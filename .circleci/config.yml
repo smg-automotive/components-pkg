@@ -1,0 +1,148 @@
+version: 2.1
+
+docker: &DOCKER_NODE
+  docker:
+    - image: cimg/node:18.0.0
+
+slack_context: &SLACK_NOTIFICATION_CONTEXT
+  context:
+    - &SLACK_NOTIFICATION_CONTEXT_ENTRY FE Slack notifications
+
+npm_publishing_context: &NPM_PUBLISHING_CONTEXT
+  context:
+    - *SLACK_NOTIFICATION_CONTEXT_ENTRY
+    - NPM package publishing
+
+slack_notify: &SLACK_NOTIFY
+  slack/notify:
+    event: fail
+    template: basic_fail_1
+    branch_pattern: main
+
+orbs:
+  slack: circleci/slack@4.9.4
+
+jobs:
+  install:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-npm-{{ checksum "package-lock.json" }}
+      - run: npm ci
+      - run: npm ls
+      - save_cache:
+          key: v1-npm-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project
+      - <<: *SLACK_NOTIFY
+
+  unit:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          command: npm run test -- --runInBand
+          no_output_timeout: 3m
+      - <<: *SLACK_NOTIFY
+
+  lint:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npm run lint
+      - <<: *SLACK_NOTIFY
+
+  typecheck:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          command: npm run typecheck
+          no_output_timeout: 1m
+      - <<: *SLACK_NOTIFY
+
+  build:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npm run build
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/dist
+      - <<: *SLACK_NOTIFY
+
+  pre_release:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      # manually set PR shell variables to empty to build pull request
+      - run: CI_PULL_REQUEST= CIRCLE_PULL_REQUEST= npx semantic-release
+      - <<: *SLACK_NOTIFY
+
+  release:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npx semantic-release
+      - <<: *SLACK_NOTIFY
+
+workflows:
+  test_and_release:
+    jobs:
+      - install:
+          <<: *SLACK_NOTIFICATION_CONTEXT
+      - unit:
+          <<: *SLACK_NOTIFICATION_CONTEXT
+          requires:
+            - install
+      - lint:
+          <<: *SLACK_NOTIFICATION_CONTEXT
+          requires:
+            - install
+      - typecheck:
+          <<: *SLACK_NOTIFICATION_CONTEXT
+          requires:
+            - install
+      - build:
+          <<: *SLACK_NOTIFICATION_CONTEXT
+          requires:
+            - install
+      - pre_release:
+          <<: *NPM_PUBLISHING_CONTEXT
+          requires:
+            - lint
+            - unit
+            - typecheck
+            - build
+          filters:
+            branches:
+              ignore: main
+      - release:
+          <<: *NPM_PUBLISHING_CONTEXT
+          requires:
+            - lint
+            - unit
+            - typecheck
+            - build
+          filters:
+            branches:
+              only: main
