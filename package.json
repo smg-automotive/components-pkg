@@ -1,5 +1,5 @@
 {
-  "name": "@smg-automotive/example",
+  "name": "@smg-automotive/components",
   "version": "0.0.0-development",
   "description": "A boilerplate package setup",
   "main": "dist/cjs/index.js",
@@ -23,9 +23,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/smg-automotive/fe-example-pkg.git"
+    "url": "https://github.com/smg-automotive/components-pkg.git"
   },
-  "homepage": "https://github.com/smg-automotive/fe-example-pkg#readme",
+  "homepage": "https://github.com/smg-automotive/components-pkg#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "22.0.0",
     "@rollup/plugin-node-resolve": "13.3.0",
