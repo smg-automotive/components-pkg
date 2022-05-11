@@ -1,9 +1,9 @@
-const direction = 'ltr'
+const direction = 'ltr';
 
 const config = {
   useSystemColorMode: false,
   initialColorMode: 'light',
   cssVarPrefix: 'chakra',
-}
+};
 
-export default { direction, config }
+export default { direction, config };

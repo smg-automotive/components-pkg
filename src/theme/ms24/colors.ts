@@ -1,4 +1,5 @@
-import { Colors } from '@chakra-ui/react'
+/* eslint-disable @typescript-eslint/naming-convention */
+import { Colors } from '@chakra-ui/react';
 
 const colors: Colors = {
   brand: {
@@ -13,6 +14,6 @@ const colors: Colors = {
     800: '#7D2528',
     900: '#5F1C1E',
   },
-}
+};
 
-export default colors
+export default colors;
