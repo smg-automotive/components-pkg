@@ -1,8 +1,11 @@
+const flexbugFixes = require('postcss-flexbugs-fixes')
+const autoprefixer = require('autoprefixer')
+
 module.exports = {
   plugins: [
-    require('postcss-flexbugs-fixes'),
-    require('autoprefixer')({
+    flexbugFixes,
+    autoprefixer({
       flexbox: 'no-2009',
     }),
   ],
-};
+}
