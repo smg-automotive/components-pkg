@@ -1,2 +1,2 @@
-export { default as ms24 } from './ms24';
-export { default as as24 } from './as24';
+export { default as motoScout24Theme } from './ms24';
+export { default as autoScout24Theme } from './as24';

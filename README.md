@@ -22,6 +22,32 @@ cd <project directory>
 npm link ../smg-automotive-components-pkg
 ```
 
+## Theming
+
+As agreed upon in the [RFC](https://github.com/smg-automotive/au-docs/discussions/3) we will handle the differences between AS24 and MS24 with two different themes. They can be then used via a theme provider that needs to wrap the application:
+
+```tsx
+// app.tsx
+import { ThemeProvider } from '@smg-automotive/components';
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <ThemeProvider theme="as24">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
+}
+
+export default MyApp
+```
+
+Theme objects can also be imported directly from the package (for showcasing, debugging, etc.):
+
+```tsx
+import { autoScout24Theme } from '@smg-automotive/components';
+```
+
+
 ## Release a new version
 
 New versions are released on the ci using semantic-release as soon as you merge into master. Please
