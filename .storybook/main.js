@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.*'],
   addons: [
     '@storybook/addon-postcss',
     '@storybook/addon-links',
@@ -12,5 +12,8 @@ module.exports = {
   framework: '@storybook/react',
   typescript: {
     reactDocgen: 'react-docgen-typescript',
+  },
+  core: {
+    builder: 'webpack5',
   },
 }
