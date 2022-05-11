@@ -29,6 +29,10 @@
     "url": "https://github.com/smg-automotive/components-pkg.git"
   },
   "homepage": "https://github.com/smg-automotive/components-pkg#readme",
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
   "devDependencies": {
     "@babel/core": "7.17.10",
     "@react-theming/storybook-addon": "1.1.5",
@@ -49,10 +53,11 @@
     "@storybook/react": "6.5.0-beta.8",
     "@storybook/testing-library": "0.0.11",
     "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "13.2.0",
+    "@testing-library/react": "12.1.5",
     "@testing-library/user-event": "14.1.1",
+    "@types/estree": "0.0.51",
     "@types/jest": "27.5.0",
-    "@types/react": "18.0.9",
+    "@types/react": "17.0.45",
     "@typescript-eslint/eslint-plugin": "5.23.0",
     "@typescript-eslint/parser": "5.23.0",
     "autoprefixer": "10.4.7",
@@ -73,8 +78,8 @@
     "jest-environment-jsdom": "28.1.0",
     "postcss-flexbugs-fixes": "5.0.2",
     "prettier": "2.6.2",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "rimraf": "3.0.2",
     "rollup": "2.72.1",
     "rollup-plugin-dts": "4.2.1",
@@ -93,5 +98,8 @@
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "framer-motion": "6.3.3"
+  },
+  "overrides": {
+    "csstype": "3.0.10"
   }
 }
