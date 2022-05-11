@@ -30,7 +30,8 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-npm-{{ checksum "package-lock.json" }}
-      - run: npm ci
+      # TEMP: remove --legacy-peer-deps once storybook 6.5 is released
+      - run: npm ci --legacy-peer-deps
       - run: npm ls
       - save_cache:
           key: v1-npm-{{ checksum "package-lock.json" }}
