@@ -98,8 +98,5 @@
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "framer-motion": "6.3.3"
-  },
-  "overrides": {
-    "csstype": "3.0.10"
   }
 }
