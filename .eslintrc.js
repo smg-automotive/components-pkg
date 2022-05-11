@@ -11,6 +11,7 @@ module.exports = {
     'prettier',
     'plugin:react-hooks/recommended',
     'plugin:testing-library/react',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -65,6 +66,17 @@ module.exports = {
       files: ['*.json'],
       rules: {
         'no-unused-expressions': 'off',
+      },
+    },
+    {
+      files: ['*.mdx'],
+      extends: ['plugin:mdx/recommended'],
+      settings: {
+        'mdx/code-blocks': true,
+      },
+      rules: {
+        'no-nested-ternary': 'off',
+        'react/jsx-props-no-spreading': 'off',
       },
     },
   ],
