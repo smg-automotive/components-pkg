@@ -1,5 +1,3 @@
-const prettierConfig = require('./.prettierrc.js')
-
 module.exports = {
   env: {
     browser: true,
@@ -7,65 +5,34 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'airbnb',
-    'prettier',
-    'plugin:react-hooks/recommended',
-    'plugin:testing-library/react',
+    '@smg-automotive/eslint-config/react',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['prettier', 'react', 'react-hooks', 'jest', 'testing-library'],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
-  },
-  ignorePatterns: ['node_modules/', 'dist/'],
   rules: {
-    'prettier/prettier': [2, prettierConfig],
     'import/no-extraneous-dependencies': [
       'error',
       {
         devDependencies: [
-          './**/*.stories.mdx',
+          './**/*.stories.@(tsx|mdx)',
           './**/*.test.@(ts|tsx)',
           'rollup.config.js',
+          'postcss.config.js',
         ],
       },
-    ],
-    'import/extensions': ['off'],
-    'react/jsx-filename-extension': ['off'],
-    'react/function-component-definition': [
-      'error',
-      { namedComponents: 'arrow-function' },
-    ],
-    'arrow-body-style': ['error', 'always'],
-    'react/require-default-props': [
-      'error',
-      { forbidDefaultForRequired: true, ignoreFunctionalComponents: true },
-    ],
-    'no-unused-vars': [
-      'error',
-      { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
     ],
   },
   overrides: [
     {
-      files: ['*.json'],
+      files: ['*.mdx'],
+      extends: ['plugin:mdx/recommended'],
+      settings: {
+        'mdx/code-blocks': true,
+      },
       rules: {
-        'no-unused-expressions': 'off',
+        'no-nested-ternary': 'off',
+        'react/jsx-props-no-spreading': 'off',
       },
     },
   ],
-}
+};

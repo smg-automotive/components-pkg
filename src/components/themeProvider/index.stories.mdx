@@ -1,0 +1,56 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box, Flex } from '@chakra-ui/react';
+
+import ThemeProvider from './index.tsx';
+
+<Meta
+  title="Theme/Provider"
+  component={ThemeProvider}
+  args={{
+    theme: 'as24',
+  }}
+  argTypes={{
+    theme: {
+      options: ['as24', 'ms24'],
+      control: { type: 'select' },
+    },
+  }}
+/>
+
+export const Template = (args) => {
+  return (
+    <ThemeProvider {...args}>
+      <Flex direction="row" align="center" justify="space-between" maxW="170px">
+        <Box
+          bg="brand.100"
+          h={50}
+          w={50}
+          mr={3}
+          borderRadius={50}
+          borderWidth={1}
+          borderStyle="solid"
+          borderColor="gray.500"
+        />
+        <Box w={100}>brand-100</Box>
+      </Flex>
+    </ThemeProvider>
+  );
+};
+
+## ThemeProvider
+
+<Canvas>
+  <Story name="as24" args={{ theme: 'as24' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="as24" />
+
+<Canvas>
+  <Story name="ms24" args={{ theme: 'ms24' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="ms24" />

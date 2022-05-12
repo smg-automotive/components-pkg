@@ -8,4 +8,4 @@ export default {
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup/jestDomExpects.ts'],
   testEnvironment: 'jsdom',
-}
+};
