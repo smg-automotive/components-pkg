@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 
 import { autoScout24Theme, motoScout24Theme } from '../../theme';
@@ -13,7 +13,7 @@ const themes = {
   ms24: motoScout24Theme,
 };
 
-const ThemeProvider: FC<Props> = ({ theme, children }) => (
+const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => (
   <ChakraProvider theme={themes[theme]}>
     <CSSReset />
     {children}
