@@ -8,7 +8,7 @@ import { Box, Flex } from '@chakra-ui/react';
 ## Colour palette
 
 <Canvas>
-  <Story name="colours">
+  <Story name="colors">
     {() => {
       return (
         <Flex direction="row" align="center" justify="left" wrap="wrap">
@@ -30,10 +30,10 @@ import { Box, Flex } from '@chakra-ui/react';
                   direction="row"
                   align="center"
                   justify="space-between"
-                  key={`brand-${shade}`}
+                  key={`auto-${shade}`}
                 >
                   <Box
-                    bg={`brand.${shade}`}
+                    bg={`auto.${shade}`}
                     h={50}
                     w={50}
                     mr={3}
@@ -43,7 +43,7 @@ import { Box, Flex } from '@chakra-ui/react';
                     borderStyle="solid"
                     borderColor="gray.500"
                   />
-                  <Box w={100}>{`brand-${shade}`}</Box>
+                  <Box w={100}>{`auto-${shade}`}</Box>
                 </Flex>
               );
             })}
@@ -54,4 +54,4 @@ import { Box, Flex } from '@chakra-ui/react';
   </Story>
 </Canvas>
 
-<ArgsTable story="colours" />
+<ArgsTable story="colors" />

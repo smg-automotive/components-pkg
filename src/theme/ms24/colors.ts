@@ -2,11 +2,11 @@
 import { Colors } from '@chakra-ui/react';
 
 const colors: Colors = {
-  brand: {
+  moto: {
     50: '#FFF8F9',
     100: '#FFE4E5',
     200: '#FFC0C2',
-    300: '#FF989B',
+    300: '#FD7978',
     400: '#FF4C52',
     500: '#EF474D',
     600: '#D64045',
