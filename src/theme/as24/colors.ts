@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Colors } from '@chakra-ui/react';
 
+// eslint-disable-next-line import/no-internal-modules
+import sharedColors from '../shared/colors';
+
 const colors: Colors = {
+  ...sharedColors,
   brand: {
     50: '#FEFCD0',
     100: '#F5F200',
