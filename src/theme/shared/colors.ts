@@ -2,7 +2,7 @@
 import { Colors } from '@chakra-ui/react';
 
 const colors: Colors = {
-  white: '#000000',
+  white: '#FFFFFF',
   black: '#000000',
   blue: {
     50: '#F7FAFE',
