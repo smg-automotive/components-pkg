@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Colors } from '@chakra-ui/react';
 
-// eslint-disable-next-line import/no-internal-modules
-import sharedColors from '../shared/colors';
+import { colors as sharedColors } from '../shared';
 
 const colors: Colors = {
   ...sharedColors,
