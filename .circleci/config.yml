@@ -2,7 +2,7 @@ version: 2.1
 
 docker: &DOCKER_NODE
   docker:
-    - image: cimg/node:18.1.0
+    - image: cimg/node:18.2.0
 
 slack_context: &SLACK_NOTIFICATION_CONTEXT
   context:
@@ -30,8 +30,7 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-npm-{{ checksum "package-lock.json" }}
-      # TEMP: remove --legacy-peer-deps once storybook 6.5 is released
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
       - run: npm ls
       - save_cache:
           key: v1-npm-{{ checksum "package-lock.json" }}
