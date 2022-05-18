@@ -2,7 +2,7 @@ version: 2.1
 
 docker: &DOCKER_NODE
   docker:
-    - image: cimg/node:18.1.0
+    - image: cimg/node:18.2.0
 
 slack_context: &SLACK_NOTIFICATION_CONTEXT
   context:
