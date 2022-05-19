@@ -1,15 +1,18 @@
 import React from 'react'
 import { addDecorator } from '@storybook/react'
+import { ThemeProvider as StorybookThemeProvider, ensure as ensureTheme } from '@storybook/theming';
 import { CSSReset, ThemeProvider } from '@chakra-ui/react'
 import { withThemes } from '@react-theming/storybook-addon'
 import { autoScout24Theme, motoScout24Theme } from '../src/theme'
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <CSSReset />
-      {children}
-    </ThemeProvider>
+    <StorybookThemeProvider theme={ensureTheme()}>
+      <ThemeProvider theme={theme}>
+        <CSSReset />
+        {children}
+      </ThemeProvider>
+    </StorybookThemeProvider>
   )
 }
 
