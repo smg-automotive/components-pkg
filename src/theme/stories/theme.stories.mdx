@@ -1,0 +1,32 @@
+import {
+  ArgsTable,
+  Canvas,
+  ColorPalette,
+  Meta,
+  Story,
+} from '@storybook/addon-docs';
+
+import ColorShowcase from './colorShowcase.tsx';
+
+<Meta title="Theme" />
+
+# Theme
+
+## Color palette
+
+<Canvas>
+  <Story name="colors" args={{ theme: 'as24' }}>
+    <ColorPalette>
+      <ColorShowcase name="brand" />
+      <ColorShowcase name="black" />
+      <ColorShowcase name="white" />
+      <ColorShowcase title="UI" name="blue" />
+      <ColorShowcase title="UI" name="gray" />
+      <ColorShowcase title="SEMANTIC" name="green" />
+      <ColorShowcase title="SEMANTIC" name="orange" />
+      <ColorShowcase title="SEMANTIC" name="red" />
+    </ColorPalette>
+  </Story>
+</Canvas>
+
+<ArgsTable story="colors" />

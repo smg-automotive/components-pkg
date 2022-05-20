@@ -14,6 +14,7 @@ module.exports = {
       'error',
       {
         devDependencies: [
+          './**/stories/**/*',
           './**/*.stories.@(tsx|mdx)',
           './**/*.test.@(ts|tsx)',
           'rollup.config.js',
