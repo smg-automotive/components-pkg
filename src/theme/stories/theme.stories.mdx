@@ -6,6 +6,9 @@ import {
   Story,
 } from '@storybook/addon-docs';
 
+import { Table, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
+
+import SpacingShowcase from './spacingShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
 
 <Meta title="Theme" />
@@ -30,3 +33,32 @@ import ColorShowcase from './colorShowcase.tsx';
 </Canvas>
 
 <ArgsTable story="colors" />
+
+## Spacing Table
+
+<Canvas>
+  <Story name="spacing" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+            <Th>Pixels</Th>
+            <Th>Example</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <SpacingShowcase name="xs" />
+          <SpacingShowcase name="sm" />
+          <SpacingShowcase name="md" />
+          <SpacingShowcase name="lg" />
+          <SpacingShowcase name="xl" />
+          <SpacingShowcase name="2xl" />
+          <SpacingShowcase name="3xl" />
+          <SpacingShowcase name="4xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
