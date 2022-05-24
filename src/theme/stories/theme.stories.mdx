@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 
 import SpacingShowcase from './spacingShowcase.tsx';
-
+import SizeShowcase from './sizeShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
@@ -89,5 +89,34 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
       <BorderRadiusShowcase name="lg" />
       <BorderRadiusShowcase name="max" />
     </Flex>
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="size" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <TableCaption>
+          The pixel column is ONLY a reference to the values in figma. The pixel
+          values are NOT computed.
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+            <Th>Pixels</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <SizeShowcase name="xs" />
+          <SizeShowcase name="s" />
+          <SizeShowcase name="md" />
+          <SizeShowcase name="lg" />
+          <SizeShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
   </Story>
 </Canvas>
