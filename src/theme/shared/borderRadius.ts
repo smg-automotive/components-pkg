@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 const borderRadius = {
   xs: '2px',
   sm: '4px',
