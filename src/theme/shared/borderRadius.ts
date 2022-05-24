@@ -1,4 +1,5 @@
 const borderRadius = {
+  none: '0',
   xs: '2px',
   sm: '4px',
   lg: '8px',
