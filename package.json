@@ -57,6 +57,7 @@
     "@types/estree": "0.0.51",
     "@types/jest": "27.5.1",
     "@types/react": "18.0.9",
+    "@types/react-textarea-autosize": "4.3.6",
     "autoprefixer": "10.4.7",
     "babel-loader": "8.2.5",
     "eslint-plugin-mdx": "1.17.0",
@@ -78,9 +79,9 @@
     "webpack": "5.72.1"
   },
   "dependencies": {
-    "@chakra-ui/react": "2.0.2",
-    "@chakra-ui/system": "2.0.2",
-    "@chakra-ui/theme": "2.0.1",
+    "@chakra-ui/react": "2.1.0",
+    "@chakra-ui/system": "2.1.0",
+    "@chakra-ui/theme": "2.0.2",
     "@chakra-ui/theme-tools": "2.0.0",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
