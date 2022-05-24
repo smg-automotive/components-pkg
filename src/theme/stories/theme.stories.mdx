@@ -6,10 +6,20 @@ import {
   Story,
 } from '@storybook/addon-docs';
 
-import { Table, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
+import {
+  Flex,
+  Table,
+  TableContainer,
+  Tbody,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react';
 
 import SpacingShowcase from './spacingShowcase.tsx';
+
 import ColorShowcase from './colorShowcase.tsx';
+import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Meta title="Theme" />
 
@@ -60,5 +70,19 @@ import ColorShowcase from './colorShowcase.tsx';
         </Tbody>
       </Table>
     </TableContainer>
+  </Story>
+</Canvas>
+
+## Border Radius
+
+<Canvas>
+  <Story name="borderRadius" args={{ theme: 'as24' }}>
+    <Flex justify="space-between">
+      <BorderRadiusShowcase name="none" />
+      <BorderRadiusShowcase name="xs" />
+      <BorderRadiusShowcase name="sm" />
+      <BorderRadiusShowcase name="lg" />
+      <BorderRadiusShowcase name="max" />
+    </Flex>
   </Story>
 </Canvas>
