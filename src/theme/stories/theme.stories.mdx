@@ -6,7 +6,10 @@ import {
   Story,
 } from '@storybook/addon-docs';
 
+import { Flex } from '@chakra-ui/react';
+
 import ColorShowcase from './colorShowcase.tsx';
+import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Meta title="Theme" />
 
@@ -30,3 +33,17 @@ import ColorShowcase from './colorShowcase.tsx';
 </Canvas>
 
 <ArgsTable story="colors" />
+
+## Border Radius
+
+<Canvas>
+  <Story name="borderRadius" args={{ theme: 'as24' }}>
+    <Flex justify="space-between">
+      <BorderRadiusShowcase name="none" />
+      <BorderRadiusShowcase name="xs" />
+      <BorderRadiusShowcase name="sm" />
+      <BorderRadiusShowcase name="lg" />
+      <BorderRadiusShowcase name="max" />
+    </Flex>
+  </Story>
+</Canvas>
