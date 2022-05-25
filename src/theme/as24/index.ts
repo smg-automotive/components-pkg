@@ -1,23 +1,15 @@
 import { extendTheme } from '@chakra-ui/react';
 
 import colors from './colors';
-import {
-  basis,
-  borderRadius,
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  spacing,
-} from '../shared';
+import { basis, borderRadius, fonts, spacing, typography } from '../shared';
 
 export const theme = {
   ...basis,
   colors,
   spacing,
   borderRadius,
-  fontSizes,
-  fontWeights,
-  lineHeights,
+  fonts,
+  typography,
   name: 'AutoScout 24',
 };
 

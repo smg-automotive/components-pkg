@@ -17,8 +17,8 @@ import {
   Tr,
 } from '@chakra-ui/react';
 
+import TypographyShowcase from './typographyShowcase.tsx';
 import SpacingShowcase from './spacingShowcase.tsx';
-
 import ColorShowcase from './colorShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
@@ -89,5 +89,13 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
       <BorderRadiusShowcase name="lg" />
       <BorderRadiusShowcase name="max" />
     </Flex>
+  </Story>
+</Canvas>
+
+## Typography
+
+<Canvas>
+  <Story name="typography" args={{ theme: 'as24' }}>
+    <TypographyShowcase name="display1" />
   </Story>
 </Canvas>
