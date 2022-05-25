@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.18.0",
+    "@chakra-ui/storybook-addon": "^3.0.0",
     "@react-theming/storybook-addon": "1.1.6",
     "@rollup/plugin-commonjs": "22.0.0",
     "@rollup/plugin-node-resolve": "13.3.0",

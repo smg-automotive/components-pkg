@@ -25,4 +25,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  chakra: {
+    theme: motoScout24Theme,
+  },
 }

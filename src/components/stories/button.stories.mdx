@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story, Preview } from '@storybook/addon-docs';
+import { Button } from '../button';
+
+<Meta title="Components/Button" component={Button} />
+
+# Button
+With `MDX`, we can define a story for `Checkbox` right in the middle of our
+
+<Canvas>
+    <Story name="Primary">
+        <Button>Primary button</Button>
+    </Story>
+</Canvas>
+<Canvas>
+
+    <Story name="Disabled">
+        <Button isDisabled={true}>Disabled</Button>
+    </Story>
+</Canvas>
+

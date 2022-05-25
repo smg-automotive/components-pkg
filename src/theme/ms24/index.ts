@@ -6,7 +6,7 @@ import { basis } from '../shared';
 export const theme = {
   ...basis,
   colors,
-  name: 'MotoScout 24',
+  name: 'MS24',
 };
 
 export default extendTheme(theme);
