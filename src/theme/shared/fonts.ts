@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 const fonts = {
   family: {
     makeItSans: 'Make It Sans',
   },
   size: {
-    f03: '4.75rem',
-    f02: '3.75rem',
-    f01: '3rem',
-    f0: '2.5rem',
-    f1: '2rem',
-    f2: '1.5rem',
-    f3: '1.25rem',
-    f4: '1rem',
-    f5: '0.875rem',
-    f6: '0.75rem',
+    '5xl': '4.75rem',
+    '4xl': '3.75rem',
+    '3xl': '3rem',
+    '2xl': '2.5rem',
+    xl: '2rem',
+    lg: '1.5rem',
+    md: '1.25rem',
+    base: '1rem',
+    sm: '0.875rem',
+    xs: '0.75rem',
   },
   weight: {
     regular: '400',

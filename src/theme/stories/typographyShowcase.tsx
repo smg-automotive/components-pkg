@@ -7,7 +7,11 @@ type Props = {
 
 const TypographyShowcase: FC<Props> = ({ name }) => {
   const theme = useTheme();
-  return <Text textStyle={theme.textStyles[name]}>{name}</Text>;
+  return (
+    <Text mb={5} style={theme.typography[name]}>
+      {name}
+    </Text>
+  );
 };
 
 export default TypographyShowcase;
