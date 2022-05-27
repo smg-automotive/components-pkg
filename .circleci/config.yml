@@ -4,6 +4,17 @@ docker: &DOCKER_NODE
   docker:
     - image: cimg/node:18.2.0
 
+bob_the_builder: &BOB_THE_BUILDER
+  docker:
+    - image: 379129775379.dkr.ecr.eu-central-1.amazonaws.com/platform/autoscout24/bob-the-builder:main
+
+  environment:
+    AWS_DEFAULT_REGION: eu-central-1
+    DOCKER_REPOSITORY: 379129775379.dkr.ecr.eu-central-1.amazonaws.com
+    DOCKER_NAMESPACE: frontend
+
+  resource_class: small
+
 slack_context: &SLACK_NOTIFICATION_CONTEXT
   context:
     - &SLACK_NOTIFICATION_CONTEXT_ENTRY FE Slack notifications
@@ -105,6 +116,16 @@ jobs:
       - run: npx semantic-release
       - <<: *SLACK_NOTIFY
 
+  docker_build:
+    <<: *BOB_THE_BUILDER
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: /build/build.sh
+      - run: /push/push.sh
+      - <<: *SLACK_NOTIFY
+
 workflows:
   test_and_release:
     jobs:
@@ -146,3 +167,4 @@ workflows:
           filters:
             branches:
               only: main
+      - docker_build
