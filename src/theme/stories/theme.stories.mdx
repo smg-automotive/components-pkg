@@ -17,6 +17,7 @@ import {
   Tr,
 } from '@chakra-ui/react';
 
+import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
@@ -118,5 +119,26 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
         </Tbody>
       </Table>
     </TableContainer>
+  </Story>
+</Canvas>
+
+## Typography
+
+<Canvas>
+  <Story name="typography" args={{ theme: 'as24' }}>
+    <TypographyShowcase name="display1" />
+    <TypographyShowcase name="display2" />
+    <TypographyShowcase name="display3" />
+    <TypographyShowcase name="display4" />
+    <TypographyShowcase name="heading1" />
+    <TypographyShowcase name="heading2" />
+    <TypographyShowcase name="heading3" />
+    <TypographyShowcase name="heading4" />
+    <TypographyShowcase name="heading5" />
+    <TypographyShowcase name="heading6" />
+    <TypographyShowcase name="body-large" />
+    <TypographyShowcase name="body" />
+    <TypographyShowcase name="body-small" />
+    <TypographyShowcase name="body-xs" />
   </Story>
 </Canvas>
