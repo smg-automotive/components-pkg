@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Button, useTheme } from '@chakra-ui/react';
+import { Button, Flex, Text, useTheme } from '@chakra-ui/react';
 
 type Props = {
   name: string;
@@ -8,13 +8,16 @@ type Props = {
 const BorderRadiusShowcase: FC<Props> = ({ name }) => {
   const theme = useTheme();
   return (
-    <Button
-      background={theme.colors.brand.primary}
-      size="lg"
-      borderRadius={theme.borderRadius[name]}
-    >
-      {name}
-    </Button>
+    <Flex direction="column" alignItems="center">
+      <Button
+        background={theme.colors.brand.primary}
+        size="lg"
+        borderRadius={theme.radii[name]}
+      >
+        {name}
+      </Button>
+      <Text mt={2}>{theme.radii[name]}</Text>
+    </Flex>
   );
 };
 
