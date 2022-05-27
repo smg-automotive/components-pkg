@@ -18,7 +18,8 @@ import {
 } from '@chakra-ui/react';
 
 import TypographyShowcase from './typographyShowcase.tsx';
-import SpacingShowcase from './spacingShowcase.tsx';
+import SpaceShowcase from './spaceShowcase.tsx';
+import SizeShowcase from './sizeShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
@@ -48,7 +49,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 ## Spacing Table
 
 <Canvas>
-  <Story name="spacing" args={{ theme: 'as24' }}>
+  <Story name="space" args={{ theme: 'as24' }}>
     <TableContainer>
       <Table>
         <TableCaption>
@@ -64,14 +65,14 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
           </Tr>
         </Thead>
         <Tbody>
-          <SpacingShowcase name="xs" />
-          <SpacingShowcase name="sm" />
-          <SpacingShowcase name="md" />
-          <SpacingShowcase name="lg" />
-          <SpacingShowcase name="xl" />
-          <SpacingShowcase name="2xl" />
-          <SpacingShowcase name="3xl" />
-          <SpacingShowcase name="4xl" />
+          <SpaceShowcase name="xs" />
+          <SpaceShowcase name="sm" />
+          <SpaceShowcase name="md" />
+          <SpaceShowcase name="lg" />
+          <SpaceShowcase name="xl" />
+          <SpaceShowcase name="2xl" />
+          <SpaceShowcase name="3xl" />
+          <SpaceShowcase name="4xl" />
         </Tbody>
       </Table>
     </TableContainer>
@@ -92,6 +93,36 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
   </Story>
 </Canvas>
 
+## Sizes
+
+<Canvas>
+  <Story name="sizes" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <TableCaption>
+          The pixel column is ONLY a reference to the values in figma. The pixel
+          values are NOT computed.
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+            <Th>Pixels</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <SizeShowcase name="xs" />
+          <SizeShowcase name="s" />
+          <SizeShowcase name="md" />
+          <SizeShowcase name="lg" />
+          <SizeShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
+
+
 ## Typography
 
 <Canvas>
@@ -110,5 +141,5 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
     <TypographyShowcase name="body" />
     <TypographyShowcase name="body-small" />
     <TypographyShowcase name="body-xs" />
-  </Story>
+    </Story>
 </Canvas>

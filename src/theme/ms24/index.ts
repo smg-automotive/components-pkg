@@ -1,13 +1,14 @@
 import { extendTheme } from '@chakra-ui/react';
 
 import colors from './colors';
-import { basis, borderRadius, fonts, spacing, typography } from '../shared';
+import { basis, fonts, radii, sizes, space, typography } from '../shared';
 
 export const theme = {
   ...basis,
   colors,
-  spacing,
-  borderRadius,
+  space,
+  radii,
+  sizes,
   fonts,
   typography,
   name: 'MotoScout 24',

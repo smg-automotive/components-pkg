@@ -7,7 +7,7 @@ type Props = {
 
 const SpacingShowCase: FC<Props> = ({ name }) => {
   const theme = useTheme();
-  const unitRem = parseFloat(theme.spacing[name]);
+  const unitRem = parseFloat(theme.space[name]);
   const unitPixel = unitRem / 0.0625;
   return (
     <Tr border="1px" borderColor={theme.colors.gray[100]}>
@@ -15,7 +15,7 @@ const SpacingShowCase: FC<Props> = ({ name }) => {
       <Td>{`${unitRem}rem`}</Td>
       <Td>{`${unitPixel}px`}</Td>
       <Td>
-        <Box bg={theme.colors.gray[200]} p={theme.spacing[name]}>
+        <Box bg={theme.colors.gray[200]} p={theme.space[name]}>
           <Box bg={theme.colors.white} textAlign="center" width="auto">
             {name}
           </Box>
