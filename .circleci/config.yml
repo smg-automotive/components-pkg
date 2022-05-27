@@ -24,6 +24,10 @@ npm_publishing_context: &NPM_PUBLISHING_CONTEXT
     - *SLACK_NOTIFICATION_CONTEXT_ENTRY
     - NPM package publishing
 
+aws_context: &AWS_CONTEXT
+  context:
+    - AWS credential
+
 slack_notify: &SLACK_NOTIFY
   slack/notify:
     event: fail
@@ -167,4 +171,5 @@ workflows:
           filters:
             branches:
               only: main
-      - docker_build
+      - docker_build:
+          <<: *AWS_CONTEXT
