@@ -1,7 +1,17 @@
 import { extendTheme } from '@chakra-ui/react';
 
 import colors from './colors';
-import { basis, fonts, radii, sizes, space, typography } from '../shared';
+import {
+  basis,
+  fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  radii,
+  sizes,
+  space,
+  typography,
+} from '../shared';
 
 export const theme = {
   ...basis,
@@ -10,6 +20,9 @@ export const theme = {
   radii,
   sizes,
   fonts,
+  fontWeights,
+  fontSizes,
+  lineHeights,
   typography,
   name: 'MotoScout 24',
 };
