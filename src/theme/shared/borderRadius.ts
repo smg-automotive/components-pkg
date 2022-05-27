@@ -1,4 +1,4 @@
-const borderRadius = {
+const radii = {
   none: '0',
   xs: '2px',
   sm: '4px',
@@ -6,4 +6,4 @@ const borderRadius = {
   max: '9999px',
 };
 
-export default borderRadius;
+export default radii;

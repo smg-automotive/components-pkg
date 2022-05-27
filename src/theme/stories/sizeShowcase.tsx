@@ -7,7 +7,7 @@ type Props = {
 
 const SizingShowCase: FC<Props> = ({ name }) => {
   const theme = useTheme();
-  const unitRem = parseFloat(theme.size[name]);
+  const unitRem = parseFloat(theme.sizes[name]);
   const unitPixel = unitRem / 0.0625;
   return (
     <Tr border="1px" borderColor={theme.colors.gray[100]}>

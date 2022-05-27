@@ -1,4 +1,4 @@
-const size = {
+const sizes = {
   xs: '1rem',
   s: '1.5rem',
   md: '2rem',
@@ -6,4 +6,4 @@ const size = {
   xl: '3rem',
 };
 
-export default size;
+export default sizes;
