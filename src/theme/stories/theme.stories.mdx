@@ -20,6 +20,7 @@ import {
 import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
+import ContainerShowcase from './containerShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
@@ -140,5 +141,28 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
     <TypographyShowcase name="body" />
     <TypographyShowcase name="body-small" />
     <TypographyShowcase name="body-xs" />
+  </Story>
+</Canvas>
+
+## Containers
+
+<Canvas>
+  <Story name="containers" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <ContainerShowcase name="sm" />
+          <ContainerShowcase name="md" />
+          <ContainerShowcase name="lg" />
+          <ContainerShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
   </Story>
 </Canvas>

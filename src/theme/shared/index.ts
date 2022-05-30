@@ -7,3 +7,4 @@ export { default as fontWeights } from './fontWeights';
 export { default as fontSizes } from './fontSizes';
 export { default as lineHeights } from './lineHeights';
 export { default as typography } from './typography';
+export { default as containers } from './containers';
