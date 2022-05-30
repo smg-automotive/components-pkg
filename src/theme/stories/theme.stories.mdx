@@ -21,6 +21,7 @@ import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
+import BreakpointShowcase from './breakpointShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Meta title="Theme" />
@@ -140,5 +141,30 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
     <TypographyShowcase name="body" />
     <TypographyShowcase name="body-small" />
     <TypographyShowcase name="body-xs" />
+  </Story>
+</Canvas>
+
+## Breakpoints
+
+<Canvas>
+  <Story name="breakpoints" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <TableCaption>
+          We use the default chakra breakpoints [sm:30em, md:48em, xl:80em] PLUS
+          these.
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Value</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <BreakpointShowcase name="xs" />
+          <BreakpointShowcase name="lg" />
+        </Tbody>
+      </Table>
+    </TableContainer>
   </Story>
 </Canvas>
