@@ -9,9 +9,9 @@ const ShadowShowcase: FC<Props> = ({ name }) => {
   const theme = useTheme();
   return (
     <Box
-      m={5}
-      w={150}
-      h={150}
+      m={10}
+      w={100}
+      h={100}
       shadow={theme.shadows[name]}
       border="1px"
       borderColor="gray.100"
