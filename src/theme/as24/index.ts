@@ -3,6 +3,7 @@ import { extendTheme } from '@chakra-ui/react';
 import colors from './colors';
 import {
   basis,
+  breakpoints,
   fontSizes,
   fontWeights,
   lineHeights,
@@ -15,6 +16,7 @@ import {
 
 export const theme = {
   ...basis,
+  breakpoints,
   colors,
   space,
   radii,
