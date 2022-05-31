@@ -26,6 +26,7 @@ npm_publishing_context: &NPM_PUBLISHING_CONTEXT
 
 aws_context: &AWS_CONTEXT
   context:
+    - *SLACK_NOTIFICATION_CONTEXT_ENTRY
     - AWS credentials
 
 slack_notify: &SLACK_NOTIFY
@@ -130,6 +131,19 @@ jobs:
       - run: /push/push.sh
       - <<: *SLACK_NOTIFY
 
+  deploy_branch:
+    <<: *BOB_THE_BUILDER
+    resource_class: small
+    steps:
+      - checkout
+      - run: STAGE_NAME=branch /deploy/deploy.sh
+      - run: STAGE_NAME=branch /deploy/branch_deployment_url.sh > deployment-url
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - deployment-url
+      - <<: *SLACK_NOTIFY
+
 workflows:
   test_and_release:
     jobs:
@@ -173,3 +187,7 @@ workflows:
               only: main
       - docker_build:
           <<: *AWS_CONTEXT
+      - deploy_branch:
+          <<: *AWS_CONTEXT
+          requires:
+            - docker_build
