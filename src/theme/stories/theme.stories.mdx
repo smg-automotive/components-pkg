@@ -6,7 +6,22 @@ import {
   Story,
 } from '@storybook/addon-docs';
 
+import {
+  Flex,
+  Table,
+  TableCaption,
+  TableContainer,
+  Tbody,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react';
+
+import TypographyShowcase from './typographyShowcase.tsx';
+import SpaceShowcase from './spaceShowcase.tsx';
+import SizeShowcase from './sizeShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
+import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Meta title="Theme" />
 
@@ -30,3 +45,100 @@ import ColorShowcase from './colorShowcase.tsx';
 </Canvas>
 
 <ArgsTable story="colors" />
+
+## Spacing Table
+
+<Canvas>
+  <Story name="space" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <TableCaption>
+          The pixel column is ONLY a reference to the values in figma. The pixel
+          values are NOT computed.
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+            <Th>Pixels</Th>
+            <Th>Example</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <SpaceShowcase name="xs" />
+          <SpaceShowcase name="sm" />
+          <SpaceShowcase name="md" />
+          <SpaceShowcase name="lg" />
+          <SpaceShowcase name="xl" />
+          <SpaceShowcase name="2xl" />
+          <SpaceShowcase name="3xl" />
+          <SpaceShowcase name="4xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
+
+## Border Radius
+
+<Canvas>
+  <Story name="borderRadius" args={{ theme: 'as24' }}>
+    <Flex justify="space-between">
+      <BorderRadiusShowcase name="none" />
+      <BorderRadiusShowcase name="xs" />
+      <BorderRadiusShowcase name="sm" />
+      <BorderRadiusShowcase name="lg" />
+      <BorderRadiusShowcase name="max" />
+    </Flex>
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="sizes" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <TableCaption>
+          The pixel column is ONLY a reference to the values in figma. The pixel
+          values are NOT computed.
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+            <Th>Pixels</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <SizeShowcase name="xs" />
+          <SizeShowcase name="s" />
+          <SizeShowcase name="md" />
+          <SizeShowcase name="lg" />
+          <SizeShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
+
+## Typography
+
+<Canvas>
+  <Story name="typography" args={{ theme: 'as24' }}>
+    <TypographyShowcase name="display1" />
+    <TypographyShowcase name="display2" />
+    <TypographyShowcase name="display3" />
+    <TypographyShowcase name="display4" />
+    <TypographyShowcase name="heading1" />
+    <TypographyShowcase name="heading2" />
+    <TypographyShowcase name="heading3" />
+    <TypographyShowcase name="heading4" />
+    <TypographyShowcase name="heading5" />
+    <TypographyShowcase name="heading6" />
+    <TypographyShowcase name="body-large" />
+    <TypographyShowcase name="body" />
+    <TypographyShowcase name="body-small" />
+    <TypographyShowcase name="body-xs" />
+  </Story>
+</Canvas>
