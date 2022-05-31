@@ -7,7 +7,9 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
+  opacity,
   radii,
+  shadows,
   sizes,
   space,
   typography,
@@ -24,6 +26,8 @@ export const theme = {
   lineHeights,
   typography,
   containers,
+  opacity,
+  shadows,
   name: 'MotoScout 24',
 };
 

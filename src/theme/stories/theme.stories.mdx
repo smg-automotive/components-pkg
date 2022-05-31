@@ -20,11 +20,52 @@ import {
 import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
+import ShadowShowcase from './shadowShowcase.tsx';
+import OpacityShowcase from './opacityShowcase.tsx';
 import ContainerShowcase from './containerShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
+import BreakpointShowcase from './breakpointShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Meta title="Theme" />
+
+## Border Radius
+
+<Canvas>
+  <Story name="borderRadius" args={{ theme: 'as24' }}>
+    <Flex justify="space-between">
+      <BorderRadiusShowcase name="none" />
+      <BorderRadiusShowcase name="xs" />
+      <BorderRadiusShowcase name="sm" />
+      <BorderRadiusShowcase name="lg" />
+      <BorderRadiusShowcase name="max" />
+    </Flex>
+  </Story>
+</Canvas>
+
+## Breakpoints
+
+<Canvas>
+  <Story name="breakpoints" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Value</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <BreakpointShowcase name="xs" />
+          <BreakpointShowcase name="sm" />
+          <BreakpointShowcase name="md" />
+          <BreakpointShowcase name="lg" />
+          <BreakpointShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
 
 # Theme
 
@@ -46,6 +87,85 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 </Canvas>
 
 <ArgsTable story="colors" />
+
+## Containers
+
+<Canvas>
+  <Story name="containers" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Pixels</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <ContainerShowcase name="sm" />
+          <ContainerShowcase name="md" />
+          <ContainerShowcase name="lg" />
+          <ContainerShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
+
+## Opacity
+
+<Canvas>
+  <Story name="opacity" args={{ theme: 'as24' }}>
+    <Flex justify="space-between">
+      <OpacityShowcase name="100" />
+      <OpacityShowcase name="80" />
+      <OpacityShowcase name="60" />
+      <OpacityShowcase name="40" />
+      <OpacityShowcase name="20" />
+    </Flex>
+  </Story>
+</Canvas>
+
+## Shadows
+
+<Canvas>
+  <Story name="shadows" args={{ theme: 'as24' }}>
+    <Flex>
+      <ShadowShowcase name="none" />
+      <ShadowShowcase name="xs" />
+      <ShadowShowcase name="sm" />
+      <ShadowShowcase name="md" />
+      <ShadowShowcase name="lg" />
+    </Flex>
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="sizes" args={{ theme: 'as24' }}>
+    <TableContainer>
+      <Table>
+        <TableCaption>
+          The pixel column is ONLY a reference to the values in figma. The pixel
+          values are NOT computed.
+        </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Rem</Th>
+            <Th>Pixels</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <SizeShowcase name="xs" />
+          <SizeShowcase name="md" />
+          <SizeShowcase name="lg" />
+          <SizeShowcase name="xl" />
+        </Tbody>
+      </Table>
+    </TableContainer>
+  </Story>
+</Canvas>
 
 ## Spacing Table
 
@@ -80,49 +200,6 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
   </Story>
 </Canvas>
 
-## Border Radius
-
-<Canvas>
-  <Story name="borderRadius" args={{ theme: 'as24' }}>
-    <Flex justify="space-between">
-      <BorderRadiusShowcase name="none" />
-      <BorderRadiusShowcase name="xs" />
-      <BorderRadiusShowcase name="sm" />
-      <BorderRadiusShowcase name="lg" />
-      <BorderRadiusShowcase name="max" />
-    </Flex>
-  </Story>
-</Canvas>
-
-## Sizes
-
-<Canvas>
-  <Story name="sizes" args={{ theme: 'as24' }}>
-    <TableContainer>
-      <Table>
-        <TableCaption>
-          The pixel column is ONLY a reference to the values in figma. The pixel
-          values are NOT computed.
-        </TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Rem</Th>
-            <Th>Pixels</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <SizeShowcase name="xs" />
-          <SizeShowcase name="s" />
-          <SizeShowcase name="md" />
-          <SizeShowcase name="lg" />
-          <SizeShowcase name="xl" />
-        </Tbody>
-      </Table>
-    </TableContainer>
-  </Story>
-</Canvas>
-
 ## Typography
 
 <Canvas>
@@ -141,28 +218,5 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
     <TypographyShowcase name="body" />
     <TypographyShowcase name="body-small" />
     <TypographyShowcase name="body-xs" />
-  </Story>
-</Canvas>
-
-## Containers
-
-<Canvas>
-  <Story name="containers" args={{ theme: 'as24' }}>
-    <TableContainer>
-      <Table>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Rem</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <ContainerShowcase name="sm" />
-          <ContainerShowcase name="md" />
-          <ContainerShowcase name="lg" />
-          <ContainerShowcase name="xl" />
-        </Tbody>
-      </Table>
-    </TableContainer>
   </Story>
 </Canvas>
