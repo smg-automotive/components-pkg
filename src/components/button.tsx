@@ -45,21 +45,21 @@ const Button: FC<Props> = ({ children, ...props }) => {
 
   const spacing = {
     md: {
-      py: 0.375,
-      px: 3,
+      py: 'sm',
+      px: 'md',
     },
     lg: {
-      py: 2.5,
-      px: 4,
+      py: 'md',
+      px: 'lg',
     },
     xl: {
-      py: '3.5',
-      px: 5,
+      py: 'lg',
+      px: 'xl',
     },
   };
 
   const commonStyles = {
-    borderRadius: '4',
+    borderRadius: 'sm',
     boxShadow: `0px 2px 0px ${btnShadowColor}`,
     fontWeight: 'bold',
     ...spacing[props.size],
