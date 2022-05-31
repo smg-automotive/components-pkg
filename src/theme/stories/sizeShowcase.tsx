@@ -10,7 +10,7 @@ const SizingShowCase: FC<Props> = ({ name }) => {
   const unitRem = parseFloat(theme.sizes[name]);
   const unitPixel = unitRem / 0.0625;
   return (
-    <Tr border="1px" borderColor={theme.colors.gray[100]}>
+    <Tr border="1px" borderColor="gray.100">
       <Td>{name}</Td>
       <Td>{`${unitRem}rem`}</Td>
       <Td>{`${unitPixel}px`}</Td>

@@ -7,6 +7,7 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
+  opacity,
   radii,
   shadows,
   sizes,
@@ -25,6 +26,7 @@ export const theme = {
   fontWeights,
   fontSizes,
   lineHeights,
+  opacity,
   shadows,
   name: 'AutoScout 24',
 };

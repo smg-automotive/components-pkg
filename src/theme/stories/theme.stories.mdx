@@ -21,6 +21,7 @@ import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
 import ShadowShowcase from './shadowShowcase.tsx';
+import OpacityShowcase from './opacityShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
 import BreakpointShowcase from './breakpointShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
@@ -114,7 +115,6 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
         </Thead>
         <Tbody>
           <SizeShowcase name="xs" />
-          <SizeShowcase name="s" />
           <SizeShowcase name="md" />
           <SizeShowcase name="lg" />
           <SizeShowcase name="xl" />
@@ -142,6 +142,20 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
     <TypographyShowcase name="body" />
     <TypographyShowcase name="body-small" />
     <TypographyShowcase name="body-xs" />
+  </Story>
+</Canvas>
+
+## Opacity
+
+<Canvas>
+  <Story name="opacity" args={{ theme: 'as24' }}>
+    <Flex justify="space-between">
+      <OpacityShowcase name="100" />
+      <OpacityShowcase name="80" />
+      <OpacityShowcase name="60" />
+      <OpacityShowcase name="40" />
+      <OpacityShowcase name="20" />
+    </Flex>
   </Story>
 </Canvas>
 
