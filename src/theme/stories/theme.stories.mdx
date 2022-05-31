@@ -20,6 +20,7 @@ import {
 import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
+import ShadowShowcase from './shadowShowcase.tsx';
 import ColorShowcase from './colorShowcase.tsx';
 import BreakpointShowcase from './breakpointShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
@@ -165,5 +166,19 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
         </Tbody>
       </Table>
     </TableContainer>
+  </Story>
+</Canvas>
+
+## Shadows
+
+<Canvas>
+  <Story name="shadows" args={{ theme: 'as24' }}>
+    <Flex>
+      <ShadowShowcase name="none" />
+      <ShadowShowcase name="xs" />
+      <ShadowShowcase name="sm" />
+      <ShadowShowcase name="md" />
+      <ShadowShowcase name="lg" />
+    </Flex>
   </Story>
 </Canvas>
