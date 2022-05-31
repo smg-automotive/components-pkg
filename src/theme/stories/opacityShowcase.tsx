@@ -11,13 +11,12 @@ const OpacityShowcase: FC<Props> = ({ name }) => {
   return (
     <Box
       bg="gray.900"
-      h={50}
-      w={50}
-      m={50}
+      h={100}
+      w={100}
       borderRadius="max"
       opacity={theme.opacity[name]}
     >
-      <Text mt={3} color="white" textAlign="center">
+      <Text mt={9} color="white" textAlign="center">
         {`${name}%`}
       </Text>
     </Box>
