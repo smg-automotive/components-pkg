@@ -7,16 +7,10 @@ import {
 } from '@chakra-ui/react';
 
 interface Props extends ButtonProps {
-  children?: ReactNode;
-  size: 'md' | 'lg' | 'xl';
-  variant: 'primary';
+  children: ReactNode;
+  size?: 'md' | 'lg' | 'xl';
+  variant?: 'primary';
 }
-
-const defaultProps: Props = {
-  size: 'lg',
-  variant: 'primary',
-};
-
 interface ButtonStates {
   normal: ButtonProps;
   hover: ButtonProps;
@@ -24,7 +18,12 @@ interface ButtonStates {
   disabled: ButtonProps;
 }
 
-const Button: FC<Props> = ({ children, ...props }) => {
+const Button: FC<Props> = ({
+  children,
+  variant = 'primary',
+  size = 'lg',
+  ...rest
+}) => {
   const btnShadowColor = useToken('colors', 'custom.btnShadow');
 
   const { name } = useTheme();
@@ -62,8 +61,8 @@ const Button: FC<Props> = ({ children, ...props }) => {
     borderRadius: 'sm',
     boxShadow: `0px 2px 0px ${btnShadowColor}`,
     fontWeight: 'bold',
-    ...spacing[props.size],
-    ...fontSize[props.size],
+    ...spacing[size],
+    ...fontSize[size],
   };
 
   if (name === 'AS24') {
@@ -113,7 +112,8 @@ const Button: FC<Props> = ({ children, ...props }) => {
   return (
     <>
       <CUButton
-        {...props}
+        {...rest}
+        {...{ size, variant }}
         {...buttonStates.normal}
         _hover={buttonStates.hover}
         _active={buttonStates.active}
@@ -125,7 +125,5 @@ const Button: FC<Props> = ({ children, ...props }) => {
     </>
   );
 };
-
-Button.defaultProps = defaultProps;
 
 export default Button;
