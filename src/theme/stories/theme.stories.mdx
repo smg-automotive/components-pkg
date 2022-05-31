@@ -150,10 +150,6 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
   <Story name="breakpoints" args={{ theme: 'as24' }}>
     <TableContainer>
       <Table>
-        <TableCaption>
-          We use the default chakra breakpoints [sm:30em, md:48em, xl:80em] PLUS
-          these.
-        </TableCaption>
         <Thead>
           <Tr>
             <Th>Name</Th>
@@ -162,7 +158,10 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
         </Thead>
         <Tbody>
           <BreakpointShowcase name="xs" />
+          <BreakpointShowcase name="sm" />
+          <BreakpointShowcase name="md" />
           <BreakpointShowcase name="lg" />
+          <BreakpointShowcase name="xl" />
         </Tbody>
       </Table>
     </TableContainer>
