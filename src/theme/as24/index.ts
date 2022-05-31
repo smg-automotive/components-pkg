@@ -4,6 +4,7 @@ import colors from './colors';
 import {
   basis,
   breakpoints,
+  containers,
   fontSizes,
   fontWeights,
   lineHeights,
@@ -26,6 +27,7 @@ export const theme = {
   fontWeights,
   fontSizes,
   lineHeights,
+  containers,
   opacity,
   shadows,
   name: 'AutoScout 24',
