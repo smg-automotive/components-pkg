@@ -4,6 +4,7 @@ import { ThemeProvider as StorybookThemeProvider, ensure as ensureTheme } from '
 import { CSSReset, ThemeProvider } from '@chakra-ui/react'
 import { withThemes } from '@react-theming/storybook-addon'
 import { autoScout24Theme, motoScout24Theme } from '../src/theme'
+import breackpoints from '../src/theme/shared/breakpoints'
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
   return (
@@ -18,6 +19,17 @@ const providerFn = ({ theme = autoScout24Theme, children }) => {
 
 addDecorator(withThemes(null, [autoScout24Theme, motoScout24Theme], { providerFn }))
 
+const customViewports = Object.entries(breackpoints).reduce((acc, [key, value]) => {
+  acc[key] = {
+    name: key,
+    styles: {
+      width: value,
+      height: "100%"
+    }
+  }
+  return acc
+}, {})
+
 export const parameters = {
   controls: {
     matchers: {
@@ -25,4 +37,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewport: {
+    viewports: customViewports,
+  }
 }
