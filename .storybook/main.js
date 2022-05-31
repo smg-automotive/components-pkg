@@ -6,7 +6,6 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@react-theming/storybook-addon',
-    '@chakra-ui/storybook-addon',
   ],
   framework: '@storybook/react',
   typescript: {
@@ -18,7 +17,6 @@ module.exports = {
   features: {
     previewMdx2: true,
     interactionsDebugger: true,
-    emotionAlias: false,
   },
   staticDirs: ['./public'],
 };

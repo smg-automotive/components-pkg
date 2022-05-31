@@ -7,12 +7,12 @@ import { autoScout24Theme, motoScout24Theme } from '../src/theme'
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
   return (
-    <StorybookThemeProvider theme={ensureTheme()}>
-      <ThemeProvider theme={theme}>
-        <CSSReset />
-        {children}
-      </ThemeProvider>
-    </StorybookThemeProvider>
+      <StorybookThemeProvider theme={ensureTheme()}>
+        <ThemeProvider theme={theme}>
+          <CSSReset />
+          {children}
+        </ThemeProvider>
+      </StorybookThemeProvider>
   )
 }
 
@@ -24,8 +24,5 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  chakra: {
-    theme: motoScout24Theme,
   },
 }

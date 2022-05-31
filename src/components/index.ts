@@ -1,2 +1,2 @@
 export { default as ThemeProvider } from './themeProvider';
-export * from './button';
+export { default as Button } from './button';

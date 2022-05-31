@@ -1,20 +1,39 @@
-import { Canvas, Meta, Story, Preview } from '@storybook/addon-docs';
-import { Button } from '../button';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Button from '../button';
 
 <Meta title="Components/Button" component={Button} />
 
+export const Template = (args) => <Button {...args}>Primary button</Button>;
+
 # Button
-With `MDX`, we can define a story for `Checkbox` right in the middle of our
 
 <Canvas>
-    <Story name="Primary">
-        <Button>Primary button</Button>
+    <Story name="Basic"
+           args={{
+               disabled: false
+           }}
+           argTypes={{
+               variant: {
+                   options: ['primary', 'secondary'],
+                   control: {type: 'radio'},
+                   defaultValue: 'primary'
+               },
+               size: {
+                   options: ['md', 'lg', 'xl'],
+                   control: {type: 'radio'},
+               },
+           }}
+    >
+        {Template.bind({})}
     </Story>
+
 </Canvas>
 <Canvas>
 
-    <Story name="Disabled">
-        <Button isDisabled={true}>Disabled</Button>
+    <Story name="Disabled" args={{
+        disabled: true
+    }}>
+        {Template.bind({})}
     </Story>
-</Canvas>
 
+</Canvas>
