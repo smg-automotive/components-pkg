@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import { expect } from '@storybook/jest';
 
-import Button from '../button';
+import Button from '../index';
 
 import fn = jest.fn;
 
