@@ -1,4 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
 import Button from '../button';
 
 <Meta title="Components/Button" component={Button} />
@@ -8,31 +9,34 @@ export const Template = (args) => <Button {...args}>Primary button</Button>;
 # Button
 
 <Canvas>
-    <Story name="Basic"
-           args={{
-               disabled: false
-           }}
-           argTypes={{
-               variant: {
-                   options: ['primary', 'secondary'],
-                   control: {type: 'radio'},
-                   defaultValue: 'primary'
-               },
-               size: {
-                   options: ['md', 'lg', 'xl'],
-                   control: {type: 'radio'},
-               },
-           }}
-    >
-        {Template.bind({})}
-    </Story>
-
+  <Story
+    name="Basic"
+    args={{
+      disabled: false,
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: { type: 'radio' },
+        defaultValue: 'primary',
+      },
+      size: {
+        options: ['md', 'lg', 'xl'],
+        control: { type: 'radio' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
-<Canvas>
 
-    <Story name="Disabled" args={{
-        disabled: true
-    }}>
-        {Template.bind({})}
-    </Story>
+<Canvas>
+  <Story
+    name="Disabled"
+    args={{
+      disabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
