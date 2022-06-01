@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import {
   ButtonProps,
   Button as CUButton,
+  StyleProps,
   useTheme,
   useToken,
 } from '@chakra-ui/react';
@@ -12,10 +13,10 @@ interface Props extends ButtonProps {
   variant?: 'primary';
 }
 interface ButtonStates {
-  normal: ButtonProps;
-  hover: ButtonProps;
-  active: ButtonProps;
-  disabled: ButtonProps;
+  normal: StyleProps;
+  hover: StyleProps;
+  active: StyleProps;
+  disabled: StyleProps;
 }
 
 const Button: FC<Props> = ({
@@ -57,7 +58,7 @@ const Button: FC<Props> = ({
     },
   };
 
-  const commonStyles = {
+  const commonNormalState: StyleProps = {
     borderRadius: 'sm',
     boxShadow: `0px 2px 0px ${btnShadowColor}`,
     fontWeight: 'bold',
@@ -65,12 +66,19 @@ const Button: FC<Props> = ({
     ...fontSize[size],
   };
 
+  const disabledState: StyleProps = {
+    bg: 'gray.100',
+    boxShadow: 'none',
+    color: 'gray.400',
+    pointerEvents: 'none',
+  };
+
   if (name === 'AS24') {
     buttonStates = {
       normal: {
         bg: 'brand.100',
         color: 'gray.900',
-        ...commonStyles,
+        ...commonNormalState,
       },
       hover: {
         bg: 'brand.200',
@@ -79,19 +87,14 @@ const Button: FC<Props> = ({
         bg: 'brand.100',
         boxShadow: 'none',
       },
-      disabled: {
-        bg: 'gray.200',
-        boxShadow: 'none',
-        color: 'gray.600',
-        pointerEvents: 'none',
-      },
+      disabled: disabledState,
     };
   } else {
     buttonStates = {
       normal: {
         bg: 'brand.500',
         color: 'black',
-        ...commonStyles,
+        ...commonNormalState,
       },
       hover: {
         bg: 'brand.200',
@@ -100,12 +103,7 @@ const Button: FC<Props> = ({
         bg: 'brand.100',
         boxShadow: 'none',
       },
-      disabled: {
-        bg: 'gray.200',
-        boxShadow: 'none',
-        color: 'gray.600',
-        pointerEvents: 'none',
-      },
+      disabled: disabledState,
     };
   }
 
