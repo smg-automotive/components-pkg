@@ -1,22 +1,27 @@
-import React from 'react'
-import { addDecorator } from '@storybook/react'
-import { ThemeProvider as StorybookThemeProvider, ensure as ensureTheme } from '@storybook/theming';
-import { CSSReset, ThemeProvider } from '@chakra-ui/react'
-import { withThemes } from '@react-theming/storybook-addon'
-import { autoScout24Theme, motoScout24Theme } from '../src/theme'
+import React from 'react';
+import { addDecorator } from '@storybook/react';
+import {
+  ThemeProvider as StorybookThemeProvider,
+  ensure as ensureTheme,
+} from '@storybook/theming';
+import { CSSReset, ThemeProvider } from '@chakra-ui/react';
+import { withThemes } from '@react-theming/storybook-addon';
+import { autoScout24Theme, motoScout24Theme } from '../src/theme';
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
   return (
-      <StorybookThemeProvider theme={ensureTheme()}>
-        <ThemeProvider theme={theme}>
-          <CSSReset />
-          {children}
-        </ThemeProvider>
-      </StorybookThemeProvider>
-  )
-}
+    <StorybookThemeProvider theme={ensureTheme()}>
+      <ThemeProvider theme={theme}>
+        <CSSReset />
+        {children}
+      </ThemeProvider>
+    </StorybookThemeProvider>
+  );
+};
 
-addDecorator(withThemes(null, [autoScout24Theme, motoScout24Theme], { providerFn }))
+addDecorator(
+  withThemes(null, [autoScout24Theme, motoScout24Theme], { providerFn })
+);
 
 export const parameters = {
   controls: {
@@ -25,4 +30,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
