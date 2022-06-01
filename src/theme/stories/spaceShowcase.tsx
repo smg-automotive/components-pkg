@@ -10,13 +10,13 @@ const SpacingShowCase: FC<Props> = ({ name }) => {
   const unitRem = parseFloat(theme.space[name]);
   const unitPixel = unitRem / 0.0625;
   return (
-    <Tr border="1px" borderColor={theme.colors.gray[100]}>
+    <Tr border="1px" borderColor="gray.100">
       <Td>{name}</Td>
       <Td>{`${unitRem}rem`}</Td>
       <Td>{`${unitPixel}px`}</Td>
       <Td>
-        <Box bg={theme.colors.gray[200]} p={theme.space[name]}>
-          <Box bg={theme.colors.white} textAlign="center" width="auto">
+        <Box bg="gray.200" p={theme.space[name]}>
+          <Box bg="white" textAlign="center" width="auto">
             {name}
           </Box>
         </Box>

@@ -10,7 +10,7 @@ const BorderRadiusShowcase: FC<Props> = ({ name }) => {
   return (
     <Flex direction="column" alignItems="center">
       <Button
-        background={theme.colors.brand.primary}
+        background="brand.primary"
         size="lg"
         borderRadius={theme.radii[name]}
       >

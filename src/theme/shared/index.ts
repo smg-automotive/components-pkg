@@ -7,3 +7,7 @@ export { default as fontWeights } from './fontWeights';
 export { default as fontSizes } from './fontSizes';
 export { default as lineHeights } from './lineHeights';
 export { default as typography } from './typography';
+export { default as containers } from './containers';
+export { default as opacity } from './opacity';
+export { default as breakpoints } from './breakpoints';
+export { default as shadows } from './shadows';

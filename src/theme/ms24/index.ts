@@ -3,10 +3,13 @@ import { extendTheme } from '@chakra-ui/react';
 import colors from './colors';
 import {
   basis,
+  containers,
   fontSizes,
   fontWeights,
   lineHeights,
+  opacity,
   radii,
+  shadows,
   sizes,
   space,
   typography,
@@ -22,6 +25,9 @@ export const theme = {
   fontSizes,
   lineHeights,
   typography,
+  containers,
+  opacity,
+  shadows,
   name: 'MS24',
 };
 
