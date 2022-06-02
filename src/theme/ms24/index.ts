@@ -4,6 +4,7 @@ import colors from './colors';
 import {
   basis,
   containers,
+  fonts,
   fontSizes,
   fontWeights,
   lineHeights,
@@ -28,6 +29,7 @@ export const theme = {
   containers,
   opacity,
   shadows,
+  fonts,
   name: 'MotoScout 24',
 };
 

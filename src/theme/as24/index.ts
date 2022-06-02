@@ -5,6 +5,7 @@ import {
   basis,
   breakpoints,
   containers,
+  fonts,
   fontSizes,
   fontWeights,
   lineHeights,
@@ -30,6 +31,7 @@ export const theme = {
   containers,
   opacity,
   shadows,
+  fonts,
   name: 'AutoScout 24',
 };
 

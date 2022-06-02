@@ -1,6 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 
+import { Fonts } from './fonts';
 import { autoScout24Theme, motoScout24Theme } from '../../theme';
 
 export type Props = {
@@ -15,6 +16,7 @@ const themes = {
 
 const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => (
   <ChakraProvider theme={themes[theme]}>
+    <Fonts />
     <CSSReset />
     {children}
   </ChakraProvider>

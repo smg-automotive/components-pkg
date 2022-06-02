@@ -2,9 +2,11 @@
 import lineHeights from './lineHeights';
 import fontWeights from './fontWeights';
 import fontSizes from './fontSizes';
+import fonts from './fonts';
 
 const typography = {
   display1: {
+    fontFamily: fonts.openSans,
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.display,
     fontSize: fontSizes['5xl'],
