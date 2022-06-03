@@ -6,8 +6,6 @@ import { expect } from '@storybook/jest';
 
 import Button from '../index';
 
-import fn = jest.fn;
-
 describe('<Button>', () => {
   beforeEach(cleanup);
 
@@ -18,7 +16,7 @@ describe('<Button>', () => {
   });
 
   it('should trigger onClick event when clicking on button', () => {
-    const onClick = fn();
+    const onClick = jest.fn();
     render(<Button onClick={onClick}>Button Label</Button>);
 
     userEvent.click(screen.getByRole('button', { name: 'Button Label' }));

@@ -1,7 +1,7 @@
 import { SystemStyleObject } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-import { typography } from '../../theme/shared';
+import { sizes as buttonHeights, typography } from '../../theme/shared';
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
@@ -10,17 +10,17 @@ const baseStyle: SystemStyleObject = {
 
 const sizes = {
   md: {
-    py: 'sm',
+    height: buttonHeights.md,
     px: 'md',
     ...typography.heading5,
   },
   lg: {
-    py: 'md',
+    height: buttonHeights.lg,
     px: 'lg',
     ...typography.heading4,
   },
   xl: {
-    py: 'lg',
+    height: buttonHeights.xl,
     px: 'xl',
     ...typography.heading4,
   },
@@ -33,7 +33,6 @@ const variants = {
     boxShadow: 'button',
     _hover: {
       filter: 'brightness(1.1)',
-      boxShadow: 'none',
     },
     _active: {
       bg: 'brand.100',
