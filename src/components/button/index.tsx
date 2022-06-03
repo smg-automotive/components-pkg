@@ -3,10 +3,10 @@ import { Button as ChakraButton } from '@chakra-ui/react';
 
 interface Props {
   variant?: 'primary';
+  size?: 'md' | 'lg' | 'xl';
   isDisabled?: boolean;
   onClick: (event: MouseEvent<HTMLElement>) => void;
   children: ReactNode;
-  size: 'md' | 'lg' | 'xl';
 }
 
 const Button: FC<Props> = ({

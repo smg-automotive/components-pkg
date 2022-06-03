@@ -12,11 +12,11 @@ export const Template = (args) => <Button {...args}>Primary button</Button>;
   <Story
     name="Basic"
     args={{
-      disabled: false,
+      isDisabled: false,
     }}
     argTypes={{
       variant: {
-        options: ['primary', 'secondary'],
+        options: ['primary'],
         control: { type: 'radio' },
         defaultValue: 'primary',
       },
@@ -34,7 +34,7 @@ export const Template = (args) => <Button {...args}>Primary button</Button>;
   <Story
     name="Disabled"
     args={{
-      disabled: true,
+      isDisabled: true,
     }}
   >
     {Template.bind({})}

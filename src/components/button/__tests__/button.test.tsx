@@ -10,13 +10,13 @@ import fn = jest.fn;
 describe('<Button>', () => {
   beforeEach(cleanup);
 
-  test('render button with label', () => {
-    render(<Button>Button Label</Button>);
+  it('render button with label', () => {
+    render(<Button onClick={() => undefined}>Button Label</Button>);
     const button = screen.getByText('Button Label');
     expect(button).toBeInTheDocument();
   });
 
-  test('trigger button onClick event', () => {
+  it('trigger button onClick event', () => {
     const onClick = fn();
     render(<Button onClick={onClick}>Button Label</Button>);
 

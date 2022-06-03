@@ -1,6 +1,8 @@
 import { SystemStyleObject } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
+import { typography } from '../../theme/shared';
+
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
   fontWeight: 'bold',
@@ -10,23 +12,23 @@ const sizes = {
   md: {
     py: 'sm',
     px: 'md',
-    fontSize: 'sm',
+    ...typography.heading5,
   },
   lg: {
     py: 'md',
     px: 'lg',
-    fontSize: 'md',
+    ...typography.heading4,
   },
   xl: {
     py: 'lg',
     px: 'xl',
-    fontSize: 'md',
+    ...typography.heading4,
   },
 };
 
 const variants = {
   primary: {
-    bg: 'brand.100',
+    bg: 'brand.primary',
     color: 'gray.900',
     boxShadow: 'button',
     _hover: {
