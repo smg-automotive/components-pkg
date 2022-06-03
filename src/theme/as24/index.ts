@@ -4,6 +4,7 @@ import colors from './colors';
 import {
   basis,
   breakpoints,
+  components,
   containers,
   fontSizes,
   fontWeights,
@@ -30,6 +31,7 @@ export const theme = {
   containers,
   opacity,
   shadows,
+  components,
   name: 'AS24',
 };
 
