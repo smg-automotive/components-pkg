@@ -7,6 +7,7 @@ type Props = {
 
 const ShadowShowcase: FC<Props> = ({ name }) => {
   const theme = useTheme();
+
   return (
     <Box
       m={10}

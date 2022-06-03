@@ -1,5 +1,3 @@
-import { extendTheme } from '@chakra-ui/react';
-
 import colors from './colors';
 import {
   basis,
@@ -31,4 +29,4 @@ export const theme = {
   name: 'AutoScout 24',
 };
 
-export default extendTheme(theme);
+export default theme;
