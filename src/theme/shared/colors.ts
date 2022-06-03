@@ -64,9 +64,6 @@ const colors: Colors = {
     800: '#831E0E',
     900: '#611B0D',
   },
-  custom: {
-    btnShadow: '#C2BF00',
-  },
 };
 
 export default colors;

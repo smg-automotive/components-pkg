@@ -1,6 +1,7 @@
 import React from 'react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 
+import { userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 import Button from '../index';
@@ -10,18 +11,29 @@ import fn = jest.fn;
 describe('<Button>', () => {
   beforeEach(cleanup);
 
-  it('render button with label', () => {
+  it('should render button with label', () => {
     render(<Button onClick={() => undefined}>Button Label</Button>);
-    const button = screen.getByText('Button Label');
+    const button = screen.getByRole('button', { name: 'Button Label' });
     expect(button).toBeInTheDocument();
   });
 
-  it('trigger button onClick event', () => {
+  it('should trigger onClick event when clicking on button', () => {
     const onClick = fn();
     render(<Button onClick={onClick}>Button Label</Button>);
 
-    fireEvent.click(screen.getByText('Button Label'));
+    userEvent.click(screen.getByRole('button', { name: 'Button Label' }));
 
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should add disabled attr when isDisabled was passed to component', () => {
+    render(
+      <Button onClick={() => undefined} isDisabled={true}>
+        Button Label
+      </Button>
+    );
+    const button = screen.getByRole('button', { name: 'Button Label' });
+
+    expect(button).toHaveAttribute('disabled');
   });
 });
