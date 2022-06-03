@@ -30,7 +30,7 @@ export const theme = {
   opacity,
   shadows,
   components,
-  name: 'MS24',
+  name: 'MotoScout 24',
 };
 
 export default extendTheme(theme);

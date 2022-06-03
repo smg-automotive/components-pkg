@@ -32,7 +32,7 @@ export const theme = {
   opacity,
   shadows,
   components,
-  name: 'AS24',
+  name: 'AutoScout 24',
 };
 
 export default extendTheme(theme);
