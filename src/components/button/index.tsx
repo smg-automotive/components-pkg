@@ -15,19 +15,15 @@ const Button: FC<Props> = ({
   isDisabled = false,
   onClick,
   children,
-}) => {
-  return (
-    <>
-      <ChakraButton
-        onClick={onClick}
-        isDisabled={isDisabled}
-        variant={variant}
-        size={size}
-      >
-        {children}
-      </ChakraButton>
-    </>
-  );
-};
+}) => (
+  <ChakraButton
+    onClick={onClick}
+    isDisabled={isDisabled}
+    variant={variant}
+    size={size}
+  >
+    {children}
+  </ChakraButton>
+);
 
 export default Button;

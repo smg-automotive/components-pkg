@@ -5,7 +5,6 @@ import { sizes as buttonHeights, typography } from '../../theme/shared';
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
-  fontWeight: 'bold',
 };
 
 const sizes = {
