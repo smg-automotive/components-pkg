@@ -8,17 +8,17 @@ const baseStyle: SystemStyleObject = {
 };
 
 const sizes = {
-  md: {
+  small: {
     height: buttonHeights.md,
     px: 'md',
     ...typography.heading5,
   },
-  lg: {
+  regular: {
     height: buttonHeights.lg,
     px: 'lg',
     ...typography.heading4,
   },
-  xl: {
+  large: {
     height: buttonHeights.xl,
     px: 'xl',
     ...typography.heading4,
