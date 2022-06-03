@@ -1,25 +1,25 @@
 import { SystemStyleObject } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-import { sizes as buttonHeights, typography } from '../../theme/shared';
+import { sizes, typography } from '../../theme/shared';
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
 };
 
-const sizes = {
+const buttonSizes = {
   small: {
-    height: buttonHeights.md,
+    height: sizes.md,
     px: 'md',
     ...typography.heading5,
   },
   regular: {
-    height: buttonHeights.lg,
+    height: sizes.lg,
     px: 'lg',
     ...typography.heading4,
   },
   large: {
-    height: buttonHeights.xl,
+    height: sizes.xl,
     px: 'xl',
     ...typography.heading4,
   },
@@ -48,7 +48,7 @@ const variants = {
 
 const Button: ComponentStyleConfig = {
   baseStyle,
-  sizes: sizes,
+  sizes: buttonSizes,
   variants,
 };
 
