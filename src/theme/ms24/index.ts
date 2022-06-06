@@ -26,7 +26,6 @@ export const theme = {
   fontSizes,
   lineHeights,
   typography,
-  containers,
   opacity,
   shadows,
   components,
