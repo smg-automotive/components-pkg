@@ -6,7 +6,6 @@ import fonts from './fonts';
 
 const typography = {
   display1: {
-    fontFamily: fonts.openSans,
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.display,
     fontSize: fontSizes['5xl'],
@@ -22,6 +21,7 @@ const typography = {
     fontSize: fontSizes['3xl'],
   },
   display4: {
+    fontFamily: fonts.body,
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.display,
     fontSize: fontSizes['2xl'],

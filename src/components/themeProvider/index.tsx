@@ -16,8 +16,8 @@ const themes = {
 
 const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => (
   <ChakraProvider theme={themes[theme]}>
-    <Fonts />
     <CSSReset />
+    <Fonts />
     {children}
   </ChakraProvider>
 );

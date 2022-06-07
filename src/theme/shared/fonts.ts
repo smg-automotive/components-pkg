@@ -1,5 +1,6 @@
 const fonts = {
-  openSans: 'Open Sans',
+  heading: 'Make It Sans, sans-serif',
+  body: 'Make It Sans, sans-serif',
 };
 
 export default fonts;
