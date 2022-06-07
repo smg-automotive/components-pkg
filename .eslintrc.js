@@ -22,7 +22,6 @@ module.exports = {
         ],
       },
     ],
-    'import/no-internal-modules': 'off',
   },
   overrides: [
     {

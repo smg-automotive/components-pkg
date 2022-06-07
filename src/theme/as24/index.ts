@@ -4,8 +4,6 @@ import colors from './colors';
 import {
   basis,
   breakpoints,
-  components,
-  containers,
   fontSizes,
   fontWeights,
   lineHeights,
@@ -16,6 +14,7 @@ import {
   space,
   typography,
 } from '../shared';
+import components from '../components';
 
 export const theme = {
   ...basis,

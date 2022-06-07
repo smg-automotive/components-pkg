@@ -5,7 +5,6 @@ import Button from './index.tsx';
 <Meta title="Components/Button" component={Button} />
 
 export const Template = (args) => <Button {...args}>Primary button</Button>;
-export const sizes = ['md', 'lg', 'xl'];
 
 # Button
 
@@ -22,16 +21,8 @@ export const sizes = ['md', 'lg', 'xl'];
         defaultValue: 'primary',
       },
       size: {
-        options: sizes,
-        mapping: sizes,
-        control: {
-          type: 'radio',
-          labels: {
-            md: 'Small',
-            lg: 'Medium',
-            xl: 'Large',
-          },
-        },
+        options: ['md', 'lg', 'xl'],
+        control: { type: 'radio' },
         defaultValue: 'lg',
       },
     }}
