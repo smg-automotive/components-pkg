@@ -1,5 +1,5 @@
 import Button from './button';
 
-export default {
+export const components = {
   Button,
 };

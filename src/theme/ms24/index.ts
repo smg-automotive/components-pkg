@@ -13,7 +13,7 @@ import {
   space,
   typography,
 } from '../shared';
-import components from '../components';
+import { components } from '../components';
 
 export const theme = {
   ...basis,
