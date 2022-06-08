@@ -1,5 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { Box } from '@chakra-ui/react';
+
 import Button from './index.tsx';
 
 <Meta title="Components/Button" component={Button} />
@@ -37,9 +39,11 @@ export const Template = (args) => <Button {...args}>Primary button</Button>;
 
 <Canvas>
   <Story name="Sizes">
-    <Button size="md">Medium</Button>
-    <Button size="lg">Large</Button>
-    <Button size="xl">Extra Large</Button>
+    <Box>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+      <Button size="xl">Extra Large</Button>
+    </Box>
   </Story>
 </Canvas>
 
