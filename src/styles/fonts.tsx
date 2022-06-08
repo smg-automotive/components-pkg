@@ -8,7 +8,7 @@ export const Fonts = () => (
         font-family: 'Make It Sans';
         font-style: regular;
         font-weight: 400;
-        src: url('/fonts/MakeItSans-Regular.woff2') format('woff2');
+        src: url('../assets/fonts/MakeItSans-Regular.woff2') format('woff2');
       }
     `}
   />
