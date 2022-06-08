@@ -1,6 +1,5 @@
 const fonts = {
-  heading: 'Make It Sans, sans-serif',
-  body: 'Make It Sans, sans-serif',
+  makeItSans: 'Make It Sans, Arial, Helvetica, Sans-Serif',
 };
 
 export default fonts;
