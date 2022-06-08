@@ -5,13 +5,14 @@ import { CSSReset, ThemeProvider } from '@chakra-ui/react'
 import { withThemes } from '@react-theming/storybook-addon'
 import { autoScout24Theme, motoScout24Theme } from '../src/theme'
 import breakpoints from '../src/theme/shared/breakpoints'
-import '../src/assets/styles/fonts.css'
+import { Fonts } from '../src/styles/fonts';
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
   return (
     <StorybookThemeProvider theme={ensureTheme()}>
       <ThemeProvider theme={theme}>
         <CSSReset />
+        <Fonts />
         {children}
       </ThemeProvider>
     </StorybookThemeProvider>
