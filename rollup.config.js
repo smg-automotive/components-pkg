@@ -1,5 +1,6 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
+import copy from 'rollup-plugin-copy';
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -26,6 +27,10 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: './tsconfig.build.json' }),
+      copy({
+        targets: [{ src: 'src/assets/**/*', dest: 'dist' }],
+        flatten: false,
+      }),
     ],
     external: ['react', 'react-dom'],
   },
