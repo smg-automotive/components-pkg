@@ -6,10 +6,14 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "bin/copy-fonts"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "copy-fonts": "bin/copy-fonts"
   },
   "scripts": {
     "dev": "start-storybook -p 6006",

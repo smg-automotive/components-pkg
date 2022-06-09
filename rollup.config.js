@@ -28,7 +28,13 @@ export default [
       commonjs(),
       typescript({ tsconfig: './tsconfig.build.json' }),
       copy({
-        targets: [{ src: 'src/assets/**/*', dest: 'dist' }],
+        targets: [
+          {
+            src: 'src/assets/**/*',
+            dest: 'dist',
+          },
+          { src: 'bin/**/*', dest: 'dist/bin' },
+        ],
         flatten: false,
       }),
     ],
