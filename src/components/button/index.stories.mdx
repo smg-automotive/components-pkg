@@ -6,7 +6,9 @@ import Button from './index.tsx';
 
 <Meta title="Components/Button" component={Button} />
 
-export const Template = (args) => <Button {...args}>Primary button</Button>;
+export const Template = (args) => (
+  <Button {...args}>{args.label || 'Button'}</Button>
+);
 
 # Button
 
@@ -17,6 +19,7 @@ export const Template = (args) => <Button {...args}>Primary button</Button>;
     name="Overview"
     args={{
       isDisabled: false,
+      label: 'Primary Button',
     }}
     argTypes={{
       variant: {
@@ -54,6 +57,7 @@ export const Template = (args) => <Button {...args}>Primary button</Button>;
     name="Disabled"
     args={{
       isDisabled: true,
+      label: 'Disabled Button',
     }}
   >
     {Template.bind({})}
