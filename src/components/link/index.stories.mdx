@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+
+import Link from './index.tsx';
+
+<Meta title="Components/Link" component={Link} />
+
+# Link
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">
+    <Link href="https://autoscout24.ch">AutoScout24 Homepage</Link>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Link with Left icon">
+    <Link leftIcon={ArrowBackIcon}>Back</Link>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Link with Right icon">
+    <Link rightIcon={ExternalLinkIcon}>Go to External Link</Link>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Link with Left&Right icons">
+    <Link leftIcon={ArrowBackIcon} rightIcon={ExternalLinkIcon}>
+      Dummy Link
+    </Link>
+  </Story>
+</Canvas>
