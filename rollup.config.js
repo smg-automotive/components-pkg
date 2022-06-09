@@ -1,6 +1,8 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
+import shebang from 'rollup-plugin-add-shebang';
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -33,7 +35,6 @@ export default [
             src: 'src/assets/**/*',
             dest: 'dist',
           },
-          { src: 'bin/**/*', dest: 'dist/bin' },
         ],
         flatten: false,
       }),
@@ -44,5 +45,16 @@ export default [
     input: 'dist/esm/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
+  },
+  {
+    input: 'bin/copy-fonts.ts',
+    output: [{ file: 'dist/bin/copy-fonts.js', sourcemap: false }],
+    plugins: [
+      typescript({ tsconfig: './tsconfig.bin.json' }),
+      shebang({
+        include: 'dist/bin/copy-fonts.js',
+      }),
+      executable(),
+    ],
   },
 ];
