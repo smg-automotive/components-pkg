@@ -1,6 +1,8 @@
 import colors from './colors';
 import {
   basis,
+  borders,
+  breakpoints,
   fontSizes,
   fontWeights,
   lineHeights,
@@ -11,9 +13,12 @@ import {
   space,
   typography,
 } from '../shared';
+import { components } from '../components';
 
 export const theme = {
   ...basis,
+  breakpoints,
+  borders,
   colors,
   space,
   radii,
@@ -24,6 +29,7 @@ export const theme = {
   typography,
   opacity,
   shadows,
+  components,
   name: 'MotoScout 24',
 };
 

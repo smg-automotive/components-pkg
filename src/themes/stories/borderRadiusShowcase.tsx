@@ -5,6 +5,7 @@ type Props = {
   name: string;
 };
 
+// TODO: replace button
 const BorderRadiusShowcase: FC<Props> = ({ name }) => {
   const theme = useTheme();
   return (
