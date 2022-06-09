@@ -2,7 +2,7 @@ import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 import { fontSizes, lineHeights } from '../shared';
 
-const baseStyle: SystemStyleObject = {
+const linkBaseStyle: SystemStyleObject = {
   lineHeight: lineHeights.display,
   fontSize: fontSizes.base,
   color: 'blue.700',
@@ -10,6 +10,7 @@ const baseStyle: SystemStyleObject = {
   alignItems: 'center',
   gap: 'xs',
   _hover: {
+    cursor: 'pointer',
     textDecoration: 'underline',
   },
   _active: {
@@ -21,18 +22,17 @@ const baseStyle: SystemStyleObject = {
   },
 };
 
+const iconBaseStyle = {
+  width: '1.5rem',
+  height: '1.5rem',
+};
+
 const Link: ComponentMultiStyleConfig = {
-  parts: ['leftIcon', 'rightIcon', 'main'],
+  parts: ['leftIcon', 'rightIcon', 'link'],
   baseStyle: {
-    main: baseStyle,
-    leftIcon: {
-      width: '24px',
-      height: '24px',
-    },
-    rightIcon: {
-      width: '24px',
-      height: '24px',
-    },
+    link: linkBaseStyle,
+    leftIcon: iconBaseStyle,
+    rightIcon: iconBaseStyle,
   },
 };
 

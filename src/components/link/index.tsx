@@ -17,7 +17,7 @@ const Link: FC<Props> = ({ children, leftIcon, rightIcon, ...rest }) => {
   const RightComponent = rightIcon;
 
   return (
-    <Box __css={styles.main}>
+    <Box __css={styles.link}>
       {LeftComponent && <LeftComponent __css={styles.leftIcon} />}
       <ChakraLink {...rest}>{children}</ChakraLink>
       {RightComponent && <RightComponent __css={styles.rightIcon} />}
