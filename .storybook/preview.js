@@ -1,8 +1,11 @@
-import React from 'react'
-import { addDecorator } from '@storybook/react'
-import { ThemeProvider as StorybookThemeProvider, ensure as ensureTheme } from '@storybook/theming';
-import { CSSReset, ThemeProvider } from '@chakra-ui/react'
-import { withThemes } from '@react-theming/storybook-addon'
+import React from 'react';
+import { addDecorator } from '@storybook/react';
+import {
+  ThemeProvider as StorybookThemeProvider,
+  ensure as ensureTheme,
+} from '@storybook/theming';
+import { CSSReset, ThemeProvider } from '@chakra-ui/react';
+import { withThemes } from '@react-theming/storybook-addon';
 
 import { motoScout24Theme, motoScoutChakraTheme, autoScout24Theme, autoScoutChakraTheme } from '../src/themes'
 import { breakpoints } from '../src/themes/shared/breakpoints'
@@ -15,21 +18,26 @@ const providerFn = ({ theme = autoScoutChakraTheme, children }) => {
         {children}
       </ThemeProvider>
     </StorybookThemeProvider>
-  )
-}
+  );
+};
 
-addDecorator(withThemes(null, [motoScout24Theme, motoScoutChakraTheme, autoScout24Theme, autoScoutChakraTheme], { providerFn }))
+addDecorator(
+  withThemes(null, [motoScout24Theme, motoScoutChakraTheme, autoScout24Theme, autoScoutChakraTheme], { providerFn })
+);
 
-const customViewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
-  acc[key] = {
-    name: key,
-    styles: {
-      width: value,
-      height: "100%"
-    }
-  }
-  return acc
-}, {})
+const customViewports = Object.entries(breakpoints).reduce(
+  (acc, [key, value]) => {
+    acc[key] = {
+      name: key,
+      styles: {
+        width: value,
+        height: '100%',
+      },
+    };
+    return acc;
+  },
+  {}
+);
 
 export const parameters = {
   controls: {
@@ -40,5 +48,5 @@ export const parameters = {
   },
   viewport: {
     viewports: customViewports,
-  }
-}
+  },
+};

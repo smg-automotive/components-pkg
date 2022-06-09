@@ -18,4 +18,4 @@ module.exports = {
     previewMdx2: true,
     interactionsDebugger: true,
   },
-}
+};
