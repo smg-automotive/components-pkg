@@ -14,6 +14,7 @@ import {
   space,
   typography,
 } from '../shared';
+import { components } from '../components';
 
 export const theme = {
   ...basis,
@@ -28,6 +29,7 @@ export const theme = {
   lineHeights,
   opacity,
   shadows,
+  components,
   name: 'AutoScout 24',
 };
 
