@@ -91,6 +91,9 @@
     "@chakra-ui/theme-tools": "2.0.1",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
-    "framer-motion": "6.3.5"
+    "@types/fs-extra": "9.0.13",
+    "framer-motion": "6.3.5",
+    "fs-extra": "10.1.0",
+    "yargs": "17.5.1"
   }
 }

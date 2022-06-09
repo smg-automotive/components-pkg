@@ -48,7 +48,13 @@ export default [
   },
   {
     input: 'bin/copy-fonts.ts',
-    output: [{ file: 'dist/bin/copy-fonts', sourcemap: false }],
+    output: [
+      {
+        file: 'dist/bin/copy-fonts',
+        sourcemap: false,
+        format: 'cjs',
+      },
+    ],
     plugins: [
       typescript({ tsconfig: './tsconfig.bin.json' }),
       shebang({
@@ -56,5 +62,6 @@ export default [
       }),
       executable(),
     ],
+    external: ['yargs', 'fs-extra', 'path'],
   },
 ];
