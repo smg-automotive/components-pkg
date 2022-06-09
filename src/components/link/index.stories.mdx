@@ -24,7 +24,13 @@ import Link from './index.tsx';
 
 <Canvas>
   <Story name="Link with Right icon">
-    <Link rightIcon={ExternalLinkIcon}>Go to External Link</Link>
+    <Link
+      rightIcon={ExternalLinkIcon}
+      href="https://google.com"
+      target="_blank"
+    >
+      Go to External Link
+    </Link>
   </Story>
 </Canvas>
 
