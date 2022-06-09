@@ -48,11 +48,11 @@ export default [
   },
   {
     input: 'bin/copy-fonts.ts',
-    output: [{ file: 'dist/bin/copy-fonts.js', sourcemap: false }],
+    output: [{ file: 'dist/bin/copy-fonts', sourcemap: false }],
     plugins: [
       typescript({ tsconfig: './tsconfig.bin.json' }),
       shebang({
-        include: 'dist/bin/copy-fonts.js',
+        include: 'dist/bin/copy-fonts',
       }),
       executable(),
     ],
