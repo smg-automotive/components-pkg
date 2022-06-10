@@ -5,9 +5,6 @@ import { fontSizes, lineHeights } from '../shared';
 const linkBaseStyle: SystemStyleObject = {
   lineHeight: lineHeights.display,
   fontSize: fontSizes.base,
-  display: 'flex',
-  alignItems: 'center',
-  gap: 'xs',
 };
 
 const enabledBaseStyle: SystemStyleObject = {
@@ -22,11 +19,6 @@ const enabledBaseStyle: SystemStyleObject = {
   },
 };
 
-const iconBaseStyle = {
-  width: '1.5rem',
-  height: '1.5rem',
-};
-
 const disabledBaseStyle = {
   color: 'gray.300',
   _hover: {
@@ -35,13 +27,18 @@ const disabledBaseStyle = {
   },
 };
 
+const iconBaseStyle = {
+  width: '1.5rem',
+  height: '1.5rem',
+};
+
 const Link: ComponentMultiStyleConfig = {
   parts: ['leftIcon', 'rightIcon', 'link', 'disabled'],
   baseStyle: {
     link: { ...linkBaseStyle, ...enabledBaseStyle },
     disabled: { ...linkBaseStyle, ...disabledBaseStyle },
-    leftIcon: iconBaseStyle,
-    rightIcon: iconBaseStyle,
+    leftIcon: { ...iconBaseStyle, mr: 'xs' },
+    rightIcon: { ...iconBaseStyle, ml: 'xs' },
   },
 };
 
