@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 
 import { expect } from '@storybook/jest';
@@ -8,47 +8,75 @@ import Link, { LinkProps } from '../index';
 const renderWrapper = ({ children, ...props }: LinkProps) =>
   render(<Link {...props}>{children}</Link>);
 
-const MockIcon: FC<{ testId: string }> = ({ testId }) => (
-  <svg data-testid={testId} />
-);
+const MockIcon = () => <svg data-testid="test-icon" />;
+
+const MockRouterLink = ({ children, ...props }: { children: ReactNode }) => {
+  return (
+    <div data-testid="router-link" {...props}>
+      {children}
+    </div>
+  );
+};
 
 describe('<Link>', () => {
   beforeEach(cleanup);
 
   it('should render link', () => {
-    renderWrapper({ children: 'Link' });
+    render(<Link>Link</Link>);
 
     const link = screen.getByText('Link');
     expect(link).toBeInTheDocument();
   });
 
-  it('should render link with left icon', async () => {
+  it('should render link with left icon', () => {
     renderWrapper({
       children: 'Link',
-      leftIcon: <MockIcon testId="left-icon" />,
+      leftIcon: MockIcon,
     });
-    const icon = screen.getByTestId('left-icon');
+    const icon = screen.getByTestId('test-icon');
     expect(icon).toBeInTheDocument();
   });
 
-  it('should render link with right icon', async () => {
+  it('should render link with right icon', () => {
     renderWrapper({
       children: 'Link',
-      rightIcon: <MockIcon testId="right-icon" />,
+      rightIcon: MockIcon,
     });
-    const icon = screen.getByTestId('right-icon');
+    const icon = screen.getByTestId('test-icon');
     expect(icon).toBeInTheDocument();
   });
 
-  it('should render link with left & right icons', async () => {
+  it('should render link with left & right icons', () => {
     renderWrapper({
       children: 'Link',
-      leftIcon: <MockIcon testId="left-icon" />,
-      rightIcon: <MockIcon testId="right-icon" />,
+      leftIcon: MockIcon,
+      rightIcon: MockIcon,
     });
-    const leftIcon = screen.getByTestId('left-icon');
-    const rightIcon = screen.getByTestId('right-icon');
-    expect(leftIcon).toBeInTheDocument();
-    expect(rightIcon).toBeInTheDocument();
+    const icons = screen.getAllByTestId('test-icon');
+    expect(icons.length).toBe(2);
+  });
+
+  it('should render href when prop was passed', () => {
+    renderWrapper({
+      children: 'Link',
+      href: 'https://google.com',
+      isExternal: true,
+    });
+
+    const link = screen.getByText('Link');
+    expect(link).toHaveAttribute('href');
+    expect(link).toHaveAttribute('target');
+    expect(link.getAttribute('target')).toBe('_blank');
+  });
+
+  it('should', () => {
+    renderWrapper({
+      as: MockRouterLink,
+      children: 'Link',
+      to: '/home',
+    });
+
+    const routerLink = screen.getByTestId('router-link');
+    expect(routerLink).toBeInTheDocument();
   });
 });
