@@ -33,7 +33,6 @@ const Link: FC<Props> = ({
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener' : undefined}
       {...rest}
-      // __css={isDisabled ? styles.disabled : styles.link}
     >
       {LeftComponent && <LeftComponent __css={styles.leftIcon} />}
       {children}
