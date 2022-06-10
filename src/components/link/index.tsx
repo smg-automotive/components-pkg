@@ -1,10 +1,5 @@
 import React, { FC, ReactElement } from 'react';
-import {
-  Box,
-  chakra,
-  HTMLChakraProps,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
+import { chakra, HTMLChakraProps, useMultiStyleConfig } from '@chakra-ui/react';
 
 interface Props extends HTMLChakraProps<'a'> {
   leftIcon?: ReactElement;
