@@ -47,21 +47,21 @@ export default [
     plugins: [dts()],
   },
   {
-    input: 'bin/copy-fonts.ts',
+    input: 'src/lib/cli/index.ts',
     output: [
       {
-        file: 'dist/bin/copy-fonts',
+        file: 'dist/bin/cli',
         sourcemap: false,
         format: 'cjs',
       },
     ],
     plugins: [
-      typescript({ tsconfig: './tsconfig.bin.json' }),
+      resolve({ preferBuiltins: true }),
+      typescript({ tsconfig: './tsconfig.build.json' }),
       shebang({
-        include: 'dist/bin/copy-fonts',
+        include: 'dist/bin/cli',
       }),
       executable(),
     ],
-    external: ['yargs', 'fs-extra', 'path'],
   },
 ];

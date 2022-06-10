@@ -12,7 +12,7 @@
     "access": "public"
   },
   "bin": {
-    "copy-fonts": "dist/bin/copy-fonts"
+    "components": "dist/bin/cli"
   },
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -65,6 +65,7 @@
     "babel-loader": "8.2.5",
     "eslint-plugin-mdx": "1.17.0",
     "eslint-plugin-storybook": "0.5.12",
+    "framer-motion": "6.3.11",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
     "postcss-flexbugs-fixes": "5.0.2",
@@ -92,8 +93,8 @@
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "@types/fs-extra": "9.0.13",
-    "framer-motion": "6.3.5",
     "fs-extra": "10.1.0",
+    "merge-json-file": "1.0.1",
     "yargs": "17.5.1"
   }
 }
