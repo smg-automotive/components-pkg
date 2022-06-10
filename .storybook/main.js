@@ -18,5 +18,5 @@ module.exports = {
     previewMdx2: true,
     interactionsDebugger: true,
   },
-  staticDirs: ['../src/assets'],
-}
+  staticDirs: [{ from: '../src/assets', to: '/assets' }],
+};
