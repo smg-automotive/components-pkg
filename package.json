@@ -11,6 +11,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "bin": {
+    "components": "dist/bin/cli"
+  },
   "scripts": {
     "dev": "start-storybook -p 6006",
     "version": "npm run build",
@@ -71,7 +74,10 @@
     "react-dom": "18.1.0",
     "rimraf": "3.0.2",
     "rollup": "2.75.6",
+    "rollup-plugin-add-shebang": "0.3.1",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "4.2.2",
+    "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "semantic-release": "19.0.3",
     "ts-jest": "28.0.4",
@@ -86,6 +92,10 @@
     "@chakra-ui/theme-tools": "2.0.2",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
-    "framer-motion": "6.3.11"
+    "@types/fs-extra": "9.0.13",
+    "framer-motion": "6.3.11",
+    "fs-extra": "10.1.0",
+    "merge-json-file": "1.0.1",
+    "yargs": "17.5.1"
   }
 }
