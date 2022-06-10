@@ -67,18 +67,6 @@ import { autoScout24Theme } from '@smg-automotive/components';
 
 We leverage [a theming addon](https://storybook.js.org/addons/@react-theming/storybook-addon) in storybook. It allows us to use bottom bar to switch themes.
 
-<!-- TEMP: delete after storybook 6.5 is released -->
-## Caveats
-
-Due to using a pre-release version of storybook we need to install dependencies with legacy peer dependency resolution:
-
-```bash
-$ npm install --legacy-peer-deps
-```
-Otherwise we wouldn't be able to use anything depending on storybook (e.g. addons) since they would error out on invalid peer dependencies (i.e. `6.5.0-beta.8` does not satisfy `^6.0.0` constraint).
-
-We expect storybook `6.5.0` to be released soon so this is temporary inconvenience.
-
 ## Release a new version
 
 New versions are released on the ci using semantic-release as soon as you merge into master. Please
