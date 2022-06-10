@@ -11,7 +11,7 @@
    ```
 2. run the setup script
    ```sh
-   npx run components setup --path=<path to you public dir>
+   npx components setup --path=<path to you public dir>
    ```
 
    The setup script will:
