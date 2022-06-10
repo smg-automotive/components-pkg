@@ -6,17 +6,6 @@ import {
   Story,
 } from '@storybook/addon-docs';
 
-import {
-  Flex,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react';
-
 import TypographyShowcase from './typographyShowcase.tsx';
 import SpaceShowcase from './spaceShowcase.tsx';
 import SizeShowcase from './sizeShowcase.tsx';
@@ -27,7 +16,8 @@ import ColorShowcase from './colorShowcase.tsx';
 import BreakpointShowcase from './breakpointShowcase.tsx';
 import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
-<Meta title="Theme"
+<Meta
+  title="Theme"
   argTypes={{
     theme: {
       options: ['as24', 'ms24'],
@@ -40,13 +30,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="borderRadius" args={{ theme: 'as24' }}>
-    <Flex justify="space-between">
-      <BorderRadiusShowcase name="none" />
-      <BorderRadiusShowcase name="xs" />
-      <BorderRadiusShowcase name="sm" />
-      <BorderRadiusShowcase name="lg" />
-      <BorderRadiusShowcase name="max" />
-    </Flex>
+    <BorderRadiusShowcase />
   </Story>
 </Canvas>
 
@@ -54,7 +38,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="breakpoints" args={{ theme: 'as24' }}>
-    <BreakpointShowcase  />
+    <BreakpointShowcase />
   </Story>
 </Canvas>
 
@@ -76,22 +60,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="containers" args={{ theme: 'as24' }}>
-    <TableContainer>
-      <Table>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Pixels</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <ContainerShowcase name="sm" />
-          <ContainerShowcase name="md" />
-          <ContainerShowcase name="lg" />
-          <ContainerShowcase name="xl" />
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <ContainerShowcase />
   </Story>
 </Canvas>
 
@@ -99,13 +68,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="opacity" args={{ theme: 'as24' }}>
-    <Flex justify="space-between">
-      <OpacityShowcase name="100" />
-      <OpacityShowcase name="80" />
-      <OpacityShowcase name="60" />
-      <OpacityShowcase name="40" />
-      <OpacityShowcase name="20" />
-    </Flex>
+    <OpacityShowcase />
   </Story>
 </Canvas>
 
@@ -113,13 +76,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="shadows" args={{ theme: 'as24' }}>
-    <Flex>
-      <ShadowShowcase name="none" />
-      <ShadowShowcase name="xs" />
-      <ShadowShowcase name="sm" />
-      <ShadowShowcase name="md" />
-      <ShadowShowcase name="lg" />
-    </Flex>
+    <ShadowShowcase />
   </Story>
 </Canvas>
 
@@ -127,27 +84,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="sizes" args={{ theme: 'as24' }}>
-    <TableContainer>
-      <Table>
-        <TableCaption>
-          The pixel column is ONLY a reference to the values in figma. The pixel
-          values are NOT computed.
-        </TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Rem</Th>
-            <Th>Pixels</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <SizeShowcase name="xs" />
-          <SizeShowcase name="md" />
-          <SizeShowcase name="lg" />
-          <SizeShowcase name="xl" />
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <SizeShowcase />
   </Story>
 </Canvas>
 
@@ -155,32 +92,7 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="space" args={{ theme: 'as24' }}>
-    <TableContainer>
-      <Table>
-        <TableCaption>
-          The pixel column is ONLY a reference to the values in figma. The pixel
-          values are NOT computed.
-        </TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Rem</Th>
-            <Th>Pixels</Th>
-            <Th>Example</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <SpaceShowcase name="xs" />
-          <SpaceShowcase name="sm" />
-          <SpaceShowcase name="md" />
-          <SpaceShowcase name="lg" />
-          <SpaceShowcase name="xl" />
-          <SpaceShowcase name="2xl" />
-          <SpaceShowcase name="3xl" />
-          <SpaceShowcase name="4xl" />
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <SpaceShowcase />
   </Story>
 </Canvas>
 
@@ -188,19 +100,6 @@ import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
 
 <Canvas>
   <Story name="typography" args={{ theme: 'as24' }}>
-    <TypographyShowcase name="display1" />
-    <TypographyShowcase name="display2" />
-    <TypographyShowcase name="display3" />
-    <TypographyShowcase name="display4" />
-    <TypographyShowcase name="heading1" />
-    <TypographyShowcase name="heading2" />
-    <TypographyShowcase name="heading3" />
-    <TypographyShowcase name="heading4" />
-    <TypographyShowcase name="heading5" />
-    <TypographyShowcase name="heading6" />
-    <TypographyShowcase name="body-large" />
-    <TypographyShowcase name="body" />
-    <TypographyShowcase name="body-small" />
-    <TypographyShowcase name="body-xs" />
+    <TypographyShowcase />
   </Story>
 </Canvas>

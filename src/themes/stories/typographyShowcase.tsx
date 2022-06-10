@@ -1,16 +1,19 @@
-import React, { FC } from 'react';
+import React, { CSSProperties, FC } from 'react';
 import { Text, useTheme } from '@chakra-ui/react';
 
-type Props = {
-  name: string;
-};
-
-const TypographyShowcase: FC<Props> = ({ name }) => {
+const TypographyShowcase: FC = () => {
   const theme = useTheme();
+
   return (
-    <Text mb={5} style={theme.typography[name]}>
-      {name}
-    </Text>
+    <>
+      {Object.entries(theme.typography).map(([name, typography]) => {
+        return (
+          <Text key={name} mb={5} style={typography as CSSProperties}>
+            {name}
+          </Text>
+        );
+      })}
+    </>
   );
 };
 

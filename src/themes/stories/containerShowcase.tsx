@@ -1,17 +1,36 @@
 import React, { FC } from 'react';
-import { Td, Tr, useTheme } from '@chakra-ui/react';
+import {
+  Table,
+  TableContainer,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  useTheme,
+} from '@chakra-ui/react';
 
-type Props = {
-  name: string;
-};
-
-const ContainerShowCase: FC<Props> = ({ name }) => {
+const ContainerShowCase: FC = () => {
   const theme = useTheme();
+
   return (
-    <Tr border="1px" borderColor="gray.100">
-      <Td>{name}</Td>
-      <Td>{theme.sizes.container[name]}</Td>
-    </Tr>
+    <TableContainer>
+      <Table variant="simple">
+        <Thead>
+          <Tr border="1px" borderColor="gray.300">
+            <Th>Name</Th>
+            <Th>Value</Th>
+          </Tr>
+        </Thead>
+        {Object.entries(theme.sizes.container).map(([name, value]) => {
+          return (
+            <Tr key={name} border="1px" borderColor="gray.300">
+              <Td>{name}</Td>
+              <Td>{value as string}</Td>
+            </Tr>
+          );
+        })}
+      </Table>
+    </TableContainer>
   );
 };
 export default ContainerShowCase;

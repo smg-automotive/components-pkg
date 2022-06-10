@@ -1,20 +1,46 @@
 import React, { FC } from 'react';
-import { Td, Tr, useTheme } from '@chakra-ui/react';
+import {
+  Table,
+  TableCaption,
+  TableContainer,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  useTheme,
+} from '@chakra-ui/react';
 
-type Props = {
-  name: string;
-};
+import { convertRemToPx } from '../../';
 
-const SizingShowCase: FC<Props> = ({ name }) => {
+const SizingShowCase: FC = () => {
   const theme = useTheme();
-  const unitRem = parseFloat(theme.sizes[name]);
-  const unitPixel = unitRem / 0.0625;
+
   return (
-    <Tr border="1px" borderColor="gray.100">
-      <Td>{name}</Td>
-      <Td>{`${unitRem}rem`}</Td>
-      <Td>{`${unitPixel}px`}</Td>
-    </Tr>
+    <TableContainer>
+      <Table variant="simple">
+        <TableCaption>
+          The pixel column is ONLY a reference to the values in figma. The pixel
+          values are NOT computed.
+        </TableCaption>
+        <Thead>
+          <Tr border="1px" borderColor="gray.300">
+            <Th>Name</Th>
+            <Th>Value</Th>
+            <Th>Pixels</Th>
+          </Tr>
+        </Thead>
+        {Object.entries(theme.sizes).map(([name, size]) => {
+          if (name === 'container') return null;
+          return (
+            <Tr key={name} border="1px" borderColor="gray.300">
+              <Td>{name}</Td>
+              <Td>{`${size}`}</Td>
+              <Td>{`${convertRemToPx(size as string)}px`}</Td>
+            </Tr>
+          );
+        })}
+      </Table>
+    </TableContainer>
   );
 };
 export default SizingShowCase;
