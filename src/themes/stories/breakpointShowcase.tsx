@@ -9,7 +9,6 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
-// TODO: make it propper
 const BreakpointShowCase: FC = () => {
   const theme = useTheme();
   return (
