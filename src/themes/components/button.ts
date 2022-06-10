@@ -1,7 +1,9 @@
 import { SystemStyleObject } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-import { sizes, typography } from '../shared';
+import { shared } from '../shared';
+
+const { sizes, typography } = shared;
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',

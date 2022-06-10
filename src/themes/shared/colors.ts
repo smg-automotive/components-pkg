@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Colors } from '@chakra-ui/react';
-
-const colors: Colors = {
+export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   blue: {
@@ -65,5 +63,3 @@ const colors: Colors = {
     900: '#611B0D',
   },
 };
-
-export default colors;

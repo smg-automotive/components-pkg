@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ColorHues, useTheme } from '@chakra-ui/react';
+import { useTheme } from '@chakra-ui/react';
 
 import { autoScout24Theme, motoScout24Theme } from '../../../themes';
 import { bareRender, screen } from '../../../../.jest';
@@ -24,9 +24,8 @@ describe('ThemeProvider', () => {
     const {
       colors: { brand },
     } = autoScout24Theme;
-    const castedBrand = brand as Partial<ColorHues>;
 
-    expect(screen.getByText(castedBrand[100] || '')).toBeInTheDocument();
+    expect(screen.getByText(brand[100])).toBeInTheDocument();
   });
 
   it('provides ms24 theme', () => {
@@ -34,8 +33,7 @@ describe('ThemeProvider', () => {
     const {
       colors: { brand },
     } = motoScout24Theme;
-    const castedBrand = brand as Partial<ColorHues>;
 
-    expect(screen.getByText(castedBrand[100] || '')).toBeInTheDocument();
+    expect(screen.getByText(brand[100])).toBeInTheDocument();
   });
 });

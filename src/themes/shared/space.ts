@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-const space = {
+export const space = {
   xs: '0.25rem',
   sm: '0.5rem',
   md: '0.75rem',
@@ -9,5 +9,3 @@ const space = {
   '3xl': '2rem',
   '4xl': '3rem',
 };
-
-export default space;

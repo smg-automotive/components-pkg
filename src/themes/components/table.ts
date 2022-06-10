@@ -1,32 +1,34 @@
 import { theme } from '@chakra-ui/react';
 
-import { typography } from '../shared';
+import { shared } from '../shared';
 
 const {
   components: { Table },
 } = theme;
 
-Table.sizes = {
+const CustomTable = JSON.parse(JSON.stringify(Table));
+
+CustomTable.sizes = {
   md: {
     th: {
       px: 'xs',
       py: 'xs',
-      ...typography.heading5,
+      ...shared.typography.heading5,
     },
     td: {
       px: 'xs',
       py: 'xs',
-      ...typography.body,
+      ...shared.typography.body,
     },
     caption: {
       px: 'xs',
       py: 'xs',
-      ...typography.body,
+      ...shared.typography.body,
     },
   },
 };
 
-delete Table.baseStyle.th?.fontFamily;
-delete Table.baseStyle.caption?.fontFamily;
+delete CustomTable.baseStyle.th?.fontFamily;
+delete CustomTable.baseStyle.caption?.fontFamily;
 
-export default Table;
+export default CustomTable;

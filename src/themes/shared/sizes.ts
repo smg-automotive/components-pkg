@@ -1,4 +1,4 @@
-const sizes = {
+export const sizes = {
   xs: '1rem',
   md: '2rem',
   lg: '2.5rem',
@@ -11,5 +11,3 @@ const sizes = {
     xl: '1280px',
   },
 };
-
-export default sizes;

@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Colors } from '@chakra-ui/react';
-
-import { colors as sharedColors } from '../shared';
+import { shared } from '../shared';
 
 const brandPrimary = '#FF4C52';
 const brand600 = '#D64045';
 
-const colors: Colors = {
-  ...sharedColors,
+export const colors = {
+  ...shared.colors,
   brand: {
     50: '#FFF8F9',
     100: '#FFE4E5',
@@ -23,5 +21,3 @@ const colors: Colors = {
     btnShadow: brand600,
   },
 };
-
-export default colors;

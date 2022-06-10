@@ -6,4 +6,4 @@ const config = {
   cssVarPrefix: 'chakra',
 };
 
-export default { direction, config };
+export const basis = { direction, config };

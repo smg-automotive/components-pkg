@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import lineHeights from './lineHeights';
-import fontWeights from './fontWeights';
-import fontSizes from './fontSizes';
+import { lineHeights } from './lineHeights';
+import { fontWeights } from './fontWeights';
+import { fontSizes } from './fontSizes';
 
-const typography = {
+export const typography = {
   display1: {
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.display,
@@ -75,5 +75,3 @@ const typography = {
     fontSize: fontSizes.xs,
   },
 };
-
-export default typography;

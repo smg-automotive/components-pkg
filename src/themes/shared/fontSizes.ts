@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-const fontSizes = {
+export const fontSizes = {
   '5xl': '4.75rem',
   '4xl': '3.75rem',
   '3xl': '3rem',
@@ -11,4 +11,3 @@ const fontSizes = {
   sm: '0.875rem',
   xs: '0.75rem',
 };
-export default fontSizes;
