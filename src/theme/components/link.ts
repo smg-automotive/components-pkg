@@ -1,6 +1,6 @@
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
-import { fontSizes, lineHeights } from '../shared';
+import { fontSizes, lineHeights, space } from '../shared';
 
 const linkBaseStyle: SystemStyleObject = {
   lineHeight: lineHeights.display,
@@ -28,8 +28,8 @@ const disabledBaseStyle = {
 };
 
 const iconBaseStyle = {
-  width: '1.5rem',
-  height: '1.5rem',
+  width: space['2xl'],
+  height: space['2xl'],
 };
 
 const Link: ComponentMultiStyleConfig = {
