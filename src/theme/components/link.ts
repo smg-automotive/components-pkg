@@ -5,10 +5,13 @@ import { fontSizes, lineHeights } from '../shared';
 const linkBaseStyle: SystemStyleObject = {
   lineHeight: lineHeights.display,
   fontSize: fontSizes.base,
-  color: 'blue.700',
   display: 'flex',
   alignItems: 'center',
   gap: 'xs',
+};
+
+const enabledBaseStyle: SystemStyleObject = {
+  color: 'blue.700',
   _hover: {
     cursor: 'pointer',
     textDecoration: 'underline',
@@ -17,9 +20,6 @@ const linkBaseStyle: SystemStyleObject = {
     textDecoration: 'none',
     color: 'gray.900',
   },
-  _disabled: {
-    color: 'gray.300',
-  },
 };
 
 const iconBaseStyle = {
@@ -27,10 +27,19 @@ const iconBaseStyle = {
   height: '1.5rem',
 };
 
+const disabledBaseStyle = {
+  color: 'gray.300',
+  _hover: {
+    cursor: 'default',
+    textDecoration: 'none',
+  },
+};
+
 const Link: ComponentMultiStyleConfig = {
-  parts: ['leftIcon', 'rightIcon', 'link'],
+  parts: ['leftIcon', 'rightIcon', 'link', 'disabled'],
   baseStyle: {
-    link: linkBaseStyle,
+    link: { ...linkBaseStyle, ...enabledBaseStyle },
+    disabled: { ...linkBaseStyle, ...disabledBaseStyle },
     leftIcon: iconBaseStyle,
     rightIcon: iconBaseStyle,
   },

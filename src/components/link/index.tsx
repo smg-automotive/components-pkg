@@ -1,30 +1,41 @@
-import React, { ElementType, FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
   Box,
-  Link as ChakraLink,
+  chakra,
   HTMLChakraProps,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
 interface Props extends HTMLChakraProps<'a'> {
-  leftIcon?: ElementType;
-  rightIcon?: ElementType;
+  leftIcon?: ReactElement;
+  rightIcon?: ReactElement;
+  isDisabled?: boolean;
+  isExternal?: boolean;
 }
 
-const Link: FC<Props> = ({ children, leftIcon, rightIcon, ...rest }) => {
+const Link: FC<Props> = ({
+  children,
+  isDisabled = false,
+  isExternal = false,
+  leftIcon,
+  rightIcon,
+  ...rest
+}) => {
   const styles = useMultiStyleConfig(`Link`);
-  const LeftComponent = leftIcon;
-  const RightComponent = rightIcon;
 
   return (
-    <ChakraLink {...rest}>
-      <Box __css={styles.link}>
-        {LeftComponent && <LeftComponent __css={styles.leftIcon} />}
-        {children}
-        {RightComponent && <RightComponent __css={styles.rightIcon} />}
-      </Box>
-    </ChakraLink>
+    <chakra.a
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener' : undefined}
+      {...rest}
+      __css={isDisabled ? styles.disabled : styles.link}
+    >
+      {leftIcon}
+      {children}
+      {rightIcon}
+    </chakra.a>
   );
 };
 
 export default Link;
+export { Props as LinkProps };
