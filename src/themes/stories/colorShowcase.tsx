@@ -18,15 +18,15 @@ const ColorShowcase: FC = () => {
       {colors.map(([colorName, colorValues]) => {
         const mappedValues =
           typeof colorValues === 'object'
-            ? colorValues
-            : { [colorName]: colorValues };
+            ? (colorValues as Colors)
+            : { [colorName]: colorValues as string };
 
         return (
           <ColorItem
             subtitle=""
             key={colorName}
             title={colorName}
-            colors={mappedValues as Colors}
+            colors={mappedValues}
           />
         );
       })}
