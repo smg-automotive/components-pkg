@@ -20,18 +20,20 @@ const Link: FC<Props> = ({
   rightIcon,
   ...rest
 }) => {
-  const Component = as;
+  const styles = useMultiStyleConfig(`Link`);
+
+  const Component = chakra(as, {
+    baseStyle: isDisabled ? styles.disabled : styles.link,
+  });
   const LeftComponent = leftIcon;
   const RightComponent = rightIcon;
-
-  const styles = useMultiStyleConfig(`Link`);
 
   return (
     <Component
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener' : undefined}
       {...rest}
-      __css={isDisabled ? styles.disabled : styles.link}
+      // __css={isDisabled ? styles.disabled : styles.link}
     >
       {LeftComponent && <LeftComponent __css={styles.leftIcon} />}
       {children}
