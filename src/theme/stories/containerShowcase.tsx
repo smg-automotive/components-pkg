@@ -10,7 +10,7 @@ const ContainerShowCase: FC<Props> = ({ name }) => {
   return (
     <Tr border="1px" borderColor="gray.100">
       <Td>{name}</Td>
-      <Td>{theme.containers[name]}</Td>
+      <Td>{theme.sizes.container[name]}</Td>
     </Tr>
   );
 };
