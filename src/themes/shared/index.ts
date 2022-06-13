@@ -6,6 +6,7 @@ import { opacity } from './opacity';
 import { lineHeights } from './lineHeights';
 import { fontWeights } from './fontWeights';
 import { fontSizes } from './fontSizes';
+import { fonts } from './fonts';
 import { colors } from './colors';
 import { breakpoints } from './breakpoints';
 import { borders } from './borders';
@@ -26,4 +27,5 @@ export const shared = {
   lineHeights,
   fontWeights,
   fontSizes,
+  fonts,
 };

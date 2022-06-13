@@ -9,12 +9,14 @@ import { withThemes } from '@react-theming/storybook-addon';
 
 import { motoScout24Theme, motoScoutChakraTheme, autoScout24Theme, autoScoutChakraTheme } from '../src/themes'
 import { breakpoints } from '../src/themes/shared/breakpoints'
+import { Fonts } from '../src/styles/fonts';
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
   return (
     <StorybookThemeProvider theme={ensureTheme()}>
       <ThemeProvider theme={theme}>
         <CSSReset />
+        <Fonts />
         {children}
       </ThemeProvider>
     </StorybookThemeProvider>
