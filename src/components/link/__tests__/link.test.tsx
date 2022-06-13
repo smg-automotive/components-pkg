@@ -69,7 +69,7 @@ describe('<Link>', () => {
     expect(link.getAttribute('target')).toBe('_blank');
   });
 
-  it('should', () => {
+  it('should be wrapped by router link component', () => {
     renderWrapper({
       as: MockRouterLink,
       children: 'Link',
