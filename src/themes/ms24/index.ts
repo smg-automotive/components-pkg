@@ -8,5 +8,3 @@ export const theme = {
   components,
   name: 'MotoScout 24',
 };
-
-export default theme;
