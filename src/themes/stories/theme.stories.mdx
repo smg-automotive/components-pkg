@@ -1,0 +1,105 @@
+import {
+  ArgsTable,
+  Canvas,
+  ColorPalette,
+  Meta,
+  Story,
+} from '@storybook/addon-docs';
+
+import TypographyShowcase from './typographyShowcase.tsx';
+import SpaceShowcase from './spaceShowcase.tsx';
+import SizeShowcase from './sizeShowcase.tsx';
+import ShadowShowcase from './shadowShowcase.tsx';
+import OpacityShowcase from './opacityShowcase.tsx';
+import ContainerShowcase from './containerShowcase.tsx';
+import ColorShowcase from './colorShowcase.tsx';
+import BreakpointShowcase from './breakpointShowcase.tsx';
+import BorderRadiusShowcase from './borderRadiusShowcase.tsx';
+
+<Meta
+  title="Theme"
+  argTypes={{
+    theme: {
+      options: ['as24', 'ms24'],
+      control: { type: 'select' },
+    },
+  }}
+/>
+
+## Border Radius
+
+<Canvas>
+  <Story name="borderRadius" args={{ theme: 'as24' }}>
+    <BorderRadiusShowcase />
+  </Story>
+</Canvas>
+
+## Breakpoints
+
+<Canvas>
+  <Story name="breakpoints" args={{ theme: 'as24' }}>
+    <BreakpointShowcase />
+  </Story>
+</Canvas>
+
+# Theme
+
+## Color palette
+
+<Canvas>
+  <Story name="colors" args={{ theme: 'as24' }}>
+    <ColorPalette>
+      <ColorShowcase />
+    </ColorPalette>
+  </Story>
+</Canvas>
+
+<ArgsTable story="colors" />
+
+## Containers
+
+<Canvas>
+  <Story name="containers" args={{ theme: 'as24' }}>
+    <ContainerShowcase />
+  </Story>
+</Canvas>
+
+## Opacity
+
+<Canvas>
+  <Story name="opacity" args={{ theme: 'as24' }}>
+    <OpacityShowcase />
+  </Story>
+</Canvas>
+
+## Shadows
+
+<Canvas>
+  <Story name="shadows" args={{ theme: 'as24' }}>
+    <ShadowShowcase />
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="sizes" args={{ theme: 'as24' }}>
+    <SizeShowcase />
+  </Story>
+</Canvas>
+
+## Spacing Table
+
+<Canvas>
+  <Story name="space" args={{ theme: 'as24' }}>
+    <SpaceShowcase />
+  </Story>
+</Canvas>
+
+## Typography
+
+<Canvas>
+  <Story name="typography" args={{ theme: 'as24' }}>
+    <TypographyShowcase />
+  </Story>
+</Canvas>

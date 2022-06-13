@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useTheme } from '@chakra-ui/react';
 
-import { autoScout24Theme, motoScout24Theme } from '../../../theme';
+import { autoScout24Theme, motoScout24Theme } from '../../../themes';
 import { bareRender, screen } from '../../../../.jest';
 import ThemeProvider, { Props } from '..';
 
@@ -21,17 +21,19 @@ const renderWrapper = (theme: Props['theme']) =>
 describe('ThemeProvider', () => {
   it('provides as24 theme', () => {
     renderWrapper('as24');
+    const {
+      colors: { brand },
+    } = autoScout24Theme;
 
-    expect(
-      screen.getByText(autoScout24Theme.colors.brand[100])
-    ).toBeInTheDocument();
+    expect(screen.getByText(brand[100])).toBeInTheDocument();
   });
 
   it('provides ms24 theme', () => {
     renderWrapper('ms24');
+    const {
+      colors: { brand },
+    } = motoScout24Theme;
 
-    expect(
-      screen.getByText(motoScout24Theme.colors.brand[100])
-    ).toBeInTheDocument();
+    expect(screen.getByText(brand[100])).toBeInTheDocument();
   });
 });
