@@ -1,6 +1,8 @@
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
-import { fontSizes } from '../shared';
+import { shared } from '../shared';
+
+const { fontSizes } = shared;
 
 const linkBaseStyle: SystemStyleObject = {
   fontSize: fontSizes.base,
