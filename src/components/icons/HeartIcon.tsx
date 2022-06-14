@@ -12,6 +12,6 @@ export const HeartIcon = createIcon({
     </svg>
   ),
   defaultProps: {
-    boxSize: '1.5rem',
+    boxSize: 'sm',
   },
 });
