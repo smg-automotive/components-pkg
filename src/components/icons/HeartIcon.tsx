@@ -1,5 +1,5 @@
 import React from 'react';
-import { createIcon } from '@chakra-ui/icons';
+import { createIcon } from '@chakra-ui/react';
 
 export const HeartIcon = createIcon({
   displayName: 'Heart',
@@ -12,6 +12,6 @@ export const HeartIcon = createIcon({
     </svg>
   ),
   defaultProps: {
-    boxSize: 6,
+    boxSize: '1.5rem',
   },
 });
