@@ -1,12 +1,11 @@
-import React, { ElementType, FC, ReactNode } from 'react';
+import React, { ElementType, FC, ReactElement, ReactNode } from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 interface Props {
   children: ReactNode;
   as?: ElementType;
-  leftIcon?: ElementType;
-  rightIcon?: ElementType;
-  isDisabled?: boolean;
+  leftIcon?: ReactElement;
+  rightIcon?: ReactElement;
   isExternal?: boolean;
   [key: string]: unknown;
 }
@@ -14,7 +13,6 @@ interface Props {
 const Link: FC<Props> = ({
   as = chakra.a,
   children,
-  isDisabled = false,
   isExternal = false,
   leftIcon,
   rightIcon,
@@ -23,10 +21,13 @@ const Link: FC<Props> = ({
   const styles = useMultiStyleConfig(`Link`);
 
   const Component = chakra(as, {
-    baseStyle: isDisabled ? styles.disabled : styles.link,
+    baseStyle: styles.link,
   });
-  const LeftComponent = leftIcon;
-  const RightComponent = rightIcon;
+
+  const textStyle = {
+    ...(leftIcon ? styles.leftIcon : {}),
+    ...(rightIcon ? styles.rightIcon : {}),
+  };
 
   return (
     <Component
@@ -34,9 +35,9 @@ const Link: FC<Props> = ({
       rel={isExternal ? 'noopener' : undefined}
       {...rest}
     >
-      {LeftComponent && <LeftComponent __css={styles.leftIcon} />}
-      {children}
-      {RightComponent && <RightComponent __css={styles.rightIcon} />}
+      {leftIcon}
+      <chakra.span __css={textStyle}>{children}</chakra.span>
+      {rightIcon}
     </Component>
   );
 };

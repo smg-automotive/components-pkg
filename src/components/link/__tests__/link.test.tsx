@@ -31,7 +31,7 @@ describe('<Link>', () => {
   it('should render link with left icon', () => {
     renderWrapper({
       children: 'Link',
-      leftIcon: MockIcon,
+      leftIcon: <MockIcon />,
     });
     const icon = screen.getByTestId('test-icon');
     expect(icon).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe('<Link>', () => {
   it('should render link with right icon', () => {
     renderWrapper({
       children: 'Link',
-      rightIcon: MockIcon,
+      rightIcon: <MockIcon />,
     });
     const icon = screen.getByTestId('test-icon');
     expect(icon).toBeInTheDocument();
@@ -49,8 +49,8 @@ describe('<Link>', () => {
   it('should render link with left & right icons', () => {
     renderWrapper({
       children: 'Link',
-      leftIcon: MockIcon,
-      rightIcon: MockIcon,
+      leftIcon: <MockIcon />,
+      rightIcon: <MockIcon />,
     });
     const icons = screen.getAllByTestId('test-icon');
     expect(icons.length).toBe(2);
@@ -63,7 +63,7 @@ describe('<Link>', () => {
       isExternal: true,
     });
 
-    const link = screen.getByText('Link');
+    const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href');
     expect(link).toHaveAttribute('target');
     expect(link.getAttribute('target')).toBe('_blank');

@@ -1,14 +1,11 @@
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
-import { fontSizes, lineHeights, space } from '../shared';
+import { fontSizes } from '../shared';
 
 const linkBaseStyle: SystemStyleObject = {
-  lineHeight: lineHeights.display,
   fontSize: fontSizes.base,
-};
-
-const enabledBaseStyle: SystemStyleObject = {
   color: 'blue.700',
+  verticalAlign: 'middle',
   _hover: {
     cursor: 'pointer',
     textDecoration: 'underline',
@@ -19,26 +16,12 @@ const enabledBaseStyle: SystemStyleObject = {
   },
 };
 
-const disabledBaseStyle = {
-  color: 'gray.300',
-  _hover: {
-    cursor: 'default',
-    textDecoration: 'none',
-  },
-};
-
-const iconBaseStyle = {
-  width: space['2xl'],
-  height: space['2xl'],
-};
-
 const Link: ComponentMultiStyleConfig = {
-  parts: ['leftIcon', 'rightIcon', 'link', 'disabled'],
+  parts: ['link', 'leftIcon', 'rightIcon'],
   baseStyle: {
-    link: { ...linkBaseStyle, ...enabledBaseStyle },
-    disabled: { ...linkBaseStyle, ...disabledBaseStyle },
-    leftIcon: { ...iconBaseStyle, mr: 'xs' },
-    rightIcon: { ...iconBaseStyle, ml: 'xs' },
+    link: linkBaseStyle,
+    leftIcon: { ml: 'xs' },
+    rightIcon: { mr: 'xs' },
   },
 };
 

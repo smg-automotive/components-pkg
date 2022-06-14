@@ -1,8 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons';
-
 import Link from './index.tsx';
+import { ArrowLeftIcon, HeartIcon } from '../index.ts';
 
 <Meta title="Components/Link" component={Link} />
 
@@ -20,7 +19,7 @@ import Link from './index.tsx';
 
 <Canvas>
   <Story name="Link with Left icon">
-    <Link leftIcon={ArrowBackIcon}>Back</Link>
+    <Link leftIcon={<ArrowLeftIcon />}>Back</Link>
   </Story>
 </Canvas>
 
@@ -28,11 +27,7 @@ import Link from './index.tsx';
 
 <Canvas>
   <Story name="Link with Right icon">
-    <Link
-      rightIcon={ExternalLinkIcon}
-      href="https://google.com"
-      target="_blank"
-    >
+    <Link rightIcon={<HeartIcon />} href="https://google.com" target="_blank">
       {'Go to External Link'}
     </Link>
   </Story>
@@ -42,22 +37,8 @@ import Link from './index.tsx';
 
 <Canvas>
   <Story name="Link with Left & Right icons">
-    <Link leftIcon={ArrowBackIcon} rightIcon={ExternalLinkIcon}>
+    <Link leftIcon={<ArrowLeftIcon />} rightIcon={<HeartIcon />}>
       {'Terms & Conditions'}
-    </Link>
-  </Story>
-</Canvas>
-
-## Disabled link
-
-<Canvas>
-  <Story name="Disabled link">
-    <Link
-      leftIcon={ArrowBackIcon}
-      rightIcon={ExternalLinkIcon}
-      isDisabled={true}
-    >
-      {'Disabled Link'}
     </Link>
   </Story>
 </Canvas>
