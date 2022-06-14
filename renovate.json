@@ -21,5 +21,6 @@
   ],
   "node": {
     "supportPolicy": ["lts_latest"]
-  }
+  },
+  "semanticCommits": true
 }
