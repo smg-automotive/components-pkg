@@ -6,8 +6,9 @@ import {
 } from '@storybook/theming';
 import { CSSReset, ThemeProvider } from '@chakra-ui/react';
 import { withThemes } from '@react-theming/storybook-addon';
-import { autoScout24Theme, motoScout24Theme } from '../src/theme';
-import breakpoints from '../src/theme/shared/breakpoints';
+
+import { motoScout24Theme, motoScoutChakraTheme, autoScout24Theme, autoScoutChakraTheme } from '../src/themes'
+import { breakpoints } from '../src/themes/shared/breakpoints'
 import { Fonts } from '../src/styles/fonts';
 
 const providerFn = ({ theme = autoScout24Theme, children }) => {
@@ -23,7 +24,7 @@ const providerFn = ({ theme = autoScout24Theme, children }) => {
 };
 
 addDecorator(
-  withThemes(null, [autoScout24Theme, motoScout24Theme], { providerFn })
+  withThemes(null, [autoScout24Theme, motoScout24Theme, autoScoutChakraTheme, motoScoutChakraTheme], { providerFn })
 );
 
 const customViewports = Object.entries(breakpoints).reduce(
