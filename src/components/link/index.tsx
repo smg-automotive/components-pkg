@@ -7,6 +7,7 @@ interface Props {
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   isExternal?: boolean;
+  rel?: string;
   [key: string]: unknown;
 }
 
@@ -14,6 +15,7 @@ const Link: FC<Props> = ({
   as = chakra.a,
   children,
   isExternal = false,
+  rel,
   leftIcon,
   rightIcon,
   ...rest
@@ -32,7 +34,7 @@ const Link: FC<Props> = ({
   return (
     <Component
       target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener' : undefined}
+      rel={rel || isExternal ? 'noopener noreferrer' : undefined}
       {...rest}
     >
       {leftIcon}
