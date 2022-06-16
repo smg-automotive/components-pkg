@@ -1,5 +1,5 @@
 export const lineHeights = {
-  display: '100%',
-  heading: '125%',
-  body: '150%',
+  xs: 1,
+  sm: 1.25,
+  md: 1.5,
 };
