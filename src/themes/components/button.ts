@@ -13,15 +13,11 @@ const baseStyle: SystemStyleObject = {
 const buttonSizes = {
   md: {
     height: sizes.md,
-    ...typography.heading5,
+    ...typography['button-sm'],
   },
   lg: {
     height: sizes.lg,
-    ...typography.heading4,
-  },
-  xl: {
-    height: sizes.xl,
-    ...typography.heading4,
+    ...typography.button,
   },
 };
 
