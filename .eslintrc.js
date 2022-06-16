@@ -16,7 +16,7 @@ module.exports = {
         devDependencies: [
           './**/stories/**/*',
           './**/*.stories.@(tsx|mdx)',
-          './**/*.test.@(ts|tsx)',
+          './**/*.Test.@(ts|tsx)',
           'rollup.config.js',
           'postcss.config.js',
         ],
