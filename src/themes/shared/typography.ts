@@ -89,4 +89,16 @@ export const typography = {
     lineHeight: lineHeights.body,
     fontSize: fontSizes.xs,
   },
+  button: {
+    fontFamily: fonts.makeItSans,
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.body,
+    fontSize: fontSizes.base,
+  },
+  'button-sm': {
+    fontFamily: fonts.makeItSans,
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.body,
+    fontSize: fontSizes.sm,
+  },
 };
