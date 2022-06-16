@@ -30,7 +30,8 @@ const variants = {
       filter: 'brightness(1.1)',
     },
     _active: {
-      bg: 'brand.100',
+      filter: 'none',
+      bg: 'brand.primary',
       boxShadow: 'none',
     },
     _disabled: {
