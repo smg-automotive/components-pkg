@@ -1,0 +1,44 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Link from './index.tsx';
+import { ArrowLeftIcon, HeartIcon } from '../index.ts';
+
+<Meta title="Components/Link" component={Link} />
+
+# Link
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">
+    <Link href="https://autoscout24.ch">{'AutoScout24 Homepage'}</Link>
+  </Story>
+</Canvas>
+
+## Link with Left icon
+
+<Canvas>
+  <Story name="Link with Left icon">
+    <Link leftIcon={<ArrowLeftIcon />}>Back</Link>
+  </Story>
+</Canvas>
+
+## Link with Right icon
+
+<Canvas>
+  <Story name="Link with Right icon">
+    <Link rightIcon={<HeartIcon />} href="https://google.com" target="_blank">
+      {'Go to External Link'}
+    </Link>
+  </Story>
+</Canvas>
+
+## Link with Left & Right icons
+
+<Canvas>
+  <Story name="Link with Left & Right icons">
+    <Link leftIcon={<ArrowLeftIcon />} rightIcon={<HeartIcon />}>
+      {'Terms & Conditions'}
+    </Link>
+  </Story>
+</Canvas>

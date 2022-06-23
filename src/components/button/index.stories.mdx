@@ -1,0 +1,64 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { Box } from '@chakra-ui/react';
+
+import Button from './index.tsx';
+
+<Meta title="Components/Button" component={Button} />
+
+export const Template = (args) => (
+  <Button {...args}>{args.label || 'Button'}</Button>
+);
+
+# Button
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      isDisabled: false,
+      label: 'Primary Button',
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary'],
+        control: { type: 'radio' },
+        defaultValue: 'primary',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: { type: 'radio' },
+        defaultValue: 'lg',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="Sizes">
+    <Box>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </Box>
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story
+    name="Disabled"
+    args={{
+      isDisabled: true,
+      label: 'Disabled Button',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
