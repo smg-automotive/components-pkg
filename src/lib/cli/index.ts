@@ -1,5 +1,5 @@
 import setup from './setup';
-import copyFonts from './copy-fonts';
+import copyFonts from './copyFonts';
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const yargs = require('yargs');

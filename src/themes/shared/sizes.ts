@@ -1,9 +1,7 @@
 export const sizes = {
-  xs: '1rem',
   sm: '1.5rem',
-  md: '2rem',
-  lg: '2.5rem',
-  xl: '3rem',
+  md: '2.25rem',
+  lg: '3rem',
   full: '100%',
   container: {
     sm: '640px',
