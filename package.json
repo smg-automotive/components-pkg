@@ -37,12 +37,12 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.5",
+    "@babel/core": "7.18.6",
     "@react-theming/storybook-addon": "1.1.6",
-    "@rollup/plugin-commonjs": "22.0.0",
+    "@rollup/plugin-commonjs": "22.0.1",
     "@rollup/plugin-node-resolve": "13.3.0",
     "@rollup/plugin-typescript": "8.3.3",
-    "@smg-automotive/eslint-config": "2.0.3",
+    "@smg-automotive/eslint-config": "2.0.6",
     "@storybook/addon-docs": "6.5.9",
     "@storybook/addon-essentials": "6.5.9",
     "@storybook/addon-interactions": "6.5.9",
