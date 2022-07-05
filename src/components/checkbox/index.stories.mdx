@@ -1,0 +1,54 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { Stack } from '@chakra-ui/react';
+
+import Checkbox from './index.tsx';
+
+<Meta title="Components/Checkbox" component={Checkbox} />
+
+export const Template = (args) => <Checkbox {...args}>{args.label}</Checkbox>;
+
+# Checkbox
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      isChecked: false,
+      label: 'Regular',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Selected
+
+<Canvas>
+  <Story
+    name="Selected"
+    args={{
+      isChecked: true,
+      label: 'Selected',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Stack spacing="lg" direction="row">
+      <Checkbox isDisabled={true}>
+        Disabled
+      </Checkbox>
+      <Checkbox isDisabled={true} isChecked={true}>
+        Disabled checked
+      </Checkbox>
+    </Stack>
+  </Story>
+</Canvas>
