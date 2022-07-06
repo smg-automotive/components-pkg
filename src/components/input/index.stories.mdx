@@ -1,17 +1,37 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { Box } from '@chakra-ui/react';
+
 import Input from './index.tsx';
 
 <Meta title="Components/Input" component={Input} />
 
-export const Template = (args) => <Input {...args} />;
+export const Template = (args) => (
+  <Box w="100%" maxW="250px">
+    <Input {...args} />
+  </Box>
+);
 
 # Input
 
 ## Overview
 
 <Canvas>
-  <Story name="Overview" args={{}} argTypes={{}}>
+  <Story
+    name="Overview"
+    args={{
+      placeholder: 'Placeholder',
+      isDisabled: false,
+      isInvalid: false,
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'lg'],
+        control: { type: 'radio' },
+        defaultValue: 'lg',
+      },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

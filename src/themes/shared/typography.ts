@@ -101,4 +101,10 @@ export const typography = {
     lineHeight: lineHeights.sm,
     fontSize: fontSizes.sm,
   },
+  input: {
+    fontFamily: fonts.makeItSans,
+    fontWeights: fontWeights.regular,
+    lineHeights: lineHeights.md,
+    fontSize: fontSizes.base,
+  },
 };

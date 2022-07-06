@@ -4,6 +4,9 @@ import type {
 } from '@chakra-ui/theme-tools';
 import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { shared } from '../shared';
+const { sizes: sizeDefinitions, typography } = shared;
+
 const baseStyle: PartsStyleObject<typeof parts> = {
   field: {
     width: '100%',
@@ -18,9 +21,17 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 
 const size: Record<string, SystemStyleObject> = {
   md: {
-    fontSize: 'md',
-    px: 4,
-    h: 10,
+    fontSize: 'lg',
+    px: 12,
+    py: 4,
+    h: sizeDefinitions.md,
+    borderRadius: 'md',
+  },
+  lg: {
+    fontSize: 'lg',
+    px: 12,
+    py: 4,
+    h: sizeDefinitions.lg,
     borderRadius: 'md',
   },
 };
@@ -29,29 +40,36 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   md: {
     field: size.md,
   },
+  lg: {
+    field: size.lg,
+  },
 };
 
 const variantOutline: PartsStyleObject<typeof parts> = {
   field: {
     border: '1px solid',
-    borderColor: 'inherit',
+    borderColor: 'gray.400',
+    borderRadius: 'sm',
     bg: 'inherit',
+    color: 'gray.900',
+    ...typography.input,
+    _placeholder: {
+      color: 'gray.400',
+    },
     _hover: {
-      borderColor: 'gray.400',
+      borderColor: 'gray.900',
     },
-    _readOnly: {
-      boxShadow: 'none !important',
-      userSelect: 'all',
+    _focus: {
+      backgroundColor: 'blue.50',
     },
-    _disabled: {
-      opacity: 0.4,
-      cursor: 'not-allowed',
-    },
+    _active: {},
     _invalid: {
       borderColor: 'red.500',
     },
-    _focusVisible: {
-      zIndex: 1,
+    _disabled: {
+      cursor: 'not-allowed',
+      color: 'gray.300',
+      borderColor: 'gray.200',
     },
   },
 };
