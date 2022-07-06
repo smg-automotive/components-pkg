@@ -6,7 +6,7 @@ import Checkbox from './index.tsx';
 
 <Meta title="Components/Checkbox" component={Checkbox} />
 
-export const Template = (args) => <Checkbox {...args}>{args.label}</Checkbox>;
+export const Template = (args) => <Checkbox {...args} />;
 
 # Checkbox
 
@@ -16,8 +16,11 @@ export const Template = (args) => <Checkbox {...args}>{args.label}</Checkbox>;
   <Story
     name="Overview"
     args={{
+      name: 'Control',
+      value: 1,
       isChecked: false,
-      label: 'Regular',
+      isDisabled: false,
+      renderLabel: 'Regular',
     }}
   >
     {Template.bind({})}
@@ -30,8 +33,11 @@ export const Template = (args) => <Checkbox {...args}>{args.label}</Checkbox>;
   <Story
     name="Selected"
     args={{
+      name: 'Control',
+      value: 1,
       isChecked: true,
-      label: 'Selected',
+      isDisabled: false,
+      renderLabel: 'Selected',
     }}
   >
     {Template.bind({})}
@@ -43,12 +49,12 @@ export const Template = (args) => <Checkbox {...args}>{args.label}</Checkbox>;
 <Canvas>
   <Story name="Disabled">
     <Stack spacing="lg" direction="row">
-      <Checkbox isDisabled={true}>
-        Disabled
-      </Checkbox>
-      <Checkbox isDisabled={true} isChecked={true}>
-        Disabled checked
-      </Checkbox>
+      <Checkbox isDisabled={true} renderLabel="Disabled" />
+      <Checkbox
+        isDisabled={true}
+        isChecked={true}
+        renderLabel="Disabled checked"
+      />
     </Stack>
   </Story>
 </Canvas>
