@@ -1,4 +1,9 @@
-import React, { FC } from 'react';
+import React, {
+  ChangeEventHandler,
+  FC,
+  FocusEventHandler,
+  KeyboardEventHandler,
+} from 'react';
 import { Input as ChakraInput } from '@chakra-ui/react';
 
 type Props = {
@@ -6,6 +11,10 @@ type Props = {
   isInvalid?: boolean;
   isDisabled?: boolean;
   size?: 'md' | 'lg';
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
 const Input: FC<Props> = (props) => <ChakraInput {...props} />;

@@ -1,16 +1,53 @@
+import { useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
 import Input from './index.tsx';
 
-<Meta title="Components/Input" component={Input} />
+<Meta
+  title="Components/Input"
+  component={Input}
+  parameters={{
+    controls: {
+      sort: 'alpha',
+      expanded: true,
+    },
+    actions: ['change', 'blur', 'keydown', 'focus'],
+  }}
+/>
 
-export const Template = (args) => (
-  <Box w="100%" maxW="250px">
-    <Input {...args} />
-  </Box>
-);
+export const Template = ({
+  value,
+  onChange,
+  onBlur,
+  onFocus,
+  onKeyDown,
+  ...args
+}) => {
+  const [currentValue, setCurrentValue] = useState(value);
+  const onChangeHandler = onChange ? action('change') : () => {};
+  return (
+    <Box w="100%" maxW="250px">
+      <Input
+        {...args}
+        onBlur={onBlur ? action('blur') : undefined}
+        onFocus={onFocus ? action('focus') : undefined}
+        onKeyDown={onKeyDown ? action('keyDown') : undefined}
+        onChange={
+          value
+            ? (e) => {
+                setCurrentValue(e.target.value);
+                onChangeHandler(e);
+              }
+            : onChangeHandler
+        }
+        value={value ? currentValue : undefined}
+      />
+    </Box>
+  );
+};
 
 # Input
 
@@ -23,12 +60,22 @@ export const Template = (args) => (
       placeholder: 'Placeholder',
       isDisabled: false,
       isInvalid: false,
+      size: 'lg',
+      onChange: true,
+      onFocus: false,
+      onBlur: false,
+      onKeyDown: false,
     }}
     argTypes={{
+      value: {
+        defaultValue: null,
+        control: { type: 'text', placeholder: 'xxxxxx' },
+        type: { name: 'string', required: false },
+        description: 'use value prop when you want controlled input',
+      },
       size: {
         options: ['md', 'lg'],
         control: { type: 'radio' },
-        defaultValue: 'lg',
       },
     }}
   >
