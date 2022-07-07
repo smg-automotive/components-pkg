@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Stack } from '@chakra-ui/react';
@@ -6,7 +8,24 @@ import Checkbox from './index.tsx';
 
 <Meta title="Components/Checkbox" component={Checkbox} />
 
-export const Template = (args) => <Checkbox {...args} />;
+export const Template = ({ ...args, value, onChange }) => {
+  const [currentValue, setCurrentValue] = useState(value);
+  const onChangeHandler = onChange ? action('onChange') : () => {};
+  return (
+    <Checkbox
+      {...args}
+      onChange={
+        value
+          ? (e) => {
+              setCurrentValue(e.target.value);
+              onChangeHandler(e);
+            }
+          : onChangeHandler
+      }
+      value={value ? currentValue : undefined}
+    />
+  );
+};
 
 # Checkbox
 
@@ -14,6 +33,7 @@ export const Template = (args) => <Checkbox {...args} />;
 
 <Canvas>
   <Story
+    id="components-input-states--focu"
     name="Overview"
     args={{
       name: 'Control',
@@ -27,16 +47,16 @@ export const Template = (args) => <Checkbox {...args} />;
   </Story>
 </Canvas>
 
+<ArgsTable story="Overview" />
+
 ## Selected
 
 <Canvas>
   <Story
+    id="components-input-states--focus"
     name="Selected"
     args={{
       name: 'Control',
-      value: 1,
-      isChecked: true,
-      isDisabled: false,
       label: 'Selected',
     }}
   >
@@ -47,7 +67,7 @@ export const Template = (args) => <Checkbox {...args} />;
 ## Disabled
 
 <Canvas>
-  <Story name="Disabled">
+  <Story name="Disabled" id="components-input-states--focuse">
     <Stack spacing="lg" direction="row">
       <Checkbox isDisabled={true} label="Disabled" />
       <Checkbox isDisabled={true} isChecked={true} label="Disabled checked" />

@@ -12,7 +12,6 @@ const baseStyle: SystemStyleObject = {
     },
   },
   icon: {
-    color: 'gray.900',
     padding: 'xs',
   },
   control: {
@@ -21,6 +20,9 @@ const baseStyle: SystemStyleObject = {
     border: '1px',
     borderRadius: 'sm',
     borderColor: 'gray.400',
+    _hover: {
+      borderColor: 'gray.900',
+    },
     _checked: {
       borderColor: 'gray.900',
     },
