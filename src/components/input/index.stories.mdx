@@ -18,14 +18,7 @@ import Input from './index.tsx';
   }}
 />
 
-export const Template = ({
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  onKeyDown,
-  ...args
-}) => {
+export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const onChangeHandler = onChange ? action('change') : () => {};
   return (
@@ -34,7 +27,6 @@ export const Template = ({
         {...args}
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
-        onKeyDown={onKeyDown ? action('keyDown') : undefined}
         onChange={
           value
             ? (e) => {
@@ -64,7 +56,6 @@ export const Template = ({
       onChange: true,
       onFocus: false,
       onBlur: false,
-      onKeyDown: false,
     }}
     argTypes={{
       value: {
