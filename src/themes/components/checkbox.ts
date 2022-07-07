@@ -30,6 +30,9 @@ const baseStyle: SystemStyleObject = {
     _disabled: {
       borderColor: 'gray.400',
     },
+    _invalid: {
+      borderColor: 'red.500',
+    },
   },
   label: {
     ...typography.body,

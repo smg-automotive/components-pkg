@@ -9,6 +9,7 @@ interface Props {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   iconColor?: string;
+  isInvalid?: boolean;
 }
 
 const Checkbox: FC<Props> = ({
@@ -19,6 +20,7 @@ const Checkbox: FC<Props> = ({
   onChange,
   label,
   iconColor = 'gray.900',
+  isInvalid,
 }) => (
   <ChakraCheckbox
     name={name}
@@ -27,6 +29,7 @@ const Checkbox: FC<Props> = ({
     isChecked={isChecked}
     onChange={onChange}
     iconColor={isDisabled ? 'gray.400' : iconColor}
+    isInvalid={isInvalid}
   >
     {label}
   </ChakraCheckbox>

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Stack } from '@chakra-ui/react';
 
@@ -5,7 +7,16 @@ import Checkbox from './index.tsx';
 
 <Meta title="Components/Checkbox" component={Checkbox} />
 
-export const Template = (args) => <Checkbox {...args} />;
+export const Template = ({ isChecked, ...args }) => {
+  const [checked, setChecked] = useState(isChecked);
+  return (
+    <Checkbox
+      {...args}
+      isChecked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+};
 
 # Checkbox
 
@@ -37,6 +48,24 @@ export const Template = (args) => <Checkbox {...args} />;
       isChecked: true,
       isDisabled: false,
       label: 'Selected',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid
+
+<Canvas>
+  <Story
+    name="Invalid"
+    args={{
+      name: 'Control',
+      value: 1,
+      isChecked: false,
+      isDisabled: false,
+      isInvalid: true,
+      label: 'Invalid',
     }}
   >
     {Template.bind({})}
