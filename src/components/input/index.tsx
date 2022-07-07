@@ -10,6 +10,7 @@ type Props = {
   onFocus?: FocusEventHandler<HTMLInputElement>;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   value?: string | number;
+  autoFocus?: boolean;
 };
 
 const Input: FC<Props> = (props) => <ChakraInput {...props} />;

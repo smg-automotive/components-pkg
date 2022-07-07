@@ -12,6 +12,7 @@ const renderWrapper = ({
   onFocus = jest.fn(),
   onChange = jest.fn(),
   value = undefined,
+  autoFocus = false,
 }: Partial<InputProps> = {}) =>
   render(
     <Input
@@ -21,6 +22,7 @@ const renderWrapper = ({
       onFocus={onFocus}
       onChange={onChange}
       value={value}
+      autoFocus={autoFocus}
     />
   );
 
@@ -69,5 +71,12 @@ describe('<Input>', () => {
     const input = screen.getByDisplayValue('test value');
 
     expect(input).toBeInTheDocument();
+  });
+
+  it('supports autoFocus', () => {
+    renderWrapper({ autoFocus: true });
+    const input = screen.getByPlaceholderText('placeholder');
+
+    expect(input).toHaveFocus();
   });
 });
