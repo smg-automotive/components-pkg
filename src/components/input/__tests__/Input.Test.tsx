@@ -1,29 +1,31 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import { userEvent } from '@storybook/testing-library';
 
 import Input, { InputProps } from '..';
 
 const renderWrapper = ({
-  placeholder = 'placeholder',
+  autoFocus = false,
+  debounce,
   isDisabled = false,
   onBlur = jest.fn(),
   onFocus = jest.fn(),
   onChange = jest.fn(),
+  placeholder = 'placeholder',
   value = undefined,
-  autoFocus = false,
 }: Partial<InputProps> = {}) =>
   render(
     <Input
-      placeholder={placeholder}
+      autoFocus={autoFocus}
+      debounce={debounce}
       isDisabled={isDisabled}
+      name="test-input"
       onBlur={onBlur}
       onFocus={onFocus}
       onChange={onChange}
+      placeholder={placeholder}
       value={value}
-      autoFocus={autoFocus}
-      name="test-input"
     />
   );
 
@@ -63,6 +65,36 @@ describe('<Input>', () => {
         userEvent.type(input, 'test');
 
         expect(onChange).toHaveBeenCalledTimes(4);
+      });
+
+      describe('debouncing', () => {
+        it('is possible', () => {
+          const onChange = jest.fn();
+          renderWrapper({ onChange, debounce: 500 });
+
+          const input = screen.getByPlaceholderText('placeholder');
+          userEvent.type(input, 'test');
+
+          return waitFor(() => {
+            expect(onChange).toHaveBeenCalledTimes(1);
+          });
+        });
+
+        it('is called before blur handler when the input is blurred', async () => {
+          const calls: string[] = [];
+          const onChange = jest.fn(() => calls.push('change'));
+          const onBlur = jest.fn(() => calls.push('blur'));
+          renderWrapper({ onChange, onBlur, debounce: 500 });
+
+          const input = screen.getByPlaceholderText('placeholder');
+          userEvent.type(input, 'test');
+          input.blur();
+
+          await waitFor(() => {
+            expect(onChange).toHaveBeenCalled();
+          });
+          expect(calls).toEqual(['change', 'blur']);
+        });
       });
     });
   });

@@ -1,4 +1,11 @@
-import React, { ChangeEventHandler, FC, FocusEventHandler } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
+import React, {
+  ChangeEventHandler,
+  FC,
+  FocusEventHandler,
+  useEffect,
+} from 'react';
+
 import { Input as ChakraInput } from '@chakra-ui/react';
 
 type Props = {
@@ -12,9 +19,41 @@ type Props = {
   value?: string | number;
   autoFocus?: boolean;
   name: string;
+  debounce?: number;
 };
 
-const Input: FC<Props> = (props) => <ChakraInput {...props} />;
+const Input: FC<Props> = ({ onChange, onBlur, debounce, ...props }) => {
+  const debouncedOnChange = useDebouncedCallback(
+    onChange ||
+      (() => {
+        return;
+      }),
+    debounce
+  );
+
+  const onBlurHandler: FocusEventHandler<HTMLInputElement> = (event) => {
+    if (debounce && debouncedOnChange.isPending()) {
+      debouncedOnChange.flush();
+    }
+
+    onBlur && onBlur(event);
+  };
+
+  useEffect(
+    () => () => {
+      debounce && debouncedOnChange.isPending() && debouncedOnChange.flush();
+    },
+    [debounce, debouncedOnChange]
+  );
+
+  return (
+    <ChakraInput
+      {...props}
+      onChange={debounce ? debouncedOnChange : onChange}
+      onBlur={onBlurHandler}
+    />
+  );
+};
 
 export default Input;
 export { Props as InputProps };
