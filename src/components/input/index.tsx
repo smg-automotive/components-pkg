@@ -1,12 +1,7 @@
-import { useDebouncedCallback } from 'use-debounce';
-import React, {
-  ChangeEventHandler,
-  FC,
-  FocusEventHandler,
-  useEffect,
-} from 'react';
-
+import React, { ChangeEventHandler, FC, FocusEventHandler } from 'react';
 import { Input as ChakraInput } from '@chakra-ui/react';
+
+import { useDebouncedOnChange } from '../hooks';
 
 type Props = {
   placeholder?: string;
@@ -23,35 +18,15 @@ type Props = {
 };
 
 const Input: FC<Props> = ({ onChange, onBlur, debounce, ...props }) => {
-  const debouncedOnChange = useDebouncedCallback(
-    onChange ||
-      (() => {
-        return;
-      }),
-    debounce
-  );
-
-  const onBlurHandler: FocusEventHandler<HTMLInputElement> = (event) => {
-    if (debounce && debouncedOnChange.isPending()) {
-      debouncedOnChange.flush();
-    }
-
-    onBlur && onBlur(event);
-  };
-
-  useEffect(
-    () => () => {
-      debounce && debouncedOnChange.isPending() && debouncedOnChange.flush();
-    },
-    [debounce, debouncedOnChange]
-  );
+  const { onBlur: onBlurHandler, onChange: onChangeHandler } =
+    useDebouncedOnChange({
+      onBlur,
+      onChange,
+      debounce,
+    });
 
   return (
-    <ChakraInput
-      {...props}
-      onChange={debounce ? debouncedOnChange : onChange}
-      onBlur={onBlurHandler}
-    />
+    <ChakraInput {...props} onChange={onChangeHandler} onBlur={onBlurHandler} />
   );
 };
 
