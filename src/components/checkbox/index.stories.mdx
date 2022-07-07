@@ -20,7 +20,7 @@ export const Template = (args) => <Checkbox {...args} />;
       value: 1,
       isChecked: false,
       isDisabled: false,
-      renderLabel: 'Regular',
+      label: 'Regular',
     }}
   >
     {Template.bind({})}
@@ -37,7 +37,7 @@ export const Template = (args) => <Checkbox {...args} />;
       value: 1,
       isChecked: true,
       isDisabled: false,
-      renderLabel: 'Selected',
+      label: 'Selected',
     }}
   >
     {Template.bind({})}
@@ -49,12 +49,8 @@ export const Template = (args) => <Checkbox {...args} />;
 <Canvas>
   <Story name="Disabled">
     <Stack spacing="lg" direction="row">
-      <Checkbox isDisabled={true} renderLabel="Disabled" />
-      <Checkbox
-        isDisabled={true}
-        isChecked={true}
-        renderLabel="Disabled checked"
-      />
+      <Checkbox isDisabled={true} label="Disabled" />
+      <Checkbox isDisabled={true} isChecked={true} label="Disabled checked" />
     </Stack>
   </Story>
 </Canvas>

@@ -6,6 +6,11 @@ import { shared } from '../shared';
 const { typography } = shared;
 
 const baseStyle: SystemStyleObject = {
+  container: {
+    _disabled: {
+      cursor: 'not-allowed',
+    },
+  },
   icon: {
     color: 'gray.900',
     padding: 'xs',
@@ -16,15 +21,11 @@ const baseStyle: SystemStyleObject = {
     border: '1px',
     borderRadius: 'sm',
     borderColor: 'gray.400',
-    _hover: {
-      borderColor: 'gray.900',
-    },
     _checked: {
       borderColor: 'gray.900',
     },
     _disabled: {
       borderColor: 'gray.400',
-      cursor: 'not-allowed',
     },
   },
   label: {
@@ -32,7 +33,6 @@ const baseStyle: SystemStyleObject = {
     color: 'gray.900',
     _disabled: {
       color: 'gray.400',
-      cursor: 'not-allowed',
     },
   },
 };

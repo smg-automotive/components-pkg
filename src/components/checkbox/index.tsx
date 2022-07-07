@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, ReactNode } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   isDisabled?: boolean;
   isChecked?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  renderLabel?: ReactNode;
+  label?: string;
 }
 
 const Checkbox: FC<Props> = ({
@@ -16,7 +16,7 @@ const Checkbox: FC<Props> = ({
   isDisabled = false,
   isChecked = false,
   onChange,
-  renderLabel,
+  label,
 }) => (
   <ChakraCheckbox
     name={name}
@@ -25,7 +25,7 @@ const Checkbox: FC<Props> = ({
     isChecked={isChecked}
     onChange={onChange}
   >
-    {renderLabel}
+    {label}
   </ChakraCheckbox>
 );
 

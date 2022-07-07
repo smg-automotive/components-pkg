@@ -16,7 +16,7 @@ const renderWrapper = ({
     <Checkbox
       name={name}
       onChange={onChange}
-      renderLabel={label}
+      label={label}
       isDisabled={isDisabled}
       isChecked={isChecked}
     />
@@ -41,9 +41,12 @@ describe('<Checkbox>', () => {
   });
 
   it('is not possible to click on the checkbox when is disabled', () => {
-    renderWrapper({ isDisabled: true });
+    const onChange = jest.fn();
+    renderWrapper({ onChange, isDisabled: true });
     const checkbox = screen.getByRole('checkbox', { name: 'Checkbox label' });
+    userEvent.click(checkbox);
 
     expect(checkbox).toBeDisabled();
+    expect(onChange).not.toHaveBeenCalled();
   });
 });
