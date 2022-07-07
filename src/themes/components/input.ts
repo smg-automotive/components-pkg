@@ -52,7 +52,7 @@ const variantOutline: PartsStyleObject<typeof parts> = {
     borderRadius: 'sm',
     bg: 'inherit',
     color: 'gray.900',
-    ...typography.input,
+    ...typography.body,
     _placeholder: {
       color: 'gray.400',
     },
