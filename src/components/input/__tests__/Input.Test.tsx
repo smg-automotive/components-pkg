@@ -23,6 +23,7 @@ const renderWrapper = ({
       onChange={onChange}
       value={value}
       autoFocus={autoFocus}
+      name="test-input"
     />
   );
 
@@ -59,9 +60,9 @@ describe('<Input>', () => {
         renderWrapper({ onChange });
 
         const input = screen.getByPlaceholderText('placeholder');
-        userEvent.type(input, 'hello world');
+        userEvent.type(input, 'test');
 
-        expect(onChange).toHaveBeenCalled();
+        expect(onChange).toHaveBeenCalledTimes(4);
       });
     });
   });

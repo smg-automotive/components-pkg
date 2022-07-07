@@ -11,6 +11,7 @@ type Props = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
   value?: string | number;
   autoFocus?: boolean;
+  name: string;
 };
 
 const Input: FC<Props> = (props) => <ChakraInput {...props} />;
