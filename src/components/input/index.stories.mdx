@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
-import { Box } from '@chakra-ui/react';
+import { Box, Stack } from '@chakra-ui/react';
 
 import Input from './index.tsx';
 
@@ -14,15 +14,23 @@ import Input from './index.tsx';
       sort: 'alpha',
       expanded: true,
     },
-    actions: ['change', 'blur', 'keydown', 'focus'],
+    actions: ['change', 'blur', 'focus'],
   }}
 />
+
+export const Container = ({ children }) => {
+  return (
+    <Box w="100%" maxW="250px">
+      {children}
+    </Box>
+  );
+};
 
 export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const onChangeHandler = onChange ? action('change') : () => {};
   return (
-    <Box w="100%" maxW="250px">
+    <Container>
       <Input
         {...args}
         onBlur={onBlur ? action('blur') : undefined}
@@ -37,7 +45,7 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
         }
         value={value ? currentValue : undefined}
       />
-    </Box>
+    </Container>
   );
 };
 
@@ -56,10 +64,11 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       onChange: true,
       onFocus: false,
       onBlur: false,
+      autoFocus: false,
     }}
     argTypes={{
       value: {
-        defaultValue: null,
+        defaultValue: '',
         control: { type: 'text', placeholder: 'xxxxxx' },
         type: { name: 'string', required: false },
         description: 'use value prop when you want controlled input',
@@ -72,4 +81,20 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
   >
     {Template.bind({})}
   </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## Sizes
+
+### Medium
+
+<Canvas>
+  <Story id="components-input-sizes--medium" />
+</Canvas>
+
+### Large
+
+<Canvas>
+  <Story id="components-input-sizes--large" />
 </Canvas>
