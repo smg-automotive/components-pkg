@@ -26,12 +26,11 @@ const useDebouncedOnChange = ({
     onBlur && onBlur(event);
   };
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    return () => {
       debounce && debouncedOnChange.isPending() && debouncedOnChange.flush();
-    },
-    [debounce, debouncedOnChange]
-  );
+    };
+  }, [debounce, debouncedOnChange]);
 
   return {
     onChange: debounce ? debouncedOnChange : onChange,
