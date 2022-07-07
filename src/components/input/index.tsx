@@ -9,8 +9,10 @@ type Props = {
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string | number;
 };
 
 const Input: FC<Props> = (props) => <ChakraInput {...props} />;
 
 export default Input;
+export { Props as InputProps };

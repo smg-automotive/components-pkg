@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import { userEvent } from '@storybook/testing-library';
 
-import Input from '..';
+import Input, { InputProps } from '..';
 
 const renderWrapper = ({
   placeholder = 'placeholder',
@@ -11,7 +11,8 @@ const renderWrapper = ({
   onBlur = jest.fn(),
   onFocus = jest.fn(),
   onChange = jest.fn(),
-} = {}) =>
+  value = undefined,
+}: Partial<InputProps> = {}) =>
   render(
     <Input
       placeholder={placeholder}
@@ -19,6 +20,7 @@ const renderWrapper = ({
       onBlur={onBlur}
       onFocus={onFocus}
       onChange={onChange}
+      value={value}
     />
   );
 
@@ -60,5 +62,12 @@ describe('<Input>', () => {
         expect(onChange).toHaveBeenCalled();
       });
     });
+  });
+
+  it('allows to set value', () => {
+    renderWrapper({ value: 'test value' });
+    const input = screen.getByDisplayValue('test value');
+
+    expect(input).toBeInTheDocument();
   });
 });
