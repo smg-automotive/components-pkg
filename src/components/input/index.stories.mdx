@@ -4,10 +4,10 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
-import Input from '.';
+import Input from './index.tsx';
 
 <Meta
-  title="Components/Input"
+  title="Components/Forms/Input"
   component={Input}
   parameters={{
     controls: {
@@ -90,13 +90,13 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
 ### Medium
 
 <Canvas>
-  <Story id="components-input-sizes--medium" />
+  <Story id="components-forms-input-sizes--medium" />
 </Canvas>
 
 ### Large
 
 <Canvas>
-  <Story id="components-input-sizes--large" />
+  <Story id="components-forms-input-sizes--large" />
 </Canvas>
 
 ## States
@@ -104,23 +104,23 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
 ### Default
 
 <Canvas>
-  <Story id="components-input-states--default-story" />
+  <Story id="components-forms-input-states--default-story" />
 </Canvas>
 
 ### Focused
 
 <Canvas>
-  <Story id="components-input-states--focused" />
+  <Story id="components-forms-input-states--focused" />
 </Canvas>
 
 ### Disabled
 
 <Canvas>
-  <Story id="components-input-states--disabled" />
+  <Story id="components-forms-input-states--disabled" />
 </Canvas>
 
 ### Invalid
 
 <Canvas>
-  <Story id="components-input-states--invalid" />
+  <Story id="components-forms-input-states--invalid" />
 </Canvas>
