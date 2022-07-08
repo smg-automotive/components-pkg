@@ -1,9 +1,9 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
 import Input from '../../input';
 import FormControl, { FormControlProps } from '..';
-import { userEvent } from '@storybook/testing-library';
 
 const renderWrapper = ({
   id = 'test',
