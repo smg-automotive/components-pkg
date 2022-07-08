@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-
 import { userEvent } from '@storybook/testing-library';
 
 import Input, { InputProps } from '..';
