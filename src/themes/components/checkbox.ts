@@ -1,49 +1,56 @@
-import { SystemStyleObject } from '@chakra-ui/theme-tools';
+import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/theme-tools';
 
-import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { shared } from '../shared';
 
 const { typography } = shared;
 
-const baseStyle: SystemStyleObject = {
-  container: {
-    _disabled: {
-      cursor: 'not-allowed',
-    },
+const baseStyleControl: SystemStyleObject = {
+  width: 'xs',
+  height: 'xs',
+  border: '1px',
+  borderRadius: 'sm',
+  borderColor: 'gray.400',
+  _hover: {
+    borderColor: 'gray.900',
   },
-  icon: {
-    padding: 'xs',
+  _checked: {
+    borderColor: 'gray.900',
   },
-  control: {
-    width: 'xs',
-    height: 'xs',
-    border: '1px',
-    borderRadius: 'sm',
+  _disabled: {
     borderColor: 'gray.400',
-    _hover: {
-      borderColor: 'gray.900',
-    },
-    _checked: {
-      borderColor: 'gray.900',
-    },
-    _disabled: {
-      borderColor: 'gray.400',
-    },
-    _invalid: {
-      borderColor: 'red.500',
-    },
   },
-  label: {
-    ...typography.body,
-    color: 'gray.900',
-    _disabled: {
-      color: 'gray.400',
-    },
+  _invalid: {
+    borderColor: 'red.500',
   },
 };
 
-const Checkbox: ComponentStyleConfig = {
+const baseStyleContainer: SystemStyleObject = {
+  _disabled: {
+    cursor: 'not-allowed',
+  },
+};
+
+const baseStyleIcon: SystemStyleObject = {
+  padding: 'xs',
+};
+
+const baseStyleLabel: SystemStyleObject = {
+  ...typography.body,
+  color: 'gray.900',
+  _disabled: {
+    color: 'gray.400',
+  },
+};
+
+const baseStyle: PartsStyleObject<typeof parts> = {
+  control: baseStyleControl,
+  container: baseStyleContainer,
+  icon: baseStyleIcon,
+  label: baseStyleLabel,
+};
+
+export default {
   baseStyle,
 };
-export default Checkbox;

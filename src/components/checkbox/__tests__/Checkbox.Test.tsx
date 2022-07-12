@@ -1,7 +1,6 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 
 import Checkbox from '../index';
 

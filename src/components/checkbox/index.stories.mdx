@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Stack } from '@chakra-ui/react';
 
 import Checkbox from './index.tsx';
@@ -30,12 +30,15 @@ export const Template = ({ isChecked, ...args }) => {
       value: 1,
       isChecked: false,
       isDisabled: false,
+      isInvalid: false,
       label: 'Regular',
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
+
+<ArgsTable story="Overview" />
 
 ## Selected
 
