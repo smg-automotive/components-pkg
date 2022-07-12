@@ -1,0 +1,87 @@
+import { useState } from 'react';
+
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Stack } from '@chakra-ui/react';
+
+import Checkbox from './index.tsx';
+
+<Meta title="Components/Checkbox" component={Checkbox} />
+
+export const Template = ({ isChecked, ...args }) => {
+  const [checked, setChecked] = useState(isChecked);
+  return (
+    <Checkbox
+      {...args}
+      isChecked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+};
+
+# Checkbox
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      name: 'Control',
+      value: 1,
+      isChecked: false,
+      isDisabled: false,
+      isInvalid: false,
+      label: 'Regular',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## Selected
+
+<Canvas>
+  <Story
+    name="Selected"
+    args={{
+      name: 'Control',
+      value: 1,
+      isChecked: true,
+      isDisabled: false,
+      label: 'Selected',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid
+
+<Canvas>
+  <Story
+    name="Invalid"
+    args={{
+      name: 'Control',
+      value: 1,
+      isChecked: false,
+      isDisabled: false,
+      isInvalid: true,
+      label: 'Invalid',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Stack spacing="lg" direction="row">
+      <Checkbox isDisabled={true} label="Disabled" />
+      <Checkbox isDisabled={true} isChecked={true} label="Disabled checked" />
+    </Stack>
+  </Story>
+</Canvas>
