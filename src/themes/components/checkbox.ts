@@ -20,6 +20,7 @@ const baseStyleControl: SystemStyleObject = {
   },
   _disabled: {
     borderColor: 'gray.400',
+    color: 'gray.400',
   },
   _invalid: {
     borderColor: 'red.500',
