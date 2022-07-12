@@ -1,0 +1,85 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box } from '@chakra-ui/react';
+
+import FormControl from './index.tsx';
+import { Input } from '../../index.ts';
+
+<Meta
+  title="Components/Forms/Form Control"
+  component={Input}
+  args={{
+    label: 'Label',
+    hint: 'I am a hint text',
+    isDisabled: false,
+    isRequired: false,
+    errorMessage: '',
+  }}
+  parameters={{
+    controls: {
+      sort: 'alpha',
+    },
+  }}
+/>
+
+export const Template = (args) => {
+  return (
+    <Box w="100%" maxW="250px">
+      <FormControl id="test-input" {...args}>
+        <Input name="test-input" placeholder="placeholder" />
+      </FormControl>
+    </Box>
+  );
+};
+
+# Form Control
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## With label
+
+<Canvas>
+  <Story name="With label" args={{ label: 'Label', hint: '' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Required
+
+<Canvas>
+  <Story name="Required" args={{ label: 'Label', hint: '', isRequired: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With hint
+
+<Canvas>
+  <Story name="With hint" args={{ label: 'Label', hint: 'Hint text' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled" args={{ label: 'Label', disabled: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Invalid
+
+<Canvas>
+  <Story
+    name="Invalid"
+    args={{ label: 'Label', errorMessage: 'Error message' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

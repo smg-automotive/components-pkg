@@ -101,4 +101,10 @@ export const typography = {
     lineHeight: lineHeights.sm,
     fontSize: fontSizes.sm,
   },
+  label: {
+    fontFamily: fonts.makeItSans,
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.sm,
+    fontSize: fontSizes.base,
+  },
 };
