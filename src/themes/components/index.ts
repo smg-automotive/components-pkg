@@ -1,3 +1,4 @@
+import Textarea from './textarea';
 import Table from './table';
 import Link from './link';
 import Input from './input';
@@ -16,4 +17,5 @@ export const components = {
   Input,
   Link,
   Table,
+  Textarea,
 };
