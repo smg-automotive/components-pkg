@@ -26,7 +26,7 @@ const renderWrapper = ({
   );
 
 describe('<Textarea>', () => {
-  it('is called when focusing the textarea', () => {
+  it('onFocus is called when focusing the textarea', () => {
     const onFocus = jest.fn();
     renderWrapper({ onFocus });
 
@@ -36,7 +36,7 @@ describe('<Textarea>', () => {
     expect(onFocus).toHaveBeenCalled();
   });
 
-  it('is called when the textarea loses focus', () => {
+  it('onBlur is called when the textarea loses focus', () => {
     const onBlur = jest.fn();
     renderWrapper({ onBlur });
 
@@ -65,12 +65,12 @@ describe('<Textarea>', () => {
   });
 
   it('is not possible to click on the textarea when is disabled', () => {
-    const onChange = jest.fn();
-    renderWrapper({ onChange, isDisabled: true });
+    const onFocus = jest.fn();
+    renderWrapper({ onFocus, isDisabled: true });
     const textarea = screen.getByPlaceholderText('Placeholder');
     userEvent.click(textarea);
 
     expect(textarea).toBeDisabled();
-    expect(onChange).not.toHaveBeenCalled();
+    expect(onFocus).not.toHaveBeenCalled();
   });
 });

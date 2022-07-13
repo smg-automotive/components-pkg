@@ -8,7 +8,6 @@ import Input from './input';
 const baseStyle: SystemStyleObject = {
   px: 'lg',
   pt: 'md',
-  ...Input.baseStyle.field,
 };
 
 const variants: Record<string, SystemStyleInterpolation> = {
