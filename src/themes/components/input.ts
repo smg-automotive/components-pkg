@@ -22,15 +22,15 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 const size: Record<string, SystemStyleObject> = {
   md: {
     fontSize: 'lg',
-    px: 12,
-    py: 4,
+    px: 'md',
+    py: 'xs',
     h: sizeDefinitions.md,
     borderRadius: 'md',
   },
   lg: {
     fontSize: 'lg',
-    px: 12,
-    py: 4,
+    px: 'md',
+    py: 'xs',
     h: sizeDefinitions.lg,
     borderRadius: 'md',
   },
