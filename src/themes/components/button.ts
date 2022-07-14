@@ -41,6 +41,23 @@ const variants = {
       pointerEvents: 'none',
     },
   },
+  secondary: {
+    bg: 'white',
+    color: 'gray.900',
+    border: '1px',
+    borderColor: 'gray.900',
+    _hover: {
+      bg: 'gray.100',
+    },
+    _active: {
+      bg: 'gray.200',
+    },
+    _disabled: {
+      color: 'gray.300',
+      borderColor: 'gray.300',
+      pointerEvents: 'none',
+    },
+  },
 };
 
 const Button: ComponentStyleConfig = {

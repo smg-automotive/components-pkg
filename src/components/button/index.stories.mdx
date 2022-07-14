@@ -12,18 +12,18 @@ export const Template = (args) => (
 
 # Button
 
-## Overview
+## Primary
 
 <Canvas>
   <Story
-    name="Overview"
+    name="Primary"
     args={{
       isDisabled: false,
       label: 'Primary Button',
     }}
     argTypes={{
       variant: {
-        options: ['primary'],
+        options: ['primary', 'secondary'],
         control: { type: 'radio' },
         defaultValue: 'primary',
       },
@@ -38,7 +38,35 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Primary" />
+
+## Secondary
+
+<Canvas>
+  <Story
+    name="Secondary"
+    args={{
+      isDisabled: false,
+      label: 'Secondary Button',
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: { type: 'radio' },
+        defaultValue: 'secondary',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: { type: 'radio' },
+        defaultValue: 'lg',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Secondary" />
 
 ## Sizes
 
@@ -54,13 +82,12 @@ export const Template = (args) => (
 ## Disabled
 
 <Canvas>
-  <Story
-    name="Disabled"
-    args={{
-      isDisabled: true,
-      label: 'Disabled Button',
-    }}
-  >
-    {Template.bind({})}
+  <Story name="Disabled">
+    <Box>
+      <Button isDisabled={true}>Primary Button</Button>
+      <Button variant="secondary" isDisabled={true}>
+        Secondary Button
+      </Button>
+    </Box>
   </Story>
 </Canvas>
