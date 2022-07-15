@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 
-import { expect } from '@storybook/jest';
-
 import Link, { LinkProps } from '../index';
 
 const renderWrapper = ({ children, ...props }: LinkProps) =>

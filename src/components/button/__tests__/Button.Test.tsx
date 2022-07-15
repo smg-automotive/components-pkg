@@ -1,8 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
-
+import { render, screen } from '@testing-library/react';
 import { userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 
 import Button from '../index';
 
@@ -18,8 +16,6 @@ const renderWrapper = ({
   );
 
 describe('<Button>', () => {
-  beforeEach(cleanup);
-
   it('should render button with label', () => {
     renderWrapper({ label: 'Button Label' });
     const button = screen.getByRole('button', { name: 'Button Label' });
