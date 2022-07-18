@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import MainHeroSection from './index.tsx';
+import { MailIcon } from '../index.ts';
+
+<Meta title="Section/main Hero" component={MainHeroSection} />
+
+# Section
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">
+    <MainHeroSection
+      title="Thank you for sending a message! We have sent a copy to your inbox."
+      text="Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days."
+      icon={<MailIcon />}
+    />
+  </Story>
+</Canvas>

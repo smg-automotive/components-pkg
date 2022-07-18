@@ -6,7 +6,7 @@ const TypographyShowcase: FC = () => {
 
   return (
     <>
-      {Object.entries(theme.typography).map(([name, typography]) => {
+      {Object.entries(theme.textStyles).map(([name, typography]) => {
         return (
           <Text key={name} mb={5} style={typography as CSSProperties}>
             {name}

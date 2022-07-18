@@ -1,4 +1,4 @@
-import { typography } from './typography';
+import { textStyles } from './typography';
 import { space } from './space';
 import { sizes } from './sizes';
 import { shadows } from './shadows';
@@ -17,7 +17,7 @@ export const shared = {
   ...basis,
   colors,
   breakpoints,
-  typography,
+  textStyles,
   space,
   sizes,
   shadows,

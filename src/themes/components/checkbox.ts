@@ -4,7 +4,7 @@ import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { shared } from '../shared';
 
-const { typography } = shared;
+const { textStyles } = shared;
 
 const baseStyleControl: SystemStyleObject = {
   width: 'xs',
@@ -38,7 +38,7 @@ const baseStyleIcon: SystemStyleObject = {
 };
 
 const baseStyleLabel: SystemStyleObject = {
-  ...typography.body,
+  ...textStyles.body,
   color: 'gray.900',
   _disabled: {
     color: 'gray.400',

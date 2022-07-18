@@ -5,10 +5,10 @@ import type {
 import { formErrorAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { shared } from '../shared';
-const { typography } = shared;
+const { textStyles } = shared;
 
 const baseStyleText: SystemStyleObject = {
-  ...typography['body-small'],
+  ...textStyles['body-small'],
   mt: 2,
   color: 'red.500',
 };

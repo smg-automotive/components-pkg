@@ -2,10 +2,10 @@ import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 import { shared } from '../shared';
 
-const { typography } = shared;
+const { textStyles } = shared;
 
 const linkBaseStyle: SystemStyleObject = {
-  ...typography.body,
+  ...textStyles.body,
   color: 'blue.700',
   verticalAlign: 'middle',
   _hover: {

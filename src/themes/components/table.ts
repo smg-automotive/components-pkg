@@ -13,17 +13,17 @@ CustomTable.sizes = {
     th: {
       px: 'xs',
       py: 'xs',
-      ...shared.typography.heading5,
+      ...shared.textStyles.heading5,
     },
     td: {
       px: 'xs',
       py: 'xs',
-      ...shared.typography.body,
+      ...shared.textStyles.body,
     },
     caption: {
       px: 'xs',
       py: 'xs',
-      ...shared.typography.body,
+      ...shared.textStyles.body,
     },
   },
 };

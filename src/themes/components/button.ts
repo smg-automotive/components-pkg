@@ -3,7 +3,7 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 import { shared } from '../shared';
 
-const { sizes, typography } = shared;
+const { sizes, textStyles } = shared;
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
@@ -13,11 +13,11 @@ const baseStyle: SystemStyleObject = {
 const buttonSizes = {
   md: {
     height: sizes.md,
-    ...typography['button-sm'],
+    ...textStyles['button-sm'],
   },
   lg: {
     height: sizes.lg,
-    ...typography.button,
+    ...textStyles.button,
   },
 };
 

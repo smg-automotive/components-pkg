@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import { Box } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 
 import Button from './index.tsx';
 
@@ -72,10 +72,10 @@ export const Template = (args) => (
 
 <Canvas>
   <Story name="Sizes">
-    <Box>
+    <Stack spacing="lg" direction="row">
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
-    </Box>
+    </Stack>
   </Story>
 </Canvas>
 
@@ -83,11 +83,11 @@ export const Template = (args) => (
 
 <Canvas>
   <Story name="Disabled">
-    <Box>
+    <Stack spacing="lg" direction="row">
       <Button isDisabled={true}>Primary Button</Button>
       <Button variant="secondary" isDisabled={true}>
         Secondary Button
       </Button>
-    </Box>
+    </Stack>
   </Story>
 </Canvas>

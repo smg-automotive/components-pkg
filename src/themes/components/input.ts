@@ -5,7 +5,7 @@ import type {
 import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { shared } from '../shared';
-const { sizes: sizeDefinitions, typography } = shared;
+const { sizes: sizeDefinitions, textStyles } = shared;
 
 const baseStyle: PartsStyleObject<typeof parts> = {
   field: {
@@ -52,7 +52,7 @@ const variantOutline: PartsStyleObject<typeof parts> = {
     borderRadius: 'sm',
     bg: 'inherit',
     color: 'gray.900',
-    ...typography.body,
+    ...textStyles.body,
     _placeholder: {
       color: 'gray.400',
     },
