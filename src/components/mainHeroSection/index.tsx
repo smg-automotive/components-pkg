@@ -15,15 +15,13 @@ const Section: FC<Props> = ({ title, text, bild }) => {
     <Stack
       direction={{ xs: 'column', lg: 'row' }}
       spacing="xl"
-      align={{ xs: 'center', lg: 'start' }}
+      align={{ xs: 'center', lg: 'baseline' }}
     >
-      <Box>{bild}</Box>
-      <Box>
+      {bild ? <Box>{bild}</Box> : null}
+      <Stack spacing="md">
         <Heading textStyle="heading1">{title}</Heading>
-        <Text textStyle="body-large" mt="md">
-          {text}
-        </Text>
-      </Box>
+        {text ? <Text textStyle="body-large">{text}</Text> : null}
+      </Stack>
     </Stack>
   );
 };
