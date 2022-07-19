@@ -42,7 +42,7 @@
     "@rollup/plugin-commonjs": "22.0.1",
     "@rollup/plugin-node-resolve": "13.3.0",
     "@rollup/plugin-typescript": "8.3.3",
-    "@smg-automotive/eslint-config": "2.0.8",
+    "@smg-automotive/eslint-config": "2.0.9",
     "@storybook/addon-actions": "6.5.9",
     "@storybook/addon-docs": "6.5.9",
     "@storybook/addon-essentials": "6.5.9",
