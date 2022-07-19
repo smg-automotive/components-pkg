@@ -4,11 +4,8 @@ import type {
 } from '@chakra-ui/theme-tools';
 import { formErrorAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { shared } from '../shared';
-const { textStyles } = shared;
-
 const baseStyleText: SystemStyleObject = {
-  ...textStyles['body-small'],
+  textStyle: 'body-small',
   mt: 2,
   color: 'red.500',
 };

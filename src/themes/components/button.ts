@@ -1,10 +1,6 @@
 import { SystemStyleObject } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-import { shared } from '../shared';
-
-const { sizes, textStyles } = shared;
-
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
   px: 'lg',
@@ -12,12 +8,12 @@ const baseStyle: SystemStyleObject = {
 
 const buttonSizes = {
   md: {
-    height: sizes.md,
-    ...textStyles['button-sm'],
+    height: 'md',
+    textStyle: 'button-sm',
   },
   lg: {
-    height: sizes.lg,
-    ...textStyles.button,
+    height: 'lg',
+    textStyle: 'button',
   },
 };
 

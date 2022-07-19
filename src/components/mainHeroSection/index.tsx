@@ -7,17 +7,17 @@ import Stack from '../stack';
 interface Props {
   title: string;
   text?: string;
-  bild?: ReactNode;
+  image?: ReactNode;
 }
 
-const Section: FC<Props> = ({ title, text, bild }) => {
+const Section: FC<Props> = ({ title, text, image }) => {
   return (
     <Stack
       direction={{ xs: 'column', lg: 'row' }}
       spacing="xl"
       align={{ xs: 'center', lg: 'baseline' }}
     >
-      {bild ? <Box>{bild}</Box> : null}
+      {image ? <Box>{image}</Box> : null}
       <Stack spacing="md">
         <Heading textStyle="heading1">{title}</Heading>
         {text ? <Text textStyle="body-large">{text}</Text> : null}
