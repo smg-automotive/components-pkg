@@ -4,7 +4,7 @@ import { fontWeights } from './fontWeights';
 import { fontSizes } from './fontSizes';
 import { fonts } from './fonts';
 
-export const typography = {
+export const textStyles = {
   display1: {
     fontFamily: fonts.makeItSans,
     fontWeight: fontWeights.bold,

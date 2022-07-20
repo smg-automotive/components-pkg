@@ -1,8 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import { Box } from '@chakra-ui/react';
-
 import Button from './index.tsx';
+import { Stack } from '../../index.ts';
 
 <Meta title="Buttons/Button" component={Button} />
 
@@ -20,17 +19,17 @@ export const Template = (args) => (
     args={{
       isDisabled: false,
       label: 'Primary Button',
+      variant: 'primary',
+      size: 'lg',
     }}
     argTypes={{
       variant: {
         options: ['primary', 'secondary'],
-        control: { type: 'radio' },
-        defaultValue: 'primary',
+        control: 'select',
       },
       size: {
         options: ['md', 'lg'],
-        control: { type: 'radio' },
-        defaultValue: 'lg',
+        control: 'select',
       },
     }}
   >
@@ -48,17 +47,17 @@ export const Template = (args) => (
     args={{
       isDisabled: false,
       label: 'Secondary Button',
+      variant: 'secondary',
+      size: 'lg',
     }}
     argTypes={{
       variant: {
         options: ['primary', 'secondary'],
-        control: { type: 'radio' },
-        defaultValue: 'secondary',
+        control: 'select',
       },
       size: {
         options: ['md', 'lg'],
-        control: { type: 'radio' },
-        defaultValue: 'lg',
+        control: 'select',
       },
     }}
   >
@@ -72,10 +71,10 @@ export const Template = (args) => (
 
 <Canvas>
   <Story name="Sizes">
-    <Box>
+    <Stack spacing="lg" direction="row">
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
-    </Box>
+    </Stack>
   </Story>
 </Canvas>
 
@@ -83,11 +82,11 @@ export const Template = (args) => (
 
 <Canvas>
   <Story name="Disabled">
-    <Box>
+    <Stack spacing="lg" direction="row">
       <Button isDisabled={true}>Primary Button</Button>
       <Button variant="secondary" isDisabled={true}>
         Secondary Button
       </Button>
-    </Box>
+    </Stack>
   </Story>
 </Canvas>

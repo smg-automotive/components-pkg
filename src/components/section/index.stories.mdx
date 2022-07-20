@@ -1,0 +1,59 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Section from './index.tsx';
+import { MailIcon } from '../index.ts';
+
+<Meta title="Sections/Section" component={Section} />
+
+export const Template = (args) => <Section {...args} />;
+
+# Section
+
+## Hero with Image
+
+<Canvas>
+  <Story
+    name="Hero with Image"
+    args={{
+      title:
+        'Thank you for sending a message! We have sent a copy to your inbox.',
+      text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      image: () => <MailIcon />,
+      variant: 'hero',
+    }}
+    argTypes={{
+      variant: {
+        options: ['hero'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Hero with Image" />
+
+## Hero without image
+
+<Canvas>
+  <Story
+    name="Hero without image"
+    args={{
+      title:
+        'Thank you for sending a message! We have sent a copy to your inbox.',
+      text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      variant: 'hero',
+    }}
+    argTypes={{
+      variant: {
+        options: ['hero'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Hero without image" />
