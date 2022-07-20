@@ -5,13 +5,13 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import Stack from '../stack';
 
 interface Props {
-  variant?: 'hero';
+  variant: 'hero';
   title: string;
   text?: string;
   image?: () => ReactNode;
 }
 
-const Section: FC<Props> = ({ title, text, image, variant = 'hero' }) => {
+const Section: FC<Props> = ({ title, text, image, variant }) => {
   return (
     <Stack
       direction={{ xs: 'column', lg: 'row' }}

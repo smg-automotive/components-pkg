@@ -19,12 +19,12 @@ export const Template = (args) => <Section {...args} />;
         'Thank you for sending a message! We have sent a copy to your inbox.',
       text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
       image: () => <MailIcon />,
+      variant: 'hero',
     }}
     argTypes={{
       variant: {
         options: ['hero'],
-        control: 'radio',
-        defaultValue: 'hero',
+        control: 'select',
       },
     }}
   >
@@ -43,12 +43,12 @@ export const Template = (args) => <Section {...args} />;
       title:
         'Thank you for sending a message! We have sent a copy to your inbox.',
       text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      variant: 'hero',
     }}
     argTypes={{
       variant: {
         options: ['hero'],
-        control: 'radio',
-        defaultValue: 'hero',
+        control: 'select',
       },
     }}
   >
