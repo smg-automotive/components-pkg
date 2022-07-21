@@ -1,5 +1,6 @@
 import Textarea from './textarea';
 import Table from './table';
+import Section from './section';
 import Link from './link';
 import Input from './input';
 import FormLabel from './formLabel';
@@ -18,4 +19,5 @@ export const components = {
   Link,
   Table,
   Textarea,
+  Section,
 };
