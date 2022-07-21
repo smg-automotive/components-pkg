@@ -1,18 +1,20 @@
-{{- $name := .Values.name -}}
-{{- $service_port := .Values.service.port -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
-  name: {{ $name }}
+  labels:
+    app: {{ .Values.name }}
 spec:
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ . | quote }}
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: {{ $name }}
-              servicePort: {{ $service_port }}
-  {{- end }}
+  - host: {{ .Values.host }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.name }}
+            port:
+              number: {{ .Values.service.port }}
+  ingressClassName: nginx
