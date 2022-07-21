@@ -1,0 +1,21 @@
+name: components-pkg
+service_group: frontend
+
+image:
+  repository: 379129775379.dkr.ecr.eu-central-1.amazonaws.com/frontend/components-pkg
+  tag: latest
+
+deployment:
+  strategy: Recreate
+  port: 8008
+
+service:
+  port: 80
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 100M
+  requests:
+    cpu: 50m
+    memory: 50M
