@@ -1,26 +1,33 @@
-import { ComponentStyleConfig, SystemStyleObject } from '@chakra-ui/react';
+import { ComponentStyleConfig } from '@chakra-ui/react';
 
-const baseStyleSection: SystemStyleObject = {
-  color: 'gray.900',
-};
+const parts = ['title', 'text'];
 
-const Section: ComponentStyleConfig = {
-  parts: ['section', 'titleHero', 'textHero', 'titleRegular', 'textRegular'],
-  baseStyle: {
-    section: baseStyleSection,
-    titleHero: {
+const variants = {
+  hero: {
+    title: {
       textStyle: 'heading1',
     },
-    textHero: {
+    text: {
       textStyle: 'body-large',
     },
-    titleRegular: {
+  },
+  regular: {
+    title: {
       textStyle: 'heading2',
     },
-    textRegular: {
+    text: {
       textStyle: 'body',
     },
   },
+};
+
+const Section: ComponentStyleConfig = {
+  parts,
+  baseStyle: {
+    title: { color: 'gray.900' },
+    text: { color: 'gray.900' },
+  },
+  variants,
 };
 
 export default Section;
