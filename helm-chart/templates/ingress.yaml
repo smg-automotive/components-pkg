@@ -1,10 +1,12 @@
+{{- $name := .Values.name -}}
+{{- $service_port := .Values.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.name }}
+  name: {{ $name }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.name }}
+    app: {{ $name }}
 spec:
   rules:
     {{- range .Values.ingress.hosts }}
@@ -14,7 +16,7 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: {{ .Values.name }}
-              servicePort: {{ .Values.service.port }}
+              serviceName: {{ $name }}
+              servicePort: {{ $service_port }}
   {{- end }}
   ingressClassName: nginx
