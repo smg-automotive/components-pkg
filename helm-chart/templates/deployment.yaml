@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Values.name }}
+spec:
+  strategy:
+    type: {{ .Values.deployment.strategy }}
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      name: {{ .Values.name }}
+      labels:
+        app: {{ .Values.name }}
+        service_group: {{ .Values.service_group }}
+    spec:
+      containers:
+        - name: {{ .Values.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.deployment.readiness_path }}
+              port: {{ .Values.deployment.port }}
+          env:
+            {{- range .Values.env }}
+            - name: "{{ .name }}"
+              value: "{{ .value }}"
+            {{- end }}
+            {{- range .Values.secretEnv }}
+            - name: "{{ .name }}"
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .secretKeyRefName }}"
+                  key: "{{ .secretKeyRefKey }}"
+            {{- end }}
+            - name: AUTOSCOUT24_TOTAL_CONTAINER_MEMORY
+              valueFrom:
+                resourceFieldRef:
+                  resource: requests.memory
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: DD_ENV
+              value: {{ .Values.namespace }}
+            - name: DD_TRACE_DB_CLIENT_SPLIT_BY_INSTANCE
+              value: 'true'
+            - name: DD_TRACE_HTTP_CLIENT_SPLIT_BY_DOMAIN
+              value: 'true'
+            - name: DD_TRACE_SPLIT_BY_TAGS
+              value: 'aws.service'
+            - name: DD_TRACE_CLASSES_EXCLUDE
+              value: 'ch.autoscout24.actuate.ProbesController,io.micrometer.datadog.*'
+            - name: DD_SERVICE_MAPPING
+              value: "root-servlet:{{ .Values.name }}-root-servlet"
+          resources:
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
