@@ -7,14 +7,14 @@ metadata:
     app: {{ .Values.name }}
 spec:
   rules:
-  - host: {{ .Values.host }}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Values.name }}
-            port:
-              number: {{ .Values.service.port }}
+    {{- range .Values.ingress.hosts }}
+    - host: {{ . | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: {{ .Values.name }}
+              servicePort: {{ .Values.service.port }}
+  {{- end }}
   ingressClassName: nginx
