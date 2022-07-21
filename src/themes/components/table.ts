@@ -1,7 +1,5 @@
 import { theme } from '@chakra-ui/react';
 
-import { shared } from '../shared';
-
 const {
   components: { Table },
 } = theme;
@@ -13,17 +11,17 @@ CustomTable.sizes = {
     th: {
       px: 'xs',
       py: 'xs',
-      ...shared.typography.heading5,
+      textStyle: 'heading5',
     },
     td: {
       px: 'xs',
       py: 'xs',
-      ...shared.typography.body,
+      textStyle: 'body',
     },
     caption: {
       px: 'xs',
       py: 'xs',
-      ...shared.typography.body,
+      textStyle: 'body',
     },
   },
 };

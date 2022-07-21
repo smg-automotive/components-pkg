@@ -1,10 +1,9 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import { Box } from '@chakra-ui/react';
-
 import Button from './index.tsx';
+import { Stack } from '../../index.ts';
 
-<Meta title="Components/Button" component={Button} />
+<Meta title="Buttons/Button" component={Button} />
 
 export const Template = (args) => (
   <Button {...args}>{args.label || 'Button'}</Button>
@@ -12,25 +11,25 @@ export const Template = (args) => (
 
 # Button
 
-## Overview
+## Primary
 
 <Canvas>
   <Story
-    name="Overview"
+    name="Primary"
     args={{
       isDisabled: false,
       label: 'Primary Button',
+      variant: 'primary',
+      size: 'lg',
     }}
     argTypes={{
       variant: {
-        options: ['primary'],
-        control: { type: 'radio' },
-        defaultValue: 'primary',
+        options: ['primary', 'secondary'],
+        control: 'select',
       },
       size: {
         options: ['md', 'lg'],
-        control: { type: 'radio' },
-        defaultValue: 'lg',
+        control: 'select',
       },
     }}
   >
@@ -38,29 +37,56 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Primary" />
+
+## Secondary
+
+<Canvas>
+  <Story
+    name="Secondary"
+    args={{
+      isDisabled: false,
+      label: 'Secondary Button',
+      variant: 'secondary',
+      size: 'lg',
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Secondary" />
 
 ## Sizes
 
 <Canvas>
   <Story name="Sizes">
-    <Box>
+    <Stack spacing="lg" direction="row">
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
-    </Box>
+    </Stack>
   </Story>
 </Canvas>
 
 ## Disabled
 
 <Canvas>
-  <Story
-    name="Disabled"
-    args={{
-      isDisabled: true,
-      label: 'Disabled Button',
-    }}
-  >
-    {Template.bind({})}
+  <Story name="Disabled">
+    <Stack spacing="lg" direction="row">
+      <Button isDisabled={true}>Primary Button</Button>
+      <Button variant="secondary" isDisabled={true}>
+        Secondary Button
+      </Button>
+    </Stack>
   </Story>
 </Canvas>

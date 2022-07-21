@@ -4,11 +4,8 @@ import type {
 } from '@chakra-ui/theme-tools';
 import { formAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { shared } from '../shared';
-const { typography } = shared;
-
 const baseStyleHelperText: SystemStyleObject = {
-  ...typography['body-small'],
+  textStyle: 'body-small',
   mt: 2,
   color: 'gray.400',
 };

@@ -3,6 +3,7 @@ export const sizes = {
   sm: '1.5rem',
   md: '2.25rem',
   lg: '3rem',
+  xl: '5rem',
   full: '100%',
   container: {
     sm: '640px',

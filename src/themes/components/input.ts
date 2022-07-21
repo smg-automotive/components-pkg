@@ -4,9 +4,6 @@ import type {
 } from '@chakra-ui/theme-tools';
 import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { shared } from '../shared';
-const { sizes: sizeDefinitions, typography } = shared;
-
 const baseStyle: PartsStyleObject<typeof parts> = {
   field: {
     width: '100%',
@@ -16,23 +13,19 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     appearance: 'none',
     transitionProperty: 'common',
     transitionDuration: 'normal',
+    px: 'md',
+    py: 'xs',
   },
 };
 
 const size: Record<string, SystemStyleObject> = {
   md: {
-    fontSize: 'lg',
-    px: 'md',
-    py: 'xs',
-    h: sizeDefinitions.md,
-    borderRadius: 'md',
+    textStyle: 'body-small',
+    h: 'md',
   },
   lg: {
-    fontSize: 'lg',
-    px: 'md',
-    py: 'xs',
-    h: sizeDefinitions.lg,
-    borderRadius: 'md',
+    textStyle: 'body',
+    h: 'lg',
   },
 };
 
@@ -52,7 +45,6 @@ const variantOutline: PartsStyleObject<typeof parts> = {
     borderRadius: 'sm',
     bg: 'inherit',
     color: 'gray.900',
-    ...typography.body,
     _placeholder: {
       color: 'gray.400',
     },
