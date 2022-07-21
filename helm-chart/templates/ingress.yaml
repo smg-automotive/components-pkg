@@ -16,7 +16,8 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: {{ $name }}
-              servicePort: {{ $service_port }}
+              name: {{ $name }}
+              port:
+                number: {{ $service_port }}
   {{- end }}
   ingressClassName: nginx
