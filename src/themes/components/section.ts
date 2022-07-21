@@ -21,6 +21,10 @@ const variants = {
   },
 };
 
+const defaultProps = {
+  variant: 'hero',
+};
+
 const Section: ComponentStyleConfig = {
   parts,
   baseStyle: {
@@ -28,6 +32,7 @@ const Section: ComponentStyleConfig = {
     text: { color: 'gray.900' },
   },
   variants,
+  defaultProps,
 };
 
 export default Section;
