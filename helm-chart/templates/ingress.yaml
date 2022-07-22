@@ -7,6 +7,11 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ $name }}
+  annotations:
+    {{- if .Values.ingress.no_index }}
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Robots-Tag: noindex, nofollow";
+    {{- end }}
 spec:
   rules:
     {{- range .Values.ingress.hosts }}
