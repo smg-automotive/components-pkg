@@ -26,9 +26,16 @@ module.exports = {
   overrides: [
     {
       files: ['*.mdx'],
-      extends: ['plugin:mdx/recommended'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/typescript',
+        'plugin:mdx/recommended',
+      ],
       settings: {
         'mdx/code-blocks': true,
+        'import/resolver': {
+          typescript: {},
+        },
       },
       rules: {
         'no-nested-ternary': 'off',

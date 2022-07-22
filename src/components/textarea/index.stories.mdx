@@ -19,7 +19,11 @@ export const Container = ({ children }) => {
 
 export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
   const [currentValue, setCurrentValue] = useState(value);
-  const onChangeHandler = onChange ? action('change') : () => {};
+  const onChangeHandler = onChange
+    ? action('change')
+    : () => {
+        return;
+      };
   return (
     <Container>
       <Textarea

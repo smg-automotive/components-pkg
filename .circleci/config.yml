@@ -71,7 +71,7 @@ jobs:
 
   lint:
     <<: *DOCKER_NODE
-    resource_class: small
+    resource_class: medium
     steps:
       - attach_workspace:
           at: ~/
