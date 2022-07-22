@@ -1,3 +1,6 @@
 env:
   - name: NODE_ENV
     value: production
+
+ingress:
+  no_index: true
