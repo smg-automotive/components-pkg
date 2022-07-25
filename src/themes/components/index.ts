@@ -7,17 +7,19 @@ import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
 import Checkbox from './checkbox';
+import Card from './card';
 import Button from './button';
 
 export const components = {
   Button,
+  Card,
   Checkbox,
   Form,
   FormError,
   FormLabel,
   Input,
   Link,
+  Section,
   Table,
   Textarea,
-  Section,
 };

@@ -1,4 +1,5 @@
 export { default as Button } from './button';
+export { default as Card } from './card';
 export { default as Checkbox } from './checkbox';
 export { default as FormControl } from './formControl';
 export { default as Input } from './input';
