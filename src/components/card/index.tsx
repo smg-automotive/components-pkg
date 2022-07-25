@@ -22,26 +22,28 @@ const Card: FC<Props> = ({
   const styles = useMultiStyleConfig(`Card`);
 
   return (
-    <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
-      <Box
-        overflow="hidden"
-        borderRadius="sm"
-        maxW={{ xs: '102px', lg: '453px' }}
-        maxH={{ xs: '64px', lg: '281px' }}
-      >
-        {renderImage()}
-      </Box>
-      <Stack spacing={{ xs: 'sm', lg: 'md' }}>
-        <chakra.span __css={styles.carTitle}>{carTitle}</chakra.span>
-        <chakra.span __css={styles.price}>{price}</chakra.span>
-        <Box>
-          <chakra.span __css={styles.dealerName}>{dealerName}</chakra.span>
-          <chakra.span __css={styles.dealerAddress}>
-            {dealerAddress}
-          </chakra.span>
+    <Box maxW={{ xs: 'full', lg: '453px' }}>
+      <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
+        <Box
+          overflow="hidden"
+          borderRadius="sm"
+          maxW={{ xs: '102px', lg: '453px' }}
+          maxH={{ xs: '64px', lg: '281px' }}
+        >
+          {renderImage()}
         </Box>
+        <Stack spacing={{ xs: 'sm', lg: 'md' }}>
+          <chakra.span __css={styles.carTitle}>{carTitle}</chakra.span>
+          <chakra.span __css={styles.price}>{price}</chakra.span>
+          <Box>
+            <chakra.span __css={styles.dealerName}>{dealerName}</chakra.span>
+            <chakra.span __css={styles.dealerAddress}>
+              {dealerAddress}
+            </chakra.span>
+          </Box>
+        </Stack>
       </Stack>
-    </Stack>
+    </Box>
   );
 };
 

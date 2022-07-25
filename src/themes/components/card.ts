@@ -8,10 +8,7 @@ const Card: ComponentStyleConfig = {
     carTitle: {
       color: 'gray.900',
       textStyle: { xs: 'heading5', lg: 'heading3' },
-      width: '250px',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
+      noOfLines: { xs: 1, lg: 'none' },
     },
     price: {
       color: 'gray.900',
