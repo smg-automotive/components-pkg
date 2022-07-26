@@ -1,3 +1,4 @@
+import VehicleReference from './vehicleReference';
 import Textarea from './textarea';
 import Table from './table';
 import Section from './section';
@@ -17,7 +18,8 @@ export const components = {
   FormLabel,
   Input,
   Link,
+  Section,
   Table,
   Textarea,
-  Section,
+  VehicleReference,
 };
