@@ -29,7 +29,12 @@ const VehicleReference: FC<Props> = ({
   return (
     <Box maxW={{ xs: 'full', lg: '453px' }}>
       <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
-        <AspectRatio minW="2xl" ratio={4 / 3}>
+        <AspectRatio
+          minW="2xl"
+          ratio={4 / 3}
+          borderRadius="sm"
+          overflow="hidden"
+        >
           {renderImage}
         </AspectRatio>
         <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
