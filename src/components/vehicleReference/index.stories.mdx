@@ -1,5 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { Box } from '@chakra-ui/react';
+
 import VehicleReference from './index.tsx';
 
 <Meta
@@ -7,7 +9,11 @@ import VehicleReference from './index.tsx';
   component={VehicleReference}
 />
 
-export const Template = (args) => <VehicleReference {...args} />;
+export const Template = (args) => (
+  <Box maxW={{ xs: '100%', lg: '450px' }}>
+    <VehicleReference {...args} />
+  </Box>
+);
 
 # Vehicle reference
 
