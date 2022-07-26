@@ -1,6 +1,11 @@
 import React, { FC, ReactNode } from 'react';
 
-import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import {
+  AspectRatio,
+  Box,
+  chakra,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
 
 import Stack from '../stack';
 
@@ -24,15 +29,10 @@ const VehicleReference: FC<Props> = ({
   return (
     <Box maxW={{ xs: 'full', lg: '453px' }}>
       <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
-        <Box
-          overflow="hidden"
-          borderRadius="sm"
-          maxW={{ xs: '102px', lg: '453px' }}
-          maxH={{ xs: '64px', lg: '281px' }}
-        >
+        <AspectRatio minW="2xl" ratio={4 / 3}>
           {renderImage}
-        </Box>
-        <Stack spacing={{ xs: 'xs', lg: 'md' }}>
+        </AspectRatio>
+        <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{carTitle}</chakra.h1>
           <chakra.span __css={styles.price}>{price}</chakra.span>
           <Box>
