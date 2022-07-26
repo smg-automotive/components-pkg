@@ -1,28 +1,31 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Card from './index.tsx';
+import VehicleReference from './index.tsx';
 
-<Meta title="Data display/Card" component={Card} />
+<Meta
+  title="Patterns/Data display/Vehicle reference"
+  component={VehicleReference}
+/>
 
-export const Template = (args) => <Card {...args} />;
+export const Template = (args) => <VehicleReference {...args} />;
 
-# Card
+# Vehicle reference
 
-## Card
+## Vehicle reference
 
 <Canvas>
   <Story
-    name="Card"
+    name="Vehicle reference"
     args={{
       carTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
       price: `CHF 23'900.–`,
       dealerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
       dealerAddress: `2540 Grenchen (SO)`,
-      renderImage: () => <img src="/dummyImage.jpeg" />,
+      renderImage: <img src="/dummyImage.jpeg" />,
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Card" />
+<ArgsTable story="Vehicle reference" />

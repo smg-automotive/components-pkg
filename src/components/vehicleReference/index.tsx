@@ -5,21 +5,21 @@ import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
 import Stack from '../stack';
 
 interface Props {
-  renderImage: () => ReactNode;
+  renderImage: ReactNode;
   carTitle: string;
   price: string;
   dealerName: string;
   dealerAddress: string;
 }
 
-const Card: FC<Props> = ({
+const VehicleReference: FC<Props> = ({
   renderImage,
   carTitle,
   price,
   dealerName,
   dealerAddress,
 }) => {
-  const styles = useMultiStyleConfig(`Card`);
+  const styles = useMultiStyleConfig(`VehicleReference`);
 
   return (
     <Box maxW={{ xs: 'full', lg: '453px' }}>
@@ -30,16 +30,14 @@ const Card: FC<Props> = ({
           maxW={{ xs: '102px', lg: '453px' }}
           maxH={{ xs: '64px', lg: '281px' }}
         >
-          {renderImage()}
+          {renderImage}
         </Box>
-        <Stack spacing={{ xs: 'sm', lg: 'md' }}>
-          <chakra.span __css={styles.carTitle}>{carTitle}</chakra.span>
+        <Stack spacing={{ xs: 'xs', lg: 'md' }}>
+          <chakra.h1 __css={styles.carTitle}>{carTitle}</chakra.h1>
           <chakra.span __css={styles.price}>{price}</chakra.span>
           <Box>
-            <chakra.span __css={styles.dealerName}>{dealerName}</chakra.span>
-            <chakra.span __css={styles.dealerAddress}>
-              {dealerAddress}
-            </chakra.span>
+            <chakra.p __css={styles.dealerName}>{dealerName}</chakra.p>
+            <chakra.p __css={styles.dealerAddress}>{dealerAddress}</chakra.p>
           </Box>
         </Stack>
       </Stack>
@@ -47,4 +45,4 @@ const Card: FC<Props> = ({
   );
 };
 
-export default Card;
+export default VehicleReference;

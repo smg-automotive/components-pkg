@@ -1,3 +1,4 @@
+import VehicleReference from './vehicleReference';
 import Textarea from './textarea';
 import Table from './table';
 import Section from './section';
@@ -7,12 +8,10 @@ import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
 import Checkbox from './checkbox';
-import Card from './card';
 import Button from './button';
 
 export const components = {
   Button,
-  Card,
   Checkbox,
   Form,
   FormError,
@@ -22,4 +21,5 @@ export const components = {
   Section,
   Table,
   Textarea,
+  VehicleReference,
 };

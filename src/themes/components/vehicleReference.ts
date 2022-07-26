@@ -2,7 +2,7 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const parts = ['carTitle', 'price', 'dealerName', 'dealerAddress'];
 
-const Card: ComponentStyleConfig = {
+const VehicleReference: ComponentStyleConfig = {
   parts,
   baseStyle: {
     carTitle: {
@@ -12,19 +12,21 @@ const Card: ComponentStyleConfig = {
     },
     price: {
       color: 'gray.900',
-      textStyle: { xs: 'heading3', lg: 'lg' },
+      textStyle: { xs: 'heading3', lg: 'heading1' },
     },
     dealerName: {
       color: 'gray.900',
       textStyle: 'heading4',
       display: { xs: 'none', lg: 'flex' },
+      wordBreak: 'break-all',
     },
     dealerAddress: {
       color: 'gray.900',
       textStyle: 'body',
       display: { xs: 'none', lg: 'flex' },
+      wordBreak: 'break-all',
     },
   },
 };
 
-export default Card;
+export default VehicleReference;
