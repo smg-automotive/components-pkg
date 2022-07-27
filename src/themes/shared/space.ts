@@ -8,4 +8,5 @@ export const space = {
   '2xl': '1.5rem',
   '3xl': '2rem',
   '4xl': '3rem',
+  '5xl': '5rem',
 };
