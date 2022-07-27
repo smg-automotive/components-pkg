@@ -6,6 +6,7 @@ const title: SystemStyleObject = {
 };
 const text: SystemStyleObject = {
   textStyle: 'base',
+  color: 'gray.900',
 };
 
 const ArticleTeaser: ComponentMultiStyleConfig = {
