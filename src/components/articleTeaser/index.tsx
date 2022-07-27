@@ -27,9 +27,9 @@ const ArticleTeaser: FC<Props> = ({
         <Stack
           direction={{
             xs: 'column',
-            md: 'row',
+            lg: 'row',
           }}
-          spacing={{ md: 'lg' }}
+          spacing={{ lg: 'lg' }}
           align="center"
         >
           <chakra.img maxW={maxImgW} src={imageUrl} />
