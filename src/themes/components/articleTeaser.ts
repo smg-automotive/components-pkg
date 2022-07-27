@@ -4,15 +4,13 @@ const title: SystemStyleObject = {
   textStyle: 'heading3',
   color: 'blue.700',
 };
-const image: SystemStyleObject = {};
 const text: SystemStyleObject = {
   textStyle: 'base',
 };
 
 const ArticleTeaser: ComponentMultiStyleConfig = {
-  parts: ['image', 'title', 'text'],
+  parts: ['title', 'text'],
   baseStyle: {
-    image,
     title,
     text,
   },
