@@ -10,33 +10,33 @@ import {
 import Stack from '../stack';
 
 interface Props {
-  renderImage: ReactNode;
-  carTitle: string;
+  image: ReactNode;
+  vehicleTitle: string;
   price: string;
-  dealerName: string;
-  dealerAddress: string;
+  sellerName: string;
+  sellerAddress: string;
 }
 
 const VehicleReference: FC<Props> = ({
-  renderImage,
-  carTitle,
+  image,
+  vehicleTitle,
   price,
-  dealerName,
-  dealerAddress,
+  sellerName,
+  sellerAddress,
 }) => {
   const styles = useMultiStyleConfig(`VehicleReference`);
 
   return (
     <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
       <AspectRatio minW="2xl" ratio={4 / 3} borderRadius="sm" overflow="hidden">
-        {renderImage}
+        {image}
       </AspectRatio>
       <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
-        <chakra.h1 __css={styles.carTitle}>{carTitle}</chakra.h1>
+        <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
         <chakra.span __css={styles.price}>{price}</chakra.span>
         <Box>
-          <chakra.p __css={styles.dealerName}>{dealerName}</chakra.p>
-          <chakra.p __css={styles.dealerAddress}>{dealerAddress}</chakra.p>
+          <chakra.p __css={styles.dealerName}>{sellerName}</chakra.p>
+          <chakra.p __css={styles.dealerAddress}>{sellerAddress}</chakra.p>
         </Box>
       </Stack>
     </Stack>
