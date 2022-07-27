@@ -1,3 +1,4 @@
+import Switch from './themeSwitch';
 import Textarea from './textarea';
 import Table from './table';
 import Section from './section';
@@ -20,4 +21,5 @@ export const components = {
   Table,
   Textarea,
   Section,
+  Switch,
 };

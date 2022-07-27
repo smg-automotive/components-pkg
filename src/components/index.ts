@@ -7,6 +7,7 @@ export { default as Link } from './link';
 export { default as Section } from './section';
 export { default as Stack } from './stack';
 export { default as Textarea } from './textarea';
+export { default as ThemeSwitch } from './themeSwitch';
 export { default as ThemeProvider } from './themeProvider';
 
 export * from './icons';
