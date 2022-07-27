@@ -18,3 +18,6 @@ export const sizes = {
     xl: '1280px',
   },
 };
+
+const sizeNames = Object.keys(sizes) as Array<keyof typeof sizes>;
+export type Sizes = Exclude<typeof sizeNames[number], 'container'>;

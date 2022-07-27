@@ -29,3 +29,4 @@ export const shared = {
   fontSizes,
   fonts,
 };
+export { Sizes } from './sizes';
