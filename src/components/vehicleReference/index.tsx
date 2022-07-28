@@ -27,19 +27,26 @@ const VehicleReference: FC<Props> = ({
   const styles = useMultiStyleConfig(`VehicleReference`);
 
   return (
-    <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
-      <AspectRatio minW="2xl" ratio={4 / 3} borderRadius="sm" overflow="hidden">
-        {image}
-      </AspectRatio>
-      <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
-        <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
-        <chakra.span __css={styles.price}>{price}</chakra.span>
-        <Box>
-          <chakra.p __css={styles.dealerName}>{sellerName}</chakra.p>
-          <chakra.p __css={styles.dealerAddress}>{sellerAddress}</chakra.p>
-        </Box>
+    <article>
+      <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
+        <AspectRatio
+          minW="2xl"
+          ratio={4 / 3}
+          borderRadius="sm"
+          overflow="hidden"
+        >
+          {image}
+        </AspectRatio>
+        <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
+          <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
+          <chakra.span __css={styles.price}>{price}</chakra.span>
+          <Box>
+            <chakra.p __css={styles.dealerName}>{sellerName}</chakra.p>
+            <chakra.p __css={styles.dealerAddress}>{sellerAddress}</chakra.p>
+          </Box>
+        </Stack>
       </Stack>
-    </Stack>
+    </article>
   );
 };
 
