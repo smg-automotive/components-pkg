@@ -29,7 +29,7 @@ const ArticleTeaser: FC<Props> = ({
             xs: 'column',
             lg: 'row',
           }}
-          spacing={{ lg: 'lg' }}
+          spacing="lg"
           align="center"
         >
           <chakra.img maxW={maxImgW} src={imageUrl} />
