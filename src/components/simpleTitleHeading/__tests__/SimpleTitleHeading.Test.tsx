@@ -22,7 +22,5 @@ describe('<SimpleTitleHeading>', () => {
     const link = screen.getByRole('link');
 
     expect(link).toHaveAttribute('href', url);
-    expect(link).toHaveAttribute('target', '_blank');
-    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 });

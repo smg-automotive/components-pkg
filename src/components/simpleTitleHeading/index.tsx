@@ -4,10 +4,11 @@ import {
   Box,
   chakra,
   Divider,
-  Flex,
   Link,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
+
+import Stack from '../stack';
 
 import { CloseIcon } from '../../assets/icons/CloseIcon';
 
@@ -20,26 +21,18 @@ const SimpleTitleHeading: FC<Props> = ({ title, url }) => {
   const styles = useMultiStyleConfig(`SimpleTitleHeading`);
 
   const renderCloseIcon = () => (
-    <Flex justify="end">
-      <Link
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        cursor="pointer"
-      >
-        <CloseIcon />
-      </Link>
-    </Flex>
+    <Link href={url} cursor="pointer">
+      <CloseIcon />
+    </Link>
   );
 
   return (
     <header>
-      <Box
-        paddingY={{ xs: 'md', lg: '3xl' }}
-        paddingX={{ xs: 'md', lg: '5xl' }}
-      >
-        {renderCloseIcon()}
-        <chakra.h3 __css={styles.title}>{title}</chakra.h3>
+      <Box paddingX={{ xs: 'md', lg: '4xl' }}>
+        <Stack direction="row" justify="space-between">
+          <chakra.h1 __css={styles.title}>{title}</chakra.h1>
+          {renderCloseIcon()}
+        </Stack>
       </Box>
       <Divider border="1px" borderColor="gray.100" />
     </header>
