@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import SimpleHeading from '..';
+import SimpleTitleHeading from '..';
 
 const renderWrapper = ({
   title = 'title',
   url = 'https://www.motoscout24.ch/de',
-}) => render(<SimpleHeading title={title} url={url} />);
+}) => render(<SimpleTitleHeading title={title} url={url} />);
 
-describe('SimpleHeading', () => {
+describe('<SimpleTitleHeading>', () => {
   it('renders title', () => {
     const title = 'Are you looking for me?';
     renderWrapper({ title });
