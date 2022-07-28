@@ -5,7 +5,7 @@ const title: SystemStyleObject = {
   color: 'blue.700',
 };
 const text: SystemStyleObject = {
-  textStyle: 'base',
+  textStyle: 'body',
   color: 'gray.900',
 };
 
