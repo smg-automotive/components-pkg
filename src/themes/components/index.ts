@@ -8,8 +8,10 @@ import FormError from './formError';
 import Form from './form';
 import Checkbox from './checkbox';
 import Button from './button';
+import ArticleTeaser from './articleTeaser';
 
 export const components = {
+  ArticleTeaser,
   Button,
   Checkbox,
   Form,
