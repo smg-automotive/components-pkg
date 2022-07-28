@@ -4,8 +4,12 @@ export const sizes = {
   sm: '1.5rem',
   md: '2.25rem',
   lg: '3rem',
-  xl: '5rem',
-  '2xl': '6.25rem',
+  xl: '4rem',
+  '2xl': '6rem',
+  '3xl': '8rem',
+  '4xl': '10rem',
+  '5xl': '15rem',
+  '6xl': '20rem',
   full: '100%',
   container: {
     sm: '640px',
@@ -14,3 +18,6 @@ export const sizes = {
     xl: '1280px',
   },
 };
+
+const sizeNames = Object.keys(sizes) as Array<keyof typeof sizes>;
+export type Sizes = Exclude<typeof sizeNames[number], 'container'>;
