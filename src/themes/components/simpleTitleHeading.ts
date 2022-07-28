@@ -1,6 +1,6 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
-const SimpleHeading: ComponentStyleConfig = {
+const SimpleTitleHeading: ComponentStyleConfig = {
   parts: ['title'],
   baseStyle: {
     title: {
@@ -10,4 +10,4 @@ const SimpleHeading: ComponentStyleConfig = {
   },
 };
 
-export default SimpleHeading;
+export default SimpleTitleHeading;
