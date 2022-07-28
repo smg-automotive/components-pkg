@@ -4,13 +4,14 @@ import {
   AspectRatio,
   Box,
   chakra,
+  Image,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
 import Stack from '../stack';
 
 interface Props {
-  image: ReactNode;
+  image?: ReactNode;
   vehicleTitle: string;
   price: string;
   sellerName: string;
@@ -35,7 +36,11 @@ const VehicleReference: FC<Props> = ({
           borderRadius="sm"
           overflow="hidden"
         >
-          {image}
+          {image ? (
+            image
+          ) : (
+            <Image fallbackSrc="assets/images/MissingImage.png" />
+          )}
         </AspectRatio>
         <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>

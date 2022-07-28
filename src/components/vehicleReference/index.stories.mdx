@@ -17,9 +17,11 @@ export const Template = (args) => (
 
 # Vehicle reference
 
+## Vehicle reference with image
+
 <Canvas>
   <Story
-    name="Vehicle reference"
+    name="Vehicle reference with image"
     args={{
       vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
       price: `CHF 23'900.–`,
@@ -32,4 +34,22 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-<ArgsTable story="Vehicle reference" />
+<ArgsTable story="Vehicle reference with image" />
+
+## Vehicle reference missing image
+
+<Canvas>
+  <Story
+    name="Vehicle reference missing image"
+    args={{
+      vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
+      price: `CHF 23'900.–`,
+      sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
+      sellerAddress: `2540 Grenchen (SO)`,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Vehicle reference missing image" />
