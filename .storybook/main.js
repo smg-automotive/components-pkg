@@ -1,3 +1,7 @@
+const path = require("path");
+function getPackageDir(package) {
+  return path.dirname(require.resolve(path.join(package, 'package.json')));
+}
 module.exports = {
   stories: ['../src/**/*.stories.*'],
   addons: [
@@ -22,4 +26,18 @@ module.exports = {
     { from: '../src/assets', to: '/assets' },
     { from: '../public', to: '/' },
   ],
+  webpackFinal: async (config) => {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@emotion/core': getPackageDir('@emotion/react'),
+          'emotion-theming': getPackageDir('@emotion/react'),
+          '@emotion/styled': getPackageDir('@emotion/styled'),
+        },
+      },
+    };
+  },
 };

@@ -24,12 +24,14 @@ console.log('$diff', $diff);
 console.log('$translateX', $translateX);
 console.log('$diffValue', diffValue);
 
+// TODO: variations
+
 const baseStyleTrack: SystemStyleFunction = (props) => {
   const { colorScheme: c } = props;
 
   console.log('inside $width', $width);
   console.log('inside $props', props);
-  console.log('inside $width', mode('gray.300', 'red.400')(props));
+  console.debug('inside $width', [$width.reference]);
   console.log('insideconfig', {
     borderRadius: 'max',
     p: '2px',
@@ -37,7 +39,7 @@ const baseStyleTrack: SystemStyleFunction = (props) => {
     height: [$height.reference],
     // transitionProperty: 'common',
     // transitionDuration: 'fast',
-    bg: mode('gray.300', 'red.400')(props),
+    bg: 'brand.primary',
     _focusVisible: {
       boxShadow: 'outline',
     },
@@ -55,9 +57,9 @@ const baseStyleTrack: SystemStyleFunction = (props) => {
     p: '2px',
     width: [$width.reference],
     height: [$height.reference],
-    // transitionProperty: 'common',
-    // transitionDuration: 'fast',
-    bg: mode('gray.300', 'red.400')(props),
+    transitionProperty: 'common',
+    transitionDuration: 'fast',
+    bg: 'brand.primary',
     _focusVisible: {
       boxShadow: 'outline',
     },
@@ -66,13 +68,13 @@ const baseStyleTrack: SystemStyleFunction = (props) => {
       cursor: 'not-allowed',
     },
     _checked: {
-      bg: mode(`${c}.500`, `${c}.200`)(props),
+      bg: '#FF4C52', // TODO: how to I get that form the theme?
     },
   };
 };
 
 const baseStyleThumb: SystemStyleObject = {
-  bg: 'white',
+  bg: 'gray.800',
   transitionProperty: 'transform',
   transitionDuration: 'normal',
   borderRadius: 'inherit',
@@ -80,20 +82,24 @@ const baseStyleThumb: SystemStyleObject = {
   height: [$height.reference],
   _checked: {
     transform: `translateX(${$translateX.reference})`,
+    bg: 'white',
   },
 };
 
-const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
-  container: {
-    [$diff.variable]: diffValue,
-    [$translateX.variable]: $diff.reference,
-    _rtl: {
-      [$translateX.variable]: calc($diff).negate().toString(),
+const baseStyle: PartsStyleFunction<typeof parts> = (props) => {
+  console.log('baseStyle called');
+  return {
+    container: {
+      [$diff.variable]: diffValue,
+      [$translateX.variable]: $diff.reference,
+      _rtl: {
+        [$translateX.variable]: calc($diff).negate().toString(),
+      },
     },
-  },
-  track: baseStyleTrack(props),
-  thumb: baseStyleThumb,
-});
+    track: baseStyleTrack(props),
+    thumb: baseStyleThumb,
+  };
+};
 
 const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   sm: {
@@ -128,7 +134,7 @@ console.log({
   defaultProps,
 });
 
-console.log('digferences??', baseStyle(defaultProps));
+// console.log('digferences??', baseStyle(defaultProps));
 
 export default {
   parts: parts.keys,

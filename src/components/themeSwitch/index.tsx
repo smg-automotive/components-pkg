@@ -1,17 +1,24 @@
 import React, { FC } from 'react';
-import { Switch } from '@chakra-ui/react';
+import { Box, Switch } from '@chakra-ui/react';
 
-interface ThemeSwitchProps {
-  foo?: string;
-}
-
-const ThemeSwitch: FC<ThemeSwitchProps> = () => {
+const ThemeSwitch: FC = (props) => {
+  console.log('ThemeSwitch render');
   return (
-    <>
-      <Switch colorScheme="red" />
-    </>
+    <Box
+      borderRadius="sm"
+      padding="md"
+      margin="md"
+      backgroundColor="gray.200"
+      display="inline-block"
+      boxShadow="md"
+    >
+      <span>🚗</span>
+      &nbsp;
+      <Switch {...props} />
+      &nbsp;
+      <span>🏍️</span>
+    </Box>
   );
 };
 
 export default ThemeSwitch;
-export { ThemeSwitchProps };
