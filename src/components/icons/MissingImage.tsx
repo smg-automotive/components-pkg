@@ -4,7 +4,7 @@ import { Icon } from '@chakra-ui/react';
 
 export const MissingImage: FC = () => {
   return (
-    <Icon viewBox="0 0 574 437">
+    <Icon viewBox="0 0 574 437" data-testid="missing-image">
       <path d="m0 0h574v437h-574z" fill="#fff" />
       <path d="m0 0h574v437h-574z" fill="#f8f8f8" />
       <g clipPath="url(#a)" fill="#ccc">

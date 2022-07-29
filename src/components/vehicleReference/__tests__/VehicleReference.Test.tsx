@@ -51,8 +51,6 @@ describe('<VehicleReference>', () => {
   it('renders missing image when we do not pass any image', () => {
     renderWrapper({});
 
-    const image = screen.getByRole('img');
-
-    expect(image).toHaveAttribute('src', 'assets/images/MissingImage.png');
+    expect(screen.getByTestId('missing-image')).toBeInTheDocument();
   });
 });
