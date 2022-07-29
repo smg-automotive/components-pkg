@@ -118,7 +118,4 @@ export const MailIcon = createIcon({
       </g>
     </svg>
   ),
-  defaultProps: {
-    boxSize: 'xl',
-  },
 });

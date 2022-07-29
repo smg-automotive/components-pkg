@@ -10,6 +10,7 @@ export const sizes = {
   '4xl': '10rem',
   '5xl': '15rem',
   '6xl': '20rem',
+  '7xl': '30rem',
   full: '100%',
   container: {
     sm: '640px',

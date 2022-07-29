@@ -3,7 +3,7 @@ import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 const parts = ['title', 'text'];
 
 const variants = {
-  hero: {
+  page: {
     title: {
       textStyle: 'heading1',
     },
@@ -11,7 +11,7 @@ const variants = {
       textStyle: 'body-large',
     },
   },
-  regular: {
+  section: {
     title: {
       textStyle: 'heading2',
     },
@@ -22,10 +22,10 @@ const variants = {
 };
 
 const defaultProps = {
-  variant: 'hero',
+  variant: 'page',
 };
 
-const Section: ComponentMultiStyleConfig = {
+const Title: ComponentMultiStyleConfig = {
   parts,
   baseStyle: {
     title: { color: 'gray.900' },
@@ -35,4 +35,4 @@ const Section: ComponentMultiStyleConfig = {
   defaultProps,
 };
 
-export default Section;
+export default Title;

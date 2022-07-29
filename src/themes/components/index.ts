@@ -1,7 +1,7 @@
+import Title from './title';
 import Textarea from './textarea';
 import Table from './table';
 import SimpleHeader from './simpleHeader';
-import Section from './section';
 import Link from './link';
 import Input from './input';
 import FormLabel from './formLabel';
@@ -22,6 +22,6 @@ export const components = {
   Link,
   Table,
   Textarea,
-  Section,
+  Title,
   SimpleHeader,
 };

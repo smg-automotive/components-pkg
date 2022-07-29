@@ -1,0 +1,119 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Title from './index.tsx';
+
+<Meta title="Patterns/Heading/Title" component={Title} />
+
+export const Template = (args) => <Title {...args} />;
+
+# Heading
+
+## Title Page with Image
+
+<Canvas>
+  <Story
+    name="Title Page with Image"
+    args={{
+      title:
+        'Thank you for sending a message! We have sent a copy to your inbox.',
+      text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      image: <img src="https://via.placeholder.com/302x320" />,
+      variant: 'page',
+      maxImgW: '2xl',
+    }}
+    argTypes={{
+      variant: {
+        options: ['page', 'section'],
+        control: 'select',
+      },
+      maxImgW: {
+        options: ['xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Title Page with Image" />
+
+## Responsive Title Page
+
+Bigger image on mobile and tablet viewports.
+
+<Canvas>
+  <Story
+    name="Responsive Title Page"
+    args={{
+      title:
+        'Thank you for sending a message! We have sent a copy to your inbox.',
+      text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      image: <img src="https://via.placeholder.com/302x320" />,
+      variant: 'page',
+      maxImgW: { sm: 'full', lg: '3xl' },
+    }}
+    argTypes={{
+      variant: {
+        options: ['page', 'section'],
+        control: 'select',
+      },
+      maxImgW: {
+        options: ['xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Responsive Title Page" />
+
+## Title Page without image
+
+<Canvas>
+  <Story
+    name="Title Page without image"
+    args={{
+      title:
+        'Thank you for sending a message! We have sent a copy to your inbox.',
+      text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      variant: 'page',
+    }}
+    argTypes={{
+      variant: {
+        options: ['page', 'section'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Title Page without image" />
+
+## Section
+
+<Canvas>
+  <Story
+    name="Section"
+    args={{
+      title:
+        'Thank you for sending a message! We have sent a copy to your inbox.',
+      text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+      variant: 'section',
+    }}
+    argTypes={{
+      variant: {
+        options: ['page', 'section'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Section" />
