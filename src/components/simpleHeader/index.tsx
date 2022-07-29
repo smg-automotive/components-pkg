@@ -2,18 +2,20 @@ import React, { FC } from 'react';
 
 import { chakra, Flex, useMultiStyleConfig } from '@chakra-ui/react';
 
-import { CloseIcon } from '../../assets/icons/CloseIcon';
+import { CloseIcon } from '../../index';
 
 interface Props {
   title: string;
   url: string;
 }
 
-const SimpleTitleHeading: FC<Props> = ({ title, url }) => {
-  const styles = useMultiStyleConfig(`SimpleTitleHeading`);
+const SimpleHeader: FC<Props> = ({ title, url }) => {
+  const styles = useMultiStyleConfig(`SimpleHeader`);
+
+  const Component = chakra('header', { baseStyle: styles.header });
 
   return (
-    <header>
+    <Component>
       <Flex
         minH={{ xs: 'xl', lg: '2xl' }}
         paddingX={{ xs: 'md', lg: '4xl' }}
@@ -30,8 +32,8 @@ const SimpleTitleHeading: FC<Props> = ({ title, url }) => {
           <CloseIcon />
         </a>
       </Flex>
-    </header>
+    </Component>
   );
 };
 
-export default SimpleTitleHeading;
+export default SimpleHeader;

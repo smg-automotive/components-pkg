@@ -1,4 +1,4 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
 const parts = ['title', 'text'];
 
@@ -25,7 +25,7 @@ const defaultProps = {
   variant: 'hero',
 };
 
-const Section: ComponentStyleConfig = {
+const Section: ComponentMultiStyleConfig = {
   parts,
   baseStyle: {
     title: { color: 'gray.900' },

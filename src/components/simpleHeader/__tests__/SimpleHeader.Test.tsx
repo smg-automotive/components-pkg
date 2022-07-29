@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import SimpleTitleHeading from '..';
+import SimpleHeader from '..';
 
 const renderWrapper = ({
   title = 'title',
   url = 'https://www.motoscout24.ch/de',
-}) => render(<SimpleTitleHeading title={title} url={url} />);
+}) => render(<SimpleHeader title={title} url={url} />);
 
-describe('<SimpleTitleHeading>', () => {
+describe('<SimpleHeader>', () => {
   it('renders title', () => {
     const title = 'Are you looking for me?';
     renderWrapper({ title });
@@ -16,7 +16,7 @@ describe('<SimpleTitleHeading>', () => {
     expect(screen.getByText(title)).toBeInTheDocument();
   });
 
-  it('leads to a link when clicking on close', () => {
+  it('leads to a link when clicking on close icon', () => {
     const url = 'https://www.autoscout24.ch/de';
     renderWrapper({ url });
     const link = screen.getByRole('link');

@@ -1,6 +1,6 @@
 import Textarea from './textarea';
 import Table from './table';
-import SimpleTitleHeading from './simpleTitleHeading';
+import SimpleHeader from './simpleHeader';
 import Section from './section';
 import Link from './link';
 import Input from './input';
@@ -23,5 +23,5 @@ export const components = {
   Table,
   Textarea,
   Section,
-  SimpleTitleHeading,
+  SimpleHeader,
 };
