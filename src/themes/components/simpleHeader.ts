@@ -9,7 +9,7 @@ const SimpleHeader: ComponentMultiStyleConfig = {
   baseStyle: {
     header: baseStyleHeader,
     title: {
-      textStyle: { xs: 'heading3', lg: 'heading1' },
+      textStyle: { base: 'heading3', lg: 'heading1' },
     },
   },
 };
