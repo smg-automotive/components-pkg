@@ -18,17 +18,12 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
     <Component>
       <Flex
         minH={{ xs: 'xl', lg: '2xl' }}
-        paddingX={{ xs: 'md', lg: '4xl' }}
         paddingY="xl"
         align="center"
         justify="space-between"
-        border="1px"
-        borderX="none"
-        borderTop="none"
-        borderBottomColor="gray.200"
       >
         <chakra.h1 __css={styles.title}>{title}</chakra.h1>
-        <Flex alignSelf="baseline" paddingTop={{ lg: 'md' }}>
+        <Flex alignSelf="baseline" paddingLeft="md" paddingTop={{ lg: 'md' }}>
           <a href={url}>
             <CloseIcon />
           </a>
