@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import Title from '..';
+import Section from '..';
 
 const renderWrapper = ({ title = 'title', image = <img src="foo.png" /> }) => {
-  render(<Title variant="page" title={title} image={image} />);
+  render(<Section variant="hero" title={title} image={image} />);
 };
 
-describe('<Title>', () => {
+describe('<Section>', () => {
   it('renders title', () => {
     const title = 'Are you looking for me?';
     renderWrapper({ title });

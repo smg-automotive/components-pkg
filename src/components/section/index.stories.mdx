@@ -1,29 +1,29 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Title from './index.tsx';
+import Section from './index.tsx';
 
-<Meta title="Patterns/Heading/Title" component={Title} />
+<Meta title="Patterns/Section" component={Section} />
 
-export const Template = (args) => <Title {...args} />;
+export const Template = (args) => <Section {...args} />;
 
-# Heading
+# Sections
 
-## Title Page with Image
+## Hero with Image
 
 <Canvas>
   <Story
-    name="Title Page with Image"
+    name="Hero with Image"
     args={{
       title:
         'Thank you for sending a message! We have sent a copy to your inbox.',
       text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
       image: <img src="https://via.placeholder.com/302x320" />,
-      variant: 'page',
+      variant: 'hero',
       maxImgW: '2xl',
     }}
     argTypes={{
       variant: {
-        options: ['page', 'section'],
+        options: ['hero', 'regular'],
         control: 'select',
       },
       maxImgW: {
@@ -36,26 +36,26 @@ export const Template = (args) => <Title {...args} />;
   </Story>
 </Canvas>
 
-<ArgsTable story="Title Page with Image" />
+<ArgsTable story="Hero with Image" />
 
-## Responsive Title Page
+## Hero Responsive
 
 Bigger image on mobile and tablet viewports.
 
 <Canvas>
   <Story
-    name="Responsive Title Page"
+    name="Hero Responsive"
     args={{
       title:
         'Thank you for sending a message! We have sent a copy to your inbox.',
       text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
       image: <img src="https://via.placeholder.com/302x320" />,
-      variant: 'page',
+      variant: 'hero',
       maxImgW: { sm: 'full', lg: '3xl' },
     }}
     argTypes={{
       variant: {
-        options: ['page', 'section'],
+        options: ['hero', 'regular'],
         control: 'select',
       },
       maxImgW: {
@@ -68,22 +68,22 @@ Bigger image on mobile and tablet viewports.
   </Story>
 </Canvas>
 
-<ArgsTable story="Responsive Title Page" />
+<ArgsTable story="Hero Responsive" />
 
-## Title Page without image
+## Hero without image
 
 <Canvas>
   <Story
-    name="Title Page without image"
+    name="Hero without image"
     args={{
       title:
         'Thank you for sending a message! We have sent a copy to your inbox.',
       text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
-      variant: 'page',
+      variant: 'hero',
     }}
     argTypes={{
       variant: {
-        options: ['page', 'section'],
+        options: ['hero', 'regular'],
         control: 'select',
       },
     }}
@@ -92,22 +92,22 @@ Bigger image on mobile and tablet viewports.
   </Story>
 </Canvas>
 
-<ArgsTable story="Title Page without image" />
+<ArgsTable story="Hero without image" />
 
-## Section
+## Regular
 
 <Canvas>
   <Story
-    name="Section"
+    name="Regular"
     args={{
       title:
         'Thank you for sending a message! We have sent a copy to your inbox.',
       text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
-      variant: 'section',
+      variant: 'regular',
     }}
     argTypes={{
       variant: {
-        options: ['page', 'section'],
+        options: ['hero', 'regular'],
         control: 'select',
       },
     }}
@@ -116,4 +116,4 @@ Bigger image on mobile and tablet viewports.
   </Story>
 </Canvas>
 
-<ArgsTable story="Section" />
+<ArgsTable story="Regular" />

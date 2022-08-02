@@ -11,19 +11,25 @@ import Stack from '../stack';
 import { Sizes } from '../../themes';
 
 interface Props {
-  variant?: 'page' | 'section';
+  variant?: 'hero' | 'regular';
   title: string;
   text?: string;
   image?: ReactNode;
   maxImgW?: ResponsiveValue<Sizes>;
 }
 
-const Title: FC<Props> = ({ title, text, image, variant, maxImgW = '2xl' }) => {
-  const styles = useMultiStyleConfig(`Title`, { variant });
+const Section: FC<Props> = ({
+  title,
+  text,
+  image,
+  variant,
+  maxImgW = '2xl',
+}) => {
+  const styles = useMultiStyleConfig(`Section`, { variant });
 
   return (
     <Stack direction={{ xs: 'column', lg: 'row' }} spacing="xl">
-      {variant === 'page' && image ? <Box maxW={maxImgW}>{image}</Box> : null}
+      {variant === 'hero' && image ? <Box maxW={maxImgW}>{image}</Box> : null}
       <Stack spacing="md">
         <chakra.span __css={styles.title}>{title}</chakra.span>
         {text ? <chakra.span __css={styles.text}>{title}</chakra.span> : null}
@@ -32,4 +38,4 @@ const Title: FC<Props> = ({ title, text, image, variant, maxImgW = '2xl' }) => {
   );
 };
 
-export default Title;
+export default Section;
