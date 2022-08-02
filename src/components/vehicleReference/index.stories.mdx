@@ -1,0 +1,55 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { Box } from '@chakra-ui/react';
+
+import VehicleReference from './index.tsx';
+
+<Meta
+  title="Patterns/Data display/Vehicle reference"
+  component={VehicleReference}
+/>
+
+export const Template = (args) => (
+  <Box maxW={{ xs: '100%', lg: '450px' }}>
+    <VehicleReference {...args} />
+  </Box>
+);
+
+# Vehicle reference
+
+## Vehicle reference with image
+
+<Canvas>
+  <Story
+    name="Vehicle reference with image"
+    args={{
+      vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
+      price: `CHF 23'900.–`,
+      sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
+      sellerAddress: `2540 Grenchen (SO)`,
+      image: <img src="/dummyImage.jpeg" />,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Vehicle reference with image" />
+
+## Vehicle reference missing image
+
+<Canvas>
+  <Story
+    name="Vehicle reference missing image"
+    args={{
+      vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
+      price: `CHF 23'900.–`,
+      sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
+      sellerAddress: `2540 Grenchen (SO)`,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Vehicle reference missing image" />

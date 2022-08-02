@@ -1,3 +1,4 @@
+import VehicleReference from './vehicleReference';
 import Textarea from './textarea';
 import Table from './table';
 import SimpleHeader from './simpleHeader';
@@ -20,8 +21,9 @@ export const components = {
   FormLabel,
   Input,
   Link,
-  Table,
-  Textarea,
   Section,
   SimpleHeader,
+  Table,
+  Textarea,
+  VehicleReference,
 };

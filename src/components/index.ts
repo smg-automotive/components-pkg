@@ -10,5 +10,6 @@ export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
 export { default as Textarea } from './textarea';
 export { default as ThemeProvider } from './themeProvider';
+export { default as VehicleReference } from './vehicleReference';
 
 export * from './icons';
