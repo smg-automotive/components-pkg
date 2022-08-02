@@ -29,10 +29,10 @@ const Section: FC<Props> = ({
 
   return (
     <Stack direction={{ xs: 'column', lg: 'row' }} spacing="xl">
-      {variant === 'hero' && image ? <Box maxW={maxImgW}>{image}</Box> : null}
+      {image ? <Box maxW={maxImgW}>{image}</Box> : null}
       <Stack spacing="md">
         <chakra.span __css={styles.title}>{title}</chakra.span>
-        {text ? <chakra.span __css={styles.text}>{title}</chakra.span> : null}
+        {text ? <chakra.span __css={styles.text}>{text}</chakra.span> : null}
       </Stack>
     </Stack>
   );

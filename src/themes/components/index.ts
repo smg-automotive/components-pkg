@@ -21,9 +21,9 @@ export const components = {
   FormLabel,
   Input,
   Link,
+  Section,
   SimpleHeader,
   Table,
   Textarea,
-  Section,
   VehicleReference,
 };
