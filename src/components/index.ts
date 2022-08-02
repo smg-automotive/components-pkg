@@ -13,3 +13,4 @@ export { default as ThemeProvider } from './themeProvider';
 export { default as VehicleReference } from './vehicleReference';
 
 export * from './icons';
+export * from './pageLayout';
