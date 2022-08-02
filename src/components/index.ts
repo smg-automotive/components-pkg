@@ -11,5 +11,7 @@ export { default as Stack } from './stack';
 export { default as Textarea } from './textarea';
 export { default as ThemeProvider } from './themeProvider';
 export { default as VehicleReference } from './vehicleReference';
+export { default as Center } from './center';
+export { default as FullHeight } from './fullHeight';
 
 export * from './icons';
