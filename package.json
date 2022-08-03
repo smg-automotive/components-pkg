@@ -2,9 +2,9 @@
   "name": "@smg-automotive/components",
   "version": "0.0.0-development",
   "description": "SMG Automotive components library",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],

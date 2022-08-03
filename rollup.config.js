@@ -3,11 +3,14 @@ import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
+import { dirname } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 const packageJson = require('./package.json');
+
+console.log('dirname(packageJson.module)', dirname(packageJson.module));
 
 export default [
   {
@@ -19,16 +22,20 @@ export default [
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: dirname(packageJson.module),
         format: 'esm',
         sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
     ],
     plugins: [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.build.json' }),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+      }),
       copy({
         targets: [
           {
@@ -41,11 +48,11 @@ export default [
     ],
     external: ['react', 'react-dom'],
   },
-  {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
-  },
+  // {
+  //   input: 'dist/esm/types/index.d.ts',
+  //   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+  //   plugins: [dts()],
+  // },
   {
     input: 'src/lib/cli/index.ts',
     output: [
