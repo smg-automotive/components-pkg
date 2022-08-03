@@ -45,9 +45,9 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
         <Grid
           templateAreas={{
             xs: `"header" "vehicle" "main"`,
-            lg: `"header vehicle" "main vehicle"`,
+            lg: `"header . ." "main . vehicle"`,
           }}
-          gridTemplateColumns={{ lg: 'repeat(2, 1fr)' }}
+          gridTemplateColumns={{ lg: '1fr 120px 1fr' }}
           gridTemplateRows="minmax(min-content, max-content) 1fr"
         >
           <GridItem area="header">
