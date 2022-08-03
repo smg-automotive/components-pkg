@@ -1,6 +1,13 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Center, chakra, Grid, GridItem } from '@chakra-ui/react';
+import {
+  Center,
+  chakra,
+  Container,
+  Grid,
+  GridItem,
+  Heading,
+} from '@chakra-ui/react';
 
 import VehicleReference, { VehicleProps } from '../vehicleReference';
 import Stack from '../stack';
@@ -22,21 +29,19 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   vehicle,
   children,
 }) => {
-  const Component = chakra('main');
-
   return (
     <Center>
-      <Component maxWidth="container.xl">
+      <Container as="main" width="full" maxWidth="container.xl">
         <Grid
           templateAreas={{
-            xs: `"header" "vehicle" "main"`,
-            lg: `"header . ." "main . vehicle"`,
+            xs: `"backlink" "heading" "vehicle" "main"`,
+            lg: `"backlink . ." "heading . vehicle" "main . vehicle"`,
           }}
           gridTemplateColumns={{ lg: '1fr 100px 1fr' }}
-          gridTemplateRows="minmax(min-content, max-content) 1fr"
+          gridTemplateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
           gap="xl"
         >
-          <GridItem area="header">
+          <GridItem area="backlink">
             {backLink ? (
               <chakra.div paddingBottom="xl">
                 <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
@@ -44,7 +49,11 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
                 </Link>
               </chakra.div>
             ) : null}
-            <chakra.h1 textStyle="heading1">{title}</chakra.h1>
+          </GridItem>
+          <GridItem area="heading">
+            <Heading as="h1" textStyle="heading1">
+              {title}
+            </Heading>
           </GridItem>
           <GridItem area="vehicle">
             <VehicleReference {...vehicle} />
@@ -55,7 +64,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
             </Stack>
           </GridItem>
         </Grid>
-      </Component>
+      </Container>
     </Center>
   );
 };
