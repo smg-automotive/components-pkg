@@ -6,23 +6,20 @@ import VehicleReference, { VehicleProps } from '../vehicleReference';
 import Stack from '../stack';
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
-import Button, { ButtonProps } from '../button';
 
 interface Props {
   title: string;
-  backLink: {
+  backLink?: {
     text: string;
     url: string;
   };
   vehicle: VehicleProps;
-  submitButton: Pick<ButtonProps, 'onClick'> & { label: string };
 }
 
-const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
+const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   title,
   backLink,
   vehicle,
-  submitButton,
   children,
 }) => {
   const Component = chakra('main');
@@ -40,22 +37,21 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
           gap="xl"
         >
           <GridItem area="header">
-            <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
-              {backLink.text}
-            </Link>
-            <chakra.h1 textStyle="heading1" paddingTop="xl">
-              {title}
-            </chakra.h1>
+            {backLink ? (
+              <chakra.div paddingBottom="xl">
+                <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
+                  {backLink.text}
+                </Link>
+              </chakra.div>
+            ) : null}
+            <chakra.h1 textStyle="heading1">{title}</chakra.h1>
           </GridItem>
           <GridItem area="vehicle">
             <VehicleReference {...vehicle} />
           </GridItem>
           <GridItem area="main">
             <Stack direction="column" spacing="2xl">
-              <chakra.div>{children}</chakra.div>
-              <Button onClick={submitButton.onClick}>
-                {submitButton.label}
-              </Button>
+              {children}
             </Stack>
           </GridItem>
         </Grid>
@@ -64,4 +60,4 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default FormWithVehicleReference;
+export default LayoutWithVehicleReference;
