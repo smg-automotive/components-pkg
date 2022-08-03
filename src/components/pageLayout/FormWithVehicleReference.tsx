@@ -12,6 +12,7 @@ import VehicleReference, { VehicleProps } from '../vehicleReference';
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
 import Button from '../button';
+import { Stack } from '../index';
 
 interface Props {
   title: string;
@@ -56,11 +57,11 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
         <GridItem area="vehicle">
           <VehicleReference {...vehicle} />
         </GridItem>
-        <GridItem area="main">
-          <Flex direction="column" paddingY="2xl">
-            {children}
-          </Flex>
-          <Button onClick={submitButton.onClick}>{submitButton.label}</Button>
+        <GridItem area="main" paddingY="2xl">
+          <Stack direction="column" spacing="2xl">
+            <chakra.div>{children}</chakra.div>
+            <Button onClick={submitButton.onClick}>{submitButton.label}</Button>
+          </Stack>
         </GridItem>
       </Grid>
     </Component>
