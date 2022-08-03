@@ -1,7 +1,9 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'; import Stack from '../stack';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
 import FormWithVehicleReference from './FormWithVehicleReference.tsx';
-import Input from '../input/index';
+import Stack from '../stack';
+import Input from '../input';
 
 <Meta
   title="Layout/Pages/Form with vehicle reference"
@@ -18,26 +20,27 @@ export const Template = (args) => <FormWithVehicleReference {...args} />;
     args={{
       title: 'Nachricht an den Verkäufer',
       backLink: {
-        text: "Back",
-        url: "https://www.autoscout24.ch/de"
+        text: 'Back',
+        url: 'https://www.autoscout24.ch/de',
       },
       vehicle: {
         vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
         price: `CHF 23'900.–`,
         sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
         sellerAddress: `2540 Grenchen (SO)`,
-        image: <img src="/dummyImage.jpeg"  alt='vehicle reference image'/>,
+        image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
       },
       submitButton: {
-        onClick: ()=> console.log("submit form"),
-        label: "Label"
+        onClick: action('submit'),
+        label: 'Label',
       },
-      children:
+      children: (
         <Stack spacing="md">
           <Input name="name" placeholder="Name" />
           <Input name="email" placeholder="E-Mail address" />
           <Input name="phone" placeholder="Phone number" />
         </Stack>
+      ),
     }}
   >
     {Template.bind({})}
