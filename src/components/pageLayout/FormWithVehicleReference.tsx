@@ -38,23 +38,22 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
             xs: `"header" "vehicle" "main"`,
             lg: `"header . ." "main . vehicle"`,
           }}
-          gridTemplateColumns={{ lg: '1fr 120px 1fr' }}
+          gridTemplateColumns={{ lg: '1fr 100px 1fr' }}
           gridTemplateRows="minmax(min-content, max-content) 1fr"
+          gap="xl"
         >
           <GridItem area="header">
-            <Link
-              href={backLink.url}
-              leftIcon={<ArrowLeftIcon />}
-              paddingY="lg"
-            >
+            <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
               {backLink.text}
             </Link>
-            <chakra.h1 textStyle="heading1">{title}</chakra.h1>
+            <chakra.h1 textStyle="heading1" paddingTop="xl">
+              {title}
+            </chakra.h1>
           </GridItem>
           <GridItem area="vehicle">
             <VehicleReference {...vehicle} />
           </GridItem>
-          <GridItem area="main" paddingY="2xl">
+          <GridItem area="main">
             <Stack direction="column" spacing="2xl">
               <chakra.div>{children}</chakra.div>
               <Button onClick={submitButton.onClick}>
