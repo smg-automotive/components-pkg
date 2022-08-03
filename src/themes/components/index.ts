@@ -5,6 +5,7 @@ import SimpleHeader from './simpleHeader';
 import Section from './section';
 import Link from './link';
 import Input from './input';
+import FormWithVehicleReference from './formWithVehicleReference';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
@@ -26,4 +27,5 @@ export const components = {
   Table,
   Textarea,
   VehicleReference,
+  FormWithVehicleReference,
 };
