@@ -1,7 +1,9 @@
 export { default as ArticleTeaser } from './articleTeaser';
 export { default as Button } from './button';
+export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as FormControl } from './formControl';
+export { default as FullHeight } from './fullHeight';
 export { default as Grid } from './grid';
 export { default as Input } from './input';
 export { default as Link } from './link';
