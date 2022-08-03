@@ -10,7 +10,7 @@ import Input from '../input/index';
 
 export const Template = (args) => <FormWithVehicleReference {...args} />;
 
-# Form with vehicle
+# Form with vehicle reference
 
 <Canvas>
   <Story
@@ -26,13 +26,18 @@ export const Template = (args) => <FormWithVehicleReference {...args} />;
         price: `CHF 23'900.–`,
         sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
         sellerAddress: `2540 Grenchen (SO)`,
-        image: <img src="/dummyImage.jpeg" />,
+        image: <img src="/dummyImage.jpeg"  alt='vehicle reference image'/>,
       },
       submitButton: {
         onClick: ()=> console.log("submit form"),
         label: "Label"
       },
-      children: <Stack spacing="md"><Input name="name" placeholder="Name" /><Input name="email" placeholder="E-Mail address" /><Input name="phone" placeholder="Phone number" /></Stack>
+      children:
+        <Stack spacing="md">
+          <Input name="name" placeholder="Name" />
+          <Input name="email" placeholder="E-Mail address" />
+          <Input name="phone" placeholder="Phone number" />
+        </Stack>
     }}
   >
     {Template.bind({})}

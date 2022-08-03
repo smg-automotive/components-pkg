@@ -1,12 +1,12 @@
-import React, { FC, MouseEvent, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 import { Center, chakra, Grid, GridItem } from '@chakra-ui/react';
 
 import VehicleReference, { VehicleProps } from '../vehicleReference';
+import Stack from '../stack';
 import Link from '../link';
-import { Stack } from '../index';
 import { ArrowLeftIcon } from '../icons';
-import Button from '../button';
+import Button, { ButtonProps } from '../button';
 
 interface Props {
   title: string;
@@ -15,10 +15,7 @@ interface Props {
     url: string;
   };
   vehicle: VehicleProps;
-  submitButton: {
-    onClick: (event: MouseEvent<HTMLElement>) => void;
-    label: string;
-  };
+  submitButton: Pick<ButtonProps, 'onClick'> & { label: string };
 }
 
 const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
