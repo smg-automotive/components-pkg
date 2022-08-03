@@ -1,19 +1,12 @@
-import React, { FC, MouseEvent, PropsWithChildren, ReactNode } from 'react';
+import React, { FC, MouseEvent, PropsWithChildren } from 'react';
 
-import {
-  Center,
-  chakra,
-  Flex,
-  Grid,
-  GridItem,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
+import { Center, chakra, Grid, GridItem } from '@chakra-ui/react';
 
 import VehicleReference, { VehicleProps } from '../vehicleReference';
 import Link from '../link';
+import { Stack } from '../index';
 import { ArrowLeftIcon } from '../icons';
 import Button from '../button';
-import { Stack } from '../index';
 
 interface Props {
   title: string;
@@ -35,8 +28,6 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   submitButton,
   children,
 }) => {
-  const styles = useMultiStyleConfig(`FormWithVehicleReference`);
-
   const Component = chakra('main');
 
   return (
@@ -58,7 +49,7 @@ const FormWithVehicleReference: FC<PropsWithChildren<Props>> = ({
             >
               {backLink.text}
             </Link>
-            <chakra.h1 __css={styles.title}>{title}</chakra.h1>
+            <chakra.h1 textStyle="heading1">{title}</chakra.h1>
           </GridItem>
           <GridItem area="vehicle">
             <VehicleReference {...vehicle} />
