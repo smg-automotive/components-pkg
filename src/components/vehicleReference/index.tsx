@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, Suspense } from 'react';
 
 import {
   AspectRatio,
@@ -38,7 +38,13 @@ const VehicleReference: FC<Props> = ({
           borderRadius="sm"
           overflow="hidden"
         >
-          {image ? image : <MissingImage />}
+          {image ? (
+            image
+          ) : (
+            <Suspense>
+              <MissingImage />
+            </Suspense>
+          )}
         </AspectRatio>
         <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
