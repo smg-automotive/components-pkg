@@ -34,13 +34,13 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       }}
       gridTemplateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
     >
-      <GridItem area="backlink">
-        {backLink ? (
+      {backLink ? (
+        <GridItem area="backlink">
           <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
             {backLink.text}
           </Link>
-        ) : null}
-      </GridItem>
+        </GridItem>
+      ) : null}
       <GridItem area="heading">
         <Heading as="h1" textStyle="heading1">
           {title}
