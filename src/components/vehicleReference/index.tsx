@@ -60,4 +60,4 @@ const VehicleReference: FC<Props> = ({
 };
 
 export default VehicleReference;
-export { Props as VehicleProps };
+export { Props as VehicleReferenceProps };

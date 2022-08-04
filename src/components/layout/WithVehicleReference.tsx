@@ -3,7 +3,7 @@ import React, { FC, PropsWithChildren } from 'react';
 import { GridItem, Heading } from '@chakra-ui/react';
 
 import BaseGridLayout, { repeatArea } from './BaseGrid';
-import VehicleReference, { VehicleProps } from '../vehicleReference';
+import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Stack from '../stack';
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
@@ -14,7 +14,7 @@ interface Props {
     text: string;
     url: string;
   };
-  vehicle: VehicleProps;
+  vehicle: VehicleReferenceProps;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({

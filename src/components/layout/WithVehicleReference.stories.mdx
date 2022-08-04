@@ -7,6 +7,30 @@ import Input from '../input';
 <Meta
   title="Layout/Pages/Layout with vehicle reference"
   component={LayoutWithVehicleReference}
+  args={{
+    title: 'Nachricht an den Verkäufer',
+    vehicle: {
+      vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
+      price: `CHF 23'900.–`,
+      sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
+      sellerAddress: `2540 Grenchen (SO)`,
+      image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
+    },
+    children: (
+      <Stack spacing="md">
+        <Input name="name" placeholder="Name" />
+        <Input name="email" placeholder="E-Mail address" />
+        <Input name="phone" placeholder="Phone number" />
+      </Stack>
+    ),
+  }}
+  argTypes={{
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
 />
 
 export const Template = (args) => <LayoutWithVehicleReference {...args} />;
@@ -19,25 +43,10 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
   <Story
     name="With back link"
     args={{
-      title: 'Nachricht an den Verkäufer',
       backLink: {
         text: 'Back',
         url: 'https://www.autoscout24.ch/de',
       },
-      vehicle: {
-        vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
-        price: `CHF 23'900.–`,
-        sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
-        sellerAddress: `2540 Grenchen (SO)`,
-        image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
-      },
-      children: (
-        <Stack spacing="md">
-          <Input name="name" placeholder="Name" />
-          <Input name="email" placeholder="E-Mail address" />
-          <Input name="phone" placeholder="Phone number" />
-        </Stack>
-      ),
     }}
   >
     {Template.bind({})}
@@ -51,23 +60,6 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
 <Canvas>
   <Story
     name="Without back link"
-    args={{
-      title: 'Nachricht an den Verkäufer',
-      vehicle: {
-        vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
-        price: `CHF 23'900.–`,
-        sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
-        sellerAddress: `2540 Grenchen (SO)`,
-        image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
-      },
-      children: (
-        <Stack spacing="md">
-          <Input name="name" placeholder="Name" />
-          <Input name="email" placeholder="E-Mail address" />
-          <Input name="phone" placeholder="Phone number" />
-        </Stack>
-      ),
-    }}
   >
     {Template.bind({})}
   </Story>
