@@ -26,12 +26,13 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   return (
     <BaseGridLayout
       templateAreas={{
-        xs: `"backlink" "vehicle" "main"`,
+        xs: `"backlink" "heading" "vehicle" "main"`,
         lg: `
             "${repeatArea(12, 'backlink')}"
+            "${repeatArea(6, 'heading')} . ${repeatArea(5, 'vehicle')}"
             "${repeatArea(6, 'main')} . ${repeatArea(5, 'vehicle')}"`,
       }}
-      gridTemplateRows="minmax(min-content, max-content) 1fr"
+      gridTemplateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
     >
       <GridItem area="backlink">
         {backLink ? (
@@ -40,13 +41,15 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
           </Link>
         ) : null}
       </GridItem>
+      <GridItem area="heading">
+        <Heading as="h1" textStyle="heading1">
+          {title}
+        </Heading>
+      </GridItem>
       <GridItem area="vehicle">
         <VehicleReference {...vehicle} />
       </GridItem>
       <GridItem area="main">
-        <Heading as="h1" textStyle="heading1" marginBottom="xl">
-          {title}
-        </Heading>
         <Stack direction="column" spacing="2xl">
           {children}
         </Stack>
