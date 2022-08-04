@@ -29,36 +29,44 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   vehicle,
   children,
 }) => {
+  const repeatArea = (count: number, area: string) => {
+    return new Array(count).fill(area).join(' ');
+  };
+
   return (
     <Center>
-      <Container as="main" width="full" maxWidth="container.xl">
+      <Container
+        as="main"
+        width="full"
+        maxWidth="container.xl"
+        paddingY={{ xs: 'xl', lg: '2xl' }}
+        paddingX={{ xs: 'md', lg: '4xl' }}
+      >
         <Grid
           templateAreas={{
-            xs: `"backlink" "heading" "vehicle" "main"`,
-            lg: `"backlink . ." "heading . vehicle" "main . vehicle"`,
+            xs: `"backlink" "vehicle" "main"`,
+            lg: `
+            "${repeatArea(12, 'backlink')}"
+            "${repeatArea(6, 'main')} . ${repeatArea(5, 'vehicle')}"`,
           }}
-          gridTemplateColumns={{ lg: '1fr 100px 1fr' }}
-          gridTemplateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
+          gridTemplateColumns={{ lg: 'repeat(12, 1fr)' }}
+          gridTemplateRows="minmax(min-content, max-content) 1fr"
           gap="xl"
         >
           <GridItem area="backlink">
             {backLink ? (
-              <chakra.div paddingBottom="xl">
-                <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
-                  {backLink.text}
-                </Link>
-              </chakra.div>
+              <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
+                {backLink.text}
+              </Link>
             ) : null}
-          </GridItem>
-          <GridItem area="heading">
-            <Heading as="h1" textStyle="heading1">
-              {title}
-            </Heading>
           </GridItem>
           <GridItem area="vehicle">
             <VehicleReference {...vehicle} />
           </GridItem>
           <GridItem area="main">
+            <Heading as="h1" textStyle="heading1" marginBottom="xl">
+              {title}
+            </Heading>
             <Stack direction="column" spacing="2xl">
               {children}
             </Stack>
