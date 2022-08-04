@@ -14,6 +14,10 @@ const external = [
   ...Object.keys(packageJson.dependencies || {}),
   ...Object.keys(packageJson.peerDependencies || {}),
 ];
+const onwarn = (warning, warn) => {
+  if (warning.code === 'CIRCULAR_DEPENDENCY') throw new Error(warning.message);
+  warn(warning);
+};
 
 export default [
   {
@@ -40,6 +44,7 @@ export default [
       }),
     ],
     external,
+    onwarn,
   },
   {
     input: 'src/index.ts',
@@ -75,6 +80,7 @@ export default [
       }),
     ],
     external,
+    onwarn,
   },
   {
     input: 'dist/esm/types/index.d.ts',
@@ -101,5 +107,6 @@ export default [
       }),
       executable(),
     ],
+    onwarn,
   },
 ];
