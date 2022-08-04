@@ -4,7 +4,7 @@
   "description": "SMG Automotive components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "sideEffects": true,
+  "sideEffects": false,
   "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"

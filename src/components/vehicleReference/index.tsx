@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, Suspense } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import {
   AspectRatio,
@@ -8,9 +8,7 @@ import {
 } from '@chakra-ui/react';
 
 import Stack from '../stack';
-import { lazy } from '../../lib';
-
-const MissingImage = lazy(async () => import('../icons'), 'MissingImage');
+import { MissingImage } from '../icons';
 
 interface Props {
   image?: ReactNode;
@@ -38,13 +36,7 @@ const VehicleReference: FC<Props> = ({
           borderRadius="sm"
           overflow="hidden"
         >
-          {image ? (
-            image
-          ) : (
-            <Suspense>
-              <MissingImage />
-            </Suspense>
-          )}
+          {image ? image : <MissingImage />}
         </AspectRatio>
         <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
