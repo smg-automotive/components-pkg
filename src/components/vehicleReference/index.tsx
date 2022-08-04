@@ -8,7 +8,9 @@ import {
 } from '@chakra-ui/react';
 
 import Stack from '../stack';
-import { MissingImage } from '../index';
+import { lazy } from '../../lib';
+
+const MissingImage = lazy(async () => import('../icons'), 'MissingImage');
 
 interface Props {
   image?: ReactNode;
