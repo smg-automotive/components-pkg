@@ -22,6 +22,7 @@ export default [
         file: packageJson.main,
         format: 'cjs',
         sourcemap: true,
+        inlineDynamicImports: true,
       },
     ],
     plugins: [
