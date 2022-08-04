@@ -1,4 +1,5 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import image from 'rollup-plugin-img';
 import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
@@ -29,6 +30,7 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
+      image(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
@@ -54,6 +56,7 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
+      image(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
