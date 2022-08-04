@@ -1,4 +1,5 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import image from 'rollup-plugin-img';
 import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
@@ -13,6 +14,10 @@ const external = [
   ...Object.keys(packageJson.dependencies || {}),
   ...Object.keys(packageJson.peerDependencies || {}),
 ];
+const onwarn = (warning, warn) => {
+  if (warning.code === 'CIRCULAR_DEPENDENCY') throw new Error(warning.message);
+  warn(warning);
+};
 
 export default [
   {
@@ -29,6 +34,7 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
+      image(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
@@ -38,6 +44,7 @@ export default [
       }),
     ],
     external,
+    onwarn,
   },
   {
     input: 'src/index.ts',
@@ -54,6 +61,7 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
+      image(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
@@ -72,6 +80,7 @@ export default [
       }),
     ],
     external,
+    onwarn,
   },
   {
     input: 'dist/esm/types/index.d.ts',
@@ -98,5 +107,6 @@ export default [
       }),
       executable(),
     ],
+    onwarn,
   },
 ];

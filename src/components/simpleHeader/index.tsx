@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { chakra, Flex, useMultiStyleConfig } from '@chakra-ui/react';
 
-import { CloseIcon } from '../../index';
+import { CloseIcon } from '../icons';
 
 interface Props {
   title: string;
