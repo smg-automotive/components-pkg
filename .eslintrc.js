@@ -22,6 +22,12 @@ module.exports = {
         ],
       },
     ],
+    'import/no-internal-modules': [
+      'error',
+      {
+        allow: ['**/assets/images/**'],
+      },
+    ],
   },
   overrides: [
     {
