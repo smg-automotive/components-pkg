@@ -1,4 +1,5 @@
 import { ComponentType, lazy } from 'react';
+
 export default (
   resolver: () => Promise<Record<string, ComponentType>>,
   name = 'default'
