@@ -93,7 +93,7 @@ export default [
         tsconfig: './tsconfig.build_cli.json',
       }),
       shebang({
-        include: dirname(packageJson.bin.components),
+        include: packageJson.bin.components,
       }),
       executable(),
     ],
