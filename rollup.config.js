@@ -1,13 +1,23 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import image from 'rollup-plugin-img';
 import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
+import { dirname, join } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 const packageJson = require('./package.json');
+const external = [
+  ...Object.keys(packageJson.dependencies || {}),
+  ...Object.keys(packageJson.peerDependencies || {}),
+];
+const onwarn = (warning, warn) => {
+  if (warning.code === 'CIRCULAR_DEPENDENCY') throw new Error(warning.message);
+  warn(warning);
+};
 
 export default [
   {
@@ -17,18 +27,48 @@ export default [
         file: packageJson.main,
         format: 'cjs',
         sourcemap: true,
-      },
-      {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
+        inlineDynamicImports: true,
       },
     ],
     plugins: [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.build.json' }),
+      image(),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        compilerOptions: {
+          outDir: dirname(packageJson.main),
+          declarationDir: join(dirname(packageJson.main), 'types'),
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        dir: dirname(packageJson.module),
+        format: 'esm',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        compilerOptions: {
+          outDir: dirname(packageJson.module),
+          declarationDir: join(dirname(packageJson.module), 'types'),
+        },
+      }),
       copy({
         targets: [
           {
@@ -39,7 +79,8 @@ export default [
         flatten: false,
       }),
     ],
-    external: ['react', 'react-dom'],
+    external,
+    onwarn,
   },
   {
     input: 'dist/esm/types/index.d.ts',
@@ -50,18 +91,22 @@ export default [
     input: 'src/lib/cli/index.ts',
     output: [
       {
-        file: 'dist/bin/cli',
+        file: packageJson.bin.components,
         sourcemap: false,
         format: 'cjs',
       },
     ],
     plugins: [
       resolve({ preferBuiltins: true }),
-      typescript({ tsconfig: './tsconfig.build.json' }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.build_cli.json',
+      }),
       shebang({
-        include: 'dist/bin/cli',
+        include: packageJson.bin.components,
       }),
       executable(),
     ],
+    onwarn,
   },
 ];
