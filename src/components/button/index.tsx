@@ -1,14 +1,24 @@
 import React, { FC, MouseEvent, ReactNode } from 'react';
 import { Button as ChakraButton } from '@chakra-ui/react';
 
-interface Props {
+type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
   isDisabled?: boolean;
-  onClick: (event: MouseEvent<HTMLElement>) => void;
   children: ReactNode;
-  type?: 'button' | 'submit';
-}
+};
+
+type ButtonProps = SharedProps & {
+  type?: 'button';
+  onClick: (event: MouseEvent<HTMLElement>) => void;
+};
+
+type SubmitProps = SharedProps & {
+  type?: 'submit';
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
+};
+
+type Props = ButtonProps | SubmitProps;
 
 const Button: FC<Props> = ({
   variant = 'primary',
