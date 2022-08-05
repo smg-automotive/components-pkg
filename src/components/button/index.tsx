@@ -7,12 +7,14 @@ interface Props {
   isDisabled?: boolean;
   onClick: (event: MouseEvent<HTMLElement>) => void;
   children: ReactNode;
+  type?: 'button' | 'submit';
 }
 
 const Button: FC<Props> = ({
   variant = 'primary',
   size = 'lg',
   isDisabled = false,
+  type = 'button',
   onClick,
   children,
 }) => (
@@ -21,6 +23,7 @@ const Button: FC<Props> = ({
     isDisabled={isDisabled}
     variant={variant}
     size={size}
+    type={type}
   >
     {children}
   </ChakraButton>
