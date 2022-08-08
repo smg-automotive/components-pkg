@@ -3,23 +3,21 @@ import type {
   SystemStyleObject,
 } from '@chakra-ui/theme-tools';
 
+import Input from './input';
+
 const baseStyle: SystemStyleObject = {
   field: {
-    width: '100%',
-    minWidth: 0,
-    outline: 0,
-    position: 'relative',
-    appearance: 'none',
-    transitionProperty: 'common',
-    transitionDuration: 'normal',
-    px: 'md',
-    py: 'xs',
+    ...Input.baseStyle.field,
   },
 };
 
-const variants: Record<string, SystemStyleInterpolation> = {};
+const variants: Record<string, SystemStyleInterpolation> = {
+  outline: Input.variants.outline,
+};
 
-const defaultProps = {};
+const defaultProps = {
+  variant: 'outline',
+};
 
 export default {
   baseStyle,
