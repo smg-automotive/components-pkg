@@ -14,7 +14,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "disableSizeLimit": true,
   },
   "exclude": ["dist", "node_modules"],
   "include": ["src"]
