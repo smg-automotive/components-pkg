@@ -1,27 +1,21 @@
-import type {
-  SystemStyleInterpolation,
-  SystemStyleObject,
-} from '@chakra-ui/theme-tools';
+import { StyleConfig } from '@chakra-ui/theme-tools';
 
 import Input from './input';
 
-const baseStyle: SystemStyleObject = {
-  field: {
-    ...Input.baseStyle.field,
+const selectStyles: StyleConfig = {
+  ...Input,
+  baseStyle: {
+    field: {
+      ...Input.baseStyle.field,
+    },
+  },
+  sizes: Input.sizes,
+  variants: {
+    outline: Input.variants.outline,
+  },
+  defaultProps: {
+    variant: 'outline',
   },
 };
 
-const variants: Record<string, SystemStyleInterpolation> = {
-  outline: Input.variants.outline,
-};
-
-const defaultProps = {
-  variant: 'outline',
-};
-
-export default {
-  baseStyle,
-  sizes: Input.sizes,
-  variants,
-  defaultProps,
-};
+export default selectStyles;
