@@ -9,7 +9,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@react-theming/storybook-addon',
+    "storybook-addon-themes",
   ],
   framework: '@storybook/react',
   typescript: {

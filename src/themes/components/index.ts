@@ -1,7 +1,7 @@
 import VehicleReference from './vehicleReference';
-import Switch from './themeSwitch';
 import Textarea from './textarea';
 import Table from './table';
+import Switch from './switch';
 import SimpleHeader from './simpleHeader';
 import Section from './section';
 import Link from './link';
@@ -26,7 +26,6 @@ export const components = {
   SimpleHeader,
   Table,
   Textarea,
-  Section,
   Switch,
   VehicleReference,
 };

@@ -1,11 +1,8 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
-import {
-  ThemeProvider as StorybookThemeProvider,
-  ensure as ensureTheme,
-} from '@storybook/theming';
-import { CSSReset, ThemeProvider } from '@chakra-ui/react';
-import { withThemes } from '@react-theming/storybook-addon';
+import { withThemes } from 'storybook-addon-themes';
+import { ChakraProvider } from '@chakra-ui/react';
+import { addons } from '@storybook/addons';
 
 import {
   motoScout24Theme,
@@ -13,33 +10,37 @@ import {
   autoScout24Theme,
   autoScoutChakraTheme,
 } from '../src/themes';
+
 import { breakpoints } from '../src/themes/shared/breakpoints';
 import { Fonts } from '../src/styles/Fonts';
+import Theme from './theme';
 
-const providerFn = ({ theme = autoScout24Theme, children }) => {
-  return (
-    <StorybookThemeProvider theme={ensureTheme()}>
-      <ThemeProvider theme={theme}>
-        <CSSReset />
-        <Fonts />
-        {children}
-      </ThemeProvider>
-    </StorybookThemeProvider>
-  );
-};
 
-addDecorator(
-  withThemes(
-    null,
-    [
-      autoScout24Theme,
-      motoScout24Theme,
-      autoScoutChakraTheme,
-      motoScoutChakraTheme,
-    ],
-    { providerFn }
+const ThemeDecorator = (args) => {
+  Theme.brandTitle = "asdas"
+  addons.setConfig({
+    theme: Theme,
+  });
+  const { theme = autoScout24Theme, children } = args;
+  return(
+    <ChakraProvider theme={theme} resetCSS={true} >
+      <Fonts />
+      {children}
+    </ChakraProvider>
   )
-);
+}
+
+addDecorator(withThemes);
+const themes = {
+  default: 'AutoScout 24',
+  Decorator: ThemeDecorator,
+  list: [
+    motoScout24Theme,
+    motoScoutChakraTheme,
+    autoScout24Theme,
+    autoScoutChakraTheme,
+  ],
+}
 
 const customViewports = Object.entries(breakpoints).reduce(
   (acc, [key, value]) => {
@@ -55,7 +56,10 @@ const customViewports = Object.entries(breakpoints).reduce(
   {}
 );
 
+
+
 export const parameters = {
+  themes,
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -66,3 +70,6 @@ export const parameters = {
     viewports: customViewports,
   },
 };
+
+
+
