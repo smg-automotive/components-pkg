@@ -72,7 +72,10 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       options: [
         { value: "o1", option: "Option 1" },
         { value: "o2", option: "Option 2" },
-        { value: "o3", option: "Option 3" }
+        { value: "o3", option: "Option 3" },
+        { value: "o4", option: "Option 4" },
+        { value: "o5", option: "Option 5" },
+        { value: "o6", option: "Option 6" }
       ]
     }}
     argTypes={{
@@ -93,43 +96,3 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
 </Canvas>
 
 <ArgsTable story="Overview" />
-
-## Sizes
-
-### Medium
-
-<Canvas>
-  <Story id="forms-input-sizes--medium" />
-</Canvas>
-
-### Large
-
-<Canvas>
-  <Story id="forms-input-sizes--large" />
-</Canvas>
-
-## States
-
-### Default
-
-<Canvas>
-  <Story id="forms-input-states--default-story" />
-</Canvas>
-
-### Focused
-
-<Canvas>
-  <Story id="forms-input-states--focused" />
-</Canvas>
-
-### Disabled
-
-<Canvas>
-  <Story id="forms-input-states--disabled" />
-</Canvas>
-
-### Invalid
-
-<Canvas>
-  <Story id="forms-input-states--invalid" />
-</Canvas>

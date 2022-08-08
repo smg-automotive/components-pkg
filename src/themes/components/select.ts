@@ -21,6 +21,7 @@ const defaultProps = {
 
 export default {
   baseStyle,
+  sizes: Input.sizes,
   variants,
   defaultProps,
 };

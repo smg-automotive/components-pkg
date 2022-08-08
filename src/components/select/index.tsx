@@ -24,7 +24,7 @@ type Props = Pick<
 
 const Select: FC<Props> = (props) => {
   return (
-    <ChakraSelect {...props} variant="outline">
+    <ChakraSelect {...props}>
       {props.options.map((option) => (
         <option value={option.value} key={option.value}>
           {option.option}
