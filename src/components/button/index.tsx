@@ -1,15 +1,15 @@
-import React, { FC, MouseEvent, ReactNode } from 'react';
-import { Button as ChakraButton } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import {
+  Button as ChakraButton,
+  ButtonProps as ChakraButtonProps,
+} from '@chakra-ui/react';
 
-interface Props {
+export type ButtonProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-  isDisabled?: boolean;
-  onClick: (event: MouseEvent<HTMLElement>) => void;
-  children: ReactNode;
-}
+} & Pick<ChakraButtonProps, 'isDisabled' | 'onClick' | 'children'>;
 
-const Button: FC<Props> = ({
+const Button: FC<ButtonProps> = ({
   variant = 'primary',
   size = 'lg',
   isDisabled = false,
