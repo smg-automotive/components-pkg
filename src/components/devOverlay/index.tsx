@@ -19,11 +19,12 @@ import Button, { ButtonProps } from '../button';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
-export type DevOverlayProps = {
-  hideDevOverlay: Extract<ButtonProps, 'onClick'>;
-  toggleTheme: Extract<SwitchProps, 'onChange'>;
-  variables: DevOverlayVariables;
-};
+export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
+  Omit<SwitchProps, 'onChange'> & {
+    hideDevOverlay: ButtonProps['onClick'];
+    toggleTheme: SwitchProps['onChange'];
+    variables: DevOverlayVariables;
+  };
 
 const DevOverlay: FC<DevOverlayProps> = ({
   variables,

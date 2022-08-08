@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Box } from '@chakra-ui/react';
 
 import DevOverlay from './index.tsx';
+import { FullHeight } from '../index';
 
 <Meta
   title="Theme/DevOverlay"
@@ -13,9 +13,9 @@ import DevOverlay from './index.tsx';
 
 export const Template = (args) => {
   return (
-    <Box min-height="100vh" height="100vh">
+    <FullHeight>
       <DevOverlay {...args} />
-    </Box>
+    </FullHeight>
   );
 };
 
