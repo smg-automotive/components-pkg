@@ -9,6 +9,36 @@ import Select from './index.tsx';
 <Meta
   title="Forms/Select"
   component={Select}
+  args={{
+    placeholder: 'Select an option',
+    isDisabled: false,
+    isInvalid: false,
+    size: 'lg',
+    onChange: true,
+    onFocus: false,
+    onBlur: false,
+    autoFocus: false,
+    options: [
+      { value: 'o1', option: 'Option 1' },
+      { value: 'o2', option: 'Option 2' },
+      { value: 'o3', option: 'Option 3' },
+      { value: 'o4', option: 'Option 4' },
+      { value: 'o5', option: 'Option 5' },
+      { value: 'o6', option: 'Option 6' },
+    ],
+  }}
+  argTypes={{
+    value: {
+      defaultValue: '',
+      control: { type: 'text', placeholder: 'xxxxxx' },
+      type: { name: 'string', required: false },
+      description: 'use value prop when you want controlled input',
+    },
+    size: {
+      options: ['md', 'lg'],
+      control: 'select',
+    },
+  }}
   parameters={{
     controls: {
       sort: 'alpha',
@@ -58,41 +88,49 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
 ## Overview
 
 <Canvas>
+  <Story name="Overview">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## Focused
+
+<Canvas>
   <Story
-    name="Overview"
+    name="Focused"
     args={{
-      placeholder: 'Select an option',
-      isDisabled: false,
-      isInvalid: false,
-      size: 'lg',
-      onChange: true,
-      onFocus: false,
-      onBlur: false,
-      autoFocus: false,
-      options: [
-        { value: "o1", option: "Option 1" },
-        { value: "o2", option: "Option 2" },
-        { value: "o3", option: "Option 3" },
-        { value: "o4", option: "Option 4" },
-        { value: "o5", option: "Option 5" },
-        { value: "o6", option: "Option 6" }
-      ]
-    }}
-    argTypes={{
-      value: {
-        defaultValue: '',
-        control: { type: 'text', placeholder: 'xxxxxx' },
-        type: { name: 'string', required: false },
-        description: 'use value prop when you want controlled input',
-      },
-      size: {
-        options: ['md', 'lg'],
-        control: 'select',
-      },
+      onFocus: true,
+      autoFocus: true,
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Focused" />
+
+<Canvas>
+  <Story
+    name="Invalid"
+    args={{
+      isInvalid: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Invalid" />
+
+<Canvas>
+  <Story
+    name="Disabled"
+    args={{
+      isDisabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Disabled" />
