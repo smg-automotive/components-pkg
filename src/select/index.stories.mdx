@@ -1,0 +1,135 @@
+import { useState } from 'react';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import { Box } from '@chakra-ui/react';
+
+import Select from './index.tsx';
+
+<Meta
+  title="Forms/Select"
+  component={Select}
+  parameters={{
+    controls: {
+      sort: 'alpha',
+      expanded: true,
+    },
+    actions: ['change', 'blur', 'focus'],
+  }}
+/>
+
+export const Container = ({ children }) => {
+  return (
+    <Box w="100%" maxW="250px">
+      {children}
+    </Box>
+  );
+};
+
+export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
+  const [currentValue, setCurrentValue] = useState(value);
+  const onChangeHandler = onChange
+    ? action('change')
+    : () => {
+        return;
+      };
+  return (
+    <Container>
+      <Select
+        {...args}
+        onBlur={onBlur ? action('blur') : undefined}
+        onFocus={onFocus ? action('focus') : undefined}
+        onChange={
+          value
+            ? (e) => {
+                setCurrentValue(e.target.value);
+                onChangeHandler(e);
+              }
+            : onChangeHandler
+        }
+        value={value ? currentValue : undefined}
+      />
+    </Container>
+  );
+};
+
+# Input
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      placeholder: 'Select an option',
+      isDisabled: false,
+      isInvalid: false,
+      size: 'lg',
+      onChange: true,
+      onFocus: false,
+      onBlur: false,
+      autoFocus: false,
+      options: [
+        { value: "o1", option: "Option 1" },
+        { value: "o2", option: "Option 2" },
+        { value: "o3", option: "Option 3" }
+      ]
+    }}
+    argTypes={{
+      value: {
+        defaultValue: '',
+        control: { type: 'text', placeholder: 'xxxxxx' },
+        type: { name: 'string', required: false },
+        description: 'use value prop when you want controlled input',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## Sizes
+
+### Medium
+
+<Canvas>
+  <Story id="forms-input-sizes--medium" />
+</Canvas>
+
+### Large
+
+<Canvas>
+  <Story id="forms-input-sizes--large" />
+</Canvas>
+
+## States
+
+### Default
+
+<Canvas>
+  <Story id="forms-input-states--default-story" />
+</Canvas>
+
+### Focused
+
+<Canvas>
+  <Story id="forms-input-states--focused" />
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story id="forms-input-states--disabled" />
+</Canvas>
+
+### Invalid
+
+<Canvas>
+  <Story id="forms-input-states--invalid" />
+</Canvas>
