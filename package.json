@@ -39,7 +39,7 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.9",
+    "@babel/core": "7.18.10",
     "@react-theming/storybook-addon": "1.1.7",
     "@rollup/plugin-commonjs": "22.0.1",
     "@rollup/plugin-node-resolve": "13.3.0",
