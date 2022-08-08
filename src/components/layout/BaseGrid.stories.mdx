@@ -1,0 +1,44 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box, GridItem } from '@chakra-ui/react';
+
+import BaseGrid from './BaseGrid.tsx';
+import { FullHeight } from '../index';
+
+<Meta
+  title="Layout/Pages/Base grid"
+  component={BaseGrid}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = () => (
+  <FullHeight>
+    <Box bg="green.100" height="full">
+      <BaseGrid
+        gridTemplateRows={{
+          xs: 'repeat(12, 1fr)',
+          lg: '1fr',
+        }}
+        height="full"
+        bg="red.200"
+      >
+        {new Array(12).fill('column').map((item, index) => (
+          <GridItem key={index}>
+            <Box bg="blue.200" h="100%">
+              {index + 1}
+            </Box>
+          </GridItem>
+        ))}
+      </BaseGrid>
+    </Box>
+  </FullHeight>
+);
+
+# Base grid
+
+<Canvas>
+  <Story name="Base grid for XL layouts">
+    {Template.bind({})}
+  </Story>
+</Canvas>
