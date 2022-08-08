@@ -23,13 +23,7 @@ const diffValue = calc.subtract($width, $height);
 
 const $translateX = cssVar('switch-thumb-x');
 
-const baseStyleTrack = ({
-  bg,
-  checkedBg,
-}: {
-  bg?: string;
-  checkedBg?: string;
-}) => {
+const baseStyleTrack: SystemStyleFunction = ({ bg, checkedBg }) => {
   const defaultBg = 'white';
   const defaultCheckedBg = 'blue';
 
@@ -59,7 +53,7 @@ const computedStyleTrack: SystemStyleFunction = (props) => {
   const bg = mode('gray.300', 'white')(props);
   const checkedBg = mode(`${c}.500`, `${c}.200`)(props);
 
-  return baseStyleTrack({ bg, checkedBg });
+  return baseStyleTrack({ ...props, bg, checkedBg });
 };
 
 const baseStyleThumb: SystemStyleObject = {
@@ -95,10 +89,10 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
 };
 
-const variants = {
-  default: {},
-  themeSwitch: {
+const themeSwitchStyles: PartsStyleFunction<typeof parts> = (props) => {
+  return {
     track: baseStyleTrack({
+      ...props,
       bg: as24Colors.brand.primary,
       checkedBg: ms24Colors.brand.primary,
     }),
@@ -107,7 +101,12 @@ const variants = {
       bg: 'gray.600',
       _checked: { bg: 'white' },
     },
-  },
+  };
+};
+
+const variants = {
+  default: {},
+  themeSwitch: themeSwitchStyles,
 };
 
 const defaultProps = {
