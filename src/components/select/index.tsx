@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Select as ChakraSelect, SelectProps } from '@chakra-ui/react';
 
+import { ArrowDownIcon } from '../icons';
+
 type Option = {
   value: string | number;
   option: string;
@@ -22,10 +24,10 @@ type Props = Pick<
   options: Option[];
 };
 
-const Select: FC<Props> = (props) => {
+const Select: FC<Props> = ({ options, ...props }) => {
   return (
-    <ChakraSelect {...props}>
-      {props.options.map((option) => (
+    <ChakraSelect {...props} icon={<ArrowDownIcon />}>
+      {options.map((option) => (
         <option value={option.value} key={option.value}>
           {option.option}
         </option>

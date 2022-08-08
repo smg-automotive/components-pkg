@@ -8,6 +8,12 @@ const selectStyles: StyleConfig = {
     field: {
       ...Input.baseStyle.field,
     },
+    icon: {
+      right: 'md',
+      _disabled: {
+        color: 'gray.200',
+      },
+    },
   },
   sizes: Input.sizes,
   variants: {
