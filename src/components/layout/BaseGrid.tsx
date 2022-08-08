@@ -10,10 +10,11 @@ const BaseGridLayout: FC<PropsWithChildren<GridProps>> = (props) => {
   const { children, ...gridProps } = props;
 
   return (
-    <Center>
+    <Center height="full">
       <Container
         as="main"
         width="full"
+        height="full"
         maxWidth="container.xl"
         paddingY={{ xs: 'xl', lg: '2xl' }}
         paddingX={{ xs: 'md', lg: '4xl' }}

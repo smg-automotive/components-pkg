@@ -39,8 +39,8 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.9",
-    "@rollup/plugin-commonjs": "22.0.1",
+    "@babel/core": "7.18.10",
+    "@rollup/plugin-commonjs": "22.0.2",
     "@rollup/plugin-node-resolve": "13.3.0",
     "@rollup/plugin-typescript": "8.3.4",
     "@smg-automotive/eslint-config": "2.0.13",
