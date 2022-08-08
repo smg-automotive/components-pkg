@@ -3,6 +3,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import LayoutWithVehicleReference from './WithVehicleReference.tsx';
 import Stack from '../stack';
 import Input from '../input';
+import FormControl from '../formControl';
 
 <Meta
   title="Layout/Pages/Layout with vehicle reference"
@@ -18,9 +19,15 @@ import Input from '../input';
     },
     children: (
       <Stack spacing="md">
-        <Input name="name" placeholder="Name" />
-        <Input name="email" placeholder="E-Mail address" />
-        <Input name="phone" placeholder="Phone number" />
+        <FormControl id="name" label="Name">
+          <Input name="name" size="lg" />
+        </FormControl>
+        <FormControl id="email" label="E-Mail address">
+          <Input name="email" size="lg" />
+        </FormControl>
+        <FormControl id="phone" label="Phone number">
+          <Input name="phone" size="lg" />
+        </FormControl>
       </Stack>
     ),
   }}
@@ -30,6 +37,9 @@ import Input from '../input';
         disable: true,
       },
     },
+  }}
+  parameters={{
+    layout: 'fullscreen',
   }}
 />
 
