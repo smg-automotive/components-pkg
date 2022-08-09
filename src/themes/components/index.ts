@@ -3,6 +3,7 @@ import Textarea from './textarea';
 import Table from './table';
 import Switch from './switch';
 import SimpleHeader from './simpleHeader';
+import Select from './select';
 import Section from './section';
 import Link from './link';
 import Input from './input';
@@ -23,6 +24,7 @@ export const components = {
   Input,
   Link,
   Section,
+  Select,
   SimpleHeader,
   Table,
   Textarea,

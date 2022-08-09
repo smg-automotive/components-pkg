@@ -11,6 +11,7 @@ export { default as Link } from './link';
 export { default as Section } from './section';
 export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
+export { default as Select } from './select';
 export { default as Textarea } from './textarea';
 export {
   default as ThemeProvider,

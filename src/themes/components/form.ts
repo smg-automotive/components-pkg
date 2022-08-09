@@ -1,7 +1,7 @@
 import type {
   PartsStyleObject,
   SystemStyleObject,
-} from '@chakra-ui/theme-tools';
+} from '@chakra-ui/styled-system';
 import { formAnatomy as parts } from '@chakra-ui/anatomy';
 
 const baseStyleHelperText: SystemStyleObject = {
