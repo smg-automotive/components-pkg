@@ -82,7 +82,13 @@ const DevOverlay: FC<DevOverlayProps> = ({
       <Heading as="h4" textStyle="heading4">
         Switch Theme
       </Heading>
-      <Switch onChange={toggleTheme} />
+      <div>
+        <span>🚗</span>
+        &nbsp;
+        <Switch onChange={toggleTheme} />
+        &nbsp;
+        <span>🏍️</span>
+      </div>
     </Box>
   );
 };

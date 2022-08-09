@@ -7,14 +7,6 @@ import {
 export type SwitchProps = Pick<ChakraSwitchProps, 'onChange'>;
 
 const Switch: FC<SwitchProps> = ({ onChange }) => {
-  return (
-    <>
-      <span>🚗</span>
-      &nbsp;
-      <ChakraSwitch onChange={onChange} variant="themeSwitch" />
-      &nbsp;
-      <span>🏍️</span>
-    </>
-  );
+  return <ChakraSwitch onChange={onChange} variant="themeSwitch" />;
 };
 export default Switch;
