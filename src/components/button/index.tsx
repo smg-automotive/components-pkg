@@ -1,22 +1,27 @@
-import React, { FC, MouseEvent, ReactNode } from 'react';
-import { Button as ChakraButton } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import {
+  Button as ChakraButton,
+  ButtonProps as ChakraButtonProps,
+} from '@chakra-ui/react';
+
+import { WithRequiredProperty } from '../../lib';
+
+type OnClick = Pick<ChakraButtonProps, 'onClick'>;
 
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-  isDisabled?: boolean;
-  children: ReactNode;
-};
+} & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
 
-type ButtonProps = SharedProps & {
-  type?: 'button';
-  onClick: (event: MouseEvent<HTMLElement>) => void;
-};
+type ButtonProps = SharedProps &
+  WithRequiredProperty<OnClick, 'onClick'> & {
+    type?: 'button';
+  };
 
-type SubmitProps = SharedProps & {
-  type?: 'submit';
-  onClick?: (event: MouseEvent<HTMLElement>) => void;
-};
+type SubmitProps = SharedProps &
+  OnClick & {
+    type?: 'submit';
+  };
 
 type Props = ButtonProps | SubmitProps;
 

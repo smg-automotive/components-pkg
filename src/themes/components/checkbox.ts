@@ -1,5 +1,4 @@
-import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/theme-tools';
-
+import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/styled-system';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
 const baseStyleControl: SystemStyleObject = {
