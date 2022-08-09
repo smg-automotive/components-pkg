@@ -1,5 +1,5 @@
-import { SystemStyleObject } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { SystemStyleObject } from '@chakra-ui/styled-system';
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
