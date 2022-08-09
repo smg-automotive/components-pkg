@@ -50,6 +50,7 @@
     "@storybook/addon-interactions": "6.5.9",
     "@storybook/addon-links": "6.5.9",
     "@storybook/addon-postcss": "2.0.0",
+    "@storybook/addons": "6.5.10",
     "@storybook/builder-webpack5": "6.5.9",
     "@storybook/jest": "0.0.10",
     "@storybook/manager-webpack5": "6.5.9",

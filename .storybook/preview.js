@@ -1,32 +1,38 @@
-import React from 'react';
-import { addDecorator } from '@storybook/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { withThemes } from 'storybook-addon-themes';
-import { ChakraProvider } from '@chakra-ui/react';
+import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { addDecorator } from '@storybook/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { addons } from '@storybook/addons';
+import { ChakraProvider } from '@chakra-ui/react';
 
+import Theme from './theme';
+// eslint-disable-next-line import/no-unresolved
+import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
-  motoScout24Theme,
-  motoScoutChakraTheme,
   autoScout24Theme,
   autoScoutChakraTheme,
+  motoScout24Theme,
+  motoScoutChakraTheme,
+  // eslint-disable-next-line import/no-unresolved
 } from '../src/themes';
 
-import { breakpoints } from '../src/themes/shared/breakpoints';
+// eslint-disable-next-line import/no-unresolved
 import { Fonts } from '../src/styles/Fonts';
-import Theme from './theme';
 
 const ThemeDecorator = (args) => {
   addons.setConfig({
     theme: Theme,
   });
   const { theme = autoScout24Theme, children } = args;
-  return(
-    <ChakraProvider theme={theme} resetCSS={true} >
+  return (
+    <ChakraProvider theme={theme} resetCSS={true}>
       <Fonts />
       {children}
     </ChakraProvider>
-  )
-}
+  );
+};
 
 addDecorator(withThemes);
 const themes = {
@@ -38,7 +44,7 @@ const themes = {
     autoScout24Theme,
     autoScoutChakraTheme,
   ],
-}
+};
 
 const customViewports = Object.entries(breakpoints).reduce(
   (acc, [key, value]) => {

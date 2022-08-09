@@ -1,7 +1,3 @@
-const path = require("path");
-function getPackageDir(package) {
-  return path.dirname(require.resolve(path.join(package, 'package.json')));
-}
 module.exports = {
   stories: ['../src/**/*.stories.*'],
   addons: [

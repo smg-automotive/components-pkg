@@ -1,22 +1,25 @@
+/* eslint-disable unicorn/filename-case */
 import React, { FC, PropsWithChildren, ReactElement } from 'react';
-import { render } from '@testing-library/react';
-import ThemeProvider, { Props } from '../src/components/themeProvider';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { render as testingLibraryRender } from '@testing-library/react';
 
+import { ThemeProvider, ThemeProviderProps } from '../src/';
 
-const Wrapper = (theme: Props['theme'] ): FC<PropsWithChildren<{}>> => ({ children }) => (
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
-  )
-
-const customRender = (
-  ui: ReactElement,
-  options = { theme: 'as24' as const},
-) => {
-  const { theme, ...rest } = options;
-  return render(ui, { wrapper: Wrapper(theme), ...rest });
+const Wrapper = (theme: ThemeProviderProps['theme']): FC<PropsWithChildren> => {
+  const ThemeRenderer: FC<PropsWithChildren> = ({ children }) => {
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  };
+  return ThemeRenderer;
 };
 
+// eslint-disable-next-line import/no-extraneous-dependencies, import/export
 export * from '@testing-library/react';
-export { customRender as render };
-export { render as bareRender };
+
+// eslint-disable-next-line import/export
+export const render = (
+  ui: ReactElement,
+  options = { theme: 'as24' as const }
+) => {
+  const { theme, ...rest } = options;
+  return testingLibraryRender(ui, { wrapper: Wrapper(theme), ...rest });
+};
