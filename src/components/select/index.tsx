@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
-import { Select as ChakraSelect, SelectProps } from '@chakra-ui/react';
+import {
+  Select as ChakraSelect,
+  SelectProps as ChakraSelectProps,
+} from '@chakra-ui/react';
 
 import { ArrowDownIcon } from '../icons';
 
@@ -9,7 +12,7 @@ type Option = {
 };
 
 type Props = Pick<
-  SelectProps,
+  ChakraSelectProps,
   | 'placeholder'
   | 'isInvalid'
   | 'isDisabled'
