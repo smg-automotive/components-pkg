@@ -2,7 +2,7 @@ import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
 export const ChevronIcon = createIcon({
-  displayName: 'ArrowDown',
+  displayName: 'Chevron',
   path: (
     <svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
       <path
