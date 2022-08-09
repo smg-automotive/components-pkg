@@ -69,12 +69,10 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       onFocus: false,
       onBlur: false,
       autoFocus: false,
+      value: '',
     }}
     argTypes={{
       value: {
-        defaultValue: '',
-        control: { type: 'text', placeholder: 'xxxxxx' },
-        type: { name: 'string', required: false },
         description: 'use value prop when you want controlled input',
       },
       size: {
