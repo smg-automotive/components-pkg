@@ -15,9 +15,7 @@ import { breakpoints } from '../src/themes/shared/breakpoints';
 import { Fonts } from '../src/styles/Fonts';
 import Theme from './theme';
 
-
 const ThemeDecorator = (args) => {
-  Theme.brandTitle = "asdas"
   addons.setConfig({
     theme: Theme,
   });
@@ -56,8 +54,6 @@ const customViewports = Object.entries(breakpoints).reduce(
   {}
 );
 
-
-
 export const parameters = {
   themes,
   controls: {
@@ -70,6 +66,3 @@ export const parameters = {
     viewports: customViewports,
   },
 };
-
-
-
