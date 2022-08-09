@@ -26,18 +26,4 @@ module.exports = {
     { from: '../src/assets', to: '/assets' },
     { from: '../public', to: '/' },
   ],
-  webpackFinal: async (config) => {
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve.alias,
-          '@emotion/core': getPackageDir('@emotion/react'),
-          'emotion-theming': getPackageDir('@emotion/react'),
-          '@emotion/styled': getPackageDir('@emotion/styled'),
-        },
-      },
-    };
-  },
 };
