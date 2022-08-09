@@ -1,13 +1,10 @@
-import {
-  calc,
-  cssVar,
-  mode,
+import { calc, cssVar, mode } from '@chakra-ui/theme-tools';
+import type {
   PartsStyleFunction,
   PartsStyleObject,
   SystemStyleFunction,
-} from '@chakra-ui/theme-tools';
-
-import type { SystemStyleObject } from '@chakra-ui/styled-system';
+  SystemStyleObject,
+} from '@chakra-ui/styled-system';
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
 // eslint-disable-next-line import/no-internal-modules
