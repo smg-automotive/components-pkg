@@ -13,7 +13,7 @@ const baseStyle: SystemStyleObject = {
   appearance: 'none',
   transitionProperty: 'common',
   transitionDuration: 'normal',
-  width: '100%',
+  width: 'full',
 };
 
 const variants: Record<string, SystemStyleInterpolation> = {
