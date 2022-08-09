@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTheme } from '@chakra-ui/react';
 
 import { autoScout24Theme, motoScout24Theme } from '../../../themes';
-import { render, screen } from '../../../../.jest';
+import { screen, testingLibraryRender } from '../../../../.jest';
 import ThemeProvider, { Props } from '..';
 
 const TestComponent: FC = () => {
@@ -12,7 +12,7 @@ const TestComponent: FC = () => {
 };
 
 const renderWrapper = (theme: Props['theme']) =>
-  render(
+  testingLibraryRender(
     <ThemeProvider theme={theme}>
       <TestComponent />
     </ThemeProvider>
