@@ -1,6 +1,5 @@
 /* eslint-disable unicorn/filename-case */
 import React, { FC, PropsWithChildren, ReactElement } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { render as testingLibraryRender } from '@testing-library/react';
 
 import { ThemeProvider, ThemeProviderProps } from '../src/';
@@ -12,7 +11,7 @@ const Wrapper = (theme: ThemeProviderProps['theme']): FC<PropsWithChildren> => {
   return ThemeRenderer;
 };
 
-// eslint-disable-next-line import/no-extraneous-dependencies, import/export
+// eslint-disable-next-line import/export
 export * from '@testing-library/react';
 
 // eslint-disable-next-line import/export
@@ -23,3 +22,4 @@ export const render = (
   const { theme, ...rest } = options;
   return testingLibraryRender(ui, { wrapper: Wrapper(theme), ...rest });
 };
+export { testingLibraryRender };

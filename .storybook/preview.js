@@ -1,9 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { withThemes } from 'storybook-addon-themes';
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { addDecorator } from '@storybook/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { addons } from '@storybook/addons';
 import { ChakraProvider } from '@chakra-ui/react';
 

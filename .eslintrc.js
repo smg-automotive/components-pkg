@@ -19,6 +19,8 @@ module.exports = {
           './**/*.Test.@(ts|tsx)',
           'rollup.config.js',
           'postcss.config.js',
+          './.jest/**/*',
+          './.storybook/**/*',
         ],
       },
     ],
