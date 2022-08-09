@@ -1,4 +1,4 @@
 export { ArrowLeftIcon } from './ArrowLeftIcon';
-export { ArrowDownIcon } from './ArrowDownIcon';
+export { ChevronIcon } from './ChevronIcon';
 export { HeartIcon } from './HeartIcon';
 export { CloseIcon } from './CloseIcon';
