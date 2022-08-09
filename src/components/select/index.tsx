@@ -6,9 +6,12 @@ import {
 
 import { ArrowDownIcon } from '../icons';
 
-type Option = {
-  value: string | number;
-  option: string;
+type OptionsAndValue<T extends string | number> = {
+  options: {
+    value: T;
+    label: string;
+  }[];
+  value?: T;
 };
 
 type Props = Pick<
@@ -22,17 +25,15 @@ type Props = Pick<
   | 'autoFocus'
 > & {
   size?: 'md' | 'lg';
-  value?: string | number;
   name: string;
-  options: Option[];
-};
+} & (OptionsAndValue<string> | OptionsAndValue<number>);
 
 const Select: FC<Props> = ({ options, ...props }) => {
   return (
     <ChakraSelect {...props} icon={<ArrowDownIcon />}>
       {options.map((option) => (
         <option value={option.value} key={option.value}>
-          {option.option}
+          {option.label}
         </option>
       ))}
     </ChakraSelect>
