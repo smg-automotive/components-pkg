@@ -4,6 +4,7 @@ export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as DevOverlay } from './devOverlay';
 export { default as FormControl } from './formControl';
+export { default as FormLabel } from './formLabel';
 export { default as FullHeight } from './fullHeight';
 export { default as Grid } from './grid';
 export { default as Input } from './input';
@@ -12,6 +13,7 @@ export { default as Section } from './section';
 export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
 export { default as Select } from './select';
+export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export {
   default as ThemeProvider,

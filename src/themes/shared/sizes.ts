@@ -20,5 +20,4 @@ export const sizes = {
   },
 };
 
-const sizeNames = Object.keys(sizes) as Array<keyof typeof sizes>;
-export type Sizes = Exclude<typeof sizeNames[number], 'container'>;
+export type Sizes = Exclude<keyof typeof sizes, 'container'>;
