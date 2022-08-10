@@ -4,11 +4,39 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
-import Input from './index.tsx';
+import Select from './index.tsx';
 
 <Meta
-  title="Forms/Input"
-  component={Input}
+  title="Forms/Select"
+  component={Select}
+  args={{
+    placeholder: 'Select an option',
+    isDisabled: false,
+    isInvalid: false,
+    size: 'lg',
+    onChange: true,
+    onFocus: false,
+    onBlur: false,
+    autoFocus: false,
+    options: [
+      { value: 'o1', label: 'Option 1' },
+      { value: 'o2', label: 'Option 2' },
+      { value: 'o3', label: 'Option 3' },
+      { value: 'o4', label: 'Option 4' },
+      { value: 'o5', label: 'Option 5' },
+      { value: 'o6', label: 'Option 6' },
+    ],
+    value: '',
+  }}
+  argTypes={{
+    value: {
+      description: 'use value prop when you want controlled select',
+    },
+    size: {
+      options: ['md', 'lg'],
+      control: 'select',
+    },
+  }}
   parameters={{
     controls: {
       sort: 'alpha',
@@ -35,7 +63,7 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       };
   return (
     <Container>
-      <Input
+      <Select
         {...args}
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
@@ -58,71 +86,49 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
 ## Overview
 
 <Canvas>
+  <Story name="Overview">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## Focused
+
+<Canvas>
   <Story
-    name="Overview"
+    name="Focused"
     args={{
-      placeholder: 'Placeholder',
-      isDisabled: false,
-      isInvalid: false,
-      size: 'lg',
-      onChange: true,
-      onFocus: false,
-      onBlur: false,
-      autoFocus: false,
-      value: '',
-    }}
-    argTypes={{
-      value: {
-        description: 'use value prop when you want controlled input',
-      },
-      size: {
-        options: ['md', 'lg'],
-        control: 'select',
-      },
+      onFocus: true,
+      autoFocus: true,
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
-
-## Sizes
-
-### Medium
+<ArgsTable story="Focused" />
 
 <Canvas>
-  <Story id="forms-input-sizes--medium" />
+  <Story
+    name="Invalid"
+    args={{
+      isInvalid: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
-### Large
+<ArgsTable story="Invalid" />
 
 <Canvas>
-  <Story id="forms-input-sizes--large" />
+  <Story
+    name="Disabled"
+    args={{
+      isDisabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
-## States
-
-### Default
-
-<Canvas>
-  <Story id="forms-input-states--default-story" />
-</Canvas>
-
-### Focused
-
-<Canvas>
-  <Story id="forms-input-states--focused" />
-</Canvas>
-
-### Disabled
-
-<Canvas>
-  <Story id="forms-input-states--disabled" />
-</Canvas>
-
-### Invalid
-
-<Canvas>
-  <Story id="forms-input-states--invalid" />
-</Canvas>
+<ArgsTable story="Disabled" />

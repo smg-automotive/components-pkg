@@ -2,6 +2,7 @@ import VehicleReference from './vehicleReference';
 import Textarea from './textarea';
 import Table from './table';
 import SimpleHeader from './simpleHeader';
+import Select from './select';
 import Section from './section';
 import Link from './link';
 import Input from './input';
@@ -22,6 +23,7 @@ export const components = {
   Input,
   Link,
   Section,
+  Select,
   SimpleHeader,
   Table,
   Textarea,
