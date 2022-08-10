@@ -1,45 +1,47 @@
+import { withThemes } from 'storybook-addon-themes';
 import React from 'react';
 import { addDecorator } from '@storybook/react';
-import {
-  ThemeProvider as StorybookThemeProvider,
-  ensure as ensureTheme,
-} from '@storybook/theming';
-import { CSSReset, ThemeProvider } from '@chakra-ui/react';
-import { withThemes } from '@react-theming/storybook-addon';
+import { addons } from '@storybook/addons';
+import { ChakraProvider } from '@chakra-ui/react';
 
+import Theme from './theme';
+// eslint-disable-next-line import/no-unresolved
+import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
-  motoScout24Theme,
-  motoScoutChakraTheme,
   autoScout24Theme,
   autoScoutChakraTheme,
+  motoScout24Theme,
+  motoScoutChakraTheme,
+  // eslint-disable-next-line import/no-unresolved
 } from '../src/themes';
-import { breakpoints } from '../src/themes/shared/breakpoints';
+
+// eslint-disable-next-line import/no-unresolved
 import { Fonts } from '../src/styles/Fonts';
 
-const providerFn = ({ theme = autoScout24Theme, children }) => {
+const ThemeDecorator = (args) => {
+  addons.setConfig({
+    theme: Theme,
+  });
+  const { theme = autoScout24Theme, children } = args;
   return (
-    <StorybookThemeProvider theme={ensureTheme()}>
-      <ThemeProvider theme={theme}>
-        <CSSReset />
-        <Fonts />
-        {children}
-      </ThemeProvider>
-    </StorybookThemeProvider>
+    <ChakraProvider theme={theme} resetCSS={true}>
+      <Fonts />
+      {children}
+    </ChakraProvider>
   );
 };
 
-addDecorator(
-  withThemes(
-    null,
-    [
-      autoScout24Theme,
-      motoScout24Theme,
-      autoScoutChakraTheme,
-      motoScoutChakraTheme,
-    ],
-    { providerFn }
-  )
-);
+addDecorator(withThemes);
+const themes = {
+  default: 'AutoScout 24',
+  Decorator: ThemeDecorator,
+  list: [
+    motoScout24Theme,
+    motoScoutChakraTheme,
+    autoScout24Theme,
+    autoScoutChakraTheme,
+  ],
+};
 
 const customViewports = Object.entries(breakpoints).reduce(
   (acc, [key, value]) => {
@@ -56,6 +58,7 @@ const customViewports = Object.entries(breakpoints).reduce(
 );
 
 export const parameters = {
+  themes,
   controls: {
     matchers: {
       color: /(background|color)$/i,

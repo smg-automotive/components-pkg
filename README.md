@@ -66,7 +66,8 @@ import { autoScout24Theme } from '@smg-automotive/components';
 
 ### Switching themes in storybook
 
-We leverage [a theming addon](https://storybook.js.org/addons/@react-theming/storybook-addon) in storybook. It allows us to use bottom bar to switch themes.
+We leverage [a theming addon](https://storybook.js.org/addons/storybook-addon-themes#custom-decorator) in storybook. 
+It allows us to use top bar to switch themes.
 
 ## Release a new version
 

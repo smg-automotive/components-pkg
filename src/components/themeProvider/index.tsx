@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { autoScout24Theme, motoScout24Theme } from '../../themes';
 // eslint-disable-next-line import/no-internal-modules
@@ -15,12 +15,13 @@ const themes = {
   ms24: motoScout24Theme,
 };
 
-const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => (
-  <ChakraProvider theme={themes[theme]}>
-    <CSSReset />
-    <Fonts />
-    {children}
-  </ChakraProvider>
-);
+const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => {
+  return (
+    <ChakraProvider theme={themes[theme]} resetCSS={true}>
+      <Fonts />
+      {children}
+    </ChakraProvider>
+  );
+};
 
 export default ThemeProvider;
