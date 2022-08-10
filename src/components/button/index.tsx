@@ -1,45 +1,40 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEventHandler } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
 } from '@chakra-ui/react';
 
-import { WithRequiredProperty } from '../../lib';
+type OnClick = MouseEventHandler<HTMLButtonElement>;
 
-type OnClick = Pick<ChakraButtonProps, 'onClick'>;
+type WithOnClick<T extends 'submit' | 'button'> = T extends 'submit'
+  ? { onClick?: OnClick }
+  : { onClick: OnClick };
 
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
 } & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
 
-type ButtonProps = SharedProps &
-  WithRequiredProperty<OnClick, 'onClick'> & {
-    type?: 'button';
-  };
+type ButtonTypeProps = SharedProps & {
+  type?: 'button';
+} & WithOnClick<'button'>;
 
-type SubmitProps = SharedProps &
-  OnClick & {
-    type?: 'submit';
-  };
+type SubmitTypeProps = SharedProps & {
+  type: 'submit';
+} & WithOnClick<'submit'>;
 
-type Props = ButtonProps | SubmitProps;
+type DefaultTypeProps = SharedProps & WithOnClick<'button'>;
+
+type Props = ButtonTypeProps | SubmitTypeProps | DefaultTypeProps;
 
 const Button: FC<Props> = ({
   variant = 'primary',
   size = 'lg',
   isDisabled = false,
-  type = 'button',
-  onClick,
   children,
+  ...rest
 }) => (
-  <ChakraButton
-    onClick={onClick}
-    isDisabled={isDisabled}
-    variant={variant}
-    size={size}
-    type={type}
-  >
+  <ChakraButton isDisabled={isDisabled} variant={variant} size={size} {...rest}>
     {children}
   </ChakraButton>
 );
