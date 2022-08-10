@@ -21,8 +21,8 @@ export type DevOverlayVariables = Record<string, string | number>[];
 
 export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
   Omit<SwitchProps, 'onChange'> & {
-    hideDevOverlay: ButtonProps['onClick'];
-    toggleTheme: SwitchProps['onChange'];
+    hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
+    toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
     variables: DevOverlayVariables;
   };
 

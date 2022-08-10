@@ -1,14 +1,12 @@
-import React, { FC, MouseEventHandler } from 'react';
+import React, { FC } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
 } from '@chakra-ui/react';
 
-type OnClick = MouseEventHandler<HTMLButtonElement>;
-
 type WithOnClick<T extends 'submit' | 'button'> = T extends 'submit'
-  ? { onClick?: OnClick }
-  : { onClick: OnClick };
+  ? Pick<ChakraButtonProps, 'onClick'>
+  : { onClick: Exclude<ChakraButtonProps['onClick'], undefined> };
 
 type SharedProps = {
   variant?: 'primary' | 'secondary';
@@ -25,9 +23,9 @@ type SubmitTypeProps = SharedProps & {
 
 type DefaultTypeProps = SharedProps & WithOnClick<'button'>;
 
-type Props = ButtonTypeProps | SubmitTypeProps | DefaultTypeProps;
+export type ButtonProps = ButtonTypeProps | SubmitTypeProps | DefaultTypeProps;
 
-const Button: FC<Props> = ({
+const Button: FC<ButtonProps> = ({
   variant = 'primary',
   size = 'lg',
   isDisabled = false,
