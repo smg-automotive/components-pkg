@@ -7,4 +7,5 @@ export const theme = {
   colors,
   components,
   name: 'AutoScout 24',
+  color: colors.brand.primary,
 };
