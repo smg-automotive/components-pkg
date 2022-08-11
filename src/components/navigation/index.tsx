@@ -1,6 +1,7 @@
-import React, { FC, PropsWithChildren, useRef } from 'react';
+import React, { FC, PropsWithChildren, ReactNode, useRef } from 'react';
 import {
   Avatar,
+  Badge,
   Box,
   Drawer,
   DrawerBody,
@@ -18,10 +19,11 @@ import {
 import DummyCollapsibleSection from './dummyCollapsibleSection';
 import Link from '../link';
 
+// eslint-disable-next-line import/no-internal-modules
 import BaseGrid from '../layout/BaseGrid';
 import logo from '../../assets/images/autoScout24Logo.webp';
 
-const DesktopOnly = ({ children }) => {
+const DesktopOnly = ({ children }: { children: ReactNode }) => {
   const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
 
   if (!isLargerThan1024) return null;
@@ -64,7 +66,9 @@ const Navigation: FC = () => {
           <Link href="#">Demo</Link>
           <Link href="#">Demo</Link>
           <Link href="#">Demo</Link>
-          <Link href="#">Demo</Link>
+          <Link href="#">
+            Demo<Badge>New</Badge>
+          </Link>
           <Link href="#">Demo</Link>
         </DesktopOnly>
         <HStack spacing="1rem">

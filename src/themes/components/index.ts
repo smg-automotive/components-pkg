@@ -16,6 +16,7 @@ import Form from './form';
 import Drawer from './drawer';
 import Checkbox from './checkbox';
 import Button from './button';
+import Badge from './badge';
 import Avatar from './avatar';
 import ArticleTeaser from './articleTeaser';
 import Accordion from './accordion';
@@ -42,4 +43,5 @@ export const components = {
   VehicleReference,
   Drawer,
   List,
+  Badge,
 };
