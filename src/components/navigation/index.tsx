@@ -5,6 +5,7 @@ import {
   Box,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
   DrawerContent,
   DrawerOverlay,
   HStack,
@@ -51,12 +52,14 @@ const Navigation: FC = () => {
         justifyContent="space-between"
         alignItems="center"
         px="2rem"
+        zIndex="menu"
+        position="absolute"
       >
         <img width="144px" height="34px" src={logo} />
         <Box
           ref={btnRef}
           variant="secondary"
-          onClick={onOpen}
+          onClick={!isOpen ? onOpen : onClose}
           cursor="pointer"
           color="blue.700"
         >
