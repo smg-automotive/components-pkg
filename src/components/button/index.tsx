@@ -7,7 +7,7 @@ import {
 export type ButtonProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-} & Pick<ChakraButtonProps, 'isDisabled' | 'onClick' | 'children'>;
+} & Pick<ChakraButtonProps, 'isDisabled' | 'onClick' | 'children' | 'ref'>;
 
 const Button: FC<ButtonProps> = ({
   variant = 'primary',
@@ -15,12 +15,14 @@ const Button: FC<ButtonProps> = ({
   isDisabled = false,
   onClick,
   children,
+  ref,
 }) => (
   <ChakraButton
     onClick={onClick}
     isDisabled={isDisabled}
     variant={variant}
     size={size}
+    ref={ref}
   >
     {children}
   </ChakraButton>

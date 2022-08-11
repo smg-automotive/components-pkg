@@ -1,0 +1,26 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box } from '@chakra-ui/react';
+
+import Navigation from './index.tsx';
+
+<Meta
+  title="Navigation/Navigation"
+  component={Navigation}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = () => {
+  return <Navigation />;
+};
+
+# Full Height
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
