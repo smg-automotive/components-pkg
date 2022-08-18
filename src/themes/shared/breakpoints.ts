@@ -1,3 +1,5 @@
+import { convertRemToPx } from '../../utilities';
+
 export const emBreakpoints = {
   base: '0em',
   xs: '23.4375em',
@@ -12,7 +14,7 @@ type BreakpointName = keyof typeof emBreakpoints;
 export const pxBreakpoints = Object.fromEntries(
   Object.entries(emBreakpoints).map(([name, emValue]) => [
     name,
-    `${parseInt(emValue, 10) * 16}px`,
+    `${convertRemToPx(emValue)}px`,
   ])
 ) as Record<BreakpointName, string>;
 
