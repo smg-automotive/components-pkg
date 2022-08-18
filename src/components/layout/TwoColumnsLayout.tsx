@@ -5,6 +5,7 @@ import { GridItem, Heading } from '@chakra-ui/react';
 import BaseGridLayout, { repeatArea } from './BaseGrid';
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
+import Divider from '../divider';
 
 interface Props {
   header: ReactNode;
@@ -39,7 +40,10 @@ const TwoColumnsLayout: FC<Props> = ({
       }}
       gridTemplateRows="minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
     >
-      <GridItem area="header">{header}</GridItem>
+      <GridItem area="header">
+        {header}
+        <Divider />
+      </GridItem>
       {backLink ? (
         <GridItem area="backlink">
           <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
