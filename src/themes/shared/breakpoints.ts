@@ -22,8 +22,8 @@ export const breakpoints = Object.fromEntries(
   Object.keys(emBreakpoints).map((name) => [
     name,
     {
-      em: parseFloat(emBreakpoints[name as BreakpointName], 10),
-      px: parseFloat(pxBreakpoints[name as BreakpointName], 10),
+      em: parseFloat(emBreakpoints[name as BreakpointName]),
+      px: parseFloat(pxBreakpoints[name as BreakpointName]),
     },
   ])
 ) as Record<
