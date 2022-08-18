@@ -1,0 +1,65 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import TwoColumnsLayout from './TwoColumnsLayout.tsx';
+import Text from '../text';
+import SimpleHeader from '../simpleHeader';
+
+<Meta
+  title="Layout/Pages/Layout with two columns"
+  component={TwoColumnsLayout}
+  args={{
+    header: (
+      <SimpleHeader
+        title="I am a simple header!"
+        url="https://www.autoscout24.ch/de"
+      />
+    ),
+    leftContent: (
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        vel lectus tellus. In auctor libero convallis metus mattis mattis. In
+        quis nisl lorem. Orci varius natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+      </Text>
+    ),
+  }}
+  argTypes={{
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = (args) => <TwoColumnsLayout {...args} />;
+
+# Layout with two columns
+
+## With right content
+
+<Canvas>
+  <Story
+    name="With right content"
+    args={{
+      rightContent: (
+        <img src="/dummyImage.jpeg" alt="vehicle reference image" />
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With right content" />
+
+## With empty right content
+
+<Canvas>
+  <Story name="With empty right content">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="With empty right content" />

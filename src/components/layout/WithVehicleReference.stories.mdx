@@ -1,7 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import LayoutWithVehicleReference from './WithVehicleReference.tsx';
-import Stack from '../stack';
+import SimpleHeader from '../simpleHeader';
 import Input from '../input';
 import FormControl from '../formControl';
 
@@ -9,7 +9,12 @@ import FormControl from '../formControl';
   title="Layout/Pages/Layout with vehicle reference"
   component={LayoutWithVehicleReference}
   args={{
-    title: 'Nachricht an den Verkäufer',
+    header: (
+      <SimpleHeader
+        title="I am a simple header!"
+        url="https://www.autoscout24.ch/de"
+      />
+    ),
     vehicle: {
       vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
       price: `CHF 23'900.–`,
@@ -17,8 +22,8 @@ import FormControl from '../formControl';
       sellerAddress: `2540 Grenchen (SO)`,
       image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
     },
-    children: (
-      <Stack spacing="md">
+    leftContent: (
+      <>
         <FormControl id="name" label="Name">
           <Input name="name" size="lg" />
         </FormControl>
@@ -28,7 +33,7 @@ import FormControl from '../formControl';
         <FormControl id="phone" label="Phone number">
           <Input name="phone" size="lg" />
         </FormControl>
-      </Stack>
+      </>
     ),
   }}
   argTypes={{
@@ -47,28 +52,25 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
 
 # Layout with vehicle reference
 
-## With back link
+## With title
 
 <Canvas>
   <Story
-    name="With back link"
+    name="With title"
     args={{
-      backLink: {
-        text: 'Back',
-        url: 'https://www.autoscout24.ch/de',
-      },
+      title: 'Nachricht an den Verkäufer',
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="With back link" />
+<ArgsTable story="With title" />
 
-## Without back link
+## Without title
 
 <Canvas>
-  <Story name="Without back link">{Template.bind({})}</Story>
+  <Story name="Without title">{Template.bind({})}</Story>
 </Canvas>
 
-<ArgsTable story="Without back link" />
+<ArgsTable story="Without title" />

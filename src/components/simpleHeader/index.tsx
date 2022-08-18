@@ -34,3 +34,4 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
 };
 
 export default SimpleHeader;
+export { Props as SimpleHeaderProps };
