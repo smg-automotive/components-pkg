@@ -8,7 +8,7 @@ import { fontWeights } from './fontWeights';
 import { fontSizes } from './fontSizes';
 import { fonts } from './fonts';
 import { colors } from './colors';
-import { breakpoints } from './breakpoints';
+import { emBreakpoints } from './breakpoints';
 import { borders } from './borders';
 import { radii } from './borderRadius';
 import { basis } from './basis';
@@ -16,7 +16,7 @@ import { basis } from './basis';
 export const shared = {
   ...basis,
   colors,
-  breakpoints,
+  breakpoints: emBreakpoints,
   textStyles,
   space,
   sizes,
@@ -30,3 +30,4 @@ export const shared = {
   fonts,
 };
 export { Sizes } from './sizes';
+export { breakpoints } from './breakpoints';
