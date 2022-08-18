@@ -10,6 +10,7 @@ import Input from './input';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
+import Divider from './divider';
 import Checkbox from './checkbox';
 import Button from './button';
 import ArticleTeaser from './articleTeaser';
@@ -18,6 +19,7 @@ export const components = {
   ArticleTeaser,
   Button,
   Checkbox,
+  Divider,
   Form,
   FormError,
   FormLabel,

@@ -3,6 +3,7 @@ export { default as Button } from './button';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as DevOverlay } from './devOverlay';
+export { default as Divider } from './divider';
 export { default as FormControl } from './formControl';
 export { default as FormLabel } from './formLabel';
 export { default as FullHeight } from './fullHeight';
