@@ -1,26 +1,3 @@
 {
-  "extends": ["config:base", "schedule:earlyMondays", ":pinDependencies"],
-  "reviewers": ["team:frontend"],
-  "packageRules": [
-    {
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
-    },
-    {
-      "matchDatasources": ["docker", "final"],
-      "matchPackageNames": ["node", "@types/node", "cimg/node"],
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "schedule": null,
-      "automerge": true
-    },
-    {
-      "matchPackagePatterns": ["^@smg-automotive/.*"],
-      "schedule": null
-    }
-  ],
-  "node": {
-    "supportPolicy": ["lts_latest"]
-  },
-  "semanticCommits": true
+  "extends": ["github>smg-automotive/renovate-config"]
 }
