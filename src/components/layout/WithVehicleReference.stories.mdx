@@ -72,10 +72,28 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
 
 <ArgsTable story="With title" />
 
-## Without title
+## With back link
 
 <Canvas>
-  <Story name="Without title">{Template.bind({})}</Story>
+  <Story
+    name="With back link"
+    args={{
+      backLink: {
+        text: 'Back',
+        url: 'https://www.autoscout24.ch/de',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
-<ArgsTable story="Without title" />
+<ArgsTable story="With back link" />
+
+## Without back link and title
+
+<Canvas>
+  <Story name="Without back link and title">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Without back link and title" />
