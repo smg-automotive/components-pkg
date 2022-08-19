@@ -1,5 +1,9 @@
 import { withThemes } from 'storybook-addon-themes';
 import React from 'react';
+import {
+  ensure as ensureTheme,
+  ThemeProvider as StorybookThemeProvider,
+} from '@storybook/theming';
 import { addDecorator } from '@storybook/react';
 import { addons } from '@storybook/addons';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -24,10 +28,12 @@ const ThemeDecorator = (args) => {
   });
   const { theme = autoScout24Theme, children } = args;
   return (
-    <ChakraProvider theme={theme} resetCSS={true}>
-      <Fonts />
-      {children}
-    </ChakraProvider>
+    <StorybookThemeProvider theme={ensureTheme()}>
+      <ChakraProvider theme={theme} resetCSS={true}>
+        <Fonts />
+        {children}
+      </ChakraProvider>
+    </StorybookThemeProvider>
   );
 };
 
