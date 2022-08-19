@@ -26,7 +26,7 @@ const TwoColumnsLayout: FC<Props> = ({
   rightContent,
 }) => {
   return (
-    <BaseLayout header={header} footer={null}>
+    <BaseLayout header={header}>
       <BaseGridLayout
         templateAreas={{
           xs: `"backlink" "heading" "rightContent" "leftContent"`,

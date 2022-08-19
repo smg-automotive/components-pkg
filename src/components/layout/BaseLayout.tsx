@@ -4,7 +4,7 @@ import Divider from '../divider';
 
 interface Props {
   header: ReactNode;
-  footer: ReactNode;
+  footer?: ReactNode;
 }
 
 const BaseLayout: FC<PropsWithChildren<Props>> = ({

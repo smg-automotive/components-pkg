@@ -21,7 +21,7 @@ const BaseGridLayout: FC<PropsWithChildren<GridProps>> = (props) => {
       >
         <Grid
           gridTemplateColumns={{ xs: '1fr', lg: 'repeat(12, 1fr)' }}
-          gap="xl"
+          gap="sm"
           {...gridProps}
         >
           {children}

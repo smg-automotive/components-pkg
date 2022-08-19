@@ -5,7 +5,6 @@ import {
   chakra,
   Container,
   Flex,
-  Grid,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
@@ -29,25 +28,22 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
           maxWidth="container.xl"
           minHeight={{ xs: 'xl', lg: '2xl' }}
           paddingX={{ xs: 'md', lg: '4xl' }}
-          paddingY="xl"
+          centerContent
+          flexDirection="row"
+          justifyContent="space-between"
         >
-          <Grid
-            gridTemplateColumns="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
-            gap="xl"
-          >
-            <Flex justify="space-between" alignContent="space-between">
-              <chakra.h1 __css={styles.title}>{title}</chakra.h1>
-              <Flex
-                alignSelf="baseline"
-                paddingLeft="md"
-                paddingTop={{ lg: 'sm' }}
-              >
-                <a href={url}>
-                  <CloseIcon />
-                </a>
-              </Flex>
+          <Flex justify="space-between" minWidth="full">
+            <chakra.h1 __css={styles.title}>{title}</chakra.h1>
+            <Flex
+              alignSelf="baseline"
+              paddingLeft="md"
+              paddingTop={{ lg: 'sm' }}
+            >
+              <a href={url}>
+                <CloseIcon />
+              </a>
             </Flex>
-          </Grid>
+          </Flex>
         </Container>
       </Center>
     </Component>
