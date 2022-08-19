@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import TwoColumsLayout from './TwoColumnsLayout';
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
@@ -12,15 +12,14 @@ interface Props {
   };
   vehicle: VehicleReferenceProps;
   header: ReactNode;
-  leftContent: ReactNode;
 }
 
-const LayoutWithVehicleReference: FC<Props> = ({
+const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   title,
   backLink,
   vehicle,
   header,
-  leftContent,
+  children,
 }) => {
   return (
     <TwoColumsLayout
@@ -30,7 +29,7 @@ const LayoutWithVehicleReference: FC<Props> = ({
       rightContent={<VehicleReference {...vehicle} />}
       leftContent={
         <Stack direction="column" spacing="2xl">
-          {leftContent}
+          {children}
         </Stack>
       }
     />

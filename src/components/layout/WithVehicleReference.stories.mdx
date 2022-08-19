@@ -22,7 +22,7 @@ import FormControl from '../formControl';
       sellerAddress: `2540 Grenchen (SO)`,
       image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
     },
-    leftContent: (
+    children: (
       <>
         <FormControl id="name" label="Name">
           <Input name="name" size="lg" />
@@ -38,6 +38,11 @@ import FormControl from '../formControl';
   }}
   argTypes={{
     children: {
+      table: {
+        disable: true,
+      },
+    },
+    header: {
       table: {
         disable: true,
       },
