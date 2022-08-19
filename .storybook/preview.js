@@ -54,7 +54,7 @@ const customViewports = Object.entries(breakpoints).reduce(
     acc[key] = {
       name: key,
       styles: {
-        width: value,
+        width: `${value.em}em`,
         height: '100%',
       },
     };
