@@ -2,7 +2,7 @@ import { convertRemToPx } from '../../utilities';
 
 export const emBreakpoints = {
   base: '0em',
-  xs: '23.4375em',
+  xs: '20em',
   sm: '30em',
   md: '48em',
   lg: '64em',
