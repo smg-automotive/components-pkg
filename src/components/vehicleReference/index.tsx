@@ -30,7 +30,7 @@ const VehicleReference: FC<Props> = ({
 
   return (
     <article>
-      <Stack direction={{ xs: 'row', lg: 'column' }} spacing="md">
+      <Stack direction={{ xxs: 'row', md: 'column' }} spacing="md">
         <AspectRatio
           minW="2xl"
           ratio={4 / 3}
@@ -43,7 +43,7 @@ const VehicleReference: FC<Props> = ({
             <img data-testid="missing-image" src={missingImage} />
           )}
         </AspectRatio>
-        <Stack spacing={{ xs: 'xs', lg: 'md' }} justify="center">
+        <Stack spacing={{ xxs: 'xs', md: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
           <chakra.span __css={styles.price}>{price}</chakra.span>
           <Box>

@@ -16,11 +16,11 @@ const BaseGridLayout: FC<PropsWithChildren<GridProps>> = (props) => {
         width="full"
         height="full"
         maxWidth="container.xl"
-        paddingY={{ xs: 'md', lg: '2xl' }}
-        paddingX={{ xs: 'md', lg: '4xl' }}
+        paddingY={{ xxs: 'md', md: '2xl' }}
+        paddingX={{ xxs: 'md', md: '4xl' }}
       >
         <Grid
-          gridTemplateColumns={{ xs: '1fr', lg: 'repeat(12, 1fr)' }}
+          gridTemplateColumns={{ xxs: '1fr', md: 'repeat(12, 1fr)' }}
           gap="lg"
           {...gridProps}
         >

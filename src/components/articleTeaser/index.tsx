@@ -26,8 +26,8 @@ const ArticleTeaser: FC<Props> = ({
       <a href={url} target="_blank" rel="noopener noreferrer">
         <Stack
           direction={{
-            xs: 'column',
-            lg: 'row',
+            xxs: 'column',
+            md: 'row',
           }}
           spacing="lg"
           align="center"

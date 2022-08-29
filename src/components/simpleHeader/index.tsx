@@ -26,8 +26,8 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
         <Container
           width="full"
           maxWidth="container.xl"
-          minHeight={{ xs: 'xl', lg: '2xl' }}
-          paddingX={{ xs: 'md', lg: '4xl' }}
+          minHeight={{ xxs: 'xl', md: '2xl' }}
+          paddingX={{ xxs: 'md', md: '4xl' }}
           centerContent
           flexDirection="row"
           justifyContent="space-between"
@@ -37,7 +37,7 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
             <Flex
               alignSelf="baseline"
               paddingLeft="md"
-              paddingTop={{ lg: 'sm' }}
+              paddingTop={{ md: 'sm' }}
             >
               <a href={url}>
                 <CloseIcon />

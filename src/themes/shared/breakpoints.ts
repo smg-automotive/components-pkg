@@ -2,11 +2,12 @@ import { convertRemToPx } from '../../utilities';
 
 export const emBreakpoints = {
   base: '0em',
-  xs: '20em',
-  sm: '30em',
-  md: '48em',
-  lg: '64em',
-  xl: '80em',
+  xxs: '20em',
+  xs: '22.5em',
+  sm: '48em',
+  md: '64em',
+  lg: '80em',
+  xl: '120em',
 };
 
 type BreakpointName = keyof typeof emBreakpoints;
