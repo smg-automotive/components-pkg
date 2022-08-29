@@ -9,6 +9,8 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
+import { convertRemEmToPx } from '../../';
+
 const BreakpointShowCase: FC = () => {
   const theme = useTheme();
   return (
@@ -18,6 +20,7 @@ const BreakpointShowCase: FC = () => {
           <Tr border="1px" borderColor="gray.300">
             <Th>Name</Th>
             <Th>Value</Th>
+            <Th>Pixels</Th>
           </Tr>
         </Thead>
         {Object.entries(theme.breakpoints).map(([name, breakpoint]) => {
@@ -25,6 +28,7 @@ const BreakpointShowCase: FC = () => {
             <Tr key={name} border="1px" borderColor="gray.300">
               <Td>{name}</Td>
               <Td>{breakpoint as string}</Td>
+              <Td>{`${convertRemEmToPx(breakpoint as string)}px`}</Td>
             </Tr>
           );
         })}
