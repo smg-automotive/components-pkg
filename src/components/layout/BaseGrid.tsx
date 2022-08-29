@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC, PropsWithChildren } from 'react';
 
 import { Center, Container, Grid, GridProps } from '@chakra-ui/react';
@@ -16,11 +17,11 @@ const BaseGridLayout: FC<PropsWithChildren<GridProps>> = (props) => {
         width="full"
         height="full"
         maxWidth="container.xl"
-        paddingY={{ xs: 'md', lg: '2xl' }}
-        paddingX={{ xs: 'md', lg: '4xl' }}
+        paddingY={{ '2xs': 'md', md: '2xl' }}
+        paddingX={{ '2xs': 'md', md: '4xl' }}
       >
         <Grid
-          gridTemplateColumns={{ xs: '1fr', lg: 'repeat(12, 1fr)' }}
+          gridTemplateColumns={{ '2xs': '1fr', md: 'repeat(12, 1fr)' }}
           gap="lg"
           {...gridProps}
         >

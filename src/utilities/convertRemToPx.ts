@@ -1,5 +1,5 @@
-export const convertRemToPx = (value: string) => {
+export const convertRemEmToPx = (value: string) => {
   const baseFontSize = 16;
-  const unitRem = parseFloat(value);
-  return unitRem * baseFontSize;
+  const unitRemEm = parseFloat(value);
+  return unitRemEm * baseFontSize;
 };

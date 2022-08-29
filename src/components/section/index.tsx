@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC, ReactNode } from 'react';
 
 import {
@@ -28,7 +29,7 @@ const Section: FC<Props> = ({
   const styles = useMultiStyleConfig(`Section`, { variant });
 
   return (
-    <Stack direction={{ xs: 'column', lg: 'row' }} spacing="xl">
+    <Stack direction={{ '2xs': 'column', md: 'row' }} spacing="xl">
       {image ? <Box maxW={maxImgW}>{image}</Box> : null}
       <Stack spacing="md">
         <chakra.span __css={styles.title}>{title}</chakra.span>

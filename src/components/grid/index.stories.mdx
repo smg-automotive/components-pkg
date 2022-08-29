@@ -77,10 +77,10 @@ export const Template = ({ maxW, ...args }) => {
 
 ## Responsive
 
-2 columns on `xs` 3 on `md`. The same approach can be taken for other props.
+2 columns on `2xs` 3 on `sm`. The same approach can be taken for other props.
 
 <Canvas>
-  <Story name="Responsive" args={{ columns: { xs: 2, md: 3 } }}>
+  <Story name="Responsive" args={{ columns: { '2xs': 2, sm: 3 } }}>
     {Template.bind({})}
   </Story>
 </Canvas>

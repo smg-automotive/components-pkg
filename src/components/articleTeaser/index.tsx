@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC } from 'react';
 import { chakra, ResponsiveValue, useMultiStyleConfig } from '@chakra-ui/react';
 
@@ -26,8 +27,8 @@ const ArticleTeaser: FC<Props> = ({
       <a href={url} target="_blank" rel="noopener noreferrer">
         <Stack
           direction={{
-            xs: 'column',
-            lg: 'row',
+            '2xs': 'column',
+            md: 'row',
           }}
           spacing="lg"
           align="center"
