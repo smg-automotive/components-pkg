@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   Accordion,
   AccordionButton,
@@ -12,14 +12,18 @@ import {
 } from '@chakra-ui/react';
 
 import Link from '../link';
+import { NavigationLinkNode } from '.';
+import { textStyles } from '../../themes/shared/typography';
 
-function DummyCollapsibleSection({
-  count,
+interface CollapsibleProps {
+  node: NavigationLinkNode
+  accordionsEnabled: boolean,
+}
+
+const CollapsibleSection: FC<CollapsibleProps> = ({
   accordionsEnabled,
-}: {
-  count: number;
-  accordionsEnabled: boolean;
-}) {
+  node
+}) => {
   return (
     <GridItem gridColumn="span 3">
       <Accordion allowMultiple={true} defaultIndex={[0]}>
@@ -27,17 +31,17 @@ function DummyCollapsibleSection({
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                Section 1 title
+                {node.text}
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
             <OrderedList styleType="none" marginStart="none">
-              {new Array(count).fill(null).map((index) => {
+              {node.items.map(({url, text}, index) => {
                 return (
                   <ListItem key={`menuEntry-${index}$`}>
-                    <Link href="#">Demo {index}</Link>
+                    <Link href={url}>{text}</Link>
                   </ListItem>
                 );
               })}
@@ -49,4 +53,4 @@ function DummyCollapsibleSection({
   );
 }
 
-export default DummyCollapsibleSection;
+export default CollapsibleSection;
