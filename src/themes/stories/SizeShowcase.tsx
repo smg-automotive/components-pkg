@@ -10,7 +10,7 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
-import { convertRemToPx } from '../../';
+import { convertRemEmToPx } from '../../';
 
 const SizingShowCase: FC = () => {
   const theme = useTheme();
@@ -35,7 +35,7 @@ const SizingShowCase: FC = () => {
             <Tr key={name} border="1px" borderColor="gray.300">
               <Td>{name}</Td>
               <Td>{`${size}`}</Td>
-              <Td>{`${convertRemToPx(size as string)}px`}</Td>
+              <Td>{`${convertRemEmToPx(size as string)}px`}</Td>
             </Tr>
           );
         })}

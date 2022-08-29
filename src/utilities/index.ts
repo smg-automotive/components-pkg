@@ -1,1 +1,1 @@
-export { convertRemToPx } from './convertRemToPx';
+export { convertRemEmToPx } from './convertRemToPx';

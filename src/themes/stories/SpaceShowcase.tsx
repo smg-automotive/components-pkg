@@ -10,7 +10,7 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
-import { convertRemToPx } from '../../utilities';
+import { convertRemEmToPx } from '../../utilities';
 
 const SpacingShowCase: FC = () => {
   const theme = useTheme();
@@ -31,7 +31,7 @@ const SpacingShowCase: FC = () => {
             <Tr key={name} border="1px" borderColor="gray.300">
               <Td>{name}</Td>
               <Td>{space as string}</Td>
-              <Td>{convertRemToPx(space as string)}</Td>
+              <Td>{`${convertRemEmToPx(space as string)}px`}</Td>
               <Td>
                 <Box bg="gray.200" p={space as string}>
                   <Box bg="white" textAlign="center" width="auto">
@@ -45,7 +45,5 @@ const SpacingShowCase: FC = () => {
       </Table>
     </TableContainer>
   );
-
-  return <Tr border="1px" borderColor="gray.100"></Tr>;
 };
 export default SpacingShowCase;

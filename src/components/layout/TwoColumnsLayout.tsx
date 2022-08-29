@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC, ReactNode } from 'react';
 
 import { GridItem, Heading } from '@chakra-ui/react';
@@ -29,7 +30,7 @@ const TwoColumnsLayout: FC<Props> = ({
     <BaseLayout header={header}>
       <BaseGridLayout
         templateAreas={{
-          xxs: `"backlink" "heading" "rightContent" "leftContent"`,
+          '2xs': `"backlink" "heading" "rightContent" "leftContent"`,
           md: `
             "${repeatArea(12, 'backlink')}"
             "${repeatArea(6, 'heading')} . ${repeatArea(5, 'rightContent')}"

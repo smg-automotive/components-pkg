@@ -1,8 +1,9 @@
-import { convertRemToPx } from '../../utilities';
+import { convertRemEmToPx } from '../../utilities';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export const emBreakpoints = {
   base: '0em',
-  xxs: '20em',
+  '2xs': '20em',
   xs: '22.5em',
   sm: '48em',
   md: '64em',
@@ -15,7 +16,7 @@ type BreakpointName = keyof typeof emBreakpoints;
 export const pxBreakpoints = Object.fromEntries(
   Object.entries(emBreakpoints).map(([name, emValue]) => [
     name,
-    `${convertRemToPx(emValue)}px`,
+    `${convertRemEmToPx(emValue)}px`,
   ])
 ) as Record<BreakpointName, string>;
 

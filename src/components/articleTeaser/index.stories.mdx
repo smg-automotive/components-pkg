@@ -23,7 +23,7 @@ import ArticleTeaser from './index.tsx';
 />
 
 export const Template = ({ nativeImageSize, ...args }) => (
-  <Box maxW={{ xxs: '100%', md: '600px' }}>
+  <Box maxW={{ '2xs': '100%', md: '600px' }}>
     <ArticleTeaser
       {...args}
       imageUrl={`https://via.placeholder.com/${nativeImageSize}`}
@@ -46,7 +46,7 @@ export const Template = ({ nativeImageSize, ...args }) => (
 Bigger image on mobile viewport.
 
 <Canvas>
-  <Story name="Responsive" args={{ maxImgW: { xxs: 'full', sm: '3xl' } }}>
+  <Story name="Responsive" args={{ maxImgW: { '2xs': 'full', sm: '3xl' } }}>
     {Template.bind({})}
   </Story>
 </Canvas>

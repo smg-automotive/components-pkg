@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC, ReactNode } from 'react';
 
 import {
@@ -30,7 +31,7 @@ const VehicleReference: FC<Props> = ({
 
   return (
     <article>
-      <Stack direction={{ xxs: 'row', md: 'column' }} spacing="md">
+      <Stack direction={{ '2xs': 'row', md: 'column' }} spacing="md">
         <AspectRatio
           minW="2xl"
           ratio={4 / 3}
@@ -43,7 +44,7 @@ const VehicleReference: FC<Props> = ({
             <img data-testid="missing-image" src={missingImage} />
           )}
         </AspectRatio>
-        <Stack spacing={{ xxs: 'xs', md: 'md' }} justify="center">
+        <Stack spacing={{ '2xs': 'xs', md: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
           <chakra.span __css={styles.price}>{price}</chakra.span>
           <Box>

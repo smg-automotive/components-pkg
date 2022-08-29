@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 const baseStyleHeader: SystemStyleObject = {
@@ -9,7 +10,7 @@ const SimpleHeader: ComponentMultiStyleConfig = {
   baseStyle: {
     header: baseStyleHeader,
     title: {
-      textStyle: { xxs: 'heading3', md: 'heading1' },
+      textStyle: { '2xs': 'heading3', md: 'heading1' },
       wordBreak: 'break-word',
     },
   },

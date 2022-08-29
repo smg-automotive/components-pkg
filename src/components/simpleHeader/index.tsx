@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC } from 'react';
 
 import {
@@ -26,8 +27,8 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
         <Container
           width="full"
           maxWidth="container.xl"
-          minHeight={{ xxs: 'xl', md: '2xl' }}
-          paddingX={{ xxs: 'md', md: '4xl' }}
+          minHeight={{ '2xs': 'xl', md: '2xl' }}
+          paddingX={{ '2xs': 'md', md: '4xl' }}
           centerContent
           flexDirection="row"
           justifyContent="space-between"
