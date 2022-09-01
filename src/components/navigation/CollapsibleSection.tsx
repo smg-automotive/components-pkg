@@ -11,18 +11,17 @@ import {
   OrderedList,
 } from '@chakra-ui/react';
 
-import Link from '../link';
-import { NavigationLinkNode } from '.';
-import { textStyles } from '../../themes/shared/typography';
+import NavigationLink from './NavigationLink';
+import { NavigationLinkNode } from './config/drawerNodeItems';
 
 interface CollapsibleProps {
-  node: NavigationLinkNode
-  accordionsEnabled: boolean,
+  node: NavigationLinkNode;
+  accordionsEnabled: boolean;
 }
 
 const CollapsibleSection: FC<CollapsibleProps> = ({
   accordionsEnabled,
-  node
+  node,
 }) => {
   return (
     <GridItem gridColumn="span 3">
@@ -38,10 +37,10 @@ const CollapsibleSection: FC<CollapsibleProps> = ({
           </h2>
           <AccordionPanel pb={4}>
             <OrderedList styleType="none" marginStart="none">
-              {node.items.map(({url, text}, index) => {
+              {node.items.map((item, index) => {
                 return (
                   <ListItem key={`menuEntry-${index}$`}>
-                    <Link href={url}>{text}</Link>
+                    <NavigationLink {...item} />
                   </ListItem>
                 );
               })}
@@ -51,6 +50,6 @@ const CollapsibleSection: FC<CollapsibleProps> = ({
       </Accordion>
     </GridItem>
   );
-}
+};
 
 export default CollapsibleSection;

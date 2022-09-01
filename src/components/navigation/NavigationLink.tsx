@@ -3,21 +3,27 @@ import Link from '../link';
 import { Badge } from '@chakra-ui/react';
 
 export interface NavigationLinkProps {
-  url: string
-  text: string
-  isNew?: boolean
-  isVisible?: boolean
-  iconRight?: ReactNode
+  url: string;
+  text: string;
+  isNew?: boolean;
+  isVisible?: boolean;
+  iconRight?: ReactNode;
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({
   url,
   text,
-  isNew
+  isNew,
+  isVisible = true,
 }) => {
+  if (!isVisible) return null;
+
   return (
-    <Link href={url}>{text}{isNew ? (<Badge>New</Badge>) : null}</Link>
+    <Link href={url}>
+      {text}
+      {isNew ? <Badge>New</Badge> : null}
+    </Link>
   );
-}
+};
 
 export default NavigationLink;

@@ -1,4 +1,7 @@
+import { boolean } from 'yargs';
+import { UserType, Plattform } from '..';
 import { NavigationLinkProps } from '../NavigationLink';
+import { NavigationLinkConfigNode, resolveVisibility } from './converter';
 
 export interface NavigationLinkNode {
   text: string;
@@ -7,28 +10,149 @@ export interface NavigationLinkNode {
 export type DrawerNode = 'search' | 'user';
 export type DawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
 
-export const dawerNodeItems: DawerNodeItems = {
+type DawerNodeItemsConfig = { [key in DrawerNode]: NavigationLinkConfigNode[] };
+
+const dawerNodeItems: DawerNodeItemsConfig = {
   search: [
     {
       text: 'Farzeuge',
       items: [
-        { text: 'Einfache Suche', url: '#' },
-        { text: 'Erweiterte Suche', url: '#' },
+        {
+          text: 'Einfache Suche',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Erweiterte Suche',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
     {
       text: 'Händler',
-      items: [{ text: 'Händler suchen', url: '#' }],
+      items: [
+        {
+          text: 'Händler suchen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+      ],
     },
     {
       text: 'Weiteres',
       items: [
-        { text: 'Teile & Zubehör suchen', url: '#' },
-        { text: 'Motoräder suchen', url: '#' },
-        { text: 'Fahrzeugbewertung', url: '#' },
-        { text: 'Versicherungsvergleich', url: '#' },
-        { text: 'Angesehene Inserate', url: '#' },
-        { text: 'Letzte Suchen', url: '#' },
+        {
+          text: 'Teile & Zubehör suchen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Motoräder suchen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Fahrzeugbewertung',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Versicherungsvergleich',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Angesehene Inserate',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Letzte Suchen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
   ],
@@ -36,73 +160,703 @@ export const dawerNodeItems: DawerNodeItems = {
     {
       text: ' Fahrzeuge verwalten',
       items: [
-        { text: 'Inserat erstellen', url: '#' },
-        { text: 'Meine Fahrzeuge', url: '#' },
-        { text: 'Meine Fahrzeuge (alt)', url: '#' },
-        { text: 'DealerDashboard', url: '#' },
-        { text: 'OptimizerPro', url: '#' },
-        { text: 'Cockpit', url: '#' },
-        { text: 'Statistiken', url: '#' },
-        { text: 'Warenkorb', url: '#' },
-        { text: 'Zum Motorradpark', url: '#' },
+        {
+          text: 'Inserat erstellen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Meine Fahrzeuge',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Meine Fahrzeuge (alt)',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'DealerDashboard',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'OptimizerPro',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Cockpit',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Statistiken',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Warenkorb',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Zum Motorradpark',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
     {
       text: 'Tools für den Verkauf',
       items: [
-        { text: 'Kontaktanfragen', url: '#' },
-        { text: 'Druckcenter', url: '#' },
-        { text: 'Probefahrten', url: '#' },
-        { text: 'Leasing', url: '#' },
-        { text: 'OptimizerPro', url: '#' },
-        { text: 'TopListing Pro', url: '#' },
-        { text: 'TopCars', url: '#' },
-        { text: ' Boosteras24', url: '#', isNew: true },
-        { text: 'Online Werbung', url: '#' },
-        { text: 'Teile, Zubehör inserieren', url: '#' },
-        { text: 'Bewertungen', url: '#' },
-        { text: 'Versicherungsvergleich', url: '#' },
+        {
+          text: 'Kontaktanfragen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Druckcenter',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Probefahrten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Leasing',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'OptimizerPro',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'TopListing Pro',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'TopCars',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: ' Boosteras24',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+          isNew: true,
+        },
+        {
+          text: 'Online Werbung',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Teile, Zubehör inserieren',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Bewertungen',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Versicherungsvergleich',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
     {
       text: 'Tools für den Einkauf',
       items: [
-        { text: 'Suchaufträge', url: '#' },
-        { text: 'Merkliste', url: '#' },
-        { text: 'B2B-Plattform', url: '#' },
-        { text: 'AMAG StandzeitenPool', url: '#' },
-        { text: 'EFAG StandzeitenPool', url: '#' },
-        { text: 'Nachfragekalkulator', url: '#' },
-        { text: 'AutoRadar', url: '#' },
-        { text: 'DealerInfoSystem', url: '#' },
-        { text: 'MarketPriceCheck', url: '#' },
+        {
+          text: 'Suchaufträge',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Merkliste',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'B2B-Plattform',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'AMAG StandzeitenPool',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'EFAG StandzeitenPool',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Nachfragekalkulator',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'AutoRadar',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'DealerInfoSystem',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'MarketPriceCheck',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
     {
       text: 'Kontoeinstellungen',
       items: [
-        { text: 'Benutzer bearbeiten', url: '#' },
-        { text: 'Passwort ändern', url: '#' },
-        { text: 'Benutzersprache', url: '#' },
-        { text: 'Abmelden', url: '#' },
+        {
+          text: 'Benutzer bearbeiten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Passwort ändern',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Benutzersprache',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Abmelden',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
     {
       text: 'Einstellungen',
       items: [
-        { text: 'InfoPage', url: '#' },
-        { text: 'Kontaktangaben', url: '#' },
-        { text: 'Öffnungszeiten', url: '#' },
-        { text: 'BusinessImage', url: '#' },
-        { text: 'Photobar bearbeiten', url: '#' },
-        { text: 'Zusatztitel verwalten', url: '#' },
-        { text: 'Bemerkungen verwalten', url: '#' },
-        { text: 'Qualitätslogo', url: '#' },
-        { text: 'AutoRadar verwalten', url: '#' },
-        { text: 'HCI', url: '#' },
-        { text: 'ImportInfo', url: '#' },
-        { text: 'DmsLog', url: '#' },
+        {
+          text: 'InfoPage',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Kontaktangaben',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Öffnungszeiten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'BusinessImage',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Photobar bearbeiten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Zusatztitel verwalten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Bemerkungen verwalten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Qualitätslogo',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'AutoRadar verwalten',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'HCI',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'ImportInfo',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'DmsLog',
+          url: '#',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
       ],
     },
   ],
+};
+
+export const getDrawerNodeItems = ({
+  userType,
+  plattform,
+}: {
+  userType: UserType;
+  plattform: Plattform;
+}): DawerNodeItems => {
+  // TODO: Extract mappings to functions
+  const itemsEntires = Object.entries(dawerNodeItems);
+  const mappedEntries = itemsEntires.map(([nodeKey, nodes]) => {
+    const mappedNodes = nodes.map((nodeEntry) => {
+      const mappedItems = nodeEntry.items.map((item) => {
+        return resolveVisibility({
+          item,
+          userType,
+          plattform,
+        });
+      });
+
+      return {
+        ...nodeEntry,
+        items: mappedItems,
+      };
+    });
+
+    return [nodeKey, mappedNodes];
+  });
+
+  return Object.fromEntries(mappedEntries);
 };

@@ -11,22 +11,22 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  useDisclosure,
+  useTheme,
   useMediaQuery,
 } from '@chakra-ui/react';
 
 // eslint-disable-next-line import/no-internal-modules
 import BaseGrid from '../layout/BaseGrid';
-import logo from '../../assets/images/autoScout24Logo.webp';
+
 import CollapsibleSection from './CollapsibleSection';
 import NavigationLink, { NavigationLinkProps } from './NavigationLink';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
-import {
-  dawerNodeItems,
-  DawerNodeItems,
-  NavigationLinkNode,
-} from './config/drawerNodeItems';
-import { headerLinks } from './config/headerLinks';
+import { DawerNodeItems, getDrawerNodeItems } from './config/drawerNodeItems';
+import { getHeaderLinks } from './config/headerLinks';
+
+// TODO: make dynamic
+import logoAS from '../../assets/images/logo_as24.svg';
+import logoMS from '../../assets/images/logo_ms24.svg';
 
 const DesktopOnly = ({ children }: { children: ReactNode }) => {
   const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
@@ -40,25 +40,43 @@ interface NavigationConfiguration {
   homeUrl: string;
   currentLanguage: string;
   menuHeight: string;
-  user: {
-    id: number;
-    name: string;
-  } | null;
+  user: User | null;
   dawerNodeItems: DawerNodeItems;
   headerLinks: NavigationLinkProps[];
 }
 
-const Navigation: FC = () => {
+interface User {
+  id: number;
+  name: string;
+  type: 'private' | 'professional';
+}
+
+export type UserType = 'private' | 'professional';
+export type Plattform = 'as24' | 'ms24';
+
+interface NavigationProps {
+  user: User;
+}
+
+const Navigation: FC<NavigationProps> = ({ user }) => {
+  const { name } = useTheme();
+  const plattform: Plattform = name === 'AutoScout 24' ? 'as24' : 'ms24';
+  const linkConfig = {
+    userType: user.type,
+    plattform,
+  };
+  const logo = plattform === 'as24' ? logoAS : logoMS;
+
+  console.log('theme', name);
+  console.log('plattform', plattform);
+
   const config: NavigationConfiguration = {
     homeUrl: '/',
     currentLanguage: 'en',
-    user: {
-      id: 123,
-      name: 'John Doe',
-    },
+    user,
     menuHeight: '60px',
-    dawerNodeItems,
-    headerLinks,
+    dawerNodeItems: getDrawerNodeItems(linkConfig),
+    headerLinks: getHeaderLinks(linkConfig),
   };
 
   // TODO: handle this propers

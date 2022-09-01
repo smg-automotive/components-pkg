@@ -11,16 +11,44 @@ import Navigation from './index.tsx';
   }}
 />
 
-export const Template = () => {
-  return <Navigation />;
+export const Template = (args) => {
+  return <Navigation {...args} />;
 };
 
 # Full Height
 
-## Overview
+## Professional
 
 <Canvas>
-  <Story name="Overview">{Template.bind({})}</Story>
+  <Story
+    name="Professional"
+    args={{
+      user: {
+        id: 123,
+        name: 'John Doe',
+        type: 'professional',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Professional" />
+
+## Private
+
+<Canvas>
+  <Story
+    name="Private"
+    args={{
+      user: {
+        id: 123,
+        name: 'John Doe',
+        type: 'private',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
