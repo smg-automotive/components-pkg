@@ -1,0 +1,26 @@
+import { Box, Center } from '@chakra-ui/react';
+import * as Icons from "./index"
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Grid from '../grid';
+
+
+<Meta
+  title="Foundations/Icons"
+/>
+
+export const Template = () => {
+  return (
+    <Grid columns={6} spacing="lg">
+      {Object.keys(Icons).sort().map(icon => (
+        <Box borderWidth='1px' borderRadius='lg' borderColor='gray.200' h="80px" p="md">
+          <Center>{React.createElement(Icons[icon])}</Center>
+          <Center><p>{icon}</p></Center>
+        </Box>
+      ))}
+    </Grid>
+  )
+}
+
+<Canvas>
+  <Story name="Overview">{Template.bind({})}</Story>
+</Canvas>
