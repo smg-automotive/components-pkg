@@ -3,7 +3,7 @@ import { createIcon } from '@chakra-ui/react';
 
 export const MessageSuccessIcon = createIcon({
   displayName: 'Chevron',
-  viewBox: '0 0 24 24',
+  viewBox: '0 0 80 80',
   path: (
     <g clipPath="url(#clip0_236_62876)">
       <path
