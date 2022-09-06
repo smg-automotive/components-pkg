@@ -1,0 +1,49 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import AlertMessage from './index.tsx';
+
+<Meta title="Patterns/Feedback/Alert Message" />
+
+export const Template = (args) => <AlertMessage {...args} />;
+
+# Alert Message
+
+## Info
+
+<Canvas>
+  <Story name="Info" args={{ typeMessage: 'info' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Info" />
+
+## Success
+
+<Canvas>
+  <Story name="Success" args={{ typeMessage: 'success' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Success" />
+
+## Warning
+
+<Canvas>
+  <Story name="Warning" args={{ typeMessage: 'warning' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Warning" />
+
+## Error
+
+<Canvas>
+  <Story name="Error" args={{ typeMessage: 'error' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Error" />

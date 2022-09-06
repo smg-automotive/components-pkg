@@ -1,5 +1,5 @@
 export { default as ArticleTeaser } from './articleTeaser';
-export { default as AlertMessage } from './alertMessage';
+export { default as Alert } from './alert';
 export { default as Button } from './button';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
