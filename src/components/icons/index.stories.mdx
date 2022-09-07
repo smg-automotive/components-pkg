@@ -5,7 +5,16 @@ import Grid from '../grid';
 
 import * as Icons from './index';
 
-<Meta title="Foundations/Icons" />
+<Meta
+  title="Foundations/Icons"
+  parameters={{
+    docs: {
+      source: {
+        code: null,
+      },
+    },
+  }}
+/>
 
 export const Template = () => {
   return (
@@ -29,6 +38,8 @@ export const Template = () => {
     </Grid>
   );
 };
+
+# Icons
 
 <Canvas>
   <Story name="Overview">{Template.bind({})}</Story>
