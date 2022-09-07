@@ -30,7 +30,11 @@ const Section: FC<Props> = ({
 
   return (
     <Stack direction={{ '2xs': 'column', md: 'row' }} spacing="xl">
-      {image ? <Box maxW={maxImgW}>{image}</Box> : null}
+      {image ? (
+        <Box maxW={maxImgW} w={maxImgW}>
+          {image}
+        </Box>
+      ) : null}
       <Stack spacing="md">
         <chakra.span __css={styles.title}>{title}</chakra.span>
         {text ? <chakra.span __css={styles.text}>{text}</chakra.span> : null}
