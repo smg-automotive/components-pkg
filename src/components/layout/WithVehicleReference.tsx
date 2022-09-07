@@ -5,7 +5,7 @@ import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Stack from '../stack';
 
 interface Props {
-  title?: string;
+  title?: string | ReactNode;
   backLink?: {
     text: string;
     url: string;
