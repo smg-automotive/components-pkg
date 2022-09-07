@@ -49,6 +49,7 @@ module.exports = {
         'no-nested-ternary': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/prop-types': 'off',
+        'import/namespace': ['error', { allowComputed: true }],
       },
     },
   ],
