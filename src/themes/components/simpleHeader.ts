@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 const baseStyleHeader: SystemStyleObject = {

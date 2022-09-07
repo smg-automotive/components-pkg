@@ -4,7 +4,6 @@ export default {
   errorOnDeprecated: true,
   moduleDirectories: ['node_modules', '<rootDir>'],
   moduleNameMapper: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '\\.(jpg|ico|jpeg|png|svg)$': '<rootDir>/.jest/mocks/fileMock.ts',
   },
   preset: 'ts-jest/presets/js-with-ts',

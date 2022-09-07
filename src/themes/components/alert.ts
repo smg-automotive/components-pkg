@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { cssVar, mode } from '@chakra-ui/theme-tools';
 import { PartsStyleFunction, PartsStyleObject } from '@chakra-ui/styled-system';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';

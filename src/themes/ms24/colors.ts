@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { shared } from '../shared';
 
 const brandPrimary = '#FF4C52';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { lineHeights } from './lineHeights';
 import { fontWeights } from './fontWeights';
 import { fontSizes } from './fontSizes';

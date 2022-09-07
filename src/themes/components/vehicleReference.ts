@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const parts = ['carTitle', 'price', 'dealerName', 'dealerAddress'];

@@ -1,6 +1,5 @@
 import { convertRemEmToPx } from '../../utilities';
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export const emBreakpoints = {
   base: '0em',
   '2xs': '20em',

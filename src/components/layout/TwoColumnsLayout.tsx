@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC, ReactNode } from 'react';
 
 import { GridItem, Heading } from '@chakra-ui/react';
