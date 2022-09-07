@@ -17,13 +17,13 @@ interface Props {
     text: string;
     url: string;
   };
-  typeMessage?: 'error' | 'warning' | 'info' | 'success';
+  type?: 'error' | 'warning' | 'info' | 'success';
   icon: ReactNode;
 }
 
-const Alert: FC<Props> = ({ title, description, link, typeMessage, icon }) => {
+const Alert: FC<Props> = ({ title, description, link, type, icon }) => {
   return (
-    <ChackraAlert status={typeMessage}>
+    <ChackraAlert status={type}>
       <AlertIcon>{icon}</AlertIcon>
       <Flex direction="column">
         {title ? <AlertTitle>{title}</AlertTitle> : null}

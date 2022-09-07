@@ -17,10 +17,10 @@ export const Template = (args) => (
   <Story
     name="Overview"
     args={{
-      typeMessage: 'info',
+      type: 'info',
     }}
     argTypes={{
-      typeMessage: {
+      type: {
         options: ['error', 'warning', 'info', 'success'],
         control: 'select',
       },
@@ -64,14 +64,14 @@ export const Template = (args) => (
   <Story
     name="With Link"
     args={{
-      typeMessage: 'info',
+      type: 'info',
       link: {
         url: 'https://www.autoscout24.ch/de',
         text: 'Link',
       },
     }}
     argTypes={{
-      typeMessage: {
+      type: {
         options: ['error', 'warning', 'info', 'success'],
         control: 'select',
       },
@@ -89,11 +89,11 @@ export const Template = (args) => (
   <Story
     name="With Title"
     args={{
-      typeMessage: 'info',
+      type: 'info',
       title: 'Your browser is outdated!',
     }}
     argTypes={{
-      typeMessage: {
+      type: {
         options: ['error', 'warning', 'info', 'success'],
         control: 'select',
       },
@@ -111,7 +111,7 @@ export const Template = (args) => (
   <Story
     name="With custom Icon"
     args={{
-      typeMessage: 'error',
+      type: 'error',
       title: 'Your browser is outdated!',
       link: {
         url: 'https://www.autoscout24.ch/de',
@@ -120,9 +120,14 @@ export const Template = (args) => (
       icon: <ErrorIcon />,
     }}
     argTypes={{
-      typeMessage: {
+      type: {
         options: ['error', 'warning', 'info', 'success'],
         control: 'select',
+      },
+      icon: {
+        table: {
+          disable: true,
+        },
       },
     }}
   >

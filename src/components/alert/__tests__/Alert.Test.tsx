@@ -11,7 +11,7 @@ describe('<Alert>', () => {
     render(
       <Alert
         title="I am the title"
-        typeMessage="info"
+        type="info"
         description="I am a description"
         icon={<MockIcon />}
       />
@@ -23,7 +23,7 @@ describe('<Alert>', () => {
   it('renders Alert with link', () => {
     render(
       <Alert
-        typeMessage="info"
+        type="info"
         description="I am a description"
         link={{
           url: 'https://www.autoscout24.ch/de',
@@ -41,7 +41,7 @@ describe('<Alert>', () => {
     it('renders information alert message correctly', () => {
       const view = render(
         <Alert
-          typeMessage="info"
+          type="info"
           description="I am a description"
           icon={<MockIcon />}
         />
@@ -53,7 +53,7 @@ describe('<Alert>', () => {
     it('renders error alert message correctly', () => {
       const view = render(
         <Alert
-          typeMessage="error"
+          type="error"
           description="I am a description"
           icon={<MockIcon />}
         />
@@ -65,7 +65,7 @@ describe('<Alert>', () => {
     it('renders warning alert message correctly', () => {
       const view = render(
         <Alert
-          typeMessage="warning"
+          type="warning"
           description="I am a description"
           icon={<MockIcon />}
         />
@@ -77,7 +77,7 @@ describe('<Alert>', () => {
     it('renders success alert message correctly', () => {
       const view = render(
         <Alert
-          typeMessage="success"
+          type="success"
           description="I am a description"
           icon={<MockIcon />}
         />
