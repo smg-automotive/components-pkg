@@ -31,7 +31,7 @@ const Section: FC<Props> = ({
   return (
     <Stack direction={{ '2xs': 'column', md: 'row' }} spacing="xl">
       {image ? (
-        <Box maxW={maxImgW} w={maxImgW}>
+        <Box maxW={maxImgW} flexShrink={0}>
           {image}
         </Box>
       ) : null}
