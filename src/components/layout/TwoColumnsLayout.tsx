@@ -10,7 +10,7 @@ import { ArrowLeftIcon } from '../icons';
 
 interface Props {
   header: ReactNode;
-  title?: string;
+  title?: string | ReactNode;
   backLink?: {
     text: string;
     url: string;
@@ -50,9 +50,13 @@ const TwoColumnsLayout: FC<Props> = ({
         ) : null}
         {title ? (
           <GridItem area="heading">
-            <Heading as="h1" textStyle="heading1">
-              {title}
-            </Heading>
+            {typeof title === 'string' ? (
+              <Heading as="h1" textStyle="heading1">
+                {title}
+              </Heading>
+            ) : (
+              title
+            )}
           </GridItem>
         ) : null}
         {rightContent ? (
