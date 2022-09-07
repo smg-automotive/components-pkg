@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
-import { Divider as ChakraDivider } from '@chakra-ui/react';
+import { Divider as ChakraDivider, ResponsiveValue } from '@chakra-ui/react';
+import { Sizes } from '../../themes';
 
-const Divider: FC = () => {
-  return <ChakraDivider />;
+type Props = {
+  verticalSpacing: ResponsiveValue<Sizes>;
+};
+
+const Divider: FC<Props> = ({ verticalSpacing }) => {
+  return <ChakraDivider my={verticalSpacing} />;
 };
 
 export default Divider;
