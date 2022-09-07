@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import {
   AlertDescription,
@@ -8,19 +8,27 @@ import {
   Flex,
 } from '@chakra-ui/react';
 
+import Link from '../link';
+
 interface Props {
-  typeMessage: 'error' | 'warning' | 'info' | 'success';
+  title?: string;
+  description: string;
+  link?: {
+    text: string;
+    url: string;
+  };
+  typeMessage?: 'error' | 'warning' | 'info' | 'success';
+  icon: ReactNode;
 }
 
-const Alert: FC<Props> = ({ typeMessage }) => {
+const Alert: FC<Props> = ({ title, description, link, typeMessage, icon }) => {
   return (
     <ChackraAlert status={typeMessage}>
-      <AlertIcon />
+      <AlertIcon>{icon}</AlertIcon>
       <Flex direction="column">
-        <AlertTitle>Your browser is outdated!</AlertTitle>
-        <AlertDescription>
-          Your Chakra experience may be degraded.
-        </AlertDescription>
+        {title ? <AlertTitle>{title}</AlertTitle> : null}
+        <AlertDescription>{description}</AlertDescription>
+        {link ? <Link href={link.url}>{link.text}</Link> : null}
       </Flex>
     </ChackraAlert>
   );

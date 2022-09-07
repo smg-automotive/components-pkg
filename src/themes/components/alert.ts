@@ -20,7 +20,9 @@ const baseStyle: PartsStyleObject<typeof parts> = {
   icon: {
     color: $fg.reference,
     flexShrink: 0,
+    alignSelf: 'start',
     marginEnd: 'lg',
+    marginTop: 'xs',
     w: 'sm',
     h: 'sm',
   },
@@ -29,7 +31,10 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c } = props;
   const bg = mode(`${c}.100`, `${c}.200`)(props);
-  const fg = mode(`${c}.500`, `${c}.200`)(props);
+  const fg = mode(
+    props.status === 'info' ? `${c}.700` : `${c}.500`,
+    `${c}.200`
+  )(props);
   return {
     container: {
       [$bg.variable]: `colors.${bg}`,
@@ -47,6 +52,7 @@ const variants = {
 
 const defaultProps = {
   variant: 'left-accent',
+  colorScheme: 'blue',
 };
 
 export default {

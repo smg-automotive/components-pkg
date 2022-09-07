@@ -1,0 +1,70 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Alert from './index.tsx';
+import { Template } from './index.stories.mdx';
+
+<Meta title="Patterns/Alert/States" component={Alert} />
+
+# Alert
+
+## States
+
+### Info
+
+<Canvas>
+  <Story
+    name="Info"
+    args={{
+      typeMessage: 'info',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Info" />
+
+### Success
+
+<Canvas>
+  <Story
+    name="Success"
+    args={{
+      typeMessage: 'success',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Success" />
+
+### Warning
+
+<Canvas>
+  <Story
+    name="Warning"
+    args={{
+      typeMessage: 'warning',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Warning" />
+
+### Error
+
+<Canvas>
+  <Story
+    name="Error"
+    args={{
+      typeMessage: 'error',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Error" />
