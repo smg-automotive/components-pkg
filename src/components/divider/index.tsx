@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Divider as ChakraDivider, ResponsiveValue } from '@chakra-ui/react';
+
 import { Sizes } from '../../themes';
 
 type Props = {
