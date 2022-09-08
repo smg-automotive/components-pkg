@@ -28,7 +28,11 @@ const Alert: FC<Props> = ({ title, description, link, type, icon }) => {
       <Flex direction="column">
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
-        {link ? <Link href={link.url}>{link.text}</Link> : null}
+        {link ? (
+          <Link href={link.url} isExternal={true}>
+            {link.text}
+          </Link>
+        ) : null}
       </Flex>
     </ChackraAlert>
   );
