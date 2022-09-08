@@ -16,7 +16,6 @@ const InsertionLayout: FC<PropsWithChildren> = ({ children }) => {
           maxWidth="container.md"
           paddingY="2xl"
           paddingX={{ base: 'sm', md: 0 }}
-          // paddingX={{ base: 'sm', sm: 0 }}
         >
           {!stepper ? null : <Box marginBottom="2xl">{stepper}</Box>}
           <Box>{content}</Box>
