@@ -1,17 +1,62 @@
+import { useState } from 'react';
 import Radio from './index.tsx';
 
 <Meta title="Forms/Radio" component={Radio} />
 
+export const Template = ({ isChecked, ...args }) => {
+  const [checked, setChecked] = useState(isChecked);
+  return (
+    <Radio
+      {...args}
+      isChecked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+};
+
 # Radio
 
-## Regular
+## Default
 
 <Canvas>
     <Story
-        name= "Regular"
+        name= "Default"
         args={{
+        name: 'Option',
         isChecked: false,
         isDisabled: false,
         }}
-    />
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+    <Story
+        name= "Disabled"
+        args={{
+        name: 'Option',
+        isChecked: false,
+        isDisabled: true,
+        }}
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Error
+
+<Canvas>
+    <Story
+        name= "Error"
+        args={{
+        name: 'Option',
+        isChecked: false,
+        isInvalid: true,
+        }}
+    >
+    {Template.bind({})}
+    </Story>
 </Canvas>
