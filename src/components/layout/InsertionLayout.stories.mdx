@@ -1,0 +1,57 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { Box, Center } from '@chakra-ui/react';
+
+import InsertionLayout from './InsertionLayout.tsx';
+import { FullHeight } from '../index';
+
+<Meta
+  title="Layout/Pages/Insertion"
+  component={InsertionLayout}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+  args={{}}
+  argTypes={{}}
+/>
+
+export const WithContent = (args) => (
+  <FullHeight>
+    <InsertionLayout {...args}>
+      <Box background="blue.200">
+        <Center>1-2-3-4-5</Center>
+      </Box>
+      <Box background="blue.300" height="600px">
+        I am the content
+      </Box>
+    </InsertionLayout>
+  </FullHeight>
+);
+
+# Insertion Pages Layout
+
+## Content Only
+
+<Canvas>
+  <Story name="Content Only">
+    <FullHeight>
+      <InsertionLayout>
+        <Box background="blue.300" height="600px">
+          I am the content
+        </Box>
+      </InsertionLayout>
+    </FullHeight>
+  </Story>
+</Canvas>
+
+<ArgsTable story="Content Only" />
+
+## Content and Stepper
+
+<Canvas>
+  <Story name="Content and Stepper" args={{}}>
+    {WithContent.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Content and Stepper" />
