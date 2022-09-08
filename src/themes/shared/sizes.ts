@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export const sizes = {
   xs: '1rem',
   sm: '1.5rem',

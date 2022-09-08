@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export const space = {
   xs: '0.25rem',
   sm: '0.5rem',

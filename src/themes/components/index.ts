@@ -14,8 +14,10 @@ import Divider from './divider';
 import Checkbox from './checkbox';
 import Button from './button';
 import ArticleTeaser from './articleTeaser';
+import Alert from './alert';
 
 export const components = {
+  Alert,
   ArticleTeaser,
   Button,
   Checkbox,

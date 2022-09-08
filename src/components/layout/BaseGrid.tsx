@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC, PropsWithChildren } from 'react';
 
 import { Center, Container, Grid, GridProps } from '@chakra-ui/react';
