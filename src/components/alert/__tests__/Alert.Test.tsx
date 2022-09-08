@@ -6,84 +6,41 @@ import Alert from '../index';
 
 const MockIcon = () => <svg data-testid="test-icon" />;
 
+const renderWrapper = ({
+  title = 'Your browser is outdated!',
+  description = 'Your Chakra experience may be degraded.',
+  icon = <MockIcon />,
+  link = {
+    url: 'http://link.com',
+    text: 'Link',
+  },
+} = {}) =>
+  render(
+    <Alert title={title} description={description} icon={icon} link={link} />
+  );
+
 describe('<Alert>', () => {
   it('renders Alert with title', () => {
-    render(
-      <Alert
-        title="I am the title"
-        type="info"
-        description="I am a description"
-        icon={<MockIcon />}
-      />
-    );
+    const title = 'I am here my friend!';
+    renderWrapper({ title });
 
-    expect(screen.getByText('I am the title')).toBeInTheDocument();
+    expect(screen.getByText(title)).toBeInTheDocument();
+  });
+
+  it('renders Alert with description', () => {
+    const description = 'Hey I am here my friend!';
+    renderWrapper({ description });
+
+    expect(screen.getByText(description)).toBeInTheDocument();
   });
 
   it('renders Alert with link', () => {
-    render(
-      <Alert
-        type="info"
-        description="I am a description"
-        link={{
-          url: 'https://www.autoscout24.ch/de',
-          text: 'Link',
-        }}
-        icon={<MockIcon />}
-      />
-    );
+    const url = 'https://www.autoscout24.ch/de';
+    const text = 'I am your link';
+    renderWrapper({ link: { url, text } });
 
     const link = screen.getByRole('link');
-    expect(link).toHaveAttribute('href', 'https://www.autoscout24.ch/de');
-  });
-
-  describe('Variations', () => {
-    it('renders information alert message correctly', () => {
-      const view = render(
-        <Alert
-          type="info"
-          description="I am a description"
-          icon={<MockIcon />}
-        />
-      );
-
-      expect(view.container).toMatchSnapshot();
-    });
-
-    it('renders error alert message correctly', () => {
-      const view = render(
-        <Alert
-          type="error"
-          description="I am a description"
-          icon={<MockIcon />}
-        />
-      );
-
-      expect(view.container).toMatchSnapshot();
-    });
-
-    it('renders warning alert message correctly', () => {
-      const view = render(
-        <Alert
-          type="warning"
-          description="I am a description"
-          icon={<MockIcon />}
-        />
-      );
-
-      expect(view.container).toMatchSnapshot();
-    });
-
-    it('renders success alert message correctly', () => {
-      const view = render(
-        <Alert
-          type="success"
-          description="I am a description"
-          icon={<MockIcon />}
-        />
-      );
-
-      expect(view.container).toMatchSnapshot();
-    });
+    expect(link).toHaveAttribute('href', url);
+    expect(screen.getByText(text)).toBeInTheDocument();
   });
 });
