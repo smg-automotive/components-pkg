@@ -5,6 +5,7 @@ import Switch from './switch';
 import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
+import Radio from './radio';
 import Link from './link';
 import Input from './input';
 import FormLabel from './formLabel';
@@ -27,6 +28,7 @@ export const components = {
   FormLabel,
   Input,
   Link,
+  Radio,
   Section,
   Select,
   SimpleHeader,
