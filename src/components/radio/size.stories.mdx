@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import Radio from './index.tsx';
+import { Template } from './index.stories.mdx';
+
+<Meta title="Forms/Radio/Sizes" component={Radio} />
+
+# Radio
+
+## Sizes
+
+### Medium
+
+<Canvas>
+    <Story
+        name= "Medium"
+        args={{
+        isDisabled: false,
+        }}
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Small
+
+<Canvas>
+    <Story
+        name= "Small"
+        args={{
+        isDisabled: false,
+        size: 'sm'
+        }}
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>

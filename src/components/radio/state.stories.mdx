@@ -1,0 +1,48 @@
+import { useState } from 'react';
+import Radio from './index.tsx';
+import { Template } from './index.stories.mdx';
+
+<Meta title="Forms/Radio/States" component={Radio} />
+
+# Radio
+
+## States
+
+### Default
+
+<Canvas>
+    <Story
+        name= "Default"
+        args={{
+        isDisabled: false,
+        }}
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+    <Story
+        name= "Disabled"
+        args={{
+        isDisabled: true,
+        }}
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>
+
+### Error
+
+<Canvas>
+    <Story
+        name= "Error"
+        args={{
+        isInvalid: true,
+        }}
+    >
+    {Template.bind({})}
+    </Story>
+</Canvas>

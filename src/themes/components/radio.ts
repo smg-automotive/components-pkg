@@ -3,6 +3,12 @@ import { radioAnatomy as parts } from '@chakra-ui/anatomy';
 
 import checkbox from './checkbox';
 
+const sizes: Record<string, PartsStyleObject<typeof parts>> = {
+  sm: {
+    label: { fontSize: 'sm' },
+  },
+};
+
 const baseStyleControl: SystemStyleObject = {
   ...checkbox.baseStyle.control,
   borderRadius: '50%',
@@ -27,5 +33,6 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 };
 
 export default {
+  sizes,
   baseStyle,
 };

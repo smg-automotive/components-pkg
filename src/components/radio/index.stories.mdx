@@ -8,6 +8,8 @@ export const Template = ({ isChecked, ...args }) => {
   return (
     <Radio
       {...args}
+      value='Option'
+      label='Option'
       isChecked={checked}
       onChange={(e) => setChecked(e.target.checked)}
     />
@@ -16,47 +18,57 @@ export const Template = ({ isChecked, ...args }) => {
 
 # Radio
 
-## Default
+## Overview
 
 <Canvas>
     <Story
-        name= "Default"
+        name= "Overview"
         args={{
-        name: 'Option',
-        isChecked: false,
         isDisabled: false,
+        isInvalid: false,
+        size: 'md'
         }}
+        argTypes={{
+        size: {
+        options: ['sm', 'md'],
+        control: 'select',
+        },
+    }}
     >
     {Template.bind({})}
     </Story>
 </Canvas>
 
-## Disabled
+## States
+
+### Default
 
 <Canvas>
-    <Story
-        name= "Disabled"
-        args={{
-        name: 'Option',
-        isChecked: false,
-        isDisabled: true,
-        }}
-    >
-    {Template.bind({})}
-    </Story>
+  <Story id="forms-radio-states--default" />
 </Canvas>
 
-## Error
+### Disabled
 
 <Canvas>
-    <Story
-        name= "Error"
-        args={{
-        name: 'Option',
-        isChecked: false,
-        isInvalid: true,
-        }}
-    >
-    {Template.bind({})}
-    </Story>
+  <Story id="forms-radio-states--disabled" />
+</Canvas>
+
+### Error
+
+<Canvas>
+  <Story id="forms-radio-states--error" />
+</Canvas>
+
+## Sizes
+
+### Medium
+
+<Canvas>
+  <Story id="forms-radio-sizes--medium" />
+</Canvas>
+
+### Small
+
+<Canvas>
+  <Story id="forms-radio-sizes--small" />
 </Canvas>
