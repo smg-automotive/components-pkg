@@ -2,12 +2,12 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Box, Center } from '@chakra-ui/react';
 
-import InsertionLayout from './InsertionLayout.tsx';
+import SingleColumnCenteredLayout from './SingleColumnCentered.tsx';
 import { FullHeight } from '../index';
 
 <Meta
-  title="Layout/Pages/Insertion"
-  component={InsertionLayout}
+  title="Layout/Pages/Single Column Centered"
+  component={SingleColumnCenteredLayout}
   parameters={{
     layout: 'fullscreen',
   }}
@@ -17,29 +17,29 @@ import { FullHeight } from '../index';
 
 export const WithContent = (args) => (
   <FullHeight>
-    <InsertionLayout {...args}>
+    <SingleColumnCenteredLayout {...args}>
       <Box background="blue.200">
         <Center>1-2-3-4-5</Center>
       </Box>
       <Box background="blue.300" height="600px">
         I am the content
       </Box>
-    </InsertionLayout>
+    </SingleColumnCenteredLayout>
   </FullHeight>
 );
 
-# Insertion Pages Layout
+# Singel Column Centered Layout
 
 ## Content Only
 
 <Canvas>
   <Story name="Content Only">
     <FullHeight>
-      <InsertionLayout>
+      <SingleColumnCenteredLayout>
         <Box background="blue.300" height="600px">
           I am the content
         </Box>
-      </InsertionLayout>
+      </SingleColumnCenteredLayout>
     </FullHeight>
   </Story>
 </Canvas>

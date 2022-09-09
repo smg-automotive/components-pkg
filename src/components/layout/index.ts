@@ -1,3 +1,3 @@
 export { default as LayoutWithVehicleReference } from './WithVehicleReference';
 export { default as TwoColumnsLayout } from './TwoColumnsLayout';
-export { default as InsertionLayout } from './InsertionLayout';
+export { default as InsertionLayout } from './SingleColumnCentered';

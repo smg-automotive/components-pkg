@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Box, Center, Container } from '@chakra-ui/react';
 
-const InsertionLayout: FC<PropsWithChildren> = ({ children }) => {
+const SingleColumnCenteredLayout: FC<PropsWithChildren> = ({ children }) => {
   const isSingleChild = !Array.isArray(children);
   const [stepper, content] = isSingleChild ? [null, children] : children;
 
@@ -25,4 +25,4 @@ const InsertionLayout: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default InsertionLayout;
+export default SingleColumnCenteredLayout;
