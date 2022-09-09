@@ -15,9 +15,9 @@ import { FullHeight } from '../index';
   argTypes={{}}
 />
 
-export const WithContent = (args) => (
+export const WithContent = () => (
   <FullHeight>
-    <SingleColumnCenteredLayout {...args}>
+    <SingleColumnCenteredLayout>
       <Box background="blue.200">
         <Center>1-2-3-4-5</Center>
       </Box>
@@ -44,14 +44,8 @@ export const WithContent = (args) => (
   </Story>
 </Canvas>
 
-<ArgsTable story="Content Only" />
-
 ## Content and Stepper
 
 <Canvas>
-  <Story name="Content and Stepper" args={{}}>
-    {WithContent.bind({})}
-  </Story>
+  <Story name="Content and Stepper">{WithContent.bind({})}</Story>
 </Canvas>
-
-<ArgsTable story="Content and Stepper" />
