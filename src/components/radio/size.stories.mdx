@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
 import Radio from './index.tsx';
 import { Template } from './index.stories.mdx';
 
@@ -11,26 +12,26 @@ import { Template } from './index.stories.mdx';
 ### Medium
 
 <Canvas>
-    <Story
-        name= "Medium"
-        args={{
-        isDisabled: false,
-        }}
-    >
+  <Story
+    name="Medium"
+    args={{
+      isDisabled: false,
+    }}
+  >
     {Template.bind({})}
-    </Story>
+  </Story>
 </Canvas>
 
 ### Small
 
 <Canvas>
-    <Story
-        name= "Small"
-        args={{
-        isDisabled: false,
-        size: 'sm'
-        }}
-    >
+  <Story
+    name="Small"
+    args={{
+      isDisabled: false,
+      size: 'sm',
+    }}
+  >
     {Template.bind({})}
-    </Story>
+  </Story>
 </Canvas>

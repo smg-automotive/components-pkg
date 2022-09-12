@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
 import Radio from './index.tsx';
 import { Template } from './index.stories.mdx';
 
@@ -11,38 +12,38 @@ import { Template } from './index.stories.mdx';
 ### Default
 
 <Canvas>
-    <Story
-        name= "Default"
-        args={{
-        isDisabled: false,
-        }}
-    >
+  <Story
+    name="Default"
+    args={{
+      isDisabled: false,
+    }}
+  >
     {Template.bind({})}
-    </Story>
+  </Story>
 </Canvas>
 
 ### Disabled
 
 <Canvas>
-    <Story
-        name= "Disabled"
-        args={{
-        isDisabled: true,
-        }}
-    >
+  <Story
+    name="Disabled"
+    args={{
+      isDisabled: true,
+    }}
+  >
     {Template.bind({})}
-    </Story>
+  </Story>
 </Canvas>
 
 ### Error
 
 <Canvas>
-    <Story
-        name= "Error"
-        args={{
-        isInvalid: true,
-        }}
-    >
+  <Story
+    name="Error"
+    args={{
+      isInvalid: true,
+    }}
+  >
     {Template.bind({})}
-    </Story>
+  </Story>
 </Canvas>

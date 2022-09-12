@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
 import Radio from './index.tsx';
 
 <Meta title="Forms/Radio" component={Radio} />
@@ -8,8 +10,8 @@ export const Template = ({ isChecked, ...args }) => {
   return (
     <Radio
       {...args}
-      value='Option'
-      label='Option'
+      value="Option"
+      label="Option"
       isChecked={checked}
       onChange={(e) => setChecked(e.target.checked)}
     />
@@ -21,22 +23,22 @@ export const Template = ({ isChecked, ...args }) => {
 ## Overview
 
 <Canvas>
-    <Story
-        name= "Overview"
-        args={{
-        isDisabled: false,
-        isInvalid: false,
-        size: 'md'
-        }}
-        argTypes={{
-        size: {
+  <Story
+    name="Overview"
+    args={{
+      isDisabled: false,
+      isInvalid: false,
+      size: 'md',
+    }}
+    argTypes={{
+      size: {
         options: ['sm', 'md'],
         control: 'select',
-        },
+      },
     }}
-    >
+  >
     {Template.bind({})}
-    </Story>
+  </Story>
 </Canvas>
 
 ## States
