@@ -1,0 +1,25 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Box from './index.tsx';
+
+<Meta title="Patterns/Box" component={Box} />
+
+export const Template = (args) => <Box {...args}>I am in the box</Box>;
+
+# Box
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      borderRadius: 'sm',
+      padding: '2xl',
+      borderColor: 'gray.900',
+      borderWidth: '1px',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
