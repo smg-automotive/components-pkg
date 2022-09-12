@@ -4,7 +4,7 @@ import { Box as ChakraBox, BoxProps as ChakraBoxProps } from '@chakra-ui/react';
 const Box: FC<ChakraBoxProps> = ({
   children,
   background,
-  borderRadius,
+  borderRadius = 'sm',
   color,
   padding,
   ...rest
