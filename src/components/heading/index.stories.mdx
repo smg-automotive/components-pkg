@@ -1,0 +1,93 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Heading from './index.tsx';
+
+<Meta title="Patterns/Heading" component={Heading} />
+
+export const Template = (args) => <Heading {...args}>Title</Heading>;
+
+# Heading
+
+## H1
+
+<Canvas>
+  <Story
+    name="H1"
+    args={{
+      as: 'h1',
+      textStyle: 'heading1',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## H2
+
+<Canvas>
+  <Story
+    name="H2"
+    args={{
+      as: 'h2',
+      textStyle: 'heading2',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## H3
+
+<Canvas>
+  <Story
+    name="H3"
+    args={{
+      as: 'h3',
+      textStyle: 'heading3',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## H4
+
+<Canvas>
+  <Story
+    name="H4"
+    args={{
+      as: 'h4',
+      textStyle: 'heading4',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## H5
+
+<Canvas>
+  <Story
+    name="H5"
+    args={{
+      as: 'h5',
+      textStyle: 'heading5',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## H6
+
+<Canvas>
+  <Story
+    name="H6"
+    args={{
+      as: 'h6',
+      textStyle: 'heading6',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
