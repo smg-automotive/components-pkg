@@ -12,6 +12,7 @@ export { default as FullHeight } from './fullHeight';
 export { default as Grid } from './grid';
 export { default as Input } from './input';
 export { default as Link } from './link';
+export { default as Radio } from './radio';
 export { default as Section } from './section';
 export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';

@@ -1,0 +1,76 @@
+import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Radio from './index.tsx';
+
+<Meta title="Forms/Radio" component={Radio} />
+
+export const Template = ({ isChecked, ...args }) => {
+  const [checked, setChecked] = useState(isChecked);
+  return (
+    <Radio
+      {...args}
+      value="Option"
+      label="Option"
+      isChecked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+};
+
+# Radio
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      isDisabled: false,
+      isInvalid: false,
+      size: 'md',
+    }}
+    argTypes={{
+      size: {
+        options: ['sm', 'md'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## States
+
+### Default
+
+<Canvas>
+  <Story id="forms-radio-states--default" />
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story id="forms-radio-states--disabled" />
+</Canvas>
+
+### Error
+
+<Canvas>
+  <Story id="forms-radio-states--error" />
+</Canvas>
+
+## Sizes
+
+### Medium
+
+<Canvas>
+  <Story id="forms-radio-sizes--medium" />
+</Canvas>
+
+### Small
+
+<Canvas>
+  <Story id="forms-radio-sizes--small" />
+</Canvas>
