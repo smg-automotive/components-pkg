@@ -11,7 +11,6 @@ export { default as FormControl } from './formControl';
 export { default as FormLabel } from './formLabel';
 export { default as FullHeight } from './fullHeight';
 export { default as Grid } from './grid';
-export { default as Heading } from './heading';
 export { default as Input } from './input';
 export { default as Link } from './link';
 export { default as Section } from './section';
@@ -26,5 +25,6 @@ export {
 } from './themeProvider';
 export { default as VehicleReference } from './vehicleReference';
 
+export * from './heading';
 export * from './icons';
 export * from './layout';
