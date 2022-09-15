@@ -2,7 +2,7 @@ version: 2.1
 
 docker: &DOCKER_NODE
   docker:
-    - image: cimg/node:18.8.0
+    - image: cimg/node:18.9.0
 
 bob_the_builder: &BOB_THE_BUILDER
   docker:
