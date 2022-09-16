@@ -6,6 +6,7 @@ export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as DevOverlay } from './devOverlay';
 export { default as Divider } from './divider';
+export { default as Flex } from './flex';
 export { default as FormControl } from './formControl';
 export { default as FormLabel } from './formLabel';
 export { default as FullHeight } from './fullHeight';
@@ -25,5 +26,6 @@ export {
 } from './themeProvider';
 export { default as VehicleReference } from './vehicleReference';
 
+export * from './heading';
 export * from './icons';
 export * from './layout';
