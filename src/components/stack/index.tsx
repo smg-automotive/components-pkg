@@ -3,7 +3,13 @@ import { Stack as ChakraStack, StackProps } from '@chakra-ui/react';
 
 type Props = Pick<
   StackProps,
-  'align' | 'children' | 'direction' | 'justify' | 'spacing' | 'wrap'
+  | 'align'
+  | 'children'
+  | 'direction'
+  | 'justify'
+  | 'spacing'
+  | 'wrap'
+  | 'padding'
 >;
 
 const Stack: FC<Props> = ({ children, ...rest }) => (
