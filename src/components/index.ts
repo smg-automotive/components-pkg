@@ -17,7 +17,7 @@ export { default as Radio } from './radio';
 export { default as Section } from './section';
 export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
-export { default as Select } from './select';
+export { default as Select, Option } from './select';
 export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export {
