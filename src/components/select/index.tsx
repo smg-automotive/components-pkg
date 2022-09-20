@@ -6,11 +6,13 @@ import {
 
 import { ChevronIcon } from '../icons';
 
+export type Options<T extends string | number> = {
+  value: T;
+  label: string;
+}
+
 type OptionsAndValue<T extends string | number> = {
-  options: {
-    value: T;
-    label: string;
-  }[];
+  options: Options<T>[];
   value?: T;
 };
 
