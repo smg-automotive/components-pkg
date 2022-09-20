@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Spacer from './index.tsx';
+import Flex from '../flex';
+import Box from '../box';
+
+<Meta title="Layout/Flex/WithSpacer" component={Spacer} />
+
+export const Template = ({ direction, ...args }) => (
+  <Flex h="xl" w="xl" direction={direction} justify="center">
+    <Box w="sm" h="sm" background="green.200" />
+    <Spacer {...args} />
+    <Box w="sm" h="sm" background="orange.300" />
+  </Flex>
+);
+
+# Spacer
+
+## Row
+
+<Canvas>
+  <Story name="Row" args={{ direction: 'row' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Column
+
+<Canvas>
+  <Story name="Column" args={{ direction: 'column' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
