@@ -3,7 +3,8 @@ import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 const linkBaseStyle: SystemStyleObject = {
   textStyle: 'body',
   color: 'blue.700',
-  verticalAlign: 'middle',
+  display: 'flex',
+  flexDirection: 'row',
   _hover: {
     cursor: 'pointer',
     textDecoration: 'underline',
