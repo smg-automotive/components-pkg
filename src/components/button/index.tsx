@@ -11,7 +11,7 @@ type WithOnClick<T extends 'submit' | 'button'> = T extends 'submit'
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-  customComponent?: 'button' | 'link';
+  as?: 'button' | 'link';
 } & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
 
 type ButtonTypeProps = SharedProps & {
@@ -31,18 +31,20 @@ const Button: FC<ButtonProps> = ({
   size = 'lg',
   isDisabled = false,
   children,
-  customComponent = 'button',
+  as,
   ...rest
-}) => (
-  <ChakraButton
-    isDisabled={isDisabled}
-    variant={variant}
-    size={size}
-    {...rest}
-    as={customComponent === 'link' ? 'a' : 'button'}
-  >
-    {children}
-  </ChakraButton>
-);
+}) => {
+  return (
+    <ChakraButton
+      as={as === 'link' ? 'a' : 'button'}
+      isDisabled={isDisabled}
+      variant={variant}
+      size={size}
+      {...rest}
+    >
+      {children}
+    </ChakraButton>
+  );
+};
 
 export default Button;
