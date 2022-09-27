@@ -1,4 +1,4 @@
-import React, { ElementType, FC } from 'react';
+import React, { FC } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
@@ -11,7 +11,7 @@ type WithOnClick<T extends 'submit' | 'button'> = T extends 'submit'
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-  customComponent?: ElementType;
+  customComponent?: 'button' | 'link';
 } & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
 
 type ButtonTypeProps = SharedProps & {
@@ -31,7 +31,7 @@ const Button: FC<ButtonProps> = ({
   size = 'lg',
   isDisabled = false,
   children,
-  customComponent,
+  customComponent = 'button',
   ...rest
 }) => (
   <ChakraButton
@@ -39,7 +39,7 @@ const Button: FC<ButtonProps> = ({
     variant={variant}
     size={size}
     {...rest}
-    as={customComponent}
+    as={customComponent === 'link' ? 'a' : 'button'}
   >
     {children}
   </ChakraButton>
