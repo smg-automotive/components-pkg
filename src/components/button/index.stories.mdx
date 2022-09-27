@@ -90,3 +90,32 @@ export const Template = (args) => (
     </Stack>
   </Story>
 </Canvas>
+
+## Custom component into Link
+
+<Canvas>
+  <Story
+    name="Custom component into Link"
+    args={{
+      isDisabled: false,
+      label: 'Primary Button',
+      variant: 'primary',
+      size: 'lg',
+      customComponent: 'a',
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Custom component into Link" />
