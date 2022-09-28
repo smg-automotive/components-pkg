@@ -3,26 +3,24 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import ButtonLink from './index.tsx';
 import { Stack } from '../../index.ts';
 
-<Meta title="Buttons/Button as Link" component={Button} />
+<Meta title="Buttons/Button as Link" component={ButtonLink} />
 
 export const Template = (args) => (
   <ButtonLink {...args}>{args.label || 'Button'}</ButtonLink>
 );
 
-# Button as Link
+# Button
 
-## Primary
+## Overview
 
 <Canvas>
   <Story
-    name="Primary"
+    name="Overview"
     args={{
-      isDisabled: false,
       label: 'Primary Button',
       variant: 'primary',
       size: 'lg',
-      as: 'a',
-      href='https://google.com',
+      url: 'https://www.autoscout24.ch/de',
     }}
     argTypes={{
       variant: {
@@ -39,34 +37,4 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-<ArgsTable story="Primary" />
-
-## Secondary
-
-<Canvas>
-  <Story
-    name="Secondary"
-    args={{
-      isDisabled: false,
-      label: 'Secondary Button',
-      variant: 'secondary',
-      size: 'lg',
-      as: 'a',
-      href='https://google.com',
-    }}
-    argTypes={{
-      variant: {
-        options: ['primary', 'secondary'],
-        control: 'select',
-      },
-      size: {
-        options: ['md', 'lg'],
-        control: 'select',
-      },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<ArgsTable story="Secondary" />
+<ArgsTable story="Overview" />
