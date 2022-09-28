@@ -1,15 +1,15 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Button from './index.tsx';
+import ButtonLink from './index.tsx';
 import { Stack } from '../../index.ts';
 
-<Meta title="Buttons/Button" component={Button} />
+<Meta title="Buttons/Button as Link" component={Button} />
 
 export const Template = (args) => (
-  <Button {...args}>{args.label || 'Button'}</Button>
+  <ButtonLink {...args}>{args.label || 'Button'}</ButtonLink>
 );
 
-# Button
+# Button as Link
 
 ## Primary
 
@@ -21,6 +21,8 @@ export const Template = (args) => (
       label: 'Primary Button',
       variant: 'primary',
       size: 'lg',
+      as: 'a',
+      href='https://google.com',
     }}
     argTypes={{
       variant: {
@@ -49,6 +51,8 @@ export const Template = (args) => (
       label: 'Secondary Button',
       variant: 'secondary',
       size: 'lg',
+      as: 'a',
+      href='https://google.com',
     }}
     argTypes={{
       variant: {
@@ -66,27 +70,3 @@ export const Template = (args) => (
 </Canvas>
 
 <ArgsTable story="Secondary" />
-
-## Sizes
-
-<Canvas>
-  <Story name="Sizes">
-    <Stack spacing="lg" direction="row">
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-    </Stack>
-  </Story>
-</Canvas>
-
-## Disabled
-
-<Canvas>
-  <Story name="Disabled">
-    <Stack spacing="lg" direction="row">
-      <Button isDisabled={true}>Primary Button</Button>
-      <Button variant="secondary" isDisabled={true}>
-        Secondary Button
-      </Button>
-    </Stack>
-  </Story>
-</Canvas>
