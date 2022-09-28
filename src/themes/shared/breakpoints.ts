@@ -11,7 +11,6 @@ export const emBreakpoints = {
 };
 
 type BreakpointName = keyof typeof emBreakpoints;
-
 export const pxBreakpoints = Object.fromEntries(
   Object.entries(emBreakpoints).map(([name, emValue]) => [
     name,
