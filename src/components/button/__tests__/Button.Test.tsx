@@ -10,7 +10,7 @@ const renderWrapper = ({
   label = 'Button Label',
 } = {}) =>
   render(
-    <Button onClick={onClick} isDisabled={isDisabled}>
+    <Button as="button" onClick={onClick} isDisabled={isDisabled}>
       {label}
     </Button>
   );

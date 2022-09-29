@@ -6,7 +6,7 @@ import { Stack } from '../../index.ts';
 <Meta title="Buttons/Button" component={Button} />
 
 export const Template = (args) => (
-  <Button {...args}>{args.label || 'Button'}</Button>
+  <Button as="button" {...args}>{args.label || 'Button'}</Button>
 );
 
 # Button
@@ -72,8 +72,8 @@ export const Template = (args) => (
 <Canvas>
   <Story name="Sizes">
     <Stack spacing="lg" direction="row">
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
+      <Button as="button" size="md">Medium</Button>
+      <Button as="button" size="lg">Large</Button>
     </Stack>
   </Story>
 </Canvas>
@@ -83,8 +83,8 @@ export const Template = (args) => (
 <Canvas>
   <Story name="Disabled">
     <Stack spacing="lg" direction="row">
-      <Button isDisabled={true}>Primary Button</Button>
-      <Button variant="secondary" isDisabled={true}>
+      <Button as="button" isDisabled={true}>Primary Button</Button>
+      <Button as="button" variant="secondary" isDisabled={true}>
         Secondary Button
       </Button>
     </Stack>
