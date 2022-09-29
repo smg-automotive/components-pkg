@@ -6,9 +6,7 @@ import { Stack } from '../../index.ts';
 <Meta title="Buttons/Button" component={Button} />
 
 export const Template = (args) => (
-  <Button as="button" {...args}>
-    {args.label || 'Button'}
-  </Button>
+  <Button {...args}>{args.label || 'Button'}</Button>
 );
 
 # Button
@@ -23,6 +21,7 @@ export const Template = (args) => (
       label: 'Primary Button',
       variant: 'primary',
       size: 'lg',
+      as: 'button',
     }}
     argTypes={{
       variant: {
@@ -51,6 +50,7 @@ export const Template = (args) => (
       label: 'Secondary Button',
       variant: 'secondary',
       size: 'lg',
+      as: 'button',
     }}
     argTypes={{
       variant: {
@@ -98,3 +98,33 @@ export const Template = (args) => (
     </Stack>
   </Story>
 </Canvas>
+
+## Button as Link
+
+<Canvas>
+  <Story
+    name="Button as Link"
+    args={{
+      label: 'Primary Button',
+      variant: 'primary',
+      size: 'lg',
+      as: 'a',
+      url: '"https://google.com"',
+      isExternal: true,
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Button as Link" />
