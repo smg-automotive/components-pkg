@@ -7,9 +7,7 @@ import type {
 } from '@chakra-ui/styled-system';
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
-// eslint-disable-next-line import/no-internal-modules
 import { colors as ms24Colors } from '../ms24/colors';
-// eslint-disable-next-line import/no-internal-modules
 import { colors as as24Colors } from '../as24/colors';
 
 const $width = cssVar('switch-track-width');
