@@ -23,39 +23,49 @@ type SubmitTypeProps = SharedProps & {
 
 type DefaultTypeProps = SharedProps & WithOnClick<'button'>;
 
-export type ButtonOnClickProps =
+export type ButtonOnClickProps<AsProp = 'button'> =
   | (SharedProps & {
-      as?: 'button';
+      as: AsProp;
     } & SubmitTypeProps)
   | (SharedProps & {
-      as?: 'button';
+      as: AsProp;
     } & ButtonTypeProps)
   | (DefaultTypeProps & {
-      as?: 'button';
+      as: AsProp;
     });
 
-export type ButtonOnLinkProps = SharedProps & {
-  as?: 'a';
+export type ButtonOnLinkProps<AsProp = 'a'> = SharedProps & {
+  as: AsProp;
   url: string;
   isExternal?: boolean;
   rel?: string;
 };
 
-export type ButtonProps = ButtonOnClickProps | ButtonOnLinkProps;
+export type ButtonProps<AsProp = 'button' | 'a'> = AsProp extends 'a'
+  ? ButtonOnLinkProps<AsProp>
+  : ButtonOnClickProps<AsProp>;
+
+const isLink = (props: ButtonProps): props is ButtonOnLinkProps<'a'> => { return props.as === "a" }
 
 const Button = (props: ButtonProps) => {
-  return props.as === 'a' ? (
-    <ChakraButton
-      as="a"
-      href={props.url}
-      target={props.isExternal ? '_blank' : undefined}
-      rel={props.rel || props.isExternal ? 'noopener noreferrer' : undefined}
-      variant={props.variant}
-      size={props.size}
-    >
-      {props.children}
-    </ChakraButton>
-  ) : props.as === 'button' ? (
+  if (isLink(props)) {
+    return (
+      <ChakraButton
+        as={props.as}
+        href={props.url}
+        target={props.isExternal ? '_blank' : undefined}
+        rel={
+          props.rel || props.isExternal ? 'noopener noreferrer' : undefined
+        }
+        variant={props.variant}
+        size={props.size}
+      >
+        {props.children}
+      </ChakraButton>
+    );
+  }
+
+  return (
     <ChakraButton
       isDisabled={props.isDisabled}
       variant={props.variant}
@@ -63,7 +73,7 @@ const Button = (props: ButtonProps) => {
     >
       {props.children}
     </ChakraButton>
-  ) : null;
+  );
 };
 
 export default Button;
