@@ -33,13 +33,19 @@ const TwoColumnsLayout: FC<Props> = ({
     <BaseLayout header={header}>
       <BaseGridLayout
         templateAreas={{
-          '2xs': `"backlink" "heading" "rightContent" "leftContent"`,
+          '2xs': `"backlink" ${
+            title ? '"heading"' : ''
+          } "rightContent" "leftContent"`,
           md: `
             "${repeatArea(12, 'backlink')}"
-            "${repeatArea(leftContentColumns, 'heading')} ${repeatArea(
-            rightContentColumns,
-            'rightContent'
-          )}"
+            ${
+              title
+                ? `"${repeatArea(leftContentColumns, 'heading')} ${repeatArea(
+                    rightContentColumns,
+                    'rightContent'
+                  )}"`
+                : ''
+            }
             "${repeatArea(leftContentColumns, 'leftContent')} ${repeatArea(
             rightContentColumns,
             'rightContent'
