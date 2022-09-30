@@ -27,11 +27,13 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       backLink={backLink}
       title={title}
       rightContent={<VehicleReference {...vehicle} />}
+      rightContentColumns={4}
       leftContent={
         <Stack direction="column" spacing="2xl">
           {children}
         </Stack>
       }
+      leftContentColumns={8}
     />
   );
 };
