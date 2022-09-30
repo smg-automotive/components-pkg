@@ -111,3 +111,22 @@ export const Template = (args) => <TwoColumnsLayout {...args} />;
 </Canvas>
 
 <ArgsTable story="With custom title" />
+
+## With custom comlum widths
+
+<Canvas>
+  <Story
+    name="With custom comlum widths"
+    args={{
+      rightContent: (
+        <img src="/dummyImage.jpeg" alt="vehicle reference image" />
+      ),
+      rightContentColumns: 4,
+      leftContentColumns: 8,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With custom comlum widths" />

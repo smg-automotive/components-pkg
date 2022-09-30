@@ -15,7 +15,9 @@ interface Props {
     url: string;
   };
   leftContent?: ReactNode;
+  leftContentColumns?: number;
   rightContent?: ReactNode;
+  rightContentColumns?: number;
 }
 
 const TwoColumnsLayout: FC<Props> = ({
@@ -23,7 +25,9 @@ const TwoColumnsLayout: FC<Props> = ({
   title,
   backLink,
   leftContent,
+  leftContentColumns = 6,
   rightContent,
+  rightContentColumns = 6,
 }) => {
   return (
     <BaseLayout header={header}>
@@ -32,9 +36,12 @@ const TwoColumnsLayout: FC<Props> = ({
           '2xs': `"backlink" "heading" "rightContent" "leftContent"`,
           md: `
             "${repeatArea(12, 'backlink')}"
-            "${repeatArea(6, 'heading')} . ${repeatArea(5, 'rightContent')}"
-            "${repeatArea(6, 'leftContent')} . ${repeatArea(
-            5,
+            "${repeatArea(leftContentColumns, 'heading')} ${repeatArea(
+            rightContentColumns,
+            'rightContent'
+          )}"
+            "${repeatArea(leftContentColumns, 'leftContent')} ${repeatArea(
+            rightContentColumns,
             'rightContent'
           )}"`,
         }}
