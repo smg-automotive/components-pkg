@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import TwoColumsLayout from './TwoColumnsLayout';
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
-import Stack from '../stack';
+import Box from '../box';
 
 interface Props {
   title?: string | ReactNode;
@@ -28,11 +28,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       title={title}
       rightContent={<VehicleReference {...vehicle} />}
       rightContentColumns={4}
-      leftContent={
-        <Stack direction="column" spacing="2xl">
-          {children}
-        </Stack>
-      }
+      leftContent={<Box marginRight={{ md: '2xl' }}>{children}</Box>}
       leftContentColumns={8}
     />
   );
