@@ -23,47 +23,62 @@ type SubmitTypeProps = SharedProps & {
 
 type DefaultTypeProps = SharedProps & WithOnClick<'button'>;
 
-export type ButtonOnClickProps =
-  | (SharedProps & {
-      as?: 'button';
-    } & SubmitTypeProps)
-  | (SharedProps & {
-      as?: 'button';
-    } & ButtonTypeProps)
+export type ButtonOnClickProps<AsProp = 'button'> =
+  | (SubmitTypeProps & {
+      as: AsProp;
+    })
+  | (ButtonTypeProps & {
+      as: AsProp;
+    })
   | (DefaultTypeProps & {
-      as?: 'button';
+      as: AsProp;
     });
 
-export type ButtonOnLinkProps = SharedProps & {
-  as?: 'a';
+type ButtonLinkProps<AsProp = 'a'> = SharedProps & {
+  as: AsProp;
   url: string;
   isExternal?: boolean;
   rel?: string;
 };
 
-export type ButtonProps = ButtonOnClickProps | ButtonOnLinkProps;
+export type ButtonProps<AsProp = 'button' | 'a'> = AsProp extends 'a'
+  ? ButtonLinkProps<AsProp>
+  : ButtonOnClickProps<AsProp>;
 
-const Button = (props: ButtonProps) => {
-  return props.as === 'a' ? (
+const isLink = (props: ButtonProps): props is ButtonLinkProps<'a'> => {
+  return props.as === 'a';
+};
+
+const Button = ({
+  variant = 'primary',
+  size = 'lg',
+  isDisabled = false,
+  ...props
+}: ButtonProps) => {
+  if (isLink(props)) {
+    return (
+      <ChakraButton
+        as={props.as}
+        href={props.url}
+        target={props.isExternal ? '_blank' : undefined}
+        rel={props.rel || props.isExternal ? 'noopener noreferrer' : undefined}
+        variant={variant}
+        size={size}
+      >
+        {props.children}
+      </ChakraButton>
+    );
+  }
+  return (
     <ChakraButton
-      as="a"
-      href={props.url}
-      target={props.isExternal ? '_blank' : undefined}
-      rel={props.rel || props.isExternal ? 'noopener noreferrer' : undefined}
-      variant={props.variant}
-      size={props.size}
+      isDisabled={isDisabled}
+      variant={variant}
+      size={size}
+      {...props}
     >
       {props.children}
     </ChakraButton>
-  ) : props.as === 'button' ? (
-    <ChakraButton
-      isDisabled={props.isDisabled}
-      variant={props.variant}
-      size={props.size}
-    >
-      {props.children}
-    </ChakraButton>
-  ) : null;
+  );
 };
 
 export default Button;

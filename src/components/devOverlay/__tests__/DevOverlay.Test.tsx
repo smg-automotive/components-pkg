@@ -7,6 +7,7 @@ describe('The DevOverlay Component', () => {
   it('renders the dev overlay', () => {
     render(
       <DevOverlay
+        as="button"
         variables={[]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
@@ -19,6 +20,7 @@ describe('The DevOverlay Component', () => {
   it('renders the passed variables', () => {
     render(
       <DevOverlay
+        as="button"
         variables={[
           {
             name: 'Dummy',
