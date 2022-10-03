@@ -1,0 +1,67 @@
+import { GridItem } from '@chakra-ui/react';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box, Center, Divider, SimpleHeader, Text } from '../index';
+import PageWithAds from './PageWithAds';
+
+<Meta
+  title="Layout/Pages/Layout with ads"
+  component={PageWithAds}
+  args={{
+    header: (
+      <SimpleHeader
+        title="I am a simple header!"
+        url="https://www.autoscout24.ch/de"
+      />
+    ),
+    footer: (
+      <Box bg="gray.200">
+        <Divider />
+        <Center><Text p="2xl">I am the footer</Text></Center>
+      </Box>
+    ),
+    ads: (
+      <Box bg="red.100" h="600px" w="full" position="sticky" top="2xl"></Box>
+    ),
+    children: (
+      <Box bg="green.100" w="full">
+        {Array.from({ length: 30 }).fill(1).map((el,index) =>
+          <Box key={index} borderWidth='1px' borderRadius='lg' p="md" m="md">List element {index + 1}</Box>)}
+      </Box>
+    )
+  }}
+  argTypes={{
+    header: {
+      table: {
+        disable: true,
+      },
+    },
+    footer: {
+      table: {
+        disable: true,
+      },
+    },
+    ads: {
+      table: {
+        disable: true,
+      },
+    }
+  }}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = (args) => <PageWithAds {...args} />;
+
+# Layout with ads
+
+<Canvas>
+  <Story
+    name="Layout with ads"
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Layout with ads" />
+
