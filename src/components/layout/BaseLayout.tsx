@@ -7,13 +7,13 @@ import Divider from '../divider';
 interface Props {
   header: ReactNode;
   footer?: ReactNode;
-  ads?: ReactNode;
+  skyScraperAds?: ReactNode;
 }
 
 const BaseLayout: FC<PropsWithChildren<Props>> = ({
   header,
   footer,
-  ads,
+  skyScraperAds,
   children,
 }) => {
   return (
@@ -22,7 +22,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
       <Divider />
       <Flex justifyContent="center">
         {children}
-        {ads ? (
+        {skyScraperAds ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
             width="300px"
@@ -30,7 +30,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             paddingY={{ '2xs': 'md', md: '2xl' }}
             position="relative"
           >
-            {ads}
+            {skyScraperAds}
           </chakra.aside>
         ) : null}
       </Flex>

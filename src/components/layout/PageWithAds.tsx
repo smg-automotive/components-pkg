@@ -6,17 +6,17 @@ import BaseGridLayout from './BaseGrid';
 interface Props {
   header: ReactNode;
   footer?: ReactNode;
-  ads?: ReactNode;
+  skyScraperAds?: ReactNode;
 }
 
 const PageWithAdsLayout: FC<PropsWithChildren<Props>> = ({
   header,
   footer,
-  ads,
+  skyScraperAds,
   children,
 }) => {
   return (
-    <BaseLayout header={header} footer={footer} ads={ads}>
+    <BaseLayout header={header} footer={footer} skyScraperAds={skyScraperAds}>
       <BaseGridLayout gridTemplateColumns="1fr">{children}</BaseGridLayout>
     </BaseLayout>
   );
