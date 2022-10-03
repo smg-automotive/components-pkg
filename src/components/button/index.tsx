@@ -9,43 +9,36 @@ type SharedProps = {
   size?: 'md' | 'lg';
 } & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
 
-type WithOnClick<T extends 'submit' | 'button'> = T extends 'submit'
-  ? Pick<ChakraButtonProps, 'onClick'>
-  : { onClick: Exclude<ChakraButtonProps['onClick'], undefined> };
-
-type ButtonTypeProps = SharedProps & {
+export type MandatoryOnClick<AsProp = 'button'> = {
+  as?: AsProp;
   type?: 'button';
-} & WithOnClick<'button'>;
+  onClick: () => void;
+} & SharedProps;
 
-type SubmitTypeProps = SharedProps & {
-  type: 'submit';
-} & WithOnClick<'submit'>;
+type OptionalOnClick<AsProp = 'button'> = {
+  as?: AsProp;
+  type?: 'submit';
+  onClick: () => void;
+} & SharedProps;
 
-type DefaultTypeProps = SharedProps & WithOnClick<'button'>;
+type ButtonType = 'button' | 'submit';
 
-export type ButtonOnClickProps<AsProp = 'button'> =
-  | (SubmitTypeProps & {
-      as: AsProp;
-    })
-  | (ButtonTypeProps & {
-      as: AsProp;
-    })
-  | (DefaultTypeProps & {
-      as: AsProp;
-    });
+export type ButtonProps<T extends ButtonType> = T extends 'button'
+  ? MandatoryOnClick
+  : OptionalOnClick;
 
-type ButtonLinkProps<AsProp = 'a'> = SharedProps & {
+type LinkProps<AsProp = 'a'> = {
   as: AsProp;
-  url: string;
+  href: string;
   isExternal?: boolean;
   rel?: string;
-};
+} & SharedProps;
 
-export type ButtonProps<AsProp = 'button' | 'a'> = AsProp extends 'a'
-  ? ButtonLinkProps<AsProp>
-  : ButtonOnClickProps<AsProp>;
+export type Props<AsProp = 'button' | 'a'> = AsProp extends 'a'
+  ? LinkProps<AsProp>
+  : ButtonProps<ButtonType>;
 
-const isLink = (props: ButtonProps): props is ButtonLinkProps<'a'> => {
+const isLink = (props: Props): props is LinkProps<'a'> => {
   return props.as === 'a';
 };
 
@@ -54,12 +47,12 @@ const Button = ({
   size = 'lg',
   isDisabled = false,
   ...props
-}: ButtonProps) => {
+}: Props) => {
   if (isLink(props)) {
     return (
       <ChakraButton
         as={props.as}
-        href={props.url}
+        href={props.href}
         target={props.isExternal ? '_blank' : undefined}
         rel={props.rel || props.isExternal ? 'noopener noreferrer' : undefined}
         variant={variant}

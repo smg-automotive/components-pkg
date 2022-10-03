@@ -21,7 +21,6 @@ export const Template = (args) => (
       label: 'Primary Button',
       variant: 'primary',
       size: 'lg',
-      as: 'button',
     }}
     argTypes={{
       variant: {
@@ -50,7 +49,6 @@ export const Template = (args) => (
       label: 'Secondary Button',
       variant: 'secondary',
       size: 'lg',
-      as: 'button',
     }}
     argTypes={{
       variant: {
@@ -74,12 +72,8 @@ export const Template = (args) => (
 <Canvas>
   <Story name="Sizes">
     <Stack spacing="lg" direction="row">
-      <Button as="button" size="md">
-        Medium
-      </Button>
-      <Button as="button" size="lg">
-        Large
-      </Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
     </Stack>
   </Story>
 </Canvas>
@@ -89,10 +83,8 @@ export const Template = (args) => (
 <Canvas>
   <Story name="Disabled">
     <Stack spacing="lg" direction="row">
-      <Button as="button" isDisabled={true}>
-        Primary Button
-      </Button>
-      <Button as="button" variant="secondary" isDisabled={true}>
+      <Button isDisabled={true}>Primary Button</Button>
+      <Button variant="secondary" isDisabled={true}>
         Secondary Button
       </Button>
     </Stack>
@@ -109,7 +101,7 @@ export const Template = (args) => (
       variant: 'primary',
       size: 'lg',
       as: 'a',
-      url: '"https://google.com"',
+      href: '"https://google.com"',
       isExternal: true,
     }}
     argTypes={{
