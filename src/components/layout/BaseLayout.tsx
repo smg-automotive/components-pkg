@@ -3,6 +3,7 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import { chakra, Flex } from '@chakra-ui/react';
 
 import Divider from '../divider';
+import Box from '../box';
 
 interface Props {
   header: ReactNode;
@@ -30,7 +31,9 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             paddingY={{ '2xs': 'md', md: '2xl' }}
             position="relative"
           >
-            {skyScraperAds}
+            <Box position="sticky" top="2xl">
+              {skyScraperAds}
+            </Box>
           </chakra.aside>
         ) : null}
       </Flex>
