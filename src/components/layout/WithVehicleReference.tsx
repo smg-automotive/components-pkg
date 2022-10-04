@@ -21,14 +21,16 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   header,
   children,
 }) => {
+  const contentMargin = { md: '2xl' };
+
   return (
     <TwoColumsLayout
       header={header}
       backLink={backLink}
-      title={title}
+      title={<Box marginRight={contentMargin}>{title}</Box>}
       rightContent={<VehicleReference {...vehicle} />}
       rightContentColumns={4}
-      leftContent={<Box marginRight={{ md: '2xl' }}>{children}</Box>}
+      leftContent={<Box marginRight={contentMargin}>{children}</Box>}
       leftContentColumns={8}
     />
   );
