@@ -27,6 +27,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
             width="300px"
+            minWidth="300px"
             marginX="2xl"
             paddingY={{ '2xs': 'md', md: '2xl' }}
             position="relative"
