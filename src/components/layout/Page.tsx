@@ -6,14 +6,14 @@ import { sizes } from '../../themes/shared/sizes';
 interface Props {
   header: ReactNode;
   maxContentWidth: keyof typeof sizes.container;
-  skyScraperAds?: ReactNode;
+  skyScraperAd?: ReactNode;
   footer?: ReactNode;
 }
 
 const PageLayout: FC<PropsWithChildren<Props>> = ({
   header,
   maxContentWidth,
-  skyScraperAds,
+  skyScraperAd,
   footer,
   children,
 }) => {
@@ -21,7 +21,7 @@ const PageLayout: FC<PropsWithChildren<Props>> = ({
     <BaseLayout
       header={header}
       footer={footer}
-      skyScraperAds={skyScraperAds}
+      skyScraperAd={skyScraperAd}
       maxContentWidth={maxContentWidth}
     >
       {children}

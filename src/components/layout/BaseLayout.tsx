@@ -9,14 +9,14 @@ import { sizes } from '../../themes/shared/sizes';
 interface Props {
   header: ReactNode;
   footer?: ReactNode;
-  skyScraperAds?: ReactNode;
+  skyScraperAd?: ReactNode;
   maxContentWidth: keyof typeof sizes.container;
 }
 
 const BaseLayout: FC<PropsWithChildren<Props>> = ({
   header,
   footer,
-  skyScraperAds,
+  skyScraperAd,
   maxContentWidth,
   children,
 }) => {
@@ -35,7 +35,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
         >
           {children}
         </Container>
-        {skyScraperAds ? (
+        {skyScraperAd ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
             width="300px"
@@ -45,7 +45,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             position="relative"
           >
             <Box position="sticky" top="2xl">
-              {skyScraperAds}
+              {skyScraperAd}
             </Box>
           </chakra.aside>
         ) : null}
