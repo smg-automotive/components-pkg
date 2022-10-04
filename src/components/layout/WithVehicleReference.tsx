@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import TwoColumsLayout from './TwoColumnsLayout';
+import TwoColumnsLayout from './TwoColumnsLayout';
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
 
@@ -24,7 +24,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   const contentMargin = { md: '2xl' };
 
   return (
-    <TwoColumsLayout
+    <TwoColumnsLayout
       header={header}
       backLink={backLink}
       title={<Box marginRight={contentMargin}>{title}</Box>}
