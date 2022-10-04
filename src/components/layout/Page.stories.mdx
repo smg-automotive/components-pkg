@@ -1,32 +1,29 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import PageWithAds from './PageWithAds';
-import { Box, Center, Divider, Flex, SimpleHeader, Text } from '../index';
+import PageLayout from './Page';
+import { Box, Divider, Flex, Text } from '../index';
 import { sizes } from '../../themes/shared/sizes';
 
 <Meta
-  title="Layout/Pages/Layout with ads"
-  component={PageWithAds}
+  title="Layout/Pages/Page"
+  component={PageLayout}
   args={{
     header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
+      <Box h="80px" bg="gray.50">
+        <Divider />
+        <Flex justifyContent="center" alignItems="center" h="full">
+          <Text p="2xl">I am the header</Text>
+        </Flex>
+      </Box>
     ),
     maxContentWidth: 'lg',
     footer: (
-      <Box bg="gray.200" h="400px">
+      <Box h="400px" bg="gray.50">
         <Divider />
-        <Center>
+        <Flex justifyContent="center" alignItems="center" h="full">
           <Text p="2xl">I am the footer</Text>
-        </Center>
+        </Flex>
       </Box>
-    ),
-    skyScraperAds: (
-      <Flex bg="red.100" h="600px" justifyContent="center" alignItems="center">
-        <Text>Ads</Text>
-      </Flex>
     ),
     children: (
       <Box bg="green.100" py="md">
@@ -78,12 +75,38 @@ import { sizes } from '../../themes/shared/sizes';
   }}
 />
 
-export const Template = (args) => <PageWithAds {...args} />;
+export const Template = (args) => <PageLayout {...args} />;
 
-# Layout with ads
+# Page layout
+
+## Layout without ads
 
 <Canvas>
-  <Story name="Layout with ads">{Template.bind({})}</Story>
+  <Story name="Layout without ads">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Layout without ads" />
+
+## Layout with ads
+
+<Canvas>
+  <Story
+    name="Layout with ads"
+    args={{
+      skyScraperAds: (
+        <Flex
+          bg="red.100"
+          h="600px"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>Ads</Text>
+        </Flex>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable story="Layout with ads" />
