@@ -30,7 +30,7 @@ const TwoColumnsLayout: FC<Props> = ({
   rightContentColumns = 6,
 }) => {
   return (
-    <BaseLayout header={header}>
+    <BaseLayout header={header} maxContentWidth="lg">
       <BaseGridLayout
         templateAreas={{
           '2xs': `"backlink" ${

@@ -1,20 +1,23 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import { chakra, Flex } from '@chakra-ui/react';
+import { chakra, Container, Flex } from '@chakra-ui/react';
 
 import Divider from '../divider';
 import Box from '../box';
+import { sizes } from '../../themes/shared/sizes';
 
 interface Props {
   header: ReactNode;
   footer?: ReactNode;
   skyScraperAds?: ReactNode;
+  maxContentWidth: keyof typeof sizes.container;
 }
 
 const BaseLayout: FC<PropsWithChildren<Props>> = ({
   header,
   footer,
   skyScraperAds,
+  maxContentWidth,
   children,
 }) => {
   return (
@@ -22,14 +25,23 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
       {header}
       <Divider />
       <Flex justifyContent="center">
-        {children}
+        <Container
+          as="main"
+          width="full"
+          height="full"
+          maxWidth={sizes.container[maxContentWidth]}
+          paddingY={{ '2xs': 'md', md: '2xl' }}
+          paddingX={{ '2xs': 'lg', lg: skyScraperAds ? '2xl' : 0 }}
+        >
+          {children}
+        </Container>
         {skyScraperAds ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
             width="300px"
             minWidth="300px"
-            marginX="2xl"
             paddingY={{ '2xs': 'md', md: '2xl' }}
+            marginRight="2xl"
             position="relative"
           >
             <Box position="sticky" top="2xl">
