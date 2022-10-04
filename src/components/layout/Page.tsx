@@ -10,7 +10,7 @@ interface Props {
   footer?: ReactNode;
 }
 
-const PageWithAdsLayout: FC<PropsWithChildren<Props>> = ({
+const PageLayout: FC<PropsWithChildren<Props>> = ({
   header,
   maxContentWidth,
   skyScraperAds,
@@ -29,4 +29,4 @@ const PageWithAdsLayout: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default PageWithAdsLayout;
+export default PageLayout;

@@ -26,22 +26,14 @@ import { sizes } from '../../themes/shared/sizes';
       </Box>
     ),
     children: (
-      <Box bg="green.100" py="md">
-        {Array.from({ length: 30 })
-          .fill(1)
-          .map((el, index) => (
-            <Box
-              key={index}
-              borderWidth="1px"
-              borderRadius="lg"
-              p="md"
-              mb={index !== 29 ? 'md' : 0}
-              mx="md"
-            >
-              <Text>List element {index + 1}</Text>
-            </Box>
-          ))}
-      </Box>
+      <Flex
+        bg="green.100"
+        h="1200px"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Text>Content</Text>
+      </Flex>
     ),
   }}
   argTypes={{

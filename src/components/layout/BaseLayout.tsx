@@ -31,7 +31,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           height="full"
           maxWidth={sizes.container[maxContentWidth]}
           paddingY={{ '2xs': 'md', md: '2xl' }}
-          paddingX={{ '2xs': 'lg', lg: skyScraperAds ? '2xl' : 0 }}
+          marginX={{ '2xs': 'lg', lg: '2xl' }}
         >
           {children}
         </Container>
