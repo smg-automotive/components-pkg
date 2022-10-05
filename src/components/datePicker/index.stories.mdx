@@ -37,15 +37,12 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
         {...args}
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
-        onChange={
-          value
-            ? (e) => {
-                setCurrentValue(e.target.value);
-                onChangeHandler(e);
-              }
-            : onChangeHandler
-        }
+        onChange={(e) => {
+          setCurrentValue(e.target.value);
+          onChangeHandler(e);
+        }}
         value={value ? currentValue : undefined}
+        name="datepicker"
       />
     </Container>
   );
