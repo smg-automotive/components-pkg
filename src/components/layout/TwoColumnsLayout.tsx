@@ -14,20 +14,22 @@ interface Props {
     text: string;
     url: string;
   };
-  leftContent?: ReactNode;
-  leftContentColumns?: number;
-  rightContent?: ReactNode;
-  rightContentColumns?: number;
+  left: {
+    content: ReactNode;
+    columns?: number;
+  };
+  right: {
+    content: ReactNode;
+    columns?: number;
+  };
 }
 
 const TwoColumnsLayout: FC<Props> = ({
   header,
   title,
   backLink,
-  leftContent,
-  leftContentColumns = 6,
-  rightContent,
-  rightContentColumns = 6,
+  left: { content: leftContent, columns: leftColumns = 6 },
+  right: { content: rightContent, columns: rightColumns = 6 },
 }) => {
   return (
     <BaseLayout header={header}>
@@ -40,14 +42,14 @@ const TwoColumnsLayout: FC<Props> = ({
             "${repeatArea(12, 'backlink')}"
             ${
               title
-                ? `"${repeatArea(leftContentColumns, 'heading')} ${repeatArea(
-                    rightContentColumns,
+                ? `"${repeatArea(leftColumns, 'heading')} ${repeatArea(
+                    rightColumns,
                     'rightContent'
                   )}"`
                 : ''
             }
-            "${repeatArea(leftContentColumns, 'leftContent')} ${repeatArea(
-            rightContentColumns,
+            "${repeatArea(leftColumns, 'leftContent')} ${repeatArea(
+            rightColumns,
             'rightContent'
           )}"`,
         }}

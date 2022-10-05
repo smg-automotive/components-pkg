@@ -28,10 +28,14 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       header={header}
       backLink={backLink}
       title={<Box marginRight={contentMargin}>{title}</Box>}
-      rightContent={<VehicleReference {...vehicle} />}
-      rightContentColumns={4}
-      leftContent={<Box marginRight={contentMargin}>{children}</Box>}
-      leftContentColumns={8}
+      left={{
+        content: <Box marginRight={contentMargin}>{children}</Box>,
+        columns: 8,
+      }}
+      right={{
+        content: <VehicleReference {...vehicle} />,
+        columns: 4,
+      }}
     />
   );
 };
