@@ -59,7 +59,7 @@ const Button: FC<Props> = ({ children, ...props }) => {
       {...rest}
       {...(props.as === 'a'
         ? {
-            target: props.isExternal ? 'noopener noreferrer' : undefined,
+            target: props.isExternal ? '_blank' : undefined,
             rel:
               props.rel ||
               (props.isExternal ? 'noopener noreferrer' : undefined),
