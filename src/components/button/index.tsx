@@ -37,6 +37,7 @@ type LinkProps = {
   isExternal?: boolean;
   rel?: string;
   isDisabled?: false;
+  onClick?: () => void;
 } & SharedProps;
 
 export type Props = LinkProps | ButtonProps;
