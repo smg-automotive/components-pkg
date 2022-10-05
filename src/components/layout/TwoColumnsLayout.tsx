@@ -7,6 +7,8 @@ import BaseGridLayout, { repeatArea } from './BaseGrid';
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
 
+type ColumSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+
 interface Props {
   header: ReactNode;
   title?: string | ReactNode;
@@ -16,11 +18,11 @@ interface Props {
   };
   left: {
     content: ReactNode;
-    columns?: number;
+    columns?: ColumSize;
   };
   right: {
     content: ReactNode;
-    columns?: number;
+    columns?: ColumSize;
   };
 }
 
@@ -39,7 +41,7 @@ const TwoColumnsLayout: FC<Props> = ({
             title ? '"heading"' : ''
           } "rightContent" "leftContent"`,
           md: `
-            "${repeatArea(12, 'backlink')}"
+            "${repeatArea(leftColumns + rightColumns, 'backlink')}"
             ${
               title
                 ? `"${repeatArea(leftColumns, 'heading')} ${repeatArea(
