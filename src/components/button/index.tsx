@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
@@ -7,69 +7,66 @@ import {
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-} & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
+} & Pick<ChakraButtonProps, 'children'>;
 
-export type MandatoryOnClick<AsProp = 'button'> = {
-  as?: AsProp;
+type MandatoryOnClick = {
+  as?: 'button';
+  type: 'submit';
+  onClick: () => void;
+  href?: never;
+  isExternal?: never;
+  rel?: never;
+} & SharedProps &
+  Pick<ChakraButtonProps, 'isDisabled'>;
+
+type OptionalOnClick = {
+  as?: 'button';
   type?: 'button';
-  onClick: () => void;
-} & SharedProps;
+  onClick?: () => void;
+  href?: never;
+  isExternal?: never;
+  rel?: never;
+} & SharedProps &
+  Pick<ChakraButtonProps, 'isDisabled'>;
 
-type OptionalOnClick<AsProp = 'button'> = {
-  as?: AsProp;
-  type?: 'submit';
-  onClick: () => void;
-} & SharedProps;
+export type ButtonProps = MandatoryOnClick | OptionalOnClick;
 
-type ButtonType = 'button' | 'submit';
-
-export type ButtonProps<T extends ButtonType> = T extends 'button'
-  ? MandatoryOnClick
-  : OptionalOnClick;
-
-type LinkProps<AsProp = 'a'> = {
-  as: AsProp;
+type LinkProps = {
+  as: 'a';
   href: string;
   isExternal?: boolean;
   rel?: string;
+  isDisabled?: false;
 } & SharedProps;
 
-export type Props<AsProp = 'button' | 'a'> = AsProp extends 'a'
-  ? LinkProps<AsProp>
-  : ButtonProps<ButtonType>;
+export type Props = LinkProps | ButtonProps;
 
-const isLink = (props: Props): props is LinkProps<'a'> => {
-  return props.as === 'a';
-};
+const Button: FC<Props> = ({ children, ...props }) => {
+  const {
+    variant = 'primary',
+    size = 'lg',
+    isDisabled = false,
+    as = 'button',
+    ...rest
+  } = props;
 
-const Button = ({
-  variant = 'primary',
-  size = 'lg',
-  isDisabled = false,
-  ...props
-}: Props) => {
-  if (isLink(props)) {
-    return (
-      <ChakraButton
-        as={props.as}
-        href={props.href}
-        target={props.isExternal ? '_blank' : undefined}
-        rel={props.rel || props.isExternal ? 'noopener noreferrer' : undefined}
-        variant={variant}
-        size={size}
-      >
-        {props.children}
-      </ChakraButton>
-    );
-  }
   return (
     <ChakraButton
-      isDisabled={isDisabled}
+      as={as}
       variant={variant}
       size={size}
-      {...props}
+      isDisabled={isDisabled}
+      {...rest}
+      {...(props.as === 'a'
+        ? {
+            target: props.isExternal ? 'noopener noreferrer' : undefined,
+            rel:
+              props.rel ||
+              (props.isExternal ? 'noopener noreferrer' : undefined),
+          }
+        : {})}
     >
-      {props.children}
+      {children}
     </ChakraButton>
   );
 };

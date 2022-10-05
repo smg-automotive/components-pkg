@@ -15,13 +15,13 @@ import {
 
 import Switch, { SwitchProps } from '../switchComponent';
 import { CloseIcon } from '../icons';
-import Button, { MandatoryOnClick } from '../button';
+import Button, { ButtonProps } from '../button';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
-export type DevOverlayProps = Omit<MandatoryOnClick, 'onClick'> &
+export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
   Omit<SwitchProps, 'onChange'> & {
-    hideDevOverlay: Exclude<MandatoryOnClick['onClick'], undefined>;
+    hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
     toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
     variables: DevOverlayVariables;
   };
