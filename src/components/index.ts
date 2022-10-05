@@ -4,6 +4,7 @@ export { default as Button } from './button';
 export { default as Box } from './box';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
+export { default as DatePicker } from './datePicker';
 export { default as DevOverlay } from './devOverlay';
 export { default as Divider } from './divider';
 export { default as Flex } from './flex';
