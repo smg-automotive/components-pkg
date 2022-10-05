@@ -25,9 +25,9 @@ const SimpleHeader: FC<Props> = ({ title, url }) => {
       <Center>
         <Container
           width="full"
-          maxWidth="container.xl"
+          maxWidth="container.lg"
           minHeight={{ '2xs': 'xl', md: '2xl' }}
-          paddingX={{ '2xs': 'md', md: '4xl' }}
+          paddingX={{ '2xs': 'lg', lg: 0 }}
           centerContent
           flexDirection="row"
           justifyContent="space-between"
