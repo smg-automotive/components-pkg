@@ -36,7 +36,6 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
     <Container>
       <DatePicker
         {...args}
-        placeholder="Select date"
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
         onChange={
@@ -57,10 +56,10 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
   <Story
     name="Date Picker"
     args={{
-      type: 'text',
-      placeholder: 'Kurac',
+      placeholder: 'Select date',
       size: 'lg',
-      onChange: true,
+      min: '2022-09-10',
+      value: '',
     }}
     argTypes={{
       size: {
