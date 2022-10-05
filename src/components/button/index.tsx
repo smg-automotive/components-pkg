@@ -12,7 +12,7 @@ type SharedProps = {
 type MandatoryOnClick = {
   as?: 'button';
   type: 'submit';
-  onClick: () => void;
+  onClick?: () => void;
   href?: never;
   isExternal?: never;
   rel?: never;
