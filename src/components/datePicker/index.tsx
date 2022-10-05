@@ -10,20 +10,11 @@ type Props = {
   value?: string;
 };
 
-const DatePicker: FC<Props> = ({
-  onBlur,
-  onFocus,
-  onChange,
-  min,
-  ...props
-}) => {
+const DatePicker: FC<Props> = ({ min, ...props }) => {
   return (
     <Input
       {...props}
       type="date"
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
       min={min ? min.toISOString().split('T')[0] : undefined}
     />
   );
