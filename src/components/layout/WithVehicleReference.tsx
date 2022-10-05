@@ -27,7 +27,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
     <TwoColumnsLayout
       header={header}
       backLink={backLink}
-      title={<Box marginRight={contentMargin}>{title}</Box>}
+      title={title ? <Box marginRight={contentMargin}>{title}</Box> : null}
       left={{
         content: <Box marginRight={contentMargin}>{children}</Box>,
         columns: 8,
