@@ -23,6 +23,9 @@ import Section from '../section';
         montes, nascetur ridiculus mus.
       </Text>
     ),
+    leftContentColumns: 6,
+    rightContent: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
+    rightContentColumns: 6,
   }}
   argTypes={{
     header: {
@@ -35,9 +38,25 @@ import Section from '../section';
         disable: true,
       },
     },
+    leftContentColumns: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 11,
+        step: 1,
+      },
+    },
     rightContent: {
       table: {
         disable: true,
+      },
+    },
+    rightContentColumns: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 11,
+        step: 1,
       },
     },
     title: {
@@ -50,13 +69,35 @@ import Section from '../section';
         disable: true,
       },
     },
+    left: {
+      table: {
+        disable: true,
+      },
+    },
+    right: {
+      table: {
+        disable: true,
+      },
+    },
   }}
   parameters={{
     layout: 'fullscreen',
   }}
 />
 
-export const Template = (args) => <TwoColumnsLayout {...args} />;
+export const Template = ({
+  rightContent,
+  leftContent,
+  rightContentColumns,
+  leftContentColumns,
+  ...args
+}) => (
+  <TwoColumnsLayout
+    {...args}
+    right={{ content: rightContent, columns: rightContentColumns }}
+    left={{ content: leftContent, columns: leftContentColumns }}
+  />
+);
 
 # Layout with two columns
 
@@ -76,14 +117,6 @@ export const Template = (args) => <TwoColumnsLayout {...args} />;
 </Canvas>
 
 <ArgsTable story="With right content" />
-
-## With empty right content
-
-<Canvas>
-  <Story name="With empty right content">{Template.bind({})}</Story>
-</Canvas>
-
-<ArgsTable story="With empty right content" />
 
 ## With custom title
 
@@ -111,3 +144,19 @@ export const Template = (args) => <TwoColumnsLayout {...args} />;
 </Canvas>
 
 <ArgsTable story="With custom title" />
+
+## With custom column widths
+
+<Canvas>
+  <Story
+    name="With custom column widths"
+    args={{
+      rightContentColumns: 4,
+      leftContentColumns: 8,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With custom column widths" />
