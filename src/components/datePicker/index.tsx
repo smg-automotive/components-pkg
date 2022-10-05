@@ -7,6 +7,7 @@ type Props = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
   size?: 'md' | 'lg';
   min?: Date;
+  value?: string;
 };
 
 const DatePicker: FC<Props> = ({
@@ -23,11 +24,7 @@ const DatePicker: FC<Props> = ({
       onChange={onChange}
       onFocus={onFocus}
       onBlur={onBlur}
-      min={
-        min
-          ? min.toLocaleDateString('en-ca')
-          : new Date().toLocaleDateString('en-ca')
-      }
+      min={min ? min.toISOString().split('T')[0] : undefined}
     />
   );
 };
