@@ -4,37 +4,71 @@ import {
   ButtonProps as ChakraButtonProps,
 } from '@chakra-ui/react';
 
-type WithOnClick<T extends 'submit' | 'button'> = T extends 'submit'
-  ? Pick<ChakraButtonProps, 'onClick'>
-  : { onClick: Exclude<ChakraButtonProps['onClick'], undefined> };
-
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-} & Pick<ChakraButtonProps, 'isDisabled' | 'children'>;
+} & Pick<ChakraButtonProps, 'children'>;
 
-type ButtonTypeProps = SharedProps & {
-  type?: 'button';
-} & WithOnClick<'button'>;
-
-type SubmitTypeProps = SharedProps & {
+type SubmitType = {
+  as?: 'button';
   type: 'submit';
-} & WithOnClick<'submit'>;
+  onClick?: () => void;
+  href?: never;
+  isExternal?: never;
+  rel?: never;
+} & SharedProps &
+  Pick<ChakraButtonProps, 'isDisabled'>;
 
-type DefaultTypeProps = SharedProps & WithOnClick<'button'>;
+type ButtonType = {
+  as?: 'button';
+  type?: 'button';
+  onClick?: () => void;
+  href?: never;
+  isExternal?: never;
+  rel?: never;
+} & SharedProps &
+  Pick<ChakraButtonProps, 'isDisabled'>;
 
-export type ButtonProps = ButtonTypeProps | SubmitTypeProps | DefaultTypeProps;
+export type ButtonProps = SubmitType | ButtonType;
 
-const Button: FC<ButtonProps> = ({
-  variant = 'primary',
-  size = 'lg',
-  isDisabled = false,
-  children,
-  ...rest
-}) => (
-  <ChakraButton isDisabled={isDisabled} variant={variant} size={size} {...rest}>
-    {children}
-  </ChakraButton>
-);
+type LinkProps = {
+  as: 'a';
+  href: string;
+  isExternal?: boolean;
+  rel?: string;
+  isDisabled?: false;
+  onClick?: () => void;
+} & SharedProps;
+
+export type Props = LinkProps | ButtonProps;
+
+const Button: FC<Props> = ({ children, ...props }) => {
+  const {
+    variant = 'primary',
+    size = 'lg',
+    isDisabled = false,
+    as = 'button',
+    isExternal,
+    ...rest
+  } = props;
+
+  return (
+    <ChakraButton
+      as={as}
+      variant={variant}
+      size={size}
+      isDisabled={isDisabled}
+      {...rest}
+      {...(props.as === 'a'
+        ? {
+            target: isExternal ? '_blank' : undefined,
+            rel: props.rel || (isExternal ? 'noopener noreferrer' : undefined),
+          }
+        : {})}
+    >
+      {children}
+    </ChakraButton>
+  );
+};
 
 export default Button;
