@@ -42,26 +42,27 @@ type LinkProps = {
 
 export type Props = LinkProps | ButtonProps;
 
-const Button: FC<Props> = ({ children, isExternal, ...props }) => {
-  const {
-    variant = 'primary',
-    size = 'lg',
-    isDisabled = false,
-    as = 'button',
-    ...rest
-  } = props;
-
+const Button: FC<Props> = ({
+  as = 'button',
+  variant = 'primary',
+  size = 'lg',
+  isDisabled = false,
+  rel,
+  children,
+  isExternal,
+  ...props
+}) => {
   return (
     <ChakraButton
       as={as}
       variant={variant}
       size={size}
       isDisabled={isDisabled}
-      {...rest}
-      {...(props.as === 'a'
+      {...props}
+      {...(as === 'a'
         ? {
             target: isExternal ? '_blank' : undefined,
-            rel: props.rel || (isExternal ? 'noopener noreferrer' : undefined),
+            rel: rel || (isExternal ? 'noopener noreferrer' : undefined),
           }
         : {})}
     >
