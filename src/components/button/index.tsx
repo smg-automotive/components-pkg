@@ -9,7 +9,7 @@ type SharedProps = {
   size?: 'md' | 'lg';
 } & Pick<ChakraButtonProps, 'children'>;
 
-type MandatoryOnClick = {
+type SubmitType = {
   as?: 'button';
   type: 'submit';
   onClick?: () => void;
@@ -19,7 +19,7 @@ type MandatoryOnClick = {
 } & SharedProps &
   Pick<ChakraButtonProps, 'isDisabled'>;
 
-type OptionalOnClick = {
+type ButtonType = {
   as?: 'button';
   type?: 'button';
   onClick?: () => void;
@@ -29,7 +29,7 @@ type OptionalOnClick = {
 } & SharedProps &
   Pick<ChakraButtonProps, 'isDisabled'>;
 
-export type ButtonProps = MandatoryOnClick | OptionalOnClick;
+export type ButtonProps = SubmitType | ButtonType;
 
 type LinkProps = {
   as: 'a';
@@ -42,7 +42,7 @@ type LinkProps = {
 
 export type Props = LinkProps | ButtonProps;
 
-const Button: FC<Props> = ({ children, ...props }) => {
+const Button: FC<Props> = ({ children, isExternal, ...props }) => {
   const {
     variant = 'primary',
     size = 'lg',
@@ -60,10 +60,8 @@ const Button: FC<Props> = ({ children, ...props }) => {
       {...rest}
       {...(props.as === 'a'
         ? {
-            target: props.isExternal ? '_blank' : undefined,
-            rel:
-              props.rel ||
-              (props.isExternal ? 'noopener noreferrer' : undefined),
+            target: isExternal ? '_blank' : undefined,
+            rel: props.rel || (isExternal ? 'noopener noreferrer' : undefined),
           }
         : {})}
     >
