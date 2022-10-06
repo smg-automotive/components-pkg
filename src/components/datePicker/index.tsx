@@ -1,14 +1,11 @@
-import React, { ChangeEventHandler, FC, FocusEventHandler } from 'react';
-import { Input } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { Input, InputProps } from '@chakra-ui/react';
 
 type Props = {
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onFocus?: FocusEventHandler<HTMLInputElement>;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
   size?: 'md' | 'lg';
   min?: Date;
   value?: string;
-};
+} & Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'>;
 
 const DatePicker: FC<Props> = ({ min, ...props }) => {
   return (
