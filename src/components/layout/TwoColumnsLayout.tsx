@@ -7,6 +7,8 @@ import BaseGridLayout, { repeatArea } from './BaseGrid';
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
 
+type ColumSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+
 interface Props {
   header: ReactNode;
   title?: string | ReactNode;
@@ -14,27 +16,42 @@ interface Props {
     text: string;
     url: string;
   };
-  leftContent?: ReactNode;
-  rightContent?: ReactNode;
+  left: {
+    content: ReactNode;
+    columns?: ColumSize;
+  };
+  right: {
+    content: ReactNode;
+    columns?: ColumSize;
+  };
 }
 
 const TwoColumnsLayout: FC<Props> = ({
   header,
   title,
   backLink,
-  leftContent,
-  rightContent,
+  left: { content: leftContent, columns: leftColumns = 6 },
+  right: { content: rightContent, columns: rightColumns = 6 },
 }) => {
   return (
-    <BaseLayout header={header}>
+    <BaseLayout header={header} maxContentWidth="lg">
       <BaseGridLayout
         templateAreas={{
-          '2xs': `"backlink" "heading" "rightContent" "leftContent"`,
+          '2xs': `"backlink" ${
+            title ? '"heading"' : ''
+          } "rightContent" "leftContent"`,
           md: `
-            "${repeatArea(12, 'backlink')}"
-            "${repeatArea(6, 'heading')} . ${repeatArea(5, 'rightContent')}"
-            "${repeatArea(6, 'leftContent')} . ${repeatArea(
-            5,
+            "${repeatArea(leftColumns + rightColumns, 'backlink')}"
+            ${
+              title
+                ? `"${repeatArea(leftColumns, 'heading')} ${repeatArea(
+                    rightColumns,
+                    'rightContent'
+                  )}"`
+                : ''
+            }
+            "${repeatArea(leftColumns, 'leftContent')} ${repeatArea(
+            rightColumns,
             'rightContent'
           )}"`,
         }}

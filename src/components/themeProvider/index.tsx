@@ -2,7 +2,6 @@ import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import { autoScout24Theme, motoScout24Theme } from '../../themes';
-// eslint-disable-next-line import/no-internal-modules
 import { Fonts } from '../../styles/Fonts';
 
 export type Props = {
