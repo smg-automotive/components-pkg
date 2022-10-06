@@ -20,6 +20,11 @@ import DatePicker from './index.tsx';
     onBlur: true,
     onFocus: true,
   }}
+  argTypes={{
+    min: {
+      control: 'date',
+    },
+  }}
 />
 
 export const Container = ({ children }) => {
@@ -30,7 +35,14 @@ export const Container = ({ children }) => {
   );
 };
 
-export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
+export const Template = ({
+  value,
+  onChange,
+  onBlur,
+  onFocus,
+  min,
+  ...args
+}) => {
   const [currentValue, setCurrentValue] = useState(value);
   const onChangeHandler = onChange
     ? action('change')
@@ -41,6 +53,7 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
     <Container>
       <DatePicker
         {...args}
+        min={min ? new Date(min) : null}
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
         onChange={(e) => {
