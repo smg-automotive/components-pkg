@@ -90,3 +90,33 @@ export const Template = (args) => (
     </Stack>
   </Story>
 </Canvas>
+
+## Button as Link
+
+<Canvas>
+  <Story
+    name="Button as Link"
+    args={{
+      label: 'Primary Button',
+      variant: 'primary',
+      size: 'lg',
+      as: 'a',
+      href: '"https://google.com"',
+      isExternal: true,
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Button as Link" />

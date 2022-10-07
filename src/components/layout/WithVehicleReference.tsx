@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import TwoColumsLayout from './TwoColumnsLayout';
+import TwoColumnsLayout from './TwoColumnsLayout';
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
-import Stack from '../stack';
+import Box from '../box';
 
 interface Props {
   title?: string | ReactNode;
@@ -21,17 +21,21 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   header,
   children,
 }) => {
+  const contentMargin = { md: '2xl' };
+
   return (
-    <TwoColumsLayout
+    <TwoColumnsLayout
       header={header}
       backLink={backLink}
-      title={title}
-      rightContent={<VehicleReference {...vehicle} />}
-      leftContent={
-        <Stack direction="column" spacing="2xl">
-          {children}
-        </Stack>
-      }
+      title={title ? <Box marginRight={contentMargin}>{title}</Box> : null}
+      left={{
+        content: <Box marginRight={contentMargin}>{children}</Box>,
+        columns: 8,
+      }}
+      right={{
+        content: <VehicleReference {...vehicle} />,
+        columns: 4,
+      }}
     />
   );
 };
