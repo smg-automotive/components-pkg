@@ -6,6 +6,7 @@ import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
 import Radio from './radio';
+import List from './list';
 import Link from './link';
 import Input from './input';
 import FormLabel from './formLabel';
@@ -36,4 +37,5 @@ export const components = {
   Textarea,
   Switch,
   VehicleReference,
+  List,
 };
