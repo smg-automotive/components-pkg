@@ -14,12 +14,14 @@ import Form from './form';
 import Divider from './divider';
 import Checkbox from './checkbox';
 import Button from './button';
+import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
 
 export const components = {
   Alert,
   ArticleTeaser,
+  Badge,
   Button,
   Checkbox,
   Divider,
