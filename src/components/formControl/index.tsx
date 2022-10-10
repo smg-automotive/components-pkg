@@ -40,8 +40,8 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
         </FormLabel>
       ) : null}
       {children}
-      {hint && !isInvalid ? <FormHelperText>{hint}</FormHelperText> : null}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      {hint ? <FormHelperText>{hint}</FormHelperText> : null}
     </ChakraFormControl>
   );
 };

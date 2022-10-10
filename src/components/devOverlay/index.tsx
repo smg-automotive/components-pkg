@@ -49,7 +49,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
           Dev Overlay&nbsp;
         </Heading>
         <Spacer />
-        <Button onClick={hideDevOverlay}>
+        <Button onClick={hideDevOverlay} data-testid="close-dev-overlay">
           <CloseIcon />
         </Button>
       </Flex>

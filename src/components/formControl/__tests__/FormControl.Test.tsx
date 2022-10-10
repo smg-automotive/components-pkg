@@ -104,12 +104,5 @@ describe('<FormControl>', () => {
 
       expect(errorMessage).toBeInTheDocument();
     });
-
-    it('hides the hint text if passed', () => {
-      renderWrapper({ errorMessage: 'I am error', hint: 'I am hint' });
-      const hint = screen.queryByText('I am hint');
-
-      expect(hint).toBe(null);
-    });
   });
 });
