@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import ListItem from './ListItem.tsx';
 import List from './index.tsx';
 
 <Meta
@@ -12,9 +13,9 @@ import List from './index.tsx';
 
 export const Template = () => (
   <List>
-    <p>Item 1</p>
-    <p>Item 2</p>
-    <p>Item 3</p>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+    <ListItem>Item 3</ListItem>
   </List>
 );
 
