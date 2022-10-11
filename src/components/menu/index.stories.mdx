@@ -1,20 +1,16 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
 import Menu from './index.tsx';
 
 <Meta title="Patterns/Data Display/Menu" component={Menu} />
 
 export const Template = ({ title }) => {
-  const dummyOnClickHandlerFactory = (value) => {
-    return () => {
-      alert(`${value} clicked`);
-    };
-  };
   const menuItems = [
-    { text: 'Detusch', onClick: dummyOnClickHandlerFactory('Detusch') },
-    { text: 'English', onClick: dummyOnClickHandlerFactory('English') },
-    { text: 'Français', onClick: dummyOnClickHandlerFactory('Français') },
-    { text: 'Italiano', onClick: dummyOnClickHandlerFactory('Italiano') },
+    { text: 'Detusch', onClick: action('Detusch') },
+    { text: 'English', onClick: action('English') },
+    { text: 'Français', onClick: action('Français') },
+    { text: 'Italiano', onClick: action('Italiano') },
   ];
   return <Menu title={title} items={menuItems} />;
 };
