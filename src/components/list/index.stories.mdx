@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import ListItem from './ListItem.tsx';
+import List from './index.tsx';
+
+<Meta
+  title="Data Display/List"
+  component={List}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = () => (
+  <List>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+    <ListItem>Item 3</ListItem>
+  </List>
+);
+
+# List
+
+<Canvas>
+  <Story name="List">{Template.bind({})}</Story>
+</Canvas>
