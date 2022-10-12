@@ -23,6 +23,7 @@ export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export { default as List } from './list';
 export { default as ListItem } from './list/ListItem';
+export { default as Menu } from './menu';
 export { default as Badge } from './badge';
 export {
   default as ThemeProvider,
