@@ -7,7 +7,7 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 
-import { ChevronIcon } from '../icons';
+import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
   text: string;
@@ -22,11 +22,7 @@ export interface MenuProps {
 const Menu: FC<MenuProps> = ({ title, items }) => {
   return (
     <ChakraMenu>
-      <MenuButton
-        as={Button}
-        padding={0}
-        rightIcon={<ChevronIcon boxSize="xs" />}
-      >
+      <MenuButton as={Button} padding={0} rightIcon={<ChevronDownSmallIcon />}>
         {title}
       </MenuButton>
       <MenuList minWidth="4xl">
