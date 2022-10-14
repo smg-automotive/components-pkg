@@ -1,12 +1,12 @@
 import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
-export const ArrowLeftIcon = createIcon({
-  displayName: 'ArrowLeft',
+export const ChevronDownLargeIcon = createIcon({
+  displayName: 'ChevronDownLarge',
   viewBox: '0 0 24 24',
   path: (
     <path
-      d="M22 11H5.83l6.58-6.59L11 3l-9 9 9 9 1.41-1.41L5.83 13H21l1-2Z"
+      d="M4.42 7.59 12 15.17l7.59-7.58L21 9l-9 9-9-9 1.42-1.41Z"
       fill="currentColor"
     />
   ),
