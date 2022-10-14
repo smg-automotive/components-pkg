@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Radio from './index.tsx';
 
@@ -41,12 +41,14 @@ export const Template = ({ isChecked, ...args }) => {
   </Story>
 </Canvas>
 
+<ArgsTable story="Overview" />
+
 ## States
 
 ### Default
 
 <Canvas>
-  <Story id="components-forms-radio-states--default" />
+  <Story id="components-forms-radio-states--default-story" />
 </Canvas>
 
 ### Disabled
