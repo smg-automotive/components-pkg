@@ -8,7 +8,7 @@ export const ErrorIcon = createIcon({
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M1 22L12 2L23 22H1ZM4.37 20H19.62L12 6.16L4.37 20ZM13 14L11 15V10H13V14ZM11 19L13 18V16H11V19Z"
+      d="M6.444 20.315a10 10 0 1 0 11.112-16.63 10 10 0 0 0-11.112 16.63ZM7.555 5.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304ZM11 13l2-1V6h-2v7Zm0 5 2-1v-2h-2v3Z"
       fill="currentColor"
     />
   ),
