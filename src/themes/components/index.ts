@@ -19,6 +19,7 @@ import Button from './button';
 import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
+import Tooltip from './tooltip';
 
 export const components = {
   Alert,
@@ -38,6 +39,7 @@ export const components = {
   SimpleHeader,
   Table,
   Textarea,
+  Tooltip,
   Switch,
   VehicleReference,
   List,
