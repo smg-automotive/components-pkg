@@ -4,7 +4,7 @@ import { Tooltip as ChakraTooltip, TooltipProps } from '@chakra-ui/react';
 
 const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
   return (
-    <ChakraTooltip bg='gray.900' hasArrow {...props}>
+    <ChakraTooltip bg="gray.900" hasArrow {...props}>
       {children}
     </ChakraTooltip>
   );

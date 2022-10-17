@@ -1,4 +1,5 @@
 import VehicleReference from './vehicleReference';
+import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
 import Switch from './switch';
@@ -19,7 +20,6 @@ import Button from './button';
 import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
-import Tooltip from './tooltip';
 
 export const components = {
   Alert,
