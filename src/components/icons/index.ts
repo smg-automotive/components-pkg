@@ -5,3 +5,5 @@ export { ErrorIcon } from './ErrorIcon';
 export { CloseIcon } from './CloseIcon';
 export { CheckmarkIcon } from './CheckmarkIcon';
 export { TooltipIcon } from './TooltipIcon';
+export { ThreeSixtyIcon } from './ThreeSixtyIcon';
+export { VideoIcon } from './VideoIcon';
