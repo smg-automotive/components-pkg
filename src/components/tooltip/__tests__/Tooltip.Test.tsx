@@ -19,7 +19,7 @@ describe('<Tooltip />', () => {
     expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument();
   });
 
-  it('does show tooltip label on focus in', async () => {
+  it('shows tooltip label on focus in', async () => {
     renderWrapper();
     fireEvent.focusIn(screen.getByTestId('test-tooltip'));
     expect(await screen.findByText(tooltipLabel)).toBeInTheDocument();
