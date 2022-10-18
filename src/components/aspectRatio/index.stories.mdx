@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import AspectRatio from './index.tsx';
+import Box from '../box';
+
+<Meta title="Layout/Aspect ratio" component={AspectRatio} />
+
+export const Template = (args) => (
+  <AspectRatio {...args}>
+    <Box backgroundColor="red.500">I am in the box with a ratio</Box>
+  </AspectRatio>
+);
+
+# Box
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      ratio: 4 / 3,
+      width: 300,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
