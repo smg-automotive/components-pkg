@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { fireEvent } from '@storybook/testing-library';
 
 import Tooltip from '..';
@@ -14,7 +14,7 @@ const renderWrapper = () =>
   );
 
 describe('<Tooltip />', () => {
-  it('does not show tooltip label', async () => {
+  it('does not show tooltip label', () => {
     renderWrapper();
     expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument();
   });
@@ -28,6 +28,8 @@ describe('<Tooltip />', () => {
   it('does not show tooltip label on focus out', async () => {
     renderWrapper();
     fireEvent.focusOut(screen.getByTestId('test-tooltip'));
-    expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument();
+    });
   });
 });
