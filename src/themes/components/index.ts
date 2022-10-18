@@ -1,4 +1,5 @@
 import VehicleReference from './vehicleReference';
+import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
 import Switch from './switch';
@@ -38,6 +39,7 @@ export const components = {
   SimpleHeader,
   Table,
   Textarea,
+  Tooltip,
   Switch,
   VehicleReference,
   List,
