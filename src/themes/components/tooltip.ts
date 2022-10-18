@@ -1,11 +1,20 @@
-import type { SystemStyleObject } from '@chakra-ui/styled-system';
+import { cssVar } from '@chakra-ui/theme-tools';
+import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 
-const baseStyle: SystemStyleObject = {
-  p: 'sm',
-  color: 'white',
-  textStyle: 'body',
-};
+const $bg = cssVar('tooltip-bg');
+const $arrowBg = cssVar('popper-arrow-bg');
 
-export default {
+const baseStyle = defineStyle(() => {
+  return {
+    bg: $bg.reference,
+    [$bg.variable]: 'colors.gray.900',
+    [$arrowBg.variable]: $bg.reference,
+    p: 'sm',
+    color: 'white',
+    textStyle: 'body',
+  };
+});
+
+export default defineStyleConfig({
   baseStyle,
-};
+});
