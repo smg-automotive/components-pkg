@@ -1,14 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 
-import {
-  AspectRatio,
-  Box,
-  chakra,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
+import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Stack from '../stack';
 
+import AspectRatio from '../aspectRatio';
 import missingImage from '../../assets/images/missingImage.png';
 
 interface Props {
