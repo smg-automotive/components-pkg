@@ -11,8 +11,8 @@ const MissingImage: FC = () => {
         data-testid="missing-image"
         src={missingImage}
         alt="image missing"
-        width={48}
-        height={48}
+        width="lg"
+        height="lg"
         objectFit="cover"
       />
     </Box>
