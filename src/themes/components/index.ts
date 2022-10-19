@@ -1,4 +1,5 @@
 import VehicleReference from './vehicleReference';
+import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
 import Switch from './switch';
@@ -7,6 +8,7 @@ import Select from './select';
 import Section from './section';
 import Radio from './radio';
 import Menu from './menu';
+import List from './list';
 import Link from './link';
 import Input from './input';
 import FormLabel from './formLabel';
@@ -37,7 +39,9 @@ export const components = {
   SimpleHeader,
   Table,
   Textarea,
+  Tooltip,
   Switch,
   VehicleReference,
+  List,
   Menu,
 };

@@ -1,12 +1,12 @@
 import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
-export const ArrowLeftIcon = createIcon({
-  displayName: 'ArrowLeft',
+export const CheckmarkIcon = createIcon({
+  displayName: 'Checkmark',
   viewBox: '0 0 24 24',
   path: (
     <path
-      d="M22 11H5.83l6.58-6.59L11 3l-9 9 9 9 1.41-1.41L5.83 13H21l1-2Z"
+      d="m9 16.17-4.58-4.58L3 13l6 6L21 7l-1.41-1.41L9 16.17Z"
       fill="currentColor"
     />
   ),

@@ -1,4 +1,7 @@
 export { ArrowLeftIcon } from './ArrowLeftIcon';
-export { ChevronIcon } from './ChevronIcon';
+export { ChevronDownSmallIcon } from './ChevronDownSmallIcon';
+export { ChevronDownLargeIcon } from './ChevronDownLargeIcon';
 export { ErrorIcon } from './ErrorIcon';
 export { CloseIcon } from './CloseIcon';
+export { CheckmarkIcon } from './CheckmarkIcon';
+export { TooltipIcon } from './TooltipIcon';

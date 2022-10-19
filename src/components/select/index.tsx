@@ -4,7 +4,7 @@ import {
   SelectProps as ChakraSelectProps,
 } from '@chakra-ui/react';
 
-import { ChevronIcon } from '../icons';
+import { ChevronDownLargeIcon } from '../icons';
 
 export type Option<T extends string | number> = {
   value: T;
@@ -32,7 +32,7 @@ type Props = Pick<
 
 const Select: FC<Props> = ({ options, ...props }) => {
   return (
-    <ChakraSelect {...props} icon={<ChevronIcon />}>
+    <ChakraSelect {...props} icon={<ChevronDownLargeIcon />}>
       {options.map((option) => (
         <option value={option.value} key={option.value}>
           {option.label}

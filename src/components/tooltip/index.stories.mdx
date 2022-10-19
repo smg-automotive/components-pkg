@@ -1,0 +1,18 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Tooltip from './index.tsx';
+import { TooltipIcon } from '../icons';
+
+<Meta title="Components/Overlay/Tooltip" component={Tooltip} />
+
+# Tooltip
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">
+    <Tooltip label="Some information">
+      <TooltipIcon />
+    </Tooltip>
+  </Story>
+</Canvas>

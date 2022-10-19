@@ -1,9 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Radio from './index.tsx';
 import { Template } from './index.stories.mdx';
 
-<Meta title="Forms/Radio/Sizes" component={Radio} />
+<Meta title="Components/Forms/Radio/Sizes" component={Radio} />
 
 # Radio
 
@@ -16,11 +16,22 @@ import { Template } from './index.stories.mdx';
     name="Medium"
     args={{
       isDisabled: false,
+      isInvalid: false,
+      size: 'md',
+    }}
+    argTypes={{
+      size: {
+        table: {
+          disable: true,
+        },
+      },
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
+
+<ArgsTable story="Medium" />
 
 ### Small
 
@@ -29,9 +40,19 @@ import { Template } from './index.stories.mdx';
     name="Small"
     args={{
       isDisabled: false,
+      isInvalid: false,
       size: 'sm',
+    }}
+    argTypes={{
+      size: {
+        table: {
+          disable: true,
+        },
+      },
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
+
+<ArgsTable story="Small" />
