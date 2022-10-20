@@ -11,15 +11,15 @@ import {
 
 type AccordionItemProps = {
   title: string;
-  titleIcon?: React.ReactNode;
+  icon?: React.ReactNode;
 } & Pick<ChakraAccordionItemProps, 'children'>;
 
 const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
-  const { children, title, titleIcon } = props;
+  const { children, title, icon, ...itemProps } = props;
   return (
-    <ChakraAccordionItem>
+    <ChakraAccordionItem {...itemProps}>
       <ChakraAccordionButton>
-        {titleIcon ? titleIcon : null}
+        {icon ? <Box mr="sm">{icon}</Box> : null}
         <Box flex="1" textAlign="left">
           {title}
         </Box>

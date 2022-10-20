@@ -2,38 +2,111 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import AccordionItem from './AccordionItem';
 
+import ListItem from '../list/ListItem';
+import List from '../list';
+import { TooltipIcon } from '../icons';
+import { CheckmarkIcon } from '../icons';
+
 import Accordion from './index';
 
 <Meta title="Components/Disclosure/Accordion" component={Accordion} />
 
-export const Template = () => (
-  <Accordion allowToggle>
-    <AccordionItem title='Section 1'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </AccordionItem>
-
-    <AccordionItem title='Section 2'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </AccordionItem>
-
-    <AccordionItem title='Section 3'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </AccordionItem>
-
-  </Accordion>
-);
-
 # Accordion
 
+## Overview
+
 <Canvas>
-  <Story name="Accordion">{Template.bind({})}</Story>
+  <Story name="Overview">
+    <Accordion allowMultiple>
+      <AccordionItem title='Section 1'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </AccordionItem>
+
+      <AccordionItem title='Section 2'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </AccordionItem>
+    </Accordion>
+
+  </Story>
+</Canvas>
+
+## With icons
+
+<Canvas>
+  <Story name="With icons">
+    <Accordion allowMultiple>
+      <AccordionItem
+        mb="md"
+        border="none"
+        boxShadow="xs"
+        title='Section 1'
+        icon={<TooltipIcon color="orange.400" />}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </AccordionItem>
+
+      <AccordionItem
+        mb="md"
+        border="none"
+        boxShadow="xs"
+        title='Section 2'
+        icon={<CheckmarkIcon color="green.400" />}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </AccordionItem>
+    </Accordion>
+
+  </Story>
+</Canvas>
+
+## With menu list
+
+<Canvas>
+  <Story
+    name="With menu list"
+    parameters={{
+      viewport: {
+        defaultViewport: 'xs',
+      },
+    }}
+  >
+    <Accordion allowToggle>
+      <AccordionItem title='Section 1'>
+        <List>
+          <ListItem>Item 1</ListItem>
+          <ListItem>Item 2</ListItem>
+          <ListItem>Item 3</ListItem>
+        </List>
+      </AccordionItem>
+
+      <AccordionItem title='Section 2'>
+        <List>
+          <ListItem>Item 1</ListItem>
+          <ListItem>Item 2</ListItem>
+          <ListItem>Item 3</ListItem>
+        </List>
+      </AccordionItem>
+
+      <AccordionItem title='Section 3'>
+        <List>
+          <ListItem>Item 1</ListItem>
+          <ListItem>Item 2</ListItem>
+          <ListItem>Item 3</ListItem>
+        </List>
+      </AccordionItem>
+    </Accordion>
+
+  </Story>
 </Canvas>

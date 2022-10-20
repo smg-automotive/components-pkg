@@ -18,8 +18,6 @@ const baseStyleContainer = defineStyle({
 });
 
 const baseStyleButton = defineStyle({
-  transitionProperty: 'common',
-  transitionDuration: 'normal',
   textStyle: 'heading4',
   p: 'md',
   _hover: {
