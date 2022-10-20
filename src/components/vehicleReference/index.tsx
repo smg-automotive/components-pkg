@@ -1,15 +1,11 @@
 import React, { FC, ReactNode } from 'react';
 
-import {
-  AspectRatio,
-  Box,
-  chakra,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
+import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Stack from '../stack';
 
-import missingImage from '../../assets/images/missingImage.png';
+import MissingImage from '../missingImage';
+import AspectRatio from '../aspectRatio';
 
 interface Props {
   image?: ReactNode;
@@ -37,11 +33,7 @@ const VehicleReference: FC<Props> = ({
           borderRadius="sm"
           overflow="hidden"
         >
-          {image ? (
-            image
-          ) : (
-            <img data-testid="missing-image" src={missingImage} />
-          )}
+          {image ? image : <MissingImage />}
         </AspectRatio>
         <Stack spacing={{ '2xs': 'xs', md: 'md' }} justify="center">
           <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
