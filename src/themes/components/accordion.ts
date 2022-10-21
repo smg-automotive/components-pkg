@@ -27,7 +27,8 @@ const baseStyleButton = defineStyle({
 
 const baseStylePanel = defineStyle({
   textStyle: 'body',
-  p: 'sm',
+  pb: 'md',
+  paddingX: 'md',
 });
 
 const baseStyleIcon = defineStyle({
