@@ -1,10 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
 import {
-  Box,
   AccordionButton as ChakraAccordionButton,
   AccordionButtonProps as ChakraAccordionButtonProps,
   AccordionIcon as ChakraAccordionIcon,
 } from '@chakra-ui/react';
+
+import { Box } from '../index';
 
 interface AccordionButtonProps extends ChakraAccordionButtonProps {
   leftIcon?: React.ReactNode;
