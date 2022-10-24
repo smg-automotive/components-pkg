@@ -1,0 +1,115 @@
+import React, {
+  FC,
+  PropsWithChildren,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+
+import NavigationButton, { Direction } from './NavigationButton';
+import Flex from '../flex';
+import Box from '../box';
+
+interface Props {
+  startIndex?: number;
+  onSlideClick?: (index: number) => void;
+  onSlideChange?: (newIndex: number) => void;
+}
+
+const Carousel: FC<PropsWithChildren<Props>> = ({
+  startIndex = 0,
+  onSlideClick,
+  onSlideChange,
+  children,
+}) => {
+  const [emblaRef, embla] = useEmblaCarousel({
+    loop: true,
+    startIndex: startIndex,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(startIndex);
+
+  const slides: ReactNode[] = Array.isArray(children) ? children : [children];
+  const numberOfSlides = slides.length;
+
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+  const scroll = useCallback(
+    (direction: Direction) => {
+      switch (direction) {
+        case 'previous':
+          scrollPrev();
+          break;
+        case 'next':
+          scrollNext();
+          break;
+      }
+    },
+    [scrollNext, scrollPrev]
+  );
+
+  const onClick = useCallback(
+    (index: number) => {
+      if (onSlideClick && embla && embla.clickAllowed()) {
+        onSlideClick(index);
+      }
+    },
+    [embla, onSlideClick]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!embla) return;
+    const newIndex = embla.selectedScrollSnap();
+    setSelectedIndex(newIndex);
+    onSlideChange && onSlideChange(newIndex);
+  }, [embla, setSelectedIndex, onSlideChange]);
+
+  useEffect(() => {
+    if (!embla) return;
+    onSelect();
+    embla.on('select', onSelect);
+  }, [embla, onSelect]);
+
+  const renderSlide = (slide: ReactNode, index: number) => {
+    return (
+      <Box
+        key={`slide-${index}`}
+        flexGrow="0"
+        flexShrink="0"
+        flexBasis="full"
+        onClick={() => onClick(index)}
+        aria-roledescription="slide"
+        aria-label={`${index + 1} of ${numberOfSlides}`}
+        aria-current={index === selectedIndex}
+      >
+        {slide}
+      </Box>
+    );
+  };
+
+  /*
+   while emblaRef is not defined (e.g. on the server side) it will render slide 0 even if another start slide index has been given.
+   this would result in a flickering behavior and is bad for performance (as we would load an image that is not needed)
+   render a static slide improves LCP and UX
+  */
+  const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
+
+  return prerenderFallbackSlide ? (
+    renderSlide(slides[startIndex], startIndex)
+  ) : (
+    <Box
+      ref={emblaRef}
+      overflow="hidden"
+      position="relative"
+      aria-label="Carousel"
+      aria-roledescription="Carousel"
+    >
+      <Flex>{slides.map((slide, index) => renderSlide(slide, index))}</Flex>
+      <NavigationButton onClick={scroll} direction="previous" />
+      <NavigationButton onClick={scroll} direction="next" />
+    </Box>
+  );
+};
+
+export default Carousel;

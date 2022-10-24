@@ -3,6 +3,7 @@ export { default as AspectRatio } from './aspectRatio';
 export { default as Alert } from './alert';
 export { default as Button } from './button';
 export { default as Box } from './box';
+export { default as Carousel } from './carousel';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as DatePicker } from './datePicker';
