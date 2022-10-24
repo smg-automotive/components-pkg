@@ -20,7 +20,6 @@ export const Slide = ({ children }) => (
 export const Template = (args) => (
   <Carousel
     {...args}
-    onSlideChange={args.onSlideChange ? action('onSlideChange') : undefined}
     onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
   >
     <Slide>Slide 1</Slide>
@@ -41,7 +40,6 @@ export const Template = (args) => (
     name="Overview"
     args={{
       startIndex: 0,
-      onSlideChange: true,
       onSlideClick: true,
     }}
   >

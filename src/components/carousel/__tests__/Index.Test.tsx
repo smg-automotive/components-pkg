@@ -71,17 +71,4 @@ describe('<Carousel />', () => {
     await userEvent.click(screen.getByText('slide 1'));
     expect(mockOnClick).toHaveBeenCalledWith(0);
   });
-
-  it('should call the onChange handler when a slide changes', async () => {
-    const mockOnChange = jest.fn();
-    render(
-      <Carousel onSlideChange={mockOnChange}>
-        <div>slide 1</div>
-        <div>slide 2</div>
-        <div>slide 3</div>
-      </Carousel>
-    );
-    await userEvent.click(screen.getByRole('button', { name: 'next slide' }));
-    expect(mockOnChange).toHaveBeenCalledWith(1);
-  });
 });

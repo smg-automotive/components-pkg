@@ -15,13 +15,11 @@ import Box from '../box';
 interface Props {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
-  onSlideChange?: (newIndex: number) => void;
 }
 
 const Carousel: FC<PropsWithChildren<Props>> = ({
   startIndex = 0,
   onSlideClick,
-  onSlideChange,
   children,
 }) => {
   const [emblaRef, embla] = useEmblaCarousel({
@@ -62,8 +60,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     if (!embla) return;
     const newIndex = embla.selectedScrollSnap();
     setSelectedIndex(newIndex);
-    onSlideChange && onSlideChange(newIndex);
-  }, [embla, setSelectedIndex, onSlideChange]);
+  }, [embla, setSelectedIndex]);
 
   useEffect(() => {
     if (!embla) return;
