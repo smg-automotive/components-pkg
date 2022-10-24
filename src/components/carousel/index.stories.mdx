@@ -1,0 +1,50 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import Carousel from './index.tsx';
+import Flex from '../flex';
+
+<Meta title="Components/Data display/Carousel" component={Carousel} />
+
+export const Slide = ({ children }) => (
+  <Flex
+    backgroundColor="red.500"
+    justifyContent="center"
+    alignItems="center"
+    height="300px"
+  >
+    {children}
+  </Flex>
+)
+
+export const Template = (args) => (
+  <Carousel
+    {...args}
+    onSlideChange={args.onSlideChange ? action("onSlideChange") : undefined}
+    onSlideClick={args.onSlideClick ? action("onSlideClick") : undefined}
+  >
+    <Slide>Slide 1</Slide>
+    <Slide>Slide 2</Slide>
+    <Slide>Slide 3</Slide>
+    <Slide>Slide 4</Slide>
+    <Slide>Slide 5</Slide>
+    <Slide>Slide 6</Slide>
+  </Carousel>
+);
+
+# Carousel
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      startIndex: 0,
+      onSlideChange: true,
+      onSlideClick: true
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
