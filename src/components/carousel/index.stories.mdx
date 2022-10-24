@@ -15,13 +15,13 @@ export const Slide = ({ children }) => (
   >
     {children}
   </Flex>
-)
+);
 
 export const Template = (args) => (
   <Carousel
     {...args}
-    onSlideChange={args.onSlideChange ? action("onSlideChange") : undefined}
-    onSlideClick={args.onSlideClick ? action("onSlideClick") : undefined}
+    onSlideChange={args.onSlideChange ? action('onSlideChange') : undefined}
+    onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
   >
     <Slide>Slide 1</Slide>
     <Slide>Slide 2</Slide>
@@ -42,7 +42,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideChange: true,
-      onSlideClick: true
+      onSlideClick: true,
     }}
   >
     {Template.bind({})}
