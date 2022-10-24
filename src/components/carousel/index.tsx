@@ -26,6 +26,9 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     loop: true,
     startIndex: startIndex,
   });
+  // console.log('emblaRef', emblaRef);
+  // console.log('embla', embla);
+  // console.log('useEmblaCarousel', useEmblaCarousel);
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
   const slides: ReactNode[] = Array.isArray(children) ? children : [children];
