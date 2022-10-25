@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
-import { ChevronDownLargeIcon } from '../icons';
+import { ChevronLeftLargeIcon, ChevronRightLargeIcon } from '../icons';
 import Flex from '../flex';
 
 export type Direction = 'previous' | 'next';
@@ -39,12 +39,11 @@ const NavigationButton: FC<Props> = ({ direction, onClick }) => {
         opacity="40%"
         _hover={{ opacity: '80%' }}
       >
-        <ChevronDownLargeIcon
-          transform={
-            direction === 'previous' ? 'rotate(90deg)' : 'rotate(-90deg)'
-          }
-          color="white"
-        />
+        {direction === 'previous' ? (
+          <ChevronLeftLargeIcon color="white" />
+        ) : (
+          <ChevronRightLargeIcon color="white" />
+        )}
       </Flex>
     </chakra.button>
   );
