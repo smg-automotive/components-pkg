@@ -1,0 +1,40 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Error from './index.tsx';
+import { AutoScout24Logo } from '../icons';
+
+<Meta title="Layout/Error" component={Error} />
+
+export const Template = (args) => <Error {...args} />;
+
+# Error page
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      statusCode: 404,
+      language: 'de',
+      brandLogo: <AutoScout24Logo width="150px" height="34px" />,
+    }}
+    argTypes={{
+      statusCode: {
+        options: [404, 500],
+        control: 'select',
+      },
+      language: {
+        options: ['de', 'fr', 'it', 'en'],
+        control: 'select',
+      },
+      brandLogo: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
