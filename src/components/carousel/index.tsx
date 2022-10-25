@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 
+import Slide from './Slide';
 import NavigationButton, { Direction } from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
@@ -69,27 +70,17 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     embla.on('select', onSelect);
   }, [embla, onSelect]);
 
-  const renderSlide = (slide: ReactNode, index: number) => {
-    return (
-      <Box
-        key={`slide-${index}`}
-        flexGrow="0"
-        flexShrink="0"
-        flexBasis="full"
-        onClick={() => onClick(index)}
-        aria-roledescription="slide"
-        aria-label={`${index + 1} of ${numberOfSlides}`}
-        aria-current={index === selectedIndex}
-      >
-        {slide}
-      </Box>
-    );
-  };
-
   const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
 
   return prerenderFallbackSlide ? (
-    renderSlide(slides[startIndex], startIndex)
+    <Slide
+      slideIndex={startIndex}
+      onClick={() => onClick(startIndex)}
+      totalSlides={numberOfSlides}
+      isCurrent={startIndex === selectedIndex}
+    >
+      {slides[startIndex]}
+    </Slide>
   ) : (
     <Box
       ref={emblaRef}
@@ -99,7 +90,19 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
       aria-roledescription="Carousel"
       role="group"
     >
-      <Flex>{slides.map((slide, index) => renderSlide(slide, index))}</Flex>
+      <Flex>
+        {slides.map((slide, index) => (
+          <Slide
+            key={`slide-${index}`}
+            slideIndex={index}
+            onClick={() => onClick(index)}
+            totalSlides={numberOfSlides}
+            isCurrent={index === selectedIndex}
+          >
+            {slide}
+          </Slide>
+        ))}
+      </Flex>
       <NavigationButton onClick={scroll} direction="previous" />
       <NavigationButton onClick={scroll} direction="next" />
     </Box>
