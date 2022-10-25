@@ -25,6 +25,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   const [emblaRef, embla] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
+    speed: 20,
   });
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
