@@ -85,11 +85,6 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     );
   };
 
-  /*
-   while emblaRef is not defined (e.g. on the server side) it will render slide 0 even if another start slide index has been given.
-   this would result in a flickering behavior and is bad for performance (as we would load an image that is not needed)
-   render a static slide improves LCP and UX
-  */
   const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
 
   return prerenderFallbackSlide ? (
