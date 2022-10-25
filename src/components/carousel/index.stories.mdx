@@ -7,12 +7,7 @@ import Flex from '../flex';
 <Meta title="Components/Data display/Carousel" component={Carousel} />
 
 export const Slide = ({ children }) => (
-  <Flex
-    backgroundColor="red.500"
-    justifyContent="center"
-    alignItems="center"
-    height="300px"
-  >
+  <Flex justifyContent="center" alignItems="center" height="600px">
     {children}
   </Flex>
 );
@@ -22,12 +17,24 @@ export const Template = (args) => (
     {...args}
     onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
   >
-    <Slide>Slide 1</Slide>
-    <Slide>Slide 2</Slide>
-    <Slide>Slide 3</Slide>
-    <Slide>Slide 4</Slide>
-    <Slide>Slide 5</Slide>
-    <Slide>Slide 6</Slide>
+    <Slide>
+      <img src="../../assets/images/4_3.jpg" />
+    </Slide>
+    <Slide>
+      <img src="../../assets/images/m8.jpeg" />
+    </Slide>
+    <Slide>
+      <img src="../../assets/images/rimac.jpeg" />
+    </Slide>
+    <Slide>
+      <img src="../../assets/images/taycan.jpeg" />
+    </Slide>
+    <Slide>
+      <img src="../../assets/images/trabant.jpeg" />
+    </Slide>
+    <Slide>
+      <img src="../../assets/images/yugo.jpeg" />
+    </Slide>
   </Carousel>
 );
 
@@ -41,7 +48,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
-      speed: 10
+      speed: 10,
     }}
   >
     {Template.bind({})}
