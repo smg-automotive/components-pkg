@@ -6,12 +6,11 @@ import { translations } from './translations';
 import { StatusCodes } from './statusCodes';
 import Text from '../text';
 import Stack from '../stack';
-import { AspectRatio } from '../index';
 import { H1 } from '../heading';
 import Flex from '../flex';
 import Button from '../button';
+import AspectRatio from '../aspectRatio';
 import { Language } from '../../types/language';
-import errorIllustration from '../../assets/images/errorIllustration.png';
 
 interface Props {
   statusCode: StatusCodes;
@@ -34,7 +33,7 @@ const ErrorPage: FC<PropsWithChildren<Props>> = ({
         {brandLogo}
         <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
           <chakra.img
-            src={errorIllustration}
+            src="../../assets/images/errorIllustration.png"
             alt={`a ${statusCode} error occurred.`}
           />
         </AspectRatio>
