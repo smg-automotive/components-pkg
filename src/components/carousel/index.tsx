@@ -15,16 +15,19 @@ import Box from '../box';
 interface Props {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
+  speed: number;
 }
 
 const Carousel: FC<PropsWithChildren<Props>> = ({
   startIndex = 0,
   onSlideClick,
+  speed,
   children,
 }) => {
   const [emblaRef, embla] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
+    speed,
   });
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
