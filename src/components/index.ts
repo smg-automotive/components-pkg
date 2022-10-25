@@ -3,6 +3,7 @@ export { default as AspectRatio } from './aspectRatio';
 export { default as Alert } from './alert';
 export { default as Button } from './button';
 export { default as Box } from './box';
+export { default as Carousel } from './carousel';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as DatePicker } from './datePicker';
@@ -28,6 +29,10 @@ export { default as ListItem } from './list/ListItem';
 export { default as Menu } from './menu';
 export { default as Badge } from './badge';
 export { default as Tooltip } from './tooltip';
+export { default as Accordion } from './accordion';
+export { default as AccordionButton } from './accordion/AccordionButton';
+export { default as AccordionPanel } from './accordion/AccordionPanel';
+export { default as AccordionItem } from './accordion/AccordionItem';
 export {
   default as ThemeProvider,
   Props as ThemeProviderProps,
