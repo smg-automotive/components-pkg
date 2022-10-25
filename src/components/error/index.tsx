@@ -20,7 +20,7 @@ interface Props {
   brandLogo: ReactNode;
 }
 
-const Error: FC<PropsWithChildren<Props>> = ({
+const ErrorPage: FC<PropsWithChildren<Props>> = ({
   statusCode,
   language,
   onButtonClick,
@@ -51,4 +51,4 @@ const Error: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default Error;
+export default ErrorPage;
