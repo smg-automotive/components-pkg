@@ -101,6 +101,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
       position="relative"
       aria-label="Carousel"
       aria-roledescription="Carousel"
+      role="group"
     >
       <Flex>{slides.map((slide, index) => renderSlide(slide, index))}</Flex>
       <NavigationButton onClick={scroll} direction="previous" />

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
 import { ChevronDownLargeIcon } from '../icons';
+import Flex from '../flex';
 
 export type Direction = 'previous' | 'next';
 interface Props {
@@ -16,19 +17,35 @@ const NavigationButton: FC<Props> = ({ direction, onClick }) => {
     <chakra.button
       onClick={() => onClick(direction)}
       position="absolute"
-      color="white"
       top="0"
+      {...side}
       width="lg"
       height="full"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      color="white"
+      visibility="hidden"
+      _groupHover={{ md: { visibility: 'visible' } }}
       aria-label={`${direction} slide`}
-      {...side}
     >
-      <ChevronDownLargeIcon
-        transform={
-          direction === 'previous' ? 'rotate(90deg)' : 'rotate(-90deg)'
-        }
-        color="white"
-      />
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        borderRadius="sm"
+        width="md"
+        height="md"
+        backgroundColor="gray.900"
+        opacity="40%"
+        _hover={{ opacity: '80%' }}
+      >
+        <ChevronDownLargeIcon
+          transform={
+            direction === 'previous' ? 'rotate(90deg)' : 'rotate(-90deg)'
+          }
+          color="white"
+        />
+      </Flex>
     </chakra.button>
   );
 };
