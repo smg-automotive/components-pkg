@@ -11,11 +11,12 @@ import Flex from '../flex';
 import Button from '../button';
 import AspectRatio from '../aspectRatio';
 import { Language } from '../../types/language';
+import errorIllustration from '../../assets/images/errorIllustration.png';
 
 interface Props {
   statusCode: StatusCodes;
   language: Language;
-  onButtonClick: () => void;
+  onButtonClick?: () => void;
   brandLogo: ReactNode;
 }
 
@@ -33,7 +34,7 @@ const ErrorPage: FC<PropsWithChildren<Props>> = ({
         {brandLogo}
         <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
           <chakra.img
-            src="../../assets/images/errorIllustration.png"
+            src={errorIllustration}
             alt={`a ${statusCode} error occurred.`}
           />
         </AspectRatio>
