@@ -24,8 +24,6 @@ const EnergyLabel: FC<Props> = ({ efficiency }) => {
   return (
     <Flex height="20px" width="40px">
       <Box
-        width="0"
-        height="0"
         borderTopWidth="10px"
         borderTopColor="transparent"
         borderRightWidth="10px"
