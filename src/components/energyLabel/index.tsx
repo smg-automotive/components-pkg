@@ -37,7 +37,7 @@ const EnergyLabel: FC<Props> = ({ efficiency }) => {
         height="full"
         justifyContent="end"
         alignItems="center"
-        paddingRight="xxs"
+        paddingRight="xs"
       >
         <Text color="white" textStyle="heading4">
           {efficiency}
