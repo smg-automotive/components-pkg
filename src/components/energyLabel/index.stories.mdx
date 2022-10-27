@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import EnergyLabel from './index.tsx';
+
+<Meta title="Components/Data display/Energy label" component={EnergyLabel} />
+
+export const Template = (args) => <EnergyLabel {...args} />;
+
+# EnergyLabel
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Energy label"
+    args={{
+      efficiency: 'A',
+    }}
+    argTypes={{
+      efficiency: {
+        options: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
