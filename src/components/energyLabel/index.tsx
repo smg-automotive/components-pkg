@@ -10,17 +10,17 @@ interface Props {
   efficiency: Efficiency;
 }
 
-const EnergyLabel: FC<Props> = ({ efficiency }) => {
-  const colors: Record<Efficiency, `#${string}`> = {
-    A: '#4CA651',
-    B: '#54B646',
-    C: '#CAD143',
-    D: '#FEF050',
-    E: '#F1AE3D',
-    F: '#EE6E2D',
-    G: '#D02F26',
-  };
+const colors: Record<Efficiency, string> = {
+  A: '#4CA651',
+  B: '#54B646',
+  C: '#CAD143',
+  D: '#FEF050',
+  E: '#F1AE3D',
+  F: '#EE6E2D',
+  G: '#D02F26',
+};
 
+const EnergyLabel: FC<Props> = ({ efficiency }) => {
   return (
     <Flex height="20px" width="40px">
       <Box
