@@ -22,7 +22,7 @@ const colors: Record<Efficiency, string> = {
 
 const EnergyLabel: FC<Props> = ({ efficiency }) => {
   return (
-    <Flex height="20px" width="40px">
+    <Flex height="20px" width="md">
       <Box
         borderTopWidth="10px"
         borderTopColor="transparent"
