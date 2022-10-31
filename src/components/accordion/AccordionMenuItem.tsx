@@ -5,7 +5,10 @@ import {
   Show,
 } from '@chakra-ui/react';
 
-import { AccordionButton, AccordionItem, AccordionPanel, Box } from '../index';
+import AccordionPanel from './AccordionPanel';
+import AccordionItem from './AccordionItem';
+import AccordionButton from './AccordionButton';
+import Box from '../box';
 
 interface AccordionMenuItemProps extends ChakraAccordionItemProps {
   title: string;
