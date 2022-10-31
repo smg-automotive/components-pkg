@@ -9,6 +9,7 @@ export { default as Checkbox } from './checkbox';
 export { default as DatePicker } from './datePicker';
 export { default as DevOverlay } from './devOverlay';
 export { default as Divider } from './divider';
+export { default as EnergyLabel } from './energyLabel';
 export { default as ErrorPage } from './errorPage';
 export { default as Flex } from './flex';
 export { default as FormControl } from './formControl';
