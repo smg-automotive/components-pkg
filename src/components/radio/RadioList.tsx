@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useRadioGroup, UseRadioGroupProps, VStack } from '@chakra-ui/react';
 
 import { RadioListItem } from './RadioListItem';
+import { Divider } from '..';
 
 type RadioListProps = {
   options: JSX.Element[];
@@ -21,7 +22,7 @@ const RadioList: FC<RadioListProps> = ({
   const group = getRootProps();
 
   return (
-    <VStack {...group} spacing={0}>
+    <VStack {...group} spacing={0} divider={<Divider key="divider" />}>
       {options.map((option) => {
         const radio = getRadioProps({ value: option.key });
         return (
