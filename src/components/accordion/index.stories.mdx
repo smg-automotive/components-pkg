@@ -4,8 +4,6 @@ import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
 
-import ListItem from '../list/ListItem';
-import List from '../list';
 import { CheckmarkIcon, TooltipIcon } from '../icons';
 
 import Accordion from './index';
@@ -70,56 +68,6 @@ export const Template = (args) => (
           title: 'Section 2',
           leftIcon: <CheckmarkIcon color="green.400" />,
           content: 'Second section content.',
-        },
-      ],
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## With menu list
-
-<Canvas>
-  <Story
-    name="With menu list"
-    parameters={{
-      viewport: {
-        defaultViewport: 'xs',
-      },
-    }}
-    args={{
-      allowToggle: true,
-      items: [
-        {
-          title: 'Section 1',
-          content: (
-            <List>
-              <ListItem>Item 1</ListItem>
-              <ListItem>Item 2</ListItem>
-              <ListItem>Item 3</ListItem>
-            </List>
-          ),
-        },
-        {
-          title: 'Section 2',
-          content: (
-            <List>
-              <ListItem>Item 1</ListItem>
-              <ListItem>Item 2</ListItem>
-              <ListItem>Item 3</ListItem>
-            </List>
-          ),
-        },
-        {
-          title: 'Section 3',
-          content: (
-            <List>
-              <ListItem>Item 1</ListItem>
-              <ListItem>Item 2</ListItem>
-              <ListItem>Item 3</ListItem>
-            </List>
-          ),
         },
       ],
     }}
