@@ -1,7 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import ErrorPage from './index.tsx';
-import { AutoScout24Logo } from '../icons';
 
 <Meta title="Patterns/Content/Error" component={ErrorPage} />
 
@@ -13,11 +12,10 @@ export const Template = (args) => <ErrorPage {...args} />;
 
 <Canvas>
   <Story
-    name="Overview"
+    name="Error"
     args={{
       statusCode: 404,
       language: 'de',
-      brandLogo: <AutoScout24Logo width="150px" height="34px" />,
     }}
     argTypes={{
       statusCode: {

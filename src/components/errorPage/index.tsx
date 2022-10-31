@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, ReactNode } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 import { chakra } from '@chakra-ui/react';
 
@@ -6,8 +6,11 @@ import { translations } from './translations';
 import { StatusCodes } from './statusCodes';
 import Text from '../text';
 import Stack from '../stack';
+import { AutoScout24Logo, MotoScout24Logo } from '../icons';
 import { H1 } from '../heading';
+import Grid from '../grid';
 import Flex from '../flex';
+import Divider from '../divider';
 import Button from '../button';
 import AspectRatio from '../aspectRatio';
 import { Language } from '../../types/language';
@@ -17,35 +20,44 @@ interface Props {
   statusCode: StatusCodes;
   language: Language;
   onButtonClick?: () => void;
-  brandLogo: ReactNode;
 }
 
 const ErrorPage: FC<PropsWithChildren<Props>> = ({
   statusCode,
   language,
   onButtonClick,
-  brandLogo,
   children,
 }) => {
   const errorTranslations = translations[language][statusCode];
   return (
     <Flex height="full" alignItems="center" justifyContent="center">
-      <Stack align="center" spacing="2xl">
-        {brandLogo}
-        <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
-          <chakra.img
-            src={errorIllustration}
-            alt={`a ${statusCode} error occurred.`}
-          />
-        </AspectRatio>
-        <Stack align="center" spacing="md">
-          <H1 textAlign="center">{errorTranslations.title}</H1>
-          <Text textAlign="center">{errorTranslations.description}</Text>
-          {children}
+      <Stack align="center" spacing="4xl">
+        <Grid columns={2} spacingX="4xl">
+          <AutoScout24Logo width="80px" height="51px" />
+          <MotoScout24Logo width="80px" height="51px" />
+        </Grid>
+        <Divider />
+        <Stack align="center" spacing="2xl">
+          <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
+            <chakra.img
+              src={errorIllustration}
+              alt={`a ${statusCode} error occurred.`}
+            />
+          </AspectRatio>
+          <Stack align="center" spacing="md">
+            <H1 textAlign="center">{errorTranslations.title}</H1>
+            <Text textAlign="center">{errorTranslations.description}</Text>
+            {children}
+          </Stack>
+          <Button
+            href={`/${language}`}
+            as="a"
+            onClick={onButtonClick}
+            variant="secondary"
+          >
+            {errorTranslations.buttonLabel}
+          </Button>
         </Stack>
-        <Button href={`/${language}`} as="a" onClick={onButtonClick}>
-          {errorTranslations.buttonLabel}
-        </Button>
       </Stack>
     </Flex>
   );
