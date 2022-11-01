@@ -12,13 +12,16 @@ const parts = [
 const fullScreen = {
   container: {
     height: '100%',
-    paddingX: '5xl',
+    paddingX: {
+      md: '5xl',
+    },
     backgroundColor: 'black',
   },
   buttonContainer: {
     backgroundColor: 'black',
     width: 'xl',
     visibility: {
+      base: 'hidden',
       md: 'visible',
     },
   },
