@@ -60,7 +60,7 @@ export const translations: Record<
     500: {
       title: 'Sorry, something went wrong',
       description:
-        'We have found a problem and have reported it to our team to fix it. In the meantime, here are a few things that you can try:',
+        'We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.',
       buttonLabel: 'Go to home',
     },
   },

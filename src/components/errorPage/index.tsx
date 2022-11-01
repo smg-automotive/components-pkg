@@ -28,12 +28,7 @@ interface Props {
   onButtonClick?: () => void;
 }
 
-const ErrorPage: FC<PropsWithChildren<Props>> = ({
-  statusCode,
-  language,
-  onButtonClick,
-  children,
-}) => {
+const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
   const errorTranslations = translations[language][statusCode];
   return (
     <Flex justifyContent="center">
@@ -53,7 +48,6 @@ const ErrorPage: FC<PropsWithChildren<Props>> = ({
           <Stack align="center" spacing="md">
             <H1 textAlign="center">{errorTranslations.title}</H1>
             <Text textAlign="center">{errorTranslations.description}</Text>
-            {children}
           </Stack>
           <Button
             href={`/${language}`}
