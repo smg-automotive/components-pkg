@@ -1,4 +1,6 @@
+export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
+export { ArrowUpIcon } from './ArrowUpIcon';
 export { AutoScout24Logo } from './AutoScout24Logo';
 export { ChevronDownSmallIcon } from './ChevronDownSmallIcon';
 export { ChevronDownLargeIcon } from './ChevronDownLargeIcon';
