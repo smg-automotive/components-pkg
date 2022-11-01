@@ -5,7 +5,17 @@ import Carousel from './index.tsx';
 import FullHeight from '../fullHeight';
 import Flex from '../flex';
 
-<Meta title="Components/Data display/Carousel" component={Carousel} />
+<Meta
+  title="Components/Data display/Carousel"
+  component={Carousel}
+  argTypes={{
+    fullScreen: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
 
 export const Slide = ({ index }) => (
   <Flex
