@@ -16,6 +16,7 @@ import FormError from './formError';
 import Form from './form';
 import Divider from './divider';
 import Checkbox from './checkbox';
+import Carousel from './carousel';
 import Button from './button';
 import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
@@ -28,6 +29,7 @@ export const components = {
   ArticleTeaser,
   Badge,
   Button,
+  Carousel,
   Checkbox,
   Divider,
   Form,

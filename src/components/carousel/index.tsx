@@ -7,6 +7,7 @@ import React, {
   useState,
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import Slide from './Slide';
 import NavigationButton, { Direction } from './NavigationButton';
@@ -17,6 +18,7 @@ interface Props {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
+  fullScreen?: boolean;
 }
 
 const Carousel: FC<PropsWithChildren<Props>> = ({
@@ -24,7 +26,13 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   onSlideClick,
   onSlideSelect,
   children,
+  fullScreen = false,
 }) => {
+  const { container, slideContainer } = useMultiStyleConfig(
+    'Carousel',
+    fullScreen ? { variant: 'fullScreen' } : {}
+  );
+
   const [emblaRef, embla] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
@@ -83,19 +91,19 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
       onClick={() => onClick(startIndex)}
       totalSlides={numberOfSlides}
       isCurrent={startIndex === selectedIndex}
+      fullScreen={fullScreen}
     >
       {slides[startIndex]}
     </Slide>
   ) : (
     <Box
       ref={emblaRef}
-      overflow="hidden"
-      position="relative"
       aria-label="Carousel"
       aria-roledescription="Carousel"
       role="group"
+      __css={container}
     >
-      <Flex>
+      <Flex __css={slideContainer}>
         {slides.map((slide, index) => (
           <Slide
             key={`slide-${index}`}
@@ -103,13 +111,22 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
             onClick={() => onClick(index)}
             totalSlides={numberOfSlides}
             isCurrent={index === selectedIndex}
+            fullScreen={fullScreen}
           >
             {slide}
           </Slide>
         ))}
       </Flex>
-      <NavigationButton onClick={scroll} direction="previous" />
-      <NavigationButton onClick={scroll} direction="next" />
+      <NavigationButton
+        onClick={scroll}
+        direction="previous"
+        fullScreen={fullScreen}
+      />
+      <NavigationButton
+        onClick={scroll}
+        direction="next"
+        fullScreen={fullScreen}
+      />
     </Box>
   );
 };
