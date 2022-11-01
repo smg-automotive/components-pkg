@@ -1,20 +1,20 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { AccordionProps, Show } from '@chakra-ui/react';
+import { AccordionProps, Hide, Show } from '@chakra-ui/react';
 
 import Accordion from './index';
 
 const AccordionMenu: FC<PropsWithChildren<AccordionProps>> = (props) => {
-  const { children, ...accordionProps } = props;
+  const { children, ...restProps } = props;
 
   return (
     <>
-      <Show below="xs">
-        <Accordion allowToggle {...accordionProps}>
+      <Show below="sm">
+        <Accordion allowMultiple {...restProps}>
           {children}
         </Accordion>
       </Show>
-      <Show above="sm">{children}</Show>
+      <Hide below="sm">{children}</Hide>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import AccordionMenuItem from './AccordionMenuItem';
+import AccordionMenuSection from './AccordionMenuSection';
 import AccordionMenu from './AccordionMenu';
 import ListItem from '../list/ListItem';
 import List from '../list';
@@ -13,9 +13,9 @@ import List from '../list';
 export const Template = (args) => (
   <AccordionMenu>
     {args?.items.map((item, i) => (
-      <AccordionMenuItem key={i} title={item.title}>
+      <AccordionMenuSection key={i} title={item.title}>
         {item.content}
-      </AccordionMenuItem>
+      </AccordionMenuSection>
     ))}
   </AccordionMenu>
 );
@@ -27,7 +27,7 @@ export const Template = (args) => (
     name="AccordionMenu (mobile-only)"
     parameters={{
       viewport: {
-        defaultViewport: 'xs',
+        defaultViewport: 'md',
       },
     }}
     args={{
@@ -45,16 +45,6 @@ export const Template = (args) => (
         },
         {
           title: 'Section 2',
-          content: (
-            <List>
-              <ListItem>Item 1</ListItem>
-              <ListItem>Item 2</ListItem>
-              <ListItem>Item 3</ListItem>
-            </List>
-          ),
-        },
-        {
-          title: 'Section 3',
           content: (
             <List>
               <ListItem>Item 1</ListItem>

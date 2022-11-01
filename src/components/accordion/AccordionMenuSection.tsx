@@ -2,6 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import {
   AccordionItemProps as ChakraAccordionItemProps,
+  Hide,
   Show,
 } from '@chakra-ui/react';
 
@@ -14,27 +15,27 @@ interface AccordionMenuItemProps extends ChakraAccordionItemProps {
   title: string;
 }
 
-const AccordionMenuItem: FC<PropsWithChildren<AccordionMenuItemProps>> = (
+const AccordionMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
   props
 ) => {
   const { children, title, ...itemProps } = props;
 
   return (
     <>
-      <Show below="xs">
+      <Show below="sm">
         <AccordionItem {...itemProps}>
           <AccordionButton>{title}</AccordionButton>
           <AccordionPanel>{children}</AccordionPanel>
         </AccordionItem>
       </Show>
-      <Show above="sm">
-        <Box>
-          <Box>{title}</Box>
-          <Box>{children}</Box>
+      <Hide below="sm">
+        <Box paddingY="md" textStyle="heading4">
+          {title}
         </Box>
-      </Show>
+        <Box pb="md">{children}</Box>
+      </Hide>
     </>
   );
 };
 
-export default AccordionMenuItem;
+export default AccordionMenuSection;
