@@ -25,6 +25,9 @@ const fullScreen = {
       md: 'visible',
     },
   },
+  slide: {
+    height: 'full',
+  },
   button: {
     opacity: '100%',
     backgroundColor: 'black',
