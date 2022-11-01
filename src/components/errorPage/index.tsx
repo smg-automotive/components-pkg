@@ -31,7 +31,7 @@ interface Props {
 const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
   const errorTranslations = translations[language][statusCode];
   return (
-    <Flex justifyContent="center">
+    <Flex justifyContent="center" pt="4xl">
       <Stack align="center" spacing="4xl">
         <Grid columns={2} spacingX="4xl">
           <AutoScout24AppLogo width="80px" height="51px" />
