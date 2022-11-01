@@ -1,5 +1,6 @@
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
+export { ArrowUpIcon } from './ArrowUpIcon';
 export { ChevronDownSmallIcon } from './ChevronDownSmallIcon';
 export { ChevronDownLargeIcon } from './ChevronDownLargeIcon';
 export { ChevronLeftLargeIcon } from './ChevronLeftLargeIcon';
