@@ -1,10 +1,10 @@
-import { StatusCodes } from './statusCodes';
 import { Language } from '../../types/language';
+import { ErrorStatusCode } from '../../types/errorStatusCode';
 
 export const translations: Record<
   Language,
   Record<
-    StatusCodes,
+    ErrorStatusCode,
     { title: string; description: string; buttonLabel: string }
   >
 > = {
