@@ -14,7 +14,13 @@ import Button from '../button';
 import AspectRatio from '../aspectRatio';
 import { Language } from '../../types/language';
 import { ErrorStatusCode } from '../../types/errorStatusCode';
-import errorIllustration from '../../assets/images/errorIllustration.png';
+import errorIllustrationSomethingWentWrong from '../../assets/images/errorIllustrationSomethingWentWrong.png';
+import errorIllustrationNotFound from '../../assets/images/errorIllustrationNotFound.png';
+
+const illustrations = {
+  404: errorIllustrationNotFound,
+  500: errorIllustrationSomethingWentWrong,
+};
 
 interface Props {
   statusCode: ErrorStatusCode;
@@ -40,7 +46,7 @@ const ErrorPage: FC<PropsWithChildren<Props>> = ({
         <Stack align="center" spacing="2xl">
           <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
             <chakra.img
-              src={errorIllustration}
+              src={illustrations[statusCode]}
               alt={`a ${statusCode} error occurred.`}
             />
           </AspectRatio>
