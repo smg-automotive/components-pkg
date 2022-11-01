@@ -67,7 +67,7 @@
     "@types/react": "18.0.21",
     "@types/react-textarea-autosize": "4.3.6",
     "autoprefixer": "10.4.12",
-    "babel-loader": "8.2.5",
+    "babel-loader": "9.0.1",
     "eslint-plugin-mdx": "2.0.5",
     "eslint-plugin-storybook": "0.6.6",
     "http-server": "14.1.1",
