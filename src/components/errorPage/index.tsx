@@ -5,6 +5,7 @@ import { chakra } from '@chakra-ui/react';
 import { translations } from './translations';
 import Text from '../text';
 import Stack from '../stack';
+import PageLayout from '../layout/Page';
 import { AutoScout24AppLogo, MotoScout24AppLogo } from '../icons';
 import { H1 } from '../heading';
 import Grid from '../grid';
@@ -31,35 +32,37 @@ interface Props {
 const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
   const errorTranslations = translations[language][statusCode];
   return (
-    <Flex justifyContent="center" pt="4xl">
-      <Stack align="center" spacing="4xl">
-        <Grid columns={2} spacingX="4xl">
-          <AutoScout24AppLogo width="80px" height="51px" />
-          <MotoScout24AppLogo width="80px" height="51px" />
-        </Grid>
-        <Divider />
-        <Stack align="center" spacing="2xl">
-          <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
-            <chakra.img
-              src={illustrations[statusCode]}
-              alt={`a ${statusCode} error occurred.`}
-            />
-          </AspectRatio>
-          <Stack align="center" spacing="md">
-            <H1 textAlign="center">{errorTranslations.title}</H1>
-            <Text textAlign="center">{errorTranslations.description}</Text>
+    <PageLayout maxContentWidth="md" header={null}>
+      <Flex justifyContent="center" pt={{ base: '3xl', md: 'xl' }}>
+        <Stack align="center" spacing="4xl">
+          <Grid columns={2} spacingX="4xl">
+            <AutoScout24AppLogo width="80px" height="51px" />
+            <MotoScout24AppLogo width="80px" height="51px" />
+          </Grid>
+          <Divider />
+          <Stack align="center" spacing="2xl">
+            <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
+              <chakra.img
+                src={illustrations[statusCode]}
+                alt={`a ${statusCode} error occurred.`}
+              />
+            </AspectRatio>
+            <Stack align="center" spacing="md">
+              <H1 textAlign="center">{errorTranslations.title}</H1>
+              <Text textAlign="center">{errorTranslations.description}</Text>
+            </Stack>
+            <Button
+              href={`/${language}`}
+              as="a"
+              onClick={onButtonClick}
+              variant="secondary"
+            >
+              {errorTranslations.buttonLabel}
+            </Button>
           </Stack>
-          <Button
-            href={`/${language}`}
-            as="a"
-            onClick={onButtonClick}
-            variant="secondary"
-          >
-            {errorTranslations.buttonLabel}
-          </Button>
         </Stack>
-      </Stack>
-    </Flex>
+      </Flex>
+    </PageLayout>
   );
 };
 
