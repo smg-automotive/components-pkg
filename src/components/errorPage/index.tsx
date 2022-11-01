@@ -3,10 +3,9 @@ import React, { FC, PropsWithChildren } from 'react';
 import { chakra } from '@chakra-ui/react';
 
 import { translations } from './translations';
-import { StatusCodes } from './statusCodes';
 import Text from '../text';
 import Stack from '../stack';
-import { AutoScout24Logo, MotoScout24Logo } from '../icons';
+import { AutoScout24AppLogo, MotoScout24AppLogo } from '../icons';
 import { H1 } from '../heading';
 import Grid from '../grid';
 import Flex from '../flex';
@@ -14,10 +13,11 @@ import Divider from '../divider';
 import Button from '../button';
 import AspectRatio from '../aspectRatio';
 import { Language } from '../../types/language';
+import { ErrorStatusCode } from '../../types/errorStatusCode';
 import errorIllustration from '../../assets/images/errorIllustration.png';
 
 interface Props {
-  statusCode: StatusCodes;
+  statusCode: ErrorStatusCode;
   language: Language;
   onButtonClick?: () => void;
 }
@@ -30,11 +30,11 @@ const ErrorPage: FC<PropsWithChildren<Props>> = ({
 }) => {
   const errorTranslations = translations[language][statusCode];
   return (
-    <Flex height="full" alignItems="center" justifyContent="center">
+    <Flex justifyContent="center">
       <Stack align="center" spacing="4xl">
         <Grid columns={2} spacingX="4xl">
-          <AutoScout24Logo width="80px" height="51px" />
-          <MotoScout24Logo width="80px" height="51px" />
+          <AutoScout24AppLogo width="80px" height="51px" />
+          <MotoScout24AppLogo width="80px" height="51px" />
         </Grid>
         <Divider />
         <Stack align="center" spacing="2xl">

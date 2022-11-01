@@ -1,8 +1,8 @@
 import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
-export const MotoScout24Logo = createIcon({
-  displayName: 'MotoScout24Logo',
+export const MotoScout24AppLogo = createIcon({
+  displayName: 'MotoScout24App',
   viewBox: '0 0 566.9 361.2',
   path: (
     <>
