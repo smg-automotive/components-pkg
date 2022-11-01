@@ -3,7 +3,7 @@ import { Grid as ChakraGrid, GridProps } from '@chakra-ui/react';
 
 type Props = Pick<
   GridProps,
-  'children' | 'templateAreas' | 'gap' | 'templateColumns'
+  'children' | 'templateAreas' | 'gap' | 'templateColumns' | 'templateRows'
 >;
 
 const Grid: FC<Props> = ({ children, ...props }) => {
