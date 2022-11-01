@@ -5,7 +5,7 @@ import { chakra } from '@chakra-ui/react';
 import { translations } from './translations';
 import Text from '../text';
 import Stack from '../stack';
-import Grid from '../simpleGrid';
+import SimpleGrid from '../simpleGrid';
 import PageLayout from '../layout/Page';
 import { AutoScout24AppLogo, MotoScout24AppLogo } from '../icons';
 import { H1 } from '../heading';
@@ -35,10 +35,10 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
     <PageLayout maxContentWidth="md" header={null}>
       <Flex justifyContent="center" pt={{ base: '3xl', md: 'xl' }}>
         <Stack align="center" spacing="4xl">
-          <Grid columns={2} spacingX="4xl">
+          <SimpleGrid columns={2} spacingX="4xl">
             <AutoScout24AppLogo width="80px" height="51px" />
             <MotoScout24AppLogo width="80px" height="51px" />
-          </Grid>
+          </SimpleGrid>
           <Divider />
           <Stack align="center" spacing="2xl">
             <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
