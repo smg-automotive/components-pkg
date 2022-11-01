@@ -26,7 +26,12 @@ import { Box } from '../index';
       md: 'repeat(4, 1fr)',
     },
   }}
-  argTypes={{}}
+  argTypes={{
+    gap: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
+      control: { type: 'select' },
+    },
+  }}
 />
 
 export const Template = ({ ...args }) => {
