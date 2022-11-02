@@ -17,10 +17,10 @@ export const RadioListItem: FC<PropsWithChildren<UseRadioProps>> = (props) => {
         cursor="pointer"
         background="white"
         borderRadius="md"
-        _checked={{
-          bg: 'blue.200',
-        }}
         _hover={{
+          bg: 'gray.100',
+        }}
+        _checked={{
           bg: 'blue.100',
         }}
         px="lg"
