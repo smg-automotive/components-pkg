@@ -6,7 +6,13 @@ import {
 
 type Props = Pick<
   SimpleGridProps,
-  'minChildWidth' | 'columns' | 'spacing' | 'spacingX' | 'spacingY' | 'children'
+  | 'minChildWidth'
+  | 'columns'
+  | 'spacing'
+  | 'spacingX'
+  | 'spacingY'
+  | 'children'
+  | 'alignItems'
 >;
 
 const SimpleGrid: FC<Props> = (props) => <ChakraSimpleGrid {...props} />;

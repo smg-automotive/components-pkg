@@ -2,33 +2,45 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import Carousel from './index.tsx';
+import FullHeight from '../fullHeight';
 import Flex from '../flex';
 
-<Meta title="Components/Data display/Carousel" component={Carousel} />
+<Meta
+  title="Components/Data display/Carousel"
+  component={Carousel}
+  argTypes={{
+    fullScreen: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
 
-export const Slide = ({ children }) => (
+export const Slide = ({ index }) => (
   <Flex
-    backgroundColor="red.500"
+    backgroundColor={['red.500', 'blue.500'][index % 2]}
     justifyContent="center"
     alignItems="center"
     height="300px"
   >
-    {children}
+    Slide {index}
   </Flex>
 );
 
 export const Template = (args) => (
-  <Carousel
-    {...args}
-    onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
-  >
-    <Slide>Slide 1</Slide>
-    <Slide>Slide 2</Slide>
-    <Slide>Slide 3</Slide>
-    <Slide>Slide 4</Slide>
-    <Slide>Slide 5</Slide>
-    <Slide>Slide 6</Slide>
-  </Carousel>
+  <FullHeight>
+    <Carousel
+      {...args}
+      onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
+    >
+      {Array(6)
+        .fill(0)
+        .map((_, i) => (
+          <Slide index={i + 1} key={`slide-${i + 1}`} />
+        ))}
+    </Carousel>
+  </FullHeight>
 );
 
 # Carousel
@@ -41,6 +53,22 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
+      fullScreen: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Full Screen
+
+<Canvas>
+  <Story
+    name="Full screen"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: true,
     }}
   >
     {Template.bind({})}
