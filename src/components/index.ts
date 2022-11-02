@@ -1,6 +1,10 @@
+export { default as AccordionButton } from './accordion/AccordionButton';
+export { default as AccordionPanel } from './accordion/AccordionPanel';
+export { default as AccordionItem } from './accordion/AccordionItem';
 export { default as ArticleTeaser } from './articleTeaser';
 export { default as AspectRatio } from './aspectRatio';
 export { default as Alert } from './alert';
+export { default as Badge } from './badge';
 export { default as Button } from './button';
 export { default as Box } from './box';
 export { default as Carousel } from './carousel';
@@ -30,12 +34,9 @@ export { default as Textarea } from './textarea';
 export { default as List } from './list';
 export { default as ListItem } from './list/ListItem';
 export { default as Menu } from './menu';
-export { default as Badge } from './badge';
 export { default as Tooltip } from './tooltip';
 export { default as Accordion } from './accordion';
-export { default as AccordionButton } from './accordion/AccordionButton';
-export { default as AccordionPanel } from './accordion/AccordionPanel';
-export { default as AccordionItem } from './accordion/AccordionItem';
+
 export {
   default as ThemeProvider,
   Props as ThemeProviderProps,
