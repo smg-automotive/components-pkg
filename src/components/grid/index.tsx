@@ -1,18 +1,14 @@
 import React, { FC } from 'react';
-import { SimpleGrid, SimpleGridProps } from '@chakra-ui/react';
+import { Grid as ChakraGrid, GridProps } from '@chakra-ui/react';
 
 type Props = Pick<
-  SimpleGridProps,
-  | 'minChildWidth'
-  | 'columns'
-  | 'spacing'
-  | 'spacingX'
-  | 'spacingY'
-  | 'children'
-  | 'alignItems'
+  GridProps,
+  'children' | 'templateAreas' | 'gap' | 'templateColumns' | 'templateRows'
 >;
 
-const Grid: FC<Props> = (props) => <SimpleGrid {...props} />;
+const Grid: FC<Props> = ({ children, ...props }) => {
+  return <ChakraGrid {...props}>{children}</ChakraGrid>;
+};
 
 export default Grid;
 export { Props as GridProps };
