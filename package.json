@@ -101,7 +101,7 @@
     "@emotion/styled": "11.10.5",
     "@types/fs-extra": "9.0.13",
     "embla-carousel-react": "7.0.4",
-    "framer-motion": "7.6.3",
+    "framer-motion": "7.6.4",
     "fs-extra": "10.1.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "8.0.4",
