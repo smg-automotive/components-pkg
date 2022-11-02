@@ -1,10 +1,10 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Hide from './index.ts';
+import Show from './index.ts';
 
 <Meta
-  title="Components/Utils/Hide"
-  component={Hide}
+  title="Components/Utils/Show"
+  component={Show}
   argTypes={{
     below: {
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
@@ -18,17 +18,17 @@ import Hide from './index.ts';
 />
 
 export const Template = ({ text, ...args }) => {
-  return <Hide {...args}>{text}</Hide>;
+  return <Show {...args}>{text}</Show>;
 };
 
-# Hide
+# Show
 
 ## Above a viewport
 
 <Canvas>
   <Story
     name="Above a viewport"
-    args={{ above: 'md', text: 'I am invisible on md and above' }}
+    args={{ above: 'md', text: 'I am visible on md and above' }}
   >
     {Template.bind({})}
   </Story>
@@ -41,7 +41,7 @@ export const Template = ({ text, ...args }) => {
 <Canvas>
   <Story
     name="Below a viewport"
-    args={{ below: 'md', text: 'I am invisible on md and below' }}
+    args={{ below: 'md', text: 'I am visible on md and below' }}
   >
     {Template.bind({})}
   </Story>
