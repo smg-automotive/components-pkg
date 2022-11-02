@@ -1,4 +1,8 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
+import { hexToRgb } from '../../lib/hexToRgb';
+import { colors } from '../shared/colors';
+
+const [r, g, b] = hexToRgb(colors.gray[900]);
 
 const parts = [
   'container',
@@ -73,10 +77,9 @@ const Carousel: ComponentStyleConfig = {
       width: 'md',
       height: 'md',
       borderRadius: 'sm',
-      backgroundColor: 'gray.900',
+      backgroundColor: `rgba(${r},${g},${b},0.4)`,
       color: 'white',
-      opacity: '40%',
-      _hover: { opacity: '80%' },
+      _hover: { backgroundColor: `rgba(${r},${g},${b},0.8)` },
     },
     icon: {
       boxSize: 'sm',
