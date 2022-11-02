@@ -55,7 +55,7 @@ const TwoColumnsLayout: FC<Props> = ({
             'rightContent'
           )}"`,
         }}
-        gridTemplateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
+        templateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
       >
         {backLink ? (
           <GridItem area="backlink">
