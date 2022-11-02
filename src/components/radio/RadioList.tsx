@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useRadioGroup, UseRadioGroupProps, VStack } from '@chakra-ui/react';
 
 import { RadioListItem } from './RadioListItem';
-import { Divider } from '..';
+import Divider from '../divider';
 
 type RadioListProps = {
   options: JSX.Element[];

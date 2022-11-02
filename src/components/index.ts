@@ -23,7 +23,6 @@ export { default as Link } from './link';
 export { default as MissingImage } from './missingImage';
 export { default as Radio } from './radio';
 export { default as RadioList } from './radio/RadioList';
-export { RadioListItem } from './radio/RadioListItem';
 export { default as Section } from './section';
 export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
