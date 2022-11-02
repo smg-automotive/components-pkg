@@ -1,102 +1,87 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Box } from '@chakra-ui/react';
 
 import Grid from './index.tsx';
+import GridItem from './GridItem.tsx';
+import { Box } from '../index';
 
 <Meta
   title="Layout/Grid"
   component={Grid}
-  parameters={{
-    controls: {
-      sort: 'alpha',
-    },
-  }}
   args={{
-    columns: 3,
-    spacing: 'md',
+    templateAreas: {
+      base: `
+        "make model"
+        "version version"
+        "doors horsePower"
+        "fuelType driveType"
+      `,
+      md: `
+        "make model version version"
+        "doors horsePower fuelType driveType"
+      `,
+    },
+    gap: 'md',
+    templateColumns: {
+      base: 'repeat(2, 1fr)',
+      md: 'repeat(4, 1fr)',
+    },
   }}
   argTypes={{
-    spacing: {
+    gap: {
       options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
       control: { type: 'select' },
-    },
-    spacingY: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-      control: { type: 'select' },
-    },
-    spacingX: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-      control: { type: 'select' },
-    },
-    maxW: {
-      table: {
-        disable: true,
-      },
     },
   }}
 />
 
-export const Template = ({ maxW, ...args }) => {
+export const Template = ({ ...args }) => {
   return (
-    <Box w="100%" maxW={maxW}>
-      <Grid {...args}>
-        <Box h="50px" bg="blue.100">
-          1
+    <Grid {...args}>
+      <GridItem area="make">
+        <Box border="1px solid purple" padding="md">
+          make
         </Box>
-        <Box h="50px" bg="green.100">
-          2
+      </GridItem>
+      <GridItem area="model">
+        <Box border="1px solid purple" padding="md">
+          model
         </Box>
-        <Box h="50px" bg="orange.100">
-          3
+      </GridItem>
+      <GridItem area="version">
+        <Box border="1px solid purple" padding="md">
+          version
         </Box>
-        <Box h="50px" bg="blue.200">
-          4
+      </GridItem>
+      <GridItem area="doors">
+        <Box border="1px solid purple" padding="md">
+          doors
         </Box>
-        <Box h="50px" bg="green.200">
-          5
+      </GridItem>
+      <GridItem area="horsePower">
+        <Box border="1px solid purple" padding="md">
+          horsePower
         </Box>
-        <Box h="50px" bg="orange.300">
-          6
+      </GridItem>
+      <GridItem area="fuelType">
+        <Box border="1px solid purple" padding="md">
+          fuelType
         </Box>
-      </Grid>
-    </Box>
+      </GridItem>
+      <GridItem area="driveType">
+        <Box border="1px solid purple" padding="md">
+          driveType
+        </Box>
+      </GridItem>
+    </Grid>
   );
 };
 
 # Grid
 
-## Overview
+## Example
 
 <Canvas>
-  <Story name="Overview" args={{ maxW: '300px' }}>
-    {Template.bind({})}
-  </Story>
+  <Story name="Example">{Template.bind({})}</Story>
 </Canvas>
 
 <ArgsTable story="Overview" />
-
-## Responsive
-
-2 columns on `2xs` 3 on `sm`. The same approach can be taken for other props.
-
-<Canvas>
-  <Story name="Responsive" args={{ columns: { '2xs': 2, sm: 3 } }}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## Auto-responsive
-
-Adds a column when there's enough space for another child according to `minChildWidth`
-
-<Canvas>
-  <Story
-    name="Auto-responsive"
-    args={{
-      columns: undefined,
-      minChildWidth: '200px',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
