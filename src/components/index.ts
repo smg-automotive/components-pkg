@@ -15,6 +15,7 @@ export { default as FormControl } from './formControl';
 export { default as FormLabel } from './formLabel';
 export { default as FullHeight } from './fullHeight';
 export { default as Grid } from './grid';
+export { default as Hide } from './hide';
 export { default as Input } from './input';
 export { default as Link } from './link';
 export { default as MissingImage } from './missingImage';
