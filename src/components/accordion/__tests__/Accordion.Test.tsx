@@ -29,6 +29,7 @@ const renderWrapper = ({ ...props }) =>
 describe('<Accordion />', () => {
   beforeAll(() => {
     window.scrollTo = jest.fn();
+    jest.clearAllMocks();
   });
 
   describe('uncontrolled', () => {
