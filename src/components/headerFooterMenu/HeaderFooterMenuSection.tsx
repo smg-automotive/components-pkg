@@ -6,17 +6,17 @@ import {
   Show,
 } from '@chakra-ui/react';
 
-import AccordionPanel from './AccordionPanel';
-import AccordionItem from './AccordionItem';
-import AccordionButton from './AccordionButton';
 import { H4 } from '../heading';
 import Box from '../box';
+import AccordionPanel from '../accordion/AccordionPanel';
+import AccordionItem from '../accordion/AccordionItem';
+import AccordionButton from '../accordion/AccordionButton';
 
 interface AccordionMenuItemProps extends ChakraAccordionItemProps {
   title: string;
 }
 
-const AccordionMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
+const HeaderFooterMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
   props
 ) => {
   const { children, title, ...itemProps } = props;
@@ -37,4 +37,4 @@ const AccordionMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
   );
 };
 
-export default AccordionMenuSection;
+export default HeaderFooterMenuSection;

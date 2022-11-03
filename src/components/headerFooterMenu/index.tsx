@@ -1,11 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { AccordionProps } from '@chakra-ui/react';
 
-import Accordion from './index';
+import Accordion from '../accordion';
 
 type Props = Pick<AccordionProps, 'allowMultiple' | 'allowToggle'>;
 
-const AccordionMenu: FC<PropsWithChildren<Props>> = (props) => {
+const HeaderFooterMenu: FC<PropsWithChildren<Props>> = (props) => {
   const { children, allowMultiple, ...restProps } = props;
 
   return (
@@ -15,4 +15,4 @@ const AccordionMenu: FC<PropsWithChildren<Props>> = (props) => {
   );
 };
 
-export default AccordionMenu;
+export default HeaderFooterMenu;

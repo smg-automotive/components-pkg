@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import AccordionMenuSection from '../AccordionMenuSection';
-import AccordionMenu from '../AccordionMenu';
+import HeaderFooterMenu from '../index';
+import HeaderFooterMenuSection from '../HeaderFooterMenuSection';
 
 const mockMatchMedia = (match: boolean) => {
   Object.defineProperty(window, 'matchMedia', {
@@ -16,17 +16,17 @@ const mockMatchMedia = (match: boolean) => {
 
 const renderWrapper = () =>
   render(
-    <AccordionMenu>
-      <AccordionMenuSection title="Section 1">
+    <HeaderFooterMenu>
+      <HeaderFooterMenuSection title="Section 1">
         <ul>
           <li>menu item 1</li>
           <li>menu item 2</li>
         </ul>
-      </AccordionMenuSection>
-    </AccordionMenu>
+      </HeaderFooterMenuSection>
+    </HeaderFooterMenu>
   );
 
-describe('<AccordionMenu />', () => {
+describe('<HeaderFooterMenu />', () => {
   beforeAll(() => {
     window.scrollTo = jest.fn();
     jest.clearAllMocks();
