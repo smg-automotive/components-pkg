@@ -3,6 +3,7 @@ import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
 import Switch from './switch';
+import Spinner from './spinner';
 import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
@@ -16,6 +17,7 @@ import FormError from './formError';
 import Form from './form';
 import Divider from './divider';
 import Checkbox from './checkbox';
+import Carousel from './carousel';
 import Button from './button';
 import Breadcrumbs from './breadcrumbs';
 import Badge from './badge';
@@ -30,6 +32,7 @@ export const components = {
   Badge,
   Breadcrumbs,
   Button,
+  Carousel,
   Checkbox,
   Divider,
   Form,
@@ -43,6 +46,7 @@ export const components = {
   Section,
   Select,
   SimpleHeader,
+  Spinner,
   Switch,
   Table,
   Textarea,

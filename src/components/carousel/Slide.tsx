@@ -1,4 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
+import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import Box from '../box';
 
@@ -7,6 +8,7 @@ interface Props {
   slideIndex: number;
   totalSlides: number;
   isCurrent: boolean;
+  fullScreen: boolean;
 }
 
 const Slide: FC<PropsWithChildren<Props>> = ({
@@ -15,12 +17,16 @@ const Slide: FC<PropsWithChildren<Props>> = ({
   totalSlides,
   isCurrent,
   children,
+  fullScreen,
 }) => {
+  const { slide } = useMultiStyleConfig(
+    'Carousel',
+    fullScreen ? { variant: 'fullScreen' } : {}
+  );
+
   return (
     <Box
-      flexGrow="0"
-      flexShrink="0"
-      flexBasis="full"
+      __css={slide}
       onClick={onClick}
       aria-roledescription="slide"
       aria-label={`${slideIndex + 1} of ${totalSlides}`}

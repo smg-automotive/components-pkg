@@ -1,0 +1,50 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Hide from './index.ts';
+
+<Meta
+  title="Components/Utils/Hide"
+  component={Hide}
+  argTypes={{
+    below: {
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' },
+    },
+    above: {
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'select' },
+    },
+  }}
+/>
+
+export const Template = ({ text, ...args }) => {
+  return <Hide {...args}>{text}</Hide>;
+};
+
+# Hide
+
+## Above a viewport
+
+<Canvas>
+  <Story
+    name="Above a viewport"
+    args={{ above: 'md', text: 'I am invisible on md and above' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Above a viewport" />
+
+## Below a viewport
+
+<Canvas>
+  <Story
+    name="Below a viewport"
+    args={{ below: 'md', text: 'I am invisible on md and below' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Below a viewport" />

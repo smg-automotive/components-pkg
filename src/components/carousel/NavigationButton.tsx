@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { chakra } from '@chakra-ui/react';
+import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 import { ChevronLeftLargeIcon, ChevronRightLargeIcon } from '../icons';
 import Flex from '../flex';
@@ -8,41 +8,28 @@ export type Direction = 'previous' | 'next';
 interface Props {
   onClick: (direction: Direction) => void;
   direction: Direction;
+  fullScreen: boolean;
 }
 
-const NavigationButton: FC<Props> = ({ direction, onClick }) => {
+const NavigationButton: FC<Props> = ({ direction, onClick, fullScreen }) => {
+  const { button, buttonContainer, icon } = useMultiStyleConfig(
+    'Carousel',
+    fullScreen ? { variant: 'fullScreen' } : {}
+  );
   const side = direction === 'previous' ? { left: '0' } : { right: '0' };
 
   return (
     <chakra.button
       onClick={() => onClick(direction)}
-      position="absolute"
-      top="0"
       {...side}
-      width="lg"
-      height="full"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      color="white"
-      visibility="hidden"
-      _groupHover={{ md: { visibility: 'visible' } }}
       aria-label={`${direction} slide`}
+      __css={buttonContainer}
     >
-      <Flex
-        justifyContent="center"
-        alignItems="center"
-        borderRadius="sm"
-        width="md"
-        height="md"
-        backgroundColor="gray.900"
-        opacity="40%"
-        _hover={{ opacity: '80%' }}
-      >
+      <Flex __css={button}>
         {direction === 'previous' ? (
-          <ChevronLeftLargeIcon color="white" />
+          <ChevronLeftLargeIcon boxSize={undefined} __css={icon} />
         ) : (
-          <ChevronRightLargeIcon color="white" />
+          <ChevronRightLargeIcon boxSize={undefined} __css={icon} />
         )}
       </Flex>
     </chakra.button>
