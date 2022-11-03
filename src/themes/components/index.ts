@@ -3,6 +3,7 @@ import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
 import Switch from './switch';
+import Spinner from './spinner';
 import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
@@ -48,4 +49,5 @@ export const components = {
   VehicleReference,
   List,
   Menu,
+  Spinner,
 };
