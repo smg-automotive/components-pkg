@@ -9,6 +9,7 @@ import {
 import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
+import { H4 } from '../heading';
 import Box from '../box';
 
 interface AccordionMenuItemProps extends ChakraAccordionItemProps {
@@ -29,9 +30,7 @@ const AccordionMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
         </AccordionItem>
       </Show>
       <Hide below="sm">
-        <Box paddingY="md" textStyle="heading4">
-          {title}
-        </Box>
+        <H4 paddingY="md">{title}</H4>
         <Box pb="md">{children}</Box>
       </Hide>
     </>

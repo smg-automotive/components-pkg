@@ -11,12 +11,13 @@ import List from '../list';
 />
 
 export const Template = (args) => (
-  <AccordionMenu>
-    {args?.items.map((item, i) => (
-      <AccordionMenuSection key={i} title={item.title}>
-        {item.content}
-      </AccordionMenuSection>
-    ))}
+  <AccordionMenu {...args}>
+    <AccordionMenuSection title={args.title}>
+      {args.children}
+    </AccordionMenuSection>
+    <AccordionMenuSection title={args.title}>
+      {args.children}
+    </AccordionMenuSection>
   </AccordionMenu>
 );
 
@@ -31,29 +32,16 @@ export const Template = (args) => (
       },
     }}
     args={{
-      allowToggle: true,
-      items: [
-        {
-          title: 'Section 1',
-          content: (
-            <List>
-              <ListItem>Item 1</ListItem>
-              <ListItem>Item 2</ListItem>
-              <ListItem>Item 3</ListItem>
-            </List>
-          ),
-        },
-        {
-          title: 'Section 2',
-          content: (
-            <List>
-              <ListItem>Item 1</ListItem>
-              <ListItem>Item 2</ListItem>
-              <ListItem>Item 3</ListItem>
-            </List>
-          ),
-        },
-      ],
+      allowMultiple: true,
+      allowToggle: false,
+      title: 'Section title',
+      children: (
+        <List>
+          <ListItem>Item 1</ListItem>
+          <ListItem>Item 2</ListItem>
+          <ListItem>Item 3</ListItem>
+        </List>
+      ),
     }}
   >
     {Template.bind({})}

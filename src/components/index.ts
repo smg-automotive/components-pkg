@@ -33,8 +33,6 @@ export { default as Tooltip } from './tooltip';
 export { default as Accordion } from './accordion';
 export { default as AccordionButton } from './accordion/AccordionButton';
 export { default as AccordionPanel } from './accordion/AccordionPanel';
-export { default as AccordionMenu } from './accordion/AccordionMenu';
-export { default as AccordionMenuSection } from './accordion/AccordionMenuSection';
 export { default as AccordionItem } from './accordion/AccordionItem';
 export {
   default as ThemeProvider,
