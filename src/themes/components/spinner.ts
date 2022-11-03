@@ -27,7 +27,7 @@ const spinnerTheme = defineStyleConfig({
   baseStyle,
   sizes,
   defaultProps: {
-    size: 'md',
+    size: 'sm',
   },
 });
 
