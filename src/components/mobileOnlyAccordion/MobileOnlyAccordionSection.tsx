@@ -12,13 +12,13 @@ import AccordionPanel from '../accordion/AccordionPanel';
 import AccordionItem from '../accordion/AccordionItem';
 import AccordionButton from '../accordion/AccordionButton';
 
-interface AccordionMenuItemProps extends ChakraAccordionItemProps {
+interface MobileOnlyAccordionItemProps extends ChakraAccordionItemProps {
   title: string;
 }
 
-const HeaderFooterMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
-  props
-) => {
+const MobileOnlyAccordionSection: FC<
+  PropsWithChildren<MobileOnlyAccordionItemProps>
+> = (props) => {
   const { children, title, ...itemProps } = props;
 
   return (
@@ -37,4 +37,4 @@ const HeaderFooterMenuSection: FC<PropsWithChildren<AccordionMenuItemProps>> = (
   );
 };
 
-export default HeaderFooterMenuSection;
+export default MobileOnlyAccordionSection;

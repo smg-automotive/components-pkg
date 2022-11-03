@@ -1,33 +1,33 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import HeaderFooterMenuSection from './HeaderFooterMenuSection';
+import MobileOnlyAccordionSection from './MobileOnlyAccordionSection';
 
 import ListItem from '../list/ListItem';
 import List from '../list';
 
-import HeaderFooterMenu from './index';
+import MobileOnlyAccordion from './index';
 
 <Meta
   title="Patterns/Navigation/HeaderFooterMenu"
-  component={HeaderFooterMenu}
+  component={MobileOnlyAccordion}
 />
 
 export const Template = (args) => (
-  <HeaderFooterMenu {...args}>
-    <HeaderFooterMenuSection title={args.title}>
+  <MobileOnlyAccordion {...args}>
+    <MobileOnlyAccordionSection title={args.title}>
       {args.children}
-    </HeaderFooterMenuSection>
-    <HeaderFooterMenuSection title={args.title}>
+    </MobileOnlyAccordionSection>
+    <MobileOnlyAccordionSection title={args.title}>
       {args.children}
-    </HeaderFooterMenuSection>
-  </HeaderFooterMenu>
+    </MobileOnlyAccordionSection>
+  </MobileOnlyAccordion>
 );
 
-# HeaderFooterMenu
+# MobileOnlyAccordionSection
 
 <Canvas>
   <Story
-    name="HeaderFooterMenu with accordion on mobile"
+    name="Overview"
     parameters={{
       viewport: {
         defaultViewport: 'sm',

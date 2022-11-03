@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import HeaderFooterMenu from '../index';
-import HeaderFooterMenuSection from '../HeaderFooterMenuSection';
+import MobileOnlyAccordionSection from '../MobileOnlyAccordionSection';
+import MobileOnlyAccordion from '../index';
 
 const mockMatchMedia = (match: boolean) => {
   Object.defineProperty(window, 'matchMedia', {
@@ -16,17 +16,17 @@ const mockMatchMedia = (match: boolean) => {
 
 const renderWrapper = () =>
   render(
-    <HeaderFooterMenu>
-      <HeaderFooterMenuSection title="Section 1">
+    <MobileOnlyAccordion>
+      <MobileOnlyAccordionSection title="Section 1">
         <ul>
           <li>menu item 1</li>
           <li>menu item 2</li>
         </ul>
-      </HeaderFooterMenuSection>
-    </HeaderFooterMenu>
+      </MobileOnlyAccordionSection>
+    </MobileOnlyAccordion>
   );
 
-describe('<HeaderFooterMenu />', () => {
+describe('<MobileOnlyAccordion />', () => {
   beforeAll(() => {
     window.scrollTo = jest.fn();
     jest.clearAllMocks();
@@ -45,6 +45,8 @@ describe('<HeaderFooterMenu />', () => {
 
   it('should render without accordion', async () => {
     mockMatchMedia(false);
+
+    renderWrapper();
 
     const button = screen.queryByRole('button');
 

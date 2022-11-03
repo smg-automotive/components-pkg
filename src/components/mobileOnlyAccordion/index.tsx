@@ -5,7 +5,7 @@ import Accordion from '../accordion';
 
 type Props = Pick<AccordionProps, 'allowMultiple' | 'allowToggle'>;
 
-const HeaderFooterMenu: FC<PropsWithChildren<Props>> = (props) => {
+const MobileOnlyAccordion: FC<PropsWithChildren<Props>> = (props) => {
   const { children, allowMultiple, ...restProps } = props;
 
   return (
@@ -15,4 +15,4 @@ const HeaderFooterMenu: FC<PropsWithChildren<Props>> = (props) => {
   );
 };
 
-export default HeaderFooterMenu;
+export default MobileOnlyAccordion;
