@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Skeleton from './index.tsx';
+import { Box } from '../index';
+
+<Meta title="Components/Feedback/Skeleton" component={Skeleton} />
+
+# Skeleton
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">
+    <Skeleton>
+      <Box height="80px" widht="500px">
+        Dummy conent
+      </Box>
+    </Skeleton>
+  </Story>
+</Canvas>

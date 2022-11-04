@@ -40,6 +40,7 @@ export { default as Stack } from './stack';
 export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
+export { default as Skeleton } from './skeleton';
 
 export {
   default as ThemeProvider,
