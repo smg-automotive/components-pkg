@@ -1,0 +1,51 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import MobileOnlyAccordionSection from './MobileOnlyAccordionSection';
+
+import ListItem from '../list/ListItem';
+import List from '../list';
+
+import MobileOnlyAccordion from './index';
+
+<Meta
+  title="Patterns/Navigation/HeaderFooterMenu"
+  component={MobileOnlyAccordion}
+/>
+
+export const Template = (args) => (
+  <MobileOnlyAccordion {...args}>
+    <MobileOnlyAccordionSection title={args.title}>
+      {args.children}
+    </MobileOnlyAccordionSection>
+    <MobileOnlyAccordionSection title={args.title}>
+      {args.children}
+    </MobileOnlyAccordionSection>
+  </MobileOnlyAccordion>
+);
+
+# MobileOnlyAccordionSection
+
+<Canvas>
+  <Story
+    name="Overview"
+    parameters={{
+      viewport: {
+        defaultViewport: 'sm',
+      },
+    }}
+    args={{
+      allowMultiple: true,
+      allowToggle: false,
+      title: 'Section title',
+      children: (
+        <List>
+          <ListItem>Item 1</ListItem>
+          <ListItem>Item 2</ListItem>
+          <ListItem>Item 3</ListItem>
+        </List>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
