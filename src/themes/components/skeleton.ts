@@ -1,4 +1,4 @@
-import { getColor, mode } from '@chakra-ui/theme-tools';
+import { getColor } from '@chakra-ui/theme-tools';
 import {
   cssVar,
   defineStyle,
