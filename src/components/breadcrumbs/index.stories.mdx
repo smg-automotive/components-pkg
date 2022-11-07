@@ -3,21 +3,34 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import Breadcrumbs from './index.tsx';
 import BreadcrumbLink from './BreadcrumbLink';
 import BreadcrumbItem from './BreadcrumbItem';
-import BreadcrumbBackLink from './BreadcrumbBackLink';
+
+import { Divider, Hide, Box, Center } from '@chakra-ui/react';
+
+import Link from '../link';
+import { ArrowLeftIcon as BackArrowIcon } from '../icons';
 
 <Meta title="Patterns/Navigation/Breadcrumbs" component={Breadcrumbs} />
 
 export const Template = (args) => (
-  <Breadcrumbs>
-    {args?.backButton && <BreadcrumbBackLink href={args.backButton} />}
-    {args?.crumbs.map((crumb, i) => (
-      <BreadcrumbItem key={i}>
-        <BreadcrumbLink isLast={args.crumbs.length - 1 === i} href={crumb.url}>
-          {crumb.title}
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-    ))}
-  </Breadcrumbs>
+  <Box display="flex">
+    {args?.backButton && (
+      <Link leftIcon={<BackArrowIcon />} href={args.backButton}>
+        Back
+      </Link>
+    )}
+    <Hide below="sm">
+      <Center height="sm" mr="md" ml="md">
+        <Divider orientation="vertical" />
+      </Center>
+      <Breadcrumbs>
+        {args?.crumbs.map((crumb, i) => (
+          <BreadcrumbItem key={i}>
+            <BreadcrumbLink href={crumb?.url}>{crumb.title}</BreadcrumbLink>
+          </BreadcrumbItem>
+        ))}
+      </Breadcrumbs>
+    </Hide>
+  </Box>
 );
 
 # Breadcrumbs
@@ -31,7 +44,7 @@ export const Template = (args) => (
       crumbs: [
         { title: 'VW', url: '#' },
         { title: 'Golf', url: '##' },
-        { title: 'VW GOLF 2.0 TSI GTI DSG Performance', url: '###' },
+        { title: 'VW GOLF 2.0 TSI GTI DSG Performance' },
       ],
     }}
   >

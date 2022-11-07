@@ -1,29 +1,25 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import {
-  chakra,
   BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbLinkProps as ChakraBreadcrumbLinkProps,
+  Text,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-interface BreadcrumbLinkProps extends ChakraBreadcrumbLinkProps {
-  isLast?: boolean;
-}
-
-const BreadcrumbLink: FC<PropsWithChildren<BreadcrumbLinkProps>> = ({
+const BreadcrumbLink: FC<PropsWithChildren<ChakraBreadcrumbLinkProps>> = ({
   children,
   ...itemProps
 }) => {
   const styles = useMultiStyleConfig('Breadcrumbs');
-  const { isLast } = itemProps;
+  const { href } = itemProps;
 
-  return isLast ? (
-    <chakra.p __css={styles.text}>{children}</chakra.p>
-  ) : (
-    <ChakraBreadcrumbLink __css={styles.link} {...itemProps}>
+  return href ? (
+    <ChakraBreadcrumbLink __css={styles.link} href={href} {...itemProps}>
       {children}
     </ChakraBreadcrumbLink>
+  ) : (
+    <Text color="gray.900">{children}</Text>
   );
 };
 
