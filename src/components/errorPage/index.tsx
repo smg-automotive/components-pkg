@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
+import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
-import { translations } from './translations';
+import TranslationProvider from '../translationProvider';
 import Text from '../text';
 import Stack from '../stack';
 import SimpleGrid from '../simpleGrid';
@@ -13,7 +14,6 @@ import Flex from '../flex';
 import Divider from '../divider';
 import Button from '../button';
 import AspectRatio from '../aspectRatio';
-import { Language } from '../../types/language';
 import { ErrorStatusCode } from '../../types/errorStatusCode';
 import errorIllustrationSomethingWentWrong from '../../assets/images/errorIllustrationSomethingWentWrong.png';
 import errorIllustrationNotFound from '../../assets/images/errorIllustrationNotFound.png';
@@ -29,8 +29,12 @@ interface Props {
   onButtonClick?: () => void;
 }
 
-const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
-  const errorTranslations = translations[language][statusCode];
+const ErrorPageContent: FC<Props> = ({
+  statusCode,
+  language,
+  onButtonClick,
+}) => {
+  const { t } = useI18n();
   return (
     <PageLayout maxContentWidth="md" header={null}>
       <Flex justifyContent="center" pt={{ base: '3xl', md: 'xl' }}>
@@ -48,8 +52,10 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
               />
             </AspectRatio>
             <Stack align="center" spacing="md">
-              <H1 textAlign="center">{errorTranslations.title}</H1>
-              <Text textAlign="center">{errorTranslations.description}</Text>
+              <H1 textAlign="center">{t(`errorPage.${statusCode}.title`)}</H1>
+              <Text textAlign="center">
+                {t(`errorPage.${statusCode}.description`)}
+              </Text>
             </Stack>
             <Button
               href={`/${language}`}
@@ -57,12 +63,20 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
               onClick={onButtonClick}
               variant="secondary"
             >
-              {errorTranslations.buttonLabel}
+              {t(`errorPage.${statusCode}.buttonLabel`)}
             </Button>
           </Stack>
         </Stack>
       </Flex>
     </PageLayout>
+  );
+};
+
+const ErrorPage: FC<Props> = (props) => {
+  return (
+    <TranslationProvider language={props.language} scopes={['errorPage']}>
+      <ErrorPageContent {...props} />
+    </TranslationProvider>
   );
 };
 
