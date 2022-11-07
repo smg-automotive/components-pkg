@@ -15,6 +15,9 @@ import Flex from '../flex';
       },
     },
   }}
+  parameters={{
+    layout: 'fullscreen',
+  }}
 />
 
 export const Slide = ({ index }) => (
@@ -34,10 +37,10 @@ export const Template = (args) => (
       {...args}
       onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
     >
-      {Array(6)
+      {Array(args.numberOfSlides)
         .fill(0)
         .map((_, i) => (
-          <Slide index={i + 1} key={`slide-${i + 1}`} />
+          <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={args.fullScreen} />
         ))}
     </Carousel>
   </FullHeight>
@@ -54,6 +57,7 @@ export const Template = (args) => (
       startIndex: 0,
       onSlideClick: true,
       fullScreen: false,
+      numberOfSlides: 6
     }}
   >
     {Template.bind({})}
@@ -69,6 +73,24 @@ export const Template = (args) => (
       startIndex: 0,
       onSlideClick: true,
       fullScreen: true,
+      numberOfSlides: 6
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With thumbnail pagination
+
+<Canvas>
+  <Story
+    name="With thumbnail pagination"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: true,
+      pagination: "thumbnails",
+      numberOfSlides: 6
     }}
   >
     {Template.bind({})}

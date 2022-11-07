@@ -13,12 +13,15 @@ import Slide from './Slide';
 import NavigationButton, { Direction } from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
+import Thumbnail from './Thumbnail';
+import SimpleGrid from '../simpleGrid';
 
 interface Props {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
   fullScreen?: boolean;
+  pagination?: 'none' | 'thumbnails';
 }
 
 const Carousel: FC<PropsWithChildren<Props>> = ({
@@ -27,8 +30,13 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   onSlideSelect,
   children,
   fullScreen = false,
+  pagination = 'none',
 }) => {
-  const { container, slideContainer } = useMultiStyleConfig(
+  const {
+    container,
+    slideContainer,
+    pagination: paginationStyles,
+  } = useMultiStyleConfig(
     'Carousel',
     fullScreen ? { variant: 'fullScreen' } : {}
   );
@@ -38,6 +46,11 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     startIndex: startIndex,
     speed: 20,
   });
+  const [thumbnailViewportRef, emblaThumbnails] = useEmblaCarousel({
+    containScroll: 'keepSnaps',
+    dragFree: true,
+  });
+
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
   const slides: ReactNode[] = Array.isArray(children) ? children : [children];
@@ -68,14 +81,25 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     [embla, onSlideClick]
   );
 
+  const onThumbnailClick = useCallback(
+    (index: number) => {
+      if (!embla || !emblaThumbnails || pagination !== 'thumbnails') return;
+      if (emblaThumbnails.clickAllowed()) embla.scrollTo(index);
+    },
+    [embla, emblaThumbnails, pagination]
+  );
+
   const onSelect = useCallback(() => {
     if (!embla) return;
     const newIndex = embla.selectedScrollSnap();
     setSelectedIndex(newIndex);
+    if (emblaThumbnails && pagination === 'thumbnails') {
+      emblaThumbnails.scrollTo(newIndex);
+    }
     if (onSlideSelect) {
       onSlideSelect(newIndex);
     }
-  }, [embla, setSelectedIndex, onSlideSelect]);
+  }, [embla, emblaThumbnails, onSlideSelect, pagination]);
 
   useEffect(() => {
     if (!embla) return;
@@ -85,49 +109,68 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
 
   const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
 
-  return prerenderFallbackSlide ? (
-    <Slide
-      slideIndex={startIndex}
-      onClick={() => onClick(startIndex)}
-      totalSlides={numberOfSlides}
-      isCurrent={startIndex === selectedIndex}
-      fullScreen={fullScreen}
-    >
-      {slides[startIndex]}
-    </Slide>
-  ) : (
-    <Box
-      ref={emblaRef}
-      aria-label="Carousel"
-      aria-roledescription="Carousel"
-      role="group"
-      __css={container}
-    >
-      <Flex __css={slideContainer}>
-        {slides.map((slide, index) => (
-          <Slide
-            key={`slide-${index}`}
-            slideIndex={index}
-            onClick={() => onClick(index)}
-            totalSlides={numberOfSlides}
-            isCurrent={index === selectedIndex}
+  return (
+    <>
+      {prerenderFallbackSlide ? (
+        <Slide
+          slideIndex={startIndex}
+          onClick={() => onClick(startIndex)}
+          totalSlides={numberOfSlides}
+          isCurrent={startIndex === selectedIndex}
+          fullScreen={fullScreen}
+        >
+          {slides[startIndex]}
+        </Slide>
+      ) : (
+        <Box
+          ref={emblaRef}
+          aria-label="Carousel"
+          aria-roledescription="Carousel"
+          role="group"
+          __css={container}
+        >
+          <Flex __css={slideContainer}>
+            {slides.map((slide, index) => (
+              <Slide
+                key={`slide-${index}`}
+                slideIndex={index}
+                onClick={() => onClick(index)}
+                totalSlides={numberOfSlides}
+                isCurrent={index === selectedIndex}
+                fullScreen={fullScreen}
+              >
+                {slide}
+              </Slide>
+            ))}
+          </Flex>
+          <NavigationButton
+            onClick={scroll}
+            direction="previous"
             fullScreen={fullScreen}
-          >
-            {slide}
-          </Slide>
-        ))}
-      </Flex>
-      <NavigationButton
-        onClick={scroll}
-        direction="previous"
-        fullScreen={fullScreen}
-      />
-      <NavigationButton
-        onClick={scroll}
-        direction="next"
-        fullScreen={fullScreen}
-      />
-    </Box>
+          />
+          <NavigationButton
+            onClick={scroll}
+            direction="next"
+            fullScreen={fullScreen}
+          />
+        </Box>
+      )}
+      {pagination === 'thumbnails' ? (
+        <Box ref={thumbnailViewportRef} __css={container}>
+          <Flex mt="xs">
+            {slides.map((slide, index) => (
+              <Thumbnail
+                key={`slide-${index}`}
+                onClick={() => onThumbnailClick(index)}
+                fullScreen={fullScreen}
+              >
+                {slide}
+              </Thumbnail>
+            ))}
+          </Flex>
+        </Box>
+      ) : null}
+    </>
   );
 };
 
