@@ -7,7 +7,11 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-const BreadcrumbLink: FC<PropsWithChildren<ChakraBreadcrumbLinkProps>> = ({
+interface BreadcrumbLinkProps extends ChakraBreadcrumbLinkProps {
+  href?: string;
+}
+
+const BreadcrumbLink: FC<PropsWithChildren<BreadcrumbLinkProps>> = ({
   children,
   ...itemProps
 }) => {

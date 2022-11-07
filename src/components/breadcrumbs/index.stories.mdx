@@ -1,10 +1,9 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box, Center, Divider, Hide } from '@chakra-ui/react';
 
 import Breadcrumbs from './index.tsx';
 import BreadcrumbLink from './BreadcrumbLink';
 import BreadcrumbItem from './BreadcrumbItem';
-
-import { Divider, Hide, Box, Center } from '@chakra-ui/react';
 
 import Link from '../link';
 import { ArrowLeftIcon as BackArrowIcon } from '../icons';
@@ -14,22 +13,28 @@ import { ArrowLeftIcon as BackArrowIcon } from '../icons';
 export const Template = (args) => (
   <Box display="flex">
     {args?.backButton && (
-      <Link leftIcon={<BackArrowIcon />} href={args.backButton}>
-        Back
-      </Link>
+      <>
+        <Link leftIcon={<BackArrowIcon />} href={args.backButton}>
+          Back
+        </Link>
+        <Hide below="sm">
+          <Center height="sm" mr="md" ml="md">
+            <Divider orientation="vertical" />
+          </Center>
+        </Hide>
+      </>
     )}
-    <Hide below="sm">
-      <Center height="sm" mr="md" ml="md">
-        <Divider orientation="vertical" />
-      </Center>
-      <Breadcrumbs>
-        {args?.crumbs.map((crumb, i) => (
-          <BreadcrumbItem key={i}>
-            <BreadcrumbLink href={crumb?.url}>{crumb.title}</BreadcrumbLink>
-          </BreadcrumbItem>
-        ))}
-      </Breadcrumbs>
-    </Hide>
+    {args.crumbs?.length > 0 && (
+      <Hide below="sm">
+        <Breadcrumbs>
+          {args.crumbs.map((crumb, i) => (
+            <BreadcrumbItem key={i}>
+              <BreadcrumbLink href={crumb?.url}>{crumb.title}</BreadcrumbLink>
+            </BreadcrumbItem>
+          ))}
+        </Breadcrumbs>
+      </Hide>
+    )}
   </Box>
 );
 
