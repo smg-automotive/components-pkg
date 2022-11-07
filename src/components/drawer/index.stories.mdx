@@ -1,44 +1,49 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { useDisclosure } from '@chakra-ui/react';
-import Drawer from './index';
-import DrawerContent from './DrawerContent';
+
 import DrawerOverlay from './DrawerOverlay';
+import DrawerContent from './DrawerContent';
 import Button from '../button';
 import Box from '../box';
 
-<Meta title="Components/Overlay/Drawer" component={Drawer} />
+import Drawer from './index';
+
+<Meta
+  title="Components/Overlay/Drawer"
+  component={Drawer}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
 
 export const Template = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
-    <>
-      <Box width="100%" height="70px" bg="green.300" zIndex='0'>
-        <Button onClick={onOpen}>Open</Button>
-        <p>Some text</p>
-        <Box w="100%" h="700px" bg="red.500">test</Box>
-      </Box>
-      <Drawer
-        placement='top'
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <DrawerOverlay marginTop="100px" />
-        <DrawerContent bg='gray.600' marginTop="100px">
-          <div>There is drawer body</div>
+    <Box
+      width="100%"
+      height="60px"
+      position="absolute"
+      pt="xs"
+      px="sm"
+      bg="gray.100"
+      zIndex="menu"
+    >
+      <Button onClick={onOpen}>Open</Button>
+      <Drawer placement="top" isOpen={isOpen} onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent marginTop="60px">
+          There is a drawer content
         </DrawerContent>
       </Drawer>
-    </>
+    </Box>
   );
-}
+};
 
 # Drawer
 
 ## Overview
 
 <Canvas>
-  <Story name="Overview">
-    {Template.bind({})}
-  </Story>
+  <Story name="Overview">{Template.bind({})}</Story>
 </Canvas>

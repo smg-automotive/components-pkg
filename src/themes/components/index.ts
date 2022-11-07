@@ -15,6 +15,7 @@ import Input from './input';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
+import Drawer from './Drawer';
 import Divider from './divider';
 import Checkbox from './checkbox';
 import Carousel from './carousel';
@@ -23,10 +24,8 @@ import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
 import Accordion from './accordion';
-import Drawer from './drawer';
 
 export const components = {
-  Drawer,
   Accordion,
   Alert,
   ArticleTeaser,
@@ -34,6 +33,7 @@ export const components = {
   Button,
   Carousel,
   Checkbox,
+  Drawer,
   Divider,
   Form,
   FormError,
