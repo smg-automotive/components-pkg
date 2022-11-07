@@ -23,8 +23,10 @@ import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
 import Accordion from './accordion';
+import Drawer from './drawer';
 
 export const components = {
+  Drawer,
   Accordion,
   Alert,
   ArticleTeaser,
