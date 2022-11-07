@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { Box, Center, Divider, Hide, Text } from '@chakra-ui/react';
+import { Box, Center, Divider, Hide } from '@chakra-ui/react';
 
 import BreadcrumbLink from '../BreadcrumbLink';
 import BreadcrumbItem from '../BreadcrumbItem';
