@@ -6,6 +6,7 @@ import { dirname, join } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 
 const dts = require('rollup-plugin-dts').default;
@@ -36,6 +37,7 @@ export default [
       resolve(),
       commonjs(),
       image(),
+      json(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
@@ -63,6 +65,7 @@ export default [
       resolve(),
       commonjs(),
       image(),
+      json(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
