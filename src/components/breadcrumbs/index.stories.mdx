@@ -1,12 +1,25 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Box } from '@chakra-ui/react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Breadcrumbs from './index.tsx';
+import BreadcrumbItem from './BreadcrumbItem';
+import BreadcrumbBackButton from './BreadcrumbBackButton';
+import BreadcrumbLink from './BreadcrumbLink';
 
-<Meta title="Components/Navigation/Breadcrumbs" component={Breadcrumbs} />
+import Link from '../link';
 
-export const Template = ({ crumbs, backLink, LinkWrapper }) => (
-  <Breadcrumbs crumbs={crumbs} backLink={backLink} LinkWrapper={LinkWrapper} />
+<Meta title="Patterns/Navigation/Breadcrumbs" component={Breadcrumbs} />
+
+export const Template = (args) => (
+  <Breadcrumbs>
+    {args?.backButton && <BreadcrumbBackButton href={args.backButton} />}
+    {args?.crumbs.map((crumb, i) => (
+      <BreadcrumbItem key={i}>
+        <BreadcrumbLink isLast={args.crumbs.length - 1 === i} href={crumb.url}>
+          {crumb.title}
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    ))}
+  </Breadcrumbs>
 );
 
 # Breadcrumbs
@@ -17,17 +30,31 @@ export const Template = ({ crumbs, backLink, LinkWrapper }) => (
   <Story
     name="Overview"
     args={{
-      backLink: { title: 'Back', url: '#' },
       crumbs: [
         { title: 'VW', url: '#' },
-        { title: 'Golf', url: '###' },
-        { title: 'VW GOLF 2.0 TSI GTI DSG Performance' },
+        { title: 'Golf', url: '##' },
+        { title: 'VW GOLF 2.0 TSI GTI DSG Performance', url: '###' },
       ],
-      LinkWrapper: Box,
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+## With Back Button
+
+<Canvas>
+  <Story
+    name="With Back Button"
+    args={{
+      backButton: '#',
+      crumbs: [
+        { title: 'VW', url: '#' },
+        { title: 'Golf', url: '##' },
+        { title: 'VW GOLF 2.0 TSI GTI DSG Performance', url: '###' },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

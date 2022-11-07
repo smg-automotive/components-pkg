@@ -10,8 +10,17 @@ const separator: SystemStyleObject = {
   borderStyle: 'solid',
   borderColor: 'gray.500',
   height: 'xs',
-  marginLeft: 'sm',
-  marginRight: 'sm',
+  marginLeft: 'md',
+  marginRight: 'md',
+};
+
+const link: SystemStyleObject = {
+  textStyle: 'body',
+  color: 'blue.700',
+  _hover: {
+    cursor: 'pointer',
+    textDecoration: 'underline',
+  },
 };
 
 const Breadcrumbs: ComponentMultiStyleConfig = {
@@ -19,6 +28,7 @@ const Breadcrumbs: ComponentMultiStyleConfig = {
   baseStyle: {
     text,
     separator,
+    link,
   },
 };
 
