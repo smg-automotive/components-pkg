@@ -1,17 +1,15 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Breadcrumbs from './index.tsx';
+import BreadcrumbBackLink from './BreadcrumbBackLink';
 import BreadcrumbItem from './BreadcrumbItem';
-import BreadcrumbBackButton from './BreadcrumbBackButton';
 import BreadcrumbLink from './BreadcrumbLink';
-
-import Link from '../link';
+import Breadcrumbs from './index.tsx';
 
 <Meta title="Patterns/Navigation/Breadcrumbs" component={Breadcrumbs} />
 
 export const Template = (args) => (
   <Breadcrumbs>
-    {args?.backButton && <BreadcrumbBackButton href={args.backButton} />}
+    {args?.backButton && <BreadcrumbBackLink href={args.backButton} />}
     {args?.crumbs.map((crumb, i) => (
       <BreadcrumbItem key={i}>
         <BreadcrumbLink isLast={args.crumbs.length - 1 === i} href={crumb.url}>
