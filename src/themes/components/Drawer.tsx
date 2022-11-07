@@ -1,4 +1,3 @@
-import { mode } from '@chakra-ui/theme-tools';
 import type {
   PartsStyleFunction,
   SystemStyleFunction,
@@ -16,16 +15,14 @@ const baseStyleDialogContainer: SystemStyleObject = {
   justifyContent: 'center',
 };
 
-const baseStyleDialog: SystemStyleFunction = (props) => {
-  const { isFullHeight } = props;
-
+const baseStyleDialog: SystemStyleFunction = () => {
   return {
-    ...(isFullHeight && { height: '100vh' }),
     zIndex: 'modal',
-    maxH: '100vh',
-    bg: mode('white', 'gray.700')(props),
+    bg: 'white',
     color: 'inherit',
-    boxShadow: mode('lg', 'dark-lg')(props),
+    boxShadow: 'xs',
+    borderBottom: 'inset 1px',
+    borderBottomColor: 'gray.200',
   };
 };
 

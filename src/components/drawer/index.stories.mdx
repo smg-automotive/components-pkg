@@ -19,10 +19,11 @@ import Drawer from './index';
 
 export const Template = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const headerHeight = '60px';
   return (
     <Box
       width="100%"
-      height="60px"
+      height={headerHeight}
       position="absolute"
       pt="xs"
       px="sm"
@@ -32,7 +33,7 @@ export const Template = () => {
       <Button onClick={onOpen}>Open</Button>
       <Drawer placement="top" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent marginTop="60px">
+        <DrawerContent marginTop={headerHeight} p="md">
           There is a drawer content
         </DrawerContent>
       </Drawer>

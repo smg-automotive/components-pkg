@@ -1,7 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import {
-  DrawerBody as ChakraDrawerBody,
   DrawerContent as ChakraDrawerContent,
   DrawerContentProps as ChakraDrawerContentProps,
 } from '@chakra-ui/react';
@@ -13,7 +12,7 @@ const DrawerContent: FC<PropsWithChildren<ChakraDrawerContentProps>> = (
 
   return (
     <ChakraDrawerContent {...drawerContentProps}>
-      <ChakraDrawerBody>{children}</ChakraDrawerBody>
+      {children}
     </ChakraDrawerContent>
   );
 };
