@@ -6,8 +6,8 @@ import {
 
 type CenterProps = Pick<ChakraCenterProps, 'children' | 'padding'>;
 
-const Center: FC<CenterProps> = ({ children }) => (
-  <ChakraCenter>{children}</ChakraCenter>
+const Center: FC<CenterProps> = ({ children, padding }) => (
+  <ChakraCenter padding={padding}>{children}</ChakraCenter>
 );
 
 export default Center;

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Spinner as ChakraSpinner } from '@chakra-ui/react';
 
 type Props = {
-  size: 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
 const Spinner: FC<Props> = ({ size }) => (
