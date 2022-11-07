@@ -9,12 +9,11 @@ import React, {
 import useEmblaCarousel from 'embla-carousel-react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
+import Thumbnail from './Thumbnail';
 import Slide from './Slide';
 import NavigationButton, { Direction } from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
-import Thumbnail from './Thumbnail';
-import SimpleGrid from '../simpleGrid';
 
 interface Props {
   startIndex?: number;
@@ -32,11 +31,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   fullScreen = false,
   pagination = 'none',
 }) => {
-  const {
-    container,
-    slideContainer,
-    pagination: paginationStyles,
-  } = useMultiStyleConfig(
+  const { container, slideContainer } = useMultiStyleConfig(
     'Carousel',
     fullScreen ? { variant: 'fullScreen' } : {}
   );
