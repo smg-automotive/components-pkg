@@ -1,9 +1,14 @@
-import React, { FC, PropsWithChildren } from 'react';
-import { Center as ChakraCenter } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import {
+  Center as ChakraCenter,
+  CenterProps as ChakraCenterProps,
+} from '@chakra-ui/react';
 
-const Center: FC<PropsWithChildren> = ({ children }) => (
+type CenterProps = Pick<ChakraCenterProps, 'children' | 'padding'>;
+
+const Center: FC<CenterProps> = ({ children }) => (
   <ChakraCenter>{children}</ChakraCenter>
 );
 
 export default Center;
-export { PropsWithChildren as CenterProps };
+export { CenterProps };
