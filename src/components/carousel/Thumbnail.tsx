@@ -4,9 +4,14 @@ import AspectRatio from '../aspectRatio';
 
 interface Props {
   onClick: () => void;
-  fullScreen: boolean;
+  isCurrent: boolean;
 }
-const Thumbnail: FC<PropsWithChildren<Props>> = ({ onClick, children }) => {
+
+const Thumbnail: FC<PropsWithChildren<Props>> = ({
+  onClick,
+  isCurrent,
+  children,
+}) => {
   return (
     <AspectRatio
       ratio={4 / 3}
@@ -15,6 +20,8 @@ const Thumbnail: FC<PropsWithChildren<Props>> = ({ onClick, children }) => {
       flexShrink="0"
       cursor="pointer"
       mr="xs"
+      border="4px"
+      borderColor={isCurrent ? 'blue.400' : 'transparent'}
     >
       {children}
     </AspectRatio>

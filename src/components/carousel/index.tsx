@@ -157,7 +157,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
               <Thumbnail
                 key={`slide-${index}`}
                 onClick={() => onThumbnailClick(index)}
-                fullScreen={fullScreen}
+                isCurrent={index === selectedIndex}
               >
                 {slide}
               </Thumbnail>
