@@ -1,14 +1,14 @@
 {
   "errorPage": {
     "404": {
-      "title": "Sorry, we can’t find that page",
+      "buttonLabel": "Go to home",
       "description": "The page you are trying to reach might no longer exist. If you typed in or copied the link, you could try doing it again.",
-      "buttonLabel": "Go to home"
+      "title": "Sorry, we can’t find that page"
     },
     "500": {
-      "title": "Sorry, something went wrong",
+      "buttonLabel": "Go to home",
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
-      "buttonLabel": "Go to home"
+      "title": "Sorry, something went wrong"
     }
   }
 }
