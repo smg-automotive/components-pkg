@@ -3,7 +3,21 @@ import type {
   SystemStyleFunction,
   SystemStyleObject,
 } from '@chakra-ui/styled-system';
+import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
 import { drawerAnatomy as parts } from '@chakra-ui/anatomy';
+
+const { definePartsStyle } = createMultiStyleConfigHelpers(parts.keys);
+
+const getSize = (value: string) => {
+  if (value === 'full') {
+    return definePartsStyle({
+      dialog: { maxW: '100vw', h: '100vh' },
+    });
+  }
+  return definePartsStyle({
+    dialog: { maxW: value },
+  });
+};
 
 const baseStyleOverlay: SystemStyleObject = {
   zIndex: 'overlay',
@@ -21,7 +35,7 @@ const baseStyleDialog: SystemStyleFunction = () => {
     bg: 'white',
     color: 'inherit',
     boxShadow: 'xs',
-    borderBottom: 'inset 1px',
+    borderBottom: '1px',
     borderBottomColor: 'gray.200',
   };
 };
@@ -38,7 +52,20 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   body: baseStyleBody,
 });
 
+const sizes = {
+  xs: getSize('xs'),
+  sm: getSize('md'),
+  md: getSize('lg'),
+  lg: getSize('2xl'),
+  xl: getSize('4xl'),
+  full: getSize('full'),
+};
+
 export default {
   baseStyle,
   parts: parts.keys,
+  sizes,
+  defaultProps: {
+    size: 'xl',
+  },
 };

@@ -10,14 +10,14 @@ import Box from '../box';
 import Drawer from './index';
 
 <Meta
-  title="Components/Overlay/Drawer"
+  title="Components/Data display/Drawer"
   component={Drawer}
   parameters={{
     layout: 'fullscreen',
   }}
 />
 
-export const Template = () => {
+export const Template = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const headerHeight = '60px';
   return (
@@ -28,10 +28,10 @@ export const Template = () => {
       pt="xs"
       px="sm"
       bg="gray.100"
-      zIndex="menu"
+      zIndex="popover"
     >
       <Button onClick={onOpen}>Open</Button>
-      <Drawer placement="top" isOpen={isOpen} onClose={onClose}>
+      <Drawer isOpen={isOpen} onClose={onClose} {...args}>
         <DrawerOverlay />
         <DrawerContent marginTop={headerHeight} p="md">
           There is a drawer content
@@ -43,8 +43,19 @@ export const Template = () => {
 
 # Drawer
 
-## Overview
-
 <Canvas>
-  <Story name="Overview">{Template.bind({})}</Story>
+  <Story
+    name="Drawer"
+    args={{
+      placement: 'top',
+    }}
+    argTypes={{
+      placement: {
+        options: ['top', 'bottom', 'left', 'right'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>

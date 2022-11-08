@@ -1,4 +1,4 @@
-import { zIndices } from './zIndex';
+import { zIndices } from './zIndices';
 import { textStyles } from './typography';
 import { space } from './space';
 import { sizes } from './sizes';
