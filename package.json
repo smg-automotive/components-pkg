@@ -38,7 +38,8 @@
   "homepage": "https://github.com/smg-automotive/components-pkg#readme",
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "@smg-automotive/i18n-pkg": ">1.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.20.2",
@@ -48,6 +49,7 @@
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-typescript": "9.0.2",
     "@smg-automotive/eslint-config": "2.0.35",
+    "@smg-automotive/i18n-pkg": "1.1.4-lkappler-modules-tryout-52584d383aa8e05423645b77d802b9b262736672.1",
     "@storybook/addon-actions": "6.5.13",
     "@storybook/addon-docs": "6.5.13",
     "@storybook/addon-essentials": "6.5.13",
@@ -103,7 +105,6 @@
     "@chakra-ui/theme-tools": "2.0.12",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
-    "@smg-automotive/i18n-pkg": "1.1.3",
     "@types/fs-extra": "9.0.13",
     "embla-carousel-react": "7.0.4",
     "framer-motion": "7.6.4",

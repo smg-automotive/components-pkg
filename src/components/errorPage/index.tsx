@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
-import TranslationProvider from '../translationProvider';
 import Text from '../text';
 import Stack from '../stack';
 import SimpleGrid from '../simpleGrid';
@@ -29,11 +28,7 @@ interface Props {
   onButtonClick?: () => void;
 }
 
-const ErrorPageContent: FC<Props> = ({
-  statusCode,
-  language,
-  onButtonClick,
-}) => {
+const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
   const { t } = useI18n();
   return (
     <PageLayout maxContentWidth="md" header={null}>
@@ -69,14 +64,6 @@ const ErrorPageContent: FC<Props> = ({
         </Stack>
       </Flex>
     </PageLayout>
-  );
-};
-
-const ErrorPage: FC<Props> = (props) => {
-  return (
-    <TranslationProvider language={props.language} scopes={['errorPage']}>
-      <ErrorPageContent {...props} />
-    </TranslationProvider>
   );
 };
 
