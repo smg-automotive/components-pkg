@@ -6,6 +6,7 @@ import {
 } from '@smg-automotive/i18n-pkg';
 
 import { dictionaries } from '../../locales';
+import logger from '../../lib/logger';
 
 interface Props {
   language: Language;
@@ -25,10 +26,7 @@ const TranslationProvider: FC<PropsWithChildren<Props>> = ({
         language,
         dictionaryScopes: scopes,
       })}
-      onMissingTranslation={(error) => {
-        // eslint-disable-next-line no-console
-        console.error(error);
-      }}
+      onMissingTranslation={logger.onMissingTranslation}
     >
       {children}
     </I18nProvider>
