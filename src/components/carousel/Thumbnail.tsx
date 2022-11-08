@@ -16,7 +16,7 @@ const Thumbnail: FC<PropsWithChildren<Props>> = ({
     <AspectRatio
       ratio={4 / 3}
       onClick={onClick}
-      width="130px"
+      width="133px"
       flexShrink="0"
       cursor="pointer"
       mr="xs"

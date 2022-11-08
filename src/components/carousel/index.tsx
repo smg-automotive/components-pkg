@@ -37,10 +37,8 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     'fullscreen-paginated': { variant: 'fullscreenPaginated' },
   };
 
-  const { container, carousel, slideContainer } = useMultiStyleConfig(
-    'Carousel',
-    styleVariant[variant]
-  );
+  const { container, carousel, slideContainer, pagination } =
+    useMultiStyleConfig('Carousel', styleVariant[variant]);
 
   const [emblaRef, embla] = useEmblaCarousel({
     loop: true,
@@ -158,8 +156,8 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
         </Box>
       )}
       {variant === 'fullscreen-paginated' ? (
-        <Box ref={thumbnailViewportRef} __css={carousel}>
-          <Flex mt="xs">
+        <Box ref={thumbnailViewportRef} __css={pagination}>
+          <Flex>
             {slides.map((slide, index) => (
               <Thumbnail
                 key={`slide-${index}`}

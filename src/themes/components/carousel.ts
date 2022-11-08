@@ -13,6 +13,7 @@ const parts = [
   'buttonContainer',
   'button',
   'icon',
+  'pagination',
 ];
 
 const fullScreen = {
@@ -49,7 +50,14 @@ const fullscreenPaginated = {
   ...fullScreen,
   carousel: {
     ...fullScreen.carousel,
-    height: 'calc(100% - 100px)',
+    height: 'calc(100% - 124px)',
+  },
+  pagination: {
+    overflow: 'hidden',
+    position: 'relative',
+    paddingX: {
+      md: '4xl',
+    },
   },
 };
 
