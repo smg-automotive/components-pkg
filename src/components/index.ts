@@ -40,6 +40,7 @@ export { default as Show } from './show';
 export { default as SimpleGrid } from './simpleGrid';
 export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
+export { default as Spinner } from './spinner';
 export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';

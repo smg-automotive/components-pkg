@@ -1,4 +1,8 @@
-import React, { ChangeEventHandler, FC, FocusEventHandler } from 'react';
+import React, {
+  ChangeEventHandler,
+  FocusEventHandler,
+  forwardRef,
+} from 'react';
 
 import { Textarea as ChakraTextarea } from '@chakra-ui/react';
 
@@ -16,8 +20,9 @@ interface Props {
   cols?: number;
 }
 
-const Textarea: FC<Props> = ({ ...props }) => {
-  return <ChakraTextarea {...props} />;
-};
+const Textarea = forwardRef<HTMLTextAreaElement, Props>(({ ...props }, ref) => {
+  return <ChakraTextarea {...props} ref={ref} />;
+});
+Textarea.displayName = 'Textarea';
 
 export default Textarea;
