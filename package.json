@@ -39,7 +39,7 @@
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "@smg-automotive/i18n-pkg": ">1.1.0"
+    "@smg-automotive/i18n-pkg": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.20.2",
