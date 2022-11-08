@@ -1,9 +1,12 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { forwardRef, PropsWithChildren } from 'react';
 import { useRadio, UseRadioProps } from '@chakra-ui/react';
 
 import Box from '../box';
 
-export const RadioListItem: FC<PropsWithChildren<UseRadioProps>> = (props) => {
+export const RadioListItem = forwardRef<
+  HTMLInputElement,
+  PropsWithChildren<UseRadioProps>
+>((props, ref) => {
   const { getInputProps, getCheckboxProps } = useRadio(props);
 
   const input = getInputProps();
@@ -11,7 +14,7 @@ export const RadioListItem: FC<PropsWithChildren<UseRadioProps>> = (props) => {
 
   return (
     <Box as="label" width="full">
-      <input {...input} />
+      <input {...input} ref={ref} />
       <Box
         {...checkbox}
         cursor="pointer"
@@ -30,4 +33,5 @@ export const RadioListItem: FC<PropsWithChildren<UseRadioProps>> = (props) => {
       </Box>
     </Box>
   );
-};
+});
+RadioListItem.displayName = 'RadioListItem';
