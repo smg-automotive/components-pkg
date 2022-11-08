@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from 'react';
+import React, { ChangeEvent, forwardRef } from 'react';
 import { Radio as ChakraRadio } from '@chakra-ui/react';
 
 interface Props {
@@ -12,29 +12,36 @@ interface Props {
   isDisabled?: boolean;
 }
 
-const Radio: FC<Props> = ({
-  name,
-  value,
-  label,
-  size = 'md',
-  onChange,
-  isChecked = false,
-  isInvalid,
-  isDisabled = false,
-}) => {
-  return (
-    <ChakraRadio
-      name={name}
-      value={value}
-      size={size}
-      onChange={onChange}
-      isChecked={isChecked}
-      isInvalid={isInvalid}
-      isDisabled={isDisabled}
-    >
-      {label}
-    </ChakraRadio>
-  );
-};
+const Radio = forwardRef<HTMLInputElement, Props>(
+  (
+    {
+      name,
+      value,
+      label,
+      size = 'md',
+      onChange,
+      isChecked = false,
+      isInvalid,
+      isDisabled = false,
+    },
+    ref
+  ) => {
+    return (
+      <ChakraRadio
+        name={name}
+        value={value}
+        size={size}
+        onChange={onChange}
+        isChecked={isChecked}
+        isInvalid={isInvalid}
+        isDisabled={isDisabled}
+        ref={ref}
+      >
+        {label}
+      </ChakraRadio>
+    );
+  }
+);
+Radio.displayName = 'Radio';
 
 export default Radio;
