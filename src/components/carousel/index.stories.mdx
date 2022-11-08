@@ -10,7 +10,7 @@ import Box from '../box';
   title="Components/Data display/Carousel"
   component={Carousel}
   argTypes={{
-    fullScreen: {
+    variant: {
       table: {
         disable: true,
       },
@@ -51,7 +51,7 @@ export const Slide = ({ index }) => (
   <Flex
     justifyContent="center"
     alignItems="center"
-    height="100%"
+    height="600px"
     position="relative"
   >
     <img
@@ -81,7 +81,6 @@ export const Template = (args) => (
           <Slide
             index={i + 1}
             key={`slide-${i + 1}`}
-            fullScreen={args.fullScreen}
           />
         ))}
     </Carousel>
@@ -98,7 +97,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
-      fullScreen: false,
+      variant: "default",
       numberOfSlides: 6,
     }}
   >
@@ -114,7 +113,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
-      fullScreen: true,
+      variant: "fullscreen",
       numberOfSlides: 6,
     }}
   >
@@ -130,8 +129,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
-      fullScreen: true,
-      pagination: 'thumbnails',
+      variant: "fullscreen-paginated",
       numberOfSlides: 6,
     }}
   >

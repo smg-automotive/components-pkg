@@ -7,6 +7,7 @@ const [r, g, b] = hexToRgb(colors.gray[900]);
 
 const parts = [
   'container',
+  'carousel',
   'slide',
   'slideContainer',
   'buttonContainer',
@@ -16,11 +17,13 @@ const parts = [
 
 const fullScreen = {
   container: {
-    height: '100%',
+    backgroundColor: 'black',
+  },
+  carousel: {
+    height: 'full',
     paddingX: {
       md: '5xl',
     },
-    backgroundColor: 'black',
   },
   buttonContainer: {
     backgroundColor: 'black',
@@ -42,10 +45,22 @@ const fullScreen = {
   },
 };
 
+const fullscreenPaginated = {
+  ...fullScreen,
+  carousel: {
+    ...fullScreen.carousel,
+    height: 'calc(100% - 100px)',
+  },
+};
+
 const Carousel: ComponentStyleConfig = {
   parts,
   baseStyle: {
     container: {
+      height: 'full',
+      width: 'full',
+    },
+    carousel: {
       overflow: 'hidden',
       position: 'relative',
     },
@@ -88,6 +103,7 @@ const Carousel: ComponentStyleConfig = {
   },
   variants: {
     fullScreen,
+    fullscreenPaginated,
   },
 };
 
