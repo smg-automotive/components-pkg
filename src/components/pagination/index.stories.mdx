@@ -1,0 +1,35 @@
+import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Pagination from './index';
+
+<Meta
+  title="Components/Navigation/Pagination"
+  component={Pagination}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = () => {
+  const [page, setPage] = useState(1);
+
+  return (
+    <>
+      <div>{`Page: ${page}`}</div>
+      <Pagination
+        count={10}
+        page={page}
+        onChange={page => setPage(page)}
+      />
+    </>
+  );
+};
+
+# Pagination
+
+## Overview
+
+<Canvas>
+  <Story name="Overview">{Template.bind({})}</Story>
+</Canvas>
