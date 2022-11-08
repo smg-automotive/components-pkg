@@ -1,14 +1,5 @@
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
-const separator: SystemStyleObject = {
-  borderLeft: '2px',
-  borderStyle: 'solid',
-  borderColor: 'gray.500',
-  height: 'xs',
-  marginLeft: 'md',
-  marginRight: 'md',
-};
-
 const link: SystemStyleObject = {
   textStyle: 'body',
   color: 'blue.700',
@@ -19,9 +10,8 @@ const link: SystemStyleObject = {
 };
 
 const Breadcrumbs: ComponentMultiStyleConfig = {
-  parts: ['text', 'separator'],
+  parts: ['link'],
   baseStyle: {
-    separator,
     link,
   },
 };
