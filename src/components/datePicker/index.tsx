@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 import { Input, InputProps } from '@chakra-ui/react';
 
 type Props = {
@@ -7,15 +7,19 @@ type Props = {
   value?: string;
 } & Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'>;
 
-const DatePicker: FC<Props> = ({ min, ...props }) => {
-  return (
-    <Input
-      {...props}
-      type="date"
-      min={min ? min.toISOString().split('T')[0] : undefined}
-    />
-  );
-};
+const DatePicker = forwardRef<HTMLInputElement, Props>(
+  ({ min, ...props }, ref) => {
+    return (
+      <Input
+        {...props}
+        type="date"
+        min={min ? min.toISOString().split('T')[0] : undefined}
+        ref={ref}
+      />
+    );
+  }
+);
+DatePicker.displayName = 'DatePicker';
 
 export default DatePicker;
 export { Props as DatePickerProps };
