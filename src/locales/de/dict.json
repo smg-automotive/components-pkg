@@ -1,0 +1,14 @@
+{
+  "errorPage": {
+    "404": {
+      "buttonLabel": "Zur Startseite",
+      "description": "Hast du den Link kopiert oder abgetippt? Dann überprüfe den Link und lade die Seite neu.",
+      "title": "Die Seite konnte nicht gefunden werden"
+    },
+    "500": {
+      "buttonLabel": "Zur Startseite",
+      "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
+      "title": "Tut uns leid, da ist was schief gegangen"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+phraseapp:
+  project_id: 63832df4e1975eaf49f7e184fd6967b8
+  file_format: nested_json
+
+  push:
+    sources:
+      - file: ./src/locales/<locale_name>/dict.json
+
+  pull:
+    targets:
+      - file: ./src/locales/<locale_name>/dict.json
