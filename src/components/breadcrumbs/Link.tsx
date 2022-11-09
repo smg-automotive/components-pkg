@@ -3,7 +3,6 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbLinkProps as ChakraBreadcrumbLinkProps,
-  Text,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
@@ -23,7 +22,7 @@ const BreadcrumbLink: FC<PropsWithChildren<BreadcrumbLinkProps>> = ({
       {children}
     </ChakraBreadcrumbLink>
   ) : (
-    <Text color="gray.900">{children}</Text>
+    <>{children}</>
   );
 };
 

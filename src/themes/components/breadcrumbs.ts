@@ -1,18 +1,17 @@
-import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
+import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
-const link: SystemStyleObject = {
-  textStyle: 'body',
-  color: 'blue.700',
-  _hover: {
-    cursor: 'pointer',
-    textDecoration: 'underline',
-  },
-};
+import { linkBaseStyle } from './link';
 
 const Breadcrumbs: ComponentMultiStyleConfig = {
-  parts: ['link'],
+  parts: ['link', 'container', 'separator'],
   baseStyle: {
-    link,
+    link: linkBaseStyle,
+    separator: {
+      color: 'gray.600',
+    },
+    container: {
+      color: 'gray.900',
+    },
   },
 };
 
