@@ -152,7 +152,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
       )}
       {hasPagination ? (
         <Box ref={thumbnailViewportRef} __css={pagination}>
-          <Flex>
+          <Flex alignItems="center" height="full">
             {slides.map((slide, index) => (
               <Thumbnail
                 key={`slide-${index}`}
@@ -163,6 +163,16 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
               </Thumbnail>
             ))}
           </Flex>
+          <NavigationButton
+            onClick={scroll}
+            direction="previous"
+            fullScreen={fullScreen}
+          />
+          <NavigationButton
+            onClick={scroll}
+            direction="next"
+            fullScreen={fullScreen}
+          />
         </Box>
       ) : null}
     </Box>

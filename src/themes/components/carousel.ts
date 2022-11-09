@@ -29,9 +29,8 @@ const fullScreen = {
   pagination: {
     overflow: 'hidden',
     position: 'relative',
-    paddingX: {
-      md: '4xl',
-    },
+    paddingX: '4xl',
+    height: '124px',
   },
   buttonContainer: {
     backgroundColor: 'black',
