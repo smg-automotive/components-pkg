@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 
 import { Box, Center, Divider, Hide } from '@chakra-ui/react';
 
-import BreadcrumbLink from '../BreadcrumbLink';
-import BreadcrumbItem from '../BreadcrumbItem';
+import BreadcrumbLink from '../Link';
+import BreadcrumbItem from '../Item';
 import Link from '../../link';
 import { ArrowLeftIcon as BackArrowIcon } from '../../icons';
 import Breadcrumbs from '..';
