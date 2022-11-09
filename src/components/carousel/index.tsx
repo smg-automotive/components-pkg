@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -44,9 +45,13 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   const [thumbnailViewportRef, emblaThumbnails] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true,
+    slidesToScroll: 'auto',
   });
+  const scrollFreeAreaRef = useRef<HTMLDivElement>();
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
+
+  const [thumbnailScrollProgress, setThumbnailScrollProgress] = useState(0);
 
   const slides: ReactNode[] = Array.isArray(children) ? children : [children];
   const numberOfSlides = slides.length;
@@ -67,6 +72,11 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     [scrollNext, scrollPrev]
   );
 
+  const scrollPaginationWithoutChangingSlide = useCallback(
+    (direction: Direction) => {},
+    []
+  );
+
   const onClick = useCallback(
     (index: number) => {
       if (onSlideClick && embla && embla.clickAllowed()) {
@@ -79,7 +89,10 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   const onThumbnailClick = useCallback(
     (index: number) => {
       if (!embla || !emblaThumbnails || !hasPagination) return;
-      if (emblaThumbnails.clickAllowed()) embla.scrollTo(index);
+      if (emblaThumbnails.clickAllowed()) {
+        embla.scrollTo(index);
+        emblaThumbnails.scrollTo(index, true);
+      }
     },
     [embla, emblaThumbnails, hasPagination]
   );
@@ -96,11 +109,22 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     }
   }, [embla, emblaThumbnails, onSlideSelect, hasPagination]);
 
+  const onScroll = useCallback(() => {
+    if (!emblaThumbnails) return;
+    const progress = Math.max(0, Math.min(1, emblaThumbnails.scrollProgress()));
+    console.log(progress);
+    setThumbnailScrollProgress(progress);
+  }, [emblaThumbnails]);
+
   useEffect(() => {
     if (!embla) return;
     onSelect();
     embla.on('select', onSelect);
-  }, [embla, onSelect]);
+    if (fullScreen && emblaThumbnails) {
+      onScroll();
+      emblaThumbnails.on('scroll', onScroll);
+    }
+  }, [embla, emblaThumbnails, onSelect, onScroll, fullScreen]);
 
   const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
 
@@ -151,8 +175,13 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
         </Box>
       )}
       {hasPagination ? (
-        <Box ref={thumbnailViewportRef} __css={pagination}>
-          <Flex alignItems="center" height="full">
+        <Box
+          ref={(el) => {
+            thumbnailViewportRef(el);
+          }}
+          __css={pagination}
+        >
+          <Flex alignItems="center" height="full" ref={scrollFreeAreaRef}>
             {slides.map((slide, index) => (
               <Thumbnail
                 key={`slide-${index}`}
@@ -163,16 +192,27 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
               </Thumbnail>
             ))}
           </Flex>
-          <NavigationButton
-            onClick={scroll}
-            direction="previous"
-            variant="pagination"
-          />
-          <NavigationButton
-            onClick={scroll}
-            direction="next"
-            variant="pagination"
-          />
+          {thumbnailScrollProgress > 0 ? (
+            <NavigationButton
+              onClick={() => {
+                if (!emblaThumbnails) return;
+                emblaThumbnails.scrollPrev();
+              }}
+              direction="previous"
+              variant="pagination"
+            />
+          ) : null}
+
+          {thumbnailScrollProgress < 1 ? (
+            <NavigationButton
+              onClick={() => {
+                if (!emblaThumbnails) return;
+                emblaThumbnails.scrollNext();
+              }}
+              direction="next"
+              variant="pagination"
+            />
+          ) : null}
         </Box>
       ) : null}
     </Box>
