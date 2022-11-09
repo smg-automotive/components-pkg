@@ -5,7 +5,7 @@ import {
   Breadcrumb as ChakraBreadcrumb,
 } from '@chakra-ui/react';
 
-import { ChevronRight } from '../icons';
+import { ChevronRightTinyIcon } from '../icons';
 
 const Breadcrumbs: FC<PropsWithChildren<BreadcrumbProps>> = ({
   children,
@@ -13,7 +13,7 @@ const Breadcrumbs: FC<PropsWithChildren<BreadcrumbProps>> = ({
 }) => {
   return (
     <ChakraBreadcrumb
-      separator={props.separator || <ChevronRight />}
+      separator={props.separator || <ChevronRightTinyIcon />}
       {...props}
     >
       {children}
