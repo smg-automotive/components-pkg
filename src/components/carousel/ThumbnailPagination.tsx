@@ -31,6 +31,7 @@ const ThumbnailPagination: FC<Props> = ({
   paginationCarousel,
 }) => {
   const [thumbnailScrollProgress, setThumbnailScrollProgress] = useState(0);
+  const [showPaginationButtons, setShowPaginationButtons] = useState(true);
   const { pagination } = useMultiStyleConfig('Carousel', {
     variant: 'fullScreen',
   });
@@ -46,7 +47,14 @@ const ThumbnailPagination: FC<Props> = ({
   );
 
   const onScroll = useCallback(() => {
-    if (!paginationCarousel) return;
+    if (
+      !paginationCarousel ||
+      paginationCarousel.slidesNotInView().length === 0
+    ) {
+      setShowPaginationButtons(false);
+      return;
+    }
+
     const progress = Math.max(
       0,
       Math.min(1, paginationCarousel.scrollProgress())
@@ -73,26 +81,30 @@ const ThumbnailPagination: FC<Props> = ({
           </Thumbnail>
         ))}
       </Flex>
-      {thumbnailScrollProgress > 0.1 ? (
-        <NavigationButton
-          onClick={() => {
-            if (!paginationCarousel) return;
-            paginationCarousel.scrollPrev();
-          }}
-          direction="previous"
-          variant="pagination"
-        />
-      ) : null}
+      {showPaginationButtons ? (
+        <>
+          {thumbnailScrollProgress > 0.2 ? (
+            <NavigationButton
+              onClick={() => {
+                if (!paginationCarousel) return;
+                paginationCarousel.scrollPrev();
+              }}
+              direction="previous"
+              variant="pagination"
+            />
+          ) : null}
 
-      {thumbnailScrollProgress < 0.9 ? (
-        <NavigationButton
-          onClick={() => {
-            if (!paginationCarousel) return;
-            paginationCarousel.scrollNext();
-          }}
-          direction="next"
-          variant="pagination"
-        />
+          {thumbnailScrollProgress < 0.8 ? (
+            <NavigationButton
+              onClick={() => {
+                if (!paginationCarousel) return;
+                paginationCarousel.scrollNext();
+              }}
+              direction="next"
+              variant="pagination"
+            />
+          ) : null}
+        </>
       ) : null}
     </Box>
   );

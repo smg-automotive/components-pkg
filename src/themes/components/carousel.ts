@@ -30,7 +30,10 @@ const fullScreen = {
   pagination: {
     overflow: 'hidden',
     position: 'relative',
-    paddingX: '4xl',
+    paddingX: {
+      base: 'md',
+      md: '5xl',
+    },
     height: '124px',
   },
   paginationButton: {
