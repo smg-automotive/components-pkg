@@ -23,11 +23,12 @@ type SharedProps = {
 
 type InputPros = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  setInputValue: never;
+  setInputValue?: never;
 } & SharedProps;
 
 type DebouncedInputPros = {
   onChange?: never;
+  debounce: true;
   setInputValue: (value: string) => void;
 } & SharedProps;
 
@@ -38,9 +39,10 @@ const Input = forwardRef<HTMLInputElement, Props>(
     const [internalUIValue, setInternalUIValue] = useState(value);
     // https://lawsofux.com/doherty-threshold/
     const debounceThreshold = debounce ? 400 : 0;
+    const inputValue = debounce ? internalUIValue : value;
 
     const setValueDebounced = useDebouncedCallback((newValue) => {
-      setInputValue(newValue);
+      if (setInputValue) setInputValue(newValue);
     }, debounceThreshold);
 
     useEffect(() => {
@@ -50,13 +52,23 @@ const Input = forwardRef<HTMLInputElement, Props>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
-    const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const debouncedOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (
+      event
+    ) => {
       const targetValue = event.target.value;
       setInternalUIValue(targetValue);
       setValueDebounced(targetValue);
     };
+    const onChangeHandler = debounce ? debouncedOnChangeHandler : onChange;
 
-    return <ChakraInput {...props} onChange={onChangeHandler} ref={ref} />;
+    return (
+      <ChakraInput
+        {...props}
+        value={inputValue}
+        onChange={onChangeHandler}
+        ref={ref}
+      />
+    );
   }
 );
 Input.displayName = 'Input';
