@@ -19,6 +19,7 @@ import Divider from './divider';
 import Checkbox from './checkbox';
 import Carousel from './carousel';
 import Button from './button';
+import Breadcrumbs from './breadcrumbs';
 import Badge from './badge';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
@@ -29,6 +30,7 @@ export const components = {
   Alert,
   ArticleTeaser,
   Badge,
+  Breadcrumbs,
   Button,
   Carousel,
   Checkbox,
@@ -38,16 +40,16 @@ export const components = {
   FormLabel,
   Input,
   Link,
+  List,
+  Menu,
   Radio,
   Section,
   Select,
   SimpleHeader,
+  Spinner,
+  Switch,
   Table,
   Textarea,
   Tooltip,
-  Switch,
   VehicleReference,
-  List,
-  Menu,
-  Spinner,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
 export const ChevronRightSmallIcon = createIcon({
-  displayName: 'ChevronRightLarge',
+  displayName: 'ChevronRightSmall',
   viewBox: '0 0 24 24',
   path: (
     <path
