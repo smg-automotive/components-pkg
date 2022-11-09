@@ -168,12 +168,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
         </Box>
       )}
       {hasPagination ? (
-        <Box
-          ref={(el) => {
-            thumbnailViewportRef(el);
-          }}
-          __css={pagination}
-        >
+        <Box ref={thumbnailViewportRef} __css={pagination}>
           <Flex alignItems="center" height="full">
             {slides.map((slide, index) => (
               <Thumbnail
