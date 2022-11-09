@@ -30,6 +30,11 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   fullScreen = false,
 }) => {
   const hasPagination = fullScreen;
+  const slides: ReactNode[] = Array.isArray(children) ? children : [children];
+  const numberOfSlides = slides.length;
+
+  const [selectedIndex, setSelectedIndex] = useState(startIndex);
+
   const { container, carousel, slideContainer } = useMultiStyleConfig(
     'Carousel',
     fullScreen ? { variant: 'fullScreen' } : {}
@@ -47,31 +52,18 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     inViewThreshold: 0.8,
   });
 
-  const [selectedIndex, setSelectedIndex] = useState(startIndex);
-
-  const slides: ReactNode[] = Array.isArray(children) ? children : [children];
-  const numberOfSlides = slides.length;
-
-  const scrollPrev = useCallback(
-    () => mainCarousel && mainCarousel.scrollPrev(),
-    [mainCarousel]
-  );
-  const scrollNext = useCallback(
-    () => mainCarousel && mainCarousel.scrollNext(),
-    [mainCarousel]
-  );
   const scroll = useCallback(
     (direction: Direction) => {
       switch (direction) {
         case 'previous':
-          scrollPrev();
+          mainCarousel && mainCarousel.scrollPrev();
           break;
         case 'next':
-          scrollNext();
+          mainCarousel && mainCarousel.scrollNext();
           break;
       }
     },
-    [scrollNext, scrollPrev]
+    [mainCarousel]
   );
 
   const onClick = useCallback(
