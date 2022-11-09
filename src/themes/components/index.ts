@@ -8,6 +8,7 @@ import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
 import Radio from './radio';
+import Pagination from './pagination';
 import Menu from './menu';
 import List from './list';
 import Link from './link';
@@ -49,5 +50,6 @@ export const components = {
   VehicleReference,
   List,
   Menu,
+  Pagination,
   Spinner,
 };

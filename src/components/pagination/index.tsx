@@ -1,11 +1,9 @@
-import React, { useMemo } from 'react';
-
-import Box from '../box';
-import Flex from '../flex';
+import React, { FC, PropsWithChildren, useMemo } from 'react';
+import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import PaginationButton from './PaginationButton';
-
-import { ChevronLeftLargeIcon, ChevronRightLargeIcon } from '../icons';
+import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
+import Box from '../box';
 
 const Dots = '...';
 const range = (start: number, end: number): Array<number> => {
@@ -13,19 +11,20 @@ const range = (start: number, end: number): Array<number> => {
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
-const Pagination = (props: any) => {
-  const {
-    onChange,
-    count,
-    page,
-    siblingCount = 1,
-  } = props;
+interface Props {
+  count: number;
+  page: number;
+  siblingCount?: number;
+  onChange: (e: unknown) => void;
+}
+
+const Pagination: FC<PropsWithChildren<Props>> = (props) => {
+  const { onChange, count, page, siblingCount = 1 } = props;
+  const { paginationContainer } = useMultiStyleConfig('Pagination');
 
   const paginationRange = useMemo(() => {
-
     // Default number of page buttons: firstPage + lastPage + currentPage + left side dots + right side dots
     const pageButtonsCount = 5;
-
     const totalPageButtonsCount = siblingCount + pageButtonsCount;
 
     if (totalPageButtonsCount >= count) {
@@ -33,10 +32,7 @@ const Pagination = (props: any) => {
     }
 
     const leftSiblingIndex = Math.max(page - siblingCount, 1);
-    const rightSiblingIndex = Math.min(
-      page + siblingCount,
-      count
-    );
+    const rightSiblingIndex = Math.min(page + siblingCount, count);
 
     const shouldShowLeftDots = leftSiblingIndex > 2;
     const shouldShowRightDots = rightSiblingIndex < count - 2;
@@ -45,29 +41,25 @@ const Pagination = (props: any) => {
     const lastPageIndex = count;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = pageButtonsCount * siblingCount;
-      let leftRange = range(1, leftItemCount);
+      const leftItemCount = pageButtonsCount * siblingCount;
+      const leftRange = range(1, leftItemCount);
 
       return [...leftRange, Dots, count];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = pageButtonsCount * siblingCount;
-      let rightRange = range(
-        count - rightItemCount + 1,
-        count
-      );
+      const rightItemCount = pageButtonsCount * siblingCount;
+      const rightRange = range(count - rightItemCount + 1, count);
       return [firstPageIndex, Dots, ...rightRange];
     }
 
     if (shouldShowLeftDots && shouldShowRightDots) {
-      let middleRange = range(leftSiblingIndex, rightSiblingIndex);
+      const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, Dots, ...middleRange, Dots, lastPageIndex];
     }
 
     return [];
   }, [count, siblingCount, page]);
-
 
   if (page === 0 || paginationRange.length < 2) {
     return null;
@@ -76,40 +68,32 @@ const Pagination = (props: any) => {
   const onNext = () => onChange(page + 1);
   const onPrevious = () => onChange(page - 1);
 
-  const isDisabled = page === 1;
   const isLastPage = page === paginationRange[paginationRange.length - 1];
 
   return (
-    <Flex>
-      <PaginationButton
-        isDisabled={isDisabled}
-        onClick={onPrevious}
-      >
-        <ChevronLeftLargeIcon />
+    <Box __css={paginationContainer}>
+      <PaginationButton isDisabled={page === 1} onClick={onPrevious}>
+        <ChevronLeftSmallIcon color={page === 1 ? 'gray.300' : 'gray.900'} />
       </PaginationButton>
-      {
-        paginationRange.map(pageNumber => {
-          if (pageNumber === Dots) {
-            return <Box className="pagination-item dots">&#8230;</Box>;
-          }
+      {paginationRange.map((pageNumber, index) => {
+        if (pageNumber === Dots) {
+          return <Box key={`paginationButton-${index}`}>&#8230;</Box>;
+        }
 
-          return (
-            <PaginationButton
-              isSelected={pageNumber === page}
-              onClick={() => onChange(pageNumber)}
-            >
-              {pageNumber}
-            </PaginationButton>
-          );
-        })
-      }
-      <PaginationButton
-        isDisabled={isLastPage}
-        onClick={onNext}
-      >
-        <ChevronRightLargeIcon />
+        return (
+          <PaginationButton
+            key={`paginationButton-${index}`}
+            variant={pageNumber === page ? 'active' : 'default'}
+            onClick={() => onChange(pageNumber)}
+          >
+            {pageNumber}
+          </PaginationButton>
+        );
+      })}
+      <PaginationButton isDisabled={isLastPage} onClick={onNext}>
+        <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
       </PaginationButton>
-    </Flex>
+    </Box>
   );
 };
 
