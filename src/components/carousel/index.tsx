@@ -4,7 +4,6 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -46,8 +45,8 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     containScroll: 'keepSnaps',
     dragFree: true,
     slidesToScroll: 'auto',
+    inViewThreshold: 0.8,
   });
-  const scrollFreeAreaRef = useRef<HTMLDivElement>();
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -72,11 +71,6 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     [scrollNext, scrollPrev]
   );
 
-  const scrollPaginationWithoutChangingSlide = useCallback(
-    (direction: Direction) => {},
-    []
-  );
-
   const onClick = useCallback(
     (index: number) => {
       if (onSlideClick && embla && embla.clickAllowed()) {
@@ -91,7 +85,6 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
       if (!embla || !emblaThumbnails || !hasPagination) return;
       if (emblaThumbnails.clickAllowed()) {
         embla.scrollTo(index);
-        emblaThumbnails.scrollTo(index, true);
       }
     },
     [embla, emblaThumbnails, hasPagination]
@@ -102,7 +95,8 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     const newIndex = embla.selectedScrollSnap();
     setSelectedIndex(newIndex);
     if (emblaThumbnails && hasPagination) {
-      emblaThumbnails.scrollTo(newIndex);
+      const slidesToScroll = emblaThumbnails.slidesInView().length;
+      emblaThumbnails.scrollTo(Math.floor(newIndex / slidesToScroll));
     }
     if (onSlideSelect) {
       onSlideSelect(newIndex);
@@ -112,7 +106,6 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   const onScroll = useCallback(() => {
     if (!emblaThumbnails) return;
     const progress = Math.max(0, Math.min(1, emblaThumbnails.scrollProgress()));
-    console.log(progress);
     setThumbnailScrollProgress(progress);
   }, [emblaThumbnails]);
 
@@ -181,7 +174,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           }}
           __css={pagination}
         >
-          <Flex alignItems="center" height="full" ref={scrollFreeAreaRef}>
+          <Flex alignItems="center" height="full">
             {slides.map((slide, index) => (
               <Thumbnail
                 key={`slide-${index}`}
@@ -192,7 +185,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
               </Thumbnail>
             ))}
           </Flex>
-          {thumbnailScrollProgress > 0 ? (
+          {thumbnailScrollProgress > 0.1 ? (
             <NavigationButton
               onClick={() => {
                 if (!emblaThumbnails) return;
@@ -203,7 +196,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
             />
           ) : null}
 
-          {thumbnailScrollProgress < 1 ? (
+          {thumbnailScrollProgress < 0.9 ? (
             <NavigationButton
               onClick={() => {
                 if (!emblaThumbnails) return;
