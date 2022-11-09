@@ -14,6 +14,7 @@ import Slide from './Slide';
 import NavigationButton, { Direction } from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
+import PaginationButton from './PaginationButton';
 
 interface Props {
   startIndex?: number;
@@ -163,16 +164,8 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
               </Thumbnail>
             ))}
           </Flex>
-          <NavigationButton
-            onClick={scroll}
-            direction="previous"
-            fullScreen={fullScreen}
-          />
-          <NavigationButton
-            onClick={scroll}
-            direction="next"
-            fullScreen={fullScreen}
-          />
+          <PaginationButton onClick={scroll} direction="previous" />
+          <PaginationButton onClick={scroll} direction="next" />
         </Box>
       ) : null}
     </Box>
