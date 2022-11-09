@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 
 import {
   BreadcrumbLink as ChakraBreadcrumbLink,
@@ -6,11 +6,7 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-interface BreadcrumbLinkProps extends ChakraBreadcrumbLinkProps {
-  href?: string;
-}
-
-const BreadcrumbLink: FC<PropsWithChildren<BreadcrumbLinkProps>> = ({
+const BreadcrumbLink: FC<ChakraBreadcrumbLinkProps> = ({
   children,
   ...itemProps
 }) => {
