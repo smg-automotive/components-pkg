@@ -10,7 +10,7 @@ import Box from '../box';
   title="Components/Data display/Carousel"
   component={Carousel}
   argTypes={{
-    variant: {
+    fullScreen: {
       table: {
         disable: true,
       },
@@ -47,11 +47,11 @@ export const images = [
   'https://placekitten.com/g/940/600',
 ];
 
-export const Slide = ({ index, variant }) => (
+export const Slide = ({ index, fullScreen }) => (
   <Flex
     justifyContent="center"
     alignItems="center"
-    height={variant === "default" ? "600px" : "full"}
+    height={fullScreen ? "full" : "600px"}
     position="relative"
   >
     <img
@@ -81,7 +81,7 @@ export const Template = (args) => (
           <Slide
             index={i + 1}
             key={`slide-${i + 1}`}
-            variant={args.variant}
+            fullScreen={args.fullScreen}
           />
         ))}
     </Carousel>
@@ -98,7 +98,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
-      variant: "default",
+      fullScreen: false,
       numberOfSlides: 6,
     }}
   >
@@ -114,7 +114,7 @@ export const Template = (args) => (
     args={{
       startIndex: 0,
       onSlideClick: true,
-      variant: "fullscreen",
+      fullScreen: true,
       numberOfSlides: 6,
     }}
   >
@@ -122,18 +122,3 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-## With thumbnail pagination
-
-<Canvas>
-  <Story
-    name="With thumbnail pagination"
-    args={{
-      startIndex: 0,
-      onSlideClick: true,
-      variant: "fullscreen-paginated",
-      numberOfSlides: 6,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>

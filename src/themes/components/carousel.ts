@@ -21,9 +21,16 @@ const fullScreen = {
     backgroundColor: 'black',
   },
   carousel: {
-    height: 'full',
+    height: 'calc(100% - 124px)',
     paddingX: {
       md: '5xl',
+    },
+  },
+  pagination: {
+    overflow: 'hidden',
+    position: 'relative',
+    paddingX: {
+      md: '4xl',
     },
   },
   buttonContainer: {
@@ -43,21 +50,6 @@ const fullScreen = {
   },
   icon: {
     boxSize: 'md',
-  },
-};
-
-const fullscreenPaginated = {
-  ...fullScreen,
-  carousel: {
-    ...fullScreen.carousel,
-    height: 'calc(100% - 124px)',
-  },
-  pagination: {
-    overflow: 'hidden',
-    position: 'relative',
-    paddingX: {
-      md: '4xl',
-    },
   },
 };
 
@@ -111,7 +103,6 @@ const Carousel: ComponentStyleConfig = {
   },
   variants: {
     fullScreen,
-    fullscreenPaginated,
   },
 };
 

@@ -15,12 +15,11 @@ import NavigationButton, { Direction } from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
 
-type Variant = 'default' | 'fullscreen' | 'fullscreen-paginated';
 interface Props {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  variant: Variant;
+  fullScreen?: boolean;
 }
 
 const Carousel: FC<PropsWithChildren<Props>> = ({
@@ -28,17 +27,14 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   onSlideClick,
   onSlideSelect,
   children,
-  variant = 'default',
+  fullScreen = false,
 }) => {
-  const isFullscreen = ['fullscreen', 'fullscreen-paginated'].includes(variant);
-  const styleVariant: Record<Variant, Record<string, string>> = {
-    default: {},
-    fullscreen: { variant: 'fullScreen' },
-    'fullscreen-paginated': { variant: 'fullscreenPaginated' },
-  };
-
+  const hasPagination = fullScreen;
   const { container, carousel, slideContainer, pagination } =
-    useMultiStyleConfig('Carousel', styleVariant[variant]);
+    useMultiStyleConfig(
+      'Carousel',
+      fullScreen ? { variant: 'fullScreen' } : {}
+    );
 
   const [emblaRef, embla] = useEmblaCarousel({
     loop: true,
@@ -82,24 +78,23 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
 
   const onThumbnailClick = useCallback(
     (index: number) => {
-      if (!embla || !emblaThumbnails || variant !== 'fullscreen-paginated')
-        return;
+      if (!embla || !emblaThumbnails || !hasPagination) return;
       if (emblaThumbnails.clickAllowed()) embla.scrollTo(index);
     },
-    [embla, emblaThumbnails, variant]
+    [embla, emblaThumbnails, hasPagination]
   );
 
   const onSelect = useCallback(() => {
     if (!embla) return;
     const newIndex = embla.selectedScrollSnap();
     setSelectedIndex(newIndex);
-    if (emblaThumbnails && variant === 'fullscreen-paginated') {
+    if (emblaThumbnails && hasPagination) {
       emblaThumbnails.scrollTo(newIndex);
     }
     if (onSlideSelect) {
       onSlideSelect(newIndex);
     }
-  }, [embla, emblaThumbnails, onSlideSelect, variant]);
+  }, [embla, emblaThumbnails, onSlideSelect, hasPagination]);
 
   useEffect(() => {
     if (!embla) return;
@@ -117,7 +112,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           onClick={() => onClick(startIndex)}
           totalSlides={numberOfSlides}
           isCurrent={startIndex === selectedIndex}
-          fullScreen={isFullscreen}
+          fullScreen={fullScreen}
         >
           {slides[startIndex]}
         </Slide>
@@ -137,7 +132,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
                 onClick={() => onClick(index)}
                 totalSlides={numberOfSlides}
                 isCurrent={index === selectedIndex}
-                fullScreen={isFullscreen}
+                fullScreen={fullScreen}
               >
                 {slide}
               </Slide>
@@ -146,16 +141,16 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           <NavigationButton
             onClick={scroll}
             direction="previous"
-            fullScreen={isFullscreen}
+            fullScreen={fullScreen}
           />
           <NavigationButton
             onClick={scroll}
             direction="next"
-            fullScreen={isFullscreen}
+            fullScreen={fullScreen}
           />
         </Box>
       )}
-      {variant === 'fullscreen-paginated' ? (
+      {hasPagination ? (
         <Box ref={thumbnailViewportRef} __css={pagination}>
           <Flex>
             {slides.map((slide, index) => (
