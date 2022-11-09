@@ -11,31 +11,13 @@ import { ArrowLeftIcon as BackArrowIcon } from '../icons';
 <Meta title="Patterns/Navigation/Breadcrumbs" component={Breadcrumbs} />
 
 export const Template = (args) => (
-  <Box display="flex">
-    {args?.backButton && (
-      <>
-        <Link leftIcon={<BackArrowIcon />} href={args.backButton}>
-          Back
-        </Link>
-        <Hide below="sm">
-          <Center height="sm" mr="md" ml="md">
-            <Divider orientation="vertical" />
-          </Center>
-        </Hide>
-      </>
-    )}
-    {args.crumbs?.length > 0 && (
-      <Hide below="sm">
-        <Breadcrumbs>
-          {args.crumbs.map((crumb, i) => (
-            <BreadcrumbItem key={i}>
-              <BreadcrumbLink href={crumb?.url}>{crumb.title}</BreadcrumbLink>
-            </BreadcrumbItem>
-          ))}
-        </Breadcrumbs>
-      </Hide>
-    )}
-  </Box>
+  <Breadcrumbs>
+    {args.crumbs.map((crumb, i) => (
+      <BreadcrumbItem key={i}>
+        <BreadcrumbLink href={crumb?.href}>{crumb.title}</BreadcrumbLink>
+      </BreadcrumbItem>
+    ))}
+  </Breadcrumbs>
 );
 
 # Breadcrumbs
@@ -47,26 +29,8 @@ export const Template = (args) => (
     name="Overview"
     args={{
       crumbs: [
-        { title: 'VW', url: '#' },
-        { title: 'Golf', url: '##' },
-        { title: 'VW GOLF 2.0 TSI GTI DSG Performance' },
-      ],
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## With Back Button
-
-<Canvas>
-  <Story
-    name="With Back Button"
-    args={{
-      backButton: '#',
-      crumbs: [
-        { title: 'VW', url: '#' },
-        { title: 'Golf', url: '##' },
+        { title: 'VW', href: '#' },
+        { title: 'Golf', href: '##' },
         { title: 'VW GOLF 2.0 TSI GTI DSG Performance' },
       ],
     }}
