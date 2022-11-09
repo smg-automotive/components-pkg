@@ -103,7 +103,7 @@
     "@chakra-ui/theme-tools": "2.0.12",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
-    "@smg-automotive/i18n-pkg": "1.1.3",
+    "@smg-automotive/i18n-pkg": "1.1.4",
     "@types/fs-extra": "9.0.13",
     "embla-carousel-react": "7.0.5",
     "framer-motion": "7.6.4",
