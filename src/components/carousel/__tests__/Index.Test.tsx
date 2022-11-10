@@ -129,4 +129,65 @@ describe('<Carousel />', () => {
       'true'
     );
   });
+
+  it('should have thumbnails on the fullscreen gallery', () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+    expect(screen.getByText('thumbnail 1')).toBeInTheDocument();
+    expect(screen.getByText('thumbnail 2')).toBeInTheDocument();
+    expect(screen.getByText('thumbnail 3')).toBeInTheDocument();
+    expect(screen.getByLabelText('thumbnail 1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
+  it('should change the main carousel slide when the user clicks on a thumbnail', async () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+    expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+    await userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
+    expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
+  it('should change the current thumbnail when the user changes the main carousel slide', async () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+    expect(screen.getByLabelText('thumbnail 1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+    await userEvent.click(screen.getByLabelText('next slide'));
+    expect(screen.getByLabelText('thumbnail 2 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
 });

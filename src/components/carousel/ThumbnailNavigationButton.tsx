@@ -29,7 +29,7 @@ const ThumbnailNavigationButton: FC<Props> = ({ direction, onClick }) => {
       onClick={() => onClick(direction)}
       {...side}
       aria-label={`scroll to ${direction} thumbnail group`}
-      aria-conrols="thumbnails-wrapper"
+      aria-controls="thumbnails-wrapper"
       __css={paginationButtonContainer}
     >
       <Flex __css={paginationButton}>{icons[direction]}</Flex>

@@ -5,11 +5,15 @@ import AspectRatio from '../aspectRatio';
 interface Props {
   onClick: () => void;
   isCurrent: boolean;
+  thumbnailIndex: number;
+  totalThumbnails: number;
 }
 
 const Thumbnail: FC<PropsWithChildren<Props>> = ({
   onClick,
   isCurrent,
+  thumbnailIndex,
+  totalThumbnails,
   children,
 }) => {
   return (
@@ -23,6 +27,7 @@ const Thumbnail: FC<PropsWithChildren<Props>> = ({
       border="4px"
       borderColor={isCurrent ? 'blue.400' : 'transparent'}
       aria-current={isCurrent}
+      aria-label={`thumbnail ${thumbnailIndex + 1} of ${totalThumbnails}`}
     >
       {children}
     </AspectRatio>

@@ -76,6 +76,8 @@ const ThumbnailPagination: FC<Props> = ({
             key={`slide-${index}`}
             onClick={() => onThumbnailClick(index)}
             isCurrent={index === currentSlide}
+            thumbnailIndex={index}
+            totalThumbnails={thumbnails.length}
           >
             {paginationCarouselRef ? (
               slide
