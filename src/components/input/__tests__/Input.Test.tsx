@@ -2,38 +2,20 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@storybook/testing-library';
 
-import Input, { InputProps } from '..';
-
-const renderWrapper = ({
-  autoFocus = false,
-  debounce,
-  isDisabled = false,
-  onBlur = jest.fn(),
-  onFocus = jest.fn(),
-  onChange = jest.fn(),
-  placeholder = 'placeholder',
-  value = undefined,
-}: Partial<InputProps> = {}) =>
-  render(
-    <Input
-      autoFocus={autoFocus}
-      debounce={debounce}
-      isDisabled={isDisabled}
-      name="test-input"
-      onBlur={onBlur}
-      onFocus={onFocus}
-      onChange={onChange}
-      placeholder={placeholder}
-      value={value}
-    />
-  );
+import Input from '..';
 
 describe('<Input>', () => {
   describe('event handlers', () => {
     describe('onFocus', () => {
       it('is called when focusing the input', () => {
         const onFocus = jest.fn();
-        renderWrapper({ onFocus });
+        render(
+          <Input
+            name="test-input"
+            placeholder="placeholder"
+            onFocus={onFocus}
+          />
+        );
 
         const input = screen.getByPlaceholderText('placeholder');
         input.focus();
@@ -45,7 +27,9 @@ describe('<Input>', () => {
     describe('onBlur', () => {
       it('is called when de-focusing the input', () => {
         const onBlur = jest.fn();
-        renderWrapper({ onBlur });
+        render(
+          <Input name="test-input" placeholder="placeholder" onBlur={onBlur} />
+        );
 
         const input = screen.getByPlaceholderText('placeholder');
         input.focus();
@@ -58,55 +42,57 @@ describe('<Input>', () => {
     describe('onChange', () => {
       it('is called when the input changes', () => {
         const onChange = jest.fn();
-        renderWrapper({ onChange });
+        render(
+          <Input
+            name="test-input"
+            placeholder="placeholder"
+            onChange={onChange}
+          />
+        );
 
         const input = screen.getByPlaceholderText('placeholder');
         userEvent.type(input, 'test');
 
         expect(onChange).toHaveBeenCalledTimes(4);
       });
+    });
 
-      describe('debouncing', () => {
-        it('is possible', () => {
-          const onChange = jest.fn();
-          renderWrapper({ onChange, debounce: 500 });
+    describe('debouncing', () => {
+      it('calls the value setter', () => {
+        const setInputValue = jest.fn();
+        const value = '';
+        render(
+          <Input
+            name="test-input"
+            value={value}
+            placeholder="placeholder"
+            setInputValue={setInputValue}
+            debounce={true}
+          />
+        );
+        const input = screen.getByPlaceholderText('placeholder');
+        userEvent.type(input, 'test');
 
-          const input = screen.getByPlaceholderText('placeholder');
-          userEvent.type(input, 'test');
-
-          return waitFor(() => {
-            expect(onChange).toHaveBeenCalledTimes(1);
-          });
-        });
-
-        it('is called before blur handler when the input is blurred', async () => {
-          const calls: string[] = [];
-          const onChange = jest.fn(() => calls.push('change'));
-          const onBlur = jest.fn(() => calls.push('blur'));
-          renderWrapper({ onChange, onBlur, debounce: 500 });
-
-          const input = screen.getByPlaceholderText('placeholder');
-          userEvent.type(input, 'test');
-          input.blur();
-
-          await waitFor(() => {
-            expect(onChange).toHaveBeenCalled();
-          });
-          expect(calls).toEqual(['change', 'blur']);
+        return waitFor(() => {
+          expect(setInputValue).toHaveBeenCalledWith('test');
         });
       });
     });
   });
 
   it('allows to set value', () => {
-    renderWrapper({ value: 'test value' });
-    const input = screen.getByDisplayValue('test value');
+    const testValue = 'test value';
+    const onChange = jest.fn();
+    render(<Input name="test-input" value={testValue} onChange={onChange} />);
+    const input = screen.getByDisplayValue(testValue);
 
     expect(input).toBeInTheDocument();
   });
 
   it('supports autoFocus', () => {
-    renderWrapper({ autoFocus: true });
+    render(
+      <Input name="test-input" placeholder="placeholder" autoFocus={true} />
+    );
     const input = screen.getByPlaceholderText('placeholder');
 
     expect(input).toHaveFocus();
