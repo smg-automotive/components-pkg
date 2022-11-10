@@ -87,7 +87,7 @@ describe('<Carousel />', () => {
   });
 
   it('should prerender a fallback slide on the server (emblaRef is undefined) when the start index is different than 0', () => {
-    (useEmblaCarousel as unknown as jest.Mock).mockReturnValueOnce([
+    (useEmblaCarousel as unknown as jest.Mock).mockReturnValue([
       undefined,
       undefined,
     ]);
@@ -110,7 +110,7 @@ describe('<Carousel />', () => {
   });
 
   it('should prerender the carousel on the server if the start index is 0', () => {
-    (useEmblaCarousel as unknown as jest.Mock).mockReturnValueOnce([
+    (useEmblaCarousel as unknown as jest.Mock).mockReturnValue([
       undefined,
       undefined,
     ]);
