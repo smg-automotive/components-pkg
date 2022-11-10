@@ -16,19 +16,22 @@ const icons = {
 };
 
 const ThumbnailNavigationButton: FC<Props> = ({ direction, onClick }) => {
-  const { paginationButton } = useMultiStyleConfig('Carousel', {
-    variant: 'fullScreen',
-  });
+  const { paginationButtonContainer, paginationButton } = useMultiStyleConfig(
+    'Carousel',
+    {
+      variant: 'fullScreen',
+    }
+  );
   const side = direction === 'previous' ? { left: '0' } : { right: '0' };
 
   return (
     <chakra.button
       onClick={() => onClick(direction)}
       {...side}
-      aria-label={`scroll to ${direction} thumbnails`}
-      __css={paginationButton}
+      aria-label={`scroll to ${direction} thumbnail group`}
+      __css={paginationButtonContainer}
     >
-      <Flex>{icons[direction]}</Flex>
+      <Flex __css={paginationButton}>{icons[direction]}</Flex>
     </chakra.button>
   );
 };

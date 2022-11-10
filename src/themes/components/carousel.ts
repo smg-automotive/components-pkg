@@ -14,6 +14,7 @@ const parts = [
   'button',
   'icon',
   'pagination',
+  'paginationButtonContainer',
   'paginationButton',
 ];
 
@@ -35,7 +36,7 @@ const fullScreen = {
     },
     height: '124px',
   },
-  paginationButton: {
+  paginationButtonContainer: {
     position: 'absolute',
     top: '0',
     width: 'lg',
@@ -45,6 +46,15 @@ const fullScreen = {
     alignItems: 'center',
     color: 'white',
     backgroundColor: 'transparent',
+  },
+  paginationButton: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 'md',
+    height: 'md',
+    borderRadius: 'sm',
+    backgroundColor: `rgba(${r},${g},${b},0.8)`,
   },
   buttonContainer: {
     backgroundColor: 'black',
