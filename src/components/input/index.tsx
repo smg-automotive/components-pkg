@@ -15,24 +15,32 @@ type SharedProps = {
   size?: 'md' | 'lg';
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
-  value?: string | number;
   autoFocus?: boolean;
   name: string;
-  debounce?: boolean;
 };
 
+type ControlledInputProps = {
+  debounce?: false;
+  value: string | number;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  setInputValue?: never;
+} & SharedProps;
+
 type InputPros = {
+  debounce?: false;
+  value?: never;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   setInputValue?: never;
 } & SharedProps;
 
 type DebouncedInputPros = {
+  value: string | number;
   onChange?: never;
   debounce: true;
   setInputValue: (value: string) => void;
 } & SharedProps;
 
-type Props = InputPros | DebouncedInputPros;
+type Props = ControlledInputProps | InputPros | DebouncedInputPros;
 
 const Input = forwardRef<HTMLInputElement, Props>(
   ({ onChange, value, debounce = false, setInputValue, ...props }, ref) => {
