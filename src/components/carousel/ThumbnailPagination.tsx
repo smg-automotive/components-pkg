@@ -77,7 +77,11 @@ const ThumbnailPagination: FC<Props> = ({
             onClick={() => onThumbnailClick(index)}
             isCurrent={index === currentSlide}
           >
-            {slide}
+            {paginationCarouselRef ? (
+              slide
+            ) : (
+              <Box h="full" w="full" backgroundColor="gray.50" />
+            )}
           </Thumbnail>
         ))}
       </Flex>
