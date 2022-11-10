@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useMultiStyleConfig } from '@chakra-ui/react';
+import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
@@ -32,6 +32,11 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
   const hasPagination = fullScreen;
   const slides: ReactNode[] = Array.isArray(children) ? children : [children];
   const numberOfSlides = slides.length;
+  // 926px is the highest phone
+  const [isMobileLandscape] = useMediaQuery(
+    '(orientation: landscape) and (pointer: coarse) and (max-width: 926px)',
+    { ssr: true, fallback: true }
+  );
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -114,6 +119,9 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
+          height={
+            isMobileLandscape || !fullScreen ? 'full' : 'calc(100% - 124px)'
+          }
           __css={carousel}
         >
           <Flex __css={slideContainer}>
@@ -142,7 +150,8 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           />
         </Box>
       )}
-      {hasPagination ? (
+
+      {hasPagination && !isMobileLandscape ? (
         <ThumbnailPagination
           currentSlide={selectedIndex}
           thumbnails={slides}

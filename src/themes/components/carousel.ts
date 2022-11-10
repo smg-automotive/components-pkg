@@ -22,7 +22,6 @@ const fullScreen = {
     backgroundColor: 'black',
   },
   carousel: {
-    height: 'calc(100% - 124px)',
     paddingX: {
       md: '5xl',
     },
