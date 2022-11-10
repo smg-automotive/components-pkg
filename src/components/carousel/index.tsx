@@ -141,12 +141,12 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           <NavigationButton
             onClick={scroll}
             direction="previous"
-            variant={fullScreen ? 'fullScreen' : 'default'}
+            fullScreen={fullScreen}
           />
           <NavigationButton
             onClick={scroll}
             direction="next"
-            variant={fullScreen ? 'fullScreen' : 'default'}
+            fullScreen={fullScreen}
           />
         </Box>
       )}

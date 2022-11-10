@@ -1,53 +1,34 @@
 import React, { FC } from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
-import {
-  ChevronLeftLargeIcon,
-  ChevronLeftSmallIcon,
-  ChevronRightLargeIcon,
-  ChevronRightSmallIcon,
-} from '../icons';
+import { ChevronLeftLargeIcon, ChevronRightLargeIcon } from '../icons';
 import Flex from '../flex';
 
 export type Direction = 'previous' | 'next';
 interface Props {
   onClick: (direction: Direction) => void;
   direction: Direction;
-  variant: 'default' | 'fullScreen' | 'pagination';
+  fullScreen: boolean;
 }
 
-const NavigationButton: FC<Props> = ({ direction, onClick, variant }) => {
-  const styleVariant = {
-    default: {},
-    fullScreen: { variant: 'fullScreen' },
-    pagination: { variant: 'fullScreen' },
-  };
-
-  const { button, buttonContainer, icon, paginationButton } =
-    useMultiStyleConfig('Carousel', styleVariant[variant]);
+const NavigationButton: FC<Props> = ({ direction, onClick, fullScreen }) => {
+  const { button, buttonContainer, icon } = useMultiStyleConfig(
+    'Carousel',
+    fullScreen ? { variant: 'fullScreen' } : {}
+  );
   const side = direction === 'previous' ? { left: '0' } : { right: '0' };
   const icons = {
-    previous: {
-      default: <ChevronLeftLargeIcon boxSize={undefined} __css={icon} />,
-      fullScreen: <ChevronLeftLargeIcon boxSize={undefined} __css={icon} />,
-      pagination: <ChevronLeftSmallIcon />,
-    },
-    next: {
-      default: <ChevronRightLargeIcon boxSize={undefined} __css={icon} />,
-      fullScreen: <ChevronRightLargeIcon boxSize={undefined} __css={icon} />,
-      pagination: <ChevronRightSmallIcon />,
-    },
+    previous: <ChevronLeftLargeIcon boxSize={undefined} __css={icon} />,
+    next: <ChevronRightLargeIcon boxSize={undefined} __css={icon} />,
   };
   return (
     <chakra.button
       onClick={() => onClick(direction)}
       {...side}
       aria-label={`${direction} slide`}
-      __css={variant === 'pagination' ? paginationButton : buttonContainer}
+      __css={buttonContainer}
     >
-      <Flex __css={variant === 'pagination' ? {} : button}>
-        {icons[direction][variant]}
-      </Flex>
+      <Flex __css={button}>{icons[direction]}</Flex>
     </chakra.button>
   );
 };

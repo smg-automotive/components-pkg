@@ -10,8 +10,8 @@ import { EmblaCarouselType } from 'embla-carousel-react';
 
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
+import ThumbnailNavigationButton from './ThumbnailNavigationButton';
 import Thumbnail from './Thumbnail';
-import NavigationButton from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
 
@@ -84,22 +84,20 @@ const ThumbnailPagination: FC<Props> = ({
       {showPaginationButtons ? (
         <>
           {thumbnailScrollProgress > 0.2 ? (
-            <NavigationButton
+            <ThumbnailNavigationButton
               onClick={() => {
                 paginationCarousel && paginationCarousel.scrollPrev();
               }}
               direction="previous"
-              variant="pagination"
             />
           ) : null}
 
           {thumbnailScrollProgress < 0.8 ? (
-            <NavigationButton
+            <ThumbnailNavigationButton
               onClick={() => {
                 paginationCarousel && paginationCarousel.scrollNext();
               }}
               direction="next"
-              variant="pagination"
             />
           ) : null}
         </>
