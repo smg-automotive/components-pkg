@@ -54,7 +54,7 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     containScroll: 'keepSnaps',
     dragFree: true,
     slidesToScroll: 'auto',
-    inViewThreshold: 0.8,
+    inViewThreshold: 1,
   });
 
   const scroll = useCallback(
