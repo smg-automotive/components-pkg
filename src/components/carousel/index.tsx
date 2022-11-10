@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  PropsWithChildren,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
@@ -15,23 +8,30 @@ import NavigationButton, { Direction } from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
 
-interface Props {
+type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  fullScreen?: boolean;
-}
+};
 
-const Carousel: FC<PropsWithChildren<Props>> = ({
-  startIndex = 0,
-  onSlideClick,
-  onSlideSelect,
-  children,
-  fullScreen = false,
-}) => {
-  const hasPagination = fullScreen;
-  const slides: ReactNode[] = Array.isArray(children) ? children : [children];
-  const numberOfSlides = slides.length;
+type DefaultProps = {
+  fullScreen?: never;
+  children: ReactNode[];
+} & SharedProps;
+
+export type FullScreenSlide = { slide: ReactNode; thumbnail: ReactNode };
+type FullScreenProps = {
+  fullScreen: true;
+  children: Array<FullScreenSlide>;
+} & SharedProps;
+
+type Props = DefaultProps | FullScreenProps;
+
+const Carousel: FC<Props> = (props) => {
+  const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen } = props;
+
+  const hasPagination = !!fullScreen;
+  const numberOfSlides = props.children.length;
   // 926px is the highest phone
   const [isMobileLandscape] = useMediaQuery(
     '(orientation: landscape) and (pointer: coarse) and (max-width: 926px)',
@@ -109,9 +109,11 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           onClick={() => onClick(startIndex)}
           totalSlides={numberOfSlides}
           isCurrent={startIndex === selectedIndex}
-          fullScreen={fullScreen}
+          fullScreen={!!fullScreen}
         >
-          {slides[startIndex]}
+          {props.fullScreen
+            ? props.children[startIndex]?.slide
+            : props.children[startIndex]}
         </Slide>
       ) : (
         <Box
@@ -125,36 +127,38 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
           __css={carousel}
         >
           <Flex __css={slideContainer}>
-            {slides.map((slide, index) => (
+            {props.children.map((slide, index) => (
               <Slide
                 key={`slide-${index}`}
                 slideIndex={index}
                 onClick={() => onClick(index)}
                 totalSlides={numberOfSlides}
                 isCurrent={index === selectedIndex}
-                fullScreen={fullScreen}
+                fullScreen={!!fullScreen}
               >
-                {slide}
+                {slide && typeof slide === 'object' && 'slide' in slide
+                  ? slide.slide
+                  : slide}
               </Slide>
             ))}
           </Flex>
           <NavigationButton
             onClick={scroll}
             direction="previous"
-            fullScreen={fullScreen}
+            fullScreen={!!fullScreen}
           />
           <NavigationButton
             onClick={scroll}
             direction="next"
-            fullScreen={fullScreen}
+            fullScreen={!!fullScreen}
           />
         </Box>
       )}
 
-      {hasPagination && !isMobileLandscape ? (
+      {props.fullScreen && !isMobileLandscape ? (
         <ThumbnailPagination
           currentSlide={selectedIndex}
-          thumbnails={slides}
+          thumbnails={props.children.map((slide) => slide.thumbnail)}
           mainCarousel={mainCarousel}
           paginationCarousel={paginationCarousel}
           paginationCarouselRef={paginationCarouselRef}
