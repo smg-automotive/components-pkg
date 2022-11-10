@@ -86,8 +86,7 @@ const ThumbnailPagination: FC<Props> = ({
           {thumbnailScrollProgress > 0.2 ? (
             <NavigationButton
               onClick={() => {
-                if (!paginationCarousel) return;
-                paginationCarousel.scrollPrev();
+                paginationCarousel && paginationCarousel.scrollPrev();
               }}
               direction="previous"
               variant="pagination"
@@ -97,8 +96,7 @@ const ThumbnailPagination: FC<Props> = ({
           {thumbnailScrollProgress < 0.8 ? (
             <NavigationButton
               onClick={() => {
-                if (!paginationCarousel) return;
-                paginationCarousel.scrollNext();
+                paginationCarousel && paginationCarousel.scrollNext();
               }}
               direction="next"
               variant="pagination"
