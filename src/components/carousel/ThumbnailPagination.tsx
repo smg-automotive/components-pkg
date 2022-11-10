@@ -69,8 +69,8 @@ const ThumbnailPagination: FC<Props> = ({
   }, [paginationCarousel, onScroll]);
 
   return (
-    <Box ref={paginationCarouselRef} __css={pagination}>
-      <Flex alignItems="center" height="full">
+    <Box ref={paginationCarouselRef} __css={pagination} aria-label="Pagination">
+      <Flex alignItems="center" height="full" id="thumbnail-wrapper">
         {thumbnails.map((slide, index) => (
           <Thumbnail
             key={`slide-${index}`}

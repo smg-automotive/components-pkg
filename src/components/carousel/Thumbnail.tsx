@@ -22,6 +22,7 @@ const Thumbnail: FC<PropsWithChildren<Props>> = ({
       mr="xs"
       border="4px"
       borderColor={isCurrent ? 'blue.400' : 'transparent'}
+      aria-current={isCurrent}
     >
       {children}
     </AspectRatio>
