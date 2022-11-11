@@ -23,13 +23,13 @@ const MobileOnlyAccordionSection: FC<
 
   return (
     <>
-      <Show below="sm">
+      <Show below="md">
         <AccordionItem {...itemProps}>
           <AccordionButton>{title}</AccordionButton>
           <AccordionPanel>{children}</AccordionPanel>
         </AccordionItem>
       </Show>
-      <Hide below="sm">
+      <Hide below="md">
         <H4 paddingY="md">{title}</H4>
         <Box pb="md">{children}</Box>
       </Hide>

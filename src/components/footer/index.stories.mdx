@@ -1,0 +1,19 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Footer from './index.tsx';
+
+<Meta
+  title="Patterns/Navigation/Footer"
+  component={Footer}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = () => <Footer />;
+
+# Footer
+
+<Canvas>
+  <Story name="Footer">{Template.bind({})}</Story>
+</Canvas>

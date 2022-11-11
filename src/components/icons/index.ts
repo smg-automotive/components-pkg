@@ -16,3 +16,7 @@ export { MotoScout24AppLogo } from './MotoScout24AppLogo';
 export { TooltipIcon } from './TooltipIcon';
 export { ThreeSixtyIcon } from './ThreeSixtyIcon';
 export { VideoIcon } from './VideoIcon';
+export { YoutubeIcon } from './YoutubeIcon';
+export { InstagramIcon } from './InstagramIcon';
+export { TwitterIcon } from './TwitterIcon';
+export { FacebookIcon } from './FacebookIcon';
