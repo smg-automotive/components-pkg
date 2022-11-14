@@ -99,6 +99,24 @@ const Carousel: FC<Props> = (props) => {
     mainCarousel.on('select', onSelect);
   }, [mainCarousel, onSelect]);
 
+  useEffect(() => {
+    const keydownListener = (e: KeyboardEvent) => {
+      if (fullScreen) {
+        switch (e.code) {
+          case 'ArrowRight':
+            scrollNext();
+            break;
+          case 'ArrowLeft':
+            scrollPrev();
+            break;
+        }
+      }
+    };
+
+    document.addEventListener('keydown', keydownListener);
+    return () => document.removeEventListener('keydown', keydownListener);
+  }, [fullScreen, scrollNext, scrollPrev]);
+
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
   return (
