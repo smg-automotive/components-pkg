@@ -31,12 +31,12 @@ const Carousel: FC<Props> = (props) => {
   const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen } = props;
 
   const numberOfSlides = props.children.length;
-  // 926px is the highest phone
-  const [isMobileLandscape] = useMediaQuery(
-    '(orientation: landscape) and (pointer: coarse) and (max-width: 926px)',
-    { ssr: true, fallback: true }
-  );
-  const hasPagination = !isMobileLandscape && !!fullScreen;
+
+  const [isHigherThan600] = useMediaQuery('(min-height: 600px)', {
+    ssr: true,
+    fallback: true,
+  });
+  const hasPagination = isHigherThan600 && !!fullScreen;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
