@@ -6,7 +6,7 @@ import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Flex from '../flex';
 
 interface Props {
-  onClick: (direction: Direction) => void;
+  onClick: () => void;
   direction: Direction;
 }
 
@@ -26,7 +26,7 @@ const ThumbnailNavigationButton: FC<Props> = ({ direction, onClick }) => {
 
   return (
     <chakra.button
-      onClick={() => onClick(direction)}
+      onClick={onClick}
       {...side}
       aria-label={`scroll to ${direction} thumbnail group`}
       aria-controls="thumbnails-wrapper"

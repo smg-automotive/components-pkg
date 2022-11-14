@@ -4,7 +4,7 @@ import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
-import NavigationButton, { Direction } from './NavigationButton';
+import NavigationButton from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
 
@@ -57,17 +57,12 @@ const Carousel: FC<Props> = (props) => {
     inViewThreshold: 1,
   });
 
-  const scroll = useCallback(
-    (direction: Direction) => {
-      switch (direction) {
-        case 'previous':
-          mainCarousel && mainCarousel.scrollPrev();
-          break;
-        case 'next':
-          mainCarousel && mainCarousel.scrollNext();
-          break;
-      }
-    },
+  const scrollPrev = useCallback(
+    () => mainCarousel && mainCarousel.scrollPrev(),
+    [mainCarousel]
+  );
+  const scrollNext = useCallback(
+    () => mainCarousel && mainCarousel.scrollNext(),
     [mainCarousel]
   );
 
@@ -161,12 +156,12 @@ const Carousel: FC<Props> = (props) => {
             ))}
           </Flex>
           <NavigationButton
-            onClick={scroll}
+            onClick={scrollPrev}
             direction="previous"
             fullScreen={!!fullScreen}
           />
           <NavigationButton
-            onClick={scroll}
+            onClick={scrollNext}
             direction="next"
             fullScreen={!!fullScreen}
           />

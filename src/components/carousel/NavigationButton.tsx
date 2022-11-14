@@ -6,7 +6,7 @@ import Flex from '../flex';
 
 export type Direction = 'previous' | 'next';
 interface Props {
-  onClick: (direction: Direction) => void;
+  onClick: () => void;
   direction: Direction;
   fullScreen: boolean;
 }
@@ -23,7 +23,7 @@ const NavigationButton: FC<Props> = ({ direction, onClick, fullScreen }) => {
   };
   return (
     <chakra.button
-      onClick={() => onClick(direction)}
+      onClick={onClick}
       {...side}
       aria-label={`${direction} slide`}
       __css={buttonContainer}
