@@ -38,7 +38,7 @@ const fullScreen = {
       base: 'md',
       md: '5xl',
     },
-    height: '124px',
+    height: '7.5rem',
   },
   paginationButtonContainer: {
     position: 'absolute',

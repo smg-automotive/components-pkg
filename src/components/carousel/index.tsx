@@ -134,7 +134,7 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={hasPagination ? 'calc(100% - 124px)' : 'full'}
+          height={hasPagination ? 'calc(100% - 7.5rem)' : 'full'}
           __css={carousel}
         >
           <Flex __css={slideContainer}>
