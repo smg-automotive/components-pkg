@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import PaginationButton from './PaginationButton';
+import PaginationButton, { paginationButtonVariant } from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
 
@@ -11,7 +11,7 @@ const range = (start: number, end: number): Array<number> => {
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
-interface Props {
+export interface Props {
   count: number;
   page: number;
   siblingCount?: number;
@@ -41,14 +41,14 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     const lastPageIndex = count;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      const leftItemCount = pageButtonsCount * siblingCount;
+      const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = range(1, leftItemCount);
 
       return [...leftRange, Dots, count];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      const rightItemCount = pageButtonsCount * siblingCount;
+      const rightItemCount = 3 + 2 * siblingCount;
       const rightRange = range(count - rightItemCount + 1, count);
       return [firstPageIndex, Dots, ...rightRange];
     }
@@ -83,7 +83,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         return (
           <PaginationButton
             key={`paginationButton-${index}`}
-            variant={pageNumber === page ? 'active' : 'default'}
+            variant={pageNumber === page ? paginationButtonVariant.active : paginationButtonVariant.default}
             onClick={() => onChange(pageNumber)}
           >
             {pageNumber}

@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Pagination from './index';
 
 <Meta title="Components/Navigation/Pagination" component={Pagination} />
 
-export const Template = () => {
+export const Template = ({ count }) => {
   const [currentPage, setPage] = useState(1);
   return (
     <div>
       <div>{`Page: ${currentPage}`}</div>
       <Pagination
-        count={10}
+        count={count}
         page={currentPage}
         onChange={(page) => setPage(page)}
       />
@@ -22,5 +22,17 @@ export const Template = () => {
 # Pagination
 
 <Canvas>
-  <Story name="Pagination">{Template.bind({})}</Story>
+  <Story
+    name="Pagination"
+    args={{
+      count: 10,
+    }}
+    argTypes={{
+      count: {
+        control: { type: 'number', min: 0 },
+      },
+    }}
+  >{Template.bind({})}</Story>
 </Canvas>
+
+<ArgsTable story="Pagination" />
