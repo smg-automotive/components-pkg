@@ -1,18 +1,19 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import EnergyLabel from './index.tsx';
+import { Stack } from '../../index.ts';
 
-<Meta title="Components/Data display/Energy label" component={EnergyLabel} />
+<Meta title="Components/Data display/Energy Label" component={EnergyLabel} />
 
 export const Template = (args) => <EnergyLabel {...args} />;
 
-# EnergyLabel
+# Energy Label
 
 ## Overview
 
 <Canvas>
   <Story
-    name="Energy label"
+    name="Overview"
     args={{
       efficiency: 'A',
     }}
@@ -24,5 +25,23 @@ export const Template = (args) => <EnergyLabel {...args} />;
     }}
   >
     {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## Variations
+
+<Canvas>
+  <Story name="Variations">
+    <Stack spacing="lg" direction="row">
+      <EnergyLabel efficiency="A" />
+      <EnergyLabel efficiency="B" />
+      <EnergyLabel efficiency="C" />
+      <EnergyLabel efficiency="D" />
+      <EnergyLabel efficiency="E" />
+      <EnergyLabel efficiency="F" />
+      <EnergyLabel efficiency="G" />
+    </Stack>
   </Story>
 </Canvas>
