@@ -21,6 +21,10 @@ const parts = [
 const fullScreen = {
   container: {
     backgroundColor: 'black',
+    position: {
+      base: 'fixed',
+      md: 'static',
+    },
   },
   carousel: {
     paddingX: {
