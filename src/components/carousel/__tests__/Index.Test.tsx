@@ -16,6 +16,16 @@ jest.mock('embla-carousel-react', () => {
 });
 
 describe('<Carousel />', () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      value: jest.fn(() => ({
+        matches: true,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      })),
+    });
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });

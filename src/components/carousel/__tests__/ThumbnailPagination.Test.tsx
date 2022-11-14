@@ -9,6 +9,12 @@ const thumbnails = [
   <div key="thumbnail-1">thumbnail 1</div>,
   <div key="thumbnail-2">thumbnail 2</div>,
   <div key="thumbnail-3">thumbnail 3</div>,
+  <div key="thumbnail-4">thumbnail 4</div>,
+  <div key="thumbnail-5">thumbnail 5</div>,
+  <div key="thumbnail-6">thumbnail 6</div>,
+  <div key="thumbnail-7">thumbnail 7</div>,
+  <div key="thumbnail-8">thumbnail 8</div>,
+  <div key="thumbnail-9">thumbnail 9</div>,
 ];
 
 const mockSlidesNotInView = jest.fn().mockReturnValue([]);
@@ -71,7 +77,8 @@ describe('<ThumbnailPagination/>', () => {
 
   it('should show the NEXT thumbnail navigation button if some are outside the viewport on the right', () => {
     mockSlidesNotInView.mockReturnValueOnce([1, 2]);
-    mockScrollProgress.mockReturnValueOnce(0.2);
+    const slideWidth = 1 / thumbnails.length;
+    mockScrollProgress.mockReturnValueOnce(slideWidth);
     render(
       <ThumbnailPagination
         currentSlideIndex={0}
@@ -91,7 +98,8 @@ describe('<ThumbnailPagination/>', () => {
 
   it('should show the PREVIOUS thumbnail navigation button if some are outside the viewport on the left', () => {
     mockSlidesNotInView.mockReturnValueOnce([1, 2]);
-    mockScrollProgress.mockReturnValueOnce(0.8);
+    const slideWidth = 1 / thumbnails.length;
+    mockScrollProgress.mockReturnValueOnce(1 - slideWidth);
     render(
       <ThumbnailPagination
         currentSlideIndex={0}
@@ -109,9 +117,10 @@ describe('<ThumbnailPagination/>', () => {
     ).toBeInTheDocument();
   });
 
-  it('should show BOTH thumbnail navigation buttons if some are outside the viewport on the left and on the right and scroll position is 0.21', () => {
+  it('should show BOTH thumbnail navigation buttons if some are outside the viewport on the left and on the right and scroll position is close to end', () => {
     mockSlidesNotInView.mockReturnValueOnce([1, 2]);
-    mockScrollProgress.mockReturnValueOnce(0.21);
+    const slideWidth = 1 / thumbnails.length;
+    mockScrollProgress.mockReturnValueOnce(1 - slideWidth - 0.01);
     render(
       <ThumbnailPagination
         currentSlideIndex={0}
@@ -129,9 +138,10 @@ describe('<ThumbnailPagination/>', () => {
     ).toBeInTheDocument();
   });
 
-  it('should show BOTH thumbnail navigation buttons if some are outside the viewport on the left and on the right and scroll position is 0.79', () => {
+  it('should show BOTH thumbnail navigation buttons if some are outside the viewport on the left and on the right and scroll position close to start', () => {
     mockSlidesNotInView.mockReturnValueOnce([1, 2]);
-    mockScrollProgress.mockReturnValueOnce(0.79);
+    const slideWidth = 1 / thumbnails.length;
+    mockScrollProgress.mockReturnValueOnce(slideWidth + 0.01);
     render(
       <ThumbnailPagination
         currentSlideIndex={0}

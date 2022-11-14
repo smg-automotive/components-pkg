@@ -30,8 +30,10 @@ const ThumbnailPagination: FC<Props> = ({
   paginationCarouselRef,
   paginationCarousel,
 }) => {
-  const [thumbnailScrollProgress, setThumbnailScrollProgress] = useState(0);
-  const [showPaginationButtons, setShowPaginationButtons] = useState(true);
+  const [paginationButtonVisibility, setPaginationButtonVisibility] = useState<{
+    previous: boolean;
+    next: boolean;
+  }>({ previous: false, next: true });
   const { pagination } = useMultiStyleConfig('Carousel', {
     variant: 'fullScreen',
   });
@@ -60,7 +62,7 @@ const ThumbnailPagination: FC<Props> = ({
       !paginationCarousel ||
       paginationCarousel.slidesNotInView().length === 0
     ) {
-      setShowPaginationButtons(false);
+      setPaginationButtonVisibility({ previous: false, next: false });
       return;
     }
 
@@ -68,8 +70,12 @@ const ThumbnailPagination: FC<Props> = ({
       0,
       Math.min(1, paginationCarousel.scrollProgress())
     );
-    setThumbnailScrollProgress(progress);
-  }, [paginationCarousel]);
+    const slideWidth = 1 / thumbnails.length;
+    setPaginationButtonVisibility({
+      previous: progress > slideWidth,
+      next: progress < 1 - slideWidth,
+    });
+  }, [paginationCarousel, thumbnails.length]);
 
   useEffect(() => {
     if (!paginationCarousel) return;
@@ -96,19 +102,11 @@ const ThumbnailPagination: FC<Props> = ({
           </Thumbnail>
         ))}
       </Flex>
-      {showPaginationButtons ? (
-        <>
-          {thumbnailScrollProgress > 0.2 ? (
-            <ThumbnailNavigationButton
-              onClick={scrollPrev}
-              direction="previous"
-            />
-          ) : null}
-
-          {thumbnailScrollProgress < 0.8 ? (
-            <ThumbnailNavigationButton onClick={scrollNext} direction="next" />
-          ) : null}
-        </>
+      {paginationButtonVisibility.previous ? (
+        <ThumbnailNavigationButton onClick={scrollPrev} direction="previous" />
+      ) : null}
+      {paginationButtonVisibility.next ? (
+        <ThumbnailNavigationButton onClick={scrollNext} direction="next" />
       ) : null}
     </Box>
   );
