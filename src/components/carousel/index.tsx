@@ -30,13 +30,13 @@ type Props = DefaultProps | FullScreenProps;
 const Carousel: FC<Props> = (props) => {
   const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen } = props;
 
-  const hasPagination = !!fullScreen;
   const numberOfSlides = props.children.length;
   // 926px is the highest phone
   const [isMobileLandscape] = useMediaQuery(
     '(orientation: landscape) and (pointer: coarse) and (max-width: 926px)',
     { ssr: true, fallback: true }
   );
+  const hasPagination = !isMobileLandscape && !!fullScreen;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -134,9 +134,7 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={
-            isMobileLandscape || !fullScreen ? 'full' : 'calc(100% - 124px)'
-          }
+          height={hasPagination ? 'calc(100% - 124px)' : 'full'}
           __css={carousel}
         >
           <Flex __css={slideContainer}>
@@ -168,7 +166,7 @@ const Carousel: FC<Props> = (props) => {
         </Box>
       )}
 
-      {props.fullScreen && !isMobileLandscape ? (
+      {hasPagination ? (
         <ThumbnailPagination
           currentSlideIndex={selectedIndex}
           thumbnails={props.children.map((slide) => slide.thumbnail)}
