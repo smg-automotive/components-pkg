@@ -16,7 +16,7 @@ import Flex from '../flex';
 import Box from '../box';
 
 interface Props {
-  currentSlide: number;
+  currentSlideIndex: number;
   thumbnails: ReactNode[];
   mainCarousel?: EmblaCarouselType;
   paginationCarouselRef?: LegacyRef<HTMLDivElement>;
@@ -24,7 +24,7 @@ interface Props {
 }
 
 const ThumbnailPagination: FC<Props> = ({
-  currentSlide,
+  currentSlideIndex,
   thumbnails,
   mainCarousel,
   paginationCarouselRef,
@@ -35,6 +35,15 @@ const ThumbnailPagination: FC<Props> = ({
   const { pagination } = useMultiStyleConfig('Carousel', {
     variant: 'fullScreen',
   });
+
+  const scrollPrev = useCallback(
+    () => paginationCarousel && paginationCarousel.scrollPrev(),
+    [paginationCarousel]
+  );
+  const scrollNext = useCallback(
+    () => paginationCarousel && paginationCarousel.scrollNext(),
+    [paginationCarousel]
+  );
 
   const onThumbnailClick = useCallback(
     (index: number) => {
@@ -75,7 +84,7 @@ const ThumbnailPagination: FC<Props> = ({
           <Thumbnail
             key={`slide-${index}`}
             onClick={() => onThumbnailClick(index)}
-            isCurrent={index === currentSlide}
+            isCurrent={index === currentSlideIndex}
             thumbnailIndex={index}
             totalThumbnails={thumbnails.length}
           >
@@ -91,20 +100,13 @@ const ThumbnailPagination: FC<Props> = ({
         <>
           {thumbnailScrollProgress > 0.2 ? (
             <ThumbnailNavigationButton
-              onClick={() => {
-                paginationCarousel && paginationCarousel.scrollPrev();
-              }}
+              onClick={scrollPrev}
               direction="previous"
             />
           ) : null}
 
           {thumbnailScrollProgress < 0.8 ? (
-            <ThumbnailNavigationButton
-              onClick={() => {
-                paginationCarousel && paginationCarousel.scrollNext();
-              }}
-              direction="next"
-            />
+            <ThumbnailNavigationButton onClick={scrollNext} direction="next" />
           ) : null}
         </>
       ) : null}

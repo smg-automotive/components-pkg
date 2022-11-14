@@ -39,7 +39,7 @@ describe('<ThumbnailPagination/>', () => {
   it('should render the thumbnails', () => {
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -54,7 +54,7 @@ describe('<ThumbnailPagination/>', () => {
   it('should NOT show the thumbnail navigation buttons if all thumbnails are visible', () => {
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -74,7 +74,7 @@ describe('<ThumbnailPagination/>', () => {
     mockScrollProgress.mockReturnValueOnce(0.2);
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -94,7 +94,7 @@ describe('<ThumbnailPagination/>', () => {
     mockScrollProgress.mockReturnValueOnce(0.8);
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -114,7 +114,7 @@ describe('<ThumbnailPagination/>', () => {
     mockScrollProgress.mockReturnValueOnce(0.21);
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -134,7 +134,7 @@ describe('<ThumbnailPagination/>', () => {
     mockScrollProgress.mockReturnValueOnce(0.79);
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -154,7 +154,7 @@ describe('<ThumbnailPagination/>', () => {
     mockScrollProgress.mockReturnValueOnce(0.21);
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -173,7 +173,7 @@ describe('<ThumbnailPagination/>', () => {
     mockScrollProgress.mockReturnValueOnce(0.21);
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
@@ -190,7 +190,7 @@ describe('<ThumbnailPagination/>', () => {
   it('should change the main carousel slide when a thumbnail is clicked', async () => {
     render(
       <ThumbnailPagination
-        currentSlide={0}
+        currentSlideIndex={0}
         thumbnails={thumbnails}
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}

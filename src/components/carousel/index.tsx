@@ -19,7 +19,7 @@ type DefaultProps = {
   children: ReactNode[];
 } & SharedProps;
 
-export type FullScreenSlide = { slide: ReactNode; thumbnail: ReactNode };
+type FullScreenSlide = { slide: ReactNode; thumbnail: ReactNode };
 type FullScreenProps = {
   fullScreen: true;
   children: Array<FullScreenSlide>;
@@ -170,7 +170,7 @@ const Carousel: FC<Props> = (props) => {
 
       {props.fullScreen && !isMobileLandscape ? (
         <ThumbnailPagination
-          currentSlide={selectedIndex}
+          currentSlideIndex={selectedIndex}
           thumbnails={props.children.map((slide) => slide.thumbnail)}
           mainCarousel={mainCarousel}
           paginationCarousel={paginationCarousel}
