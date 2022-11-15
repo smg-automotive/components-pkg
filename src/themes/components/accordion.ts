@@ -1,45 +1,75 @@
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/styled-system';
+import { SystemStyleObject } from '@chakra-ui/styled-system';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
-const { definePartsStyle, defineMultiStyleConfig } =
-  createMultiStyleConfigHelpers(parts.keys);
-
-const baseStyleContainer = defineStyle({
-  color: 'gray.900',
-  borderTop: '1px',
-  borderColor: 'gray.200',
-  _last: {
-    borderBottom: '1px',
-    borderColor: 'gray.200',
+const variantLight: Record<string, SystemStyleObject> = {
+  button: {
+    _hover: {
+      bg: 'gray.50',
+    },
   },
-});
+  container: {
+    color: 'gray.900',
+    borderColor: 'gray.200',
+    _last: {
+      borderColor: 'gray.200',
+    },
+  },
+};
 
-const baseStyleButton = defineStyle({
+const variantDark: Record<string, SystemStyleObject> = {
+  button: {
+    _hover: {
+      bg: 'black',
+    },
+  },
+  container: {
+    color: 'white',
+    bg: 'gray.900',
+    borderColor: 'gray.700',
+    _last: {
+      borderColor: 'gray.700',
+    },
+  },
+};
+
+const titleOnDesktop = {
   textStyle: 'heading4',
   p: 'md',
-  _hover: {
-    bg: 'gray.50',
+};
+
+const baseStyle: Record<string, SystemStyleObject> = {
+  container: {
+    borderTop: '1px',
+    _last: {
+      borderBottom: '1px',
+    },
   },
-});
+  button: {
+    textStyle: 'heading4',
+    p: 'md',
+  },
+  panel: {
+    pb: 'md',
+    paddingX: 'md',
+  },
+  icon: {
+    fontSize: 'lg',
+  },
+  titleOnDesktop,
+};
 
-const baseStylePanel = defineStyle({
-  textStyle: 'body',
-  pb: 'md',
-  paddingX: 'md',
-});
+const variants = {
+  light: variantLight,
+  dark: variantDark,
+};
 
-const baseStyleIcon = defineStyle({
-  fontSize: 'lg',
-});
+const defaultProps = {
+  variant: 'light',
+};
 
-const baseStyle = definePartsStyle({
-  container: baseStyleContainer,
-  button: baseStyleButton,
-  panel: baseStylePanel,
-  icon: baseStyleIcon,
-});
-
-export default defineMultiStyleConfig({ baseStyle });
+export default {
+  parts: parts.keys,
+  baseStyle,
+  variants,
+  defaultProps,
+};

@@ -1,6 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import MobileOnlyAccordionSection from './MobileOnlyAccordionSection';
+import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
 
 import ListItem from '../list/ListItem';
 import List from '../list';
@@ -13,13 +15,15 @@ import MobileOnlyAccordion from './index';
 />
 
 export const Template = (args) => (
-  <MobileOnlyAccordion {...args}>
-    <MobileOnlyAccordionSection title={args.title}>
-      {args.children}
-    </MobileOnlyAccordionSection>
-    <MobileOnlyAccordionSection title={args.title}>
-      {args.children}
-    </MobileOnlyAccordionSection>
+  <MobileOnlyAccordion>
+    <MobileOnlyAccordionItem>
+      <MobileOnlyAccordionButton>{args.title}</MobileOnlyAccordionButton>
+      <MobileOnlyAccordionPanel>{args.children}</MobileOnlyAccordionPanel>
+    </MobileOnlyAccordionItem>
+    <MobileOnlyAccordionItem>
+      <MobileOnlyAccordionButton>{args.title}</MobileOnlyAccordionButton>
+      <MobileOnlyAccordionPanel>{args.children}</MobileOnlyAccordionPanel>
+    </MobileOnlyAccordionItem>
   </MobileOnlyAccordion>
 );
 
@@ -36,8 +40,6 @@ export const Template = (args) => (
       },
     }}
     args={{
-      allowMultiple: true,
-      allowToggle: false,
       title: 'Section title',
       children: (
         <List>

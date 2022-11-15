@@ -6,10 +6,10 @@ import Accordion from '../accordion';
 type Props = Pick<AccordionProps, 'allowMultiple' | 'allowToggle'>;
 
 const MobileOnlyAccordion: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, allowMultiple, ...restProps } = props;
+  const { children, ...restProps } = props;
 
   return (
-    <Accordion allowMultiple={allowMultiple} {...restProps}>
+    <Accordion allowMultiple {...restProps}>
       {children}
     </Accordion>
   );
