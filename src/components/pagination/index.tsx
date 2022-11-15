@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import PaginationButton, { PaginationButtonVariant } from './PaginationButton';
+import PaginationButton from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
 
@@ -15,7 +15,7 @@ export interface Props {
   count: number;
   page: number;
   siblingCount?: number;
-  onChange: (e: unknown) => void;
+  onChange: (page: number) => void;
 }
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
@@ -72,7 +72,11 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
 
   return (
     <Box __css={paginationContainer}>
-      <PaginationButton isDisabled={page === 1} onClick={onPrevious}>
+      <PaginationButton
+        isDisabled={page === 1}
+        onClick={onPrevious}
+        data-testid="prev-button"
+      >
         <ChevronLeftSmallIcon color={page === 1 ? 'gray.300' : 'gray.900'} />
       </PaginationButton>
       {paginationRange.map((pageNumber, index) => {
@@ -83,18 +87,18 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         return (
           <PaginationButton
             key={`paginationButton-${index}`}
-            variant={
-              pageNumber === page
-                ? PaginationButtonVariant.active
-                : PaginationButtonVariant.default
-            }
-            onClick={() => onChange(pageNumber)}
+            isActive={pageNumber === page}
+            onClick={() => onChange(pageNumber as number)}
           >
             {pageNumber}
           </PaginationButton>
         );
       })}
-      <PaginationButton isDisabled={isLastPage} onClick={onNext}>
+      <PaginationButton
+        isDisabled={isLastPage}
+        onClick={onNext}
+        data-testid="next-button"
+      >
         <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
       </PaginationButton>
     </Box>

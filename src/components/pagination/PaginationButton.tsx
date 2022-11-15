@@ -1,24 +1,24 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
-export const enum PaginationButtonVariant {
-  default = 'default',
-  active = 'active',
-}
-
 interface Props {
   isDisabled?: boolean;
-  variant?: PaginationButtonVariant;
+  isActive?: boolean;
   onClick: (e: unknown) => void;
 }
 
 const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, isDisabled, variant, ...rest } = props;
+  const { children, isDisabled, isActive, ...rest } = props;
   const { paginationButton } = useMultiStyleConfig('Pagination', {
-    variant: variant ? variant : PaginationButtonVariant.default,
+    variant: isActive ? 'active' : 'default',
   });
   return (
-    <chakra.button disabled={isDisabled} __css={paginationButton} {...rest}>
+    <chakra.button
+      __css={paginationButton}
+      disabled={isDisabled}
+      aria-current={isActive}
+      {...rest}
+    >
       {children}
     </chakra.button>
   );
