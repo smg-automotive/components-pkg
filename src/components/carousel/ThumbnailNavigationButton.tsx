@@ -16,7 +16,7 @@ const icons = {
 };
 
 const ThumbnailNavigationButton: FC<Props> = ({ direction, onClick }) => {
-  const { paginationButtonContainer, paginationButton } = useMultiStyleConfig(
+  const { paginationButton, paginationIconContainer } = useMultiStyleConfig(
     'Carousel',
     {
       variant: 'fullScreen',
@@ -30,9 +30,9 @@ const ThumbnailNavigationButton: FC<Props> = ({ direction, onClick }) => {
       {...side}
       aria-label={`scroll to ${direction} thumbnail group`}
       aria-controls="thumbnails-wrapper"
-      __css={paginationButtonContainer}
+      __css={paginationButton}
     >
-      <Flex __css={paginationButton}>{icons[direction]}</Flex>
+      <Flex __css={paginationIconContainer}>{icons[direction]}</Flex>
     </chakra.button>
   );
 };
