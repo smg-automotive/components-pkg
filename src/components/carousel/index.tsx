@@ -7,6 +7,7 @@ import Slide from './Slide';
 import NavigationButton from './NavigationButton';
 import Flex from '../flex';
 import Box from '../box';
+import { breakpoints } from '../../themes';
 
 type SharedProps = {
   startIndex?: number;
@@ -32,11 +33,14 @@ const Carousel: FC<Props> = (props) => {
 
   const numberOfSlides = props.children.length;
 
-  const [isHigherThan600] = useMediaQuery('(min-height: 600px)', {
-    ssr: true,
-    fallback: true,
-  });
-  const hasPagination = isHigherThan600 && !!fullScreen;
+  const [isSmallLandscapeViewport] = useMediaQuery(
+    `(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`,
+    {
+      ssr: true,
+      fallback: false,
+    }
+  );
+  const hasPagination = fullScreen && !isSmallLandscapeViewport;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
