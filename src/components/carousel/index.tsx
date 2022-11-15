@@ -83,6 +83,24 @@ const Carousel: FC<PropsWithChildren<Props>> = ({
     embla.on('select', onSelect);
   }, [embla, onSelect]);
 
+  useEffect(() => {
+    const keydownListener = (e: KeyboardEvent) => {
+      if (fullScreen) {
+        switch (e.code) {
+          case 'ArrowRight':
+            scrollNext();
+            break;
+          case 'ArrowLeft':
+            scrollPrev();
+            break;
+        }
+      }
+    };
+
+    document.addEventListener('keydown', keydownListener);
+    return () => document.removeEventListener('keydown', keydownListener);
+  }, [fullScreen, scrollNext, scrollPrev]);
+
   const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
 
   return prerenderFallbackSlide ? (

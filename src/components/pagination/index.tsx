@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import PaginationButton, { paginationButtonVariant } from './PaginationButton';
+import PaginationButton, { PaginationButtonVariant } from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
 
@@ -83,7 +83,11 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         return (
           <PaginationButton
             key={`paginationButton-${index}`}
-            variant={pageNumber === page ? paginationButtonVariant.active : paginationButtonVariant.default}
+            variant={
+              pageNumber === page
+                ? PaginationButtonVariant.active
+                : PaginationButtonVariant.default
+            }
             onClick={() => onChange(pageNumber)}
           >
             {pageNumber}
