@@ -19,7 +19,7 @@ describe('<Carousel />', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       value: jest.fn(() => ({
-        matches: true,
+        matches: false,
         addListener: jest.fn(),
         removeListener: jest.fn(),
       })),
