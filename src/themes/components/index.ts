@@ -16,6 +16,7 @@ import Input from './input';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
+import Drawer from './drawer';
 import Divider from './divider';
 import Checkbox from './checkbox';
 import Carousel from './carousel';
@@ -35,6 +36,7 @@ export const components = {
   Button,
   Carousel,
   Checkbox,
+  Drawer,
   Divider,
   Form,
   FormError,
