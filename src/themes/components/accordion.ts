@@ -1,7 +1,9 @@
-import { SystemStyleObject } from '@chakra-ui/styled-system';
+import { defineStyle, createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
-const variantLight: Record<string, SystemStyleObject> = {
+const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys)
+
+const variantLight = defineStyle({
   button: {
     _hover: {
       bg: 'gray.50',
@@ -14,12 +16,12 @@ const variantLight: Record<string, SystemStyleObject> = {
       borderColor: 'gray.200',
     },
   },
-};
+});
 
-const variantDark: Record<string, SystemStyleObject> = {
+const variantDark = defineStyle({
   button: {
     _hover: {
-      bg: 'black',
+      bg: 'gray.700',
     },
   },
   container: {
@@ -30,14 +32,14 @@ const variantDark: Record<string, SystemStyleObject> = {
       borderColor: 'gray.700',
     },
   },
-};
+});
 
 const titleOnDesktop = {
   textStyle: 'heading4',
   p: 'md',
 };
 
-const baseStyle: Record<string, SystemStyleObject> = {
+const baseStyle = defineStyle({
   container: {
     borderTop: '1px',
     _last: {
@@ -46,30 +48,28 @@ const baseStyle: Record<string, SystemStyleObject> = {
   },
   button: {
     textStyle: 'heading4',
-    p: 'md',
+    paddingX: 'md',
+    paddingY: 'sm',
   },
   panel: {
     pb: 'md',
     paddingX: 'md',
   },
   icon: {
-    fontSize: 'lg',
+    fontSize: 'xl',
   },
   titleOnDesktop,
-};
+});
 
 const variants = {
   light: variantLight,
   dark: variantDark,
 };
 
-const defaultProps = {
-  variant: 'light',
-};
-
-export default {
-  parts: parts.keys,
+export default defineMultiStyleConfig({
   baseStyle,
   variants,
-  defaultProps,
-};
+  defaultProps: {
+    variant: 'light',
+  }
+});

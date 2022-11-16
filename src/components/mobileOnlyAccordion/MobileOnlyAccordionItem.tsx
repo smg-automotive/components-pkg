@@ -9,13 +9,13 @@ const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
   props
 ) => {
   const { children, ...rest } = props;
-  const [isLargerThan1024] = useMediaQuery(
+  const [isLargerThanMd] = useMediaQuery(
     `(min-width: ${breakpoints.md.px}px)`
   );
-  const desktopStyle = isLargerThan1024 ? { border: 'none' } : {};
+  const desktopStyle = isLargerThanMd ? { border: 'none' } : {};
 
   return (
-    <AccordionItem style={desktopStyle} isDisabled={isLargerThan1024} {...rest}>
+    <AccordionItem style={desktopStyle} {...rest}>
       {children}
     </AccordionItem>
   );

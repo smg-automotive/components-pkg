@@ -9,11 +9,11 @@ import { breakpoints } from '../../themes';
 const MobileOnlyAccordionButton: FC<PropsWithChildren> = (props) => {
   const { children, ...rest } = props;
   const { titleOnDesktop } = useMultiStyleConfig('Accordion');
-  const [isLargerThan1024] = useMediaQuery(
+  const [isLargerThanMd] = useMediaQuery(
     `(min-width: ${breakpoints.md.px}px)`
   );
 
-  if (!isLargerThan1024) {
+  if (!isLargerThanMd) {
     return <AccordionButton {...rest}>{children}</AccordionButton>;
   }
 
