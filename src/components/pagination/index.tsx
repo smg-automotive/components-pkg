@@ -20,7 +20,7 @@ export interface Props {
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
   const { onChange, count, page, siblingCount = 1 } = props;
-  const { paginationContainer } = useMultiStyleConfig('Pagination');
+  const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
 
   const paginationRange = useMemo(() => {
     // Default number of page buttons: firstPage + lastPage + currentPage + left side dots + right side dots
@@ -81,7 +81,11 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
       </PaginationButton>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === Dots) {
-          return <Box key={`paginationButton-${index}`}>&#8230;</Box>;
+          return (
+            <Box __css={dots} key={`paginationButton-${index}`}>
+              &#8230;
+            </Box>
+          );
         }
 
         return (

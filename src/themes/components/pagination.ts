@@ -18,6 +18,17 @@ const baseStyle = {
     _hover: {
       backgroundColor: 'gray.100',
     },
+    _disabled: {
+      cursor: 'default',
+      _hover: {
+        backgroundColor: 'inherit',
+      },
+    },
+  },
+  dots: {
+    width: 'sm',
+    height: 'sm',
+    textAlign: 'center',
   },
 };
 
