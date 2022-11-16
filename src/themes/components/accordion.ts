@@ -23,6 +23,7 @@ const variantLight = defineStyle({
 
 const variantDark = defineStyle({
   button: {
+    textStyle: 'heading5',
     _hover: {
       bg: 'gray.700',
     },
@@ -34,6 +35,9 @@ const variantDark = defineStyle({
     _last: {
       borderColor: 'gray.700',
     },
+  },
+  panel: {
+    textStyle: 'body-small',
   },
 });
 
@@ -51,12 +55,12 @@ const baseStyle = defineStyle({
   },
   button: {
     textStyle: 'heading4',
-    paddingX: 'md',
-    paddingY: 'sm',
+    paddingX: 'lg',
+    paddingY: 'md',
   },
   panel: {
     pb: 'md',
-    paddingX: 'md',
+    paddingX: 'lg',
   },
   icon: {
     fontSize: 'xl',
