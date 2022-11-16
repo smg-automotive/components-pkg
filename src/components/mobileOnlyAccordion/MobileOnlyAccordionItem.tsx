@@ -9,9 +9,7 @@ const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
   props
 ) => {
   const { children, ...rest } = props;
-  const [isLargerThanMd] = useMediaQuery(
-    `(min-width: ${breakpoints.md.px}px)`
-  );
+  const [isLargerThanMd] = useMediaQuery(`(min-width: ${breakpoints.md.px}px)`);
   const desktopStyle = isLargerThanMd ? { border: 'none' } : {};
 
   return (

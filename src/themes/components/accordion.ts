@@ -1,7 +1,10 @@
-import { defineStyle, createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
+import {
+  createMultiStyleConfigHelpers,
+  defineStyle,
+} from '@chakra-ui/styled-system';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
-const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys)
+const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
 
 const variantLight = defineStyle({
   button: {
@@ -71,5 +74,5 @@ export default defineMultiStyleConfig({
   variants,
   defaultProps: {
     variant: 'light',
-  }
+  },
 });
