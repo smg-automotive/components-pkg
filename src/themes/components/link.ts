@@ -1,6 +1,6 @@
 import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
-const linkBaseStyle: SystemStyleObject = {
+export const linkBaseStyle: SystemStyleObject = {
   textStyle: 'body',
   color: 'blue.700',
   display: 'inline-flex',

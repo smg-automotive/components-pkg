@@ -16,6 +16,16 @@ jest.mock('embla-carousel-react', () => {
 });
 
 describe('<Carousel />', () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      value: jest.fn(() => ({
+        matches: false,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      })),
+    });
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -86,8 +96,69 @@ describe('<Carousel />', () => {
     expect(mockOnClick).toHaveBeenCalledWith(0);
   });
 
+  it('should have thumbnails on the fullscreen gallery', () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+    expect(screen.getByText('thumbnail 1')).toBeInTheDocument();
+    expect(screen.getByText('thumbnail 2')).toBeInTheDocument();
+    expect(screen.getByText('thumbnail 3')).toBeInTheDocument();
+    expect(screen.getByLabelText('thumbnail 1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
+  it('should change the main carousel slide when the user clicks on a thumbnail', async () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+    expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+    await userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
+    expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
+  it('should change the current thumbnail when the user changes the main carousel slide', async () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+    expect(screen.getByLabelText('thumbnail 1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+    await userEvent.click(screen.getByLabelText('next slide'));
+    expect(screen.getByLabelText('thumbnail 2 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
   it('should prerender a fallback slide on the server (emblaRef is undefined) when the start index is different than 0', () => {
-    (useEmblaCarousel as unknown as jest.Mock).mockReturnValueOnce([
+    (useEmblaCarousel as unknown as jest.Mock).mockReturnValue([
       undefined,
       undefined,
     ]);
@@ -110,7 +181,7 @@ describe('<Carousel />', () => {
   });
 
   it('should prerender the carousel on the server if the start index is 0', () => {
-    (useEmblaCarousel as unknown as jest.Mock).mockReturnValueOnce([
+    (useEmblaCarousel as unknown as jest.Mock).mockReturnValue([
       undefined,
       undefined,
     ]);
