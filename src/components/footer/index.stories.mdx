@@ -11,8 +11,8 @@ import Footer from './index.tsx';
   args={{
     brand: 'as24',
     language: 'de',
+    environement: 'preprod',
     useAbsoluteUrls: true,
-    isProduction: false,
   }}
   argTypes={{
     brand: {
@@ -21,6 +21,10 @@ import Footer from './index.tsx';
     },
     language: {
       options: ['de', 'fr', 'it', 'en'],
+      control: 'select',
+    },
+    environement: {
+      options: ['preprod', 'production'],
       control: 'select',
     },
   }}
