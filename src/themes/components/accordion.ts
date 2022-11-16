@@ -19,6 +19,9 @@ const variantLight = defineStyle({
       borderColor: 'gray.200',
     },
   },
+  panel: {
+    textStyle: 'body',
+  },
 });
 
 const variantDark = defineStyle({
@@ -39,12 +42,10 @@ const variantDark = defineStyle({
   panel: {
     textStyle: 'body-small',
   },
+  titleOnDesktop: {
+    textStyle: 'heading5',
+  },
 });
-
-const titleOnDesktop = {
-  textStyle: 'heading4',
-  p: 'md',
-};
 
 const baseStyle = defineStyle({
   container: {
@@ -65,7 +66,16 @@ const baseStyle = defineStyle({
   icon: {
     fontSize: 'xl',
   },
-  titleOnDesktop,
+  titleOnDesktop: {
+    textStyle: 'heading5',
+    paddingX: 'lg',
+    paddingY: 'md',
+  },
+  panelOnDesktop: {
+    textStyle: 'body-small',
+    pb: 'md',
+    paddingX: 'lg',
+  },
 });
 
 const variants = {

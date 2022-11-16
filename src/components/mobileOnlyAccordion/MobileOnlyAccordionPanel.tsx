@@ -8,7 +8,7 @@ import { breakpoints } from '../../themes';
 
 const MobileOnlyAccordionPanel: FC<PropsWithChildren> = (props) => {
   const { children, ...rest } = props;
-  const { panel } = useMultiStyleConfig('Accordion');
+  const { panelOnDesktop } = useMultiStyleConfig('Accordion');
   const [isLargerThanMd] = useMediaQuery(`(min-width: ${breakpoints.md.px}px)`);
 
   if (!isLargerThanMd) {
@@ -16,7 +16,7 @@ const MobileOnlyAccordionPanel: FC<PropsWithChildren> = (props) => {
   }
 
   return (
-    <Box __css={panel} pb="md" {...rest}>
+    <Box __css={panelOnDesktop} {...rest}>
       {children}
     </Box>
   );
