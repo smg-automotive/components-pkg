@@ -7,7 +7,7 @@ import {
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-} & Pick<ChakraButtonProps, 'children'>;
+} & Pick<ChakraButtonProps, 'children' | 'width'>;
 
 type SubmitType = {
   as?: 'button';
