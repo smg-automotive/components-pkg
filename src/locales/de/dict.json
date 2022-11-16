@@ -10,5 +10,28 @@
       "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
       "title": "Tut uns leid, da ist was schief gegangen"
     }
+  },
+  "footer": {
+    "as24": {  "sections": {
+      "brand": {
+        "title": "AutoScout24"
+      }
+    }},
+    "ms24": {
+      "sections": {
+      "brand": {
+        "title": "MotoScout24"
+      }
+    }
+  },
+    "sections": {
+      "brand": {
+        "advancedSearch": "Erweiterte Suche",
+        "dealerSearch": "Garagen & Händler suchen",
+        "makes": "Markenübersicht",
+        "models": "Modellübersicht",
+        "insurance": "Autoversicherungen"
+      }
+    }
   }
 }

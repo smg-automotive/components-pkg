@@ -8,9 +8,25 @@ import Footer from './index.tsx';
   parameters={{
     layout: 'fullscreen',
   }}
+  args={{
+    brand: 'as24',
+    language: 'de',
+    useAbsoluteUrls: true,
+    isProduction: false,
+  }}
+  argTypes={{
+    brand: {
+      options: ['as24', 'ms24'],
+      control: 'select',
+    },
+    language: {
+      options: ['de', 'fr', 'it', 'en'],
+      control: 'select',
+    },
+  }}
 />
 
-export const Template = () => <Footer />;
+export const Template = (args) => <Footer {...args} />;
 
 # Footer
 
