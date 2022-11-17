@@ -5,11 +5,11 @@ import { Container } from '@chakra-ui/react';
 import SocialMedia from './SocialMedia';
 import FooterSectionGrid from './SectionGrid';
 import FooterLanguageNavigation from './LanguageNavigation';
+import FooterCopyright from './Copyright';
 import { FooterConfig } from './config/factory';
 import { footerConfig } from './config';
 import FooterCompanies from './Companies';
 import TranslationProvider from '../translationProvider';
-import Text from '../text';
 import Divider from '../divider';
 import Center from '../center';
 import Box from '../box';
@@ -64,11 +64,7 @@ const Footer: FC<FooterProps> = ({
           <Center>
             <Container width="full" maxWidth="container.xl" paddingX="lg">
               <FooterCompanies config={config} />
-              <Center>
-                <Text textStyle="body-small">
-                  {t('footer.copyright', { year: '2022' })}
-                </Text>
-              </Center>
+              <FooterCopyright />
             </Container>
           </Center>
         </Box>
