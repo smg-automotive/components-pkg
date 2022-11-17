@@ -34,6 +34,8 @@ interface Props {
     numberOfSlides: number;
     onSlideClick: boolean;
     fullScreen: boolean;
+    onSlideEnter: boolean;
+    onSlideLeave: boolean;
   };
   action: (message: string) => (...args: unknown[]) => void;
 }
@@ -90,6 +92,12 @@ const FullScreenVariant: FC<Props> = ({ args, action }) => {
           slide: (
             <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={true} />
           ),
+          onSlideEnter: args.onSlideEnter
+            ? () => action('onSlideEnter')(i)
+            : undefined,
+          onSlideLeave: args.onSlideLeave
+            ? () => action('onSlideLeave')(i)
+            : undefined,
           thumbnail: (
             <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={true} />
           ),

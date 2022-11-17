@@ -20,7 +20,12 @@ type DefaultProps = {
   children: ReactNode[];
 } & SharedProps;
 
-type FullScreenSlide = { slide: ReactNode; thumbnail: ReactNode };
+type FullScreenSlide = {
+  slide: ReactNode;
+  thumbnail: ReactNode;
+  onSlideEnter?: () => void;
+  onSlideLeave?: () => void;
+};
 type FullScreenProps = {
   fullScreen: true;
   children: Array<FullScreenSlide>;
@@ -115,6 +120,29 @@ const Carousel: FC<Props> = (props) => {
     document.addEventListener('keydown', keydownListener);
     return () => document.removeEventListener('keydown', keydownListener);
   }, [fullScreen, scrollNext, scrollPrev]);
+
+  const current = mainCarousel?.selectedScrollSnap();
+  const previous = mainCarousel?.previousScrollSnap();
+
+  useEffect(() => {
+    if (!props.fullScreen) {
+      return;
+    }
+
+    if (current !== undefined) {
+      const currentSlide = props.children[current];
+      if (currentSlide.onSlideEnter) {
+        currentSlide.onSlideEnter();
+      }
+    }
+
+    if (previous !== undefined && previous !== current) {
+      const previousSlide = props.children[previous];
+      if (previousSlide.onSlideLeave) {
+        previousSlide.onSlideLeave();
+      }
+    }
+  }, [current, previous, props.fullScreen, props.children]);
 
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
