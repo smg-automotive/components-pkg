@@ -6,7 +6,9 @@ import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 import Text from '../text';
 import Stack from '../stack';
-import MobileOnlyAccordionSection from '../mobileOnlyAccordion/MobileOnlyAccordionSection';
+import MobileOnlyAccordionPanel from '../mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from '../mobileOnlyAccordion/MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from '../mobileOnlyAccordion/MobileOnlyAccordionButton';
 import MobileOnlyAccordion from '../mobileOnlyAccordion';
 import ListItem from '../list/ListItem';
 import List from '../list';
@@ -46,9 +48,6 @@ const FooterSectionGrid: FC<FooterSectionGridProps> = ({ config }) => {
     chunkSize: 2,
   });
 
-  console.log('sectionChunks', config.sections);
-  console.log('sectionChunks', sectionChunks);
-
   return (
     <Grid
       templateColumns={{
@@ -59,26 +58,32 @@ const FooterSectionGrid: FC<FooterSectionGridProps> = ({ config }) => {
       {sectionChunks.map((sectionChunk, chunkIndex) => {
         return (
           <GridItem key={`footerGridItem-${chunkIndex}`}>
-            <MobileOnlyAccordion allowMultiple={true}>
+            <MobileOnlyAccordion allowMultiple={true} variant="dark">
               {sectionChunk.map((sectionConfig, sectionIndex) => {
                 return (
-                  <MobileOnlyAccordionSection
+                  <MobileOnlyAccordionItem
                     key={`footerSection-${chunkIndex}-${sectionIndex}`}
-                    title={t(sectionConfig.title[0].translationKey)}
-                    color="white"
+                    borderTop="none"
+                    borderBottomWidth="1px"
+                    borderBottomColor="gray.700"
                   >
-                    <List>
-                      {sectionConfig.items.map((item, itemIndex) => {
-                        return (
-                          <ListItem
-                            key={`footerListItem-${chunkIndex}-${sectionIndex}-${itemIndex}`}
-                          >
-                            <FooterLink linkInstance={item} />
-                          </ListItem>
-                        );
-                      })}
-                    </List>
-                  </MobileOnlyAccordionSection>
+                    <MobileOnlyAccordionButton>
+                      {t(sectionConfig.title[0].translationKey)}
+                    </MobileOnlyAccordionButton>
+                    <MobileOnlyAccordionPanel>
+                      <List variant="sm">
+                        {sectionConfig.items.map((item, itemIndex) => {
+                          return (
+                            <ListItem
+                              key={`footerListItem-${chunkIndex}-${sectionIndex}-${itemIndex}`}
+                            >
+                              <FooterLink linkInstance={item} />
+                            </ListItem>
+                          );
+                        })}
+                      </List>
+                    </MobileOnlyAccordionPanel>
+                  </MobileOnlyAccordionItem>
                 );
               })}
             </MobileOnlyAccordion>

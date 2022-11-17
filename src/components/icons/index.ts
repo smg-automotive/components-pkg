@@ -20,3 +20,4 @@ export { YoutubeIcon } from './YoutubeIcon';
 export { InstagramIcon } from './InstagramIcon';
 export { TwitterIcon } from './TwitterIcon';
 export { FacebookIcon } from './FacebookIcon';
+export { ChevronUpLargeIcon } from './ChevronUpLargeIcon';

@@ -26,6 +26,7 @@ const FooterLink: FC<FooterLinkProps> = ({ linkInstance }) => {
     <ComponentsLink
       href={linkInstance.link?.[language]}
       color="white"
+      textStyle="body-small"
       {...targetSettings}
     >
       {t(linkInstance.translationKey)}

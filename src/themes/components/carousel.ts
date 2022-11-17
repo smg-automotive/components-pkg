@@ -7,20 +7,58 @@ const [r, g, b] = hexToRgb(colors.gray[900]);
 
 const parts = [
   'container',
+  'carousel',
   'slide',
   'slideContainer',
   'buttonContainer',
   'button',
   'icon',
+  'pagination',
+  'paginationButton',
+  'paginationIconContainer',
 ];
 
 const fullScreen = {
   container: {
-    height: '100%',
+    backgroundColor: 'black',
+    position: {
+      base: 'fixed',
+      md: 'static',
+    },
+  },
+  carousel: {
     paddingX: {
       md: '5xl',
     },
-    backgroundColor: 'black',
+  },
+  pagination: {
+    overflow: 'hidden',
+    position: 'relative',
+    paddingX: {
+      base: 'md',
+      md: '5xl',
+    },
+    height: '7.5rem',
+  },
+  paginationButton: {
+    position: 'absolute',
+    top: '0',
+    width: 'lg',
+    height: 'full',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    backgroundColor: 'transparent',
+  },
+  paginationIconContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 'md',
+    height: 'md',
+    borderRadius: 'sm',
+    backgroundColor: `rgba(${r},${g},${b},0.8)`,
   },
   buttonContainer: {
     backgroundColor: 'black',
@@ -46,6 +84,10 @@ const Carousel: ComponentStyleConfig = {
   parts,
   baseStyle: {
     container: {
+      height: 'full',
+      width: 'full',
+    },
+    carousel: {
       overflow: 'hidden',
       position: 'relative',
     },

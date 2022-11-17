@@ -1,6 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import MobileOnlyAccordionSection from './MobileOnlyAccordionSection';
+import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
 
 import ListItem from '../list/ListItem';
 import List from '../list';
@@ -8,34 +10,35 @@ import List from '../list';
 import MobileOnlyAccordion from './index';
 
 <Meta
-  title="Patterns/Navigation/HeaderFooterMenu"
+  title="Patterns/Navigation/MobileOnlyAccordion"
   component={MobileOnlyAccordion}
 />
 
 export const Template = (args) => (
-  <MobileOnlyAccordion {...args}>
-    <MobileOnlyAccordionSection title={args.title}>
-      {args.children}
-    </MobileOnlyAccordionSection>
-    <MobileOnlyAccordionSection title={args.title}>
-      {args.children}
-    </MobileOnlyAccordionSection>
+  <MobileOnlyAccordion variant={args.variant}>
+    <MobileOnlyAccordionItem>
+      <MobileOnlyAccordionButton>{args.title}</MobileOnlyAccordionButton>
+      <MobileOnlyAccordionPanel>{args.children}</MobileOnlyAccordionPanel>
+    </MobileOnlyAccordionItem>
+    <MobileOnlyAccordionItem>
+      <MobileOnlyAccordionButton>{args.title}</MobileOnlyAccordionButton>
+      <MobileOnlyAccordionPanel>{args.children}</MobileOnlyAccordionPanel>
+    </MobileOnlyAccordionItem>
   </MobileOnlyAccordion>
 );
 
-# MobileOnlyAccordionSection
+# Mobile Only Accordion
 
 ## Overview
 
 <Canvas>
   <Story
-    name="HeaderFooterMenu"
+    name="Mobile Only Accordion"
     parameters={{
       viewport: {},
     }}
     args={{
-      allowMultiple: true,
-      allowToggle: false,
+      variant: 'light',
       title: 'Section title',
       children: (
         <List>
@@ -44,6 +47,12 @@ export const Template = (args) => (
           <ListItem>Item 3</ListItem>
         </List>
       ),
+    }}
+    argTypes={{
+      variant: {
+        options: ['light', 'dark'],
+        control: 'select',
+      },
     }}
   >
     {Template.bind({})}
