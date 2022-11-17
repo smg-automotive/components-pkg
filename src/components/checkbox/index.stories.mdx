@@ -85,3 +85,22 @@ export const Template = ({ isChecked, ...args }) => {
     </Stack>
   </Story>
 </Canvas>
+
+## Indeterminate
+
+<Canvas>
+  <Story
+    name="Indeterminate"
+    args={{
+      name: 'Control',
+      value: 1,
+      isChecked: false,
+      isDisabled: false,
+      isInvalid: false,
+      isIndeterminate: true,
+      label: 'Indeterminate',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
