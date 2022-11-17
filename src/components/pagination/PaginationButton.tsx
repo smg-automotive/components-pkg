@@ -8,7 +8,7 @@ interface Props {
 }
 
 const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, isDisabled, isActive, ...rest } = props;
+  const { children, isDisabled, isActive, onClick } = props;
   const { paginationButton } = useMultiStyleConfig('Pagination', {
     variant: isActive ? 'active' : 'default',
   });
@@ -17,7 +17,7 @@ const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
       __css={paginationButton}
       disabled={isDisabled}
       aria-current={isActive}
-      {...rest}
+      onClick={onClick}
     >
       {children}
     </chakra.button>

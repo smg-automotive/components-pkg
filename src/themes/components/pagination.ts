@@ -1,20 +1,25 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
-const parts = ['paginationContainer', 'paginationButton'];
+const parts = ['paginationContainer', 'paginationButton', 'dots'];
 
 const baseStyle = {
   paginationContainer: {
     display: 'flex',
+    flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     textStyle: 'body',
   },
   paginationButton: {
-    width: 'md',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    minWidth: 'md',
     height: 'md',
     borderRadius: 'sm',
-    paddingX: 'sm',
     _hover: {
       backgroundColor: 'gray.100',
     },
@@ -26,8 +31,8 @@ const baseStyle = {
     },
   },
   dots: {
-    width: 'sm',
-    height: 'sm',
+    minWidth: 'md',
+    height: 'auto',
     textAlign: 'center',
   },
 };
