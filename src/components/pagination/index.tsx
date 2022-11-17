@@ -6,20 +6,20 @@ import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
 
 const Dots = '...';
+const siblingCount = 1;
 const range = (start: number, end: number): Array<number> => {
   const length = end - start + 1;
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
 export interface Props {
-  count: number;
-  page: number;
-  siblingCount?: number;
+  totalPages: number;
+  currentPage: number;
   onChange: (page: number) => void;
 }
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
-  const { onChange, count, page, siblingCount = 1 } = props;
+  const { onChange, totalPages, currentPage } = props;
   const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
 
   const paginationRange = useMemo(() => {
@@ -27,29 +27,29 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     const pageButtonsCount = 5;
     const totalPageButtonsCount = siblingCount + pageButtonsCount;
 
-    if (totalPageButtonsCount >= count) {
-      return range(1, count);
+    if (totalPageButtonsCount >= totalPages) {
+      return range(1, totalPages);
     }
 
-    const leftSiblingIndex = Math.max(page - siblingCount, 1);
-    const rightSiblingIndex = Math.min(page + siblingCount, count);
+    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
+    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
 
     const shouldShowLeftDots = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < count - 2;
+    const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
 
     const firstPageIndex = 1;
-    const lastPageIndex = count;
+    const lastPageIndex = totalPages;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = range(1, leftItemCount);
 
-      return [...leftRange, Dots, count];
+      return [...leftRange, Dots, totalPages];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(count - rightItemCount + 1, count);
+      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
       return [firstPageIndex, Dots, ...rightRange];
     }
 
@@ -59,30 +59,37 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     }
 
     return [];
-  }, [count, siblingCount, page]);
+  }, [totalPages, currentPage]);
 
-  if (page === 0 || paginationRange.length < 2) {
+  if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
 
-  const onNext = () => onChange(page + 1);
-  const onPrevious = () => onChange(page - 1);
+  const onNext = () => onChange(currentPage + 1);
+  const onPrevious = () => onChange(currentPage - 1);
 
-  const isLastPage = page === paginationRange[paginationRange.length - 1];
+  const isLastPage =
+    currentPage === paginationRange[paginationRange.length - 1];
 
   return (
     <Box __css={paginationContainer}>
       <PaginationButton
-        isDisabled={page === 1}
+        isDisabled={currentPage === 1}
         onClick={onPrevious}
-        data-testid="prev-button"
+        ariaLabel="prev page"
       >
-        <ChevronLeftSmallIcon color={page === 1 ? 'gray.300' : 'gray.900'} />
+        <ChevronLeftSmallIcon
+          color={currentPage === 1 ? 'gray.300' : 'gray.900'}
+        />
       </PaginationButton>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === Dots) {
           return (
-            <Box __css={dots} key={`paginationButton-${index}`}>
+            <Box
+              __css={dots}
+              key={`paginationDots-${index}`}
+              aria-label={index === 1 ? 'left side dots' : 'right side dots'}
+            >
               &#8230;
             </Box>
           );
@@ -91,7 +98,8 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         return (
           <PaginationButton
             key={`paginationButton-${index}`}
-            isActive={pageNumber === page}
+            isActive={pageNumber === currentPage}
+            ariaLabel={`go to page ${pageNumber} of ${totalPages}`}
             onClick={() => onChange(pageNumber as number)}
           >
             {pageNumber}
@@ -101,7 +109,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
       <PaginationButton
         isDisabled={isLastPage}
         onClick={onNext}
-        data-testid="next-button"
+        ariaLabel="next page"
       >
         <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
       </PaginationButton>

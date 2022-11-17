@@ -11,8 +11,8 @@ export const Template = ({ count }) => {
     <div>
       <div>{`Page: ${currentPage}`}</div>
       <Pagination
-        count={count}
-        page={currentPage}
+        totalPages={count}
+        currentPage={currentPage}
         onChange={(page) => setPage(page)}
       />
     </div>

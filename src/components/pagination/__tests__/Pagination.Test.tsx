@@ -5,58 +5,102 @@ import { render, screen } from '@testing-library/react';
 import Pagination from '../index';
 
 const mockOnChange = jest.fn();
-const renderWrapper = (count = 5, page = 1) => {
+const renderWrapper = (totalPages = 5, currentPage = 1) => {
   return render(
-    <Pagination count={count} page={page} onChange={mockOnChange} />
+    <Pagination
+      totalPages={totalPages}
+      currentPage={currentPage}
+      onChange={mockOnChange}
+    />
   );
 };
 
 describe('<Pagination />', () => {
-  it('should render with next/prev buttons', async () => {
-    renderWrapper();
+  describe('render', () => {
+    it('should render pagination without dots', () => {
+      renderWrapper(5, 1);
 
-    const prev = screen.getByTestId('prev-button');
-    const next = screen.getByTestId('next-button');
+      const leftDots = screen.queryByLabelText('left side dots');
+      const rightDots = screen.queryByLabelText('right side dots');
 
-    expect(prev).toBeInTheDocument();
-    expect(next).toBeInTheDocument();
+      expect(leftDots).not.toBeInTheDocument();
+      expect(rightDots).not.toBeInTheDocument();
+    });
+
+    it('should render pagination with dots on right side', () => {
+      renderWrapper(10, 1);
+
+      const leftDots = screen.queryByLabelText('left side dots');
+      const rightDots = screen.queryByLabelText('right side dots');
+
+      expect(leftDots).not.toBeInTheDocument();
+      expect(rightDots).toBeInTheDocument();
+    });
+
+    it('should render pagination with dots on left side', () => {
+      renderWrapper(10, 10);
+
+      const leftDots = screen.queryByLabelText('left side dots');
+      const rightDots = screen.queryByLabelText('right side dots');
+
+      expect(leftDots).toBeInTheDocument();
+      expect(rightDots).not.toBeInTheDocument();
+    });
+
+    it('should render pagination with dots on both side', () => {
+      renderWrapper(10, 5);
+
+      const leftDots = screen.queryByLabelText('left side dots');
+      const rightDots = screen.queryByLabelText('right side dots');
+
+      expect(leftDots).toBeInTheDocument();
+      expect(rightDots).toBeInTheDocument();
+    });
+
+    it('should respect current page', () => {
+      renderWrapper(10, 1);
+
+      const currentPage = screen.getByText('1');
+      expect(currentPage).toHaveAttribute('aria-current', 'true');
+    });
   });
 
-  it('should render without next/prev buttons with one page', async () => {
-    renderWrapper(1);
+  describe('onChange', () => {
+    it('should call the onChange handler by click on a button', async () => {
+      renderWrapper(10, 1);
 
-    const prev = screen.queryByTestId('prev-button');
-    const next = screen.queryByTestId('next-button');
+      await userEvent.click(screen.getByText('2'));
+      expect(mockOnChange).toHaveBeenCalledWith(2);
+    });
 
-    expect(prev).not.toBeInTheDocument();
-    expect(next).not.toBeInTheDocument();
-  });
+    describe('first page is active', () => {
+      it('should not be able to change the page by click on Prev button', () => {
+        renderWrapper(10, 1);
 
-  it('should respect current page', async () => {
-    renderWrapper();
+        expect(screen.getByLabelText('prev page')).toBeDisabled();
+      });
 
-    const currentPage = screen.getByText('1');
-    expect(currentPage).toHaveAttribute('aria-current', 'true');
-  });
+      it('should be able to change the page by click on Next button', async () => {
+        renderWrapper(10, 1);
 
-  it('should call the onChange handler by click on a button', async () => {
-    renderWrapper();
+        await userEvent.click(screen.getByLabelText('next page'));
+        expect(mockOnChange).toHaveBeenCalledWith(2);
+      });
+    });
 
-    await userEvent.click(screen.getByText('2'));
-    expect(mockOnChange).toHaveBeenCalledWith(2);
-  });
+    describe('last page is active', () => {
+      it('should not be able to change the page by click on Next button', () => {
+        renderWrapper(10, 10);
 
-  it('should has prev button as disabled when first page is active', async () => {
-    renderWrapper(10, 1);
+        expect(screen.getByLabelText('next page')).toBeDisabled();
+      });
 
-    const prev = screen.getByTestId('prev-button');
-    expect(prev).toBeDisabled();
-  });
+      it('should be able to change the page by click on Prev button', async () => {
+        renderWrapper(10, 10);
 
-  it('should has next button as disabled when last page is active', async () => {
-    renderWrapper(10, 10);
-
-    const next = screen.getByTestId('next-button');
-    expect(next).toBeDisabled();
+        await userEvent.click(screen.getByLabelText('prev page'));
+        expect(mockOnChange).toHaveBeenCalledWith(9);
+      });
+    });
   });
 });

@@ -4,11 +4,12 @@ import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 interface Props {
   isDisabled?: boolean;
   isActive?: boolean;
+  ariaLabel: string;
   onClick: (e: unknown) => void;
 }
 
 const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, isDisabled, isActive, onClick, ...rest } = props;
+  const { children, isDisabled, isActive, onClick, ariaLabel } = props;
   const { paginationButton } = useMultiStyleConfig('Pagination', {
     variant: isActive ? 'active' : 'default',
   });
@@ -17,8 +18,8 @@ const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
       __css={paginationButton}
       disabled={isDisabled}
       aria-current={isActive}
+      aria-label={ariaLabel}
       onClick={onClick}
-      {...rest}
     >
       {children}
     </chakra.button>
