@@ -1,7 +1,7 @@
 import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 
 import Carousel from '../index';
 
@@ -28,6 +28,74 @@ describe('<Carousel />', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('triggers the onSlideEnter event on the first slide', () => {
+    const mockOnEnter = jest.fn();
+
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          {
+            slide: <div>slide 1</div>,
+            onSlideEnter: mockOnEnter,
+            thumbnail: <div>thumbnail 1</div>,
+          },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+
+    return waitFor(() => expect(mockOnEnter).toHaveBeenCalled());
+  });
+
+  it('triggers the onSlideEnter event on the navigation', () => {
+    const mockOnEnter = jest.fn();
+    const user = userEvent.setup();
+
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          {
+            slide: <div>slide 2</div>,
+            onSlideEnter: mockOnEnter,
+            thumbnail: <div>thumbnail 2</div>,
+          },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+
+    act(() => {
+      user.click(screen.getByText('thumbnail 2'));
+    });
+    return waitFor(() => expect(mockOnEnter).toHaveBeenCalled());
+  });
+
+  it('triggers the onSlideLEave event on the navigation', () => {
+    const mockOnLeave = jest.fn();
+    const user = userEvent.setup();
+
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          {
+            slide: <div>slide 1</div>,
+            onSlideLeave: mockOnLeave,
+            thumbnail: <div>thumbnail 1</div>,
+          },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>
+    );
+
+    act(() => {
+      user.click(screen.getByText('thumbnail 2'));
+    });
+    return waitFor(() => expect(mockOnLeave).toHaveBeenCalled());
   });
 
   it('should create the carousel in infinite mode', async () => {
