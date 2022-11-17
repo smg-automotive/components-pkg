@@ -87,6 +87,8 @@ const Carousel: FC<Props> = (props) => {
   const onSelect = useCallback(() => {
     if (!mainCarousel) return;
     const newIndex = mainCarousel.selectedScrollSnap();
+    const previousIndex = mainCarousel.previousScrollSnap();
+
     setSelectedIndex(newIndex);
     if (paginationCarousel && hasPagination) {
       const slidesToScroll = paginationCarousel.slidesInView().length;
@@ -95,7 +97,32 @@ const Carousel: FC<Props> = (props) => {
     if (onSlideSelect) {
       onSlideSelect(newIndex);
     }
-  }, [mainCarousel, paginationCarousel, onSlideSelect, hasPagination]);
+
+    if (!props.fullScreen) {
+      return;
+    }
+
+    if (newIndex !== undefined) {
+      const currentSlide = props.children[newIndex];
+      if (currentSlide.onSlideEnter) {
+        currentSlide.onSlideEnter();
+      }
+    }
+
+    if (previousIndex !== undefined && previousIndex !== newIndex) {
+      const previousSlide = props.children[previousIndex];
+      if (previousSlide.onSlideLeave) {
+        previousSlide.onSlideLeave();
+      }
+    }
+  }, [
+    mainCarousel,
+    paginationCarousel,
+    onSlideSelect,
+    hasPagination,
+    props.children,
+    props.fullScreen,
+  ]);
 
   useEffect(() => {
     if (!mainCarousel) return;
@@ -120,29 +147,6 @@ const Carousel: FC<Props> = (props) => {
     document.addEventListener('keydown', keydownListener);
     return () => document.removeEventListener('keydown', keydownListener);
   }, [fullScreen, scrollNext, scrollPrev]);
-
-  const current = mainCarousel?.selectedScrollSnap();
-  const previous = mainCarousel?.previousScrollSnap();
-
-  useEffect(() => {
-    if (!props.fullScreen) {
-      return;
-    }
-
-    if (current !== undefined) {
-      const currentSlide = props.children[current];
-      if (currentSlide.onSlideEnter) {
-        currentSlide.onSlideEnter();
-      }
-    }
-
-    if (previous !== undefined && previous !== current) {
-      const previousSlide = props.children[previous];
-      if (previousSlide.onSlideLeave) {
-        previousSlide.onSlideLeave();
-      }
-    }
-  }, [current, previous, props.fullScreen, props.children]);
 
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
