@@ -13,6 +13,7 @@ export interface LinkInstance {
   link?: LocalizedLinks;
   target?: LinkTargets;
   isVisible: boolean;
+  onClick?: () => void;
 }
 
 interface LinkSectionConfig {

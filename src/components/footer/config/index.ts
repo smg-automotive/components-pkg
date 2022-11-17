@@ -1,5 +1,13 @@
 import { LinkConfig } from './link';
 
+declare global {
+  interface Window {
+    OneTrust: {
+      ToggleInfoDisplay: () => void;
+    };
+  }
+}
+
 interface LinkSectionConfig {
   title: LinkConfig[];
   items: LinkConfig[];
@@ -304,19 +312,16 @@ export const footerConfig: FooterConfigInterface = {
           },
         },
         {
-          translationKey: 'footer.sections.legal.imprint',
+          translationKey: 'footer.sections.legal.cookieSettings',
           visibilitySettings: {
             brand: { as24: true, ms24: false },
           },
-          link: {
-            de: '/de/content/impressum',
-            en: '/de/content/impressum',
-            fr: 'TODO',
-            it: 'TODO',
+          onClick: () => {
+            window.OneTrust?.ToggleInfoDisplay();
           },
         },
         {
-          translationKey: 'footer.sections.legal.cookieSettings',
+          translationKey: 'footer.sections.legal.imprint',
           visibilitySettings: {
             brand: { as24: true, ms24: false },
           },
@@ -331,14 +336,164 @@ export const footerConfig: FooterConfigInterface = {
     },
   ],
   apps: {
-    android: [],
-    apple: [],
+    android: [
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: true, ms24: false },
+        },
+        link: {
+          de: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
+          en: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
+          fr: 'TODO',
+          it: 'TODO',
+        },
+        target: '_blank',
+      },
+    ],
+    apple: [
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: true, ms24: false },
+        },
+        link: {
+          de: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
+          en: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
+          fr: 'TODO',
+          it: 'TODO',
+        },
+        target: '_blank',
+      },
+    ],
   },
   socialMedia: {
-    facebook: [],
-    instagram: [],
-    twitter: [],
-    youtube: [],
+    facebook: [
+      {
+        translationKey: 't',
+        visibilitySettings: {
+          brand: { as24: true, ms24: false },
+        },
+        link: {
+          de: 'https://www.facebook.com/autoscout24.ch',
+          en: 'https://www.facebook.com/autoscout24.ch',
+          fr: 'TODO',
+          it: 'TODO',
+        },
+        target: '_blank',
+      },
+    ],
+    instagram: [
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: true, ms24: false },
+        },
+        link: {
+          de: 'https://www.instagram.com/autoscout24ch/',
+          en: 'https://www.instagram.com/autoscout24ch/',
+          fr: 'TODO',
+          it: 'TODO',
+        },
+        target: '_blank',
+      },
+    ],
+    twitter: [
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: true, ms24: false },
+        },
+        link: {
+          de: 'https://twitter.com/autoscout24_ch?lang=de',
+          en: 'https://twitter.com/autoscout24_ch?lang=en/',
+          fr: 'TODO',
+          it: 'TODO',
+        },
+        target: '_blank',
+      },
+    ],
+    youtube: [
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: true, ms24: false },
+        },
+        link: {
+          de: 'https://www.youtube.com/user/autoscout24schweiz',
+          en: 'https://www.youtube.com/user/autoscout24schweiz',
+          fr: 'TODO',
+          it: 'TODO',
+        },
+        target: '_blank',
+      },
+    ],
   },
-  companies: [],
+  companies: [
+    {
+      translationKey: 'footer.companies.smg',
+      visibilitySettings: {
+        brand: { as24: true, ms24: false },
+      },
+      link: {
+        de: 'https://swissmarketplace.group/de/',
+        en: 'https://swissmarketplace.group',
+        fr: 'TODO',
+        it: 'TODO',
+      },
+      target: '_blank',
+    },
+    {
+      translationKey: 'footer.companies.financeScout24',
+      visibilitySettings: {
+        brand: { as24: true, ms24: false },
+      },
+      link: {
+        de: 'https://www.financescout24.ch/de',
+        en: 'https://www.financescout24.ch/de',
+        fr: 'TODO',
+        it: 'TODO',
+      },
+      target: '_blank',
+    },
+    {
+      translationKey: 'footer.companies.immoScout24',
+      visibilitySettings: {
+        brand: { as24: true, ms24: false },
+      },
+      link: {
+        de: 'https://www.immoscout24.ch/de',
+        en: 'https://www.immoscout24.ch/en',
+        fr: 'TODO',
+        it: 'TODO',
+      },
+      target: '_blank',
+    },
+    {
+      translationKey: 'footer.companies.motoScout24',
+      visibilitySettings: {
+        brand: { as24: true, ms24: false },
+      },
+      link: {
+        de: 'https://www.motoscout24.ch/de/',
+        en: 'https://www.motoscout24.ch/de/',
+        fr: 'TODO',
+        it: 'TODO',
+      },
+      target: '_blank',
+    },
+    {
+      translationKey: 'footer.companies.anibis',
+      visibilitySettings: {
+        brand: { as24: true, ms24: false },
+      },
+      link: {
+        de: 'https://www.anibis.ch/de',
+        en: 'https://www.anibis.ch/de',
+        fr: 'TODO',
+        it: 'TODO',
+      },
+      target: '_blank',
+    },
+  ],
 };

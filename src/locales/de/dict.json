@@ -15,15 +15,16 @@
     "as24": {  "sections": {
       "brand": {
         "title": "AutoScout24"
+        }
       }
-    }},
+    },
     "ms24": {
       "sections": {
       "brand": {
-        "title": "MotoScout24"
+          "title": "MotoScout24"
+        }
       }
-    }
-  },
+    },
     "sections": {
       "brand": {
         "advancedSearch": "Erweiterte Suche",
@@ -59,8 +60,19 @@
         "agb": "AGB",
         "dataProtection": "Datenschutz",
         "imprint": "Impressum",
-        "cookieSettings": "TODO"
+        "cookieSettings": "Voreinstellungen verwalten"
       }
-    }
+    },
+    "apps": {
+      "title": "Mobile Apps"
+    },
+    "companies": {
+      "smg": "SMG Swiss Marketplace Group",
+      "financeScout24": "FinanceScout24",
+      "immoScout24": "ImmoScout24",
+      "motoScout24": "MotoScout24",
+      "anibis": "anibis.ch"
+    },
+    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Ihr Partner für Auto Occasionen - Suchen & kaufen Sie Autos im grössten Automarkt der Schweiz"
   }
 }

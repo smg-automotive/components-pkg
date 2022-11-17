@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { LinkInstance } from './config/factory';
@@ -7,12 +7,38 @@ import { default as ComponentsLink } from '../link';
 
 interface FooterLinkProps {
   linkInstance: LinkInstance;
+  bold?: boolean;
 }
-const FooterLink: FC<FooterLinkProps> = ({ linkInstance }) => {
+const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
+  linkInstance,
+  children,
+  bold = false,
+}) => {
   const { t, language } = useI18n();
 
-  if (!linkInstance.link?.[language]) {
-    return <Text>{t(linkInstance.translationKey)}</Text>;
+  const boldStyles = bold
+    ? {
+        fontWeight: 'bold',
+      }
+    : {};
+
+  if (!linkInstance.link?.[language] && !linkInstance.onClick) {
+    return <Text {...boldStyles}>{t(linkInstance.translationKey)}</Text>;
+  }
+
+  if (linkInstance.onClick) {
+    return (
+      <ComponentsLink
+        type="button"
+        as="button"
+        color="white"
+        textStyle="body-small"
+        onClick={linkInstance.onClick}
+        {...boldStyles}
+      >
+        {t(linkInstance.translationKey)}
+      </ComponentsLink>
+    );
   }
 
   const targetSettings = linkInstance.target
@@ -28,8 +54,9 @@ const FooterLink: FC<FooterLinkProps> = ({ linkInstance }) => {
       color="white"
       textStyle="body-small"
       {...targetSettings}
+      {...boldStyles}
     >
-      {t(linkInstance.translationKey)}
+      {children ? children : t(linkInstance.translationKey)}
     </ComponentsLink>
   );
 };

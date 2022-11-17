@@ -10,8 +10,6 @@ type Props = {
 const MobileOnlyAccordion: FC<PropsWithChildren<Props>> = (props) => {
   const { children, ...restProps } = props;
 
-  console.log('accordion rest', restProps);
-
   return (
     <Accordion allowMultiple {...restProps}>
       {children}

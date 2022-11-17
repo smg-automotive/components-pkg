@@ -12,6 +12,7 @@ type LocalizedLinks = Record<Language, string>;
 export interface LinkConfig {
   translationKey: string;
   link?: LocalizedLinks;
+  onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
 }
@@ -21,6 +22,7 @@ export class Link {
   translationKey: string;
   link?: LocalizedLinks;
   target?: LinkTargets;
+  onClick?: () => void;
   isVisible: boolean;
   linkProtocol: string;
   domains: Record<Brand, Record<Environment, string>>;
@@ -38,6 +40,7 @@ export class Link {
   }) {
     this.translationKey = config.translationKey;
     this.target = config.target;
+    this.onClick = config.onClick;
     this.isVisible = Link.determineVisibility({
       visibilitySettings: config.visibilitySettings,
       brand,
