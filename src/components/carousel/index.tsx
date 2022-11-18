@@ -20,7 +20,12 @@ type DefaultProps = {
   children: ReactNode[];
 } & SharedProps;
 
-type FullScreenSlide = { slide: ReactNode; thumbnail: ReactNode };
+type FullScreenSlide = {
+  slide: ReactNode;
+  thumbnail: ReactNode;
+  onSlideEnter?: () => void;
+  onSlideLeave?: () => void;
+};
 type FullScreenProps = {
   fullScreen: true;
   children: Array<FullScreenSlide>;
@@ -82,6 +87,8 @@ const Carousel: FC<Props> = (props) => {
   const onSelect = useCallback(() => {
     if (!mainCarousel) return;
     const newIndex = mainCarousel.selectedScrollSnap();
+    const previousIndex = mainCarousel.previousScrollSnap();
+
     setSelectedIndex(newIndex);
     if (paginationCarousel && hasPagination) {
       const slidesToScroll = paginationCarousel.slidesInView().length;
@@ -90,7 +97,32 @@ const Carousel: FC<Props> = (props) => {
     if (onSlideSelect) {
       onSlideSelect(newIndex);
     }
-  }, [mainCarousel, paginationCarousel, onSlideSelect, hasPagination]);
+
+    if (!props.fullScreen) {
+      return;
+    }
+
+    if (newIndex !== undefined) {
+      const currentSlide = props.children[newIndex];
+      if (currentSlide.onSlideEnter) {
+        currentSlide.onSlideEnter();
+      }
+    }
+
+    if (previousIndex !== undefined && previousIndex !== newIndex) {
+      const previousSlide = props.children[previousIndex];
+      if (previousSlide.onSlideLeave) {
+        previousSlide.onSlideLeave();
+      }
+    }
+  }, [
+    mainCarousel,
+    paginationCarousel,
+    onSlideSelect,
+    hasPagination,
+    props.children,
+    props.fullScreen,
+  ]);
 
   useEffect(() => {
     if (!mainCarousel) return;

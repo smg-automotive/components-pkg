@@ -34,8 +34,10 @@ interface Props {
     numberOfSlides: number;
     onSlideClick: boolean;
     fullScreen: boolean;
+    onSlideEnter: boolean;
+    onSlideLeave: boolean;
   };
-  action: (message: string) => void;
+  action: (message: string) => (...args: unknown[]) => void;
 }
 
 interface SlideProps {
@@ -69,9 +71,7 @@ const DefaultVariant: FC<Props> = ({ args, action }) => {
   return (
     <FullHeight>
       <Carousel
-        onSlideClick={
-          args.onSlideClick ? () => action('onSlideClick') : undefined
-        }
+        onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
       >
         {Array.from({ length: args.numberOfSlides || 6 }).map((_, i) => (
           <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={false} />
@@ -86,14 +86,18 @@ const FullScreenVariant: FC<Props> = ({ args, action }) => {
     <FullHeight>
       <Carousel
         fullScreen={true}
-        onSlideClick={
-          args.onSlideClick ? () => action('onSlideClick') : undefined
-        }
+        onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
       >
         {Array.from({ length: args.numberOfSlides || 6 }).map((_, i) => ({
           slide: (
             <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={true} />
           ),
+          onSlideEnter: args.onSlideEnter
+            ? () => action('onSlideEnter')(i)
+            : undefined,
+          onSlideLeave: args.onSlideLeave
+            ? () => action('onSlideLeave')(i)
+            : undefined,
           thumbnail: (
             <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={true} />
           ),
