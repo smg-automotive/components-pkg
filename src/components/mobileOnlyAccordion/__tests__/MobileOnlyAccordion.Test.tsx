@@ -1,7 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import MobileOnlyAccordionSection from '../MobileOnlyAccordionSection';
+import MobileOnlyAccordionPanel from '../MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from '../MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from '../MobileOnlyAccordionButton';
 import MobileOnlyAccordion from '../index';
 
 const mockMatchMedia = (match: boolean) => {
@@ -17,12 +19,15 @@ const mockMatchMedia = (match: boolean) => {
 const renderWrapper = () =>
   render(
     <MobileOnlyAccordion>
-      <MobileOnlyAccordionSection title="Section 1">
-        <ul>
-          <li>menu item 1</li>
-          <li>menu item 2</li>
-        </ul>
-      </MobileOnlyAccordionSection>
+      <MobileOnlyAccordionItem>
+        <MobileOnlyAccordionButton>Section 1</MobileOnlyAccordionButton>
+        <MobileOnlyAccordionPanel>
+          <ul>
+            <li>menu item 1</li>
+            <li>menu item 2</li>
+          </ul>
+        </MobileOnlyAccordionPanel>
+      </MobileOnlyAccordionItem>
     </MobileOnlyAccordion>
   );
 
@@ -33,7 +38,7 @@ describe('<MobileOnlyAccordion />', () => {
   });
 
   it('should render with accordion', async () => {
-    mockMatchMedia(true);
+    mockMatchMedia(false);
 
     renderWrapper();
 
@@ -44,7 +49,7 @@ describe('<MobileOnlyAccordion />', () => {
   });
 
   it('should render without accordion', async () => {
-    mockMatchMedia(false);
+    mockMatchMedia(true);
 
     renderWrapper();
 
