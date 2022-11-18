@@ -8,6 +8,7 @@ export { ChevronLeftLargeIcon } from './ChevronLeftLargeIcon';
 export { ChevronRightLargeIcon } from './ChevronRightLargeIcon';
 export { ChevronLeftSmallIcon } from './ChevronLeftSmallIcon';
 export { ChevronRightSmallIcon } from './ChevronRightSmallIcon';
+export { ChevronRightTinyIcon } from './ChevronRightTinyIcon';
 export { ErrorIcon } from './ErrorIcon';
 export { CloseIcon } from './CloseIcon';
 export { CheckmarkIcon } from './CheckmarkIcon';
