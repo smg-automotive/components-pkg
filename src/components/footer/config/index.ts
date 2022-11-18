@@ -575,19 +575,6 @@ export const footerConfig: FooterConfigInterface = {
   },
   companies: [
     {
-      translationKey: 'footer.companies.autoScout24',
-      visibilitySettings: {
-        brand: { as24: true, ms24: false },
-      },
-      link: {
-        de: 'https://www.autoscout24.ch/de/',
-        en: 'https://www.autoscout24.ch/de/',
-        fr: 'https://www.autoscout24.ch/fr/',
-        it: 'https://www.autoscout24.ch/it/',
-      },
-      target: '_blank',
-    },
-    {
       translationKey: 'footer.companies.smg',
       visibilitySettings: {
         brand: { as24: true, ms24: true },
@@ -597,6 +584,19 @@ export const footerConfig: FooterConfigInterface = {
         en: 'https://swissmarketplace.group',
         fr: 'https://swissmarketplace.group/fr/',
         it: 'https://swissmarketplace.group',
+      },
+      target: '_blank',
+    },
+    {
+      translationKey: 'footer.companies.autoScout24',
+      visibilitySettings: {
+        brand: { as24: false, ms24: true },
+      },
+      link: {
+        de: 'https://www.autoscout24.ch/de/',
+        en: 'https://www.autoscout24.ch/de/',
+        fr: 'https://www.autoscout24.ch/fr/',
+        it: 'https://www.autoscout24.ch/it/',
       },
       target: '_blank',
     },
