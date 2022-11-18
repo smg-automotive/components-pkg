@@ -10,5 +10,72 @@
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, quelque chose a mal tourné"
     }
+  },
+  "footer": {
+    "apps": {
+      "title": "App download"
+    },
+    "as24": {
+      "sections": {
+        "brand": {
+          "insurance": "Assurances voiture",
+          "title": "AutoScout24"
+        }
+      }
+    },
+    "companies": {
+      "anibis": "anibis.ch",
+      "autoscout24": "AutoScout24",
+      "financeScout24": "FinanceScout24",
+      "immoScout24": "ImmoScout24",
+      "motoScout24": "MotoScout24",
+      "smg": "SMG Swiss Marketplace Group"
+    },
+    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Votre partenaire pour voitures d'occasion - recherche & achat de véhicules sur le plus grand marché automobile de Suisse",
+    "ms24": {
+      "sections": {
+        "brand": {
+          "insurance": "Assurances moto",
+          "title": "MotoScout24"
+        }
+      }
+    },
+    "sections": {
+      "aboutUs": {
+        "contact": "Contact",
+        "factsAndFigures": "Facts & Figures",
+        "jobs": "Postes vacants",
+        "newsletter": "Newsletter",
+        "title": "A propos de nous"
+      },
+      "advertisement": {
+        "smg": "Sur les portails SMG Swiss Marketplace Group",
+        "title": "Publicité"
+      },
+      "brand": {
+        "advancedSearch": "Recherche avancée",
+        "dealerSearch": "Rechercher point de vente",
+        "makes": "Aperçu marques",
+        "models": "Vue d’ensemble des modèles"
+      },
+      "legal": {
+        "agb": "Conditions générales",
+        "cookieSettings": "Gérer mes préférences",
+        "dataProtection": "Protection des données",
+        "imprint": "Impressum",
+        "rules": "Règles d'insertion",
+        "securityHint": "Conseils de securité",
+        "title": "Mentions légales et sécurité"
+      },
+      "list": {
+        "productsAndPrices": "Produits et prix",
+        "title": "Insérer",
+        "vehicles": "Véhicules"
+      },
+      "media": {
+        "contact": "Contact médias",
+        "title": "Médias"
+      }
+    }
   }
 }

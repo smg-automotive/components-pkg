@@ -54,8 +54,20 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/auto/suche',
             en: '/de/auto/suche',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/voiture/recherche',
+            it: '/it/automobile/ricerca',
+          },
+        },
+        {
+          translationKey: 'footer.sections.brand.advancedSearch',
+          visibilitySettings: {
+            brand: { as24: false, ms24: true },
+          },
+          link: {
+            de: '/de/motorrad/suche',
+            en: '/de/motorrad/suche',
+            fr: '/fr/moto/recherche',
+            it: '/it/moto/ricerca',
           },
         },
         {
@@ -66,8 +78,20 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/auto-haendler-garage/suche',
             en: '/de/auto-haendler-garage/suche',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/voiture-concessionaires-garages/recherche',
+            it: '/it/auto-concessionari-garage/ricerca',
+          },
+        },
+        {
+          translationKey: 'footer.sections.brand.dealerSearch',
+          visibilitySettings: {
+            brand: { as24: false, ms24: true },
+          },
+          link: {
+            de: '/de/moto-haendler-garage/suche',
+            en: '/de/moto-haendler-garage/suche',
+            fr: '/fr/moto-concessionaires-garage/recherche',
+            it: '/it/moto-concessionari-garage/ricerca',
           },
         },
         {
@@ -78,8 +102,20 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/auto-marken',
             en: '/de/auto-marken',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/marques-de-vehicules',
+            it: '/it/marche-automobili',
+          },
+        },
+        {
+          translationKey: 'footer.sections.brand.makes',
+          visibilitySettings: {
+            brand: { as24: false, ms24: true },
+          },
+          link: {
+            de: '/de/motorrad-marken',
+            en: '/de/motorrad-marken',
+            fr: '/fr/marques-motos',
+            it: '/it/marche-moto',
           },
         },
         {
@@ -90,20 +126,33 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/auto-modelle',
             en: '/de/auto-modelle',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/modeles-voitures',
+            it: '/it/modelli-automobili',
           },
         },
         {
-          translationKey: 'footer.sections.brand.insurance',
+          translationKey: 'footer.as24.sections.brand.insurance',
           visibilitySettings: {
             brand: { as24: true, ms24: false },
           },
           link: {
             de: 'https://www.financescout24.ch/de/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_footer_car_',
             en: 'https://www.financescout24.ch/de/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_footer_car_',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: 'https://www.financescout24.ch/fr/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_footer_car_',
+            it: 'https://www.financescout24.ch/it/trova-assicurazione-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_footer_car_',
+          },
+          target: '_blank',
+        },
+        {
+          translationKey: 'footer.ms24.sections.brand.insurance',
+          visibilitySettings: {
+            brand: { as24: false, ms24: true },
+          },
+          link: {
+            de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=link_footer_moto_',
+            en: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=link_footer_moto_',
+            fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=link_footer_moto_',
+            it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=link_footer_moto_',
           },
           target: '_blank',
         },
@@ -127,8 +176,20 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/auto-verkaufen',
             en: '/de/auto-verkaufen',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/vendre-voiture',
+            it: '',
+          },
+        },
+        {
+          translationKey: 'footer.sections.list.vehicles',
+          visibilitySettings: {
+            brand: { as24: false, ms24: true },
+          },
+          link: {
+            de: '/de/motorrad-inserieren',
+            en: '/de/motorrad-inserieren',
+            fr: '/fr/member/insertion/type',
+            it: '/it/member/insertion/type',
           },
         },
         {
@@ -139,8 +200,8 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/produkte-und-preise',
             en: '/de/produkte-und-preise',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/produits-et-prix',
+            it: '/it/prodotti-e-prezzi',
           },
         },
       ],
@@ -158,49 +219,49 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.contact',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: '/de/contact/',
             en: '/de/contact/',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/contact/',
+            it: '/it/contact/',
           },
         },
         {
           translationKey: 'footer.sections.aboutUs.newsletter',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: '/de/newsletter/?ac=rg',
             en: '/de/newsletter/?ac=rg',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/newsletter/?ac=rg',
+            it: '/it/newsletter/?ac=rg',
           },
         },
         {
           translationKey: 'footer.sections.aboutUs.factsAndFigures',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/automotive/',
             en: 'https://swissmarketplace.group/automotive/',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: 'https://swissmarketplace.group/fr/automotive/',
+            it: 'https://swissmarketplace.group/it/automotive/',
           },
         },
         {
           translationKey: 'footer.sections.aboutUs.jobs',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/karriere/',
             en: 'https://swissmarketplace.group/career/',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: 'https://swissmarketplace.group/fr/carrieres/',
+            it: 'https://swissmarketplace.group/career/',
           },
         },
       ],
@@ -218,13 +279,13 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.advertisement.smg',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/werbung/',
             en: 'https://swissmarketplace.group/advertising/',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: 'https://swissmarketplace.group/fr/publicite/',
+            it: 'https://swissmarketplace.group/advertising/',
           },
         },
       ],
@@ -242,13 +303,13 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.media.contact',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: 'https://medien-de.autoscout24.ch/',
             en: 'https://medien-de.autoscout24.ch/',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: 'https://medien-fr.autoscout24.ch/',
+            it: 'https://medien-de.autoscout24.ch/',
           },
         },
       ],
@@ -266,55 +327,55 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.securityHint',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
             en: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/c/d/information/conseils-de-s%C3%A9curit%C3%A9-d-autoscout24-prot%C3%A8gez-vous-contre-la-fraude?a=11818',
+            it: '/it/c/d/informazione/avvisi-sulla-sicurezza-di-autoscout24-ecco-come-tutelarsi-dai-truffatori?a=13949',
           },
         },
         {
           translationKey: 'footer.sections.legal.rules',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: '/de/content/insertionsregeln',
             en: '/de/content/insertionsregeln',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/content/regles-d-insertion',
+            it: '/it/content/regole-d-inserzione',
           },
         },
         {
           translationKey: 'footer.sections.legal.agb',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: '/de/content/agb',
             en: '/de/content/agb',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/content/conditions-generales',
+            it: '/it/content/condizioni-generali',
           },
         },
         {
           translationKey: 'footer.sections.legal.dataProtection',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/datenschutzerklaerung/',
             en: 'https://swissmarketplace.group/privacy/',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: 'https://swissmarketplace.group/fr/protection-des-donnees-2/',
+            it: 'https://swissmarketplace.group/privacy/',
           },
         },
         {
           translationKey: 'footer.sections.legal.cookieSettings',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           onClick: () => {
             window.OneTrust?.ToggleInfoDisplay();
@@ -323,13 +384,13 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.imprint',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { as24: true, ms24: true },
           },
           link: {
             de: '/de/content/impressum',
             en: '/de/content/impressum',
-            fr: 'TODO',
-            it: 'TODO',
+            fr: '/fr/content/mentionslegales',
+            it: '/it/content/colofone',
           },
         },
       ],
@@ -345,8 +406,21 @@ export const footerConfig: FooterConfigInterface = {
         link: {
           de: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
           en: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
-          fr: 'TODO',
-          it: 'TODO',
+          fr: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
+          it: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
+        },
+        target: '_blank',
+      },
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: false, ms24: true },
+        },
+        link: {
+          de: 'https://9s76.app.link/MS24_Web_Footer_GP?%243p=a_custom_358667',
+          en: 'https://9s76.app.link/MS24_Web_Footer_GP?%243p=a_custom_358667',
+          fr: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
+          it: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
         },
         target: '_blank',
       },
@@ -360,8 +434,21 @@ export const footerConfig: FooterConfigInterface = {
         link: {
           de: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
           en: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
-          fr: 'TODO',
-          it: 'TODO',
+          fr: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
+          it: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
+        },
+        target: '_blank',
+      },
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: false, ms24: true },
+        },
+        link: {
+          de: 'https://9s76.app.link/MS24_Web_Footer_iOS?%243p=a_custom_358667',
+          en: 'https://9s76.app.link/MS24_Web_Footer_iOS?%243p=a_custom_358667',
+          fr: 'https://9s76.app.link/MS24_Web_Footer_iOS?%243p=a_custom_358667',
+          it: 'https://9s76.app.link/MS24_Web_Footer_iOS?%243p=a_custom_358667',
         },
         target: '_blank',
       },
@@ -370,15 +457,28 @@ export const footerConfig: FooterConfigInterface = {
   socialMedia: {
     facebook: [
       {
-        translationKey: 't',
+        translationKey: '',
         visibilitySettings: {
           brand: { as24: true, ms24: false },
         },
         link: {
           de: 'https://www.facebook.com/autoscout24.ch',
           en: 'https://www.facebook.com/autoscout24.ch',
-          fr: 'TODO',
-          it: 'TODO',
+          fr: 'https://www.facebook.com/autoscout24.ch',
+          it: 'https://www.facebook.com/autoscout24.ch',
+        },
+        target: '_blank',
+      },
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: false, ms24: true },
+        },
+        link: {
+          de: 'https://www.facebook.com/motoscout24.ch',
+          en: 'https://www.facebook.com/motoscout24.ch',
+          fr: 'https://www.facebook.com/motoscout24.ch',
+          it: 'https://www.facebook.com/motoscout24.ch',
         },
         target: '_blank',
       },
@@ -392,8 +492,21 @@ export const footerConfig: FooterConfigInterface = {
         link: {
           de: 'https://www.instagram.com/autoscout24ch/',
           en: 'https://www.instagram.com/autoscout24ch/',
-          fr: 'TODO',
-          it: 'TODO',
+          fr: 'https://www.instagram.com/autoscout24ch/',
+          it: 'https://www.instagram.com/autoscout24ch/',
+        },
+        target: '_blank',
+      },
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: false, ms24: true },
+        },
+        link: {
+          de: 'https://www.instagram.com/motoscout24ch/',
+          en: 'https://www.instagram.com/motoscout24ch/',
+          fr: 'https://www.instagram.com/motoscout24ch/',
+          it: 'https://www.instagram.com/motoscout24ch/',
         },
         target: '_blank',
       },
@@ -406,9 +519,22 @@ export const footerConfig: FooterConfigInterface = {
         },
         link: {
           de: 'https://twitter.com/autoscout24_ch?lang=de',
-          en: 'https://twitter.com/autoscout24_ch?lang=en/',
-          fr: 'TODO',
-          it: 'TODO',
+          en: 'https://twitter.com/autoscout24_ch?lang=en',
+          fr: 'https://twitter.com/autoscout24_ch?lang=fr',
+          it: 'https://twitter.com/autoscout24_ch?lang=it',
+        },
+        target: '_blank',
+      },
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: false, ms24: true },
+        },
+        link: {
+          de: 'https://twitter.com/motoscout24_ch?lang=de',
+          en: 'https://twitter.com/motoscout24_ch?lang=en',
+          fr: 'https://twitter.com/motoscout24_ch?lang=fr',
+          it: 'https://twitter.com/motoscout24_ch?lang=it',
         },
         target: '_blank',
       },
@@ -422,8 +548,21 @@ export const footerConfig: FooterConfigInterface = {
         link: {
           de: 'https://www.youtube.com/user/autoscout24schweiz',
           en: 'https://www.youtube.com/user/autoscout24schweiz',
-          fr: 'TODO',
-          it: 'TODO',
+          fr: 'https://www.youtube.com/user/autoscout24schweiz',
+          it: 'https://www.youtube.com/user/autoscout24schweiz',
+        },
+        target: '_blank',
+      },
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { as24: false, ms24: true },
+        },
+        link: {
+          de: 'https://www.youtube.com/user/motoscout24schweiz',
+          en: 'https://www.youtube.com/user/motoscout24schweiz',
+          fr: 'https://www.youtube.com/user/motoscout24schweiz',
+          it: 'https://www.youtube.com/user/motoscout24schweiz',
         },
         target: '_blank',
       },
@@ -431,41 +570,54 @@ export const footerConfig: FooterConfigInterface = {
   },
   companies: [
     {
-      translationKey: 'footer.companies.smg',
+      translationKey: 'footer.companies.autoScout24',
       visibilitySettings: {
         brand: { as24: true, ms24: false },
       },
       link: {
+        de: 'https://www.autoscout24.ch/de/',
+        en: 'https://www.autoscout24.ch/de/',
+        fr: 'https://www.autoscout24.ch/fr/',
+        it: 'https://www.autoscout24.ch/it/',
+      },
+      target: '_blank',
+    },
+    {
+      translationKey: 'footer.companies.smg',
+      visibilitySettings: {
+        brand: { as24: true, ms24: true },
+      },
+      link: {
         de: 'https://swissmarketplace.group/de/',
         en: 'https://swissmarketplace.group',
-        fr: 'TODO',
-        it: 'TODO',
+        fr: 'https://swissmarketplace.group/fr/',
+        it: 'https://swissmarketplace.group',
       },
       target: '_blank',
     },
     {
       translationKey: 'footer.companies.financeScout24',
       visibilitySettings: {
-        brand: { as24: true, ms24: false },
+        brand: { as24: true, ms24: true },
       },
       link: {
         de: 'https://www.financescout24.ch/de',
         en: 'https://www.financescout24.ch/de',
-        fr: 'TODO',
-        it: 'TODO',
+        fr: 'https://www.financescout24.ch/fr',
+        it: 'https://www.financescout24.ch/it',
       },
       target: '_blank',
     },
     {
       translationKey: 'footer.companies.immoScout24',
       visibilitySettings: {
-        brand: { as24: true, ms24: false },
+        brand: { as24: true, ms24: true },
       },
       link: {
         de: 'https://www.immoscout24.ch/de',
         en: 'https://www.immoscout24.ch/en',
-        fr: 'TODO',
-        it: 'TODO',
+        fr: 'https://www.immoscout24.ch/fr',
+        it: 'https://www.immoscout24.ch/it',
       },
       target: '_blank',
     },
@@ -477,21 +629,21 @@ export const footerConfig: FooterConfigInterface = {
       link: {
         de: 'https://www.motoscout24.ch/de/',
         en: 'https://www.motoscout24.ch/de/',
-        fr: 'TODO',
-        it: 'TODO',
+        fr: 'https://www.motoscout24.ch/fr/',
+        it: 'https://www.motoscout24.ch/it/',
       },
       target: '_blank',
     },
     {
       translationKey: 'footer.companies.anibis',
       visibilitySettings: {
-        brand: { as24: true, ms24: false },
+        brand: { as24: true, ms24: true },
       },
       link: {
         de: 'https://www.anibis.ch/de',
         en: 'https://www.anibis.ch/de',
-        fr: 'TODO',
-        it: 'TODO',
+        fr: 'https://www.anibis.ch/fr',
+        it: 'https://www.anibis.ch/it',
       },
       target: '_blank',
     },

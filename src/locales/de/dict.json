@@ -12,67 +12,70 @@
     }
   },
   "footer": {
-    "as24": {  "sections": {
-      "brand": {
-        "title": "AutoScout24"
+    "apps": {
+      "title": "Mobile Apps"
+    },
+    "as24": {
+      "sections": {
+        "brand": {
+          "insurance": "Autoversicherungen",
+          "title": "AutoScout24"
         }
       }
     },
+    "companies": {
+      "anibis": "anibis.ch",
+      "autoscout24": "AutoScout24",
+      "financeScout24": "FinanceScout24",
+      "immoScout24": "ImmoScout24",
+      "motoScout24": "MotoScout24",
+      "smg": "SMG Swiss Marketplace Group"
+    },
+    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Ihr Partner für Auto Occasionen - Suchen & kaufen Sie Autos im grössten Automarkt der Schweiz",
     "ms24": {
       "sections": {
-      "brand": {
+        "brand": {
+          "insurance": "Motorradversicherungen",
           "title": "MotoScout24"
         }
       }
     },
     "sections": {
+      "aboutUs": {
+        "contact": "Kontakt",
+        "factsAndFigures": "Facts & Figures",
+        "jobs": "Offene Stellen",
+        "newsletter": "Newsletter",
+        "title": "Über uns"
+      },
+      "advertisement": {
+        "smg": "Auf SMG Swiss Marketplace Group Portalen",
+        "title": "Werbung"
+      },
       "brand": {
         "advancedSearch": "Erweiterte Suche",
         "dealerSearch": "Garagen & Händler suchen",
         "makes": "Markenübersicht",
-        "models": "Modellübersicht",
-        "insurance": "Autoversicherungen"
-      },
-      "list": {
-        "title": "Inserieren",
-        "vehicles": "Fahrzeuge",
-        "productsAndPrices": "Produkte und Preise"
-      },
-      "aboutUs": {
-        "title": "Über uns",
-        "contact": "Kontakt",
-        "newsletter": "Newsletter",
-        "factsAndFigures": "Facts & Figures",
-        "jobs": "Offene Stellen"
-      },
-      "advertisement": {
-        "title": "Werbung",
-        "smg": "Auf SMG Swiss Marketplace Group Portalen"
-      },
-      "media": {
-        "title": "Für Medien",
-        "contact": "Medienkontaktn"
+        "models": "Modellübersicht"
       },
       "legal": {
-        "title": "Rechtliches & Sicherheit",
-        "securityHint": "Sicherheitshinweise",
-        "rules": "Insertionsregeln",
         "agb": "AGB",
+        "cookieSettings": "Voreinstellungen verwalten",
         "dataProtection": "Datenschutz",
         "imprint": "Impressum",
-        "cookieSettings": "Voreinstellungen verwalten"
+        "rules": "Insertionsregeln",
+        "securityHint": "Sicherheitshinweise",
+        "title": "Rechtliches & Sicherheit"
+      },
+      "list": {
+        "productsAndPrices": "Produkte und Preise",
+        "title": "Inserieren",
+        "vehicles": "Fahrzeuge"
+      },
+      "media": {
+        "contact": "Medienkontaktn",
+        "title": "Für Medien"
       }
-    },
-    "apps": {
-      "title": "Mobile Apps"
-    },
-    "companies": {
-      "smg": "SMG Swiss Marketplace Group",
-      "financeScout24": "FinanceScout24",
-      "immoScout24": "ImmoScout24",
-      "motoScout24": "MotoScout24",
-      "anibis": "anibis.ch"
-    },
-    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Ihr Partner für Auto Occasionen - Suchen & kaufen Sie Autos im grössten Automarkt der Schweiz"
+    }
   }
 }

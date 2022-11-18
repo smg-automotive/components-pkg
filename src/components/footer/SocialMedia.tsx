@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 import Stack from '../stack';
-import Link from '../link';
 import {
   FacebookIcon,
   InstagramIcon,

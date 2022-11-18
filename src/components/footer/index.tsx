@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Container } from '@chakra-ui/react';
 
 import SocialMedia from './SocialMedia';
@@ -37,7 +36,6 @@ const Footer: FC<FooterProps> = ({
     useAbsoluteUrls,
   });
   const config = footerConfigInstance.getMappedConfig();
-  const { t } = useI18n();
 
   return (
     <TranslationProvider language={language} scopes={['footer']}>

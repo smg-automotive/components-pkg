@@ -10,5 +10,72 @@
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, something went wrong"
     }
+  },
+  "footer": {
+    "apps": {
+      "title": "Mobile Apps"
+    },
+    "as24": {
+      "sections": {
+        "brand": {
+          "insurance": "Car insurance",
+          "title": "AutoScout24"
+        }
+      }
+    },
+    "companies": {
+      "anibis": "anibis.ch",
+      "autoscout24": "AutoScout24",
+      "financeScout24": "FinanceScout24",
+      "immoScout24": "ImmoScout24",
+      "motoScout24": "MotoScout24",
+      "smg": "SMG Swiss Marketplace Group"
+    },
+    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. All rights reserved. Your partner for second-hand cars - Search & buy cars in the largest car market in Switzerland",
+    "ms24": {
+      "sections": {
+        "brand": {
+          "insurance": "Motorbike insurance",
+          "title": "MotoScout24"
+        }
+      }
+    },
+    "sections": {
+      "aboutUs": {
+        "contact": "Contact",
+        "factsAndFigures": "Facts & Figures",
+        "jobs": "Vacancies",
+        "newsletter": "Newsletter",
+        "title": "About Us"
+      },
+      "advertisement": {
+        "smg": "On SMG Swiss Marketplace Group Portals",
+        "title": "Advertising"
+      },
+      "brand": {
+        "advancedSearch": "Advanced Search",
+        "dealerSearch": "Search Garages & Dealers",
+        "makes": "Brand Overview",
+        "models": "Model Overview"
+      },
+      "legal": {
+        "agb": "GTC",
+        "cookieSettings": "Manage Preferences",
+        "dataProtection": "Data Protection",
+        "imprint": "imprint",
+        "rules": "Insertion Rules",
+        "securityHint": "Security Advice",
+        "title": "Legal & Security"
+      },
+      "list": {
+        "productsAndPrices": "Products and Prices",
+        "title": "Advertise",
+        "vehicles": "Vehicles"
+      },
+      "media": {
+        "contact": "Media contact",
+        "title": "For Media"
+      }
+    }
   }
 }
