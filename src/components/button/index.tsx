@@ -7,6 +7,7 @@ import {
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
+  wrap?: 'nowrap' | 'normal';
 } & Pick<ChakraButtonProps, 'children' | 'width'>;
 
 type SubmitType = {
@@ -49,6 +50,7 @@ const Button: FC<Props> = ({ children, ...props }) => {
     isDisabled = false,
     as = 'button',
     isExternal,
+    wrap = 'nowrap',
     ...rest
   } = props;
 
@@ -58,6 +60,7 @@ const Button: FC<Props> = ({ children, ...props }) => {
       variant={variant}
       size={size}
       isDisabled={isDisabled}
+      style={{ whiteSpace: wrap }}
       {...rest}
       {...(props.as === 'a'
         ? {
