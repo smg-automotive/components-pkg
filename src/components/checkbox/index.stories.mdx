@@ -18,6 +18,34 @@ export const Template = ({ isChecked, ...args }) => {
   );
 };
 
+export const IndeterminateTemplate = () => {
+  const [checkedItems, setCheckedItems] = useState([false, false]);
+  const allChecked = checkedItems.every(Boolean);
+  const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
+  return (
+    <>
+      <Checkbox
+        label="Parent Checkbox"
+        isChecked={allChecked}
+        isIndeterminate={isIndeterminate}
+        onChange={(e) => setCheckedItems([e.target.checked, e.target.checked])}
+      />
+      <Stack pl="lg" mt="s" spacing="s">
+        <Checkbox
+          label="Child Checkbox 1"
+          isChecked={checkedItems[0]}
+          onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
+        />
+        <Checkbox
+          label="Child Checkbox 2"
+          isChecked={checkedItems[1]}
+          onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
+        />
+      </Stack>
+    </>
+  );
+};
+
 # Checkbox
 
 ## Overview
@@ -89,18 +117,5 @@ export const Template = ({ isChecked, ...args }) => {
 ## Indeterminate
 
 <Canvas>
-  <Story
-    name="Indeterminate"
-    args={{
-      name: 'Control',
-      value: 1,
-      isChecked: false,
-      isDisabled: false,
-      isInvalid: false,
-      isIndeterminate: true,
-      label: 'Indeterminate',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
+  <Story name="Indeterminate">{IndeterminateTemplate.bind({})}</Story>
 </Canvas>
