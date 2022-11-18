@@ -46,6 +46,8 @@ export class FooterConfig {
   environment: Environment;
   useAbsoluteUrls: boolean;
   mappedConfig?: FooterConfigInstance;
+  linkProtocol: string;
+  domains: Record<Brand, Record<Environment, string>>;
 
   constructor({
     config,
@@ -62,6 +64,17 @@ export class FooterConfig {
     this.config = config;
     this.environment = environment;
     this.useAbsoluteUrls = useAbsoluteUrls;
+    this.domains = {
+      as24: {
+        production: 'www.autoscout24.ch',
+        preprod: 'int.autoscout24.ch',
+      },
+      ms24: {
+        production: 'www.motoscout24.ch',
+        preprod: 'int.motoscout24.ch',
+      },
+    };
+    this.linkProtocol = 'https';
   }
 
   getMappedConfig(): FooterConfigInstance {
@@ -107,6 +120,8 @@ export class FooterConfig {
       brand: this.brand,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
+      linkProtocol: this.linkProtocol,
+      domains: this.domains,
     });
   }
 }

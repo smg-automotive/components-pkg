@@ -24,19 +24,21 @@ export class Link {
   target?: LinkTargets;
   onClick?: () => void;
   isVisible: boolean;
-  linkProtocol: string;
-  domains: Record<Brand, Record<Environment, string>>;
 
   constructor({
     config,
     brand,
     environment,
     useAbsoluteUrls,
+    linkProtocol,
+    domains,
   }: {
     config: LinkConfig;
     brand: Brand;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    linkProtocol: string;
+    domains: Record<Brand, Record<Environment, string>>;
   }) {
     this.translationKey = config.translationKey;
     this.target = config.target;
@@ -45,23 +47,14 @@ export class Link {
       visibilitySettings: config.visibilitySettings,
       brand,
     });
-    // FIXME: Do not keep this in the link instance
-    this.domains = {
-      as24: {
-        production: 'www.autoscout24.ch',
-        preprod: 'int.autoscout24.ch',
-      },
-      ms24: {
-        production: 'www.motoscout24.ch',
-        preprod: 'int.motoscout24.ch',
-      },
-    };
-    this.linkProtocol = 'https';
+
     this.link = this.prefixDomain({
       link: config.link,
       brand,
       environment,
       useAbsoluteUrls,
+      linkProtocol,
+      domains,
     });
   }
 
@@ -70,17 +63,21 @@ export class Link {
     brand,
     environment,
     useAbsoluteUrls,
+    linkProtocol,
+    domains,
   }: {
     link?: LocalizedLinks;
     brand: Brand;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    linkProtocol: string;
+    domains: Record<Brand, Record<Environment, string>>;
   }) {
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
 
-    const domain = this.domains[brand][environment];
-    const baseUrl = `${this.linkProtocol}://${domain}`;
+    const domain = domains[brand][environment];
+    const baseUrl = `${linkProtocol}://${domain}`;
 
     const prefixedLink = {
       de: `${baseUrl}${link.de}`,
