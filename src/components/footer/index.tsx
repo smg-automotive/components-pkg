@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Container } from '@chakra-ui/react';
 
 import SocialMedia from './SocialMedia';
@@ -29,13 +29,15 @@ const Footer: FC<FooterProps> = ({
   environment,
   useAbsoluteUrls,
 }) => {
-  const footerConfigInstance = new FooterConfig({
-    config: footerConfig,
-    brand,
-    environment,
-    useAbsoluteUrls,
-  });
-  const config = footerConfigInstance.getMappedConfig();
+  const config = useMemo(() => {
+    const footerConfigInstance = new FooterConfig({
+      config: footerConfig,
+      brand,
+      environment,
+      useAbsoluteUrls,
+    });
+    return footerConfigInstance.getMappedConfig();
+  }, [brand, environment, useAbsoluteUrls]);
 
   return (
     <TranslationProvider language={language} scopes={['footer']}>
