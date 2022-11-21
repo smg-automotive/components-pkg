@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
-import { useMultiStyleConfig } from '@chakra-ui/react';
+import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
 import PaginationButton from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
+import { breakpoints } from '../../themes';
 
 const Dots = '...';
 const siblingCount = 1;
@@ -21,6 +22,7 @@ export interface Props {
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
   const { onChange, totalPages, currentPage } = props;
   const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
+  const [isLargerThanXs] = useMediaQuery(`(min-width: ${breakpoints.xs.px}px)`);
 
   const paginationRange = useMemo(() => {
     // Default number of page buttons: firstPage + lastPage + currentPage + left side dots + right side dots
@@ -73,15 +75,17 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
 
   return (
     <Box __css={paginationContainer}>
-      <PaginationButton
-        isDisabled={currentPage === 1}
-        onClick={onPrevious}
-        ariaLabel="prev page"
-      >
-        <ChevronLeftSmallIcon
-          color={currentPage === 1 ? 'gray.300' : 'gray.900'}
-        />
-      </PaginationButton>
+      {isLargerThanXs ? (
+        <PaginationButton
+          isDisabled={currentPage === 1}
+          onClick={onPrevious}
+          ariaLabel="prev page"
+        >
+          <ChevronLeftSmallIcon
+            color={currentPage === 1 ? 'gray.300' : 'gray.900'}
+          />
+        </PaginationButton>
+      ) : null}
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === Dots) {
           return (
@@ -106,13 +110,15 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
           </PaginationButton>
         );
       })}
-      <PaginationButton
-        isDisabled={isLastPage}
-        onClick={onNext}
-        ariaLabel="next page"
-      >
-        <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
-      </PaginationButton>
+      {isLargerThanXs ? (
+        <PaginationButton
+          isDisabled={isLastPage}
+          onClick={onNext}
+          ariaLabel="next page"
+        >
+          <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
+        </PaginationButton>
+      ) : null}
     </Box>
   );
 };

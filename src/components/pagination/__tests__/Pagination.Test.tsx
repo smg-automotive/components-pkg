@@ -16,6 +16,20 @@ const renderWrapper = (totalPages = 5, currentPage = 1) => {
 };
 
 describe('<Pagination />', () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      value: jest.fn(() => ({
+        matches: true,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      })),
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('render', () => {
     it('should render pagination without dots', () => {
       renderWrapper(5, 1);
