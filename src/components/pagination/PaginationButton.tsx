@@ -5,11 +5,11 @@ interface Props {
   isDisabled?: boolean;
   isActive?: boolean;
   ariaLabel: string;
-  onClick: (e: unknown) => void;
+  onClick: () => void;
 }
 
 const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, isDisabled, isActive, onClick, ariaLabel } = props;
+  const { children, isDisabled, isActive, ariaLabel, onClick } = props;
   const { paginationButton } = useMultiStyleConfig('Pagination', {
     variant: isActive ? 'active' : 'default',
   });
