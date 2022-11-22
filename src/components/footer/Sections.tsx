@@ -11,27 +11,11 @@ import ListItem from '../list/ListItem';
 import List from '../list';
 
 import GridItem from '../grid/GridItem';
+import { chunkArray } from '../../utilities/chunkArray';
 
 interface FooterSectionsProps {
   config: FooterConfigInstance;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
-const chunkArray = <ArrayType extends unknown>({
-  array,
-  chunkSize,
-}: {
-  array: ArrayType[];
-  chunkSize: number;
-}): ArrayType[][] => {
-  const chunks = [];
-
-  for (let i = 0; i < array.length; i = i + chunkSize) {
-    chunks.push(array.slice(i, i + chunkSize));
-  }
-
-  return chunks;
-};
 
 const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
   const { t } = useI18n();
