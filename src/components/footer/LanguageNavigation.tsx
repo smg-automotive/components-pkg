@@ -10,8 +10,8 @@ const FooterLanguageNavigation: FC = () => {
   return (
     <Center>
       <Stack
-        marginTop="12px"
-        spacing="24px"
+        marginTop="md"
+        spacing="2xl"
         direction="row"
         divider={<StackDivider borderColor="gray.700" />}
       >

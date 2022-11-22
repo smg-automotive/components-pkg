@@ -18,7 +18,7 @@ interface SocialMediaProps {
 const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
   return (
     <Center>
-      <Stack marginY="24px" spacing="24px" direction="row">
+      <Stack marginY="2xl" spacing="2xl" direction="row">
         <FooterLink linkInstance={config.socialMedia.facebook[0]}>
           <FacebookIcon />
         </FooterLink>

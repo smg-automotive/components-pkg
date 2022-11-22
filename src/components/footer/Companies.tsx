@@ -11,8 +11,8 @@ interface FooterCompaniesProps {
 const FooterCompanies: FC<FooterCompaniesProps> = ({ config }) => {
   return (
     <Flex
-      marginBottom="12px"
-      marginTop="24px"
+      marginBottom="md"
+      marginTop="2xl"
       gap={{ base: 'md', md: '2xl' }}
       flexWrap="wrap"
       justifyContent="center"
