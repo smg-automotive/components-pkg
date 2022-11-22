@@ -336,8 +336,8 @@ export const footerConfig: FooterConfigInterface = {
           link: {
             de: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
             en: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
-            fr: '/fr/c/d/information/conseils-de-s%C3%A9curit%C3%A9-d-autoscout24-prot%C3%A8gez-vous-contre-la-fraude?a=11818',
-            it: '/it/c/d/informazione/avvisi-sulla-sicurezza-di-autoscout24-ecco-come-tutelarsi-dai-truffatori?a=13949',
+            fr: '/fr/c/d/information/conseils-de-securite-d-autoscout24?a=28058',
+            it: '/it/c/d/informazione/avvertenze-sulla-sicurezza-di-autoscout24?a=28059',
           },
         },
         {
