@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
-import { Show, useMultiStyleConfig } from '@chakra-ui/react';
+import { BoxProps, Show, useMultiStyleConfig } from '@chakra-ui/react';
 
 import PaginationButton from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
@@ -12,13 +12,11 @@ const range = (start: number, end: number): Array<number> => {
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
-export interface Props {
+export type Props = {
   totalPages: number;
   currentPage: number;
-  marginTop?: string;
-  marginBottom?: string;
   onChange: (page: number) => void;
-}
+} & Pick<BoxProps, 'marginTop' | 'marginBottom'>;
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
   const { onChange, totalPages, currentPage, marginTop, marginBottom } = props;
