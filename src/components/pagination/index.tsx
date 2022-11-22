@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
-import { useMultiStyleConfig, Show } from '@chakra-ui/react';
+import { Show, useMultiStyleConfig } from '@chakra-ui/react';
 
 import PaginationButton from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
