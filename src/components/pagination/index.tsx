@@ -1,10 +1,9 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
-import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
+import { useMultiStyleConfig, Show } from '@chakra-ui/react';
 
 import PaginationButton from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
-import { breakpoints } from '../../themes';
 
 const Dots = '...';
 const siblingCount = 1;
@@ -16,13 +15,14 @@ const range = (start: number, end: number): Array<number> => {
 export interface Props {
   totalPages: number;
   currentPage: number;
+  marginTop?: string;
+  marginBottom?: string;
   onChange: (page: number) => void;
 }
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
-  const { onChange, totalPages, currentPage } = props;
+  const { onChange, totalPages, currentPage, marginTop, marginBottom } = props;
   const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
-  const [isLargerThanXs] = useMediaQuery(`(min-width: ${breakpoints.xs.px}px)`);
 
   const paginationRange = useMemo(() => {
     // Default number of page buttons: firstPage + lastPage + currentPage + left side dots + right side dots
@@ -39,9 +39,10 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     const shouldShowLeftDots = leftSiblingIndex > 2;
     const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
 
-    const firstPageIndex = 1;
-    const lastPageIndex = totalPages;
+    const firstPageNumber = 1;
+    const lastPageNumber = totalPages;
 
+    // Show dots on right side
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = range(1, leftItemCount);
@@ -49,21 +50,23 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
       return [...leftRange, Dots, totalPages];
     }
 
+    // Show dots on left side
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
       const rightRange = range(totalPages - rightItemCount + 1, totalPages);
-      return [firstPageIndex, Dots, ...rightRange];
+      return [firstPageNumber, Dots, ...rightRange];
     }
 
+    // Show dots on both side
     if (shouldShowLeftDots && shouldShowRightDots) {
       const middleRange = range(leftSiblingIndex, rightSiblingIndex);
-      return [firstPageIndex, Dots, ...middleRange, Dots, lastPageIndex];
+      return [firstPageNumber, Dots, ...middleRange, Dots, lastPageNumber];
     }
 
     return [];
   }, [totalPages, currentPage]);
 
-  if (currentPage === 0 || paginationRange.length < 2) {
+  if (paginationRange.length < 2) {
     return null;
   }
 
@@ -74,18 +77,22 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     currentPage === paginationRange[paginationRange.length - 1];
 
   return (
-    <Box __css={paginationContainer}>
-      {isLargerThanXs ? (
+    <Box
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      __css={paginationContainer}
+    >
+      <Show above="xs">
         <PaginationButton
           isDisabled={currentPage === 1}
           onClick={onPrevious}
-          ariaLabel="prev page"
+          ariaLabel="previous page"
         >
           <ChevronLeftSmallIcon
             color={currentPage === 1 ? 'gray.300' : 'gray.900'}
           />
         </PaginationButton>
-      ) : null}
+      </Show>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === Dots) {
           return (
@@ -110,7 +117,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
           </PaginationButton>
         );
       })}
-      {isLargerThanXs ? (
+      <Show above="xs">
         <PaginationButton
           isDisabled={isLastPage}
           onClick={onNext}
@@ -118,7 +125,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         >
           <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
         </PaginationButton>
-      ) : null}
+      </Show>
     </Box>
   );
 };

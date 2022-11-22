@@ -91,7 +91,7 @@ describe('<Pagination />', () => {
       it('should not be able to change the page by click on Prev button', () => {
         renderWrapper(10, 1);
 
-        expect(screen.getByLabelText('prev page')).toBeDisabled();
+        expect(screen.getByLabelText('previous page')).toBeDisabled();
       });
 
       it('should be able to change the page by click on Next button', async () => {
@@ -112,7 +112,7 @@ describe('<Pagination />', () => {
       it('should be able to change the page by click on Prev button', async () => {
         renderWrapper(10, 10);
 
-        await userEvent.click(screen.getByLabelText('prev page'));
+        await userEvent.click(screen.getByLabelText('previous page'));
         expect(mockOnChange).toHaveBeenCalledWith(9);
       });
     });
