@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import DevOverlay from '../index';
+import { Brand } from '../../../types/brand';
 
 describe('The DevOverlay Component', () => {
   it('renders the dev overlay', () => {
@@ -10,6 +11,7 @@ describe('The DevOverlay Component', () => {
         variables={[]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
+        activeTheme={Brand.as24}
       />
     );
 
@@ -27,6 +29,7 @@ describe('The DevOverlay Component', () => {
         ]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
+        activeTheme={Brand.as24}
       />
     );
 
