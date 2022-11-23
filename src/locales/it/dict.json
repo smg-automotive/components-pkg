@@ -10,5 +10,72 @@
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Spiacenti, qualcosa è andato storto"
     }
+  },
+  "footer": {
+    "apps": {
+      "title": "App download"
+    },
+    "as24": {
+      "sections": {
+        "brand": {
+          "insurance": "Assicurazione auto",
+          "title": "AutoScout24"
+        }
+      }
+    },
+    "companies": {
+      "anibis": "anibis.ch",
+      "autoScout24": "AutoScout24",
+      "financeScout24": "FinanceScout24",
+      "immoScout24": "ImmoScout24",
+      "motoScout24": "MotoScout24",
+      "smg": "SMG Swiss Marketplace Group"
+    },
+    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tutti i diritti riservati. Il suo partner per auto d'occasione, ricerca & aquisto di veicoli nel mercato automobilìstico svizzero.",
+    "ms24": {
+      "sections": {
+        "brand": {
+          "insurance": "Assicurazione moto",
+          "title": "MotoScout24"
+        }
+      }
+    },
+    "sections": {
+      "aboutUs": {
+        "contact": "Contatto",
+        "factsAndFigures": "Facts & Figures",
+        "jobs": "Lavori",
+        "newsletter": "Newsletter",
+        "title": "Chi siamo"
+      },
+      "advertisement": {
+        "smg": "Sui portali di SMG Swiss Marketplace Group",
+        "title": "Publicità"
+      },
+      "brand": {
+        "advancedSearch": "Ricerca avanzata",
+        "dealerSearch": "Ricerca commerciante",
+        "makes": "Marche e modelli",
+        "models": "Panoramica dei modelli"
+      },
+      "legal": {
+        "agb": "Condizioni generali",
+        "cookieSettings": "Gestisci le preferenze",
+        "dataProtection": "Protezione dei dati",
+        "imprint": "Colofone",
+        "rules": "Regole d'inserzione",
+        "securityHint": "Avvertenze di sicurezza",
+        "title": "Basi legali"
+      },
+      "list": {
+        "productsAndPrices": "Prodotti e prezzi",
+        "title": "Inserire",
+        "vehicles": "Veicoli"
+      },
+      "media": {
+        "contact": "Contatto per i media",
+        "title": "Media"
+      }
+    }
   }
 }

@@ -17,4 +17,8 @@ export { ShareIcon } from './ShareIcon';
 export { TooltipIcon } from './TooltipIcon';
 export { ThreeSixtyIcon } from './ThreeSixtyIcon';
 export { VideoIcon } from './VideoIcon';
+export { YoutubeIcon } from './YoutubeIcon';
+export { InstagramIcon } from './InstagramIcon';
+export { TwitterIcon } from './TwitterIcon';
+export { FacebookIcon } from './FacebookIcon';
 export { ChevronUpLargeIcon } from './ChevronUpLargeIcon';

@@ -17,6 +17,27 @@ const baseStyle = definePartsStyle({
   icon: baseStyleIcon,
 });
 
+const mdVariant = {
+  container: {
+    textStyle: 'body',
+  },
+};
+
+const smVariant = {
+  container: {
+    textStyle: 'body-small',
+  },
+};
+
+const variants = {
+  md: mdVariant,
+  sm: smVariant,
+};
+
 export default defineMultiStyleConfig({
   baseStyle,
+  variants,
+  defaultProps: {
+    variant: 'md',
+  },
 });
