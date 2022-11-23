@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
@@ -7,7 +7,8 @@ import {
 type SharedProps = {
   variant?: 'primary' | 'secondary';
   size?: 'md' | 'lg';
-  wrap?: 'nowrap' | 'normal';
+  leftIcon?: ReactElement;
+  rightIcon?: ReactElement;
 } & Pick<ChakraButtonProps, 'children' | 'width'>;
 
 type SubmitType = {
@@ -50,17 +51,20 @@ const Button: FC<Props> = ({ children, ...props }) => {
     isDisabled = false,
     as = 'button',
     isExternal,
-    wrap = 'nowrap',
+    leftIcon,
+    rightIcon,
     ...rest
   } = props;
 
   return (
     <ChakraButton
+      leftIcon={leftIcon}
+      rightIcon={rightIcon}
+      iconSpacing="xs"
       as={as}
       variant={variant}
       size={size}
       isDisabled={isDisabled}
-      style={{ whiteSpace: wrap }}
       {...rest}
       {...(props.as === 'a'
         ? {

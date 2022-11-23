@@ -9,6 +9,7 @@ interface Props {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   isInvalid?: boolean;
+  isIndeterminate?: boolean;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, Props>(
@@ -21,6 +22,7 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
       onChange,
       label,
       isInvalid,
+      isIndeterminate = false,
     },
     ref
   ) => (
@@ -32,6 +34,7 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
       isChecked={isChecked}
       onChange={onChange}
       isInvalid={isInvalid}
+      isIndeterminate={isIndeterminate}
     >
       {label}
     </ChakraCheckbox>

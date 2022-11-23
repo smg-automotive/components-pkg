@@ -13,6 +13,8 @@ export { ErrorIcon } from './ErrorIcon';
 export { CloseIcon } from './CloseIcon';
 export { CheckmarkIcon } from './CheckmarkIcon';
 export { MotoScout24AppLogo } from './MotoScout24AppLogo';
+export { ShareIcon } from './ShareIcon';
 export { TooltipIcon } from './TooltipIcon';
 export { ThreeSixtyIcon } from './ThreeSixtyIcon';
 export { VideoIcon } from './VideoIcon';
+export { ChevronUpLargeIcon } from './ChevronUpLargeIcon';
