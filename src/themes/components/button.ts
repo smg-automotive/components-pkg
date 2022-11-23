@@ -4,6 +4,7 @@ import { SystemStyleObject } from '@chakra-ui/styled-system';
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
   px: 'lg',
+  whiteSpace: 'break-spaces',
 };
 
 const buttonSizes = {
