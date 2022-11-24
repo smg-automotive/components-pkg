@@ -8,6 +8,7 @@ type Props = Pick<
   | 'gap'
   | 'templateColumns'
   | 'templateRows'
+  | 'padding'
   | 'minHeight'
 >;
 
