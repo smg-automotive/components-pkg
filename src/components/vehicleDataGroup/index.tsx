@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Box, List, useMultiStyleConfig } from '@chakra-ui/react';
 
-import { H4 } from '../';
+import { H4 } from '../heading';
 
 interface VehicleDataGroupProps {
   title?: string;

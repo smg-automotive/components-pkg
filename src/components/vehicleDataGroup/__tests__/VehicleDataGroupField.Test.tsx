@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import VehicleDataGroup from '../';
 import VehicleDataGroupField from '../VehicleDataGroupField';
 import { CloseIcon } from '../../icons';
+import VehicleDataGroup from '../';
 
 describe('<VehicleDataGroupField />', () => {
   const itemLabel = 'Item label';

@@ -1,4 +1,5 @@
 import VehicleReference from './vehicleReference';
+import VehicleDataGroup from './vehicleDataGroup';
 import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
@@ -13,7 +14,6 @@ import Menu from './menu';
 import List from './list';
 import Link from './link';
 import Input from './input';
-import VehicleDataGroup from './vehicleDataGroup';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
