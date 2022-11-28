@@ -1,18 +1,18 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Box, List, Text, useMultiStyleConfig } from '@chakra-ui/react';
+import { Box, List, useMultiStyleConfig } from '@chakra-ui/react';
 
 import { H4 } from '../';
 
-interface GroupLabelProps {
+interface VehicleDataGroupProps {
   title?: string;
 }
 
-const GroupLabel: FC<PropsWithChildren<GroupLabelProps>> = ({
+const VehicleDataGroup: FC<PropsWithChildren<VehicleDataGroupProps>> = ({
   title,
   children,
   ...rest
 }) => {
-  const { list } = useMultiStyleConfig(`GroupLabel`);
+  const { list } = useMultiStyleConfig(`VehicleDataGroup`);
 
   return (
     <Box {...rest}>
@@ -22,4 +22,4 @@ const GroupLabel: FC<PropsWithChildren<GroupLabelProps>> = ({
   );
 };
 
-export default GroupLabel;
+export default VehicleDataGroup;

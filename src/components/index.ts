@@ -53,8 +53,8 @@ export { default as AppLayout } from './layout/app/AppLayout';
 export { default as AppLayoutHeader } from './layout/app/Header';
 export { default as AppLayoutFooter } from './layout/app/Footer';
 export { default as AppLayoutContent } from './layout/app/Content';
-export { default as GroupLabel } from './groupLabel';
-export { default as GroupLabelItem } from './groupLabel/GroupLabelItem';
+export { default as VehicleDataGroup } from './vehicleDataGroup';
+export { default as VehicleDataGroupField } from './vehicleDataGroup/VehicleDataGroupField';
 
 export {
   default as ThemeProvider,

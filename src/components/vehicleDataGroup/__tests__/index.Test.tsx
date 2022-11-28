@@ -1,20 +1,20 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import GroupLabelItem from '../GroupLabelItem';
-import GroupLabel from '../';
+import VehicleDataGroupField from '../VehicleDataGroupField';
+import VehicleDataGroup from '../';
 
-describe('<GroupLabel />', () => {
+describe('<VehicleDataGroup />', () => {
   const title = 'Group Label title';
   const itemLabel = 'Item label';
   const itemValue = 'Item value';
 
   it('should display component title', () => {
     render(
-      <GroupLabel title={title}>
-        <GroupLabelItem label={`${itemLabel} 1`} value={itemValue} />
-        <GroupLabelItem label={`${itemLabel} 2`} value={itemValue} />
-      </GroupLabel>
+      <VehicleDataGroup title={title}>
+        <VehicleDataGroupField label={`${itemLabel} 1`} value={itemValue} />
+        <VehicleDataGroupField label={`${itemLabel} 2`} value={itemValue} />
+      </VehicleDataGroup>
     );
 
     expect(screen.getByText(title)).toBeInTheDocument();
@@ -22,10 +22,10 @@ describe('<GroupLabel />', () => {
 
   it('should render component without title if `title` prop is not added', () => {
     render(
-      <GroupLabel>
-        <GroupLabelItem label={`${itemLabel} 1`} value={itemValue} />
-        <GroupLabelItem label={`${itemLabel} 2`} value={itemValue} />
-      </GroupLabel>
+      <VehicleDataGroup>
+        <VehicleDataGroupField label={`${itemLabel} 1`} value={itemValue} />
+        <VehicleDataGroupField label={`${itemLabel} 2`} value={itemValue} />
+      </VehicleDataGroup>
     );
 
     expect(screen.queryByText(title)).not.toBeInTheDocument();
@@ -33,10 +33,10 @@ describe('<GroupLabel />', () => {
 
   it('should display label and value for each item', () => {
     render(
-      <GroupLabel title={title}>
-        <GroupLabelItem label={`${itemLabel} 1`} value={itemValue} />
-        <GroupLabelItem label={`${itemLabel} 2`} value={itemValue} />
-      </GroupLabel>
+      <VehicleDataGroup title={title}>
+        <VehicleDataGroupField label={`${itemLabel} 1`} value={itemValue} />
+        <VehicleDataGroupField label={`${itemLabel} 2`} value={itemValue} />
+      </VehicleDataGroup>
     );
 
     expect(screen.getByText(`${itemLabel} 1`)).toBeInTheDocument();

@@ -19,8 +19,8 @@ const baseStyleItemElement: SystemStyleObject = {
   flex: 1,
 };
 
-const GroupLabel: ComponentMultiStyleConfig = {
-  parts: ['list', 'listItem', 'itemLabel', 'itemValue'],
+const VehicleDataGroup: ComponentMultiStyleConfig = {
+  parts: ['list', 'listItem', 'listItemElement'],
   baseStyle: {
     list: baseStyleList,
     listItem: baseStyleListItem,
@@ -28,4 +28,4 @@ const GroupLabel: ComponentMultiStyleConfig = {
   },
 };
 
-export default GroupLabel;
+export default VehicleDataGroup;

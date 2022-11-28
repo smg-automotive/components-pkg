@@ -13,7 +13,7 @@ import Menu from './menu';
 import List from './list';
 import Link from './link';
 import Input from './input';
-import GroupLabel from './groupLabel';
+import VehicleDataGroup from './vehicleDataGroup';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
@@ -57,5 +57,5 @@ export const components = {
   Textarea,
   Tooltip,
   VehicleReference,
-  GroupLabel,
+  VehicleDataGroup,
 };

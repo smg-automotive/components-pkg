@@ -1,0 +1,51 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import VehicleDataGroup from './';
+import VehicleDataGroupField from './VehicleDataGroupField.tsx'
+import { CloseIcon } from '../icons'
+
+<Meta title="Components/Data Display/VehicleDataGroup" component={VehicleDataGroup} />
+
+export const ItemLabel = () => (
+    <>
+    <CloseIcon />
+    Some value
+    </>
+)
+
+export const ItemValue = () => (
+  <>
+    <CloseIcon />
+    Some value
+  </>
+)
+
+export const Template = (args) => {
+
+  const label = 'VehicleDataGroupField label';
+  const value = 'VehiculeDataGroupField Value';
+
+  return (
+    <VehicleDataGroup {...args} title={args.title} w={args.w} >
+      <VehicleDataGroupField label={label} value={value} />
+      <VehicleDataGroupField label={label} value={value} />
+      <VehicleDataGroupField label={label} value={value} />
+    </VehicleDataGroup>
+  )
+};
+
+# GroupLabel
+
+## Overview
+
+<Canvas>
+  <Story
+    name="GroupLabel"
+    args={{
+      title: 'Vehicle Group Data',
+      w: '400px',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

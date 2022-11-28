@@ -1,13 +1,16 @@
 import React, { FC, ReactNode } from 'react';
 import { Box, chakra, ListItem, useMultiStyleConfig } from '@chakra-ui/react';
 
-interface GroupLabelItemProps {
+interface VehicleGroupDataFieldProps {
   label: ReactNode;
   value: ReactNode;
 }
 
-const GroupLabelItem: FC<GroupLabelItemProps> = ({ label, value }) => {
-  const { listItem, listItemElement } = useMultiStyleConfig(`GroupLabel`);
+const VehicleGroupDataField: FC<VehicleGroupDataFieldProps> = ({
+  label,
+  value,
+}) => {
+  const { listItem, listItemElement } = useMultiStyleConfig(`VehicleDataGroup`);
 
   return (
     <ListItem>
@@ -21,4 +24,4 @@ const GroupLabelItem: FC<GroupLabelItemProps> = ({ label, value }) => {
   );
 };
 
-export default GroupLabelItem;
+export default VehicleGroupDataField;
