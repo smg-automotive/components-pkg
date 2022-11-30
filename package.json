@@ -107,7 +107,7 @@
     "@types/fs-extra": "9.0.13",
     "embla-carousel-react": "7.0.5",
     "framer-motion": "7.6.15",
-    "fs-extra": "11.0.0",
+    "fs-extra": "11.1.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "9.0.2",
     "yargs": "17.6.2"
