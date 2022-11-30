@@ -41,13 +41,13 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.20.2",
-    "@rollup/plugin-commonjs": "23.0.2",
+    "@babel/core": "7.20.5",
+    "@rollup/plugin-commonjs": "23.0.3",
     "@rollup/plugin-image": "3.0.1",
-    "@rollup/plugin-json": "5.0.1",
+    "@rollup/plugin-json": "5.0.2",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-typescript": "9.0.2",
-    "@smg-automotive/eslint-config": "2.0.39",
+    "@smg-automotive/eslint-config": "2.0.40",
     "@storybook/addon-actions": "6.5.13",
     "@storybook/addon-docs": "6.5.13",
     "@storybook/addon-essentials": "6.5.13",
@@ -80,7 +80,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rimraf": "3.0.2",
-    "rollup": "3.4.0",
+    "rollup": "3.5.0",
     "rollup-plugin-add-shebang": "0.3.1",
     "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-dts": "5.0.0",
@@ -106,10 +106,10 @@
     "@smg-automotive/i18n-pkg": "1.1.4",
     "@types/fs-extra": "9.0.13",
     "embla-carousel-react": "7.0.5",
-    "framer-motion": "7.6.10",
-    "fs-extra": "10.1.0",
+    "framer-motion": "7.6.12",
+    "fs-extra": "11.0.0",
     "merge-json-file": "1.0.1",
-    "use-debounce": "8.0.4",
+    "use-debounce": "9.0.2",
     "yargs": "17.6.2"
   }
 }

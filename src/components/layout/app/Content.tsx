@@ -1,9 +1,9 @@
 import React from 'react';
 import { forwardRef } from '@chakra-ui/react';
 
-import GridItem, { GridProps } from '../../grid/GridItem';
+import GridItem, { GridItemProps } from '../../grid/GridItem';
 
-const AppLayoutContent = forwardRef<GridProps, 'div'>((props, ref) => {
+const AppLayoutContent = forwardRef<GridItemProps, 'div'>((props, ref) => {
   return <GridItem area="content" ref={ref} {...props} />;
 });
 
