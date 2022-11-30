@@ -1,7 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { BoxProps as ChakraProps } from '@chakra-ui/react';
 
-import { Box, H4, List } from '../';
+import List from '../list';
+import { H4 } from '../heading';
+import Box from '../box';
 
 interface VehicleDataGroupProps extends ChakraProps {
   title?: string;

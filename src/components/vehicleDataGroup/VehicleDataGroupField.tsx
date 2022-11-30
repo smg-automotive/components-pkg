@@ -1,6 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 
-import { Box, Flex, ListItem, Text } from '../';
+import Text from '../text';
+import ListItem from '../list/ListItem';
+import Flex from '../flex';
+import Box from '../box';
 
 interface VehicleGroupDataFieldProps {
   label: ReactNode;
