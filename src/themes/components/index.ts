@@ -1,5 +1,4 @@
 import VehicleReference from './vehicleReference';
-import VehicleDataGroup from './vehicleDataGroup';
 import Tooltip from './tooltip';
 import Textarea from './textarea';
 import Table from './table';
