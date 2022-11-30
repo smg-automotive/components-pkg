@@ -1,13 +1,17 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { List as ChakraList } from '@chakra-ui/react';
+import { List as ChakraList, ListProps as ChakraProps } from '@chakra-ui/react';
 
-interface ListProps {
+interface ListProps extends ChakraProps {
   variant?: 'sm' | 'md';
 }
 
-const List: FC<PropsWithChildren<ListProps>> = ({ children, variant }) => {
+const List: FC<PropsWithChildren<ListProps>> = ({
+  children,
+  variant,
+  ...rest
+}) => {
   return (
-    <ChakraList spacing={variant} variant={variant}>
+    <ChakraList {...rest} spacing={variant} variant={variant}>
       {children}
     </ChakraList>
   );

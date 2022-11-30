@@ -57,5 +57,4 @@ export const components = {
   Textarea,
   Tooltip,
   VehicleReference,
-  VehicleDataGroup,
 };

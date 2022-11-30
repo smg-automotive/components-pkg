@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Box, List, useMultiStyleConfig } from '@chakra-ui/react';
+import { BoxProps as ChakraProps } from '@chakra-ui/react';
 
-import { H4 } from '../heading';
+import { Box, H4, List } from '../';
 
-interface VehicleDataGroupProps {
+interface VehicleDataGroupProps extends ChakraProps {
   title?: string;
 }
 
@@ -11,15 +11,13 @@ const VehicleDataGroup: FC<PropsWithChildren<VehicleDataGroupProps>> = ({
   title,
   children,
   ...rest
-}) => {
-  const { list } = useMultiStyleConfig(`VehicleDataGroup`);
-
-  return (
-    <Box {...rest}>
-      {title ? <H4>{title}</H4> : null}
-      <List __css={list}>{children}</List>
-    </Box>
-  );
-};
+}) => (
+  <Box {...rest}>
+    {title ? <H4>{title}</H4> : null}
+    <List mt="sm" display="flex" flexDirection="column" gap="xs">
+      {children}
+    </List>
+  </Box>
+);
 
 export default VehicleDataGroup;
