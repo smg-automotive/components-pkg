@@ -1,13 +1,12 @@
 /* eslint-disable unicorn/filename-case */
 import { FooterConfig } from '../factory';
-import { Brand } from '../../../../types/brand';
 import { footerConfig } from '..';
 
 describe('The footer configuration', () => {
   it('returns a mapped instance', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.ms24,
+      brand: 'ms24',
       environment: 'production',
       useAbsoluteUrls: true,
     });
@@ -23,7 +22,7 @@ describe('The footer configuration', () => {
   it('returns six sections', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.ms24,
+      brand: 'ms24',
       environment: 'production',
       useAbsoluteUrls: true,
     });
@@ -34,7 +33,7 @@ describe('The footer configuration', () => {
   it('returns only one visible title per section', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.ms24,
+      brand: 'ms24',
       environment: 'production',
       useAbsoluteUrls: true,
     });
@@ -48,7 +47,7 @@ describe('The footer configuration', () => {
   it('returns only one link item per app type', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.ms24,
+      brand: 'ms24',
       environment: 'production',
       useAbsoluteUrls: true,
     });
@@ -61,7 +60,7 @@ describe('The footer configuration', () => {
   it('returns only one link item per social media type', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.ms24,
+      brand: 'ms24',
       environment: 'production',
       useAbsoluteUrls: true,
     });
@@ -76,7 +75,7 @@ describe('The footer configuration', () => {
   it('returns five company links', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.ms24,
+      brand: 'ms24',
       environment: 'production',
       useAbsoluteUrls: true,
     });
