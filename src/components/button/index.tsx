@@ -9,7 +9,7 @@ type SharedProps = {
   size?: 'md' | 'lg';
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
-} & Pick<ChakraButtonProps, 'children'>;
+} & Pick<ChakraButtonProps, 'children' | 'width'>;
 
 type SubmitType = {
   as?: 'button';

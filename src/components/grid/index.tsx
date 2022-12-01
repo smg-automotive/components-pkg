@@ -1,14 +1,11 @@
-import React, { FC } from 'react';
-import { Grid as ChakraGrid, GridProps } from '@chakra-ui/react';
+import React from 'react';
+import { Grid as ChakraGrid, forwardRef, GridProps } from '@chakra-ui/react';
 
-type Props = Pick<
-  GridProps,
-  'children' | 'templateAreas' | 'gap' | 'templateColumns' | 'templateRows'
->;
+const Grid = forwardRef<GridProps, 'div'>((props, ref) => {
+  return <ChakraGrid {...props} ref={ref} />;
+});
 
-const Grid: FC<Props> = ({ children, ...props }) => {
-  return <ChakraGrid {...props}>{children}</ChakraGrid>;
-};
+Grid.displayName = 'Grid';
 
 export default Grid;
-export { Props as GridProps };
+export { GridProps };
