@@ -34,7 +34,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
   toggleTheme,
   activeTheme,
 }) => {
-  const isThemeSwitcherChecked = Brand.as24 !== activeTheme;
+  const isThemeSwitcherChecked = 'as24' !== activeTheme;
 
   return (
     <Box
