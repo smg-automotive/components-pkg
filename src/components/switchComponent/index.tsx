@@ -4,9 +4,15 @@ import {
   SwitchProps as ChakraSwitchProps,
 } from '@chakra-ui/react';
 
-export type SwitchProps = Pick<ChakraSwitchProps, 'onChange'>;
+export type SwitchProps = Pick<ChakraSwitchProps, 'onChange' | 'isChecked'>;
 
-const Switch: FC<SwitchProps> = ({ onChange }) => {
-  return <ChakraSwitch onChange={onChange} variant="themeSwitch" />;
+const Switch: FC<SwitchProps> = ({ onChange, isChecked }) => {
+  return (
+    <ChakraSwitch
+      onChange={onChange}
+      isChecked={isChecked}
+      variant="themeSwitch"
+    />
+  );
 };
 export default Switch;

@@ -1,7 +1,10 @@
+import { useArgs } from '@storybook/client-api';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import DevOverlay from './index.tsx';
+import ThemeProvider from '../themeProvider';
 import { FullHeight } from '../index';
+import { Brand } from '../../types/brand';
 
 <Meta
   title="Theme/DevOverlay"
@@ -11,11 +14,20 @@ import { FullHeight } from '../index';
   }}
 />
 
-export const Template = (args) => {
+export const Template = ({ ...args }) => {
+  const [{ activeTheme }, updateArgs] = useArgs();
+  const toggleTheme = () => {
+    if (activeTheme === Brand.as24) {
+      return updateArgs({ activeTheme: Brand.ms24 });
+    }
+    return updateArgs({ activeTheme: Brand.as24 });
+  };
   return (
-    <FullHeight>
-      <DevOverlay {...args} />
-    </FullHeight>
+    <ThemeProvider theme={activeTheme}>
+      <FullHeight>
+        <DevOverlay {...args} toggleTheme={toggleTheme} />
+      </FullHeight>
+    </ThemeProvider>
   );
 };
 
@@ -37,6 +49,13 @@ export const Template = (args) => {
           value: 'storybook',
         },
       ],
+      activeTheme: Brand.as24,
+    }}
+    argTypes={{
+      activeTheme: {
+        options: [Brand.as24, Brand.ms24],
+        control: 'select',
+      },
     }}
   >
     {Template.bind({})}
