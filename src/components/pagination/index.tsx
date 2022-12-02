@@ -118,7 +118,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
           <PaginationButton
             key={`paginationButton-${index}`}
             isActive={pageNumber === currentPagePlusOne}
-            ariaLabel={`go to page ${pageNumber} of ${totalPages}`}
+            ariaLabel={`go to page ${pageNumber} of ${totalPagesPlusOne}`}
             onClick={() => onChange(pageNumberMinusOne(pageNumber as number))}
           >
             {pageNumber}
