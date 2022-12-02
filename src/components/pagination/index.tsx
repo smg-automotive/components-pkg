@@ -71,8 +71,13 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
   const onNext = () => onChange(currentPage + 1);
   const onPrevious = () => onChange(currentPage - 1);
 
+  // workaround for pagination API as it starts from 0
+  const currentPagePlusOne = currentPage + 1;
+  const pageNumberMinusOne = (pageNumber: number) => pageNumber - 1;
+
+  const isFirstPage = currentPage === 0;
   const isLastPage =
-    currentPage === paginationRange[paginationRange.length - 1];
+    currentPagePlusOne === paginationRange[paginationRange.length - 1];
 
   return (
     <Box
@@ -82,13 +87,11 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     >
       <Show above="xs">
         <PaginationButton
-          isDisabled={currentPage === 1}
+          isDisabled={isFirstPage}
           onClick={onPrevious}
           ariaLabel="previous page"
         >
-          <ChevronLeftSmallIcon
-            color={currentPage === 1 ? 'gray.300' : 'gray.900'}
-          />
+          <ChevronLeftSmallIcon color={isFirstPage ? 'gray.300' : 'gray.900'} />
         </PaginationButton>
       </Show>
       {paginationRange.map((pageNumber, index) => {
@@ -107,9 +110,9 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         return (
           <PaginationButton
             key={`paginationButton-${index}`}
-            isActive={pageNumber === currentPage}
+            isActive={pageNumber === currentPagePlusOne}
             ariaLabel={`go to page ${pageNumber} of ${totalPages}`}
-            onClick={() => onChange(pageNumber as number)}
+            onClick={() => onChange(pageNumberMinusOne(pageNumber as number))}
           >
             {pageNumber}
           </PaginationButton>

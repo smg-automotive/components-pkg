@@ -3,13 +3,13 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Pagination from './index';
 
-<Meta title="Components/Navigation/Pagination" component={Pagination} />
+<Meta title="Patterns/Navigation/Pagination" component={Pagination} />
 
 export const Template = ({ count }) => {
-  const [currentPage, setPage] = useState(1);
+  const [currentPage, setPage] = useState(0);
   return (
     <div>
-      <div>{`Page: ${currentPage}`}</div>
+      <div>{`Page index for API contract: ${currentPage}`}</div>
       <Pagination
         marginTop="sm"
         totalPages={count}
