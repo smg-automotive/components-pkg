@@ -114,7 +114,7 @@ describe('<Pagination />', () => {
         render(
           <Pagination
             totalPages={10}
-            currentPage={10}
+            currentPage={9}
             onChange={mockOnChange}
           />
         );
