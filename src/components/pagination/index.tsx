@@ -22,36 +22,47 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
   const { onChange, totalPages, currentPage, marginTop, marginBottom } = props;
   const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
 
+  // workaround for pagination API as it starts from 0
+  const totalPagesPlusOne = totalPages + 1;
+  const currentPagePlusOne = currentPage + 1;
+  const pageNumberMinusOne = (pageNumber: number) => pageNumber - 1;
+
   const paginationRange = useMemo(() => {
     // Default number of page buttons: firstPage + lastPage + currentPage + left side dots + right side dots
     const pageButtonsCount = 5;
     const totalPageButtonsCount = siblingCount + pageButtonsCount;
 
-    if (totalPageButtonsCount >= totalPages) {
-      return range(1, totalPages);
+    if (totalPageButtonsCount >= totalPagesPlusOne) {
+      return range(1, totalPagesPlusOne);
     }
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
+    const rightSiblingIndex = Math.min(
+      currentPage + siblingCount,
+      totalPagesPlusOne
+    );
 
     const shouldShowLeftDots = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
+    const shouldShowRightDots = rightSiblingIndex < totalPagesPlusOne - 2;
 
     const firstPageNumber = 1;
-    const lastPageNumber = totalPages;
+    const lastPageNumber = totalPagesPlusOne;
 
     // Show dots on right side
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = range(1, leftItemCount);
 
-      return [...leftRange, Dots, totalPages];
+      return [...leftRange, Dots, totalPagesPlusOne];
     }
 
     // Show dots on left side
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
+      const rightRange = range(
+        totalPagesPlusOne - rightItemCount + 1,
+        totalPagesPlusOne
+      );
       return [firstPageNumber, Dots, ...rightRange];
     }
 
@@ -62,7 +73,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     }
 
     return [];
-  }, [totalPages, currentPage]);
+  }, [totalPagesPlusOne, currentPage]);
 
   if (paginationRange.length < 2) {
     return null;
@@ -70,10 +81,6 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
 
   const onNext = () => onChange(currentPage + 1);
   const onPrevious = () => onChange(currentPage - 1);
-
-  // workaround for pagination API as it starts from 0
-  const currentPagePlusOne = currentPage + 1;
-  const pageNumberMinusOne = (pageNumber: number) => pageNumber - 1;
 
   const isFirstPage = currentPage === 0;
   const isLastPage =

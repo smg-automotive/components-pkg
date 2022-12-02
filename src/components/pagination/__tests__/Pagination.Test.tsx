@@ -112,7 +112,11 @@ describe('<Pagination />', () => {
     describe('last page is active', () => {
       it('should not be able to change the page by click on Next button', () => {
         render(
-          <Pagination totalPages={10} currentPage={9} onChange={mockOnChange} />
+          <Pagination
+            totalPages={10}
+            currentPage={10}
+            onChange={mockOnChange}
+          />
         );
 
         expect(screen.getByLabelText('next page')).toBeDisabled();
