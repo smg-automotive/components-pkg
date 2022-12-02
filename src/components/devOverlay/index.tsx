@@ -16,6 +16,7 @@ import {
 import Switch, { SwitchProps } from '../switchComponent';
 import { CloseIcon } from '../icons';
 import Button, { ButtonProps } from '../button';
+import { Brand } from '../../types/brand';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
@@ -24,13 +25,17 @@ export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
     hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
     toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
     variables: DevOverlayVariables;
+    activeTheme: Brand;
   };
 
 const DevOverlay: FC<DevOverlayProps> = ({
   variables,
   hideDevOverlay,
   toggleTheme,
+  activeTheme,
 }) => {
+  const isThemeSwitcherChecked = 'as24' !== activeTheme;
+
   return (
     <Box
       position="absolute"
@@ -85,7 +90,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
       <div>
         <span>🚗</span>
         &nbsp;
-        <Switch onChange={toggleTheme} />
+        <Switch onChange={toggleTheme} isChecked={isThemeSwitcherChecked} />
         &nbsp;
         <span>🏍️</span>
       </div>
