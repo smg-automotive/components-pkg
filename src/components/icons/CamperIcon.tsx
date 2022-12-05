@@ -7,28 +7,28 @@ export const CamperIcon = createIcon({
   path: (
     <>
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M20.102 11h1.9a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1.5"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M5.895 11h-1.9a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1.5"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M8.588 16.752h1M16.592 16.752h1M5.996 10.5V5.996a2 2 0 0 1 2-2h10.005a2 2 0 0 1 2 2V10.5M20.461 13H5.535"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -36,7 +36,7 @@ export const CamperIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

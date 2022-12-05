@@ -7,7 +7,7 @@ export const BicycleIcon = createIcon({
   path: (
     <>
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -15,7 +15,7 @@ export const BicycleIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -25,20 +25,20 @@ export const BicycleIcon = createIcon({
         cx="19.002"
         cy="15.001"
         r="4.002"
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="m16 5.997 2-1M19.001 15.001 16 5.998M6.996 6.998h3.001"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -46,7 +46,7 @@ export const BicycleIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

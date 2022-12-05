@@ -10,13 +10,13 @@ export const BoatTrailerIcon = createIcon({
         cx="11.499"
         cy="17.502"
         r="2.501"
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -24,14 +24,14 @@ export const BoatTrailerIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="m19.002 5.997-1 6.003"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

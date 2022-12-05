@@ -7,21 +7,21 @@ export const ChassisCabIcon = createIcon({
   path: (
     <>
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M17.001 19.423H9.34"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M23.004 14h-3.502a.5.5 0 0 1-.5-.5V10h3.501M19.558 18.442a1.5 1.5 0 1 1-2.122 0h0a1.5 1.5 0 0 1 2.122 0v0M2.994 4.997h8.004M10.998 4.997a1 1 0 0 1 1 1M11.998 5.997V12M5.556 18.442a1.5 1.5 0 1 1-2.122 0h0a1.5 1.5 0 0 1 2.122 0v0"
       />
       <path
-        stroke="currentcolor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
