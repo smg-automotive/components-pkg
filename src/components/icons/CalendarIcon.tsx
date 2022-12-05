@@ -7,14 +7,14 @@ export const CalendarIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M16 2v4M8 2v4M3 9h18"
       />
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -22,7 +22,7 @@ export const CalendarIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

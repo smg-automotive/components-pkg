@@ -7,7 +7,7 @@ export const RangeIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -15,14 +15,14 @@ export const RangeIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M6.485 5.337a.25.25 0 1 0 0 .498.25.25 0 0 0 0-.498"
       />
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -30,7 +30,7 @@ export const RangeIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

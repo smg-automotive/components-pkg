@@ -7,14 +7,14 @@ export const DriveSystemIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M10.606 13.423a1.305 1.305 0 1 1-1.845 1.845 1.305 1.305 0 0 1 1.845-1.845"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

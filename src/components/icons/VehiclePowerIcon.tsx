@@ -7,14 +7,14 @@ export const VehiclePowerIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M18.364 5.636a9 9 0 0 1 0 12.728 9 9 0 1 1 0-12.728"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

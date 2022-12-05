@@ -7,14 +7,14 @@ export const TransmissionIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M20.21 18.86 21.64 21M4 7v10M21.414 3.586a2 2 0 1 1-2.828 2.828 2 2 0 0 1 2.828-2.828"
       />
       <path
-        stroke="#333"
+        stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

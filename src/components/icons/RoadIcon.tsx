@@ -7,7 +7,7 @@ export const RoadIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -15,7 +15,7 @@ export const RoadIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

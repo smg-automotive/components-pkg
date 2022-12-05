@@ -7,14 +7,14 @@ export const DriveTypeIcon = createIcon({
   path: (
     <>
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M7 5h10"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -22,14 +22,14 @@ export const DriveTypeIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M7 19h10"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -37,7 +37,7 @@ export const DriveTypeIcon = createIcon({
         clipRule="evenodd"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

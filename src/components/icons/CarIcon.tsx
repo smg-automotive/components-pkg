@@ -7,8 +7,7 @@ export const CarIcon = createIcon({
   path: (
     <>
       <path
-        fill="none"
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -18,7 +17,7 @@ export const CarIcon = createIcon({
         cx="17.35"
         cy="18.253"
         r="1.751"
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -27,13 +26,13 @@ export const CarIcon = createIcon({
         cx="6.628"
         cy="18.253"
         r="1.751"
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
       />
       <path
-        stroke="#333"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

@@ -6,7 +6,7 @@ export const ConsumptionIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <path
-      stroke="#333"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="1.5"
