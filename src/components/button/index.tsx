@@ -40,7 +40,6 @@ type ButtonType = Overwrite<
   SharedProps,
   {
     type?: 'button';
-    onClick: () => void;
   }
 >;
 

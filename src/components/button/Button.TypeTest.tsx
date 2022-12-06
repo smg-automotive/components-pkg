@@ -19,7 +19,6 @@ const _Button = () => {
       <Button isExternal={true} onClick={() => null}>
         Label
       </Button>
-      {/* @ts-expect-error onClick missing */}
       <Button>Label</Button>
       <Button onClick={() => null}>Label</Button>
     </div>
