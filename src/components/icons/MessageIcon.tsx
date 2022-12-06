@@ -1,8 +1,8 @@
 import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
-export const MessageCtaIcon = createIcon({
-  displayName: 'MessageCta',
+export const MessageIcon = createIcon({
+  displayName: 'Message',
   viewBox: '0 0 24 24',
   path: (
     <path
