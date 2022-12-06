@@ -194,7 +194,7 @@ export const Template = (args) => <Button {...args}>{args.label}</Button>;
     args={{
       variant: 'primary',
       size: 'lg',
-      leftIcon: <ShareIcon />,
+      icon: <ShareIcon />,
       ariaLabel: 'Share to Facebook',
     }}
     argTypes={{
@@ -206,7 +206,7 @@ export const Template = (args) => <Button {...args}>{args.label}</Button>;
         options: ['md', 'lg'],
         control: 'select',
       },
-      leftIcon: {
+      icon: {
         table: {
           disable: true,
         },
