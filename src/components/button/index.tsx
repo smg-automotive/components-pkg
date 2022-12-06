@@ -5,6 +5,18 @@ import {
 } from '@chakra-ui/react';
 
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
+type ToNever<Source> = { [P in keyof Source]?: never };
+
+type LinkButton = {
+  href: string;
+  isExternal?: boolean;
+  rel?: string;
+};
+
+type IconOnlyButton = {
+  ariaLabel: string;
+  icon: ReactElement;
+};
 
 type SharedProps = {
   as?: 'button';
@@ -14,20 +26,9 @@ type SharedProps = {
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   onClick?: () => void;
-  href?: never;
-  isExternal?: never;
-  rel?: never;
-  icon?: never;
-  ariaLabel?: never;
-} & Pick<ChakraButtonProps, 'width' | 'isDisabled'>;
-
-type WithIcon = {
-  ariaLabel: string;
-  icon: ReactElement;
-  leftIcon?: never;
-  rightIcon?: never;
-  children?: never;
-};
+} & Pick<ChakraButtonProps, 'width' | 'isDisabled'> &
+  ToNever<LinkButton> &
+  ToNever<IconOnlyButton>;
 
 type SubmitType = Overwrite<
   SharedProps,
@@ -40,6 +41,7 @@ type ButtonType = Overwrite<
   SharedProps,
   {
     type?: 'button';
+    onClick: () => void;
   }
 >;
 
@@ -47,18 +49,19 @@ export type ButtonProps = SubmitType | ButtonType;
 
 type LinkProps = Overwrite<
   SharedProps,
-  {
+  LinkButton & {
     as: 'a';
-    href: string;
-    isExternal?: boolean;
-    rel?: string;
     isDisabled?: false;
   }
 >;
 
-export type Props =
-  | (LinkProps | ButtonProps)
-  | Overwrite<LinkProps | ButtonProps, WithIcon>;
+type IconProps = Overwrite<
+  LinkProps | ButtonProps,
+  IconOnlyButton &
+    ToNever<Pick<SharedProps, 'leftIcon' | 'rightIcon' | 'children'>>
+>;
+
+export type Props = LinkProps | ButtonProps | IconProps;
 
 const Button: FC<Props> = (props) => {
   const {

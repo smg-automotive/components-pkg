@@ -19,8 +19,22 @@ const _Button = () => {
       <Button isExternal={true} onClick={() => null}>
         Label
       </Button>
+      {/* @ts-expect-error rel not allowed */}
+      <Button rel="foo" onClick={() => null}>
+        Label
+      </Button>
+      {/* @ts-expect-error onClick is missing */}
       <Button>Label</Button>
       <Button onClick={() => null}>Label</Button>
+      <Button
+        onClick={() => null}
+        variant="secondary"
+        leftIcon={<ShareIcon />}
+        rightIcon={<ShareIcon />}
+        size="md"
+      >
+        Label
+      </Button>
     </div>
   );
 };
@@ -37,7 +51,21 @@ const _SubmitButton = () => {
       <Button type="submit" isExternal={true}>
         Label
       </Button>
+      {/* @ts-expect-error rel not allowed */}
+      <Button rel="foo" onClick={() => null}>
+        Label
+      </Button>
       <Button type="submit">Label</Button>
+      <Button
+        type="submit"
+        onClick={() => null}
+        variant="secondary"
+        leftIcon={<ShareIcon />}
+        rightIcon={<ShareIcon />}
+        size="md"
+      >
+        Label
+      </Button>
     </div>
   );
 };
@@ -67,14 +95,22 @@ const _IconButton = () => {
   return (
     <div>
       {/* @ts-expect-error aria-label is missing */}
-      <Button icon={<ShareIcon />} />
+      <Button icon={<ShareIcon />} onClick={() => null} />
       {/* @ts-expect-error children not allowed */}
-      <Button icon={<ShareIcon />} ariaLabel="share">
+      <Button icon={<ShareIcon />} ariaLabel="share" onClick={() => null}>
         Share
       </Button>
       {/* @ts-expect-error leftIcon not allowed */}
-      <Button icon={<ShareIcon />} ariaLabel="share" leftIcon={<ShareIcon />} />
+      <Button
+        icon={<ShareIcon />}
+        ariaLabel="share"
+        leftIcon={<ShareIcon />}
+        onClick={() => null}
+      />
+      {/* @ts-expect-error onClick missing */}
       <Button icon={<ShareIcon />} ariaLabel="share" />
+      <Button icon={<ShareIcon />} ariaLabel="share" type="submit" />
+      <Button icon={<ShareIcon />} ariaLabel="share" onClick={() => null} />
       <Button icon={<ShareIcon />} ariaLabel="share" as="a" href="foo/bar" />;
     </div>
   );
