@@ -1,14 +1,12 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Button from './index.tsx';
-import { VideoIcon } from '../index.ts';
+import { ShareIcon, VideoIcon } from '../index.ts';
 import { Stack } from '../../index.ts';
 
 <Meta title="Components/Button" component={Button} />
 
-export const Template = (args) => (
-  <Button {...args}>{args.label || 'Button'}</Button>
-);
+export const Template = (args) => <Button {...args}>{args.label}</Button>;
 
 # Button
 
@@ -187,3 +185,36 @@ export const Template = (args) => (
 </Canvas>
 
 <ArgsTable story="Button with right icon" />
+
+## Icon button
+
+<Canvas>
+  <Story
+    name="Icon button"
+    args={{
+      variant: 'primary',
+      size: 'lg',
+      leftIcon: <ShareIcon />,
+      'aria-label': 'Share to Facebook',
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      leftIcon: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Icon button" />

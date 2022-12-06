@@ -9,7 +9,7 @@ type SharedProps = {
   size?: 'md' | 'lg';
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
-} & Pick<ChakraButtonProps, 'children' | 'width'>;
+} & Pick<ChakraButtonProps, 'children' | 'width' | 'aria-label'>;
 
 type SubmitType = {
   as?: 'button';
@@ -60,7 +60,7 @@ const Button: FC<Props> = ({ children, ...props }) => {
     <ChakraButton
       leftIcon={leftIcon}
       rightIcon={rightIcon}
-      iconSpacing="xs"
+      iconSpacing={children ? 'xs' : 0}
       as={as}
       variant={variant}
       size={size}
