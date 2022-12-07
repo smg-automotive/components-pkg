@@ -1,3 +1,5 @@
+export { AvatarIcon } from './AvatarIcon';
+export { AvatarWithNotificationIcon } from './AvatarWithNotificationIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
