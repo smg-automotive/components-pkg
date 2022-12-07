@@ -1,70 +1,89 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
 } from '@chakra-ui/react';
 
-type SharedProps = {
-  variant?: 'primary' | 'secondary';
-  size?: 'md' | 'lg';
-  leftIcon?: ReactElement;
-  rightIcon?: ReactElement;
-} & Pick<ChakraButtonProps, 'children' | 'width'>;
+type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
+type Never<Source> = { [P in keyof Source]?: never };
 
-type SubmitType = {
-  as?: 'button';
-  type: 'submit';
-  onClick?: () => void;
-  href?: never;
-  isExternal?: never;
-  rel?: never;
-} & SharedProps &
-  Pick<ChakraButtonProps, 'isDisabled'>;
-
-type ButtonType = {
-  as?: 'button';
-  type?: 'button';
-  onClick?: () => void;
-  href?: never;
-  isExternal?: never;
-  rel?: never;
-} & SharedProps &
-  Pick<ChakraButtonProps, 'isDisabled'>;
-
-export type ButtonProps = SubmitType | ButtonType;
-
-type LinkProps = {
-  as: 'a';
+type LinkButton = {
   href: string;
   isExternal?: boolean;
   rel?: string;
-  isDisabled?: false;
+};
+
+type IconButton = {
+  ariaLabel: string;
+  icon: ReactElement;
+};
+
+type SharedProps = {
+  as?: 'button';
+  variant?: 'primary' | 'secondary';
+  size?: 'md' | 'lg';
+  children: ReactNode;
+  leftIcon?: ReactElement;
+  rightIcon?: ReactElement;
   onClick?: () => void;
-} & SharedProps;
+} & Pick<ChakraButtonProps, 'width' | 'isDisabled'> &
+  Never<LinkButton> &
+  Never<IconButton>;
 
-export type Props = LinkProps | ButtonProps;
+type SubmitType = Overwrite<
+  SharedProps,
+  {
+    type: 'submit';
+  }
+>;
 
-const Button: FC<Props> = ({ children, ...props }) => {
+type ButtonType = Overwrite<
+  SharedProps,
+  {
+    type?: 'button';
+    onClick: () => void;
+  }
+>;
+
+export type ButtonProps = SubmitType | ButtonType;
+
+type LinkProps = Overwrite<
+  SharedProps,
+  LinkButton & {
+    as: 'a';
+    isDisabled?: false;
+  }
+>;
+
+type IconProps = IconButton &
+  Never<Pick<SharedProps, 'leftIcon' | 'rightIcon' | 'children'>>;
+type IconButtonProps =
+  | Overwrite<ButtonType, IconProps>
+  | Overwrite<SubmitType, IconProps>
+  | Overwrite<LinkProps, IconProps>;
+
+export type Props = LinkProps | ButtonProps | IconButtonProps;
+
+const Button: FC<Props> = (props) => {
   const {
     variant = 'primary',
     size = 'lg',
     isDisabled = false,
     as = 'button',
     isExternal,
-    leftIcon,
-    rightIcon,
     ...rest
   } = props;
 
   return (
     <ChakraButton
-      leftIcon={leftIcon}
-      rightIcon={rightIcon}
-      iconSpacing="xs"
+      leftIcon={props.children ? props.leftIcon : props.icon}
+      rightIcon={props.children ? props.rightIcon : undefined}
+      iconSpacing={props.children ? 'xs' : 0}
       as={as}
       variant={variant}
       size={size}
       isDisabled={isDisabled}
+      aria-label={props.children ? undefined : props.ariaLabel}
       {...rest}
       {...(props.as === 'a'
         ? {
@@ -73,7 +92,7 @@ const Button: FC<Props> = ({ children, ...props }) => {
           }
         : {})}
     >
-      {children}
+      {props.children}
     </ChakraButton>
   );
 };
