@@ -20,7 +20,7 @@ import { Brand } from '../../types/brand';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
-export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
+export type DevOverlayProps = Omit<ButtonProps, 'onClick' | 'children'> &
   Omit<SwitchProps, 'onChange'> & {
     hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
     toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
