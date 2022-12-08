@@ -71,19 +71,21 @@ const Button: FC<Props> = (props) => {
     isDisabled = false,
     as = 'button',
     isExternal,
+    ariaLabel,
+    icon,
     ...rest
   } = props;
 
   return (
     <ChakraButton
-      leftIcon={props.children ? props.leftIcon : props.icon}
+      leftIcon={props.children ? props.leftIcon : icon}
       rightIcon={props.children ? props.rightIcon : undefined}
       iconSpacing={props.children ? 'xs' : 0}
       as={as}
       variant={variant}
       size={size}
       isDisabled={isDisabled}
-      aria-label={props.children ? undefined : props.ariaLabel}
+      aria-label={props.children ? undefined : ariaLabel}
       {...rest}
       {...(props.as === 'a'
         ? {
