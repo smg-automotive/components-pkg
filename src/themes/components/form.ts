@@ -10,8 +10,13 @@ const baseStyleHelperText: SystemStyleObject = {
   color: 'gray.400',
 };
 
+const requiredIndicator: SystemStyleObject = {
+  color: 'red.500',
+};
+
 const baseStyle: PartsStyleObject<typeof parts> = {
   helperText: baseStyleHelperText,
+  requiredIndicator,
 };
 
 export default {
