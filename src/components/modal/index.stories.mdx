@@ -1,0 +1,58 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useDisclosure, ChakraProvider } from '@chakra-ui/react';
+
+import Modal from './index';
+import ModalContent from './ModalContent';
+import ModalOverlay from './ModalOverlay';
+import ModalCloseButton from './ModalCloseButton';
+import ModalBody from './ModalBody';
+import ModalHeader from './ModalHeader';
+import ModalFooter from './ModalFooter';
+
+import Divider from '../divider';
+import ThemeProvider from '../themeProvider';
+import Button from '../button';
+import Box from '../box';
+
+<Meta title="Components/Data display/Modal" component={Modal} />
+
+export const Template = (args) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <Box>
+      <Button onClick={onOpen}>Open Modal</Button>
+      <Modal isOpen={isOpen} onClose={onClose} {...args}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <Divider />
+          <ModalBody>
+            <Box p="4">This is modal content</Box>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Box>
+  );
+};
+
+# Modal
+
+<Canvas>
+  <Story
+    name="Modal"
+    args={{ isCentered: true, size: 'sm', motionPreset: 'scale' }}
+    argTypes={{
+      size: {
+        options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
+        control: 'select',
+      },
+      motionPreset: {
+        options: ['slideInBottom', 'slideInRight', 'scale'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
