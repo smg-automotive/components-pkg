@@ -19,20 +19,22 @@ import Box from '../box';
 export const Template = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box>
-      <Button onClick={onOpen}>Open Modal</Button>
-      <Modal isOpen={isOpen} onClose={onClose} {...args}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <Divider />
-          <ModalBody>
-            <Box p="4">This is modal content</Box>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </Box>
+    <ThemeProvider>
+      <Box>
+        <Button onClick={onOpen}>Open Modal</Button>
+        <Modal isOpen={isOpen} onClose={onClose} {...args}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <Divider />
+            <ModalBody>
+              <Box p="4">This is modal content</Box>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Box>
+    </ThemeProvider>
   );
 };
 
