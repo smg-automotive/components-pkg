@@ -5,42 +5,14 @@ export const TrailerIcon = createIcon({
   displayName: 'Trailer',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <circle
-        cx="11.499"
-        cy="17.502"
-        r="2.501"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m19.002 12-.722 4.33a2 2 0 0 1-1.974 1.672H14.5l1-6.002h3.502Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m19.002 5.997-1 6.003"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M16 5.997h3.001M14.5 18.002h-.55M9.048 18.002H5.996"
-      />
-    </>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M1 7h14.535l4 6H23v2H9.828a3 3 0 0 1-5.656 0H1V7Zm14 6h2.131l-2.666-4H3v4h1.172a3 3 0 0 1 5.656 0H15Zm-7.293 1.708a1 1 0 1 0-1.414-1.415 1 1 0 0 0 1.414 1.415Z"
+      clipRule="evenodd"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });

@@ -5,33 +5,14 @@ export const CalendarIcon = createIcon({
   displayName: 'Calendar',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M16 2v4M8 2v4M3 9h18"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M19 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M7.013 12.729a.25.25 0 1 0 .002.5.25.25 0 0 0-.002-.5M12.013 12.729a.25.25 0 1 0 .002.5.25.25 0 0 0-.002-.5M17.013 12.729a.25.25 0 1 0 .002.5.25.25 0 0 0-.002-.5M7.013 16.729a.25.25 0 1 0 .002.5.25.25 0 0 0-.002-.5M12.013 16.729a.25.25 0 1 0 .002.5.25.25 0 0 0-.002-.5"
-      />
-    </>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M17 4h5v8H4v8h16v-6l2-1v9H2V4h5V2h2v2h6V2h2v2ZM7 6H4v4h16V6h-3v1l-2 1V6H9v1L7 8V6Zm1 10v-2H6v2h2Zm3-2h2v2h-2v-2Zm7 2v-2h-2v2h2Z"
+      clipRule="evenodd"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });

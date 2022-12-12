@@ -7,41 +7,13 @@ export const CarIcon = createIcon({
   path: (
     <>
       <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M15.77 19.003H8.38"
+        fill="currentColor"
+        d="M19 11h-1.5L15 6H4l-3 5v9h3.18a3 3 0 0 0 5.64 0h4.37a3 3 0 0 0 5.63 0H23v-5a4 4 0 0 0-4-4ZM7 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-2h-1.18a3 3 0 0 0-5.63 0H9.82a3 3 0 0 0-5.63 0H3v-5h3l1-2H3.33l1.81-3h8.62l2.51 5H19a2 2 0 0 1 2 2v3Z"
       />
-      <circle
-        cx="17.35"
-        cy="18.253"
-        r="1.751"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-      <circle
-        cx="6.628"
-        cy="18.253"
-        r="1.751"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M18.928 19.003h1.237c.74 0 1.367-.541 1.479-1.272l.335-2.186c.163-1.022-.482-2-1.486-2.252a17.605 17.605 0 0 0-4.583-.47 14.156 14.156 0 0 0-2.956-1.99 7.857 7.857 0 0 0-7.045 0l-2.252 1.13a6.617 6.617 0 0 1-.985.393.984.984 0 0 0-.678.943v4.204a1.499 1.499 0 0 0 1.497 1.5h1.558"
-      />
+      <path fill="currentColor" d="m11 13 2-1v-2h-2v3Z" />
     </>
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });
