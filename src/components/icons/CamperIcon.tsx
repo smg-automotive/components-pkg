@@ -5,47 +5,14 @@ export const CamperIcon = createIcon({
   displayName: 'Camper',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M20.102 11h1.9a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M5.895 11h-1.9a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M8.588 16.752h1M16.592 16.752h1M5.996 10.5V5.996a2 2 0 0 1 2-2h10.005a2 2 0 0 1 2 2V10.5M20.461 13H5.535"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M5.496 13.793v4.21a2 2 0 0 0 2 2h11.006a2 2 0 0 0 2-2v-4.21c0-.528-.052-1.053-.155-1.57l-.523-2.616a2.001 2.001 0 0 0-1.963-1.609H8.137c-.954 0-1.776.673-1.963 1.609l-.523 2.616a8.03 8.03 0 0 0-.155 1.57Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M9.234 20.003v1.5a1 1 0 0 1-1 1.001H7.232a1 1 0 0 1-1-1v-1.957M19.765 19.547v1.957a1 1 0 0 1-1 1h-1a1 1 0 0 1-1.001-1v-1.5"
-      />
-    </>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M4.667 5A1.667 1.667 0 0 0 3 6.667v4.334h10V8h8V6.666A1.667 1.667 0 0 0 19.333 5H4.667ZM1 6.667v10.134c0 .619.274 1.189.722 1.591.443.4 1.025.608 1.611.608h.839a3 3 0 0 0 5.656 0h5.344a2.999 2.999 0 0 0 5.656 0H23v-6.333l-.193-.257-.013-.018L21 10.001h2V6.667A3.667 3.667 0 0 0 19.333 3H4.667A3.667 3.667 0 0 0 1 6.667Zm2 10.134V13h10v4H9.828a3 3 0 0 0-5.656 0h-.839a.414.414 0 0 1-.274-.095C3.007 16.858 3 16.818 3 16.8ZM20 12h-5v-2h3.5l1.5 2Zm-4.828 5H15v-3h6v3h-.172a2.999 2.999 0 0 0-5.656 0ZM8 18a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 0 2 0 1 1 0 0 0-2 0ZM5 6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H5Z"
+      clipRule="evenodd"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });

@@ -5,25 +5,14 @@ export const VehiclePowerIcon = createIcon({
   displayName: 'VehiclePower',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M18.364 5.636a9 9 0 0 1 0 12.728 9 9 0 1 1 0-12.728"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M17.413 19.031a3.213 3.213 0 0 0-.804-1.172A3.209 3.209 0 0 0 14.424 17H9.576a3.225 3.225 0 0 0-2.99 2.031M13.414 10.586a2 2 0 1 1-2.828 2.828 2 2 0 0 1 2.828-2.828M12 3v2M16.5 4.21l-.87 1.5M7.5 4.21l.87 1.5M4.21 7.5l1.5.87M21 12h-1.5M4.5 12H3M13.79 11.13l6-3.63"
-      />
-    </>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M4.062 11A7.96 7.96 0 0 1 5.68 7.096l1.37 1.37L8.465 7.05l-1.37-1.37A7.96 7.96 0 0 1 11 4.062V6h2V4.062a7.96 7.96 0 0 1 3.906 1.619l-1.37 1.37-3.018 3.017A2.004 2.004 0 0 0 10 12.001a2 2 0 1 0 3.932-.518l3.018-3.018 1.37-1.37A7.96 7.96 0 0 1 19.938 11H18v2h1.938a7.972 7.972 0 0 1-2.078 4.446L16.414 16H7.586L6.14 17.447A7.972 7.972 0 0 1 4.062 13H6v-2H4.062Zm3.618 7.735A7.963 7.963 0 0 0 12 20a7.963 7.963 0 0 0 4.32-1.265L15.586 18H8.414l-.734.735ZM2 12C2 6.478 6.477 2 12 2s10 4.477 10 10c0 5.522-4.477 10-10 10S2 17.523 2 12Z"
+      clipRule="evenodd"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });

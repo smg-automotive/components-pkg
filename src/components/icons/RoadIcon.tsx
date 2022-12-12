@@ -5,26 +5,14 @@ export const RoadIcon = createIcon({
   displayName: 'Road',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m12.413 15.234 3.495 4.98a.502.502 0 0 1-.515.779L12 20.302l-3.397.691a.5.5 0 0 1-.513-.776l3.496-4.983a.506.506 0 0 1 .827 0Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M21.003 18.003 18.002 4.998M2.996 18.003 5.997 4.998M12 2.997v2M12 8.999v2"
-      />
-    </>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M2.03 21.758 6.97 2H9c0 .08-.01.161-.03.243L4.031 22H2c0-.08.01-.161.03-.242ZM22 22c0-.08-.01-.161-.03-.242L17.031 2H15c0 .08.01.161.03.243L19.97 22H22Zm-9 0v-6h-2v6h2ZM11 7V2h2v5h-2Zm2 2v5h-2V9h2Z"
+      clipRule="evenodd"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });

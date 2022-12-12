@@ -5,57 +5,12 @@ export const UtilityVehicleIcon = createIcon({
   displayName: 'UtilityVehicle',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M7.975 19.503H16.5"
-      />
-      <circle
-        cx="18.001"
-        cy="19.503"
-        r="1.501"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-      <circle
-        cx="6.475"
-        cy="19.503"
-        r="1.501"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M2.994 14.862H15.5a.5.5 0 0 0 .5-.5V7.997a2 2 0 0 0-2-2H4.995a2 2 0 0 0-2 2v10.504a1 1 0 0 0 1 1h.978"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M16 7.998h3.248c1.053 0 1.993.66 2.351 1.65l1.284 3.544c.08.218.12.449.12.681v4.13a1.5 1.5 0 0 1-1.5 1.5H19.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M23.003 14h-3.001l-.708-.707a1 1 0 0 0-.707-.293H16"
-      />
-    </>
+    <path
+      fill="currentColor"
+      d="M19 5h-3V3H1v17h3.18a3 3 0 0 0 5.64 0h4.36a3 3 0 0 0 5.64 0H23V9a4 4 0 0 0-4-4ZM7 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4-2h-1.18a3 3 0 0 0-5.64 0H9.82a3 3 0 0 0-5.64 0H3v-4h8l1-2H3V5h11v9h7v4Zm0-6h-5V7h3a2 2 0 0 1 2 2v3Z"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });

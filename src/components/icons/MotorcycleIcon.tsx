@@ -5,57 +5,14 @@ export const MotorcycleIcon = createIcon({
   displayName: 'Motorcycle',
   viewBox: '0 0 24 24',
   path: (
-    <>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m7.567 11.94 1.56-1.85 6.874-2.091-5.002 7.003H4.996l2.571-3.062Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M8.998 15.001a4.011 4.011 0 1 1-1.431-3.061"
-      />
-      <circle
-        cx="19.002"
-        cy="15.001"
-        r="4.002"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m16 5.997 2-1M19.001 15.001 16 5.998M6.996 6.998h3.001"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M16 7.999 11 15.002H4.996l4.132-4.916L16 8Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M11 15.001 7.997 6.998"
-      />
-    </>
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M13 4h4l2 8a4 4 0 1 1-1.93.52l-.32-1.27L12 16h-2l-2-6H1l1-2h13.94l-.5-2H13V4Zm-2.9 6 1.27 3.8 3.8-3.8H10.1Zm7.789 7.663a2 2 0 1 0 2.222-3.324 2 2 0 0 0-2.222 3.324ZM21 7h-2v3h2V7ZM4 5h6L9 7H4V5Zm-1.222 7.675a4 4 0 1 1 4.444 6.652 4 4 0 0 1-4.444-6.652Zm1.11 4.988a2 2 0 1 0 2.223-3.325 2 2 0 0 0-2.222 3.325Z"
+      clipRule="evenodd"
+    />
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });
