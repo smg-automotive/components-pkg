@@ -7,39 +7,16 @@ export const RangeIcon = createIcon({
   path: (
     <>
       <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M7.194 10.703a.992.992 0 0 1-1.416 0c-1.02-1.039-2.782-3.115-2.782-5.058 0-2.015 1.563-3.649 3.49-3.649 1.928 0 3.491 1.634 3.491 3.649 0 1.943-1.763 4.02-2.783 5.058Z"
-        clipRule="evenodd"
+        fill="currentColor"
+        d="M7 21h3l1-2H8l-1 2Zm6 0h3l1-2h-3l-1 2Zm-9-4H2v6h2v-2h1l1-2H4v-2Zm16 0v2h-1l-1 2h2v2h2v-6h-2Zm-1-9A7 7 0 1 0 5 8c0 4.34 5.71 9.23 6.36 9.77l.64.53.64-.53C13.29 17.23 19 12.34 19 8Zm-7 7.67C10.18 14 7 10.55 7 8a5 5 0 1 1 10 0c0 2.55-3.18 6-5 7.67Z"
       />
       <path
-        stroke="currentcolor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M6.485 5.337a.25.25 0 1 0 0 .498.25.25 0 0 0 0-.498"
-      />
-      <path
-        stroke="currentcolor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m20.163 17.556-2.89 1.71a.552.552 0 0 0 0 .95l2.89 1.71c.371.22.84-.048.84-.48v-3.411c0-.431-.469-.7-.84-.48Z"
-        clipRule="evenodd"
-      />
-      <path
-        stroke="currentcolor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M13.001 19.702H7.999a2 2 0 0 1-2-2.001v0a2 2 0 0 1 2-2.001h5.653a2.35 2.35 0 0 0 2.35-2.35v0a2.35 2.35 0 0 0-2.35-2.35H11"
+        fill="currentColor"
+        d="M12 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm0-4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
       />
     </>
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
   },
 });
