@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, useMemo } from 'react';
+import React, { FC, MouseEvent, PropsWithChildren, useMemo } from 'react';
 import { BoxProps, Show, useMultiStyleConfig } from '@chakra-ui/react';
 
 import PaginationButton from './PaginationButton';
@@ -68,8 +68,14 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     return null;
   }
 
-  const onNext = () => onChange(currentPage + 1);
-  const onPrevious = () => onChange(currentPage - 1);
+  const onNext = (e: MouseEvent) => {
+    e.preventDefault();
+    onChange(currentPage + 1);
+  };
+  const onPrevious = (e: MouseEvent) => {
+    e.preventDefault();
+    onChange(currentPage - 1);
+  };
 
   // workaround for pagination API as it starts from 0
   const currentPagePlusOne = currentPage + 1;
@@ -112,7 +118,10 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
             key={`paginationButton-${index}`}
             isActive={pageNumber === currentPagePlusOne}
             ariaLabel={`go to page ${pageNumber} of ${totalPages}`}
-            onClick={() => onChange(pageNumberMinusOne(pageNumber as number))}
+            onClick={(e) => {
+              e.preventDefault();
+              onChange(pageNumberMinusOne(pageNumber as number));
+            }}
           >
             {pageNumber}
           </PaginationButton>
