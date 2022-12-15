@@ -1,11 +1,3 @@
-import React, { FC } from 'react';
-import {
-  ModalOverlay as ChakraModalOverlay,
-  ModalOverlayProps,
-} from '@chakra-ui/react';
-
-const ModalOverlay: FC<ModalOverlayProps> = (props) => {
-  return <ChakraModalOverlay {...props} />;
-};
+import { ModalOverlay } from '@chakra-ui/react';
 
 export default ModalOverlay;

@@ -3,14 +3,14 @@ import { useDisclosure, ChakraProvider } from '@chakra-ui/react';
 
 import Modal from './index';
 import ModalContent from './ModalContent';
-import ModalOverlay from './ModalOverlay';
 import ModalCloseButton from './ModalCloseButton';
 import ModalBody from './ModalBody';
 import ModalHeader from './ModalHeader';
 import ModalFooter from './ModalFooter';
+import ModalOverlay from './ModalOverlay';
 
-import Divider from '../divider';
 import ThemeProvider from '../themeProvider';
+import Divider from '../divider';
 import Button from '../button';
 import Box from '../box';
 
@@ -19,22 +19,20 @@ import Box from '../box';
 export const Template = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <ThemeProvider>
-      <Box>
-        <Button onClick={onOpen}>Open Modal</Button>
-        <Modal isOpen={isOpen} onClose={onClose} {...args}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <Divider />
-            <ModalBody>
-              <Box p="4">This is modal content</Box>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </Box>
-    </ThemeProvider>
+    <Box>
+      <Button onClick={onOpen}>Open Modal</Button>
+      <Modal isOpen={isOpen} onClose={onClose} {...args}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <Divider />
+          <ModalBody>
+            <Box p="4">This is modal content</Box>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Box>
   );
 };
 
@@ -43,10 +41,10 @@ export const Template = (args) => {
 <Canvas>
   <Story
     name="Modal"
-    args={{ isCentered: true, size: 'sm', motionPreset: 'scale' }}
+    args={{ isCentered: true, size: 'lg', motionPreset: 'scale' }}
     argTypes={{
       size: {
-        options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
+        options: ['lg', 'full'],
         control: 'select',
       },
       motionPreset: {

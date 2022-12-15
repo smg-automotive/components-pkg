@@ -57,7 +57,6 @@ export { default as Modal } from './modal';
 export { default as ModalContent } from './modal/ModalContent';
 export { default as ModalBody } from './modal/ModalBody';
 export { default as ModalFooter } from './modal/ModalFooter';
-export { default as ModalOverlay } from './modal/ModalOverlay';
 export { default as ModalCloseButton } from './modal/ModalCloseButton';
 export { default as ModalHeader } from './modal/ModalHeader';
 
