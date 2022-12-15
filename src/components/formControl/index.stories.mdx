@@ -10,6 +10,7 @@ import { Input } from '../../index.ts';
   args={{
     label: 'Label',
     hint: 'I am a hint text',
+    tooltip: '',
     isDisabled: false,
     isRequired: false,
     errorMessage: '',
@@ -65,6 +66,21 @@ export const Template = (args) => {
   </Story>
 </Canvas>
 
+## With tooltip
+
+<Canvas>
+  <Story
+    name="With tooltip"
+    args={{
+      label: 'Label',
+      hint: '',
+      tooltip: 'I am a tooltip text',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Disabled
 
 <Canvas>
@@ -78,7 +94,7 @@ export const Template = (args) => {
 <Canvas>
   <Story
     name="Invalid"
-    args={{ label: 'Label', errorMessage: 'Error message' }}
+    args={{ label: 'Label', tooltip: '', errorMessage: 'Error message' }}
   >
     {Template.bind({})}
   </Story>
