@@ -1,11 +1,11 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, MouseEvent, PropsWithChildren } from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 interface Props {
   isDisabled?: boolean;
   isActive?: boolean;
   ariaLabel: string;
-  onClick: () => void;
+  onClick: (e: MouseEvent) => void;
 }
 
 const PaginationButton: FC<PropsWithChildren<Props>> = (props) => {
