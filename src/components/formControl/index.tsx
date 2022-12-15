@@ -6,8 +6,9 @@ import {
   FormLabel,
 } from '@chakra-ui/react';
 
-import { Flex, Tooltip } from '../index';
+import Tooltip from '../tooltip';
 import { TooltipIcon } from '../icons';
+import Flex from '../flex';
 
 type Props = {
   isDisabled?: boolean;
