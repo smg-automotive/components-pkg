@@ -39,10 +39,13 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
     </FormLabel>
   );
 
-  const renderTooltip = (
-    <Tooltip label={tooltip}>
-      <TooltipIcon ml="sm" />
-    </Tooltip>
+  const renderLabelWithTooltip = (
+    <Flex justifyContent="start">
+      {renderLabel}
+      <Tooltip label={tooltip}>
+        <TooltipIcon ml="sm" pos="relative" bottom="xxs" />
+      </Tooltip>
+    </Flex>
   );
 
   return (
@@ -53,12 +56,7 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
       id={id}
     >
       {label && !tooltip ? renderLabel : null}
-      {label && tooltip ? (
-        <Flex justifyContent="start">
-          {renderLabel}
-          {renderTooltip}
-        </Flex>
-      ) : null}
+      {label && tooltip ? renderLabelWithTooltip : null}
       {children}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
       {hint ? <FormHelperText>{hint}</FormHelperText> : null}
