@@ -7,8 +7,8 @@ import {
 } from '@chakra-ui/react';
 
 import Tooltip from '../tooltip';
+import Stack from '../stack';
 import { TooltipIcon } from '../icons';
-import Flex from '../flex';
 
 type Props = {
   isDisabled?: boolean;
@@ -32,20 +32,20 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
 }) => {
   const isInvalid = !!errorMessage;
 
-  const renderLabel = (
+  const formLabel = (
     <FormLabel htmlFor={id}>
       {label}
       {isRequired ? <>&nbsp;</> : null}
     </FormLabel>
   );
 
-  const renderLabelWithTooltip = (
-    <Flex justifyContent="start">
-      {renderLabel}
+  const formLabelWithTooltip = (
+    <Stack direction="row" spacing="sm">
+      {formLabel}
       <Tooltip label={tooltip}>
-        <TooltipIcon ml="sm" pos="relative" bottom="xxs" />
+        <TooltipIcon pos="relative" bottom="xxs" />
       </Tooltip>
-    </Flex>
+    </Stack>
   );
 
   return (
@@ -55,8 +55,8 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
       isRequired={isRequired}
       id={id}
     >
-      {label && !tooltip ? renderLabel : null}
-      {label && tooltip ? renderLabelWithTooltip : null}
+      {label && !tooltip ? formLabel : null}
+      {label && tooltip ? formLabelWithTooltip : null}
       {children}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
       {hint ? <FormHelperText>{hint}</FormHelperText> : null}
