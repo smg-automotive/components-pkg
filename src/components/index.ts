@@ -29,6 +29,7 @@ export { default as FullHeight } from './fullHeight';
 export { default as Grid } from './grid';
 export { default as GridItem } from './grid/GridItem';
 export { default as Hide } from './hide';
+export { default as useMediaQuery } from './hooks/useMediaQuery';
 export { default as Input } from './input';
 export { default as Link } from './link';
 export { default as List } from './list';
