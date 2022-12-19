@@ -53,7 +53,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
 
         <ModalBody>{children}</ModalBody>
 
-        {(primaryActionButton?.action || secondaryActionButton?.action) && (
+        {(primaryActionButton || secondaryActionButton) && (
           <>
             <Divider />
             <ModalFooter>
