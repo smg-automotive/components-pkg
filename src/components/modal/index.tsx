@@ -40,7 +40,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   const { t } = useI18n();
 
   return (
-    <ChakraModal {...modalProps}>
+    <ChakraModal {...modalProps} onClose={onClose}>
       <ModalOverlay {...modalOverlayProps} />
       <ModalContent>
         {title && (

@@ -26,7 +26,7 @@ type SharedProps = {
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   onClick?: () => void;
-} & Pick<ChakraButtonProps, 'width' | 'isDisabled'> &
+} & Pick<ChakraButtonProps, 'width' | 'isDisabled' | 'mr'> &
   Never<LinkButton> &
   Never<IconButton>;
 
