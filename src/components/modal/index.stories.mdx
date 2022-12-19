@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 import { useDisclosure } from '@chakra-ui/react';
 
-import Divider from '../divider';
 import Button from '../button';
 import Box from '../box';
 
@@ -67,7 +67,7 @@ export const ModalTemplate = (args) => {
       motionPreset: 'scale',
       title: 'Modal Header',
       primaryActionButton: {
-        action: () => console.log('UDRI!'),
+        action: action('Submit'),
         actionName: 'Submit',
       },
     }}
@@ -97,11 +97,11 @@ export const ModalTemplate = (args) => {
       motionPreset: 'scale',
       title: 'Modal Header',
       primaryActionButton: {
-        action: () => console.log('Boom!'),
+        action: action('Submit'),
         actionName: 'Submit',
       },
       secondaryActionButton: {
-        action: () => console.log('Fire!'),
+        action: action('Fire'),
         actionName: 'Fire',
       },
     }}

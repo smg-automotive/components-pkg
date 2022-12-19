@@ -69,6 +69,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
               {secondaryActionButton?.action &&
                 !primaryActionButton?.action && (
                   <Button
+                    as="button"
                     variant="secondary"
                     onClick={secondaryActionButton.action}
                   >
