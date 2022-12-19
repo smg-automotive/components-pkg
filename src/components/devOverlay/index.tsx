@@ -27,7 +27,7 @@ export type DevOverlayProps = Omit<ButtonProps, 'onClick' | 'children'> &
     toggleTranslation: Exclude<SwitchProps['onChange'], undefined>;
     variables: DevOverlayVariables;
     activeTheme: Brand;
-    displayTranslationKeys?: boolean;
+    displayTranslationKeys: boolean;
   };
 
 const DevOverlay: FC<DevOverlayProps> = ({
@@ -36,7 +36,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
   toggleTheme,
   toggleTranslation,
   activeTheme,
-  displayTranslationKeys,
+  displayTranslationKeys = false,
 }) => {
   const isThemeSwitcherChecked = 'as24' !== activeTheme;
 
