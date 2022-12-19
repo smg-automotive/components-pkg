@@ -18,7 +18,7 @@ import Button from '../button';
 
 type ActionButton = {
   action: () => void;
-  actionName: string;
+  label: string;
 };
 
 interface Props extends ModalProps {
@@ -57,43 +57,25 @@ const Modal: FC<PropsWithChildren<Props>> = ({
                 {t('modal.close')}
               </Button>
 
-              {primaryActionButton?.action &&
-                !secondaryActionButton?.action && (
-                  <Button
-                    variant="primary"
-                    onClick={primaryActionButton.action}
-                  >
-                    {primaryActionButton.actionName}
-                  </Button>
-                )}
-              {secondaryActionButton?.action &&
-                !primaryActionButton?.action && (
-                  <Button
-                    as="button"
-                    variant="secondary"
-                    onClick={secondaryActionButton.action}
-                  >
-                    {secondaryActionButton.actionName}
-                  </Button>
-                )}
-
-              {primaryActionButton?.action && secondaryActionButton?.action && (
-                <Box display="flex" justifyContent="space-between">
+              <Box display="flex" justifyContent="space-between">
+                {secondaryActionButton?.action ? (
                   <Button
                     variant="secondary"
                     onClick={secondaryActionButton.action}
                     mr="12"
                   >
-                    {secondaryActionButton.actionName}
+                    {secondaryActionButton.label}
                   </Button>
+                ) : null}
+                {primaryActionButton?.action ? (
                   <Button
                     variant="primary"
                     onClick={primaryActionButton.action}
                   >
-                    {primaryActionButton.actionName}
+                    {primaryActionButton.label}
                   </Button>
-                </Box>
-              )}
+                ) : null}
+              </Box>
             </ModalFooter>
           </>
         )}
