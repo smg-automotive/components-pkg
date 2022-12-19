@@ -14,7 +14,8 @@ const Hide: FC<Omit<HideProps, 'ssr'> & Omit<BoxProps, 'sx'>> = ({
   const query = useQuery(queryProps);
   const media = query && `@media ${query}`;
   const testId = `hide-${Object.entries(queryProps)
-    .map((arr) => arr.join('-'))
+    .map(([key, value]) => (value ? `${key}-${value}` : null))
+    .filter(Boolean)
     .join('-')}`;
 
   return (

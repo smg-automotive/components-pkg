@@ -18,7 +18,8 @@ const Show: FC<Omit<ShowProps, 'ssr'> & Omit<BoxProps, 'sx'> & Props> = ({
   const query = useQuery(queryProps);
   const media = `@media ${query}`;
   const testId = `show-${Object.entries(queryProps)
-    .map((arr) => arr.join('-'))
+    .map(([key, value]) => (value ? `${key}-${value}` : null))
+    .filter(Boolean)
     .join('-')}`;
 
   return (
