@@ -22,7 +22,7 @@ type ActionButton = {
 };
 
 interface Props extends ModalProps {
-  title: string;
+  title?: string;
   modalOverlayProps?: ModalOverlayProps;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
@@ -40,12 +40,16 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   const { t } = useI18n();
 
   return (
-    <ChakraModal {...modalProps} onClose={onClose}>
+    <ChakraModal {...modalProps}>
       <ModalOverlay {...modalOverlayProps} />
       <ModalContent>
-        <ModalHeader>{title}</ModalHeader>
-        <ModalCloseButton />
-        <Divider />
+        {title && (
+          <>
+            <ModalHeader>{title}</ModalHeader>
+            <ModalCloseButton />
+            <Divider />
+          </>
+        )}
 
         <ModalBody>{children}</ModalBody>
 

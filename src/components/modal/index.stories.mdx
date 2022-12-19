@@ -56,6 +56,35 @@ export const ModalTemplate = (args) => {
   </Story>
 </Canvas>
 
+# Modal Without Header
+
+<Canvas>
+  <Story
+    name="Modal Without Header"
+    args={{
+      isCentered: true,
+      size: 'md',
+      motionPreset: 'scale',
+      primaryActionButton: {
+        action: action('Submit'),
+        label: 'Submit',
+      },
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'full'],
+        control: 'select',
+      },
+      motionPreset: {
+        options: ['slideInBottom', 'slideInRight', 'scale'],
+        control: 'select',
+      },
+    }}
+  >
+    {ModalTemplate.bind({})}
+  </Story>
+</Canvas>
+
 # Modal With Footer
 
 <Canvas>
