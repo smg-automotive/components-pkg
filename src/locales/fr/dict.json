@@ -77,5 +77,8 @@
         "title": "Médias"
       }
     }
+  },
+  "modal": {
+    "close": "Fermer"
   }
 }

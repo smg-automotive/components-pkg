@@ -77,5 +77,8 @@
         "title": "Media"
       }
     }
+  },
+  "modal": {
+    "close": "Chiudi"
   }
 }

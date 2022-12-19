@@ -1,15 +1,3 @@
-import React, { FC, PropsWithChildren } from 'react';
-import {
-  ModalContent as ChakraModalContent,
-  ModalContentProps,
-} from '@chakra-ui/react';
-
-const ModalContent: FC<PropsWithChildren<ModalContentProps>> = (props) => {
-  const { children, ...modalContentProps } = props;
-
-  return (
-    <ChakraModalContent {...modalContentProps}>{children}</ChakraModalContent>
-  );
-};
+import { ModalContent } from '@chakra-ui/react';
 
 export default ModalContent;

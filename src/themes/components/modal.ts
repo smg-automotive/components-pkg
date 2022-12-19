@@ -73,6 +73,9 @@ const baseStyleBody = defineStyle((props) => {
 const baseStyleFooter = defineStyle({
   px: '12',
   py: '16',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
 const baseStyle = definePartsStyle((props) => ({
@@ -102,12 +105,12 @@ function getSize(value: string) {
 }
 
 const sizes = {
-  lg: getSize('7xl'),
+  md: getSize('7xl'),
   full: getSize('full'),
 };
 
 export default defineMultiStyleConfig({
   baseStyle,
   sizes,
-  defaultProps: { size: 'lg' },
+  defaultProps: { size: 'md' },
 });

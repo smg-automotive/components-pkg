@@ -1,36 +1,30 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { useDisclosure, ChakraProvider } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 
-import Modal from './index';
-import ModalContent from './ModalContent';
-import ModalCloseButton from './ModalCloseButton';
-import ModalBody from './ModalBody';
-import ModalHeader from './ModalHeader';
-import ModalFooter from './ModalFooter';
-import ModalOverlay from './ModalOverlay';
-
-import ThemeProvider from '../themeProvider';
 import Divider from '../divider';
 import Button from '../button';
 import Box from '../box';
 
+import Modal from './index';
+
 <Meta title="Components/Data display/Modal" component={Modal} />
 
-export const Template = (args) => {
+export const ModalTemplate = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen}>Open</Button>
       <Modal isOpen={isOpen} onClose={onClose} {...args}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <Divider />
-          <ModalBody>
-            <Box p="4">This is modal content</Box>
-          </ModalBody>
-        </ModalContent>
+        <Box p="4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
+          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
+          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
+          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
+          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
+          Phasellus malesuada egestas est sit amet venenatis.
+        </Box>
       </Modal>
     </Box>
   );
@@ -41,10 +35,15 @@ export const Template = (args) => {
 <Canvas>
   <Story
     name="Modal"
-    args={{ isCentered: true, size: 'lg', motionPreset: 'scale' }}
+    args={{
+      isCentered: true,
+      size: 'md',
+      motionPreset: 'scale',
+      title: 'Modal Header',
+    }}
     argTypes={{
       size: {
-        options: ['lg', 'full'],
+        options: ['md', 'full'],
         control: 'select',
       },
       motionPreset: {
@@ -53,6 +52,70 @@ export const Template = (args) => {
       },
     }}
   >
-    {Template.bind({})}
+    {ModalTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# Modal With Footer
+
+<Canvas>
+  <Story
+    name="Modal With Footer"
+    args={{
+      isCentered: true,
+      size: 'md',
+      motionPreset: 'scale',
+      title: 'Modal Header',
+      primaryActionButton: {
+        action: () => console.log('UDRI!'),
+        actionName: 'Submit',
+      },
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'full'],
+        control: 'select',
+      },
+      motionPreset: {
+        options: ['slideInBottom', 'slideInRight', 'scale'],
+        control: 'select',
+      },
+    }}
+  >
+    {ModalTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# Modal With 2 Action Buttons
+
+<Canvas>
+  <Story
+    name="Modal With 2 Action Buttons"
+    args={{
+      isCentered: true,
+      size: 'md',
+      motionPreset: 'scale',
+      title: 'Modal Header',
+      primaryActionButton: {
+        action: () => console.log('Boom!'),
+        actionName: 'Submit',
+      },
+      secondaryActionButton: {
+        action: () => console.log('Fire!'),
+        actionName: 'Fire',
+      },
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'full'],
+        control: 'select',
+      },
+      motionPreset: {
+        options: ['slideInBottom', 'slideInRight', 'scale'],
+        control: 'select',
+      },
+    }}
+  >
+    {ModalTemplate.bind({})}
   </Story>
 </Canvas>

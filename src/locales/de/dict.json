@@ -77,5 +77,8 @@
         "title": "Für Medien"
       }
     }
+  },
+  "modal": {
+    "close": "Schliessen"
   }
 }
