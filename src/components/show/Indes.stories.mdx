@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Show from './index.ts';
+import Show from './index.tsx';
 
 <Meta
   title="Components/Utils/Show"
@@ -14,37 +14,90 @@ import Show from './index.ts';
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'select' },
     },
+    text: {
+      table: {
+        disable: true,
+      },
+    },
   }}
 />
 
 export const Template = ({ text, ...args }) => {
-  return <Show {...args}>{text}</Show>;
+  const breakpoint = args.below || args.above || '[please pass a breakpoint]';
+  return <Show {...args}>{text.replace('BREAKPOINT', breakpoint)}</Show>;
 };
 
 # Show
 
-## Above a viewport
+## Show above a viewport (including the passed viewport)
 
 <Canvas>
   <Story
-    name="Above a viewport"
-    args={{ above: 'md', text: 'I am visible on md and above' }}
+    name="Show above a viewport (including the passed viewport)"
+    args={{
+      above: 'md',
+      text: 'I am visible on BREAKPOINT and above and hidden otherwise',
+    }}
+    argTypes={{
+      below: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Above a viewport" />
+<ArgsTable story="Show above a viewport" />
 
-## Below a viewport
+## Show below a viewport (including the passed viewport)
 
 <Canvas>
   <Story
-    name="Below a viewport"
-    args={{ below: 'md', text: 'I am visible on md and below' }}
+    name="Show below a viewport (including the passed viewport)"
+    args={{
+      below: 'md',
+      text: 'I am visible on BREAKPOINT and below and hidden otherwise',
+    }}
+    argTypes={{
+      above: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="Below a viewport" />
+<ArgsTable story="Show below a viewport" />
+
+<Canvas>
+  <Story
+    name="Shown when matching a query"
+    args={{
+      breakpoint:
+        '(orientation: landscape) and (hover: none) and (pointer: coarse)',
+      text: 'I am only shown on mobile landscape',
+    }}
+    argTypes={{
+      above: {
+        table: {
+          disable: true,
+        },
+      },
+      below: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With a custom breakpoint query" />

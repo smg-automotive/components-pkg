@@ -5,7 +5,8 @@ import Box from '../box';
 
 const Hide: FC<PropsWithChildren<HideProps>> = ({ children, ...props }) => {
   const query = useQuery(props);
-  const media = `@media ${query}`;
+
+  const media = query && `@media ${query}`;
 
   return (
     <Box
