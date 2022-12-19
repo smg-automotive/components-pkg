@@ -1,10 +1,16 @@
-import React, { FC, PropsWithChildren } from 'react';
-import { ShowProps, useQuery } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { BoxProps, ShowProps, useQuery } from '@chakra-ui/react';
 
 import Box from '../box';
 
-const Show: FC<PropsWithChildren<ShowProps>> = ({ children, ...props }) => {
-  const query = useQuery(props);
+const Show: FC<Omit<ShowProps, 'ssr'> & BoxProps> = ({
+  children,
+  breakpoint,
+  above,
+  below,
+  ...props
+}) => {
+  const query = useQuery({ breakpoint, above, below });
   const media = `@media ${query}`;
   const testId = `show-${Object.entries(props)
     .map((arr) => arr.join('-'))
@@ -19,6 +25,7 @@ const Show: FC<PropsWithChildren<ShowProps>> = ({ children, ...props }) => {
         },
       }}
       data-testid={testId}
+      {...props}
     >
       {children}
     </Box>
