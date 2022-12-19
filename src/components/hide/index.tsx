@@ -7,6 +7,9 @@ const Hide: FC<PropsWithChildren<HideProps>> = ({ children, ...props }) => {
   const query = useQuery(props);
 
   const media = query && `@media ${query}`;
+  const testId = `hide-${Object.entries(props)
+    .map((arr) => arr.join('-'))
+    .join('-')}`;
 
   return (
     <Box
@@ -15,6 +18,7 @@ const Hide: FC<PropsWithChildren<HideProps>> = ({ children, ...props }) => {
           display: 'none',
         },
       }}
+      data-testid={testId}
     >
       {children}
     </Box>

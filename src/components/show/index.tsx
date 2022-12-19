@@ -6,6 +6,9 @@ import Box from '../box';
 const Show: FC<PropsWithChildren<ShowProps>> = ({ children, ...props }) => {
   const query = useQuery(props);
   const media = `@media ${query}`;
+  const testId = `show-${Object.entries(props)
+    .map((arr) => arr.join('-'))
+    .join('-')}`;
 
   return (
     <Box
@@ -15,6 +18,7 @@ const Show: FC<PropsWithChildren<ShowProps>> = ({ children, ...props }) => {
           display: 'block',
         },
       }}
+      data-testid={testId}
     >
       {children}
     </Box>
