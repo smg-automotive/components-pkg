@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Hide from './index.ts';
+import Hide from './index.tsx';
 
 <Meta
   title="Components/Utils/Hide"
@@ -13,6 +13,11 @@ import Hide from './index.ts';
     above: {
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'select' },
+    },
+    text: {
+      table: {
+        disable: true,
+      },
     },
   }}
 />
@@ -27,8 +32,15 @@ export const Template = ({ text, ...args }) => {
 
 <Canvas>
   <Story
-    name="Above a viewport"
+    name="Hide above a viewport (including the passed viewport)"
     args={{ above: 'md', text: 'I am invisible on md and above' }}
+    argTypes={{
+      below: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -40,11 +52,43 @@ export const Template = ({ text, ...args }) => {
 
 <Canvas>
   <Story
-    name="Below a viewport"
+    name="Hide below a viewport (including the passed viewport)"
     args={{ below: 'md', text: 'I am invisible on md and below' }}
+    argTypes={{
+      above: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable story="Below a viewport" />
+
+## With a custom breakpoint query
+
+<Canvas>
+  <Story
+    name="Hide when matching a query"
+    args={{ breakpoint: '(orientation: landscape) and (hover: none) and (pointer: coarse)', text: 'I am invisible on mobile landscape' }}
+    argTypes={{
+      above: {
+        table: {
+          disable: true,
+        },
+      },
+      below: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With a custom breakpoint query" />
