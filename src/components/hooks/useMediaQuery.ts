@@ -5,11 +5,7 @@ import {
   useQuery,
 } from '@chakra-ui/react';
 
-type Props = {
-  query: ShowProps;
-  options?: UseMediaQueryOptions;
-};
-const useMediaQuery = ({ query, options }: Props) => {
+const useMediaQuery = (query: ShowProps, options?: UseMediaQueryOptions) => {
   const mediaQuery = useQuery(query);
   return useChakraMediaQuery(mediaQuery, options)[0];
 };
