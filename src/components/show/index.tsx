@@ -4,9 +4,9 @@ import { BoxProps, ShowProps, useQuery } from '@chakra-ui/react';
 import Box from '../box';
 
 type Props = {
-  showDisplay?: string;
+  showDisplay?: Pick<BoxProps, 'display'>;
 };
-const Show: FC<Omit<ShowProps, 'ssr'> & BoxProps & Props> = ({
+const Show: FC<Omit<ShowProps, 'ssr'> & Omit<BoxProps, 'sx'> & Props> = ({
   children,
   breakpoint,
   above,
@@ -14,9 +14,10 @@ const Show: FC<Omit<ShowProps, 'ssr'> & BoxProps & Props> = ({
   showDisplay,
   ...props
 }) => {
-  const query = useQuery({ breakpoint, above, below });
+  const queryProps = { breakpoint, above, below };
+  const query = useQuery(queryProps);
   const media = `@media ${query}`;
-  const testId = `show-${Object.entries(props)
+  const testId = `show-${Object.entries(queryProps)
     .map((arr) => arr.join('-'))
     .join('-')}`;
 
