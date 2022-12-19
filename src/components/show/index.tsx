@@ -3,11 +3,15 @@ import { BoxProps, ShowProps, useQuery } from '@chakra-ui/react';
 
 import Box from '../box';
 
-const Show: FC<Omit<ShowProps, 'ssr'> & BoxProps> = ({
+type Props = {
+  showDisplay?: string;
+};
+const Show: FC<Omit<ShowProps, 'ssr'> & BoxProps & Props> = ({
   children,
   breakpoint,
   above,
   below,
+  showDisplay,
   ...props
 }) => {
   const query = useQuery({ breakpoint, above, below });
@@ -21,7 +25,7 @@ const Show: FC<Omit<ShowProps, 'ssr'> & BoxProps> = ({
       sx={{
         display: 'none',
         [media]: {
-          display: 'block',
+          display: showDisplay || 'block',
         },
       }}
       data-testid={testId}
