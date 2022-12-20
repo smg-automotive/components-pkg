@@ -109,7 +109,7 @@ export const Template = ({ text, ...args }) => {
 If you are using testing-library, you will face some limitations in testing different viewport sizes. It is sometimes not possible to properly query the DOM elements inside the Show component because they would be hidden on the Jest viewport (`1024px`) size and testing-library does not allow you to overwrite that behavior. In that case, you should use the `hidden: true` flag as follows:
 
 ```tsx
-/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-unresolved, unicorn/filename-case */
 import { render, screen, within } from '@testing-library/react';
 import { Hide } from '@smg-automotive/components';
 
