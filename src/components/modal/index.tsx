@@ -19,7 +19,8 @@ type ActionButton = {
   label: string;
 };
 
-interface Props extends ModalProps {
+interface Props
+  extends Omit<ModalProps, 'isCentered' | 'motionPreset' | 'size'> {
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
@@ -29,17 +30,15 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   title,
   primaryActionButton,
   secondaryActionButton,
-  onClose,
   children,
   ...modalProps
 }) => {
   return (
     <ChakraModal
-      {...modalProps}
       isCentered
       motionPreset="scale"
       size={{ xs: 'full', sm: 'md' }}
-      onClose={onClose}
+      {...modalProps}
     >
       <ModalOverlay />
       <ModalContent>

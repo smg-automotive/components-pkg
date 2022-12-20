@@ -41,13 +41,11 @@ const baseStyleHeader = defineStyle({
   justifyContent: 'space-between',
   alignItems: 'center',
   position: 'relative',
-  maxHeight: '65px',
 });
 
 const baseStyleCloseButton = defineStyle({
-  width: '18px',
-  height: '18px',
-  fontSize: '18px',
+  width: 'sm',
+  height: 'sm',
 });
 
 const baseStyleBody = defineStyle({
