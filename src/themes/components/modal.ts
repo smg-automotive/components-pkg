@@ -29,7 +29,7 @@ const baseStyleDialog = defineStyle({
   borderRadius: 'sm',
   bg: mode('white', 'gray.700'),
   color: 'inherit',
-  my: '16',
+  my: 'lg',
   zIndex: 'modal',
   boxShadow: mode('lg', 'dark-lg'),
 });
@@ -37,12 +37,11 @@ const baseStyleDialog = defineStyle({
 const baseStyleHeader = defineStyle({
   px: 'lg',
   py: 'xl',
-  fontSize: 'md',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  fontWeight: 'semibold',
   position: 'relative',
+  maxHeight: '65px',
 });
 
 const baseStyleCloseButton = defineStyle({
@@ -57,8 +56,8 @@ const baseStyleBody = defineStyle({
 });
 
 const baseStyleFooter = defineStyle({
-  px: 'md',
-  py: 'lg',
+  px: 'lg',
+  py: 'md',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',

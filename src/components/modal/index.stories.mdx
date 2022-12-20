@@ -36,20 +36,7 @@ export const ModalTemplate = (args) => {
   <Story
     name="Modal"
     args={{
-      isCentered: true,
-      size: 'md',
-      motionPreset: 'scale',
       title: 'Modal Header',
-    }}
-    argTypes={{
-      size: {
-        options: ['md', 'full'],
-        control: 'select',
-      },
-      motionPreset: {
-        options: ['slideInBottom', 'slideInRight', 'scale'],
-        control: 'select',
-      },
     }}
   >
     {ModalTemplate.bind({})}
@@ -62,26 +49,15 @@ export const ModalTemplate = (args) => {
   <Story
     name="Modal Without Header"
     args={{
-      isCentered: true,
-      size: 'md',
-      motionPreset: 'scale',
       primaryActionButton: {
         action: action('Submit'),
         label: 'Submit',
       },
     }}
-    argTypes={{
-      size: {
-        options: ['md', 'full'],
-        control: 'select',
-      },
-      motionPreset: {
-        options: ['slideInBottom', 'slideInRight', 'scale'],
-        control: 'select',
-      },
-    }}
-  >
+>
+
     {ModalTemplate.bind({})}
+
   </Story>
 </Canvas>
 
@@ -91,23 +67,10 @@ export const ModalTemplate = (args) => {
   <Story
     name="Modal With Footer"
     args={{
-      isCentered: true,
-      size: 'md',
-      motionPreset: 'scale',
       title: 'Modal Header',
       primaryActionButton: {
         action: action('Submit'),
         label: 'Submit',
-      },
-    }}
-    argTypes={{
-      size: {
-        options: ['md', 'full'],
-        control: 'select',
-      },
-      motionPreset: {
-        options: ['slideInBottom', 'slideInRight', 'scale'],
-        control: 'select',
       },
     }}
   >
@@ -121,9 +84,6 @@ export const ModalTemplate = (args) => {
   <Story
     name="Modal With 2 Action Buttons"
     args={{
-      isCentered: true,
-      size: 'md',
-      motionPreset: 'scale',
       title: 'Modal Header',
       primaryActionButton: {
         action: action('Submit'),
@@ -132,16 +92,6 @@ export const ModalTemplate = (args) => {
       secondaryActionButton: {
         action: action('Fire'),
         label: 'Fire',
-      },
-    }}
-    argTypes={{
-      size: {
-        options: ['md', 'full'],
-        control: 'select',
-      },
-      motionPreset: {
-        options: ['slideInBottom', 'slideInRight', 'scale'],
-        control: 'select',
       },
     }}
   >

@@ -7,10 +7,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ModalOverlayProps,
   ModalProps,
 } from '@chakra-ui/react';
 
+import { H3 } from '../heading';
 import Divider from '../divider';
 import Button from '../button';
 
@@ -21,7 +21,6 @@ type ActionButton = {
 
 interface Props extends ModalProps {
   title?: string;
-  modalOverlayProps?: ModalOverlayProps;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
 }
@@ -32,17 +31,22 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   secondaryActionButton,
   onClose,
   children,
-  modalOverlayProps,
   ...modalProps
 }) => {
   return (
-    <ChakraModal {...modalProps} onClose={onClose}>
-      <ModalOverlay {...modalOverlayProps} />
+    <ChakraModal
+      {...modalProps}
+      isCentered
+      motionPreset="scale"
+      size={{ xs: 'full', sm: 'md' }}
+      onClose={onClose}
+    >
+      <ModalOverlay />
       <ModalContent>
         {title && (
           <>
             <ModalHeader>
-              {title}
+              <H3>{title}</H3>
               <ModalCloseButton />
             </ModalHeader>
             <Divider />
