@@ -6,6 +6,7 @@ import Box from '../box';
 type Props = {
   showDisplay?: string;
 };
+
 const Show: FC<Omit<ShowProps, 'ssr'> & Omit<BoxProps, 'sx'> & Props> = ({
   children,
   breakpoint,

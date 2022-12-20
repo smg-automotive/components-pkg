@@ -29,13 +29,13 @@ export const Template = ({ text, ...args }) => {
 
 # Show
 
-## Show above a viewport (including the passed viewport)
+## Show above a viewport
 
 <Canvas>
   <Story
-    name="Show above a viewport (including the passed viewport)"
+    name="Show above a viewport"
     args={{
-      above: 'md',
+      above: undefined,
       text: 'I am visible on BREAKPOINT and above and hidden otherwise',
     }}
     argTypes={{
@@ -52,13 +52,13 @@ export const Template = ({ text, ...args }) => {
 
 <ArgsTable story="Show above a viewport" />
 
-## Show below a viewport (including the passed viewport)
+## Show below a viewport
 
 <Canvas>
   <Story
-    name="Show below a viewport (including the passed viewport)"
+    name="Show below a viewport"
     args={{
-      below: 'md',
+      below: undefined,
       text: 'I am visible on BREAKPOINT and below and hidden otherwise',
     }}
     argTypes={{
@@ -75,9 +75,11 @@ export const Template = ({ text, ...args }) => {
 
 <ArgsTable story="Show below a viewport" />
 
+## Show when matching a query
+
 <Canvas>
   <Story
-    name="Shown when matching a query"
+    name="Show when matching a query"
     args={{
       breakpoint:
         '(orientation: landscape) and (hover: none) and (pointer: coarse)',
@@ -100,4 +102,30 @@ export const Template = ({ text, ...args }) => {
   </Story>
 </Canvas>
 
-<ArgsTable story="With a custom breakpoint query" />
+<ArgsTable story="Show when matching a query" />
+
+# Testing
+
+If you are using testing-library, you will face some limitations in testing different viewport sizes. It is sometimes not possible to properly query the DOM elements inside the Show component because they would be hidden on the Jest viewport (`1024px`) size and testing-library does not allow you to overwrite that behavior. In that case, you should use the `hidden: true` flag as follows:
+
+```tsx
+/* eslint-disable import/no-unresolved */
+import { render, screen, within } from '@testing-library/react';
+import { Show } from '@smg-automotive/components';
+
+it('should show the link on desktop devices', () => {
+  render(
+    <Show above="md">
+      <a href="...">my-link</a>
+    </Show>
+  );
+  const ctaContainer = screen.getByTestId('show-container');
+  expect(
+    within(ctaContainer).getByRole('link', {
+      name: 'my-link',
+      // this is needed to find it in the DOM
+      hidden: true,
+    })
+  ).toBeInTheDocument();
+});
+```
