@@ -66,7 +66,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
                   <Button
                     variant="secondary"
                     onClick={secondaryActionButton.action}
-                    mr="12"
+                    mr={primaryActionButton ? '12' : '0'}
                   >
                     {secondaryActionButton.label}
                   </Button>
