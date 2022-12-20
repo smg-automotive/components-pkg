@@ -1,7 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
-  Box,
   Modal as ChakraModal,
   ModalBody,
   ModalCloseButton,
@@ -37,8 +35,6 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   modalOverlayProps,
   ...modalProps
 }) => {
-  const { t } = useI18n();
-
   return (
     <ChakraModal {...modalProps} onClose={onClose}>
       <ModalOverlay {...modalOverlayProps} />
@@ -56,30 +52,27 @@ const Modal: FC<PropsWithChildren<Props>> = ({
         {(primaryActionButton || secondaryActionButton) && (
           <>
             <Divider />
-            <ModalFooter>
-              <Button variant="secondary" onClick={onClose}>
-                {t('modal.close')}
-              </Button>
-
-              <Box display="flex" justifyContent="space-between">
-                {secondaryActionButton?.action ? (
-                  <Button
-                    variant="secondary"
-                    onClick={secondaryActionButton.action}
-                    mr={primaryActionButton ? '12' : '0'}
-                  >
-                    {secondaryActionButton.label}
-                  </Button>
-                ) : null}
-                {primaryActionButton?.action ? (
-                  <Button
-                    variant="primary"
-                    onClick={primaryActionButton.action}
-                  >
-                    {primaryActionButton.label}
-                  </Button>
-                ) : null}
-              </Box>
+            <ModalFooter
+              display="flex"
+              justifyContent={
+                secondaryActionButton && primaryActionButton
+                  ? 'space-between'
+                  : 'flex-end'
+              }
+            >
+              {secondaryActionButton ? (
+                <Button
+                  variant="secondary"
+                  onClick={secondaryActionButton.action}
+                >
+                  {secondaryActionButton.label}
+                </Button>
+              ) : null}
+              {primaryActionButton ? (
+                <Button variant="primary" onClick={primaryActionButton.action}>
+                  {primaryActionButton.label}
+                </Button>
+              ) : null}
             </ModalFooter>
           </>
         )}
