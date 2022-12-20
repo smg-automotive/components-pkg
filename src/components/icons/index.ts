@@ -41,3 +41,4 @@ export { CamperIcon } from './CamperIcon';
 export { TrailerIcon } from './TrailerIcon';
 export { TruckIcon } from './TruckIcon';
 export { UtilityVehicleIcon } from './UtilityVehicleIcon';
+export { LocationPinIcon } from './LocationPinIcon';
