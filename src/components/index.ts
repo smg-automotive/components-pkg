@@ -54,11 +54,6 @@ export { default as AppLayoutHeader } from './layout/app/Header';
 export { default as AppLayoutFooter } from './layout/app/Footer';
 export { default as AppLayoutContent } from './layout/app/Content';
 export { default as Modal } from './modal';
-export { default as ModalContent } from './modal/ModalContent';
-export { default as ModalBody } from './modal/ModalBody';
-export { default as ModalFooter } from './modal/ModalFooter';
-export { default as ModalCloseButton } from './modal/ModalCloseButton';
-export { default as ModalHeader } from './modal/ModalHeader';
 
 export {
   default as ThemeProvider,
