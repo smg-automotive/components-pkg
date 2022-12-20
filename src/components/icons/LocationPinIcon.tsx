@@ -2,7 +2,7 @@ import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
 export const LocationPinIcon = createIcon({
-  displayName: 'Location Pin',
+  displayName: 'Location',
   viewBox: '0 0 24 24',
   path: (
     <>
