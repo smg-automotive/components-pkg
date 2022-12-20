@@ -41,8 +41,10 @@ const Modal: FC<PropsWithChildren<Props>> = ({
       <ModalContent>
         {title && (
           <>
-            <ModalHeader>{title}</ModalHeader>
-            <ModalCloseButton />
+            <ModalHeader>
+              {title}
+              <ModalCloseButton />
+            </ModalHeader>
             <Divider />
           </>
         )}

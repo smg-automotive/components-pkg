@@ -16,77 +16,63 @@ const baseStyleOverlay = defineStyle({
   opacity: `${opacity[40]} !important`,
 });
 
-const baseStyleDialogContainer = defineStyle((props) => {
-  const { isCentered, scrollBehavior } = props;
-
-  return {
-    display: 'flex',
-    zIndex: 'modal',
-    justifyContent: 'center',
-    alignItems: isCentered ? 'center' : 'flex-start',
-    overflow: scrollBehavior === 'inside' ? 'hidden' : 'auto',
-    overscrollBehaviorY: 'none',
-  };
+const baseStyleDialogContainer = defineStyle({
+  display: 'flex',
+  zIndex: 'modal',
+  justifyContent: 'center',
+  alignItems: 'center',
+  overflow: 'hidden',
+  overscrollBehaviorY: 'none',
 });
 
-const baseStyleDialog = defineStyle((props) => {
-  const { scrollBehavior } = props;
-
-  return {
-    borderRadius: 'sm',
-    bg: mode('white', 'gray.700')(props),
-    color: 'inherit',
-    my: '16',
-    zIndex: 'modal',
-    maxH: scrollBehavior === 'inside' ? 'calc(100% - 7.5rem)' : undefined,
-    boxShadow: mode('lg', 'dark-lg')(props),
-  };
+const baseStyleDialog = defineStyle({
+  borderRadius: 'sm',
+  bg: mode('white', 'gray.700'),
+  color: 'inherit',
+  my: '16',
+  zIndex: 'modal',
+  boxShadow: mode('lg', 'dark-lg'),
 });
 
 const baseStyleHeader = defineStyle({
-  px: '16',
-  py: '20',
+  px: 'lg',
+  py: 'xl',
   fontSize: 'md',
   display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
   fontWeight: 'semibold',
   position: 'relative',
 });
 
 const baseStyleCloseButton = defineStyle({
-  position: 'absolute',
-  top: '26',
-  right: '19',
   width: '18px',
   height: '18px',
+  fontSize: '18px',
 });
 
-const baseStyleBody = defineStyle((props) => {
-  const { scrollBehavior } = props;
-  return {
-    px: '25px',
-    py: '26px',
-    flex: '1',
-    overflow: scrollBehavior === 'inside' ? 'auto' : undefined,
-  };
+const baseStyleBody = defineStyle({
+  p: '2xl',
+  flex: '1',
 });
 
 const baseStyleFooter = defineStyle({
-  px: '12',
-  py: '16',
+  px: 'md',
+  py: 'lg',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
 });
 
-const baseStyle = definePartsStyle((props) => ({
+const baseStyle = definePartsStyle({
   overlay: baseStyleOverlay,
-  dialogContainer: baseStyleDialogContainer(props),
-  dialog: baseStyleDialog(props),
+  dialogContainer: baseStyleDialogContainer,
+  dialog: baseStyleDialog,
   header: baseStyleHeader,
   closeButton: baseStyleCloseButton,
-  body: baseStyleBody(props),
+  body: baseStyleBody,
   footer: baseStyleFooter,
-}));
+});
 
 function getSize(value: string) {
   if (value === 'full') {
