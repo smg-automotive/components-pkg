@@ -95,7 +95,7 @@ export default [
     input: 'src/fonts/Emotion.tsx',
     output: [
       {
-        file: 'dist/cjs/fonts/emotion.js',
+        file: 'dist/fonts/cjs/emotion.js',
         format: 'cjs',
         sourcemap: true,
         inlineDynamicImports: true,
@@ -110,8 +110,8 @@ export default [
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
-          outDir: 'dist/cjs/fonts/',
-          declarationDir: 'dist/cjs/fonts/types',
+          outDir: 'dist/fonts/cjs',
+          declarationDir: 'dist/fonts/cjs/types',
         },
       }),
     ],
@@ -122,7 +122,7 @@ export default [
     input: 'src/fonts/Emotion.tsx',
     output: [
       {
-        dir: 'dist/esm/fonts/',
+        dir: 'dist/fonts/esm',
         format: 'esm',
         sourcemap: true,
         preserveModules: true,
@@ -138,8 +138,8 @@ export default [
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
-          outDir: 'dist/esm/fonts/',
-          declarationDir: 'dist/esm/fonts/types',
+          outDir: 'dist/fonts/esm',
+          declarationDir: 'dist/fonts/esm/types',
         },
       }),
     ],
@@ -150,7 +150,7 @@ export default [
     input: 'src/fonts/Next.tsx',
     output: [
       {
-        file: 'dist/cjs/fonts/next.js',
+        file: 'dist/fonts/cjs/next.js',
         format: 'cjs',
         sourcemap: true,
         inlineDynamicImports: true,
@@ -165,8 +165,8 @@ export default [
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
-          outDir: 'dist/cjs/fonts/',
-          declarationDir: 'dist/cjs/fonts/types',
+          outDir: 'dist/fonts/cjs',
+          declarationDir: 'dist/fonts/cjs/types',
         },
       }),
     ],
@@ -177,7 +177,7 @@ export default [
     input: 'src/fonts/Next.tsx',
     output: [
       {
-        dir: 'dist/esm/fonts/',
+        dir: 'dist/fonts/esm',
         format: 'esm',
         sourcemap: true,
         preserveModules: true,
@@ -193,8 +193,8 @@ export default [
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
-          outDir: 'dist/esm/fonts/',
-          declarationDir: 'dist/esm/fonts/types',
+          outDir: 'dist/fonts/esm',
+          declarationDir: 'dist/fonts/esm/types',
         },
       }),
     ],
