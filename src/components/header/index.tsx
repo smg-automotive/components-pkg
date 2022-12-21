@@ -1,35 +1,30 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
-import {
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  useMediaQuery,
-  useTheme,
-} from '@chakra-ui/react';
 
 // eslint-disable-next-line import/no-internal-modules
+
+import { DrawerBody, HStack, useTheme } from '@chakra-ui/react';
 
 import NavigationLink, { NavigationLinkProps } from './NavigationLink';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { getHeaderLinks } from './config/headerLinks';
 import { DawerNodeItems, getDrawerNodeItems } from './config/drawerNodeItems';
 import CollapsibleSection from './CollapsibleSection';
+import Menu from '../menu';
 import BaseGrid from '../layout/BaseGrid';
 
+// TODO: update the hook
+import useMediaQuery from '../hooks/useMediaQuery';
 // TODO: make dynamic
+import DrawerOverlay from '../drawer/DrawerOverlay';
+import DrawerContent from '../drawer/DrawerContent';
+import Drawer from '../drawer';
+import Box from '../box';
 import Avatar from '../avatar';
 import logoMS from '../../assets/images/logo_ms24.svg';
 import logoAS from '../../assets/images/logo_as24.svg';
 
 const DesktopOnly = ({ children }: { children: ReactNode }) => {
-  const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
+  const isLargerThan1024 = useMediaQuery({ above: 'md' });
 
   if (!isLargerThan1024) return null;
 
@@ -80,7 +75,7 @@ const Navigation: FC<NavigationProps> = ({ user }) => {
   };
 
   // TODO: handle this propers
-  const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)');
+  const isLargerThan1024 = useMediaQuery({ above: 'md' });
   const accordionsEnabled = !isLargerThan1024;
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
@@ -137,23 +132,15 @@ const Navigation: FC<NavigationProps> = ({ user }) => {
         )}
 
         <DesktopOnly>
-          <Menu>
-            <MenuButton>Language</MenuButton>
-            <MenuList>
-              <MenuItem as="a" href="/de">
-                DE
-              </MenuItem>
-              <MenuItem as="a" href="/fr">
-                FR
-              </MenuItem>
-              <MenuItem as="a" href="/it">
-                IT
-              </MenuItem>
-              <MenuItem as="a" href="/en">
-                EN
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          <Menu
+            title="Language"
+            items={[
+              { text: 'DE', onClick: () => null },
+              { text: 'FR', onClick: () => null },
+              { text: 'IT', onClick: () => null },
+              { text: 'EN', onClick: () => null },
+            ]}
+          ></Menu>
         </DesktopOnly>
         <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
           <DrawerOverlay />
