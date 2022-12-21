@@ -1,3 +1,3 @@
 module.exports = {
-  ...require("@smg-automotive/eslint-config/prettier"),
-}
+  ...require('@smg-automotive/eslint-config/prettier'),
+};

@@ -23,11 +23,13 @@ import Carousel from './carousel';
 import Button from './button';
 import Breadcrumbs from './breadcrumbs';
 import Badge from './badge';
+import Avatar from './avatar';
 import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
 import Accordion from './accordion';
 
 export const components = {
+  Avatar,
   Accordion,
   Alert,
   ArticleTeaser,

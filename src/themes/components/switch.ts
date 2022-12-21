@@ -7,6 +7,7 @@ import type {
 } from '@chakra-ui/styled-system';
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { opacity } from '../shared/opacity';
 import { colors as ms24Colors } from '../ms24/colors';
 import { colors as as24Colors } from '../as24/colors';
 
@@ -34,7 +35,7 @@ const baseStyleTrack: SystemStyleFunction = ({ bg, checkedBg }) => {
       boxShadow: 'outline',
     },
     _disabled: {
-      opacity: 0.4,
+      opacity: opacity[40],
       cursor: 'not-allowed',
     },
     _checked: {

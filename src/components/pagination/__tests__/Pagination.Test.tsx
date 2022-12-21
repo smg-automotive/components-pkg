@@ -5,15 +5,6 @@ import { render, screen } from '@testing-library/react';
 import Pagination from '../index';
 
 const mockOnChange = jest.fn();
-const renderWrapper = (totalPages = 5, currentPage = 1) => {
-  return render(
-    <Pagination
-      totalPages={totalPages}
-      currentPage={currentPage}
-      onChange={mockOnChange}
-    />
-  );
-};
 
 describe('<Pagination />', () => {
   beforeAll(() => {
@@ -32,7 +23,9 @@ describe('<Pagination />', () => {
 
   describe('render', () => {
     it('should render pagination without dots', () => {
-      renderWrapper(5, 1);
+      render(
+        <Pagination totalPages={5} currentPage={1} onChange={mockOnChange} />
+      );
 
       const leftDots = screen.queryByLabelText('left side dots');
       const rightDots = screen.queryByLabelText('right side dots');
@@ -42,7 +35,9 @@ describe('<Pagination />', () => {
     });
 
     it('should render pagination with dots on right side', () => {
-      renderWrapper(10, 1);
+      render(
+        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />
+      );
 
       const leftDots = screen.queryByLabelText('left side dots');
       const rightDots = screen.queryByLabelText('right side dots');
@@ -52,7 +47,9 @@ describe('<Pagination />', () => {
     });
 
     it('should render pagination with dots on left side', () => {
-      renderWrapper(10, 10);
+      render(
+        <Pagination totalPages={10} currentPage={10} onChange={mockOnChange} />
+      );
 
       const leftDots = screen.queryByLabelText('left side dots');
       const rightDots = screen.queryByLabelText('right side dots');
@@ -62,7 +59,9 @@ describe('<Pagination />', () => {
     });
 
     it('should render pagination with dots on both side', () => {
-      renderWrapper(10, 5);
+      render(
+        <Pagination totalPages={10} currentPage={5} onChange={mockOnChange} />
+      );
 
       const leftDots = screen.queryByLabelText('left side dots');
       const rightDots = screen.queryByLabelText('right side dots');
@@ -72,48 +71,60 @@ describe('<Pagination />', () => {
     });
 
     it('should respect current page', () => {
-      renderWrapper(10, 1);
+      render(
+        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />
+      );
 
-      const currentPage = screen.getByText('1');
+      const currentPage = screen.getByText('2');
       expect(currentPage).toHaveAttribute('aria-current', 'true');
     });
   });
 
   describe('onChange', () => {
     it('should call the onChange handler by click on a button', async () => {
-      renderWrapper(10, 1);
+      render(
+        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />
+      );
 
       await userEvent.click(screen.getByText('2'));
-      expect(mockOnChange).toHaveBeenCalledWith(2);
+      expect(mockOnChange).toHaveBeenCalledWith(1);
     });
 
     describe('first page is active', () => {
       it('should not be able to change the page by click on Prev button', () => {
-        renderWrapper(10, 1);
+        render(
+          <Pagination totalPages={10} currentPage={0} onChange={mockOnChange} />
+        );
 
         expect(screen.getByLabelText('previous page')).toBeDisabled();
       });
 
       it('should be able to change the page by click on Next button', async () => {
-        renderWrapper(10, 1);
+        render(
+          <Pagination totalPages={10} currentPage={0} onChange={mockOnChange} />
+        );
 
         await userEvent.click(screen.getByLabelText('next page'));
-        expect(mockOnChange).toHaveBeenCalledWith(2);
+        expect(mockOnChange).toHaveBeenCalledWith(1);
       });
     });
 
     describe('last page is active', () => {
       it('should not be able to change the page by click on Next button', () => {
-        renderWrapper(10, 10);
+        render(
+          <Pagination totalPages={10} currentPage={9} onChange={mockOnChange} />
+        );
 
         expect(screen.getByLabelText('next page')).toBeDisabled();
       });
 
       it('should be able to change the page by click on Prev button', async () => {
-        renderWrapper(10, 10);
+        render(
+          <Pagination totalPages={10} currentPage={9} onChange={mockOnChange} />
+        );
 
         await userEvent.click(screen.getByLabelText('previous page'));
-        expect(mockOnChange).toHaveBeenCalledWith(9);
+        expect(mockOnChange).toHaveBeenCalledWith(8);
       });
     });
   });

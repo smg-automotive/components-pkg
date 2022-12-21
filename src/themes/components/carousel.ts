@@ -1,5 +1,6 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
+import { opacity } from '../shared/opacity';
 import { colors } from '../shared/colors';
 import { hexToRgb } from '../../lib/hexToRgb';
 
@@ -72,7 +73,7 @@ const fullScreen = {
     height: 'full',
   },
   button: {
-    opacity: '100%',
+    opacity: opacity[100],
     backgroundColor: 'black',
   },
   icon: {

@@ -10,6 +10,9 @@ describe('The DevOverlay Component', () => {
         variables={[]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
+        toggleTranslation={jest.fn()}
+        activeTheme="as24"
+        displayTranslationKeys={false}
       />
     );
 
@@ -27,6 +30,9 @@ describe('The DevOverlay Component', () => {
         ]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
+        activeTheme="as24"
+        toggleTranslation={jest.fn()}
+        displayTranslationKeys={false}
       />
     );
 

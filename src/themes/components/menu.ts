@@ -4,6 +4,8 @@ import {
 } from '@chakra-ui/styled-system';
 import { menuAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { opacity } from '../shared/opacity';
+
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
 
@@ -35,7 +37,7 @@ const baseStyleItem = defineStyle({
     bg: 'gray.100',
   },
   _disabled: {
-    opacity: 0.4,
+    opacity: opacity[40],
     cursor: 'not-allowed',
   },
 });

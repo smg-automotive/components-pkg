@@ -1,4 +1,10 @@
-import React, { ElementType, forwardRef, ReactElement, ReactNode } from 'react';
+import React, {
+  ElementType,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  useMemo,
+} from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 interface Props {
@@ -26,9 +32,11 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
   ) => {
     const styles = useMultiStyleConfig(`Link`);
 
-    const Component = chakra(as, {
-      baseStyle: styles.link,
-    });
+    const Component = useMemo(() => {
+      return chakra(as, {
+        baseStyle: styles.link,
+      });
+    }, [as, styles.link]);
 
     const textStyle = {
       ...(leftIcon ? styles.leftIcon : {}),

@@ -16,6 +16,7 @@ const AppLayout = forwardRef<GridProps, 'div'>((props, ref) => {
       templateAreas={pageGirdArea}
       minHeight="100vh"
       ref={ref}
+      textStyle="body"
       {...props}
     />
   );
