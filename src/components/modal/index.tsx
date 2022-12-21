@@ -19,8 +19,7 @@ type ActionButton = {
   label: string;
 };
 
-interface Props
-  extends Omit<ModalProps, 'isCentered' | 'motionPreset' | 'size'> {
+interface Props extends Pick<ModalProps, 'isOpen' | 'onClose'> {
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
