@@ -92,6 +92,61 @@ export default [
     plugins: [dts()],
   },
   {
+    input: 'src/fonts/Emotion.tsx',
+    output: [
+      {
+        file: 'dist/cjs/fonts/emotion.js',
+        format: 'cjs',
+        sourcemap: true,
+        inlineDynamicImports: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        compilerOptions: {
+          outDir: 'dist/cjs/fonts/',
+          declarationDir: 'dist/cjs/fonts/types',
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
+    input: 'src/fonts/Emotion.tsx',
+    output: [
+      {
+        dir: 'dist/esm/fonts/',
+        format: 'esm',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        compilerOptions: {
+          outDir: 'dist/esm/fonts/',
+          declarationDir: 'dist/esm/fonts/types',
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
     input: 'src/lib/cli/index.ts',
     output: [
       {

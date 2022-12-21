@@ -20,7 +20,7 @@ import {
 } from '../src/themes';
 
 // eslint-disable-next-line import/no-unresolved
-import { Fonts } from '../src/styles/Fonts';
+import Fonts from '../src/fonts/Emotion';
 
 const ThemeDecorator = (args) => {
   addons.setConfig({
