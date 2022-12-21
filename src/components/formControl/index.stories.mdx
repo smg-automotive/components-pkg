@@ -6,7 +6,7 @@ import { Input } from '../../index.ts';
 
 <Meta
   title="Components/Forms/Form Control"
-  component={Input}
+  component={FormControl}
   args={{
     label: 'Label',
     hint: 'I am a hint text',
@@ -14,6 +14,13 @@ import { Input } from '../../index.ts';
     isDisabled: false,
     isRequired: false,
     errorMessage: '',
+    size: 'lg',
+  }}
+  argTypes={{
+    size: {
+      options: ['sm', 'lg'],
+      control: 'select',
+    },
   }}
   parameters={{
     controls: {
