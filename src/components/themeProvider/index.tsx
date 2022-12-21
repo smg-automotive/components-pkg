@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import { autoScout24Theme, motoScout24Theme } from '../../themes';
-import { Fonts } from '../../styles/Fonts';
+// import { Fonts } from '../../styles/Fonts';
 
 export type Props = {
   // Theme to use
@@ -17,7 +17,7 @@ const themes = {
 const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => {
   return (
     <ChakraProvider theme={themes[theme]} resetCSS={true}>
-      <Fonts />
+      {/* <Fonts /> */}
       {children}
     </ChakraProvider>
   );

@@ -20,6 +20,10 @@ export const Fonts = () => (
             url('/assets/fonts/MakeItSans-Bold.woff2') format('woff2'),
             url('/assets/fonts/MakeItSans-Bold.otf') format('otf');
       }
+
+      :root {
+        --font-primary: 'Make It Sans', Arial, Helvetica, Sans-Serif
+      }
     `}
   />
 );
