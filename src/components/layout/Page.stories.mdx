@@ -1,0 +1,104 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import PageLayout from './Page';
+import { Box, Divider, Flex, Text } from '../index';
+import { sizes } from '../../themes/shared/sizes';
+
+<Meta
+  title="Layout/Pages/Page"
+  component={PageLayout}
+  args={{
+    header: (
+      <Box h="80px" bg="gray.50">
+        <Divider />
+        <Flex justifyContent="center" alignItems="center" h="full">
+          <Text p="2xl">I am the header</Text>
+        </Flex>
+      </Box>
+    ),
+    maxContentWidth: 'lg',
+    footer: (
+      <Box h="400px" bg="gray.50">
+        <Divider />
+        <Flex justifyContent="center" alignItems="center" h="full">
+          <Text p="2xl">I am the footer</Text>
+        </Flex>
+      </Box>
+    ),
+    children: (
+      <Flex
+        bg="green.100"
+        h="1200px"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Text>Content</Text>
+      </Flex>
+    ),
+  }}
+  argTypes={{
+    header: {
+      table: {
+        disable: true,
+      },
+    },
+    footer: {
+      table: {
+        disable: true,
+      },
+    },
+    skyScraperAd: {
+      table: {
+        disable: true,
+      },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+    maxContentWidth: {
+      options: Object.keys(sizes.container),
+      control: { type: 'select' },
+    },
+  }}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = (args) => <PageLayout {...args} />;
+
+# Page layout
+
+## Layout without ads
+
+<Canvas>
+  <Story name="Layout without ads">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Layout without ads" />
+
+## Layout with ads
+
+<Canvas>
+  <Story
+    name="Layout with ads"
+    args={{
+      skyScraperAd: (
+        <Flex
+          bg="red.100"
+          h="600px"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>Ads</Text>
+        </Flex>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Layout with ads" />

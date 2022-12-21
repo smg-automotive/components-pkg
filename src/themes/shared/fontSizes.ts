@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export const fontSizes = {
   xs: '0.75rem',
   sm: '0.875rem',

@@ -28,8 +28,12 @@ const Section: FC<Props> = ({
   const styles = useMultiStyleConfig(`Section`, { variant });
 
   return (
-    <Stack direction={{ xs: 'column', lg: 'row' }} spacing="xl">
-      {image ? <Box maxW={maxImgW}>{image}</Box> : null}
+    <Stack direction={{ '2xs': 'column', md: 'row' }} spacing="xl">
+      {image ? (
+        <Box maxW={maxImgW} flexShrink={0}>
+          {image}
+        </Box>
+      ) : null}
       <Stack spacing="md">
         <chakra.span __css={styles.title}>{title}</chakra.span>
         {text ? <chakra.span __css={styles.text}>{text}</chakra.span> : null}

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export const sizes = {
   xs: '1rem',
   sm: '1.5rem',
@@ -20,5 +19,4 @@ export const sizes = {
   },
 };
 
-const sizeNames = Object.keys(sizes) as Array<keyof typeof sizes>;
-export type Sizes = Exclude<typeof sizeNames[number], 'container'>;
+export type Sizes = Exclude<keyof typeof sizes, 'container'>;

@@ -16,21 +16,30 @@ import {
 import Switch, { SwitchProps } from '../switchComponent';
 import { CloseIcon } from '../icons';
 import Button, { ButtonProps } from '../button';
+import { Brand } from '../../types/brand';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
-export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
+export type DevOverlayProps = Omit<ButtonProps, 'onClick' | 'children'> &
   Omit<SwitchProps, 'onChange'> & {
-    hideDevOverlay: ButtonProps['onClick'];
-    toggleTheme: SwitchProps['onChange'];
+    hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
+    toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
+    toggleTranslation: Exclude<SwitchProps['onChange'], undefined>;
     variables: DevOverlayVariables;
+    activeTheme: Brand;
+    displayTranslationKeys: boolean;
   };
 
 const DevOverlay: FC<DevOverlayProps> = ({
   variables,
   hideDevOverlay,
   toggleTheme,
+  toggleTranslation,
+  activeTheme,
+  displayTranslationKeys = false,
 }) => {
+  const isThemeSwitcherChecked = 'as24' !== activeTheme;
+
   return (
     <Box
       position="absolute"
@@ -49,7 +58,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
           Dev Overlay&nbsp;
         </Heading>
         <Spacer />
-        <Button onClick={hideDevOverlay}>
+        <Button onClick={hideDevOverlay} data-testid="close-dev-overlay">
           <CloseIcon />
         </Button>
       </Flex>
@@ -85,9 +94,22 @@ const DevOverlay: FC<DevOverlayProps> = ({
       <div>
         <span>🚗</span>
         &nbsp;
-        <Switch onChange={toggleTheme} />
+        <Switch onChange={toggleTheme} isChecked={isThemeSwitcherChecked} />
         &nbsp;
         <span>🏍️</span>
+      </div>
+      <Heading as="h4" textStyle="heading4">
+        Switch Translation
+      </Heading>
+      <div>
+        <span>🌐</span>
+        &nbsp;
+        <Switch
+          onChange={toggleTranslation}
+          isChecked={displayTranslationKeys}
+        />
+        &nbsp;
+        <span>🔑</span>
       </div>
     </Box>
   );

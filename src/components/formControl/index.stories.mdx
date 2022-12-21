@@ -5,11 +5,12 @@ import FormControl from './index.tsx';
 import { Input } from '../../index.ts';
 
 <Meta
-  title="Forms/Form Control"
+  title="Components/Forms/Form Control"
   component={Input}
   args={{
     label: 'Label',
     hint: 'I am a hint text',
+    tooltip: '',
     isDisabled: false,
     isRequired: false,
     errorMessage: '',
@@ -61,6 +62,21 @@ export const Template = (args) => {
 
 <Canvas>
   <Story name="With hint" args={{ label: 'Label', hint: 'Hint text' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With tooltip
+
+<Canvas>
+  <Story
+    name="With tooltip"
+    args={{
+      label: 'Label',
+      hint: '',
+      tooltip: 'I am a tooltip text',
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

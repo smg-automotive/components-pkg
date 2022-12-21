@@ -1,9 +1,9 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Link from './index.tsx';
-import { ArrowLeftIcon, HeartIcon } from '../index.ts';
+import { ArrowLeftIcon, ErrorIcon } from '../index.ts';
 
-<Meta title="Navigation/Link" component={Link} />
+<Meta title="Components/Navigation/Link" component={Link} />
 
 # Link
 
@@ -27,7 +27,7 @@ import { ArrowLeftIcon, HeartIcon } from '../index.ts';
 
 <Canvas>
   <Story name="Link with Right icon">
-    <Link rightIcon={<HeartIcon />} href="https://google.com" target="_blank">
+    <Link rightIcon={<ErrorIcon />} href="https://google.com" target="_blank">
       Go to External Link
     </Link>
   </Story>
@@ -37,8 +37,20 @@ import { ArrowLeftIcon, HeartIcon } from '../index.ts';
 
 <Canvas>
   <Story name="Link with Left & Right icons">
-    <Link leftIcon={<ArrowLeftIcon />} rightIcon={<HeartIcon />}>
+    <Link leftIcon={<ArrowLeftIcon />} rightIcon={<ErrorIcon />}>
       Terms & Conditions
     </Link>
+  </Story>
+</Canvas>
+
+## Link as part of a paragraph
+
+<Canvas>
+  <Story name="Link as part of a paragraph">
+    <p>
+      You need to accept
+      <Link>Terms & Conditions</Link>
+      before you proceed
+    </p>
   </Story>
 </Canvas>

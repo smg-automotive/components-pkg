@@ -1,48 +1,92 @@
-import type {
-  PartsStyleObject,
-  SystemStyleObject,
+import {
+  createMultiStyleConfigHelpers,
+  defineStyle,
 } from '@chakra-ui/styled-system';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
-const baseStyleContainer: SystemStyleObject = {};
+const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
 
-const baseStyleButton: SystemStyleObject = {
-  transitionProperty: 'common',
-  transitionDuration: 'normal',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  _focusVisible: {
-    boxShadow: 'outline',
+const variantLight = defineStyle({
+  button: {
+    _hover: {
+      bg: 'gray.50',
+    },
   },
-  _hover: {
-    bg: 'blackAlpha.50',
+  container: {
+    color: 'gray.900',
+    borderColor: 'gray.200',
+    _last: {
+      borderColor: 'gray.200',
+    },
   },
-  _disabled: {
-    cursor: 'default',
+  panel: {
+    textStyle: 'body',
   },
-  px: 4,
-  py: 2,
+});
+
+const variantDark = defineStyle({
+  button: {
+    textStyle: 'heading5',
+    _hover: {
+      bg: 'gray.700',
+    },
+  },
+  container: {
+    color: 'white',
+    bg: 'gray.900',
+    borderColor: 'gray.700',
+    _last: {
+      borderColor: 'gray.700',
+    },
+  },
+  panel: {
+    textStyle: 'body-small',
+  },
+  titleOnDesktop: {
+    textStyle: 'heading5',
+  },
+});
+
+const baseStyle = defineStyle({
+  container: {
+    borderTop: '1px',
+    _last: {
+      borderBottom: '1px',
+    },
+  },
+  button: {
+    textStyle: 'heading4',
+    paddingX: 'lg',
+    paddingY: 'md',
+  },
+  panel: {
+    pb: 'md',
+    paddingX: 'lg',
+  },
+  icon: {
+    fontSize: 'xl',
+  },
+  titleOnDesktop: {
+    textStyle: 'heading5',
+    paddingX: 'lg',
+    paddingY: 'md',
+  },
+  panelOnDesktop: {
+    textStyle: 'body-small',
+    pb: 'md',
+    paddingX: 'lg',
+  },
+});
+
+const variants = {
+  light: variantLight,
+  dark: variantDark,
 };
 
-const baseStylePanel: SystemStyleObject = {
-  pt: 2,
-  px: 4,
-  pb: 5,
-};
-
-const baseStyleIcon: SystemStyleObject = {
-  fontSize: '1.25em',
-};
-
-const baseStyle: PartsStyleObject<typeof parts> = {
-  root: {},
-  container: baseStyleContainer,
-  button: baseStyleButton,
-  panel: baseStylePanel,
-  icon: baseStyleIcon,
-};
-
-export default {
-  parts: parts.keys,
+export default defineMultiStyleConfig({
   baseStyle,
-};
+  variants,
+  defaultProps: {
+    variant: 'light',
+  },
+});

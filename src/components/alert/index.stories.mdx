@@ -1,0 +1,138 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Alert from './index.tsx';
+import { ErrorIcon } from '../index.ts';
+
+<Meta title="Components/Feedback/Alert" component={Alert} />
+
+export const Template = (args) => (
+  <Alert description="Your Chakra experience may be degraded." {...args} />
+);
+
+# Alert
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      type: 'info',
+    }}
+    argTypes={{
+      type: {
+        options: ['error', 'warning', 'info', 'success'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## States
+
+### Info
+
+<Canvas>
+  <Story id="components-feedback-alert-states--info" />
+</Canvas>
+
+### Success
+
+<Canvas>
+  <Story id="components-feedback-alert-states--success" />
+</Canvas>
+
+### Warning
+
+<Canvas>
+  <Story id="components-feedback-alert-states--warning" />
+</Canvas>
+
+### Error
+
+<Canvas>
+  <Story id="components-feedback-alert-states--error" />
+</Canvas>
+
+## With Link
+
+<Canvas>
+  <Story
+    name="With Link"
+    args={{
+      type: 'info',
+      link: {
+        url: 'https://www.autoscout24.ch/de',
+        text: 'Link',
+      },
+    }}
+    argTypes={{
+      type: {
+        options: ['error', 'warning', 'info', 'success'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With Link" />
+
+## With Title
+
+<Canvas>
+  <Story
+    name="With Title"
+    args={{
+      type: 'info',
+      title: 'Your browser is outdated!',
+    }}
+    argTypes={{
+      type: {
+        options: ['error', 'warning', 'info', 'success'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With Title" />
+
+## With custom Icon
+
+<Canvas>
+  <Story
+    name="With custom Icon"
+    args={{
+      type: 'error',
+      title: 'Your browser is outdated!',
+      link: {
+        url: 'https://www.autoscout24.ch/de',
+        text: 'Link',
+      },
+      icon: <ErrorIcon />,
+    }}
+    argTypes={{
+      type: {
+        options: ['error', 'warning', 'info', 'success'],
+        control: 'select',
+      },
+      icon: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With custom Icon" />

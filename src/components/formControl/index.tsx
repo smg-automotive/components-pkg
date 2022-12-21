@@ -6,6 +6,10 @@ import {
   FormLabel,
 } from '@chakra-ui/react';
 
+import Tooltip from '../tooltip';
+import Stack from '../stack';
+import { TooltipIcon } from '../icons';
+
 type Props = {
   isDisabled?: boolean;
   isRequired?: boolean;
@@ -13,6 +17,7 @@ type Props = {
   id: string;
   label?: string;
   hint?: string;
+  tooltip?: string;
 };
 
 const FormControl: FC<PropsWithChildren<Props>> = ({
@@ -23,8 +28,25 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
   id,
   label,
   hint,
+  tooltip,
 }) => {
   const isInvalid = !!errorMessage;
+
+  const formLabel = (
+    <FormLabel htmlFor={id}>
+      {label}
+      {isRequired ? <>&nbsp;</> : null}
+    </FormLabel>
+  );
+
+  const formLabelWithTooltip = (
+    <Stack direction="row" spacing="sm">
+      {formLabel}
+      <Tooltip label={tooltip}>
+        <TooltipIcon pos="relative" bottom="xxs" />
+      </Tooltip>
+    </Stack>
+  );
 
   return (
     <ChakraFormControl
@@ -33,15 +55,11 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
       isRequired={isRequired}
       id={id}
     >
-      {label ? (
-        <FormLabel htmlFor={id}>
-          {label}
-          {isRequired ? <>&nbsp;</> : null}
-        </FormLabel>
-      ) : null}
+      {label && !tooltip ? formLabel : null}
+      {label && tooltip ? formLabelWithTooltip : null}
       {children}
-      {hint && !isInvalid ? <FormHelperText>{hint}</FormHelperText> : null}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      {hint ? <FormHelperText>{hint}</FormHelperText> : null}
     </ChakraFormControl>
   );
 };

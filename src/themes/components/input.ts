@@ -6,7 +6,7 @@ import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 
 const baseStyle: PartsStyleObject<typeof parts> = {
   field: {
-    width: '100%',
+    width: 'full',
     minWidth: 0,
     outline: 0,
     position: 'relative',

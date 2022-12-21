@@ -1,0 +1,81 @@
+{
+  "errorPage": {
+    "404": {
+      "buttonLabel": "Zur Startseite",
+      "description": "Hast du den Link kopiert oder abgetippt? Dann überprüfe den Link und lade die Seite neu.",
+      "title": "Die Seite konnte nicht gefunden werden"
+    },
+    "500": {
+      "buttonLabel": "Zur Startseite",
+      "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
+      "title": "Tut uns leid, da ist was schief gegangen"
+    }
+  },
+  "footer": {
+    "apps": {
+      "title": "Mobile Apps"
+    },
+    "as24": {
+      "sections": {
+        "brand": {
+          "insurance": "Autoversicherungen",
+          "title": "AutoScout24"
+        }
+      }
+    },
+    "companies": {
+      "anibis": "anibis.ch",
+      "autoScout24": "AutoScout24",
+      "financeScout24": "FinanceScout24",
+      "immoScout24": "ImmoScout24",
+      "motoScout24": "MotoScout24",
+      "smg": "SMG Swiss Marketplace Group"
+    },
+    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Ihr Partner für Auto Occasionen - Suchen & kaufen Sie Autos im grössten Automarkt der Schweiz",
+    "ms24": {
+      "sections": {
+        "brand": {
+          "insurance": "Motorradversicherungen",
+          "title": "MotoScout24"
+        }
+      }
+    },
+    "sections": {
+      "aboutUs": {
+        "contact": "Kontakt",
+        "factsAndFigures": "Facts & Figures",
+        "jobs": "Offene Stellen",
+        "newsletter": "Newsletter",
+        "title": "Über uns"
+      },
+      "advertisement": {
+        "smg": "Auf SMG Swiss Marketplace Group Portalen",
+        "title": "Werbung"
+      },
+      "brand": {
+        "advancedSearch": "Erweiterte Suche",
+        "dealerSearch": "Garagen & Händler suchen",
+        "makes": "Markenübersicht",
+        "models": "Modellübersicht"
+      },
+      "legal": {
+        "agb": "AGB",
+        "cookieSettings": "Voreinstellungen verwalten",
+        "dataProtection": "Datenschutz",
+        "imprint": "Impressum",
+        "rules": "Insertionsregeln",
+        "securityHint": "Sicherheitshinweise",
+        "title": "Rechtliches & Sicherheit"
+      },
+      "list": {
+        "productsAndPrices": "Produkte und Preise",
+        "title": "Inserieren",
+        "vehicles": "Fahrzeuge"
+      },
+      "media": {
+        "contact": "Medienkontaktn",
+        "title": "Für Medien"
+      }
+    }
+  }
+}

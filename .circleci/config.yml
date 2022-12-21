@@ -2,7 +2,7 @@ version: 2.1
 
 docker: &DOCKER_NODE
   docker:
-    - image: cimg/node:18.7.0
+    - image: cimg/node:lts
 
 bob_the_builder: &BOB_THE_BUILDER
   docker:
@@ -36,7 +36,7 @@ slack_notify: &SLACK_NOTIFY
     branch_pattern: main
 
 orbs:
-  slack: circleci/slack@4.10.1
+  slack: circleci/slack@4.12.0
 
 jobs:
   install:
@@ -104,7 +104,7 @@ jobs:
 
   pre_release:
     <<: *DOCKER_NODE
-    resource_class: small
+    resource_class: medium
     steps:
       - attach_workspace:
           at: ~/
@@ -114,7 +114,7 @@ jobs:
 
   release:
     <<: *DOCKER_NODE
-    resource_class: small
+    resource_class: medium
     steps:
       - attach_workspace:
           at: ~/

@@ -7,6 +7,7 @@ const selectStyles: StyleConfig = {
   baseStyle: {
     field: {
       ...Input.baseStyle.field,
+      paddingInlineEnd: '3xl',
     },
     icon: {
       right: 'md',

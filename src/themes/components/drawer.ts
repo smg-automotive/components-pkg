@@ -1,29 +1,25 @@
-import { mode } from '@chakra-ui/theme-tools';
 import type {
   PartsStyleFunction,
-  PartsStyleObject,
   SystemStyleFunction,
   SystemStyleObject,
 } from '@chakra-ui/styled-system';
+import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
 import { drawerAnatomy as parts } from '@chakra-ui/anatomy';
 
-/**
- * Since the `maxWidth` prop references theme.sizes internally,
- * we can leverage that to size our modals.
- */
-function getSize(value: string): PartsStyleObject<typeof parts> {
+const { definePartsStyle } = createMultiStyleConfigHelpers(parts.keys);
+
+const getSize = (value: string) => {
   if (value === 'full') {
-    return {
+    return definePartsStyle({
       dialog: { maxW: '100vw', h: '100vh' },
-    };
+    });
   }
-  return {
+  return definePartsStyle({
     dialog: { maxW: value },
-  };
-}
+  });
+};
 
 const baseStyleOverlay: SystemStyleObject = {
-  bg: 'blackAlpha.600',
   zIndex: 'overlay',
 };
 
@@ -33,52 +29,27 @@ const baseStyleDialogContainer: SystemStyleObject = {
   justifyContent: 'center',
 };
 
-const baseStyleDialog: SystemStyleFunction = (props) => {
-  const { isFullHeight } = props;
-
+const baseStyleDialog: SystemStyleFunction = () => {
   return {
-    ...(isFullHeight && { height: '100vh' }),
     zIndex: 'modal',
-    maxH: '100vh',
-    bg: mode('white', 'gray.700')(props),
+    bg: 'white',
     color: 'inherit',
-    boxShadow: mode('lg', 'dark-lg')(props),
+    boxShadow: 'xs',
+    borderBottom: '1px',
+    borderBottomColor: 'gray.200',
   };
 };
 
-const baseStyleHeader: SystemStyleObject = {
-  px: 6,
-  py: 4,
-  fontSize: 'xl',
-  fontWeight: 'semibold',
-};
-
-const baseStyleCloseButton: SystemStyleObject = {
-  position: 'absolute',
-  top: 2,
-  insetEnd: 3,
-};
-
 const baseStyleBody: SystemStyleObject = {
-  px: 6,
-  py: 2,
   flex: 1,
   overflow: 'auto',
-};
-
-const baseStyleFooter: SystemStyleObject = {
-  px: 6,
-  py: 4,
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   overlay: baseStyleOverlay,
   dialogContainer: baseStyleDialogContainer,
   dialog: baseStyleDialog(props),
-  header: baseStyleHeader,
-  closeButton: baseStyleCloseButton,
   body: baseStyleBody,
-  footer: baseStyleFooter,
 });
 
 const sizes = {
@@ -90,13 +61,11 @@ const sizes = {
   full: getSize('full'),
 };
 
-const defaultProps = {
-  size: 'xs',
-};
-
 export default {
-  parts: parts.keys,
   baseStyle,
+  parts: parts.keys,
   sizes,
-  defaultProps,
+  defaultProps: {
+    size: 'xl',
+  },
 };

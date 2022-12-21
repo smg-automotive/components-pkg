@@ -7,24 +7,25 @@ const VehicleReference: ComponentStyleConfig = {
   baseStyle: {
     carTitle: {
       color: 'gray.900',
-      textStyle: { xs: 'heading5', lg: 'heading3' },
-      noOfLines: { xs: 1, lg: 'none' },
+      textStyle: { '2xs': 'heading5', md: 'heading3' },
+      noOfLines: { '2xs': 1, md: 'none' },
+      wordBreak: 'break-word',
     },
     price: {
       color: 'gray.900',
-      textStyle: { xs: 'heading3', lg: 'heading1' },
+      textStyle: { '2xs': 'heading3', md: 'heading1' },
     },
     dealerName: {
       color: 'gray.900',
       textStyle: 'heading4',
-      display: { xs: 'none', lg: 'flex' },
-      wordBreak: 'break-all',
+      display: { '2xs': 'none', md: 'flex' },
+      wordBreak: 'break-word',
     },
     dealerAddress: {
       color: 'gray.900',
       textStyle: 'body',
-      display: { xs: 'none', lg: 'flex' },
-      wordBreak: 'break-all',
+      display: { '2xs': 'none', md: 'flex' },
+      wordBreak: 'break-word',
     },
   },
 };

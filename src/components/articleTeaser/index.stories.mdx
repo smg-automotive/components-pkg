@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react';
 import ArticleTeaser from './index.tsx';
 
 <Meta
-  title="Patterns/Data display/Article Teaser"
+  title="Patterns/Content/Article Teaser"
   component={ArticleTeaser}
   args={{
     nativeImageSize: '320x320',
@@ -23,7 +23,7 @@ import ArticleTeaser from './index.tsx';
 />
 
 export const Template = ({ nativeImageSize, ...args }) => (
-  <Box maxW={{ xs: '100%', lg: '600px' }}>
+  <Box maxW={{ '2xs': '100%', md: '600px' }}>
     <ArticleTeaser
       {...args}
       imageUrl={`https://via.placeholder.com/${nativeImageSize}`}
@@ -46,7 +46,7 @@ export const Template = ({ nativeImageSize, ...args }) => (
 Bigger image on mobile viewport.
 
 <Canvas>
-  <Story name="Responsive" args={{ maxImgW: { sm: 'full', md: '3xl' } }}>
+  <Story name="Responsive" args={{ maxImgW: { '2xs': 'full', sm: '3xl' } }}>
     {Template.bind({})}
   </Story>
 </Canvas>

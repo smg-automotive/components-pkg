@@ -17,8 +17,8 @@ export const Template = () => (
     <Box bg="green.100" height="full">
       <BaseGrid
         gridTemplateRows={{
-          xs: 'repeat(12, 1fr)',
-          lg: '1fr',
+          '2xs': 'repeat(12, 1fr)',
+          md: '1fr',
         }}
         height="full"
         bg="red.200"
@@ -35,8 +35,10 @@ export const Template = () => (
   </FullHeight>
 );
 
-# Base grid
+# Base grid for XL layouts
+
+## Overview
 
 <Canvas>
-  <Story name="Base grid for XL layouts">{Template.bind({})}</Story>
+  <Story name="Base grid">{Template.bind({})}</Story>
 </Canvas>

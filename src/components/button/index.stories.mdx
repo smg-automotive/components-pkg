@@ -1,13 +1,12 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Button from './index.tsx';
+import { ShareIcon, VideoIcon } from '../index.ts';
 import { Stack } from '../../index.ts';
 
-<Meta title="Buttons/Button" component={Button} />
+<Meta title="Components/Button" component={Button} />
 
-export const Template = (args) => (
-  <Button {...args}>{args.label || 'Button'}</Button>
-);
+export const Template = (args) => <Button {...args}>{args.label}</Button>;
 
 # Button
 
@@ -90,3 +89,132 @@ export const Template = (args) => (
     </Stack>
   </Story>
 </Canvas>
+
+## Button as Link
+
+<Canvas>
+  <Story
+    name="Button as Link"
+    args={{
+      label: 'Primary Button',
+      variant: 'primary',
+      size: 'lg',
+      as: 'a',
+      href: '"https://google.com"',
+      isExternal: true,
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Button as Link" />
+
+## Button with left icon
+
+<Canvas>
+  <Story
+    name="Button with left icon"
+    args={{
+      label: 'Button with left icon',
+      variant: 'primary',
+      size: 'lg',
+      leftIcon: <VideoIcon />,
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      leftIcon: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Button with left icon" />
+
+## Button with right icon
+
+<Canvas>
+  <Story
+    name="Button with right icon"
+    args={{
+      label: 'Button with right icon',
+      variant: 'primary',
+      size: 'lg',
+      rightIcon: <VideoIcon />,
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      rightIcon: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Button with right icon" />
+
+## Icon button
+
+<Canvas>
+  <Story
+    name="Icon button"
+    args={{
+      variant: 'primary',
+      size: 'lg',
+      icon: <ShareIcon />,
+      ariaLabel: 'Share to Facebook',
+    }}
+    argTypes={{
+      variant: {
+        options: ['primary', 'secondary'],
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      icon: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Icon button" />

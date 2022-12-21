@@ -24,12 +24,6 @@ module.exports = {
         ],
       },
     ],
-    'import/no-internal-modules': [
-      'error',
-      {
-        allow: ['**/assets/images/**'],
-      },
-    ],
   },
   overrides: [
     {
@@ -44,11 +38,13 @@ module.exports = {
         'import/resolver': {
           typescript: {},
         },
+        'import/ignore': ['@chakra-ui/react'],
       },
       rules: {
         'no-nested-ternary': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/prop-types': 'off',
+        'import/namespace': ['error', { allowComputed: true }],
       },
     },
   ],

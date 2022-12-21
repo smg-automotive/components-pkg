@@ -1,24 +1,43 @@
-import type {
-  PartsStyleObject,
-  SystemStyleObject,
+import {
+  createMultiStyleConfigHelpers,
+  defineStyle,
 } from '@chakra-ui/styled-system';
 import { listAnatomy as parts } from '@chakra-ui/anatomy';
 
-const baseStyleIcon: SystemStyleObject = {
-  marginEnd: '0.5rem',
+const { defineMultiStyleConfig, definePartsStyle } =
+  createMultiStyleConfigHelpers(parts.keys);
+
+const baseStyleIcon = defineStyle({
+  marginEnd: '2',
   display: 'inline',
   verticalAlign: 'text-bottom',
-};
+});
 
-const baseStyle: PartsStyleObject<typeof parts> = {
-  container: {},
-  item: {
-    lineHeight: '1.75rem',
-  },
+const baseStyle = definePartsStyle({
   icon: baseStyleIcon,
+});
+
+const mdVariant = {
+  container: {
+    textStyle: 'body',
+  },
 };
 
-export default {
-  parts: parts.keys,
-  baseStyle,
+const smVariant = {
+  container: {
+    textStyle: 'body-small',
+  },
 };
+
+const variants = {
+  md: mdVariant,
+  sm: smVariant,
+};
+
+export default defineMultiStyleConfig({
+  baseStyle,
+  variants,
+  defaultProps: {
+    variant: 'md',
+  },
+});

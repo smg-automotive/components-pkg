@@ -5,7 +5,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import Checkbox from './index.tsx';
 import { Stack } from '../../index.ts';
 
-<Meta title="Forms/Checkbox" component={Checkbox} />
+<Meta title="Components/Forms/Checkbox" component={Checkbox} />
 
 export const Template = ({ isChecked, ...args }) => {
   const [checked, setChecked] = useState(isChecked);
@@ -15,6 +15,34 @@ export const Template = ({ isChecked, ...args }) => {
       isChecked={checked}
       onChange={(e) => setChecked(e.target.checked)}
     />
+  );
+};
+
+export const IndeterminateTemplate = () => {
+  const [checkedItems, setCheckedItems] = useState([false, false]);
+  const allChecked = checkedItems.every(Boolean);
+  const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
+  return (
+    <>
+      <Checkbox
+        label="Parent Checkbox"
+        isChecked={allChecked}
+        isIndeterminate={isIndeterminate}
+        onChange={(e) => setCheckedItems([e.target.checked, e.target.checked])}
+      />
+      <Stack pl="lg" mt="s" spacing="s">
+        <Checkbox
+          label="Child Checkbox 1"
+          isChecked={checkedItems[0]}
+          onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
+        />
+        <Checkbox
+          label="Child Checkbox 2"
+          isChecked={checkedItems[1]}
+          onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
+        />
+      </Stack>
+    </>
   );
 };
 
@@ -84,4 +112,10 @@ export const Template = ({ isChecked, ...args }) => {
       <Checkbox isDisabled={true} isChecked={true} label="Disabled checked" />
     </Stack>
   </Story>
+</Canvas>
+
+## Indeterminate
+
+<Canvas>
+  <Story name="Indeterminate">{IndeterminateTemplate.bind({})}</Story>
 </Canvas>

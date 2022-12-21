@@ -1,0 +1,64 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import StoryTemplate from './StoryTemplate';
+import Carousel from './index.tsx';
+
+<Meta
+  title="Components/Data display/Carousel"
+  component={Carousel}
+  argTypes={{
+    fullScreen: {
+      table: {
+        disable: true,
+      },
+    },
+    numberOfSlides: {
+      control: { type: 'number', min: 1, max: 20, step: 1 },
+    },
+  }}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+/>
+
+export const Template = (args) => {
+  // mdx has a limitation that you cannot pass an array of objects as children. Extracting it to a separate component solves the issue
+  return <StoryTemplate args={args} action={action} />;
+};
+
+# Carousel
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: false,
+      numberOfSlides: 6,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Full Screen
+
+<Canvas>
+  <Story
+    name="Full screen"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: true,
+      numberOfSlides: 6,
+      onSlideEnter: true,
+      onSlideLeave: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

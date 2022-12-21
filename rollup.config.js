@@ -1,13 +1,15 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import image from 'rollup-plugin-img';
 import executable from 'rollup-plugin-executable';
-import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
 import { dirname, join } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
+import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+
+const dts = require('rollup-plugin-dts').default;
 
 const packageJson = require('./package.json');
 const external = [
@@ -35,6 +37,7 @@ export default [
       resolve(),
       commonjs(),
       image(),
+      json(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
@@ -62,6 +65,7 @@ export default [
       resolve(),
       commonjs(),
       image(),
+      json(),
       typescript({
         tsconfig: './tsconfig.build.json',
         compilerOptions: {

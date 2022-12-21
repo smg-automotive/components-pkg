@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export const colors = {
   white: '#FFFFFF',
   black: '#000000',

@@ -1,11 +1,6 @@
-import {
-  ArgsTable,
-  Canvas,
-  ColorPalette,
-  Meta,
-  Story,
-} from '@storybook/addon-docs';
+import { Canvas, ColorPalette, Meta, Story } from '@storybook/addon-docs';
 
+import ZindicesShowcase from './ZindicesShowcase.tsx';
 import TypographyShowcase from './TypographyShowcase.tsx';
 import SpaceShowcase from './SpaceShowcase.tsx';
 import SizeShowcase from './SizeShowcase.tsx';
@@ -14,6 +9,7 @@ import OpacityShowcase from './OpacityShowcase.tsx';
 import ContainerShowcase from './ContainerShowcase.tsx';
 import ColorShowcase from './ColorShowcase.tsx';
 import BreakpointShowcase from './BreakpointShowcase.tsx';
+import BorderShowcase from './BorderShowcase.tsx';
 import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 
 <Meta
@@ -31,6 +27,14 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 <Canvas>
   <Story name="borderRadius" args={{ theme: 'as24' }}>
     <BorderRadiusShowcase />
+  </Story>
+</Canvas>
+
+## Border
+
+<Canvas>
+  <Story name="border" args={{ theme: 'as24' }}>
+    <BorderShowcase />
   </Story>
 </Canvas>
 
@@ -53,8 +57,6 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
     </ColorPalette>
   </Story>
 </Canvas>
-
-<ArgsTable story="colors" />
 
 ## Containers
 
@@ -101,5 +103,13 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 <Canvas>
   <Story name="typography" args={{ theme: 'as24' }}>
     <TypographyShowcase />
+  </Story>
+</Canvas>
+
+## zIndices
+
+<Canvas>
+  <Story name="zIndices" args={{ theme: 'as24' }}>
+    <ZindicesShowcase />
   </Story>
 </Canvas>

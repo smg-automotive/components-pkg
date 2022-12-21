@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export const opacity = {
   20: '0.2',
   40: '0.4',
