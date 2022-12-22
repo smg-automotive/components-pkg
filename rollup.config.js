@@ -95,7 +95,7 @@ export default [
     input: 'src/fonts/Hosted.tsx',
     output: [
       {
-        file: 'dist/fonts/cjs/hosted.js',
+        file: packageJson.exports['./fonts/hosted'].replace(/^.\//, ''),
         format: 'cjs',
         sourcemap: true,
         inlineDynamicImports: true,
@@ -110,8 +110,14 @@ export default [
       typescript({
         tsconfig: './tsconfig.build_fonts.json',
         compilerOptions: {
-          outDir: 'dist/fonts/cjs',
-          declarationDir: 'dist/fonts/cjs/types',
+          outDir: dirname(packageJson.exports['./fonts/hosted']).replace(
+            /^.\//,
+            ''
+          ),
+          declarationDir: join(
+            dirname(packageJson.exports['./fonts/hosted']),
+            'types'
+          ).replace(/^.\//, ''),
         },
       }),
     ],
