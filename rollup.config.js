@@ -92,6 +92,61 @@ export default [
     plugins: [dts()],
   },
   {
+    input: 'src/fonts/Hosted.tsx',
+    output: [
+      {
+        file: 'dist/fonts/cjs/hosted.js',
+        format: 'cjs',
+        sourcemap: true,
+        inlineDynamicImports: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build_fonts.json',
+        compilerOptions: {
+          outDir: 'dist/fonts/cjs',
+          declarationDir: 'dist/fonts/cjs/types',
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
+    input: 'src/fonts/Hosted.tsx',
+    output: [
+      {
+        dir: 'dist/fonts/esm',
+        format: 'esm',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src/fonts',
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build_fonts.json',
+        compilerOptions: {
+          outDir: 'dist/fonts/esm',
+          declarationDir: 'dist/fonts/esm/types',
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
     input: 'src/lib/cli/index.ts',
     output: [
       {
