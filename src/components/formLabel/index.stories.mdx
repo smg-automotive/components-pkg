@@ -8,6 +8,13 @@ import FormLabel from './index.tsx';
   component={FormLabel}
   args={{
     children: 'I am label',
+    size: 'lg',
+  }}
+  argTypes={{
+    size: {
+      options: ['sm', 'lg'],
+      control: 'select',
+    },
   }}
 />
 
