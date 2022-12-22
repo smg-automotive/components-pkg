@@ -10,9 +10,9 @@ import AspectRatio from '../aspectRatio';
 interface Props {
   image?: ReactNode;
   vehicleTitle: string;
-  price: string;
-  sellerName: string;
-  sellerAddress: string;
+  price?: string;
+  sellerName?: string;
+  sellerAddress?: string;
 }
 
 const VehicleReference: FC<Props> = ({
