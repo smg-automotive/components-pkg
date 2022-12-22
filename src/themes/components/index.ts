@@ -9,6 +9,7 @@ import Select from './select';
 import Section from './section';
 import Radio from './radio';
 import Pagination from './pagination';
+import Modal from './modal';
 import Menu from './menu';
 import List from './list';
 import Link from './link';
@@ -29,17 +30,17 @@ import Alert from './alert';
 import Accordion from './accordion';
 
 export const components = {
-  Avatar,
   Accordion,
   Alert,
   ArticleTeaser,
+  Avatar,
   Badge,
   Breadcrumbs,
   Button,
   Carousel,
   Checkbox,
-  Drawer,
   Divider,
+  Drawer,
   Form,
   FormError,
   FormLabel,
@@ -47,6 +48,7 @@ export const components = {
   Link,
   List,
   Menu,
+  Modal,
   Pagination,
   Radio,
   Section,

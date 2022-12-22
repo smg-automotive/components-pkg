@@ -1,6 +1,15 @@
 import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/styled-system';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
+const sizes: Record<string, PartsStyleObject<typeof parts>> = {
+  sm: {
+    label: { fontSize: 'sm' },
+  },
+  lg: {
+    label: { fontSize: 'base' },
+  },
+};
+
 const baseStyleControl: SystemStyleObject = {
   width: 'xs',
   height: 'xs',
@@ -49,4 +58,5 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 
 export default {
   baseStyle,
+  sizes,
 };
