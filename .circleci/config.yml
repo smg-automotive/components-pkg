@@ -91,7 +91,7 @@ jobs:
 
   build:
     <<: *DOCKER_NODE
-    resource_class: large
+    resource_class: medium
     steps:
       - attach_workspace:
           at: ~/
