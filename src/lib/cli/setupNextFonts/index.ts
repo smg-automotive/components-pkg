@@ -17,7 +17,7 @@ export default ({
   console.info('Creating a <Fonts /> component in', componentDestination);
 
   const resolvedDestination = destination(destinationRoot);
-  const pathToFonts = path.relative(componentDestination, resolvedDestination);
+  const pathToFonts = path.relative(componentPath, resolvedDestination);
 
   const component = fs
     .readFileSync(path.join(__dirname, 'template.tsx.tpl'))
