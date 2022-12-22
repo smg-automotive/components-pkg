@@ -1,36 +1,36 @@
 import React, { FC } from 'react';
+
 import localFont from '@next/font/local';
-import { Global } from '@emotion/react';
 
 const makeItSans = localFont({
   src: [
     {
-      path: '../assets/fonts/MakeItSans-Bold.woff',
+      path: '%fontPath%/MakeItSans-Bold.woff',
       weight: '400',
       style: 'regular',
     },
     {
-      path: '../assets/fonts/MakeItSans-Regular.woff2',
+      path: '%fontPath%/MakeItSans-Regular.woff2',
       weight: '400',
       style: 'regular',
     },
     {
-      path: '../assets/fonts/MakeItSans-Regular.otf',
+      path: '%fontPath%/MakeItSans-Regular.otf',
       weight: '400',
       style: 'regular',
     },
     {
-      path: '../assets/fonts/MakeItSans-Bold.woff2',
+      path: '%fontPath%/MakeItSans-Bold.woff2',
       weight: '700',
       style: 'bold',
     },
     {
-      path: '../assets/fonts/MakeItSans-Bold.otf',
+      path: '%fontPath%/MakeItSans-Bold.otf',
       weight: '700',
       style: 'bold',
     },
     {
-      path: '../assets/fonts/MakeItSans-Bold.woff',
+      path: '%fontPath%/MakeItSans-Bold.woff',
       weight: '700',
       style: 'bold',
     },
@@ -39,13 +39,11 @@ const makeItSans = localFont({
 });
 
 const Fonts: FC = () => (
-  <Global
-    styles={`
-      :root {
-         --font-primary: ${makeItSans.style.fontFamily};
-      }
-    `}
-  />
+  <style jsx global>{`
+    :root {
+      --font-primary: ${makeItSans.style.fontFamily};
+    }
+  `}</style>
 );
 
 export default Fonts;
