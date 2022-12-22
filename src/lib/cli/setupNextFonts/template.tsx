@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 import React, { FC } from 'react';
 
 import localFont from '@next/font/local';
@@ -39,6 +40,9 @@ const makeItSans = localFont({
 });
 
 const Fonts: FC = () => (
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line react/no-unknown-property
   <style jsx global>{`
     :root {
       --font-primary: ${makeItSans.style.fontFamily};

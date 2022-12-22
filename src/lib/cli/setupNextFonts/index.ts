@@ -20,9 +20,15 @@ export default ({
   const pathToFonts = path.relative(componentPath, resolvedDestination);
 
   const component = fs
-    .readFileSync(path.join(__dirname, 'template.tsx.tpl'))
+    .readFileSync(path.join(__dirname, 'template.tsx'))
     .toString('utf8')
-    .replace(/%fontPath%/gi, pathToFonts);
+    .replace(/%fontPath%/gi, pathToFonts)
+    .split('\n')
+    .filter(
+      (line: string) =>
+        !line.match(/^\s*\/\/.*$/) && !line.match(/^\/\*\s.*\s\*\/$/)
+    )
+    .join('\n');
 
   fs.writeFileSync(componentDestination, component);
 

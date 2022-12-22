@@ -176,7 +176,7 @@ export default [
       copy({
         targets: [
           {
-            src: 'src/lib/cli/setupNextFonts/template.tsx.tpl',
+            src: 'src/lib/cli/setupNextFonts/template.tsx',
             dest: 'dist/bin',
           },
         ],
