@@ -29,6 +29,15 @@ const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
   ''
 );
 
+const fontsNextRequire = packageJson.exports['./fonts/next'].require.replace(
+  /^.\//,
+  ''
+);
+const fontsNextImport = packageJson.exports['./fonts/next'].import.replace(
+  /^.\//,
+  ''
+);
+
 export default [
   {
     input: 'src/index.ts',
@@ -148,6 +157,61 @@ export default [
         compilerOptions: {
           outDir: dirname(fontsHostedImport),
           declarationDir: join(dirname(fontsHostedImport), 'types'),
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
+    input: 'src/fonts/Next.tsx',
+    output: [
+      {
+        file: fontsNextRequire,
+        format: 'cjs',
+        sourcemap: true,
+        inlineDynamicImports: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build_fonts.json',
+        compilerOptions: {
+          outDir: dirname(fontsNextRequire),
+          declarationDir: join(dirname(fontsNextRequire), 'types'),
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
+    input: 'src/fonts/Next.tsx',
+    output: [
+      {
+        dir: dirname(fontsNextImport),
+        format: 'esm',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src/fonts',
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build_fonts.json',
+        compilerOptions: {
+          outDir: dirname(fontsNextImport),
+          declarationDir: join(dirname(fontsNextImport), 'types'),
         },
       }),
     ],

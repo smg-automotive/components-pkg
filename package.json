@@ -12,6 +12,10 @@
     "./fonts/hosted": {
       "require": "./dist/fonts/cjs/hosted.js",
       "import": "./dist/fonts/esm/Hosted.js"
+    },
+    "./fonts/next": {
+      "require": "./dist/fonts/cjs/next.js",
+      "import": "./dist/fonts/esm/Next.js"
     }
   },
   "types": "dist/index.d.ts",
@@ -19,6 +23,9 @@
     "*": {
       "fonts/hosted": [
         "dist/fonts/esm/types/Hosted"
+      ],
+      "fonts/next": [
+        "dist/fonts/esm/types/Next"
       ]
     }
   },
@@ -55,10 +62,12 @@
   "homepage": "https://github.com/smg-automotive/components-pkg#readme",
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "@next/font": "^13.0.7"
   },
   "devDependencies": {
     "@babel/core": "7.20.5",
+    "@next/font": "13.0.7",
     "@rollup/plugin-commonjs": "23.0.7",
     "@rollup/plugin-image": "3.0.1",
     "@rollup/plugin-json": "5.0.2",
