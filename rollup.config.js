@@ -21,6 +21,14 @@ const onwarn = (warning, warn) => {
   warn(warning);
 };
 
+const fontsHostedRequire = packageJson.exports[
+  './fonts/hosted'
+].require.replace(/^.\//, '');
+const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
+  /^.\//,
+  ''
+);
+
 export default [
   {
     input: 'src/index.ts',
@@ -95,7 +103,7 @@ export default [
     input: 'src/fonts/Hosted.tsx',
     output: [
       {
-        file: packageJson.exports['./fonts/hosted'].replace(/^.\//, ''),
+        file: fontsHostedRequire,
         format: 'cjs',
         sourcemap: true,
         inlineDynamicImports: true,
@@ -110,14 +118,8 @@ export default [
       typescript({
         tsconfig: './tsconfig.build_fonts.json',
         compilerOptions: {
-          outDir: dirname(packageJson.exports['./fonts/hosted']).replace(
-            /^.\//,
-            ''
-          ),
-          declarationDir: join(
-            dirname(packageJson.exports['./fonts/hosted']),
-            'types'
-          ).replace(/^.\//, ''),
+          outDir: dirname(fontsHostedRequire),
+          declarationDir: join(dirname(fontsHostedRequire), 'types'),
         },
       }),
     ],
@@ -128,7 +130,7 @@ export default [
     input: 'src/fonts/Hosted.tsx',
     output: [
       {
-        dir: 'dist/fonts/esm',
+        dir: dirname(fontsHostedImport),
         format: 'esm',
         sourcemap: true,
         preserveModules: true,
@@ -144,8 +146,8 @@ export default [
       typescript({
         tsconfig: './tsconfig.build_fonts.json',
         compilerOptions: {
-          outDir: 'dist/fonts/esm',
-          declarationDir: 'dist/fonts/esm/types',
+          outDir: dirname(fontsHostedImport),
+          declarationDir: join(dirname(fontsHostedImport), 'types'),
         },
       }),
     ],
