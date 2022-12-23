@@ -1,6 +1,9 @@
 /* eslint-disable unicorn/filename-case */
 import React, { FC } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
 import localFont from '@next/font/local';
 
 const makeItSans = localFont({
