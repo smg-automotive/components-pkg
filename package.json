@@ -4,8 +4,25 @@
   "description": "SMG Automotive components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./fonts/hosted": {
+      "require": "./dist/fonts/cjs/hosted.js",
+      "import": "./dist/fonts/esm/Hosted.js"
+    }
+  },
   "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "fonts/hosted": [
+        "dist/fonts/esm/types/Hosted"
+      ]
+    }
+  },
+  "sideEffects": false,
   "files": [
     "dist/**/*"
   ],

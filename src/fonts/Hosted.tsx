@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Global } from '@emotion/react';
 
-export const Fonts = () => (
+const Fonts: FC = () => (
   <Global
     styles={`
       @font-face {
@@ -20,6 +20,12 @@ export const Fonts = () => (
             url('/assets/fonts/MakeItSans-Bold.woff2') format('woff2'),
             url('/assets/fonts/MakeItSans-Bold.otf') format('otf');
       }
+
+      :root {
+        --font-primary: 'Make It Sans', Arial, Helvetica, Sans-Serif
+      }
     `}
   />
 );
+
+export default Fonts;

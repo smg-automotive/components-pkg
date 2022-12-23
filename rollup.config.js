@@ -21,6 +21,14 @@ const onwarn = (warning, warn) => {
   warn(warning);
 };
 
+const fontsHostedRequire = packageJson.exports[
+  './fonts/hosted'
+].require.replace(/^.\//, '');
+const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
+  /^.\//,
+  ''
+);
+
 export default [
   {
     input: 'src/index.ts',
@@ -92,6 +100,61 @@ export default [
     plugins: [dts()],
   },
   {
+    input: 'src/fonts/Hosted.tsx',
+    output: [
+      {
+        file: fontsHostedRequire,
+        format: 'cjs',
+        sourcemap: true,
+        inlineDynamicImports: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build_fonts.json',
+        compilerOptions: {
+          outDir: dirname(fontsHostedRequire),
+          declarationDir: join(dirname(fontsHostedRequire), 'types'),
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
+    input: 'src/fonts/Hosted.tsx',
+    output: [
+      {
+        dir: dirname(fontsHostedImport),
+        format: 'esm',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src/fonts',
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      image(),
+      json(),
+      typescript({
+        tsconfig: './tsconfig.build_fonts.json',
+        compilerOptions: {
+          outDir: dirname(fontsHostedImport),
+          declarationDir: join(dirname(fontsHostedImport), 'types'),
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  },
+  {
     input: 'src/lib/cli/index.ts',
     output: [
       {
@@ -110,6 +173,14 @@ export default [
         include: packageJson.bin.components,
       }),
       executable(),
+      copy({
+        targets: [
+          {
+            src: 'src/lib/cli/setupNextFonts/template.tsx',
+            dest: 'dist/bin',
+          },
+        ],
+      }),
     ],
     onwarn,
   },
