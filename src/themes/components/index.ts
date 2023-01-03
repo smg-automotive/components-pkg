@@ -1,6 +1,7 @@
 import VehicleReference from './vehicleReference';
 import Tooltip from './tooltip';
 import Textarea from './textarea';
+import Tabs from './tabs';
 import Table from './table';
 import Switch from './switch';
 import Spinner from './spinner';
@@ -58,4 +59,5 @@ export const components = {
   Textarea,
   Tooltip,
   VehicleReference,
+  Tabs,
 };

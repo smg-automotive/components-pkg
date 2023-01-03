@@ -1,0 +1,17 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Tabs from './index.tsx';
+
+<Meta title="Components/Navigation/Tabs" component={Tabs} />
+
+export const Template = (args) => {
+  return <Tabs {...args} />;
+};
+
+# Tab
+
+## Overview
+
+<Canvas>
+  <Story name="Tab">{Template.bind({})}</Story>
+</Canvas>
