@@ -55,6 +55,11 @@ export { default as AppLayout } from './layout/app/AppLayout';
 export { default as AppLayoutHeader } from './layout/app/Header';
 export { default as AppLayoutFooter } from './layout/app/Footer';
 export { default as AppLayoutContent } from './layout/app/Content';
+export { default as Tabs } from './tab';
+export { default as Tab } from './tab/Tab';
+export { default as TabList } from './tab/TabList';
+export { default as TabPanel } from './tab/TabPanel';
+export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
 
 export {
