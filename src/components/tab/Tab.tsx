@@ -8,4 +8,3 @@ const Tab: FC<PropsWithChildren<Props>> = (props) => {
 };
 
 export default Tab;
-export { Props as TabProps };
