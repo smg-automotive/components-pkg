@@ -30,6 +30,7 @@ export { default as Grid } from './grid';
 export { default as GridItem } from './grid/GridItem';
 export { default as Hide } from './hide';
 export { default as useMediaQuery } from './hooks/useMediaQuery';
+export { default as useDisclosure } from './hooks/useDisclosure';
 export { default as Input } from './input';
 export { default as Link } from './link';
 export { default as List } from './list';
@@ -55,6 +56,11 @@ export { default as AppLayoutHeader } from './layout/app/Header';
 export { default as AppLayoutFooter } from './layout/app/Footer';
 export { default as AppLayoutContent } from './layout/app/Content';
 export { default as Tabs } from './tab';
+export { default as Tab } from './tab/Tab';
+export { default as TabList } from './tab/TabList';
+export { default as TabPanel } from './tab/TabPanel';
+export { default as TabPanels } from './tab/TabPanels';
+export { default as Modal } from './modal';
 
 export {
   default as ThemeProvider,

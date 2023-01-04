@@ -2,7 +2,9 @@
 import React, { FC, PropsWithChildren, ReactElement } from 'react';
 import { render as testingLibraryRender } from '@testing-library/react';
 
-import { ThemeProvider, ThemeProviderProps } from '../src/';
+import ThemeProvider, {
+  Props as ThemeProviderProps,
+} from '../src/components/themeProvider';
 
 const Wrapper = (theme: ThemeProviderProps['theme']): FC<PropsWithChildren> => {
   const ThemeRenderer: FC<PropsWithChildren> = ({ children }) => {
