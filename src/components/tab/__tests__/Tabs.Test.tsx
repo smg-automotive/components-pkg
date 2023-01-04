@@ -46,17 +46,17 @@ describe('<Tabs />', () => {
     expect(screen.getByText('Eins')).toBeInTheDocument();
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
   });
-  it('changes tab on click', async () => {
+  it('changes tab on click', () => {
     renderWrapper({});
     userEvent.click(screen.getByText('Two'));
     expect(screen.getByText('Zwei')).toBeInTheDocument();
   });
-  it('displays the tabs with the last tab opens by default', async () => {
+  it('displays the tabs with the last tab opens by default', () => {
     renderWrapper({ defaultIndex: 2 });
     expect(screen.getByText('Drei')).toBeInTheDocument();
     expect(screen.queryByText('Eins')).not.toBeInTheDocument();
   });
-  it('displays the tabs with one tab disabled', async () => {
+  it('displays the tabs with one tab disabled', () => {
     renderWrapper({ isDisabled: true });
     userEvent.click(screen.getByText('Two'));
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();

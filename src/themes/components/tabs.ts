@@ -1,11 +1,14 @@
+import { opacity } from '../shared/opacity';
+import { borders } from '../shared/borders';
+
 const baseStyleTab = {
   textStyle: 'body',
   transitionProperty: 'common',
   transitionDuration: 'normal',
-  borderBottom: '1.5px solid',
+  borderBottom: borders['1px'],
   borderColor: 'transparent',
   p: 'sm',
-  marginBottom: '-1.5px',
+  marginBottom: '-1px',
   color: 'gray.600',
   _selected: {
     fontWeight: 'bold',
@@ -15,12 +18,12 @@ const baseStyleTab = {
   _disabled: {
     _active: { bg: 'none' },
     cursor: 'not-allowed',
-    opacity: 0.4,
+    opacity: opacity[40],
   },
 };
 
 const baseStyleTablist = {
-  borderBottom: '1.5px solid',
+  borderBottom: borders['1px'],
   borderColor: 'gray.200',
   justifyContent: 'start',
 };
