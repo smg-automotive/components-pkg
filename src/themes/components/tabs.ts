@@ -1,11 +1,10 @@
 import { opacity } from '../shared/opacity';
-import { borders } from '../shared/borders';
 
 const baseStyleTab = {
   textStyle: 'body',
   transitionProperty: 'common',
   transitionDuration: 'normal',
-  borderBottom: borders['1px'],
+  borderBottom: '1px',
   borderColor: 'transparent',
   p: 'sm',
   marginBottom: '-1px',
@@ -23,7 +22,7 @@ const baseStyleTab = {
 };
 
 const baseStyleTablist = {
-  borderBottom: borders['1px'],
+  borderBottom: '1px',
   borderColor: 'gray.200',
   justifyContent: 'start',
 };
