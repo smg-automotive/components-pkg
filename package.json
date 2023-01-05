@@ -124,7 +124,7 @@
     "@smg-automotive/i18n-pkg": "1.2.0",
     "@types/fs-extra": "9.0.13",
     "embla-carousel-react": "7.0.5",
-    "framer-motion": "8.1.7",
+    "framer-motion": "8.1.9",
     "fs-extra": "11.1.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "9.0.2",
