@@ -61,7 +61,7 @@
     "@babel/core": "7.20.7",
     "@rollup/plugin-commonjs": "24.0.0",
     "@rollup/plugin-image": "3.0.1",
-    "@rollup/plugin-json": "5.0.2",
+    "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-typescript": "9.0.2",
     "@smg-automotive/eslint-config": "2.0.45",
