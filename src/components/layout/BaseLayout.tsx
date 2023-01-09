@@ -3,7 +3,6 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import { chakra, Container, Flex } from '@chakra-ui/react';
 
 import Divider from '../divider';
-import Box from '../box';
 import { sizes } from '../../themes/shared/sizes';
 
 interface Props {
@@ -44,9 +43,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             marginRight="2xl"
             position="relative"
           >
-            <Box position="sticky" top="2xl">
-              {skyScraperAd}
-            </Box>
+            {skyScraperAd}
           </chakra.aside>
         ) : null}
       </Flex>
