@@ -44,9 +44,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             marginRight="2xl"
             position="relative"
           >
-            <Box position="sticky" top="2xl">
-              {skyScraperAd}
-            </Box>
+            {skyScraperAd}
           </chakra.aside>
         ) : null}
       </Flex>
