@@ -3,7 +3,6 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import { chakra, Container, Flex } from '@chakra-ui/react';
 
 import Divider from '../divider';
-import Box from '../box';
 import { sizes } from '../../themes/shared/sizes';
 
 interface Props {
