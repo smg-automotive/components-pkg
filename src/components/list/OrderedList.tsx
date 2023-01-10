@@ -16,7 +16,7 @@ const OrderedList: FC<PropsWithChildren<ListProps>> = ({
       spacing={variant}
       variant={variant}
       start={start}
-      stylePosition={'inside'}
+      stylePosition="inside"
     >
       {children}
     </ChakraList>
