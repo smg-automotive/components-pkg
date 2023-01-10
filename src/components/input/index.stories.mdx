@@ -70,7 +70,7 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       onBlur: false,
       autoFocus: false,
       value: '',
-      type: 'text'
+      type: 'text',
     }}
     argTypes={{
       value: {
@@ -83,7 +83,7 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       type: {
         options: ['text', 'number'],
         control: 'select',
-      }
+      },
     }}
   >
     {Template.bind({})}
