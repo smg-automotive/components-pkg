@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { OrderedList as ChakraList } from '@chakra-ui/react';
+import { OrderedList as ChakraOrderedList } from '@chakra-ui/react';
 
 interface ListProps {
   variant?: 'sm' | 'md';
