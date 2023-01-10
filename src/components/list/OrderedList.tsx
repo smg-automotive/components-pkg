@@ -6,7 +6,7 @@ interface ListProps {
   start?: number;
 }
 
-const List: FC<PropsWithChildren<ListProps>> = ({
+const OrderedList: FC<PropsWithChildren<ListProps>> = ({
   children,
   variant,
   start = 1,
