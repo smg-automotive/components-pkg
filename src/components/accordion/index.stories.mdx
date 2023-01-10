@@ -5,6 +5,7 @@ import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
 
 import { CheckmarkIcon, TimeIcon, TooltipIcon } from '../icons';
+import Box from '../box';
 
 import Accordion from './index';
 
@@ -19,7 +20,7 @@ export const Template = (args) => (
     {args?.items.map((item, i) => (
       <AccordionItem key={i}>
         <AccordionButton leftIcon={item?.leftIcon}>
-          {item.title}
+          <Box mr="sm">{item.title}</Box>
         </AccordionButton>
         <AccordionPanel>{item.content}</AccordionPanel>
       </AccordionItem>
