@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { OrderedList as ChakraList } from '@chakra-ui/react';
+import { OrderedList as OrderedList } from '@chakra-ui/react';
 
 interface ListProps {
   variant?: 'sm' | 'md';
@@ -12,14 +12,14 @@ const List: FC<PropsWithChildren<ListProps>> = ({
   start = 1,
 }) => {
   return (
-    <ChakraList
+    <OrderedList
       spacing={variant}
       variant={variant}
       start={start}
-      stylePosition={'inside'}
+      stylePosition="inside"
     >
       {children}
-    </ChakraList>
+    </OrderedList>
   );
 };
 

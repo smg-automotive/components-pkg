@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { UnorderedList as ChakraList } from '@chakra-ui/react';
+import { UnorderedList as UnorderedList } from '@chakra-ui/react';
 
 interface ListProps {
   variant?: 'sm' | 'md';
@@ -7,9 +7,9 @@ interface ListProps {
 
 const List: FC<PropsWithChildren<ListProps>> = ({ children, variant }) => {
   return (
-    <ChakraList spacing={variant} variant={variant} stylePosition={'inside'}>
+    <UnorderedList spacing={variant} variant={variant} stylePosition={'inside'}>
       {children}
-    </ChakraList>
+    </UnorderedList>
   );
 };
 
