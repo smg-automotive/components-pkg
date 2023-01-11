@@ -4,7 +4,8 @@ import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
 
-import { CheckmarkIcon, TooltipIcon } from '../icons';
+import { CheckmarkIcon, TimeIcon, TooltipIcon } from '../icons';
+import Box from '../box';
 
 import Accordion from './index';
 
@@ -14,6 +15,7 @@ export const Template = (args) => (
   <Accordion
     allowMultiple={args?.allowMultiple}
     allowToggle={args?.allowToggle}
+    variant={args?.variant}
   >
     {args?.items.map((item, i) => (
       <AccordionItem key={i}>
@@ -69,7 +71,18 @@ export const Template = (args) => (
           leftIcon: <CheckmarkIcon color="green.400" />,
           content: 'Second section content.',
         },
+        {
+          title: 'Opening hours',
+          leftIcon: <TimeIcon />,
+          content: 'First section content.',
+        },
       ],
+    }}
+    argTypes={{
+      variant: {
+        type: 'select',
+        options: ['light', 'dark', 'minimal'],
+      },
     }}
   >
     {Template.bind({})}
