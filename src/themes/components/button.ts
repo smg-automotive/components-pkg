@@ -19,24 +19,26 @@ const buttonSizes = {
 };
 
 const variants = {
-  primary: {
-    bg: 'brand.primary',
-    color: 'white',
-    boxShadow: 'button',
-    _hover: {
-      filter: 'brightness(0.9)',
-    },
-    _active: {
-      filter: 'none',
+  primary: ({ theme: { name } }) => {
+    return {
       bg: 'brand.primary',
-      boxShadow: 'none',
-    },
-    _disabled: {
-      bg: 'gray.100',
-      boxShadow: 'none',
-      color: 'gray.400',
-      pointerEvents: 'none',
-    },
+      color: name === 'ImmoScout 24' ? 'rgb(51, 51, 51)' : 'white',
+      boxShadow: 'button',
+      _hover: {
+        filter: 'brightness(0.9)',
+      },
+      _active: {
+        filter: 'none',
+        bg: 'brand.primary',
+        boxShadow: 'none',
+      },
+      _disabled: {
+        bg: 'gray.100',
+        boxShadow: 'none',
+        color: 'gray.400',
+        pointerEvents: 'none',
+      },
+    };
   },
   secondary: {
     bg: 'white',

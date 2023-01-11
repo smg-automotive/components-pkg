@@ -14,6 +14,7 @@ import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
   autoScout24Theme,
   autoScoutChakraTheme,
+  immoScout24Theme,
   motoScout24Theme,
   motoScoutChakraTheme,
   // eslint-disable-next-line import/no-unresolved
@@ -46,6 +47,7 @@ const themes = {
     motoScoutChakraTheme,
     autoScout24Theme,
     autoScoutChakraTheme,
+    immoScout24Theme,
   ],
 };
 
