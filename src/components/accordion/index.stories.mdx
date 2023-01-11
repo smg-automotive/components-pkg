@@ -20,7 +20,7 @@ export const Template = (args) => (
     {args?.items.map((item, i) => (
       <AccordionItem key={i}>
         <AccordionButton leftIcon={item?.leftIcon}>
-          <Box mr="sm">{item.title}</Box>
+          {item.title}
         </AccordionButton>
         <AccordionPanel>{item.content}</AccordionPanel>
       </AccordionItem>

@@ -52,6 +52,10 @@ const variantMinimal = defineStyle({
     textStyle: 'body',
     paddingX: 0,
     maxWidth: 'fit-content',
+
+    '& > svg': {
+      marginLeft: 'sm',
+    },
   },
   container: {
     borderTop: 0,
