@@ -1,6 +1,6 @@
 import { shared } from '../shared';
 
-const brandPrimary = '#F5F200';
+const brandPrimary = '#FF7500';
 const brand300 = '#C1B900';
 
 export const colors = {
@@ -17,6 +17,6 @@ export const colors = {
     800: '#4C4500',
     900: '#3A3400',
     primary: brandPrimary,
-    btnShadow: brand300,
+    btnShadow: 'none',
   },
 };

@@ -7,7 +7,7 @@ export const linkBaseStyle: SystemStyleObject = {
   flexDirection: 'row',
   _hover: {
     cursor: 'pointer',
-    textDecoration: 'underline',
+    color: 'blue.900',
   },
   _active: {
     textDecoration: 'none',
