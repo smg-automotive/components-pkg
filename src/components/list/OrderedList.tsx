@@ -1,26 +1,26 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { OrderedList as OrderedList } from '@chakra-ui/react';
+import { OrderedList as ChakraOrderedList } from '@chakra-ui/react';
 
 interface ListProps {
   variant?: 'sm' | 'md';
   start?: number;
 }
 
-const List: FC<PropsWithChildren<ListProps>> = ({
+const OrderedList: FC<PropsWithChildren<ListProps>> = ({
   children,
   variant,
   start = 1,
 }) => {
   return (
-    <OrderedList
+    <ChakraOrderedList
       spacing={variant}
       variant={variant}
       start={start}
       stylePosition="inside"
     >
       {children}
-    </OrderedList>
+    </ChakraOrderedList>
   );
 };
 
-export default List;
+export default OrderedList;
