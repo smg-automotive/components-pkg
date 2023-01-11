@@ -59,9 +59,6 @@ const variantMinimal = defineStyle({
       borderBottom: 0,
     },
   },
-  icon: {
-    fontSize: 'md',
-  },
   panel: {
     pb: 'md',
     paddingX: '3xl',
