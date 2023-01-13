@@ -20,6 +20,11 @@ const variants: Record<string, SystemStyleInterpolation> = {
   outline: Input.variants.outline.field ?? {},
 };
 
+const sizes: Record<string, SystemStyleObject> = {
+  sm: { fontSize: 'sm' },
+  md: { fontSize: 'base' },
+};
+
 const defaultProps = {
   variant: 'outline',
 };
@@ -27,5 +32,6 @@ const defaultProps = {
 export default {
   baseStyle,
   variants,
+  sizes,
   defaultProps,
 };

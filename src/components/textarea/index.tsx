@@ -18,6 +18,7 @@ interface Props {
   onChange?: ChangeEventHandler<HTMLTextAreaElement>;
   rows?: number;
   cols?: number;
+  size?: 'sm' | 'md';
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(({ ...props }, ref) => {
