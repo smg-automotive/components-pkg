@@ -45,3 +45,4 @@ export { VehiclePowerIcon } from './VehiclePowerIcon';
 export { VideoIcon } from './VideoIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { YoutubeIcon } from './YoutubeIcon';
+export { HeartIcon } from './HeartIcon';
