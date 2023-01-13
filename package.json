@@ -127,7 +127,7 @@
     "framer-motion": "8.2.4",
     "fs-extra": "11.1.0",
     "merge-json-file": "1.0.1",
-    "use-debounce": "9.0.2",
+    "use-debounce": "9.0.3",
     "yargs": "17.6.2"
   }
 }
