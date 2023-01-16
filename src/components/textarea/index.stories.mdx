@@ -6,6 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
 import Textarea from './index.tsx';
+import { shared } from '../../themes';
 
 <Meta title="Components/Forms/Textarea" component={Textarea} />
 
@@ -63,6 +64,12 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       rows: 10,
       cols: 50,
     }}
+    argTypes={{
+      textStyle: {
+        options: Object.keys(shared.textStyles),
+        control: { type: 'select' },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -83,6 +90,12 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       rows: 10,
       cols: 50,
     }}
+    argTypes={{
+      textStyle: {
+        options: Object.keys(shared.textStyles),
+        control: { type: 'select' },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -101,6 +114,12 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       rows: 10,
       cols: 50,
     }}
+    argTypes={{
+      textStyle: {
+        options: Object.keys(shared.textStyles),
+        control: { type: 'select' },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -118,6 +137,12 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       autoFocus: false,
       rows: 10,
       cols: 50,
+    }}
+    argTypes={{
+      textStyle: {
+        options: Object.keys(shared.textStyles),
+        control: { type: 'select' },
+      },
     }}
   >
     {Template.bind({})}
