@@ -13,7 +13,7 @@ const UnorderedList: FC<PropsWithChildren<ListProps>> = ({
     <ChakraUnorderedList
       spacing={variant}
       variant={variant}
-      stylePosition={'inside'}
+      stylePosition="inside"
     >
       {children}
     </ChakraUnorderedList>
