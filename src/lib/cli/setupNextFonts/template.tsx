@@ -9,17 +9,17 @@ import localFont from '@next/font/local';
 const makeItSans = localFont({
   src: [
     {
-      path: '%fontPath%/MakeItSans-Bold.woff',
+      path: '%fontPath%/MakeItSans-Regular.woff',
       weight: '400',
       style: 'regular',
+    },
+    {
+      path: '%fontPath%/MakeItSans-Bold.woff',
+      weight: '700',
+      style: 'bold',
     },
     {
       path: '%fontPath%/MakeItSans-Regular.woff2',
-      weight: '400',
-      style: 'regular',
-    },
-    {
-      path: '%fontPath%/MakeItSans-Regular.otf',
       weight: '400',
       style: 'regular',
     },
@@ -29,12 +29,12 @@ const makeItSans = localFont({
       style: 'bold',
     },
     {
-      path: '%fontPath%/MakeItSans-Bold.otf',
-      weight: '700',
-      style: 'bold',
+      path: '%fontPath%/MakeItSans-Regular.otf',
+      weight: '400',
+      style: 'regular',
     },
     {
-      path: '%fontPath%/MakeItSans-Bold.woff',
+      path: '%fontPath%/MakeItSans-Bold.otf',
       weight: '700',
       style: 'bold',
     },
