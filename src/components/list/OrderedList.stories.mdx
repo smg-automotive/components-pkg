@@ -1,16 +1,17 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import OrderedList from './OrderedList';
 import ListItem from './ListItem.tsx';
-import List from './index.tsx';
 
 <Meta
-  title="Components/Data display/List/Unstyled list"
-  component={List}
+  title="Components/Data display/Ordered list"
+  component={OrderedList}
   parameters={{
     layout: 'fullscreen',
   }}
   args={{
     variant: 'md',
+    start: 1,
   }}
   argTypes={{
     variant: {
@@ -21,11 +22,11 @@ import List from './index.tsx';
 />
 
 export const Template = (args) => (
-  <List {...args}>
+  <OrderedList {...args}>
     <ListItem>Item 1</ListItem>
     <ListItem>Item 2</ListItem>
     <ListItem>Item 3</ListItem>
-  </List>
+  </OrderedList>
 );
 
 # List
@@ -33,5 +34,5 @@ export const Template = (args) => (
 ## Overview
 
 <Canvas>
-  <Story name="List">{Template.bind({})}</Story>
+  <Story name="Ordered list">{Template.bind({})}</Story>
 </Canvas>
