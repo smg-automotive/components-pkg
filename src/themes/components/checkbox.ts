@@ -1,6 +1,8 @@
 import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/styled-system';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { fontWeights } from '../shared/fontWeights';
+
 const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   sm: {
     label: { fontSize: 'sm' },
@@ -43,6 +45,10 @@ const baseStyleIcon: SystemStyleObject = {
 
 const baseStyleLabel: SystemStyleObject = {
   textStyle: 'body',
+  fontWeight: {
+    bold: fontWeights.bold,
+    regular: fontWeights.regular,
+  },
   color: 'gray.900',
   _disabled: {
     color: 'gray.400',
