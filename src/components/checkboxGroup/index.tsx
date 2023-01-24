@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 
 import { Box } from '@chakra-ui/react';
 
@@ -41,17 +41,16 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
       />
 
       {checkboxes?.map((item, index) => (
-        <>
+        <Fragment key={item.name}>
           <Box
             as={Checkbox}
             {...item}
             size={size}
             pl="md"
             isDisabled={isDisabled}
-            key={item.name}
           />
           {addDividerAfterIndex?.includes(index) ? <Divider /> : null}
-        </>
+        </Fragment>
       ))}
     </Stack>
   );
