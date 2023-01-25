@@ -3,6 +3,7 @@ import React, { FC, PropsWithChildren } from 'react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import Show from '../show';
+import Hide from '../hide';
 import Box from '../box';
 import AccordionPanel from '../accordion/AccordionPanel';
 
@@ -17,9 +18,9 @@ const MobileOnlyAccordionPanel: FC<PropsWithChildren> = (props) => {
           {children}
         </Box>
       </Show>
-      <Show below="md">
+      <Hide above="md">
         <AccordionPanel {...rest}>{children}</AccordionPanel>
-      </Show>
+      </Hide>
     </>
   );
 };
