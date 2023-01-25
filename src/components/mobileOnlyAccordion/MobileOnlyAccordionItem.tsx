@@ -1,19 +1,28 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { AccordionItemProps, useMediaQuery } from '@chakra-ui/react';
+import { AccordionItemProps, useQuery } from '@chakra-ui/react';
 
 import AccordionItem from '../accordion/AccordionItem';
-import { breakpoints } from '../../themes';
 
 const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
   props
 ) => {
   const { children, ...rest } = props;
-  const [isLargerThanMd] = useMediaQuery(`(min-width: ${breakpoints.md.px}px)`);
-  const desktopStyle = isLargerThanMd ? { border: 'none' } : {};
+  const query = useQuery({ above: 'md' });
+  const media = `@media ${query}`;
 
   return (
-    <AccordionItem style={desktopStyle} {...rest}>
+    <AccordionItem
+      sx={{
+        [media]: {
+          border: 'none',
+          _last: {
+            border: 'none',
+          },
+        },
+      }}
+      {...rest}
+    >
       {children}
     </AccordionItem>
   );
