@@ -6,16 +6,6 @@ import MobileOnlyAccordionItem from '../MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from '../MobileOnlyAccordionButton';
 import MobileOnlyAccordion from '../index';
 
-const mockMatchMedia = (match: boolean) => {
-  Object.defineProperty(window, 'matchMedia', {
-    value: jest.fn(() => ({
-      matches: match,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-    })),
-  });
-};
-
 const renderWrapper = () =>
   render(
     <MobileOnlyAccordion>
@@ -37,24 +27,10 @@ describe('<MobileOnlyAccordion />', () => {
     jest.clearAllMocks();
   });
 
-  it('should render with accordion', async () => {
-    mockMatchMedia(false);
-
+  it('should render with accordion with a hidden button on desktop', async () => {
     renderWrapper();
 
-    const button = screen.getByRole('button');
-
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('aria-expanded');
-  });
-
-  it('should render without accordion', async () => {
-    mockMatchMedia(true);
-
-    renderWrapper();
-
-    const button = screen.queryByRole('button');
-
-    expect(button).not.toBeInTheDocument();
+    const button = screen.getByRole('button', { hidden: true });
+    expect(button).not.toBeVisible();
   });
 });
