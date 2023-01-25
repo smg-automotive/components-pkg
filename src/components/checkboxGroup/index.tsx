@@ -44,7 +44,11 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
         <Fragment key={item.name}>
           <Box
             as={Checkbox}
-            {...item}
+            name={item.name}
+            label={item.label}
+            value={item.value}
+            onChange={item.onChange}
+            isChecked={item.isChecked}
             size={size}
             pl="md"
             isDisabled={isDisabled}
