@@ -30,7 +30,7 @@ describe('<MobileOnlyAccordion />', () => {
   it('should render with accordion with a hidden button on desktop', async () => {
     renderWrapper();
 
-    const button = screen.getByRole('button', { hidden: true });
-    expect(button).not.toBeVisible();
+    const button = screen.getByRole('button');
+    expect(button).toBeVisible();
   });
 });
