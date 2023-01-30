@@ -11,7 +11,7 @@ import Tabs from './index';
 
 export const Template = (args) => (
   <Tabs {...args}>
-      <TabList {...args}>
+      <TabList>
         <Tab>One</Tab>
         <Tab {...args}>Two</Tab>
         <Tab>Three</Tab>
@@ -42,13 +42,6 @@ export const Template = (args) => (
     args={{
       isDisabled: false,
       defaultIndex: 0,
-      justifyContent: 'start',
-    }}
-    argTypes={{
-      justifyContent: {
-        options: ['space-between', 'start', 'space-around'],
-        control: 'select',
-      },
     }}
   >
     {Template.bind({})}
