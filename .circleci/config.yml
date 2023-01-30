@@ -19,13 +19,9 @@ slack_context: &SLACK_NOTIFICATION_CONTEXT
   context:
     - &SLACK_NOTIFICATION_CONTEXT_ENTRY FE Slack notifications
 
-phrase_CLI_context: &PHRASE_CLI_CONTEXT
-  context:
-    - &PHRASE_CLI_CONTEXT_ENTRY CLI Phrase
-
 phrase_context: &PHRASE_CONTEXT
   context: 
-    - *PHRASE_CLI_CONTEXT_ENTRY
+    - CLI Phrase
     - *SLACK_NOTIFICATION_CONTEXT_ENTRY
 
 npm_publishing_context: &NPM_PUBLISHING_CONTEXT
