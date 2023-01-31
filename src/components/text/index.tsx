@@ -3,7 +3,7 @@ import { Text as ChakraText, TextProps } from '@chakra-ui/react';
 
 type Props = Pick<
   TextProps,
-  'as' | 'children' | 'color' | 'textStyle' | 'textAlign'
+  'as' | 'children' | 'color' | 'textStyle' | 'textAlign' | 'fontWeight'
 >;
 
 const Text: FC<Props> = ({ children, ...chakraProps }) => (
