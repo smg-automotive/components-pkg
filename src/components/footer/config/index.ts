@@ -177,7 +177,7 @@ export const footerConfig: FooterConfigInterface = {
             de: '/de/auto-verkaufen',
             en: '/de/auto-verkaufen',
             fr: '/fr/vendre-voiture',
-            it: '',
+            it: '/it/vendere-auto',
           },
         },
         {
