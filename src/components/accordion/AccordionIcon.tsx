@@ -8,7 +8,7 @@ const AccordionIcon: FC = () => {
   const styles = useAccordionStyles();
 
   const iconStyles = {
-    transform: isOpen ? 'rotate(-180deg)' : undefined,
+    transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)',
     ...styles.icon,
   };
 
