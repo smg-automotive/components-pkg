@@ -19,6 +19,11 @@ slack_context: &SLACK_NOTIFICATION_CONTEXT
   context:
     - &SLACK_NOTIFICATION_CONTEXT_ENTRY FE Slack notifications
 
+phrase_context: &PHRASE_CONTEXT
+  context: 
+    - CLI Phrase
+    - *SLACK_NOTIFICATION_CONTEXT_ENTRY
+
 npm_publishing_context: &NPM_PUBLISHING_CONTEXT
   context:
     - *SLACK_NOTIFICATION_CONTEXT_ENTRY
@@ -87,6 +92,15 @@ jobs:
       - run:
           command: npm run typecheck
           no_output_timeout: 1m
+      - <<: *SLACK_NOTIFY
+
+  phrase_push:
+    <<: *DOCKER_NODE
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: npx au-phrase push
       - <<: *SLACK_NOTIFY
 
   build:
@@ -162,6 +176,13 @@ workflows:
           <<: *SLACK_NOTIFICATION_CONTEXT
           requires:
             - install
+      - phrase_push:
+          <<: *PHRASE_CONTEXT
+          requires:
+            - install
+          filters:
+            branches:
+              only: main
       - build:
           <<: *SLACK_NOTIFICATION_CONTEXT
           requires:
