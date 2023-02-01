@@ -1,9 +1,9 @@
 import React, { FC, MouseEvent, PropsWithChildren, useMemo } from 'react';
 import { BoxProps, Show, useMultiStyleConfig } from '@chakra-ui/react';
 
-import PaginationButton from './PaginationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Box from '../box';
+import PaginationButton from './PaginationButton';
 
 const Dots = '...';
 const siblingCount = 1;

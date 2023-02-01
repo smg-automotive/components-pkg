@@ -4,8 +4,8 @@ import {
   AccordionButtonProps as ChakraAccordionButtonProps,
 } from '@chakra-ui/react';
 
-import AccordionIcon from './AccordionIcon';
 import Box from '../box';
+import AccordionIcon from './AccordionIcon';
 
 interface AccordionButtonProps extends ChakraAccordionButtonProps {
   leftIcon?: React.ReactNode;
