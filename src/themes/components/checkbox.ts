@@ -1,4 +1,4 @@
-import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/styled-system';
+import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/react';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { fontWeights } from '../shared/fontWeights';

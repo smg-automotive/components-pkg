@@ -1,7 +1,4 @@
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/styled-system';
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
 const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);

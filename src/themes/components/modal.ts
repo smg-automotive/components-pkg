@@ -1,8 +1,5 @@
 import { mode } from '@chakra-ui/theme-tools';
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/styled-system';
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { opacity } from '../shared/opacity';

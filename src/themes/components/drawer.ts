@@ -1,9 +1,9 @@
-import type {
+import {
+  createMultiStyleConfigHelpers,
   PartsStyleFunction,
   SystemStyleFunction,
   SystemStyleObject,
-} from '@chakra-ui/styled-system';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system';
+} from '@chakra-ui/react';
 import { drawerAnatomy as parts } from '@chakra-ui/anatomy';
 
 const { definePartsStyle } = createMultiStyleConfigHelpers(parts.keys);

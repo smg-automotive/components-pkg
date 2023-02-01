@@ -1,7 +1,4 @@
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/styled-system';
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { menuAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { opacity } from '../shared/opacity';

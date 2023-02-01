@@ -1,4 +1,4 @@
-import { StyleConfig } from '@chakra-ui/styled-system';
+import { StyleConfig } from '@chakra-ui/react';
 
 import Input from './input';
 

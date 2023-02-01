@@ -4,7 +4,7 @@ import type {
   PartsStyleObject,
   SystemStyleFunction,
   SystemStyleObject,
-} from '@chakra-ui/styled-system';
+} from '@chakra-ui/react';
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { opacity } from '../shared/opacity';
