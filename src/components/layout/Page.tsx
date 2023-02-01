@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import BaseLayout from './BaseLayout';
 import { sizes } from '../../themes/shared/sizes';
+import BaseLayout from './BaseLayout';
 
 interface Props {
   header: ReactNode;

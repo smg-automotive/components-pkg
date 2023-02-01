@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 
-import FooterLink from './Link';
-import { FooterConfigInstance } from './config/factory';
 import Stack from '../stack';
 import {
   FacebookIcon,
@@ -10,6 +8,8 @@ import {
   YoutubeIcon,
 } from '../icons';
 import Center from '../center';
+import FooterLink from './Link';
+import { FooterConfigInstance } from './config/factory';
 
 interface SocialMediaProps {
   config: FooterConfigInstance;

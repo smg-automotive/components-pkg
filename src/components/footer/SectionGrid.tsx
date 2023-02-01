@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
+import Grid from '../grid';
 import FooterSections from './Sections';
 import { FooterConfigInstance } from './config/factory';
 import FooterApps from './Apps';
-import Grid from '../grid';
 
 interface FooterSectionGridProps {
   config: FooterConfigInstance;
