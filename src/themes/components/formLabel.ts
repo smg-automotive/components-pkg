@@ -1,4 +1,4 @@
-import type { SystemStyleObject } from '@chakra-ui/styled-system';
+import type { SystemStyleObject } from '@chakra-ui/react';
 
 const sizes: Record<string, SystemStyleObject> = {
   sm: { fontSize: 'sm' },

@@ -1,5 +1,5 @@
 import { cssVar, mode } from '@chakra-ui/theme-tools';
-import { PartsStyleFunction, PartsStyleObject } from '@chakra-ui/styled-system';
+import { PartsStyleFunction, PartsStyleObject } from '@chakra-ui/react';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';
 
 const $fg = cssVar('alert-fg');
