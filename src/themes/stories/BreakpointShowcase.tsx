@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
-import { convertRemEmToPx } from '../../';
+import { convertRemEmToPx } from 'src/';
 
 const BreakpointShowCase: FC = () => {
   const theme = useTheme();

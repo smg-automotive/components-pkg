@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
+import missingImage from 'src/assets/images/missingImage.png';
+
 import Box from '../box';
-import missingImage from '../../assets/images/missingImage.png';
 
 const MissingImage: FC = () => {
   return (

@@ -1,7 +1,7 @@
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import { Environment } from '../../../types/environment';
-import { Brand } from '../../../types/brand';
+import { Environment } from 'src/types/environment';
+import { Brand } from 'src/types/brand';
 
 export type LinkTargets = '_blank';
 interface VisibilitySettings {

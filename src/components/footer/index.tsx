@@ -1,13 +1,17 @@
 import React, { FC, useMemo } from 'react';
 import { Container } from '@chakra-ui/react';
 
+import { Language } from 'src/types/language';
+
+import { Environment } from 'src/types/environment';
+
+import { Brand } from 'src/types/brand';
+
 import TranslationProvider from '../translationProvider';
 import Divider from '../divider';
 import Center from '../center';
 import Box from '../box';
-import { Language } from '../../types/language';
-import { Environment } from '../../types/environment';
-import { Brand } from '../../types/brand';
+
 import SocialMedia from './SocialMedia';
 import FooterSectionGrid from './SectionGrid';
 import FooterLanguageNavigation from './LanguageNavigation';
