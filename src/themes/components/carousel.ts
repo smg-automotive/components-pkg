@@ -1,8 +1,9 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
+import { hexToRgb } from 'src/lib/hexToRgb';
+
 import { opacity } from '../shared/opacity';
 import { colors } from '../shared/colors';
-import { hexToRgb } from '../../lib/hexToRgb';
 
 const [r, g, b] = hexToRgb(colors.gray[900]);
 

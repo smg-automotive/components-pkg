@@ -13,10 +13,11 @@ import {
   Tr,
 } from '@chakra-ui/react';
 
+import { Brand } from 'src/types/brand';
+
 import Switch, { SwitchProps } from '../switchComponent';
 import { CloseIcon } from '../icons';
 import Button, { ButtonProps } from '../button';
-import { Brand } from '../../types/brand';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 

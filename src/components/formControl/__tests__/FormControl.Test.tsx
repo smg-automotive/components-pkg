@@ -2,7 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@storybook/testing-library';
 
-import Input from '../../input';
+import Input from 'src/components/input';
+
 import FormControl, { FormControlProps } from '..';
 
 const renderWrapper = ({

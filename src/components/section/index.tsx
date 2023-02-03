@@ -7,8 +7,9 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
+import { Sizes } from 'src/themes';
+
 import Stack from '../stack';
-import { Sizes } from '../../themes';
 
 interface Props {
   variant?: 'hero' | 'regular';

@@ -2,13 +2,15 @@ import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
+import googleplay from 'src/assets/images/googleplay.png';
+
+import appstore from 'src/assets/images/appstore.png';
+
 import Text from '../text';
 import Stack from '../stack';
 
 import GridItem from '../grid/GridItem';
 
-import googleplay from '../../assets/images/googleplay.png';
-import appstore from '../../assets/images/appstore.png';
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 

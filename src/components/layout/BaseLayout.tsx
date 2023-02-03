@@ -2,8 +2,9 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import { chakra, Container, Flex } from '@chakra-ui/react';
 
+import { sizes } from 'src/themes/shared/sizes';
+
 import Divider from '../divider';
-import { sizes } from '../../themes/shared/sizes';
 
 interface Props {
   header: ReactNode;
