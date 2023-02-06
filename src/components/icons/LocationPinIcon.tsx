@@ -6,6 +6,7 @@ export const LocationPinIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Location pin icon</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

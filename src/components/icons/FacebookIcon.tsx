@@ -6,6 +6,7 @@ export const FacebookIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Facebook icon</title>
       <rect width="24" height="24" fill="#4267B2" rx="2" />
       <path
         fill="#FFF"
