@@ -1,4 +1,4 @@
-import { convertRemEmToPx } from '../../utilities/convertRemEmToPx';
+import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
 
 export const emBreakpoints = {
   base: '0em',

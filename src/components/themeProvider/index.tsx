@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { autoScout24Theme, motoScout24Theme } from '../../themes';
+import { autoScout24Theme, motoScout24Theme } from 'src/themes';
 
 export type Props = {
   // Theme to use

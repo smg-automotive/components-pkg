@@ -10,7 +10,7 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
-import { convertRemEmToPx } from '../../utilities/convertRemEmToPx';
+import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
 
 const SpacingShowCase: FC = () => {
   const theme = useTheme();

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { useTheme } from '@chakra-ui/react';
 
-import { autoScout24Theme, motoScout24Theme } from '../../../themes';
-import { screen, testingLibraryRender } from '../../../../.jest';
+import { autoScout24Theme, motoScout24Theme } from 'src/themes';
+import { screen, testingLibraryRender } from '.jest';
+
 import ThemeProvider, { Props } from '..';
 
 const TestComponent: FC = () => {

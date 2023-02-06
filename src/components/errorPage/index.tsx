@@ -3,6 +3,12 @@ import React, { FC } from 'react';
 import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
+import { ErrorStatusCode } from 'src/types/errorStatusCode';
+
+import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustrationSomethingWentWrong.png';
+
+import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
+
 import TranslationProvider from '../translationProvider';
 import Text from '../text';
 import Stack from '../stack';
@@ -14,9 +20,6 @@ import Flex from '../flex';
 import Divider from '../divider';
 import Button from '../button';
 import AspectRatio from '../aspectRatio';
-import { ErrorStatusCode } from '../../types/errorStatusCode';
-import errorIllustrationSomethingWentWrong from '../../assets/images/errorIllustrationSomethingWentWrong.png';
-import errorIllustrationNotFound from '../../assets/images/errorIllustrationNotFound.png';
 
 const illustrations = {
   404: errorIllustrationNotFound,

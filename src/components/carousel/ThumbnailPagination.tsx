@@ -10,10 +10,10 @@ import { EmblaCarouselType } from 'embla-carousel-react';
 
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import ThumbnailNavigationButton from './ThumbnailNavigationButton';
-import Thumbnail from './Thumbnail';
 import Flex from '../flex';
 import Box from '../box';
+import ThumbnailNavigationButton from './ThumbnailNavigationButton';
+import Thumbnail from './Thumbnail';
 
 interface Props {
   currentSlideIndex: number;
