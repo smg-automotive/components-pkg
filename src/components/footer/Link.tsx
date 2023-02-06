@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
+import { LinkInstance } from './config/factory';
 import Text from '../text';
 import { default as ComponentsLink } from '../link';
-import { LinkInstance } from './config/factory';
 
 interface FooterLinkProps {
   linkInstance: LinkInstance;

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import Flex from '../flex';
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
+import Flex from '../flex';
 
 interface FooterCompaniesProps {
   config: FooterConfigInstance;

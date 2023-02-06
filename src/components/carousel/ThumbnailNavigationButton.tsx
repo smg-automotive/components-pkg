@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
+import { Direction } from './NavigationButton';
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 import Flex from '../flex';
-import { Direction } from './NavigationButton';
 
 interface Props {
   onClick: () => void;

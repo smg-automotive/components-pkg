@@ -9,6 +9,7 @@ import { addons } from '@storybook/addons';
 import { ChakraProvider } from '@chakra-ui/react';
 
 // eslint-disable-next-line import/no-unresolved
+import Theme from './theme';
 import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
   autoScout24Theme,
@@ -20,7 +21,6 @@ import {
 
 // eslint-disable-next-line import/no-unresolved
 import Fonts from '../src/fonts/Hosted';
-import Theme from './theme';
 
 const ThemeDecorator = (args) => {
   addons.setConfig({
