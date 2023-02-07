@@ -3,7 +3,13 @@ import { Text as ChakraText, TextProps } from '@chakra-ui/react';
 
 type Props = Pick<
   TextProps,
-  'as' | 'children' | 'color' | 'textStyle' | 'textAlign'
+  | 'as'
+  | 'children'
+  | 'color'
+  | 'textStyle'
+  | 'textAlign'
+  | 'isTruncated'
+  | 'noOfLines'
 >;
 
 const Text: FC<Props> = ({ children, ...chakraProps }) => (
