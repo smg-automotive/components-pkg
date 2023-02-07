@@ -8,8 +8,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+import alias from '@rollup/plugin-alias';
 
-const dts = require('rollup-plugin-dts').default;
+// const dts = require('rollup-plugin-dts').default;
 
 const packageJson = require('./package.json');
 const external = [
@@ -50,8 +51,11 @@ export default [
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
           outDir: dirname(packageJson.main),
-          declarationDir: join(dirname(packageJson.main), 'types'),
+          declaration: false,
         },
+      }),
+      alias({
+        entries: [{ find: 'src', replacement: './src' }],
       }),
     ],
     external,
@@ -78,8 +82,11 @@ export default [
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
           outDir: dirname(packageJson.module),
-          declarationDir: join(dirname(packageJson.module), 'types'),
+          declaration: true,
         },
+      }),
+      alias({
+        entries: [{ find: 'src', replacement: './src' }],
       }),
       copy({
         targets: [
@@ -94,11 +101,11 @@ export default [
     external,
     onwarn,
   },
-  {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
-  },
+  // {
+  //   input: 'dist/esm/types/index.d.ts',
+  //   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+  //   plugins: [dts()],
+  // },
   {
     input: 'src/fonts/Hosted.tsx',
     output: [
@@ -119,6 +126,7 @@ export default [
         tsconfig: './tsconfig.build_fonts.json',
         compilerOptions: {
           outDir: dirname(fontsHostedRequire),
+          declaration: true,
           declarationDir: join(dirname(fontsHostedRequire), 'types'),
         },
       }),
@@ -147,6 +155,7 @@ export default [
         tsconfig: './tsconfig.build_fonts.json',
         compilerOptions: {
           outDir: dirname(fontsHostedImport),
+          declaration: true,
           declarationDir: join(dirname(fontsHostedImport), 'types'),
         },
       }),
