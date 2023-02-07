@@ -6,7 +6,7 @@ export const TooltipIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title>Tool tip icon</title>
+      <title>Tooltip icon</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
