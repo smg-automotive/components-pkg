@@ -8,7 +8,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
-import alias from '@rollup/plugin-alias';
 
 import tsconfigJson from './tsconfig.json';
 
@@ -54,9 +53,6 @@ export default [
         compilerOptions: {
           outDir: dirname(packageJson.main),
         },
-      }),
-      alias({
-        entries: [{ find: 'src', replacement: './src' }],
       }),
     ],
     external,
