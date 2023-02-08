@@ -13,4 +13,4 @@ export const space = {
   '7xl': '8rem',
 };
 
-export type Space = typeof space;
+export type Space = Exclude<keyof typeof space, undefined>;

@@ -3,4 +3,4 @@ export const fontWeights = {
   bold: 700,
 };
 
-export type FontWeights = typeof fontWeights;
+export type FontWeights = Exclude<keyof typeof fontWeights, undefined>;
