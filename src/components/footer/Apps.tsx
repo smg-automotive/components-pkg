@@ -10,7 +10,6 @@ import Text from '../text';
 import Stack from '../stack';
 
 import GridItem from '../grid/GridItem';
-
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 

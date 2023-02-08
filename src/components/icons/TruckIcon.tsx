@@ -6,7 +6,7 @@ export const TruckIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title id="truckTitle">Truck</title>
+      <title id="truckTitle">Truck icon</title>
       <path
         fill="currentColor"
         fillRule="evenodd"

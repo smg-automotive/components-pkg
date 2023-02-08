@@ -6,6 +6,7 @@ export const VideoIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Video icon</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

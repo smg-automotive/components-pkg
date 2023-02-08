@@ -6,6 +6,7 @@ export const WhatsAppIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Whatsapp icon</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
