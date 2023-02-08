@@ -10,8 +10,8 @@ import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
 
-import tsconfigJson from './tsconfig.json';
-import packageJson from './package.json';
+import tsconfigJson from './tsconfig.json' assert { type: 'json' };
+import packageJson from './package.json' assert { type: 'json' };
 
 const external = [
   ...Object.keys(packageJson.dependencies || {}),
@@ -98,7 +98,7 @@ export default [
     input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [
-      dts.default({
+      dts({
         compilerOptions: {
           baseUrl: tsconfigJson.compilerOptions.baseUrl,
         },

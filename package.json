@@ -36,7 +36,7 @@
     "dev": "start-storybook -p 6006",
     "start": "http-server ./storybook-static -p 8008",
     "version": "npm run build",
-    "build": "rimraf dist && rollup -c --bundleConfigAsCjs",
+    "build": "rimraf dist && rollup -c",
     "build:storybook": "build-storybook",
     "lint:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
     "lint": "npm run lint:i18n && eslint --ext ts,js,tsx,jsx,json,mdx .",
