@@ -1,5 +1,6 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import executable from 'rollup-plugin-executable';
+import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
 import { dirname, join } from 'path';
@@ -10,10 +11,8 @@ import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
 
 import tsconfigJson from './tsconfig.json';
+import packageJson from './package.json';
 
-const dts = require('rollup-plugin-dts').default;
-
-const packageJson = require('./package.json');
 const external = [
   ...Object.keys(packageJson.dependencies || {}),
   ...Object.keys(packageJson.peerDependencies || {}),
@@ -99,7 +98,7 @@ export default [
     input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [
-      dts({
+      dts.default({
         compilerOptions: {
           baseUrl: tsconfigJson.compilerOptions.baseUrl,
         },
