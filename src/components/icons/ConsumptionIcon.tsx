@@ -6,6 +6,7 @@ export const ConsumptionIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Consumption icon</title>
       <path fill="currentColor" d="M10 15v-3l-2 1v3l2-1Z" />
       <path
         fill="currentColor"

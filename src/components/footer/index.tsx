@@ -11,7 +11,6 @@ import TranslationProvider from '../translationProvider';
 import Divider from '../divider';
 import Center from '../center';
 import Box from '../box';
-
 import SocialMedia from './SocialMedia';
 import FooterSectionGrid from './SectionGrid';
 import FooterLanguageNavigation from './LanguageNavigation';
