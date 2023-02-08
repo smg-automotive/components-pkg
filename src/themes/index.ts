@@ -12,4 +12,4 @@ export const motoScoutChakraTheme = extendTheme(
 export const autoScoutChakraTheme = extendTheme(
   Object.assign({}, autoScout24Theme, { name: 'AutoScout 24 with Chakra' })
 );
-export { Sizes, shared, breakpoints } from './shared';
+export { Sizes, Space, FontWeights, shared, breakpoints } from './shared';

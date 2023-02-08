@@ -1,16 +1,14 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Tab as ChakraTab, TabProps } from '@chakra-ui/react';
 
+import { Space } from 'src/themes';
+
 type Props = {
-  marginX?: 'lg' | 'md';
+  marginX?: Space;
 } & Pick<TabProps, 'isDisabled'>;
 
 const Tab: FC<PropsWithChildren<Props>> = (props) => {
-  return (
-    <ChakraTab marginX={props.marginX} {...props}>
-      {props.children}
-    </ChakraTab>
-  );
+  return <ChakraTab {...props}>{props.children}</ChakraTab>;
 };
 
 export default Tab;
