@@ -6,6 +6,7 @@ export const AvatarWithNotificationIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Avatar with notification icon</title>
       <path
         fill="currentColor"
         fillRule="evenodd"

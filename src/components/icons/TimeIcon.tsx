@@ -6,6 +6,7 @@ export const TimeIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
+      <title>Time icon</title>
       <path d="M13 6V11.5L16.6 14.2L15.4 15.8L11 12.5V7L13 6Z" fill="#333333" />
       <path
         fillRule="evenodd"
