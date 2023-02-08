@@ -17,7 +17,7 @@ module.exports = {
           './**/stories/**/*',
           './**/*.stories.@(tsx|mdx)',
           './**/*.Test.@(ts|tsx)',
-          'rollup.config.js',
+          'rollup.config.mjs',
           'postcss.config.js',
           './.jest/**/*',
           './.storybook/**/*',
