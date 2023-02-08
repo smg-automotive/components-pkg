@@ -38,6 +38,28 @@ const baseStyle = {
   tabpanel: baseStyleTabpanel,
 };
 
+const variants = {
+  spaceBetween: {
+    tablist: {
+      borderBottom: '1px',
+      borderColor: 'gray.200',
+      justifyContent: 'space-between',
+    },
+    tab: baseStyleTab,
+    tabpanel: baseStyleTabpanel,
+  },
+  spaceAround: {
+    tablist: {
+      borderBottom: '1px',
+      borderColor: 'gray.200',
+      justifyContent: 'space-around',
+    },
+    tab: baseStyleTab,
+    tabpanel: baseStyleTabpanel,
+  },
+};
+
 export default {
   baseStyle,
+  variants,
 };

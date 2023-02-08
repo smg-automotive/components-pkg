@@ -43,6 +43,12 @@ export const Template = (args) => (
       isDisabled: false,
       defaultIndex: 0,
     }}
+    argTypes={{
+      variant: {
+        options: ['spaceBetween', 'spaceAround'],
+        control: 'select',
+      },
+    }}
   >
     {Template.bind({})}
   </Story>

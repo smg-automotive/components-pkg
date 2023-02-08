@@ -7,6 +7,8 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 
+import { FontWeights } from 'src/themes';
+
 import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
@@ -17,12 +19,18 @@ interface MenuItem {
 export interface MenuProps {
   title: string;
   items: MenuItem[];
+  fontWeightTitle?: FontWeights;
 }
 
-const Menu: FC<MenuProps> = ({ title, items }) => {
+const Menu: FC<MenuProps> = ({ title, items, fontWeightTitle = 'regular' }) => {
   return (
     <ChakraMenu>
-      <MenuButton as={Button} padding={0} rightIcon={<ChevronDownSmallIcon />}>
+      <MenuButton
+        as={Button}
+        padding={0}
+        rightIcon={<ChevronDownSmallIcon />}
+        fontWeight={fontWeightTitle}
+      >
         {title}
       </MenuButton>
       <MenuList minWidth="4xl">
