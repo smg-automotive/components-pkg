@@ -10,7 +10,9 @@ import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
 import alias from '@rollup/plugin-alias';
 
-// const dts = require('rollup-plugin-dts').default;
+import tsconfigJson from './tsconfig.json';
+
+const dts = require('rollup-plugin-dts').default;
 
 const packageJson = require('./package.json');
 const external = [
@@ -43,7 +45,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      resolve({ moduleDirectories: ['.', 'node_modules'] }),
       commonjs(),
       image(),
       json(),
@@ -51,7 +53,6 @@ export default [
         tsconfig: './tsconfig.build.json',
         compilerOptions: {
           outDir: dirname(packageJson.main),
-          declaration: false,
         },
       }),
       alias({
@@ -74,7 +75,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      resolve({ moduleDirectories: ['.', 'node_modules'] }),
       commonjs(),
       image(),
       json(),
@@ -84,9 +85,6 @@ export default [
           outDir: dirname(packageJson.module),
           declaration: true,
         },
-      }),
-      alias({
-        entries: [{ find: 'src', replacement: './src' }],
       }),
       copy({
         targets: [
@@ -101,11 +99,17 @@ export default [
     external,
     onwarn,
   },
-  // {
-  //   input: 'dist/esm/index.d.ts',
-  //   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-  //   plugins: [dts()],
-  // },
+  {
+    input: 'src/index.ts',
+    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    plugins: [
+      dts({
+        compilerOptions: {
+          baseUrl: tsconfigJson.compilerOptions.baseUrl,
+        },
+      }),
+    ],
+  },
   {
     input: 'src/fonts/Hosted.tsx',
     output: [
@@ -118,7 +122,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      resolve({ moduleDirectories: ['.', 'node_modules'] }),
       commonjs(),
       image(),
       json(),
@@ -147,7 +151,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      resolve({ moduleDirectories: ['.', 'node_modules'] }),
       commonjs(),
       image(),
       json(),
@@ -173,7 +177,10 @@ export default [
       },
     ],
     plugins: [
-      resolve({ preferBuiltins: true }),
+      resolve({
+        moduleDirectories: ['.', 'node_modules'],
+        preferBuiltins: true,
+      }),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.build_cli.json',

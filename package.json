@@ -14,7 +14,7 @@
       "import": "./dist/fonts/esm/Hosted.js"
     }
   },
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
       "fonts/hosted": [
