@@ -5,6 +5,7 @@
     "jsx": "react",
     "module": "esnext",
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
