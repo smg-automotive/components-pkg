@@ -28,7 +28,7 @@ const ArticleTeaser: FC<Props> = ({
         <Stack
           direction={{
             '2xs': 'column',
-            md: 'row',
+            sm: 'row',
           }}
           spacing="lg"
           align="center"
