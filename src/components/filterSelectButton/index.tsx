@@ -32,11 +32,25 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
 
   const appliedOrOpenColorScheme = {
     backgroundColor: 'gray.900',
+    ...(props.isApplied
+      ? {
+          _hover: {
+            backgroundColor: 'black',
+          },
+        }
+      : {
+          _groupHover: {
+            backgroundColor: 'black',
+          },
+        }),
     color: 'white',
   };
 
   const defaultColorSchema = {
     backgroundColor: 'gray.100',
+    _groupHover: {
+      backgroundColor: 'gray.200',
+    },
     color: 'gray.900',
   };
 
@@ -52,13 +66,14 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
         onOpen={onOpen}
         onClose={onClose}
       >
-        <ButtonGroup isAttached={true} maxWidth="250px" w="full">
+        <ButtonGroup isAttached={true} w="full" maxW="full">
           <PopoverTrigger>
             <ChakraButton
-              w="full"
               h="md"
               display="flex"
               justifyContent="flex-start"
+              flex="1"
+              minW={0}
               borderRadius="sm"
               paddingX="md"
               borderRightColor={props.isApplied ? 'white' : undefined}
@@ -82,10 +97,8 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               aria-label="reset filter"
               onClick={props.onResetFilter}
               minW="md"
+              w="md"
               h="md"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
               borderRadius="sm"
               {...appliedOrOpenColorScheme}
             />
@@ -102,10 +115,8 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               aria-label="open filter"
               onClick={isOpen ? undefined : onOpen}
               minW="md"
+              w="md"
               h="md"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
               borderRadius="sm"
               {...(isOpen ? appliedOrOpenColorScheme : defaultColorSchema)}
             />
