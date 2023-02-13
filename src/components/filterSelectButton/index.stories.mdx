@@ -1,0 +1,51 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
+
+import FilterSelectButton from './index.tsx'; import {Box} from "@chakra-ui/react";
+
+<Meta title="Components/Filter/Select button" component={FilterSelectButton}/>
+
+export const Template = (args) => <Box w="500px"><FilterSelectButton {...args} /></Box>;
+
+# Filter select button
+
+## Default
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            label: "Treibstoff"
+        }}
+        argTypes={{
+            filter: {
+                table: {
+                    disable: true,
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Applied
+
+<Canvas>
+    <Story
+        name="Applied"
+        args={{
+            label: "Treibstoff",
+            displayValue: "Benzin, Diesel",
+            isApplied: true
+        }}
+        argTypes={{
+            filter: {
+                table: {
+                    disable: true,
+                },
+            },
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
