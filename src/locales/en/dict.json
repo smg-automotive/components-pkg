@@ -1,4 +1,8 @@
 {
+  "filterSelectButton": {
+    "reset": "Reset",
+    "close": "Close"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Go to home",

@@ -1,4 +1,5 @@
 import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {action} from '@storybook/addon-actions';
 
 import FilterSelectButton from './index.tsx';
 import {Box, Flex} from "@chakra-ui/react";
@@ -7,13 +8,37 @@ import Text from '../text';
 import Stack from "../stack"
 
 
-<Meta title="Components/Filter/Select button" component={FilterSelectButton}/>
+<Meta
+    title="Components/Filter/Select button"
+    component={FilterSelectButton}
+    args={{language: "de"}}
+    argTypes={{
+        language: {
+            options: ['de', 'fr', 'it', 'en'],
+            control: 'select',
+        },
+        filter: {
+            table: {
+                disable: true,
+            },
+        },
+    }}
+/>
 
-export const Template = (args) => <Box w="500px"><FilterSelectButton {...args} /></Box>;
+export const Template = (args) => (
+    <Box w="500px">
+        <FilterSelectButton
+            {...args}
+            onPopoverOpen={action("onPopoverOpen")}
+            onPopoverClose={action("onPopoverClose")}
+        />
+    </Box>);
 
 export const CheckBoxFilter = ({label, facet}) => (
-    <Flex justifyContent="space-between" paddingY="xs" paddingX="sm" backgroundColor="gray.50" borderRadius="xs"
-          color="gray.900"><Checkbox name={label} label={label}/><Text>{facet}</Text></Flex>
+    <Flex justifyContent="space-between" paddingY="xs" paddingX="sm" color="gray.900">
+        <Checkbox name={label} label={label}/>
+        <Text>{facet}</Text>
+    </Flex>
 )
 
 export const DummyFilter = () => (
@@ -40,13 +65,6 @@ export const DummyFilter = () => (
             },
             filter: <DummyFilter/>
         }}
-        argTypes={{
-            filter: {
-                table: {
-                    disable: true,
-                },
-            },
-        }}
     >
         {Template.bind({})}
     </Story>
@@ -66,13 +84,6 @@ export const DummyFilter = () => (
                 onClick: () => null
             },
             filter: <DummyFilter/>
-        }}
-        argTypes={{
-            filter: {
-                table: {
-                    disable: true,
-                },
-            },
         }}
     >
         {Template.bind({})}

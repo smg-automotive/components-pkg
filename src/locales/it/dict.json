@@ -1,4 +1,8 @@
 {
+  "filterSelectButton": {
+    "reset": "Ripristina",
+    "close": "Vicino"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Alla pagina iniziale",
