@@ -1,18 +1,18 @@
-import React from 'react';
-import { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
+import { Language } from '@smg-automotive/i18n-pkg';
 import {
-  Button as ChakraButton,
   ButtonGroup,
   chakra,
+  Button as ChakraButton,
   IconButton,
   Popover,
   PopoverTrigger,
   useDisclosure,
 } from '@chakra-ui/react';
-import { ChevronDownSmallIcon, CloseIcon } from '../icons';
 
 import TranslationProvider from '../translationProvider';
-import { Language } from '@smg-automotive/i18n-pkg';
+import { ChevronDownSmallIcon, CloseIcon } from '../icons';
+
 import FilterPopover, { PopoverProps } from './Popover';
 
 type Props = {
@@ -23,8 +23,8 @@ type Props = {
   onPopoverOpen?: () => void; // when dialog gets open - for tracking?
 } & Omit<PopoverProps, 'onClose'>;
 
-const FilterSelectButton: FC<Props> = (props) => {
-  const { onOpen, onClose, isOpen, onToggle } = useDisclosure({
+const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
+  const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: props.initialPopoverState === 'open',
     onOpen: props.onPopoverOpen,
     onClose: props.onPopoverClose,
@@ -65,13 +65,12 @@ const FilterSelectButton: FC<Props> = (props) => {
               borderRightWidth={props.isApplied ? '1px' : undefined}
               {...(props.isApplied ? appliedColorScheme : defaultColorSchema)}
             >
-              <chakra.span>{props.label}</chakra.span>
               <chakra.span
                 textOverflow="ellipsis"
                 overflow="hidden"
                 whiteSpace="nowrap"
               >
-                {props.displayValue ? `: ${props.displayValue}` : null}
+                {props.displayValue || props.label}
               </chakra.span>
             </ChakraButton>
           </PopoverTrigger>
@@ -91,7 +90,7 @@ const FilterSelectButton: FC<Props> = (props) => {
             <IconButton
               icon={<ChevronDownSmallIcon w="16px" h="16px" />}
               aria-label="open filter"
-              onClick={onToggle}
+              onClick={isOpen ? undefined : onOpen}
               minW="36px"
               display="flex"
               alignItems="center"
@@ -101,7 +100,9 @@ const FilterSelectButton: FC<Props> = (props) => {
             />
           )}
         </ButtonGroup>
-        <FilterPopover {...props} onClose={onClose} />
+        <FilterPopover {...props} onClose={onClose}>
+          {props.children}
+        </FilterPopover>
       </Popover>
     </TranslationProvider>
   );

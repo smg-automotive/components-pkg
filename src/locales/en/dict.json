@@ -1,8 +1,4 @@
 {
-  "filterSelectButton": {
-    "reset": "Reset",
-    "close": "Close"
-  },
   "errorPage": {
     "404": {
       "buttonLabel": "Go to home",
@@ -14,6 +10,10 @@
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, something went wrong"
     }
+  },
+  "filterSelectButton": {
+    "close": "Close",
+    "reset": "Reset"
   },
   "footer": {
     "apps": {

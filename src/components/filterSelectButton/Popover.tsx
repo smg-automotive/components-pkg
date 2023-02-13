@@ -1,3 +1,5 @@
+import React, { FC, PropsWithChildren } from 'react';
+import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
   chakra,
   PopoverBody,
@@ -5,14 +7,12 @@ import {
   PopoverContent,
   PopoverFooter,
   PopoverHeader,
-  useDisclosure,
 } from '@chakra-ui/react';
-import Flex from '../flex';
+
 import Text from '../text';
 import Link from '../link';
+import Flex from '../flex';
 import Button from '../button';
-import React, { FC, ReactNode } from 'react';
-import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 
 export type PopoverProps = {
   applyButton: {
@@ -23,21 +23,20 @@ export type PopoverProps = {
   numberOfAppliedFilters?: number;
 
   // events
-  filter: ReactNode; // used to pass the UI for the filter
   isApplied: boolean; //to know if a filter is applied or not (keeping the component independent) - for styling and primary/secondary button switch
   label: string; // used for placeholder in default state and for the value if a filter is applied
   onClose: () => void;
   onResetFilter: () => void;
 };
 
-const Popover: FC<PopoverProps> = ({
+const Popover: FC<PropsWithChildren<PopoverProps>> = ({
   applyButton,
-  filter,
   numberOfAppliedFilters,
   isApplied,
   label,
   onClose,
   onResetFilter,
+  children,
 }) => {
   const { t } = useI18n();
 
@@ -80,7 +79,7 @@ const Popover: FC<PopoverProps> = ({
           {t('filterSelectButton.reset')}
         </Link>
       </PopoverHeader>
-      <PopoverBody>{filter}</PopoverBody>
+      <PopoverBody>{children}</PopoverBody>
       <PopoverFooter paddingTop="2xl">
         <Button
           variant={isApplied ? 'primary' : 'secondary'}

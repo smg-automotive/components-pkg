@@ -1,8 +1,4 @@
 {
-  "filterSelectButton": {
-    "reset": "Réinitialiser",
-    "close": "Fermer"
-  },
   "errorPage": {
     "404": {
       "buttonLabel": "Vers la page d’accueil",
@@ -14,6 +10,10 @@
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, quelque chose a mal tourné"
     }
+  },
+  "filterSelectButton": {
+    "close": "Fermer",
+    "reset": "Réinitialiser"
   },
   "footer": {
     "apps": {
