@@ -2,13 +2,24 @@ import React from 'react';
 import { FC, ReactNode } from 'react';
 import {
   Box,
-  Button,
+  Button as ChakraButton,
   ButtonGroup,
   chakra,
   Divider,
   IconButton,
+  Popover,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { ArrowDownIcon, ChevronDownSmallIcon, CloseIcon } from '../icons';
+import Flex from '../flex';
+import Text from '../text';
+import Button from '../button';
 
 type Props = {
   applyButton: {
@@ -29,6 +40,7 @@ type Props = {
 };
 
 const FilterSelectButton: FC<Props> = (props) => {
+  const { onOpen, onClose, isOpen } = useDisclosure();
   /*
    * design:
    * mobile: https://www.figma.com/file/WvYYKrx8rxw80fwkzhAQwh/Search-Results-%26-Advanced-Search?node-id=871%3A179771&t=ZhQtXXEVuEgwU5Sn-0
@@ -46,51 +58,98 @@ const FilterSelectButton: FC<Props> = (props) => {
   };
 
   return (
-    <>
-      <ButtonGroup isAttached={true} maxWidth="250px" w="full">
-        <Button
-          w="full"
-          display="flex"
-          justifyContent="flex-start"
-          borderRadius="sm"
-          paddingY="xs"
-          paddingX="md"
-          borderRightColor={props.isApplied ? 'white' : undefined}
-          borderRightWidth={props.isApplied ? '1px' : undefined}
-          {...(props.isApplied ? appliedColorScheme : defaultColorSchema)}
-        >
-          <chakra.span>{props.label}</chakra.span>
-          <chakra.span>
-            {props.displayValue ? `: ${props.displayValue}` : null}
-          </chakra.span>
-        </Button>
-        {props.isApplied ? (
-          <IconButton
-            icon={<CloseIcon w="16px" h="16px" />}
-            aria-label="reset filter"
+    <Popover
+      placement="bottom-start"
+      isLazy={true}
+      isOpen={isOpen}
+      onOpen={onOpen}
+      onClose={onClose}
+      //isOpen={props.initialState === 'open'}
+    >
+      <PopoverTrigger>
+        <ButtonGroup isAttached={true} maxWidth="250px" w="full">
+          <ChakraButton
+            w="full"
+            display="flex"
+            justifyContent="flex-start"
+            borderRadius="sm"
+            paddingY="xs"
+            paddingX="md"
+            borderRightColor={props.isApplied ? 'white' : undefined}
+            borderRightWidth={props.isApplied ? '1px' : undefined}
+            {...(props.isApplied ? appliedColorScheme : defaultColorSchema)}
+          >
+            <chakra.span>{props.label}</chakra.span>
+            <chakra.span>
+              {props.displayValue ? `: ${props.displayValue}` : null}
+            </chakra.span>
+          </ChakraButton>
+          {props.isApplied ? (
+            <IconButton
+              icon={<CloseIcon w="16px" h="16px" />}
+              aria-label="reset filter"
+              onClick={props.onResetFilter}
+              w="36px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              borderRadius="sm"
+              {...appliedColorScheme}
+            />
+          ) : (
+            <IconButton
+              icon={<ChevronDownSmallIcon w="16px" h="16px" />}
+              aria-label="open filter"
+              w="36px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              borderRadius="sm"
+              {...defaultColorSchema}
+            />
+          )}
+        </ButtonGroup>
+      </PopoverTrigger>
+      <PopoverContent
+        backgroundColor="white"
+        borderRadius="sm"
+        shadow="xs"
+        padding="2xl"
+        width={{ base: 'full', sm: '320px' }}
+      >
+        <PopoverHeader paddingBottom="2xl">
+          <Flex justifyContent="space-between">
+            <Text textStyle="heading3">{props.label}</Text>
+            <PopoverCloseButton />
+          </Flex>
+          <ChakraButton
             onClick={props.onResetFilter}
-            w="36px"
             display="flex"
-            alignItems="center"
-            justifyContent="center"
-            borderRadius="sm"
-            {...appliedColorScheme}
-          />
-        ) : (
-          <IconButton
-            icon={<ChevronDownSmallIcon w="16px" h="16px" />}
-            aria-label="open filter"
-            w="36px"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            borderRadius="sm"
-            {...defaultColorSchema}
-          />
-        )}
-      </ButtonGroup>
+            justifyContent="flex-start"
+          >
+            Zurücksetzen
+          </ChakraButton>
+        </PopoverHeader>
+        <PopoverBody>{props.filter}</PopoverBody>
+        <PopoverFooter paddingTop="2xl">
+          <Button
+            variant={props.isApplied ? 'primary' : 'secondary'}
+            onClick={
+              props.isApplied
+                ? () => {
+                    props.applyButton.onClick();
+                    onClose();
+                  }
+                : onClose
+            }
+            width="full"
+          >
+            {props.isApplied ? props.applyButton.label : 'Schliessen'}
+          </Button>
+        </PopoverFooter>
+      </PopoverContent>
       {/* for the dialog - use chakra popover https://chakra-ui.com/docs/components/popover/props */}
-    </>
+    </Popover>
   );
 };
 
