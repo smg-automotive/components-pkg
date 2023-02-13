@@ -56,10 +56,10 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
           <PopoverTrigger>
             <ChakraButton
               w="full"
+              h="md"
               display="flex"
               justifyContent="flex-start"
               borderRadius="sm"
-              paddingY="xs"
               paddingX="md"
               borderRightColor={props.isApplied ? 'white' : undefined}
               borderRightWidth={props.isApplied ? '1px' : undefined}
@@ -79,7 +79,8 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               icon={<CloseIcon w="16px" h="16px" />}
               aria-label="reset filter"
               onClick={props.onResetFilter}
-              minW="36px"
+              minW="md"
+              h="md"
               display="flex"
               alignItems="center"
               justifyContent="center"
@@ -91,7 +92,8 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               icon={<ChevronDownSmallIcon w="16px" h="16px" />}
               aria-label="open filter"
               onClick={isOpen ? undefined : onOpen}
-              minW="36px"
+              minW="md"
+              h="md"
               display="flex"
               alignItems="center"
               justifyContent="center"
