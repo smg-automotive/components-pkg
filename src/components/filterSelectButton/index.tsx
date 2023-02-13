@@ -24,7 +24,7 @@ type Props = {
 } & Omit<PopoverProps, 'onClose'>;
 
 const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
-  const { onOpen, onClose, isOpen } = useDisclosure({
+  const { onOpen, onClose, isOpen, onToggle } = useDisclosure({
     defaultIsOpen: props.initialPopoverState === 'open',
     onOpen: props.onPopoverOpen,
     onClose: props.onPopoverClose,
@@ -60,6 +60,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
       scopes={['filterSelectButton']}
     >
       <Popover
+        returnFocusOnClose={true}
         placement="bottom-start"
         isLazy={true}
         isOpen={isOpen}
@@ -113,7 +114,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
                 />
               }
               aria-label="open filter"
-              onClick={isOpen ? undefined : onOpen}
+              onClick={onToggle}
               minW="md"
               w="md"
               h="md"
