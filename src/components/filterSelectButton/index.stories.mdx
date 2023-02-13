@@ -7,11 +7,26 @@ import Checkbox from '../checkbox';
 import Text from '../text';
 import Stack from "../stack"
 
+export const DummyFilter = () => (
+    <Stack spacing="sm">
+        <CheckBoxFilter label="Benzin" facet="23"/>
+        <CheckBoxFilter label="Diesel" facet="4"/>
+        <CheckBoxFilter label="Elektro" facet="8"/>
+        <CheckBoxFilter label="Hybrid" facet="55"/>
+    </Stack>
+)
 
 <Meta
     title="Components/Filter/Select button"
     component={FilterSelectButton}
-    args={{language: "de"}}
+    args={{
+        language: "de",
+        applyButton: {
+            label: "12324 Fahrzeuge",
+            onClick: action("search")
+        },
+        filter: <DummyFilter/>
+    }}
     argTypes={{
         language: {
             options: ['de', 'fr', 'it', 'en'],
@@ -41,14 +56,7 @@ export const CheckBoxFilter = ({label, facet}) => (
     </Flex>
 )
 
-export const DummyFilter = () => (
-    <Stack spacing="sm">
-        <CheckBoxFilter label="Benzin" facet="23"/>
-        <CheckBoxFilter label="Diesel" facet="4"/>
-        <CheckBoxFilter label="Elektro" facet="8"/>
-        <CheckBoxFilter label="Hybrid" facet="55"/>
-    </Stack>
-)
+
 
 # Filter select button
 
@@ -59,11 +67,6 @@ export const DummyFilter = () => (
         name="Default"
         args={{
             label: "Treibstoff",
-            applyButton: {
-                label: "12324 Fahrzeuge",
-                onClick: () => null
-            },
-            filter: <DummyFilter/>
         }}
         argTypes={{
             applyButton: {
@@ -84,14 +87,9 @@ export const DummyFilter = () => (
         name="Applied"
         args={{
             label: "Treibstoff",
-            displayValue: "Benzin, Diesel",
+            displayValue: "Benzin, Diesel, Elektro",
             numberOfAppliedFilters: 5,
-            isApplied: true,
-            applyButton: {
-                label: "12324 Fahrzeuge",
-                onClick: action("search")
-            },
-            filter: <DummyFilter/>
+            isApplied: true
         }}
     >
         {Template.bind({})}

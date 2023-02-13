@@ -18,22 +18,17 @@ import FilterPopover, { PopoverProps } from './Popover';
 type Props = {
   language: Language;
   displayValue: string; // used for the value if a filter is applied in the dark gray box
-  initialState?: 'open' | 'closed';
+  initialPopoverState?: 'open' | 'closed';
   onPopoverClose?: () => void; // when dialog is closed - for tracking?
   onPopoverOpen?: () => void; // when dialog gets open - for tracking?
 } & Omit<PopoverProps, 'onClose'>;
 
 const FilterSelectButton: FC<Props> = (props) => {
   const { onOpen, onClose, isOpen, onToggle } = useDisclosure({
-    defaultIsOpen: true,
+    defaultIsOpen: props.initialPopoverState === 'open',
     onOpen: props.onPopoverOpen,
     onClose: props.onPopoverClose,
   });
-  /*
-   * design:
-   * mobile: https://www.figma.com/file/WvYYKrx8rxw80fwkzhAQwh/Search-Results-%26-Advanced-Search?node-id=871%3A179771&t=ZhQtXXEVuEgwU5Sn-0
-   * desktop: https://www.figma.com/file/WvYYKrx8rxw80fwkzhAQwh/Search-Results-%26-Advanced-Search?node-id=101%3A62741&t=vmcTmi1JMle1Lj6Q-0
-   * */
 
   const appliedColorScheme = {
     backgroundColor: 'gray.900',
@@ -71,7 +66,11 @@ const FilterSelectButton: FC<Props> = (props) => {
               {...(props.isApplied ? appliedColorScheme : defaultColorSchema)}
             >
               <chakra.span>{props.label}</chakra.span>
-              <chakra.span>
+              <chakra.span
+                textOverflow="ellipsis"
+                overflow="hidden"
+                whiteSpace="nowrap"
+              >
                 {props.displayValue ? `: ${props.displayValue}` : null}
               </chakra.span>
             </ChakraButton>
@@ -81,7 +80,7 @@ const FilterSelectButton: FC<Props> = (props) => {
               icon={<CloseIcon w="16px" h="16px" />}
               aria-label="reset filter"
               onClick={props.onResetFilter}
-              w="36px"
+              minW="36px"
               display="flex"
               alignItems="center"
               justifyContent="center"
@@ -93,7 +92,7 @@ const FilterSelectButton: FC<Props> = (props) => {
               icon={<ChevronDownSmallIcon w="16px" h="16px" />}
               aria-label="open filter"
               onClick={onToggle}
-              w="36px"
+              minW="36px"
               display="flex"
               alignItems="center"
               justifyContent="center"
