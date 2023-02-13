@@ -1,7 +1,6 @@
 import React from 'react';
 import { FC } from 'react';
 import {
-  Box,
   Button as ChakraButton,
   ButtonGroup,
   chakra,
@@ -105,7 +104,6 @@ const FilterSelectButton: FC<Props> = (props) => {
           )}
         </ButtonGroup>
         <FilterPopover {...props} onClose={onClose} />
-        {/* for the dialog - use chakra popover https://chakra-ui.com/docs/components/popover/props */}
       </Popover>
     </TranslationProvider>
   );

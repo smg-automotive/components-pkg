@@ -1,4 +1,5 @@
 import {
+  chakra,
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
@@ -19,6 +20,7 @@ export type PopoverProps = {
     label: string;
     onClick: () => void;
   };
+  numberOfAppliedFilters?: number;
 
   // events
   filter: ReactNode; // used to pass the UI for the filter
@@ -31,6 +33,7 @@ export type PopoverProps = {
 const Popover: FC<PopoverProps> = ({
   applyButton,
   filter,
+  numberOfAppliedFilters,
   isApplied,
   label,
   onClose,
@@ -48,8 +51,30 @@ const Popover: FC<PopoverProps> = ({
     >
       <PopoverHeader paddingBottom="2xl">
         <Flex justifyContent="space-between">
-          <Text textStyle="heading3">{label}</Text>
-          <PopoverCloseButton />
+          <Flex
+            as={Text}
+            textStyle="heading3"
+            color="gray.900"
+            alignItems="center"
+          >
+            {label}
+            {numberOfAppliedFilters ? (
+              <chakra.span
+                backgroundColor="brand.primary"
+                borderRadius="max"
+                w="sm"
+                h="sm"
+                ml="sm"
+                fontSize="sm"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                {numberOfAppliedFilters}
+              </chakra.span>
+            ) : null}
+          </Flex>
+          <PopoverCloseButton color="gray.800" />
         </Flex>
         <Link as="button" onClick={onResetFilter} disabled={!isApplied}>
           {t('filterSelectButton.reset')}

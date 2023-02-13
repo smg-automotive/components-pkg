@@ -65,6 +65,13 @@ export const DummyFilter = () => (
             },
             filter: <DummyFilter/>
         }}
+        argTypes={{
+            applyButton: {
+                table: {
+                    disable: true,
+                },
+            },
+        }}
     >
         {Template.bind({})}
     </Story>
@@ -78,10 +85,11 @@ export const DummyFilter = () => (
         args={{
             label: "Treibstoff",
             displayValue: "Benzin, Diesel",
+            numberOfAppliedFilters: 5,
             isApplied: true,
             applyButton: {
                 label: "12324 Fahrzeuge",
-                onClick: () => null
+                onClick: action("search")
             },
             filter: <DummyFilter/>
         }}
