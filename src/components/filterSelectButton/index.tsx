@@ -60,7 +60,6 @@ const FilterSelectButton: FC<Props> = (props) => {
         <ButtonGroup isAttached={true} maxWidth="250px" w="full">
           <PopoverTrigger>
             <ChakraButton
-              onClick={onToggle}
               w="full"
               display="flex"
               justifyContent="flex-start"
