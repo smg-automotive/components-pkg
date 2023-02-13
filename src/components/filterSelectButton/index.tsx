@@ -40,7 +40,7 @@ type Props = {
 };
 
 const FilterSelectButton: FC<Props> = (props) => {
-  const { onOpen, onClose, isOpen } = useDisclosure();
+  const { onOpen, onClose, isOpen, onToggle } = useDisclosure();
   /*
    * design:
    * mobile: https://www.figma.com/file/WvYYKrx8rxw80fwkzhAQwh/Search-Results-%26-Advanced-Search?node-id=871%3A179771&t=ZhQtXXEVuEgwU5Sn-0
@@ -64,11 +64,11 @@ const FilterSelectButton: FC<Props> = (props) => {
       isOpen={isOpen}
       onOpen={onOpen}
       onClose={onClose}
-      //isOpen={props.initialState === 'open'}
     >
-      <PopoverTrigger>
-        <ButtonGroup isAttached={true} maxWidth="250px" w="full">
+      <ButtonGroup isAttached={true} maxWidth="250px" w="full">
+        <PopoverTrigger>
           <ChakraButton
+            onClick={onToggle}
             w="full"
             display="flex"
             justifyContent="flex-start"
@@ -84,32 +84,33 @@ const FilterSelectButton: FC<Props> = (props) => {
               {props.displayValue ? `: ${props.displayValue}` : null}
             </chakra.span>
           </ChakraButton>
-          {props.isApplied ? (
-            <IconButton
-              icon={<CloseIcon w="16px" h="16px" />}
-              aria-label="reset filter"
-              onClick={props.onResetFilter}
-              w="36px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              borderRadius="sm"
-              {...appliedColorScheme}
-            />
-          ) : (
-            <IconButton
-              icon={<ChevronDownSmallIcon w="16px" h="16px" />}
-              aria-label="open filter"
-              w="36px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              borderRadius="sm"
-              {...defaultColorSchema}
-            />
-          )}
-        </ButtonGroup>
-      </PopoverTrigger>
+        </PopoverTrigger>
+        {props.isApplied ? (
+          <IconButton
+            icon={<CloseIcon w="16px" h="16px" />}
+            aria-label="reset filter"
+            onClick={props.onResetFilter}
+            w="36px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            borderRadius="sm"
+            {...appliedColorScheme}
+          />
+        ) : (
+          <IconButton
+            icon={<ChevronDownSmallIcon w="16px" h="16px" />}
+            aria-label="open filter"
+            onClick={onToggle}
+            w="36px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            borderRadius="sm"
+            {...defaultColorSchema}
+          />
+        )}
+      </ButtonGroup>
       <PopoverContent
         backgroundColor="white"
         borderRadius="sm"
