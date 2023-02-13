@@ -30,7 +30,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
     onClose: props.onPopoverClose,
   });
 
-  const appliedColorScheme = {
+  const appliedOrOpenColorScheme = {
     backgroundColor: 'gray.900',
     color: 'white',
   };
@@ -63,7 +63,9 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               paddingX="md"
               borderRightColor={props.isApplied ? 'white' : undefined}
               borderRightWidth={props.isApplied ? '1px' : undefined}
-              {...(props.isApplied ? appliedColorScheme : defaultColorSchema)}
+              {...(props.isApplied || isOpen
+                ? appliedOrOpenColorScheme
+                : defaultColorSchema)}
             >
               <chakra.span
                 textOverflow="ellipsis"
@@ -76,7 +78,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
           </PopoverTrigger>
           {props.isApplied ? (
             <IconButton
-              icon={<CloseIcon w="16px" h="16px" />}
+              icon={<CloseIcon w="xs" h="xs" />}
               aria-label="reset filter"
               onClick={props.onResetFilter}
               minW="md"
@@ -85,11 +87,18 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               alignItems="center"
               justifyContent="center"
               borderRadius="sm"
-              {...appliedColorScheme}
+              {...appliedOrOpenColorScheme}
             />
           ) : (
             <IconButton
-              icon={<ChevronDownSmallIcon w="16px" h="16px" />}
+              icon={
+                <ChevronDownSmallIcon
+                  w="xs"
+                  h="xs"
+                  transition="0.2s"
+                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                />
+              }
               aria-label="open filter"
               onClick={isOpen ? undefined : onOpen}
               minW="md"
@@ -98,7 +107,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               alignItems="center"
               justifyContent="center"
               borderRadius="sm"
-              {...defaultColorSchema}
+              {...(isOpen ? appliedOrOpenColorScheme : defaultColorSchema)}
             />
           )}
         </ButtonGroup>
