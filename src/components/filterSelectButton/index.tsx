@@ -24,7 +24,7 @@ type Props = {
 } & Omit<PopoverProps, 'onClose'>;
 
 const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
-  const { onOpen, onClose, isOpen, onToggle } = useDisclosure({
+  const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: props.initialPopoverState === 'open',
     onOpen: props.onPopoverOpen,
     onClose: props.onPopoverClose,
@@ -72,7 +72,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
             <ChakraButton
               h="md"
               display="flex"
-              justifyContent="flex-start"
+              justifyContent="space-between"
               flex="1"
               minW={0}
               borderRadius="sm"
@@ -82,6 +82,16 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               {...(props.isApplied || isOpen
                 ? appliedOrOpenColorScheme
                 : defaultColorSchema)}
+              rightIcon={
+                props.isApplied ? undefined : (
+                  <ChevronDownSmallIcon
+                    w="xs"
+                    h="xs"
+                    transition="0.2s"
+                    transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                  />
+                )
+              }
             >
               <chakra.span
                 textOverflow="ellipsis"
@@ -103,25 +113,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               borderRadius="sm"
               {...appliedOrOpenColorScheme}
             />
-          ) : (
-            <IconButton
-              icon={
-                <ChevronDownSmallIcon
-                  w="xs"
-                  h="xs"
-                  transition="0.2s"
-                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                />
-              }
-              aria-label="open filter"
-              onClick={onToggle}
-              minW="md"
-              w="md"
-              h="md"
-              borderRadius="sm"
-              {...(isOpen ? appliedOrOpenColorScheme : defaultColorSchema)}
-            />
-          )}
+          ) : null}
         </ButtonGroup>
         <FilterPopover {...props} onClose={onClose}>
           {props.children}

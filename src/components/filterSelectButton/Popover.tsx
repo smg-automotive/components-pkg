@@ -46,7 +46,7 @@ const Popover: FC<PropsWithChildren<PopoverProps>> = ({
       borderRadius="sm"
       shadow="xs"
       padding="2xl"
-      width={{ base: 'full', sm: '320px' }}
+      width="320px"
     >
       <PopoverHeader paddingBottom="2xl">
         <Flex justifyContent="space-between">
