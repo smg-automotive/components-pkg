@@ -9,15 +9,15 @@ import Checkbox from '../checkbox';
 import { FilterSelectButton } from './index.tsx';
 
 export const CheckBoxFilter = ({ label, facet }) => (
-    <Flex
-        justifyContent="space-between"
-        paddingY="xs"
-        paddingX="sm"
-        color="gray.900"
-    >
-        <Checkbox name={label} label={label} />
-        <Text>{facet}</Text>
-    </Flex>
+  <Flex
+    justifyContent="space-between"
+    paddingY="xs"
+    paddingX="sm"
+    color="gray.900"
+  >
+    <Checkbox name={label} label={label} />
+    <Text>{facet}</Text>
+  </Flex>
 );
 
 export const DummyFilter = () => (
