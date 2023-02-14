@@ -14,6 +14,7 @@ interface Props {
   rightIcon?: ReactElement;
   isExternal?: boolean;
   rel?: string;
+  variant?: 'baseLink' | 'headerLink';
   [key: string]: unknown;
 }
 
@@ -26,11 +27,12 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rel,
       leftIcon,
       rightIcon,
+      variant = 'baseLink',
       ...rest
     },
     ref
   ) => {
-    const styles = useMultiStyleConfig(`Link`);
+    const styles = useMultiStyleConfig('Link', { variant });
 
     const Component = useMemo(() => {
       return chakra(as, {

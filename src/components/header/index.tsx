@@ -2,17 +2,24 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 // eslint-disable-next-line import/no-internal-modules
 
-import { DrawerBody, HStack, useTheme } from '@chakra-ui/react';
+import {
+  DrawerBody,
+  HStack,
+  useMultiStyleConfig,
+  useTheme,
+} from '@chakra-ui/react';
 
 import NavigationLink, { NavigationLinkProps } from './NavigationLink';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { getHeaderLinks } from './config/headerLinks';
 import { DawerNodeItems, getDrawerNodeItems } from './config/drawerNodeItems';
 import CollapsibleSection from './CollapsibleSection';
+import Stack from '../stack';
 import Menu from '../menu';
 import BaseGrid from '../layout/BaseGrid';
 
 // TODO: update the hook
+import { ChevronDownSmallIcon } from '../icons';
 import useMediaQuery from '../hooks/useMediaQuery';
 // TODO: make dynamic
 import DrawerOverlay from '../drawer/DrawerOverlay';
@@ -82,82 +89,100 @@ const Navigation: FC<NavigationProps> = ({ user }) => {
     dawerNodeItems: config.dawerNodeItems,
   });
 
+  const linkStypes = useMultiStyleConfig('Link', { variant: 'headerLink' });
+
   return (
     <>
       <Box
         width="full"
         height={config.menuHeight}
-        background="gray.100"
+        borderBottomColor="gray.200"
+        borderBottomWidth="1px"
+        alignItems="center"
         display="flex"
         justifyContent="space-between"
-        alignItems="center"
         px="2rem"
         zIndex="header"
         position="absolute"
       >
-        <img width="144px" height="34px" src={logo} />
-        {/* TODO: replace logo quality */}
-        <Box
-          onClick={createDrawerHandler({
-            nodeName: 'search',
-          })}
-          cursor="pointer"
-          color="blue.700"
-        >
-          Suche
-        </Box>
-        <DesktopOnly>
-          {config.headerLinks.map((link, index) => (
-            <NavigationLink key={`link-${index}`} {...link} />
-          ))}
-        </DesktopOnly>
-
-        {config.user ? (
-          <HStack
-            spacing="1rem"
+        <Stack direction="row" spacing="2xl" align="center">
+          <img width="144px" height="34px" src={logo} />
+          {/* TODO: replace logo quality */}
+          {/* extract navigation links to separate component */}
+          <Box
             onClick={createDrawerHandler({
-              nodeName: 'user',
+              nodeName: 'search',
             })}
+            __css={linkStypes.link}
           >
-            <Avatar />
-            <span>
-              {config.user.id}-{config.user.name}
-            </span>
-          </HStack>
-        ) : (
-          <HStack spacing="1rem">
-            <Avatar />
-            <span>Login</span>
-          </HStack>
-        )}
+            Suche <ChevronDownSmallIcon />
+          </Box>
+          <DesktopOnly>
+            {config.headerLinks.map((link, index) => (
+              <NavigationLink key={`link-${index}`} {...link} />
+            ))}
+          </DesktopOnly>
+        </Stack>
+        <Stack direction="row" spacing="2xl" align="center">
+          {config.user ? (
+            <HStack
+              spacing="xxs"
+              onClick={createDrawerHandler({
+                nodeName: 'user',
+              })}
+            >
+              <Avatar />
+              <span>
+                {config.user.id}-{config.user.name}
+              </span>
+            </HStack>
+          ) : (
+            <HStack spacing="1rem">
+              <Avatar />
+              <span>Login</span>
+            </HStack>
+          )}
 
-        <DesktopOnly>
-          <Menu
-            title="Language"
-            items={[
-              { text: 'DE', onClick: () => null },
-              { text: 'FR', onClick: () => null },
-              { text: 'IT', onClick: () => null },
-              { text: 'EN', onClick: () => null },
-            ]}
-          ></Menu>
-        </DesktopOnly>
-        <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent marginTop={config.menuHeight}>
-            <DrawerBody py="2xl" px="0">
-              <BaseGrid height="full">
-                {drawer?.nodes.map((node, index) => (
-                  <CollapsibleSection
-                    key={`node-${index}`}
-                    node={node}
-                    accordionsEnabled={accordionsEnabled}
-                  />
-                ))}
-              </BaseGrid>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
+          <DesktopOnly>
+            <Box
+              as={Menu}
+              title="DE"
+              variant="menuBold"
+              items={[
+                { text: 'DE', onClick: () => null },
+                { text: 'FR', onClick: () => null },
+                { text: 'IT', onClick: () => null },
+                { text: 'EN', onClick: () => null },
+              ]}
+            >
+              {/* <Menu
+                title="DE"
+                items={[
+                  { text: 'DE', onClick: () => null },
+                  { text: 'FR', onClick: () => null },
+                  { text: 'IT', onClick: () => null },
+                  { text: 'EN', onClick: () => null },
+                ]}
+              /> */}
+            </Box>
+          </DesktopOnly>
+          <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
+            <DrawerOverlay />
+            <DrawerContent marginTop={config.menuHeight}>
+              <DrawerBody py="2xl" px="0">
+                <BaseGrid height="full">
+                  {drawer?.nodes.map((node, index) => (
+                    <CollapsibleSection
+                      key={`node-${index}`}
+                      node={node}
+                      accordionsEnabled={accordionsEnabled}
+                    />
+                  ))}
+                </BaseGrid>
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+        </Stack>
       </Box>
     </>
   );

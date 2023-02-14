@@ -1,6 +1,6 @@
-import { UserType, Plattform } from '..';
-import { NavigationLinkProps } from '../NavigationLink';
 import { NavigationLinkConfigProps, resolveVisibility } from './converter';
+import { NavigationLinkProps } from '../NavigationLink';
+import { Plattform, UserType } from '..';
 
 const headerLinks: NavigationLinkConfigProps[] = [
   {

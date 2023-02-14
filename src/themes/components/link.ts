@@ -5,13 +5,30 @@ export const linkBaseStyle: SystemStyleObject = {
   color: 'blue.700',
   display: 'inline-flex',
   flexDirection: 'row',
-  _hover: {
-    cursor: 'pointer',
-    textDecoration: 'underline',
-  },
   _active: {
     textDecoration: 'none',
     color: 'gray.900',
+  },
+};
+
+const baseLink: SystemStyleObject = {
+  link: {
+    _hover: {
+      cursor: 'pointer',
+      textDecoration: 'underline',
+    },
+  },
+};
+
+const headerLink: SystemStyleObject = {
+  link: {
+    fontWeight: '700',
+    color: 'gray.900',
+    cursor: 'pointer',
+    _hover: {
+      textDecoration: 'none',
+      color: 'blue.700',
+    },
   },
 };
 
@@ -21,6 +38,13 @@ const Link: ComponentMultiStyleConfig = {
     link: linkBaseStyle,
     leftIcon: { ml: 'xs' },
     rightIcon: { mr: 'xs' },
+  },
+  variants: {
+    headerLink,
+    baseLink,
+  },
+  defaultProps: {
+    variant: 'baseLink',
   },
 };
 

@@ -1,8 +1,9 @@
-import { useDisclosure } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useDisclosure } from '@chakra-ui/react';
+
 import {
-  DrawerNode,
   DawerNodeItems,
+  DrawerNode,
   NavigationLinkNode,
 } from '../config/drawerNodeItems';
 

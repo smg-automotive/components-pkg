@@ -1,6 +1,8 @@
 import React, { FC, ReactNode } from 'react';
-import Link from '../link';
+
 import { Badge } from '@chakra-ui/react';
+
+import Link from '../link';
 
 export interface NavigationLinkProps {
   url: string;
@@ -19,7 +21,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   if (!isVisible) return null;
 
   return (
-    <Link href={url}>
+    <Link href={url} variant="headerLink">
       {text}
       {isNew ? <Badge>New</Badge> : null}
     </Link>
