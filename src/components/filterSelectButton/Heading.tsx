@@ -44,9 +44,9 @@ const FilterSelectButtonHeading: FC<Props> = ({
               fontSize="sm"
               h="sm"
               justifyContent="center"
+              minW="sm"
               mx="sm"
               w="sm"
-              minW="sm"
             >
               {numberOfAppliedFilters}
             </chakra.span>
