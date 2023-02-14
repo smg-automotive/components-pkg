@@ -1,5 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
-import { Language } from '@smg-automotive/i18n-pkg';
+import React, { FC } from 'react';
 import {
   ButtonGroup,
   chakra,
@@ -13,27 +12,31 @@ import {
 import TranslationProvider from '../translationProvider';
 import { ChevronDownSmallIcon, CloseIcon } from '../icons';
 
-import FilterPopover, { PopoverProps } from './Popover';
+import { FilterSelectButtonProps } from './props';
+import FilterPopover from './Popover';
 
-// TODO: cleanup props with subcomponents
-type Props = {
-  language: Language;
-  displayValue: string; // used for the value if a filter is applied in the dark gray box
-  initialPopoverState?: 'open' | 'closed';
-  onPopoverClose?: () => void; // when dialog is closed - for tracking?
-  onPopoverOpen?: () => void; // when dialog gets open - for tracking?
-} & Omit<PopoverProps, 'onClose'>;
-
-const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
+export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
+  actionButton,
+  displayValue,
+  initialPopoverState = 'closed',
+  isApplied,
+  label,
+  language,
+  numberOfAppliedFilters,
+  onPopoverClose,
+  onPopoverOpen,
+  onResetFilter,
+  children,
+}) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
-    defaultIsOpen: props.initialPopoverState === 'open',
-    onOpen: props.onPopoverOpen,
-    onClose: props.onPopoverClose,
+    defaultIsOpen: initialPopoverState === 'open',
+    onOpen: onPopoverOpen,
+    onClose: onPopoverClose,
   });
 
   const appliedOrOpenColorScheme = {
     backgroundColor: 'gray.900',
-    ...(props.isApplied
+    ...(isApplied
       ? {
           _hover: {
             backgroundColor: 'black',
@@ -56,10 +59,7 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
   };
 
   return (
-    <TranslationProvider
-      language={props.language}
-      scopes={['filterSelectButton']}
-    >
+    <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <Popover
         returnFocusOnClose={true}
         placement="bottom-start"
@@ -78,13 +78,13 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
               minW={0}
               borderRadius="sm"
               paddingX="md"
-              borderRightColor={props.isApplied ? 'white' : undefined}
-              borderRightWidth={props.isApplied ? '1px' : undefined}
-              {...(props.isApplied || isOpen
+              borderRightColor={isApplied ? 'white' : undefined}
+              borderRightWidth={isApplied ? '1px' : undefined}
+              {...(isApplied || isOpen
                 ? appliedOrOpenColorScheme
                 : defaultColorSchema)}
               rightIcon={
-                props.isApplied ? undefined : (
+                isApplied ? undefined : (
                   <ChevronDownSmallIcon
                     w="xs"
                     h="xs"
@@ -99,15 +99,15 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
                 overflow="hidden"
                 whiteSpace="nowrap"
               >
-                {props.displayValue || props.label}
+                {displayValue || label}
               </chakra.span>
             </ChakraButton>
           </PopoverTrigger>
-          {props.isApplied ? (
+          {isApplied ? (
             <IconButton
               icon={<CloseIcon w="xs" h="xs" />}
               aria-label="reset filter"
-              onClick={props.onResetFilter}
+              onClick={onResetFilter}
               minW="md"
               w="md"
               h="md"
@@ -116,8 +116,15 @@ const FilterSelectButton: FC<PropsWithChildren<Props>> = (props) => {
             />
           ) : null}
         </ButtonGroup>
-        <FilterPopover {...props} onClose={onClose}>
-          {props.children}
+        <FilterPopover
+          actionButton={actionButton}
+          numberOfAppliedFilters={numberOfAppliedFilters}
+          isApplied={isApplied}
+          label={label}
+          onResetFilter={onResetFilter}
+          onClose={onClose}
+        >
+          {children}
         </FilterPopover>
       </Popover>
     </TranslationProvider>

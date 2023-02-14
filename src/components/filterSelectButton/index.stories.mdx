@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import { Box, Flex } from '@chakra-ui/react';
@@ -6,7 +6,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import Text from '../text';
 import Stack from '../stack';
 import Checkbox from '../checkbox';
-import FilterSelectButton from './index.tsx';
+import { FilterSelectButton } from './index.tsx';
 
 export const DummyFilter = () => (
   <Stack spacing="sm">
@@ -22,7 +22,7 @@ export const DummyFilter = () => (
   component={FilterSelectButton}
   args={{
     language: 'de',
-    applyButton: {
+    actionButton: {
       label: '12324 Fahrzeuge',
       onClick: action('search'),
     },
@@ -32,7 +32,7 @@ export const DummyFilter = () => (
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
-    filter: {
+    children: {
       table: {
         disable: true,
       },
@@ -67,6 +67,8 @@ export const CheckBoxFilter = ({ label, facet }) => (
 
 # Filter select button
 
+<ArgsTable of={FilterSelectButton} />
+
 ## Default empty
 
 <Canvas>
@@ -76,7 +78,7 @@ export const CheckBoxFilter = ({ label, facet }) => (
       label: 'Treibstoff',
     }}
     argTypes={{
-      applyButton: {
+      actionButton: {
         table: {
           disable: true,
         },
@@ -101,7 +103,7 @@ export const CheckBoxFilter = ({ label, facet }) => (
         options: ['open', 'closed'],
         control: 'select',
       },
-      applyButton: {
+      actionButton: {
         table: {
           disable: true,
         },

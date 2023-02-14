@@ -1,23 +1,25 @@
-import Flex from '../flex';
-import Text from '../text';
-import { chakra, IconButton } from '@chakra-ui/react';
-import { CloseIcon } from '../icons';
-import Link from '../link';
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
+import { chakra, IconButton } from '@chakra-ui/react';
 
-type FilterSelectButtonHeadingProps = {
-  isApplied: boolean;
-  label: string;
-  numberOfAppliedFilters?: number;
+import Text from '../text';
+import Link from '../link';
+import { CloseIcon } from '../icons';
+
+import Flex from '../flex';
+import { FilterSelectButtonProps } from './props';
+
+type Props = {
   onClose: () => void;
-  onResetFilter: () => void;
-};
-const FilterSelectButtonHeading: FC<FilterSelectButtonHeadingProps> = ({
+} & Pick<
+  FilterSelectButtonProps,
+  'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
+>;
+const FilterSelectButtonHeading: FC<Props> = ({
+  onClose,
   isApplied,
   label,
   numberOfAppliedFilters,
-  onClose,
   onResetFilter,
 }) => {
   const { t } = useI18n();

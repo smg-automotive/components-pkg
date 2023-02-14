@@ -1,19 +1,15 @@
-import Button from '../button';
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
-export type FilterSelectCtaButtonProps = {
-  applyButton: {
-    // if primary search button is shown
-    label: string;
-    onClick: () => void;
-  };
-  isApplied: boolean; //to know if a filter is applied or not (keeping the component independent) - for styling and primary/secondary button switch
+import Button from '../button';
+import { FilterSelectButtonProps } from './props';
+
+export type Props = {
   onClose: () => void;
-};
-const FilterSelectCtaButton: FC<FilterSelectCtaButtonProps> = ({
+} & Pick<FilterSelectButtonProps, 'isApplied' | 'actionButton'>;
+const FilterSelectCtaButton: FC<Props> = ({
   isApplied,
-  applyButton,
+  actionButton,
   onClose,
 }) => {
   const { t } = useI18n();
@@ -24,14 +20,14 @@ const FilterSelectCtaButton: FC<FilterSelectCtaButtonProps> = ({
       onClick={
         isApplied
           ? () => {
-              applyButton.onClick();
+              actionButton.onClick();
               onClose();
             }
           : onClose
       }
       width="full"
     >
-      {isApplied ? applyButton.label : t('filterSelectButton.close')}
+      {isApplied ? actionButton.label : t('filterSelectButton.close')}
     </Button>
   );
 };

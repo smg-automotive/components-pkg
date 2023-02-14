@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 import {
   PopoverBody,
   PopoverContent,
@@ -6,28 +6,27 @@ import {
   PopoverHeader,
 } from '@chakra-ui/react';
 
+import { FilterSelectButtonProps } from './props';
 import FilterSelectButtonHeading from './Heading';
 import FilterSelectCtaButton from './CtaButton';
 
-// TODO: cleanup props with subcomponents
-export type PopoverProps = {
-  applyButton: {
-    // if primary search button is shown
-    label: string;
-    onClick: () => void;
-  };
-  numberOfAppliedFilters?: number;
-  isApplied: boolean; //to know if a filter is applied or not (keeping the component independent) - for styling and primary/secondary button switch
-  label: string; // used for placeholder in default state and for the value if a filter is applied
+type Props = {
   onClose: () => void;
-  onResetFilter: () => void;
-};
+} & Pick<
+  FilterSelectButtonProps,
+  | 'actionButton'
+  | 'isApplied'
+  | 'label'
+  | 'numberOfAppliedFilters'
+  | 'onResetFilter'
+  | 'children'
+>;
 
-const Popover: FC<PropsWithChildren<PopoverProps>> = ({
-  applyButton,
-  numberOfAppliedFilters,
+const Popover: FC<Props> = ({
+  actionButton,
   isApplied,
   label,
+  numberOfAppliedFilters,
   onClose,
   onResetFilter,
   children,
@@ -53,7 +52,7 @@ const Popover: FC<PropsWithChildren<PopoverProps>> = ({
       <PopoverFooter paddingTop="2xl">
         <FilterSelectCtaButton
           isApplied={isApplied}
-          applyButton={applyButton}
+          actionButton={actionButton}
           onClose={onClose}
         />
       </PopoverFooter>
