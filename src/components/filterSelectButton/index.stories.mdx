@@ -8,6 +8,18 @@ import Stack from '../stack';
 import Checkbox from '../checkbox';
 import { FilterSelectButton } from './index.tsx';
 
+export const CheckBoxFilter = ({ label, facet }) => (
+    <Flex
+        justifyContent="space-between"
+        paddingY="xs"
+        paddingX="sm"
+        color="gray.900"
+    >
+        <Checkbox name={label} label={label} />
+        <Text>{facet}</Text>
+    </Flex>
+);
+
 export const DummyFilter = () => (
   <Stack spacing="sm">
     <CheckBoxFilter label="Benzin" facet="23" />
@@ -51,18 +63,6 @@ export const Template = (args) => (
       <DummyFilter />
     </FilterSelectButton>
   </Box>
-);
-
-export const CheckBoxFilter = ({ label, facet }) => (
-  <Flex
-    justifyContent="space-between"
-    paddingY="xs"
-    paddingX="sm"
-    color="gray.900"
-  >
-    <Checkbox name={label} label={label} />
-    <Text>{facet}</Text>
-  </Flex>
 );
 
 # Filter select button

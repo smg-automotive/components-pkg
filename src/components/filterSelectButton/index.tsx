@@ -102,7 +102,7 @@ export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
                     textOverflow="ellipsis"
                     whiteSpace="nowrap"
                   >
-                    {displayValue || label}
+                    {displayValue && isApplied ? displayValue : label}
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
