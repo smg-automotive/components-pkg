@@ -15,6 +15,7 @@ type Props = {
   FilterSelectButtonProps,
   'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
+
 const FilterSelectButtonHeading: FC<Props> = ({
   onClose,
   isApplied,
@@ -28,35 +29,35 @@ const FilterSelectButtonHeading: FC<Props> = ({
     <>
       <Flex justifyContent="space-between">
         <Flex
-          as={Text}
-          textStyle="heading3"
-          color="gray.900"
           alignItems="center"
+          as={Text}
+          color="gray.900"
+          textStyle="heading3"
         >
           {label}
           {numberOfAppliedFilters ? (
             <chakra.span
+              alignItems="center"
               backgroundColor="brand.primary"
               borderRadius="max"
-              w="sm"
-              h="sm"
-              ml="sm"
-              fontSize="sm"
               display="flex"
-              alignItems="center"
+              fontSize="sm"
+              h="sm"
               justifyContent="center"
+              ml="sm"
+              w="sm"
             >
               {numberOfAppliedFilters}
             </chakra.span>
           ) : null}
         </Flex>
         <IconButton
+          aria-label={t('filterSelectButton.close')}
           icon={<CloseIcon color="gray.800" />}
           onClick={onClose}
-          aria-label={t('filterSelectButton.close')}
         />
       </Flex>
-      <Link as="button" onClick={onResetFilter} disabled={!isApplied}>
+      <Link as="button" disabled={!isApplied} onClick={onResetFilter}>
         {t('filterSelectButton.reset')}
       </Link>
     </>

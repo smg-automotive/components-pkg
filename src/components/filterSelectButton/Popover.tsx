@@ -35,24 +35,24 @@ const Popover: FC<Props> = ({
     <PopoverContent
       backgroundColor="white"
       borderRadius="sm"
-      shadow="xs"
       padding="2xl"
-      width="320px"
+      shadow="xs"
+      w="6xl"
     >
       <PopoverHeader paddingBottom="2xl">
         <FilterSelectButtonHeading
-          onResetFilter={onResetFilter}
+          isApplied={isApplied}
           label={label}
           numberOfAppliedFilters={numberOfAppliedFilters}
-          isApplied={isApplied}
           onClose={onClose}
+          onResetFilter={onResetFilter}
         />
       </PopoverHeader>
       <PopoverBody>{children}</PopoverBody>
       <PopoverFooter paddingTop="2xl">
         <FilterSelectCtaButton
-          isApplied={isApplied}
           actionButton={actionButton}
+          isApplied={isApplied}
           onClose={onClose}
         />
       </PopoverFooter>

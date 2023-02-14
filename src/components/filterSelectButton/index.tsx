@@ -71,26 +71,18 @@ export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
             onOpen={onOpen}
             onClose={onClose}
           >
-            <ButtonGroup
-              isAttached={true}
-              w="full"
-              maxW="full"
-              position="relative"
-            >
+            <ButtonGroup isAttached={true} w="full" maxW="full">
               <PopoverTrigger>
                 <ChakraButton
-                  h="md"
-                  display="flex"
-                  justifyContent="space-between"
-                  flex="1"
-                  minW={0}
                   borderRadius="sm"
-                  paddingX="md"
                   borderRightColor={isApplied ? 'white' : undefined}
                   borderRightWidth={isApplied ? '1px' : undefined}
-                  {...(isApplied || isOpen
-                    ? appliedOrOpenColorScheme
-                    : defaultColorSchema)}
+                  display="flex"
+                  flex="1"
+                  h="md"
+                  justifyContent="space-between"
+                  minW="0"
+                  paddingX="md"
                   rightIcon={
                     isApplied ? undefined : (
                       <ChevronDownSmallIcon
@@ -101,10 +93,13 @@ export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
                       />
                     )
                   }
+                  {...(isApplied || isOpen
+                    ? appliedOrOpenColorScheme
+                    : defaultColorSchema)}
                 >
                   <chakra.span
-                    textOverflow="ellipsis"
                     overflow="hidden"
+                    textOverflow="ellipsis"
                     whiteSpace="nowrap"
                   >
                     {displayValue || label}
@@ -113,24 +108,24 @@ export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
               </PopoverTrigger>
               {isApplied ? (
                 <IconButton
-                  icon={<CloseIcon w="xs" h="xs" />}
                   aria-label={t('filterSelectButton.reset')}
-                  onClick={onResetFilter}
-                  minW="md"
-                  w="md"
-                  h="md"
                   borderRadius="sm"
+                  h="md"
+                  icon={<CloseIcon w="xs" h="xs" />}
+                  minW="md"
+                  onClick={onResetFilter}
+                  w="md"
                   {...appliedOrOpenColorScheme}
                 />
               ) : null}
             </ButtonGroup>
             <FilterPopover
               actionButton={actionButton}
-              numberOfAppliedFilters={numberOfAppliedFilters}
               isApplied={isApplied}
               label={label}
-              onResetFilter={onResetFilter}
+              numberOfAppliedFilters={numberOfAppliedFilters}
               onClose={onClose}
+              onResetFilter={onResetFilter}
             >
               {children}
             </FilterPopover>

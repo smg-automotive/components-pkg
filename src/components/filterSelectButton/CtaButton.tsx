@@ -7,6 +7,7 @@ import { FilterSelectButtonProps } from './props';
 export type Props = {
   onClose: () => void;
 } & Pick<FilterSelectButtonProps, 'isApplied' | 'actionButton'>;
+
 const FilterSelectCtaButton: FC<Props> = ({
   isApplied,
   actionButton,
@@ -16,7 +17,6 @@ const FilterSelectCtaButton: FC<Props> = ({
 
   return (
     <Button
-      variant={isApplied ? 'primary' : 'secondary'}
       onClick={
         isApplied
           ? () => {
@@ -25,6 +25,7 @@ const FilterSelectCtaButton: FC<Props> = ({
             }
           : onClose
       }
+      variant={isApplied ? 'primary' : 'secondary'}
       width="full"
     >
       {isApplied ? actionButton.label : t('filterSelectButton.close')}
