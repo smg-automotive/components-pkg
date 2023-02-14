@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { I18nContext } from '@smg-automotive/i18n-pkg';
 import {
   ButtonGroup,
   chakra,
@@ -60,73 +61,82 @@ export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
 
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
-      <Popover
-        returnFocusOnClose={true}
-        placement="bottom-start"
-        isLazy={true}
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-      >
-        <ButtonGroup isAttached={true} w="full" maxW="full">
-          <PopoverTrigger>
-            <ChakraButton
-              h="md"
-              display="flex"
-              justifyContent="space-between"
-              flex="1"
-              minW={0}
-              borderRadius="sm"
-              paddingX="md"
-              borderRightColor={isApplied ? 'white' : undefined}
-              borderRightWidth={isApplied ? '1px' : undefined}
-              {...(isApplied || isOpen
-                ? appliedOrOpenColorScheme
-                : defaultColorSchema)}
-              rightIcon={
-                isApplied ? undefined : (
-                  <ChevronDownSmallIcon
-                    w="xs"
-                    h="xs"
-                    transition="0.2s"
-                    transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                  />
-                )
-              }
+      <I18nContext.Consumer>
+        {({ t }) => (
+          <Popover
+            returnFocusOnClose={true}
+            placement="bottom-start"
+            isLazy={true}
+            isOpen={isOpen}
+            onOpen={onOpen}
+            onClose={onClose}
+          >
+            <ButtonGroup
+              isAttached={true}
+              w="full"
+              maxW="full"
+              position="relative"
             >
-              <chakra.span
-                textOverflow="ellipsis"
-                overflow="hidden"
-                whiteSpace="nowrap"
-              >
-                {displayValue || label}
-              </chakra.span>
-            </ChakraButton>
-          </PopoverTrigger>
-          {isApplied ? (
-            <IconButton
-              icon={<CloseIcon w="xs" h="xs" />}
-              aria-label="reset filter"
-              onClick={onResetFilter}
-              minW="md"
-              w="md"
-              h="md"
-              borderRadius="sm"
-              {...appliedOrOpenColorScheme}
-            />
-          ) : null}
-        </ButtonGroup>
-        <FilterPopover
-          actionButton={actionButton}
-          numberOfAppliedFilters={numberOfAppliedFilters}
-          isApplied={isApplied}
-          label={label}
-          onResetFilter={onResetFilter}
-          onClose={onClose}
-        >
-          {children}
-        </FilterPopover>
-      </Popover>
+              <PopoverTrigger>
+                <ChakraButton
+                  h="md"
+                  display="flex"
+                  justifyContent="space-between"
+                  flex="1"
+                  minW={0}
+                  borderRadius="sm"
+                  paddingX="md"
+                  borderRightColor={isApplied ? 'white' : undefined}
+                  borderRightWidth={isApplied ? '1px' : undefined}
+                  {...(isApplied || isOpen
+                    ? appliedOrOpenColorScheme
+                    : defaultColorSchema)}
+                  rightIcon={
+                    isApplied ? undefined : (
+                      <ChevronDownSmallIcon
+                        w="xs"
+                        h="xs"
+                        transition="0.2s"
+                        transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                      />
+                    )
+                  }
+                >
+                  <chakra.span
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                  >
+                    {displayValue || label}
+                  </chakra.span>
+                </ChakraButton>
+              </PopoverTrigger>
+              {isApplied ? (
+                <IconButton
+                  icon={<CloseIcon w="xs" h="xs" />}
+                  aria-label={t('filterSelectButton.reset')}
+                  onClick={onResetFilter}
+                  minW="md"
+                  w="md"
+                  h="md"
+                  borderRadius="sm"
+                  {...appliedOrOpenColorScheme}
+                />
+              ) : null}
+            </ButtonGroup>
+            <FilterPopover
+              actionButton={actionButton}
+              numberOfAppliedFilters={numberOfAppliedFilters}
+              isApplied={isApplied}
+              label={label}
+              onResetFilter={onResetFilter}
+              onClose={onClose}
+            >
+              {children}
+            </FilterPopover>
+          </Popover>
+        )}
+      </I18nContext.Consumer>
     </TranslationProvider>
   );
 };

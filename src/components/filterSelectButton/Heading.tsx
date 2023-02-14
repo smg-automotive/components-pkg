@@ -53,7 +53,7 @@ const FilterSelectButtonHeading: FC<Props> = ({
         <IconButton
           icon={<CloseIcon color="gray.800" />}
           onClick={onClose}
-          aria-label="close"
+          aria-label={t('filterSelectButton.close')}
         />
       </Flex>
       <Link as="button" onClick={onResetFilter} disabled={!isApplied}>
