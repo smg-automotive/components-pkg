@@ -15,6 +15,7 @@ import { ChevronDownSmallIcon, CloseIcon } from '../icons';
 
 import FilterPopover, { PopoverProps } from './Popover';
 
+// TODO: cleanup props with subcomponents
 type Props = {
   language: Language;
   displayValue: string; // used for the value if a filter is applied in the dark gray box

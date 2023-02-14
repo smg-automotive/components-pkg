@@ -1,19 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
-  chakra,
   PopoverBody,
-  PopoverCloseButton,
   PopoverContent,
   PopoverFooter,
   PopoverHeader,
 } from '@chakra-ui/react';
 
-import Text from '../text';
-import Link from '../link';
-import Flex from '../flex';
-import Button from '../button';
+import FilterSelectButtonHeading from './Heading';
+import FilterSelectCtaButton from './CtaButton';
 
+// TODO: cleanup props with subcomponents
 export type PopoverProps = {
   applyButton: {
     // if primary search button is shown
@@ -21,8 +17,6 @@ export type PopoverProps = {
     onClick: () => void;
   };
   numberOfAppliedFilters?: number;
-
-  // events
   isApplied: boolean; //to know if a filter is applied or not (keeping the component independent) - for styling and primary/secondary button switch
   label: string; // used for placeholder in default state and for the value if a filter is applied
   onClose: () => void;
@@ -38,8 +32,6 @@ const Popover: FC<PropsWithChildren<PopoverProps>> = ({
   onResetFilter,
   children,
 }) => {
-  const { t } = useI18n();
-
   return (
     <PopoverContent
       backgroundColor="white"
@@ -49,52 +41,21 @@ const Popover: FC<PropsWithChildren<PopoverProps>> = ({
       width="320px"
     >
       <PopoverHeader paddingBottom="2xl">
-        <Flex justifyContent="space-between">
-          <Flex
-            as={Text}
-            textStyle="heading3"
-            color="gray.900"
-            alignItems="center"
-          >
-            {label}
-            {numberOfAppliedFilters ? (
-              <chakra.span
-                backgroundColor="brand.primary"
-                borderRadius="max"
-                w="sm"
-                h="sm"
-                ml="sm"
-                fontSize="sm"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                {numberOfAppliedFilters}
-              </chakra.span>
-            ) : null}
-          </Flex>
-          <PopoverCloseButton color="gray.800" />
-        </Flex>
-        <Link as="button" onClick={onResetFilter} disabled={!isApplied}>
-          {t('filterSelectButton.reset')}
-        </Link>
+        <FilterSelectButtonHeading
+          onResetFilter={onResetFilter}
+          label={label}
+          numberOfAppliedFilters={numberOfAppliedFilters}
+          isApplied={isApplied}
+          onClose={onClose}
+        />
       </PopoverHeader>
       <PopoverBody>{children}</PopoverBody>
       <PopoverFooter paddingTop="2xl">
-        <Button
-          variant={isApplied ? 'primary' : 'secondary'}
-          onClick={
-            isApplied
-              ? () => {
-                  applyButton.onClick();
-                  onClose();
-                }
-              : onClose
-          }
-          width="full"
-        >
-          {isApplied ? applyButton.label : t('filterSelectButton.close')}
-        </Button>
+        <FilterSelectCtaButton
+          isApplied={isApplied}
+          applyButton={applyButton}
+          onClose={onClose}
+        />
       </PopoverFooter>
     </PopoverContent>
   );
