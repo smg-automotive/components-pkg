@@ -1,4 +1,4 @@
-import { defineStyle } from '@chakra-ui/styled-system';
+import { defineStyle } from '@chakra-ui/react';
 
 const baseStyle = defineStyle(({ theme }) => {
   const color = theme.name === 'AutoScout 24' ? 'black' : 'white';

@@ -17,6 +17,7 @@ type SharedProps = {
   onFocus?: FocusEventHandler<HTMLInputElement>;
   autoFocus?: boolean;
   name: string;
+  type?: 'text' | 'number';
 };
 
 type ControlledInputProps = {
@@ -43,7 +44,17 @@ type DebouncedInputPros = {
 type Props = ControlledInputProps | InputPros | DebouncedInputPros;
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ onChange, value, debounce = false, setInputValue, ...props }, ref) => {
+  (
+    {
+      onChange,
+      value,
+      debounce = false,
+      setInputValue,
+      type = 'text',
+      ...props
+    },
+    ref
+  ) => {
     const [internalUIValue, setInternalUIValue] = useState(value);
     // https://lawsofux.com/doherty-threshold/
     const debounceThreshold = debounce ? 400 : 0;
@@ -72,6 +83,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <ChakraInput
         {...props}
+        type={type}
         value={inputValue}
         onChange={onChangeHandler}
         ref={ref}

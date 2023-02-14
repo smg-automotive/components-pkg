@@ -1,7 +1,4 @@
-import {
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/styled-system';
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
 const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
@@ -47,6 +44,29 @@ const variantDark = defineStyle({
   },
 });
 
+const variantMinimal = defineStyle({
+  button: {
+    textStyle: 'body',
+    paddingX: 0,
+    maxWidth: 'fit-content',
+
+    '& > svg': {
+      marginLeft: 'sm',
+    },
+  },
+  container: {
+    borderTop: 0,
+    _last: {
+      borderBottom: 0,
+    },
+  },
+  panel: {
+    pb: 'md',
+    paddingX: '3xl',
+    textStyle: 'body',
+  },
+});
+
 const baseStyle = defineStyle({
   container: {
     borderTop: '1px',
@@ -81,6 +101,7 @@ const baseStyle = defineStyle({
 const variants = {
   light: variantLight,
   dark: variantDark,
+  minimal: variantMinimal,
 };
 
 export default defineMultiStyleConfig({

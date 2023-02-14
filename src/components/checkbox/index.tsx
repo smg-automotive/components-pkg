@@ -1,7 +1,7 @@
 import React, { ChangeEvent, forwardRef } from 'react';
 import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
 
-interface Props {
+export interface CheckboxProps {
   name: string;
   value?: string;
   isDisabled?: boolean;
@@ -10,9 +10,11 @@ interface Props {
   label?: string;
   isInvalid?: boolean;
   isIndeterminate?: boolean;
+  size?: 'sm' | 'lg';
+  fontWeight?: 'regular' | 'bold';
 }
 
-const Checkbox = forwardRef<HTMLInputElement, Props>(
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       name,
@@ -23,10 +25,14 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
       label,
       isInvalid,
       isIndeterminate = false,
+      size = 'lg',
+      fontWeight = 'regular',
+      ...props
     },
     ref
   ) => (
     <ChakraCheckbox
+      {...props}
       ref={ref}
       name={name}
       value={value}
@@ -35,6 +41,8 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
       onChange={onChange}
       isInvalid={isInvalid}
       isIndeterminate={isIndeterminate}
+      size={size}
+      fontWeight={fontWeight}
     >
       {label}
     </ChakraCheckbox>

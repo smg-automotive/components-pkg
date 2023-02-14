@@ -1,4 +1,4 @@
-import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/styled-system';
+import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/react';
 import { radioAnatomy as parts } from '@chakra-ui/anatomy';
 
 import checkbox from './checkbox';

@@ -1,24 +1,27 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
+import { useMultiStyleConfig } from '@chakra-ui/react';
 
+import Show from '../show';
+import Hide from '../hide';
 import Box from '../box';
 import AccordionPanel from '../accordion/AccordionPanel';
-import { breakpoints } from '../../themes';
 
 const MobileOnlyAccordionPanel: FC<PropsWithChildren> = (props) => {
   const { children, ...rest } = props;
   const { panelOnDesktop } = useMultiStyleConfig('Accordion');
-  const [isLargerThanMd] = useMediaQuery(`(min-width: ${breakpoints.md.px}px)`);
-
-  if (!isLargerThanMd) {
-    return <AccordionPanel {...rest}>{children}</AccordionPanel>;
-  }
 
   return (
-    <Box __css={panelOnDesktop} {...rest}>
-      {children}
-    </Box>
+    <>
+      <Show above="md">
+        <Box __css={panelOnDesktop} {...rest}>
+          {children}
+        </Box>
+      </Show>
+      <Hide above="md">
+        <AccordionPanel {...rest}>{children}</AccordionPanel>
+      </Hide>
+    </>
   );
 };
 

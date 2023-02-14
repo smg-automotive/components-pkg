@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import OrderedList from './OrderedList';
+import ListItem from './ListItem.tsx';
+
+<Meta
+  title="Components/Data display/Ordered list"
+  component={OrderedList}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+  args={{
+    variant: 'md',
+    start: 1,
+  }}
+  argTypes={{
+    variant: {
+      options: ['sm', 'md'],
+      control: 'select',
+    },
+  }}
+/>
+
+export const Template = (args) => (
+  <OrderedList {...args}>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+    <ListItem>Item 3</ListItem>
+  </OrderedList>
+);
+
+# List
+
+## Overview
+
+<Canvas>
+  <Story name="Ordered list">{Template.bind({})}</Story>
+</Canvas>

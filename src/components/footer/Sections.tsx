@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
-import FooterLink from './Link';
-import { FooterConfigInstance } from './config/factory';
+import { chunkArray } from 'src/utilities/chunkArray';
+
 import MobileOnlyAccordionPanel from '../mobileOnlyAccordion/MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from '../mobileOnlyAccordion/MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from '../mobileOnlyAccordion/MobileOnlyAccordionButton';
@@ -11,7 +11,8 @@ import ListItem from '../list/ListItem';
 import List from '../list';
 
 import GridItem from '../grid/GridItem';
-import { chunkArray } from '../../utilities/chunkArray';
+import FooterLink from './Link';
+import { FooterConfigInstance } from './config/factory';
 
 interface FooterSectionsProps {
   config: FooterConfigInstance;

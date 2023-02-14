@@ -5,8 +5,8 @@ import {
   Language,
 } from '@smg-automotive/i18n-pkg';
 
-import { dictionaries } from '../../locales';
-import logger from '../../lib/logger';
+import { dictionaries } from 'src/locales';
+import logger from 'src/lib/logger';
 
 interface Props {
   language: Language;

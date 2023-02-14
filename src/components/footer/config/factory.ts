@@ -1,8 +1,9 @@
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import { Environment } from 'src/types/environment';
+import { Brand } from 'src/types/brand';
+
 import { Link, LinkConfig, LinkTargets } from './link';
-import { Environment } from '../../../types/environment';
-import { Brand } from '../../../types/brand';
 
 import { FooterConfigInterface } from '.';
 

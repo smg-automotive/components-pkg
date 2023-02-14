@@ -8,7 +8,6 @@ import { addDecorator } from '@storybook/react';
 import { addons } from '@storybook/addons';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import Theme from './theme';
 // eslint-disable-next-line import/no-unresolved
 import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
@@ -20,7 +19,8 @@ import {
 } from '../src/themes';
 
 // eslint-disable-next-line import/no-unresolved
-import { Fonts } from '../src/styles/Fonts';
+import Fonts from '../src/fonts/Hosted';
+import Theme from './theme';
 
 const ThemeDecorator = (args) => {
   addons.setConfig({

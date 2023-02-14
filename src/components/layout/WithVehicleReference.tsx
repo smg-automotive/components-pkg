@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import TwoColumnsLayout from './TwoColumnsLayout';
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
+import TwoColumnsLayout from './TwoColumnsLayout';
 
 interface Props {
   title?: string | ReactNode;

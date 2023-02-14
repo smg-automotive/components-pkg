@@ -24,6 +24,52 @@
 
     After `postinstall` script is added fonts will be copied every time you install the dependencies, you don't need to manually copy fonts after updating the components package.
 
+3. Dealing with fonts
+
+    There are three ways of making sure that fonts are loaded:
+
+    * self-hosting fonts and using provided `fonts/hosted` module.
+
+        To leverage it:
+
+        1. Make sure that you're hosting the fonts under `/assets/fonts`
+        2. On the top level of your application render the `<Fonts />` component from:
+         ```typescript
+         import Fonts from '@smg-automotive/components/fonts/hosted'
+
+         const App: () => {
+          // ...
+
+          return (<>
+           <Fonts />
+           <!-- rest of the application -->
+          </>)
+         }
+         ```
+
+        The provided component makes sure that correct `font-face`s are declared
+
+    * using `@next/fonts` to leverage font optimizations from nextjs
+
+        Unfortunately due to technical limitations in how `@next/fonts` are set up we can't provide a module similar to self-hosted fonts. We do the next best thing and provide a component generator. Simply run:
+
+         ```bash
+         npx components setup-next-fonts --fonts-path <path-to-which-fonts-were-copied> --component-path <path-to-save-the-component>
+         ```
+
+        This will generate the `<Fonts />` component with the `@next/font` configuration ready to use in your project.
+
+    * handling fonts yourself
+
+        You can also deal with the fonts yourself. That means you're responsible for declaring `font-face` and hosting fonts. The only thing that you need to do is to provide a `--font-primary` CSS variable so the components package picks your font declaration up:
+
+         ```CSS
+         :root {
+            --font-primary: '<your font family name>'
+          }
+         ```
+
+        We recommend adding fallback font families of `Arial, Helvetica, Sans-Serif`
 
 ## Development
 ```

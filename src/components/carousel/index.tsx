@@ -2,12 +2,13 @@ import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
+import { breakpoints } from 'src/themes';
+
+import Flex from '../flex';
+import Box from '../box';
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
 import NavigationButton from './NavigationButton';
-import Flex from '../flex';
-import Box from '../box';
-import { breakpoints } from '../../themes';
 
 type SharedProps = {
   startIndex?: number;

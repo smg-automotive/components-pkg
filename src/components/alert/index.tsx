@@ -4,7 +4,7 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Alert as ChackraAlert,
+  Alert as ChakraAlert,
   Flex,
 } from '@chakra-ui/react';
 
@@ -23,7 +23,7 @@ interface Props {
 
 const Alert: FC<Props> = ({ title, description, link, type, icon }) => {
   return (
-    <ChackraAlert status={type}>
+    <ChakraAlert status={type}>
       <AlertIcon>{icon}</AlertIcon>
       <Flex direction="column">
         {title ? <AlertTitle>{title}</AlertTitle> : null}
@@ -34,7 +34,7 @@ const Alert: FC<Props> = ({ title, description, link, type, icon }) => {
           </Link>
         ) : null}
       </Flex>
-    </ChackraAlert>
+    </ChakraAlert>
   );
 };
 

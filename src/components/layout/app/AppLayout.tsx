@@ -1,7 +1,7 @@
 import React from 'react';
 import { forwardRef } from '@chakra-ui/react';
 
-import Grid, { GridProps } from '../../grid';
+import Grid, { GridProps } from 'src/components/grid';
 
 const pageGirdArea = `
   "header"

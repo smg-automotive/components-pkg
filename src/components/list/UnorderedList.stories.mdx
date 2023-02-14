@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import UnorderedList from './UnorderedList';
+import ListItem from './ListItem.tsx';
+
+<Meta
+  title="Components/Data display/Unordered list"
+  component={UnorderedList}
+  parameters={{
+    layout: 'fullscreen',
+  }}
+  args={{
+    variant: 'md',
+  }}
+  argTypes={{
+    variant: {
+      options: ['sm', 'md'],
+      control: 'select',
+    },
+  }}
+/>
+
+export const Template = (args) => (
+  <UnorderedList {...args}>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+    <ListItem>Item 3</ListItem>
+  </UnorderedList>
+);
+
+# List
+
+## Overview
+
+<Canvas>
+  <Story name="Unordered list">{Template.bind({})}</Story>
+</Canvas>

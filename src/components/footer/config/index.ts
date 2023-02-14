@@ -177,7 +177,7 @@ export const footerConfig: FooterConfigInterface = {
             de: '/de/auto-verkaufen',
             en: '/de/auto-verkaufen',
             fr: '/fr/vendre-voiture',
-            it: '',
+            it: '/it/vendere-auto',
           },
         },
         {
@@ -309,10 +309,10 @@ export const footerConfig: FooterConfigInterface = {
             brand: { as24: true, ms24: true },
           },
           link: {
-            de: 'https://medien-de.autoscout24.ch/',
-            en: 'https://medien-de.autoscout24.ch/',
-            fr: 'https://medien-fr.autoscout24.ch/',
-            it: 'https://medien-de.autoscout24.ch/',
+            de: 'https://swissmarketplace.group/de/media/',
+            en: 'https://swissmarketplace.group/media/',
+            fr: 'https://swissmarketplace.group/fr/actualites/',
+            it: 'https://swissmarketplace.group/media/',
           },
           target: '_blank',
         },

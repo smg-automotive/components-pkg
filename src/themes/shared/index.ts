@@ -32,4 +32,6 @@ export const shared = {
   zIndices,
 };
 export { Sizes } from './sizes';
+export { Space } from './space';
+export { FontWeights } from './fontWeights';
 export { breakpoints } from './breakpoints';

@@ -7,6 +7,13 @@ import VehicleReference from './index.tsx';
 <Meta
   title="Patterns/Data display/Vehicle reference"
   component={VehicleReference}
+  argTypes={{
+    image: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
 />
 
 export const Template = (args) => (
@@ -53,3 +60,18 @@ export const Template = (args) => (
 </Canvas>
 
 <ArgsTable story="Vehicle reference missing image" />
+
+## Vehicle reference with minimal props
+
+<Canvas>
+  <Story
+    name="Vehicle reference with minimal props"
+    args={{
+      vehicleTitle: 'AUDI',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Vehicle reference with minimal props" />

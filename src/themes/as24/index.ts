@@ -1,6 +1,6 @@
-import { colors } from './colors';
 import { shared } from '../shared';
 import { components } from '../components';
+import { colors } from './colors';
 
 export const theme = {
   ...shared,

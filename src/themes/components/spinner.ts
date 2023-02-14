@@ -1,5 +1,5 @@
 import { cssVar } from '@chakra-ui/theme-tools';
-import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
+import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
 
 const $size = cssVar('spinner-size');
 

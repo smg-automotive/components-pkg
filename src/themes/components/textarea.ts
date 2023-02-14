@@ -1,7 +1,7 @@
 import type {
   SystemStyleInterpolation,
   SystemStyleObject,
-} from '@chakra-ui/styled-system';
+} from '@chakra-ui/react';
 
 import Input from './input';
 
