@@ -27,9 +27,9 @@ const FilterSelectButtonHeading: FC<Props> = ({
 
   return (
     <>
-      <Flex justifyContent="space-between">
+      <Flex alignItems="start" justifyContent="space-between">
         <Flex
-          alignItems="center"
+          alignItems="start"
           as={Text}
           color="gray.900"
           textStyle="heading3"
@@ -44,8 +44,9 @@ const FilterSelectButtonHeading: FC<Props> = ({
               fontSize="sm"
               h="sm"
               justifyContent="center"
-              ml="sm"
+              mx="sm"
               w="sm"
+              minW="sm"
             >
               {numberOfAppliedFilters}
             </chakra.span>
