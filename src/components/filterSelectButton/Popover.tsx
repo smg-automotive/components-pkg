@@ -48,7 +48,9 @@ const Popover: FC<Props> = ({
           onResetFilter={onResetFilter}
         />
       </PopoverHeader>
-      <PopoverBody>{children}</PopoverBody>
+      <PopoverBody maxH="7xl" overflowY="scroll">
+        {children}
+      </PopoverBody>
       <PopoverFooter paddingTop="2xl">
         <FilterSelectCtaButton
           actionButton={actionButton}
