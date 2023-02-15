@@ -6,14 +6,14 @@ import {
   PopoverHeader,
 } from '@chakra-ui/react';
 
-import { FilterSelectButtonProps } from './props';
-import FilterSelectButtonHeading from './Heading';
-import FilterSelectCtaButton from './CtaButton';
+import { PopoverFilterProps } from './props';
+import FilterHeading from './Heading';
+import FilterActionButton from './ActionButton';
 
 type Props = {
   onClose: () => void;
 } & Pick<
-  FilterSelectButtonProps,
+  PopoverFilterProps,
   | 'actionButton'
   | 'isApplied'
   | 'label'
@@ -40,7 +40,7 @@ const Popover: FC<Props> = ({
       w="6xl"
     >
       <PopoverHeader paddingBottom="2xl">
-        <FilterSelectButtonHeading
+        <FilterHeading
           isApplied={isApplied}
           label={label}
           numberOfAppliedFilters={numberOfAppliedFilters}
@@ -52,7 +52,7 @@ const Popover: FC<Props> = ({
         {children}
       </PopoverBody>
       <PopoverFooter paddingTop="2xl">
-        <FilterSelectCtaButton
+        <FilterActionButton
           actionButton={actionButton}
           isApplied={isApplied}
           onClose={onClose}

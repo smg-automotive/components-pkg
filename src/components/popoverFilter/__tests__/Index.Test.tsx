@@ -2,10 +2,10 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
-import { FilterSelectButtonProps } from '../props';
-import { FilterSelectButton } from '../index';
+import { PopoverFilterProps } from '../props';
+import { PopoverFilter } from '../index';
 
-const validProps: FilterSelectButtonProps = {
+const validProps: PopoverFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },
   displayValue: '',
   isApplied: false,
@@ -17,9 +17,9 @@ const validProps: FilterSelectButtonProps = {
 describe('<FilterSelectButton/>', () => {
   it('should open the popover if you click on the button', async () => {
     render(
-      <FilterSelectButton {...validProps}>
+      <PopoverFilter {...validProps}>
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
 
     expect(screen.queryByText('Popover content')).toBeNull();
@@ -30,13 +30,13 @@ describe('<FilterSelectButton/>', () => {
   it('should show the reset button if the filter is applied', async () => {
     const mockOnReset = jest.fn();
     render(
-      <FilterSelectButton
+      <PopoverFilter
         {...validProps}
         isApplied={true}
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Zurücksetzen' }));
@@ -46,13 +46,13 @@ describe('<FilterSelectButton/>', () => {
   it('should be possible to reset the filter on the popover', async () => {
     const mockOnReset = jest.fn();
     render(
-      <FilterSelectButton
+      <PopoverFilter
         {...validProps}
         isApplied={true}
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
@@ -64,9 +64,9 @@ describe('<FilterSelectButton/>', () => {
 
   it('should show a close button if no filter is applied', async () => {
     render(
-      <FilterSelectButton {...validProps} isApplied={false}>
+      <PopoverFilter {...validProps} isApplied={false}>
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the bottom and on the top right
@@ -78,13 +78,13 @@ describe('<FilterSelectButton/>', () => {
   it('should show the primary action button if a filter is applied', async () => {
     const mockSearchButton = jest.fn();
     render(
-      <FilterSelectButton
+      <PopoverFilter
         {...validProps}
         isApplied={true}
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the top right
@@ -98,9 +98,9 @@ describe('<FilterSelectButton/>', () => {
   it('should call the callback if the popover opens', async () => {
     const mockOnOpen = jest.fn();
     render(
-      <FilterSelectButton {...validProps} onPopoverOpen={mockOnOpen}>
+      <PopoverFilter {...validProps} onPopoverOpen={mockOnOpen}>
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     expect(mockOnOpen).toHaveBeenCalledTimes(1);
@@ -109,13 +109,13 @@ describe('<FilterSelectButton/>', () => {
   it('should call the callback if the popover closes', async () => {
     const mockOnClose = jest.fn();
     render(
-      <FilterSelectButton
+      <PopoverFilter
         {...validProps}
         onPopoverClose={mockOnClose}
         isApplied={true}
       >
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     await userEvent.click(
@@ -126,22 +126,22 @@ describe('<FilterSelectButton/>', () => {
 
   it('should set the initial open state', () => {
     render(
-      <FilterSelectButton {...validProps} initialPopoverState="open">
+      <PopoverFilter {...validProps} initialPopoverState="open">
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
     expect(screen.getByText('Popover content')).toBeInTheDocument();
   });
 
   it('should show the number of applied filters', () => {
     render(
-      <FilterSelectButton
+      <PopoverFilter
         {...validProps}
         initialPopoverState="open"
         numberOfAppliedFilters={5}
       >
         <div>Popover content</div>
-      </FilterSelectButton>
+      </PopoverFilter>
     );
     expect(screen.getByText('5')).toBeInTheDocument();
   });

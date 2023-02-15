@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import Button from '../button';
-import { FilterSelectButtonProps } from './props';
+import { PopoverFilterProps } from './props';
 
 export type Props = {
   onClose: () => void;
-} & Pick<FilterSelectButtonProps, 'isApplied' | 'actionButton'>;
+} & Pick<PopoverFilterProps, 'isApplied' | 'actionButton'>;
 
-const FilterSelectCtaButton: FC<Props> = ({
+const FilterActionButton: FC<Props> = ({
   isApplied,
   actionButton,
   onClose,
@@ -33,4 +33,4 @@ const FilterSelectCtaButton: FC<Props> = ({
   );
 };
 
-export default FilterSelectCtaButton;
+export default FilterActionButton;

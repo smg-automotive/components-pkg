@@ -23,7 +23,7 @@ export { default as DrawerOverlay } from './drawer/DrawerOverlay';
 export { default as Divider } from './divider';
 export { default as EnergyLabel } from './energyLabel';
 export { default as ErrorPage } from './errorPage';
-export { FilterSelectButton } from './filterSelectButton';
+export { PopoverFilter } from './popoverFilter';
 export { default as Flex } from './flex';
 export { default as FormControl } from './formControl';
 export { default as FormLabel } from './formLabel';

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
-export type FilterSelectButtonProps = {
+export type PopoverFilterProps = {
   /**
    * The primary action button if a filter is applied.
    * If a filter is not applied, a secondary close button is shown.

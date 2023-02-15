@@ -7,16 +7,16 @@ import Link from '../link';
 import { CloseIcon } from '../icons';
 
 import Flex from '../flex';
-import { FilterSelectButtonProps } from './props';
+import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
 } & Pick<
-  FilterSelectButtonProps,
+  PopoverFilterProps,
   'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
 
-const FilterSelectButtonHeading: FC<Props> = ({
+const FilterHeading: FC<Props> = ({
   onClose,
   isApplied,
   label,
@@ -65,4 +65,4 @@ const FilterSelectButtonHeading: FC<Props> = ({
   );
 };
 
-export default FilterSelectButtonHeading;
+export default FilterHeading;

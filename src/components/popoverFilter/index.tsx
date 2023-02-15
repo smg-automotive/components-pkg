@@ -13,10 +13,10 @@ import {
 import TranslationProvider from '../translationProvider';
 import { ChevronDownSmallIcon, CloseIcon } from '../icons';
 
-import { FilterSelectButtonProps } from './props';
+import { PopoverFilterProps } from './props';
 import FilterPopover from './Popover';
 
-export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
+export const PopoverFilter: FC<PopoverFilterProps> = ({
   actionButton,
   displayValue,
   initialPopoverState = 'closed',
@@ -136,4 +136,4 @@ export const FilterSelectButton: FC<FilterSelectButtonProps> = ({
   );
 };
 
-export default FilterSelectButton;
+export default PopoverFilter;

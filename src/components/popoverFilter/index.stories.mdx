@@ -6,7 +6,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import Text from '../text';
 import Stack from '../stack';
 import Checkbox from '../checkbox';
-import { FilterSelectButton } from './index.tsx';
+import { PopoverFilter } from './index.tsx';
 
 export const CheckBoxFilter = ({ label, facet }) => (
   <Flex
@@ -30,8 +30,8 @@ export const DummyFilter = () => (
 );
 
 <Meta
-  title="Components/Filter/Select button"
-  component={FilterSelectButton}
+  title="Components/Filter/Popover"
+  component={PopoverFilter}
   args={{
     language: 'de',
     actionButton: {
@@ -54,20 +54,20 @@ export const DummyFilter = () => (
 
 export const Template = (args) => (
   <Box w={{ base: 'full', sm: '250px' }} h="400px">
-    <FilterSelectButton
+    <PopoverFilter
       {...args}
       onPopoverOpen={action('onPopoverOpen')}
       onPopoverClose={action('onPopoverClose')}
       onResetFilter={action('onResetFilter')}
     >
       <DummyFilter />
-    </FilterSelectButton>
+    </PopoverFilter>
   </Box>
 );
 
-# Filter select button
+# Popover filter
 
-<ArgsTable of={FilterSelectButton} />
+<ArgsTable of={PopoverFilter} />
 
 ## Default empty
 
