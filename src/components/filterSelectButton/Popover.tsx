@@ -48,7 +48,7 @@ const Popover: FC<Props> = ({
           onResetFilter={onResetFilter}
         />
       </PopoverHeader>
-      <PopoverBody maxH="7xl" overflowY="scroll">
+      <PopoverBody maxH="6xl" overflowY="scroll">
         {children}
       </PopoverBody>
       <PopoverFooter paddingTop="2xl">
