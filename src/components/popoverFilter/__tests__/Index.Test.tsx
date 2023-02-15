@@ -14,7 +14,7 @@ const validProps: PopoverFilterProps = {
   onResetFilter: jest.fn(),
   children: <div />,
 };
-describe('<FilterSelectButton/>', () => {
+describe('<PopoverFilter />', () => {
   it('should open the popover if you click on the button', async () => {
     render(
       <PopoverFilter {...validProps}>
