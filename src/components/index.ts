@@ -42,6 +42,7 @@ export { default as ListItem } from './list/ListItem';
 export { default as Menu } from './menu';
 export { default as MissingImage } from './missingImage';
 export { default as Pagination } from './pagination';
+export { PopoverFilter } from './popoverFilter';
 export { default as Radio } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as Section } from './section';

@@ -11,6 +11,10 @@
       "title": "Spiacenti, qualcosa è andato storto"
     }
   },
+  "filterSelectButton": {
+    "close": "Vicino",
+    "reset": "Ripristina"
+  },
   "footer": {
     "apps": {
       "title": "App download"
