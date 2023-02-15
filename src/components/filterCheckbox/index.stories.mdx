@@ -1,0 +1,59 @@
+import { useState } from 'react';
+
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import CheckboxFilter from './index.tsx';
+
+<Meta title="Components/Filters/Checkbox" component={CheckboxFilter} />
+
+export const Template = ({ selected, ...args }) => {
+  const [checked, setChecked] = useState(selected || []);
+  return (
+    <CheckboxFilter
+      {...args}
+      selected={checked}
+      apply={(filters) => {
+        setChecked(filters[args.name]);
+      }}
+      options={[
+        { label: 'New', value: 1 },
+        { label: 'Used', value: 2 },
+        { label: 'Old-timer', value: 3 },
+      ]}
+    />
+  );
+};
+
+# Checkbox
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      name: 'Filter',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
+
+## With facet
+
+<Canvas>
+  <Story
+    name="With facet"
+    args={{
+      name: 'Filter',
+      facet: { '1': 77, '2': 7137, '3': 0 },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="with facet" />
