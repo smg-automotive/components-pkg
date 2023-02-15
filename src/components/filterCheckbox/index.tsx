@@ -64,7 +64,13 @@ const CheckboxFilter: FC<Props> = ({
           label={
             <Flex width="5xl" justifyContent="space-between">
               <chakra.span>{label}</chakra.span>
-              {hasFacet && <chakra.span>{resultsCount.toString()}</chakra.span>}
+              {hasFacet && (
+                <chakra.span>
+                  {resultsCount
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1’')}
+                </chakra.span>
+              )}
             </Flex>
           }
           onChange={selectValue(value)}
