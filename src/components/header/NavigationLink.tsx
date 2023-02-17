@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
-import { Badge } from '@chakra-ui/react';
+import { Badge, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Link from '../link';
 
@@ -10,6 +10,8 @@ export interface NavigationLinkProps {
   isNew?: boolean;
   isVisible?: boolean;
   iconRight?: ReactNode;
+  fontWeight?: 'regular' | 'bold';
+  variant?: 'navigationLink' | 'subNavigationLink';
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({
@@ -17,13 +19,15 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   text,
   isNew,
   isVisible = true,
+  fontWeight = 'regular',
+  variant = 'navigationLink',
 }) => {
   if (!isVisible) return null;
 
   return (
-    <Link href={url} variant="headerLink">
+    <Link href={url} variant={variant} fontWeight={fontWeight}>
       {text}
-      {isNew ? <Badge>New</Badge> : null}
+      {isNew ? <Badge variant="navigationLinkBadge">New</Badge> : null}
     </Link>
   );
 };

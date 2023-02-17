@@ -20,14 +20,28 @@ const baseLink: SystemStyleObject = {
   },
 };
 
-const headerLink: SystemStyleObject = {
+const navigationLink: SystemStyleObject = {
   link: {
-    fontWeight: '700',
     color: 'gray.900',
     cursor: 'pointer',
+    fontSize: '16px',
     _hover: {
       textDecoration: 'none',
       color: 'blue.700',
+    },
+  },
+};
+
+const subNavigationLink: SystemStyleObject = {
+  link: {
+    color: 'gray.900',
+    cursor: 'pointer',
+    fontSize: '16px',
+    _hover: {
+      textDecoration: 'underline',
+    },
+    _focusVisible: {
+      outline: 'none',
     },
   },
 };
@@ -40,7 +54,8 @@ const Link: ComponentMultiStyleConfig = {
     rightIcon: { mr: 'xs' },
   },
   variants: {
-    headerLink,
+    navigationLink,
+    subNavigationLink,
     baseLink,
   },
   defaultProps: {

@@ -1,6 +1,5 @@
-import { boolean } from 'yargs';
-import { UserType, Plattform } from '..';
 import { NavigationLinkProps } from '../NavigationLink';
+import { Plattform, UserType } from '..';
 import { NavigationLinkConfigNode, resolveVisibility } from './converter';
 
 export interface NavigationLinkNode {

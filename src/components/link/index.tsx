@@ -14,8 +14,9 @@ interface Props {
   rightIcon?: ReactElement;
   isExternal?: boolean;
   rel?: string;
-  variant?: 'baseLink' | 'headerLink';
+  variant?: 'baseLink' | 'navigationLink';
   [key: string]: unknown;
+  fontWeight?: 'regular' | 'bold';
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
@@ -28,6 +29,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       leftIcon,
       rightIcon,
       variant = 'baseLink',
+      fontWeight = 'regular',
       ...rest
     },
     ref
@@ -51,6 +53,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         rel={rel || isExternal ? 'noopener noreferrer' : undefined}
         ref={ref}
         {...rest}
+        fontWeight={fontWeight}
       >
         {leftIcon}
         <chakra.span __css={textStyle}>{children}</chakra.span>

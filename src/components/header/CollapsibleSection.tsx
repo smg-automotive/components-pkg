@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { Box, GridItem } from '@chakra-ui/react';
 
-import NavigationLink from './NavigationLink';
-import { NavigationLinkNode } from './config/drawerNodeItems';
 import MobileOnlyAccordionPanel from '../mobileOnlyAccordion/MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from '../mobileOnlyAccordion/MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from '../mobileOnlyAccordion/MobileOnlyAccordionButton';
 import MobileOnlyAccordion from '../mobileOnlyAccordion';
 import ListItem from '../list/ListItem';
 import List from '../list';
+import NavigationLink from './NavigationLink';
+import { NavigationLinkNode } from './config/drawerNodeItems';
 
 interface CollapsibleProps {
   node: NavigationLinkNode;
@@ -17,25 +17,37 @@ interface CollapsibleProps {
 
 const CollapsibleSection: FC<CollapsibleProps> = ({ node }) => {
   return (
-    <GridItem gridColumn="span 3">
+    <GridItem>
       <MobileOnlyAccordion allowMultiple={true}>
-        <MobileOnlyAccordionItem>
-          <MobileOnlyAccordionButton>
-            <Box flex="1" textAlign="left">
-              {node.text}
-            </Box>
-          </MobileOnlyAccordionButton>
-          <MobileOnlyAccordionPanel>
+        <MobileOnlyAccordionItem border="none">
+          <Box
+            as={MobileOnlyAccordionButton}
+            flex="1"
+            textAlign="left"
+            fontSize="base"
+            paddingTop={{ base: 'md', md: 0 }}
+          >
+            {node.text}
+          </Box>
+          <Box
+            as={MobileOnlyAccordionPanel}
+            paddingTop={{ base: 'lg', md: 0 }}
+            paddingBottom="0"
+          >
             <List>
               {node.items.map((item, index) => {
                 return (
-                  <ListItem key={`menuEntry-${index}$`}>
-                    <NavigationLink {...item} />
-                  </ListItem>
+                  <Box
+                    as={ListItem}
+                    key={`menuEntry-${index}$`}
+                    paddingBottom={{ base: 'lg', md: 'md' }}
+                  >
+                    <NavigationLink {...item} variant="subNavigationLink" />
+                  </Box>
                 );
               })}
             </List>
-          </MobileOnlyAccordionPanel>
+          </Box>
         </MobileOnlyAccordionItem>
       </MobileOnlyAccordion>
     </GridItem>

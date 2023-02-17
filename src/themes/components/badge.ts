@@ -14,6 +14,17 @@ const baseStyle = defineStyle(({ theme }) => {
   };
 });
 
+const navigationLinkBadge = {
+  paddingX: 'xxs',
+  paddingY: 'xxs',
+  position: 'relative',
+  top: '-xs',
+  lineHeight: '100%',
+};
+
 export default {
   baseStyle,
+  variants: {
+    navigationLinkBadge,
+  },
 };

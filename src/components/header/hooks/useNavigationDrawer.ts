@@ -49,7 +49,7 @@ export const drawerHandlerFactory = ({
   };
 };
 
-type Drawer = {
+export type Drawer = {
   nodes: NavigationLinkNode[];
   current: DrawerNode;
 } | null;

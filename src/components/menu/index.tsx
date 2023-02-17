@@ -1,3 +1,4 @@
+import { FontWeights } from 'src/themes';
 import React, { FC } from 'react';
 import {
   Button,
@@ -6,8 +7,6 @@ import {
   MenuButton,
   MenuList,
 } from '@chakra-ui/react';
-
-import { FontWeights } from 'src/themes';
 
 import { ChevronDownSmallIcon } from '../icons';
 
