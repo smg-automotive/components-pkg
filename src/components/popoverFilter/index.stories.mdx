@@ -1,33 +1,9 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
-import Text from '../text';
-import Stack from '../stack';
-import Flex from '../flex';
-import Checkbox from '../checkbox';
+import CheckboxFilter from '../checkboxFilter';
 import Box from '../box';
 import { PopoverFilter } from './index.tsx';
-
-export const CheckBoxFilter = ({ label, facet }) => (
-  <Flex
-    justifyContent="space-between"
-    paddingY="xs"
-    paddingX="sm"
-    color="gray.900"
-  >
-    <Checkbox name={label} label={label} />
-    <Text>{facet}</Text>
-  </Flex>
-);
-
-export const DummyFilter = () => (
-  <Stack spacing="sm">
-    <CheckBoxFilter label="Benzin" facet="23" />
-    <CheckBoxFilter label="Diesel" facet="4" />
-    <CheckBoxFilter label="Elektro" facet="8" />
-    <CheckBoxFilter label="Hybrid" facet="55" />
-  </Stack>
-);
 
 <Meta
   title="Components/Filter/Popover"
@@ -60,7 +36,16 @@ export const Template = (args) => (
       onPopoverClose={action('onPopoverClose')}
       onResetFilter={action('onResetFilter')}
     >
-      <DummyFilter />
+      <CheckboxFilter
+        name="fuel-type"
+        items={[
+          { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
+          { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
+          { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
+          { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
+        ]}
+        onApply={() => null}
+      />
     </PopoverFilter>
   </Box>
 );

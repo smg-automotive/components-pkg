@@ -1,0 +1,59 @@
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import Box from '../box';
+
+import CheckboxFilterTemplate from './StoryTemplate.tsx';
+
+import CheckboxFilter from './index';
+
+<Meta
+  title="Components/Filter/Checkbox"
+  argTypes={{
+    onApplyAction: {
+      table: {
+        disable: true,
+      },
+    },
+    defaultFacets: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => {
+  return (
+    <Box w="6xl">
+      <CheckboxFilterTemplate {...args} />
+    </Box>
+  );
+};
+
+# Checkbox
+
+<ArgsTable of={CheckboxFilter} />
+
+## Overview
+
+<Story
+  name="Overview"
+  args={{
+    onApplyAction: action('onApply'),
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## With disabled
+
+<Story
+  name="With disabled"
+  args={{
+    onApplyAction: action('onApply'),
+    defaultFacets: { 'old-timer': 0 },
+  }}
+>
+  {Template.bind({})}
+</Story>

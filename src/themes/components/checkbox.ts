@@ -44,6 +44,7 @@ const baseStyleIcon: SystemStyleObject = {
 };
 
 const baseStyleLabel: SystemStyleObject = {
+  width: 'full',
   textStyle: 'body',
   fontWeight: {
     bold: fontWeights.bold,
