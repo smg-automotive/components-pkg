@@ -1,4 +1,8 @@
-import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
+import {
+  ComponentStyleConfig,
+  createMultiStyleConfigHelpers,
+  defineStyle,
+} from '@chakra-ui/react';
 import { listAnatomy as parts } from '@chakra-ui/anatomy';
 
 const { defineMultiStyleConfig, definePartsStyle } =
@@ -37,4 +41,4 @@ export default defineMultiStyleConfig({
   defaultProps: {
     variant: 'md',
   },
-});
+}) as ComponentStyleConfig;

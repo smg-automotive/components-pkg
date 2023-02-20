@@ -1,5 +1,9 @@
 import { mode } from '@chakra-ui/theme-tools';
-import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
+import {
+  ComponentStyleConfig,
+  createMultiStyleConfigHelpers,
+  defineStyle,
+} from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { opacity } from '../shared/opacity';
@@ -93,4 +97,4 @@ export default defineMultiStyleConfig({
   baseStyle,
   sizes,
   defaultProps: { size: 'md' },
-});
+}) as ComponentStyleConfig;

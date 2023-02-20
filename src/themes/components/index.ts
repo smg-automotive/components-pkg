@@ -1,3 +1,5 @@
+import { ComponentStyleConfig } from '@chakra-ui/react';
+
 import VehicleReference from './vehicleReference';
 import Tooltip from './tooltip';
 import Textarea from './textarea';
@@ -30,7 +32,7 @@ import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
 import Accordion from './accordion';
 
-export const components = {
+export const components: Record<string, ComponentStyleConfig> = {
   Accordion,
   Alert,
   ArticleTeaser,

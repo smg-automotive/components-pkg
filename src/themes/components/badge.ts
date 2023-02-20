@@ -1,4 +1,4 @@
-import { defineStyle } from '@chakra-ui/react';
+import { ComponentStyleConfig, defineStyle } from '@chakra-ui/react';
 
 const baseStyle = defineStyle(({ theme }) => {
   const color = theme.name === 'AutoScout 24' ? 'black' : 'white';
@@ -16,4 +16,4 @@ const baseStyle = defineStyle(({ theme }) => {
 
 export default {
   baseStyle,
-};
+} as ComponentStyleConfig;

@@ -1,5 +1,9 @@
 import { cssVar, mode } from '@chakra-ui/theme-tools';
-import { PartsStyleFunction, PartsStyleObject } from '@chakra-ui/react';
+import {
+  ComponentStyleConfig,
+  PartsStyleFunction,
+  PartsStyleObject,
+} from '@chakra-ui/react';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';
 
 const $fg = cssVar('alert-fg');
@@ -59,4 +63,4 @@ export default {
   baseStyle,
   variants,
   defaultProps,
-};
+} as ComponentStyleConfig;

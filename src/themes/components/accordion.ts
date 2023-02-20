@@ -1,4 +1,8 @@
-import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
+import {
+  ComponentStyleConfig,
+  createMultiStyleConfigHelpers,
+  defineStyle,
+} from '@chakra-ui/react';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
 const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
@@ -110,4 +114,4 @@ export default defineMultiStyleConfig({
   defaultProps: {
     variant: 'light',
   },
-});
+}) as ComponentStyleConfig;
