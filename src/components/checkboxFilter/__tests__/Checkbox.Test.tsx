@@ -39,15 +39,34 @@ describe('<CheckBoxFilter />', () => {
     await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
     expect(onApply).toHaveBeenCalledWith(
-      { value: 'new', isChecked: true },
+      { key: 'new', isChecked: true },
       { new: true, used: false }
     );
   });
 
-  it('disables checkbox filter with facet zero', () => {
+  it('should disable the checkbox filter with facet zero', () => {
     renderWrapper({ facet: { used: 0, new: 10 } });
 
     const checkboxFilter = screen.getByRole('checkbox', { name: /Used/ });
     expect(checkboxFilter).toBeDisabled();
+  });
+
+  it('should not disable the checkbox if the checkbox is selected', () => {
+    renderWrapper({
+      facet: { used: 0, new: 10 },
+      checked: { used: true, new: false },
+    });
+
+    const checkboxFilter = screen.getByRole('checkbox', { name: /Used/ });
+    expect(checkboxFilter).toBeEnabled();
+  });
+
+  it('should separate the facet number with a thousand separator', () => {
+    renderWrapper({ facet: { used: 1000000, new: 10 } });
+    expect(
+      screen.getByRole('checkbox', {
+        name: 'Used 1’000’000',
+      })
+    ).toBeInTheDocument();
   });
 });

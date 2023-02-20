@@ -39,7 +39,7 @@ type Props<ItemKey extends string> = {
 };
 
 const addThousandSeparatorToNumber = (value: number) => {
-  return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1’');
+  return new Intl.NumberFormat('de-CH').format(value);
 };
 
 function CheckboxFilter<ItemKey extends string>({
@@ -77,6 +77,7 @@ function CheckboxFilter<ItemKey extends string>({
             }}
             isDisabled={facets[item.key] === 0 && !checked[item.key]}
             isChecked={checked[item.key]}
+            value={item.key}
           />
         );
       })}
