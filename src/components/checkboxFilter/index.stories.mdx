@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
 
 import CheckboxFilter from './index.tsx';
 
-<Meta title="Components/Filters/Checkbox" component={CheckboxFilter} />
+<Meta title="Components/Filter/Checkbox" component={CheckboxFilter} />
 
 export const Template = ({ selected, ...args }) => {
   const [checked, setChecked] = useState(selected || []);
