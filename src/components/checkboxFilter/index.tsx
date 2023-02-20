@@ -16,6 +16,7 @@ type Props<ItemKey extends string> = {
    */
   name: string;
   /**
+   * @template ItemKey
    * @param Item: { key: ItemKey, label: string }
    */
   items: Item<ItemKey>[];
