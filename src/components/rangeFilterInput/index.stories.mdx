@@ -6,7 +6,7 @@ import { Box } from '@chakra-ui/react';
 
 import RangeFilterInput from './index';
 
-<Meta title="Components/Forms/RangeFilterInput" component={RangeFilterInput} />;
+<Meta title="Components/Forms/FilterInput" component={RangeFilterInput} />;
 
 export const Template = ({
   handleChange,
@@ -57,8 +57,8 @@ export const Template = ({
         from: 'From',
         to: 'To',
       },
-      handleChange: (touched, value) => {
-        console.log(touched, value);
+      handleChange: (event) => {
+        console.log(event);
       },
     }}
     argTypes={{
@@ -82,6 +82,29 @@ export const Template = ({
     name="With initial value"
     args={{
       unit: 'CHF',
+      name: {
+        from: 'priceFrom',
+        to: 'priceTo',
+      },
+      value: {
+        from: 100,
+        to: 200,
+      },
+      handleChange: (event) => {
+        console.log(event);
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Without unit
+
+<Canvas>
+  <Story
+    name="Without unit"
+    args={{
       name: {
         from: 'priceFrom',
         to: 'priceTo',
