@@ -8,8 +8,8 @@ import CheckboxFilter from '../index';
 const renderWrapper = ({
   name = 'condition-filter',
   options = [
-    { label: 'New', value: 'new' },
-    { label: 'Used', value: 'used' },
+    { label: 'New', key: 'new' },
+    { label: 'Used', key: 'used' },
   ],
   onApply = jest.fn(),
   facet = { new: 77, used: 0 },
@@ -18,7 +18,7 @@ const renderWrapper = ({
   render(
     <CheckboxFilter
       name={name}
-      options={options}
+      items={options}
       onApply={onApply}
       facets={facet}
       checked={checked}

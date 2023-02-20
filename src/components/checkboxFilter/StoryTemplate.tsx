@@ -4,10 +4,10 @@ import CheckboxFilter from './index';
 
 type Values = 'new' | 'used' | 'old-timer';
 
-const options: Array<{ label: string; value: Values }> = [
-  { label: 'New', value: 'new' },
-  { label: 'Used', value: 'used' },
-  { label: 'Old-timer', value: 'old-timer' },
+const options: Array<{ label: string; key: Values }> = [
+  { label: 'New', key: 'new' },
+  { label: 'Used', key: 'used' },
+  { label: 'Old-timer', key: 'old-timer' },
 ];
 
 type Props = {
@@ -25,7 +25,7 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets }) => {
   return (
     <CheckboxFilter
       checked={checked}
-      options={options}
+      items={options}
       facets={{
         new: 10,
         used: 20,

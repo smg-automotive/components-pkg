@@ -50,11 +50,11 @@ export const Template = (args) => (
           electric: 4,
           hybrid: 0,
         }}
-        options={[
-          { label: 'Benzin', value: 'petrol' },
-          { label: 'Diesel', value: 'diesel' },
-          { label: 'Elektro', value: 'electric' },
-          { label: 'Hybrid', value: 'hybrid' },
+        items={[
+          { label: 'Benzin', key: 'petrol' },
+          { label: 'Diesel', key: 'diesel' },
+          { label: 'Elektro', key: 'electric' },
+          { label: 'Hybrid', key: 'hybrid' },
         ]}
         onApply={() => null}
       />
