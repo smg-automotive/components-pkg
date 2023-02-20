@@ -8,7 +8,11 @@ import Checkbox from '../checkbox';
 type Item<ItemKey> = {
   key: ItemKey;
   label: string;
+  facet: number;
+  isChecked: boolean;
 };
+
+type State<ItemKey extends string> = { [key in ItemKey]: boolean };
 
 type Props<ItemKey extends string> = {
   /**
@@ -17,26 +21,19 @@ type Props<ItemKey extends string> = {
   name: string;
   /**
    * @template ItemKey
-   * @param Item: { key: ItemKey, label: string }
+   * @param {Item} item     renders one checkbox { key: ItemKey, label: string, facet: number, isChecked: boolean }
+   * @param item.key        unique name of the checkbox
+   * @param item.label      label shown on the UI
+   * @param item.facet      Numeric value shown next to the checkbox label. Indicates how many search results are going to be visible after the checkbox has been applied.
+   * @param item.isChecked  The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
    */
   items: Item<ItemKey>[];
   /**
-   * The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
-   */
-  checked: { [key in ItemKey]: boolean };
-  /**
-   * Numeric value shown next to the checkbox label. Indicates how many search results are going to be visible after the checkbox has been applied.
-   */
-  facets: { [key in ItemKey]: number };
-  /**
    * Callback function that is triggered after any checkbox has been clicked.
-   * @param item: contains the modified checkbox with the new value
-   * @param newFilterState: contains the new state of the whole filter group
+   * @param updatedItem     contains the modified checkbox with the new value
+   * @param newState        contains the new state of the whole filter group
    */
-  onApply: (
-    item: { key: ItemKey; isChecked: boolean },
-    newFilterState: { [key in ItemKey]: boolean }
-  ) => void;
+  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
 };
 
 const addThousandSeparatorToNumber = (value: number) => {
@@ -46,8 +43,6 @@ const addThousandSeparatorToNumber = (value: number) => {
 function CheckboxFilter<ItemKey extends string>({
   name,
   items,
-  checked,
-  facets,
   onApply,
 }: Props<ItemKey>) {
   return (
@@ -65,19 +60,26 @@ function CheckboxFilter<ItemKey extends string>({
               >
                 <chakra.span>{item.label}</chakra.span>
                 <chakra.span>
-                  {addThousandSeparatorToNumber(facets[item.key])}
+                  {addThousandSeparatorToNumber(item.facet)}
                 </chakra.span>
               </chakra.span>
             }
             onChange={(event) => {
               const isChecked = event.target.checked;
+              const previousState = items.reduce<Partial<State<ItemKey>>>(
+                (acc, currentItem) => {
+                  acc[currentItem.key] = currentItem.isChecked;
+                  return acc;
+                },
+                {}
+              );
               onApply(
-                { key: item.key, isChecked },
-                { ...checked, [item.key]: isChecked }
+                { ...item, isChecked },
+                { ...previousState, [item.key]: isChecked }
               );
             }}
-            isDisabled={facets[item.key] === 0 && !checked[item.key]}
-            isChecked={checked[item.key]}
+            isDisabled={item.facet === 0 && !item.isChecked}
+            isChecked={item.isChecked}
             value={item.key}
           />
         );

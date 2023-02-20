@@ -8,22 +8,12 @@ import CheckboxFilter from '../index';
 const renderWrapper = ({
   name = 'condition-filter',
   options = [
-    { label: 'New', key: 'new' },
-    { label: 'Used', key: 'used' },
+    { label: 'New', key: 'new', facet: 77, isChecked: false },
+    { label: 'Used', key: 'used', facet: 0, isChecked: false },
   ],
   onApply = jest.fn(),
-  facet = { new: 77, used: 0 },
-  checked = { new: false, used: false },
 } = {}) =>
-  render(
-    <CheckboxFilter
-      name={name}
-      items={options}
-      onApply={onApply}
-      facets={facet}
-      checked={checked}
-    />
-  );
+  render(<CheckboxFilter name={name} items={options} onApply={onApply} />);
 
 describe('<CheckBoxFilter />', () => {
   it('should render a checkbox for each option', () => {
@@ -39,13 +29,13 @@ describe('<CheckBoxFilter />', () => {
     await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
     expect(onApply).toHaveBeenCalledWith(
-      { key: 'new', isChecked: true },
+      { label: 'New', key: 'new', isChecked: true, facet: 77 },
       { new: true, used: false }
     );
   });
 
   it('should disable the checkbox filter with facet zero', () => {
-    renderWrapper({ facet: { used: 0, new: 10 } });
+    renderWrapper();
 
     const checkboxFilter = screen.getByRole('checkbox', { name: /Used/ });
     expect(checkboxFilter).toBeDisabled();
@@ -53,8 +43,10 @@ describe('<CheckBoxFilter />', () => {
 
   it('should not disable the checkbox if the checkbox is selected', () => {
     renderWrapper({
-      facet: { used: 0, new: 10 },
-      checked: { used: true, new: false },
+      options: [
+        { label: 'New', key: 'new', facet: 77, isChecked: false },
+        { label: 'Used', key: 'used', facet: 0, isChecked: true },
+      ],
     });
 
     const checkboxFilter = screen.getByRole('checkbox', { name: /Used/ });
@@ -62,7 +54,12 @@ describe('<CheckBoxFilter />', () => {
   });
 
   it('should separate the facet number with a thousand separator', () => {
-    renderWrapper({ facet: { used: 1000000, new: 10 } });
+    renderWrapper({
+      options: [
+        { label: 'New', key: 'new', facet: 77, isChecked: false },
+        { label: 'Used', key: 'used', facet: 1000000, isChecked: false },
+      ],
+    });
     expect(
       screen.getByRole('checkbox', {
         name: 'Used 1’000’000',
