@@ -11,6 +11,10 @@
       "title": "Tut uns leid, da ist was schief gegangen"
     }
   },
+  "filterSelectButton": {
+    "close": "Schliessen",
+    "reset": "Zurücksetzen"
+  },
   "footer": {
     "apps": {
       "title": "Mobile Apps"

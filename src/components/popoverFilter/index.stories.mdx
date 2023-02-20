@@ -1,0 +1,138 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import Text from '../text';
+import Stack from '../stack';
+import Flex from '../flex';
+import Checkbox from '../checkbox';
+import Box from '../box';
+import { PopoverFilter } from './index.tsx';
+
+export const CheckBoxFilter = ({ label, facet }) => (
+  <Flex
+    justifyContent="space-between"
+    paddingY="xs"
+    paddingX="sm"
+    color="gray.900"
+  >
+    <Checkbox name={label} label={label} />
+    <Text>{facet}</Text>
+  </Flex>
+);
+
+export const DummyFilter = () => (
+  <Stack spacing="sm">
+    <CheckBoxFilter label="Benzin" facet="23" />
+    <CheckBoxFilter label="Diesel" facet="4" />
+    <CheckBoxFilter label="Elektro" facet="8" />
+    <CheckBoxFilter label="Hybrid" facet="55" />
+  </Stack>
+);
+
+<Meta
+  title="Components/Filter/Popover"
+  component={PopoverFilter}
+  args={{
+    language: 'de',
+    actionButton: {
+      label: '12324 Fahrzeuge',
+      onClick: action('actionButton - onClick'),
+    },
+  }}
+  argTypes={{
+    language: {
+      options: ['de', 'fr', 'it', 'en'],
+      control: 'select',
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => (
+  <Box w={{ base: 'full', sm: '250px' }} h="400px">
+    <PopoverFilter
+      {...args}
+      onPopoverOpen={action('onPopoverOpen')}
+      onPopoverClose={action('onPopoverClose')}
+      onResetFilter={action('onResetFilter')}
+    >
+      <DummyFilter />
+    </PopoverFilter>
+  </Box>
+);
+
+# Popover filter
+
+<ArgsTable of={PopoverFilter} />
+
+## Default empty
+
+<Canvas>
+  <Story
+    name="Default empty"
+    args={{
+      label: 'Treibstoff',
+    }}
+    argTypes={{
+      actionButton: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Default initially open
+
+<Canvas>
+  <Story
+    name="Default initially open"
+    args={{
+      label: 'Treibstoff',
+      initialPopoverState: 'open',
+    }}
+    argTypes={{
+      initialPopoverState: {
+        options: ['open', 'closed'],
+        control: 'select',
+      },
+      actionButton: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Applied
+
+<Canvas>
+  <Story
+    name="Applied"
+    args={{
+      label: 'Treibstoff',
+      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+      numberOfAppliedFilters: 5,
+      isApplied: true,
+    }}
+    argTypes={{
+      isApplied: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

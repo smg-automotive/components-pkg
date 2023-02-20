@@ -114,7 +114,7 @@
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.1.2",
-    "@chakra-ui/react": "2.4.9",
+    "@chakra-ui/react": "2.5.0",
     "@chakra-ui/theme-tools": "2.0.17",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
