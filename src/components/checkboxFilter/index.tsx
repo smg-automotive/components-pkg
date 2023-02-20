@@ -21,6 +21,10 @@ type Props<Option extends string | number> = {
   ) => void;
 };
 
+const addThousandSeparatorToNumber = (value: number) => {
+  return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1’');
+};
+
 function CheckboxFilter<Option extends string | number>({
   name,
   options,
@@ -43,9 +47,7 @@ function CheckboxFilter<Option extends string | number>({
               >
                 <chakra.span>{option.label}</chakra.span>
                 <chakra.span>
-                  {facets[option.value]
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1’')}
+                  {addThousandSeparatorToNumber(facets[option.value])}
                 </chakra.span>
               </chakra.span>
             }
