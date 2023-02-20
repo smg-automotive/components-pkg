@@ -1,4 +1,5 @@
 import type {
+  ComponentStyleConfig,
   SystemStyleInterpolation,
   SystemStyleObject,
 } from '@chakra-ui/react';
@@ -28,4 +29,4 @@ export default {
   baseStyle,
   variants,
   defaultProps,
-};
+} as ComponentStyleConfig;
