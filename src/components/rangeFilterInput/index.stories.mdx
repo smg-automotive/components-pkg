@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
@@ -6,15 +8,91 @@ import RangeFilterInput from './index';
 
 <Meta title="Components/Forms/RangeFilterInput" component={RangeFilterInput} />;
 
-export const Template = (args) => <RangeFilterInput {...args} />;
+export const Template = ({
+  handleChange,
+  name,
+  placeholder,
+  size,
+  unit,
+  value,
+  ...rest
+}) => {
+  const [currentValue, setCurrentValue] = useState(value);
+  const onChange = (editedField, newValue) => {
+    setCurrentValue({
+      ...currentValue,
+      [editedField]: newValue[editedField],
+      touched: editedField,
+    });
+  };
+  return (
+    <Box maxW={270}>
+      <RangeFilterInput
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        handleChange={(event) => {
+          onChange(event.touched, event.value);
+        }}
+        size={size}
+        unit={unit}
+        {...rest}
+      />
+    </Box>
+  );
+};
 
 ## Overview
 
 <Canvas>
   <Story
-    name="RangeFilterInput"
+    name="Overview"
     args={{
       unit: 'CHF',
+      name: {
+        from: 'priceFrom',
+        to: 'priceTo',
+      },
+      placeholder: {
+        from: 'From',
+        to: 'To',
+      },
+      handleChange: (touched, value) => {
+        console.log(touched, value);
+      },
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      isDisabled: {
+        control: 'boolean',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With initial value
+
+<Canvas>
+  <Story
+    name="With initial value"
+    args={{
+      unit: 'CHF',
+      name: {
+        from: 'priceFrom',
+        to: 'priceTo',
+      },
+      value: {
+        from: 100,
+        to: 200,
+      },
+      handleChange: (touched, value) => {
+        console.log(touched, value);
+      },
     }}
   >
     {Template.bind({})}

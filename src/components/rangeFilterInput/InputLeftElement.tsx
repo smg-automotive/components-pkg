@@ -4,7 +4,12 @@ import { InputLeftElement as ChakraInputLeftElement } from '@chakra-ui/react';
 
 const InputLeftElement: FC<{ unit: string }> = ({ unit }) => {
   return (
-    <ChakraInputLeftElement pointerEvents="none" paddingLeft="sm">
+    <ChakraInputLeftElement
+      pointerEvents="none"
+      paddingLeft="sm"
+      height="full"
+      fontSize="sm"
+    >
       {unit}
     </ChakraInputLeftElement>
   );

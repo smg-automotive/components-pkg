@@ -81,13 +81,13 @@ const variantOutlineTo: PartsStyleObject<typeof parts> = {
 };
 
 const variants = {
-  outlineFrom: variantOutlineFrom,
-  outlineTo: variantOutlineTo,
+  fromOutline: variantOutlineFrom,
+  toOutline: variantOutlineTo,
 };
 
 const defaultProps = {
   size: 'md',
-  variant: 'outlineFrom',
+  variant: 'fromOutline',
 };
 
 export default {
