@@ -1,8 +1,11 @@
-import { Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
-import CheckboxFilter from './StoryTemplate.tsx';
+
+import CheckboxFilterTemplate from './StoryTemplate.tsx';
+
+import CheckboxFilter from './index';
 
 <Meta
   title="Components/Filter/Checkbox"
@@ -23,12 +26,14 @@ import CheckboxFilter from './StoryTemplate.tsx';
 export const Template = (args) => {
   return (
     <Box w="6xl">
-      <CheckboxFilter {...args} />
+      <CheckboxFilterTemplate {...args} />
     </Box>
   );
 };
 
 # Checkbox
+
+<ArgsTable of={CheckboxFilter} />
 
 ## Overview
 

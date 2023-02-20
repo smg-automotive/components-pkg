@@ -11,10 +11,27 @@ type Item<Option> = {
 };
 
 type Props<Option extends string | number> = {
+  /**
+   * Name of the filter - only used on the DOM.
+   */
   name: string;
+  /**
+   * @param Item: { value: Option, label: string }
+   */
   options: Item<Option>[];
+  /**
+   * The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
+   */
   checked: { [key in Option]: boolean };
+  /**
+   * Numeric value shown next to the checkbox label. Indicates how many search results are going to be visible after the checkbox has been applied.
+   */
   facets: { [key in Option]: number };
+  /**
+   * Callback function that is triggered after any checkbox has been clicked.
+   * @param item: contains the modified checkbox with the new value
+   * @param newFilterState: contains the new state of the whole filter group
+   */
   onApply: (
     item: { value: Option; isChecked: boolean },
     newFilterState: { [key in Option]: boolean }
