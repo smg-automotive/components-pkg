@@ -1,5 +1,5 @@
 import React from 'react';
-import { forwardRef } from '@chakra-ui/react';
+import { ComponentWithAs, forwardRef } from '@chakra-ui/react';
 
 import Grid, { GridProps } from 'src/components/grid';
 
@@ -9,7 +9,10 @@ const pageGirdArea = `
   "footer"
 `;
 
-const AppLayout = forwardRef<GridProps, 'div'>((props, ref) => {
+const AppLayout: ComponentWithAs<'div', GridProps> = forwardRef<
+  GridProps,
+  'div'
+>((props, ref) => {
   return (
     <Grid
       templateRows="min-content auto min-content"
@@ -17,7 +20,7 @@ const AppLayout = forwardRef<GridProps, 'div'>((props, ref) => {
       minHeight="100vh"
       ref={ref}
       textStyle="body"
-      {...props}
+      {...(props as GridProps)}
     />
   );
 });
