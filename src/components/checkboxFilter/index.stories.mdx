@@ -1,26 +1,30 @@
-import { useState } from 'react';
+import { Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import Box from '../box';
+import CheckboxFilter from './StoryTemplate.tsx';
 
-import CheckboxFilter from './index.tsx';
+<Meta
+  title="Components/Filter/Checkbox"
+  argTypes={{
+    onApplyAction: {
+      table: {
+        disable: true,
+      },
+    },
+    defaultFacets: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
 
-<Meta title="Components/Filter/Checkbox" component={CheckboxFilter} />
-
-export const Template = ({ selected, ...args }) => {
-  const [checked, setChecked] = useState(selected || []);
+export const Template = (args) => {
   return (
-    <CheckboxFilter
-      {...args}
-      selected={checked}
-      apply={(filters) => {
-        setChecked(filters[args.name]);
-      }}
-      options={[
-        { label: 'New', value: 1 },
-        { label: 'Used', value: 2 },
-        { label: 'Old-timer', value: 3 },
-      ]}
-    />
+    <Box w="6xl">
+      <CheckboxFilter {...args} />
+    </Box>
   );
 };
 
@@ -28,31 +32,23 @@ export const Template = ({ selected, ...args }) => {
 
 ## Overview
 
-<Canvas>
-  <Story
-    name="Overview"
-    args={{
-      name: 'Filter',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
+<Story
+  name="Overview"
+  args={{
+    onApplyAction: action('onApply'),
+  }}
+>
+  {Template.bind({})}
+</Story>
 
-<ArgsTable story="Overview" />
+## With disabled
 
-## With facet
-
-<Canvas>
-  <Story
-    name="With facet"
-    args={{
-      name: 'Filter',
-      facet: { '1': 77, '2': 7123, '3': 0 },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<ArgsTable story="with facet" />
+<Story
+  name="With disabled"
+  args={{
+    onApplyAction: action('onApply'),
+    defaultFacets: { 'old-timer': 0 },
+  }}
+>
+  {Template.bind({})}
+</Story>
