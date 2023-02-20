@@ -38,23 +38,11 @@ export const Template = (args) => (
     >
       <CheckboxFilter
         name="fuel-type"
-        checked={{
-          petrol: true,
-          diesel: true,
-          electric: false,
-          hybrid: false,
-        }}
-        facets={{
-          petrol: 20,
-          diesel: 17,
-          electric: 4,
-          hybrid: 0,
-        }}
         items={[
-          { label: 'Benzin', key: 'petrol' },
-          { label: 'Diesel', key: 'diesel' },
-          { label: 'Elektro', key: 'electric' },
-          { label: 'Hybrid', key: 'hybrid' },
+          { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
+          { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
+          { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
+          { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
         ]}
         onApply={() => null}
       />
