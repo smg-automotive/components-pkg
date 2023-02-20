@@ -6,55 +6,48 @@ import { userEvent } from '@storybook/testing-library';
 import CheckboxFilter from '../index';
 
 const renderWrapper = ({
-  name = 'Filter',
+  name = 'condition-filter',
   options = [
-    { label: 'New', value: 1 },
-    { label: 'Used', value: 2 },
+    { label: 'New', value: 'new' },
+    { label: 'Used', value: 'used' },
   ],
-  applyFilters = jest.fn(),
-  facet = { '1': 77, '2': 0 },
-  selected = [],
-  onSelect = jest.fn(),
+  onApply = jest.fn(),
+  facet = { new: 77, used: 0 },
+  checked = { new: false, used: false },
 } = {}) =>
   render(
     <CheckboxFilter
       name={name}
       options={options}
-      onApply={applyFilters}
+      onApply={onApply}
       facets={facet}
-      selected={selected}
-      onSelect={onSelect}
+      checked={checked}
     />
   );
 
 describe('<CheckBoxFilter />', () => {
-  it('renders checkbox filter with facet', () => {
+  it('should render a checkbox for each option', () => {
     renderWrapper();
 
-    const checkboxFilter = screen.getByRole('checkbox', { name: 'New 77' });
-    expect(checkboxFilter).toBeInTheDocument();
+    expect(screen.getByRole('checkbox', { name: /New/ })).toBeInTheDocument();
+    expect(screen.getByRole('checkbox', { name: /Used/ })).toBeInTheDocument();
   });
 
-  it('applies filter on click', () => {
-    const applyFilters = jest.fn();
-    renderWrapper({ applyFilters });
-    userEvent.click(screen.getByRole('checkbox', { name: 'New 77' }));
+  it('should call onApply', async () => {
+    const onApply = jest.fn();
+    renderWrapper({ onApply });
+    await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
-    expect(applyFilters).toHaveBeenCalled();
-  });
-
-  it('calls onSelect when the values is selected', () => {
-    const onSelect = jest.fn();
-    renderWrapper({ onSelect });
-    userEvent.click(screen.getByRole('checkbox', { name: 'New 77' }));
-
-    expect(onSelect).toHaveBeenCalledWith(1);
+    expect(onApply).toHaveBeenCalledWith(
+      { value: 'new', isChecked: true },
+      { new: true, used: false }
+    );
   });
 
   it('disables checkbox filter with facet zero', () => {
-    renderWrapper();
+    renderWrapper({ facet: { used: 0, new: 10 } });
 
-    const checkboxFilter = screen.getByRole('checkbox', { name: 'Used 0' });
+    const checkboxFilter = screen.getByRole('checkbox', { name: /Used/ });
     expect(checkboxFilter).toBeDisabled();
   });
 });

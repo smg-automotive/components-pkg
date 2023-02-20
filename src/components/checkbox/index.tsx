@@ -7,7 +7,7 @@ export interface CheckboxProps {
   isDisabled?: boolean;
   isChecked?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  label?: ReactNode;
+  label?: ReactNode | string;
   isInvalid?: boolean;
   isIndeterminate?: boolean;
   size?: 'sm' | 'lg';

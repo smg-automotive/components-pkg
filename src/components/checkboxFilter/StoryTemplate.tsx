@@ -24,6 +24,7 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets }) => {
 
   return (
     <CheckboxFilter
+      checked={checked}
       options={options}
       facets={{
         new: 10,
@@ -31,7 +32,6 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets }) => {
         'old-timer': 1,
         ...defaultFacets,
       }}
-      checked={checked}
       name="condition-filter"
       onApply={(item, newFilterState) => {
         onApplyAction({ item, newFilterState });
