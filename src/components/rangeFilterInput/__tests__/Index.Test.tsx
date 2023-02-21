@@ -17,7 +17,7 @@ describe('<RangeFilterInput/>', () => {
         }}
         unit="CHF"
         value={{
-          from: 400,
+          from: 200,
           to: 1000,
         }}
         placeholder={{
@@ -56,7 +56,7 @@ describe('<RangeFilterInput/>', () => {
       () => {
         expect(mockOnChange).toHaveBeenCalledWith({
           touched: 'to',
-          value: { from: 400, to: '300' },
+          value: { from: 200, to: '300' },
         });
       },
       { timeout: 1500 }
