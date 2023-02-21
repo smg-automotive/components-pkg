@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
@@ -8,15 +7,7 @@ import RangeFilterInput from './index';
 
 <Meta title="Components/Forms/FilterInput" component={RangeFilterInput} />;
 
-export const Template = ({
-  handleChange,
-  name,
-  placeholder,
-  size,
-  unit,
-  value,
-  ...rest
-}) => {
+export const Template = ({ name, placeholder, size, unit, value, ...rest }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const onChange = (editedField, newValue) => {
     setCurrentValue({
@@ -57,9 +48,6 @@ export const Template = ({
         from: 'From',
         to: 'To',
       },
-      handleChange: (event) => {
-        console.log(event);
-      },
     }}
     argTypes={{
       size: {
@@ -90,9 +78,6 @@ export const Template = ({
         from: 100,
         to: 200,
       },
-      handleChange: (event) => {
-        console.log(event);
-      },
     }}
   >
     {Template.bind({})}
@@ -112,9 +97,6 @@ export const Template = ({
       value: {
         from: 100,
         to: 200,
-      },
-      handleChange: (touched, value) => {
-        console.log(touched, value);
       },
     }}
   >
