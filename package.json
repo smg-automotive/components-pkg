@@ -126,6 +126,6 @@
     "fs-extra": "11.1.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "9.0.3",
-    "yargs": "17.6.2"
+    "yargs": "17.7.1"
   }
 }
