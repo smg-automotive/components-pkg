@@ -5,19 +5,11 @@ import { act, render, screen } from '@testing-library/react';
 
 import RangeFilterInput from '../index';
 
-type ChangeCallback = (event: { value: number; name: 'from' | 'to' }) => void;
-
 describe('<RangeFilterInput/>', () => {
-  const renderInputField = (onChange?: ChangeCallback) => {
+  const renderInputField = (onChange = jest.fn()) => {
     return render(
       <RangeFilterInput
-        handleChange={
-          onChange
-            ? onChange
-            : () => {
-                return;
-              }
-        }
+        handleChange={onChange}
         from={{
           name: 'priceFrom',
           value: 200,

@@ -27,10 +27,6 @@ import RangeFilterInput from './index';
 export const Template = ({ from, to, unit, ...rest }) => {
   const [currentValue, setCurrentValue] = useState({ from, to });
   const onChange = (value, name) => {
-    action('change')({
-      ...currentValue,
-      [name]: { ...currentValue[name], value },
-    });
     setCurrentValue({
       ...currentValue,
       [name]: { ...currentValue[name], value },
@@ -42,6 +38,7 @@ export const Template = ({ from, to, unit, ...rest }) => {
         from={from}
         to={to}
         handleChange={(event) => {
+          action('change')(event);
           onChange(event.value, event.name);
         }}
         unit={unit}
