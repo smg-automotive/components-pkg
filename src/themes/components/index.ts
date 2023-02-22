@@ -12,6 +12,7 @@ import Select from './select';
 import Section from './section';
 import Radio from './radio';
 import Pagination from './pagination';
+import NumberInput from './numberInput';
 import Modal from './modal';
 import Menu from './menu';
 import List from './list';
@@ -52,6 +53,7 @@ export const components: Record<string, ComponentStyleConfig> = {
   List,
   Menu,
   Modal,
+  NumberInput,
   Pagination,
   Radio,
   Section,
@@ -60,8 +62,8 @@ export const components: Record<string, ComponentStyleConfig> = {
   Spinner,
   Switch,
   Table,
+  Tabs,
   Textarea,
   Tooltip,
   VehicleReference,
-  Tabs,
 };
