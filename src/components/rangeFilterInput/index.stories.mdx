@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
@@ -17,12 +18,19 @@ import RangeFilterInput from './index';
       control: 'boolean',
     },
   }}
+  parameters={{
+    actions: ['change'],
+  }}
 />
 ;
 
 export const Template = ({ from, to, unit, ...rest }) => {
   const [currentValue, setCurrentValue] = useState({ from, to });
   const onChange = (value, name) => {
+    action('change')({
+      ...currentValue,
+      [name]: { ...currentValue[name], value },
+    });
     setCurrentValue({
       ...currentValue,
       [name]: { ...currentValue[name], value },

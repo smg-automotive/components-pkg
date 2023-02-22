@@ -7,13 +7,17 @@ import RangeFilterInput from '../index';
 
 type ChangeCallback = (event: { value: number; name: 'from' | 'to' }) => void;
 
-const mockOnChange = jest.fn();
-
 describe('<RangeFilterInput/>', () => {
-  const renderInputField = (onChange: ChangeCallback) => {
+  const renderInputField = (onChange?: ChangeCallback) => {
     return render(
       <RangeFilterInput
-        handleChange={onChange}
+        handleChange={
+          onChange
+            ? onChange
+            : () => {
+                return;
+              }
+        }
         from={{
           name: 'priceFrom',
           value: 200,
@@ -29,11 +33,9 @@ describe('<RangeFilterInput/>', () => {
     );
   };
 
-  beforeEach(() => {
-    mockOnChange.mockClear();
-  });
-
   it('triggers onChange with the touched FROM field', async () => {
+    const mockOnChange = jest.fn();
+
     renderInputField(mockOnChange);
     const inputFrom = screen.getByPlaceholderText('From');
 
@@ -46,6 +48,8 @@ describe('<RangeFilterInput/>', () => {
   });
 
   it('triggers onChange with the touched TO field', async () => {
+    const mockOnChange = jest.fn();
+
     renderInputField(mockOnChange);
     const inputTo = screen.getByPlaceholderText('To');
 
@@ -58,7 +62,7 @@ describe('<RangeFilterInput/>', () => {
   });
 
   it('shows the unit', () => {
-    renderInputField(mockOnChange);
+    renderInputField();
     expect(screen.getAllByText('CHF')).toHaveLength(2);
   });
 });

@@ -64,7 +64,7 @@ const variantOutline: PartsStyleObject<typeof parts> = {
   },
 };
 
-const variantOutlineFrom: PartsStyleObject<typeof parts> = {
+const variantInputLeft: PartsStyleObject<typeof parts> = {
   field: {
     ...variantOutline.field,
     borderTopEndRadius: 0,
@@ -72,7 +72,7 @@ const variantOutlineFrom: PartsStyleObject<typeof parts> = {
   },
 };
 
-const variantOutlineTo: PartsStyleObject<typeof parts> = {
+const variantInputRight: PartsStyleObject<typeof parts> = {
   field: {
     ...variantOutline.field,
     borderTopStartRadius: 0,
@@ -81,8 +81,8 @@ const variantOutlineTo: PartsStyleObject<typeof parts> = {
 };
 
 const variants = {
-  fromOutline: variantOutlineFrom,
-  toOutline: variantOutlineTo,
+  inputLeft: variantInputLeft,
+  inputRight: variantInputRight,
 };
 
 const defaultProps = {
