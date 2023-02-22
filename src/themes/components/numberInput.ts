@@ -87,7 +87,6 @@ const variants = {
 
 const defaultProps = {
   size: 'md',
-  variant: 'fromOutline',
 };
 
 export default {

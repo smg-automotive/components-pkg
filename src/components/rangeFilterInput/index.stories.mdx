@@ -5,27 +5,37 @@ import { Box } from '@chakra-ui/react';
 
 import RangeFilterInput from './index';
 
-<Meta title="Components/Forms/FilterInput" component={RangeFilterInput} />;
+<Meta
+  title="Components/Filter/Range Input"
+  component={RangeFilterInput}
+  argTypes={{
+    size: {
+      options: ['md', 'lg'],
+      control: 'select',
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
+  }}
+/>
+;
 
-export const Template = ({ name, placeholder, size, unit, value, ...rest }) => {
-  const [currentValue, setCurrentValue] = useState(value);
-  const onChange = (editedField, newValue) => {
+export const Template = ({ from, to, unit, ...rest }) => {
+  const [currentValue, setCurrentValue] = useState({ from, to });
+  const onChange = (value, name) => {
     setCurrentValue({
       ...currentValue,
-      [editedField]: newValue[editedField],
-      touched: editedField,
+      [name]: { ...currentValue[name], value },
     });
   };
   return (
     <Box maxW={270}>
       <RangeFilterInput
-        name={name}
-        value={value}
-        placeholder={placeholder}
+        from={from}
+        to={to}
         handleChange={(event) => {
-          onChange(event.touched, event.value);
+          onChange(event.value, event.name);
         }}
-        size={size}
         unit={unit}
         {...rest}
       />
@@ -40,22 +50,13 @@ export const Template = ({ name, placeholder, size, unit, value, ...rest }) => {
     name="Overview"
     args={{
       unit: 'CHF',
-      name: {
-        from: 'priceFrom',
-        to: 'priceTo',
+      from: {
+        name: 'priceFrom',
+        placeholder: 'From',
       },
-      placeholder: {
-        from: 'From',
-        to: 'To',
-      },
-    }}
-    argTypes={{
-      size: {
-        options: ['md', 'lg'],
-        control: 'select',
-      },
-      isDisabled: {
-        control: 'boolean',
+      to: {
+        name: 'priceTo',
+        placeholder: 'To',
       },
     }}
   >
@@ -70,13 +71,13 @@ export const Template = ({ name, placeholder, size, unit, value, ...rest }) => {
     name="With initial value"
     args={{
       unit: 'CHF',
-      name: {
-        from: 'priceFrom',
-        to: 'priceTo',
+      from: {
+        name: 'priceFrom',
+        value: 100,
       },
-      value: {
-        from: 100,
-        to: 200,
+      to: {
+        name: 'priceTo',
+        value: 200,
       },
     }}
   >
@@ -90,13 +91,13 @@ export const Template = ({ name, placeholder, size, unit, value, ...rest }) => {
   <Story
     name="Without unit"
     args={{
-      name: {
-        from: 'priceFrom',
-        to: 'priceTo',
+      from: {
+        name: 'priceFrom',
+        value: 100,
       },
-      value: {
-        from: 100,
-        to: 200,
+      to: {
+        name: 'priceTo',
+        value: 200,
       },
     }}
   >

@@ -9,73 +9,70 @@ import {
 import Stack from '../stack';
 import InputLeftElement from './InputLeftElement';
 
-type InputElement = 'from' | 'to';
+type RangeFilterInputField = {
+  name: string;
+  value?: number;
+  placeholder?: string;
+};
 
 type ChangeCallback = {
-  touched: InputElement;
-  value: {
-    from: number;
-    to: number;
-  };
+  value: number;
+  name: 'from' | 'to';
 };
 
 type RangeFilterInputProps = {
-  name: {
-    from: string;
-    to: string;
-  };
+  from: RangeFilterInputField;
+  to: RangeFilterInputField;
   handleChange: (event: ChangeCallback) => void;
-  placeholder?: {
-    from: string;
-    to: string;
-  };
   unit?: string;
-  value: {
-    from: number;
-    to: number;
-  };
   size?: 'md' | 'lg';
 } & Pick<NumberInputProps, 'min' | 'max' | 'isDisabled'>;
 
 const RangeFilterInput: FC<RangeFilterInputProps> = ({
-  name,
+  from,
   handleChange,
-  placeholder,
+  to,
   unit,
-  value,
-  size = 'md',
+  size,
   ...rest
 }) => {
   return (
     <Stack direction="row" spacing={0}>
-      {Object.keys(name).map((elem: string) => {
-        const inputFieldElement = elem as InputElement;
+      <InputGroup>
+        <NumberInput
+          width="full"
+          variant="fromOutline"
+          defaultValue={from.value ? from.value : ''}
+          name={from.name}
+          size={size}
+          onChange={(_, value) => handleChange({ value, name: 'from' })}
+          {...rest}
+        >
+          {unit ? <InputLeftElement unit={unit} /> : null}
+          <NumberInputField
+            value={from.value ? from.value : ''}
+            placeholder={from.placeholder ? from.placeholder : ''}
+          />
+        </NumberInput>
+      </InputGroup>
 
-        return (
-          <InputGroup key={inputFieldElement}>
-            <NumberInput
-              width="full"
-              variant={`${inputFieldElement}Outline`}
-              defaultValue={value ? value[inputFieldElement] : ''}
-              size={size}
-              name={name[inputFieldElement]}
-              onChange={(val) =>
-                handleChange({
-                  touched: inputFieldElement,
-                  value: { ...value, [inputFieldElement]: val },
-                })
-              }
-              {...rest}
-            >
-              {unit ? <InputLeftElement unit={unit} /> : null}
-              <NumberInputField
-                value={value ? value[inputFieldElement] : ''}
-                placeholder={placeholder ? placeholder[inputFieldElement] : ''}
-              />
-            </NumberInput>
-          </InputGroup>
-        );
-      })}
+      <InputGroup>
+        <NumberInput
+          width="full"
+          variant="toOutline"
+          defaultValue={to.value ? to.value : ''}
+          name={to.name}
+          size={size}
+          onChange={(_, value) => handleChange({ value, name: 'to' })}
+          {...rest}
+        >
+          {unit ? <InputLeftElement unit={unit} /> : null}
+          <NumberInputField
+            value={to.value ? to.value : ''}
+            placeholder={to.placeholder ? to.placeholder : ''}
+          />
+        </NumberInput>
+      </InputGroup>
     </Stack>
   );
 };
