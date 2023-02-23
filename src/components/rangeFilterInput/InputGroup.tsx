@@ -43,6 +43,7 @@ const InputGroup: FC<InputGroupProps> = ({
         <NumberInputField
           value={inputProps.value ? inputProps.value : ''}
           placeholder={inputProps.placeholder ? inputProps.placeholder : ''}
+          fontSize="body"
         />
       </NumberInput>
     </ChakraInputGroup>
