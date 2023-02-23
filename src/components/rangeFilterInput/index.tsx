@@ -1,5 +1,5 @@
 import { useDebouncedCallback } from 'use-debounce';
-import React, { FC, FocusEventHandler } from 'react';
+import React, { FC } from 'react';
 import { NumberInputProps } from '@chakra-ui/react';
 
 import Stack from '../stack';
