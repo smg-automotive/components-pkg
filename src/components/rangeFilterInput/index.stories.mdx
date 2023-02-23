@@ -15,7 +15,7 @@ import RangeFilterInput from './index';
     },
   }}
   parameters={{
-    actions: ['change'],
+    actions: ['change', 'onBlur'],
   }}
 />
 ;
@@ -36,6 +36,9 @@ export const Template = ({ from, to, unit, ...rest }) => {
         handleChange={(event) => {
           action('change')(event);
           onChange(event.value, event.name);
+        }}
+        onBlur={(event) => {
+          action('onBlur')(event);
         }}
         unit={unit}
         {...rest}

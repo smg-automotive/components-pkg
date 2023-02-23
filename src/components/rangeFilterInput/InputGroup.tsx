@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, FocusEvent } from 'react';
 import {
   InputGroup as ChakraInputGroup,
   NumberInput,
@@ -16,6 +16,7 @@ import {
 type InputGroupProps = {
   handleChange: (event: ChangeCallback) => void;
   inputProps: RangeFilterInputField;
+  onBlur?: (event: ChangeCallback) => void;
   unit?: string;
   variant: 'inputLeft' | 'inputRight';
 } & PickedNumberInputProps;
@@ -23,10 +24,12 @@ type InputGroupProps = {
 const InputGroup: FC<InputGroupProps> = ({
   handleChange,
   inputProps,
+  onBlur,
   unit,
   variant,
   ...rest
 }) => {
+  const inputVariantName = variant === 'inputLeft' ? 'from' : 'to';
   return (
     <ChakraInputGroup>
       <NumberInput
@@ -34,8 +37,16 @@ const InputGroup: FC<InputGroupProps> = ({
         variant={variant}
         defaultValue={inputProps.value ? inputProps.value : ''}
         name={inputProps.name}
-        onChange={(_, value) =>
-          handleChange({ value, name: variant === 'inputLeft' ? 'from' : 'to' })
+        onChange={(_, value) => handleChange({ value, name: inputVariantName })}
+        onBlur={
+          onBlur
+            ? (event: FocusEvent<HTMLInputElement>) => {
+                onBlur({
+                  value: Number(event.target.value),
+                  name: inputVariantName,
+                });
+              }
+            : undefined
         }
         {...rest}
       >
