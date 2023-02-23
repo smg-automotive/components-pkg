@@ -38,7 +38,7 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
   ...rest
 }) => {
   const debounceThreshold = debounce ? 1000 : 0;
-  const setValueDebounced = useDebouncedCallback(
+  const handleChangeDebounced = useDebouncedCallback(
     handleChange,
     debounceThreshold
   );
@@ -48,7 +48,7 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
       <InputGroup
         inputProps={from}
         variant="inputLeft"
-        handleChange={setValueDebounced}
+        handleChange={handleChangeDebounced}
         unit={unit}
         {...rest}
       />
@@ -56,7 +56,7 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
       <InputGroup
         inputProps={to}
         variant="inputRight"
-        handleChange={setValueDebounced}
+        handleChange={handleChangeDebounced}
         unit={unit}
         {...rest}
       />
