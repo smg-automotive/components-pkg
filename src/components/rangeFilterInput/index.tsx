@@ -26,6 +26,7 @@ type RangeFilterInputProps = {
   to: RangeFilterInputField;
   handleChange: (event: ChangeCallback) => void;
   unit?: string;
+  debounce?: boolean;
 } & PickedNumberInputProps;
 
 const RangeFilterInput: FC<RangeFilterInputProps> = ({
@@ -33,9 +34,10 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
   to,
   handleChange,
   unit,
+  debounce = true,
   ...rest
 }) => {
-  const debounceThreshold = 1000;
+  const debounceThreshold = debounce ? 1000 : 0;
   const setValueDebounced = useDebouncedCallback(
     handleChange,
     debounceThreshold
