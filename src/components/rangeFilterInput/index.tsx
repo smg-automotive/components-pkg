@@ -1,3 +1,4 @@
+import { useDebouncedCallback } from 'use-debounce';
 import React, { FC } from 'react';
 import { NumberInputProps } from '@chakra-ui/react';
 
@@ -17,7 +18,7 @@ export type ChangeCallback = {
 
 export type PickedNumberInputProps = Pick<
   NumberInputProps,
-  'min' | 'max' | 'isDisabled' | 'onFocus'
+  'min' | 'max' | 'isDisabled' | 'onFocus' | 'onBlur'
 >;
 
 type RangeFilterInputProps = {
@@ -25,7 +26,6 @@ type RangeFilterInputProps = {
   to: RangeFilterInputField;
   handleChange: (event: ChangeCallback) => void;
   unit?: string;
-  size?: 'md' | 'lg';
 } & PickedNumberInputProps;
 
 const RangeFilterInput: FC<RangeFilterInputProps> = ({
@@ -33,15 +33,20 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
   to,
   handleChange,
   unit,
-  size,
   ...rest
 }) => {
+  const debounceThreshold = 1000;
+  const setValueDebounced = useDebouncedCallback(
+    handleChange,
+    debounceThreshold
+  );
+
   return (
     <Stack direction="row" spacing={0}>
       <InputGroup
         inputProps={from}
         variant="inputLeft"
-        handleChange={handleChange}
+        handleChange={setValueDebounced}
         unit={unit}
         {...rest}
       />
@@ -49,7 +54,7 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
       <InputGroup
         inputProps={to}
         variant="inputRight"
-        handleChange={handleChange}
+        handleChange={setValueDebounced}
         unit={unit}
         {...rest}
       />
