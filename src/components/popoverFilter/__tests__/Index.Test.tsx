@@ -1,11 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import {
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import { PopoverFilterProps } from '../props';
 import { PopoverFilter } from '../index';
