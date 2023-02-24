@@ -10,16 +10,12 @@ import RangeFilterInput from './index';
   title="Components/Filter/Range Input"
   component={RangeFilterInput}
   argTypes={{
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
     isDisabled: {
       control: 'boolean',
     },
   }}
   parameters={{
-    actions: ['change'],
+    actions: ['change', 'onBlur'],
   }}
 />
 ;
@@ -40,6 +36,9 @@ export const Template = ({ from, to, unit, ...rest }) => {
         handleChange={(event) => {
           action('change')(event);
           onChange(event.value, event.name);
+        }}
+        onBlur={(event) => {
+          action('onBlur')(event);
         }}
         unit={unit}
         {...rest}

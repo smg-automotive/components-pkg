@@ -21,6 +21,7 @@ describe('<RangeFilterInput/>', () => {
           placeholder: 'To',
         }}
         unit="CHF"
+        debounce={false}
       />
     );
   };
