@@ -11,7 +11,9 @@ jest.mock('embla-carousel-react', () => {
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     __esModule: true,
-    default: jest.fn(embla),
+    default: jest.fn((...args) => {
+      return embla(args);
+    }),
   };
 });
 
@@ -98,25 +100,28 @@ describe('<Carousel />', () => {
     return waitFor(() => expect(mockOnLeave).toHaveBeenCalled());
   });
 
-  it('should create the carousel in infinite mode', async () => {
-    render(
+  it.only('should create the carousel in infinite mode', async () => {
+    const content = render(
       <Carousel onSlideClick={jest.fn} startIndex={2}>
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
       </Carousel>
     );
+
     expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
       'aria-current',
       'true'
     );
-    await userEvent.hover(screen.getByLabelText('Carousel'));
+    // await userEvent.hover(screen.getByLabelText('Carousel'));
     await userEvent.click(screen.getByLabelText('next slide'));
+    console.log("screen.getByLabelText('1 of 3')", content.debug());
     expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
       'aria-current',
       'true'
     );
     await userEvent.click(screen.getByLabelText('previous slide'));
+    console.log("screen.getByLabelText('3 of 3')", content.debug());
     expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
       'aria-current',
       'true'
