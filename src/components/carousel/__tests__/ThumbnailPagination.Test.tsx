@@ -1,7 +1,7 @@
 import React from 'react';
 import { EmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import ThumbnailPagination from '../ThumbnailPagination';
 
@@ -171,10 +171,8 @@ describe('<ThumbnailPagination/>', () => {
         mainCarousel={mainCarousel}
       />
     );
-    await userEvent.click(
-      screen.getByLabelText('scroll to next thumbnail group')
-    );
-    expect(mockScrollNext).toHaveBeenCalled();
+    userEvent.click(screen.getByLabelText('scroll to next thumbnail group'));
+    await waitFor(() => expect(mockScrollNext).toHaveBeenCalled());
     expect(mockMainScrollTo).not.toHaveBeenCalled();
   });
 
@@ -190,10 +188,10 @@ describe('<ThumbnailPagination/>', () => {
         mainCarousel={mainCarousel}
       />
     );
-    await userEvent.click(
+    userEvent.click(
       screen.getByLabelText('scroll to previous thumbnail group')
     );
-    expect(mockScrollPrev).toHaveBeenCalled();
+    await waitFor(() => expect(mockScrollPrev).toHaveBeenCalled());
     expect(mockMainScrollTo).not.toHaveBeenCalled();
   });
 
@@ -207,7 +205,7 @@ describe('<ThumbnailPagination/>', () => {
         mainCarousel={mainCarousel}
       />
     );
-    await userEvent.click(screen.getByText('thumbnail 2'));
-    expect(mockMainScrollTo).toHaveBeenCalledWith(1);
+    userEvent.click(screen.getByText('thumbnail 2'));
+    await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1));
   });
 });

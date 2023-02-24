@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import AccordionPanel from '../AccordionPanel';
 import AccordionItem from '../AccordionItem';
@@ -43,12 +43,16 @@ describe('<Accordion />', () => {
         'test-accordion-button-2'
       );
 
-      await userEvent.click(firstAccordionButton);
-      expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true');
+      userEvent.click(firstAccordionButton);
+      await waitFor(() =>
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true')
+      );
       expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'false');
 
-      await userEvent.click(secondAccordionButton);
-      expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false');
+      userEvent.click(secondAccordionButton);
+      await waitFor(() =>
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false')
+      );
       expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true');
     });
   });
@@ -63,11 +67,15 @@ describe('<Accordion />', () => {
         'test-accordion-button-1'
       );
 
-      await userEvent.click(firstAccordionButton);
-      expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true');
+      userEvent.click(firstAccordionButton);
+      await waitFor(() =>
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true')
+      );
 
-      await userEvent.click(firstAccordionButton);
-      expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false');
+      userEvent.click(firstAccordionButton);
+      await waitFor(() =>
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false')
+      );
     });
   });
 
@@ -82,11 +90,15 @@ describe('<Accordion />', () => {
         'test-accordion-button-2'
       );
 
-      await userEvent.click(firstAccordionButton);
-      expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true');
+      userEvent.click(firstAccordionButton);
+      await waitFor(() =>
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true')
+      );
 
-      await userEvent.click(secondAccordionButton);
-      expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true');
+      userEvent.click(secondAccordionButton);
+      await waitFor(() =>
+        expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true')
+      );
     });
   });
 });

@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import CheckboxFilter from '../index';
 
@@ -26,11 +25,13 @@ describe('<CheckBoxFilter />', () => {
   it('should call onApply', async () => {
     const onApply = jest.fn();
     renderWrapper({ onApply });
-    await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
+    userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
-    expect(onApply).toHaveBeenCalledWith(
-      { label: 'New', key: 'new', isChecked: true, facet: 77 },
-      { new: true, used: false }
+    await waitFor(() =>
+      expect(onApply).toHaveBeenCalledWith(
+        { label: 'New', key: 'new', isChecked: true, facet: 77 },
+        { new: true, used: false }
+      )
     );
   });
 
