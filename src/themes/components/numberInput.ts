@@ -17,20 +17,13 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 };
 
 const size: Record<string, SystemStyleObject> = {
-  md: {
-    textStyle: 'body-small',
-    h: 'md',
-  },
   lg: {
-    textStyle: 'body',
+    textStyle: 'body-small',
     h: 'lg',
   },
 };
 
 const sizes: Record<string, PartsStyleObject<typeof parts>> = {
-  md: {
-    field: size.md,
-  },
   lg: {
     field: size.lg,
   },
@@ -69,6 +62,7 @@ const variantInputLeft: PartsStyleObject<typeof parts> = {
     ...variantOutline.field,
     borderTopEndRadius: 0,
     borderBottomEndRadius: 0,
+    borderRight: 0,
   },
 };
 
@@ -86,7 +80,7 @@ const variants = {
 };
 
 const defaultProps = {
-  size: 'md',
+  size: 'lg',
 };
 
 export default {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 
 import Checkbox from '../index';
 
@@ -31,21 +31,21 @@ describe('<Checkbox>', () => {
     expect(checkbox).toBeInTheDocument();
   });
 
-  it('triggers onChange event when clicking on checkbox', () => {
+  it('triggers onChange event when clicking on checkbox', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange });
     userEvent.click(screen.getByRole('checkbox', { name: 'Checkbox label' }));
 
-    expect(onChange).toHaveBeenCalled();
+    await waitFor(() => expect(onChange).toHaveBeenCalled());
   });
 
-  it('is not possible to click on the checkbox when is disabled', () => {
+  it('is not possible to click on the checkbox when is disabled', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange, isDisabled: true });
     const checkbox = screen.getByRole('checkbox', { name: 'Checkbox label' });
     userEvent.click(checkbox);
 
-    expect(checkbox).toBeDisabled();
+    await waitFor(() => expect(checkbox).toBeDisabled());
     expect(onChange).not.toHaveBeenCalled();
   });
 });
