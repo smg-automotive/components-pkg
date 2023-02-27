@@ -35,7 +35,6 @@ interface Props {
     onSlideClick: boolean;
     fullScreen: boolean;
     onSlideEnter: boolean;
-    startIndex?: number;
     onSlideLeave: boolean;
   };
   action: (message: string) => (...args: unknown[]) => void;
@@ -69,12 +68,10 @@ const Slide: FC<SlideProps> = ({ index, fullScreen }) => (
 );
 
 const DefaultVariant: FC<Props> = ({ args, action }) => {
-  console.log('startindex', args.startIndex);
   return (
     <FullHeight>
       <Carousel
         onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
-        startIndex={args.startIndex ? args.startIndex : 0}
       >
         {Array.from({ length: args.numberOfSlides || 6 }).map((_, i) => (
           <Slide index={i + 1} key={`slide-${i + 1}`} fullScreen={false} />
