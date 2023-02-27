@@ -131,7 +131,7 @@ const Carousel: FC<Props> = (props) => {
   useEffect(() => {
     if (!mainCarousel) return;
     // TODO: why would we call an on select handler on initial rendering
-    // onSelect();
+    onSelect();
     mainCarousel.on('select', onSelect);
   }, [mainCarousel, onSelect]);
 
@@ -184,20 +184,24 @@ const Carousel: FC<Props> = (props) => {
           __css={carousel}
         >
           <Flex __css={slideContainer}>
-            {props.children.map((slide, index) => (
-              <Slide
-                key={`slide-${index}`}
-                slideIndex={index}
-                onClick={() => onClick(index)}
-                totalSlides={numberOfSlides}
-                isCurrent={index === selectedIndex}
-                fullScreen={!!fullScreen}
-              >
-                {slide && typeof slide === 'object' && 'slide' in slide
-                  ? slide.slide
-                  : slide}
-              </Slide>
-            ))}
+            {props.children.map((slide, index) => {
+              console.log('maping ', index, selectedIndex);
+              console.log('isCurrent ', index === selectedIndex);
+              return (
+                <Slide
+                  key={`slide-${index}`}
+                  slideIndex={index}
+                  onClick={() => onClick(index)}
+                  totalSlides={numberOfSlides}
+                  isCurrent={index === selectedIndex}
+                  fullScreen={!!fullScreen}
+                >
+                  {slide && typeof slide === 'object' && 'slide' in slide
+                    ? slide.slide
+                    : slide}
+                </Slide>
+              );
+            })}
           </Flex>
           <NavigationButton
             onClick={scrollPrev}
