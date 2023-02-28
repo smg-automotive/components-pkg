@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 
 import {
-  DawerNodeItems,
   DrawerNode,
+  DrawerNodeItems,
   NavigationLinkNode,
 } from '../config/drawerNodeItems';
 
 export const drawerHandlerFactory = ({
   nodeName,
-  dawerNodeItems,
+  drawerNodeItems,
   isOpen,
   onOpen,
   onClose,
@@ -17,7 +17,7 @@ export const drawerHandlerFactory = ({
   setDrawer,
 }: {
   nodeName: DrawerNode;
-  dawerNodeItems: DawerNodeItems;
+  drawerNodeItems: DrawerNodeItems;
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
@@ -27,7 +27,7 @@ export const drawerHandlerFactory = ({
   return () => {
     if (!isOpen) {
       setDrawer({
-        nodes: dawerNodeItems[nodeName],
+        nodes: drawerNodeItems[nodeName],
         current: nodeName,
       });
       onOpen();
@@ -38,7 +38,7 @@ export const drawerHandlerFactory = ({
       onClose();
       // Note: can be wrapped in a set timeout for slideup and down variations
       setDrawer({
-        nodes: dawerNodeItems[nodeName],
+        nodes: drawerNodeItems[nodeName],
         current: nodeName,
       });
       onOpen();
@@ -55,16 +55,16 @@ export type Drawer = {
 } | null;
 
 export const useNavigationDrawer = ({
-  dawerNodeItems,
+  drawerNodeItems,
 }: {
-  dawerNodeItems: DawerNodeItems;
+  drawerNodeItems: DrawerNodeItems;
 }) => {
   const [drawer, setDrawer] = useState<Drawer>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const createDrawerHandler = ({ nodeName }: { nodeName: DrawerNode }) => {
     return drawerHandlerFactory({
       nodeName,
-      dawerNodeItems,
+      drawerNodeItems,
       isOpen,
       onOpen,
       onClose,

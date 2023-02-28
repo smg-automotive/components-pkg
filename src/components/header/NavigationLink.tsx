@@ -1,8 +1,19 @@
 import React, { FC, ReactNode } from 'react';
 
-import { Badge, useMultiStyleConfig } from '@chakra-ui/react';
+import { Badge } from '@chakra-ui/react';
 
 import Link from '../link';
+import Hide from '../hide';
+
+export const HeaderLink: FC<{
+  link: NavigationLinkProps;
+}> = ({ link }) => {
+  return (
+    <Hide below={link.showUnderMoreLinkBelow}>
+      <NavigationLink {...link} fontWeight="bold" />
+    </Hide>
+  );
+};
 
 export interface NavigationLinkProps {
   url: string;
@@ -10,6 +21,7 @@ export interface NavigationLinkProps {
   isNew?: boolean;
   isVisible?: boolean;
   iconRight?: ReactNode;
+  showUnderMoreLinkBelow?: string;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
 }

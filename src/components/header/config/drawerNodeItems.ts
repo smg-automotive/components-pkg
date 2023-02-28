@@ -3,11 +3,11 @@ import { Plattform, UserType } from '..';
 import { NavigationLinkConfigNode, resolveVisibility } from './converter';
 
 export interface NavigationLinkNode {
-  text: string;
+  text?: string;
   items: NavigationLinkProps[];
 }
-export type DrawerNode = 'search' | 'user';
-export type DawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
+export type DrawerNode = 'search' | 'user' | 'more';
+export type DrawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
 
 type DawerNodeItemsConfig = { [key in DrawerNode]: NavigationLinkConfigNode[] };
 
@@ -827,6 +827,88 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
   ],
+  more: [
+    {
+      items: [
+        {
+          text: 'Verkaufen',
+          url: '#',
+          showUnderMoreLinkBelow: 'sm',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Schätzen',
+          url: '#',
+          showUnderMoreLinkBelow: 'sm',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          text: 'Versichern',
+          url: '#',
+          showUnderMoreLinkBelow: 'md',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          text: 'Auto-Abo',
+          url: '#',
+          isNew: true,
+          showUnderMoreLinkBelow: 'lg',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          text: 'Magazin',
+          url: '#',
+          showUnderMoreLinkBelow: 'lg',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export const getDrawerNodeItems = ({
@@ -835,7 +917,7 @@ export const getDrawerNodeItems = ({
 }: {
   userType: UserType;
   plattform: Plattform;
-}): DawerNodeItems => {
+}): DrawerNodeItems => {
   // TODO: Extract mappings to functions
   const itemsEntires = Object.entries(dawerNodeItems);
   const mappedEntries = itemsEntires.map(([nodeKey, nodes]) => {

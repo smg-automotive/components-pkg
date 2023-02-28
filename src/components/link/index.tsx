@@ -14,7 +14,7 @@ interface Props {
   rightIcon?: ReactElement;
   isExternal?: boolean;
   rel?: string;
-  variant?: 'baseLink' | 'navigationLink';
+  variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
   [key: string]: unknown;
   fontWeight?: 'regular' | 'bold';
 }

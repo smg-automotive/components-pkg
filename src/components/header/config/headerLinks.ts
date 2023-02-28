@@ -1,11 +1,12 @@
-import { NavigationLinkConfigProps, resolveVisibility } from './converter';
 import { NavigationLinkProps } from '../NavigationLink';
 import { Plattform, UserType } from '..';
+import { NavigationLinkConfigProps, resolveVisibility } from './converter';
 
 const headerLinks: NavigationLinkConfigProps[] = [
   {
     text: 'Verkaufen',
     url: '#',
+    showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
         private: true,
@@ -20,6 +21,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     text: 'Schätzen',
     url: '#',
+    showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
         private: true,
@@ -34,6 +36,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     text: 'Versichern',
     url: '#',
+    showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
         private: true,
@@ -49,6 +52,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
     text: 'Auto-Abo',
     url: '#',
     isNew: true,
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,
@@ -63,6 +67,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     text: 'Magazin',
     url: '#',
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,

@@ -1,11 +1,12 @@
-import { UserType, Plattform } from '..';
 import { NavigationLinkProps } from '../NavigationLink';
+import { Plattform, UserType } from '..';
 import { NavigationLinkNode } from './drawerNodeItems';
 
 export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
   'isVisible'
 > & {
+  showUnderMoreLinkBelow?: string; // TODO ZIBLJIC
   visibilitySettings: {
     userType: {
       private: boolean;
@@ -34,6 +35,7 @@ const convertNavigationItem = ({
     isNew: item.isNew,
     iconRight: item.iconRight,
     isVisible,
+    showUnderMoreLinkBelow: item.showUnderMoreLinkBelow,
   };
 };
 
