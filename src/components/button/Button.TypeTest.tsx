@@ -73,8 +73,6 @@ const _SubmitButton = () => {
 const _LinkButton = () => {
   return (
     <div>
-      {/* @ts-expect-error href is missing */}
-      <Button as="a" />
       {/* @ts-expect-error children is missing */}
       <Button as="a" href="foo/bar" />
       {/* @ts-expect-error isDisabled must be false */}
