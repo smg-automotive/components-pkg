@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode } from 'react';
+import React, { ElementType, FC, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
@@ -50,7 +50,7 @@ export type ButtonProps = SubmitType | ButtonType;
 type LinkProps = Overwrite<
   SharedProps,
   LinkButton & {
-    as: 'a';
+    as: ElementType;
     isDisabled?: false;
   }
 >;
