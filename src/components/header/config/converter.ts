@@ -1,3 +1,5 @@
+import { BreakpointName } from 'src/themes/shared/breakpoints';
+
 import { NavigationLinkProps } from '../NavigationLink';
 import { Plattform, UserType } from '..';
 import { NavigationLinkNode } from './drawerNodeItems';
@@ -6,7 +8,7 @@ export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
   'isVisible'
 > & {
-  showUnderMoreLinkBelow?: string; // TODO ZIBLJIC
+  showUnderMoreLinkBelow?: BreakpointName;
   visibilitySettings: {
     userType: {
       private: boolean;

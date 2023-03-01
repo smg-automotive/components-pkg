@@ -35,9 +35,10 @@ export type Plattform = 'as24' | 'ms24';
 
 interface NavigationProps {
   user: User;
+  hasNotification: boolean;
 }
 
-const Navigation: FC<NavigationProps> = ({ user }) => {
+const Navigation: FC<NavigationProps> = ({ user, hasNotification }) => {
   const { name } = useTheme();
   const plattform: Plattform = name === 'AutoScout 24' ? 'as24' : 'ms24';
   const linkConfig = {
@@ -66,6 +67,7 @@ const Navigation: FC<NavigationProps> = ({ user }) => {
         borderBottomWidth="1px"
         zIndex="header"
         position="absolute"
+        backgroundColor="white"
         fontFamily="Make It Sans" // TODO Figure out how to handle this
       >
         <Box
@@ -75,18 +77,22 @@ const Navigation: FC<NavigationProps> = ({ user }) => {
           margin={{ xl: 'auto' }}
           display="flex"
           justifyContent="space-between"
-          px="2rem"
-          backgroundColor="white"
+          px={{ base: 'sm', xs: 'lg' }}
         >
           <NavigationItems
             plattform={plattform}
             headerLinks={config.headerLinks}
+            drawer={drawer}
+            isOpen={isOpen}
             createDrawerHandler={createDrawerHandler}
           />
           <Stack direction="row" spacing="2xl" align="center">
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
+              isOpen={isOpen}
+              drawer={drawer}
+              hasNotification={hasNotification}
             />
             <NavigationLanguageMenu />
           </Stack>

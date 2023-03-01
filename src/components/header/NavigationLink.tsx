@@ -2,6 +2,8 @@ import React, { FC, ReactNode } from 'react';
 
 import { Badge } from '@chakra-ui/react';
 
+import { BreakpointName } from 'src/themes/shared/breakpoints';
+
 import Link from '../link';
 import Hide from '../hide';
 
@@ -21,7 +23,7 @@ export interface NavigationLinkProps {
   isNew?: boolean;
   isVisible?: boolean;
   iconRight?: ReactNode;
-  showUnderMoreLinkBelow?: string;
+  showUnderMoreLinkBelow?: BreakpointName;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
 }

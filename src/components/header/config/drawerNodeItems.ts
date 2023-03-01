@@ -1,12 +1,20 @@
 import { NavigationLinkProps } from '../NavigationLink';
 import { Plattform, UserType } from '..';
-import { NavigationLinkConfigNode, resolveVisibility } from './converter';
+import {
+  NavigationLinkConfigNode,
+  NavigationLinkConfigProps,
+  resolveVisibility,
+} from './converter';
 
 export interface NavigationLinkNode {
   text?: string;
   items: NavigationLinkProps[];
 }
-export type DrawerNode = 'search' | 'user' | 'more';
+export enum DrawerNode {
+  Search = 'search',
+  User = 'user',
+  More = 'more',
+}
 export type DrawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
 
 type DawerNodeItemsConfig = { [key in DrawerNode]: NavigationLinkConfigNode[] };
@@ -911,6 +919,44 @@ const dawerNodeItems: DawerNodeItemsConfig = {
   ],
 };
 
+const mapDrawerNodeItems = (
+  userType: UserType,
+  plattform: Plattform,
+  items: NavigationLinkConfigProps[]
+) =>
+  items.map((item) =>
+    resolveVisibility({
+      item,
+      userType,
+      plattform,
+    })
+  );
+
+const mapDrawerNodes = (
+  userType: UserType,
+  plattform: Plattform,
+  nodeEntry: NavigationLinkConfigNode[]
+) =>
+  nodeEntry.map((node) => {
+    const mappedItems = mapDrawerNodeItems(userType, plattform, node.items);
+
+    return {
+      ...node,
+      items: mappedItems,
+    };
+  });
+
+const mapDrawerItemsEntries = (
+  userType: UserType,
+  plattform: Plattform,
+  itemsEntires: [string, NavigationLinkConfigNode[]][]
+) =>
+  itemsEntires.map(([nodeKey, nodes]) => {
+    const mappedNodes = mapDrawerNodes(userType, plattform, nodes);
+
+    return [nodeKey, mappedNodes];
+  });
+
 export const getDrawerNodeItems = ({
   userType,
   plattform,
@@ -918,26 +964,12 @@ export const getDrawerNodeItems = ({
   userType: UserType;
   plattform: Plattform;
 }): DrawerNodeItems => {
-  // TODO: Extract mappings to functions
   const itemsEntires = Object.entries(dawerNodeItems);
-  const mappedEntries = itemsEntires.map(([nodeKey, nodes]) => {
-    const mappedNodes = nodes.map((nodeEntry) => {
-      const mappedItems = nodeEntry.items.map((item) => {
-        return resolveVisibility({
-          item,
-          userType,
-          plattform,
-        });
-      });
-
-      return {
-        ...nodeEntry,
-        items: mappedItems,
-      };
-    });
-
-    return [nodeKey, mappedNodes];
-  });
+  const mappedEntries = mapDrawerItemsEntries(
+    userType,
+    plattform,
+    itemsEntires
+  );
 
   return Object.fromEntries(mappedEntries);
 };
