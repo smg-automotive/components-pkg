@@ -1,4 +1,3 @@
-import { FontWeights } from 'src/themes';
 import React, { FC } from 'react';
 import {
   Button,
@@ -7,6 +6,8 @@ import {
   MenuButton,
   MenuList,
 } from '@chakra-ui/react';
+
+import { FontWeights } from 'src/themes';
 
 import { ChevronDownSmallIcon } from '../icons';
 
@@ -19,11 +20,17 @@ export interface MenuProps {
   title: string;
   items: MenuItem[];
   fontWeightTitle?: FontWeights;
+  offset?: [number, number];
 }
 
-const Menu: FC<MenuProps> = ({ title, items, fontWeightTitle = 'regular' }) => {
+const Menu: FC<MenuProps> = ({
+  title,
+  items,
+  fontWeightTitle = 'regular',
+  offset = [],
+}) => {
   return (
-    <ChakraMenu>
+    <ChakraMenu {...(offset.length && { offset })}>
       <MenuButton
         as={Button}
         padding={0}
