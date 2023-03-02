@@ -9,6 +9,7 @@ export type NavigationLinkConfigProps = Omit<
   'isVisible'
 > & {
   showUnderMoreLinkBelow?: BreakpointName;
+  color?: string;
   visibilitySettings: {
     userType: {
       private: boolean;
@@ -36,6 +37,7 @@ const convertNavigationItem = ({
     url: item.url,
     isNew: item.isNew,
     iconRight: item.iconRight,
+    color: item.color,
     isVisible,
     showUnderMoreLinkBelow: item.showUnderMoreLinkBelow,
   };

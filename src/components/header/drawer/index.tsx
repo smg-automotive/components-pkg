@@ -21,7 +21,11 @@ export const DrawerNavigationLink: FC<{
   return (
     <Show below={item.showUnderMoreLinkBelow}>
       <Box as={ListItem} paddingBottom={{ base: 'lg', md: 'md' }}>
-        <NavigationLink {...item} variant="subNavigationLink" />
+        <NavigationLink
+          {...item}
+          variant="subNavigationLink"
+          color={item.color}
+        />
       </Box>
     </Show>
   );
@@ -52,7 +56,11 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
       <DrawerOverlay />
       <DrawerContent marginTop={menuHeight}>
-        <DrawerBody py={{ md: '2xl' }} px={{ md: '2xl' }}>
+        <DrawerBody
+          py={{ md: '2xl' }}
+          maxWidth="container.xl"
+          margin={{ xl: 'auto' }}
+        >
           <Grid
             height="full"
             templateColumns={{ '2xs': '1fr', md: 'repeat(6, 1fr)' }}

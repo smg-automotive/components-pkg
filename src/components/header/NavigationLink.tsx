@@ -26,6 +26,7 @@ export interface NavigationLinkProps {
   showUnderMoreLinkBelow?: BreakpointName;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
+  color?: string;
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({
@@ -35,11 +36,12 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   isVisible = true,
   fontWeight = 'regular',
   variant = 'navigationLink',
+  color = 'initial',
 }) => {
   if (!isVisible) return null;
 
   return (
-    <Link href={url} variant={variant} fontWeight={fontWeight}>
+    <Link href={url} variant={variant} fontWeight={fontWeight} color={color}>
       {text}
       {isNew ? <Badge variant="navigationLinkBadge">New</Badge> : null}
     </Link>

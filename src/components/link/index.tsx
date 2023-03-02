@@ -17,6 +17,7 @@ interface Props {
   variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
   [key: string]: unknown;
   fontWeight?: 'regular' | 'bold';
+  color?: string;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
@@ -30,6 +31,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
+      color = 'initial',
       ...rest
     },
     ref
@@ -52,6 +54,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         target={isExternal ? '_blank' : undefined}
         rel={rel || isExternal ? 'noopener noreferrer' : undefined}
         ref={ref}
+        color={color}
         {...rest}
         fontWeight={fontWeight}
       >

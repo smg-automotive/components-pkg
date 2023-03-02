@@ -647,6 +647,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         },
         {
           text: 'Abmelden',
+          color: 'red.500',
           url: '#',
           visibilitySettings: {
             userType: {
