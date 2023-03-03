@@ -73,4 +73,5 @@ export { default as VehicleReference } from './vehicleReference';
 
 export * from './heading';
 export * from './icons';
+export * from './card';
 export * from './layout';
