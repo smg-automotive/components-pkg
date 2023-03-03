@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Badge, Box } from '@chakra-ui/react';
+import { Badge } from '@chakra-ui/react';
 
 import GridItem from '../grid/GridItem';
 import Grid from '../grid';
