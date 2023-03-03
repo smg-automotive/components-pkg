@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react';
+import { Badge, Box } from '@chakra-ui/react';
 
 import GridItem from '../grid/GridItem';
 import Grid from '../grid';
-import Box from '../box';
 import AspectRatio from '../aspectRatio';
 
 type Props = {
@@ -25,20 +25,14 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
         overflow="hidden"
         position="relative"
       >
-        <Box
-          transform="rotate(-45deg) translateX(-50%) translateY(12px)"
+        <Badge
+          transform="rotate(-45deg) translateX(-50%) translateY(9px)"
           transformOrigin="top left"
-          bg="brand.100"
-          color="gray.900"
-          fontSize="xs"
-          lineHeight={1.75}
           width="70px"
-          fontWeight="bold"
-          display="inline-block"
           textAlign="center"
         >
-          TOP
-        </Box>
+          Top
+        </Badge>
       </GridItem>
     </Grid>
   );
