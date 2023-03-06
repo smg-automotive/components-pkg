@@ -27,10 +27,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.simpleSearch',
           url: {
-            de: '#',
+            de: '/de',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/?vehtyp=10',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
@@ -46,10 +46,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.advancedSearch',
           url: {
-            de: '#',
+            de: '/de/auto/suche',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/voiture/recherche',
+            it: '/it/automobile/ricerca',
           },
           visibilitySettings: {
             userType: {
@@ -70,10 +70,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.searchMerchant',
           url: {
-            de: '#',
+            de: '/de/auto-haendler-garage/suche',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/voiture-concessionaires-garages/recherche',
+            it: '/it/auto-concessionari-garage/ricerca',
           },
           visibilitySettings: {
             userType: {
@@ -94,10 +94,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.findPartsAndAccessories',
           url: {
-            de: '#',
+            de: '/de/ersatzteile-zubehoer',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/pieces-accessoires',
+            it: '/it/ricambi-accessori',
           },
           visibilitySettings: {
             userType: {
@@ -113,10 +113,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.searchMotorcycles',
           url: {
-            de: '#',
+            de: 'https://www.motoscout24.ch/de',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://www.motoscout24.ch/fr',
+            it: 'https://www.motoscout24.ch/it',
           },
           visibilitySettings: {
             userType: {
@@ -132,10 +132,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.vehicleRating',
           url: {
-            de: '#',
+            de: '/de/content/fahrzeugbewertung',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/content/evaluation-vehicule',
+            it: '/it/content/valutazione-veicolo',
           },
           visibilitySettings: {
             userType: {
@@ -151,10 +151,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.insuranceComparison',
           url: {
-            de: '#',
+            de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://www.financescout24.ch/fr/lp/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
+            it: 'https://www.financescout24.ch/it/lp/trova-assicurazione-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
           },
           visibilitySettings: {
             userType: {
@@ -170,10 +170,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.viewedListings',
           url: {
-            de: '#',
+            de: '/de/besuchte-fahrzeuge',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/vehicules-visites',
+            it: '/it/veicoli-visitat',
           },
           visibilitySettings: {
             userType: {
@@ -189,10 +189,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.searchMenu.recentSearches',
           url: {
-            de: '#',
+            de: '/de/letzte-suchen',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/dernieres-recherches',
+            it: '/it/ultime-ricerche',
           },
           visibilitySettings: {
             userType: {
@@ -215,10 +215,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.createAd',
           url: {
-            de: '#',
+            de: '/de/member/insertion/type',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/insertion/type/index',
+            it: '/it/member/insertion/type/index',
           },
           visibilitySettings: {
             userType: {
@@ -234,10 +234,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.myVehicles',
           url: {
-            de: '#',
+            de: 'https://dealer.autoscout24.ch/de/vehicles',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://dealer.autoscout24.ch/fr/vehicles',
+            it: 'https://dealer.autoscout24.ch/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -253,10 +253,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.myVehcilesOld',
           url: {
-            de: '#',
+            de: '/de/member/vehiclepool/index',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool/index',
           },
           visibilitySettings: {
             userType: {
@@ -272,10 +272,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.dealerDashboard',
           url: {
-            de: '#',
+            de: 'https://dealer.autoscout24.ch/de/login',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://dealer.autoscout24.ch/fr/login',
+            it: 'https://dealer.autoscout24.ch/it/login',
           },
           visibilitySettings: {
             userType: {
@@ -291,10 +291,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.optimizerPro',
           url: {
-            de: '#',
+            de: '/de/member/optimizerpro/index',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/optimizerpro',
+            it: '/it/member/optimizerpro/index',
           },
           visibilitySettings: {
             userType: {
@@ -310,10 +310,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.cockpit',
           url: {
-            de: '#',
+            de: '/de/member/cockpit/index',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/cockpit',
+            it: '/it/member/cockpit/index',
           },
           visibilitySettings: {
             userType: {
@@ -329,10 +329,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.statistics',
           url: {
-            de: '#',
+            de: '/de/member/statistics',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/statistics',
+            it: '/it/member/statistics',
           },
           visibilitySettings: {
             userType: {
@@ -348,10 +348,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.shoppingCard',
           url: {
-            de: '#',
+            de: '/de/member/insertion/checkout/index?steps=40-47',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/insertion/checkout/index?steps=40-47',
+            it: '/it/member/insertion/checkout/index?steps=40-47',
           },
           visibilitySettings: {
             userType: {
@@ -367,10 +367,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.motorcyclePark',
           url: {
-            de: '#',
+            de: 'https://www.motoscout24.ch/de/member/vehiclepool',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
+            it: 'https://www.motoscout24.ch/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -391,10 +391,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.contactRequests',
           url: {
-            de: '#',
+            de: '/de/member/messagemanager/index',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/messagemanager',
+            it: '/it/member/messagemanager/index',
           },
           visibilitySettings: {
             userType: {
@@ -410,10 +410,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.printingCenter',
           url: {
-            de: '#',
+            de: '/de/member/printcenter/index?status=30',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/printcenter?status=30',
+            it: '/it/member/printcenter/index?status=30',
           },
           visibilitySettings: {
             userType: {
@@ -429,10 +429,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.testDrives',
           url: {
-            de: '#',
+            de: '/de/member/testdrive/settings',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/testdrive',
+            it: '/it/member/testdrive/settings',
           },
           visibilitySettings: {
             userType: {
@@ -448,10 +448,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.leasing',
           url: {
-            de: '#',
+            de: '/de/member/leasing',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/leasing',
+            it: '/it/member/leasing',
           },
           visibilitySettings: {
             userType: {
@@ -467,7 +467,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.optimizerProToolsForSelling',
           url: {
-            de: '#',
+            de: '#', // TODO ADD LINKS
             en: '#',
             fr: '#',
             it: '#',
@@ -486,10 +486,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.topListingPro',
           url: {
-            de: '#',
+            de: '/de/member/toplisting',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/toplisting',
+            it: '/it/member/toplisting',
           },
           visibilitySettings: {
             userType: {
@@ -505,10 +505,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.topCars',
           url: {
-            de: '#',
+            de: '/de/member/topvehicles?slot=36&vehtyp=10',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/topvehicles?vehtyp=10&slot=36',
+            it: '/it/member/topvehicles?slot=36&vehtyp=10',
           },
           visibilitySettings: {
             userType: {
@@ -524,10 +524,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.boosteras24',
           url: {
-            de: '#',
+            de: 'https://dealer.autoscout24.ch/de/booster',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://dealer.autoscout24.ch/fr/booster',
+            it: 'https://dealer.autoscout24.ch/it/booster',
           },
           visibilitySettings: {
             userType: {
@@ -544,10 +544,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.onlineAdvertising',
           url: {
-            de: '#',
+            de: '/de/member/displayads',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/displayads',
+            it: '/it/member/displayads',
           },
           visibilitySettings: {
             userType: {
@@ -563,10 +563,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.advertisePartsAccessories',
           url: {
-            de: '#',
+            de: '/de/ersatzteile-zubehoer/insertion',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/pieces-accessoires/insertion',
+            it: '/it/ricambi-accessori/insertion',
           },
           visibilitySettings: {
             userType: {
@@ -582,10 +582,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.reviews',
           url: {
-            de: '#',
+            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid=60601',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid=60601', // TODO account id
+            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid=60601',
           },
           visibilitySettings: {
             userType: {
@@ -601,10 +601,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.insuranceComparison',
           url: {
-            de: '#',
+            de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://www.financescout24.ch/fr/lp/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
+            it: 'https://www.financescout24.ch/it/lp/trova-assicurazione-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
           },
           visibilitySettings: {
             userType: {
@@ -625,10 +625,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.requisitions',
           url: {
-            de: '#',
+            de: '/de/member/searchjobs',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/searchjobs',
+            it: '/it/member/searchjobs',
           },
           visibilitySettings: {
             userType: {
@@ -644,10 +644,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.bookmarks',
           url: {
-            de: '#',
+            de: '/de/member/favorites',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/favorites',
+            it: '/it/member/favorites',
           },
           visibilitySettings: {
             userType: {
@@ -663,10 +663,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.b2bPlattform',
           url: {
-            de: '#',
+            de: '/de/member/b2bplatform',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/b2bplatform',
+            it: '/it/member/b2bplatform',
           },
           visibilitySettings: {
             userType: {
@@ -682,10 +682,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.amagServiceLifePool',
           url: {
-            de: '#',
+            de: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
+            it: '/it/member/parkingpool/amag?parkingtimedays=9&group=100&cond=49&vehtyp=10',
           },
           visibilitySettings: {
             userType: {
@@ -701,10 +701,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.efagServiceLifePool',
           url: {
-            de: '#',
+            de: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
+            it: '/it/member/parkingpool/efag?group=1&cond=49&vehtyp=10',
           },
           visibilitySettings: {
             userType: {
@@ -720,10 +720,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.demandCalculator',
           url: {
-            de: '#',
+            de: '/de/member/demandcalculator',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/demandcalculator',
+            it: '/it/member/demandcalculator',
           },
           visibilitySettings: {
             userType: {
@@ -739,10 +739,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.autoRadar',
           url: {
-            de: '#',
+            de: '/de/productdescription/as24_autoradar',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/productdescription/as24_autoradar',
+            it: '/it/productdescription/as24_autoradar',
           },
           visibilitySettings: {
             userType: {
@@ -758,10 +758,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.dealerInfoSystem',
           url: {
-            de: '#',
+            de: 'http://bi.scout24.ch',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'http://bi.scout24.ch',
+            it: 'http://bi.scout24.ch',
           },
           visibilitySettings: {
             userType: {
@@ -777,10 +777,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.marketPriceCheck',
           url: {
-            de: '#',
+            de: '/de/member/vehicleacquisition',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/vehicleacquisition',
+            it: 'it/member/vehicleacquisition',
           },
           visibilitySettings: {
             userType: {
@@ -801,10 +801,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.editUser',
           url: {
-            de: '#',
+            de: '/de/member/users/list',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/users/list',
+            it: '/it/member/users/list',
           },
           visibilitySettings: {
             userType: {
@@ -820,10 +820,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.changePassword',
           url: {
-            de: '#',
+            de: '/de/member/masterdata/changepassword',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/masterdata/changepassword',
+            it: '/it/member/masterdata/changepassword',
           },
           visibilitySettings: {
             userType: {
@@ -839,10 +839,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.userLanguage',
           url: {
-            de: '#',
+            de: '/de/member/masterdata/userlanguage',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/masterdata/userlanguage',
+            it: '/it/member/masterdata/userlanguage',
           },
           visibilitySettings: {
             userType: {
@@ -859,10 +859,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.logout',
           color: 'red.500',
           url: {
-            de: '#',
+            de: '/de/account/logoff',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/account/logoff',
+            it: '/it/account/logoff',
           },
           visibilitySettings: {
             userType: {
@@ -883,10 +883,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.infoPage',
           url: {
-            de: '#',
+            de: '/de/member/dealerpageadmin',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/dealerpageadmin',
+            it: '/it/member/dealerpageadmin',
           },
           visibilitySettings: {
             userType: {
@@ -902,10 +902,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.contactDetails',
           url: {
-            de: '#',
+            de: '/de/member/masterdata/addressedit',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/masterdata/addressedit',
+            it: '/it/member/masterdata/addressedit',
           },
           visibilitySettings: {
             userType: {
@@ -921,10 +921,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.openingHours',
           url: {
-            de: '#',
+            de: '/de/member/businesshours',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/businesshours',
+            it: '/it/member/businesshours',
           },
           visibilitySettings: {
             userType: {
@@ -940,10 +940,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.businessImage',
           url: {
-            de: '#',
+            de: '/de/member/businessimage',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/de/member/businessimage',
+            it: '/it/member/businessimage',
           },
           visibilitySettings: {
             userType: {
@@ -959,10 +959,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.editPhotobar',
           url: {
-            de: '#',
+            de: '/de/member/templates/photobar',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/it/member/templates/photobar',
+            it: '/it/member/templates/photobar',
           },
           visibilitySettings: {
             userType: {
@@ -978,10 +978,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.manageAdditionalTitles',
           url: {
-            de: '#',
+            de: '/de/member/templates/teaser',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/templates/teaser',
+            it: '/it/member/templates/teaser',
           },
           visibilitySettings: {
             userType: {
@@ -997,10 +997,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.manageNotes',
           url: {
-            de: '#',
+            de: '/de/member/templates/comment',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/templates/comment',
+            it: '/it/member/templates/comment',
           },
           visibilitySettings: {
             userType: {
@@ -1016,10 +1016,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.qualityLogo',
           url: {
-            de: '#',
+            de: '/de/member/qualilogo',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/qualilogo',
+            it: '/it/member/qualilogo',
           },
           visibilitySettings: {
             userType: {
@@ -1035,10 +1035,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.manageAutoRadar',
           url: {
-            de: '#',
+            de: '/de/productdescription/as24_autoradar',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/productdescription/as24_autoradar',
+            it: '/it/productdescription/as24_autoradar',
           },
           visibilitySettings: {
             userType: {
@@ -1054,10 +1054,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.hci',
           url: {
-            de: '#',
+            de: '/de/member/hci',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/hci',
+            it: '/it/member/hci',
           },
           visibilitySettings: {
             userType: {
@@ -1073,10 +1073,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.importInfo',
           url: {
-            de: '#',
+            de: '/de/productdescription/as24_service',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/productdescription/as24_service',
+            it: '/it/productdescription/as24_service',
           },
           visibilitySettings: {
             userType: {
@@ -1092,10 +1092,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.dmsLog',
           url: {
-            de: '#',
+            de: '/de/member/dmsinfo/log',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/member/dmsinfo/log',
+            it: '/it/member/dmsinfo/log',
           },
           visibilitySettings: {
             userType: {
@@ -1117,10 +1117,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.sell',
           url: {
-            de: '#',
+            de: '/de/auto-verkaufen',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/vendre-voiture',
+            it: '/it/vendere-auto',
           },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {
@@ -1137,10 +1137,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.estimate',
           url: {
-            de: '#',
+            de: '/de/fahrzeugbewertung',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/evaluation-vehicules',
+            it: '/it/valuazione-vehicoli',
           },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {
@@ -1157,10 +1157,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.assure',
           url: {
-            de: '#',
+            de: '/de/autoversicherung',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: '/fr/assurance-auto',
+            it: '/it/assicurazione-auto',
           },
           showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
@@ -1198,10 +1198,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.magazine',
           url: {
-            de: '#',
+            de: 'https://guide.autoscout24.ch/de/',
             en: '#',
-            fr: '#',
-            it: '#',
+            fr: 'https://guide.autoscout24.ch/fr/',
+            it: 'https://guide.autoscout24.ch/it/',
           },
           showUnderMoreLinkBelow: 'lg',
           visibilitySettings: {

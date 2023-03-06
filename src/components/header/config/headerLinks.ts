@@ -6,10 +6,10 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.sell',
     url: {
-      de: '#',
+      de: '/de/auto-verkaufen',
       en: '#',
-      fr: '#',
-      it: '#',
+      fr: '/fr/vendre-voiture',
+      it: '/it/vendere-auto',
     },
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
@@ -26,10 +26,10 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.estimate',
     url: {
-      de: '#',
+      de: '/de/fahrzeugbewertung',
       en: '#',
-      fr: '#',
-      it: '#',
+      fr: '/fr/evaluation-vehicules',
+      it: '/it/valuazione-vehicoli',
     },
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
@@ -46,10 +46,10 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.assure',
     url: {
-      de: '#',
+      de: '/de/autoversicherung',
       en: '#',
-      fr: '#',
-      it: '#',
+      fr: '/fr/assurance-auto',
+      it: '/it/assicurazione-auto',
     },
     showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
@@ -66,7 +66,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.carSubscription',
     url: {
-      de: '#',
+      de: '#', // TOPO ADD LINK
       en: '#',
       fr: '#',
       it: '#',
@@ -87,10 +87,10 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.magazine',
     url: {
-      de: '#',
+      de: 'https://guide.autoscout24.ch/de/',
       en: '#',
-      fr: '#',
-      it: '#',
+      fr: 'https://guide.autoscout24.ch/fr/',
+      it: 'https://guide.autoscout24.ch/it/',
     },
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
