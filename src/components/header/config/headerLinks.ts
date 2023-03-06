@@ -4,8 +4,13 @@ import { NavigationLinkConfigProps, resolveVisibility } from './converter';
 
 const headerLinks: NavigationLinkConfigProps[] = [
   {
-    text: 'Verkaufen',
-    url: '#',
+    translationKey: 'header.sell',
+    url: {
+      de: '#',
+      en: '#',
+      fr: '#',
+      it: '#',
+    },
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
@@ -19,8 +24,13 @@ const headerLinks: NavigationLinkConfigProps[] = [
     },
   },
   {
-    text: 'Schätzen',
-    url: '#',
+    translationKey: 'header.estimate',
+    url: {
+      de: '#',
+      en: '#',
+      fr: '#',
+      it: '#',
+    },
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
@@ -34,8 +44,13 @@ const headerLinks: NavigationLinkConfigProps[] = [
     },
   },
   {
-    text: 'Versichern',
-    url: '#',
+    translationKey: 'header.assure',
+    url: {
+      de: '#',
+      en: '#',
+      fr: '#',
+      it: '#',
+    },
     showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
@@ -49,8 +64,13 @@ const headerLinks: NavigationLinkConfigProps[] = [
     },
   },
   {
-    text: 'Auto-Abo',
-    url: '#',
+    translationKey: 'header.carSubscription',
+    url: {
+      de: '#',
+      en: '#',
+      fr: '#',
+      it: '#',
+    },
     isNew: true,
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
@@ -65,8 +85,13 @@ const headerLinks: NavigationLinkConfigProps[] = [
     },
   },
   {
-    text: 'Magazin',
-    url: '#',
+    translationKey: 'header.magazine',
+    url: {
+      de: '#',
+      en: '#',
+      fr: '#',
+      it: '#',
+    },
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {

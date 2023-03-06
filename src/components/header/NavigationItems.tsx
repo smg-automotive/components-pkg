@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Box, Image, useMultiStyleConfig } from '@chakra-ui/react';
 
 import logoMS from 'src/assets/images/logo_ms24.svg';
@@ -51,7 +52,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
       </Link>
 
       <NavigationItem
-        text="Suche"
+        translationKey="header.search"
         drawerHandler={searchDrawerHandler}
         isOpen={isOpen && drawer?.current === DrawerNode.Search}
       />
@@ -60,7 +61,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
       ))}
       <Show below="lg">
         <NavigationItem
-          text="Mehr"
+          translationKey="header.more"
           drawerHandler={moreDrawerHandler}
           isOpen={isOpen && drawer?.current === DrawerNode.More}
         />
@@ -70,10 +71,11 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
 };
 
 const NavigationItem: FC<{
-  text: string;
+  translationKey: string;
   isOpen: boolean;
   drawerHandler: () => void;
-}> = ({ text, drawerHandler, isOpen }) => {
+}> = ({ translationKey, drawerHandler, isOpen }) => {
+  const { t } = useI18n();
   const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
   return (
     <Box
@@ -81,8 +83,10 @@ const NavigationItem: FC<{
       __css={linkStyles.link}
       fontWeight="bold"
       {...(isOpen ? { color: 'blue.700' } : null)}
+      position="relative"
+      top="1px"
     >
-      {text} <DrawerIndicator isOpen={isOpen} />
+      {t(translationKey)} <DrawerIndicator isOpen={isOpen} />
     </Box>
   );
 };

@@ -1,7 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 
+import { Language } from '@smg-automotive/i18n-pkg';
 import { useTheme } from '@chakra-ui/react';
 
+import TranslationProvider from '../translationProvider';
 import Stack from '../stack';
 
 import Box from '../box';
@@ -17,7 +19,7 @@ import { DrawerNodeItems, getDrawerNodeItems } from './config/drawerNodeItems';
 
 interface NavigationConfiguration {
   homeUrl: string;
-  currentLanguage: string;
+  currentLanguage: Language;
   menuHeight: string;
   user: User | null;
   drawerNodeItems: DrawerNodeItems;
@@ -34,11 +36,16 @@ export type UserType = 'private' | 'professional';
 export type Plattform = 'as24' | 'ms24';
 
 interface NavigationProps {
+  language: Language;
   user: User;
   hasNotification: boolean;
 }
 
-const Navigation: FC<NavigationProps> = ({ user, hasNotification }) => {
+const Navigation: FC<NavigationProps> = ({
+  language,
+  user,
+  hasNotification,
+}) => {
   const { name } = useTheme();
   const plattform: Plattform = name === 'AutoScout 24' ? 'as24' : 'ms24';
   const linkConfig = {
@@ -48,7 +55,7 @@ const Navigation: FC<NavigationProps> = ({ user, hasNotification }) => {
 
   const config: NavigationConfiguration = {
     homeUrl: '/',
-    currentLanguage: 'en',
+    currentLanguage: language,
     user,
     menuHeight: '60px',
     drawerNodeItems: getDrawerNodeItems(linkConfig),
@@ -60,7 +67,7 @@ const Navigation: FC<NavigationProps> = ({ user, hasNotification }) => {
   });
 
   return (
-    <>
+    <TranslationProvider language={config.currentLanguage} scopes={['header']}>
       <Box
         width="full"
         borderBottomColor="gray.200"
@@ -94,7 +101,7 @@ const Navigation: FC<NavigationProps> = ({ user, hasNotification }) => {
               drawer={drawer}
               hasNotification={hasNotification}
             />
-            <NavigationLanguageMenu />
+            <NavigationLanguageMenu activeLanguage={config.currentLanguage} />
           </Stack>
         </Box>
         <NavigationDrawer
@@ -104,7 +111,7 @@ const Navigation: FC<NavigationProps> = ({ user, hasNotification }) => {
           menuHeight={config.menuHeight}
         />
       </Box>
-    </>
+    </TranslationProvider>
   );
 };
 export default Navigation;

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Box, GridItem } from '@chakra-ui/react';
 
 import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
@@ -15,7 +16,7 @@ export const NonCollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
   node,
 }) => {
   return (
-    <Box py={{ base: '2xl', md: 0 }} px={{ base: '2xl', md: 0 }}>
+    <Box py={{ base: '2xl', md: 0 }} px={{ base: '2xl' }}>
       <List>
         {node.items.map((item, index) => {
           return <DrawerNavigationLink item={item} key={index} />;
@@ -28,6 +29,12 @@ export const NonCollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
 export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
   node,
 }) => {
+  const { t } = useI18n();
+
+  if (!node.translationKey) {
+    return null;
+  }
+
   return (
     <GridItem>
       <MobileOnlyAccordion allowMultiple={true}>
@@ -39,7 +46,7 @@ export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
             fontSize="base"
             paddingTop={{ base: 'md', md: 0 }}
           >
-            {node.text}
+            {t(node.translationKey)}
           </Box>
           <Box
             as={MobileOnlyAccordionPanel}
@@ -47,9 +54,9 @@ export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
             paddingBottom="0"
           >
             <List>
-              {node.items.map((item, index) => {
-                return <DrawerNavigationLink item={item} key={index} />;
-              })}
+              {node.items.map((item, index) => (
+                <DrawerNavigationLink item={item} key={index} />
+              ))}
             </List>
           </Box>
         </MobileOnlyAccordionItem>

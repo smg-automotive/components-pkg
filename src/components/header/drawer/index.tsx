@@ -32,7 +32,7 @@ export const DrawerNavigationLink: FC<{
 };
 
 export const DrawerMenu: FC<{ node: NavigationLinkNode }> = ({ node }) => {
-  if (!node.text) {
+  if (!node.translationKey) {
     return <NonCollapsibleSection node={node} />;
   }
 
@@ -58,6 +58,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
       <DrawerContent marginTop={menuHeight}>
         <DrawerBody
           py={{ md: '2xl' }}
+          px={{ md: 'xs' }}
           maxWidth="container.xl"
           margin={{ xl: 'auto' }}
         >

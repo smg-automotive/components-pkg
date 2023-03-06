@@ -8,6 +8,12 @@ import Navigation from './index.tsx';
   parameters={{
     layout: 'fullscreen',
   }}
+  argTypes={{
+    language: {
+      options: ['de', 'fr', 'it', 'en'],
+      control: 'select',
+    },
+  }}
 />
 
 export const Template = (args) => {
@@ -27,6 +33,7 @@ export const Template = (args) => {
         name: 'John Doe',
         type: 'professional',
       },
+      language: 'en',
     }}
   >
     {Template.bind({})}
@@ -46,6 +53,7 @@ export const Template = (args) => {
         name: 'John Doe',
         type: 'private',
       },
+      language: 'en',
     }}
   >
     {Template.bind({})}

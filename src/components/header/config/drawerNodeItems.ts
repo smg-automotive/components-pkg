@@ -7,7 +7,7 @@ import {
 } from './converter';
 
 export interface NavigationLinkNode {
-  text?: string;
+  translationKey?: string;
   items: NavigationLinkProps[];
 }
 export enum DrawerNode {
@@ -22,11 +22,16 @@ type DawerNodeItemsConfig = { [key in DrawerNode]: NavigationLinkConfigNode[] };
 const dawerNodeItems: DawerNodeItemsConfig = {
   search: [
     {
-      text: 'Farzeuge',
+      translationKey: 'header.searchMenu.vehicles',
       items: [
         {
-          text: 'Einfache Suche',
-          url: '#',
+          translationKey: 'header.searchMenu.simpleSearch',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -39,8 +44,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Erweiterte Suche',
-          url: '#',
+          translationKey: 'header.searchMenu.advancedSearch',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -55,11 +65,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
     {
-      text: 'Händler',
+      translationKey: 'header.searchMenu.dealer',
       items: [
         {
-          text: 'Händler suchen',
-          url: '#',
+          translationKey: 'header.searchMenu.searchMerchant',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -74,11 +89,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
     {
-      text: 'Weiteres',
+      translationKey: 'header.searchMenu.additional',
       items: [
         {
-          text: 'Teile & Zubehör suchen',
-          url: '#',
+          translationKey: 'header.searchMenu.findPartsAndAccessories',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -91,8 +111,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Motoräder suchen',
-          url: '#',
+          translationKey: 'header.searchMenu.searchMotorcycles',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -105,8 +130,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Fahrzeugbewertung',
-          url: '#',
+          translationKey: 'header.searchMenu.vehicleRating',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -119,8 +149,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Versicherungsvergleich',
-          url: '#',
+          translationKey: 'header.searchMenu.insuranceComparison',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -133,8 +168,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Angesehene Inserate',
-          url: '#',
+          translationKey: 'header.searchMenu.viewedListings',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -147,8 +187,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Letzte Suchen',
-          url: '#',
+          translationKey: 'header.searchMenu.recentSearches',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -165,11 +210,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
   ],
   user: [
     {
-      text: ' Fahrzeuge verwalten',
+      translationKey: 'header.userMenu.manageVehicles',
       items: [
         {
-          text: 'Inserat erstellen',
-          url: '#',
+          translationKey: 'header.userMenu.createAd',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -182,8 +232,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Meine Fahrzeuge',
-          url: '#',
+          translationKey: 'header.userMenu.myVehicles',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -196,8 +251,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Meine Fahrzeuge (alt)',
-          url: '#',
+          translationKey: 'header.userMenu.myVehcilesOld',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -210,8 +270,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'DealerDashboard',
-          url: '#',
+          translationKey: 'header.userMenu.dealerDashboard',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -224,8 +289,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'OptimizerPro',
-          url: '#',
+          translationKey: 'header.userMenu.optimizerPro',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -238,8 +308,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Cockpit',
-          url: '#',
+          translationKey: 'header.userMenu.cockpit',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -252,8 +327,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Statistiken',
-          url: '#',
+          translationKey: 'header.userMenu.statistics',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -266,8 +346,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Warenkorb',
-          url: '#',
+          translationKey: 'header.userMenu.shoppingCard',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -280,8 +365,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Zum Motorradpark',
-          url: '#',
+          translationKey: 'header.userMenu.motorcyclePark',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -296,11 +386,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
     {
-      text: 'Tools für den Verkauf',
+      translationKey: 'header.userMenu.toolsForSelling',
       items: [
         {
-          text: 'Kontaktanfragen',
-          url: '#',
+          translationKey: 'header.userMenu.contactRequests',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -313,8 +408,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Druckcenter',
-          url: '#',
+          translationKey: 'header.userMenu.printingCenter',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -327,8 +427,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Probefahrten',
-          url: '#',
+          translationKey: 'header.userMenu.testDrives',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -341,8 +446,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Leasing',
-          url: '#',
+          translationKey: 'header.userMenu.leasing',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -355,8 +465,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'OptimizerPro',
-          url: '#',
+          translationKey: 'header.userMenu.optimizerProToolsForSelling',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -369,8 +484,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'TopListing Pro',
-          url: '#',
+          translationKey: 'header.userMenu.topListingPro',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -383,8 +503,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'TopCars',
-          url: '#',
+          translationKey: 'header.userMenu.topCars',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -397,8 +522,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: ' Boosteras24',
-          url: '#',
+          translationKey: 'header.userMenu.boosteras24',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -412,8 +542,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           isNew: true,
         },
         {
-          text: 'Online Werbung',
-          url: '#',
+          translationKey: 'header.userMenu.onlineAdvertising',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -426,8 +561,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Teile, Zubehör inserieren',
-          url: '#',
+          translationKey: 'header.userMenu.advertisePartsAccessories',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -440,8 +580,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Bewertungen',
-          url: '#',
+          translationKey: 'header.userMenu.reviews',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -454,8 +599,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Versicherungsvergleich',
-          url: '#',
+          translationKey: 'header.userMenu.insuranceComparison',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -470,11 +620,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
     {
-      text: 'Tools für den Einkauf',
+      translationKey: 'header.userMenu.toolsForPurchasing',
       items: [
         {
-          text: 'Suchaufträge',
-          url: '#',
+          translationKey: 'header.userMenu.requisitions',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -487,8 +642,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Merkliste',
-          url: '#',
+          translationKey: 'header.userMenu.bookmarks',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -501,8 +661,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'B2B-Plattform',
-          url: '#',
+          translationKey: 'header.userMenu.b2bPlattform',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -515,8 +680,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'AMAG StandzeitenPool',
-          url: '#',
+          translationKey: 'header.userMenu.amagServiceLifePool',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -529,8 +699,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'EFAG StandzeitenPool',
-          url: '#',
+          translationKey: 'header.userMenu.efagServiceLifePool',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -543,8 +718,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Nachfragekalkulator',
-          url: '#',
+          translationKey: 'header.userMenu.demandCalculator',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -557,8 +737,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'AutoRadar',
-          url: '#',
+          translationKey: 'header.userMenu.autoRadar',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -571,8 +756,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'DealerInfoSystem',
-          url: '#',
+          translationKey: 'header.userMenu.dealerInfoSystem',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -585,8 +775,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'MarketPriceCheck',
-          url: '#',
+          translationKey: 'header.userMenu.marketPriceCheck',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -601,11 +796,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
     {
-      text: 'Kontoeinstellungen',
+      translationKey: 'header.userMenu.accountSettings',
       items: [
         {
-          text: 'Benutzer bearbeiten',
-          url: '#',
+          translationKey: 'header.userMenu.editUser',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -618,8 +818,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Passwort ändern',
-          url: '#',
+          translationKey: 'header.userMenu.changePassword',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -632,8 +837,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Benutzersprache',
-          url: '#',
+          translationKey: 'header.userMenu.userLanguage',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -646,9 +856,14 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Abmelden',
+          translationKey: 'header.userMenu.logout',
           color: 'red.500',
-          url: '#',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -663,11 +878,16 @@ const dawerNodeItems: DawerNodeItemsConfig = {
       ],
     },
     {
-      text: 'Einstellungen',
+      translationKey: 'header.userMenu.settings',
       items: [
         {
-          text: 'InfoPage',
-          url: '#',
+          translationKey: 'header.userMenu.infoPage',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -680,8 +900,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Kontaktangaben',
-          url: '#',
+          translationKey: 'header.userMenu.contactDetails',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: true,
@@ -694,8 +919,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Öffnungszeiten',
-          url: '#',
+          translationKey: 'header.userMenu.openingHours',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -708,8 +938,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'BusinessImage',
-          url: '#',
+          translationKey: 'header.userMenu.businessImage',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -722,8 +957,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Photobar bearbeiten',
-          url: '#',
+          translationKey: 'header.userMenu.editPhotobar',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -736,8 +976,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Zusatztitel verwalten',
-          url: '#',
+          translationKey: 'header.userMenu.manageAdditionalTitles',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -750,8 +995,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Bemerkungen verwalten',
-          url: '#',
+          translationKey: 'header.userMenu.manageNotes',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -764,8 +1014,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Qualitätslogo',
-          url: '#',
+          translationKey: 'header.userMenu.qualityLogo',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -778,8 +1033,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'AutoRadar verwalten',
-          url: '#',
+          translationKey: 'header.userMenu.manageAutoRadar',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -792,8 +1052,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'HCI',
-          url: '#',
+          translationKey: 'header.userMenu.hci',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -806,8 +1071,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'ImportInfo',
-          url: '#',
+          translationKey: 'header.userMenu.importInfo',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -820,8 +1090,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'DmsLog',
-          url: '#',
+          translationKey: 'header.userMenu.dmsLog',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           visibilitySettings: {
             userType: {
               private: false,
@@ -840,8 +1115,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
     {
       items: [
         {
-          text: 'Verkaufen',
-          url: '#',
+          translationKey: 'header.sell',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {
             userType: {
@@ -855,8 +1135,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Schätzen',
-          url: '#',
+          translationKey: 'header.estimate',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {
             userType: {
@@ -870,8 +1155,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Versichern',
-          url: '#',
+          translationKey: 'header.assure',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
@@ -885,8 +1175,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Auto-Abo',
-          url: '#',
+          translationKey: 'header.carSubscription',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           isNew: true,
           showUnderMoreLinkBelow: 'lg',
           visibilitySettings: {
@@ -901,8 +1196,13 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          text: 'Magazin',
-          url: '#',
+          translationKey: 'header.magazine',
+          url: {
+            de: '#',
+            en: '#',
+            fr: '#',
+            it: '#',
+          },
           showUnderMoreLinkBelow: 'lg',
           visibilitySettings: {
             userType: {

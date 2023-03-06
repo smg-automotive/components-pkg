@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
+import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 import { Badge } from '@chakra-ui/react';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
@@ -18,8 +19,8 @@ export const HeaderLink: FC<{
 };
 
 export interface NavigationLinkProps {
-  url: string;
-  text: string;
+  url: Record<Language, string>;
+  translationKey: string;
   isNew?: boolean;
   isVisible?: boolean;
   iconRight?: ReactNode;
@@ -31,18 +32,24 @@ export interface NavigationLinkProps {
 
 const NavigationLink: FC<NavigationLinkProps> = ({
   url,
-  text,
+  translationKey,
   isNew,
   isVisible = true,
   fontWeight = 'regular',
   variant = 'navigationLink',
   color = 'initial',
 }) => {
+  const { t, language } = useI18n();
   if (!isVisible) return null;
 
   return (
-    <Link href={url} variant={variant} fontWeight={fontWeight} color={color}>
-      {text}
+    <Link
+      href={url[language]}
+      variant={variant}
+      fontWeight={fontWeight}
+      color={color}
+    >
+      {t(translationKey)}
       {isNew ? <Badge variant="navigationLinkBadge">New</Badge> : null}
     </Link>
   );

@@ -38,7 +38,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Box fontWeight="bold" {...(isOpen ? { color: 'blue.700' } : null)}>
+          <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
             {user.name}
           </Box>
         </Hide>

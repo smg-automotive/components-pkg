@@ -33,7 +33,7 @@ const convertNavigationItem = ({
   isVisible: boolean;
 }): NavigationLinkProps => {
   return {
-    text: item.text,
+    translationKey: item.translationKey,
     url: item.url,
     isNew: item.isNew,
     iconRight: item.iconRight,

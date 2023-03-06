@@ -15,9 +15,10 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
     <Hide below="sm">
       <Box
         as={Menu}
-        title="DE"
+        title={activeLanguage.toUpperCase()}
         fontWeight="bold"
-        offset={[-100, 18]}
+        fontWeightTitle="bold"
+        offset={[-100, 18]} // TODO responsive missing
         items={[
           { text: 'Deutsch', onClick: () => null },
           { text: 'Français', onClick: () => null },
