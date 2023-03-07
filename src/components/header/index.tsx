@@ -1,7 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
-import { useTheme } from '@chakra-ui/react';
+
+import { Brand } from 'src/types/brand';
 
 import TranslationProvider from '../translationProvider';
 import Stack from '../stack';
@@ -36,18 +37,18 @@ export type UserType = 'private' | 'professional';
 export type Plattform = 'as24' | 'ms24';
 
 interface NavigationProps {
+  plattform: Brand;
   language: Language;
   user: User;
   hasNotification: boolean;
 }
 
 const Navigation: FC<NavigationProps> = ({
+  plattform,
   language,
   user,
   hasNotification,
 }) => {
-  const { name } = useTheme();
-  const plattform: Plattform = name === 'AutoScout 24' ? 'as24' : 'ms24';
   const linkConfig = {
     userType: user.type,
     plattform,
@@ -58,7 +59,10 @@ const Navigation: FC<NavigationProps> = ({
     currentLanguage: language,
     user,
     menuHeight: '60px',
-    drawerNodeItems: getDrawerNodeItems(linkConfig),
+    drawerNodeItems: getDrawerNodeItems({
+      ...linkConfig,
+      urlPathParams: { accountId: user.id },
+    }),
     headerLinks: getHeaderLinks(linkConfig),
   };
 
@@ -75,7 +79,6 @@ const Navigation: FC<NavigationProps> = ({
         zIndex="header"
         position="absolute"
         backgroundColor="white"
-        fontFamily="Make It Sans" // TODO Figure out how to handle this
       >
         <Box
           maxWidth="container.xl"

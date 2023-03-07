@@ -13,6 +13,10 @@ import Navigation from './index.tsx';
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
+    plattform: {
+      options: ['as24', 'ms24'],
+      control: 'select',
+    },
   }}
 />
 
@@ -34,6 +38,7 @@ export const Template = (args) => {
         type: 'professional',
       },
       language: 'en',
+      plattform: 'as24',
     }}
   >
     {Template.bind({})}
@@ -54,6 +59,7 @@ export const Template = (args) => {
         type: 'private',
       },
       language: 'en',
+      plattform: 'as24',
     }}
   >
     {Template.bind({})}

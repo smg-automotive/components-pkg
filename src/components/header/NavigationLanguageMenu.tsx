@@ -18,12 +18,12 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         title={activeLanguage.toUpperCase()}
         fontWeight="bold"
         fontWeightTitle="bold"
-        offset={[-100, 18]} // TODO responsive missing
+        offset={[-100, 18]}
         items={[
-          { text: 'Deutsch', onClick: () => null },
-          { text: 'Français', onClick: () => null },
-          { text: 'Italiano', onClick: () => null },
-          { text: 'English', onClick: () => null },
+          { text: 'Deutsch', onClick: () => (window.location.href = '/de') },
+          { text: 'Français', onClick: () => (window.location.href = '/fr') },
+          { text: 'Italiano', onClick: () => (window.location.href = '/it') },
+          { text: 'English', onClick: () => (window.location.href = '/en') },
         ]}
       ></Box>
     </Hide>

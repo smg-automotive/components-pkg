@@ -1,3 +1,7 @@
+import { Language } from '@smg-automotive/i18n-pkg';
+
+import { replaceParameters } from 'src/utilities/replacePathParameters';
+
 import { NavigationLinkProps } from '../NavigationLink';
 import { Plattform, UserType } from '..';
 import {
@@ -582,10 +586,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.reviews',
           url: {
-            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid=60601',
+            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
             en: '#',
-            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid=60601', // TODO account id
-            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid=60601',
+            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}', // TODO account id
+            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
           },
           visibilitySettings: {
             userType: {
@@ -1220,26 +1224,50 @@ const dawerNodeItems: DawerNodeItemsConfig = {
   ],
 };
 
+const replacePathParameters = (
+  item: NavigationLinkConfigProps,
+  urlPathParams: Record<string, string | number>
+) => {
+  Object.keys(item.url).forEach((language) => {
+    const replacedPath = replaceParameters({
+      path: item.url[language as Language],
+      params: urlPathParams,
+    });
+    item.url[language as Language] = replacedPath;
+  });
+};
+
 const mapDrawerNodeItems = (
   userType: UserType,
   plattform: Plattform,
-  items: NavigationLinkConfigProps[]
+  items: NavigationLinkConfigProps[],
+  urlPathParams?: Record<string, string | number>
 ) =>
-  items.map((item) =>
-    resolveVisibility({
+  items.map((item) => {
+    if (urlPathParams) {
+      replacePathParameters(item, urlPathParams);
+    }
+
+    return resolveVisibility({
       item,
       userType,
       plattform,
-    })
-  );
+    });
+  });
 
 const mapDrawerNodes = (
   userType: UserType,
   plattform: Plattform,
-  nodeEntry: NavigationLinkConfigNode[]
+  nodeEntry: NavigationLinkConfigNode[],
+  urlPathParams?: Record<string, string | number>
 ) =>
   nodeEntry.map((node) => {
-    const mappedItems = mapDrawerNodeItems(userType, plattform, node.items);
+    const mappedItems = mapDrawerNodeItems(
+      userType,
+      plattform,
+      node.items,
+      urlPathParams
+    );
 
     return {
       ...node,
@@ -1250,10 +1278,16 @@ const mapDrawerNodes = (
 const mapDrawerItemsEntries = (
   userType: UserType,
   plattform: Plattform,
-  itemsEntires: [string, NavigationLinkConfigNode[]][]
+  itemsEntires: [string, NavigationLinkConfigNode[]][],
+  urlPathParams?: Record<string, string | number>
 ) =>
   itemsEntires.map(([nodeKey, nodes]) => {
-    const mappedNodes = mapDrawerNodes(userType, plattform, nodes);
+    const mappedNodes = mapDrawerNodes(
+      userType,
+      plattform,
+      nodes,
+      urlPathParams
+    );
 
     return [nodeKey, mappedNodes];
   });
@@ -1261,15 +1295,18 @@ const mapDrawerItemsEntries = (
 export const getDrawerNodeItems = ({
   userType,
   plattform,
+  urlPathParams,
 }: {
   userType: UserType;
   plattform: Plattform;
+  urlPathParams?: Record<string, string | number>;
 }): DrawerNodeItems => {
   const itemsEntires = Object.entries(dawerNodeItems);
   const mappedEntries = mapDrawerItemsEntries(
     userType,
     plattform,
-    itemsEntires
+    itemsEntires,
+    urlPathParams
   );
 
   return Object.fromEntries(mappedEntries);
