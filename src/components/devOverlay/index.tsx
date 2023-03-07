@@ -39,7 +39,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
   activeTheme,
   displayTranslationKeys = false,
 }) => {
-  const isThemeSwitcherChecked = 'as24' !== activeTheme;
+  const isThemeSwitcherChecked = Brand.AutoScout24 !== activeTheme;
 
   return (
     <Box

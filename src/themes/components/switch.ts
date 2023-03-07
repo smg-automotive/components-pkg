@@ -8,8 +8,8 @@ import type {
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { opacity } from '../shared/opacity';
-import { colors as ms24Colors } from '../ms24/colors';
-import { colors as as24Colors } from '../as24/colors';
+import { colors as ms24Colors } from '../motoscout24/colors';
+import { colors as as24Colors } from '../autoscout24/colors';
 
 const $width = cssVar('switch-track-width');
 const $height = cssVar('switch-track-height');

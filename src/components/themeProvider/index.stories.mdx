@@ -1,17 +1,19 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Box, Flex } from '@chakra-ui/react';
 
+import { Brand } from 'src/types/brand';
+
 import ThemeProvider from './index.tsx';
 
 <Meta
   title="Theme/Provider"
   component={ThemeProvider}
   args={{
-    theme: 'as24',
+    theme: Brand.AutoScout24,
   }}
   argTypes={{
     theme: {
-      options: ['as24', 'ms24'],
+      options: [Brand.AutoScout24, Brand.MotoScout24],
       control: { type: 'select' },
     },
   }}
@@ -40,17 +42,17 @@ export const Template = (args) => {
 ## Theme Provider
 
 <Canvas>
-  <Story name="as24" args={{ theme: 'as24' }}>
+  <Story name={Brand.AutoScout24} args={{ theme: Brand.AutoScout24 }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="as24" />
+<ArgsTable story={Brand.AutoScout24} />
 
 <Canvas>
-  <Story name="ms24" args={{ theme: 'ms24' }}>
+  <Story name={Brand.MotoScout24} args={{ theme: Brand.MotoScout24 }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable story="ms24" />
+<ArgsTable story={Brand.MotoScout24} />
