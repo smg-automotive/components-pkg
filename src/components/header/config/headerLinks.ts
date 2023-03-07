@@ -7,7 +7,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
     translationKey: 'header.sell',
     url: {
       de: '/de/auto-verkaufen',
-      en: '#',
+      en: '/de/auto-verkaufen',
       fr: '/fr/vendre-voiture',
       it: '/it/vendere-auto',
     },
@@ -27,7 +27,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
     translationKey: 'header.estimate',
     url: {
       de: '/de/fahrzeugbewertung',
-      en: '#',
+      en: '/de/fahrzeugbewertung',
       fr: '/fr/evaluation-vehicules',
       it: '/it/valuazione-vehicoli',
     },
@@ -47,7 +47,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
     translationKey: 'header.assure',
     url: {
       de: '/de/autoversicherung',
-      en: '#',
+      en: '/de/autoversicherung',
       fr: '/fr/assurance-auto',
       it: '/it/assicurazione-auto',
     },
@@ -88,7 +88,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
     translationKey: 'header.magazine',
     url: {
       de: 'https://guide.autoscout24.ch/de/',
-      en: '#',
+      en: 'https://guide.autoscout24.ch/de/',
       fr: 'https://guide.autoscout24.ch/fr/',
       it: 'https://guide.autoscout24.ch/it/',
     },

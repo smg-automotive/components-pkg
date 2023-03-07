@@ -1,4 +1,5 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box } from '@chakra-ui/react';
 
 import Navigation from './index.tsx';
 
@@ -21,7 +22,11 @@ import Navigation from './index.tsx';
 />
 
 export const Template = (args) => {
-  return <Navigation {...args} />;
+  return (
+    <Box fontFamily="Make It Sans">
+      <Navigation {...args} />
+    </Box>
+  );
 };
 
 # Full Height
