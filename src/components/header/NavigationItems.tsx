@@ -77,6 +77,7 @@ const NavigationItem: FC<{
 }> = ({ translationKey, drawerHandler, isOpen }) => {
   const { t } = useI18n();
   const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
+
   return (
     <Box
       onClick={drawerHandler}

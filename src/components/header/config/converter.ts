@@ -1,3 +1,6 @@
+import { Language } from '@smg-automotive/i18n-pkg';
+
+import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { NavigationLinkProps } from '../NavigationLink';
@@ -21,46 +24,83 @@ export type NavigationLinkConfigProps = Omit<
     };
   };
 };
+
 export type NavigationLinkConfigNode = Omit<NavigationLinkNode, 'items'> & {
   items: NavigationLinkConfigProps[];
 };
 
-const convertNavigationItem = ({
+const constructUrls = ({
   item,
-  isVisible,
+  urlPathParams,
+  domain,
+  useAbsoluteUrls,
 }: {
   item: NavigationLinkConfigProps;
+  urlPathParams?: Record<string, string | number>;
+  domain: string;
+  useAbsoluteUrls: boolean;
+}) => {
+  const urls = {} as Record<Language, string>;
+
+  for (const language in item.url) {
+    let path = item.url[language as Language];
+    if (urlPathParams) {
+      path = replaceParameters({
+        path,
+        params: urlPathParams,
+      });
+    }
+
+    const baseUrl = useAbsoluteUrls && domain ? `https://${domain}` : '';
+    const url = `${baseUrl}${path}`;
+    urls[language as Language] = url;
+  }
+
+  return urls;
+};
+
+export interface ConvertNavigationItemData {
+  item: NavigationLinkConfigProps;
   isVisible: boolean;
-}): NavigationLinkProps => {
+  urlPathParams?: Record<string, string | number>;
+  domain: string;
+  useAbsoluteUrls: boolean;
+}
+
+const convertNavigationItem = (
+  data: ConvertNavigationItemData
+): NavigationLinkProps => {
+  const itemUrls = constructUrls(data);
+
   return {
-    translationKey: item.translationKey,
-    url: item.url,
-    isNew: item.isNew,
-    iconRight: item.iconRight,
-    color: item.color,
-    isVisible,
-    showUnderMoreLinkBelow: item.showUnderMoreLinkBelow,
+    translationKey: data.item.translationKey,
+    url: itemUrls,
+    isNew: data.item.isNew,
+    iconRight: data.item.iconRight,
+    color: data.item.color,
+    isVisible: data.isVisible,
+    showUnderMoreLinkBelow: data.item.showUnderMoreLinkBelow,
   };
 };
 
-export const resolveVisibility = ({
-  item,
-  userType,
-  plattform,
-}: {
-  item: NavigationLinkConfigProps;
-  userType: UserType;
-  plattform: Plattform;
-}): NavigationLinkProps => {
-  if (!item.visibilitySettings.plattform[plattform]) {
-    return convertNavigationItem({ item, isVisible: false });
+export const resolveVisibility = (
+  data: Omit<ConvertNavigationItemData, 'isVisible'> & {
+    userType: UserType;
+    plattform: Plattform;
+  }
+): NavigationLinkProps => {
+  if (!data.item.visibilitySettings.plattform[data.plattform]) {
+    return convertNavigationItem({ ...data, isVisible: false });
   }
 
   // Add in entitlements in here
 
-  if (!item.visibilitySettings.userType[userType]) {
-    return convertNavigationItem({ item, isVisible: false });
+  if (!data.item.visibilitySettings.userType[data.userType]) {
+    return convertNavigationItem({
+      ...data,
+      isVisible: false,
+    });
   }
 
-  return convertNavigationItem({ item, isVisible: true });
+  return convertNavigationItem({ ...data, isVisible: true });
 };

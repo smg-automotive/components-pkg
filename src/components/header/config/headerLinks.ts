@@ -1,5 +1,5 @@
 import { NavigationLinkProps } from '../NavigationLink';
-import { Plattform, UserType } from '..';
+import { LinkConfig } from '..';
 import { NavigationLinkConfigProps, resolveVisibility } from './converter';
 
 const headerLinks: NavigationLinkConfigProps[] = [
@@ -66,10 +66,10 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.carSubscription',
     url: {
-      de: '#', // TOPO ADD LINK
-      en: '#',
-      fr: '#',
-      it: '#',
+      de: '/#', // TODO ADD LINK
+      en: '/#',
+      fr: '/#',
+      it: '/#',
     },
     isNew: true,
     showUnderMoreLinkBelow: 'lg',
@@ -106,18 +106,11 @@ const headerLinks: NavigationLinkConfigProps[] = [
   },
 ];
 
-export const getHeaderLinks = ({
-  userType,
-  plattform,
-}: {
-  userType: UserType;
-  plattform: Plattform;
-}): NavigationLinkProps[] => {
+export const getHeaderLinks = (data: LinkConfig): NavigationLinkProps[] => {
   const mappedHeaderLinks = headerLinks.map((item) => {
     return resolveVisibility({
+      ...data,
       item,
-      userType,
-      plattform,
     });
   });
 

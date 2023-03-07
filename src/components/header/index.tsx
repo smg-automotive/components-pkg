@@ -1,7 +1,8 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useMemo } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import TranslationProvider from '../translationProvider';
@@ -31,6 +32,7 @@ export interface User {
   id: number;
   name: string;
   type: 'private' | 'professional';
+  accountId: number;
 }
 
 export type UserType = 'private' | 'professional';
@@ -41,6 +43,16 @@ interface NavigationProps {
   language: Language;
   user: User;
   hasNotification: boolean;
+  domain?: string;
+  useAbsoluteUrls?: boolean;
+}
+
+export interface LinkConfig {
+  userType: UserType;
+  plattform: Plattform;
+  useAbsoluteUrls: boolean;
+  domain: string;
+  urlPathParams: Record<string, string | number>;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -48,23 +60,37 @@ const Navigation: FC<NavigationProps> = ({
   language,
   user,
   hasNotification,
+  useAbsoluteUrls = false,
+  domain = '',
 }) => {
-  const linkConfig = {
+  const linkConfig: LinkConfig = {
     userType: user.type,
     plattform,
+    useAbsoluteUrls,
+    domain,
+    urlPathParams: { accountId: user.accountId },
   };
 
-  const config: NavigationConfiguration = {
-    homeUrl: '/',
-    currentLanguage: language,
-    user,
-    menuHeight: '60px',
-    drawerNodeItems: getDrawerNodeItems({
-      ...linkConfig,
-      urlPathParams: { accountId: user.id },
+  const config: NavigationConfiguration = useMemo(
+    () => ({
+      homeUrl: '/',
+      currentLanguage: language,
+      user,
+      menuHeight: '60px',
+      drawerNodeItems: getDrawerNodeItems(linkConfig),
+      headerLinks: getHeaderLinks(linkConfig),
     }),
-    headerLinks: getHeaderLinks(linkConfig),
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      user.id,
+      user.type,
+      user.accountId,
+      plattform,
+      useAbsoluteUrls,
+      domain,
+      language,
+    ]
+  );
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
     drawerNodeItems: config.drawerNodeItems,

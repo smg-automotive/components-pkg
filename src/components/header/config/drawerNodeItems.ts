@@ -1,9 +1,5 @@
-import { Language } from '@smg-automotive/i18n-pkg';
-
-import { replaceParameters } from 'src/utilities/replacePathParameters';
-
 import { NavigationLinkProps } from '../NavigationLink';
-import { Plattform, UserType } from '..';
+import { LinkConfig } from '..';
 import {
   NavigationLinkConfigNode,
   NavigationLinkConfigProps,
@@ -14,11 +10,13 @@ export interface NavigationLinkNode {
   translationKey?: string;
   items: NavigationLinkProps[];
 }
+
 export enum DrawerNode {
   Search = 'search',
   User = 'user',
   More = 'more',
 }
+
 export type DrawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
 
 type DawerNodeItemsConfig = { [key in DrawerNode]: NavigationLinkConfigNode[] };
@@ -1203,7 +1201,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.magazine',
           url: {
             de: 'https://guide.autoscout24.ch/de/',
-            en: '#',
+            en: 'https://guide.autoscout24.ch/de/',
             fr: 'https://guide.autoscout24.ch/fr/',
             it: 'https://guide.autoscout24.ch/it/',
           },
@@ -1224,50 +1222,21 @@ const dawerNodeItems: DawerNodeItemsConfig = {
   ],
 };
 
-const replacePathParameters = (
-  item: NavigationLinkConfigProps,
-  urlPathParams: Record<string, string | number>
-) => {
-  Object.keys(item.url).forEach((language) => {
-    const replacedPath = replaceParameters({
-      path: item.url[language as Language],
-      params: urlPathParams,
-    });
-    item.url[language as Language] = replacedPath;
-  });
-};
-
 const mapDrawerNodeItems = (
-  userType: UserType,
-  plattform: Plattform,
-  items: NavigationLinkConfigProps[],
-  urlPathParams?: Record<string, string | number>
+  data: LinkConfig & { items: NavigationLinkConfigProps[] }
 ) =>
-  items.map((item) => {
-    if (urlPathParams) {
-      replacePathParameters(item, urlPathParams);
-    }
-
+  data.items.map((item) => {
     return resolveVisibility({
+      ...data,
       item,
-      userType,
-      plattform,
     });
   });
 
 const mapDrawerNodes = (
-  userType: UserType,
-  plattform: Plattform,
-  nodeEntry: NavigationLinkConfigNode[],
-  urlPathParams?: Record<string, string | number>
+  data: LinkConfig & { nodeEntry: NavigationLinkConfigNode[] }
 ) =>
-  nodeEntry.map((node) => {
-    const mappedItems = mapDrawerNodeItems(
-      userType,
-      plattform,
-      node.items,
-      urlPathParams
-    );
+  data.nodeEntry.map((node) => {
+    const mappedItems = mapDrawerNodeItems({ ...data, items: node.items });
 
     return {
       ...node,
@@ -1276,38 +1245,17 @@ const mapDrawerNodes = (
   });
 
 const mapDrawerItemsEntries = (
-  userType: UserType,
-  plattform: Plattform,
-  itemsEntires: [string, NavigationLinkConfigNode[]][],
-  urlPathParams?: Record<string, string | number>
+  data: LinkConfig & { itemsEntires: [string, NavigationLinkConfigNode[]][] }
 ) =>
-  itemsEntires.map(([nodeKey, nodes]) => {
-    const mappedNodes = mapDrawerNodes(
-      userType,
-      plattform,
-      nodes,
-      urlPathParams
-    );
+  data.itemsEntires.map(([nodeKey, nodes]) => {
+    const mappedNodes = mapDrawerNodes({ ...data, nodeEntry: nodes });
 
     return [nodeKey, mappedNodes];
   });
 
-export const getDrawerNodeItems = ({
-  userType,
-  plattform,
-  urlPathParams,
-}: {
-  userType: UserType;
-  plattform: Plattform;
-  urlPathParams?: Record<string, string | number>;
-}): DrawerNodeItems => {
+export const getDrawerNodeItems = (data: LinkConfig): DrawerNodeItems => {
   const itemsEntires = Object.entries(dawerNodeItems);
-  const mappedEntries = mapDrawerItemsEntries(
-    userType,
-    plattform,
-    itemsEntires,
-    urlPathParams
-  );
+  const mappedEntries = mapDrawerItemsEntries({ ...data, itemsEntires });
 
   return Object.fromEntries(mappedEntries);
 };
