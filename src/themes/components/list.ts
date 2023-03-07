@@ -42,7 +42,7 @@ const variants = {
       _before: {
         content: '""',
         marginLeft:
-          styleType !== 'decimal'
+          styleType === 'initial'
             ? `calc(-${fontSizes[size as keyof typeof fontSizes]} / 2)`
             : '',
       },
