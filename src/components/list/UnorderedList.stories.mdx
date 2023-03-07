@@ -1,31 +1,42 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Box from 'src/components/box';
 
 import UnorderedList from './UnorderedList';
 import ListItem from './ListItem.tsx';
 
 <Meta
-  title="Components/Data display/Unordered list"
+  title="Components/Data display/List/Unordered list"
   component={UnorderedList}
   parameters={{
     layout: 'fullscreen',
   }}
   args={{
-    variant: 'md',
+    size: 'md',
+    variant: 'icon-inside',
+    start: 1,
   }}
   argTypes={{
-    variant: {
+    size: {
       options: ['sm', 'md'],
+      control: 'select',
+    },
+    variant: {
+      options: ['icon-inside', 'icon-outside'],
       control: 'select',
     },
   }}
 />
 
 export const Template = (args) => (
-  <UnorderedList {...args}>
-    <ListItem>Item 1</ListItem>
-    <ListItem>Item 2</ListItem>
-    <ListItem>Item 3</ListItem>
-  </UnorderedList>
+  <Box maxW="200px" border="1px solid black">
+    <UnorderedList {...args} bg="gray.100">
+      <ListItem>
+        Item 1 is a very long item that will wrap to the next line
+      </ListItem>
+      <ListItem>Item 2</ListItem>
+      <ListItem>Item 3</ListItem>
+    </UnorderedList>
+  </Box>
 );
 
 # List
