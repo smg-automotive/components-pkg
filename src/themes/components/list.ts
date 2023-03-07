@@ -18,27 +18,40 @@ const baseStyle = definePartsStyle({
   icon: baseStyleIcon,
 });
 
-const mdVariant = {
-  container: {
-    textStyle: 'body',
+const sizes = {
+  md: {
+    container: {
+      textStyle: 'body',
+      spacing: 'md',
+    },
   },
-};
-
-const smVariant = {
-  container: {
-    textStyle: 'body-small',
+  sm: {
+    container: {
+      textStyle: 'body-small',
+      spacing: 'sm',
+    },
   },
 };
 
 const variants = {
-  md: mdVariant,
-  sm: smVariant,
+  'icon-inside': {
+    container: {
+      stylePosition: 'inside',
+    },
+    'icon-outside': {
+      container: {
+        stylePosition: 'outside',
+      },
+    },
+  },
 };
 
 export default defineMultiStyleConfig({
   baseStyle,
+  sizes,
   variants,
   defaultProps: {
-    variant: 'md',
+    size: 'md',
+    variant: 'icon-inside',
   },
 }) as ComponentStyleConfig;
