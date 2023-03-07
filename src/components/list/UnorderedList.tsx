@@ -1,20 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { UnorderedList as ChakraUnorderedList } from '@chakra-ui/react';
 
-interface ListProps {
-  variant?: 'sm' | 'md';
-}
+import { ListProps } from './props';
 
 const UnorderedList: FC<PropsWithChildren<ListProps>> = ({
   children,
   variant,
+  size,
 }) => {
   return (
-    <ChakraUnorderedList
-      spacing={variant}
-      variant={variant}
-      stylePosition="inside"
-    >
+    <ChakraUnorderedList size={size} variant={variant}>
       {children}
     </ChakraUnorderedList>
   );
