@@ -10,10 +10,10 @@ import List from './index.tsx';
     layout: 'fullscreen',
   }}
   args={{
-    variant: 'md',
+    size: 'md',
   }}
   argTypes={{
-    variant: {
+    size: {
       options: ['sm', 'md'],
       control: 'select',
     },
@@ -33,5 +33,5 @@ export const Template = (args) => (
 ## Overview
 
 <Canvas>
-  <Story name="List">{Template.bind({})}</Story>
+  <Story name="Unstyled list">{Template.bind({})}</Story>
 </Canvas>

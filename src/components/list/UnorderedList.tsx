@@ -1,17 +1,18 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { UnorderedList as ChakraUnorderedList } from '@chakra-ui/react';
+import { List } from '@chakra-ui/react';
 
 import { ListProps } from './props';
 
 const UnorderedList: FC<PropsWithChildren<ListProps>> = ({
   children,
-  variant,
-  size,
+  ...props
 }) => {
   return (
-    <ChakraUnorderedList size={size} variant={variant}>
+    // default implementation in chakra forces 1em margin-start
+    // https://github.com/chakra-ui/chakra-ui/blob/main/packages/components/layout/src/list.tsx#L107
+    <List as="ul" styleType="initial" {...props}>
       {children}
-    </ChakraUnorderedList>
+    </List>
   );
 };
 

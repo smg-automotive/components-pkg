@@ -5,6 +5,8 @@ import {
 } from '@chakra-ui/react';
 import { listAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { fontSizes } from '../shared/fontSizes';
+
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
 
@@ -19,31 +21,39 @@ const baseStyle = definePartsStyle({
 });
 
 const sizes = {
-  md: {
+  md: definePartsStyle({
     container: {
       textStyle: 'body',
-      spacing: 'md',
     },
-  },
-  sm: {
+  }),
+  sm: definePartsStyle({
     container: {
       textStyle: 'body-small',
-      spacing: 'sm',
     },
-  },
+  }),
 };
 
 const variants = {
-  'icon-inside': {
-    container: {
-      stylePosition: 'inside',
-    },
-    'icon-outside': {
-      container: {
-        stylePosition: 'outside',
+  'icon-inside': definePartsStyle(({ size, styleType }) => ({
+    container: defineStyle({
+      listStylePos: 'inside',
+    }),
+    item: defineStyle({
+      _before: {
+        content: '""',
+        marginLeft:
+          styleType !== 'decimal'
+            ? `calc(-${fontSizes[size as keyof typeof fontSizes]} / 2)`
+            : '',
       },
-    },
-  },
+    }),
+  })),
+  'icon-outside': definePartsStyle(({ size }) => ({
+    container: defineStyle({
+      listStylePos: 'outside',
+      marginStart: fontSizes[size as keyof typeof fontSizes],
+    }),
+  })),
 };
 
 export default defineMultiStyleConfig({
