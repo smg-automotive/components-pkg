@@ -1,4 +1,4 @@
-FROM node:lts-alpine@sha256:bc329c7332cffc30c2d4801e38df03cbfa8dcbae2a7a52a449db104794f168a3
+FROM node:lts-alpine@sha256:f8a51c36b0be7434bbf867d4a08decf0100e656203d893b9b0f8b1fe9e40daea
 
 WORKDIR /app
 ADD . /app

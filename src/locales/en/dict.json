@@ -11,6 +11,10 @@
       "title": "Sorry, something went wrong"
     }
   },
+  "filterSelectButton": {
+    "close": "Close",
+    "reset": "Reset"
+  },
   "footer": {
     "apps": {
       "title": "Mobile Apps"

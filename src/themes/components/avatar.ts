@@ -1,4 +1,4 @@
-import type { SystemStyleObject } from '@chakra-ui/react';
+import type { ComponentStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 const baseStyle: SystemStyleObject = {
   cursor: 'pointer',
@@ -6,4 +6,4 @@ const baseStyle: SystemStyleObject = {
 
 export default {
   baseStyle,
-};
+} as ComponentStyleConfig;

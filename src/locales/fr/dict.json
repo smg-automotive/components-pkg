@@ -11,6 +11,10 @@
       "title": "Désolé, quelque chose a mal tourné"
     }
   },
+  "filterSelectButton": {
+    "close": "Fermer",
+    "reset": "Réinitialiser"
+  },
   "footer": {
     "apps": {
       "title": "App download"

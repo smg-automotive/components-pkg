@@ -1,3 +1,5 @@
+import { ComponentStyleConfig } from '@chakra-ui/react';
+
 import VehicleReference from './vehicleReference';
 import Tooltip from './tooltip';
 import Textarea from './textarea';
@@ -10,6 +12,7 @@ import Select from './select';
 import Section from './section';
 import Radio from './radio';
 import Pagination from './pagination';
+import NumberInput from './numberInput';
 import Modal from './modal';
 import Menu from './menu';
 import List from './list';
@@ -30,7 +33,7 @@ import ArticleTeaser from './articleTeaser';
 import Alert from './alert';
 import Accordion from './accordion';
 
-export const components = {
+export const components: Record<string, ComponentStyleConfig> = {
   Accordion,
   Alert,
   ArticleTeaser,
@@ -50,6 +53,7 @@ export const components = {
   List,
   Menu,
   Modal,
+  NumberInput,
   Pagination,
   Radio,
   Section,
@@ -58,8 +62,8 @@ export const components = {
   Spinner,
   Switch,
   Table,
+  Tabs,
   Textarea,
   Tooltip,
   VehicleReference,
-  Tabs,
 };

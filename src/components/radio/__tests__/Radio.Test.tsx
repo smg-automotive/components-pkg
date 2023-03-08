@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 
 import Radio from '../index';
 
@@ -38,21 +38,21 @@ describe('<Radio>', () => {
     expect(radio).toBeChecked();
   });
 
-  it('triggers onChange event when clicking on radio', () => {
+  it('triggers onChange event when clicking on radio', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange });
     userEvent.click(screen.getByRole('radio', { name: 'Option' }));
 
-    expect(onChange).toHaveBeenCalled();
+    await waitFor(() => expect(onChange).toHaveBeenCalled());
   });
 
-  it('is not possible to check the radio when disabled', () => {
+  it('is not possible to check the radio when disabled', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange, isDisabled: true });
     const radio = screen.getByRole('radio', { name: 'Option' });
     userEvent.click(radio);
 
-    expect(radio).toBeDisabled();
+    await waitFor(() => expect(radio).toBeDisabled());
     expect(onChange).not.toHaveBeenCalled();
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
 
 import TabPanels from '../TabPanels';
 import TabPanel from '../TabPanel';
@@ -46,23 +46,23 @@ describe('<Tabs />', () => {
     expect(screen.getByText('Eins')).toBeInTheDocument();
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
   });
-  it('changes tab on click', () => {
+  it('changes tab on click', async () => {
     renderWrapper({});
     userEvent.click(screen.getByText('Two'));
-    expect(screen.getByText('Zwei')).toBeInTheDocument();
+    expect(await screen.findByText('Zwei')).toBeInTheDocument();
   });
   it('displays the tabs with the last tab opens by default', () => {
     renderWrapper({ defaultIndex: 2 });
     expect(screen.getByText('Drei')).toBeInTheDocument();
     expect(screen.queryByText('Eins')).not.toBeInTheDocument();
   });
-  it('displays the tabs with one tab disabled', () => {
+  it('displays the tabs with one tab disabled', async () => {
     renderWrapper({ isDisabled: true });
     userEvent.click(screen.getByText('Two'));
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
     expect(screen.getByText('Eins')).toBeInTheDocument();
     userEvent.click(screen.getByText('Three'));
-    expect(screen.getByText('Drei')).toBeInTheDocument();
+    expect(await screen.findByText('Drei')).toBeInTheDocument();
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
   });
 });

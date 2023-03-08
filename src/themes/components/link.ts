@@ -9,6 +9,10 @@ export const linkBaseStyle: SystemStyleObject = {
     textDecoration: 'none',
     color: 'gray.900',
   },
+  _disabled: {
+    textDecoration: 'none',
+    color: 'gray.300',
+  },
 };
 
 const baseLink: SystemStyleObject = {

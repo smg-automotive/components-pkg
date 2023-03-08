@@ -1,5 +1,9 @@
 import { cssVar } from '@chakra-ui/theme-tools';
-import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
+import {
+  ComponentStyleConfig,
+  defineStyle,
+  defineStyleConfig,
+} from '@chakra-ui/react';
 
 const $bg = cssVar('tooltip-bg');
 const $arrowBg = cssVar('popper-arrow-bg');
@@ -17,4 +21,4 @@ const baseStyle = defineStyle(() => {
 
 export default defineStyleConfig({
   baseStyle,
-});
+}) as ComponentStyleConfig;

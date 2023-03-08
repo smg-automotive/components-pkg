@@ -1,4 +1,4 @@
-import React, { ChangeEvent, forwardRef } from 'react';
+import React, { ChangeEvent, forwardRef, ReactNode } from 'react';
 import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
 
 export interface CheckboxProps {
@@ -7,7 +7,7 @@ export interface CheckboxProps {
   isDisabled?: boolean;
   isChecked?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  label?: string;
+  label?: ReactNode | string;
   isInvalid?: boolean;
   isIndeterminate?: boolean;
   size?: 'sm' | 'lg';
