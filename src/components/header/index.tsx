@@ -2,7 +2,6 @@ import React, { FC, PropsWithChildren, useMemo } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import TranslationProvider from '../translationProvider';
