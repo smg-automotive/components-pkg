@@ -1,7 +1,7 @@
 import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import Carousel from '../index';
 
@@ -68,9 +68,8 @@ describe('<Carousel />', () => {
       </Carousel>
     );
 
-    act(() => {
-      user.click(screen.getByText('thumbnail 2'));
-    });
+    user.click(screen.getByText('thumbnail 2'));
+
     return waitFor(() => expect(mockOnEnter).toHaveBeenCalled());
   });
 
@@ -92,9 +91,7 @@ describe('<Carousel />', () => {
       </Carousel>
     );
 
-    act(() => {
-      user.click(screen.getByText('thumbnail 2'));
-    });
+    user.click(screen.getByText('thumbnail 2'));
     return waitFor(() => expect(mockOnLeave).toHaveBeenCalled());
   });
 
@@ -110,16 +107,20 @@ describe('<Carousel />', () => {
       'aria-current',
       'true'
     );
-    await userEvent.hover(screen.getByLabelText('Carousel'));
-    await userEvent.click(screen.getByLabelText('next slide'));
-    expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
-      'aria-current',
-      'true'
+    userEvent.hover(screen.getByLabelText('Carousel'));
+    userEvent.click(screen.getByLabelText('next slide'));
+    await waitFor(() =>
+      expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
+        'aria-current',
+        'true'
+      )
     );
-    await userEvent.click(screen.getByLabelText('previous slide'));
-    expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
-      'aria-current',
-      'true'
+    userEvent.click(screen.getByLabelText('previous slide'));
+    await waitFor(() =>
+      expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
+        'aria-current',
+        'true'
+      )
     );
   });
 
@@ -160,8 +161,8 @@ describe('<Carousel />', () => {
         <div>slide 3</div>
       </Carousel>
     );
-    await userEvent.click(screen.getByText('slide 1'));
-    expect(mockOnClick).toHaveBeenCalledWith(0);
+    userEvent.click(screen.getByText('slide 1'));
+    await waitFor(() => expect(mockOnClick).toHaveBeenCalledWith(0));
   });
 
   it('should have thumbnails on the fullscreen gallery', () => {
@@ -197,10 +198,12 @@ describe('<Carousel />', () => {
       'aria-current',
       'true'
     );
-    await userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
-    expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
-      'aria-current',
-      'true'
+    userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
+    await waitFor(() =>
+      expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
+        'aria-current',
+        'true'
+      )
     );
   });
 
@@ -218,10 +221,12 @@ describe('<Carousel />', () => {
       'aria-current',
       'true'
     );
-    await userEvent.click(screen.getByLabelText('next slide'));
-    expect(screen.getByLabelText('thumbnail 2 of 3')).toHaveAttribute(
-      'aria-current',
-      'true'
+    userEvent.click(screen.getByLabelText('next slide'));
+    await waitFor(() =>
+      expect(screen.getByLabelText('thumbnail 2 of 3')).toHaveAttribute(
+        'aria-current',
+        'true'
+      )
     );
   });
 

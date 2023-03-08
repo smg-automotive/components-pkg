@@ -7,7 +7,7 @@ export default {
     '\\.(jpg|ico|jpeg|png|svg)$': '<rootDir>/.jest/mocks/fileMock.ts',
   },
   preset: 'ts-jest/presets/js-with-ts',
-  restoreMocks: true,
+  restoreMocks: false,
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: [
     '<rootDir>/.jest/setup/jestDomExpects.ts',

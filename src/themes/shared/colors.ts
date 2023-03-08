@@ -14,7 +14,7 @@ export const colors = {
     900: '#13364E',
   },
   gray: {
-    50: '#FAFAFA',
+    50: '#F5F5F5',
     100: '#EAEAEA',
     200: '#CFCFCF',
     300: '#B5B5B5',
