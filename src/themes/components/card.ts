@@ -9,6 +9,7 @@ const baseStyle = definePartsStyle({
     backgroundColor: 'white',
     boxShadow: 'xs',
     borderRadius: 'sm',
+    overflow: 'hidden',
   },
   header: {
     paddingX: '2xl',
