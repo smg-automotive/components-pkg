@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Box from 'src/components/box';
 
@@ -15,22 +15,28 @@ import ListItem from './ListItem.tsx';
     size: 'md',
     variant: 'icon-inside',
     start: 1,
+    styleType: 'decimal',
+    showContainer: false,
   }}
   argTypes={{
     size: {
-      options: ['sm', 'md'],
       control: 'select',
     },
     variant: {
-      options: ['icon-inside', 'icon-outside'],
+      control: 'select',
+    },
+    styleType: {
       control: 'select',
     },
   }}
 />
 
-export const Template = (args) => (
-  <Box maxW="200px" border="1px solid black">
-    <OrderedList {...args} bg="gray.100">
+export const Template = ({ showContainer, ...args }) => (
+  <Box
+    maxW="200px"
+    border={showContainer ? '1px solid black' : '1px solid transparent'}
+  >
+    <OrderedList {...args} bg={showContainer ? 'gray.100' : 'inherit'}>
       <ListItem>
         Item 1 is a very long item that will wrap to the next line
       </ListItem>
@@ -44,6 +50,10 @@ export const Template = (args) => (
 
 ## Overview
 
+Use `showContainer` to see the difference between `icon-inside` and `icon-outside` variants.
+
 <Canvas>
   <Story name="Ordered list">{Template.bind({})}</Story>
 </Canvas>
+
+<ArgsTable story="Ordered list" />

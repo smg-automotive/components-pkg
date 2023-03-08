@@ -3,9 +3,9 @@ import { List as ChakraList, ListProps } from '@chakra-ui/react';
 
 const List: FC<PropsWithChildren<Omit<ListProps, 'variant'>>> = ({
   children,
-  size,
+  ...props
 }) => {
-  return <ChakraList size={size}>{children}</ChakraList>;
+  return <ChakraList {...props}>{children}</ChakraList>;
 };
 
 export default List;
