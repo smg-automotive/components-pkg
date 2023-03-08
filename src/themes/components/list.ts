@@ -5,6 +5,8 @@ import {
 } from '@chakra-ui/react';
 import { listAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { styleTypes as unorderedStyleTypes } from 'src/components/list/UnorderedList';
+
 import { fontSizes } from '../shared/fontSizes';
 
 const { defineMultiStyleConfig, definePartsStyle } =
@@ -41,10 +43,9 @@ const variants = {
     item: defineStyle({
       _before: {
         content: '""',
-        marginLeft:
-          styleType === 'initial'
-            ? `calc(-${fontSizes[size as keyof typeof fontSizes]} / 2)`
-            : '',
+        marginStart: unorderedStyleTypes.includes(styleType)
+          ? `calc(-${fontSizes[size as keyof typeof fontSizes]} / 2)`
+          : '',
       },
     }),
   })),
