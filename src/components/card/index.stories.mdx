@@ -1,0 +1,44 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box } from '@chakra-ui/react';
+
+import { Card, CardHeader, CardBody, CardFooter } from './index.tsx';
+
+<Meta
+  title="Components/Data display/Card"
+  component={Card}
+  args={{
+    tileContent: 'I am title',
+    bodyContent: 'I am body',
+    footerContent: 'I am footer',
+    maxWidth: 400,
+  }}
+  argTypes={{
+    maxWidth: {
+      control: {
+        type: 'number',
+        step: 50,
+      },
+    },
+  }}
+/>
+
+export const Template = ({
+  tileContent,
+  bodyContent,
+  footerContent,
+  maxWidth,
+}) => (
+  <Card maxW={`${maxWidth}px`}>
+    {tileContent ? <CardHeader>{tileContent}</CardHeader> : null}
+    {bodyContent ? <CardBody>{bodyContent}</CardBody> : null}
+    {footerContent ? <CardFooter>{footerContent}</CardFooter> : null}
+  </Card>
+);
+
+# Top Listing Badge
+
+<Canvas>
+  <Story name="Card">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Card" />
