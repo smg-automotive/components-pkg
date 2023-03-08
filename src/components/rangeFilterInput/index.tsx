@@ -1,19 +1,21 @@
 import { useDebouncedCallback } from 'use-debounce';
-import React, { FC } from 'react';
-import { NumberInputProps } from '@chakra-ui/react';
+import React from 'react';
+import {
+  InputGroup as ChakraInputGroup,
+  NumberInputProps,
+} from '@chakra-ui/react';
 
-import Stack from '../stack';
-import InputGroup from './InputGroup';
+import Input from './Input';
 
-export type RangeFilterInputField = {
-  name: string;
+export type RangeFilterInputField<Name> = {
+  name: Name;
   value?: number;
   placeholder?: string;
 };
 
-export type ChangeCallback = {
-  value: number;
-  name: 'from' | 'to';
+export type ChangeCallback<Name> = {
+  value?: number;
+  name: Name;
 };
 
 export type PickedNumberInputProps = Pick<
@@ -21,33 +23,27 @@ export type PickedNumberInputProps = Pick<
   'min' | 'max' | 'isDisabled' | 'onFocus'
 >;
 
-type RangeFilterInputProps = {
-  debounce?: boolean;
-  from: RangeFilterInputField;
-  handleChange: (event: ChangeCallback) => void;
-  onBlur?: (event: ChangeCallback) => void;
-  to: RangeFilterInputField;
+type RangeFilterInputProps<NameFrom, NameTo> = {
+  from: RangeFilterInputField<NameFrom>;
+  handleChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
+  onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
+  to: RangeFilterInputField<NameTo>;
   unit?: string;
 } & PickedNumberInputProps;
 
-const RangeFilterInput: FC<RangeFilterInputProps> = ({
+function RangeFilterInput<NameFrom extends string, NameTo extends string>({
   from,
   to,
   handleChange,
   unit,
-  debounce = true,
   onBlur,
   ...rest
-}) => {
-  const debounceThreshold = debounce ? 1000 : 0;
-  const handleChangeDebounced = useDebouncedCallback(
-    handleChange,
-    debounceThreshold
-  );
+}: RangeFilterInputProps<NameFrom, NameTo>) {
+  const handleChangeDebounced = useDebouncedCallback(handleChange, 1000);
 
   return (
-    <Stack direction="row" spacing={0}>
-      <InputGroup
+    <ChakraInputGroup display="flex">
+      <Input
         inputProps={from}
         variant="inputLeft"
         handleChange={handleChangeDebounced}
@@ -56,16 +52,16 @@ const RangeFilterInput: FC<RangeFilterInputProps> = ({
         {...rest}
       />
 
-      <InputGroup
+      <Input
         inputProps={to}
         variant="inputRight"
         handleChange={handleChangeDebounced}
-        onBlur={onBlur ? onBlur : undefined}
+        onBlur={onBlur}
         unit={unit}
         {...rest}
       />
-    </Stack>
+    </ChakraInputGroup>
   );
-};
+}
 
 export default RangeFilterInput;

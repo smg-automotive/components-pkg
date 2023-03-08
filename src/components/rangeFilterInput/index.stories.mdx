@@ -28,24 +28,43 @@ export const Template = ({ from, to, unit, ...rest }) => {
       [name]: { ...currentValue[name], value },
     });
   };
-  return (
-    <Box maxW={270}>
-      <RangeFilterInput
-        from={from}
-        to={to}
-        handleChange={(event) => {
-          action('change')(event);
-          onChange(event.value, event.name);
-        }}
-        onBlur={(event) => {
-          action('onBlur')(event);
-        }}
-        unit={unit}
-        {...rest}
-      />
-    </Box>
-  );
-};
+
+    const reset = () => {
+        setCurrentValue(prevState => {
+           return{
+               from: {
+                   ...prevState.from,
+                   value: undefined
+               },
+               to: {
+                   ...prevState.to,
+                   value: undefined
+               }
+           }
+        })
+    }
+
+return (
+
+<Box maxW={270}>
+  <RangeFilterInput
+    from={from}
+    to={to}
+    handleChange={(event) => {
+      action('change')(event);
+      onChange(event.value, event.name);
+    }}
+    onBlur={(event) => {
+      action('onBlur')(event);
+    }}
+    unit={unit}
+    {...rest}
+  />
+  <button onClick={reset}>Reset filter</button>
+  <p>{from.value}</p>
+  <p>{to.value}</p>
+</Box>
+); };
 
 ## Overview
 
