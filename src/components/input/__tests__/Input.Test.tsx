@@ -1,6 +1,6 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
 
 import Input from '..';
 
@@ -40,7 +40,7 @@ describe('<Input>', () => {
     });
 
     describe('onChange', () => {
-      it('is called when the input changes', () => {
+      it('is called when the input changes', async () => {
         const onChange = jest.fn();
         render(
           <Input
@@ -53,7 +53,7 @@ describe('<Input>', () => {
         const input = screen.getByPlaceholderText('placeholder');
         userEvent.type(input, 'test');
 
-        expect(onChange).toHaveBeenCalledTimes(4);
+        await waitFor(() => expect(onChange).toHaveBeenCalledTimes(4));
       });
     });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import { PopoverFilterProps } from '../props';
 import { PopoverFilter } from '../index';
@@ -23,8 +23,8 @@ describe('<PopoverFilter />', () => {
     );
 
     expect(screen.queryByText('Popover content')).toBeNull();
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    expect(screen.getByText('Popover content')).toBeInTheDocument();
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    expect(await screen.findByText('Popover content')).toBeInTheDocument();
   });
 
   it('should show the reset button if the filter is applied', async () => {
@@ -39,8 +39,8 @@ describe('<PopoverFilter />', () => {
       </PopoverFilter>
     );
 
-    await userEvent.click(screen.getByRole('button', { name: 'Zurücksetzen' }));
-    expect(mockOnReset).toHaveBeenCalledTimes(1);
+    userEvent.click(screen.getByRole('button', { name: 'Zurücksetzen' }));
+    await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
 
   it('should be possible to reset the filter on the popover', async () => {
@@ -55,11 +55,9 @@ describe('<PopoverFilter />', () => {
       </PopoverFilter>
     );
 
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    await userEvent.click(
-      screen.getAllByRole('button', { name: 'Zurücksetzen' })[0]
-    );
-    expect(mockOnReset).toHaveBeenCalledTimes(1);
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    userEvent.click(screen.getAllByRole('button', { name: 'Zurücksetzen' })[0]);
+    await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
 
   it('should show a close button if no filter is applied', async () => {
@@ -68,11 +66,11 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the bottom and on the top right
-    expect(screen.getAllByRole('button', { name: 'Schliessen' })).toHaveLength(
-      2
-    );
+    expect(
+      await screen.findAllByRole('button', { name: 'Schliessen' })
+    ).toHaveLength(2);
   });
 
   it('should show the primary action button if a filter is applied', async () => {
@@ -86,13 +84,13 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the top right
-    expect(screen.getAllByRole('button', { name: 'Schliessen' })).toHaveLength(
-      1
-    );
-    await userEvent.click(screen.getByRole('button', { name: 'Search' }));
-    expect(mockSearchButton).toHaveBeenCalledTimes(1);
+    expect(
+      await screen.findAllByRole('button', { name: 'Schliessen' })
+    ).toHaveLength(1);
+    userEvent.click(screen.getByRole('button', { name: 'Search' }));
+    await waitFor(() => expect(mockSearchButton).toHaveBeenCalledTimes(1));
   });
 
   it('should call the callback if the popover opens', async () => {
@@ -102,8 +100,8 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    expect(mockOnOpen).toHaveBeenCalledTimes(1);
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
   });
 
   it('should call the callback if the popover closes', async () => {
@@ -117,11 +115,15 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    await userEvent.click(
-      screen.getAllByRole('button', { name: 'Schliessen' })[0]
-    );
-    expect(mockOnClose).toHaveBeenCalledTimes(1);
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+
+    expect(
+      await screen.findAllByRole('button', { name: 'Schliessen' })
+    ).toHaveLength(1);
+
+    userEvent.click(screen.getAllByRole('button', { name: 'Schliessen' })[0]);
+
+    await waitFor(() => expect(mockOnClose).toHaveBeenCalledTimes(1));
   });
 
   it('should set the initial open state', () => {
