@@ -34,7 +34,9 @@ function InputGroup<Name extends string>({
       variant={variant}
       defaultValue={inputProps.value}
       name={inputProps.name}
-      onChange={(_, value) => handleChange({ value, name: inputProps.name })}
+      onChange={(_, value) =>
+        handleChange({ value: value || undefined, name: inputProps.name })
+      }
       onBlur={(event) => {
         onBlur &&
           onBlur({
