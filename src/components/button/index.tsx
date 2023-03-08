@@ -20,7 +20,7 @@ type IconButton = {
 
 type SharedProps = {
   as?: 'button';
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'success';
   size?: 'md' | 'lg';
   children: ReactNode;
   leftIcon?: ReactElement;
