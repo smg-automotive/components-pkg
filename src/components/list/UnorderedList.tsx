@@ -8,7 +8,7 @@ export const styleTypes = ['disc', 'circle', 'square', 'initial'] as const;
 type StyleType = (typeof styleTypes)[number];
 
 const UnorderedList: FC<
-  PropsWithChildren<ListProps & { styleType: StyleType }>
+  PropsWithChildren<ListProps & { styleType?: StyleType }>
 > = ({ children, styleType = 'initial', ...props }) => {
   return (
     // default implementation in chakra forces 1em margin-start

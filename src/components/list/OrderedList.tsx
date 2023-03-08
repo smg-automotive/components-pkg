@@ -13,7 +13,7 @@ export const styleTypes = [
 type StyleType = (typeof styleTypes)[number];
 
 const OrderedList: FC<
-  PropsWithChildren<ListProps & { start?: number; styleType: StyleType }>
+  PropsWithChildren<ListProps & { start?: number; styleType?: StyleType }>
 > = ({ children, styleType = 'decimal', ...props }) => {
   return (
     // default implementation in chakra forces 1em margin-start
