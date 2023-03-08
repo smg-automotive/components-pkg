@@ -5,7 +5,7 @@ import {
   NumberInputProps,
 } from '@chakra-ui/react';
 
-import Input from './Input';
+import InputGroup from './InputGroup';
 
 export type RangeFilterInputField<Name> = {
   name: Name;
@@ -43,7 +43,7 @@ function RangeFilterInput<NameFrom extends string, NameTo extends string>({
 
   return (
     <ChakraInputGroup display="flex">
-      <Input
+      <InputGroup
         inputProps={from}
         variant="inputLeft"
         handleChange={handleChangeDebounced}
@@ -52,7 +52,7 @@ function RangeFilterInput<NameFrom extends string, NameTo extends string>({
         {...rest}
       />
 
-      <Input
+      <InputGroup
         inputProps={to}
         variant="inputRight"
         handleChange={handleChangeDebounced}

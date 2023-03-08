@@ -17,7 +17,7 @@ type InputGroupProps<Name> = {
   variant: 'inputLeft' | 'inputRight';
 } & PickedNumberInputProps;
 
-function Input<Name extends string>({
+function InputGroup<Name extends string>({
   handleChange,
   inputProps,
   onBlur,
@@ -56,4 +56,4 @@ function Input<Name extends string>({
   );
 }
 
-export default Input;
+export default InputGroup;
