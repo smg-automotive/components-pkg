@@ -2,6 +2,7 @@ import React, { FC, PropsWithChildren, useMemo } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import TranslationProvider from '../translationProvider';
@@ -17,6 +18,7 @@ import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
 import { getHeaderLinks } from './config/headerLinks';
 import { DrawerNodeItems, getDrawerNodeItems } from './config/drawerNodeItems';
+import { domains } from './config/domains';
 
 interface NavigationConfiguration {
   homeUrl: string;
@@ -38,6 +40,7 @@ export type UserType = 'private' | 'professional';
 export type Plattform = 'as24' | 'ms24';
 
 interface NavigationProps {
+  environment: Environment;
   plattform: Brand;
   language: Language;
   user: User;
@@ -55,18 +58,18 @@ export interface LinkConfig {
 }
 
 const Navigation: FC<NavigationProps> = ({
+  environment,
   plattform,
   language,
   user,
   hasNotification,
   useAbsoluteUrls = false,
-  domain = '',
 }) => {
   const linkConfig: LinkConfig = {
     userType: user.type,
     plattform,
     useAbsoluteUrls,
-    domain,
+    domain: domains[plattform][environment],
     urlPathParams: { accountId: user.accountId },
   };
 
@@ -86,7 +89,7 @@ const Navigation: FC<NavigationProps> = ({
       user.accountId,
       plattform,
       useAbsoluteUrls,
-      domain,
+      environment,
       language,
     ]
   );

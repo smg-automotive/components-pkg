@@ -18,6 +18,10 @@ import Navigation from './index.tsx';
       options: ['as24', 'ms24'],
       control: 'select',
     },
+    environment: {
+      options: ['preprod', 'production'],
+      control: 'select',
+    },
   }}
 />
 
@@ -43,10 +47,10 @@ export const Template = (args) => {
         type: 'professional',
         accountId: 525,
       },
-      language: 'en',
+      language: 'de',
       plattform: 'as24',
-      domain: 'www.autoscouttest.com',
       useAbsoluteUrls: true,
+      environment: 'preprod',
     }}
   >
     {Template.bind({})}
@@ -66,11 +70,11 @@ export const Template = (args) => {
         name: 'John Doe',
         type: 'private',
         accountId: 525,
-        domain: 'www.autoscouttest.com',
         useAbsoluteUrls: true,
       },
-      language: 'en',
+      language: 'de',
       plattform: 'as24',
+      environment: 'preprod',
     }}
   >
     {Template.bind({})}
