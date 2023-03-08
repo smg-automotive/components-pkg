@@ -1,1 +1,1 @@
-export { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+export { Card, CardBody, CardFooter, CardHeader } from '@chakra-ui/react';
