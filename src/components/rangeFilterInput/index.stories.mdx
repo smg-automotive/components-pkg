@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
@@ -21,30 +20,23 @@ import RangeFilterInput from './index';
 ;
 
 export const Template = ({ from, to, unit, ...rest }) => {
-  const [currentValue, setCurrentValue] = useState({ from, to });
-  const onChange = (value, name) => {
-    setCurrentValue({
-      ...currentValue,
-      [name]: { ...currentValue[name], value },
-    });
-  };
-  return (
-    <Box maxW={270}>
-      <RangeFilterInput
-        from={from}
-        to={to}
-        handleChange={(event) => {
-          action('change')(event);
-          onChange(event.value, event.name);
-        }}
-        onBlur={(event) => {
-          action('onBlur')(event);
-        }}
-        unit={unit}
-        {...rest}
-      />
-    </Box>
-  );
+    return (
+        <Box maxW={270}>
+          <RangeFilterInput
+            from={from}
+            to={to}
+            handleChange={(event) => {
+              action('change')(event);
+            }}
+            onBlur={(event) => {
+              action('onBlur')(event);
+            }}
+            unit={unit}
+            {...rest}
+          />
+        </Box>
+    );
+
 };
 
 ## Overview
