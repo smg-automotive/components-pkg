@@ -18,6 +18,10 @@ import { CollapsibleSection, NonCollapsibleSection } from './DrawerSections';
 export const DrawerNavigationLink: FC<{
   item: NavigationLinkProps;
 }> = ({ item }) => {
+  if (!item.isVisible) {
+    return null;
+  }
+
   return (
     <Show below={item.showUnderMoreLinkBelow}>
       <Box as={ListItem} paddingBottom={{ base: 'lg', md: 'md' }}>
@@ -57,6 +61,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
       <DrawerOverlay />
       <DrawerContent marginTop={menuHeight}>
         <DrawerBody
+          data-testid="drawer-body"
           py={{ md: '2xl' }}
           px={{ md: 'xs' }}
           maxWidth="container.xl"

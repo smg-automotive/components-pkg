@@ -36,7 +36,7 @@ const constructUrls = ({
   useAbsoluteUrls,
 }: {
   item: NavigationLinkConfigProps;
-  urlPathParams?: Record<string, string | number>;
+  urlPathParams?: Record<string, string | number> | null;
   domain: string;
   useAbsoluteUrls: boolean;
 }) => {
@@ -62,12 +62,12 @@ const constructUrls = ({
 export interface ConvertNavigationItemData {
   item: NavigationLinkConfigProps;
   isVisible: boolean;
-  urlPathParams?: Record<string, string | number>;
+  urlPathParams: Record<string, string | number> | null;
   domain: string;
   useAbsoluteUrls: boolean;
 }
 
-const convertNavigationItem = (
+export const convertNavigationItem = (
   data: ConvertNavigationItemData
 ): NavigationLinkProps => {
   const itemUrls = constructUrls(data);
@@ -85,7 +85,7 @@ const convertNavigationItem = (
 
 export const resolveVisibility = (
   data: Omit<ConvertNavigationItemData, 'isVisible'> & {
-    userType: UserType;
+    userType: UserType | null;
     plattform: Plattform;
   }
 ): NavigationLinkProps => {
@@ -95,7 +95,7 @@ export const resolveVisibility = (
 
   // Add in entitlements in here
 
-  if (!data.item.visibilitySettings.userType[data.userType]) {
+  if (data.userType && !data.item.visibilitySettings.userType[data.userType]) {
     return convertNavigationItem({
       ...data,
       isVisible: false,

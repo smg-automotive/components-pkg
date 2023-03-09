@@ -10,7 +10,10 @@ type Props = {
 const Avatar: FC<Props> = ({ withNotification }) => {
   const baseStyle = useMultiStyleConfig('Avatar');
   return withNotification ? (
-    <AvatarWithNotificationIcon __css={baseStyle} />
+    <AvatarWithNotificationIcon
+      __css={baseStyle}
+      data-testid="notification-icon"
+    />
   ) : (
     <AvatarIcon __css={baseStyle} />
   );

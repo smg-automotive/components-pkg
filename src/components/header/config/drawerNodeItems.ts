@@ -467,25 +467,6 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
-          translationKey: 'header.userMenu.optimizerProToolsForSelling',
-          url: {
-            de: '#', // TODO ADD LINKS
-            en: '#',
-            fr: '#',
-            it: '#',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            plattform: {
-              as24: true,
-              ms24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.topListingPro',
           url: {
             de: '/de/member/toplisting',
@@ -1244,7 +1225,7 @@ const mapDrawerNodes = (
     };
   });
 
-const mapDrawerItemsEntries = (
+export const mapDrawerItemsEntries = (
   data: LinkConfig & { itemsEntires: [string, NavigationLinkConfigNode[]][] }
 ) =>
   data.itemsEntires.map(([nodeKey, nodes]) => {

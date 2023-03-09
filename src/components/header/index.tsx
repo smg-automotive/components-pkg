@@ -43,18 +43,18 @@ interface NavigationProps {
   environment: Environment;
   plattform: Brand;
   language: Language;
-  user: User;
+  user: User | null;
   hasNotification: boolean;
   domain?: string;
   useAbsoluteUrls?: boolean;
 }
 
 export interface LinkConfig {
-  userType: UserType;
+  userType: UserType | null;
   plattform: Plattform;
   useAbsoluteUrls: boolean;
   domain: string;
-  urlPathParams: Record<string, string | number>;
+  urlPathParams: Record<string, string | number> | null;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -66,11 +66,11 @@ const Navigation: FC<NavigationProps> = ({
   useAbsoluteUrls = false,
 }) => {
   const linkConfig: LinkConfig = {
-    userType: user.type,
+    userType: user && user.type,
     plattform,
     useAbsoluteUrls,
     domain: domains[plattform][environment],
-    urlPathParams: { accountId: user.accountId },
+    urlPathParams: user && { accountId: user.accountId },
   };
 
   const config: NavigationConfiguration = useMemo(
@@ -84,9 +84,9 @@ const Navigation: FC<NavigationProps> = ({
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
-      user.id,
-      user.type,
-      user.accountId,
+      user?.id,
+      user?.type,
+      user?.accountId,
       plattform,
       useAbsoluteUrls,
       environment,

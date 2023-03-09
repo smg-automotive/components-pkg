@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Box, HStack } from '@chakra-ui/react';
 
 import Avatar from 'src/components/avatar';
@@ -11,7 +12,7 @@ import { DrawerNode } from './config/drawerNodeItems';
 import { User } from './index';
 
 interface NavigationAvatarProps {
-  user: User;
+  user: User | null;
   isOpen: boolean;
   drawer: Drawer;
   hasNotification: boolean;
@@ -25,6 +26,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   hasNotification,
   createDrawerHandler,
 }) => {
+  const { t } = useI18n();
   const isDrawerOpened = isOpen && drawer?.current === DrawerNode.User;
   if (user) {
     return (
@@ -50,7 +52,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   return (
     <HStack spacing="xs" cursor="pointer" _hover={{ color: 'blue.700' }}>
       <Avatar />
-      <Box fontWeight="bold">Login</Box>
+      <Box fontWeight="bold">{t('header.login')}</Box>
     </HStack>
   );
 };
