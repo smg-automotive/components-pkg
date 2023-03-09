@@ -20,7 +20,7 @@ const baseStyle = definePartsStyle({
     marginY: '2xl',
   },
   footer: {
-    borderTop: '1px solid',
+    borderTop: '1px',
     borderColor: 'gray.100',
     paddingX: 'lg',
     paddingY: 'md',
