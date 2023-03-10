@@ -50,10 +50,15 @@ const constructUrls = ({
         params: urlPathParams,
       });
     }
+    const isAlreadyAbsolute = path?.substring(0, 4) === 'http';
 
-    const baseUrl = useAbsoluteUrls && domain ? `https://${domain}` : '';
-    const url = `${baseUrl}${path}`;
-    urls[language as Language] = url;
+    if (isAlreadyAbsolute) {
+      urls[language as Language] = path;
+    } else {
+      const baseUrl = useAbsoluteUrls && domain ? `https://${domain}` : '';
+      const url = `${baseUrl}${path}`;
+      urls[language as Language] = url;
+    }
   }
 
   return urls;
