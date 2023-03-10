@@ -69,7 +69,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
         >
           <Grid
             height="full"
-            templateColumns={{ '2xs': '1fr', md: 'repeat(6, 1fr)' }}
+            templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
             maxWidth="container.xl"
             gridGap={{ md: '3xl' }}
           >

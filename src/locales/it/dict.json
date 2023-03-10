@@ -89,7 +89,7 @@
     "login": "Connexion",
     "magazine": "Rivista",
     "more": "Plus",
-    "search": "Rechercher",
+    "search": "Ricerca",
     "searchMenu": {
       "additional": "Altre",
       "advancedSearch": "Ricerca avanzata",
@@ -144,7 +144,7 @@
       "myVehicles": "I miei veicoli",
       "myMotorcycles": "le mie moto",
       "myMotorcyclesOld": "le mie moto (lay-out prec.)",
-      "onlineAdvertising": "Gestire veicoli",
+      "onlineAdvertising": "Pubblicità online",
       "openingHours": "Orari di apertura",
       "optimizerPro": "OptimizerPro",
       "printingCenter": "Centro Stampa",

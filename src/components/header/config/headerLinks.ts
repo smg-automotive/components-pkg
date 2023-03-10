@@ -64,27 +64,6 @@ const headerLinks: NavigationLinkConfigProps[] = [
     },
   },
   {
-    translationKey: 'header.carSubscription',
-    url: {
-      de: '/#', // TODO this link might be unnecessary, waiting for confirmation
-      en: '/#',
-      fr: '/#',
-      it: '/#',
-    },
-    isNew: true,
-    showUnderMoreLinkBelow: 'lg',
-    visibilitySettings: {
-      userType: {
-        private: true,
-        professional: true,
-      },
-      plattform: {
-        as24: true,
-        ms24: false,
-      },
-    },
-  },
-  {
     translationKey: 'header.magazine',
     url: {
       de: 'https://guide.autoscout24.ch/de/',
