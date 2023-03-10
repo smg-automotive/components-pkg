@@ -115,6 +115,7 @@
       "bookmarks": "Favoris",
       "boosteras24": "Booster as24",
       "businessImage": "BusinessImage",
+      "carPark": "Parc de véhicules",
       "changePassword": "Changer le mot de passe",
       "cockpit": "Cockpit",
       "contactDetails": "Informations de contact",
@@ -139,11 +140,10 @@
       "manageVehicles": "Gérer les véhicules",
       "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Parc de motos",
-      "carPark": "Parc de véhicules",
-      "myVehcilesOld": "Mes véhicules (anc. vue)",
-      "myVehicles": "Mes véhicules",
       "myMotorcycles": "Mes motos",
       "myMotorcyclesOld": "Mes motos (anc. vue)",
+      "myVehcilesOld": "Mes véhicules (anc. vue)",
+      "myVehicles": "Mes véhicules",
       "onlineAdvertising": "Publicité online",
       "openingHours": "Heures d' ouverture",
       "optimizerPro": "OptimizerPro",
@@ -159,8 +159,8 @@
       "toolsForPurchasing": "Outils pour l'achat",
       "toolsForSelling": "Outils pour la vente",
       "topCars": "TopCars",
-      "topMotos": "TopMotos",
       "topListingPro": "TopListing Pro",
+      "topMotos": "TopMotos",
       "userLanguage": "Langue de l'utilisateur"
     }
   }

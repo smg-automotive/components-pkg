@@ -115,6 +115,7 @@
       "bookmarks": "Bookmarks",
       "boosteras24": "Boosteras24",
       "businessImage": "BusinessImage",
+      "carPark": "Car park",
       "changePassword": "Change password",
       "cockpit": "Cockpit",
       "contactDetails": "Contact details",
@@ -139,11 +140,10 @@
       "manageVehicles": "Manage vehicle",
       "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Motorcycle park",
-      "carPark": "Car park",
-      "myVehcilesOld": "My Vehicles (old)",
-      "myVehicles": "My Vehicles",
       "myMotorcycles": "My Motorcycles",
       "myMotorcyclesOld": "My Motorcycle (old)",
+      "myVehcilesOld": "My Vehicles (old)",
+      "myVehicles": "My Vehicles",
       "onlineAdvertising": "Online Advertising",
       "openingHours": "Opening hours",
       "optimizerPro": "OptimizerPro ??",
@@ -158,8 +158,8 @@
       "toolsForPurchasing": "Tools for purchasing",
       "toolsForSelling": "Tools for Selling",
       "topCars": "TopCars",
-      "topMotos": "TopMotos",
       "topListingPro": "TopListing Pro",
+      "topMotos": "TopMotos",
       "userLanguage": "User language"
     }
   }
