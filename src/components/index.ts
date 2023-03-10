@@ -65,6 +65,7 @@ export { default as TabList } from './tab/TabList';
 export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
+export { default as Toast } from './toast';
 
 export {
   default as ThemeProvider,

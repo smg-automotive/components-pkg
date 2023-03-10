@@ -6,7 +6,7 @@ import {
   ToastPosition,
 } from '@chakra-ui/react';
 
-import { Alert } from '../components';
+import { Alert } from '../index';
 
 interface ToastOptions {
   position?: ToastPosition;
@@ -20,7 +20,7 @@ interface ToastOptions {
   };
 }
 
-const useToast = () => {
+const Toast = () => {
   const toast = chakraUseToast();
   const toastIdRef = useRef<ToastId[]>([]);
 
@@ -52,4 +52,4 @@ const useToast = () => {
   };
 };
 
-export default useToast;
+export default Toast;
