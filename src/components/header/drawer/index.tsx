@@ -71,7 +71,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             height="full"
             templateColumns={{ '2xs': '1fr', md: 'repeat(6, 1fr)' }}
             maxWidth="container.xl"
-            gridGap={{ md: '5xl' }}
+            gridGap={{ md: '3xl' }}
           >
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
