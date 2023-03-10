@@ -23,7 +23,6 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
           { text: 'Deutsch', onClick: () => (window.location.href = '/de') },
           { text: 'Français', onClick: () => (window.location.href = '/fr') },
           { text: 'Italiano', onClick: () => (window.location.href = '/it') },
-          { text: 'English', onClick: () => (window.location.href = '/en') },
         ]}
       ></Box>
     </Hide>

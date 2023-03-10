@@ -66,7 +66,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.carSubscription',
     url: {
-      de: '/#', // TODO ADD LINK
+      de: '/#', // TODO this link might be unnecessary, waiting for confirmation
       en: '/#',
       fr: '/#',
       it: '/#',

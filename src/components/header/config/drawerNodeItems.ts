@@ -1160,7 +1160,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.carSubscription',
           url: {
-            de: '#', // TODO ADD LINKS
+            de: '#', // TODO this link might be unnecessary, waiting for confirmation
             en: '#',
             fr: '#',
             it: '#',
