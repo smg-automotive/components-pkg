@@ -65,12 +65,12 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           py={{ md: '2xl' }}
           px={{ md: 'xs' }}
           maxWidth="container.xl"
+          width="100%"
           margin={{ xl: 'auto' }}
         >
           <Grid
             height="full"
             templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
-            maxWidth="container.xl"
             gridGap={{ md: '3xl' }}
           >
             {drawer?.nodes.map((node, index) => (
