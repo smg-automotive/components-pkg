@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Box, HStack } from '@chakra-ui/react';
 
 import Avatar from 'src/components/avatar';
