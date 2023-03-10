@@ -127,6 +127,25 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.searchCars',
+          url: {
+            de: 'https://www.autoscout24.ch/de',
+            en: 'https://www.autoscout24.ch/de',
+            fr: 'https://www.autoscout24.ch/fr',
+            it: 'https://www.autoscout24.ch/it',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: false,
               ms24: true,
             },
           },
@@ -248,17 +267,17 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
         {
           translationKey: 'header.userMenu.myVehcilesOld',
           url: {
-            de: '/de/member/vehiclepool/index',
-            en: '/de/member/vehiclepool/index',
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
             fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool/index',
+            it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -267,6 +286,44 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.myMotorcycles',
+          url: {
+            de: 'https://dealer.autoscout24.ch/de/vehicles',
+            en: 'https://dealer.autoscout24.ch/de/vehicles',
+            fr: 'https://dealer.autoscout24.ch/fr/vehicles',
+            it: 'https://dealer.autoscout24.ch/it/vehicles',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: false,
+              ms24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.myMotorcyclesOld',
+          url: {
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: false,
               ms24: true,
             },
           },
@@ -348,6 +405,25 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           },
         },
         {
+          translationKey: 'header.userMenu.printableList',
+          url: {
+            de: '/de/member/printvehiclelist',
+            en: '/en/member/printvehiclelist',
+            fr: '/fr/member/printvehiclelist',
+            it: '/it/member/printvehiclelist',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: false,
+              ms24: true,
+            },
+          },
+        },
+        {
           translationKey: 'header.userMenu.shoppingCard',
           url: {
             de: '/de/member/insertion/checkout/index?steps=40-47',
@@ -381,6 +457,25 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.carPark',
+          url: {
+            de: 'https://www.motoscout24.ch/de/member/vehiclepool',
+            en: 'https://www.motoscout24.ch/de/member/vehiclepool',
+            fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
+            it: 'https://www.motoscout24.ch/it/member/vehiclepool',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            plattform: {
+              as24: false,
               ms24: true,
             },
           },
@@ -393,10 +488,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.contactRequests',
           url: {
-            de: '/de/member/messagemanager/index',
-            en: '/de/member/messagemanager/index',
+            de: '/de/member/messagemanager',
+            en: '/de/member/messagemanager',
             fr: '/fr/member/messagemanager',
-            it: '/it/member/messagemanager/index',
+            it: '/it/member/messagemanager',
           },
           visibilitySettings: {
             userType: {
@@ -412,10 +507,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.printingCenter',
           url: {
-            de: '/de/member/printcenter/index?status=30',
-            en: '/de/member/printcenter/index?status=30',
+            de: '/de/member/printcenter?status=30',
+            en: '/de/member/printcenter?status=30',
             fr: '/fr/member/printcenter?status=30',
-            it: '/it/member/printcenter/index?status=30',
+            it: '/it/member/printcenter?status=30',
           },
           visibilitySettings: {
             userType: {
@@ -433,7 +528,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           url: {
             de: '/de/member/testdrive/settings',
             en: '/de/member/testdrive/settings',
-            fr: '/fr/member/testdrive',
+            fr: '/fr/member/testdrive/settings',
             it: '/it/member/testdrive/settings',
           },
           visibilitySettings: {
@@ -443,7 +538,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
@@ -462,7 +557,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
@@ -488,10 +583,10 @@ const dawerNodeItems: DawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.topCars',
           url: {
-            de: '/de/member/topvehicles?slot=36&vehtyp=10',
-            en: '/de/member/topvehicles?slot=36&vehtyp=10',
-            fr: '/fr/member/topvehicles?vehtyp=10&slot=36',
-            it: '/it/member/topvehicles?slot=36&vehtyp=10',
+            de: '/de/member/topvehicles',
+            en: '/de/member/topvehicles',
+            fr: '/fr/member/topvehicles',
+            it: '/it/member/topvehicles',
           },
           visibilitySettings: {
             userType: {
@@ -500,6 +595,25 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.topMotos',
+          url: {
+            de: '/de/member/topvehicles',
+            en: '/de/member/topvehicles',
+            fr: '/fr/member/topvehicles',
+            it: '/it/member/topvehicles',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            plattform: {
+              as24: false,
               ms24: true,
             },
           },
@@ -519,7 +633,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
           isNew: true,
@@ -567,7 +681,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           url: {
             de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
             en: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}', // TODO account id
+            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
             it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
           },
           visibilitySettings: {
@@ -609,7 +723,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.requisitions',
           url: {
             de: '/de/member/searchjobs',
-            en: '#',
+            en: '/de/member/searchjobs',
             fr: '/fr/member/searchjobs',
             it: '/it/member/searchjobs',
           },
@@ -628,7 +742,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.bookmarks',
           url: {
             de: '/de/member/favorites',
-            en: '#',
+            en: '/de/member/favorites',
             fr: '/fr/member/favorites',
             it: '/it/member/favorites',
           },
@@ -647,7 +761,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.b2bPlattform',
           url: {
             de: '/de/member/b2bplatform',
-            en: '#',
+            en: '/de/member/b2bplatform',
             fr: '/fr/member/b2bplatform',
             it: '/it/member/b2bplatform',
           },
@@ -658,7 +772,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
@@ -666,7 +780,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.amagServiceLifePool',
           url: {
             de: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
-            en: '#',
+            en: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
             fr: '/fr/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
             it: '/it/member/parkingpool/amag?parkingtimedays=9&group=100&cond=49&vehtyp=10',
           },
@@ -677,7 +791,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
@@ -685,7 +799,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.efagServiceLifePool',
           url: {
             de: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
-            en: '#',
+            en: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
             fr: '/fr/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
             it: '/it/member/parkingpool/efag?group=1&cond=49&vehtyp=10',
           },
@@ -696,7 +810,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
@@ -704,7 +818,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.demandCalculator',
           url: {
             de: '/de/member/demandcalculator',
-            en: '#',
+            en: '/de/member/demandcalculator',
             fr: '/fr/member/demandcalculator',
             it: '/it/member/demandcalculator',
           },
@@ -723,7 +837,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
           translationKey: 'header.userMenu.autoRadar',
           url: {
             de: '/de/productdescription/as24_autoradar',
-            en: '#',
+            en: '/de/productdescription/as24_autoradar',
             fr: '/fr/productdescription/as24_autoradar',
             it: '/it/productdescription/as24_autoradar',
           },
@@ -734,7 +848,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },
@@ -1030,7 +1144,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
             },
             plattform: {
               as24: true,
-              ms24: true,
+              ms24: false,
             },
           },
         },

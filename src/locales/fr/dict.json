@@ -139,11 +139,15 @@
       "manageVehicles": "Gérer les véhicules",
       "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Parc de motos",
+      "carPark": "Parc de véhicules",
       "myVehcilesOld": "Mes véhicules (anc. vue)",
       "myVehicles": "Mes véhicules",
+      "myMotorcycles": "Mes motos",
+      "myMotorcyclesOld": "Mes motos (anc. vue)",
       "onlineAdvertising": "Publicité online",
       "openingHours": "Heures d' ouverture",
       "optimizerPro": "OptimizerPro",
+      "printableList": "Liste Imprimable",
       "printingCenter": "Centre d'impression",
       "qualityLogo": "Sigle de qualité",
       "requisitions": "Profil de recherche",
@@ -155,6 +159,7 @@
       "toolsForPurchasing": "Outils pour l'achat",
       "toolsForSelling": "Outils pour la vente",
       "topCars": "TopCars",
+      "topMotos": "TopMotos",
       "topListingPro": "TopListing Pro",
       "userLanguage": "Langue de l'utilisateur"
     }
