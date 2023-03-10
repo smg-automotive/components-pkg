@@ -6,7 +6,7 @@ import {
   ToastPosition,
 } from '@chakra-ui/react';
 
-import { Alert } from '../index';
+import Alert from '../alert';
 
 interface ToastOptions {
   position?: ToastPosition;
