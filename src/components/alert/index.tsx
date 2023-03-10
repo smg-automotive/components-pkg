@@ -5,6 +5,7 @@ import {
   AlertIcon,
   AlertTitle,
   Alert as ChakraAlert,
+  CloseButton,
   Flex,
 } from '@chakra-ui/react';
 
@@ -19,9 +20,17 @@ interface Props {
   };
   type?: 'error' | 'warning' | 'info' | 'success';
   icon: ReactNode;
+  onClose?: () => void;
 }
 
-const Alert: FC<Props> = ({ title, description, link, type, icon }) => {
+const Alert: FC<Props> = ({
+  title,
+  description,
+  link,
+  type,
+  icon,
+  onClose,
+}) => {
   return (
     <ChakraAlert status={type}>
       <AlertIcon>{icon}</AlertIcon>
@@ -34,6 +43,14 @@ const Alert: FC<Props> = ({ title, description, link, type, icon }) => {
           </Link>
         ) : null}
       </Flex>
+      {onClose ? (
+        <CloseButton
+          alignSelf="flex-start"
+          ml="auto"
+          fontSize="xs"
+          onClick={onClose}
+        />
+      ) : null}
     </ChakraAlert>
   );
 };
