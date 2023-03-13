@@ -17,6 +17,7 @@ interface ToastOptions {
   link?: {
     text: string;
     url: string;
+    isExternal?: boolean;
   };
 }
 
