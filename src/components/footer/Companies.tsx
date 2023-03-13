@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import Flex from '../flex';
+import Stack from '../stack';
+import Box from '../box';
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 
@@ -10,12 +11,14 @@ interface FooterCompaniesProps {
 
 const FooterCompanies: FC<FooterCompaniesProps> = ({ config }) => {
   return (
-    <Flex
+    <Box
+      gap={{ base: 'md', md: '2xl' }}
       marginBottom="md"
       marginTop="2xl"
-      gap={{ base: 'md', md: '2xl' }}
-      flexWrap="wrap"
-      justifyContent="center"
+      as={Stack}
+      direction="row"
+      justify="center"
+      wrap="wrap"
     >
       {config.companies.map((companyLink, index) => {
         return (
@@ -26,7 +29,7 @@ const FooterCompanies: FC<FooterCompaniesProps> = ({ config }) => {
           />
         );
       })}
-    </Flex>
+    </Box>
   );
 };
 
