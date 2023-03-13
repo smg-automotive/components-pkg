@@ -37,6 +37,7 @@ const useToast = () => {
 
     const toastId = toast({
       position: position,
+      duration: 900000,
       render: () => (
         <Alert
           type={type}

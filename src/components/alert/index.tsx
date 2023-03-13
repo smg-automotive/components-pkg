@@ -48,7 +48,10 @@ const Alert: FC<Props> = ({
         <CloseButton
           alignSelf="flex-start"
           ml="auto"
+          pl="md"
           fontSize="xxs"
+          position="relative"
+          top="xs"
           onClick={onClose}
         />
       ) : null}
