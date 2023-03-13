@@ -5,6 +5,14 @@ import { act, render, screen } from '@testing-library/react';
 
 import RangeFilterInput from '../index';
 
+jest.mock('use-debounce', () => {
+  return {
+    useDebouncedCallback: jest.fn().mockImplementation((func) => {
+      return func;
+    }),
+  };
+});
+
 describe('<RangeFilterInput/>', () => {
   const renderInputField = (onChange = jest.fn()) => {
     return render(
@@ -12,16 +20,15 @@ describe('<RangeFilterInput/>', () => {
         handleChange={onChange}
         from={{
           name: 'priceFrom',
-          value: 200,
+          value: undefined,
           placeholder: 'From',
         }}
         to={{
           name: 'priceTo',
-          value: 1000,
+          value: undefined,
           placeholder: 'To',
         }}
         unit="CHF"
-        debounce={false}
       />
     );
   };
@@ -32,11 +39,10 @@ describe('<RangeFilterInput/>', () => {
     renderInputField(mockOnChange);
     const inputFrom = screen.getByPlaceholderText('From');
 
-    await act(() => userEvent.clear(inputFrom));
     await act(() => userEvent.type(inputFrom, '500'));
     expect(mockOnChange).toHaveBeenCalledWith({
       value: 500,
-      name: 'from',
+      name: 'priceFrom',
     });
   });
 
@@ -46,16 +52,28 @@ describe('<RangeFilterInput/>', () => {
     renderInputField(mockOnChange);
     const inputTo = screen.getByPlaceholderText('To');
 
-    await act(() => userEvent.clear(inputTo));
     await act(() => userEvent.type(inputTo, '300'));
     expect(mockOnChange).toHaveBeenCalledWith({
       value: 300,
-      name: 'to',
+      name: 'priceTo',
     });
   });
 
   it('shows the unit', () => {
     renderInputField();
     expect(screen.getAllByText('CHF')).toHaveLength(2);
+  });
+
+  it('should allow to reset the field', async () => {
+    const mockOnChange = jest.fn();
+
+    renderInputField(mockOnChange);
+    const inputFrom = screen.getByPlaceholderText('From');
+    await act(() => userEvent.type(inputFrom, '5'));
+    await act(() => userEvent.clear(inputFrom));
+    expect(mockOnChange).toHaveBeenCalledWith({
+      value: undefined,
+      name: 'priceFrom',
+    });
   });
 });

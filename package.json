@@ -115,17 +115,18 @@
   "dependencies": {
     "@chakra-ui/anatomy": "2.1.2",
     "@chakra-ui/react": "2.5.1",
+    "@chakra-ui/styled-system": "2.6.1",
     "@chakra-ui/theme-tools": "2.0.17",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@smg-automotive/i18n-pkg": "1.4.0",
+    "@smg-automotive/i18n-pkg": "1.5.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.1",
-    "embla-carousel-react": "7.0.9",
-    "framer-motion": "9.1.7",
+    "embla-carousel-react": "7.1.0",
+    "framer-motion": "10.2.4",
     "fs-extra": "11.1.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "9.0.3",
-    "yargs": "17.6.2"
+    "yargs": "17.7.1"
   }
 }

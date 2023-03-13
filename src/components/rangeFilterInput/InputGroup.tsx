@@ -1,9 +1,5 @@
-import React, { FC, FocusEvent } from 'react';
-import {
-  InputGroup as ChakraInputGroup,
-  NumberInput,
-  NumberInputField,
-} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { NumberInput, NumberInputField } from '@chakra-ui/react';
 
 import InputLeftElement from './InputLeftElement';
 
@@ -13,52 +9,53 @@ import {
   RangeFilterInputField,
 } from './index';
 
-type InputGroupProps = {
-  handleChange: (event: ChangeCallback) => void;
-  inputProps: RangeFilterInputField;
-  onBlur?: (event: ChangeCallback) => void;
+type InputGroupProps<Name> = {
+  handleChange: (event: ChangeCallback<Name>) => void;
+  inputProps: RangeFilterInputField<Name>;
+  onBlur?: (event: ChangeCallback<Name>) => void;
   unit?: string;
   variant: 'inputLeft' | 'inputRight';
 } & PickedNumberInputProps;
 
-const InputGroup: FC<InputGroupProps> = ({
+function InputGroup<Name extends string>({
   handleChange,
   inputProps,
   onBlur,
   unit,
   variant,
   ...rest
-}) => {
-  const inputVariantName = variant === 'inputLeft' ? 'from' : 'to';
+}: InputGroupProps<Name>) {
+  const [refocus, setRefocus] = useState(false);
+
   return (
-    <ChakraInputGroup>
-      <NumberInput
-        width="full"
-        variant={variant}
-        defaultValue={inputProps.value ? inputProps.value : ''}
-        name={inputProps.name}
-        onChange={(_, value) => handleChange({ value, name: inputVariantName })}
-        onBlur={
-          onBlur
-            ? (event: FocusEvent<HTMLInputElement>) => {
-                onBlur({
-                  value: Number(event.target.value),
-                  name: inputVariantName,
-                });
-              }
-            : undefined
-        }
-        {...rest}
-      >
-        {unit ? <InputLeftElement unit={unit} /> : null}
-        <NumberInputField
-          value={inputProps.value ? inputProps.value : ''}
-          placeholder={inputProps.placeholder ? inputProps.placeholder : ''}
-          fontSize="body"
-        />
-      </NumberInput>
-    </ChakraInputGroup>
+    <NumberInput
+      key={`${inputProps.name}-${inputProps.value}`}
+      width="full"
+      variant={variant}
+      defaultValue={inputProps.value}
+      name={inputProps.name}
+      onChange={(_, value) =>
+        handleChange({ value: value || undefined, name: inputProps.name })
+      }
+      onBlur={(event) => {
+        onBlur &&
+          onBlur({
+            value: Number(event.target.value) || undefined,
+            name: inputProps.name,
+          });
+        setRefocus(false);
+      }}
+      onFocus={() => setRefocus(true)}
+      {...rest}
+    >
+      {unit ? <InputLeftElement unit={unit} /> : null}
+      <NumberInputField
+        placeholder={inputProps.placeholder ? inputProps.placeholder : ''}
+        fontSize="body"
+        autoFocus={refocus}
+      />
+    </NumberInput>
   );
-};
+}
 
 export default InputGroup;
