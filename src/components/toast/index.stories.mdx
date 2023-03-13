@@ -1,13 +1,13 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { useToast } from 'src/hooks';
+
 import { Button, ErrorIcon } from '../index.ts';
 
-import Toast from './index';
-
-<Meta title="Components/Feedback/Toast" component={Toast} />
+<Meta title="Components/Feedback/Toast" component={useToast} />
 
 export const Template = (args) => {
-  const toast = Toast();
+  const toast = useToast();
   return (
     <Button
       onClick={() =>

@@ -6,21 +6,21 @@ import {
   ToastPosition,
 } from '@chakra-ui/react';
 
-import Alert from '../alert';
+import { Alert } from '../components';
 
 interface ToastOptions {
-  position?: ToastPosition;
-  icon: ReactNode;
-  title: string;
   description: string;
+  icon: ReactNode;
   type: 'error' | 'warning' | 'info' | 'success';
+  position?: ToastPosition;
+  title?: string;
   link?: {
     text: string;
     url: string;
   };
 }
 
-const Toast = () => {
+const useToast = () => {
   const toast = chakraUseToast();
   const toastIdRef = useRef<ToastId[]>([]);
 
@@ -52,4 +52,4 @@ const Toast = () => {
   };
 };
 
-export default Toast;
+export default useToast;
