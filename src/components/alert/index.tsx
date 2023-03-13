@@ -17,6 +17,7 @@ interface Props {
   link?: {
     text: string;
     url: string;
+    isExternal?: boolean;
   };
   type?: 'error' | 'warning' | 'info' | 'success';
   icon: ReactNode;
@@ -38,7 +39,7 @@ const Alert: FC<Props> = ({
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
-          <Link href={link.url} isExternal={true}>
+          <Link href={link.url} isExternal={link?.isExternal}>
             {link.text}
           </Link>
         ) : null}
