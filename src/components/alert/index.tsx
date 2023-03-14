@@ -11,7 +11,7 @@ import {
 
 import Link from '../link';
 
-interface Props {
+export interface AlertProps {
   title?: string;
   description: string;
   link?: {
@@ -24,7 +24,7 @@ interface Props {
   onClose?: () => void;
 }
 
-const Alert: FC<Props> = ({
+const Alert: FC<AlertProps> = ({
   title,
   description,
   link,

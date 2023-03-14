@@ -7,18 +7,10 @@ import {
 } from '@chakra-ui/react';
 
 import { Alert } from '../components';
+import { AlertProps } from '../components/alert';
 
-interface ToastOptions {
-  description: string;
-  icon: ReactNode;
-  type: 'error' | 'warning' | 'info' | 'success';
+interface ToastOptions extends AlertProps {
   position?: ToastPosition;
-  title?: string;
-  link?: {
-    text: string;
-    url: string;
-    isExternal?: boolean;
-  };
 }
 
 const useToast = () => {
@@ -37,7 +29,6 @@ const useToast = () => {
 
     const toastId = toast({
       position: position,
-      duration: 900000,
       render: () => (
         <Alert
           type={type}
