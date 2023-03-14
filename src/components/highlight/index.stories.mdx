@@ -1,0 +1,32 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { H1 } from '../heading';
+import Highlight from './index.tsx';
+
+<Meta
+  title="Components/Highlight"
+  component={Highlight}
+  argTypes={{
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+export const Template = () => {
+  return (
+    <H1>
+      Found <Highlight>1524</Highlight> cars
+    </H1>
+  );
+};
+
+# Highlight
+
+<Canvas>
+  <Story name="Highlight">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Highlight" />
