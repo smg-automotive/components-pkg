@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
-import { Box, HStack } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 
+import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
 
 import Hide from '../hide';
+
 import NavigationLink from './NavigationLink';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';

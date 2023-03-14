@@ -1,47 +1,15 @@
 import React, { FC } from 'react';
 
-import { Box, DrawerBody } from '@chakra-ui/react';
+import { DrawerBody } from '@chakra-ui/react';
 
-import Show from 'src/components/show';
-import ListItem from 'src/components/list/ListItem';
 import Grid from 'src/components/grid';
 
 import DrawerOverlay from 'src/components/drawer/DrawerOverlay';
 import DrawerContent from 'src/components/drawer/DrawerContent';
 import Drawer from 'src/components/drawer';
 
-import NavigationLink, { NavigationLinkProps } from '../NavigationLink';
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
-import { NavigationLinkNode } from '../config/drawerNodeItems';
-import { CollapsibleSection, NonCollapsibleSection } from './DrawerSections';
-
-export const DrawerNavigationLink: FC<{
-  item: NavigationLinkProps;
-}> = ({ item }) => {
-  if (!item.isVisible) {
-    return null;
-  }
-
-  return (
-    <Show below={item.showUnderMoreLinkBelow}>
-      <Box as={ListItem} paddingBottom={{ base: 'lg', md: 'md' }}>
-        <NavigationLink
-          {...item}
-          variant="subNavigationLink"
-          color={item.color}
-        />
-      </Box>
-    </Show>
-  );
-};
-
-const DrawerMenu: FC<{ node: NavigationLinkNode }> = ({ node }) => {
-  if (!node.translationKey) {
-    return <NonCollapsibleSection node={node} />;
-  }
-
-  return <CollapsibleSection node={node} />;
-};
+import { DrawerMenu } from './DrawerMenu';
 
 interface NavigationDrawerProps {
   drawer: useNavigationDrawerType;

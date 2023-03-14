@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
 
-import { useI18n } from '@smg-automotive/i18n-pkg';
-import { Box, Image, useMultiStyleConfig } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
 
-import logoMS from 'src/assets/images/logo_ms24.svg';
-import logoAS from 'src/assets/images/logo_as24.svg';
+import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
+import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
 
 import Stack from '../stack';
 import Show from '../show';
 import Link from '../link';
 
 import { HeaderLink, NavigationLinkProps } from './NavigationLink';
+import { NavigationItem } from './NavigationItem';
 import { Drawer as UseNavigationDrawer } from './hooks/useNavigationDrawer';
-import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/drawerNodeItems';
 
 import { Platform } from '.';
@@ -32,7 +31,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
   isOpen,
   createDrawerHandler,
 }) => {
-  const logo = platform === 'as24' ? logoAS : logoMS;
+  const logo = platform === 'as24' ? logoAutoScout24 : logoMotoScout24;
 
   const moreDrawerHandler = createDrawerHandler({
     nodeName: DrawerNode.More,
@@ -67,27 +66,5 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
         />
       </Show>
     </Stack>
-  );
-};
-
-const NavigationItem: FC<{
-  translationKey: string;
-  isOpen: boolean;
-  drawerHandler: () => void;
-}> = ({ translationKey, drawerHandler, isOpen }) => {
-  const { t } = useI18n();
-  const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
-
-  return (
-    <Box
-      onClick={drawerHandler}
-      __css={linkStyles.link}
-      fontWeight="bold"
-      {...(isOpen ? { color: 'blue.700' } : null)}
-      position="relative"
-      top="1px"
-    >
-      {t(translationKey)} <DrawerIndicator isOpen={isOpen} />
-    </Box>
   );
 };

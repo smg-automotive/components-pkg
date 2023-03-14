@@ -32,8 +32,8 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           translationKey: 'header.searchMenu.simpleSearch',
           url: {
             de: '/de',
-            en: '#',
-            fr: '/fr/?vehtyp=10',
+            en: '/de',
+            fr: '/fr',
             it: '/it',
           },
           visibilitySettings: {

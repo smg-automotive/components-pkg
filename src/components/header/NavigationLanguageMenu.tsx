@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Box } from '@chakra-ui/react';
+
+import Box from 'src/components/box';
 
 import Menu from '../menu';
 import Hide from '../hide';

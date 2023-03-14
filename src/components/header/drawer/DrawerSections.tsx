@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { Box, GridItem } from '@chakra-ui/react';
+import { GridItem } from '@chakra-ui/react';
 
 import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
 import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
 import List from 'src/components/list';
+import Box from 'src/components/box';
 
 import { NavigationLinkNode } from '../config/drawerNodeItems';
 
-import { DrawerNavigationLink } from '.';
+import { DrawerNavigationLink } from './DrawerNavigationLink';
 
 export const NonCollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
   node,

@@ -5,10 +5,10 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
+import Box from 'src/components/box';
+
 import TranslationProvider from '../translationProvider';
 import Stack from '../stack';
-
-import Box from '../box';
 
 import { NavigationLinkProps } from './NavigationLink';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
