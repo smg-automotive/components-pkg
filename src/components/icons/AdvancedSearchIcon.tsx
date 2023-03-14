@@ -3,7 +3,7 @@ import { createIcon } from '@chakra-ui/react';
 
 export const AdvancedSearchIcon = createIcon({
   displayName: 'Advanced search',
-  viewBox: '0 0 24 24',
+  viewBox: '0 0 20 20',
   path: (
     <>
       <title>Advanced Search Icon</title>
