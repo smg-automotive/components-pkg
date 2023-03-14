@@ -29,19 +29,18 @@ interface NavigationConfiguration {
   headerLinks: NavigationLinkProps[];
 }
 
+export type UserType = 'private' | 'professional';
+export type Platform = 'as24' | 'ms24';
+
 export interface User {
   id: number;
   name: string;
-  type: 'private' | 'professional';
+  type: UserType;
   accountId: number;
 }
-
-export type UserType = 'private' | 'professional';
-export type Plattform = 'as24' | 'ms24';
-
 interface NavigationProps {
   environment: Environment;
-  plattform: Brand;
+  platform: Brand;
   language: Language;
   user: User | null;
   hasNotification: boolean;
@@ -51,7 +50,7 @@ interface NavigationProps {
 
 export interface LinkConfig {
   userType: UserType | null;
-  plattform: Plattform;
+  platform: Platform;
   useAbsoluteUrls: boolean;
   domain: string;
   urlPathParams: Record<string, string | number> | null;
@@ -59,7 +58,7 @@ export interface LinkConfig {
 
 const Navigation: FC<NavigationProps> = ({
   environment,
-  plattform,
+  platform,
   language,
   user,
   hasNotification,
@@ -67,9 +66,9 @@ const Navigation: FC<NavigationProps> = ({
 }) => {
   const linkConfig: LinkConfig = {
     userType: user && user.type,
-    plattform,
+    platform,
     useAbsoluteUrls,
-    domain: domains[plattform][environment],
+    domain: domains[platform][environment],
     urlPathParams: user && { accountId: user.accountId },
   };
 
@@ -87,7 +86,7 @@ const Navigation: FC<NavigationProps> = ({
       user?.id,
       user?.type,
       user?.accountId,
-      plattform,
+      platform,
       useAbsoluteUrls,
       environment,
       language,
@@ -118,7 +117,7 @@ const Navigation: FC<NavigationProps> = ({
           px={{ base: 'sm', xs: 'lg' }}
         >
           <NavigationItems
-            plattform={plattform}
+            platform={platform}
             headerLinks={config.headerLinks}
             drawer={drawer}
             isOpen={isOpen}

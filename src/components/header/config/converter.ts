@@ -4,7 +4,7 @@ import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { NavigationLinkProps } from '../NavigationLink';
-import { Plattform, UserType } from '..';
+import { Platform, UserType } from '..';
 import { NavigationLinkNode } from './drawerNodeItems';
 
 export type NavigationLinkConfigProps = Omit<
@@ -18,7 +18,7 @@ export type NavigationLinkConfigProps = Omit<
       private: boolean;
       professional: boolean;
     };
-    plattform: {
+    platform: {
       as24: boolean;
       ms24: boolean;
     };
@@ -91,10 +91,10 @@ export const convertNavigationItem = (
 export const resolveVisibility = (
   data: Omit<ConvertNavigationItemData, 'isVisible'> & {
     userType: UserType | null;
-    plattform: Plattform;
+    platform: Platform;
   }
 ): NavigationLinkProps => {
-  if (!data.item.visibilitySettings.plattform[data.plattform]) {
+  if (!data.item.visibilitySettings.platform[data.platform]) {
     return convertNavigationItem({ ...data, isVisible: false });
   }
 

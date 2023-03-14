@@ -17,7 +17,7 @@ describe('conventer', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -61,7 +61,7 @@ describe('conventer', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -105,7 +105,7 @@ describe('conventer', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },

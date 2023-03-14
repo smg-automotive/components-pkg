@@ -35,7 +35,7 @@ export const DrawerNavigationLink: FC<{
   );
 };
 
-export const DrawerMenu: FC<{ node: NavigationLinkNode }> = ({ node }) => {
+const DrawerMenu: FC<{ node: NavigationLinkNode }> = ({ node }) => {
   if (!node.translationKey) {
     return <NonCollapsibleSection node={node} />;
   }

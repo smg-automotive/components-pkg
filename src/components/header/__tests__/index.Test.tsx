@@ -12,7 +12,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        plattform="as24"
+        platform="as24"
         language="en"
         hasNotification={false}
       />
@@ -31,7 +31,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        plattform="as24"
+        platform="as24"
         language="en"
         hasNotification={false}
       />
@@ -50,7 +50,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={null}
-        plattform="as24"
+        platform="as24"
         language="en"
         hasNotification={false}
       />
@@ -64,7 +64,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        plattform="as24"
+        platform="as24"
         language="en"
         hasNotification={false}
       />
@@ -78,7 +78,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        plattform="as24"
+        platform="as24"
         language="en"
         hasNotification
       />

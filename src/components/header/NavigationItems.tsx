@@ -15,10 +15,10 @@ import { Drawer as UseNavigationDrawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/drawerNodeItems';
 
-import { Plattform } from '.';
+import { Platform } from '.';
 
 interface NavigationItemsProps {
-  plattform: Plattform;
+  platform: Platform;
   headerLinks: NavigationLinkProps[];
   drawer: UseNavigationDrawer;
   isOpen: boolean;
@@ -26,13 +26,13 @@ interface NavigationItemsProps {
 }
 
 export const NavigationItems: FC<NavigationItemsProps> = ({
-  plattform,
+  platform,
   headerLinks,
   drawer,
   isOpen,
   createDrawerHandler,
 }) => {
-  const logo = plattform === 'as24' ? logoAS : logoMS;
+  const logo = platform === 'as24' ? logoAS : logoMS;
 
   const moreDrawerHandler = createDrawerHandler({
     nodeName: DrawerNode.More,

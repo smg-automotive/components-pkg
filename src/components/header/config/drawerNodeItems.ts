@@ -19,9 +19,11 @@ export enum DrawerNode {
 
 export type DrawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
 
-type DawerNodeItemsConfig = { [key in DrawerNode]: NavigationLinkConfigNode[] };
+type DrawerNodeItemsConfig = {
+  [key in DrawerNode]: NavigationLinkConfigNode[];
+};
 
-const dawerNodeItems: DawerNodeItemsConfig = {
+const drawerNodeItems: DrawerNodeItemsConfig = {
   search: [
     {
       translationKey: 'header.searchMenu.vehicles',
@@ -39,7 +41,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -58,7 +60,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -82,7 +84,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -106,7 +108,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -125,7 +127,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -144,7 +146,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: false,
               ms24: true,
             },
@@ -163,7 +165,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -182,7 +184,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -201,7 +203,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -220,7 +222,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -246,7 +248,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -265,7 +267,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -284,7 +286,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -303,7 +305,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: false,
               ms24: true,
             },
@@ -322,7 +324,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: false,
               ms24: true,
             },
@@ -341,7 +343,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -360,7 +362,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -379,7 +381,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -398,7 +400,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -417,7 +419,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: false,
               ms24: true,
             },
@@ -436,7 +438,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -455,7 +457,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -474,7 +476,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: false,
               ms24: true,
             },
@@ -498,7 +500,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -517,7 +519,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -536,7 +538,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -555,7 +557,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -574,7 +576,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -593,7 +595,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -612,7 +614,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: false,
               ms24: true,
             },
@@ -631,7 +633,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -651,7 +653,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -670,7 +672,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -689,7 +691,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -708,7 +710,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -732,7 +734,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -751,14 +753,14 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
           },
         },
         {
-          translationKey: 'header.userMenu.b2bPlattform',
+          translationKey: 'header.userMenu.b2bplatform',
           url: {
             de: '/de/member/b2bplatform',
             en: '/de/member/b2bplatform',
@@ -770,7 +772,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -789,7 +791,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -808,7 +810,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -827,7 +829,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -846,7 +848,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -865,7 +867,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -884,7 +886,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -908,7 +910,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -927,7 +929,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -946,7 +948,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -966,7 +968,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -990,7 +992,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1009,7 +1011,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1028,7 +1030,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1047,7 +1049,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1066,7 +1068,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1085,7 +1087,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1104,7 +1106,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1123,7 +1125,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1142,7 +1144,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -1161,7 +1163,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1180,7 +1182,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1199,7 +1201,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1225,7 +1227,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1245,7 +1247,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: false,
             },
@@ -1265,7 +1267,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1285,7 +1287,7 @@ const dawerNodeItems: DawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            plattform: {
+            platform: {
               as24: true,
               ms24: true,
             },
@@ -1328,7 +1330,7 @@ export const mapDrawerItemsEntries = (
   });
 
 export const getDrawerNodeItems = (data: LinkConfig): DrawerNodeItems => {
-  const itemsEntires = Object.entries(dawerNodeItems);
+  const itemsEntires = Object.entries(drawerNodeItems);
   const mappedEntries = mapDrawerItemsEntries({ ...data, itemsEntires });
 
   return Object.fromEntries(mappedEntries);

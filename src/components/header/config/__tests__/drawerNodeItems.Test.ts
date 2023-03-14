@@ -21,7 +21,7 @@ describe('drawerNodeItems', () => {
                   private: true,
                   professional: true,
                 },
-                plattform: {
+                platform: {
                   as24: true,
                   ms24: true,
                 },
@@ -40,7 +40,7 @@ describe('drawerNodeItems', () => {
                   private: true,
                   professional: true,
                 },
-                plattform: {
+                platform: {
                   as24: true,
                   ms24: true,
                 },
@@ -53,7 +53,7 @@ describe('drawerNodeItems', () => {
 
     const nodeItems = mapDrawerItemsEntries({
       userType: 'private',
-      plattform: 'as24',
+      platform: 'as24',
       useAbsoluteUrls: true,
       domain: 'www.autoscout24.com',
       itemsEntires: Object.entries(items),

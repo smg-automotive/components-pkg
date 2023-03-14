@@ -18,7 +18,7 @@ describe('resolveVisibility', () => {
             private: false,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -31,7 +31,7 @@ describe('resolveVisibility', () => {
     converter.resolveVisibility({
       ...navigationItem,
       userType: 'private',
-      plattform: 'as24',
+      platform: 'as24',
       urlPathParams: null,
     });
 
@@ -39,7 +39,7 @@ describe('resolveVisibility', () => {
     expect(converter.convertNavigationItem).toHaveBeenCalledWith({
       ...navigationItem,
       userType: 'private',
-      plattform: 'as24',
+      platform: 'as24',
       isVisible: false,
       urlPathParams: null,
     });
@@ -59,7 +59,7 @@ describe('resolveVisibility', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -72,7 +72,7 @@ describe('resolveVisibility', () => {
     converter.resolveVisibility({
       ...navigationItem,
       userType: 'private',
-      plattform: 'as24',
+      platform: 'as24',
       urlPathParams: null,
     });
 
@@ -80,7 +80,7 @@ describe('resolveVisibility', () => {
     expect(converter.convertNavigationItem).toHaveBeenCalledWith({
       ...navigationItem,
       userType: 'private',
-      plattform: 'as24',
+      platform: 'as24',
       isVisible: true,
       urlPathParams: null,
     });
@@ -100,7 +100,7 @@ describe('resolveVisibility', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -113,7 +113,7 @@ describe('resolveVisibility', () => {
     converter.resolveVisibility({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'as24',
+      platform: 'as24',
       urlPathParams: null,
     });
 
@@ -121,7 +121,7 @@ describe('resolveVisibility', () => {
     expect(converter.convertNavigationItem).toHaveBeenCalledWith({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'as24',
+      platform: 'as24',
       isVisible: true,
       urlPathParams: null,
     });
@@ -141,7 +141,7 @@ describe('resolveVisibility', () => {
             private: true,
             professional: false,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -154,7 +154,7 @@ describe('resolveVisibility', () => {
     converter.resolveVisibility({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'as24',
+      platform: 'as24',
       urlPathParams: null,
     });
 
@@ -162,12 +162,12 @@ describe('resolveVisibility', () => {
     expect(converter.convertNavigationItem).toHaveBeenCalledWith({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'as24',
+      platform: 'as24',
       isVisible: false,
       urlPathParams: null,
     });
   });
-  it('should resolve visibility to false for ms24 plattform', () => {
+  it('should resolve visibility to false for ms24 platform', () => {
     const navigationItem = {
       item: {
         translationKey: 'mock.key',
@@ -182,7 +182,7 @@ describe('resolveVisibility', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: false,
           },
@@ -195,7 +195,7 @@ describe('resolveVisibility', () => {
     converter.resolveVisibility({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'ms24',
+      platform: 'ms24',
       urlPathParams: null,
     });
 
@@ -203,12 +203,12 @@ describe('resolveVisibility', () => {
     expect(converter.convertNavigationItem).toHaveBeenCalledWith({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'ms24',
+      platform: 'ms24',
       isVisible: false,
       urlPathParams: null,
     });
   });
-  it('should resolve visibility to true for ms24 plattform', () => {
+  it('should resolve visibility to true for ms24 platform', () => {
     const navigationItem = {
       item: {
         translationKey: 'mock.key',
@@ -223,7 +223,7 @@ describe('resolveVisibility', () => {
             private: true,
             professional: true,
           },
-          plattform: {
+          platform: {
             as24: true,
             ms24: true,
           },
@@ -236,7 +236,7 @@ describe('resolveVisibility', () => {
     converter.resolveVisibility({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'ms24',
+      platform: 'ms24',
       urlPathParams: null,
     });
 
@@ -244,7 +244,7 @@ describe('resolveVisibility', () => {
     expect(converter.convertNavigationItem).toHaveBeenCalledWith({
       ...navigationItem,
       userType: 'professional',
-      plattform: 'ms24',
+      platform: 'ms24',
       isVisible: true,
       urlPathParams: null,
     });

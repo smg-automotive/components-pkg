@@ -17,7 +17,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
         private: true,
         professional: true,
       },
-      plattform: {
+      platform: {
         as24: true,
         ms24: true,
       },
@@ -37,7 +37,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
         private: true,
         professional: true,
       },
-      plattform: {
+      platform: {
         as24: true,
         ms24: false,
       },
@@ -57,7 +57,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
         private: true,
         professional: true,
       },
-      plattform: {
+      platform: {
         as24: true,
         ms24: true,
       },
@@ -77,7 +77,7 @@ const headerLinks: NavigationLinkConfigProps[] = [
         private: true,
         professional: true,
       },
-      plattform: {
+      platform: {
         as24: true,
         ms24: true,
       },
