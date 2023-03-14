@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import {
   useToast as chakraUseToast,
@@ -6,8 +6,7 @@ import {
   ToastPosition,
 } from '@chakra-ui/react';
 
-import { Alert } from '../components';
-import { AlertProps } from '../components/alert';
+import Alert, { AlertProps } from '../components/alert';
 
 interface ToastOptions extends AlertProps {
   position?: ToastPosition;
