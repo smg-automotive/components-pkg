@@ -58,13 +58,13 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.21.0",
+    "@babel/core": "7.21.3",
     "@rollup/plugin-commonjs": "24.0.1",
     "@rollup/plugin-image": "3.0.2",
     "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-typescript": "11.0.0",
-    "@smg-automotive/eslint-config": "3.0.6",
+    "@smg-automotive/eslint-config": "3.0.7",
     "@storybook/addon-actions": "6.5.16",
     "@storybook/addon-docs": "6.5.16",
     "@storybook/addon-essentials": "6.5.16",
