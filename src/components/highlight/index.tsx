@@ -12,6 +12,7 @@ const Highlight: FC<PropsWithChildren> = ({ children }) => {
         ''
       )});`}
       width="max-content"
+      px="sm"
     >
       {children}
     </chakra.span>
