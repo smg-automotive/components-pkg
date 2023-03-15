@@ -11,6 +11,10 @@ import Hide from '../hide';
 export const HeaderLink: FC<{
   link: NavigationLinkProps;
 }> = ({ link }) => {
+  if (!link.isVisible) {
+    return null;
+  }
+
   return (
     <Hide below={link.showUnderMoreLinkBelow}>
       <NavigationLink {...link} fontWeight="bold" />
