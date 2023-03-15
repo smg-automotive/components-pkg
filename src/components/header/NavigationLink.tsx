@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 
 import { Language, useI18n } from '@smg-automotive/i18n-pkg';
-import { Badge } from '@chakra-ui/react';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
+import Badge from 'src/components/badge';
 
 import Link from '../link';
 import Hide from '../hide';
@@ -50,7 +50,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
       color={color}
     >
       {t(translationKey)}
-      {isNew ? <Badge variant="navigationLinkBadge">New</Badge> : null}
+      {isNew ? <Badge variant="navigationLinkBadge" text="New"></Badge> : null}
     </Link>
   );
 };

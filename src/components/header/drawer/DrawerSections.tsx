@@ -17,7 +17,7 @@ export const NonCollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
   node,
 }) => {
   return (
-    <Box py={{ base: '2xl', md: 0 }} px={{ base: '2xl' }}>
+    <Box py={{ base: '2xl', md: 0 }} px="2xl">
       <List>
         {node.items.map((item, index) => {
           return <DrawerNavigationLink item={item} key={index} />;
