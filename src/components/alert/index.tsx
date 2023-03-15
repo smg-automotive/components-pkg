@@ -4,9 +4,9 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Box,
   Alert as ChakraAlert,
   CloseButton,
+  Flex,
 } from '@chakra-ui/react';
 
 import Link from '../link';
@@ -33,9 +33,9 @@ const Alert: FC<AlertProps> = ({
   onClose,
 }) => {
   return (
-    <ChakraAlert flexDirection="row" status={type}>
+    <ChakraAlert status={type}>
       <AlertIcon>{icon}</AlertIcon>
-      <Box>
+      <Flex direction="column">
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
@@ -43,7 +43,7 @@ const Alert: FC<AlertProps> = ({
             {link.text}
           </Link>
         ) : null}
-      </Box>
+      </Flex>
       {onClose ? (
         <CloseButton
           alignSelf="flex-start"
