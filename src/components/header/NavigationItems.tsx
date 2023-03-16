@@ -45,11 +45,10 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
       <Link href="/">
         <Image
           width={{ sm: '124px', base: '101px' }}
-          height={{ sm: '30px', base: '24px' }}
+          height={{ sm: '30px', base: 'sm' }}
           src={logo}
         />
       </Link>
-
       <NavigationItem
         translationKey="header.search"
         drawerHandler={searchDrawerHandler}
