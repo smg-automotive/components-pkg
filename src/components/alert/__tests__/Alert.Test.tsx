@@ -13,6 +13,7 @@ const renderWrapper = ({
   link = {
     url: 'http://link.com',
     text: 'Link',
+    isExternal: true,
   },
 } = {}) =>
   render(
@@ -37,7 +38,8 @@ describe('<Alert>', () => {
   it('renders Alert with link', () => {
     const url = 'https://www.autoscout24.ch/de';
     const text = 'I am your link';
-    renderWrapper({ link: { url, text } });
+    const isExternal = true;
+    renderWrapper({ link: { url, text, isExternal } });
 
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', url);
