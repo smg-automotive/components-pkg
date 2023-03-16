@@ -1,9 +1,9 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 
 const baseStyle = defineStyle({
-  w: 'sm',
-  h: 'sm',
-  fontSize: 'xs',
+  w: 'xs',
+  h: 'xs',
+  fontSize: '8px',
   color: 'gray.800',
   borderRadius: 'sm',
   _disabled: {

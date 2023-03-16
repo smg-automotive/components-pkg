@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-
 import {
   AlertDescription,
   AlertIcon,
@@ -7,37 +6,32 @@ import {
   Alert as ChakraAlert,
   CloseButton,
   Flex,
-  useDisclosure,
 } from '@chakra-ui/react';
 
 import Link from '../link';
-import { BareAlertProps } from './Bare';
 
-type SharedProps = Omit<BareAlertProps, 'onClose'>;
+export interface BareAlertProps {
+  title?: string;
+  description: string;
+  link?: {
+    text: string;
+    url: string;
+    isExternal?: boolean;
+  };
+  type?: 'error' | 'warning' | 'info' | 'success';
+  icon?: ReactNode;
+  onClose?: () => void;
+}
 
-type DismissibleProps = SharedProps & {
-  onDismiss?: () => void;
-  dismissible?: true;
-};
-
-type NonDismissibleProps = SharedProps & {
-  onDismiss?: never;
-  dismissible?: false;
-};
-
-export type AlertProps = DismissibleProps | NonDismissibleProps;
-
-const Alert: FC<AlertProps> = ({
+const BareAlert: FC<BareAlertProps> = ({
   title,
   description,
   link,
   type,
   icon,
-  ...rest
+  onClose,
 }) => {
-  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
-
-  return isOpen || !rest.dismissible ? (
+  return (
     <ChakraAlert status={type}>
       <AlertIcon>{icon}</AlertIcon>
       <Flex direction="column" w="100%">
@@ -49,18 +43,15 @@ const Alert: FC<AlertProps> = ({
           </Link>
         ) : null}
       </Flex>
-      {rest.dismissible ? (
+      {onClose ? (
         <CloseButton
           alignSelf="flex-start"
           position="relative"
-          onClick={() => {
-            onClose();
-            rest.onDismiss?.();
-          }}
+          onClick={onClose}
         />
       ) : null}
     </ChakraAlert>
-  ) : null;
+  );
 };
 
-export default Alert;
+export default BareAlert;
