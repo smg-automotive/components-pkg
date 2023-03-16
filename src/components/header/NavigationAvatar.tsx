@@ -35,17 +35,14 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         spacing="xs"
         cursor="pointer"
         _hover={{ color: 'blue.700' }}
+        color="gray.900"
         onClick={createDrawerHandler({
           nodeName: DrawerNode.User,
         })}
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Box
-            fontWeight="bold"
-            color="gray.900"
-            {...(isDrawerOpened && { color: 'blue.700' })}
-          >
+          <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
             {user.name}
           </Box>
         </Hide>
@@ -55,8 +52,13 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   }
 
   return (
-    <HStack spacing="xs" cursor="pointer" _hover={{ color: 'blue.700' }}>
-      <Avatar color="gray.900" />
+    <HStack
+      spacing="xs"
+      cursor="pointer"
+      _hover={{ color: 'blue.700' }}
+      color="gray.900"
+    >
+      <Avatar />
       <Box fontWeight="bold">
         <NavigationLink
           url={{

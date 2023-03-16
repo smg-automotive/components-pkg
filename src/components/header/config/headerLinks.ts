@@ -19,6 +19,26 @@ const headerLinks: NavigationLinkConfigProps[] = [
       },
       platform: {
         as24: true,
+        ms24: false,
+      },
+    },
+  },
+  {
+    translationKey: 'header.sell',
+    url: {
+      de: '/de/motorrad-inserieren',
+      en: '/de/motorrad-inserieren',
+      fr: '/fr/publier-annonce-moto',
+      it: '/it/pubblicare-annuncio-moto',
+    },
+    showUnderMoreLinkBelow: 'sm',
+    visibilitySettings: {
+      userType: {
+        private: true,
+        professional: true,
+      },
+      platform: {
+        as24: false,
         ms24: true,
       },
     },
@@ -59,6 +79,26 @@ const headerLinks: NavigationLinkConfigProps[] = [
       },
       platform: {
         as24: true,
+        ms24: false,
+      },
+    },
+  },
+  {
+    translationKey: 'header.assure',
+    url: {
+      de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+      en: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+      fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+      it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+    },
+    showUnderMoreLinkBelow: 'md',
+    visibilitySettings: {
+      userType: {
+        private: true,
+        professional: true,
+      },
+      platform: {
+        as24: false,
         ms24: true,
       },
     },
@@ -79,6 +119,26 @@ const headerLinks: NavigationLinkConfigProps[] = [
       },
       platform: {
         as24: true,
+        ms24: false,
+      },
+    },
+  },
+  {
+    translationKey: 'header.magazine',
+    url: {
+      de: '/de/c/h/information',
+      en: '/en/c/h/information',
+      fr: '/fr/c/h/information',
+      it: '/it/c/h/information',
+    },
+    showUnderMoreLinkBelow: 'lg',
+    visibilitySettings: {
+      userType: {
+        private: true,
+        professional: true,
+      },
+      platform: {
+        as24: false,
         ms24: true,
       },
     },

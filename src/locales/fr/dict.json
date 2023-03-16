@@ -92,7 +92,7 @@
     "search": "Rechercher",
     "searchMenu": {
       "additional": "Autres",
-      "advancedSearch": "Rechercher point de vente",
+      "advancedSearch": "Recherche avancée",
       "dealer": "Points de vente",
       "findPartsAndAccessories": "Pièces et accessoires",
       "insuranceComparison": "Comparaison d’assurances",
@@ -128,6 +128,7 @@
       "editPhotobar": "Modifier la Photobar",
       "editUser": "Modifier utilisateur",
       "efagServiceLifePool": "EFAG Pool",
+      "emailAddress": "Adresse e-mail",
       "hci": "HCI",
       "importInfo": "ImportInfo",
       "infoPage": "InfoPage",

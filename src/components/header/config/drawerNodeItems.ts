@@ -295,6 +295,25 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.myMotorcycles',
           url: {
+            de: 'de/member/vehiclepool',
+            en: 'en/member/vehiclepool',
+            fr: 'fr/member/vehiclepool',
+            it: 'it/member/vehiclepool',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            platform: {
+              as24: false,
+              ms24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.myMotorcycles',
+          url: {
             de: 'https://dealer.autoscout24.ch/de/vehicles',
             en: 'https://dealer.autoscout24.ch/de/vehicles',
             fr: 'https://dealer.autoscout24.ch/fr/vehicles',
@@ -303,7 +322,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             platform: {
               as24: false,
@@ -435,7 +454,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           },
           visibilitySettings: {
             userType: {
-              private: false,
+              private: true,
               professional: true,
             },
             platform: {
@@ -497,7 +516,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           },
           visibilitySettings: {
             userType: {
-              private: false,
+              private: true,
               professional: true,
             },
             platform: {
@@ -760,7 +779,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           },
         },
         {
-          translationKey: 'header.userMenu.b2bplatform',
+          translationKey: 'header.userMenu.b2bPlattform',
           url: {
             de: '/de/member/b2bplatform',
             en: '/de/member/b2bplatform',
@@ -858,7 +877,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           translationKey: 'header.userMenu.dealerInfoSystem',
           url: {
             de: 'http://bi.scout24.ch',
-            en: '#',
+            en: 'http://bi.scout24.ch',
             fr: 'http://bi.scout24.ch',
             it: 'http://bi.scout24.ch',
           },
@@ -877,7 +896,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           translationKey: 'header.userMenu.marketPriceCheck',
           url: {
             de: '/de/member/vehicleacquisition',
-            en: '#',
+            en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
             it: 'it/member/vehicleacquisition',
           },
@@ -897,6 +916,25 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
     {
       translationKey: 'header.userMenu.accountSettings',
       items: [
+        {
+          translationKey: 'header.userMenu.emailAddress',
+          url: {
+            de: '/de/member/masterdata/changeemail',
+            en: '/de/member/masterdata/changeemail',
+            fr: '/fr/member/masterdata/changeemail',
+            it: '/it/member/masterdata/changeemail',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            platform: {
+              as24: true,
+              ms24: false,
+            },
+          },
+        },
         {
           translationKey: 'header.userMenu.editUser',
           url: {
@@ -927,7 +965,26 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
+            },
+            platform: {
+              as24: true,
+              ms24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.accountSettings',
+          url: {
+            de: '/de/member/masterdata/additionalusersettings',
+            en: '/de/member/masterdata/additionalusersettings',
+            fr: '/fr/member/masterdata/additionalusersettings',
+            it: '/it/member/masterdata/additionalusersettings',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
             },
             platform: {
               as24: true,
@@ -1229,6 +1286,26 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
             },
             platform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.sell',
+          url: {
+            de: '/de/motorrad-inserieren',
+            en: '/de/motorrad-inserieren',
+            fr: '/fr/publier-annonce-moto',
+            it: '/it/pubblicare-annuncio-moto',
+          },
+          showUnderMoreLinkBelow: 'sm',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            platform: {
+              as24: false,
               ms24: true,
             },
           },
@@ -1269,6 +1346,26 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
             },
             platform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.assure',
+          url: {
+            de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+            en: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+            fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+            it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+          },
+          showUnderMoreLinkBelow: 'md',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            platform: {
+              as24: false,
               ms24: true,
             },
           },
@@ -1289,6 +1386,26 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
             },
             platform: {
               as24: true,
+              ms24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.magazine',
+          url: {
+            de: '/de/c/h/information',
+            en: '/en/c/h/information',
+            fr: '/fr/c/h/information',
+            it: '/it/c/h/information',
+          },
+          showUnderMoreLinkBelow: 'lg',
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            platform: {
+              as24: false,
               ms24: true,
             },
           },
