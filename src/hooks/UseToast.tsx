@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 
 import {
   useToast as chakraUseToast,
-  CloseButton,
   ToastId,
   ToastPosition,
 } from '@chakra-ui/react';
