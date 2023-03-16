@@ -19,6 +19,7 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         title={activeLanguage.toUpperCase()}
         fontWeight="bold"
         fontWeightTitle="bold"
+        menuColor="gray.900"
         offset={[-100, 18]}
         items={[
           { text: 'Deutsch', onClick: () => (window.location.href = '/de') },

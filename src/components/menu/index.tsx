@@ -21,6 +21,7 @@ export interface MenuProps {
   items: MenuItem[];
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
+  menuColor?: string;
 }
 
 const Menu: FC<MenuProps> = ({
@@ -28,6 +29,7 @@ const Menu: FC<MenuProps> = ({
   items,
   fontWeightTitle = 'regular',
   offset = [],
+  menuColor,
 }) => {
   return (
     <ChakraMenu {...(offset.length && { offset })}>
@@ -36,13 +38,18 @@ const Menu: FC<MenuProps> = ({
         padding={0}
         rightIcon={<ChevronDownSmallIcon />}
         fontWeight={fontWeightTitle}
+        {...(menuColor && { color: menuColor })}
       >
         {title}
       </MenuButton>
       <MenuList minWidth="4xl">
         {items.map(({ onClick, text }, index) => {
           return (
-            <ChakraMenuItem key={`menuItem-${index}`} onClick={onClick}>
+            <ChakraMenuItem
+              key={`menuItem-${index}`}
+              onClick={onClick}
+              {...(menuColor && { color: menuColor })}
+            >
               {text}
             </ChakraMenuItem>
           );

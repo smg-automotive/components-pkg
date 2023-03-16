@@ -41,7 +41,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   isVisible = true,
   fontWeight = 'regular',
   variant = 'navigationLink',
-  color = 'initial',
+  color = 'gray.900',
 }) => {
   const { t, language } = useI18n();
   if (!isVisible) return null;

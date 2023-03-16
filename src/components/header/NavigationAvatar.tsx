@@ -41,7 +41,11 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
+          <Box
+            fontWeight="bold"
+            color="gray.900"
+            {...(isDrawerOpened && { color: 'blue.700' })}
+          >
             {user.name}
           </Box>
         </Hide>
@@ -52,7 +56,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
 
   return (
     <HStack spacing="xs" cursor="pointer" _hover={{ color: 'blue.700' }}>
-      <Avatar />
+      <Avatar color="gray.900" />
       <Box fontWeight="bold">
         <NavigationLink
           url={{

@@ -7,6 +7,7 @@ export const DrawerIndicator: FC<{ isOpen: boolean }> = ({ isOpen }) => {
   return (
     <Show above="xs">
       <ChevronDownSmallIcon
+        color="gray.900"
         {...(isOpen
           ? { transform: 'rotate(180deg)', color: 'blue.700' }
           : null)}
