@@ -25,7 +25,6 @@ const baseStyle: PartsStyleObject<typeof parts> = {
     flexShrink: 0,
     alignSelf: 'start',
     marginEnd: 'lg',
-    marginTop: 'xs',
     w: 'sm',
     h: 'sm',
   },
