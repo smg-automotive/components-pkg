@@ -6,9 +6,9 @@ import {
   ToastPosition,
 } from '@chakra-ui/react';
 
-import Alert, { AlertProps } from '../components/alert';
+import BareAlert, { BareAlertProps } from '../components/alert/Bare';
 
-interface ToastOptions extends AlertProps {
+interface ToastOptions extends BareAlertProps {
   position?: ToastPosition;
 }
 
@@ -29,7 +29,7 @@ const useToast = () => {
     const toastId = toast({
       position: position,
       render: () => (
-        <Alert
+        <BareAlert
           type={type}
           icon={icon}
           title={title}
