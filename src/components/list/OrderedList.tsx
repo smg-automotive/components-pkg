@@ -1,25 +1,26 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { OrderedList as ChakraOrderedList } from '@chakra-ui/react';
+import { List } from '@chakra-ui/react';
 
-interface ListProps {
-  variant?: 'sm' | 'md';
-  start?: number;
-}
+import { ListProps } from './props';
 
-const OrderedList: FC<PropsWithChildren<ListProps>> = ({
-  children,
-  variant,
-  start = 1,
-}) => {
+export const styleTypes = [
+  'decimal',
+  'lower-alpha',
+  'lower-roman',
+  'upper-alpha',
+  'upper-roman',
+] as const;
+type StyleType = (typeof styleTypes)[number];
+
+const OrderedList: FC<
+  PropsWithChildren<ListProps & { start?: number; styleType?: StyleType }>
+> = ({ children, styleType = 'decimal', ...props }) => {
   return (
-    <ChakraOrderedList
-      spacing={variant}
-      variant={variant}
-      start={start}
-      stylePosition="inside"
-    >
+    // default implementation in chakra forces 1em margin-start
+    // https://github.com/chakra-ui/chakra-ui/blob/main/packages/components/layout/src/list.tsx#L95
+    <List as="ol" styleType={styleType} {...props}>
       {children}
-    </ChakraOrderedList>
+    </List>
   );
 };
 

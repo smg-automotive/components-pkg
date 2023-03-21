@@ -43,7 +43,7 @@ const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
                       {t(sectionConfig.title[0].translationKey)}
                     </MobileOnlyAccordionButton>
                     <MobileOnlyAccordionPanel>
-                      <List variant="sm">
+                      <List size="sm">
                         {sectionConfig.items.map((item, itemIndex) => {
                           return (
                             <ListItem
