@@ -3,7 +3,7 @@ import { createIcon } from '@chakra-ui/react';
 
 export const MissingImageIcon = createIcon({
   displayName: 'MissingImage',
-  viewBox: '0 0 48 49',
+  viewBox: '0 0 48 48',
   path: (
     <>
       <title>Missing Image Icon</title>
