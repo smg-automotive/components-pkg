@@ -1,3 +1,4 @@
+export { AdvancedSearchIcon } from './AdvancedSearchIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
@@ -44,6 +45,7 @@ export { TwitterIcon } from './TwitterIcon';
 export { UtilityVehicleIcon } from './UtilityVehicleIcon';
 export { VehiclePowerIcon } from './VehiclePowerIcon';
 export { VideoIcon } from './VideoIcon';
+export { WarningIcon } from './WarningIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { YoutubeIcon } from './YoutubeIcon';
 export { HeartIcon } from './HeartIcon';

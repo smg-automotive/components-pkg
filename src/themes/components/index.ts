@@ -23,6 +23,7 @@ import FormError from './formError';
 import Form from './form';
 import Drawer from './drawer';
 import Divider from './divider';
+import CloseButton from './closeButton';
 import Checkbox from './checkbox';
 import Carousel from './carousel';
 import Card from './card';
@@ -45,6 +46,7 @@ export const components: Record<string, ComponentStyleConfig> = {
   Card,
   Carousel,
   Checkbox,
+  CloseButton,
   Divider,
   Drawer,
   Form,
