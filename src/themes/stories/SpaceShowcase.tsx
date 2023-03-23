@@ -17,9 +17,9 @@ const SpacingShowCase: FC = () => {
 
   return (
     <TableContainer>
-      <Table variant="simple">
+      <Table>
         <Thead>
-          <Tr border="1px" borderColor="gray.300">
+          <Tr>
             <Th>Name</Th>
             <Th>Value</Th>
             <Th>Pixels</Th>
@@ -28,7 +28,7 @@ const SpacingShowCase: FC = () => {
         </Thead>
         {Object.entries(theme.space).map(([name, space]) => {
           return (
-            <Tr key={name} border="1px" borderColor="gray.300">
+            <Tr key={name}>
               <Td>{name}</Td>
               <Td>{space as string}</Td>
               <Td>{`${convertRemEmToPx(space as string)}px`}</Td>

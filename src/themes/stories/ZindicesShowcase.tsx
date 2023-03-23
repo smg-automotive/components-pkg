@@ -13,16 +13,16 @@ const ZindicesShowcase: FC = () => {
   const theme = useTheme();
   return (
     <TableContainer>
-      <Table variant="simple">
+      <Table>
         <Thead>
-          <Tr border="1px" borderColor="gray.300">
+          <Tr>
             <Th>Name</Th>
             <Th>Value</Th>
           </Tr>
         </Thead>
         {Object.entries(theme.zIndices).map(([name, value]) => {
           return (
-            <Tr key={name} border="1px" borderColor="gray.300">
+            <Tr key={name}>
               <Td>{name}</Td>
               <Td>{value as string}</Td>
             </Tr>
