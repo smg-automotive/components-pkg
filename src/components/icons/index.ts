@@ -29,6 +29,7 @@ export { GasStationIcon } from './GasStationIcon';
 export { InstagramIcon } from './InstagramIcon';
 export { LocationPinIcon } from './LocationPinIcon';
 export { MessageIcon } from './MessageIcon';
+export { MissingImageIcon } from './MissingImageIcon';
 export { MotorcycleIcon } from './MotorcycleIcon';
 export { MotoScout24AppLogo } from './MotoScout24AppLogo';
 export { PrintIcon } from './PrintIcon';
