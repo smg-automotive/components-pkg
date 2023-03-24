@@ -41,13 +41,13 @@ const variantSimple = definePartsStyle((props) => {
     th: {
       color: 'gray.700',
       borderBottom: '1px',
-      borderColor: `${c}.100`,
+      borderColor: `${c}.200`,
       ...numericStyles,
     },
     td: {
       borderBottom: '1px',
       color: 'gray.900',
-      borderColor: `${c}.100`,
+      borderColor: `${c}.200`,
       ...numericStyles,
     },
     caption: {
@@ -70,12 +70,12 @@ const variantStripe = definePartsStyle((props) => {
     th: {
       color: 'gray.600',
       borderBottom: '1px',
-      borderColor: `${c}.100`,
+      borderColor: `${c}.200`,
       ...numericStyles,
     },
     td: {
       borderBottom: '1px',
-      borderColor: `${c}.100`,
+      borderColor: `${c}.50`,
       ...numericStyles,
     },
     caption: {
@@ -83,20 +83,29 @@ const variantStripe = definePartsStyle((props) => {
     },
     tbody: {
       tr: {
-        '&:nth-of-type(odd)': {
+        _odd: {
           'th, td': {
             borderBottomWidth: '1px',
-            borderColor: `${c}.100`,
+            borderColor: `${c}.50`,
+            background: `${c}.50`,
           },
-          td: {
+        },
+        _hover: {
+          'th, td': {
             background: `${c}.100`,
+          },
+        },
+        _last: {
+          'th, td': {
+            borderBottomWidth: '1px',
+            borderColor: `${c}.200`,
           },
         },
       },
     },
     tfoot: {
       tr: {
-        '&:last-of-type': {
+        _last: {
           th: { borderBottomWidth: 0 },
         },
       },
@@ -132,17 +141,18 @@ const sizes = {
   md: definePartsStyle({
     th: {
       px: 'md',
-      py: 'md',
+      py: 'sm',
       textStyle: 'heading4',
+      fontSize: 'sm',
     },
     td: {
       px: 'md',
-      py: 'md',
+      py: 'sm',
       textStyle: 'body',
     },
     caption: {
       px: 'md',
-      py: 'md',
+      py: 'sm',
       textStyle: 'body',
     },
   }),
