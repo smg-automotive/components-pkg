@@ -66,11 +66,11 @@ export class FooterConfig {
     this.environment = environment;
     this.useAbsoluteUrls = useAbsoluteUrls;
     this.domains = {
-      as24: {
+      [Brand.AutoScout24]: {
         production: 'www.autoscout24.ch',
         preprod: 'int.autoscout24.ch',
       },
-      ms24: {
+      [Brand.MotoScout24]: {
         production: 'www.motoscout24.ch',
         preprod: 'int.motoscout24.ch',
       },
