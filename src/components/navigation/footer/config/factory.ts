@@ -1,21 +1,10 @@
-import { Language } from '@smg-automotive/i18n-pkg';
-
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
-import { Link, LinkConfig, LinkTargets } from './link';
+import { Link, LinkConfig, LinkInstance } from 'src/components/navigation/link';
+import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
 import { FooterConfigInterface } from '.';
-
-type LocalizedLinks = Record<Language, string>;
-
-export interface LinkInstance {
-  translationKey: string;
-  link?: LocalizedLinks;
-  target?: LinkTargets;
-  isVisible: boolean;
-  onClick?: () => void;
-}
 
 interface LinkSectionConfig {
   title: LinkConfig[];
@@ -41,14 +30,9 @@ export interface FooterConfigInstance {
   };
   companies: LinkInstance[];
 }
-export class FooterConfig {
-  brand: Brand;
+export class FooterConfig extends BaseConfig<FooterConfigInstance> {
   config: FooterConfigInterface;
-  environment: Environment;
-  useAbsoluteUrls: boolean;
   mappedConfig?: FooterConfigInstance;
-  linkProtocol: string;
-  domains: Record<Brand, Record<Environment, string>>;
 
   constructor({
     config,
@@ -61,21 +45,8 @@ export class FooterConfig {
     environment?: Environment;
     useAbsoluteUrls?: boolean;
   }) {
-    this.brand = brand;
+    super({ brand, environment, useAbsoluteUrls });
     this.config = config;
-    this.environment = environment;
-    this.useAbsoluteUrls = useAbsoluteUrls;
-    this.domains = {
-      as24: {
-        production: 'www.autoscout24.ch',
-        preprod: 'int.autoscout24.ch',
-      },
-      ms24: {
-        production: 'www.motoscout24.ch',
-        preprod: 'int.motoscout24.ch',
-      },
-    };
-    this.linkProtocol = 'https';
   }
 
   getMappedConfig(): FooterConfigInstance {
@@ -115,7 +86,7 @@ export class FooterConfig {
       .filter((item) => item.isVisible);
   }
 
-  private mapLink(config: LinkConfig): LinkInstance {
+  mapLink(config: LinkConfig): LinkInstance {
     return new Link({
       config,
       brand: this.brand,

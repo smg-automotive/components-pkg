@@ -7,10 +7,11 @@ import { Environment } from 'src/types/environment';
 
 import { Brand } from 'src/types/brand';
 
-import TranslationProvider from '../translationProvider';
-import Divider from '../divider';
-import Center from '../center';
-import Box from '../box';
+import TranslationProvider from 'src/components/translationProvider';
+import Divider from 'src/components/divider';
+import Center from 'src/components/center';
+import Box from 'src/components/box';
+
 import SocialMedia from './SocialMedia';
 import FooterSectionGrid from './SectionGrid';
 import FooterLanguageNavigation from './LanguageNavigation';

@@ -3,14 +3,15 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { chunkArray } from 'src/utilities/chunkArray';
 
-import MobileOnlyAccordionPanel from '../mobileOnlyAccordion/MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from '../mobileOnlyAccordion/MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from '../mobileOnlyAccordion/MobileOnlyAccordionButton';
-import MobileOnlyAccordion from '../mobileOnlyAccordion';
-import ListItem from '../list/ListItem';
-import List from '../list';
+import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
+import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
+import ListItem from 'src/components/list/ListItem';
+import List from 'src/components/list';
 
-import GridItem from '../grid/GridItem';
+import GridItem from 'src/components/grid/GridItem';
+
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 
@@ -40,7 +41,8 @@ const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
                     borderBottomColor="gray.700"
                   >
                     <MobileOnlyAccordionButton>
-                      {t(sectionConfig.title[0].translationKey)}
+                      {sectionConfig.title[0].translationKey &&
+                        t(sectionConfig.title[0].translationKey)}
                     </MobileOnlyAccordionButton>
                     <MobileOnlyAccordionPanel>
                       <List size="sm">

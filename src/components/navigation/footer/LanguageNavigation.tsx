@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 
 import { StackDivider } from '@chakra-ui/react';
 
-import Text from '../text';
-import Stack from '../stack';
-import Link from '../link';
-import Center from '../center';
+import Text from 'src/components/text';
+import Stack from 'src/components/stack';
+import Link from 'src/components/link';
+import Center from 'src/components/center';
 
 const FooterLanguageNavigation: FC = () => {
   return (

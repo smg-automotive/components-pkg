@@ -1,4 +1,4 @@
-import { LinkConfig } from './link';
+import { LinkConfig } from 'src/components/navigation/link';
 
 declare global {
   interface Window {

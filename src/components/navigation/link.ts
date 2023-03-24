@@ -11,7 +11,7 @@ export interface VisibilitySettings {
   brand: Record<Brand, boolean>;
   userType?: Record<UserType, boolean>;
 }
-type LocalizedLinks = Record<Language, string>;
+export type LocalizedLinks = Record<Language, string>;
 
 export interface LinkConfig {
   translationKey?: string;

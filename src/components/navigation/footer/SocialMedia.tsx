@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 
-import Stack from '../stack';
+import Stack from 'src/components/stack';
 import {
   FacebookIcon,
   InstagramIcon,
   TwitterIcon,
   YoutubeIcon,
-} from '../icons';
-import Center from '../center';
+} from 'src/components/icons';
+import Center from 'src/components/center';
+
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';
 

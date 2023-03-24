@@ -36,13 +36,6 @@ interface NavigationProps {
   useAbsoluteUrls?: boolean;
 }
 
-export interface LinkConfig {
-  userType: UserType | undefined;
-  brand: Platform;
-  useAbsoluteUrls: boolean;
-  urlPathParams?: Record<string, string | number>;
-}
-
 const Navigation: FC<NavigationProps> = ({
   environment,
   brand,
@@ -127,5 +120,3 @@ const Navigation: FC<NavigationProps> = ({
 };
 export default Navigation;
 export { PropsWithChildren as FullHeightProps };
-
-//
