@@ -1,6 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Box from '../box';
+import Box from 'src/components/box';
 
 import Navigation from './index.tsx';
 
@@ -15,7 +15,7 @@ import Navigation from './index.tsx';
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
-    platform: {
+    brand: {
       options: ['as24', 'ms24'],
       control: 'select',
     },
@@ -49,7 +49,7 @@ export const Template = (args) => {
         accountId: 525,
       },
       language: 'de',
-      platform: 'as24',
+      brand: 'as24',
       useAbsoluteUrls: true,
       environment: 'preprod',
     }}
@@ -74,7 +74,7 @@ export const Template = (args) => {
         useAbsoluteUrls: true,
       },
       language: 'de',
-      platform: 'as24',
+      brand: 'as24',
       environment: 'preprod',
     }}
   >
@@ -90,7 +90,7 @@ export const Template = (args) => {
     args={{
       user: null,
       language: 'de',
-      platform: 'as24',
+      brand: 'as24',
       environment: 'preprod',
     }}
   >

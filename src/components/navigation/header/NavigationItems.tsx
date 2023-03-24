@@ -2,23 +2,23 @@ import React, { FC } from 'react';
 
 import { Image } from '@chakra-ui/react';
 
+import Stack from 'src/components/stack';
+import Show from 'src/components/show';
+import Link from 'src/components/link';
 import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
 import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
 
-import Stack from '../stack';
-import Show from '../show';
-import Link from '../link';
-
-import { HeaderLink, NavigationLinkProps } from './NavigationLink';
 import { NavigationItem } from './NavigationItem';
+import { HeaderLink } from './links/HeaderLink';
 import { Drawer as UseNavigationDrawer } from './hooks/useNavigationDrawer';
+import { HeaderNavigationLink } from './config/headerNavigationLink';
 import { DrawerNode } from './config/drawerNodeItems';
 
 import { Platform } from '.';
 
 interface NavigationItemsProps {
   platform: Platform;
-  headerLinks: NavigationLinkProps[];
+  headerLinks: HeaderNavigationLink[];
   drawer: UseNavigationDrawer;
   isOpen: boolean;
   createDrawerHandler: ({ nodeName }: { nodeName: DrawerNode }) => () => void;

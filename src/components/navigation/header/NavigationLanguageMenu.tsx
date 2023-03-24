@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 
+import Menu from 'src/components/menu';
+import Hide from 'src/components/hide';
 import Box from 'src/components/box';
-
-import Menu from '../menu';
-import Hide from '../hide';
 
 interface NavigationLanguageMenuProps {
   activeLanguage: string;
@@ -20,6 +19,7 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         fontWeight="bold"
         fontWeightTitle="bold"
         menuColor="gray.900"
+        marginTop="-2px"
         offset={[-100, 18]}
         items={[
           { text: 'Deutsch', onClick: () => (window.location.href = '/de') },

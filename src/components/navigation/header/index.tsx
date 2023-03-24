@@ -5,29 +5,18 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
+import TranslationProvider from 'src/components/translationProvider';
+import Stack from 'src/components/stack';
 import Box from 'src/components/box';
 
-import TranslationProvider from '../translationProvider';
-import Stack from '../stack';
-
-import { NavigationLinkProps } from './NavigationLink';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
-import { getHeaderLinks } from './config/headerLinks';
-import { DrawerNodeItems, getDrawerNodeItems } from './config/drawerNodeItems';
-import { domains } from './config/domains';
-
-interface NavigationConfiguration {
-  homeUrl: string;
-  currentLanguage: Language;
-  menuHeight: string;
-  user: User | null;
-  drawerNodeItems: DrawerNodeItems;
-  headerLinks: NavigationLinkProps[];
-}
+import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
+import { headerLinks } from './config/headerLinks';
+import { drawerNodeItems } from './config/drawerNodeItems';
 
 export type UserType = 'private' | 'professional';
 export type Platform = 'as24' | 'ms24';
@@ -40,65 +29,57 @@ export interface User {
 }
 interface NavigationProps {
   environment: Environment;
-  platform: Brand;
+  brand: Brand;
   language: Language;
   user: User | null;
   hasNotification: boolean;
-  domain?: string;
   useAbsoluteUrls?: boolean;
 }
 
 export interface LinkConfig {
-  userType: UserType | null;
-  platform: Platform;
+  userType: UserType | undefined;
+  brand: Platform;
   useAbsoluteUrls: boolean;
-  domain: string;
-  urlPathParams: Record<string, string | number> | null;
+  urlPathParams?: Record<string, string | number>;
 }
 
 const Navigation: FC<NavigationProps> = ({
   environment,
-  platform,
+  brand,
   language,
   user,
   hasNotification,
   useAbsoluteUrls = false,
 }) => {
-  const linkConfig: LinkConfig = {
-    userType: user && user.type,
-    platform,
-    useAbsoluteUrls,
-    domain: domains[platform][environment],
-    urlPathParams: user && { accountId: user.accountId },
-  };
-
-  const config: NavigationConfiguration = useMemo(
-    () => ({
-      homeUrl: '/',
-      currentLanguage: language,
-      user,
-      menuHeight: '60px',
-      drawerNodeItems: getDrawerNodeItems(linkConfig),
-      headerLinks: getHeaderLinks(linkConfig),
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      user?.id,
-      user?.type,
-      user?.accountId,
-      platform,
-      useAbsoluteUrls,
+  const config = useMemo(() => {
+    const headerNavigationConfigInstance = new HeaderNavigationConfig({
+      brand,
       environment,
-      language,
-    ]
-  );
+      useAbsoluteUrls,
+      config: {
+        headerItems: headerLinks,
+        drawerItems: drawerNodeItems,
+      },
+      user,
+    });
+    return headerNavigationConfigInstance.getMappedConfig();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    brand,
+    environment,
+    useAbsoluteUrls,
+    headerLinks,
+    drawerNodeItems,
+    user?.id,
+    user?.type,
+  ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
-    drawerNodeItems: config.drawerNodeItems,
+    drawerNodeItems: config.drawerItems,
   });
 
   return (
-    <TranslationProvider language={config.currentLanguage} scopes={['header']}>
+    <TranslationProvider language={language} scopes={['header']}>
       <Box
         width="full"
         borderBottomColor="gray.200"
@@ -117,8 +98,8 @@ const Navigation: FC<NavigationProps> = ({
           px={{ base: 'sm', xs: 'lg' }}
         >
           <NavigationItems
-            platform={platform}
-            headerLinks={config.headerLinks}
+            platform={brand}
+            headerLinks={config.headerItems}
             drawer={drawer}
             isOpen={isOpen}
             createDrawerHandler={createDrawerHandler}
@@ -131,18 +112,20 @@ const Navigation: FC<NavigationProps> = ({
               drawer={drawer}
               hasNotification={hasNotification}
             />
-            <NavigationLanguageMenu activeLanguage={config.currentLanguage} />
+            <NavigationLanguageMenu activeLanguage={language} />
           </Stack>
         </Box>
-        <NavigationDrawer
-          drawer={drawer}
-          isOpen={isOpen}
-          onClose={onClose}
-          menuHeight={config.menuHeight}
-        />
       </Box>
+      <NavigationDrawer
+        drawer={drawer}
+        isOpen={isOpen}
+        onClose={onClose}
+        menuHeight={config.menuHeight}
+      />
     </TranslationProvider>
   );
 };
 export default Navigation;
 export { PropsWithChildren as FullHeightProps };
+
+//

@@ -1,10 +1,6 @@
-import { NavigationLinkProps } from '../NavigationLink';
-import { LinkConfig } from '..';
-import {
-  NavigationLinkConfigNode,
-  NavigationLinkConfigProps,
-  resolveVisibility,
-} from './converter';
+import { NavigationLinkProps } from '../links/NavigationLink';
+import { HeaderNavigationLink } from './headerNavigationLink';
+import { NavigationLinkConfigProps } from './headerLinks';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -17,20 +13,28 @@ export enum DrawerNode {
   More = 'more',
 }
 
+export type NavigationLinkConfigNode = Omit<NavigationLinkNode, 'items'> & {
+  items: NavigationLinkConfigProps[];
+};
+
 export type DrawerNodeItems = { [key in DrawerNode]: NavigationLinkNode[] };
 
-type DrawerNodeItemsConfig = {
+export type DrawerNodeItemsConfig = {
   [key in DrawerNode]: NavigationLinkConfigNode[];
 };
 
-const drawerNodeItems: DrawerNodeItemsConfig = {
+export type DrawerNodeLinks = {
+  [key in DrawerNode]: HeaderNavigationLink[];
+};
+
+export const drawerNodeItems: DrawerNodeItemsConfig = {
   search: [
     {
       translationKey: 'header.searchMenu.vehicles',
       items: [
         {
           translationKey: 'header.searchMenu.simpleSearch',
-          url: {
+          link: {
             de: '/de',
             en: '/de',
             fr: '/fr',
@@ -41,7 +45,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -49,7 +53,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.advancedSearch',
-          url: {
+          link: {
             de: '/de/auto/suche',
             en: '/de/auto/suche',
             fr: '/fr/voiture/recherche',
@@ -60,7 +64,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -73,7 +77,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.searchMenu.searchMerchant',
-          url: {
+          link: {
             de: '/de/auto-haendler-garage/suche',
             en: '/de/auto-haendler-garage/suche',
             fr: '/fr/voiture-concessionaires-garages/recherche',
@@ -84,7 +88,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -97,7 +101,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.searchMenu.findPartsAndAccessories',
-          url: {
+          link: {
             de: '/de/ersatzteile-zubehoer',
             en: '/de/ersatzteile-zubehoer',
             fr: '/fr/pieces-accessoires',
@@ -108,7 +112,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -116,7 +120,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.searchMotorcycles',
-          url: {
+          link: {
             de: 'https://www.motoscout24.ch/de',
             en: 'https://www.motoscout24.ch/de',
             fr: 'https://www.motoscout24.ch/fr',
@@ -127,7 +131,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -135,7 +139,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.searchCars',
-          url: {
+          link: {
             de: 'https://www.autoscout24.ch/de',
             en: 'https://www.autoscout24.ch/de',
             fr: 'https://www.autoscout24.ch/fr',
@@ -146,7 +150,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -154,7 +158,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.vehicleRating',
-          url: {
+          link: {
             de: '/de/content/fahrzeugbewertung',
             en: '/de/content/fahrzeugbewertung',
             fr: '/fr/content/evaluation-vehicule',
@@ -165,7 +169,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -173,7 +177,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.insuranceComparison',
-          url: {
+          link: {
             de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             en: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             fr: 'https://www.financescout24.ch/fr/lp/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
@@ -184,7 +188,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -192,7 +196,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.viewedListings',
-          url: {
+          link: {
             de: '/de/besuchte-fahrzeuge',
             en: '/de/besuchte-fahrzeuge',
             fr: '/fr/vehicules-visites',
@@ -203,7 +207,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -211,7 +215,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.searchMenu.recentSearches',
-          url: {
+          link: {
             de: '/de/letzte-suchen',
             en: '/de/letzte-suchen',
             fr: '/fr/dernieres-recherches',
@@ -222,7 +226,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -237,7 +241,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.userMenu.createAd',
-          url: {
+          link: {
             de: '/de/member/insertion/type',
             en: '/de/member/insertion/type',
             fr: '/fr/member/insertion/type/index',
@@ -248,7 +252,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -256,7 +260,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.myVehicles',
-          url: {
+          link: {
             de: 'https://dealer.autoscout24.ch/de/vehicles',
             en: 'https://dealer.autoscout24.ch/de/vehicles',
             fr: 'https://dealer.autoscout24.ch/fr/vehicles',
@@ -267,7 +271,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -275,7 +279,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.myVehcilesOld',
-          url: {
+          link: {
             de: '/de/member/vehiclepool',
             en: '/de/member/vehiclepool',
             fr: '/fr/member/vehiclepool',
@@ -286,7 +290,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -294,7 +298,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.myMotorcycles',
-          url: {
+          link: {
             de: 'de/member/vehiclepool',
             en: 'en/member/vehiclepool',
             fr: 'fr/member/vehiclepool',
@@ -305,7 +309,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -313,7 +317,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.myMotorcycles',
-          url: {
+          link: {
             de: 'https://dealer.autoscout24.ch/de/vehicles',
             en: 'https://dealer.autoscout24.ch/de/vehicles',
             fr: 'https://dealer.autoscout24.ch/fr/vehicles',
@@ -324,7 +328,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: false,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -332,7 +336,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.myMotorcyclesOld',
-          url: {
+          link: {
             de: '/de/member/vehiclepool',
             en: '/de/member/vehiclepool',
             fr: '/fr/member/vehiclepool',
@@ -343,7 +347,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -351,7 +355,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.dealerDashboard',
-          url: {
+          link: {
             de: 'https://dealer.autoscout24.ch/de/login',
             en: 'https://dealer.autoscout24.ch/de/login',
             fr: 'https://dealer.autoscout24.ch/fr/login',
@@ -362,7 +366,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -370,7 +374,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.optimizerPro',
-          url: {
+          link: {
             de: '/de/member/optimizerpro/index',
             en: '/de/member/optimizerpro/index',
             fr: '/fr/member/optimizerpro',
@@ -381,7 +385,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -389,7 +393,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.cockpit',
-          url: {
+          link: {
             de: '/de/member/cockpit/index',
             en: '/de/member/cockpit/index',
             fr: '/fr/member/cockpit',
@@ -400,7 +404,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -408,7 +412,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.statistics',
-          url: {
+          link: {
             de: '/de/member/statistics',
             en: '/de/member/statistics',
             fr: '/fr/member/statistics',
@@ -419,7 +423,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -427,7 +431,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.printableList',
-          url: {
+          link: {
             de: '/de/member/printvehiclelist',
             en: '/en/member/printvehiclelist',
             fr: '/fr/member/printvehiclelist',
@@ -438,7 +442,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -446,7 +450,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.shoppingCard',
-          url: {
+          link: {
             de: '/de/member/insertion/checkout/index?steps=40-47',
             en: '/de/member/insertion/checkout/index?steps=40-47',
             fr: '/fr/member/insertion/checkout/index?steps=40-47',
@@ -457,7 +461,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -465,7 +469,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.motorcyclePark',
-          url: {
+          link: {
             de: 'https://www.motoscout24.ch/de/member/vehiclepool',
             en: 'https://www.motoscout24.ch/de/member/vehiclepool',
             fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
@@ -476,7 +480,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -484,7 +488,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.carPark',
-          url: {
+          link: {
             de: 'https://www.motoscout24.ch/de/member/vehiclepool',
             en: 'https://www.motoscout24.ch/de/member/vehiclepool',
             fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
@@ -495,7 +499,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -508,7 +512,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.userMenu.contactRequests',
-          url: {
+          link: {
             de: '/de/member/messagemanager',
             en: '/de/member/messagemanager',
             fr: '/fr/member/messagemanager',
@@ -519,7 +523,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -527,7 +531,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.printingCenter',
-          url: {
+          link: {
             de: '/de/member/printcenter?status=30',
             en: '/de/member/printcenter?status=30',
             fr: '/fr/member/printcenter?status=30',
@@ -538,7 +542,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -546,7 +550,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.testDrives',
-          url: {
+          link: {
             de: '/de/member/testdrive/settings',
             en: '/de/member/testdrive/settings',
             fr: '/fr/member/testdrive/settings',
@@ -557,7 +561,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -565,7 +569,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.leasing',
-          url: {
+          link: {
             de: '/de/member/leasing',
             en: '/de/member/leasing',
             fr: '/fr/member/leasing',
@@ -576,7 +580,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -584,7 +588,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.topListingPro',
-          url: {
+          link: {
             de: '/de/member/toplisting',
             en: '/de/member/toplisting',
             fr: '/fr/member/toplisting',
@@ -595,7 +599,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -603,7 +607,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.topCars',
-          url: {
+          link: {
             de: '/de/member/topvehicles',
             en: '/de/member/topvehicles',
             fr: '/fr/member/topvehicles',
@@ -614,7 +618,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -622,7 +626,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.topMotos',
-          url: {
+          link: {
             de: '/de/member/topvehicles',
             en: '/de/member/topvehicles',
             fr: '/fr/member/topvehicles',
@@ -633,7 +637,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -641,7 +645,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.boosteras24',
-          url: {
+          link: {
             de: 'https://dealer.autoscout24.ch/de/booster',
             en: 'https://dealer.autoscout24.ch/de/booster',
             fr: 'https://dealer.autoscout24.ch/fr/booster',
@@ -652,7 +656,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -661,7 +665,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.onlineAdvertising',
-          url: {
+          link: {
             de: '/de/member/displayads',
             en: '/de/member/displayads',
             fr: '/fr/member/displayads',
@@ -672,7 +676,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -680,7 +684,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.advertisePartsAccessories',
-          url: {
+          link: {
             de: '/de/ersatzteile-zubehoer/insertion',
             en: '/de/ersatzteile-zubehoer/insertion',
             fr: '/fr/pieces-accessoires/insertion',
@@ -691,7 +695,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -699,7 +703,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.reviews',
-          url: {
+          link: {
             de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
             en: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
             fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
@@ -710,7 +714,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -718,7 +722,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.insuranceComparison',
-          url: {
+          link: {
             de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             en: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             fr: 'https://www.financescout24.ch/fr/lp/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
@@ -729,7 +733,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -742,7 +746,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.userMenu.requisitions',
-          url: {
+          link: {
             de: '/de/member/searchjobs',
             en: '/de/member/searchjobs',
             fr: '/fr/member/searchjobs',
@@ -753,7 +757,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -761,7 +765,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.bookmarks',
-          url: {
+          link: {
             de: '/de/member/favorites',
             en: '/de/member/favorites',
             fr: '/fr/member/favorites',
@@ -772,7 +776,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -780,7 +784,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.b2bPlattform',
-          url: {
+          link: {
             de: '/de/member/b2bplatform',
             en: '/de/member/b2bplatform',
             fr: '/fr/member/b2bplatform',
@@ -791,7 +795,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -799,7 +803,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.amagServiceLifePool',
-          url: {
+          link: {
             de: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
             en: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
             fr: '/fr/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
@@ -810,7 +814,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -818,7 +822,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.efagServiceLifePool',
-          url: {
+          link: {
             de: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
             en: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
             fr: '/fr/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
@@ -829,7 +833,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -837,7 +841,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.demandCalculator',
-          url: {
+          link: {
             de: '/de/member/demandcalculator',
             en: '/de/member/demandcalculator',
             fr: '/fr/member/demandcalculator',
@@ -848,7 +852,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -856,7 +860,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.autoRadar',
-          url: {
+          link: {
             de: '/de/productdescription/as24_autoradar',
             en: '/de/productdescription/as24_autoradar',
             fr: '/fr/productdescription/as24_autoradar',
@@ -867,7 +871,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -875,7 +879,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.dealerInfoSystem',
-          url: {
+          link: {
             de: 'http://bi.scout24.ch',
             en: 'http://bi.scout24.ch',
             fr: 'http://bi.scout24.ch',
@@ -886,7 +890,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -894,7 +898,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.marketPriceCheck',
-          url: {
+          link: {
             de: '/de/member/vehicleacquisition',
             en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
@@ -905,7 +909,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -918,7 +922,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.userMenu.emailAddress',
-          url: {
+          link: {
             de: '/de/member/masterdata/changeemail',
             en: '/de/member/masterdata/changeemail',
             fr: '/fr/member/masterdata/changeemail',
@@ -929,7 +933,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: false,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -937,7 +941,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.editUser',
-          url: {
+          link: {
             de: '/de/member/users/list',
             en: '/de/member/users/list',
             fr: '/fr/member/users/list',
@@ -948,7 +952,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -956,7 +960,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.changePassword',
-          url: {
+          link: {
             de: '/de/member/masterdata/changepassword',
             en: '/de/member/masterdata/changepassword',
             fr: '/fr/member/masterdata/changepassword',
@@ -967,7 +971,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: false,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -975,7 +979,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.accountSettings',
-          url: {
+          link: {
             de: '/de/member/masterdata/additionalusersettings',
             en: '/de/member/masterdata/additionalusersettings',
             fr: '/fr/member/masterdata/additionalusersettings',
@@ -986,7 +990,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: false,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -994,7 +998,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.userLanguage',
-          url: {
+          link: {
             de: '/de/member/masterdata/userlanguage',
             en: '/de/member/masterdata/userlanguage',
             fr: '/fr/member/masterdata/userlanguage',
@@ -1005,7 +1009,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1014,7 +1018,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.logout',
           color: 'red.500',
-          url: {
+          link: {
             de: '/de/account/logoff',
             en: '/de/account/logoff',
             fr: '/fr/account/logoff',
@@ -1025,7 +1029,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1038,7 +1042,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.userMenu.infoPage',
-          url: {
+          link: {
             de: '/de/member/dealerpageadmin',
             en: '/de/member/dealerpageadmin',
             fr: '/fr/member/dealerpageadmin',
@@ -1049,7 +1053,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1057,7 +1061,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.contactDetails',
-          url: {
+          link: {
             de: '/de/member/masterdata/addressedit',
             en: '/de/member/masterdata/addressedit',
             fr: '/fr/member/masterdata/addressedit',
@@ -1068,7 +1072,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1076,7 +1080,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.openingHours',
-          url: {
+          link: {
             de: '/de/member/businesshours',
             en: '/de/member/businesshours',
             fr: '/fr/member/businesshours',
@@ -1087,7 +1091,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1095,7 +1099,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.businessImage',
-          url: {
+          link: {
             de: '/de/member/businessimage',
             en: '/de/member/businessimage',
             fr: '/de/member/businessimage',
@@ -1106,7 +1110,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1114,7 +1118,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.editPhotobar',
-          url: {
+          link: {
             de: '/de/member/templates/photobar',
             en: '/de/member/templates/photobar',
             fr: '/it/member/templates/photobar',
@@ -1125,7 +1129,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1133,7 +1137,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.manageAdditionalTitles',
-          url: {
+          link: {
             de: '/de/member/templates/teaser',
             en: '/de/member/templates/teaser',
             fr: '/fr/member/templates/teaser',
@@ -1144,7 +1148,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1152,7 +1156,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.manageNotes',
-          url: {
+          link: {
             de: '/de/member/templates/comment',
             en: '/de/member/templates/comment',
             fr: '/fr/member/templates/comment',
@@ -1163,7 +1167,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1171,7 +1175,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.qualityLogo',
-          url: {
+          link: {
             de: '/de/member/qualilogo',
             en: '/de/member/qualilogo',
             fr: '/fr/member/qualilogo',
@@ -1182,7 +1186,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1190,7 +1194,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.manageAutoRadar',
-          url: {
+          link: {
             de: '/de/productdescription/as24_autoradar',
             en: '/de/productdescription/as24_autoradar',
             fr: '/fr/productdescription/as24_autoradar',
@@ -1201,7 +1205,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -1209,7 +1213,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.hci',
-          url: {
+          link: {
             de: '/de/member/hci',
             en: '/de/member/hci',
             fr: '/fr/member/hci',
@@ -1220,7 +1224,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1228,7 +1232,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.importInfo',
-          url: {
+          link: {
             de: '/de/productdescription/as24_service',
             en: '/de/productdescription/as24_service',
             fr: '/fr/productdescription/as24_service',
@@ -1239,7 +1243,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1247,7 +1251,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.userMenu.dmsLog',
-          url: {
+          link: {
             de: '/de/member/dmsinfo/log',
             en: '/de/member/dmsinfo/log',
             fr: '/fr/member/dmsinfo/log',
@@ -1258,7 +1262,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: false,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: true,
             },
@@ -1272,7 +1276,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       items: [
         {
           translationKey: 'header.sell',
-          url: {
+          link: {
             de: '/de/auto-verkaufen',
             en: '/de/auto-verkaufen',
             fr: '/fr/vendre-voiture',
@@ -1284,7 +1288,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -1292,7 +1296,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.sell',
-          url: {
+          link: {
             de: '/de/motorrad-inserieren',
             en: '/de/motorrad-inserieren',
             fr: '/fr/publier-annonce-moto',
@@ -1304,7 +1308,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -1312,7 +1316,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.estimate',
-          url: {
+          link: {
             de: '/de/fahrzeugbewertung',
             en: '/de/fahrzeugbewertung',
             fr: '/fr/evaluation-vehicules',
@@ -1324,7 +1328,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -1332,7 +1336,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.assure',
-          url: {
+          link: {
             de: '/de/autoversicherung',
             en: '/de/autoversicherung',
             fr: '/fr/assurance-auto',
@@ -1344,7 +1348,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -1352,7 +1356,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.assure',
-          url: {
+          link: {
             de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
             en: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
             fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
@@ -1364,7 +1368,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -1372,7 +1376,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.magazine',
-          url: {
+          link: {
             de: 'https://guide.autoscout24.ch/de/',
             en: 'https://guide.autoscout24.ch/de/',
             fr: 'https://guide.autoscout24.ch/fr/',
@@ -1384,7 +1388,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: true,
               ms24: false,
             },
@@ -1392,7 +1396,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
         },
         {
           translationKey: 'header.magazine',
-          url: {
+          link: {
             de: '/de/c/h/information',
             en: '/en/c/h/information',
             fr: '/fr/c/h/information',
@@ -1404,7 +1408,7 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
               private: true,
               professional: true,
             },
-            platform: {
+            brand: {
               as24: false,
               ms24: true,
             },
@@ -1413,42 +1417,4 @@ const drawerNodeItems: DrawerNodeItemsConfig = {
       ],
     },
   ],
-};
-
-const mapDrawerNodeItems = (
-  data: LinkConfig & { items: NavigationLinkConfigProps[] }
-) =>
-  data.items.map((item) => {
-    return resolveVisibility({
-      ...data,
-      item,
-    });
-  });
-
-const mapDrawerNodes = (
-  data: LinkConfig & { nodeEntry: NavigationLinkConfigNode[] }
-) =>
-  data.nodeEntry.map((node) => {
-    const mappedItems = mapDrawerNodeItems({ ...data, items: node.items });
-
-    return {
-      ...node,
-      items: mappedItems,
-    };
-  });
-
-export const mapDrawerItemsEntries = (
-  data: LinkConfig & { itemsEntires: [string, NavigationLinkConfigNode[]][] }
-) =>
-  data.itemsEntires.map(([nodeKey, nodes]) => {
-    const mappedNodes = mapDrawerNodes({ ...data, nodeEntry: nodes });
-
-    return [nodeKey, mappedNodes];
-  });
-
-export const getDrawerNodeItems = (data: LinkConfig): DrawerNodeItems => {
-  const itemsEntires = Object.entries(drawerNodeItems);
-  const mappedEntries = mapDrawerItemsEntries({ ...data, itemsEntires });
-
-  return Object.fromEntries(mappedEntries);
 };

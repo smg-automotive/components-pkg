@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { HStack } from '@chakra-ui/react';
 
+import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
 
-import Hide from '../hide';
-
-import NavigationLink from './NavigationLink';
+import NavigationLink from './links/NavigationLink';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/drawerNodeItems';
@@ -57,20 +56,20 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       cursor="pointer"
       _hover={{ color: 'blue.700' }}
       color="gray.900"
+      fontWeight="bold"
     >
-      <Avatar />
-      <Box fontWeight="bold">
-        <NavigationLink
-          url={{
-            en: 'en/login',
-            fr: 'fr/login',
-            it: 'it/login',
-            de: 'de/login',
-          }}
-          translationKey="header.login"
-          fontWeight="bold"
-        />
-      </Box>
+      <NavigationLink
+        link={{
+          en: 'en/login',
+          fr: 'fr/login',
+          it: 'it/login',
+          de: 'de/login',
+        }}
+        translationKey="header.login"
+        fontWeight="bold"
+        leftIcon={<Avatar />}
+        hideTextBelow="sm"
+      />
     </HStack>
   );
 };
