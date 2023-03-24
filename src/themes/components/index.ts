@@ -23,8 +23,10 @@ import FormError from './formError';
 import Form from './form';
 import Drawer from './drawer';
 import Divider from './divider';
+import CloseButton from './closeButton';
 import Checkbox from './checkbox';
 import Carousel from './carousel';
+import Card from './card';
 import Button from './button';
 import Breadcrumbs from './breadcrumbs';
 import Badge from './badge';
@@ -41,8 +43,10 @@ export const components: Record<string, ComponentStyleConfig> = {
   Badge,
   Breadcrumbs,
   Button,
+  Card,
   Carousel,
   Checkbox,
+  CloseButton,
   Divider,
   Drawer,
   Form,

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { act, render, screen } from '@testing-library/react';
 
 import Alert from '../index';
 
@@ -13,10 +14,19 @@ const renderWrapper = ({
   link = {
     url: 'http://link.com',
     text: 'Link',
+    isExternal: true,
   },
+  dismissible = false,
+  onDismiss = jest.fn(),
 } = {}) =>
   render(
-    <Alert title={title} description={description} icon={icon} link={link} />
+    <Alert
+      title={title}
+      description={description}
+      icon={icon}
+      link={link}
+      {...(dismissible ? { dismissible, onDismiss } : {})}
+    />
   );
 
 describe('<Alert>', () => {
@@ -37,7 +47,8 @@ describe('<Alert>', () => {
   it('renders Alert with link', () => {
     const url = 'https://www.autoscout24.ch/de';
     const text = 'I am your link';
-    renderWrapper({ link: { url, text } });
+    const isExternal = true;
+    renderWrapper({ link: { url, text, isExternal } });
 
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', url);
@@ -45,5 +56,30 @@ describe('<Alert>', () => {
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
 
     expect(screen.getByText(text)).toBeInTheDocument();
+  });
+
+  describe('dismissible', () => {
+    it('can be dismissed', async () => {
+      const user = userEvent.setup();
+      const description = 'dismissible alert';
+      renderWrapper({ dismissible: true, description });
+
+      const dismissButton = screen.getByRole('button', { name: 'Close' });
+
+      await act(() => user.click(dismissButton));
+
+      expect(screen.queryByText(description)).not.toBeInTheDocument();
+    });
+
+    it('calls onDismiss when dismissed', async () => {
+      const user = userEvent.setup();
+      const onDismiss = jest.fn();
+      renderWrapper({ dismissible: true, onDismiss });
+
+      const dismissButton = screen.getByRole('button', { name: 'Close' });
+      await act(() => user.click(dismissButton));
+
+      expect(onDismiss).toHaveBeenCalled();
+    });
   });
 });
