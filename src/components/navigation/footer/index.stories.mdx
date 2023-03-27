@@ -1,5 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { Brand } from 'src/types/brand';
+
 import Footer from './index.tsx';
 
 <Meta
@@ -9,14 +11,14 @@ import Footer from './index.tsx';
     layout: 'fullscreen',
   }}
   args={{
-    brand: 'as24',
+    brand: Brand.AutoScout24,
     language: 'de',
     environement: 'preprod',
     useAbsoluteUrls: true,
   }}
   argTypes={{
     brand: {
-      options: ['as24', 'ms24'],
+      options: [Brand.AutoScout24, Brand.MotoScout24],
       control: 'select',
     },
     language: {

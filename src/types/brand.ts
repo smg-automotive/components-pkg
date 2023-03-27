@@ -1,1 +1,4 @@
-export type Brand = 'as24' | 'ms24';
+export enum Brand {
+  AutoScout24 = 'autoscout24',
+  MotoScout24 = 'motoscout24',
+}

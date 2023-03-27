@@ -11,72 +11,77 @@
    npm install @smg-automotive/components
    ```
 2. run the setup script
+
    ```sh
    npx components setup --path=<path to you public dir>
    ```
 
    The setup script will:
+
    - add a `postinstall` script that will copy self hosted fonts to your public directory. They need to be served from `/assets/fonts` to be correctly loaded.
    - add the copied font directory to your `.gitignore`
    - copy the fonts
 
-    Default `path` is `public`, which is the publicly available directory in nextjs projects.
+   Default `path` is `public`, which is the publicly available directory in nextjs projects.
 
-    After `postinstall` script is added fonts will be copied every time you install the dependencies, you don't need to manually copy fonts after updating the components package.
+   After `postinstall` script is added fonts will be copied every time you install the dependencies, you don't need to manually copy fonts after updating the components package.
 
 3. Dealing with fonts
 
-    There are three ways of making sure that fonts are loaded:
+   There are three ways of making sure that fonts are loaded:
 
-    * self-hosting fonts and using provided `fonts/hosted` module.
+   - self-hosting fonts and using provided `fonts/hosted` module.
 
-        To leverage it:
+     To leverage it:
 
-        1. Make sure that you're hosting the fonts under `/assets/fonts`
-        2. On the top level of your application render the `<Fonts />` component from:
-         ```typescript
-         import Fonts from '@smg-automotive/components/fonts/hosted'
+     1. Make sure that you're hosting the fonts under `/assets/fonts`
+     2. On the top level of your application render the `<Fonts />` component from:
 
-         const App: () => {
-          // ...
+     ```typescript
+     import Fonts from '@smg-automotive/components/fonts/hosted'
 
-          return (<>
-           <Fonts />
-           <!-- rest of the application -->
-          </>)
-         }
-         ```
+     const App: () => {
+      // ...
 
-        The provided component makes sure that correct `font-face`s are declared
+      return (<>
+       <Fonts />
+       <!-- rest of the application -->
+      </>)
+     }
+     ```
 
-    * using `@next/fonts` to leverage font optimizations from nextjs
+     The provided component makes sure that correct `font-face`s are declared
 
-        Unfortunately due to technical limitations in how `@next/fonts` are set up we can't provide a module similar to self-hosted fonts. We do the next best thing and provide a component generator. Simply run:
+   - using `@next/fonts` to leverage font optimizations from nextjs
 
-         ```bash
-         npx components setup-next-fonts --fonts-path <path-to-which-fonts-were-copied> --component-path <path-to-save-the-component>
-         ```
+     Unfortunately due to technical limitations in how `@next/fonts` are set up we can't provide a module similar to self-hosted fonts. We do the next best thing and provide a component generator. Simply run:
 
-        This will generate the `<Fonts />` component with the `@next/font` configuration ready to use in your project.
+     ```bash
+     npx components setup-next-fonts --fonts-path <path-to-which-fonts-were-copied> --component-path <path-to-save-the-component>
+     ```
 
-    * handling fonts yourself
+     This will generate the `<Fonts />` component with the `@next/font` configuration ready to use in your project.
 
-        You can also deal with the fonts yourself. That means you're responsible for declaring `font-face` and hosting fonts. The only thing that you need to do is to provide a `--font-primary` CSS variable so the components package picks your font declaration up:
+   - handling fonts yourself
 
-         ```CSS
-         :root {
-            --font-primary: '<your font family name>'
-          }
-         ```
+     You can also deal with the fonts yourself. That means you're responsible for declaring `font-face` and hosting fonts. The only thing that you need to do is to provide a `--font-primary` CSS variable so the components package picks your font declaration up:
 
-        We recommend adding fallback font families of `Arial, Helvetica, Sans-Serif`
+     ```CSS
+     :root {
+        --font-primary: '<your font family name>'
+      }
+     ```
+
+     We recommend adding fallback font families of `Arial, Helvetica, Sans-Serif`
 
 ## Development
+
 ```
 npm run build
 ```
 
 You can link your local npm package to integrate it with any local project:
+
 ```
 cd smg-automotive-components-pkg
 npm run build
@@ -95,13 +100,13 @@ import { ThemeProvider } from '@smg-automotive/components';
 
 const App = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme="as24">
+    <ThemeProvider theme="autoscout24">
       <Component {...pageProps} />
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;
 ```
 
 Theme objects can also be imported directly from the package (for showcasing, debugging, etc.):

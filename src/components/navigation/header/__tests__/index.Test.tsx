@@ -4,6 +4,11 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { screen } from '@storybook/testing-library';
 
+import { Brand } from 'src/types/brand';
+
+import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
+import { headerLinks } from '../config/headerLinks';
+import { drawerNodeItems } from '../config/drawerNodeItems';
 import Navigation from '..';
 
 describe('Header', () => {
@@ -12,7 +17,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        brand="as24"
+        brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
       />
@@ -31,7 +36,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        brand="as24"
+        brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
       />
@@ -50,7 +55,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={null}
-        brand="as24"
+        brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
       />
@@ -64,7 +69,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        brand="as24"
+        brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
       />
@@ -78,7 +83,7 @@ describe('Header', () => {
       <Navigation
         environment="preprod"
         user={{ id: 1, name: 'John Doe', type: 'private', accountId: 5 }}
-        brand="as24"
+        brand={Brand.AutoScout24}
         language="en"
         hasNotification
       />
@@ -86,5 +91,30 @@ describe('Header', () => {
 
     const notification = screen.getByTestId('notification-icon');
     expect(notification).toBeInTheDocument();
+  });
+  it('returns a mapped instance', () => {
+    const headerConfigInstance = new HeaderNavigationConfig({
+      brand: Brand.AutoScout24,
+      environment: 'preprod',
+      useAbsoluteUrls: false,
+      config: {
+        headerItems: headerLinks,
+        drawerItems: drawerNodeItems,
+      },
+      user: {
+        id: 1,
+        name: 'John Doe',
+        type: 'private',
+        accountId: 5,
+      },
+    });
+    const config = headerConfigInstance.getMappedConfig();
+    expect(config).toEqual({
+      drawerItems: expect.any(Object),
+      headerItems: expect.any(Object),
+      homeUrl: expect.any(String),
+      menuHeight: expect.any(String),
+      user: expect.any(Object),
+    });
   });
 });

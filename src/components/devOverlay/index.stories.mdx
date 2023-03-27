@@ -1,6 +1,8 @@
 import { useArgs } from '@storybook/client-api';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { Brand } from 'src/types/brand';
+
 import ThemeProvider from '../themeProvider';
 import { FullHeight } from '../index';
 import DevOverlay from './index.tsx';
@@ -16,10 +18,10 @@ import DevOverlay from './index.tsx';
 export const Template = ({ ...args }) => {
   const [{ activeTheme }, updateArgs] = useArgs();
   const toggleTheme = () => {
-    if (activeTheme === 'as24') {
-      return updateArgs({ activeTheme: 'ms24' });
+    if (activeTheme === Brand.AutoScout24) {
+      return updateArgs({ activeTheme: Brand.MotoScout24 });
     }
-    return updateArgs({ activeTheme: 'as24' });
+    return updateArgs({ activeTheme: Brand.AutoScout24 });
   };
   return (
     <ThemeProvider theme={activeTheme}>
@@ -48,11 +50,11 @@ export const Template = ({ ...args }) => {
           value: 'storybook',
         },
       ],
-      activeTheme: 'as24',
+      activeTheme: Brand.AutoScout24,
     }}
     argTypes={{
       activeTheme: {
-        options: ['as24', 'ms24'],
+        options: [Brand.AutoScout24, Brand.MotoScout24],
         control: 'select',
       },
     }}

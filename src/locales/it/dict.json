@@ -19,7 +19,7 @@
     "apps": {
       "title": "App download"
     },
-    "as24": {
+    "autoscout24": {
       "sections": {
         "brand": {
           "insurance": "Assicurazione auto",
@@ -36,7 +36,7 @@
       "smg": "SMG Swiss Marketplace Group"
     },
     "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tutti i diritti riservati. Il suo partner per auto d'occasione, ricerca & aquisto di veicoli nel mercato automobilìstico svizzero.",
-    "ms24": {
+    "motoscout24": {
       "sections": {
         "brand": {
           "insurance": "Assicurazione moto",

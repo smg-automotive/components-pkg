@@ -14,8 +14,8 @@ export type NavigationLinkConfigProps = Omit<
       professional: boolean;
     };
     brand: {
-      as24: boolean;
-      ms24: boolean;
+      autoscout24: boolean;
+      motoscout24: boolean;
     };
   };
 };
@@ -36,8 +36,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: true,
-        ms24: false,
+        autoscout24: true,
+        motoscout24: false,
       },
     },
   },
@@ -56,8 +56,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: false,
-        ms24: true,
+        autoscout24: false,
+        motoscout24: true,
       },
     },
   },
@@ -76,8 +76,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: true,
-        ms24: false,
+        autoscout24: true,
+        motoscout24: false,
       },
     },
   },
@@ -96,8 +96,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: true,
-        ms24: false,
+        autoscout24: true,
+        motoscout24: false,
       },
     },
   },
@@ -116,8 +116,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: false,
-        ms24: true,
+        autoscout24: false,
+        motoscout24: true,
       },
     },
   },
@@ -136,8 +136,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: true,
-        ms24: false,
+        autoscout24: true,
+        motoscout24: false,
       },
     },
   },
@@ -156,8 +156,8 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         professional: true,
       },
       brand: {
-        as24: false,
-        ms24: true,
+        autoscout24: false,
+        motoscout24: true,
       },
     },
   },

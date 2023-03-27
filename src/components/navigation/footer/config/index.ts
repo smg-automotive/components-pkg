@@ -1,3 +1,4 @@
+import { Brand } from 'src/types/brand';
 import { LinkConfig } from 'src/components/navigation/link';
 
 declare global {
@@ -33,15 +34,15 @@ export const footerConfig: FooterConfigInterface = {
     {
       title: [
         {
-          translationKey: 'footer.as24.sections.brand.title',
+          translationKey: 'footer.autoscout24.sections.brand.title',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
         },
         {
-          translationKey: 'footer.ms24.sections.brand.title',
+          translationKey: 'footer.motoscout24.sections.brand.title',
           visibilitySettings: {
-            brand: { as24: false, ms24: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
         },
       ],
@@ -49,7 +50,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.advancedSearch',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
             de: '/de/auto/suche',
@@ -61,7 +62,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.advancedSearch',
           visibilitySettings: {
-            brand: { as24: false, ms24: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/motorrad/suche',
@@ -73,7 +74,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.dealerSearch',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
             de: '/de/auto-haendler-garage/suche',
@@ -85,7 +86,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.dealerSearch',
           visibilitySettings: {
-            brand: { as24: false, ms24: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/moto-haendler-garage/suche',
@@ -97,7 +98,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.makes',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
             de: '/de/auto-marken',
@@ -109,7 +110,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.makes',
           visibilitySettings: {
-            brand: { as24: false, ms24: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/motorrad-marken',
@@ -121,7 +122,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.brand.models',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
             de: '/de/auto-modelle',
@@ -131,9 +132,9 @@ export const footerConfig: FooterConfigInterface = {
           },
         },
         {
-          translationKey: 'footer.as24.sections.brand.insurance',
+          translationKey: 'footer.autoscout24.sections.brand.insurance',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
             de: 'https://www.financescout24.ch/de/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_footer_car_',
@@ -144,9 +145,9 @@ export const footerConfig: FooterConfigInterface = {
           target: '_blank',
         },
         {
-          translationKey: 'footer.ms24.sections.brand.insurance',
+          translationKey: 'footer.motoscout24.sections.brand.insurance',
           visibilitySettings: {
-            brand: { as24: false, ms24: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
             de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=link_footer_moto_',
@@ -163,7 +164,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.list.title',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
         },
       ],
@@ -171,7 +172,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.list.vehicles',
           visibilitySettings: {
-            brand: { as24: true, ms24: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
             de: '/de/auto-verkaufen',
@@ -183,7 +184,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.list.vehicles',
           visibilitySettings: {
-            brand: { as24: false, ms24: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/motorrad-inserieren',
@@ -195,7 +196,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.list.productsAndPrices',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/produkte-und-preise',
@@ -211,7 +212,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.title',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
         },
       ],
@@ -219,7 +220,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.contact',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/contact/',
@@ -231,7 +232,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.newsletter',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/newsletter/?ac=rg',
@@ -243,7 +244,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.factsAndFigures',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/automotive/',
@@ -256,7 +257,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.jobs',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/karriere/',
@@ -273,7 +274,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.advertisement.title',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
         },
       ],
@@ -281,7 +282,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.advertisement.smg',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/werbung/',
@@ -298,7 +299,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.media.title',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
         },
       ],
@@ -306,7 +307,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.media.contact',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/media/',
@@ -323,7 +324,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.title',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
         },
       ],
@@ -331,7 +332,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.securityHint',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
@@ -343,7 +344,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.rules',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/content/insertionsregeln',
@@ -355,7 +356,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.agb',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/content/agb',
@@ -367,7 +368,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.dataProtection',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: 'https://swissmarketplace.group/de/datenschutzerklaerung/',
@@ -380,7 +381,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.cookieSettings',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           onClick: () => {
             window.OneTrust?.ToggleInfoDisplay();
@@ -389,7 +390,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.legal.imprint',
           visibilitySettings: {
-            brand: { as24: true, ms24: true },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/content/impressum',
@@ -406,7 +407,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: true, ms24: false },
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
         },
         link: {
           de: 'https://5kvw.app.link/AS24_Web_Footer_GP?%243p=a_custom_358666',
@@ -419,7 +420,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: false, ms24: true },
+          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
         },
         link: {
           de: 'https://9s76.app.link/MS24_Web_Footer_GP?%243p=a_custom_358667',
@@ -434,7 +435,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: true, ms24: false },
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
         },
         link: {
           de: 'https://5kvw.app.link/AS24_Web_Footer_iOS?%243p=a_custom_358666',
@@ -447,7 +448,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: false, ms24: true },
+          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
         },
         link: {
           de: 'https://9s76.app.link/MS24_Web_Footer_iOS?%243p=a_custom_358667',
@@ -464,7 +465,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: true, ms24: false },
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
         },
         link: {
           de: 'https://www.facebook.com/autoscout24.ch',
@@ -477,7 +478,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: false, ms24: true },
+          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
         },
         link: {
           de: 'https://www.facebook.com/motoscout24.ch',
@@ -492,7 +493,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: true, ms24: false },
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
         },
         link: {
           de: 'https://www.instagram.com/autoscout24ch/',
@@ -505,7 +506,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: false, ms24: true },
+          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
         },
         link: {
           de: 'https://www.instagram.com/motoscout24ch/',
@@ -520,7 +521,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: true, ms24: false },
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
         },
         link: {
           de: 'https://twitter.com/autoscout24_ch?lang=de',
@@ -533,7 +534,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: false, ms24: true },
+          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
         },
         link: {
           de: 'https://twitter.com/motoscout24_ch?lang=de',
@@ -548,7 +549,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: true, ms24: false },
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
         },
         link: {
           de: 'https://www.youtube.com/user/autoscout24schweiz',
@@ -561,7 +562,7 @@ export const footerConfig: FooterConfigInterface = {
       {
         translationKey: '',
         visibilitySettings: {
-          brand: { as24: false, ms24: true },
+          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
         },
         link: {
           de: 'https://www.youtube.com/user/motoscout24schweiz',
@@ -577,7 +578,7 @@ export const footerConfig: FooterConfigInterface = {
     {
       translationKey: 'footer.companies.smg',
       visibilitySettings: {
-        brand: { as24: true, ms24: true },
+        brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
       },
       link: {
         de: 'https://swissmarketplace.group/de/',
@@ -590,7 +591,7 @@ export const footerConfig: FooterConfigInterface = {
     {
       translationKey: 'footer.companies.autoScout24',
       visibilitySettings: {
-        brand: { as24: false, ms24: true },
+        brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
       },
       link: {
         de: 'https://www.autoscout24.ch/de/',
@@ -603,7 +604,7 @@ export const footerConfig: FooterConfigInterface = {
     {
       translationKey: 'footer.companies.financeScout24',
       visibilitySettings: {
-        brand: { as24: true, ms24: true },
+        brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
       },
       link: {
         de: 'https://www.financescout24.ch/de',
@@ -616,7 +617,7 @@ export const footerConfig: FooterConfigInterface = {
     {
       translationKey: 'footer.companies.immoScout24',
       visibilitySettings: {
-        brand: { as24: true, ms24: true },
+        brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
       },
       link: {
         de: 'https://www.immoscout24.ch/de',
@@ -629,7 +630,7 @@ export const footerConfig: FooterConfigInterface = {
     {
       translationKey: 'footer.companies.motoScout24',
       visibilitySettings: {
-        brand: { as24: true, ms24: false },
+        brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
       },
       link: {
         de: 'https://www.motoscout24.ch/de/',
@@ -642,7 +643,7 @@ export const footerConfig: FooterConfigInterface = {
     {
       translationKey: 'footer.companies.anibis',
       visibilitySettings: {
-        brand: { as24: true, ms24: true },
+        brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
       },
       link: {
         de: 'https://www.anibis.ch/de',

@@ -31,7 +31,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
   isOpen,
   createDrawerHandler,
 }) => {
-  const logo = platform === 'as24' ? logoAutoScout24 : logoMotoScout24;
+  const logo = platform === 'autoscout24' ? logoAutoScout24 : logoMotoScout24;
 
   const moreDrawerHandler = createDrawerHandler({
     nodeName: DrawerNode.More,

@@ -19,7 +19,7 @@ import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/drawerNodeItems';
 
 export type UserType = 'private' | 'professional';
-export type Platform = 'as24' | 'ms24';
+export type Platform = 'autoscout24' | 'motoscout24';
 
 export interface User {
   id: number;
