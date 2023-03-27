@@ -40,8 +40,14 @@ const NavigationLink: FC<NavigationLinkProps> = ({
       color={color}
       leftIcon={leftIcon}
     >
-      {translationKey && <Hide below={hideTextBelow}>{t(translationKey)}</Hide>}
-      {isNew ? <Badge variant="navigationLinkBadge" text="New"></Badge> : null}
+      {translationKey && (
+        <Hide below={hideTextBelow}>
+          {t(translationKey)}
+          {isNew ? (
+            <Badge variant="navigationLinkBadge" text="New"></Badge>
+          ) : null}
+        </Hide>
+      )}
     </Link>
   );
 };
