@@ -106,7 +106,7 @@ const variantStripe = definePartsStyle((props) => {
     tfoot: {
       tr: {
         _last: {
-          th: { borderBottomWidth: 0 },
+          'th, td': { borderBottomWidth: 0 },
         },
       },
     },
