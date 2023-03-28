@@ -17,13 +17,13 @@ const SizingShowCase: FC = () => {
 
   return (
     <TableContainer>
-      <Table variant="simple">
+      <Table>
         <TableCaption>
           The pixel column is ONLY a reference to the values in figma. The pixel
           values are NOT computed.
         </TableCaption>
         <Thead>
-          <Tr border="1px" borderColor="gray.300">
+          <Tr>
             <Th>Name</Th>
             <Th>Value</Th>
             <Th>Pixels</Th>
@@ -32,7 +32,7 @@ const SizingShowCase: FC = () => {
         {Object.entries(theme.sizes).map(([name, size]) => {
           if (name === 'container') return null;
           return (
-            <Tr key={name} border="1px" borderColor="gray.300">
+            <Tr key={name}>
               <Td>{name}</Td>
               <Td>{`${size}`}</Td>
               <Td>{`${convertRemEmToPx(size as string)}px`}</Td>
