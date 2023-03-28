@@ -6,6 +6,7 @@ export { ArrowRightIcon } from './ArrowRightIcon';
 export { AutoScout24AppLogo } from './AutoScout24AppLogo';
 export { AvatarIcon } from './AvatarIcon';
 export { AvatarWithNotificationIcon } from './AvatarWithNotificationIcon';
+export { CalculatorIcon } from './CalculatorIcon';
 export { CalendarIcon } from './CalendarIcon';
 export { CallIcon } from './CallIcon';
 export { CamperIcon } from './CamperIcon';

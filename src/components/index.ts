@@ -77,3 +77,4 @@ export * from './heading';
 export * from './icons';
 export * from './card';
 export * from './layout';
+export * from './table';
