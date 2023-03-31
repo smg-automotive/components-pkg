@@ -52,3 +52,4 @@ export { WarningIcon } from './WarningIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { YoutubeIcon } from './YoutubeIcon';
 export { HeartIcon } from './HeartIcon';
+export { InfoIcon } from './InfoIcon';
