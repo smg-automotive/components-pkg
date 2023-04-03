@@ -44,6 +44,26 @@ export const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.sell',
     link: {
+      de: '/de/member/insertion/type',
+      en: '/de/member/insertion/type',
+      fr: '/fr/member/insertion/type',
+      it: '/it/member/insertion/type',
+    },
+    showUnderMoreLinkBelow: 'sm',
+    visibilitySettings: {
+      userType: {
+        private: false,
+        professional: true,
+      },
+      brand: {
+        autoscout24: false,
+        motoscout24: true,
+      },
+    },
+  },
+  {
+    translationKey: 'header.sell',
+    link: {
       de: '/de/motorrad-inserieren',
       en: '/de/motorrad-inserieren',
       fr: '/fr/publier-annonce-moto',
@@ -53,7 +73,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     visibilitySettings: {
       userType: {
         private: true,
-        professional: true,
+        professional: false,
       },
       brand: {
         autoscout24: false,
@@ -73,7 +93,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     visibilitySettings: {
       userType: {
         private: true,
-        professional: true,
+        professional: false,
       },
       brand: {
         autoscout24: true,

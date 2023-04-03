@@ -167,7 +167,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
@@ -244,8 +244,8 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           link: {
             de: '/de/member/insertion/type',
             en: '/de/member/insertion/type',
-            fr: '/fr/member/insertion/type/index',
-            it: '/it/member/insertion/type/index',
+            fr: '/fr/member/insertion/type',
+            it: '/it/member/insertion/type',
           },
           visibilitySettings: {
             userType: {
@@ -261,6 +261,25 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.myVehicles',
           link: {
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.myVehicles',
+          link: {
             de: 'https://dealer.autoscout24.ch/de/vehicles',
             en: 'https://dealer.autoscout24.ch/de/vehicles',
             fr: 'https://dealer.autoscout24.ch/fr/vehicles',
@@ -268,7 +287,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
             },
             brand: {
@@ -287,7 +306,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
             },
             brand: {
@@ -299,10 +318,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.myMotorcycles',
           link: {
-            de: 'de/member/vehiclepool',
-            en: 'en/member/vehiclepool',
-            fr: 'fr/member/vehiclepool',
-            it: 'it/member/vehiclepool',
+            de: 'https://dealer.motoscout24.ch/de/vehicles',
+            en: 'https://dealer.motoscout24.ch/de/vehicles',
+            fr: 'https://dealer.motoscout24.ch/fr/vehicles',
+            it: 'https://dealer.motoscout24.ch/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -318,34 +337,15 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.myMotorcycles',
           link: {
-            de: 'https://dealer.autoscout24.ch/de/vehicles',
-            en: 'https://dealer.autoscout24.ch/de/vehicles',
-            fr: 'https://dealer.autoscout24.ch/fr/vehicles',
-            it: 'https://dealer.autoscout24.ch/it/vehicles',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.myMotorcyclesOld',
-          link: {
             de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
+            en: '/en/member/vehiclepool',
             fr: '/fr/member/vehiclepool',
             it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: false,
@@ -368,6 +368,25 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
             },
             brand: {
               autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.dealerDashboard',
+          link: {
+            de: 'https://dealer.motoscout24.ch/de',
+            en: 'https://dealer.motoscout24.ch/de',
+            fr: 'https://dealer.motoscout24.ch/fr',
+            it: 'https://dealer.motoscout24.ch/it',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -375,10 +394,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.optimizerPro',
           link: {
-            de: '/de/member/optimizerpro/index',
-            en: '/de/member/optimizerpro/index',
+            de: '/de/member/optimizerpro',
+            en: '/de/member/optimizerpro',
             fr: '/fr/member/optimizerpro',
-            it: '/it/member/optimizerpro/index',
+            it: '/it/member/optimizerpro',
           },
           visibilitySettings: {
             userType: {
@@ -394,10 +413,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.cockpit',
           link: {
-            de: '/de/member/cockpit/index',
-            en: '/de/member/cockpit/index',
+            de: '/de/member/cockpit',
+            en: '/de/member/cockpit',
             fr: '/fr/member/cockpit',
-            it: '/it/member/cockpit/index',
+            it: '/it/member/cockpit',
           },
           visibilitySettings: {
             userType: {
@@ -451,10 +470,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.shoppingCard',
           link: {
-            de: '/de/member/insertion/checkout/index?steps=40-47',
-            en: '/de/member/insertion/checkout/index?steps=40-47',
-            fr: '/fr/member/insertion/checkout/index?steps=40-47',
-            it: '/it/member/insertion/checkout/index?steps=40-47',
+            de: '/de/member/insertion/checkout/?steps=40-47',
+            en: '/de/member/insertion/checkout/?steps=40-47',
+            fr: '/fr/member/insertion/checkout/?steps=40-47',
+            it: '/it/member/insertion/checkout/?steps=40-47',
           },
           visibilitySettings: {
             userType: {
@@ -489,10 +508,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.carPark',
           link: {
-            de: 'https://www.motoscout24.ch/de/member/vehiclepool',
-            en: 'https://www.motoscout24.ch/de/member/vehiclepool',
-            fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
-            it: 'https://www.motoscout24.ch/it/member/vehiclepool',
+            de: 'https://www.autoscout24.ch/de/member/vehiclepool',
+            en: 'https://www.autoscout24.ch/de/member/vehiclepool',
+            fr: 'https://www.autoscout24.ch/fr/member/vehiclepool',
+            it: 'https://www.autoscout24.ch/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -513,10 +532,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.contactRequests',
           link: {
-            de: '/de/member/messagemanager',
-            en: '/de/member/messagemanager',
-            fr: '/fr/member/messagemanager',
-            it: '/it/member/messagemanager',
+            de: '/de/member/messagemanager?vehtyp=60',
+            en: '/de/member/messagemanager?vehtyp=60',
+            fr: '/fr/member/messagemanager?vehtyp=60',
+            it: '/it/member/messagemanager?vehtyp=60',
           },
           visibilitySettings: {
             userType: {
@@ -969,7 +988,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
@@ -1233,10 +1252,10 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.importInfo',
           link: {
-            de: '/de/productdescription/as24_service',
-            en: '/de/productdescription/as24_service',
-            fr: '/fr/productdescription/as24_service',
-            it: '/it/productdescription/as24_service',
+            de: '/de/member/importinfo/',
+            en: '/de/member/importinfo/',
+            fr: '/fr/member/importinfo/',
+            it: '/it/member/importinfo/',
           },
           visibilitySettings: {
             userType: {
@@ -1297,6 +1316,26 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.sell',
           link: {
+            de: '/de/member/insertion/type',
+            en: '/de/member/insertion/type',
+            fr: '/fr/member/insertion/type',
+            it: '/it/member/insertion/type',
+          },
+          showUnderMoreLinkBelow: 'sm',
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.sell',
+          link: {
             de: '/de/motorrad-inserieren',
             en: '/de/motorrad-inserieren',
             fr: '/fr/publier-annonce-moto',
@@ -1306,7 +1345,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: false,
@@ -1326,7 +1365,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
