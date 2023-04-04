@@ -15,11 +15,11 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
+  withCustomPagination?: boolean;
 };
 
 type DefaultProps = {
   fullScreen?: never;
-  withCustomPagination?: boolean;
   children: ReactNode[];
 } & SharedProps;
 
