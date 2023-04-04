@@ -4,6 +4,7 @@ import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
 import { breakpoints } from 'src/themes';
 
+import Pagination from '../pagination';
 import Flex from '../flex';
 import Box from '../box';
 import ThumbnailPagination from './ThumbnailPagination';
@@ -18,6 +19,7 @@ type SharedProps = {
 
 type DefaultProps = {
   fullScreen?: never;
+  withCustomPagination?: boolean;
   children: ReactNode[];
 } & SharedProps;
 
@@ -35,7 +37,13 @@ type FullScreenProps = {
 type Props = DefaultProps | FullScreenProps;
 
 const Carousel: FC<Props> = (props) => {
-  const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen } = props;
+  const {
+    startIndex = 0,
+    onSlideClick,
+    onSlideSelect,
+    fullScreen,
+    withCustomPagination,
+  } = props;
 
   const numberOfSlides = props.children.length;
 
@@ -210,6 +218,14 @@ const Carousel: FC<Props> = (props) => {
           mainCarousel={mainCarousel}
           paginationCarousel={paginationCarousel}
           paginationCarouselRef={paginationCarouselRef}
+        />
+      ) : null}
+
+      {mainCarousel && !fullScreen && withCustomPagination ? (
+        <Pagination
+          totalPages={numberOfSlides}
+          currentPage={selectedIndex}
+          onChange={(page) => mainCarousel.scrollTo(page)}
         />
       ) : null}
     </Box>

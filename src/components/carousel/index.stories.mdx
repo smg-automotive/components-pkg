@@ -62,3 +62,20 @@ export const Template = (args) => {
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## With Custom Pagination
+
+<Canvas>
+  <Story
+    name="With Custom Pagination"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: false,
+      numberOfSlides: 6,
+      withCustomPagination: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
