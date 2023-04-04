@@ -90,6 +90,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
       marginTop={marginTop}
       marginBottom={marginBottom}
       __css={paginationContainer}
+      data-testid="pagination"
     >
       <Show above="xs">
         <PaginationButton
