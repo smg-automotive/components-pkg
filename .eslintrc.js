@@ -38,7 +38,7 @@ module.exports = {
         'import/resolver': {
           typescript: {},
         },
-        'import/ignore': ['@chakra-ui/react'],
+        'import/ignore': ['@storybook/addon-docs'],
       },
       rules: {
         'no-nested-ternary': 'off',
