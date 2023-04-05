@@ -51,6 +51,6 @@ export default defineMultiStyleConfig({
   variants,
   defaultProps: {
     size: 'md',
-    variant: 'icon-outside',
+    variant: 'icon-inside',
   },
 }) as ComponentStyleConfig;
