@@ -36,11 +36,6 @@ const variants = {
     container: defineStyle({
       listStylePos: 'inside',
     }),
-    item: defineStyle({
-      _before: {
-        content: '""',
-      },
-    }),
   }),
   'icon-outside': definePartsStyle({
     container: defineStyle({
