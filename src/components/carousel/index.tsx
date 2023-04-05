@@ -222,11 +222,14 @@ const Carousel: FC<Props> = (props) => {
       ) : null}
 
       {mainCarousel && !fullScreen && withCustomPagination ? (
-        <Pagination
-          totalPages={numberOfSlides}
-          currentPage={selectedIndex}
-          onChange={(page) => mainCarousel.scrollTo(page)}
-        />
+        <Box paddingY="sm">
+          <Pagination
+            totalPages={numberOfSlides}
+            currentPage={selectedIndex}
+            onChange={(page) => mainCarousel.scrollTo(page)}
+            infinite
+          />
+        </Box>
       ) : null}
     </Box>
   );

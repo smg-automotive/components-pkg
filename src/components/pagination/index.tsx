@@ -15,11 +15,19 @@ const range = (start: number, end: number): Array<number> => {
 export type Props = {
   totalPages: number;
   currentPage: number;
+  infinite?: boolean;
   onChange: (page: number) => void;
 } & Pick<BoxProps, 'marginTop' | 'marginBottom'>;
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
-  const { onChange, totalPages, currentPage, marginTop, marginBottom } = props;
+  const {
+    onChange,
+    totalPages,
+    currentPage,
+    marginTop,
+    marginBottom,
+    infinite,
+  } = props;
   const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
 
   const paginationRange = useMemo(() => {
@@ -94,11 +102,13 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     >
       <Show above="xs">
         <PaginationButton
-          isDisabled={isFirstPage}
+          isDisabled={!infinite && isFirstPage}
           onClick={onPrevious}
           ariaLabel="previous page"
         >
-          <ChevronLeftSmallIcon color={isFirstPage ? 'gray.300' : 'gray.900'} />
+          <ChevronLeftSmallIcon
+            color={!infinite && isFirstPage ? 'gray.300' : 'gray.900'}
+          />
         </PaginationButton>
       </Show>
       {paginationRange.map((pageNumber, index) => {
@@ -130,11 +140,13 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
       })}
       <Show above="xs">
         <PaginationButton
-          isDisabled={isLastPage}
+          isDisabled={!infinite && isLastPage}
           onClick={onNext}
           ariaLabel="next page"
         >
-          <ChevronRightSmallIcon color={isLastPage ? 'gray.300' : 'gray.900'} />
+          <ChevronRightSmallIcon
+            color={!infinite && isLastPage ? 'gray.300' : 'gray.900'}
+          />
         </PaginationButton>
       </Show>
     </Box>
