@@ -2,7 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Box from 'src/components/box';
 
-import UnorderedList from './UnorderedList';
+import UnorderedList, { styleTypes } from './UnorderedList';
 import ListItem from './ListItem.tsx';
 
 <Meta
@@ -14,19 +14,21 @@ import ListItem from './ListItem.tsx';
   args={{
     size: 'md',
     variant: 'icon-inside',
-    start: 1,
     styleType: 'initial',
     showContainer: false,
   }}
   argTypes={{
     size: {
       control: 'select',
+      options: ['sm', 'md'],
     },
     variant: {
       control: 'select',
+      options: ['icon-inside', 'icon-outside'],
     },
     styleType: {
       control: 'select',
+      options: styleTypes,
     },
     showContainer: {
       control: 'boolean',
