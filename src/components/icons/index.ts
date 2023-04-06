@@ -24,6 +24,7 @@ export { ChevronRightTinyIcon } from './ChevronRightTinyIcon';
 export { ChevronUpLargeIcon } from './ChevronUpLargeIcon';
 export { CloseIcon } from './CloseIcon';
 export { ConsumptionIcon } from './ConsumptionIcon';
+export { CreditIcon } from './CreditIcon';
 export { DeleteIcon } from './DeleteIcon';
 export { DriveSystemIcon } from './DriveSystemIcon';
 export { DriveTypeIcon } from './DriveTypeIcon';
