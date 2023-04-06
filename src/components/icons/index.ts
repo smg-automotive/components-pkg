@@ -1,4 +1,5 @@
 export { AdvancedSearchIcon } from './AdvancedSearchIcon';
+export { ArrowDiagonalIcon } from './ArrowDiagonalIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
@@ -23,6 +24,7 @@ export { ChevronRightTinyIcon } from './ChevronRightTinyIcon';
 export { ChevronUpLargeIcon } from './ChevronUpLargeIcon';
 export { CloseIcon } from './CloseIcon';
 export { ConsumptionIcon } from './ConsumptionIcon';
+export { CreditIcon } from './CreditIcon';
 export { DeleteIcon } from './DeleteIcon';
 export { DriveSystemIcon } from './DriveSystemIcon';
 export { DriveTypeIcon } from './DriveTypeIcon';
