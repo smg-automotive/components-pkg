@@ -14,6 +14,7 @@ export { CarIcon } from './CarIcon';
 export { CheckmarkIcon } from './CheckmarkIcon';
 export { ChevronDownLargeIcon } from './ChevronDownLargeIcon';
 export { ChevronDownSmallIcon } from './ChevronDownSmallIcon';
+export { ChevronUpSmallIcon } from './ChevronUpSmallIcon';
 export { ChevronLeftLargeIcon } from './ChevronLeftLargeIcon';
 export { ChevronLeftSmallIcon } from './ChevronLeftSmallIcon';
 export { ChevronRightLargeIcon } from './ChevronRightLargeIcon';

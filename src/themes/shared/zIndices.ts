@@ -12,4 +12,5 @@ export const zIndices = {
   skipLink: 1600,
   toast: 1700,
   tooltip: 1800,
+  header: 1900,
 };

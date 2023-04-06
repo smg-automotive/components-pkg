@@ -3,7 +3,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { opacity } from 'src/themes/shared/opacity';
 
-import Box from '../box';
+import Box from 'src/components/box';
 
 const FooterCopyright: FC = () => {
   const { t } = useI18n();

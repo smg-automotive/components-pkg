@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
-import Text from '../text';
-import { default as ComponentsLink } from '../link';
-import { LinkInstance } from './config/factory';
+import Text from 'src/components/text';
+import { default as ComponentsLink } from 'src/components/link';
+
+import { LinkInstance } from '../link';
 
 interface FooterLinkProps {
   linkInstance: LinkInstance;
@@ -23,7 +24,11 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
     : {};
 
   if (!linkInstance.link?.[language] && !linkInstance.onClick) {
-    return <Text {...boldStyles}>{t(linkInstance.translationKey)}</Text>;
+    return (
+      <Text {...boldStyles}>
+        {linkInstance.translationKey && t(linkInstance.translationKey)}
+      </Text>
+    );
   }
 
   if (linkInstance.onClick) {
@@ -36,7 +41,7 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
         onClick={linkInstance.onClick}
         {...boldStyles}
       >
-        {t(linkInstance.translationKey)}
+        {linkInstance.translationKey && t(linkInstance.translationKey)}
       </ComponentsLink>
     );
   }
@@ -56,7 +61,9 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
       {...targetSettings}
       {...boldStyles}
     >
-      {children ? children : t(linkInstance.translationKey)}
+      {children
+        ? children
+        : linkInstance.translationKey && t(linkInstance.translationKey)}
     </ComponentsLink>
   );
 };
