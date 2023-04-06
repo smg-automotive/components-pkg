@@ -35,7 +35,7 @@ type FullScreenProps = {
 type Props = DefaultProps | FullScreenProps;
 
 const Carousel: FC<Props> = (props) => {
-  const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen } = props;
+  const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen, isOpen } = props;
 
   const numberOfSlides = props.children.length;
 
@@ -66,6 +66,12 @@ const Carousel: FC<Props> = (props) => {
     slidesToScroll: 'auto',
     inViewThreshold: 1,
   });
+
+  useEffect(() => {
+    if (mainCarousel && isOpen) {
+      mainCarousel.reInit();
+    }
+  }, [isOpen, mainCarousel]);
 
   const scrollPrev = useCallback(
     () => mainCarousel && mainCarousel.scrollPrev(),
@@ -167,7 +173,7 @@ const Carousel: FC<Props> = (props) => {
         </Slide>
       ) : (
         <Box
-          ref={mainCarouselRef}
+          ref={isOpen ? mainCarouselRef : null}
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"

@@ -1,29 +1,50 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
-import { useDisclosure } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react'; import { Fragment } from 'react';
 
 import Button from '../button';
 import Box from '../box';
 
 import Modal from './index';
 
+import Carousel from '../carousel';
+
 <Meta title="Components/Data display/Modal" component={Modal} />
 
 export const ModalTemplate = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const images = [
+    'https://placekitten.com/g/800/600',
+    'https://placekitten.com/g/800/600',
+    'https://placekitten.com/g/800/600',
+    'https://placekitten.com/g/800/600',
+    'https://placekitten.com/g/800/600',
+  ]
   return (
     <Box>
       <Button onClick={onOpen}>Open</Button>
       <Modal isOpen={isOpen} onClose={onClose} {...args}>
-        <Box p="4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-          Phasellus malesuada egestas est sit amet venenatis.
+        <Box>
+          <Carousel isOpen={isOpen}>
+            {images.map(image => {
+              return (
+                <img
+                  src={image}
+                  alt="a great kitten"
+                />
+              )
+            })}
+          </Carousel>
+          <Box p="4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
+            amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+            condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
+            nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
+            ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
+            purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
+            Phasellus malesuada egestas est sit amet venenatis.
+          </Box>
         </Box>
       </Modal>
     </Box>
