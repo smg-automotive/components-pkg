@@ -31,7 +31,6 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
-      color = 'initial',
       ...rest
     },
     ref
@@ -54,7 +53,6 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         target={isExternal ? '_blank' : undefined}
         rel={rel || isExternal ? 'noopener noreferrer' : undefined}
         ref={ref}
-        color={color}
         {...rest}
         fontWeight={fontWeight}
       >
