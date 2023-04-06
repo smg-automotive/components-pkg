@@ -3,23 +3,35 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
+import { UserType } from './header';
+
 export type LinkTargets = '_blank';
-interface VisibilitySettings {
+
+export interface VisibilitySettings {
   brand: Record<Brand, boolean>;
+  userType?: Record<UserType, boolean>;
 }
-type LocalizedLinks = Record<Language, string>;
+export type LocalizedLinks = Record<Language, string>;
 
 export interface LinkConfig {
-  translationKey: string;
+  translationKey?: string;
   link?: LocalizedLinks;
   onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
 }
 
+export interface LinkInstance {
+  translationKey?: string;
+  link?: LocalizedLinks;
+  target?: LinkTargets;
+  isVisible: boolean;
+  onClick?: () => void;
+}
+
 // !!CMP Link
 export class Link {
-  translationKey: string;
+  translationKey?: string;
   link?: LocalizedLinks;
   target?: LinkTargets;
   onClick?: () => void;
@@ -28,6 +40,7 @@ export class Link {
   constructor({
     config,
     brand,
+    userType,
     environment,
     useAbsoluteUrls,
     linkProtocol,
@@ -35,6 +48,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
+    userType?: UserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -46,6 +60,7 @@ export class Link {
     this.isVisible = Link.determineVisibility({
       visibilitySettings: config.visibilitySettings,
       brand,
+      userType,
     });
 
     this.link = this.prefixDomain({
@@ -92,10 +107,24 @@ export class Link {
   private static determineVisibility({
     visibilitySettings,
     brand,
+    userType,
   }: {
     visibilitySettings: VisibilitySettings;
     brand: Brand;
+    userType?: UserType;
   }) {
-    return visibilitySettings.brand[brand];
+    if (!visibilitySettings.brand[brand]) {
+      return false;
+    }
+
+    if (
+      userType &&
+      visibilitySettings.userType &&
+      !visibilitySettings.userType[userType]
+    ) {
+      return false;
+    }
+
+    return true;
   }
 }

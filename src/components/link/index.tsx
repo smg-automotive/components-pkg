@@ -14,7 +14,10 @@ interface Props {
   rightIcon?: ReactElement;
   isExternal?: boolean;
   rel?: string;
+  variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
   [key: string]: unknown;
+  fontWeight?: 'regular' | 'bold';
+  color?: string;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
@@ -26,11 +29,13 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rel,
       leftIcon,
       rightIcon,
+      variant = 'baseLink',
+      fontWeight = 'regular',
       ...rest
     },
     ref
   ) => {
-    const styles = useMultiStyleConfig(`Link`);
+    const styles = useMultiStyleConfig('Link', { variant });
 
     const Component = useMemo(() => {
       return chakra(as, {
@@ -49,6 +54,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         rel={rel || isExternal ? 'noopener noreferrer' : undefined}
         ref={ref}
         {...rest}
+        fontWeight={fontWeight}
       >
         {leftIcon}
         <chakra.span __css={textStyle}>{children}</chakra.span>
