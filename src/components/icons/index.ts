@@ -57,3 +57,4 @@ export { YoutubeIcon } from './YoutubeIcon';
 export { HeartIcon } from './HeartIcon';
 export { InfoIcon } from './InfoIcon';
 export { PlusIcon } from './PlusIcon';
+export { ImageIcon } from './ImageIcon';
