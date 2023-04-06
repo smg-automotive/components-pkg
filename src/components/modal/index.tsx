@@ -19,7 +19,7 @@ type ActionButton = {
   label: string;
 };
 
-interface Props extends Pick<ModalProps, 'isOpen' | 'onClose'> {
+interface Props extends Pick<ModalProps, 'isOpen' | 'onClose' | 'motionPreset'> {
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
@@ -30,12 +30,13 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   primaryActionButton,
   secondaryActionButton,
   children,
+  motionPreset = 'scale',
   ...modalProps
 }) => {
   return (
     <ChakraModal
       isCentered
-      motionPreset="scale"
+      motionPreset={motionPreset}
       size={{ xs: 'full', sm: 'md' }}
       {...modalProps}
     >
