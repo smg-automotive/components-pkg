@@ -8,7 +8,7 @@ export type PopoverFilterProps = {
    */
   actionButton: {
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
   };
   /**
    * Shows the value of the filter in default and open state.
