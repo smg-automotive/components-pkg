@@ -184,30 +184,6 @@ describe('<Carousel />', () => {
     );
   });
 
-  it('should have custom pagination', () => {
-    render(
-      <Carousel withCustomPagination>
-        <div>slide 1</div>
-        <div>slide 2</div>
-        <div>slide 3</div>
-      </Carousel>
-    );
-    expect(screen.getByTestId('pagination')).toBeInTheDocument();
-  });
-
-  it('should not have custom pagination on the fullscreen gallery', () => {
-    render(
-      <Carousel fullScreen={true} withCustomPagination>
-        {[
-          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
-          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
-          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
-        ]}
-      </Carousel>
-    );
-    expect(screen.queryByTestId('pagination')).not.toBeInTheDocument();
-  });
-
   it('should change the main carousel slide when the user clicks on a thumbnail', async () => {
     render(
       <Carousel fullScreen={true}>

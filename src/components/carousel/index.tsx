@@ -4,11 +4,11 @@ import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
 import { breakpoints } from 'src/themes';
 
-import Pagination from '../pagination';
 import Flex from '../flex';
 import Box from '../box';
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
+import NumbersPagination from './NumbersPagination';
 import NavigationButton from './NavigationButton';
 
 type SharedProps = {
@@ -54,7 +54,10 @@ const Carousel: FC<Props> = (props) => {
       fallback: false,
     }
   );
-  const hasPagination = fullScreen && !isSmallLandscapeViewport;
+
+  const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
+  const hasNumbersPagination = withCustomPagination && !fullScreen;
+  const hasPagination = hasThumbnailPagination || hasNumbersPagination;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -99,7 +102,7 @@ const Carousel: FC<Props> = (props) => {
     const previousIndex = mainCarousel.previousScrollSnap();
 
     setSelectedIndex(newIndex);
-    if (paginationCarousel && hasPagination) {
+    if (paginationCarousel && hasThumbnailPagination) {
       const slidesToScroll = paginationCarousel.slidesInView().length;
       paginationCarousel.scrollTo(Math.floor(newIndex / slidesToScroll));
     }
@@ -128,7 +131,7 @@ const Carousel: FC<Props> = (props) => {
     mainCarousel,
     paginationCarousel,
     onSlideSelect,
-    hasPagination,
+    hasThumbnailPagination,
     props.children,
     props.fullScreen,
   ]);
@@ -211,7 +214,7 @@ const Carousel: FC<Props> = (props) => {
         </Box>
       )}
 
-      {hasPagination ? (
+      {hasThumbnailPagination ? (
         <ThumbnailPagination
           currentSlideIndex={selectedIndex}
           thumbnails={props.children.map((slide) => slide.thumbnail)}
@@ -221,15 +224,12 @@ const Carousel: FC<Props> = (props) => {
         />
       ) : null}
 
-      {mainCarousel && !fullScreen && withCustomPagination ? (
-        <Box paddingY="sm">
-          <Pagination
-            totalPages={numberOfSlides}
-            currentPage={selectedIndex}
-            onChange={(page) => mainCarousel.scrollTo(page)}
-            infinite
-          />
-        </Box>
+      {hasNumbersPagination ? (
+        <NumbersPagination
+          mainCarousel={mainCarousel}
+          currentSlideIndex={selectedIndex}
+          numbers={props.children.map((_, index) => index)}
+        />
       ) : null}
     </Box>
   );
