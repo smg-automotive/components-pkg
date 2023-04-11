@@ -10,6 +10,7 @@ type Props = Pick<
   | 'textAlign'
   | 'isTruncated'
   | 'noOfLines'
+  | 'marginBottom'
 >;
 
 const Text: FC<Props> = ({ children, ...chakraProps }) => (
