@@ -20,7 +20,7 @@ const FilterActionButton: FC<Props> = ({
       onClick={
         isApplied
           ? () => {
-              actionButton.onClick();
+              actionButton.onClick?.();
               onClose();
             }
           : onClose
