@@ -36,7 +36,7 @@ interface Props {
     fullScreen: boolean;
     onSlideEnter: boolean;
     onSlideLeave: boolean;
-    withCustomPagination: boolean;
+    withNumbersPagination: boolean;
   };
   action: (message: string) => (...args: unknown[]) => void;
 }
@@ -72,7 +72,7 @@ const DefaultVariant: FC<Props> = ({ args, action }) => {
   return (
     <FullHeight>
       <Carousel
-        withCustomPagination={args?.withCustomPagination}
+        withNumbersPagination={args?.withNumbersPagination}
         onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
       >
         {Array.from({ length: args.numberOfSlides || 6 }).map((_, i) => (
