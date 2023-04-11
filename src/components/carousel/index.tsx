@@ -15,7 +15,7 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  withCustomPagination?: boolean;
+  withNumbersPagination?: boolean;
 };
 
 type DefaultProps = {
@@ -42,7 +42,7 @@ const Carousel: FC<Props> = (props) => {
     onSlideClick,
     onSlideSelect,
     fullScreen,
-    withCustomPagination,
+    withNumbersPagination,
   } = props;
 
   const numberOfSlides = props.children.length;
@@ -56,7 +56,7 @@ const Carousel: FC<Props> = (props) => {
   );
 
   const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
-  const hasNumbersPagination = withCustomPagination && !fullScreen;
+  const hasNumbersPagination = withNumbersPagination && !fullScreen;
   const hasPagination = hasThumbnailPagination || hasNumbersPagination;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
