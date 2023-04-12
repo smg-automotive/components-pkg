@@ -32,6 +32,7 @@ export { MotorcycleIcon } from './MotorcycleIcon';
 export { MotoScout24AppLogo } from './MotoScout24AppLogo';
 export { PrintIcon } from './PrintIcon';
 export { RangeIcon } from './RangeIcon';
+export { ResetFiltersIcon } from './ResetFiltersIcon';
 export { RoadIcon } from './RoadIcon';
 export { ShareIcon } from './ShareIcon';
 export { ThreeSixtyIcon } from './ThreeSixtyIcon';
