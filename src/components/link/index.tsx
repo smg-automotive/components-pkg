@@ -14,6 +14,7 @@ interface Props {
   rightIcon?: ReactElement;
   isExternal?: boolean;
   rel?: string;
+  target?: string;
   variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
   [key: string]: unknown;
   fontWeight?: 'regular' | 'bold';
@@ -27,6 +28,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       children,
       isExternal = false,
       rel,
+      target,
       leftIcon,
       rightIcon,
       variant = 'baseLink',
@@ -50,8 +52,8 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
 
     return (
       <Component
-        target={isExternal ? '_blank' : undefined}
-        rel={rel || isExternal ? 'noopener noreferrer' : undefined}
+        target={target || (isExternal ? '_blank' : undefined)}
+        rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         ref={ref}
         {...rest}
         fontWeight={fontWeight}
