@@ -164,7 +164,7 @@ const Carousel: FC<Props> = (props) => {
   let carouselHeight = 'full';
   switch (true) {
     case hasNumbersPagination:
-      carouselHeight = 'calc(100% - 4rem)';
+      carouselHeight = 'calc(100% - 5rem)';
       break;
     case hasThumbnailPagination:
       carouselHeight = 'calc(100% - 7.5rem)';
