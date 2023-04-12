@@ -45,6 +45,7 @@ export { MotoScout24AppLogo } from './MotoScout24AppLogo';
 export { PlusIcon } from './PlusIcon';
 export { PrintIcon } from './PrintIcon';
 export { RangeIcon } from './RangeIcon';
+export { ResetFiltersIcon } from './ResetFiltersIcon';
 export { RoadIcon } from './RoadIcon';
 export { ShareIcon } from './ShareIcon';
 export { StarIcon } from './StarIcon';
