@@ -41,6 +41,7 @@ export { PrintIcon } from './PrintIcon';
 export { RangeIcon } from './RangeIcon';
 export { RoadIcon } from './RoadIcon';
 export { ShareIcon } from './ShareIcon';
+export { StarIcon } from './StarIcon';
 export { ThreeSixtyIcon } from './ThreeSixtyIcon';
 export { TimeIcon } from './TimeIcon';
 export { TooltipIcon } from './TooltipIcon';
