@@ -57,7 +57,6 @@ const Carousel: FC<Props> = (props) => {
 
   const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
   const hasNumbersPagination = withNumbersPagination && !fullScreen;
-  const hasPagination = hasThumbnailPagination || hasNumbersPagination;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -182,7 +181,7 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={hasPagination ? 'calc(100% - 7.5rem)' : 'full'}
+          height={hasThumbnailPagination ? 'calc(100% - 7.5rem)' : 'full'}
           __css={carousel}
         >
           <Flex __css={slideContainer}>
