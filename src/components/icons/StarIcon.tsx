@@ -15,7 +15,5 @@ export const StarIcon = createIcon({
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'none',
-    stroke: 'currentColor',
   },
 });
