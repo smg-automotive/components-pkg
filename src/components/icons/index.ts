@@ -30,6 +30,7 @@ export { DeleteIcon } from './DeleteIcon';
 export { DriveSystemIcon } from './DriveSystemIcon';
 export { DriveTypeIcon } from './DriveTypeIcon';
 export { ErrorIcon } from './ErrorIcon';
+export { EyeIcon } from './EyeIcon';
 export { FacebookIcon } from './FacebookIcon';
 export { GasStationIcon } from './GasStationIcon';
 export { HeartIcon } from './HeartIcon';
