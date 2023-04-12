@@ -27,15 +27,7 @@ const NumbersPagination: FC<Props> = ({
 
   return (
     <Box aria-label="Numbers Pagination">
-      <Flex
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        position="absolute"
-        bottom="md"
-        left="0"
-        right="0"
-      >
+      <Flex flexDirection="row" alignItems="center" justifyContent="center">
         {numbers.map((index) => (
           <NumbersPaginationButton
             key={`slide-${index}`}
