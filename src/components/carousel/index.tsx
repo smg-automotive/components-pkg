@@ -161,6 +161,16 @@ const Carousel: FC<Props> = (props) => {
 
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
+  let carouselHeight = 'full';
+  switch (true) {
+    case hasNumbersPagination:
+      carouselHeight = 'calc(100% - 4rem)';
+      break;
+    case hasThumbnailPagination:
+      carouselHeight = 'calc(100% - 7.5rem)';
+      break;
+  }
+
   return (
     <Box __css={container}>
       {prerenderFallbackSlide ? (
@@ -181,7 +191,7 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={hasThumbnailPagination ? 'calc(100% - 7.5rem)' : 'full'}
+          height={carouselHeight}
           __css={carousel}
         >
           <Flex __css={slideContainer}>
