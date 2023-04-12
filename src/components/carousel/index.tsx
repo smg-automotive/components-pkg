@@ -162,7 +162,7 @@ const Carousel: FC<Props> = (props) => {
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
   let carouselHeight = 'full';
-  switch (true) {
+  switch (hasNumbersPagination || hasThumbnailPagination) {
     case hasNumbersPagination:
       carouselHeight = 'calc(100% - 5rem)';
       break;
