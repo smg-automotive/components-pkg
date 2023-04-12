@@ -10,8 +10,8 @@ export const ChevronUpSmallIcon = createIcon({
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-        fill="currentColor"
+        d="m5 15 1.415 1.415L12 10.83l5.589 5.581L18.999 15 12 8l-7 7Z"
+        fill="#currentColor"
       />
     </>
   ),
