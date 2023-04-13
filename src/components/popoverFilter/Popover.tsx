@@ -38,6 +38,7 @@ const Popover: FC<Props> = ({
       padding="2xl"
       shadow="xs"
       w="6xl"
+      zIndex="popover"
     >
       <PopoverHeader paddingBottom="2xl">
         <FilterHeading
