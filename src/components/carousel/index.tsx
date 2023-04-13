@@ -8,12 +8,14 @@ import Flex from '../flex';
 import Box from '../box';
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
+import NumbersPagination from './NumbersPagination';
 import NavigationButton from './NavigationButton';
 
 type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
+  withNumbersPagination?: boolean;
 };
 
 type DefaultProps = {
@@ -34,8 +36,20 @@ type FullScreenProps = {
 
 type Props = DefaultProps | FullScreenProps;
 
+enum PaginationType {
+  Thumbnail = 'thumbnail',
+  Number = 'number',
+  None = 'none',
+}
+
 const Carousel: FC<Props> = (props) => {
-  const { startIndex = 0, onSlideClick, onSlideSelect, fullScreen } = props;
+  const {
+    startIndex = 0,
+    onSlideClick,
+    onSlideSelect,
+    fullScreen,
+    withNumbersPagination,
+  } = props;
 
   const numberOfSlides = props.children.length;
 
@@ -46,7 +60,16 @@ const Carousel: FC<Props> = (props) => {
       fallback: false,
     }
   );
-  const hasPagination = fullScreen && !isSmallLandscapeViewport;
+
+  const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
+
+  let paginationType = PaginationType.None;
+  if (hasThumbnailPagination) {
+    paginationType = PaginationType.Thumbnail;
+  }
+  if (withNumbersPagination) {
+    paginationType = PaginationType.Number;
+  }
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -91,7 +114,7 @@ const Carousel: FC<Props> = (props) => {
     const previousIndex = mainCarousel.previousScrollSnap();
 
     setSelectedIndex(newIndex);
-    if (paginationCarousel && hasPagination) {
+    if (paginationCarousel && hasThumbnailPagination) {
       const slidesToScroll = paginationCarousel.slidesInView().length;
       paginationCarousel.scrollTo(Math.floor(newIndex / slidesToScroll));
     }
@@ -120,7 +143,7 @@ const Carousel: FC<Props> = (props) => {
     mainCarousel,
     paginationCarousel,
     onSlideSelect,
-    hasPagination,
+    hasThumbnailPagination,
     props.children,
     props.fullScreen,
   ]);
@@ -151,6 +174,12 @@ const Carousel: FC<Props> = (props) => {
 
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
+  const carouselHeightByPaginationTypeMap = {
+    [PaginationType.None]: 'full',
+    [PaginationType.Thumbnail]: 'calc(100% - 7.5rem)',
+    [PaginationType.Number]: 'calc(100% - 5rem)',
+  };
+
   return (
     <Box __css={container}>
       {prerenderFallbackSlide ? (
@@ -171,7 +200,7 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={hasPagination ? 'calc(100% - 7.5rem)' : 'full'}
+          height={carouselHeightByPaginationTypeMap[paginationType]}
           __css={carousel}
         >
           <Flex __css={slideContainer}>
@@ -203,13 +232,21 @@ const Carousel: FC<Props> = (props) => {
         </Box>
       )}
 
-      {hasPagination ? (
+      {hasThumbnailPagination ? (
         <ThumbnailPagination
           currentSlideIndex={selectedIndex}
           thumbnails={props.children.map((slide) => slide.thumbnail)}
           mainCarousel={mainCarousel}
           paginationCarousel={paginationCarousel}
           paginationCarouselRef={paginationCarouselRef}
+        />
+      ) : null}
+
+      {paginationType === PaginationType.Number ? (
+        <NumbersPagination
+          mainCarousel={mainCarousel}
+          currentSlideIndex={selectedIndex}
+          numberOfSlides={props.children.length}
         />
       ) : null}
     </Box>
