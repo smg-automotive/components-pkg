@@ -184,6 +184,23 @@ describe('<Carousel />', () => {
     );
   });
 
+  it('should have numbers pagination when withNumbersPagination prop passed', () => {
+    render(
+      <Carousel withNumbersPagination>
+        <div>slide 1</div>
+        <div>slide 2</div>
+        <div>slide 3</div>
+      </Carousel>
+    );
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByLabelText('numbers pagination 1 of 3')).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
   it('should change the main carousel slide when the user clicks on a thumbnail', async () => {
     render(
       <Carousel fullScreen={true}>

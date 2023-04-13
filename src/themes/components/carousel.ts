@@ -82,6 +82,20 @@ const fullScreen = {
   },
 };
 
+const numbersPaginationButton = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  textAlign: 'center',
+  minWidth: 'md',
+  height: 'md',
+  borderRadius: 'sm',
+  _hover: {
+    backgroundColor: 'gray.100',
+  },
+};
+
 const Carousel: ComponentStyleConfig = {
   parts,
   baseStyle: {
@@ -128,6 +142,15 @@ const Carousel: ComponentStyleConfig = {
     },
     icon: {
       boxSize: 'sm',
+    },
+    numbersPaginationButton,
+    numbersPaginationButtonActive: {
+      ...numbersPaginationButton,
+      color: 'white',
+      backgroundColor: 'gray.900',
+      _hover: {
+        backgroundColor: 'gray.900',
+      },
     },
   },
   variants: {
