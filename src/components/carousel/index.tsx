@@ -36,6 +36,12 @@ type FullScreenProps = {
 
 type Props = DefaultProps | FullScreenProps;
 
+enum PaginationType {
+  Thumbnail = 'thumbnail',
+  Number = 'number',
+  None = 'none',
+}
+
 const Carousel: FC<Props> = (props) => {
   const {
     startIndex = 0,
@@ -56,7 +62,14 @@ const Carousel: FC<Props> = (props) => {
   );
 
   const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
-  const hasNumbersPagination = withNumbersPagination && !fullScreen;
+
+  let paginationType = PaginationType.None;
+  if (hasThumbnailPagination) {
+    paginationType = PaginationType.Thumbnail;
+  }
+  if (withNumbersPagination) {
+    paginationType = PaginationType.Number;
+  }
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
@@ -161,15 +174,11 @@ const Carousel: FC<Props> = (props) => {
 
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
-  let carouselHeight = 'full';
-  switch (hasNumbersPagination || hasThumbnailPagination) {
-    case hasNumbersPagination:
-      carouselHeight = 'calc(100% - 5rem)';
-      break;
-    case hasThumbnailPagination:
-      carouselHeight = 'calc(100% - 7.5rem)';
-      break;
-  }
+  const carouselHeightByPaginationTypeMap = {
+    [PaginationType.None]: 'full',
+    [PaginationType.Thumbnail]: 'calc(100% - 7.5rem)',
+    [PaginationType.Number]: 'calc(100% - 5rem)',
+  };
 
   return (
     <Box __css={container}>
@@ -191,7 +200,7 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={carouselHeight}
+          height={carouselHeightByPaginationTypeMap[paginationType]}
           __css={carousel}
         >
           <Flex __css={slideContainer}>
@@ -233,11 +242,11 @@ const Carousel: FC<Props> = (props) => {
         />
       ) : null}
 
-      {hasNumbersPagination ? (
+      {paginationType === PaginationType.Number ? (
         <NumbersPagination
           mainCarousel={mainCarousel}
           currentSlideIndex={selectedIndex}
-          numbers={props.children.map((_, index) => index)}
+          numberOfSlides={props.children.length}
         />
       ) : null}
     </Box>

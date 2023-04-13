@@ -7,13 +7,13 @@ import NumbersPaginationButton from './NumbersPaginationButton';
 
 interface Props {
   currentSlideIndex: number;
-  numbers: number[];
+  numberOfSlides: number;
   mainCarousel?: EmblaCarouselType;
 }
 
 const NumbersPagination: FC<Props> = ({
   currentSlideIndex,
-  numbers,
+  numberOfSlides,
   mainCarousel,
 }) => {
   const onNumbersClick = useCallback(
@@ -24,16 +24,17 @@ const NumbersPagination: FC<Props> = ({
     },
     [mainCarousel]
   );
+  const pagination = Array.from({ length: numberOfSlides }, (_, i) => i);
 
   return (
     <Box aria-label="Numbers Pagination">
       <Flex flexDirection="row" alignItems="center" justifyContent="center">
-        {numbers.map((index) => (
+        {pagination.map((index) => (
           <NumbersPaginationButton
             key={`slide-${index}`}
             isCurrent={index === currentSlideIndex}
-            numbersIndex={index}
-            totalNumbers={numbers.length}
+            currentPageNumber={index + 1}
+            totalNumbers={numberOfSlides}
             onClick={() => onNumbersClick(index)}
           />
         ))}

@@ -5,8 +5,6 @@ import { render, screen, waitFor } from '@testing-library/react';
 
 import NumbersPagination from '../NumbersPagination';
 
-const numbers = [0, 1, 2, 3, 4, 5];
-
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {
   scrollTo: mockMainScrollTo,
@@ -21,7 +19,7 @@ describe('<NumbersPagination />', () => {
     render(
       <NumbersPagination
         currentSlideIndex={0}
-        numbers={numbers}
+        numberOfSlides={5}
         mainCarousel={mainCarousel}
       />
     );
@@ -34,7 +32,7 @@ describe('<NumbersPagination />', () => {
     render(
       <NumbersPagination
         currentSlideIndex={0}
-        numbers={numbers}
+        numberOfSlides={5}
         mainCarousel={mainCarousel}
       />
     );
