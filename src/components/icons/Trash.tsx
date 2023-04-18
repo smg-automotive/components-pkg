@@ -6,7 +6,7 @@ export const TrashIcon = createIcon({
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title>Car icon</title>
+      <title>Trash icon</title>
       <path
         fill="currentColor"
         fillRule="evenodd"
