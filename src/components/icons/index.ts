@@ -62,3 +62,7 @@ export { WarningIcon } from './WarningIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { YoutubeIcon } from './YoutubeIcon';
 export { TrashIcon } from './Trash';
+export { DaylightIcon } from './DaylightIcon';
+export { EquipmentIcon } from './EquipmentIcon';
+export { InteriorIcon } from './InteriorIcon';
+export { ViewIcon } from './ViewIcon';
