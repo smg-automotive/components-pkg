@@ -67,3 +67,4 @@ export { DaylightIcon } from './DaylightIcon';
 export { EquipmentIcon } from './EquipmentIcon';
 export { InteriorIcon } from './InteriorIcon';
 export { ViewIcon } from './ViewIcon';
+export { DragIcon } from './DragIcon';
