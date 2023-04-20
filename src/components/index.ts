@@ -42,7 +42,7 @@ export { default as MissingImage } from './missingImage';
 export { default as Pagination } from './pagination';
 export { PopoverFilter } from './filterPatterns/popover';
 export { ModalFilter } from './filterPatterns/modal';
-export { default as FilterHeading } from './filterPatterns/heading';
+export { FilterHeading } from './filterPatterns/heading';
 export { default as Radio } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';

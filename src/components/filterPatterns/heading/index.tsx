@@ -19,7 +19,7 @@ type Props = {
   'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
 
-const FilterHeading: FC<Props> = ({
+export const FilterHeading: FC<Props> = ({
   onClose,
   language,
   isApplied,

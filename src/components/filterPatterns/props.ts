@@ -12,12 +12,12 @@ export type FilterPatternProps = {
    */
   isApplied: boolean;
   /**
-   * Label for the filter button and the popover.
+   * Label for the filter button and the filter title.
    */
   label: string;
   language: Language;
   /**
-   * In case multiple filters are shown in the same popover.
+   * In case multiple filters are shown in the same filter (e.g. a list of checkboxes).
    * This can be used to show a branded bubble next to the filter title that shows how many filters are applied.
    */
   numberOfAppliedFilters?: number;
@@ -26,7 +26,7 @@ export type FilterPatternProps = {
    */
   onResetFilter: () => void;
   /**
-   * Content of the popover.
+   * Content of the filter.
    */
   children: ReactNode;
 };
