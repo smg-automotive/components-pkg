@@ -10,7 +10,7 @@ import {
 
 import Box from 'src/components/box';
 
-import FilterHeading from '../heading';
+import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 import { PopoverFilterProps } from './props';
 

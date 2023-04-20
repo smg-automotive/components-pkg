@@ -75,31 +75,6 @@ export const Template = (args) => (
   </Story>
 </Canvas>
 
-## Default initially open
-
-<Canvas>
-  <Story
-    name="Default initially open"
-    args={{
-      label: 'Treibstoff',
-      initialModalState: 'open',
-    }}
-    argTypes={{
-      initialModalState: {
-        options: ['open', 'closed'],
-        control: 'select',
-      },
-      actionButton: {
-        table: {
-          disable: true,
-        },
-      },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
 ## Applied
 
 <Canvas>

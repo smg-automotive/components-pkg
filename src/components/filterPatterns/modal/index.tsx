@@ -14,7 +14,7 @@ import TranslationProvider from 'src/components/translationProvider';
 
 import { ChevronRightSmallIcon } from 'src/components/icons';
 
-import FilterHeading from '../heading';
+import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 
 import { ModalFilterProps } from './props';

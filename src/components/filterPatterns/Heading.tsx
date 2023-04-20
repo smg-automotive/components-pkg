@@ -9,7 +9,7 @@ import { CloseIcon } from 'src/components/icons';
 
 import Flex from 'src/components/flex';
 
-import { FilterPatternProps } from '../props';
+import { FilterPatternProps } from './props';
 
 type Props = {
   onClose?: () => void;
@@ -74,5 +74,3 @@ export const FilterHeading: FC<Props> = ({
     </TranslationProvider>
   );
 };
-
-export default FilterHeading;
