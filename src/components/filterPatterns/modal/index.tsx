@@ -10,10 +10,12 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import TranslationProvider from '../translationProvider';
-import FilterHeading from '../popoverFilter/Heading';
-import FilterActionButton from '../popoverFilter/ActionButton';
-import { ChevronRightSmallIcon } from '../icons';
+import TranslationProvider from 'src/components/translationProvider';
+
+import { ChevronRightSmallIcon } from 'src/components/icons';
+
+import FilterHeading from '../heading';
+import FilterActionButton from '../ActionButton';
 
 import { ModalFilterProps } from './props';
 
@@ -82,6 +84,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               padding="2xl"
             >
               <FilterHeading
+                language={language}
                 isApplied={isApplied}
                 label={label}
                 numberOfAppliedFilters={numberOfAppliedFilters}

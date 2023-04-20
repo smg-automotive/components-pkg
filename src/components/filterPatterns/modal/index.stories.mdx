@@ -1,7 +1,8 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
-import CheckboxFilter from '../checkboxFilter';
+import CheckboxFilter from 'src/components/checkboxFilter';
+
 import { ModalFilter } from './index.tsx';
 
 <Meta
@@ -50,7 +51,7 @@ export const Template = (args) => (
   </ModalFilter>
 );
 
-# Popover filter
+# Modal filter
 
 <ArgsTable of={ModalFilter} />
 

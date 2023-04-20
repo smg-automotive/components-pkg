@@ -2,13 +2,21 @@ import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import Button from '../button';
-import { PopoverFilterProps } from './props';
+import { FilterPatternProps } from './props';
 
-export type Props = {
+export type ActionButtonProps = {
+  /**
+   * The primary action button if a filter is applied.
+   * If a filter is not applied, a secondary close button is shown.
+   */
+  actionButton: {
+    label: string;
+    onClick?: () => void;
+  };
   onClose: () => void;
-} & Pick<PopoverFilterProps, 'isApplied' | 'actionButton'>;
+} & Pick<FilterPatternProps, 'isApplied'>;
 
-const FilterActionButton: FC<Props> = ({
+const FilterActionButton: FC<ActionButtonProps> = ({
   isApplied,
   actionButton,
   onClose,

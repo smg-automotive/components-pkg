@@ -10,8 +10,8 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import TranslationProvider from '../translationProvider';
-import { ChevronDownSmallIcon, CloseIcon } from '../icons';
+import TranslationProvider from 'src/components/translationProvider';
+import { ChevronDownSmallIcon, CloseIcon } from 'src/components/icons';
 
 import { PopoverFilterProps } from './props';
 import FilterPopover from './Popover';
