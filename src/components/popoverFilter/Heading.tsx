@@ -27,7 +27,7 @@ const FilterHeading: FC<Props> = ({
 
   return (
     <>
-      <Flex alignItems="start" justifyContent="space-between">
+      <Flex alignItems="start" justifyContent="space-between" w="full">
         <Flex
           alignItems="start"
           as={Text}
