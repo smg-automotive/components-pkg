@@ -78,7 +78,7 @@ const Navigation: FC<NavigationProps> = ({
         borderBottomColor="gray.200"
         borderBottomWidth="1px"
         zIndex="header"
-        position="absolute"
+        position="relative"
         backgroundColor="white"
       >
         <Box
