@@ -20,7 +20,7 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         fontWeightTitle="bold"
         menuColor="gray.900"
         marginTop="-2px"
-        offset={[-100, 18]}
+        offset={[-110, 18]}
         items={[
           { text: 'Deutsch', onClick: () => (window.location.href = '/de') },
           { text: 'Français', onClick: () => (window.location.href = '/fr') },
