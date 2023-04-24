@@ -75,12 +75,11 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           size="full"
           motionPreset="slideInBottom"
         >
-          <ModalContent w="full">
+          <ModalContent h="full" w="full">
             <ModalHeader
               display="flex"
               flexDirection="column"
               alignItems="flex-start"
-              w="full"
               padding="2xl"
             >
               <FilterHeading
