@@ -12,7 +12,7 @@ export type FilterPatternProps = {
    */
   isApplied: boolean;
   /**
-   * Label for the filter button and the filter title.
+   * Label for the filter button and the modal/popover title.
    */
   label: string;
   language: Language;
