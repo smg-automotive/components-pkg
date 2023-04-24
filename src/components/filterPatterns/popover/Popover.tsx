@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
   PopoverBody,
   PopoverContent,
@@ -7,10 +8,11 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from 'src/components/box';
+
+import { FilterHeading } from '../Heading';
+import FilterActionButton from '../ActionButton';
 import { PopoverFilterProps } from './props';
-import FilterHeading from './Heading';
-import FilterActionButton from './ActionButton';
 
 type Props = {
   onClose: () => void;
@@ -33,6 +35,7 @@ const Popover: FC<Props> = ({
   onResetFilter,
   children,
 }) => {
+  const { language } = useI18n();
   return (
     <Portal>
       <Box zIndex="popover" w="full" h="full" position="relative">
@@ -49,6 +52,7 @@ const Popover: FC<Props> = ({
               label={label}
               numberOfAppliedFilters={numberOfAppliedFilters}
               onClose={onClose}
+              language={language}
               onResetFilter={onResetFilter}
             />
           </PopoverHeader>

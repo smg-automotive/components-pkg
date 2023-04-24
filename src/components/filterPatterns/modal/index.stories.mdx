@@ -1,13 +1,14 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
-import CheckboxFilter from '../checkboxFilter';
-import Box from '../box';
-import { PopoverFilter } from './index.tsx';
+import CheckboxFilter from 'src/components/checkboxFilter';
+import Box from 'src/components/box';
+
+import { ModalFilter } from './index.tsx';
 
 <Meta
-  title="Components/Filter/Popover"
-  component={PopoverFilter}
+  title="Patterns/Filter/Modal"
+  component={ModalFilter}
   args={{
     language: 'de',
     actionButton: {
@@ -26,14 +27,17 @@ import { PopoverFilter } from './index.tsx';
       },
     },
   }}
+  parameters={{
+    layout: 'fullscreen',
+  }}
 />
 
 export const Template = (args) => (
-  <Box w={{ base: 'full', sm: '250px' }} h="400px">
-    <PopoverFilter
+  <Box paddingX="lg">
+    <ModalFilter
       {...args}
-      onPopoverOpen={action('onPopoverOpen')}
-      onPopoverClose={action('onPopoverClose')}
+      onModalOpen={action('onModalOpen')}
+      onModalClose={action('onModalClose')}
       onResetFilter={action('onResetFilter')}
     >
       <CheckboxFilter
@@ -46,13 +50,13 @@ export const Template = (args) => (
         ]}
         onApply={() => null}
       />
-    </PopoverFilter>
+    </ModalFilter>
   </Box>
 );
 
-# Popover filter
+# Modal filter
 
-<ArgsTable of={PopoverFilter} />
+<ArgsTable of={ModalFilter} />
 
 ## Default empty
 
@@ -63,31 +67,6 @@ export const Template = (args) => (
       label: 'Treibstoff',
     }}
     argTypes={{
-      actionButton: {
-        table: {
-          disable: true,
-        },
-      },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## Default initially open
-
-<Canvas>
-  <Story
-    name="Default initially open"
-    args={{
-      label: 'Treibstoff',
-      initialPopoverState: 'open',
-    }}
-    argTypes={{
-      initialPopoverState: {
-        options: ['open', 'closed'],
-        control: 'select',
-      },
       actionButton: {
         table: {
           disable: true,
