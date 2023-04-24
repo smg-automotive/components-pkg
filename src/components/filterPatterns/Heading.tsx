@@ -39,7 +39,7 @@ export const FilterHeading: FC<Props> = ({
                 color="gray.900"
                 textStyle="heading3"
               >
-                {label}
+                <chakra.span wordBreak="break-all">{label}</chakra.span>
                 {numberOfAppliedFilters ? (
                   <chakra.span
                     alignItems="center"
@@ -50,7 +50,8 @@ export const FilterHeading: FC<Props> = ({
                     h="sm"
                     justifyContent="center"
                     minW="sm"
-                    mx="sm"
+                    ml="sm"
+                    mr="xl"
                     w="sm"
                   >
                     {numberOfAppliedFilters}
