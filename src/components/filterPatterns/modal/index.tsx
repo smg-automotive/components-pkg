@@ -48,7 +48,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           justifyContent="space-between"
           w="full"
           h="lg"
-          paddingX="lg"
+          paddingX="0"
           paddingY="md"
           color="gray.900"
         >
@@ -58,7 +58,9 @@ export const ModalFilter: FC<ModalFilterProps> = ({
             w="full"
             minW="0"
           >
-            <chakra.span mr="2xl">{label}</chakra.span>
+            <chakra.span mr="2xl" whiteSpace="nowrap">
+              {label}
+            </chakra.span>
             <chakra.span
               fontWeight="bold"
               overflow="hidden"

@@ -12,6 +12,7 @@ export type ActionButtonProps = {
   actionButton: {
     label: string;
     onClick?: () => void;
+    href?: () => void;
   };
   onClose: () => void;
 } & Pick<FilterPatternProps, 'isApplied'>;

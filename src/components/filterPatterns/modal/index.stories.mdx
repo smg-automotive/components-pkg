@@ -2,6 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import CheckboxFilter from 'src/components/checkboxFilter';
+import Box from 'src/components/box';
 
 import { ModalFilter } from './index.tsx';
 
@@ -32,23 +33,25 @@ import { ModalFilter } from './index.tsx';
 />
 
 export const Template = (args) => (
-  <ModalFilter
-    {...args}
-    onModalOpen={action('onModalOpen')}
-    onModalClose={action('onModalClose')}
-    onResetFilter={action('onResetFilter')}
-  >
-    <CheckboxFilter
-      name="fuel-type"
-      items={[
-        { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
-        { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
-        { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
-        { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
-      ]}
-      onApply={() => null}
-    />
-  </ModalFilter>
+  <Box paddingX="lg">
+    <ModalFilter
+      {...args}
+      onModalOpen={action('onModalOpen')}
+      onModalClose={action('onModalClose')}
+      onResetFilter={action('onResetFilter')}
+    >
+      <CheckboxFilter
+        name="fuel-type"
+        items={[
+          { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
+          { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
+          { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
+          { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
+        ]}
+        onApply={() => null}
+      />
+    </ModalFilter>
+  </Box>
 );
 
 # Modal filter
@@ -81,7 +84,7 @@ export const Template = (args) => (
   <Story
     name="Applied"
     args={{
-      label: 'Treibstoff',
+      label: 'Treibstoff und Modelle',
       displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
       numberOfAppliedFilters: 5,
       isApplied: true,
