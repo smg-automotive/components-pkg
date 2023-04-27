@@ -372,7 +372,7 @@ export const footerConfig: FooterConfigInterface = {
           },
           link: {
             de: 'https://guide.autoscout24.ch/de/datenschutzerklaerung/',
-            en: '',
+            en: 'https://guide.autoscout24.ch/de/datenschutzerklaerung/',
             fr: 'https://guide.autoscout24.ch/fr/declaration-de-protection-des-donnees/',
             it: 'https://guide.autoscout24.ch/it/dichiarazione-sulla-protezione-dei-dati/',
           },
