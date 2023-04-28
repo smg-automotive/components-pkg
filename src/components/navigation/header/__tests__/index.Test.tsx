@@ -20,6 +20,10 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogin={() => {}}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogout={() => {}}
       />
     );
 
@@ -39,6 +43,10 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogin={() => {}}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogout={() => {}}
       />
     );
 
@@ -58,6 +66,10 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogin={() => {}}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogout={() => {}}
       />
     );
 
@@ -72,6 +84,10 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogin={() => {}}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogout={() => {}}
       />
     );
 
@@ -86,6 +102,10 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogin={() => {}}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onLogout={() => {}}
       />
     );
 
@@ -99,7 +119,8 @@ describe('Header', () => {
       useAbsoluteUrls: false,
       config: {
         headerItems: headerLinks,
-        drawerItems: drawerNodeItems,
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        drawerItems: drawerNodeItems({ onLogout: () => {} }),
       },
       user: {
         id: 1,
