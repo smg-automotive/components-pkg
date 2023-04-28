@@ -20,10 +20,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogin={() => {}}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogout={() => {}}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -43,10 +41,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogin={() => {}}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogout={() => {}}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -66,10 +62,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogin={() => {}}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogout={() => {}}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -84,10 +78,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogin={() => {}}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogout={() => {}}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -102,10 +94,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogin={() => {}}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onLogout={() => {}}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -119,8 +109,7 @@ describe('Header', () => {
       useAbsoluteUrls: false,
       config: {
         headerItems: headerLinks,
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        drawerItems: drawerNodeItems({ onLogout: () => {} }),
+        drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
       },
       user: {
         id: 1,
