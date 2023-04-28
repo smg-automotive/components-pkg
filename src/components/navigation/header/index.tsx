@@ -34,6 +34,8 @@ interface NavigationProps {
   user: User | null;
   hasNotification: boolean;
   useAbsoluteUrls?: boolean;
+  onLogin: () => void;
+  onLogout: () => void;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -43,6 +45,8 @@ const Navigation: FC<NavigationProps> = ({
   user,
   hasNotification,
   useAbsoluteUrls = false,
+  onLogin,
+  onLogout,
 }) => {
   const config = useMemo(() => {
     const headerNavigationConfigInstance = new HeaderNavigationConfig({
@@ -51,7 +55,7 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       config: {
         headerItems: headerLinks,
-        drawerItems: drawerNodeItems,
+        drawerItems: drawerNodeItems({ onLogout }),
       },
       user,
     });
@@ -104,6 +108,7 @@ const Navigation: FC<NavigationProps> = ({
               isOpen={isOpen}
               drawer={drawer}
               hasNotification={hasNotification}
+              onLogin={onLogin}
             />
             <NavigationLanguageMenu activeLanguage={language} />
           </Stack>

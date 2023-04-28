@@ -27,7 +27,11 @@ export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
 };
 
-export const drawerNodeItems: DrawerNodeItemsConfig = {
+export const drawerNodeItems = ({
+  onLogout,
+}: {
+  onLogout: () => void;
+}): DrawerNodeItemsConfig => ({
   search: [
     {
       translationKey: 'header.searchMenu.vehicles',
@@ -1037,12 +1041,7 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
         {
           translationKey: 'header.userMenu.logout',
           color: 'red.500',
-          link: {
-            de: '/de/account/logoff',
-            en: '/de/account/logoff',
-            fr: '/fr/account/logoff',
-            it: '/it/account/logoff',
-          },
+          onClick: onLogout,
           visibilitySettings: {
             userType: {
               private: true,
@@ -1456,4 +1455,4 @@ export const drawerNodeItems: DrawerNodeItemsConfig = {
       ],
     },
   ],
-};
+});

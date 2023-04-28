@@ -20,6 +20,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -39,6 +41,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -58,6 +62,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -72,6 +78,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -86,6 +94,8 @@ describe('Header', () => {
         brand={Brand.AutoScout24}
         language="en"
         hasNotification
+        onLogin={jest.fn}
+        onLogout={jest.fn}
       />
     );
 
@@ -99,7 +109,7 @@ describe('Header', () => {
       useAbsoluteUrls: false,
       config: {
         headerItems: headerLinks,
-        drawerItems: drawerNodeItems,
+        drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
       },
       user: {
         id: 1,
