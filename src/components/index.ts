@@ -1,3 +1,4 @@
+export { default as AbsoluteCenter } from './absoluteCenter';
 export { default as Accordion } from './accordion';
 export { default as AccordionButton } from './accordion/AccordionButton';
 export { default as AccordionPanel } from './accordion/AccordionPanel';

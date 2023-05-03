@@ -100,7 +100,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       config: {
         translationKey: link.translationKey,
         link: link.link,
-        onClick: undefined,
+        onClick: link.onClick,
         target: undefined,
         visibilitySettings: link.visibilitySettings,
       },

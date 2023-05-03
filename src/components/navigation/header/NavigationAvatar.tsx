@@ -18,6 +18,7 @@ interface NavigationAvatarProps {
   drawer: Drawer;
   hasNotification: boolean;
   createDrawerHandler: ({ nodeName }: { nodeName: DrawerNode }) => () => void;
+  onLogin: () => void;
 }
 
 export const NavigationAvatar: FC<NavigationAvatarProps> = ({
@@ -26,6 +27,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   drawer,
   hasNotification,
   createDrawerHandler,
+  onLogin,
 }) => {
   const isDrawerOpened = isOpen && drawer?.current === DrawerNode.User;
   if (user) {
@@ -59,16 +61,11 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       fontWeight="bold"
     >
       <NavigationLink
-        link={{
-          en: 'en/login',
-          fr: 'fr/login',
-          it: 'it/login',
-          de: 'de/login',
-        }}
         translationKey="header.login"
         fontWeight="bold"
         leftIcon={<Avatar />}
         hideTextBelow="sm"
+        onClick={onLogin}
       />
     </HStack>
   );

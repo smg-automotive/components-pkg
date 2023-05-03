@@ -18,6 +18,7 @@ export interface NavigationLinkProps {
   color?: string;
   leftIcon?: ReactNode;
   hideTextBelow?: BreakpointName;
+  onClick?: () => void;
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({
@@ -29,6 +30,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   color = 'gray.900',
   leftIcon,
   hideTextBelow,
+  onClick,
 }) => {
   const { t, language } = useI18n();
 
@@ -39,6 +41,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
       fontWeight={fontWeight}
       color={color}
       leftIcon={leftIcon}
+      onClick={onClick}
     >
       {translationKey && (
         <Hide below={hideTextBelow}>
