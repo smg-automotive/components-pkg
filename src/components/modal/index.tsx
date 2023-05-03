@@ -24,6 +24,7 @@ interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
+  size?: 'full' | 'md';
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -32,13 +33,14 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   secondaryActionButton,
   children,
   motionPreset = 'scale',
+  size = 'md',
   ...modalProps
 }) => {
   return (
     <ChakraModal
       isCentered
       motionPreset={motionPreset}
-      size={{ xs: 'full', sm: 'md' }}
+      size={size === 'md' ? { xs: 'full', sm: 'md' } : 'full'}
       {...modalProps}
     >
       <ModalOverlay />
