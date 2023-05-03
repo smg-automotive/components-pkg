@@ -1,3 +1,4 @@
+export { default as AbsoluteCenter } from './absoluteCenter';
 export { default as Accordion } from './accordion';
 export { default as AccordionButton } from './accordion/AccordionButton';
 export { default as AccordionPanel } from './accordion/AccordionPanel';
@@ -40,7 +41,9 @@ export { default as ListItem } from './list/ListItem';
 export { default as Menu } from './menu';
 export { default as MissingImage } from './missingImage';
 export { default as Pagination } from './pagination';
-export { PopoverFilter } from './popoverFilter';
+export { PopoverFilter } from './filterPatterns/popover';
+export { ModalFilter } from './filterPatterns/modal';
+export { FilterHeading } from './filterPatterns/Heading';
 export { default as Radio } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';

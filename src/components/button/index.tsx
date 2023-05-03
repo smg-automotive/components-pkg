@@ -25,7 +25,7 @@ type SharedProps = {
   children: ReactNode;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
-  onClick?: () => void;
+  onClick?: ChakraButtonProps['onClick'];
 } & Pick<ChakraButtonProps, 'width' | 'isDisabled'> &
   Never<LinkButton> &
   Never<IconButton>;
@@ -41,7 +41,7 @@ type ButtonType = Overwrite<
   SharedProps,
   {
     type?: 'button';
-    onClick: () => void;
+    onClick: Exclude<ChakraButtonProps['onClick'], undefined>;
   }
 >;
 

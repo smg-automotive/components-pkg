@@ -17,7 +17,7 @@ type SharedProps = {
   onFocus?: FocusEventHandler<HTMLInputElement>;
   autoFocus?: boolean;
   name: string;
-  type?: 'text' | 'number';
+  type?: 'text' | 'number' | 'password';
 };
 
 type ControlledInputProps = {

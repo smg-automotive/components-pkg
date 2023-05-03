@@ -1,17 +1,17 @@
 import React from 'react';
 import { createIcon } from '@chakra-ui/react';
 
-export const ChevronUpSmallIcon = createIcon({
-  displayName: 'ChevronUpSmall',
+export const TrashIcon = createIcon({
+  displayName: 'Trash',
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title>Chevron up small icon</title>
+      <title>Trash icon</title>
       <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="m5 15 1.415 1.415L12 10.83l5.589 5.581L18.999 15 12 8l-7 7Z"
         fill="currentColor"
+        fillRule="evenodd"
+        d="M21 6v2H7v12h10V10l2-1v13H5V8H3V6h5V2h8v4h5ZM10 4v2h4V4h-4Zm1 6v7l-2 1v-8h2Zm4 0v7l-2 1v-8h2Z"
+        clipRule="evenodd"
       />
     </>
   ),
