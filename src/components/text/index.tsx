@@ -1,19 +1,7 @@
 import React, { FC } from 'react';
 import { Text as ChakraText, TextProps } from '@chakra-ui/react';
 
-type Props = Pick<
-  TextProps,
-  | 'as'
-  | 'children'
-  | 'color'
-  | 'textStyle'
-  | 'textAlign'
-  | 'isTruncated'
-  | 'noOfLines'
-  | 'marginBottom'
->;
-
-const Text: FC<Props> = ({ children, ...chakraProps }) => (
+const Text: FC<TextProps> = ({ children, ...chakraProps }) => (
   <ChakraText {...chakraProps}>{children}</ChakraText>
 );
 
