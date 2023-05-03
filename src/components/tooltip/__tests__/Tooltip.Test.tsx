@@ -1,6 +1,6 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
-import { fireEvent } from '@storybook/testing-library';
 
 import Tooltip from '..';
 
@@ -19,17 +19,20 @@ describe('<Tooltip />', () => {
     expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument();
   });
 
-  it('shows tooltip label on focus in', async () => {
+  it('shows tooltip label on hover', async () => {
     renderWrapper();
-    fireEvent.focusIn(screen.getByTestId('test-tooltip'));
-    expect(await screen.findByText(tooltipLabel)).toBeInTheDocument();
+    userEvent.hover(screen.getByTestId('test-tooltip'));
+    const tooltipLabelElement = await screen.findByText(tooltipLabel);
+    expect(tooltipLabelElement).toBeInTheDocument();
   });
 
-  it('does not show tooltip label on focus out', async () => {
+  it('does not show tooltip label on unhover', async () => {
+    const user = userEvent.setup();
     renderWrapper();
-    fireEvent.focusOut(screen.getByTestId('test-tooltip'));
-    await waitFor(() => {
-      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument();
-    });
+    user.hover(screen.getByTestId('test-tooltip'));
+    user.unhover(screen.getByTestId('test-tooltip'));
+    return waitFor(() =>
+      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument()
+    );
   });
 });
