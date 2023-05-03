@@ -19,7 +19,7 @@
     "apps": {
       "title": "Mobile Apps"
     },
-    "as24": {
+    "autoscout24": {
       "sections": {
         "brand": {
           "insurance": "Car insurance",
@@ -36,7 +36,7 @@
       "smg": "SMG Swiss Marketplace Group"
     },
     "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. All rights reserved. Your partner for second-hand cars - Search & buy cars in the largest car market in Switzerland",
-    "ms24": {
+    "motoscout24": {
       "sections": {
         "brand": {
           "insurance": "Motorbike insurance",
@@ -80,6 +80,88 @@
         "contact": "Media contact",
         "title": "For Media"
       }
+    }
+  },
+  "header": {
+    "assure": "Assure",
+    "carSubscription": "Car subscription",
+    "estimate": "Estimate",
+    "login": "Login",
+    "magazine": "Magazine",
+    "more": "More",
+    "search": "Search",
+    "searchMenu": {
+      "additional": "Additional",
+      "advancedSearch": "Advanced Search",
+      "dealer": "Dealer",
+      "findPartsAndAccessories": "Find Parts & Accessories",
+      "insuranceComparison": "Insurance comparison",
+      "recentSearches": "Recent searches",
+      "searchCars": "Rechercher des véhicules",
+      "searchMerchant": "Search a merchant",
+      "searchMotorcycles": "Search motorcycles",
+      "simpleSearch": "Simple Search (Home)",
+      "vehicleRating": "Vehicle Rating",
+      "vehicles": "Vehicles",
+      "viewedListings": "Viewed listings"
+    },
+    "sell": "Sell",
+    "userMenu": {
+      "accountSettings": "Kontoeinstellungen",
+      "advertisePartsAccessories": "Advertise parts, accessories",
+      "amagServiceLifePool": "AMAG service life pool",
+      "autoRadar": "AutoRadar",
+      "b2bPlattform": "B2B-Plattform",
+      "bookmarks": "Bookmarks",
+      "boosteras24": "Boosteras24",
+      "businessImage": "BusinessImage",
+      "carPark": "Car park",
+      "changePassword": "Change password",
+      "cockpit": "Cockpit",
+      "contactDetails": "Contact details",
+      "contactRequests": "Contact requests",
+      "createAd": "Create Ad",
+      "dealerDashboard": "DealerDashboard",
+      "dealerInfoSystem": "DealerInfoSystem",
+      "demandCalculator": "Demand Calculator",
+      "dmsLog": "DmsLog",
+      "editPhotobar": "Edit photobar",
+      "editUser": "Edit user",
+      "efagServiceLifePool": "EFAG service life pool",
+      "emailAddress": "Email address",
+      "hci": "HCI",
+      "importInfo": "ImportInfo",
+      "infoPage": "InfoPage",
+      "insuranceComparison": "Insurance comparison",
+      "leasing": "Leasing",
+      "logout": "Logout",
+      "manageAdditionalTitles": "Manage additional titles",
+      "manageAutoRadar": "Manage AutoRadar",
+      "manageNotes": "Manage Notes",
+      "manageVehicles": "Manage vehicle",
+      "marketPriceCheck": "MarketPriceCheck",
+      "motorcyclePark": "Motorcycle park",
+      "myMotorcycles": "My Motorcycles",
+      "myMotorcyclesOld": "My Motorcycle (old)",
+      "myVehcilesOld": "My Vehicles (old)",
+      "myVehicles": "My Vehicles",
+      "onlineAdvertising": "Online Advertising",
+      "openingHours": "Opening hours",
+      "optimizerPro": "OptimizerPro",
+      "printingCenter": "Printing center",
+      "qualityLogo": "Quality logo",
+      "requisitions": "Requisitions",
+      "reviews": "Reviews",
+      "settings": "Ideas",
+      "shoppingCard": "Shopping card",
+      "statistics": "The statistics",
+      "testDrives": "Test drives",
+      "toolsForPurchasing": "Tools for purchasing",
+      "toolsForSelling": "Tools for Selling",
+      "topCars": "TopCars",
+      "topListingPro": "TopListing Pro",
+      "topMotos": "TopMotos",
+      "userLanguage": "User language"
     }
   }
 }

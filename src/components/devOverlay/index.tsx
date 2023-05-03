@@ -39,7 +39,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
   activeTheme,
   displayTranslationKeys = false,
 }) => {
-  const isThemeSwitcherChecked = 'as24' !== activeTheme;
+  const isThemeSwitcherChecked = Brand.AutoScout24 !== activeTheme;
 
   return (
     <Box
@@ -68,7 +68,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
       </Heading>
       {!variables || variables.length === 0 ? null : (
         <TableContainer>
-          <Table variant="simple">
+          <Table variant="unstyled" size="sm">
             <Thead>
               <Tr>
                 <Th>Name</Th>

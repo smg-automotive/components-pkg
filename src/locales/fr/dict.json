@@ -19,7 +19,7 @@
     "apps": {
       "title": "App download"
     },
-    "as24": {
+    "autoscout24": {
       "sections": {
         "brand": {
           "insurance": "Assurances voiture",
@@ -36,7 +36,7 @@
       "smg": "SMG Swiss Marketplace Group"
     },
     "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Votre partenaire pour voitures d'occasion - recherche & achat de véhicules sur le plus grand marché automobile de Suisse",
-    "ms24": {
+    "motoscout24": {
       "sections": {
         "brand": {
           "insurance": "Assurances moto",
@@ -80,6 +80,89 @@
         "contact": "Contact médias",
         "title": "Médias"
       }
+    }
+  },
+  "header": {
+    "assure": "Assurer",
+    "carSubscription": "Auto-Abo",
+    "estimate": "Estimer",
+    "login": "Rapport",
+    "magazine": "Magazin",
+    "more": "Plus",
+    "search": "Rechercher",
+    "searchMenu": {
+      "additional": "Autres",
+      "advancedSearch": "Recherche avancée",
+      "dealer": "Points de vente",
+      "findPartsAndAccessories": "Pièces et accessoires",
+      "insuranceComparison": "Comparaison d’assurances",
+      "recentSearches": "Dernières recherches",
+      "searchCars": "Rechercher des véhicules",
+      "searchMerchant": "Rechercher point de vente",
+      "searchMotorcycles": "Rechercher des motos",
+      "simpleSearch": "Recherche simple (page d'accueil)",
+      "vehicleRating": "Evaluer le véhicule",
+      "vehicles": "Véhicules",
+      "viewedListings": "Annonces vues"
+    },
+    "sell": "Vendre",
+    "userMenu": {
+      "accountSettings": "Paramétrage du compte",
+      "advertisePartsAccessories": "Insérer des pièces détachées",
+      "amagServiceLifePool": "AMAG Pool",
+      "autoRadar": "AutoRadar",
+      "b2bPlattform": "Plate-forme B2B",
+      "bookmarks": "Favoris",
+      "boosteras24": "Booster as24",
+      "businessImage": "BusinessImage",
+      "carPark": "Parc de véhicules",
+      "changePassword": "Changer le mot de passe",
+      "cockpit": "Cockpit",
+      "contactDetails": "Informations de contact",
+      "contactRequests": "Demandes de contact",
+      "createAd": "Créer une annonce",
+      "dealerDashboard": "DealerDashboard",
+      "dealerInfoSystem": "DealerInfoSystem",
+      "demandCalculator": "Calculateur de la demande",
+      "dmsLog": "DmsLog",
+      "editPhotobar": "Modifier la Photobar",
+      "editUser": "Modifier utilisateur",
+      "efagServiceLifePool": "EFAG Pool",
+      "emailAddress": "Adresse e-mail",
+      "hci": "HCI",
+      "importInfo": "ImportInfo",
+      "infoPage": "InfoPage",
+      "insuranceComparison": "Comparaison d’assurances",
+      "leasing": "Leasing",
+      "logout": "Logout",
+      "manageAdditionalTitles": "Gérer titre complémentaire",
+      "manageAutoRadar": "Gérer AutoRadar",
+      "manageNotes": "Gérer les remarques",
+      "manageVehicles": "Gérer les véhicules",
+      "marketPriceCheck": "MarketPriceCheck",
+      "motorcyclePark": "Parc de motos",
+      "myMotorcycles": "Mes motos",
+      "myMotorcyclesOld": "Mes motos (anc. vue)",
+      "myVehcilesOld": "Mes véhicules (anc. vue)",
+      "myVehicles": "Mes véhicules",
+      "onlineAdvertising": "Publicité online",
+      "openingHours": "Heures d'ouverture",
+      "optimizerPro": "OptimizerPro",
+      "printableList": "Liste Imprimable",
+      "printingCenter": "Centre d'impression",
+      "qualityLogo": "Sigle de qualité",
+      "requisitions": "Profil de recherche",
+      "reviews": "Évaluations",
+      "settings": "Préférences",
+      "shoppingCard": "Panier",
+      "statistics": "Statistiques",
+      "testDrives": "Essais de conduite",
+      "toolsForPurchasing": "Outils pour l'achat",
+      "toolsForSelling": "Outils pour la vente",
+      "topCars": "TopCars",
+      "topListingPro": "TopListing Pro",
+      "topMotos": "TopMotos",
+      "userLanguage": "Langue de l'utilisateur"
     }
   }
 }

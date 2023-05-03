@@ -1,3 +1,4 @@
+export { default as AbsoluteCenter } from './absoluteCenter';
 export { default as Accordion } from './accordion';
 export { default as AccordionButton } from './accordion/AccordionButton';
 export { default as AccordionPanel } from './accordion/AccordionPanel';
@@ -40,7 +41,9 @@ export { default as ListItem } from './list/ListItem';
 export { default as Menu } from './menu';
 export { default as MissingImage } from './missingImage';
 export { default as Pagination } from './pagination';
-export { PopoverFilter } from './popoverFilter';
+export { PopoverFilter } from './filterPatterns/popover';
+export { ModalFilter } from './filterPatterns/modal';
+export { FilterHeading } from './filterPatterns/Heading';
 export { default as Radio } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';
@@ -54,7 +57,7 @@ export { default as Spinner } from './spinner';
 export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
-export { default as Footer } from './footer';
+export { default as Footer } from './navigation/footer';
 export { default as TopListingBadge } from './topListingBadge';
 export { default as AppLayout } from './layout/app/AppLayout';
 export { default as AppLayoutHeader } from './layout/app/Header';
@@ -66,6 +69,7 @@ export { default as TabList } from './tab/TabList';
 export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
+export { default as HeaderNavigation } from './navigation/header';
 
 export {
   default as ThemeProvider,
@@ -77,3 +81,4 @@ export * from './heading';
 export * from './icons';
 export * from './card';
 export * from './layout';
+export * from './table';

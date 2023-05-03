@@ -15,9 +15,9 @@ const BreakpointShowCase: FC = () => {
   const theme = useTheme();
   return (
     <TableContainer>
-      <Table variant="simple">
+      <Table>
         <Thead>
-          <Tr border="1px" borderColor="gray.300">
+          <Tr>
             <Th>Name</Th>
             <Th>Value</Th>
             <Th>Pixels</Th>
@@ -25,7 +25,7 @@ const BreakpointShowCase: FC = () => {
         </Thead>
         {Object.entries(theme.breakpoints).map(([name, breakpoint]) => {
           return (
-            <Tr key={name} border="1px" borderColor="gray.300">
+            <Tr key={name}>
               <Td>{name}</Td>
               <Td>{breakpoint as string}</Td>
               <Td>{`${convertRemEmToPx(breakpoint as string)}px`}</Td>
