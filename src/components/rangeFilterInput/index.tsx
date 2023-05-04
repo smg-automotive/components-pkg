@@ -11,6 +11,7 @@ export type RangeFilterInputField<Name> = {
   name: Name;
   value?: number;
   placeholder?: string;
+  ariaLabel?: string;
 };
 
 export type ChangeCallback<Name> = {

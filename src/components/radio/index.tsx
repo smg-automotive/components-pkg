@@ -1,5 +1,5 @@
 import React, { ChangeEvent, forwardRef } from 'react';
-import { Radio as ChakraRadio } from '@chakra-ui/react';
+import { Radio as ChakraRadio, RadioGroup } from '@chakra-ui/react';
 
 interface Props {
   name?: string;
@@ -45,3 +45,4 @@ const Radio = forwardRef<HTMLInputElement, Props>(
 Radio.displayName = 'Radio';
 
 export default Radio;
+export { RadioGroup };

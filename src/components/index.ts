@@ -44,7 +44,7 @@ export { default as Pagination } from './pagination';
 export { PopoverFilter } from './filterPatterns/popover';
 export { ModalFilter } from './filterPatterns/modal';
 export { FilterHeading } from './filterPatterns/Heading';
-export { default as Radio } from './radio';
+export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';
 export { default as Section } from './section';
