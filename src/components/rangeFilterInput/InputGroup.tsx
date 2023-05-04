@@ -53,6 +53,7 @@ function InputGroup<Name extends string>({
         placeholder={inputProps.placeholder ? inputProps.placeholder : ''}
         fontSize="body"
         autoFocus={refocus}
+        aria-label={inputProps.ariaLabel}
       />
     </NumberInput>
   );
