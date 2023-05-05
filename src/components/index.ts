@@ -44,7 +44,7 @@ export { default as Pagination } from './pagination';
 export { PopoverFilter } from './filterPatterns/popover';
 export { ModalFilter } from './filterPatterns/modal';
 export { FilterHeading } from './filterPatterns/Heading';
-export { default as Radio } from './radio';
+export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';
 export { default as Section } from './section';
@@ -69,7 +69,7 @@ export { default as TabList } from './tab/TabList';
 export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
-export { default as HeaderNavigation } from './navigation/header';
+export { default as HeaderNavigation, UserType } from './navigation/header';
 
 export {
   default as ThemeProvider,
