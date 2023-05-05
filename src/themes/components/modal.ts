@@ -88,7 +88,10 @@ const variants = {
     },
     header: baseStyleHeader,
     closeButton: baseStyleCloseButton,
-    body: baseStyleBody,
+    body: {
+      p: '0',
+      flex: '1',
+    },
     footer: baseStyleFooter,
     dialog: {
       maxW: '100vw',
