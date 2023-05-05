@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strict": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "module": "esnext",
     "declaration": true,
     "declarationMap": true,
@@ -17,7 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": ["dist", "node_modules"],
   "include": ["src"]

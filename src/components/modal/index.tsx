@@ -10,7 +10,7 @@ import {
   ModalProps,
 } from '@chakra-ui/react';
 
-import { H3, H4 } from '../heading';
+import { H3 } from '../heading';
 import Divider from '../divider';
 import Button from '../button';
 
@@ -22,7 +22,6 @@ type ActionButton = {
 interface Props
   extends Pick<ModalProps, 'isOpen' | 'onClose' | 'motionPreset'> {
   title?: string;
-  subtitle?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
   variant?: 'fullScreenGallery' | 'base';
@@ -35,7 +34,6 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   children,
   motionPreset = 'scale',
   variant = 'base',
-  subtitle,
   ...modalProps
 }) => {
   return (
@@ -48,23 +46,13 @@ const Modal: FC<PropsWithChildren<Props>> = ({
     >
       <ModalOverlay />
       <ModalContent>
-        {title && variant === 'base' && (
+        {title && (
           <>
             <ModalHeader>
               <H3>{title}</H3>
               <ModalCloseButton />
             </ModalHeader>
             <Divider />
-          </>
-        )}
-
-        {title && subtitle && variant === 'fullScreenGallery' && (
-          <>
-            <ModalHeader>
-              <H3>{title}</H3>
-              <H4>{subtitle}</H4>
-              <ModalCloseButton />
-            </ModalHeader>
           </>
         )}
 
