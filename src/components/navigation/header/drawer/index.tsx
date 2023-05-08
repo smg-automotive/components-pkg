@@ -32,7 +32,6 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           data-testid="drawer-body"
           py={{ md: '2xl' }}
           px={{ md: 'xs' }}
-          maxWidth="container.xl"
           width="full"
           margin={{ xl: 'auto' }}
         >
