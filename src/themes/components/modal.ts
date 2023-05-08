@@ -72,6 +72,36 @@ const baseStyle = definePartsStyle({
   footer: baseStyleFooter,
 });
 
+const variants = {
+  base: baseStyle,
+  fullScreen: {
+    overlay: {
+      bg: 'black',
+      zIndex: 'modal',
+      width: '100vw',
+    },
+    dialogContainer: {
+      width: '100vw',
+      color: 'white',
+      zIndex: 'modal',
+    },
+    header: baseStyleHeader,
+    closeButton: baseStyleCloseButton,
+    body: {
+      p: '0',
+      flex: '1',
+    },
+    footer: baseStyleFooter,
+    dialog: {
+      maxW: '100vw',
+      minH: '100vh',
+      bg: 'black',
+      my: '0',
+      borderRadius: '0',
+    },
+  },
+};
+
 function getSize(value: string) {
   if (value === 'full') {
     return definePartsStyle({
@@ -94,7 +124,7 @@ const sizes = {
 };
 
 export default defineMultiStyleConfig({
-  baseStyle,
+  variants,
   sizes,
   defaultProps: { size: 'md' },
 }) as ComponentStyleConfig;
