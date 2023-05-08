@@ -16,7 +16,7 @@ const BorderRadiusShowcase: FC = () => {
             >
               {name}
             </Button>
-            <Text mt={2}>{radii as string}</Text>
+            <Text mt="xs">{radii as string}</Text>
           </Flex>
         );
       })}

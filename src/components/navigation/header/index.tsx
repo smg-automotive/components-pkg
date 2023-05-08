@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, useMemo } from 'react';
+import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
@@ -75,6 +75,16 @@ const Navigation: FC<NavigationProps> = ({
     drawerNodeItems: config.drawerItems,
   });
 
+  // We can't pass `onClose` to logout callback when instancing the config
+  // because config is needed to call `useNavigationDrawer` hook
+  // which returns `onClose` callback
+  // that's why we need to call onClose like this
+  useEffect(() => {
+    if (!user?.id) {
+      onClose();
+    }
+  }, [user?.id, onClose]);
+
   return (
     <TranslationProvider language={language} scopes={['header']}>
       <Box
@@ -89,7 +99,7 @@ const Navigation: FC<NavigationProps> = ({
           maxWidth="container.xl"
           height={config.menuHeight}
           alignItems="center"
-          margin={{ xl: 'auto' }}
+          margin="auto"
           display="flex"
           justifyContent="space-between"
           px={{ base: 'sm', xs: 'lg' }}
