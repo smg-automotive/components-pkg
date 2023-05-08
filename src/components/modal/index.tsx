@@ -24,7 +24,7 @@ interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreenGallery' | 'base';
+  variant?: 'fullScreen' | 'base';
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({

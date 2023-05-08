@@ -74,7 +74,7 @@ const baseStyle = definePartsStyle({
 
 const variants = {
   base: baseStyle,
-  fullScreenGallery: {
+  fullScreen: {
     overlay: {
       bg: 'black',
       zIndex: 'modal',
