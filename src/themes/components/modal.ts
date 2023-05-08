@@ -78,7 +78,6 @@ const variants = {
     overlay: {
       bg: 'black',
       zIndex: 'modal',
-      opacity: `${opacity[40]} !important`,
       width: '100vw',
     },
     dialogContainer: {
@@ -95,7 +94,7 @@ const variants = {
     footer: baseStyleFooter,
     dialog: {
       maxW: '100vw',
-      minH: '$100vh',
+      minH: '100vh',
       bg: 'black',
       my: '0',
       borderRadius: '0',
