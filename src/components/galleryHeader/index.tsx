@@ -34,7 +34,6 @@ const GalleryHeader: FC<GalleryHeaderProps> = ({
         {({ t }) => (
           <Box
             color="white"
-            bg="black"
             px="2xl"
             py="lg"
             position={{
