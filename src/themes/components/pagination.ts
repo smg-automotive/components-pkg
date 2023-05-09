@@ -20,6 +20,7 @@ const baseStyle = {
     minWidth: 'md',
     height: 'md',
     borderRadius: 'sm',
+    padding: 'sm',
     _hover: {
       backgroundColor: 'gray.100',
     },
