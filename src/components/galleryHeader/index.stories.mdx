@@ -1,0 +1,30 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import GalleryHeader from './index';
+
+<Meta title="Components/Navigation/GalleryHeader" component={GalleryHeader} />
+
+export const Template = (args) => (
+  <GalleryHeader
+    currentSlide={2}
+    slidesCount={3}
+    onClose={() => null}
+    {...args}
+  />
+);
+
+# GalleryHeader
+
+## Overview
+
+<Canvas>
+  <Story
+    name="GalleryHeader"
+    args={{
+      title: 'Gallery Header',
+      subtitle: 'Subtitle',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
