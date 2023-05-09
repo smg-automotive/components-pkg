@@ -8,17 +8,26 @@ import SimpleGrid from 'src/components/simpleGrid';
 import Show from 'src/components/show';
 import Link from 'src/components/link';
 import { CloseIcon } from 'src/components/icons';
-import { H1, H2 } from 'src/components/heading';
+
 import Box from 'src/components/box';
 
-const GalleryHeader: FC<{
+interface GalleryHeaderProps {
   currentSlide: number;
   slidesCount: number;
   onClose: () => void;
-  title?: string;
-  subtitle?: string;
+  titleComponent: () => React.ReactNode;
   language: Language;
-}> = ({ currentSlide, slidesCount, onClose, title, subtitle, language }) => {
+  businessLinkComponent?: () => React.ReactNode;
+}
+
+const GalleryHeader: FC<GalleryHeaderProps> = ({
+  currentSlide,
+  slidesCount,
+  onClose,
+  titleComponent,
+  language,
+  businessLinkComponent,
+}) => {
   return (
     <TranslationProvider language={language} scopes={['galleryHeader']}>
       <I18nContext.Consumer>
@@ -44,12 +53,7 @@ const GalleryHeader: FC<{
               }}
               alignItems="center"
             >
-              <Show above="md">
-                <>
-                  {title && <H1 textStyle="body-large">title</H1>}
-                  {subtitle && <H2 textStyle="body-large">subtitle</H2>}
-                </>
-              </Show>
+              <Show above="md">{titleComponent()}</Show>
               <Box
                 textAlign={{
                   base: 'left',
@@ -67,6 +71,7 @@ const GalleryHeader: FC<{
                 </Link>
               </Box>
             </SimpleGrid>
+            {businessLinkComponent ? businessLinkComponent() : null}
           </Box>
         )}
       </I18nContext.Consumer>
