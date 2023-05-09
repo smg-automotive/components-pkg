@@ -126,5 +126,5 @@ const sizes = {
 export default defineMultiStyleConfig({
   variants,
   sizes,
-  defaultProps: { size: 'md' },
+  defaultProps: { size: 'md', variant: 'base' },
 }) as ComponentStyleConfig;
