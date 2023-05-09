@@ -23,6 +23,13 @@ export const Template = (args) => (
     args={{
       title: 'Gallery Header',
       subtitle: 'Subtitle',
+      language: 'de',
+    }}
+    argTypes={{
+      language: {
+        options: ['de', 'fr', 'it', 'en'],
+        control: 'select',
+      },
     }}
   >
     {Template.bind({})}
