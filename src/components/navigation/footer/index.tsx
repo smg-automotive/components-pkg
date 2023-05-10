@@ -56,7 +56,7 @@ const Footer: FC<FooterProps> = ({
           <Center>
             <Container
               width="full"
-              maxWidth="container.xl"
+              maxWidth="container.2xl"
               paddingX={{ base: 0, md: 'lg' }}
             >
               <FooterSectionGrid config={config} />

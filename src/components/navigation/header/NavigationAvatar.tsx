@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { HStack } from '@chakra-ui/react';
+import { useI18n } from '@smg-automotive/i18n-pkg';
+import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
 
-import NavigationLink from './links/NavigationLink';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/drawerNodeItems';
@@ -30,6 +30,9 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   onLogin,
 }) => {
   const isDrawerOpened = isOpen && drawer?.current === DrawerNode.User;
+  const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
+  const { t } = useI18n();
+
   if (user) {
     return (
       <HStack
@@ -54,19 +57,17 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
 
   return (
     <HStack
-      spacing="xs"
-      cursor="pointer"
-      _hover={{ color: 'blue.700' }}
-      color="gray.900"
+      onClick={onLogin}
+      __css={linkStyles.link}
       fontWeight="bold"
+      color="gray.900"
+      position="relative"
+      top="1px"
     >
-      <NavigationLink
-        translationKey="header.login"
-        fontWeight="bold"
-        leftIcon={<Avatar />}
-        hideTextBelow="sm"
-        onClick={onLogin}
-      />
+      <Hide below="sm" marginRight="xs">
+        {t('header.login')}
+      </Hide>
+      <Box as={Avatar} marginLeft="2px" />
     </HStack>
   );
 };
