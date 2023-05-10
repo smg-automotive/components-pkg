@@ -34,7 +34,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           px={{ md: 'xs' }}
           maxWidth="container.2xl"
           width="full"
-          margin={{ xl: 'auto' }}
+          margin={'auto'}
         >
           <Grid
             height="full"
