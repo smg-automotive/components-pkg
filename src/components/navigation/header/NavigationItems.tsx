@@ -47,6 +47,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
           width={{ sm: '124px', base: '101px' }}
           height={{ sm: '30px', base: 'sm' }}
           src={logo}
+          alt="Platform logo"
         />
       </Link>
       <NavigationItem
