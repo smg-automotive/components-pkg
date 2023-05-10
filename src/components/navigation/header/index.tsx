@@ -96,6 +96,7 @@ const Navigation: FC<NavigationProps> = ({
         backgroundColor="white"
       >
         <Box
+          maxWidth="container.2xl"
           height={config.menuHeight}
           alignItems="center"
           margin="auto"
