@@ -8,6 +8,7 @@ import { autoScout24Theme, motoScout24Theme } from 'src/themes';
 export type Props = {
   // Theme to use
   theme: Brand;
+  cssVarsRoot?: string;
 };
 
 const themes = {
@@ -15,9 +16,17 @@ const themes = {
   [Brand.MotoScout24]: motoScout24Theme,
 };
 
-const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => {
+const ThemeProvider: FC<PropsWithChildren<Props>> = ({
+  theme,
+  children,
+  cssVarsRoot,
+}) => {
   return (
-    <ChakraProvider theme={themes[theme]} resetCSS={true}>
+    <ChakraProvider
+      theme={themes[theme]}
+      resetCSS={true}
+      cssVarsRoot={cssVarsRoot}
+    >
       {children}
     </ChakraProvider>
   );
