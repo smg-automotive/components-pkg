@@ -33,7 +33,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           py={{ md: '2xl' }}
           px={{ md: 'xs' }}
           width="full"
-          margin={{ xl: 'auto' }}
+          margin={'auto'}
         >
           <Grid
             height="full"
