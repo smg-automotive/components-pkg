@@ -8,7 +8,7 @@ export const ChevronUpLargeIcon = createIcon({
     <>
       <title>Chevron up large icon</title>
       <path
-        d="M19.59 16.41L12 8.83L4.42 16.41L3 15L12 6L21 15L19.59 16.41Z"
+        d="M5 15L6.415 16.415L12.0002 10.8298L17.5888 16.4111L18.9999 14.9999L12 8L5 15Z"
         fill="currentColor"
       />
     </>
