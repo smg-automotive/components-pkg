@@ -60,7 +60,6 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       onClick={onLogin}
       __css={linkStyles.link}
       fontWeight="bold"
-      color="gray.900"
       position="relative"
       top="1px"
     >
