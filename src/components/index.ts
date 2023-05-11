@@ -70,6 +70,7 @@ export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
 export { default as HeaderNavigation, UserType } from './navigation/header';
+export { default as GalleryHeader } from './galleryHeader';
 
 export {
   default as ThemeProvider,

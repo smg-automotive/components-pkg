@@ -82,6 +82,9 @@
       }
     }
   },
+  "galleryHeader": {
+    "imageCount": "{{x}} of {{of}}"
+  },
   "header": {
     "assure": "Assure",
     "carSubscription": "Car subscription",

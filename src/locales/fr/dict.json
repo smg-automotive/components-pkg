@@ -82,6 +82,9 @@
       }
     }
   },
+  "galleryHeader": {
+    "imageCount": "{{x}} de {{of}}"
+  },
   "header": {
     "assure": "Assurer",
     "carSubscription": "Auto-Abo",
