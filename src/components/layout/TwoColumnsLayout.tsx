@@ -7,7 +7,7 @@ import { ArrowLeftIcon } from '../icons';
 import BaseLayout from './BaseLayout';
 import BaseGridLayout, { repeatArea } from './BaseGrid';
 
-export type ColumSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+export type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 interface Props {
   header?: ReactNode;
@@ -18,11 +18,11 @@ interface Props {
   };
   left: {
     content: ReactNode;
-    columns?: ColumSize;
+    columns?: ColumnSize;
   };
   right: {
     content: ReactNode;
-    columns?: ColumSize;
+    columns?: ColumnSize;
   };
 }
 
