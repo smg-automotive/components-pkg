@@ -17,6 +17,13 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
       sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
       sellerAddress: `2540 Grenchen (SO)`,
       image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
+      callToAction: (
+        <Box marginBottom="xl">
+          <Button variant="secondary" onClick={() => ({})} width="full">
+            View vehicle
+          </Button>
+        </Box>
+      ),
     },
     children: (
       <>
@@ -39,11 +46,6 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
       },
     },
     header: {
-      table: {
-        disable: true,
-      },
-    },
-    callToAction: {
       table: {
         disable: true,
       },
@@ -123,16 +125,9 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
 
 <Canvas>
   <Story
-    name="Without header & with CTA"
+    name="Without header"
     args={{
       title: 'Nachricht an den Verkäufer',
-      callToAction: (
-        <Box marginBottom="xl">
-          <Button variant="secondary" onClick={() => ({})} width="full">
-            View vehicle
-          </Button>
-        </Box>
-      ),
     }}
   >
     {Template.bind({})}

@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
-import TwoColumnsLayout from './TwoColumnsLayout';
+import TwoColumnsLayout, { ColumSize } from './TwoColumnsLayout';
 
 interface Props {
   title?: string | ReactNode;
@@ -12,7 +12,8 @@ interface Props {
   };
   vehicle: VehicleReferenceProps;
   header?: ReactNode;
-  callToAction?: ReactNode;
+  leftColumnSize?: ColumSize;
+  rightColumnSize?: ColumSize;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
@@ -21,7 +22,8 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   vehicle,
   header,
   children,
-  callToAction,
+  leftColumnSize = 8,
+  rightColumnSize = 4,
 }) => {
   const contentMargin = { md: '2xl' };
 
@@ -32,11 +34,11 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       title={title ? <Box marginRight={contentMargin}>{title}</Box> : null}
       left={{
         content: <Box marginRight={contentMargin}>{children}</Box>,
-        columns: 8,
+        columns: leftColumnSize,
       }}
       right={{
-        content: <VehicleReference {...vehicle} callToAction={callToAction} />,
-        columns: 4,
+        content: <VehicleReference {...vehicle} />,
+        columns: rightColumnSize,
       }}
     />
   );
