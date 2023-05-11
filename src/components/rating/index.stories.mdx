@@ -1,0 +1,27 @@
+import { useState } from 'react';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Rating from './index.tsx';
+
+<Meta title="Components/Rating" component={Rating} />
+
+export const Template = (args) => {
+  return <Rating {...args} />;
+};
+
+# Radio
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      rating: 4.2,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Overview" />
