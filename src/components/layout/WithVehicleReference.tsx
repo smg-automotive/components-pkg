@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
+import { sizes } from 'src/themes/shared/sizes';
+
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
 import TwoColumnsLayout, { ColumnSize } from './TwoColumnsLayout';
-
 interface Props {
   title?: string | ReactNode;
   backLink?: {
@@ -14,6 +15,7 @@ interface Props {
   header?: ReactNode;
   leftColumnSize?: ColumnSize;
   rightColumnSize?: ColumnSize;
+  maxContentWidth?: keyof typeof sizes.container;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
@@ -24,6 +26,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   children,
   leftColumnSize = 8,
   rightColumnSize = 4,
+  maxContentWidth = 'lg',
 }) => {
   const contentMargin = { md: '2xl' };
 
@@ -40,6 +43,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
         content: <VehicleReference {...vehicle} />,
         columns: rightColumnSize,
       }}
+      maxContentWidth={maxContentWidth}
     />
   );
 };

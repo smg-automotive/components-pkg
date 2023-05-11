@@ -2,6 +2,8 @@ import React, { FC, ReactNode } from 'react';
 
 import { GridItem, Heading } from '@chakra-ui/react';
 
+import { sizes } from 'src/themes/shared/sizes';
+
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
 import BaseLayout from './BaseLayout';
@@ -24,6 +26,7 @@ interface Props {
     content: ReactNode;
     columns?: ColumnSize;
   };
+  maxContentWidth?: keyof typeof sizes.container;
 }
 
 const TwoColumnsLayout: FC<Props> = ({
@@ -32,9 +35,10 @@ const TwoColumnsLayout: FC<Props> = ({
   backLink,
   left: { content: leftContent, columns: leftColumns = 6 },
   right: { content: rightContent, columns: rightColumns = 6 },
+  maxContentWidth = 'lg',
 }) => {
   return (
-    <BaseLayout header={header} maxContentWidth="lg">
+    <BaseLayout header={header} maxContentWidth={maxContentWidth}>
       <BaseGridLayout
         templateAreas={{
           '2xs': `"backlink" ${
