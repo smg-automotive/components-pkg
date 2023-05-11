@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
-import TwoColumnsLayout, { ColumSize } from './TwoColumnsLayout';
+import TwoColumnsLayout, { ColumnSize } from './TwoColumnsLayout';
 
 interface Props {
   title?: string | ReactNode;
@@ -12,8 +12,8 @@ interface Props {
   };
   vehicle: VehicleReferenceProps;
   header?: ReactNode;
-  leftColumnSize?: ColumSize;
-  rightColumnSize?: ColumSize;
+  leftColumnSize?: ColumnSize;
+  rightColumnSize?: ColumnSize;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
