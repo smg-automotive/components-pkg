@@ -1,5 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box } from '@chakra-ui/react';
 
+import Button from '../button';
 import SimpleHeader from '../simpleHeader';
 import Input from '../input';
 import FormControl from '../formControl';
@@ -9,12 +11,6 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
   title="Layout/Pages/Layout with vehicle reference"
   component={LayoutWithVehicleReference}
   args={{
-    header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
-    ),
     vehicle: {
       vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
       price: `CHF 23'900.–`,
@@ -47,6 +43,11 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
         disable: true,
       },
     },
+    callToAction: {
+      table: {
+        disable: true,
+      },
+    },
   }}
   parameters={{
     layout: 'fullscreen',
@@ -64,6 +65,12 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
     name="With title"
     args={{
       title: 'Nachricht an den Verkäufer',
+      header: (
+        <SimpleHeader
+          title="I am a simple header!"
+          url="https://www.autoscout24.ch/de"
+        />
+      ),
     }}
   >
     {Template.bind({})}
@@ -82,6 +89,12 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
         text: 'Back',
         url: 'https://www.autoscout24.ch/de',
       },
+      header: (
+        <SimpleHeader
+          title="I am a simple header!"
+          url="https://www.autoscout24.ch/de"
+        />
+      ),
     }}
   >
     {Template.bind({})}
@@ -93,7 +106,37 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
 ## Without back link and title
 
 <Canvas>
-  <Story name="Without back link and title">{Template.bind({})}</Story>
+  <Story
+    name="Without back link and title"
+    args={{
+      header: (
+        <SimpleHeader
+          title="I am a simple header!"
+          url="https://www.autoscout24.ch/de"
+        />
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Without header & with CTA"
+    args={{
+      title: 'Nachricht an den Verkäufer',
+      callToAction: (
+        <Box marginBottom="xl">
+          <Button variant="secondary" onClick={() => ({})} width="full">
+            View vehicle
+          </Button>
+        </Box>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable story="Without back link and title" />

@@ -11,7 +11,8 @@ interface Props {
     url: string;
   };
   vehicle: VehicleReferenceProps;
-  header: ReactNode;
+  header?: ReactNode;
+  callToAction?: ReactNode;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
@@ -20,6 +21,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   vehicle,
   header,
   children,
+  callToAction,
 }) => {
   const contentMargin = { md: '2xl' };
 
@@ -33,7 +35,7 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
         columns: 8,
       }}
       right={{
-        content: <VehicleReference {...vehicle} />,
+        content: <VehicleReference {...vehicle} callToAction={callToAction} />,
         columns: 4,
       }}
     />
