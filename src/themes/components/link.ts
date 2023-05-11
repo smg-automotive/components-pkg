@@ -36,6 +36,21 @@ const navigationLink: SystemStyleObject = {
   },
 };
 
+const footerLink: SystemStyleObject = {
+  link: {
+    color: 'white',
+    _hover: {
+      textDecoration: 'underline',
+    },
+    _active: {
+      color: 'gray.50',
+    },
+    _visited: {
+      color: 'white',
+    },
+  },
+};
+
 const subNavigationLink: SystemStyleObject = {
   link: {
     color: 'gray.900',
@@ -61,6 +76,7 @@ const Link: ComponentMultiStyleConfig = {
     navigationLink,
     subNavigationLink,
     baseLink,
+    footerLink,
   },
   defaultProps: {
     variant: 'baseLink',
