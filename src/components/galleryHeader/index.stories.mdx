@@ -13,14 +13,13 @@ export const Template = (args) => (
       currentSlide={2}
       slidesCount={3}
       onClose={() => null}
-      titleComponent={() => (
-        <>
-          <H1 textStyle="body-large">Title</H1>
-          <H2 textStyle="body-large">Subtitle</H2>
-        </>
-      )}
       {...args}
-    />
+    >
+      <>
+        <H1 textStyle="body-large">Title</H1>
+        <H2 textStyle="body-large">Subtitle</H2>
+      </>
+    </GalleryHeader>
   </Box>
 );
 

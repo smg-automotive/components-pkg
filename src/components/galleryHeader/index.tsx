@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 import { I18nContext } from '@smg-automotive/i18n-pkg';
 
@@ -15,18 +15,15 @@ interface GalleryHeaderProps {
   currentSlide: number;
   slidesCount: number;
   onClose: () => void;
-  titleComponent: () => React.ReactNode;
   language: Language;
-  businessLinkComponent?: () => React.ReactNode;
 }
 
-const GalleryHeader: FC<GalleryHeaderProps> = ({
+const GalleryHeader: FC<PropsWithChildren<GalleryHeaderProps>> = ({
   currentSlide,
   slidesCount,
   onClose,
-  titleComponent,
   language,
-  businessLinkComponent,
+  children,
 }) => {
   return (
     <TranslationProvider language={language} scopes={['galleryHeader']}>
@@ -52,7 +49,7 @@ const GalleryHeader: FC<GalleryHeaderProps> = ({
               }}
               alignItems="center"
             >
-              <Show above="md">{titleComponent()}</Show>
+              <Show above="md">{children}</Show>
               <Box
                 textAlign={{
                   base: 'left',
@@ -65,12 +62,11 @@ const GalleryHeader: FC<GalleryHeaderProps> = ({
                 })}
               </Box>
               <Box textAlign="right">
-                <Link onClick={() => onClose()}>
+                <Link ariaLabel="Close gallery" onClick={() => onClose()}>
                   <CloseIcon color="white" />
                 </Link>
               </Box>
             </SimpleGrid>
-            {businessLinkComponent ? businessLinkComponent() : null}
           </Box>
         )}
       </I18nContext.Consumer>
