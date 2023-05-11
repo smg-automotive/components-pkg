@@ -18,11 +18,9 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
       sellerAddress: `2540 Grenchen (SO)`,
       image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
       callToAction: (
-        <Box marginBottom="xl">
           <Button variant="secondary" onClick={() => ({})} width="full">
             View vehicle
           </Button>
-        </Box>
       ),
     },
     children: (
@@ -38,8 +36,9 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
         </FormControl>
       </>
     ),
-  }}
-  argTypes={{
+
+}}
+argTypes={{
     children: {
       table: {
         disable: true,
@@ -51,7 +50,7 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
       },
     },
   }}
-  parameters={{
+parameters={{
     layout: 'fullscreen',
   }}
 />
