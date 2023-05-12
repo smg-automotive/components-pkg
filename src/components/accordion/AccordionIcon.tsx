@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useAccordionItemState, useAccordionStyles } from '@chakra-ui/react';
 
-import { ChevronUpLargeIcon } from '../icons';
+import { ChevronUpSmallIcon } from '../icons';
 
 const AccordionIcon: FC = () => {
   const { isOpen } = useAccordionItemState();
@@ -12,7 +12,7 @@ const AccordionIcon: FC = () => {
     ...styles.icon,
   };
 
-  return <ChevronUpLargeIcon __css={iconStyles} />;
+  return <ChevronUpSmallIcon __css={iconStyles} />;
 };
 
 export default AccordionIcon;
