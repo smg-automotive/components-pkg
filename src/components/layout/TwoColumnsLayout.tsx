@@ -2,15 +2,17 @@ import React, { FC, ReactNode } from 'react';
 
 import { GridItem, Heading } from '@chakra-ui/react';
 
+import { sizes } from 'src/themes/shared/sizes';
+
 import Link from '../link';
 import { ArrowLeftIcon } from '../icons';
 import BaseLayout from './BaseLayout';
 import BaseGridLayout, { repeatArea } from './BaseGrid';
 
-type ColumSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+export type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 interface Props {
-  header: ReactNode;
+  header?: ReactNode;
   title?: string | ReactNode;
   backLink?: {
     text: string;
@@ -18,12 +20,13 @@ interface Props {
   };
   left: {
     content: ReactNode;
-    columns?: ColumSize;
+    columns?: ColumnSize;
   };
   right: {
     content: ReactNode;
-    columns?: ColumSize;
+    columns?: ColumnSize;
   };
+  maxContentWidth?: keyof typeof sizes.container;
 }
 
 const TwoColumnsLayout: FC<Props> = ({
@@ -32,9 +35,10 @@ const TwoColumnsLayout: FC<Props> = ({
   backLink,
   left: { content: leftContent, columns: leftColumns = 6 },
   right: { content: rightContent, columns: rightColumns = 6 },
+  maxContentWidth = 'lg',
 }) => {
   return (
-    <BaseLayout header={header} maxContentWidth="lg">
+    <BaseLayout header={header} maxContentWidth={maxContentWidth}>
       <BaseGridLayout
         templateAreas={{
           '2xs': `"backlink" ${
