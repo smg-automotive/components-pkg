@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
+import { sizes } from 'src/themes/shared/sizes';
+
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
-import TwoColumnsLayout from './TwoColumnsLayout';
-
+import TwoColumnsLayout, { ColumnSize } from './TwoColumnsLayout';
 interface Props {
   title?: string | ReactNode;
   backLink?: {
@@ -11,7 +12,10 @@ interface Props {
     url: string;
   };
   vehicle: VehicleReferenceProps;
-  header: ReactNode;
+  header?: ReactNode;
+  leftColumnSize?: ColumnSize;
+  rightColumnSize?: ColumnSize;
+  maxContentWidth?: keyof typeof sizes.container;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
@@ -20,6 +24,9 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   vehicle,
   header,
   children,
+  leftColumnSize = 8,
+  rightColumnSize = 4,
+  maxContentWidth = 'lg',
 }) => {
   const contentMargin = { md: '2xl' };
 
@@ -30,12 +37,13 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       title={title ? <Box marginRight={contentMargin}>{title}</Box> : null}
       left={{
         content: <Box marginRight={contentMargin}>{children}</Box>,
-        columns: 8,
+        columns: leftColumnSize,
       }}
       right={{
         content: <VehicleReference {...vehicle} />,
-        columns: 4,
+        columns: rightColumnSize,
       }}
+      maxContentWidth={maxContentWidth}
     />
   );
 };

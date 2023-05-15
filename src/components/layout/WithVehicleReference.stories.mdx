@@ -1,26 +1,27 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Box } from '@chakra-ui/react';
 
 import SimpleHeader from '../simpleHeader';
 import Input from '../input';
 import FormControl from '../formControl';
+import Button from '../button';
 import LayoutWithVehicleReference from './WithVehicleReference.tsx';
 
 <Meta
   title="Layout/Pages/Layout with vehicle reference"
   component={LayoutWithVehicleReference}
   args={{
-    header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
-    ),
     vehicle: {
       vehicleTitle: 'AUDI A5 Sportback 3.0 TDI quattro S-tronic (Limousine)',
       price: `CHF 23'900.–`,
       sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
       sellerAddress: `2540 Grenchen (SO)`,
       image: <img src="/dummyImage.jpeg" alt="vehicle reference image" />,
+      callToAction: (
+          <Button variant="secondary" onClick={() => ({})} width="full">
+            View vehicle
+          </Button>
+      ),
     },
     children: (
       <>
@@ -35,8 +36,9 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
         </FormControl>
       </>
     ),
-  }}
-  argTypes={{
+
+}}
+argTypes={{
     children: {
       table: {
         disable: true,
@@ -48,7 +50,7 @@ import LayoutWithVehicleReference from './WithVehicleReference.tsx';
       },
     },
   }}
-  parameters={{
+parameters={{
     layout: 'fullscreen',
   }}
 />
@@ -64,6 +66,12 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
     name="With title"
     args={{
       title: 'Nachricht an den Verkäufer',
+      header: (
+        <SimpleHeader
+          title="I am a simple header!"
+          url="https://www.autoscout24.ch/de"
+        />
+      ),
     }}
   >
     {Template.bind({})}
@@ -82,6 +90,12 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
         text: 'Back',
         url: 'https://www.autoscout24.ch/de',
       },
+      header: (
+        <SimpleHeader
+          title="I am a simple header!"
+          url="https://www.autoscout24.ch/de"
+        />
+      ),
     }}
   >
     {Template.bind({})}
@@ -93,7 +107,31 @@ export const Template = (args) => <LayoutWithVehicleReference {...args} />;
 ## Without back link and title
 
 <Canvas>
-  <Story name="Without back link and title">{Template.bind({})}</Story>
+  <Story
+    name="Without back link and title"
+    args={{
+      header: (
+        <SimpleHeader
+          title="I am a simple header!"
+          url="https://www.autoscout24.ch/de"
+        />
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Without header"
+    args={{
+      title: 'Nachricht an den Verkäufer',
+      maxContentWidth: 'xl',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable story="Without back link and title" />

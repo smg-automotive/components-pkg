@@ -7,7 +7,7 @@ import { sizes } from 'src/themes/shared/sizes';
 import Divider from '../divider';
 
 interface Props {
-  header: ReactNode;
+  header?: ReactNode;
   footer?: ReactNode;
   skyScraperAd?: ReactNode;
   maxContentWidth: keyof typeof sizes.container;
@@ -22,8 +22,12 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <>
-      {header}
-      <Divider />
+      {header ? (
+        <>
+          {header}
+          <Divider />
+        </>
+      ) : null}
       <Flex justifyContent="center">
         <Container
           as="main"

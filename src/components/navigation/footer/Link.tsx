@@ -36,7 +36,7 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
       <ComponentsLink
         type="button"
         as="button"
-        color="white"
+        variant="footerLink"
         textStyle="body-small"
         onClick={linkInstance.onClick}
         {...boldStyles}
@@ -56,7 +56,7 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
   return (
     <ComponentsLink
       href={linkInstance.link?.[language]}
-      color="white"
+      variant="footerLink"
       textStyle="body-small"
       {...targetSettings}
       {...boldStyles}
