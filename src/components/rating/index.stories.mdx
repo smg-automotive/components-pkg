@@ -2,7 +2,16 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Rating from './index.tsx';
 
-<Meta title="Components/Rating" component={Rating} />
+<Meta
+  title="Components/Rating"
+  component={Rating}
+  argTypes={{
+    size: {
+      options: ['large', 'small'],
+      control: { type: 'select' },
+    },
+  }}
+/>
 
 export const Template = (args) => {
   return <Rating {...args} />;
@@ -17,6 +26,7 @@ export const Template = (args) => {
     name="Overview"
     args={{
       rating: 4.2,
+      size: 'large',
     }}
   >
     {Template.bind({})}
