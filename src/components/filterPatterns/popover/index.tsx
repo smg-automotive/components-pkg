@@ -70,6 +70,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             isOpen={isOpen}
             onOpen={onOpen}
             onClose={onClose}
+            id={`popover-filter-${label}`}
           >
             <ButtonGroup isAttached={true} w="full" maxW="full">
               <PopoverTrigger>
