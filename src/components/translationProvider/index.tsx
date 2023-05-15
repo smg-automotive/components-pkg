@@ -3,6 +3,7 @@ import {
   filterDictionaryScopes,
   I18nProvider,
   Language,
+  useI18n,
 } from '@smg-automotive/i18n-pkg';
 
 import { dictionaries } from 'src/locales';
@@ -18,6 +19,12 @@ const TranslationProvider: FC<PropsWithChildren<Props>> = ({
   scopes,
   children,
 }) => {
+  const { t } = useI18n();
+
+  if (typeof t === 'function') {
+    return <>children</>;
+  }
+
   return (
     <I18nProvider
       language={language}
