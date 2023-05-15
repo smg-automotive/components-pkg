@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { I18nContext, Language, useI18n } from '@smg-automotive/i18n-pkg';
+import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
@@ -27,7 +27,6 @@ export const FilterHeading: FC<Props> = ({
   numberOfAppliedFilters,
   onResetFilter,
 }) => {
-  const { t } = useI18n();
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <I18nContext.Consumer>
