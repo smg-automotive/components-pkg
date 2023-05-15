@@ -5,7 +5,6 @@ import {
   PopoverContent,
   PopoverFooter,
   PopoverHeader,
-  Portal,
 } from '@chakra-ui/react';
 
 import Box from 'src/components/box';
