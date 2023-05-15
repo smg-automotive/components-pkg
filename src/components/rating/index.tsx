@@ -12,8 +12,6 @@ const Rating: FC<Props> = ({ rating, size }) => {
       aria-label={`Rating is ${rating} out of 5`}
       sx={{
         '--rating': rating.toString(),
-        '--star-color': 'white',
-        '--star-background': '#333',
         '--percent': 'calc(var(--rating) / 5 * 100%)',
       }}
       display="inline-block"
@@ -23,12 +21,14 @@ const Rating: FC<Props> = ({ rating, size }) => {
       _before={{
         content: '"★★★★★"',
         letterSpacing: size === 'large' ? '10px' : '5px',
-        color: 'var(--star-background)',
+        color: 'gray.900',
         background:
-          'linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent))',
+          'linear-gradient(90deg, var(--chakra-colors-gray-900) var(--percent), white var(--percent))',
         '-webkit-background-clip': 'text',
         '-webkit-text-fill-color': 'transparent',
-        '-webkit-text-stroke': `${size === 'large' ? '2px' : '1px'} #333`,
+        '-webkit-text-stroke': `${
+          size === 'large' ? '2px' : '1px'
+        } var(--chakra-colors-gray-900)`,
       }}
     />
   );
