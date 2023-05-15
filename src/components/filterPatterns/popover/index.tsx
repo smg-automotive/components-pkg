@@ -66,11 +66,9 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
           <Popover
             returnFocusOnClose={true}
             placement="bottom-start"
-            isLazy={true}
             isOpen={isOpen}
             onOpen={onOpen}
             onClose={onClose}
-            id={`popover-filter-${label}`}
           >
             <ButtonGroup isAttached={true} w="full" maxW="full">
               <PopoverTrigger>
