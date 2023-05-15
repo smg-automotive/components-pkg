@@ -6,11 +6,11 @@ import Rating from './index.tsx';
   title="Components/Data display/Rating"
   component={Rating}
   argTypes={{
-      size: {
-          table: {
-              disable: true,
-          },
+    size: {
+      table: {
+        disable: true,
       },
+    },
   }}
 />
 
@@ -39,15 +39,15 @@ export const Template = (args) => {
 ## Small
 
 <Canvas>
-    <Story
-        name="Small"
-        args={{
-            rating: 4.2,
-            size: 'small',
-        }}
-    >
-        {Template.bind({})}
-    </Story>
+  <Story
+    name="Small"
+    args={{
+      rating: 4.2,
+      size: 'small',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 <ArgsTable story="Small" />
