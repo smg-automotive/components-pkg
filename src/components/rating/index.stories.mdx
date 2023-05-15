@@ -6,10 +6,11 @@ import Rating from './index.tsx';
   title="Components/Rating"
   component={Rating}
   argTypes={{
-    size: {
-      options: ['large', 'small'],
-      control: { type: 'select' },
-    },
+      size: {
+          table: {
+              disable: true,
+          },
+      },
   }}
 />
 
@@ -17,13 +18,13 @@ export const Template = (args) => {
   return <Rating {...args} />;
 };
 
-# Radio
+# Rating
 
-## Overview
+## Large
 
 <Canvas>
   <Story
-    name="Overview"
+    name="Large"
     args={{
       rating: 4.2,
       size: 'large',
@@ -33,4 +34,20 @@ export const Template = (args) => {
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Large" />
+
+## Small
+
+<Canvas>
+    <Story
+        name="Small"
+        args={{
+            rating: 4.2,
+            size: 'small',
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<ArgsTable story="Small" />
