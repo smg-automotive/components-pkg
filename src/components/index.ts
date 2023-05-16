@@ -47,6 +47,7 @@ export { FilterHeading } from './filterPatterns/Heading';
 export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';
+export { default as Rating } from './rating';
 export { default as Section } from './section';
 export { default as Select, Option } from './select';
 export { default as Show } from './show';
