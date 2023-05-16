@@ -17,7 +17,7 @@ const Rating: FC<Props> = ({ rating, size }) => {
       }}
       display="inline-block"
       fontSize={size === 'large' ? 'md' : 'sm'}
-      fontFamily="Arial, Helvetic"
+      fontFamily="Arial"
       lineHeight="xs"
       _before={{
         content: '"★★★★★"',
