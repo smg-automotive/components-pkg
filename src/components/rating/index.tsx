@@ -12,8 +12,8 @@ const Rating: FC<Props> = ({ rating, size }) => {
       aria-label={`Rating is ${rating} out of 5`}
       sx={{
         '--rating': rating.toString(),
-        '--letter-space': '0.5em',
         '--percent': 'calc((var(--rating) - 0.16) / 5 * 100%)',
+        '--star-color': 'var(--chakra-colors-gray-900)',
       }}
       display="inline-block"
       fontSize={size === 'large' ? 'md' : 'sm'}
@@ -21,15 +21,13 @@ const Rating: FC<Props> = ({ rating, size }) => {
       lineHeight="xs"
       _before={{
         content: '"★★★★★"',
-        letterSpacing: 'var(--letter-space)',
-        color: 'gray.900',
+        letterSpacing: '0.5em',
+        color: 'var(--star-color)',
         background:
-          'linear-gradient(90deg, var(--chakra-colors-gray-900) var(--percent), white var(--percent))',
+          'linear-gradient(90deg, var(--star-color) var(--percent), white var(--percent))',
         '-webkit-background-clip': 'text',
         '-webkit-text-fill-color': 'transparent',
-        '-webkit-text-stroke': `${
-          size === 'large' ? '2px' : '1px'
-        } var(--chakra-colors-gray-900)`,
+        '-webkit-text-stroke': `0.07em var(--star-color)`,
       }}
     />
   );
