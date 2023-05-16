@@ -22,12 +22,6 @@ const baseStyle = {
     borderRadius: 'sm',
     padding: 'sm',
     marginX: 'xxs',
-    _first: {
-      marginX: 0,
-    },
-    _last: {
-      marginX: 0,
-    },
     _hover: {
       backgroundColor: 'gray.100',
     },
