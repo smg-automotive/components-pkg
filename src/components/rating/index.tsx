@@ -25,9 +25,9 @@ const Rating: FC<Props> = ({ rating, size }) => {
         color: 'var(--star-color)',
         background:
           'linear-gradient(90deg, var(--star-color) var(--percent), white var(--percent))',
-        '-webkit-background-clip': 'text',
-        '-webkit-text-fill-color': 'transparent',
-        '-webkit-text-stroke': `0.1em var(--star-color)`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        WebkitTextStroke: '0.1em var(--star-color)',
       }}
     />
   );
