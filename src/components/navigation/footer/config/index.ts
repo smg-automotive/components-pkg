@@ -232,7 +232,7 @@ export const footerConfig: FooterConfigInterface = {
         {
           translationKey: 'footer.sections.aboutUs.newsletter',
           visibilitySettings: {
-            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
+            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: false },
           },
           link: {
             de: '/de/newsletter/?ac=rg',
