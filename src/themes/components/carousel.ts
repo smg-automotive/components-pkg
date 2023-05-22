@@ -128,6 +128,9 @@ const Carousel: ComponentStyleConfig = {
       color: 'white',
       visibility: 'hidden',
       _groupHover: { md: { visibility: 'visible' } },
+      _focus: {
+        outline: 'none',
+      },
     },
     button: {
       display: 'flex',
