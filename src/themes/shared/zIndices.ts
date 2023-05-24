@@ -13,4 +13,5 @@ export const zIndices = {
   toast: 1700,
   tooltip: 1800,
   header: 1900,
+  fullScreenModal: 2000,
 };
