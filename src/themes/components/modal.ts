@@ -1,4 +1,5 @@
 import { mode } from '@chakra-ui/theme-tools';
+
 import {
   ComponentStyleConfig,
   createMultiStyleConfigHelpers,
@@ -6,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { zIndices } from '../shared/zIndices';
 import { opacity } from '../shared/opacity';
 
 const { defineMultiStyleConfig, definePartsStyle } =
@@ -83,7 +85,7 @@ const variants = {
     dialogContainer: {
       width: '100vw',
       color: 'white',
-      zIndex: 'modal',
+      zIndex: zIndices.fullScreenModal,
     },
     header: baseStyleHeader,
     closeButton: baseStyleCloseButton,
