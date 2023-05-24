@@ -17,6 +17,7 @@ export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as CheckboxFilter } from './checkboxFilter';
 export { default as CheckboxGroup } from './checkboxGroup';
+export { default as Count } from './count';
 export { default as DatePicker } from './datePicker';
 export { default as DevOverlay } from './devOverlay';
 export { default as Drawer } from './drawer';

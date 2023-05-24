@@ -9,6 +9,7 @@ import { CloseIcon } from 'src/components/icons';
 
 import Flex from 'src/components/flex';
 
+import Count from '../count';
 import { FilterPatternProps } from './props';
 
 type Props = {
@@ -39,23 +40,11 @@ export const FilterHeading: FC<Props> = ({
                 color="gray.900"
                 textStyle="heading3"
               >
-                <chakra.span wordBreak="break-all">{label}</chakra.span>
+                <chakra.span wordBreak="break-all" mr="sm">
+                  {label}
+                </chakra.span>
                 {numberOfAppliedFilters ? (
-                  <chakra.span
-                    alignItems="center"
-                    backgroundColor="brand.primary"
-                    borderRadius="max"
-                    display="flex"
-                    fontSize="sm"
-                    h="sm"
-                    justifyContent="center"
-                    minW="sm"
-                    ml="sm"
-                    mr="xl"
-                    w="sm"
-                  >
-                    {numberOfAppliedFilters}
-                  </chakra.span>
+                  <Count count={numberOfAppliedFilters} />
                 ) : null}
               </Flex>
               {onClose ? (
