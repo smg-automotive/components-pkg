@@ -2,7 +2,7 @@ import { ComponentStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
-  px: 'lg',
+  px: 'sm',
   whiteSpace: 'break-spaces',
 };
 
