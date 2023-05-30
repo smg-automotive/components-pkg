@@ -1,0 +1,47 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { action } from '@storybook/addon-actions';
+
+import SelectMenu from './index.tsx';
+
+<Meta
+  title="Patterns/Data Display/SelectMenu"
+  component={SelectMenu}
+  argTypes={{
+    type: {
+      options: ['radio', 'checkbox'],
+      control: { type: 'select' },
+    },
+    value: {
+      options: ['fr', 'en', 'de', 'it'],
+      control: { type: 'select' },
+    },
+  }}
+/>
+
+export const Template = ({ title, type, value }) => {
+  const menuOptions = [
+    { key: 'de', label: 'Detusch', onClick: action('Detusch') },
+    { key: 'en', label: 'English', onClick: action('English') },
+    { key: 'fr', label: 'Français', onClick: action('Français') },
+    { key: 'it', label: 'Italiano', onClick: action('Italiano') },
+  ];
+
+return <SelectMenu title={title} value={value} options={menuOptions} type={type} />;
+};
+
+# SelectMenu
+
+## Overview
+
+<Canvas>
+  <Story
+    name="SelectMenu"
+    args={{
+      title: 'Lanague',
+      type: 'radio',
+      value: 'fr',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
