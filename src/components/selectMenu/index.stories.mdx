@@ -1,33 +1,33 @@
+import { useState } from 'react';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
+import { SortIcon } from '../icons';
 import SelectMenu from './index.tsx';
 
-<Meta
-  title="Patterns/Data Display/SelectMenu"
-  component={SelectMenu}
-  argTypes={{
-    type: {
-      options: ['radio', 'checkbox'],
-      control: { type: 'select' },
-    },
-    value: {
-      options: ['fr', 'en', 'de', 'it'],
-      control: { type: 'select' },
-    },
-  }}
+<Meta title="Patterns/Data Display/SelectMenu" component={SelectMenu} />
+
+export const Template = ({ title, ...args }) => {
+  const [value, setValue] = useState('de');
+  const handleChange = (val) => setValue(val)
+
+const menuOptions = [
+{ key: 'de', label: 'Detusch', onClick: action('Detusch') },
+{ key: 'en', label: 'English', onClick: action('English') },
+{ key: 'fr', label: 'Français', onClick: action('Français') },
+{ key: 'it', label: 'Italiano', onClick: action('Italiano') },
+];
+
+return (
+
+<SelectMenu
+  onChange={handleChange}
+  title={title}
+  value={value}
+  options={menuOptions}
+  {...args}
 />
-
-export const Template = ({ title, type, value }) => {
-  const menuOptions = [
-    { key: 'de', label: 'Detusch', onClick: action('Detusch') },
-    { key: 'en', label: 'English', onClick: action('English') },
-    { key: 'fr', label: 'Français', onClick: action('Français') },
-    { key: 'it', label: 'Italiano', onClick: action('Italiano') },
-  ];
-
-return <SelectMenu title={title} value={value} options={menuOptions} type={type} />;
-};
+); };
 
 # SelectMenu
 
@@ -37,9 +37,52 @@ return <SelectMenu title={title} value={value} options={menuOptions} type={type}
   <Story
     name="SelectMenu"
     args={{
-      title: 'Lanague',
-      type: 'radio',
-      value: 'fr',
+      title: 'Language',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Show/hide menu drop down indicator
+
+<Canvas>
+  <Story
+    name="Show/Hide Indicator"
+    args={{
+      title: 'Language',
+      withIndicator: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Title with icon
+
+<Canvas>
+  <Story
+    name="Title with icon"
+    args={{
+      title: 'Language',
+      leftIcon: <SortIcon />,
+      menuColor: 'blue.700',
+      withIndicator: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom menuColor and menuOptionColor
+
+<Canvas>
+  <Story
+    name="With custom menu and menu option colors"
+    args={{
+      title: 'Language',
+      menuColor: 'blue.700',
+      menuOptionColor: 'red.700',
     }}
   >
     {Template.bind({})}

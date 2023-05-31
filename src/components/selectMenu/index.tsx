@@ -10,12 +10,12 @@ import {
 
 import { FontWeights } from 'src/themes';
 
-import { ChevronDownSmallIcon, ChevronUpSmallIcon } from '../icons';
+import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuOption {
   key: string;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export interface SelectMenuProps {
@@ -26,7 +26,9 @@ export interface SelectMenuProps {
   offset?: [number, number];
   menuColor?: string;
   menuOptionColor?: string;
-  type?: 'radio' | 'checkbox';
+  onChange?: (val: string | string[]) => void;
+  leftIcon?: JSX.Element;
+  withIndicator?: boolean;
 }
 
 const SelectMenu: FC<SelectMenuProps> = ({
@@ -37,7 +39,9 @@ const SelectMenu: FC<SelectMenuProps> = ({
   offset = [],
   menuColor,
   menuOptionColor,
-  type = 'radio',
+  onChange = () => null,
+  withIndicator = true,
+  leftIcon,
 }) => {
   return (
     <Menu {...(offset.length && { offset })}>
@@ -46,20 +50,23 @@ const SelectMenu: FC<SelectMenuProps> = ({
           <MenuButton
             as={Button}
             padding={0}
-            rightIcon={
-              isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
-            }
+            leftIcon={leftIcon}
+            {...(withIndicator && {
+              rightIcon: (
+                <ChevronDownSmallIcon
+                  transition="0.2s"
+                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                />
+              ),
+            })}
             fontWeight={fontWeightTitle}
             {...(menuColor && { color: menuColor })}
           >
             {title}
           </MenuButton>
           <MenuList minWidth="4xl">
-            <MenuOptionGroup
-              {...(type === 'radio' && { defaultValue: value })}
-              type={type}
-            >
-              {options.map(({ key, label, onClick }) => (
+            <MenuOptionGroup value={value} type="radio" onChange={onChange}>
+              {options.map(({ key, label, onClick = () => null }) => (
                 <MenuItemOption
                   key={key}
                   value={key}
