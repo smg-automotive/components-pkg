@@ -70,3 +70,4 @@ export { ViewIcon } from './ViewIcon';
 export { WarningIcon } from './WarningIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { YoutubeIcon } from './YoutubeIcon';
+export { SortIcon } from './SortIcon';
