@@ -13,7 +13,7 @@ import { FontWeights } from 'src/themes';
 import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuOption {
-  key: string;
+  value: string;
   label: string;
   onClick?: () => void;
 }
@@ -66,18 +66,20 @@ const SelectMenu: FC<SelectMenuProps> = ({
           </MenuButton>
           <MenuList minWidth="4xl">
             <MenuOptionGroup value={value} type="radio" onChange={onChange}>
-              {options.map(({ key, label, onClick = () => null }) => (
-                <MenuItemOption
-                  key={key}
-                  value={key}
-                  onClick={onClick}
-                  {...(menuOptionColor && {
-                    color: menuOptionColor,
-                  })}
-                >
-                  {label}
-                </MenuItemOption>
-              ))}
+              {options.map(
+                ({ value: itemValue, label, onClick = () => null }) => (
+                  <MenuItemOption
+                    key={itemValue}
+                    value={itemValue}
+                    onClick={onClick}
+                    {...(menuOptionColor && {
+                      color: menuOptionColor,
+                    })}
+                  >
+                    {label}
+                  </MenuItemOption>
+                )
+              )}
             </MenuOptionGroup>
           </MenuList>
         </>

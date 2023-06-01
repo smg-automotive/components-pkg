@@ -12,10 +12,10 @@ export const Template = ({ title, ...args }) => {
   const handleChange = (val) => setValue(val)
 
 const menuOptions = [
-{ key: 'de', label: 'Detusch', onClick: action('Detusch') },
-{ key: 'en', label: 'English', onClick: action('English') },
-{ key: 'fr', label: 'Français', onClick: action('Français') },
-{ key: 'it', label: 'Italiano', onClick: action('Italiano') },
+{ value: 'de', label: 'Detusch', onClick: action('Detusch') },
+{ value: 'en', label: 'English', onClick: action('English') },
+{ value: 'fr', label: 'Français', onClick: action('Français') },
+{ value: 'it', label: 'Italiano', onClick: action('Italiano') },
 ];
 
 return (
