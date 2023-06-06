@@ -1,7 +1,8 @@
 import React from 'react';
-import { createIcon } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const HeartIcon = createIcon({
+export const HeartIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'Heart',
   viewBox: '0 0 24 24',
   path: (
