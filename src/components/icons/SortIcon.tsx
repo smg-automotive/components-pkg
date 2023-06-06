@@ -1,7 +1,8 @@
 import React from 'react';
-import { createIcon } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const SortIcon = createIcon({
+export const SortIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'Sort',
   viewBox: '0 0 24 24',
   path: (

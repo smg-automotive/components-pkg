@@ -1,7 +1,8 @@
 import React from 'react';
-import { createIcon } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const WhatsAppIcon = createIcon({
+export const WhatsAppIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'WhatsApp',
   viewBox: '0 0 24 24',
   path: (
