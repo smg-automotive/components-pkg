@@ -2,7 +2,8 @@ import { shared } from '../shared';
 import { components } from '../components';
 import { colors } from './colors';
 
-export const theme = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const theme: Record<string, any> = {
   ...shared,
   colors,
   components,

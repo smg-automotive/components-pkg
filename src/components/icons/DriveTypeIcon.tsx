@@ -1,7 +1,8 @@
 import React from 'react';
-import { createIcon } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/system';
+import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const DriveTypeIcon = createIcon({
+export const DriveTypeIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'DriveType',
   viewBox: '0 0 24 24',
   path: (
