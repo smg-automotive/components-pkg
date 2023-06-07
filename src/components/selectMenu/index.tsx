@@ -51,14 +51,14 @@ const SelectMenu: FC<SelectMenuProps> = ({
             as={Button}
             padding={0}
             leftIcon={leftIcon}
-            {...(withIndicator && {
-              rightIcon: (
+            rightIcon={
+              withIndicator ? (
                 <ChevronDownSmallIcon
                   transition="0.2s"
                   transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
                 />
-              ),
-            })}
+              ) : undefined
+            }
             fontWeight={fontWeightTitle}
             {...(menuColor && { color: menuColor })}
           >
