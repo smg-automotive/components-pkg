@@ -16,7 +16,7 @@ const baseStyleList = defineStyle({
   color: 'inherit',
   minW: '3xs',
   py: '2',
-  zIndex: 1,
+  zIndex: 'dropdown',
   borderRadius: 'sm',
   borderWidth: '1px',
   borderColor: 'gray.200',
