@@ -12,7 +12,7 @@ export interface CheckboxProps {
   isIndeterminate?: boolean;
   size?: 'sm' | 'lg';
   fontWeight?: 'regular' | 'bold';
-  alignItems?: 'center' | 'flex-start';
+  variant?: 'allignCenter' | 'allignTop';
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -28,7 +28,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       isIndeterminate = false,
       size = 'lg',
       fontWeight = 'regular',
-      alignItems = 'center',
+      variant = 'allignCenter',
       ...props
     },
     ref
@@ -45,7 +45,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       isIndeterminate={isIndeterminate}
       size={size}
       fontWeight={fontWeight}
-      alignItems={alignItems}
+      variant={variant}
     >
       {label}
     </ChakraCheckbox>
