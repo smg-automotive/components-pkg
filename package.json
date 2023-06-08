@@ -122,7 +122,7 @@
     "@chakra-ui/styled-system": "2.9.1",
     "@chakra-ui/system": "2.5.8",
     "@chakra-ui/theme-tools": "2.0.18",
-    "@emotion/react": "11.11.0",
+    "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
     "@smg-automotive/i18n-pkg": "1.5.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
