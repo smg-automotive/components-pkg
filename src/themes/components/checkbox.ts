@@ -66,9 +66,8 @@ const allignTop = {
   container: {
     alignItems: 'flex-start',
   },
-  label: {
-    position: 'relative',
-    top: '-5',
+  control: {
+    marginTop: 'xs',
   },
 };
 
