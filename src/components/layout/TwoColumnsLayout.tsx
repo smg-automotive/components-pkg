@@ -11,13 +11,15 @@ import BaseGridLayout, { repeatArea } from './BaseGrid';
 
 export type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
-interface Props {
+export interface TwoColumnsLayoutProps {
   header?: ReactNode;
   title?: string | ReactNode;
-  backLink?: {
-    text: string;
-    url: string;
-  };
+  backLink?:
+    | {
+        text: string;
+        url: string;
+      }
+    | ReactNode;
   left: {
     content: ReactNode;
     columns?: ColumnSize;
@@ -29,14 +31,15 @@ interface Props {
   maxContentWidth?: keyof typeof sizes.container;
 }
 
-const TwoColumnsLayout: FC<Props> = ({
-  header,
-  title,
-  backLink,
-  left: { content: leftContent, columns: leftColumns = 6 },
-  right: { content: rightContent, columns: rightColumns = 6 },
-  maxContentWidth = 'lg',
-}) => {
+const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
+  const {
+    header,
+    title,
+    left: { content: leftContent, columns: leftColumns = 6 },
+    right: { content: rightContent, columns: rightColumns = 6 },
+    maxContentWidth = 'lg',
+  } = props;
+
   return (
     <BaseLayout header={header} maxContentWidth={maxContentWidth}>
       <BaseGridLayout
@@ -61,11 +64,15 @@ const TwoColumnsLayout: FC<Props> = ({
         }}
         templateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
       >
-        {backLink ? (
+        {props.backLink ? (
           <GridItem area="backlink">
-            <Link href={backLink.url} leftIcon={<ArrowLeftIcon />}>
-              {backLink.text}
-            </Link>
+            {typeof props.backLink === 'object' && 'url' in props.backLink ? (
+              <Link href={props.backLink.url} leftIcon={<ArrowLeftIcon />}>
+                {props.backLink.text}
+              </Link>
+            ) : (
+              props.backLink
+            )}
           </GridItem>
         ) : null}
         {title ? (

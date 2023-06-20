@@ -1,21 +1,15 @@
-import React, { FC, PropsWithChildren, ReactNode } from 'react';
-
-import { sizes } from 'src/themes/shared/sizes';
+import React, { FC, PropsWithChildren } from 'react';
 
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
-import TwoColumnsLayout, { ColumnSize } from './TwoColumnsLayout';
-interface Props {
-  title?: string | ReactNode;
-  backLink?: {
-    text: string;
-    url: string;
-  };
+import TwoColumnsLayout, {
+  ColumnSize,
+  TwoColumnsLayoutProps,
+} from './TwoColumnsLayout';
+interface Props extends TwoColumnsLayoutProps {
   vehicle: VehicleReferenceProps;
-  header?: ReactNode;
   leftColumnSize?: ColumnSize;
   rightColumnSize?: ColumnSize;
-  maxContentWidth?: keyof typeof sizes.container;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
