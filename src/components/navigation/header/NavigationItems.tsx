@@ -8,13 +8,12 @@ import Link from 'src/components/link';
 import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
 import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
 
+import { Platform } from './types';
 import { NavigationItem } from './NavigationItem';
 import { HeaderLink } from './links/HeaderLink';
 import { Drawer as UseNavigationDrawer } from './hooks/useNavigationDrawer';
 import { HeaderNavigationLink } from './config/headerNavigationLink';
 import { DrawerNode } from './config/drawerNodeItems';
-
-import { Platform } from '.';
 
 interface NavigationItemsProps {
   platform: Platform;

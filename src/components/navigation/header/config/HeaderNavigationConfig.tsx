@@ -1,13 +1,18 @@
 import { ReactNode } from 'react';
 
+import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
-import { LinkConfig, LinkInstance } from 'src/components/navigation/link';
+import {
+  LinkConfig,
+  LinkInstance,
+  LocalizedLinks,
+} from 'src/components/navigation/link';
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
-import { User } from '..';
+import { User, UserType } from '../types';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import {
@@ -54,6 +59,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   homeUrl: string;
   menuHeight: string;
   user: User | null;
+  userType: UserType;
   mappedConfig?: HeaderNavigationConfigInstance;
   urlPathParams?: Record<string, string | number>;
 
@@ -63,6 +69,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     useAbsoluteUrls,
     config,
     user,
+    userType,
     urlPathParams,
   }: {
     brand: Brand;
@@ -70,6 +77,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
     user: User | null;
+    userType: UserType;
     urlPathParams?: Record<string, string | number>;
   }) {
     super({ brand, environment, useAbsoluteUrls });
@@ -77,6 +85,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
+    this.userType = userType;
     this.urlPathParams = urlPathParams;
   }
 
@@ -95,17 +104,40 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     return this.mappedConfig;
   }
 
+  replacePathParams = (
+    link: LocalizedLinks | undefined
+  ): LocalizedLinks | undefined => {
+    if (link && this.urlPathParams) {
+      const transformedLink = Object.entries(link).reduce(
+        (acc, [key, value]) => {
+          return {
+            ...acc,
+            [key]: replaceParameters({
+              path: value,
+              params: this.urlPathParams,
+            }),
+          };
+        },
+        {} as LocalizedLinks
+      );
+
+      return transformedLink;
+    }
+
+    return;
+  };
+
   mapLink(link: HeaderNavigationLinkConfig) {
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
-        link: link.link,
+        link: this.replacePathParams(link.link),
         onClick: link.onClick,
         target: undefined,
         visibilitySettings: link.visibilitySettings,
       },
       brand: this.brand,
-      userType: this.user?.type,
+      userType: this.userType,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
       linkProtocol: this.linkProtocol,

@@ -7,7 +7,7 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { Link, LinkConfig } from 'src/components/navigation/link';
 
-import { UserType } from '..';
+import { UserType } from '../types';
 
 export class HeaderNavigationLink extends Link {
   isNew?: boolean;

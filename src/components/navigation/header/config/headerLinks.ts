@@ -12,6 +12,7 @@ export type NavigationLinkConfigProps = Omit<
     userType: {
       private: boolean;
       professional: boolean;
+      guest?: boolean;
     };
     brand: {
       autoscout24: boolean;
@@ -54,6 +55,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
       userType: {
         private: false,
         professional: true,
+        guest: false,
       },
       brand: {
         autoscout24: false,
@@ -93,7 +95,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     visibilitySettings: {
       userType: {
         private: true,
-        professional: false,
+        professional: true,
       },
       brand: {
         autoscout24: true,

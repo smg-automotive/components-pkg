@@ -70,6 +70,25 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.advancedSearch',
+          link: {
+            de: '/de/motorrad/suche',
+            en: '/de/motorrad/suche',
+            fr: '/fr/moto/recherche',
+            it: '/it/moto/ricerca',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -94,6 +113,25 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.searchMerchant',
+          link: {
+            de: '/de/moto-haendler-garage/suche',
+            en: '/de/moto-haendler-garage/suche',
+            fr: '/fr/moto-concessionaires-garage/recherche',
+            it: '/it/moto-concessionari-garage/ricerca',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -171,7 +209,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
@@ -204,7 +242,7 @@ export const drawerNodeItems = ({
             de: '/de/besuchte-fahrzeuge',
             en: '/de/besuchte-fahrzeuge',
             fr: '/fr/vehicules-visites',
-            it: '/it/veicoli-visitat',
+            it: '/it/veicoli-visitati',
           },
           visibilitySettings: {
             userType: {
@@ -536,10 +574,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.contactRequests',
           link: {
-            de: '/de/member/messagemanager?vehtyp=60',
-            en: '/de/member/messagemanager?vehtyp=60',
-            fr: '/fr/member/messagemanager?vehtyp=60',
-            it: '/it/member/messagemanager?vehtyp=60',
+            de: '/de/member/messagemanager',
+            en: '/de/member/messagemanager',
+            fr: '/fr/member/messagemanager',
+            it: '/it/member/messagemanager',
           },
           visibilitySettings: {
             userType: {
@@ -739,6 +777,25 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.reviews',
+          link: {
+            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
+            en: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
+            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
+            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -884,10 +941,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.autoRadar',
           link: {
-            de: '/de/productdescription/as24_autoradar',
-            en: '/de/productdescription/as24_autoradar',
-            fr: '/fr/productdescription/as24_autoradar',
-            it: '/it/productdescription/as24_autoradar',
+            de: '/de/member/autoradarlauncher/all',
+            en: '/de/member/autoradarlauncher/all',
+            fr: '/fr/member/autoradarlauncher/all',
+            it: '/it/member/autoradarlauncher/all',
           },
           visibilitySettings: {
             userType: {
@@ -1213,10 +1270,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.manageAutoRadar',
           link: {
-            de: '/de/productdescription/as24_autoradar',
-            en: '/de/productdescription/as24_autoradar',
-            fr: '/fr/productdescription/as24_autoradar',
-            it: '/it/productdescription/as24_autoradar',
+            de: '/de/member/autoradar',
+            en: '/de/member/autoradar',
+            fr: '/fr/member/autoradar',
+            it: '/it/member/autoradar',
           },
           visibilitySettings: {
             userType: {
@@ -1325,6 +1382,7 @@ export const drawerNodeItems = ({
             userType: {
               private: false,
               professional: true,
+              guest: false,
             },
             brand: {
               autoscout24: false,
@@ -1364,7 +1422,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,

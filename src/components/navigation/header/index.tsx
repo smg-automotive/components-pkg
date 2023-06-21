@@ -9,6 +9,7 @@ import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 import Box from 'src/components/box';
 
+import { User, UserType } from './types';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
@@ -18,15 +19,6 @@ import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/drawerNodeItems';
 
-export type UserType = 'private' | 'professional';
-export type Platform = 'autoscout24' | 'motoscout24';
-
-export interface User {
-  id: number;
-  name: string;
-  type: UserType;
-  accountId: number;
-}
 interface NavigationProps {
   environment: Environment;
   brand: Brand;
@@ -49,6 +41,10 @@ const Navigation: FC<NavigationProps> = ({
   onLogout,
 }) => {
   const config = useMemo(() => {
+    const userType = user ? user.type : UserType.Guest;
+    const urlPathParams = user?.accountId
+      ? { accountId: user?.accountId }
+      : undefined;
     const headerNavigationConfigInstance = new HeaderNavigationConfig({
       brand,
       environment,
@@ -58,6 +54,8 @@ const Navigation: FC<NavigationProps> = ({
         drawerItems: drawerNodeItems({ onLogout }),
       },
       user,
+      userType,
+      urlPathParams,
     });
     return headerNavigationConfigInstance.getMappedConfig();
     // eslint-disable-next-line react-hooks/exhaustive-deps
