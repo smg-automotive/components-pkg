@@ -1,4 +1,4 @@
-import type { SystemStyleObject } from '@chakra-ui/styled-system';
+import type { ComponentStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 const baseStyle: SystemStyleObject = {
   borderColor: 'gray.100',
@@ -8,4 +8,4 @@ const baseStyle: SystemStyleObject = {
 
 export default {
   baseStyle,
-};
+} as ComponentStyleConfig;

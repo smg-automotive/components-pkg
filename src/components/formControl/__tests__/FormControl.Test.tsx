@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
 
-import Input from '../../input';
+import Input from 'src/components/input';
+
 import FormControl, { FormControlProps } from '..';
 
 const renderWrapper = ({
@@ -39,13 +40,13 @@ describe('<FormControl>', () => {
   });
 
   describe('label', () => {
-    it('is connected with input', () => {
+    it('is connected with input', async () => {
       renderWrapper({ label: 'Label' });
       const label = screen.getByText('Label');
       userEvent.click(label);
       const input = screen.getByLabelText('Label');
 
-      expect(input).toHaveFocus();
+      await waitFor(() => expect(input).toHaveFocus());
     });
   });
 

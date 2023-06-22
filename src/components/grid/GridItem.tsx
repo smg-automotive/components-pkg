@@ -1,11 +1,20 @@
-import React, { FC } from 'react';
-import { GridItem as ChakraGridItem, GridItemProps } from '@chakra-ui/react';
+import React from 'react';
+import {
+  GridItem as ChakraGridItem,
+  ComponentWithAs,
+  forwardRef,
+  GridItemProps,
+} from '@chakra-ui/react';
 
-type Props = Pick<GridItemProps, 'children' | 'area'>;
+const GridItem: ComponentWithAs<'div', GridItemProps> = forwardRef<
+  GridItemProps,
+  'div'
+>((props, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return <ChakraGridItem {...(props as GridItemProps)} ref={ref} />;
+});
 
-const GridItem: FC<Props> = ({ children, ...props }) => {
-  return <ChakraGridItem {...props}>{children}</ChakraGridItem>;
-};
+GridItem.displayName = 'GridItem';
 
 export default GridItem;
-export { Props as GridProps };
+export { GridItemProps };

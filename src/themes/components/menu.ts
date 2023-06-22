@@ -1,8 +1,11 @@
 import {
+  ComponentStyleConfig,
   createMultiStyleConfigHelpers,
   defineStyle,
-} from '@chakra-ui/styled-system';
+} from '@chakra-ui/react';
 import { menuAnatomy as parts } from '@chakra-ui/anatomy';
+
+import { opacity } from '../shared/opacity';
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
@@ -13,7 +16,7 @@ const baseStyleList = defineStyle({
   color: 'inherit',
   minW: '3xs',
   py: '2',
-  zIndex: 1,
+  zIndex: 'dropdown',
   borderRadius: 'sm',
   borderWidth: '1px',
   borderColor: 'gray.200',
@@ -35,7 +38,7 @@ const baseStyleItem = defineStyle({
     bg: 'gray.100',
   },
   _disabled: {
-    opacity: 0.4,
+    opacity: opacity[40],
     cursor: 'not-allowed',
   },
 });
@@ -47,4 +50,4 @@ const baseStyle = definePartsStyle({
 
 export default defineMultiStyleConfig({
   baseStyle,
-});
+}) as ComponentStyleConfig;

@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "strict": true,
     "jsx": "react",
     "module": "esnext",
     "declaration": true,
-    "declarationDir": "types",
+    "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noUnusedParameters": true,

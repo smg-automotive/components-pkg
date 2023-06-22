@@ -1,8 +1,8 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { Box } from '../index';
 import Grid from './index.tsx';
 import GridItem from './GridItem.tsx';
-import { Box } from '../index';
 
 <Meta
   title="Layout/Grid"
@@ -81,7 +81,7 @@ export const Template = ({ ...args }) => {
 ## Example
 
 <Canvas>
-  <Story name="Example">{Template.bind({})}</Story>
+  <Story name="Grid">{Template.bind({})}</Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Grid" />

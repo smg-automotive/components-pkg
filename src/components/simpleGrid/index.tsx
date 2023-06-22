@@ -13,6 +13,8 @@ type Props = Pick<
   | 'spacingY'
   | 'children'
   | 'alignItems'
+  | 'width'
+  | 'rowGap'
 >;
 
 const SimpleGrid: FC<Props> = (props) => <ChakraSimpleGrid {...props} />;

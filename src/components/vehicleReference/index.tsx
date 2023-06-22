@@ -10,9 +10,10 @@ import AspectRatio from '../aspectRatio';
 interface Props {
   image?: ReactNode;
   vehicleTitle: string;
-  price: string;
-  sellerName: string;
-  sellerAddress: string;
+  price?: string | null;
+  sellerName?: string | null;
+  sellerAddress?: string | null;
+  callToAction?: ReactNode;
 }
 
 const VehicleReference: FC<Props> = ({
@@ -21,6 +22,7 @@ const VehicleReference: FC<Props> = ({
   price,
   sellerName,
   sellerAddress,
+  callToAction,
 }) => {
   const styles = useMultiStyleConfig(`VehicleReference`);
 
@@ -44,6 +46,9 @@ const VehicleReference: FC<Props> = ({
           </Box>
         </Stack>
       </Stack>
+      {callToAction ? (
+        <Box marginTop={{ base: 'lg', md: 'sm' }}>{callToAction}</Box>
+      ) : null}
     </article>
   );
 };

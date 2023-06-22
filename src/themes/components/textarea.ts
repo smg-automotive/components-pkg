@@ -1,7 +1,8 @@
 import type {
+  ComponentStyleConfig,
   SystemStyleInterpolation,
   SystemStyleObject,
-} from '@chakra-ui/styled-system';
+} from '@chakra-ui/react';
 
 import Input from './input';
 
@@ -28,4 +29,4 @@ export default {
   baseStyle,
   variants,
   defaultProps,
-};
+} as ComponentStyleConfig;

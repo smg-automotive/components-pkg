@@ -2,12 +2,12 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import { chakra, Container, Flex } from '@chakra-ui/react';
 
+import { sizes } from 'src/themes/shared/sizes';
+
 import Divider from '../divider';
-import Box from '../box';
-import { sizes } from '../../themes/shared/sizes';
 
 interface Props {
-  header: ReactNode;
+  header?: ReactNode;
   footer?: ReactNode;
   skyScraperAd?: ReactNode;
   maxContentWidth: keyof typeof sizes.container;
@@ -22,8 +22,12 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <>
-      {header}
-      <Divider />
+      {header ? (
+        <>
+          {header}
+          <Divider />
+        </>
+      ) : null}
       <Flex justifyContent="center">
         <Container
           as="main"
@@ -44,9 +48,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             marginRight="2xl"
             position="relative"
           >
-            <Box position="sticky" top="2xl">
-              {skyScraperAd}
-            </Box>
+            {skyScraperAd}
           </chakra.aside>
         ) : null}
       </Flex>

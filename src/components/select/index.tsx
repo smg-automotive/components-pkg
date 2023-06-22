@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 import {
   Select as ChakraSelect,
   SelectProps as ChakraSelectProps,
@@ -30,16 +30,19 @@ type Props = Pick<
   name: string;
 } & (OptionsAndValue<string> | OptionsAndValue<number>);
 
-const Select: FC<Props> = ({ options, ...props }) => {
-  return (
-    <ChakraSelect {...props} icon={<ChevronDownLargeIcon />}>
-      {options.map((option) => (
-        <option value={option.value} key={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </ChakraSelect>
-  );
-};
+const Select = forwardRef<HTMLSelectElement, Props>(
+  ({ options, ...props }, ref) => {
+    return (
+      <ChakraSelect {...props} icon={<ChevronDownLargeIcon />} ref={ref}>
+        {options.map((option) => (
+          <option value={option.value} key={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </ChakraSelect>
+    );
+  }
+);
+Select.displayName = 'Select';
 
 export default Select;

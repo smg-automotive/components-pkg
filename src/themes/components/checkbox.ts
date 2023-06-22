@@ -1,5 +1,16 @@
-import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/styled-system';
+import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/react';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
+
+import { fontWeights } from '../shared/fontWeights';
+
+const sizes: Record<string, PartsStyleObject<typeof parts>> = {
+  sm: {
+    label: { fontSize: 'sm' },
+  },
+  lg: {
+    label: { fontSize: 'base' },
+  },
+};
 
 const baseStyleControl: SystemStyleObject = {
   width: 'xs',
@@ -33,10 +44,30 @@ const baseStyleIcon: SystemStyleObject = {
 };
 
 const baseStyleLabel: SystemStyleObject = {
+  width: 'full',
   textStyle: 'body',
+  fontWeight: {
+    bold: fontWeights.bold,
+    regular: fontWeights.regular,
+  },
   color: 'gray.900',
   _disabled: {
     color: 'gray.400',
+  },
+};
+
+const allignCenter = {
+  container: {
+    alignItems: 'center',
+  },
+};
+
+const allignTop = {
+  container: {
+    alignItems: 'flex-start',
+  },
+  control: {
+    marginTop: 'xs',
   },
 };
 
@@ -47,6 +78,16 @@ const baseStyle: PartsStyleObject<typeof parts> = {
   label: baseStyleLabel,
 };
 
+const variants = {
+  allignTop: allignTop,
+  allignCenter: allignCenter,
+};
+
 export default {
   baseStyle,
+  sizes,
+  variants,
+  defaultProps: {
+    variant: 'allignCenter',
+  },
 };

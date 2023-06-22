@@ -1,9 +1,9 @@
-import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { SystemStyleObject } from '@chakra-ui/styled-system';
+import { ComponentStyleConfig, SystemStyleObject } from '@chakra-ui/react';
 
 const baseStyle: SystemStyleObject = {
   borderRadius: 'sm',
   px: 'lg',
+  whiteSpace: 'break-spaces',
 };
 
 const buttonSizes = {
@@ -51,6 +51,23 @@ const variants = {
     _disabled: {
       color: 'gray.300',
       borderColor: 'gray.300',
+      pointerEvents: 'none',
+    },
+  },
+  success: {
+    bg: 'green.500',
+    color: 'white',
+    _hover: {
+      filter: 'brightness(1.1)',
+    },
+    _active: {
+      filter: 'none',
+      bg: 'green.500',
+    },
+    _disabled: {
+      bg: 'gray.100',
+      boxShadow: 'none',
+      color: 'gray.400',
       pointerEvents: 'none',
     },
   },

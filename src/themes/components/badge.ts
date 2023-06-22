@@ -1,4 +1,4 @@
-import { defineStyle } from '@chakra-ui/styled-system';
+import { ComponentStyleConfig, defineStyle } from '@chakra-ui/react';
 
 const baseStyle = defineStyle(({ theme }) => {
   const color = theme.name === 'AutoScout 24' ? 'black' : 'white';
@@ -14,6 +14,17 @@ const baseStyle = defineStyle(({ theme }) => {
   };
 });
 
+const navigationLinkBadge = {
+  paddingX: 'xxs',
+  paddingY: 'xxs',
+  position: 'relative',
+  top: '-xs',
+  lineHeight: '100%',
+};
+
 export default {
   baseStyle,
-};
+  variants: {
+    navigationLinkBadge,
+  },
+} as ComponentStyleConfig;

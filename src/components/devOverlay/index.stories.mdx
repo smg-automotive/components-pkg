@@ -1,7 +1,11 @@
+import { useArgs } from '@storybook/client-api';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import DevOverlay from './index.tsx';
+import { Brand } from 'src/types/brand';
+
+import ThemeProvider from '../themeProvider';
 import { FullHeight } from '../index';
+import DevOverlay from './index.tsx';
 
 <Meta
   title="Theme/DevOverlay"
@@ -11,11 +15,20 @@ import { FullHeight } from '../index';
   }}
 />
 
-export const Template = (args) => {
+export const Template = ({ ...args }) => {
+  const [{ activeTheme }, updateArgs] = useArgs();
+  const toggleTheme = () => {
+    if (activeTheme === Brand.AutoScout24) {
+      return updateArgs({ activeTheme: Brand.MotoScout24 });
+    }
+    return updateArgs({ activeTheme: Brand.AutoScout24 });
+  };
   return (
-    <FullHeight>
-      <DevOverlay {...args} />
-    </FullHeight>
+    <ThemeProvider theme={activeTheme}>
+      <FullHeight>
+        <DevOverlay {...args} toggleTheme={toggleTheme} />
+      </FullHeight>
+    </ThemeProvider>
   );
 };
 
@@ -25,7 +38,7 @@ export const Template = (args) => {
 
 <Canvas>
   <Story
-    name="Overview"
+    name="DevOverlay"
     args={{
       variables: [
         {
@@ -37,6 +50,13 @@ export const Template = (args) => {
           value: 'storybook',
         },
       ],
+      activeTheme: Brand.AutoScout24,
+    }}
+    argTypes={{
+      activeTheme: {
+        options: [Brand.AutoScout24, Brand.MotoScout24],
+        control: 'select',
+      },
     }}
   >
     {Template.bind({})}

@@ -1,28 +1,23 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import MobileOnlyAccordionSection from '../MobileOnlyAccordionSection';
+import MobileOnlyAccordionPanel from '../MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from '../MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from '../MobileOnlyAccordionButton';
 import MobileOnlyAccordion from '../index';
-
-const mockMatchMedia = (match: boolean) => {
-  Object.defineProperty(window, 'matchMedia', {
-    value: jest.fn(() => ({
-      matches: match,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-    })),
-  });
-};
 
 const renderWrapper = () =>
   render(
     <MobileOnlyAccordion>
-      <MobileOnlyAccordionSection title="Section 1">
-        <ul>
-          <li>menu item 1</li>
-          <li>menu item 2</li>
-        </ul>
-      </MobileOnlyAccordionSection>
+      <MobileOnlyAccordionItem>
+        <MobileOnlyAccordionButton>Section 1</MobileOnlyAccordionButton>
+        <MobileOnlyAccordionPanel>
+          <ul>
+            <li>menu item 1</li>
+            <li>menu item 2</li>
+          </ul>
+        </MobileOnlyAccordionPanel>
+      </MobileOnlyAccordionItem>
     </MobileOnlyAccordion>
   );
 
@@ -32,24 +27,10 @@ describe('<MobileOnlyAccordion />', () => {
     jest.clearAllMocks();
   });
 
-  it('should render with accordion', async () => {
-    mockMatchMedia(true);
-
+  it('should render with accordion with a hidden button on desktop', async () => {
     renderWrapper();
 
     const button = screen.getByRole('button');
-
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('aria-expanded');
-  });
-
-  it('should render without accordion', async () => {
-    mockMatchMedia(false);
-
-    renderWrapper();
-
-    const button = screen.queryByRole('button');
-
-    expect(button).not.toBeInTheDocument();
+    expect(button).toBeVisible();
   });
 });

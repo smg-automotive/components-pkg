@@ -5,3 +5,4 @@ dist/
 *.tsbuildinfo
 .npm
 .eslintcache
+.DS_Store

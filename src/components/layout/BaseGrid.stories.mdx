@@ -1,8 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Box, GridItem } from '@chakra-ui/react';
 
-import BaseGrid from './BaseGrid.tsx';
 import { FullHeight } from '../index';
+import BaseGrid from './BaseGrid.tsx';
 
 <Meta
   title="Layout/Pages/Base grid"
@@ -35,8 +35,10 @@ export const Template = () => (
   </FullHeight>
 );
 
-# Base grid
+# Base grid for XL layouts
+
+## Overview
 
 <Canvas>
-  <Story name="Base grid for XL layouts">{Template.bind({})}</Story>
+  <Story name="Base grid">{Template.bind({})}</Story>
 </Canvas>

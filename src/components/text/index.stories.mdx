@@ -1,7 +1,8 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import { shared } from 'src/themes';
+
 import Text from './index.tsx';
-import { shared } from '../../themes';
 
 <Meta
   title="Components/Utils/Text"
@@ -37,7 +38,7 @@ export const Template = ({ color, shade, ...args }) => {
 ## Overview
 
 <Canvas>
-  <Story name="Overview">{Template.bind({})}</Story>
+  <Story name="Text">{Template.bind({})}</Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Text" />

@@ -8,6 +8,13 @@ import FormLabel from './index.tsx';
   component={FormLabel}
   args={{
     children: 'I am label',
+    size: 'lg',
+  }}
+  argTypes={{
+    size: {
+      options: ['sm', 'lg'],
+      control: 'select',
+    },
   }}
 />
 
@@ -24,7 +31,7 @@ export const Template = (args) => {
 ## Overview
 
 <Canvas>
-  <Story name="Overview">{Template.bind({})}</Story>
+  <Story name="Form Label">{Template.bind({})}</Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="Form Label" />

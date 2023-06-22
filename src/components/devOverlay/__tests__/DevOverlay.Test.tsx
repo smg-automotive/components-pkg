@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
+import { Brand } from 'src/types/brand';
+
 import DevOverlay from '../index';
 
 describe('The DevOverlay Component', () => {
@@ -10,6 +12,9 @@ describe('The DevOverlay Component', () => {
         variables={[]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
+        toggleTranslation={jest.fn()}
+        activeTheme={Brand.AutoScout24}
+        displayTranslationKeys={false}
       />
     );
 
@@ -27,6 +32,9 @@ describe('The DevOverlay Component', () => {
         ]}
         hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
+        activeTheme={Brand.AutoScout24}
+        toggleTranslation={jest.fn()}
+        displayTranslationKeys={false}
       />
     );
 

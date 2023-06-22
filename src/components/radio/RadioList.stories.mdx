@@ -3,8 +3,8 @@ import { action } from '@storybook/addon-actions';
 
 import { Spacer } from '@chakra-ui/react';
 
-import RadioList from './RadioList.tsx';
 import { Box, Flex } from '../index';
+import RadioList from './RadioList.tsx';
 
 <Meta
   title="Components/Forms/RadioList"
@@ -51,13 +51,13 @@ export const Template = (args) => {
   );
 };
 
-# Radio
+# RadioList
 
-## List
+## Overview
 
 <Canvas>
   <Story
-    name="List"
+    name="RadioList"
     args={{
       name: 'Demo',
       onChange: action,
@@ -75,4 +75,4 @@ export const Template = (args) => {
   </Story>
 </Canvas>
 
-<ArgsTable story="Overview" />
+<ArgsTable story="RadioList" />

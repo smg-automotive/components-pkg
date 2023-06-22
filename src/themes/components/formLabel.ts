@@ -1,4 +1,9 @@
-import type { SystemStyleObject } from '@chakra-ui/styled-system';
+import type { SystemStyleObject } from '@chakra-ui/react';
+
+const sizes: Record<string, SystemStyleObject> = {
+  sm: { fontSize: 'sm' },
+  lg: { fontSize: 'base' },
+};
 
 const baseStyle: SystemStyleObject = {
   textStyle: 'label',
@@ -13,4 +18,5 @@ const baseStyle: SystemStyleObject = {
 
 export default {
   baseStyle,
+  sizes,
 };

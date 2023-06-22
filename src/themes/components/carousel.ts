@@ -1,26 +1,66 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
+import { hexToRgb } from 'src/lib/hexToRgb';
+
+import { opacity } from '../shared/opacity';
 import { colors } from '../shared/colors';
-import { hexToRgb } from '../../lib/hexToRgb';
 
 const [r, g, b] = hexToRgb(colors.gray[900]);
 
 const parts = [
   'container',
+  'carousel',
   'slide',
   'slideContainer',
   'buttonContainer',
   'button',
   'icon',
+  'pagination',
+  'paginationButton',
+  'paginationIconContainer',
 ];
 
 const fullScreen = {
   container: {
-    height: '100%',
+    backgroundColor: 'black',
+    position: {
+      base: 'fixed',
+      md: 'static',
+    },
+  },
+  carousel: {
     paddingX: {
       md: '5xl',
     },
-    backgroundColor: 'black',
+  },
+  pagination: {
+    overflow: 'hidden',
+    position: 'relative',
+    paddingX: {
+      base: 'md',
+      md: '5xl',
+    },
+    height: '7.5rem',
+  },
+  paginationButton: {
+    position: 'absolute',
+    top: '0',
+    width: 'lg',
+    height: 'full',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    backgroundColor: 'transparent',
+  },
+  paginationIconContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 'md',
+    height: 'md',
+    borderRadius: 'sm',
+    backgroundColor: `rgba(${r},${g},${b},0.8)`,
   },
   buttonContainer: {
     backgroundColor: 'black',
@@ -34,7 +74,7 @@ const fullScreen = {
     height: 'full',
   },
   button: {
-    opacity: '100%',
+    opacity: opacity[100],
     backgroundColor: 'black',
   },
   icon: {
@@ -42,10 +82,28 @@ const fullScreen = {
   },
 };
 
+const numbersPaginationButton = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  textAlign: 'center',
+  minWidth: 'md',
+  height: 'md',
+  borderRadius: 'sm',
+  _hover: {
+    backgroundColor: 'gray.100',
+  },
+};
+
 const Carousel: ComponentStyleConfig = {
   parts,
   baseStyle: {
     container: {
+      height: 'full',
+      width: 'full',
+    },
+    carousel: {
       overflow: 'hidden',
       position: 'relative',
     },
@@ -70,6 +128,9 @@ const Carousel: ComponentStyleConfig = {
       color: 'white',
       visibility: 'hidden',
       _groupHover: { md: { visibility: 'visible' } },
+      _focus: {
+        outline: 'none',
+      },
     },
     button: {
       display: 'flex',
@@ -84,6 +145,15 @@ const Carousel: ComponentStyleConfig = {
     },
     icon: {
       boxSize: 'sm',
+    },
+    numbersPaginationButton,
+    numbersPaginationButtonActive: {
+      ...numbersPaginationButton,
+      color: 'white',
+      backgroundColor: 'gray.900',
+      _hover: {
+        backgroundColor: 'gray.900',
+      },
     },
   },
   variants: {

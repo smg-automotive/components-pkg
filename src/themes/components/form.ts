@@ -1,7 +1,4 @@
-import type {
-  PartsStyleObject,
-  SystemStyleObject,
-} from '@chakra-ui/styled-system';
+import type { PartsStyleObject, SystemStyleObject } from '@chakra-ui/react';
 import { formAnatomy as parts } from '@chakra-ui/anatomy';
 
 const baseStyleHelperText: SystemStyleObject = {
@@ -10,8 +7,13 @@ const baseStyleHelperText: SystemStyleObject = {
   color: 'gray.400',
 };
 
+const requiredIndicator: SystemStyleObject = {
+  color: 'red.500',
+};
+
 const baseStyle: PartsStyleObject<typeof parts> = {
   helperText: baseStyleHelperText,
+  requiredIndicator,
 };
 
 export default {

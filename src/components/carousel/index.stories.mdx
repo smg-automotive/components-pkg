@@ -1,9 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
+import StoryTemplate from './StoryTemplate';
 import Carousel from './index.tsx';
-import FullHeight from '../fullHeight';
-import Flex from '../flex';
 
 <Meta
   title="Components/Data display/Carousel"
@@ -14,34 +13,19 @@ import Flex from '../flex';
         disable: true,
       },
     },
+    numberOfSlides: {
+      control: { type: 'number', min: 1, max: 20, step: 1 },
+    },
+  }}
+  parameters={{
+    layout: 'fullscreen',
   }}
 />
 
-export const Slide = ({ index }) => (
-  <Flex
-    backgroundColor={['red.500', 'blue.500'][index % 2]}
-    justifyContent="center"
-    alignItems="center"
-    height="300px"
-  >
-    Slide {index}
-  </Flex>
-);
-
-export const Template = (args) => (
-  <FullHeight>
-    <Carousel
-      {...args}
-      onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
-    >
-      {Array(6)
-        .fill(0)
-        .map((_, i) => (
-          <Slide index={i + 1} key={`slide-${i + 1}`} />
-        ))}
-    </Carousel>
-  </FullHeight>
-);
+export const Template = (args) => {
+  // mdx has a limitation that you cannot pass an array of objects as children. Extracting it to a separate component solves the issue
+  return <StoryTemplate args={args} action={action} />;
+};
 
 # Carousel
 
@@ -54,6 +38,7 @@ export const Template = (args) => (
       startIndex: 0,
       onSlideClick: true,
       fullScreen: false,
+      numberOfSlides: 6,
     }}
   >
     {Template.bind({})}
@@ -69,6 +54,26 @@ export const Template = (args) => (
       startIndex: 0,
       onSlideClick: true,
       fullScreen: true,
+      numberOfSlides: 6,
+      onSlideEnter: true,
+      onSlideLeave: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Numbers Pagination
+
+<Canvas>
+  <Story
+    name="With Numbers Pagination"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: false,
+      numberOfSlides: 6,
+      withNumbersPagination: true,
     }}
   >
     {Template.bind({})}

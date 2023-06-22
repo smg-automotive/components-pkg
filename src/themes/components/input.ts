@@ -1,7 +1,4 @@
-import type {
-  PartsStyleObject,
-  SystemStyleObject,
-} from '@chakra-ui/styled-system';
+import type { PartsStyleObject, SystemStyleObject } from '@chakra-ui/react';
 import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 
 const baseStyle: PartsStyleObject<typeof parts> = {

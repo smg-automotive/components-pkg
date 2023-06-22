@@ -1,132 +1,254 @@
-import React, {
-  FC,
-  PropsWithChildren,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useMultiStyleConfig } from '@chakra-ui/react';
+import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
 
-import Slide from './Slide';
-import NavigationButton, { Direction } from './NavigationButton';
+import { breakpoints } from 'src/themes';
+
 import Flex from '../flex';
 import Box from '../box';
+import ThumbnailPagination from './ThumbnailPagination';
+import Slide from './Slide';
+import NumbersPagination from './NumbersPagination';
+import NavigationButton from './NavigationButton';
 
-interface Props {
+type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  fullScreen?: boolean;
+  withNumbersPagination?: boolean;
+};
+
+type DefaultProps = {
+  fullScreen?: never;
+  children: ReactNode[];
+} & SharedProps;
+
+type FullScreenSlide = {
+  slide: ReactNode;
+  thumbnail: ReactNode;
+  onSlideEnter?: () => void;
+  onSlideLeave?: () => void;
+};
+type FullScreenProps = {
+  fullScreen: true;
+  children: Array<FullScreenSlide>;
+} & SharedProps;
+
+type Props = DefaultProps | FullScreenProps;
+
+enum PaginationType {
+  Thumbnail = 'thumbnail',
+  Number = 'number',
+  None = 'none',
 }
 
-const Carousel: FC<PropsWithChildren<Props>> = ({
-  startIndex = 0,
-  onSlideClick,
-  onSlideSelect,
-  children,
-  fullScreen = false,
-}) => {
-  const { container, slideContainer } = useMultiStyleConfig(
+const Carousel: FC<Props> = (props) => {
+  const {
+    startIndex = 0,
+    onSlideClick,
+    onSlideSelect,
+    fullScreen,
+    withNumbersPagination,
+  } = props;
+
+  const numberOfSlides = props.children.length;
+
+  const [isSmallLandscapeViewport] = useMediaQuery(
+    `(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`,
+    {
+      ssr: true,
+      fallback: false,
+    }
+  );
+
+  const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
+
+  let paginationType = PaginationType.None;
+  if (hasThumbnailPagination) {
+    paginationType = PaginationType.Thumbnail;
+  }
+  if (withNumbersPagination) {
+    paginationType = PaginationType.Number;
+  }
+
+  const [selectedIndex, setSelectedIndex] = useState(startIndex);
+
+  const { container, carousel, slideContainer } = useMultiStyleConfig(
     'Carousel',
     fullScreen ? { variant: 'fullScreen' } : {}
   );
 
-  const [emblaRef, embla] = useEmblaCarousel({
+  const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
     speed: 20,
   });
-  const [selectedIndex, setSelectedIndex] = useState(startIndex);
+  const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
+    containScroll: 'keepSnaps',
+    dragFree: true,
+    slidesToScroll: 'auto',
+    inViewThreshold: 1,
+  });
 
-  const slides: ReactNode[] = Array.isArray(children) ? children : [children];
-  const numberOfSlides = slides.length;
-
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
-  const scroll = useCallback(
-    (direction: Direction) => {
-      switch (direction) {
-        case 'previous':
-          scrollPrev();
-          break;
-        case 'next':
-          scrollNext();
-          break;
-      }
-    },
-    [scrollNext, scrollPrev]
+  const scrollPrev = useCallback(
+    () => mainCarousel && mainCarousel.scrollPrev(),
+    [mainCarousel]
+  );
+  const scrollNext = useCallback(
+    () => mainCarousel && mainCarousel.scrollNext(),
+    [mainCarousel]
   );
 
   const onClick = useCallback(
     (index: number) => {
-      if (onSlideClick && embla && embla.clickAllowed()) {
+      if (onSlideClick && mainCarousel && mainCarousel.clickAllowed()) {
         onSlideClick(index);
       }
     },
-    [embla, onSlideClick]
+    [mainCarousel, onSlideClick]
   );
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    const newIndex = embla.selectedScrollSnap();
+    if (!mainCarousel) return;
+    const newIndex = mainCarousel.selectedScrollSnap();
+    const previousIndex = mainCarousel.previousScrollSnap();
+
     setSelectedIndex(newIndex);
+    if (paginationCarousel && hasThumbnailPagination) {
+      const slidesToScroll = paginationCarousel.slidesInView().length;
+      paginationCarousel.scrollTo(Math.floor(newIndex / slidesToScroll));
+    }
     if (onSlideSelect) {
       onSlideSelect(newIndex);
     }
-  }, [embla, setSelectedIndex, onSlideSelect]);
+
+    if (!props.fullScreen) {
+      return;
+    }
+
+    if (newIndex !== undefined) {
+      const currentSlide = props.children[newIndex];
+      if (currentSlide.onSlideEnter) {
+        currentSlide.onSlideEnter();
+      }
+    }
+
+    if (previousIndex !== undefined && previousIndex !== newIndex) {
+      const previousSlide = props.children[previousIndex];
+      if (previousSlide.onSlideLeave) {
+        previousSlide.onSlideLeave();
+      }
+    }
+  }, [
+    mainCarousel,
+    paginationCarousel,
+    onSlideSelect,
+    hasThumbnailPagination,
+    props.children,
+    props.fullScreen,
+  ]);
 
   useEffect(() => {
-    if (!embla) return;
+    if (!mainCarousel) return;
     onSelect();
-    embla.on('select', onSelect);
-  }, [embla, onSelect]);
+    mainCarousel.on('select', onSelect);
+  }, [mainCarousel, onSelect]);
 
-  const prerenderFallbackSlide = startIndex !== 0 && !emblaRef;
+  useEffect(() => {
+    const keydownListener = (e: KeyboardEvent) => {
+      if (fullScreen) {
+        switch (e.code) {
+          case 'ArrowRight':
+            scrollNext();
+            break;
+          case 'ArrowLeft':
+            scrollPrev();
+            break;
+        }
+      }
+    };
 
-  return prerenderFallbackSlide ? (
-    <Slide
-      slideIndex={startIndex}
-      onClick={() => onClick(startIndex)}
-      totalSlides={numberOfSlides}
-      isCurrent={startIndex === selectedIndex}
-      fullScreen={fullScreen}
-    >
-      {slides[startIndex]}
-    </Slide>
-  ) : (
-    <Box
-      ref={emblaRef}
-      aria-label="Carousel"
-      aria-roledescription="Carousel"
-      role="group"
-      __css={container}
-    >
-      <Flex __css={slideContainer}>
-        {slides.map((slide, index) => (
-          <Slide
-            key={`slide-${index}`}
-            slideIndex={index}
-            onClick={() => onClick(index)}
-            totalSlides={numberOfSlides}
-            isCurrent={index === selectedIndex}
-            fullScreen={fullScreen}
-          >
-            {slide}
-          </Slide>
-        ))}
-      </Flex>
-      <NavigationButton
-        onClick={scroll}
-        direction="previous"
-        fullScreen={fullScreen}
-      />
-      <NavigationButton
-        onClick={scroll}
-        direction="next"
-        fullScreen={fullScreen}
-      />
+    document.addEventListener('keydown', keydownListener);
+    return () => document.removeEventListener('keydown', keydownListener);
+  }, [fullScreen, scrollNext, scrollPrev]);
+
+  const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
+
+  const carouselHeightByPaginationTypeMap = {
+    [PaginationType.None]: 'full',
+    [PaginationType.Thumbnail]: 'calc(100% - 7.5rem)',
+    [PaginationType.Number]: 'calc(100% - 5rem)',
+  };
+
+  return (
+    <Box __css={container}>
+      {prerenderFallbackSlide ? (
+        <Slide
+          slideIndex={startIndex}
+          onClick={() => onClick(startIndex)}
+          totalSlides={numberOfSlides}
+          isCurrent={startIndex === selectedIndex}
+          fullScreen={!!fullScreen}
+        >
+          {props.fullScreen
+            ? props.children[startIndex]?.slide
+            : props.children[startIndex]}
+        </Slide>
+      ) : (
+        <Box
+          ref={mainCarouselRef}
+          aria-label="Carousel"
+          aria-roledescription="Carousel"
+          role="group"
+          height={carouselHeightByPaginationTypeMap[paginationType]}
+          __css={carousel}
+        >
+          <Flex __css={slideContainer}>
+            {props.children.map((slide, index) => (
+              <Slide
+                key={`slide-${index}`}
+                slideIndex={index}
+                onClick={() => onClick(index)}
+                totalSlides={numberOfSlides}
+                isCurrent={index === selectedIndex}
+                fullScreen={!!fullScreen}
+              >
+                {slide && typeof slide === 'object' && 'slide' in slide
+                  ? slide.slide
+                  : slide}
+              </Slide>
+            ))}
+          </Flex>
+          <NavigationButton
+            onClick={scrollPrev}
+            direction="previous"
+            fullScreen={!!fullScreen}
+          />
+          <NavigationButton
+            onClick={scrollNext}
+            direction="next"
+            fullScreen={!!fullScreen}
+          />
+        </Box>
+      )}
+
+      {hasThumbnailPagination ? (
+        <ThumbnailPagination
+          currentSlideIndex={selectedIndex}
+          thumbnails={props.children.map((slide) => slide.thumbnail)}
+          mainCarousel={mainCarousel}
+          paginationCarousel={paginationCarousel}
+          paginationCarouselRef={paginationCarouselRef}
+        />
+      ) : null}
+
+      {paginationType === PaginationType.Number ? (
+        <NumbersPagination
+          mainCarousel={mainCarousel}
+          currentSlideIndex={selectedIndex}
+          numberOfSlides={props.children.length}
+        />
+      ) : null}
     </Box>
   );
 };

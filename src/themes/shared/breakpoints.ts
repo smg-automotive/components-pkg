@@ -1,4 +1,4 @@
-import { convertRemEmToPx } from '../../utilities/convertRemEmToPx';
+import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
 
 export const emBreakpoints = {
   base: '0em',
@@ -10,7 +10,7 @@ export const emBreakpoints = {
   xl: '120em',
 };
 
-type BreakpointName = keyof typeof emBreakpoints;
+export type BreakpointName = keyof typeof emBreakpoints;
 export const pxBreakpoints = Object.fromEntries(
   Object.entries(emBreakpoints).map(([name, emValue]) => [
     name,

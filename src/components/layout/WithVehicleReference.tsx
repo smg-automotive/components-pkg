@@ -1,17 +1,15 @@
-import React, { FC, PropsWithChildren, ReactNode } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
-import TwoColumnsLayout from './TwoColumnsLayout';
 import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
 import Box from '../box';
-
-interface Props {
-  title?: string | ReactNode;
-  backLink?: {
-    text: string;
-    url: string;
-  };
+import TwoColumnsLayout, {
+  ColumnSize,
+  TwoColumnsLayoutProps,
+} from './TwoColumnsLayout';
+interface Props extends Omit<TwoColumnsLayoutProps, 'left' | 'right'> {
   vehicle: VehicleReferenceProps;
-  header: ReactNode;
+  leftColumnSize?: ColumnSize;
+  rightColumnSize?: ColumnSize;
 }
 
 const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
@@ -20,6 +18,9 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   vehicle,
   header,
   children,
+  leftColumnSize = 8,
+  rightColumnSize = 4,
+  maxContentWidth = 'lg',
 }) => {
   const contentMargin = { md: '2xl' };
 
@@ -30,12 +31,13 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
       title={title ? <Box marginRight={contentMargin}>{title}</Box> : null}
       left={{
         content: <Box marginRight={contentMargin}>{children}</Box>,
-        columns: 8,
+        columns: leftColumnSize,
       }}
       right={{
         content: <VehicleReference {...vehicle} />,
-        columns: 4,
+        columns: rightColumnSize,
       }}
+      maxContentWidth={maxContentWidth}
     />
   );
 };

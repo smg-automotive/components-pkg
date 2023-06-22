@@ -2,7 +2,11 @@
 import React, { FC, PropsWithChildren, ReactElement } from 'react';
 import { render as testingLibraryRender } from '@testing-library/react';
 
-import { ThemeProvider, ThemeProviderProps } from '../src/';
+import { Brand } from 'src/types/brand';
+
+import ThemeProvider, {
+  Props as ThemeProviderProps,
+} from '../src/components/themeProvider';
 
 const Wrapper = (theme: ThemeProviderProps['theme']): FC<PropsWithChildren> => {
   const ThemeRenderer: FC<PropsWithChildren> = ({ children }) => {
@@ -17,7 +21,7 @@ export * from '@testing-library/react';
 // eslint-disable-next-line import/export
 export const render = (
   ui: ReactElement,
-  options = { theme: 'as24' as const }
+  options = { theme: Brand.AutoScout24 as const }
 ) => {
   const { theme, ...rest } = options;
   return testingLibraryRender(ui, { wrapper: Wrapper(theme), ...rest });

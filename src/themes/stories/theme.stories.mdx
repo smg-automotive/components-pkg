@@ -1,5 +1,8 @@
 import { Canvas, ColorPalette, Meta, Story } from '@storybook/addon-docs';
 
+import { Brand } from 'src/types/brand';
+
+import ZindicesShowcase from './ZindicesShowcase.tsx';
 import TypographyShowcase from './TypographyShowcase.tsx';
 import SpaceShowcase from './SpaceShowcase.tsx';
 import SizeShowcase from './SizeShowcase.tsx';
@@ -15,7 +18,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
   title="Foundations/Theme"
   argTypes={{
     theme: {
-      options: ['as24', 'ms24'],
+      options: [Brand.AutoScout24, Brand.MotoScout24],
       control: { type: 'select' },
     },
   }}
@@ -24,7 +27,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Border Radius
 
 <Canvas>
-  <Story name="borderRadius" args={{ theme: 'as24' }}>
+  <Story name="borderRadius" args={{ theme: Brand.AutoScout24 }}>
     <BorderRadiusShowcase />
   </Story>
 </Canvas>
@@ -32,7 +35,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Border
 
 <Canvas>
-  <Story name="border" args={{ theme: 'as24' }}>
+  <Story name="border" args={{ theme: Brand.AutoScout24 }}>
     <BorderShowcase />
   </Story>
 </Canvas>
@@ -40,7 +43,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Breakpoints
 
 <Canvas>
-  <Story name="breakpoints" args={{ theme: 'as24' }}>
+  <Story name="breakpoints" args={{ theme: Brand.AutoScout24 }}>
     <BreakpointShowcase />
   </Story>
 </Canvas>
@@ -50,7 +53,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Color palette
 
 <Canvas>
-  <Story name="colors" args={{ theme: 'as24' }}>
+  <Story name="colors" args={{ theme: Brand.AutoScout24 }}>
     <ColorPalette>
       <ColorShowcase />
     </ColorPalette>
@@ -60,7 +63,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Containers
 
 <Canvas>
-  <Story name="containers" args={{ theme: 'as24' }}>
+  <Story name="containers" args={{ theme: Brand.AutoScout24 }}>
     <ContainerShowcase />
   </Story>
 </Canvas>
@@ -68,7 +71,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Opacity
 
 <Canvas>
-  <Story name="opacity" args={{ theme: 'as24' }}>
+  <Story name="opacity" args={{ theme: Brand.AutoScout24 }}>
     <OpacityShowcase />
   </Story>
 </Canvas>
@@ -76,7 +79,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Shadows
 
 <Canvas>
-  <Story name="shadows" args={{ theme: 'as24' }}>
+  <Story name="shadows" args={{ theme: Brand.AutoScout24 }}>
     <ShadowShowcase />
   </Story>
 </Canvas>
@@ -84,7 +87,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Sizes
 
 <Canvas>
-  <Story name="sizes" args={{ theme: 'as24' }}>
+  <Story name="sizes" args={{ theme: Brand.AutoScout24 }}>
     <SizeShowcase />
   </Story>
 </Canvas>
@@ -92,7 +95,7 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Spacing Table
 
 <Canvas>
-  <Story name="space" args={{ theme: 'as24' }}>
+  <Story name="space" args={{ theme: Brand.AutoScout24 }}>
     <SpaceShowcase />
   </Story>
 </Canvas>
@@ -100,7 +103,15 @@ import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
 ## Typography
 
 <Canvas>
-  <Story name="typography" args={{ theme: 'as24' }}>
+  <Story name="typography" args={{ theme: Brand.AutoScout24 }}>
     <TypographyShowcase />
+  </Story>
+</Canvas>
+
+## zIndices
+
+<Canvas>
+  <Story name="zIndices" args={{ theme: Brand.AutoScout24 }}>
+    <ZindicesShowcase />
   </Story>
 </Canvas>

@@ -1,3 +1,4 @@
+import { zIndices } from './zIndices';
 import { textStyles } from './typography';
 import { space } from './space';
 import { sizes } from './sizes';
@@ -28,6 +29,9 @@ export const shared = {
   fontWeights,
   fontSizes,
   fonts,
+  zIndices,
 };
 export { Sizes } from './sizes';
+export { Space } from './space';
+export { FontWeights } from './fontWeights';
 export { breakpoints } from './breakpoints';

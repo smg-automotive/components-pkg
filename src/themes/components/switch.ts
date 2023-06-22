@@ -4,11 +4,12 @@ import type {
   PartsStyleObject,
   SystemStyleFunction,
   SystemStyleObject,
-} from '@chakra-ui/styled-system';
+} from '@chakra-ui/react';
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { colors as ms24Colors } from '../ms24/colors';
-import { colors as as24Colors } from '../as24/colors';
+import { opacity } from '../shared/opacity';
+import { colors as ms24Colors } from '../motoscout24/colors';
+import { colors as as24Colors } from '../autoscout24/colors';
 
 const $width = cssVar('switch-track-width');
 const $height = cssVar('switch-track-height');
@@ -34,7 +35,7 @@ const baseStyleTrack: SystemStyleFunction = ({ bg, checkedBg }) => {
       boxShadow: 'outline',
     },
     _disabled: {
-      opacity: 0.4,
+      opacity: opacity[40],
       cursor: 'not-allowed',
     },
     _checked: {

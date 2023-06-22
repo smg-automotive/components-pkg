@@ -1,8 +1,3 @@
-import React, { FC } from 'react';
-import { Divider as ChakraDivider } from '@chakra-ui/react';
-
-const Divider: FC = () => {
-  return <ChakraDivider />;
-};
+import { Divider } from '@chakra-ui/react';
 
 export default Divider;

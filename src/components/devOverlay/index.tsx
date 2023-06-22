@@ -13,24 +13,34 @@ import {
   Tr,
 } from '@chakra-ui/react';
 
+import { Brand } from 'src/types/brand';
+
 import Switch, { SwitchProps } from '../switchComponent';
 import { CloseIcon } from '../icons';
 import Button, { ButtonProps } from '../button';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
-export type DevOverlayProps = Omit<ButtonProps, 'onClick'> &
+export type DevOverlayProps = Omit<ButtonProps, 'onClick' | 'children'> &
   Omit<SwitchProps, 'onChange'> & {
     hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
     toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
+    toggleTranslation: Exclude<SwitchProps['onChange'], undefined>;
     variables: DevOverlayVariables;
+    activeTheme: Brand;
+    displayTranslationKeys: boolean;
   };
 
 const DevOverlay: FC<DevOverlayProps> = ({
   variables,
   hideDevOverlay,
   toggleTheme,
+  toggleTranslation,
+  activeTheme,
+  displayTranslationKeys = false,
 }) => {
+  const isThemeSwitcherChecked = Brand.AutoScout24 !== activeTheme;
+
   return (
     <Box
       position="absolute"
@@ -58,7 +68,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
       </Heading>
       {!variables || variables.length === 0 ? null : (
         <TableContainer>
-          <Table variant="simple">
+          <Table variant="unstyled" size="sm">
             <Thead>
               <Tr>
                 <Th>Name</Th>
@@ -85,9 +95,22 @@ const DevOverlay: FC<DevOverlayProps> = ({
       <div>
         <span>🚗</span>
         &nbsp;
-        <Switch onChange={toggleTheme} />
+        <Switch onChange={toggleTheme} isChecked={isThemeSwitcherChecked} />
         &nbsp;
         <span>🏍️</span>
+      </div>
+      <Heading as="h4" textStyle="heading4">
+        Switch Translation
+      </Heading>
+      <div>
+        <span>🌐</span>
+        &nbsp;
+        <Switch
+          onChange={toggleTranslation}
+          isChecked={displayTranslationKeys}
+        />
+        &nbsp;
+        <span>🔑</span>
       </div>
     </Box>
   );

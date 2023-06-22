@@ -2,10 +2,10 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   AccordionButton as ChakraAccordionButton,
   AccordionButtonProps as ChakraAccordionButtonProps,
-  AccordionIcon as ChakraAccordionIcon,
 } from '@chakra-ui/react';
 
 import Box from '../box';
+import AccordionIcon from './AccordionIcon';
 
 interface AccordionButtonProps extends ChakraAccordionButtonProps {
   leftIcon?: React.ReactNode;
@@ -22,7 +22,7 @@ const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
       <Box flex="1" textAlign="left">
         {children}
       </Box>
-      <ChakraAccordionIcon />
+      <AccordionIcon />
     </ChakraAccordionButton>
   );
 };

@@ -1,19 +1,15 @@
 import React, { FC } from 'react';
-import { chakra } from '@chakra-ui/react';
 
+import { MissingImageIcon } from '../icons';
 import Box from '../box';
-import missingImage from '../../assets/images/missingImage.png';
 
 const MissingImage: FC = () => {
   return (
     <Box backgroundColor="gray.50">
-      <chakra.img
+      <MissingImageIcon
         data-testid="missing-image"
-        src={missingImage}
-        alt="image missing"
-        width="lg"
-        height="lg"
-        objectFit="cover"
+        boxSize="lg"
+        color="gray.300"
       />
     </Box>
   );

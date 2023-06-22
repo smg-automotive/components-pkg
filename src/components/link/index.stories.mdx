@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Link from './index.tsx';
 import { ArrowLeftIcon, ErrorIcon } from '../index.ts';
+import Link from './index.tsx';
 
 <Meta title="Components/Navigation/Link" component={Link} />
 
@@ -52,5 +52,29 @@ import { ArrowLeftIcon, ErrorIcon } from '../index.ts';
       <Link>Terms & Conditions</Link>
       before you proceed
     </p>
+  </Story>
+</Canvas>
+
+## Link with rel and target
+
+<Canvas>
+  <Story name="Link with rel and target">
+    <Link
+      rel="nofollow noopener noreferrer"
+      target="_blank"
+      href="https://autoscout24.ch"
+    >
+      AutoScout24 Homepage
+    </Link>
+  </Story>
+</Canvas>
+
+## Link with external rel
+
+<Canvas>
+  <Story name="Link with external rel">
+    <Link isExternal={true} href="https://autoscout24.ch">
+      AutoScout24 Homepage
+    </Link>
   </Story>
 </Canvas>

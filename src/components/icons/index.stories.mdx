@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Box, Center } from '@chakra-ui/react';
 
-import Grid from '../grid';
+import SimpleGrid from '../simpleGrid';
 
 import * as Icons from './index';
 
@@ -18,7 +18,7 @@ import * as Icons from './index';
 
 export const Template = () => {
   return (
-    <Grid columns={6} spacing="lg">
+    <SimpleGrid columns={6} spacing="lg">
       {Object.keys(Icons)
         .sort()
         .map((icon, index) => (
@@ -35,12 +35,14 @@ export const Template = () => {
             </Center>
           </Box>
         ))}
-    </Grid>
+    </SimpleGrid>
   );
 };
 
 # Icons
 
+## Overview
+
 <Canvas>
-  <Story name="Overview">{Template.bind({})}</Story>
+  <Story name="Icons">{Template.bind({})}</Story>
 </Canvas>
