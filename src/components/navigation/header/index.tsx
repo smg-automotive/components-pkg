@@ -9,7 +9,7 @@ import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 import Box from 'src/components/box';
 
-import { User, UserType } from './types';
+import { User } from './types';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';

@@ -119,7 +119,6 @@ describe('Header', () => {
         type: UserType.Private,
         accountId: 5,
       },
-      userType: UserType.Private,
     });
     const config = headerConfigInstance.getMappedConfig();
     expect(config).toEqual({
