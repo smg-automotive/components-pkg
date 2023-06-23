@@ -1,13 +1,18 @@
 import { ReactNode } from 'react';
 
+import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
-import { LinkConfig, LinkInstance } from 'src/components/navigation/link';
+import {
+  LinkConfig,
+  LinkInstance,
+  LocalizedLinks,
+} from 'src/components/navigation/link';
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
-import { User } from '..';
+import { User, UserType } from '../types';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import {
@@ -54,6 +59,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   homeUrl: string;
   menuHeight: string;
   user: User | null;
+  userType: UserType;
   mappedConfig?: HeaderNavigationConfigInstance;
   urlPathParams?: Record<string, string | number>;
 
@@ -77,6 +83,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
+    this.userType = user ? user.type : UserType.Guest;
     this.urlPathParams = urlPathParams;
   }
 
@@ -95,17 +102,35 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     return this.mappedConfig;
   }
 
+  replacePathParams = (
+    link: LocalizedLinks | undefined
+  ): LocalizedLinks | undefined => {
+    if (link && this.urlPathParams) {
+      return Object.entries(link).reduce((acc, [key, value]) => {
+        return {
+          ...acc,
+          [key]: replaceParameters({
+            path: value,
+            params: this.urlPathParams,
+          }),
+        };
+      }, {} as LocalizedLinks);
+    }
+
+    return link;
+  };
+
   mapLink(link: HeaderNavigationLinkConfig) {
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
-        link: link.link,
+        link: this.replacePathParams(link.link),
         onClick: link.onClick,
         target: undefined,
         visibilitySettings: link.visibilitySettings,
       },
       brand: this.brand,
-      userType: this.user?.type,
+      userType: this.userType,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
       linkProtocol: this.linkProtocol,

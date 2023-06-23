@@ -3,13 +3,17 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
-import { UserType } from './header';
+import { UserType } from './header/types';
 
 export type LinkTargets = '_blank';
 
 export interface VisibilitySettings {
   brand: Record<Brand, boolean>;
-  userType?: Record<UserType, boolean>;
+  userType?: {
+    private: boolean;
+    professional: boolean;
+    guest?: boolean;
+  };
 }
 export type LocalizedLinks = Record<Language, string>;
 
@@ -118,7 +122,16 @@ export class Link {
     }
 
     if (
+      userType === UserType.Guest &&
+      visibilitySettings.userType &&
+      visibilitySettings.userType[userType] !== undefined
+    ) {
+      return !!visibilitySettings.userType[userType];
+    }
+
+    if (
       userType &&
+      userType !== UserType.Guest &&
       visibilitySettings.userType &&
       !visibilitySettings.userType[userType]
     ) {
