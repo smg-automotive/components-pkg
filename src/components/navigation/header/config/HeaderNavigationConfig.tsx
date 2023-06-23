@@ -117,7 +117,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       }, {} as LocalizedLinks);
     }
 
-    return;
+    return link;
   };
 
   mapLink(link: HeaderNavigationLinkConfig) {
