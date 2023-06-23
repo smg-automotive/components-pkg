@@ -69,7 +69,6 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     useAbsoluteUrls,
     config,
     user,
-    userType,
     urlPathParams,
   }: {
     brand: Brand;
@@ -77,7 +76,6 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
     user: User | null;
-    userType: UserType;
     urlPathParams?: Record<string, string | number>;
   }) {
     super({ brand, environment, useAbsoluteUrls });
@@ -85,7 +83,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
-    this.userType = userType;
+    this.userType = user ? user.type : UserType.Guest;
     this.urlPathParams = urlPathParams;
   }
 
@@ -108,20 +106,15 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     link: LocalizedLinks | undefined
   ): LocalizedLinks | undefined => {
     if (link && this.urlPathParams) {
-      const transformedLink = Object.entries(link).reduce(
-        (acc, [key, value]) => {
-          return {
-            ...acc,
-            [key]: replaceParameters({
-              path: value,
-              params: this.urlPathParams,
-            }),
-          };
-        },
-        {} as LocalizedLinks
-      );
-
-      return transformedLink;
+      return Object.entries(link).reduce((acc, [key, value]) => {
+        return {
+          ...acc,
+          [key]: replaceParameters({
+            path: value,
+            params: this.urlPathParams,
+          }),
+        };
+      }, {} as LocalizedLinks);
     }
 
     return;

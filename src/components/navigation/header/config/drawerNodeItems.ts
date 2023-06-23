@@ -237,25 +237,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.searchMenu.viewedListings',
-          link: {
-            de: '/de/besuchte-fahrzeuge',
-            en: '/de/besuchte-fahrzeuge',
-            fr: '/fr/vehicules-visites',
-            it: '/it/veicoli-visitati',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.searchMenu.recentSearches',
           link: {
             de: '/de/letzte-suchen',
@@ -758,44 +739,6 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.reviews',
-          link: {
-            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            en: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.reviews',
-          link: {
-            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
-            en: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
-            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
-            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}&tab=dealerrating',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
               motoscout24: true,
             },
           },

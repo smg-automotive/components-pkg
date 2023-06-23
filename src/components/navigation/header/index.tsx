@@ -41,7 +41,6 @@ const Navigation: FC<NavigationProps> = ({
   onLogout,
 }) => {
   const config = useMemo(() => {
-    const userType = user ? user.type : UserType.Guest;
     const urlPathParams = user?.accountId
       ? { accountId: user?.accountId }
       : undefined;
@@ -54,7 +53,6 @@ const Navigation: FC<NavigationProps> = ({
         drawerItems: drawerNodeItems({ onLogout }),
       },
       user,
-      userType,
       urlPathParams,
     });
     return headerNavigationConfigInstance.getMappedConfig();
