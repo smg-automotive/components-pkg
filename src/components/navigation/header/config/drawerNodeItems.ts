@@ -591,25 +591,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.testDrives',
-          link: {
-            de: '/de/member/testdrive/settings',
-            en: '/de/member/testdrive/settings',
-            fr: '/fr/member/testdrive/settings',
-            it: '/it/member/testdrive/settings',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.leasing',
           link: {
             de: '/de/member/leasing',
