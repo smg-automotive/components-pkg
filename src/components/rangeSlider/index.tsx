@@ -7,12 +7,18 @@ import {
   RangeSliderTrack,
 } from '@chakra-ui/react';
 
-type RangeSliderProps = RangeSliderProps & ChakraRangeSliderProps;
+type RangeSliderProps = ChakraRangeSliderProps;
 
-const RangeSlider: FC<RangeSliderProps> = ({ min, max, ...restProps }) => (
+const RangeSlider: FC<RangeSliderProps> = ({
+  min = 0,
+  max = 10,
+  ...restProps
+}) => (
   <ChakraRangeSlider
     aria-label={['min', 'max']}
     defaultValue={[min, max]}
+    min={min}
+    max={max}
     {...restProps}
   >
     <RangeSliderTrack>

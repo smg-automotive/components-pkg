@@ -32,7 +32,7 @@ const baseStyleContainer = defineStyle((props) => {
 const baseStyleTrack = defineStyle((props) => {
   const orientationStyles = orient({
     orientation: props.orientation,
-    horizontal: { h: '10' },
+    horizontal: { h: '4' },
     vertical: { w: '10' },
   });
 
