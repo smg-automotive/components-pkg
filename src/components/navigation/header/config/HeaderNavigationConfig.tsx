@@ -83,7 +83,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
-    this.userType = user ? user.type : UserType.Guest;
+    this.userType = user ? user.type : UserType.Private;
     this.urlPathParams = urlPathParams;
   }
 

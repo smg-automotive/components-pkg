@@ -122,7 +122,7 @@ export class Link {
     }
 
     if (
-      userType === UserType.Guest &&
+      userType === UserType.Private &&
       visibilitySettings.userType &&
       visibilitySettings.userType[userType] !== undefined
     ) {
@@ -131,7 +131,7 @@ export class Link {
 
     if (
       userType &&
-      userType !== UserType.Guest &&
+      userType !== UserType.Private &&
       visibilitySettings.userType &&
       !visibilitySettings.userType[userType]
     ) {
