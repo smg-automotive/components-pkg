@@ -12,7 +12,7 @@ import {
 } from 'src/components/navigation/link';
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
-import { User, UserType } from '../types';
+import { MappedUserType, User } from '../types';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import {
@@ -59,7 +59,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   homeUrl: string;
   menuHeight: string;
   user: User | null;
-  userType: UserType;
+  userType: MappedUserType;
   mappedConfig?: HeaderNavigationConfigInstance;
   urlPathParams?: Record<string, string | number>;
 
@@ -83,7 +83,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
-    this.userType = user ? user.type : UserType.Private;
+    this.userType = user ? user.type : MappedUserType.Private;
     this.urlPathParams = urlPathParams;
   }
 
