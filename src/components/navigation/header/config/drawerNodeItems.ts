@@ -425,11 +425,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -816,10 +816,10 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -835,10 +835,10 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -873,10 +873,10 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -892,11 +892,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -911,11 +911,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -1107,11 +1107,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -1202,10 +1202,10 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
