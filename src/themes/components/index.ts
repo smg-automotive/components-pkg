@@ -7,6 +7,7 @@ import Tabs from './tabs';
 import Table from './table';
 import Switch from './switch';
 import Spinner from './spinner';
+import Skeleton from './skeleton';
 import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
@@ -62,6 +63,7 @@ export const components: Record<string, ComponentStyleConfig> = {
   Radio,
   Section,
   Select,
+  Skeleton,
   SimpleHeader,
   Spinner,
   Switch,
