@@ -95,7 +95,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     visibilitySettings: {
       userType: {
         private: true,
-        professional: true,
+        professional: false,
       },
       brand: {
         autoscout24: true,
