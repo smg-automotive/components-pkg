@@ -6,7 +6,7 @@ import { screen } from '@storybook/testing-library';
 
 import { Brand } from 'src/types/brand';
 
-import { UserType } from '../types';
+import { MappedUserType } from '../types';
 
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
@@ -18,7 +18,12 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: 1,
+          name: 'John Doe',
+          type: MappedUserType.Private,
+          accountId: 5,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -39,7 +44,12 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: 1,
+          name: 'John Doe',
+          type: MappedUserType.Private,
+          accountId: 5,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -76,7 +86,12 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: 1,
+          name: 'John Doe',
+          type: MappedUserType.Private,
+          accountId: 5,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -92,7 +107,12 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: 1,
+          name: 'John Doe',
+          type: MappedUserType.Private,
+          accountId: 5,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification
@@ -116,7 +136,7 @@ describe('Header', () => {
       user: {
         id: 1,
         name: 'John Doe',
-        type: UserType.Private,
+        type: MappedUserType.Private,
         accountId: 5,
       },
     });

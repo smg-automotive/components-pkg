@@ -3,7 +3,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
-import { UserType } from './header/types';
+import { MappedUserType } from './header/types';
 
 export type LinkTargets = '_blank';
 
@@ -52,7 +52,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType;
+    userType?: MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -115,14 +115,14 @@ export class Link {
   }: {
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType?: UserType;
+    userType?: MappedUserType;
   }) {
     if (!visibilitySettings.brand[brand]) {
       return false;
     }
 
     if (
-      userType === UserType.Private &&
+      userType === MappedUserType.Private &&
       visibilitySettings.userType &&
       visibilitySettings.userType[userType] !== undefined
     ) {
@@ -131,7 +131,7 @@ export class Link {
 
     if (
       userType &&
-      userType !== UserType.Private &&
+      userType !== MappedUserType.Private &&
       visibilitySettings.userType &&
       !visibilitySettings.userType[userType]
     ) {

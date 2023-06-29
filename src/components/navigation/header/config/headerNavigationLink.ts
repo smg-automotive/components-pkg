@@ -7,7 +7,7 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { Link, LinkConfig } from 'src/components/navigation/link';
 
-import { UserType } from '../types';
+import { MappedUserType } from '../types';
 
 export class HeaderNavigationLink extends Link {
   isNew?: boolean;
@@ -36,7 +36,7 @@ export class HeaderNavigationLink extends Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType;
+    userType?: MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
