@@ -1337,10 +1337,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.estimate',
           link: {
-            de: '/de/fahrzeugbewertung',
-            en: '/de/fahrzeugbewertung',
-            fr: '/fr/evaluation-vehicules',
-            it: '/it/valuazione-vehicoli',
+            de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
+            en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
+            fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
+            it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
           },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {
