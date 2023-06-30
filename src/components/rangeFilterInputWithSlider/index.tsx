@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import RangeSliderWithChart, {
+  NumericMinMaxValue,
+} from '../rangeSlider/RangeSliderWithChart';
 import RangeFilterInput, {
   ChangeCallback,
   PickedNumberInputProps,
@@ -7,9 +10,6 @@ import RangeFilterInput, {
 } from '../rangeFilterInput';
 import Flex from '../flex';
 import Box from '../box';
-import RangeSliderWithChart, {
-  NumericMinMaxValue,
-} from './RangeSliderWithChart';
 
 export type ChangeSliderCallback = {
   touched: 'min' | 'max';
@@ -40,8 +40,6 @@ function RangeFilterInputWithSlider<
   withReversedOrder = false,
   from,
   to,
-  min,
-  max,
   ...rest
 }: Props<NameFrom, NameTo>) {
   const value = {
@@ -99,7 +97,11 @@ function RangeFilterInputWithSlider<
 
   return (
     <Flex direction="column">
-      <Box order={withReversedOrder ? 1 : 0} px="md">
+      <Box
+        order={withReversedOrder ? 1 : 0}
+        px="md"
+        py={withReversedOrder ? 'md' : 0}
+      >
         <RangeSliderWithChart
           onChange={handleSliderChange}
           onSliderRelease={handleSliderRelease}

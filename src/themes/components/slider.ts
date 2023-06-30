@@ -33,16 +33,16 @@ const baseStyleTrack = defineStyle((props) => {
   const orientationStyles = orient({
     orientation: props.orientation,
     horizontal: { h: '4' },
-    vertical: { w: '10' },
+    vertical: { w: '4' },
   });
 
   return {
     ...orientationStyles,
     overflow: 'hidden',
     borderRadius: 'sm',
-    bg: 'gray.50',
+    bg: 'gray.300',
     _disabled: {
-      bg: 'gray.300',
+      bg: 'gray.400',
     },
   };
 });

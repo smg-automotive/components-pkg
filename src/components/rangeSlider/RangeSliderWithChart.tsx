@@ -30,15 +30,17 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   onChange,
   onSliderRelease,
 }) => {
-  const range = Object.keys(facets).map((key, index) => {
-    const [from] = key.split('-');
+  const range = Object.keys(facets)
+    .map((key) => {
+      const [from] = key.split('-');
 
-    if (index === 0 && from === '*') {
-      return 0;
-    }
+      if (from === '*') {
+        return 0;
+      }
 
-    return parseInt(from, 10);
-  });
+      return parseInt(from, 10);
+    })
+    .sort((a, b) => a - b);
 
   const toIndex = (value: number) => {
     const closestValue = range.reduce((prev, curr) => {
