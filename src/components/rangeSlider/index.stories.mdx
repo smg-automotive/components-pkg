@@ -6,14 +6,17 @@ import RangeSlider from './index.tsx';
 <Meta title="Components/Filter/Range Slider" component={RangeSlider} />;
 
 export const Template = (args) => {
-  return <RangeSlider
-    onChange={(event) => {
-      action('change')(event);
-    }}
-    onChangeEnd={(event) => {
-      action('change end')(event);
-    }}
-  />
+  return (
+    <RangeSlider
+      onChange={(event) => {
+        action('change')(event);
+      }}
+      onChangeEnd={(event) => {
+        action('change end')(event);
+      }}
+      {...args}
+    />
+  );
 };
 
 ## Overview
