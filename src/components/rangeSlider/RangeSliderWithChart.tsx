@@ -79,8 +79,6 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
       : [minValue, minValue];
   };
 
-  // check this
-  // current implementation depend of update of initialSelection by outside
   const getChangedThumb = (
     initial: number[],
     current: number[]
