@@ -6,11 +6,10 @@ import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
 
+import { User } from './types';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/drawerNodeItems';
-
-import { User } from './index';
 
 interface NavigationAvatarProps {
   user: User | null;

@@ -59,6 +59,7 @@ export { default as Spinner } from './spinner';
 export { default as Text } from './text';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
+export { default as Skeleton } from './skeleton';
 export { default as Footer } from './navigation/footer';
 export { default as TopListingBadge } from './topListingBadge';
 export { default as AppLayout } from './layout/app/AppLayout';
@@ -71,7 +72,8 @@ export { default as TabList } from './tab/TabList';
 export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
-export { default as HeaderNavigation, UserType } from './navigation/header';
+export { default as HeaderNavigation } from './navigation/header';
+export { UserType } from './navigation/header/types';
 export { default as GalleryHeader } from './galleryHeader';
 export { default as SelectMenu } from './selectMenu';
 

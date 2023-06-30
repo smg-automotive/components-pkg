@@ -12,6 +12,7 @@ export type NavigationLinkConfigProps = Omit<
     userType: {
       private: boolean;
       professional: boolean;
+      guest?: boolean;
     };
     brand: {
       autoscout24: boolean;
@@ -54,6 +55,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
       userType: {
         private: false,
         professional: true,
+        guest: false,
       },
       brand: {
         autoscout24: false,
@@ -84,10 +86,10 @@ export const headerLinks: NavigationLinkConfigProps[] = [
   {
     translationKey: 'header.estimate',
     link: {
-      de: '/de/fahrzeugbewertung',
-      en: '/de/fahrzeugbewertung',
-      fr: '/fr/evaluation-vehicules',
-      it: '/it/valuazione-vehicoli',
+      de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
+      en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
+      fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
+      it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
     },
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {

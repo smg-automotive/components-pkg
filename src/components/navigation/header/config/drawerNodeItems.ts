@@ -70,6 +70,25 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.advancedSearch',
+          link: {
+            de: '/de/motorrad/suche',
+            en: '/de/motorrad/suche',
+            fr: '/fr/moto/recherche',
+            it: '/it/moto/ricerca',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -94,6 +113,25 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.searchMerchant',
+          link: {
+            de: '/de/moto-haendler-garage/suche',
+            en: '/de/moto-haendler-garage/suche',
+            fr: '/fr/moto-concessionaires-garage/recherche',
+            it: '/it/moto-concessionari-garage/ricerca',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -171,7 +209,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
@@ -186,25 +224,6 @@ export const drawerNodeItems = ({
             en: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             fr: 'https://www.financescout24.ch/fr/lp/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             it: 'https://www.financescout24.ch/it/lp/trova-assicurazione-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.searchMenu.viewedListings',
-          link: {
-            de: '/de/besuchte-fahrzeuge',
-            en: '/de/besuchte-fahrzeuge',
-            fr: '/fr/vehicules-visites',
-            it: '/it/veicoli-visitat',
           },
           visibilitySettings: {
             userType: {
@@ -406,11 +425,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -536,10 +555,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.contactRequests',
           link: {
-            de: '/de/member/messagemanager?vehtyp=60',
-            en: '/de/member/messagemanager?vehtyp=60',
-            fr: '/fr/member/messagemanager?vehtyp=60',
-            it: '/it/member/messagemanager?vehtyp=60',
+            de: '/de/member/messagemanager',
+            en: '/de/member/messagemanager',
+            fr: '/fr/member/messagemanager',
+            it: '/it/member/messagemanager',
           },
           visibilitySettings: {
             userType: {
@@ -568,25 +587,6 @@ export const drawerNodeItems = ({
             brand: {
               autoscout24: true,
               motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.testDrives',
-          link: {
-            de: '/de/member/testdrive/settings',
-            en: '/de/member/testdrive/settings',
-            fr: '/fr/member/testdrive/settings',
-            it: '/it/member/testdrive/settings',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
             },
           },
         },
@@ -725,25 +725,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.reviews',
-          link: {
-            de: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            en: '/de/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            fr: '/fr/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-            it: '/it/ip/autoscout24-3175-steffisburg/dealerrating?accountid={accountId}',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.insuranceComparison',
           link: {
             de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
@@ -835,10 +816,10 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -854,10 +835,10 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -884,18 +865,18 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.autoRadar',
           link: {
-            de: '/de/productdescription/as24_autoradar',
-            en: '/de/productdescription/as24_autoradar',
-            fr: '/fr/productdescription/as24_autoradar',
-            it: '/it/productdescription/as24_autoradar',
+            de: '/de/member/autoradarlauncher/all',
+            en: '/de/member/autoradarlauncher/all',
+            fr: '/fr/member/autoradarlauncher/all',
+            it: '/it/member/autoradarlauncher/all',
           },
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -911,11 +892,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -930,11 +911,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -1126,11 +1107,11 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
-              motoscout24: true,
+              autoscout24: false,
+              motoscout24: false,
             },
           },
         },
@@ -1213,18 +1194,18 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.manageAutoRadar',
           link: {
-            de: '/de/productdescription/as24_autoradar',
-            en: '/de/productdescription/as24_autoradar',
-            fr: '/fr/productdescription/as24_autoradar',
-            it: '/it/productdescription/as24_autoradar',
+            de: '/de/member/autoradar',
+            en: '/de/member/autoradar',
+            fr: '/fr/member/autoradar',
+            it: '/it/member/autoradar',
           },
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
-              autoscout24: true,
+              autoscout24: false,
               motoscout24: false,
             },
           },
@@ -1325,6 +1306,7 @@ export const drawerNodeItems = ({
             userType: {
               private: false,
               professional: true,
+              guest: false,
             },
             brand: {
               autoscout24: false,
@@ -1355,10 +1337,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.estimate',
           link: {
-            de: '/de/fahrzeugbewertung',
-            en: '/de/fahrzeugbewertung',
-            fr: '/fr/evaluation-vehicules',
-            it: '/it/valuazione-vehicoli',
+            de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
+            en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
+            fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
+            it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
           },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {

@@ -9,12 +9,8 @@ export const ExchangeIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     <>
       <title>Exchange icon</title>
       <path
-        d="M9.59 1.41L12.18 4H2L3 6H12.17L9.59 8.59L11 10L16 5L11 0L9.59 1.41Z"
         fill="currentColor"
-      />
-      <path
-        d="M5 10L0 15L5 20L6.41 18.58L3.82 16H14L13 14H3.83L6.41 11.41L5 10Z"
-        fill="currentColor"
+        d="M13.59 3.41 16.18 6H6l1 2h9.17l-2.58 2.59L15 12l5-5-5-5-1.41 1.41ZM9 12l-5 5 5 5 1.41-1.42L7.82 18H18l-1-2H7.83l2.58-2.59L9 12Z"
       />
     </>
   ),

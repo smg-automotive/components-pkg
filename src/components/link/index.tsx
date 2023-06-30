@@ -18,6 +18,7 @@ interface Props {
   variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
   [key: string]: unknown;
   fontWeight?: 'regular' | 'bold';
+  ariaLabel?: string;
   color?: string;
 }
 
@@ -33,6 +34,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
+      ariaLabel,
       ...rest
     },
     ref
@@ -55,6 +57,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         target={target || (isExternal ? '_blank' : undefined)}
         rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         ref={ref}
+        aria-label={ariaLabel}
         {...rest}
         fontWeight={fontWeight}
       >
