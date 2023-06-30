@@ -3,24 +3,21 @@ import { action } from '@storybook/addon-actions';
 
 import RangeSlider from './index.tsx';
 
-<Meta
-  title="Components/Filter/Range Slider"
-  component={RangeSlider}
-/>
-;
+<Meta title="Components/Filter/Range Slider" component={RangeSlider} />;
 
 export const Template = (args) => {
-  return (
-    <RangeSlider />
-  );
+  return <RangeSlider
+    onChange={(event) => {
+      action('change')(event);
+    }}
+    onChangeEnd={(event) => {
+      action('change end')(event);
+    }}
+  />
 };
 
 ## Overview
 
 <Canvas>
-  <Story
-    name="Overview"
-  >
-    {Template.bind({})}
-  </Story>
+  <Story name="Overview">{Template.bind({})}</Story>
 </Canvas>
