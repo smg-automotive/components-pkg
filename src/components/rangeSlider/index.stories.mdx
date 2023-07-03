@@ -1,22 +1,23 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
-import { Box } from '@chakra-ui/react';
+import Box from '../box';
 
 import RangeSlider from './';
 
-<Meta title="Components/Filter/Range Slider" component={RangeSlider} />;
+<Meta title="Components/Filter/Range Slider" component={RangeSlider} />
 
 export const Template = (args) => {
   return (
-    <Box maxW={270}>
+    <Box w={340}>
       <RangeSlider
         onChange={(event) => {
-          action('onChange')(event);
+          action('change')(event);
         }}
         onChangeEnd={(event) => {
-          action('onChangeEnd')(event);
+          action('changeEnd')(event);
         }}
+        {...args}
       />
     </Box>
   );
