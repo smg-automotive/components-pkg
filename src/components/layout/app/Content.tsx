@@ -7,7 +7,14 @@ const AppLayoutContent: ComponentWithAs<'div', GridItemProps> = forwardRef<
   GridItemProps,
   'div'
 >((props, ref) => {
-  return <GridItem area="content" ref={ref} {...(props as GridItemProps)} />;
+  return (
+    <GridItem
+      area="content"
+      ref={ref}
+      {...(props as GridItemProps)}
+      marginBottom={{ sm: '5xl', base: '3xl' }}
+    />
+  );
 });
 
 AppLayoutContent.displayName = 'AppLayoutContent';
