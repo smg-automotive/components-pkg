@@ -35,6 +35,8 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           height="full"
           maxWidth={sizes.container[maxContentWidth]}
           marginX={{ '2xs': 'lg', lg: '2xl' }}
+          paddingBottom={{ md: '5xl', base: '3xl' }}
+          paddingTop={{ '2xs': 'md', md: '2xl' }}
         >
           {children}
         </Container>
@@ -45,6 +47,8 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             minWidth="300px"
             marginRight="2xl"
             position="relative"
+            paddingBottom={{ md: '5xl', base: '3xl' }}
+            paddingTop={{ '2xs': 'md', md: '2xl' }}
           >
             {skyScraperAd}
           </chakra.aside>
