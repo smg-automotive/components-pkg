@@ -12,7 +12,8 @@ const AppLayoutContent: ComponentWithAs<'div', GridItemProps> = forwardRef<
       area="content"
       ref={ref}
       {...(props as GridItemProps)}
-      marginBottom={{ md: '4xl', base: '3xl' }}
+      paddingBottom={{ md: '5xl', base: '3xl' }}
+      paddingTop={{ '2xs': 'md', md: '2xl' }}
     />
   );
 });

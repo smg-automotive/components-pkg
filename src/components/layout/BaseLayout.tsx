@@ -34,7 +34,6 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           width="full"
           height="full"
           maxWidth={sizes.container[maxContentWidth]}
-          paddingY={{ '2xs': 'md', md: '2xl' }}
           marginX={{ '2xs': 'lg', lg: '2xl' }}
         >
           {children}
@@ -44,7 +43,6 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
             display={{ '2xs': 'none', lg: 'block' }}
             width="300px"
             minWidth="300px"
-            paddingY={{ '2xs': 'md', md: '2xl' }}
             marginRight="2xl"
             position="relative"
           >
