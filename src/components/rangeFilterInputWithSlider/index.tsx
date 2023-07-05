@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import RangeSliderWithChart, {
+  Facet,
   NumericMinMaxValue,
 } from '../rangeSlider/RangeSliderWithChart';
 import RangeFilterInput, {
@@ -17,12 +18,7 @@ export type ChangeSliderCallback = {
 };
 
 export type Props<NameFrom, NameTo> = {
-  /**
-   * The facets for each element of the scale. The keys are generated automatically based on the scale
-   * e.g. { "*-100": 100, "100-200": 200, "200-500": 5000, "500-*": 80  }
-   */
-  facets: Record<string, number>;
-  withReversedOrder?: boolean;
+  facets: Array<Facet>;
   from: RangeFilterInputField<NameFrom>;
   handleChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
   onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
@@ -33,15 +29,7 @@ export type Props<NameFrom, NameTo> = {
 function RangeFilterInputWithSlider<
   NameFrom extends string,
   NameTo extends string
->({
-  facets,
-  unit,
-  handleChange,
-  withReversedOrder = false,
-  from,
-  to,
-  ...rest
-}: Props<NameFrom, NameTo>) {
+>({ facets, unit, handleChange, from, to, ...rest }: Props<NameFrom, NameTo>) {
   const value = {
     min: from.value,
     max: to.value,
@@ -97,16 +85,11 @@ function RangeFilterInputWithSlider<
 
   return (
     <Flex direction="column">
-      <Box
-        order={withReversedOrder ? 1 : 0}
-        px="md"
-        py={withReversedOrder ? 'md' : 0}
-      >
+      <Box order={{ base: 1, sm: 0 }} px="md" py={{ base: 'md', sm: 0 }}>
         <RangeSliderWithChart
-          onChange={handleSliderChange}
+          onSliderChange={handleSliderChange}
           onSliderRelease={handleSliderRelease}
           selection={appliedValue()}
-          initialSelection={value}
           facets={facets}
           {...rest}
         />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Box from '../box';
 import Chart from './Chart';
@@ -15,32 +15,30 @@ export type ChangeCallback = {
   value: NumericMinMaxValue;
 };
 
+export type Facet = {
+  from: number;
+  to?: number | null;
+  value: number;
+};
+
 interface RangeSliderWithChartProps {
-  facets: Record<string, number>;
+  facets: Array<Facet>;
   selection: NumericMinMaxValue;
-  initialSelection: NumericMinMaxValue;
-  onChange: (values: NumericMinMaxValue) => void;
+  onSliderChange: (values: NumericMinMaxValue) => void;
   onSliderRelease: (event: ChangeCallback) => void;
 }
 
 const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   facets,
   selection,
-  initialSelection,
-  onChange,
+  onSliderChange,
   onSliderRelease,
 }) => {
-  const range = Object.keys(facets)
-    .map((key) => {
-      const [from] = key.split('-');
+  const [startRange, setStartRange] = useState<number[]>([]);
 
-      if (from === '*') {
-        return 0;
-      }
+  const sortedFacetsByFromKey = facets.sort((a, b) => a.from - b.from);
 
-      return parseInt(from, 10);
-    })
-    .sort((a, b) => a - b);
+  const range = sortedFacetsByFromKey.map(({ from }) => from);
 
   const toIndex = (value: number) => {
     const closestValue = range.reduce((prev, curr) => {
@@ -90,13 +88,13 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
       initialMaxIndex === currentMaxIndex
     ) {
       return null;
-    } else {
-      return initialMinIndex !== currentMinIndex ? 'min' : 'max';
     }
+
+    return initialMinIndex !== currentMinIndex ? 'min' : 'max';
   };
 
   const handleChangeEnd = ([newMinIndex, newMaxIndex]: number[]) => {
-    const changedThumb = getChangedThumb(toRange(initialSelection), [
+    const changedThumb = getChangedThumb(startRange, [
       newMinIndex,
       newMaxIndex,
     ]);
@@ -111,16 +109,17 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   return (
     <>
       <Box position="relative" top="sm">
-        <Chart range={toRange(selection)} facets={facets} />
+        <Chart range={toRange(selection)} facets={sortedFacetsByFromKey} />
       </Box>
       <RangeSlider
         step={1}
         min={0}
         max={range.length}
         onChange={([newMinIndex, newMaxIndex]) => {
-          onChange(toMinMax(newMinIndex, newMaxIndex, selection));
+          onSliderChange(toMinMax(newMinIndex, newMaxIndex, selection));
         }}
         onChangeEnd={handleChangeEnd}
+        onChangeStart={setStartRange}
         value={toRange(selection)}
       />
     </>
