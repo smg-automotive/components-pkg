@@ -38,22 +38,22 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   const sortedFacetsByFromKey = facets.sort((a, b) => a.from - b.from);
 
-  const range = sortedFacetsByFromKey.map(({ from }) => from);
+  const scale = sortedFacetsByFromKey.map(({ from }) => from);
 
   const toIndex = (value: number) => {
-    const closestValue = range.reduce((prev, curr) => {
+    const closestValue = scale.reduce((prev, curr) => {
       return Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev;
     });
 
-    return range.indexOf(closestValue);
+    return scale.indexOf(closestValue);
   };
 
   const toValue = (index: number) => {
-    if (index === range.length) {
+    if (index === scale.length) {
       return null;
     }
 
-    return range[index];
+    return scale[index];
   };
 
   const toMinMax = (
@@ -66,14 +66,14 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   });
 
   const toRange = ({ min, max }: NumericMinMaxValue) => {
-    const maxValue = max ? toIndex(max) : range.length;
+    const maxValue = max ? toIndex(max) : scale.length;
     const minValue = min ? toIndex(min) : 0;
 
-    const rangeValue: number[] = [minValue, maxValue];
-    const sortedRange = [...rangeValue].sort((a, b) => a - b);
+    const range: number[] = [minValue, maxValue];
+    const sortedRange = [...range].sort((a, b) => a - b);
 
-    return JSON.stringify(rangeValue) === JSON.stringify(sortedRange)
-      ? rangeValue
+    return JSON.stringify(range) === JSON.stringify(sortedRange)
+      ? range
       : [minValue, minValue];
   };
 
@@ -114,7 +114,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
       <RangeSlider
         step={1}
         min={0}
-        max={range.length}
+        max={scale.length}
         onChange={([newMinIndex, newMaxIndex]) => {
           onSliderChange(toMinMax(newMinIndex, newMaxIndex, selection));
         }}
