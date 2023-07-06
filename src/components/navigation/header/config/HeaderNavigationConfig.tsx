@@ -146,11 +146,9 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   }
 
   getHeaderLinks = (): HeaderNavigationLink[] => {
-    const mappedHeaderLinks = this.config.headerItems
+    return this.config.headerItems
       .map((link) => this.mapLink(link))
       .filter((item) => item.isVisible);
-
-    return mappedHeaderLinks;
   };
 
   getDrawerNodeItems = (): DrawerNodeItems => {

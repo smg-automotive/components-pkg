@@ -47,5 +47,25 @@ module.exports = {
         'import/namespace': ['error', { allowComputed: true }],
       },
     },
+    {
+      files: [
+        '**/locales/**',
+        '**/__tests__/**/*.[jt]s?(x)',
+        '**/?(*.)+(spec|test).[tj]s?(x)*',
+        'package-lock.json',
+        '**/config/**',
+        '**/cypress/**',
+        '*.mdx',
+      ],
+      rules: {
+        'sonarjs/no-duplicate-string': 'off',
+      },
+    },
+    {
+      files: ['*.ts?(x)'],
+      rules: {
+        'sonarjs/cognitive-complexity': 'warn',
+      },
+    },
   ],
 };

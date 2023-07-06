@@ -66,7 +66,7 @@
     "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.1.0",
     "@rollup/plugin-typescript": "11.1.1",
-    "@smg-automotive/eslint-config": "3.0.24",
+    "@smg-automotive/eslint-config": "v3.1.0-add-sonar-js-5182cb1525fe887b4b28a7da8349b71a0b5a3eee.1",
     "@storybook/addon-actions": "7.0.22",
     "@storybook/addon-docs": "7.0.22",
     "@storybook/addon-essentials": "7.0.22",

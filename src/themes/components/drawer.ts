@@ -1,7 +1,6 @@
 import {
   createMultiStyleConfigHelpers,
   PartsStyleFunction,
-  SystemStyleFunction,
   SystemStyleObject,
 } from '@chakra-ui/react';
 import { drawerAnatomy as parts } from '@chakra-ui/anatomy';
@@ -29,7 +28,7 @@ const baseStyleDialogContainer: SystemStyleObject = {
   justifyContent: 'center',
 };
 
-const baseStyleDialog: SystemStyleFunction = () => {
+const baseStyleDialog = () => {
   return {
     zIndex: 'modal',
     bg: 'white',
@@ -45,10 +44,10 @@ const baseStyleBody: SystemStyleObject = {
   overflow: 'auto',
 };
 
-const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
+const baseStyle: PartsStyleFunction<typeof parts> = () => ({
   overlay: baseStyleOverlay,
   dialogContainer: baseStyleDialogContainer,
-  dialog: baseStyleDialog(props),
+  dialog: baseStyleDialog(),
   body: baseStyleBody,
 });
 
