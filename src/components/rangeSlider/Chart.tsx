@@ -17,7 +17,7 @@ const Chart: React.FC<Props> = ({ facets, range }) => {
   const maxValue = Math.max(...facets.map(({ value }) => value));
 
   return (
-    <Flex justify="space-between" h="3xl">
+    <Flex justify="space-between" h="3xl" data-testid="chart">
       {facets.map(({ from }, index) => (
         <Box
           h="full"

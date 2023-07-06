@@ -20,7 +20,7 @@ return (
 
 <Box maxW={380}>
   <RangeFilterInputWithSlider
-    handleChange={(event) => {
+    onChange={(event) => {
       setFilters({
         ...filters,
         [event.name]: event.value,

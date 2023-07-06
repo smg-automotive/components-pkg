@@ -20,7 +20,7 @@ export type ChangeSliderCallback = {
 export type Props<NameFrom, NameTo> = {
   facets: Array<Facet>;
   from: RangeFilterInputField<NameFrom>;
-  handleChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
+  onChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
   onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
   to: RangeFilterInputField<NameTo>;
   unit?: string;
@@ -29,7 +29,7 @@ export type Props<NameFrom, NameTo> = {
 function RangeFilterInputWithSlider<
   NameFrom extends string,
   NameTo extends string
->({ facets, unit, handleChange, from, to, ...rest }: Props<NameFrom, NameTo>) {
+>({ facets, unit, onChange, from, to, ...rest }: Props<NameFrom, NameTo>) {
   const value = {
     min: from.value,
     max: to.value,
@@ -55,7 +55,7 @@ function RangeFilterInputWithSlider<
 
   const handleSliderRelease = (event: ChangeSliderCallback) => {
     setIsSliding(false);
-    handleChange({
+    onChange({
       name: event.touched === 'min' ? from.name : to.name,
       value: event.value[event.touched],
     });
@@ -80,7 +80,7 @@ function RangeFilterInputWithSlider<
       [event.name === from.name ? 'min' : 'max']: event.value,
     });
 
-    handleChange(event);
+    onChange(event);
   };
 
   return (
