@@ -32,7 +32,7 @@ function InputGroup<Name extends string>({
       key={`${inputProps.name}-${inputProps.value}`}
       width="full"
       variant={variant}
-      defaultValue={inputProps.value}
+      defaultValue={inputProps.value as number | string | undefined}
       name={inputProps.name}
       onChange={(_, value) =>
         handleChange({ value: value || undefined, name: inputProps.name })

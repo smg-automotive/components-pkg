@@ -9,13 +9,13 @@ import InputGroup from './InputGroup';
 
 export type RangeFilterInputField<Name> = {
   name: Name;
-  value?: number;
+  value?: number | null;
   placeholder?: string;
   ariaLabel?: string;
 };
 
 export type ChangeCallback<Name> = {
-  value?: number;
+  value?: number | null;
   name: Name;
 };
 
