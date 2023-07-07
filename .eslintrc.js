@@ -48,23 +48,9 @@ module.exports = {
       },
     },
     {
-      files: [
-        '**/locales/**',
-        '**/__tests__/**/*.[jt]s?(x)',
-        '**/?(*.)+(spec|test).[tj]s?(x)*',
-        'package-lock.json',
-        '**/config/**',
-        '**/cypress/**',
-        '*.mdx',
-      ],
+      files: ['*.mdx'],
       rules: {
         'sonarjs/no-duplicate-string': 'off',
-      },
-    },
-    {
-      files: ['*.ts?(x)'],
-      rules: {
-        'sonarjs/cognitive-complexity': 'warn',
       },
     },
   ],
