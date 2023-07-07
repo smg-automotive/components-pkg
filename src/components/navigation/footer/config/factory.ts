@@ -72,12 +72,10 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
   }
 
   private mapSectionConfig(section: LinkSectionConfig) {
-    const mappedSection = {
+    return {
       title: this.mapLinkArray(section.title),
       items: this.mapLinkArray(section.items),
     };
-
-    return mappedSection;
   }
 
   private mapLinkArray(linkConfigArray: LinkConfig[]): LinkInstance[] {

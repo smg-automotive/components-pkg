@@ -98,14 +98,12 @@ export class Link {
     const domain = domains[brand][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
 
-    const prefixedLink = {
+    return {
       de: `${baseUrl}${link.de}`,
       fr: `${baseUrl}${link.fr}`,
       it: `${baseUrl}${link.it}`,
       en: `${baseUrl}${link.en}`,
     };
-
-    return prefixedLink;
   }
 
   private static determineVisibility({
@@ -129,15 +127,11 @@ export class Link {
       return !!visibilitySettings.userType[userType];
     }
 
-    if (
+    return !(
       userType &&
       userType !== UserType.Guest &&
       visibilitySettings.userType &&
       !visibilitySettings.userType[userType]
-    ) {
-      return false;
-    }
-
-    return true;
+    );
   }
 }

@@ -47,5 +47,11 @@ module.exports = {
         'import/namespace': ['error', { allowComputed: true }],
       },
     },
+    {
+      files: ['*.mdx'],
+      rules: {
+        'sonarjs/no-duplicate-string': 'off',
+      },
+    },
   ],
 };
