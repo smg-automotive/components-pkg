@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
-import RangeFilterInputWithFacets from '../';
+import RangeFilterInputWithSlider from '../';
 
 jest.mock('use-debounce', () => {
   return {
@@ -59,7 +59,7 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
 
 const renderWrapper = ({ onChange = jest.fn(), facets = mockedFacets }) => {
   return render(
-    <RangeFilterInputWithFacets
+    <RangeFilterInputWithSlider
       onChange={onChange}
       from={mockedFrom}
       to={mockedTo}
