@@ -5,7 +5,10 @@ import React, {
   ReactNode,
   useMemo,
 } from 'react';
+
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
+
+import Flex from '../flex';
 
 interface Props {
   children: ReactNode;
@@ -53,18 +56,20 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
     };
 
     return (
-      <Component
-        target={target || (isExternal ? '_blank' : undefined)}
-        rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
-        ref={ref}
-        aria-label={ariaLabel}
-        {...rest}
-        fontWeight={fontWeight}
-      >
-        {leftIcon}
-        <chakra.span __css={textStyle}>{children}</chakra.span>
-        {rightIcon}
-      </Component>
+      <Flex>
+        <Component
+          target={target || (isExternal ? '_blank' : undefined)}
+          rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
+          ref={ref}
+          aria-label={ariaLabel}
+          {...rest}
+          fontWeight={fontWeight}
+        >
+          {leftIcon}
+          <chakra.span __css={textStyle}>{children}</chakra.span>
+          {rightIcon}
+        </Component>
+      </Flex>
     );
   }
 );
