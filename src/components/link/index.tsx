@@ -8,7 +8,7 @@ import React, {
 
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
-import Flex from '../flex';
+import Box from '../box';
 
 interface Props {
   children: ReactNode;
@@ -56,7 +56,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
     };
 
     return (
-      <Flex>
+      <Box>
         <Component
           target={target || (isExternal ? '_blank' : undefined)}
           rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
@@ -69,7 +69,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
           <chakra.span __css={textStyle}>{children}</chakra.span>
           {rightIcon}
         </Component>
-      </Flex>
+      </Box>
     );
   }
 );
