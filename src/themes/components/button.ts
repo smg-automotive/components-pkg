@@ -20,7 +20,7 @@ const buttonSizes = {
 const variants = {
   primary: {
     bg: 'brand.primary',
-    color: 'gray.900',
+    color: 'black',
     boxShadow: 'button',
     _hover: {
       filter: 'brightness(1.1)',
