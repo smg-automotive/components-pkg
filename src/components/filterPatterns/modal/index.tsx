@@ -94,7 +94,9 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 onResetFilter={onResetFilter}
               />
             </ModalHeader>
-            <ModalBody overflowY="scroll">{children}</ModalBody>
+            <ModalBody overflowY="scroll" paddingY={0}>
+              {children}
+            </ModalBody>
             {showCallToActionButton ? (
               <ModalFooter padding="2xl">
                 <FilterActionButton

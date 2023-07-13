@@ -48,7 +48,7 @@ const Popover: FC<Props> = ({
           shadow="xs"
           w="6xl"
         >
-          <PopoverHeader paddingBottom="2xl">
+          <PopoverHeader>
             <FilterHeading
               isApplied={isApplied}
               label={label}
@@ -59,17 +59,18 @@ const Popover: FC<Props> = ({
             />
           </PopoverHeader>
           <PopoverBody
+            marginY="2xl"
             maxH={
               showCallToActionButton
                 ? '6xl'
-                : 'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))'
+                : 'calc(var(--chakra-sizes-lg) + var(--chakra-sizes-6xl))'
             }
             overflowY="scroll"
           >
             {children}
           </PopoverBody>
           {showCallToActionButton ? (
-            <PopoverFooter paddingTop="2xl">
+            <PopoverFooter>
               <FilterActionButton
                 actionButton={actionButton}
                 isApplied={isApplied}
