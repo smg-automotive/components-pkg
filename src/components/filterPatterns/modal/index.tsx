@@ -31,6 +31,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onModalOpen,
   onResetFilter,
   showCallToActionButton = true,
+  header,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -85,14 +86,18 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               alignItems="flex-start"
               padding="2xl"
             >
-              <FilterHeading
-                language={language}
-                isApplied={isApplied}
-                label={label}
-                numberOfAppliedFilters={numberOfAppliedFilters}
-                onClose={onClose}
-                onResetFilter={onResetFilter}
-              />
+              {header ? (
+                header
+              ) : (
+                <FilterHeading
+                  language={language}
+                  isApplied={isApplied}
+                  label={label}
+                  numberOfAppliedFilters={numberOfAppliedFilters}
+                  onClose={onClose}
+                  onResetFilter={onResetFilter}
+                />
+              )}
             </ModalHeader>
             <ModalBody overflowY="scroll" paddingY={0}>
               {children}

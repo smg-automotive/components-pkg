@@ -24,6 +24,7 @@ type Props = {
   | 'numberOfAppliedFilters'
   | 'onResetFilter'
   | 'showCallToActionButton'
+  | 'header'
   | 'children'
 >;
 
@@ -35,6 +36,7 @@ const Popover: FC<Props> = ({
   onClose,
   onResetFilter,
   showCallToActionButton,
+  header,
   children,
 }) => {
   const { language } = useI18n();
@@ -49,14 +51,18 @@ const Popover: FC<Props> = ({
           w="6xl"
         >
           <PopoverHeader>
-            <FilterHeading
-              isApplied={isApplied}
-              label={label}
-              numberOfAppliedFilters={numberOfAppliedFilters}
-              onClose={onClose}
-              language={language}
-              onResetFilter={onResetFilter}
-            />
+            {header ? (
+              header
+            ) : (
+              <FilterHeading
+                isApplied={isApplied}
+                label={label}
+                numberOfAppliedFilters={numberOfAppliedFilters}
+                onClose={onClose}
+                language={language}
+                onResetFilter={onResetFilter}
+              />
+            )}
           </PopoverHeader>
           <PopoverBody
             marginY="2xl"

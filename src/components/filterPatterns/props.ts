@@ -31,6 +31,10 @@ export type FilterPatternProps = {
    */
   showCallToActionButton?: boolean;
   /**
+   * To show a custom filter header.
+   */
+  header?: ReactNode;
+  /**
    * Content of the filter.
    */
   children: ReactNode;

@@ -28,6 +28,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   onPopoverOpen,
   onResetFilter,
   showCallToActionButton = true,
+  header,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -128,6 +129,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               onClose={onClose}
               onResetFilter={onResetFilter}
               showCallToActionButton={showCallToActionButton}
+              header={header}
             >
               {children}
             </FilterPopover>
