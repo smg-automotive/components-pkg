@@ -1,6 +1,9 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
+import Text from 'src/components/text';
+import { ChevronLeftSmallIcon } from 'src/components/icons';
+import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
@@ -49,6 +52,23 @@ export const Template = (args) => (
       />
     </PopoverFilter>
   </Box>
+);
+
+export const CustomHeader = () => (
+  <Flex justifyContent="center" alignItems="center" width="full">
+    <ChevronLeftSmallIcon color="blue.700" />
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      width="full"
+    >
+      <Text textStyle="body-small" color="gray.500">
+        VW
+      </Text>
+      <Text textStyle="heading3">Modell auswählen</Text>
+    </Flex>
+  </Flex>
 );
 
 # Popover filter
@@ -133,6 +153,23 @@ export const Template = (args) => (
       displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
       numberOfAppliedFilters: 5,
       showCallToActionButton: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With custom header
+
+<Canvas>
+  <Story
+    name="With custom header"
+    args={{
+      label: 'Treibstoff',
+      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+      numberOfAppliedFilters: 5,
+      showCallToActionButton: false,
+      header: <CustomHeader />,
     }}
   >
     {Template.bind({})}
