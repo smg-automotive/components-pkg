@@ -65,7 +65,8 @@ const Popover: FC<Props> = ({
             )}
           </PopoverHeader>
           <PopoverBody
-            marginY="2xl"
+            marginTop="2xl"
+            marginBottom={showCallToActionButton ? '2xl' : '0'}
             maxH={
               showCallToActionButton
                 ? '6xl'
