@@ -5,12 +5,14 @@ interface DotsButtonProps {
   onClick: () => void;
   isCurrent: boolean;
   currentDot: number;
+  totalDots: number;
 }
 
 const DotsPaginationButton: FC<DotsButtonProps> = ({
   onClick,
   isCurrent,
   currentDot,
+  totalDots,
 }) => {
   const { dotsPaginationButton, dotsPaginationButtonActive } =
     useMultiStyleConfig('Carousel');
@@ -20,7 +22,7 @@ const DotsPaginationButton: FC<DotsButtonProps> = ({
       __css={isCurrent ? dotsPaginationButtonActive : dotsPaginationButton}
       onClick={onClick}
       aria-current={isCurrent}
-      aria-label={`selected dot ${currentDot}`}
+      aria-label={`slide indicator ${currentDot} of ${totalDots}`}
     />
   );
 };
