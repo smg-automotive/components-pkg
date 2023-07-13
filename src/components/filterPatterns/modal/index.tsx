@@ -104,7 +104,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               {children}
             </ModalBody>
             {showCallToActionButton ? (
-              <ModalFooter paddingBottom="2xl">
+              <ModalFooter paddingBottom="2xl" paddingTop="0">
                 <FilterActionButton
                   actionButton={actionButton}
                   isApplied={isApplied}
