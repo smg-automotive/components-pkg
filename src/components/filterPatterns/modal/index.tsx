@@ -99,7 +99,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 />
               )}
             </ModalHeader>
-            <ModalBody overflowY="scroll" paddingY={0}>
+            <ModalBody overflowY="scroll" paddingTop={0}>
               {children}
             </ModalBody>
             {showCallToActionButton ? (
