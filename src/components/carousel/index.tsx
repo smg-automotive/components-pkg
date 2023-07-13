@@ -10,12 +10,14 @@ import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
 import NumbersPagination from './NumbersPagination';
 import NavigationButton from './NavigationButton';
+import DotsPagination from './DotsPagination';
 
 type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
   withNumbersPagination?: boolean;
+  withDotsPagination?: boolean;
 };
 
 type DefaultProps = {
@@ -40,6 +42,7 @@ enum PaginationType {
   Thumbnail = 'thumbnail',
   Number = 'number',
   None = 'none',
+  Dot = 'dot',
 }
 
 const Carousel: FC<Props> = (props) => {
@@ -49,6 +52,7 @@ const Carousel: FC<Props> = (props) => {
     onSlideSelect,
     fullScreen,
     withNumbersPagination,
+    withDotsPagination,
   } = props;
 
   const numberOfSlides = props.children.length;
@@ -69,6 +73,9 @@ const Carousel: FC<Props> = (props) => {
   }
   if (withNumbersPagination) {
     paginationType = PaginationType.Number;
+  }
+  if (withDotsPagination) {
+    paginationType = PaginationType.Dot;
   }
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
@@ -178,6 +185,7 @@ const Carousel: FC<Props> = (props) => {
     [PaginationType.None]: 'full',
     [PaginationType.Thumbnail]: 'calc(100% - 7.5rem)',
     [PaginationType.Number]: 'calc(100% - 5rem)',
+    [PaginationType.Dot]: 'full',
   };
 
   return (
@@ -229,6 +237,13 @@ const Carousel: FC<Props> = (props) => {
             direction="next"
             fullScreen={!!fullScreen}
           />
+          {paginationType === PaginationType.Dot ? (
+            <DotsPagination
+              mainCarousel={mainCarousel}
+              currentSlideIndex={selectedIndex}
+              numberOfSlides={props.children.length}
+            />
+          ) : null}
         </Box>
       )}
 
