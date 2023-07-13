@@ -8,7 +8,7 @@ import Box from '../box';
 import NumbersPaginationButton from './NumbersPaginationButton';
 import DotsPaginationButton from './DotsPaginationButton';
 
-type PaginationType = 'dots' | 'numbers';
+type PaginationType = 'dot' | 'number';
 
 interface Props {
   currentSlideIndex: number;
@@ -36,7 +36,7 @@ const NumbersDotsPagination: FC<Props> = ({
 
   const renderPagination = (type: PaginationType) => {
     switch (type) {
-      case 'dots':
+      case 'dot':
         return (
           <Box aria-label="Dots Pagination" __css={dotsPaginationContainer}>
             <Flex
@@ -56,7 +56,7 @@ const NumbersDotsPagination: FC<Props> = ({
             </Flex>
           </Box>
         );
-      case 'numbers':
+      case 'number':
         return (
           <Box aria-label="Numbers Pagination">
             <Flex

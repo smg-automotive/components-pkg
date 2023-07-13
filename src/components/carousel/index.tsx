@@ -15,8 +15,7 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  withNumbersPagination?: boolean;
-  withDotsPagination?: boolean;
+  paginationType?: PaginationType;
 };
 
 type DefaultProps = {
@@ -37,7 +36,7 @@ type FullScreenProps = {
 
 type Props = DefaultProps | FullScreenProps;
 
-enum PaginationType {
+export enum PaginationType {
   Thumbnail = 'thumbnail',
   Number = 'number',
   None = 'none',
@@ -50,12 +49,10 @@ const Carousel: FC<Props> = (props) => {
     onSlideClick,
     onSlideSelect,
     fullScreen,
-    withNumbersPagination,
-    withDotsPagination,
+    paginationType = PaginationType.None,
   } = props;
 
-  const numberOfSlides = props.children.length;
-
+  const [selectedIndex, setSelectedIndex] = useState(startIndex);
   const [isSmallLandscapeViewport] = useMediaQuery(
     `(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`,
     {
@@ -63,27 +60,10 @@ const Carousel: FC<Props> = (props) => {
       fallback: false,
     }
   );
-
-  const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
-
-  let paginationType = PaginationType.None;
-  if (hasThumbnailPagination) {
-    paginationType = PaginationType.Thumbnail;
-  }
-  if (withNumbersPagination) {
-    paginationType = PaginationType.Number;
-  }
-  if (withDotsPagination) {
-    paginationType = PaginationType.Dot;
-  }
-
-  const [selectedIndex, setSelectedIndex] = useState(startIndex);
-
   const { container, carousel, slideContainer } = useMultiStyleConfig(
     'Carousel',
     fullScreen ? { variant: 'fullScreen' } : {}
   );
-
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
@@ -104,7 +84,6 @@ const Carousel: FC<Props> = (props) => {
     () => mainCarousel && mainCarousel.scrollNext(),
     [mainCarousel]
   );
-
   const onClick = useCallback(
     (index: number) => {
       if (onSlideClick && mainCarousel && mainCarousel.clickAllowed()) {
@@ -113,6 +92,9 @@ const Carousel: FC<Props> = (props) => {
     },
     [mainCarousel, onSlideClick]
   );
+
+  const numberOfSlides = props.children.length;
+  const hasThumbnailPagination = fullScreen && !isSmallLandscapeViewport;
 
   const onSelect = useCallback(() => {
     if (!mainCarousel) return;
@@ -207,7 +189,11 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={carouselHeightByPaginationTypeMap[paginationType]}
+          height={
+            carouselHeightByPaginationTypeMap[
+              hasThumbnailPagination ? PaginationType.Thumbnail : paginationType
+            ]
+          }
           __css={carousel}
         >
           <Flex __css={slideContainer}>
@@ -241,7 +227,7 @@ const Carousel: FC<Props> = (props) => {
               mainCarousel={mainCarousel}
               currentSlideIndex={selectedIndex}
               numberOfSlides={props.children.length}
-              paginationType="dots"
+              paginationType={PaginationType.Dot}
             />
           ) : null}
         </Box>
@@ -262,7 +248,7 @@ const Carousel: FC<Props> = (props) => {
           mainCarousel={mainCarousel}
           currentSlideIndex={selectedIndex}
           numberOfSlides={props.children.length}
-          paginationType="numbers"
+          paginationType={PaginationType.Number}
         />
       ) : null}
     </Box>
