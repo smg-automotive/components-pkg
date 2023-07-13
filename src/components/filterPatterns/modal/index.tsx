@@ -30,6 +30,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onModalClose,
   onModalOpen,
   onResetFilter,
+  showCallToActionButton = true,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -94,13 +95,15 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               />
             </ModalHeader>
             <ModalBody overflowY="scroll">{children}</ModalBody>
-            <ModalFooter padding="2xl">
-              <FilterActionButton
-                actionButton={actionButton}
-                isApplied={isApplied}
-                onClose={onClose}
-              />
-            </ModalFooter>
+            {showCallToActionButton ? (
+              <ModalFooter padding="2xl">
+                <FilterActionButton
+                  actionButton={actionButton}
+                  isApplied={isApplied}
+                  onClose={onClose}
+                />
+              </ModalFooter>
+            ) : null}
           </ModalContent>
         </ChakraModal>
       </>

@@ -23,6 +23,7 @@ type Props = {
   | 'label'
   | 'numberOfAppliedFilters'
   | 'onResetFilter'
+  | 'showCallToActionButton'
   | 'children'
 >;
 
@@ -33,6 +34,7 @@ const Popover: FC<Props> = ({
   numberOfAppliedFilters,
   onClose,
   onResetFilter,
+  showCallToActionButton,
   children,
 }) => {
   const { language } = useI18n();
@@ -56,16 +58,25 @@ const Popover: FC<Props> = ({
               onResetFilter={onResetFilter}
             />
           </PopoverHeader>
-          <PopoverBody maxH="6xl" overflowY="scroll">
+          <PopoverBody
+            maxH={
+              showCallToActionButton
+                ? '6xl'
+                : 'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))'
+            }
+            overflowY="scroll"
+          >
             {children}
           </PopoverBody>
-          <PopoverFooter paddingTop="2xl">
-            <FilterActionButton
-              actionButton={actionButton}
-              isApplied={isApplied}
-              onClose={onClose}
-            />
-          </PopoverFooter>
+          {showCallToActionButton ? (
+            <PopoverFooter paddingTop="2xl">
+              <FilterActionButton
+                actionButton={actionButton}
+                isApplied={isApplied}
+                onClose={onClose}
+              />
+            </PopoverFooter>
+          ) : null}
         </PopoverContent>
       </Box>
     </Portal>

@@ -26,6 +26,11 @@ export type FilterPatternProps = {
    */
   onResetFilter: () => void;
   /**
+   * If a call-to-action button is displayed in the filter footer
+   * @default true
+   */
+  showCallToActionButton?: boolean;
+  /**
    * Content of the filter.
    */
   children: ReactNode;
