@@ -49,7 +49,6 @@ const NumbersDotsPagination: FC<Props> = ({
                   key={`slide-${index}`}
                   isCurrent={index === currentSlideIndex}
                   currentDot={index + 1}
-                  onClick={() => onClick(index)}
                   totalDots={numberOfSlides}
                 />
               ))}
