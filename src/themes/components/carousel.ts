@@ -125,6 +125,11 @@ const dotsPaginationButton = {
     height: '6px',
     content: '""',
   },
+  _hover: {
+    _after: {
+      opacity: opacity[80],
+    },
+  },
 };
 
 const dotsPaginationButtonActive = {
@@ -216,7 +221,7 @@ const Carousel: ComponentStyleConfig = {
     dotsPaginationContainer: {
       position: 'absolute',
       width: 'full',
-      top: '75%',
+      bottom: '23%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
