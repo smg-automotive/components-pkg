@@ -96,8 +96,44 @@ const numbersPaginationButton = {
   },
 };
 
+const dotsPaginationWrapper = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: 'xs',
+  _last: {
+    '> span': {
+      width: '4px',
+      height: '4px',
+      _after: {
+        width: '100%',
+        height: '4px',
+        content: '""',
+      },
+      _active: {
+        width: '8px',
+        height: '8px',
+        _after: {
+          backgroundColor: 'white',
+          borderRadius: 'full',
+          opacity: opacity[100],
+          width: '100%',
+          height: '8px',
+          content: '""',
+        },
+      },
+    },
+  },
+  _hover: {
+    '> span': {
+      _after: {
+        opacity: opacity[80],
+      },
+    },
+  },
+};
+
 const dotsPaginationButton = {
-  ['-webkit-appearance']: 'none',
   backgroundColor: 'transparent',
   touchAction: 'manipulation',
   display: 'inline-flex',
@@ -107,16 +143,7 @@ const dotsPaginationButton = {
   padding: 0,
   width: '6px',
   height: '6px',
-  marginX: 'sm',
-  _last: {
-    width: '4px',
-    height: '4px',
-    _after: {
-      width: '100%',
-      height: '4px',
-      content: '""',
-    },
-  },
+  marginX: 'xs',
   _after: {
     backgroundColor: 'gray.300',
     opacity: opacity[40],
@@ -125,36 +152,19 @@ const dotsPaginationButton = {
     height: '6px',
     content: '""',
   },
-  _hover: {
-    _after: {
-      opacity: opacity[80],
-    },
-  },
 };
 
 const dotsPaginationButtonActive = {
   ...dotsPaginationButton,
-  width: '8px',
-  height: '8px',
-  marginX: 'sm',
-  _last: {
-    width: '8px',
-    height: '8px',
-    _after: {
-      backgroundColor: 'white',
-      borderRadius: 'full',
-      opacity: opacity[100],
-      width: '100%',
-      height: '8px',
-      content: '""',
-    },
-  },
+  // eslint-disable-next-line sonarjs/no-duplicate-string
+  width: '8px !important',
+  height: '8px !important',
   _after: {
     backgroundColor: 'white',
     borderRadius: 'full',
     opacity: opacity[100],
     width: '100%',
-    height: '8px',
+    height: '8px !important',
     content: '""',
   },
 };
@@ -226,6 +236,7 @@ const Carousel: ComponentStyleConfig = {
       justifyContent: 'center',
       alignItems: 'center',
     },
+    dotsPaginationWrapper,
     dotsPaginationButton,
     dotsPaginationButtonActive,
   },

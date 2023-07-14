@@ -14,16 +14,23 @@ const DotsPaginationButton: FC<DotsButtonProps> = ({
   currentDot,
   totalDots,
 }) => {
-  const { dotsPaginationButton, dotsPaginationButtonActive } =
-    useMultiStyleConfig('Carousel');
+  const {
+    dotsPaginationButton,
+    dotsPaginationButtonActive,
+    dotsPaginationWrapper,
+  } = useMultiStyleConfig('Carousel');
 
   return (
     <chakra.button
-      __css={isCurrent ? dotsPaginationButtonActive : dotsPaginationButton}
+      __css={dotsPaginationWrapper}
       onClick={onClick}
       aria-current={isCurrent}
       aria-label={`slide indicator ${currentDot} of ${totalDots}`}
-    />
+    >
+      <chakra.span
+        __css={isCurrent ? dotsPaginationButtonActive : dotsPaginationButton}
+      />
+    </chakra.button>
   );
 };
 
