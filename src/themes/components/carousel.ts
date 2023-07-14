@@ -105,12 +105,12 @@ const dotsPaginationButton = {
   padding: 0,
   width: '6px',
   height: '6px',
-  marginX: 'xs',
+  marginX: '6px',
   _last: {
     width: '4px',
     height: '4px',
     _after: {
-      width: '100%',
+      width: 'full',
       height: '4px',
       content: '""',
     },
@@ -119,7 +119,7 @@ const dotsPaginationButton = {
     backgroundColor: 'gray.300',
     opacity: opacity[40],
     borderRadius: 'full',
-    width: '100%',
+    width: 'full',
     height: '6px',
     content: '""',
   },
@@ -127,15 +127,14 @@ const dotsPaginationButton = {
 
 const dotsPaginationButtonActive = {
   ...dotsPaginationButton,
-  // eslint-disable-next-line sonarjs/no-duplicate-string
-  width: '8px !important',
-  height: '8px !important',
+  width: '8px',
+  height: '8px',
   _after: {
     backgroundColor: 'white',
     borderRadius: 'full',
     opacity: opacity[100],
-    width: '100%',
-    height: '8px !important',
+    width: 'full',
+    height: '8px',
     content: '""',
   },
 };
@@ -202,7 +201,7 @@ const Carousel: ComponentStyleConfig = {
     dotsPaginationContainer: {
       position: 'absolute',
       width: 'full',
-      bottom: '5%',
+      bottom: 'lg',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
