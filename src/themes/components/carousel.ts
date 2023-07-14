@@ -96,7 +96,7 @@ const numbersPaginationButton = {
   },
 };
 
-const dotsPaginationWrapper = {
+const dotsPaginationButtonWrapper = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -236,7 +236,7 @@ const Carousel: ComponentStyleConfig = {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    dotsPaginationWrapper,
+    dotsPaginationButtonWrapper,
     dotsPaginationButton,
     dotsPaginationButtonActive,
   },
