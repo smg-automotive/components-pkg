@@ -231,7 +231,7 @@ const Carousel: ComponentStyleConfig = {
     dotsPaginationContainer: {
       position: 'absolute',
       width: 'full',
-      bottom: '23%',
+      bottom: '5%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
