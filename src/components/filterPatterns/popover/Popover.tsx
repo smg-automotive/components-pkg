@@ -23,6 +23,8 @@ type Props = {
   | 'label'
   | 'numberOfAppliedFilters'
   | 'onResetFilter'
+  | 'showCallToActionButton'
+  | 'header'
   | 'children'
 >;
 
@@ -33,6 +35,8 @@ const Popover: FC<Props> = ({
   numberOfAppliedFilters,
   onClose,
   onResetFilter,
+  showCallToActionButton,
+  header,
   children,
 }) => {
   const { language } = useI18n();
@@ -46,26 +50,37 @@ const Popover: FC<Props> = ({
           shadow="xs"
           w="6xl"
         >
-          <PopoverHeader paddingBottom="2xl">
-            <FilterHeading
-              isApplied={isApplied}
-              label={label}
-              numberOfAppliedFilters={numberOfAppliedFilters}
-              onClose={onClose}
-              language={language}
-              onResetFilter={onResetFilter}
-            />
+          <PopoverHeader>
+            {header ? (
+              header
+            ) : (
+              <FilterHeading
+                isApplied={isApplied}
+                label={label}
+                numberOfAppliedFilters={numberOfAppliedFilters}
+                onClose={onClose}
+                language={language}
+                onResetFilter={onResetFilter}
+              />
+            )}
           </PopoverHeader>
-          <PopoverBody maxH="6xl" overflowY="scroll">
+          <PopoverBody
+            marginTop="2xl"
+            marginBottom={showCallToActionButton ? '2xl' : '0'}
+            maxH="6xl"
+            overflowY="scroll"
+          >
             {children}
           </PopoverBody>
-          <PopoverFooter paddingTop="2xl">
-            <FilterActionButton
-              actionButton={actionButton}
-              isApplied={isApplied}
-              onClose={onClose}
-            />
-          </PopoverFooter>
+          {showCallToActionButton ? (
+            <PopoverFooter>
+              <FilterActionButton
+                actionButton={actionButton}
+                isApplied={isApplied}
+                onClose={onClose}
+              />
+            </PopoverFooter>
+          ) : null}
         </PopoverContent>
       </Box>
     </Portal>

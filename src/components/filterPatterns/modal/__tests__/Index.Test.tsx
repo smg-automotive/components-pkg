@@ -55,6 +55,23 @@ describe('<ModalFilter />', () => {
     ).toHaveLength(2);
   });
 
+  it('should show no action button', async () => {
+    render(
+      <ModalFilter
+        {...validProps}
+        isApplied={false}
+        showCallToActionButton={false}
+      >
+        <div>Modal content</div>
+      </ModalFilter>
+    );
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    // close button on the top right
+    expect(
+      await screen.findAllByRole('button', { name: 'Schliessen' })
+    ).toHaveLength(1);
+  });
+
   it('should show the primary action button if a filter is applied', async () => {
     const mockSearchButton = jest.fn();
     render(
@@ -73,6 +90,16 @@ describe('<ModalFilter />', () => {
     ).toHaveLength(1);
     userEvent.click(screen.getByRole('button', { name: 'Search' }));
     await waitFor(() => expect(mockSearchButton).toHaveBeenCalledTimes(1));
+  });
+
+  it('should show a custom header', async () => {
+    render(
+      <ModalFilter {...validProps} header={<div>custom header</div>}>
+        <div>Modal content</div>
+      </ModalFilter>
+    );
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    expect(await screen.findByText('custom header')).toBeInTheDocument();
   });
 
   it('should call the callback if the modal opens', async () => {

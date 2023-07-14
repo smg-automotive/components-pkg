@@ -73,6 +73,23 @@ describe('<PopoverFilter />', () => {
     ).toHaveLength(2);
   });
 
+  it('should show no action button', async () => {
+    render(
+      <PopoverFilter
+        {...validProps}
+        isApplied={false}
+        showCallToActionButton={false}
+      >
+        <div>Popover content</div>
+      </PopoverFilter>
+    );
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    // close button on the top right
+    expect(
+      await screen.findAllByRole('button', { name: 'Schliessen' })
+    ).toHaveLength(1);
+  });
+
   it('should show the primary action button if a filter is applied', async () => {
     const mockSearchButton = jest.fn();
     render(
@@ -91,6 +108,16 @@ describe('<PopoverFilter />', () => {
     ).toHaveLength(1);
     userEvent.click(screen.getByRole('button', { name: 'Search' }));
     await waitFor(() => expect(mockSearchButton).toHaveBeenCalledTimes(1));
+  });
+
+  it('should show a custom header', async () => {
+    render(
+      <PopoverFilter {...validProps} header={<div>custom header</div>}>
+        <div>Popover content</div>
+      </PopoverFilter>
+    );
+    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    expect(await screen.findByText('custom header')).toBeInTheDocument();
   });
 
   it('should call the callback if the popover opens', async () => {
