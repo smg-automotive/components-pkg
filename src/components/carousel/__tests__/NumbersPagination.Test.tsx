@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
 import NumbersPagination from '../NumbersDotsPagination';
+import { PaginationType } from '..';
 
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {
@@ -21,6 +22,7 @@ describe('<NumbersPagination />', () => {
         currentSlideIndex={0}
         numberOfSlides={5}
         mainCarousel={mainCarousel}
+        paginationType={PaginationType.Number}
       />
     );
     expect(screen.getByText('1')).toBeInTheDocument();
@@ -34,6 +36,7 @@ describe('<NumbersPagination />', () => {
         currentSlideIndex={0}
         numberOfSlides={5}
         mainCarousel={mainCarousel}
+        paginationType={PaginationType.Number}
       />
     );
     userEvent.click(screen.getByText('2'));

@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
-import Carousel from '../index';
+import Carousel, { PaginationType } from '../index';
 
 jest.mock('embla-carousel-react', () => {
   const embla = jest.requireActual('embla-carousel-react');
@@ -186,7 +186,7 @@ describe('<Carousel />', () => {
 
   it('should have numbers pagination when withNumbersPagination prop passed', () => {
     render(
-      <Carousel withNumbersPagination>
+      <Carousel paginationType={PaginationType.Number}>
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
