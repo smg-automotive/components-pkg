@@ -4,7 +4,7 @@ import FullHeight from '../fullHeight';
 import Flex from '../flex';
 import Box from '../box';
 
-import Carousel from './index';
+import Carousel, { PaginationType } from './index';
 
 const images = [
   'https://placekitten.com/g/800/600',
@@ -36,7 +36,7 @@ interface Props {
     fullScreen: boolean;
     onSlideEnter: boolean;
     onSlideLeave: boolean;
-    withNumbersPagination: boolean;
+    paginationType: PaginationType;
   };
   action: (message: string) => (...args: unknown[]) => void;
 }
@@ -72,7 +72,7 @@ const DefaultVariant: FC<Props> = ({ args, action }) => {
   return (
     <FullHeight>
       <Carousel
-        withNumbersPagination={args?.withNumbersPagination}
+        paginationType={args.paginationType}
         onSlideClick={args.onSlideClick ? action('onSlideClick') : undefined}
       >
         {Array.from({ length: args.numberOfSlides || 6 }).map((_, i) => (

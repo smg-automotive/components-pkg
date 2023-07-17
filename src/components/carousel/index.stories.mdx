@@ -2,7 +2,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import StoryTemplate from './StoryTemplate';
-import Carousel from './index.tsx';
+import Carousel, { PaginationType } from './index.tsx';
 
 <Meta
   title="Components/Data display/Carousel"
@@ -73,7 +73,24 @@ export const Template = (args) => {
       onSlideClick: true,
       fullScreen: false,
       numberOfSlides: 6,
-      withNumbersPagination: true,
+      paginationType: PaginationType.Number,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Dots Pagination
+
+<Canvas>
+  <Story
+    name="With Dots Pagination"
+    args={{
+      startIndex: 0,
+      onSlideClick: true,
+      fullScreen: false,
+      numberOfSlides: 6,
+      paginationType: PaginationType.Dot,
     }}
   >
     {Template.bind({})}
