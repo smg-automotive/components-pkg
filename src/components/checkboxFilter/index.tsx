@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { chakra } from '@chakra-ui/react';
 
@@ -10,6 +10,7 @@ type Item<ItemKey> = {
   label: string;
   facet: number;
   isChecked: boolean;
+  image?: ReactNode;
 };
 
 type State<ItemKey extends string> = { [key in ItemKey]: boolean };
@@ -26,6 +27,7 @@ type Props<ItemKey extends string> = {
    * @param item.label      label shown on the UI
    * @param item.facet      Numeric value shown next to the checkbox label. Indicates how many search results are going to be visible after the checkbox has been applied.
    * @param item.isChecked  The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
+   * @param item.image      image/icon shown on the UI
    */
   items: Item<ItemKey>[];
   /**
@@ -53,16 +55,35 @@ function CheckboxFilter<ItemKey extends string>({
             key={`filter_${name}_${item.label}`}
             name={`filter_${name}_${item.label}`}
             label={
-              <chakra.span
-                w="full"
-                display="flex"
-                justifyContent="space-between"
-              >
-                <chakra.span>{item.label}</chakra.span>
-                <chakra.span>
-                  {addThousandSeparatorToNumber(item.facet)}
+              item.image ? (
+                <chakra.div
+                  w="full"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <chakra.div width="119px" height="80px">
+                    {item.image}
+                  </chakra.div>
+                  <chakra.span display="flex" flexDirection="column">
+                    <chakra.span>{item.label}</chakra.span>
+                    <chakra.span color="gray.400">
+                      {addThousandSeparatorToNumber(item.facet)}
+                    </chakra.span>
+                  </chakra.span>
+                </chakra.div>
+              ) : (
+                <chakra.span
+                  w="full"
+                  display="flex"
+                  justifyContent="space-between"
+                >
+                  <chakra.span>{item.label}</chakra.span>
+                  <chakra.span>
+                    {addThousandSeparatorToNumber(item.facet)}
+                  </chakra.span>
                 </chakra.span>
-              </chakra.span>
+              )
             }
             onChange={(event) => {
               const isChecked = event.target.checked;

@@ -8,7 +8,13 @@ const renderWrapper = ({
   name = 'condition-filter',
   options = [
     { label: 'New', key: 'new', facet: 77, isChecked: false },
-    { label: 'Used', key: 'used', facet: 0, isChecked: false },
+    {
+      label: 'Used',
+      key: 'used',
+      facet: 0,
+      isChecked: false,
+      image: <img src="limousine.jpeg" />,
+    },
   ],
   onApply = jest.fn(),
 } = {}) =>
@@ -66,5 +72,22 @@ describe('<CheckBoxFilter />', () => {
         name: 'Used 1’000’000',
       })
     ).toBeInTheDocument();
+  });
+
+  it('should render an image when is passed', () => {
+    const image = <img src="kombi.jpeg" />;
+    renderWrapper({
+      options: [
+        {
+          label: 'Used',
+          key: 'used',
+          facet: 0,
+          isChecked: false,
+          image,
+        },
+      ],
+    });
+
+    expect(screen.getByRole('img')).toHaveAttribute('src', 'kombi.jpeg');
   });
 });
