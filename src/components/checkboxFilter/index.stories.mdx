@@ -58,13 +58,25 @@ export const Template = (args) => {
   {Template.bind({})}
 </Story>
 
-## Label with image
+## Label with image, wrapping text
 
 <Story
-  name="Label with image"
+  name="Label with image, wrapping text"
   args={{
     onApplyAction: action('onApply'),
-    image: <img src="/limousine.jpeg" alt="limousine image" />,
+    image: <img src="https://placeholder.com/220x100" alt="limousine image" />,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Label with image no wrapping text
+
+<Story
+  name="Label with image no wrapping text"
+  args={{
+    onApplyAction: action('onApply'),
+    image: <img src="https://placeholder.com/50x50" alt="limousine image" />,
   }}
 >
   {Template.bind({})}

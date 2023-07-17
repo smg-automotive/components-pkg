@@ -56,22 +56,21 @@ function CheckboxFilter<ItemKey extends string>({
             name={`filter_${name}_${item.label}`}
             label={
               item.image ? (
-                <chakra.div
-                  w="full"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <chakra.div width="119px" height="80px">
-                    {item.image}
-                  </chakra.div>
-                  <chakra.span display="flex" flexDirection="column">
+                <chakra.span display="flex" alignItems="center">
+                  {item.image}
+                  <chakra.span
+                    w="full"
+                    display="flex"
+                    justifyContent="space-between"
+                    flexWrap="wrap"
+                    marginLeft="sm"
+                  >
                     <chakra.span>{item.label}</chakra.span>
-                    <chakra.span color="gray.400">
+                    <chakra.span>
                       {addThousandSeparatorToNumber(item.facet)}
                     </chakra.span>
                   </chakra.span>
-                </chakra.div>
+                </chakra.span>
               ) : (
                 <chakra.span
                   w="full"
