@@ -27,8 +27,6 @@ const NumbersDotsPagination: FC<Props> = ({
           <DotsPaginationButton
             key={`slide-${index}`}
             isCurrent={index === currentSlideIndex}
-            currentDot={index + 1}
-            totalDots={numberOfSlides}
           />
         ))}
       </Flex>
