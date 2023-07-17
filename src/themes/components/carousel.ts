@@ -96,9 +96,9 @@ const numbersPaginationButton = {
   },
 };
 
-const dotsPaginationButton = {
+const dotsPaginationIndicator = {
   backgroundColor: 'transparent',
-  touchAction: 'manipulation',
+  touchAction: 'pan-x',
   display: 'inline-flex',
   textDecoration: 'none',
   border: 0,
@@ -125,8 +125,8 @@ const dotsPaginationButton = {
   },
 };
 
-const dotsPaginationButtonActive = {
-  ...dotsPaginationButton,
+const dotsPaginationIndicatorActive = {
+  ...dotsPaginationIndicator,
   width: '8px',
   height: '8px',
   _last: {
@@ -215,8 +215,8 @@ const Carousel: ComponentStyleConfig = {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    dotsPaginationButton,
-    dotsPaginationButtonActive,
+    dotsPaginationIndicator,
+    dotsPaginationIndicatorActive,
   },
   variants: {
     fullScreen,

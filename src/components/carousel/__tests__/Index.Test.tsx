@@ -184,7 +184,7 @@ describe('<Carousel />', () => {
     );
   });
 
-  it('should have numbers pagination when withNumbersPagination prop passed', () => {
+  it('should have numbers pagination', () => {
     render(
       <Carousel paginationType={PaginationType.Number}>
         <div>slide 1</div>

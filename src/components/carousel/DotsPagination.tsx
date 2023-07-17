@@ -5,7 +5,7 @@ import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import Flex from '../flex';
 import Box from '../box';
-import DotsPaginationButton from './DotsPaginationButton';
+import DotsPaginationIndicator from './DotsPaginationIndicator';
 
 interface Props {
   currentSlideIndex: number;
@@ -24,7 +24,7 @@ const NumbersDotsPagination: FC<Props> = ({
     <Box aria-label="Dots Pagination" __css={dotsPaginationContainer}>
       <Flex flexDirection="row" alignItems="center" justifyContent="center">
         {pagination.map((index) => (
-          <DotsPaginationButton
+          <DotsPaginationIndicator
             key={`slide-${index}`}
             isCurrent={index === currentSlideIndex}
           />
