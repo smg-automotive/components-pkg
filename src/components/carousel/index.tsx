@@ -8,8 +8,9 @@ import Flex from '../flex';
 import Box from '../box';
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
-import NumbersDotsPagination from './NumbersDotsPagination';
+import NumbersPagination from './NumbersPagination';
 import NavigationButton from './NavigationButton';
+import DotsPagination from './DotsPagination';
 
 type SharedProps = {
   startIndex?: number;
@@ -223,11 +224,10 @@ const Carousel: FC<Props> = (props) => {
             fullScreen={!!fullScreen}
           />
           {paginationType === PaginationType.Dot ? (
-            <NumbersDotsPagination
+            <DotsPagination
               mainCarousel={mainCarousel}
               currentSlideIndex={selectedIndex}
               numberOfSlides={props.children.length}
-              paginationType={PaginationType.Dot}
             />
           ) : null}
         </Box>
@@ -244,11 +244,10 @@ const Carousel: FC<Props> = (props) => {
       ) : null}
 
       {paginationType === PaginationType.Number ? (
-        <NumbersDotsPagination
+        <NumbersPagination
           mainCarousel={mainCarousel}
           currentSlideIndex={selectedIndex}
           numberOfSlides={props.children.length}
-          paginationType={PaginationType.Number}
         />
       ) : null}
     </Box>

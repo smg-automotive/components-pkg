@@ -3,7 +3,7 @@ import { EmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
-import NumbersPagination from '../NumbersDotsPagination';
+import NumbersPagination from '../NumbersPagination';
 import { PaginationType } from '..';
 
 const mockMainScrollTo = jest.fn();

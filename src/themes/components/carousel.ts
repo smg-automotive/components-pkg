@@ -129,6 +129,15 @@ const dotsPaginationButtonActive = {
   ...dotsPaginationButton,
   width: '8px',
   height: '8px',
+  _last: {
+    width: '8px',
+    height: '8px',
+    _after: {
+      width: 'full',
+      height: '8px',
+      content: '""',
+    },
+  },
   _after: {
     backgroundColor: 'white',
     borderRadius: 'full',
