@@ -225,7 +225,6 @@ const Carousel: FC<Props> = (props) => {
           />
           {paginationType === PaginationType.Dot ? (
             <DotsPagination
-              mainCarousel={mainCarousel}
               currentSlideIndex={selectedIndex}
               numberOfSlides={props.children.length}
             />
