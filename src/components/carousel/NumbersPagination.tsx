@@ -11,7 +11,7 @@ interface Props {
   mainCarousel?: EmblaCarouselType;
 }
 
-const NumbersDotsPagination: FC<Props> = ({
+const NumbersPagination: FC<Props> = ({
   currentSlideIndex,
   numberOfSlides,
   mainCarousel,
@@ -43,4 +43,4 @@ const NumbersDotsPagination: FC<Props> = ({
   );
 };
 
-export default NumbersDotsPagination;
+export default NumbersPagination;

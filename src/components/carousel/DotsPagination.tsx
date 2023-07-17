@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { EmblaCarouselType } from 'embla-carousel-react';
 
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
@@ -10,7 +9,6 @@ import DotsPaginationIndicator from './DotsPaginationIndicator';
 interface Props {
   currentSlideIndex: number;
   numberOfSlides: number;
-  mainCarousel?: EmblaCarouselType;
 }
 
 const NumbersDotsPagination: FC<Props> = ({
