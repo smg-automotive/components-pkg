@@ -24,7 +24,7 @@ import CheckboxFilter from './index';
       table: {
         disable: true,
       },
-    }
+    },
   }}
 />
 
@@ -83,7 +83,9 @@ export const Template = (args) => {
   name="Label with image no wrapping text"
   args={{
     onApplyAction: action('onApply'),
-    image: <img src="https://placekitten.com/g/50/50" alt="placeholder image" />,
+    image: (
+      <img src="https://placekitten.com/g/50/50" alt="placeholder image" />
+    ),
   }}
 >
   {Template.bind({})}
