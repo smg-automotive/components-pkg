@@ -48,6 +48,7 @@ export { MessageIcon } from './MessageIcon';
 export { MissingImageIcon } from './MissingImageIcon';
 export { MotorcycleIcon } from './MotorcycleIcon';
 export { MotoScout24AppLogo } from './MotoScout24AppLogo';
+export { PenIcon } from './PenIcon';
 export { PlusIcon } from './PlusIcon';
 export { PrintIcon } from './PrintIcon';
 export { RangeIcon } from './RangeIcon';
