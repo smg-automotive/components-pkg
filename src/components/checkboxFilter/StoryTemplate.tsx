@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 
 import CheckboxFilter from './index';
 
@@ -7,9 +7,10 @@ type Values = 'new' | 'used' | 'old-timer';
 type Props = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [key in Values]: number }>;
+  image?: ReactNode;
 };
 
-const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets }) => {
+const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
   // coming from backend
   const facets = {
     new: 10,
@@ -42,6 +43,7 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets }) => {
         },
         {
           label: 'Old-timer',
+          image,
           key: 'old-timer',
           facet: facets['old-timer'],
           isChecked: conditionQuery['old-timer'],

@@ -20,6 +20,11 @@ import CheckboxFilter from './index';
         disable: true,
       },
     },
+    image: {
+      table: {
+        disable: true,
+      },
+    },
   }}
 />
 
@@ -53,6 +58,34 @@ export const Template = (args) => {
   args={{
     onApplyAction: action('onApply'),
     defaultFacets: { 'old-timer': 0 },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Label with image, wrapping text
+
+<Story
+  name="Label with image, wrapping text"
+  args={{
+    onApplyAction: action('onApply'),
+    image: (
+      <img src="https://placekitten.com/g/220/100" alt="placeholder image" />
+    ),
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Label with image no wrapping text
+
+<Story
+  name="Label with image no wrapping text"
+  args={{
+    onApplyAction: action('onApply'),
+    image: (
+      <img src="https://placekitten.com/g/50/50" alt="placeholder image" />
+    ),
   }}
 >
   {Template.bind({})}
