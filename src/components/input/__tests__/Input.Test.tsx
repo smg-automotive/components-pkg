@@ -14,7 +14,7 @@ describe('<Input>', () => {
             name="test-input"
             placeholder="placeholder"
             onFocus={onFocus}
-          />
+          />,
         );
 
         const input = screen.getByPlaceholderText('placeholder');
@@ -28,7 +28,7 @@ describe('<Input>', () => {
       it('is called when de-focusing the input', () => {
         const onBlur = jest.fn();
         render(
-          <Input name="test-input" placeholder="placeholder" onBlur={onBlur} />
+          <Input name="test-input" placeholder="placeholder" onBlur={onBlur} />,
         );
 
         const input = screen.getByPlaceholderText('placeholder');
@@ -47,7 +47,7 @@ describe('<Input>', () => {
             name="test-input"
             placeholder="placeholder"
             onChange={onChange}
-          />
+          />,
         );
 
         const input = screen.getByPlaceholderText('placeholder');
@@ -68,7 +68,7 @@ describe('<Input>', () => {
             placeholder="placeholder"
             setInputValue={setInputValue}
             debounce={true}
-          />
+          />,
         );
         const input = screen.getByPlaceholderText('placeholder');
         userEvent.type(input, 'test');
@@ -91,7 +91,7 @@ describe('<Input>', () => {
 
   it('supports autoFocus', () => {
     render(
-      <Input name="test-input" placeholder="placeholder" autoFocus={true} />
+      <Input name="test-input" placeholder="placeholder" autoFocus={true} />,
     );
     const input = screen.getByPlaceholderText('placeholder');
 

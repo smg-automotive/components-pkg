@@ -50,7 +50,7 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(screen.getByText('thumbnail 1')).toBeInTheDocument();
     expect(screen.getByText('thumbnail 2')).toBeInTheDocument();
@@ -65,13 +65,13 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(
-      screen.queryByLabelText('scroll to next thumbnail group')
+      screen.queryByLabelText('scroll to next thumbnail group'),
     ).toBeNull();
     expect(
-      screen.queryByLabelText('scroll to previous thumbnail group')
+      screen.queryByLabelText('scroll to previous thumbnail group'),
     ).toBeNull();
   });
 
@@ -86,13 +86,13 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(
-      screen.getByLabelText('scroll to next thumbnail group')
+      screen.getByLabelText('scroll to next thumbnail group'),
     ).toBeInTheDocument();
     expect(
-      screen.queryByLabelText('scroll to previous thumbnail group')
+      screen.queryByLabelText('scroll to previous thumbnail group'),
     ).toBeNull();
   });
 
@@ -107,13 +107,13 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(
-      screen.queryByLabelText('scroll to next thumbnail group')
+      screen.queryByLabelText('scroll to next thumbnail group'),
     ).toBeNull();
     expect(
-      screen.getByLabelText('scroll to previous thumbnail group')
+      screen.getByLabelText('scroll to previous thumbnail group'),
     ).toBeInTheDocument();
   });
 
@@ -128,13 +128,13 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(
-      screen.getByLabelText('scroll to next thumbnail group')
+      screen.getByLabelText('scroll to next thumbnail group'),
     ).toBeInTheDocument();
     expect(
-      screen.getByLabelText('scroll to previous thumbnail group')
+      screen.getByLabelText('scroll to previous thumbnail group'),
     ).toBeInTheDocument();
   });
 
@@ -149,13 +149,13 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(
-      screen.getByLabelText('scroll to next thumbnail group')
+      screen.getByLabelText('scroll to next thumbnail group'),
     ).toBeInTheDocument();
     expect(
-      screen.getByLabelText('scroll to previous thumbnail group')
+      screen.getByLabelText('scroll to previous thumbnail group'),
     ).toBeInTheDocument();
   });
 
@@ -169,7 +169,7 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     userEvent.click(screen.getByLabelText('scroll to next thumbnail group'));
     await waitFor(() => expect(mockScrollNext).toHaveBeenCalled());
@@ -186,10 +186,10 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     userEvent.click(
-      screen.getByLabelText('scroll to previous thumbnail group')
+      screen.getByLabelText('scroll to previous thumbnail group'),
     );
     await waitFor(() => expect(mockScrollPrev).toHaveBeenCalled());
     expect(mockMainScrollTo).not.toHaveBeenCalled();
@@ -203,7 +203,7 @@ describe('<ThumbnailPagination/>', () => {
         paginationCarouselRef={paginationCarouselRef}
         paginationCarousel={paginationCarousel}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     userEvent.click(screen.getByText('thumbnail 2'));
     await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1));

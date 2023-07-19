@@ -41,7 +41,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
         ))}
       </ChakraSelect>
     );
-  }
+  },
 );
 Select.displayName = 'Select';
 

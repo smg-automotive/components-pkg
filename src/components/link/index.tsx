@@ -37,7 +37,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       ariaLabel,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const styles = useMultiStyleConfig('Link', { variant });
 
@@ -66,7 +66,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         {rightIcon}
       </Component>
     );
-  }
+  },
 );
 Link.displayName = 'Link';
 

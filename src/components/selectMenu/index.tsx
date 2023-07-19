@@ -78,7 +78,7 @@ const SelectMenu: FC<SelectMenuProps> = ({
                   >
                     {label}
                   </MenuItemOption>
-                )
+                ),
               )}
             </MenuOptionGroup>
           </MenuList>

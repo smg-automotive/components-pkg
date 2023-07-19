@@ -44,7 +44,7 @@ describe('<Carousel />', () => {
           { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
           { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
         ]}
-      </Carousel>
+      </Carousel>,
     );
 
     return waitFor(() => expect(mockOnEnter).toHaveBeenCalled());
@@ -65,7 +65,7 @@ describe('<Carousel />', () => {
           },
           { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
         ]}
-      </Carousel>
+      </Carousel>,
     );
 
     user.click(screen.getByText('thumbnail 2'));
@@ -88,7 +88,7 @@ describe('<Carousel />', () => {
           { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
           { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
         ]}
-      </Carousel>
+      </Carousel>,
     );
 
     user.click(screen.getByText('thumbnail 2'));
@@ -101,26 +101,26 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
     userEvent.hover(screen.getByLabelText('Carousel'));
     userEvent.click(screen.getByLabelText('next slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
         'aria-current',
-        'true'
-      )
+        'true',
+      ),
     );
     userEvent.click(screen.getByLabelText('previous slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
         'aria-current',
-        'true'
-      )
+        'true',
+      ),
     );
   });
 
@@ -130,11 +130,11 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
   });
 
@@ -144,11 +144,11 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByLabelText('2 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
   });
 
@@ -159,7 +159,7 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
     userEvent.click(screen.getByText('slide 1'));
     await waitFor(() => expect(mockOnClick).toHaveBeenCalledWith(0));
@@ -173,14 +173,14 @@ describe('<Carousel />', () => {
           { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
           { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
         ]}
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByText('thumbnail 1')).toBeInTheDocument();
     expect(screen.getByText('thumbnail 2')).toBeInTheDocument();
     expect(screen.getByText('thumbnail 3')).toBeInTheDocument();
     expect(screen.getByLabelText('thumbnail 1 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
   });
 
@@ -190,14 +190,14 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByText('2')).toBeInTheDocument();
     expect(screen.getByText('3')).toBeInTheDocument();
     expect(screen.getByLabelText('numbers pagination 1 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
   });
 
@@ -209,18 +209,18 @@ describe('<Carousel />', () => {
           { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
           { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
         ]}
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
     userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
     await waitFor(() =>
       expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
         'aria-current',
-        'true'
-      )
+        'true',
+      ),
     );
   });
 
@@ -232,18 +232,18 @@ describe('<Carousel />', () => {
           { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
           { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
         ]}
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.getByLabelText('thumbnail 1 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
     userEvent.click(screen.getByLabelText('next slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('thumbnail 2 of 3')).toHaveAttribute(
         'aria-current',
-        'true'
-      )
+        'true',
+      ),
     );
   });
 
@@ -258,13 +258,13 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
 
     expect(screen.queryByLabelText('Carousel')).toBeNull();
     expect(screen.getByLabelText('2 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
     expect(screen.queryByLabelText('1 of 3')).toBeNull();
     expect(screen.queryByLabelText('3 of 3')).toBeNull();
@@ -281,13 +281,13 @@ describe('<Carousel />', () => {
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
-      </Carousel>
+      </Carousel>,
     );
 
     expect(screen.getByLabelText('Carousel')).toBeInTheDocument();
     expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
       'aria-current',
-      'true'
+      'true',
     );
   });
 });

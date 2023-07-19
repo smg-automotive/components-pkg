@@ -36,8 +36,8 @@ describe('<CheckBoxFilter />', () => {
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(
         { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false }
-      )
+        { new: true, used: false },
+      ),
     );
   });
 
@@ -70,7 +70,7 @@ describe('<CheckBoxFilter />', () => {
     expect(
       screen.getByRole('checkbox', {
         name: 'Used 1’000’000',
-      })
+      }),
     ).toBeInTheDocument();
   });
 

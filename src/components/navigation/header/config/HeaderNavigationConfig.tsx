@@ -103,7 +103,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   }
 
   replacePathParams = (
-    link: LocalizedLinks | undefined
+    link: LocalizedLinks | undefined,
   ): LocalizedLinks | undefined => {
     if (link && this.urlPathParams) {
       return Object.entries(link).reduce((acc, [key, value]) => {
@@ -159,7 +159,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   };
 
   mapDrawerItemsEntries = (
-    itemsEntires: [string, NavigationLinkConfigNode[]][]
+    itemsEntires: [string, NavigationLinkConfigNode[]][],
   ) =>
     itemsEntires.map(([nodeKey, nodes]) => {
       const mappedNodes = this.mapDrawerNodes(nodes);
@@ -178,7 +178,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     });
 
   mapDrawerNodeItems = (
-    items: NavigationLinkConfigProps[]
+    items: NavigationLinkConfigProps[],
   ): HeaderNavigationLink[] => {
     return items
       .map((item) => this.mapLink(item))

@@ -22,7 +22,7 @@ const renderWrapper = ({
       placeholder={placeholder}
       onFocus={onFocus}
       onBlur={onBlur}
-    />
+    />,
   );
 
 describe('<Textarea>', () => {
@@ -47,12 +47,12 @@ describe('<Textarea>', () => {
     expect(onBlur).toHaveBeenCalled();
   });
 
-  it('triggers onChange event when the textarea changes', () => {
+  it('triggers onChange event when the textarea changes', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange });
 
     const textarea = screen.getByPlaceholderText('Placeholder');
-    userEvent.type(textarea, 'test...');
+    await userEvent.type(textarea, 'test...');
 
     expect(onChange).toHaveBeenCalledTimes(7);
   });

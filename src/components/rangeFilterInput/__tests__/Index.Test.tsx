@@ -29,7 +29,7 @@ describe('<RangeFilterInput/>', () => {
           placeholder: 'To',
         }}
         unit="CHF"
-      />
+      />,
     );
   };
 

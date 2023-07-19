@@ -35,7 +35,7 @@ const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const bg = mode(`${c}.100`, `${c}.200`)(props);
   const fg = mode(
     props.status === 'info' ? `${c}.700` : `${c}.500`,
-    `${c}.200`
+    `${c}.200`,
   )(props);
   return {
     container: {

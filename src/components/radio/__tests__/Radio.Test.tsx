@@ -20,7 +20,7 @@ const renderWrapper = ({
       label={label}
       isDisabled={isDisabled}
       isChecked={isChecked}
-    />
+    />,
   );
 
 describe('<Radio>', () => {

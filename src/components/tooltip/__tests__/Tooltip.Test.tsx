@@ -10,7 +10,7 @@ const renderWrapper = () =>
   render(
     <Tooltip label={tooltipLabel}>
       <span data-testid="test-tooltip">Hover me</span>
-    </Tooltip>
+    </Tooltip>,
   );
 
 describe('<Tooltip />', () => {
@@ -32,7 +32,7 @@ describe('<Tooltip />', () => {
     user.hover(screen.getByTestId('test-tooltip'));
     user.unhover(screen.getByTestId('test-tooltip'));
     return waitFor(() =>
-      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument()
+      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument(),
     );
   });
 });

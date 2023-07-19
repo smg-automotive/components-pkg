@@ -12,7 +12,7 @@ const renderWrapper = ({
   render(
     <Button onClick={onClick} isDisabled={isDisabled}>
       {label}
-    </Button>
+    </Button>,
   );
 
 describe('<Button>', () => {
@@ -22,11 +22,11 @@ describe('<Button>', () => {
     expect(button).toBeInTheDocument();
   });
 
-  it('should trigger onClick event when clicking on button', () => {
+  it('should trigger onClick event when clicking on button', async () => {
     const onClick = jest.fn();
     renderWrapper({ label: 'Button Label', onClick });
 
-    userEvent.click(screen.getByRole('button', { name: 'Button Label' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Button Label' }));
 
     expect(onClick).toHaveBeenCalled();
   });

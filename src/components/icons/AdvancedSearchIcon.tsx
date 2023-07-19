@@ -18,5 +18,5 @@ export const AdvancedSearchIcon: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  }
+  },
 );

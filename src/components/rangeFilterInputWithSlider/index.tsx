@@ -28,7 +28,7 @@ export type Props<NameFrom, NameTo> = {
 
 function RangeFilterInputWithSlider<
   NameFrom extends string,
-  NameTo extends string
+  NameTo extends string,
 >({ facets, unit, onChange, from, to, ...rest }: Props<NameFrom, NameTo>) {
   const value = {
     min: from.value,
