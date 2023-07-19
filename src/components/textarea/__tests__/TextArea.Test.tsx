@@ -22,7 +22,7 @@ const renderWrapper = ({
       placeholder={placeholder}
       onFocus={onFocus}
       onBlur={onBlur}
-    />
+    />,
   );
 
 describe('<Textarea>', () => {
