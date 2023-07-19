@@ -28,7 +28,7 @@ describe('<Section>', () => {
 
     expect(screen.getByRole('img')).toHaveAttribute(
       'src',
-      'https://via.placeholder.com/302x320'
+      'https://via.placeholder.com/302x320',
     );
   });
 });

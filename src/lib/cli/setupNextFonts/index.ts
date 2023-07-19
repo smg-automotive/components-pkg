@@ -26,7 +26,7 @@ export default ({
     .split('\n')
     .filter(
       (line: string) =>
-        !line.match(/^\s*\/\/.*$/) && !line.match(/^\/\*\s.*\s\*\/$/)
+        !line.match(/^\s*\/\/.*$/) && !line.match(/^\/\*\s.*\s\*\/$/),
     )
     .join('\n');
 

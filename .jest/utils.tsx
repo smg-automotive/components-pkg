@@ -21,7 +21,7 @@ export * from '@testing-library/react';
 // eslint-disable-next-line import/export
 export const render = (
   ui: ReactElement,
-  options = { theme: Brand.AutoScout24 as const }
+  options = { theme: Brand.AutoScout24 as const },
 ) => {
   const { theme, ...rest } = options;
   return testingLibraryRender(ui, { wrapper: Wrapper(theme), ...rest });

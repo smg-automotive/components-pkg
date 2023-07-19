@@ -17,7 +17,7 @@ const DatePicker = forwardRef<HTMLInputElement, Props>(
         ref={ref}
       />
     );
-  }
+  },
 );
 DatePicker.displayName = 'DatePicker';
 

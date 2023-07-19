@@ -1,7 +1,7 @@
 import { ComponentType, lazy } from 'react';
 export default (
   resolver: () => Promise<Record<string, ComponentType>>,
-  name = 'default'
+  name = 'default',
 ) => {
   return lazy(async () => {
     const resolved = await resolver();

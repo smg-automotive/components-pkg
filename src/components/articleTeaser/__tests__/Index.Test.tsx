@@ -10,7 +10,7 @@ const renderWrapper = ({
   url = 'http://link.com',
 } = {}) =>
   render(
-    <ArticleTeaser title={title} text={text} imageUrl={imageUrl} url={url} />
+    <ArticleTeaser title={title} text={text} imageUrl={imageUrl} url={url} />,
   );
 
 describe('ArticleTeaser', () => {

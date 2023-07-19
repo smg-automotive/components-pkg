@@ -22,7 +22,7 @@ export const replaceParameters = ({
       throw new Error(
         `Parameter ${name} missing. Expected parameters are: ${parameters
           .map(paramName)
-          .join(', ')}`
+          .join(', ')}`,
       );
     }
 

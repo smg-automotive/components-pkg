@@ -34,7 +34,7 @@ const renderWrapper = ({
           <p>Drei</p>
         </TabPanel>
       </TabPanels>
-    </Tabs>
+    </Tabs>,
   );
 
 describe('<Tabs />', () => {

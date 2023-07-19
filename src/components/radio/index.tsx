@@ -24,7 +24,7 @@ const Radio = forwardRef<HTMLInputElement, Props>(
       isInvalid,
       isDisabled = false,
     },
-    ref
+    ref,
   ) => {
     return (
       <ChakraRadio
@@ -40,7 +40,7 @@ const Radio = forwardRef<HTMLInputElement, Props>(
         {label}
       </ChakraRadio>
     );
-  }
+  },
 );
 Radio.displayName = 'Radio';
 

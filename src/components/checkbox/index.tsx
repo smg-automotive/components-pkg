@@ -33,7 +33,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       readOnly = false,
       ...props
     },
-    ref
+    ref,
   ) => (
     <ChakraCheckbox
       {...props}
@@ -52,7 +52,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     >
       {label}
     </ChakraCheckbox>
-  )
+  ),
 );
 Checkbox.displayName = 'Checkbox';
 

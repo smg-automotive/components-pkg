@@ -15,7 +15,7 @@ const useDebouncedOnChange = ({
       (() => {
         return;
       }),
-    debounce
+    debounce,
   );
 
   const onBlurHandler: FocusEventHandler<HTMLInputElement> = (event) => {

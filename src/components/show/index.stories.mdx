@@ -118,7 +118,7 @@ it('should show the link on desktop devices', () => {
   render(
     <Show above="md">
       <a href="...">my-link</a>
-    </Show>
+    </Show>,
   );
   const ctaContainer = screen.getByTestId('show-container');
   expect(
@@ -126,7 +126,7 @@ it('should show the link on desktop devices', () => {
       name: 'my-link',
       // this is needed to find it in the DOM
       hidden: true,
-    })
+    }),
   ).toBeInTheDocument();
 });
 ```

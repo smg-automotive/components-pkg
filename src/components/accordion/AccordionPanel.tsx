@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react';
 
 const AccordionPanel: FC<PropsWithChildren<ChakraAccordionPanelProps>> = (
-  props
+  props,
 ) => {
   const { children, ...panelProps } = props;
 

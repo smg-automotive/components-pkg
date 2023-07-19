@@ -12,7 +12,7 @@ const renderWrapper = ({
   render(
     <Button onClick={onClick} isDisabled={isDisabled}>
       {label}
-    </Button>
+    </Button>,
   );
 
 describe('<Button>', () => {

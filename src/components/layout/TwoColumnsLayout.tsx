@@ -53,14 +53,14 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
               title
                 ? `"${repeatArea(leftColumns, 'heading')} ${repeatArea(
                     rightColumns,
-                    'rightContent'
+                    'rightContent',
                   )}"`
                 : ''
             }
             "${repeatArea(leftColumns, 'leftContent')} ${repeatArea(
-            rightColumns,
-            'rightContent'
-          )}"`,
+              rightColumns,
+              'rightContent',
+            )}"`,
         }}
         templateRows="minmax(min-content, max-content) minmax(min-content, max-content) 1fr"
       >

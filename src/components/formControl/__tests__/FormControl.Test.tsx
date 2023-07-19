@@ -25,7 +25,7 @@ const renderWrapper = ({
       label={label}
     >
       <Input name={id} placeholder={placeholder} />
-    </FormControl>
+    </FormControl>,
   );
 };
 

@@ -26,7 +26,7 @@ const renderWrapper = ({
       icon={icon}
       link={link}
       {...(dismissible ? { dismissible, onDismiss } : {})}
-    />
+    />,
   );
 
 describe('<Alert>', () => {

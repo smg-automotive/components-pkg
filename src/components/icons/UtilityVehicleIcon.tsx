@@ -18,5 +18,5 @@ export const UtilityVehicleIcon: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  }
+  },
 );

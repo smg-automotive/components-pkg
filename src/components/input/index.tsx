@@ -53,7 +53,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       type = 'text',
       ...props
     },
-    ref
+    ref,
   ) => {
     const [internalUIValue, setInternalUIValue] = useState(value);
     // https://lawsofux.com/doherty-threshold/
@@ -72,7 +72,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     }, [value]);
 
     const debouncedOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       const targetValue = event.target.value;
       setInternalUIValue(targetValue);
@@ -89,7 +89,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
         ref={ref}
       />
     );
-  }
+  },
 );
 Input.displayName = 'Input';
 

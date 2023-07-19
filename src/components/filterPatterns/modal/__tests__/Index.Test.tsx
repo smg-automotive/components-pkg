@@ -19,7 +19,7 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
 
     expect(screen.queryByText('Modal content')).toBeNull();
@@ -32,12 +32,12 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} isApplied={true} onResetFilter={mockOnReset}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
 
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     userEvent.click(
-      await screen.findByRole('button', { name: 'Zurücksetzen' })
+      await screen.findByRole('button', { name: 'Zurücksetzen' }),
     );
     await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
@@ -46,12 +46,12 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} isApplied={false}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the bottom and on the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(2);
   });
 
@@ -63,12 +63,12 @@ describe('<ModalFilter />', () => {
         showCallToActionButton={false}
       >
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button on the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
   });
 
@@ -81,12 +81,12 @@ describe('<ModalFilter />', () => {
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
     userEvent.click(screen.getByRole('button', { name: 'Search' }));
     await waitFor(() => expect(mockSearchButton).toHaveBeenCalledTimes(1));
@@ -96,7 +96,7 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} header={<div>custom header</div>}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     expect(await screen.findByText('custom header')).toBeInTheDocument();
@@ -107,7 +107,7 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} onModalOpen={mockOnOpen}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
@@ -118,12 +118,12 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} onModalClose={mockOnClose} isApplied={true}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
     userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
 
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
 
     userEvent.click(screen.getAllByRole('button', { name: 'Schliessen' })[0]);

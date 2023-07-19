@@ -18,7 +18,7 @@ const renderWrapper = () =>
           </ul>
         </MobileOnlyAccordionPanel>
       </MobileOnlyAccordionItem>
-    </MobileOnlyAccordion>
+    </MobileOnlyAccordion>,
   );
 
 describe('<MobileOnlyAccordion />', () => {

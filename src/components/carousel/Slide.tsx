@@ -21,7 +21,7 @@ const Slide: FC<PropsWithChildren<Props>> = ({
 }) => {
   const { slide } = useMultiStyleConfig(
     'Carousel',
-    fullScreen ? { variant: 'fullScreen' } : {}
+    fullScreen ? { variant: 'fullScreen' } : {},
   );
 
   return (

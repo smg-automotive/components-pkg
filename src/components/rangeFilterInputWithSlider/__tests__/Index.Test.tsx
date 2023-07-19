@@ -65,7 +65,7 @@ const renderWrapper = ({ onChange = jest.fn(), facets = mockedFacets }) => {
       to={mockedTo}
       facets={facets}
       unit="CHF"
-    />
+    />,
   );
 };
 
@@ -93,7 +93,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
         expect(mockOnChange).toHaveBeenCalledWith({
           value: 500,
           name: 'priceFrom',
-        })
+        }),
       );
     });
 
@@ -115,7 +115,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
         expect(mockOnChange).toHaveBeenCalledWith({
           value: 300,
           name: 'priceTo',
-        })
+        }),
       );
     });
 
@@ -181,7 +181,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
             value: 1000,
           });
         },
-        { timeout: 1500 }
+        { timeout: 1500 },
       );
     });
 
@@ -214,7 +214,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
           const inputFrom = screen.getAllByRole('spinbutton')[0];
           expect(inputFrom).toHaveValue('1000');
         },
-        { timeout: 1500 }
+        { timeout: 1500 },
       );
     });
 

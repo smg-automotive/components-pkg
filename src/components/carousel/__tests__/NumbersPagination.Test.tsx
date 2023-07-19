@@ -21,7 +21,7 @@ describe('<NumbersPagination />', () => {
         currentSlideIndex={0}
         numberOfSlides={5}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByText('2')).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('<NumbersPagination />', () => {
         currentSlideIndex={0}
         numberOfSlides={5}
         mainCarousel={mainCarousel}
-      />
+      />,
     );
     userEvent.click(screen.getByText('2'));
     await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1));
