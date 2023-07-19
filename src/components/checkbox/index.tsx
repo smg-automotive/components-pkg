@@ -13,6 +13,7 @@ export interface CheckboxProps {
   size?: 'sm' | 'lg';
   fontWeight?: 'regular' | 'bold';
   variant?: 'allignCenter' | 'allignTop';
+  readOnly?: boolean;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -29,6 +30,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       size = 'lg',
       fontWeight = 'regular',
       variant = 'allignCenter',
+      readOnly = false,
       ...props
     },
     ref
@@ -46,6 +48,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       size={size}
       fontWeight={fontWeight}
       variant={variant}
+      readOnly={readOnly}
     >
       {label}
     </ChakraCheckbox>
