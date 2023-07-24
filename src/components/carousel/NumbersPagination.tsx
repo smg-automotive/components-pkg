@@ -22,7 +22,7 @@ const NumbersPagination: FC<Props> = ({
         mainCarousel.scrollTo(index);
       }
     },
-    [mainCarousel],
+    [mainCarousel]
   );
   const pagination = Array.from({ length: numberOfSlides }, (_, i) => i);
 

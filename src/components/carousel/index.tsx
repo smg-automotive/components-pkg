@@ -59,11 +59,11 @@ const Carousel: FC<Props> = (props) => {
     {
       ssr: true,
       fallback: false,
-    },
+    }
   );
   const { container, carousel, slideContainer } = useMultiStyleConfig(
     'Carousel',
-    fullScreen ? { variant: 'fullScreen' } : {},
+    fullScreen ? { variant: 'fullScreen' } : {}
   );
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop: true,
@@ -72,18 +72,19 @@ const Carousel: FC<Props> = (props) => {
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
-    dragFree: true,
+    draggable: true,
+    dragFree: false,
     slidesToScroll: 'auto',
     inViewThreshold: 1,
   });
 
   const scrollPrev = useCallback(
     () => mainCarousel && mainCarousel.scrollPrev(),
-    [mainCarousel],
+    [mainCarousel]
   );
   const scrollNext = useCallback(
     () => mainCarousel && mainCarousel.scrollNext(),
-    [mainCarousel],
+    [mainCarousel]
   );
   const onClick = useCallback(
     (index: number) => {
@@ -91,7 +92,7 @@ const Carousel: FC<Props> = (props) => {
         onSlideClick(index);
       }
     },
-    [mainCarousel, onSlideClick],
+    [mainCarousel, onSlideClick]
   );
 
   const numberOfSlides = props.children.length;
