@@ -98,6 +98,7 @@ const numbersPaginationButton = {
 
 const dotsPaginationIndicator = {
   backgroundColor: 'transparent',
+  touchAction: 'pan-x',
   display: 'inline-flex',
   textDecoration: 'none',
   border: 0,

@@ -72,8 +72,7 @@ const Carousel: FC<Props> = (props) => {
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
-    draggable: true,
-    dragFree: false,
+    dragFree: true,
     slidesToScroll: 'auto',
     inViewThreshold: 1,
   });
