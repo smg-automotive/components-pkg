@@ -68,6 +68,7 @@ const Carousel: FC<Props> = (props) => {
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
+    dragFree: true,
     speed: 20,
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
