@@ -24,7 +24,7 @@ interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreen' | 'base';
+  variant?: 'fullScreen' | 'base' | 'topScroll';
   size?: 'md' | 'lg' | 'full';
 }
 
@@ -38,11 +38,8 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   variant = 'base',
   ...modalProps
 }) => {
-  const modalSize = size
-    ? size
-    : variant === 'base'
-    ? { xs: 'full', sm: 'md' }
-    : 'full';
+  const modalSize =
+    size || (variant !== 'fullScreen' ? { xs: 'full', sm: 'md' } : 'full');
   return (
     <ChakraModal
       isCentered

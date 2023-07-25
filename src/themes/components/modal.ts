@@ -76,6 +76,14 @@ const baseStyle = definePartsStyle({
 
 const variants = {
   base: baseStyle,
+  topScroll: {
+    ...baseStyle,
+    dialogContainer: {
+      ...baseStyle.dialogContainer,
+      alignItems: 'flex-start',
+      overflow: 'auto',
+    },
+  },
   fullScreen: {
     overlay: {
       bg: 'black',
