@@ -122,6 +122,7 @@ function getSize(value: string) {
 
 const sizes = {
   md: getSize('7xl'),
+  lg: getSize('10xl'),
   full: getSize('full'),
 };
 
