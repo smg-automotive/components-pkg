@@ -33,9 +33,9 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   primaryActionButton,
   secondaryActionButton,
   children,
-  size,
+  size = 'lg',
   motionPreset = 'scale',
-  variant = 'base',
+  variant = 'topScroll',
   ...modalProps
 }) => {
   const modalSize =
