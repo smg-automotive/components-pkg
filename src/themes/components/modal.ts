@@ -131,7 +131,7 @@ function getSize(value: string) {
 
 const sizes = {
   md: getSize('7xl'),
-  lg: getSize('10xl'),
+  lg: getSize('8xl'),
   full: getSize('full'),
 };
 

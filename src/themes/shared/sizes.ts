@@ -10,9 +10,7 @@ export const sizes = {
   '5xl': '15rem',
   '6xl': '20rem',
   '7xl': '30rem',
-  '8xl': '40rem',
-  '9xl': '50rem',
-  '10xl': '60rem',
+  '8xl': '55rem',
   full: '100%',
   container: {
     sm: '640px',
