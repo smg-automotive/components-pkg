@@ -76,6 +76,15 @@ const baseStyle = definePartsStyle({
 
 const variants = {
   base: baseStyle,
+  topScroll: {
+    ...baseStyle,
+    dialogContainer: {
+      ...baseStyle.dialogContainer,
+      alignItems: 'flex-start',
+      overflow: 'auto',
+      marginTop: '5xl',
+    },
+  },
   fullScreen: {
     overlay: {
       bg: 'black',
@@ -122,6 +131,7 @@ function getSize(value: string) {
 
 const sizes = {
   md: getSize('7xl'),
+  lg: getSize('8xl'),
   full: getSize('full'),
 };
 
