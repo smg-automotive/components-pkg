@@ -19,10 +19,12 @@ type IconButton = {
   icon: ReactElement;
 };
 
+type ButtonSize = 'md' | 'lg';
+
 type SharedProps = {
   as?: 'button';
   variant?: 'primary' | 'secondary' | 'success';
-  size?: 'md' | 'lg' | ResponsiveValue<'md' | 'lg'>;
+  size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
