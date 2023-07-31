@@ -1,4 +1,5 @@
 export { AdvancedSearchIcon } from './AdvancedSearchIcon';
+export { ArrowCircleIcon } from './ArrowCircleIcon';
 export { ArrowDiagonalIcon } from './ArrowDiagonalIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
@@ -36,6 +37,7 @@ export { ErrorIcon } from './ErrorIcon';
 export { ExchangeIcon } from './ExchangeIcon';
 export { EyeIcon } from './EyeIcon';
 export { FacebookIcon } from './FacebookIcon';
+export { FlagIcon } from './FlagIcon';
 export { GasStationIcon } from './GasStationIcon';
 export { HeartIcon } from './HeartIcon';
 export { ImageIcon } from './ImageIcon';
