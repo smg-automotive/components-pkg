@@ -62,7 +62,7 @@ describe('The footer configuration', () => {
   it('returns only one link item per social media type', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.MotoScout24,
+      brand: Brand.AutoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
     });
