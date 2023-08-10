@@ -10,7 +10,7 @@ const selectStyles: StyleConfig = {
       paddingInlineEnd: '3xl',
     },
     icon: {
-      right: 'md',
+      right: 'sm',
       _disabled: {
         color: 'gray.200',
       },
