@@ -69,8 +69,8 @@ const Link: ComponentMultiStyleConfig = {
   parts: ['link', 'leftIcon', 'rightIcon'],
   baseStyle: {
     link: linkBaseStyle,
-    leftIcon: { ml: 'xs' },
-    rightIcon: { mr: 'xs' },
+    leftIcon: { ml: 'md' },
+    rightIcon: { mr: 'md' },
   },
   variants: {
     navigationLink,
