@@ -40,6 +40,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
 }) => {
   const modalSize =
     size || (variant !== 'fullScreen' ? { xs: 'full', sm: 'md' } : 'full');
+
   return (
     <ChakraModal
       isCentered
@@ -54,7 +55,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           <>
             <ModalHeader>
               <H3>{title}</H3>
-              <ModalCloseButton />
+              <ModalCloseButton fontSize="base" />
             </ModalHeader>
             <Divider />
           </>
