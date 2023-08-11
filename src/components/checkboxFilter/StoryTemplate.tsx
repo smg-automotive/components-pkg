@@ -6,7 +6,7 @@ type Values = 'new' | 'used' | 'old-timer';
 
 type Props = {
   onApplyAction: (args: unknown) => void;
-  defaultFacets?: Partial<{ [key in Values]: number }>;
+  defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
 };
 

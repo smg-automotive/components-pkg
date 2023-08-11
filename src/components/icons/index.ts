@@ -74,3 +74,7 @@ export { WarningIcon } from './WarningIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { YoutubeIcon } from './YoutubeIcon';
 export { SortIcon } from './SortIcon';
+export { GoogleIcon } from './GoogleIcon';
+export { SaveSearchIcon } from './SaveSearchIcon';
+export { AutoScout24Icon } from './AutoScout24Icon';
+export { MotoScout24Icon } from './MotoScout24Icon';
