@@ -39,7 +39,8 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   ...modalProps
 }) => {
   const modalSize =
-    size || (variant !== 'fullScreen' ? { xs: 'full', sm: 'md' } : 'full');
+    size ??
+    (variant !== 'fullScreen' ? { xs: 'full', sm: size ?? 'md' } : 'full');
 
   return (
     <ChakraModal
