@@ -43,7 +43,7 @@ describe('<FormControl>', () => {
     it('is connected with input', async () => {
       renderWrapper({ label: 'Label' });
       const label = screen.getByText('Label');
-      userEvent.click(label);
+      await userEvent.click(label);
       const input = screen.getByLabelText('Label');
 
       await waitFor(() => expect(input).toHaveFocus());

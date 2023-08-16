@@ -36,7 +36,7 @@ describe('<NumbersPagination />', () => {
         mainCarousel={mainCarousel}
       />,
     );
-    userEvent.click(screen.getByText('2'));
+    await userEvent.click(screen.getByText('2'));
     await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1));
   });
 });

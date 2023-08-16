@@ -10,6 +10,10 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   rules: {
+    'testing-library/no-await-sync-events': [
+      'error',
+      { eventModules: ['fire-event'] },
+    ],
     'import/no-extraneous-dependencies': [
       'error',
       {

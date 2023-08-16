@@ -31,7 +31,7 @@ describe('<CheckBoxFilter />', () => {
   it('should call onApply', async () => {
     const onApply = jest.fn();
     renderWrapper({ onApply });
-    userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
+    await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(

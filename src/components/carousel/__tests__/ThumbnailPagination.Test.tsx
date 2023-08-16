@@ -171,7 +171,9 @@ describe('<ThumbnailPagination/>', () => {
         mainCarousel={mainCarousel}
       />,
     );
-    userEvent.click(screen.getByLabelText('scroll to next thumbnail group'));
+    await userEvent.click(
+      screen.getByLabelText('scroll to next thumbnail group'),
+    );
     await waitFor(() => expect(mockScrollNext).toHaveBeenCalled());
     expect(mockMainScrollTo).not.toHaveBeenCalled();
   });
@@ -188,7 +190,7 @@ describe('<ThumbnailPagination/>', () => {
         mainCarousel={mainCarousel}
       />,
     );
-    userEvent.click(
+    await userEvent.click(
       screen.getByLabelText('scroll to previous thumbnail group'),
     );
     await waitFor(() => expect(mockScrollPrev).toHaveBeenCalled());
@@ -205,7 +207,7 @@ describe('<ThumbnailPagination/>', () => {
         mainCarousel={mainCarousel}
       />,
     );
-    userEvent.click(screen.getByText('thumbnail 2'));
+    await userEvent.click(screen.getByText('thumbnail 2'));
     await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1));
   });
 });

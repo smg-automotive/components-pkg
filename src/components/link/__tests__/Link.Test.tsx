@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Link, { LinkProps } from '../index';
 
@@ -17,8 +17,6 @@ const MockRouterLink = ({ children, ...props }: { children: ReactNode }) => {
 };
 
 describe('<Link>', () => {
-  beforeEach(cleanup);
-
   it('should render link', () => {
     render(<Link>Link</Link>);
 
