@@ -64,11 +64,11 @@ describe('<Textarea>', () => {
     expect(textarea).toHaveFocus();
   });
 
-  it('is not possible to click on the textarea when is disabled', () => {
+  it('is not possible to click on the textarea when is disabled', async () => {
     const onFocus = jest.fn();
     renderWrapper({ onFocus, isDisabled: true });
     const textarea = screen.getByPlaceholderText('Placeholder');
-    userEvent.click(textarea);
+    await userEvent.click(textarea);
 
     expect(textarea).toBeDisabled();
     expect(onFocus).not.toHaveBeenCalled();

@@ -50,7 +50,7 @@ describe('<Carousel />', () => {
     return waitFor(() => expect(mockOnEnter).toHaveBeenCalled());
   });
 
-  it('triggers the onSlideEnter event on the navigation', () => {
+  it('triggers the onSlideEnter event on the navigation', async () => {
     const mockOnEnter = jest.fn();
     const user = userEvent.setup();
 
@@ -68,12 +68,12 @@ describe('<Carousel />', () => {
       </Carousel>,
     );
 
-    user.click(screen.getByText('thumbnail 2'));
+    await user.click(screen.getByText('thumbnail 2'));
 
     return waitFor(() => expect(mockOnEnter).toHaveBeenCalled());
   });
 
-  it('triggers the onSlideLEave event on the navigation', () => {
+  it('triggers the onSlideLEave event on the navigation', async () => {
     const mockOnLeave = jest.fn();
     const user = userEvent.setup();
 
@@ -91,7 +91,7 @@ describe('<Carousel />', () => {
       </Carousel>,
     );
 
-    user.click(screen.getByText('thumbnail 2'));
+    await user.click(screen.getByText('thumbnail 2'));
     return waitFor(() => expect(mockOnLeave).toHaveBeenCalled());
   });
 
@@ -107,15 +107,15 @@ describe('<Carousel />', () => {
       'aria-current',
       'true',
     );
-    userEvent.hover(screen.getByLabelText('Carousel'));
-    userEvent.click(screen.getByLabelText('next slide'));
+    await userEvent.hover(screen.getByLabelText('Carousel'));
+    await userEvent.click(screen.getByLabelText('next slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
         'aria-current',
         'true',
       ),
     );
-    userEvent.click(screen.getByLabelText('previous slide'));
+    await userEvent.click(screen.getByLabelText('previous slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
         'aria-current',
@@ -161,7 +161,7 @@ describe('<Carousel />', () => {
         <div>slide 3</div>
       </Carousel>,
     );
-    userEvent.click(screen.getByText('slide 1'));
+    await userEvent.click(screen.getByText('slide 1'));
     await waitFor(() => expect(mockOnClick).toHaveBeenCalledWith(0));
   });
 
@@ -215,7 +215,7 @@ describe('<Carousel />', () => {
       'aria-current',
       'true',
     );
-    userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
+    await userEvent.click(screen.getByLabelText('thumbnail 3 of 3'));
     await waitFor(() =>
       expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
         'aria-current',
@@ -238,7 +238,7 @@ describe('<Carousel />', () => {
       'aria-current',
       'true',
     );
-    userEvent.click(screen.getByLabelText('next slide'));
+    await userEvent.click(screen.getByLabelText('next slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('thumbnail 2 of 3')).toHaveAttribute(
         'aria-current',

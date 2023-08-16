@@ -85,9 +85,9 @@ describe('<RangeFilterInputWithSlider/>', () => {
 
       const inputFrom = screen.getAllByRole('spinbutton')[0];
 
-      await waitFor(() => user.clear(inputFrom));
+      await user.clear(inputFrom);
 
-      user.type(inputFrom, '500');
+      await user.type(inputFrom, '500');
 
       return waitFor(() =>
         expect(mockOnChange).toHaveBeenCalledWith({
@@ -107,9 +107,9 @@ describe('<RangeFilterInputWithSlider/>', () => {
 
       const inputTo = screen.getAllByRole('spinbutton')[1];
 
-      await waitFor(() => user.clear(inputTo));
+      await user.clear(inputTo);
 
-      user.type(inputTo, '300');
+      await user.type(inputTo, '300');
 
       return waitFor(() =>
         expect(mockOnChange).toHaveBeenCalledWith({
@@ -129,9 +129,9 @@ describe('<RangeFilterInputWithSlider/>', () => {
 
       const inputTo = screen.getAllByRole('spinbutton')[0];
 
-      await waitFor(() => user.clear(inputTo));
+      await user.clear(inputTo);
 
-      user.type(inputTo, '1600');
+      await user.type(inputTo, '1600');
 
       return waitFor(() => {
         const sliderTo = screen.getAllByRole('slider')[0];
@@ -165,14 +165,14 @@ describe('<RangeFilterInputWithSlider/>', () => {
       expect(maxMarker).toHaveAttribute('aria-valuenow', '3');
     });
 
-    it('should trigger onChange when the FROM thumb moves', () => {
+    it('should trigger onChange when the FROM thumb moves', async () => {
       const mockOnChange = jest.fn();
       renderWrapper({
         onChange: mockOnChange,
       });
 
       const fromSlider = screen.getAllByRole('slider')[0];
-      userEvent.type(fromSlider, '{arrowup}');
+      await userEvent.type(fromSlider, '{arrowup}');
 
       return waitFor(
         () => {
@@ -194,20 +194,20 @@ describe('<RangeFilterInputWithSlider/>', () => {
 
       const fromSlider = screen.getAllByRole('slider')[0];
       const toSlider = screen.getAllByRole('slider')[1];
-      userEvent.click(fromSlider);
-      userEvent.click(toSlider);
+      await userEvent.click(fromSlider);
+      await userEvent.click(toSlider);
 
       return waitFor(() => expect(mockOnChange).not.toHaveBeenCalled());
     });
 
-    it('should update input field with value set by slider', () => {
+    it('should update input field with value set by slider', async () => {
       const mockOnChange = jest.fn();
       renderWrapper({
         onChange: mockOnChange,
       });
 
       const fromSlider = screen.getAllByRole('slider')[0];
-      userEvent.type(fromSlider, '{arrowup}');
+      await userEvent.type(fromSlider, '{arrowup}');
 
       return waitFor(
         () => {

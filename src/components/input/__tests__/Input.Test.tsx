@@ -51,14 +51,14 @@ describe('<Input>', () => {
         );
 
         const input = screen.getByPlaceholderText('placeholder');
-        userEvent.type(input, 'test');
+        await userEvent.type(input, 'test');
 
         await waitFor(() => expect(onChange).toHaveBeenCalledTimes(4));
       });
     });
 
     describe('debouncing', () => {
-      it('calls the value setter', () => {
+      it('calls the value setter', async () => {
         const setInputValue = jest.fn();
         const value = '';
         render(
@@ -71,7 +71,7 @@ describe('<Input>', () => {
           />,
         );
         const input = screen.getByPlaceholderText('placeholder');
-        userEvent.type(input, 'test');
+        await userEvent.type(input, 'test');
 
         return waitFor(() => {
           expect(setInputValue).toHaveBeenCalledWith('test');

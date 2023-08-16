@@ -43,13 +43,13 @@ describe('<Accordion />', () => {
         'test-accordion-button-2',
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
         expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
       expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'false');
 
-      userEvent.click(secondAccordionButton);
+      await userEvent.click(secondAccordionButton);
       await waitFor(() =>
         expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false'),
       );
@@ -67,12 +67,12 @@ describe('<Accordion />', () => {
         'test-accordion-button-1',
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
         expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
         expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false'),
       );
@@ -90,12 +90,12 @@ describe('<Accordion />', () => {
         'test-accordion-button-2',
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
         expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
 
-      userEvent.click(secondAccordionButton);
+      await userEvent.click(secondAccordionButton);
       await waitFor(() =>
         expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );

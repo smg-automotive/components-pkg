@@ -34,7 +34,9 @@ describe('<Checkbox>', () => {
   it('triggers onChange event when clicking on checkbox', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange });
-    userEvent.click(screen.getByRole('checkbox', { name: 'Checkbox label' }));
+    await userEvent.click(
+      screen.getByRole('checkbox', { name: 'Checkbox label' }),
+    );
 
     await waitFor(() => expect(onChange).toHaveBeenCalled());
   });
@@ -43,7 +45,7 @@ describe('<Checkbox>', () => {
     const onChange = jest.fn();
     renderWrapper({ onChange, isDisabled: true });
     const checkbox = screen.getByRole('checkbox', { name: 'Checkbox label' });
-    userEvent.click(checkbox);
+    await userEvent.click(checkbox);
 
     await waitFor(() => expect(checkbox).toBeDisabled());
     expect(onChange).not.toHaveBeenCalled();
