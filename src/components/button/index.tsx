@@ -83,7 +83,6 @@ const Button: FC<Props> = (props) => {
     as = 'button',
     isExternal,
     ariaLabel,
-    removeBorder,
     icon,
     ...rest
   } = props;
