@@ -23,7 +23,7 @@ type ButtonSize = 'md' | 'lg';
 
 type SharedProps = {
   as?: 'button';
-  variant?: 'primary' | 'secondary' | 'success';
+  variant?: 'primary' | 'secondary' | 'success' | 'transparent';
   size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;
@@ -83,6 +83,7 @@ const Button: FC<Props> = (props) => {
     as = 'button',
     isExternal,
     ariaLabel,
+    removeBorder,
     icon,
     ...rest
   } = props;
