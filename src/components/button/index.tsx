@@ -23,7 +23,7 @@ type ButtonSize = 'md' | 'lg';
 
 type SharedProps = {
   as?: 'button';
-  variant?: 'primary' | 'secondary' | 'success';
+  variant?: 'primary' | 'secondary' | 'success' | 'transparent';
   size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;

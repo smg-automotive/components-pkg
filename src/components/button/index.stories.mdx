@@ -2,14 +2,14 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Stack } from 'src/index.ts';
 
-import { ShareIcon, VideoIcon } from '../index.ts';
+import { ShareIcon, TrashIcon, VideoIcon } from '../index.ts';
 import Button from './index.tsx';
 
 <Meta title="Components/Button" component={Button} />
 
 export const Template = (args) => <Button {...args}>{args.label}</Button>;
 
-export const variants = ['primary', 'secondary', 'success'];
+export const variants = ['primary', 'secondary', 'success', 'transparent'];
 
 # Button
 
@@ -96,6 +96,39 @@ export const variants = ['primary', 'secondary', 'success'];
 </Canvas>
 
 <ArgsTable story="Success" />
+
+## Transparent
+
+<Canvas>
+  <Story
+    name="Transparent"
+    args={{
+      isDisabled: false,
+      variant: 'transparent',
+      icon: <TrashIcon />,
+      size: 'lg',
+    }}
+    argTypes={{
+      variant: {
+        options: variants,
+        control: 'select',
+      },
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      disabled: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Transparent" />
 
 ## Sizes
 
