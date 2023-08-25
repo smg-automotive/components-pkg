@@ -13,6 +13,7 @@ export { CalendarIcon } from './CalendarIcon';
 export { CallIcon } from './CallIcon';
 export { CamperIcon } from './CamperIcon';
 export { CarIcon } from './CarIcon';
+export { CopyIcon } from './CopyIcon';
 export { CheckmarkIcon } from './CheckmarkIcon';
 export { CheckShieldIcon } from './CheckShieldIcon';
 export { ChevronDownLargeIcon } from './ChevronDownLargeIcon';
