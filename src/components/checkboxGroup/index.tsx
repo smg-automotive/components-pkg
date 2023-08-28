@@ -23,6 +23,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
   size = 'lg',
   isIndeterminate,
   addDividerAfterIndex,
+  variant = 'alignCenter',
   checkboxes,
 }) => {
   return (
@@ -37,6 +38,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
         isInvalid={isInvalid}
         isIndeterminate={isIndeterminate}
         size={size}
+        variant={variant}
         fontWeight="bold"
       />
 
@@ -51,6 +53,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
             isChecked={item.isChecked}
             size={size}
             pl="md"
+            variant={variant}
             isDisabled={isDisabled}
           />
           {addDividerAfterIndex?.includes(index) ? <Divider /> : null}

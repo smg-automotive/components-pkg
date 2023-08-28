@@ -56,18 +56,27 @@ const baseStyleLabel: SystemStyleObject = {
   },
 };
 
-const allignCenter = {
+const alignCenter = {
   container: {
     alignItems: 'center',
   },
 };
 
-const allignTop = {
+const alignTop = {
   container: {
     alignItems: 'flex-start',
   },
   control: {
     marginTop: 'xs',
+  },
+};
+
+const alignTopForSmallSize = {
+  container: {
+    alignItems: 'flex-start',
+  },
+  control: {
+    marginTop: 'xxs',
   },
 };
 
@@ -79,8 +88,9 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 };
 
 const variants = {
-  allignTop: allignTop,
-  allignCenter: allignCenter,
+  alignTop: alignTop,
+  alignCenter: alignCenter,
+  alignTopForSmallSize: alignTopForSmallSize,
 };
 
 export default {

@@ -12,7 +12,7 @@ export interface CheckboxProps {
   isIndeterminate?: boolean;
   size?: 'sm' | 'lg';
   fontWeight?: 'regular' | 'bold';
-  variant?: 'allignCenter' | 'allignTop';
+  variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
   readOnly?: boolean;
 }
 
@@ -29,7 +29,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       isIndeterminate = false,
       size = 'lg',
       fontWeight = 'regular',
-      variant = 'allignCenter',
+      variant = 'alignCenter',
       readOnly = false,
       ...props
     },
