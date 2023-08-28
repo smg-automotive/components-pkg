@@ -40,7 +40,6 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
         isIndeterminate={isIndeterminate}
         size={size}
         fontWeight="bold"
-        variant={variant}
       />
 
       {checkboxes?.map((item, index) => (
