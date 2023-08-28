@@ -10,7 +10,6 @@ interface CheckboxGroupProps extends CheckboxProps {
   checkboxes?: CheckboxProps[];
   addDividerAfterIndex?: number[];
   size?: 'sm' | 'lg';
-  variant?: 'allignCenter' | 'allignTop';
 }
 
 const CheckboxGroup: FC<CheckboxGroupProps> = ({
@@ -24,7 +23,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
   size = 'lg',
   isIndeterminate,
   addDividerAfterIndex,
-  variant = 'allignCenter',
+  variant = 'alignCenter',
   checkboxes,
 }) => {
   return (
@@ -39,6 +38,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
         isInvalid={isInvalid}
         isIndeterminate={isIndeterminate}
         size={size}
+        variant={variant}
         fontWeight="bold"
       />
 
