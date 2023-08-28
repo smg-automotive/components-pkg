@@ -90,7 +90,7 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 const variants = {
   alignTop: alignTop,
   alignCenter: alignCenter,
-  alignTopSmallSize: alignTopForSmallSize,
+  alignTopForSmallSize: alignTopForSmallSize,
 };
 
 export default {
