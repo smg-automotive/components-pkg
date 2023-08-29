@@ -25,6 +25,9 @@ const baseStyle = {
     _hover: {
       backgroundColor: 'gray.100',
     },
+    _active: {
+      backgroundColor: 'gray.200',
+    },
     _disabled: {
       cursor: 'default',
       _hover: {
