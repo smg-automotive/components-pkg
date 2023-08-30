@@ -72,17 +72,13 @@ const Modal: FC<PropsWithChildren<Props>> = ({
               justifyContent={
                 bothActionButtons ? 'space-between' : 'flex-start'
               }
+              gap={bothActionButtons ? 'sm' : 0}
             >
               {secondaryActionButton ? (
                 <Button
                   variant="secondary"
                   onClick={secondaryActionButton.action}
-                  width={
-                    bothActionButtons
-                      ? // eslint-disable-next-line sonarjs/no-duplicate-string
-                        'fit-content'
-                      : { base: 'full', sm: 'fit-content' }
-                  }
+                  width={{ base: 'full', sm: 'fit-content' }}
                 >
                   {secondaryActionButton.label}
                 </Button>
@@ -91,11 +87,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
                 <Button
                   variant="primary"
                   onClick={primaryActionButton.action}
-                  width={
-                    bothActionButtons
-                      ? 'fit-content'
-                      : { base: 'full', sm: 'fit-content' }
-                  }
+                  width={{ base: 'full', sm: 'fit-content' }}
                 >
                   {primaryActionButton.label}
                 </Button>
