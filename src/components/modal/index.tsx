@@ -71,7 +71,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
               justifyContent={
                 secondaryActionButton && primaryActionButton
                   ? 'space-between'
-                  : 'flex-end'
+                  : 'flex-start'
               }
             >
               {secondaryActionButton ? (
