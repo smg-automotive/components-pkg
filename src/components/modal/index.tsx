@@ -40,6 +40,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
 }) => {
   const modalSize =
     size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
+  const bothActionButtons = primaryActionButton && secondaryActionButton;
 
   return (
     <ChakraModal
@@ -69,21 +70,33 @@ const Modal: FC<PropsWithChildren<Props>> = ({
             <ModalFooter
               display="flex"
               justifyContent={
-                secondaryActionButton && primaryActionButton
-                  ? 'space-between'
-                  : 'flex-start'
+                bothActionButtons ? 'space-between' : 'flex-start'
               }
             >
               {secondaryActionButton ? (
                 <Button
                   variant="secondary"
                   onClick={secondaryActionButton.action}
+                  width={
+                    bothActionButtons
+                      ? // eslint-disable-next-line sonarjs/no-duplicate-string
+                        'fit-content'
+                      : { base: 'full', sm: 'fit-content' }
+                  }
                 >
                   {secondaryActionButton.label}
                 </Button>
               ) : null}
               {primaryActionButton ? (
-                <Button variant="primary" onClick={primaryActionButton.action}>
+                <Button
+                  variant="primary"
+                  onClick={primaryActionButton.action}
+                  width={
+                    bothActionButtons
+                      ? 'fit-content'
+                      : { base: 'full', sm: 'fit-content' }
+                  }
+                >
                   {primaryActionButton.label}
                 </Button>
               ) : null}
