@@ -6,7 +6,7 @@ import Grid from '../grid';
 import AspectRatio from '../aspectRatio';
 
 type Props = {
-  aspectRatio: number;
+  aspectRatio?: number;
 };
 
 const TopListingBadge: FC<PropsWithChildren<Props>> = ({
@@ -16,7 +16,11 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
   return (
     <Grid>
       <GridItem gridColumn={1} gridRow={1}>
-        <AspectRatio ratio={aspectRatio}>{children}</AspectRatio>
+        {aspectRatio ? (
+          <AspectRatio ratio={aspectRatio}>{children}</AspectRatio>
+        ) : (
+          children
+        )}
       </GridItem>
       <GridItem
         gridColumn={1}
