@@ -29,7 +29,7 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
         overflow="hidden"
         position="relative"
         pointerEvents="none"
-        onTouchStart={(e) => e.preventDefault()}
+        __css={{ touchAction: 'none' }}
       >
         <Badge
           transform="rotate(-45deg) translateX(-50%) translateY(9px)"
