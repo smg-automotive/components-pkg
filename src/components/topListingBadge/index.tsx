@@ -6,7 +6,7 @@ import Grid from '../grid';
 import AspectRatio from '../aspectRatio';
 
 type Props = {
-  aspectRatio: number;
+  aspectRatio?: number;
 };
 
 const TopListingBadge: FC<PropsWithChildren<Props>> = ({
@@ -16,7 +16,11 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
   return (
     <Grid>
       <GridItem gridColumn={1} gridRow={1}>
-        <AspectRatio ratio={aspectRatio}>{children}</AspectRatio>
+        {aspectRatio ? (
+          <AspectRatio ratio={aspectRatio}>{children}</AspectRatio>
+        ) : (
+          children
+        )}
       </GridItem>
       <GridItem
         gridColumn={1}
@@ -24,6 +28,8 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
         zIndex="docked"
         overflow="hidden"
         position="relative"
+        pointerEvents="none"
+        __css={{ touchAction: 'none' }}
       >
         <Badge
           transform="rotate(-45deg) translateX(-50%) translateY(9px)"
@@ -31,6 +37,7 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
           width="70px"
           textAlign="center"
           paddingLeft="sm"
+          color="gray.900"
         >
           Top
         </Badge>
