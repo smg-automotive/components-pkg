@@ -31,6 +31,7 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
           width="70px"
           textAlign="center"
           paddingLeft="sm"
+          color="gray.900"
         >
           Top
         </Badge>
