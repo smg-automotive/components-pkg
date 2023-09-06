@@ -72,10 +72,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.simpleSearch',
           link: {
-            de: '/de/with-top-listing-entitlement',
-            en: '/de/with-top-listing-entitlement',
-            fr: '/fr/with-top-listing--entitlement',
-            it: '/it/with-top-listing--entitlement',
+            de: '/de/with-top-car-entitlement',
+            en: '/de/with-top-car-entitlement',
+            fr: '/fr/with-top-car--entitlement',
+            it: '/it/with-top-car--entitlement',
           },
           missingEntitlementFallbackLink: {
             de: '/de/no-entitlement',
