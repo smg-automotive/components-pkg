@@ -3,4 +3,5 @@
 // support for them. This will be subject to change.
 export enum Entitlement {
   TopListing = 'top-listing',
+  TopCar = 'top-car',
 }

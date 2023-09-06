@@ -1,3 +1,9 @@
+import React from 'react';
+
+import { Entitlement } from 'src/types/entitlements';
+
+import { MagnifierIcon } from 'src/components/icons';
+
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -36,6 +42,60 @@ export const drawerNodeItems = ({
     {
       translationKey: 'header.searchMenu.vehicles',
       items: [
+        {
+          translationKey: 'header.searchMenu.simpleSearch',
+          link: {
+            de: '/de/with-top-listing-entitlement',
+            en: '/de/with-top-listing-entitlement',
+            fr: '/fr/with-top-listing--entitlement',
+            it: '/it/with-top-listing--entitlement',
+          },
+          missingEntitlementFallbackLink: {
+            de: '/de/no-entitlement',
+            en: '/de/no-entitlement',
+            fr: '/fr/no-entitlement',
+            it: '/it/no-entitlement',
+          },
+          missingEntitlementLinkIcon: <MagnifierIcon />,
+          requiredEntitlement: Entitlement.TopListing,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.simpleSearch',
+          link: {
+            de: '/de/with-top-listing-entitlement',
+            en: '/de/with-top-listing-entitlement',
+            fr: '/fr/with-top-listing--entitlement',
+            it: '/it/with-top-listing--entitlement',
+          },
+          missingEntitlementFallbackLink: {
+            de: '/de/no-entitlement',
+            en: '/de/no-entitlement',
+            fr: '/fr/no-entitlement',
+            it: '/it/no-entitlement',
+          },
+          missingEntitlementLinkIcon: <MagnifierIcon />,
+          requiredEntitlement: Entitlement.TopCar,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+        },
         {
           translationKey: 'header.searchMenu.simpleSearch',
           link: {
