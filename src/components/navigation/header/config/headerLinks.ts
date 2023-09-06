@@ -1,5 +1,3 @@
-import { Language } from '@smg-automotive/i18n-pkg';
-
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { LocalizedLinks } from 'src/components/navigation/link';

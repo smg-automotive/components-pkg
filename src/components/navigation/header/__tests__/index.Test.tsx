@@ -10,7 +10,7 @@ import { UserType } from '../types';
 
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
-import { drawerNodeItems } from '../config/drawerNodeItems';
+import { drawerNodeItems } from '../config/DrawerNodeItems';
 import Navigation from '..';
 
 describe('Header', () => {

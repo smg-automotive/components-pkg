@@ -1,4 +1,3 @@
-// eslint-disable-next-line unicorn/filename-case
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';

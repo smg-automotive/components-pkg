@@ -18,7 +18,7 @@ import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
-import { drawerNodeItems } from './config/drawerNodeItems';
+import { drawerNodeItems } from './config/DrawerNodeItems';
 
 interface NavigationProps {
   environment: Environment;

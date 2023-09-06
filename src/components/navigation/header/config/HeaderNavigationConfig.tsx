@@ -20,7 +20,7 @@ import {
   DrawerNodeItems,
   DrawerNodeItemsConfig,
   NavigationLinkConfigNode,
-} from './drawerNodeItems';
+} from './DrawerNodeItems';
 
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;
