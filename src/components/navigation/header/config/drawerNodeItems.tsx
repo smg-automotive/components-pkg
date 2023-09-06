@@ -748,10 +748,6 @@ export const drawerNodeItems = ({
     {
       translationKey: 'header.userMenu.toolsForPurchasing',
       items: [
-        // entitlment required --- item.link[entitlement][en]
-        // item.link
-        // ako ima renderujemo odredjeni link
-        // ako nema renderujemo drugi link sa nekom ikonicom [requisitions, bookmarks]
         {
           translationKey: 'header.userMenu.requisitions',
           link: {
