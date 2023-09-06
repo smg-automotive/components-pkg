@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
 import { Environment } from 'src/types/environment';
+import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { UserType } from './header/types';
@@ -20,9 +22,12 @@ export type LocalizedLinks = Record<Language, string>;
 export interface LinkConfig {
   translationKey?: string;
   link?: LocalizedLinks;
+  missingEntitlementFallbackLink?: LocalizedLinks;
+  missingEntitlementLinkIcon?: ReactNode;
   onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
+  requiredEntitlement?: Entitlement;
 }
 
 export interface LinkInstance {
@@ -49,6 +54,7 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     domains,
+    hasEntitlement = false,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -57,6 +63,7 @@ export class Link {
     useAbsoluteUrls: boolean;
     linkProtocol: string;
     domains: Record<Brand, Record<Environment, string>>;
+    hasEntitlement?: boolean;
   }) {
     this.translationKey = config.translationKey;
     this.target = config.target;
@@ -67,14 +74,28 @@ export class Link {
       userType,
     });
 
+    const link = this.resolveLink({ hasEntitlement, config });
+
     this.link = this.prefixDomain({
-      link: config.link,
+      link,
       brand,
       environment,
       useAbsoluteUrls,
       linkProtocol,
       domains,
     });
+  }
+
+  private resolveLink({
+    hasEntitlement,
+    config,
+  }: {
+    hasEntitlement: boolean;
+    config: LinkConfig;
+  }) {
+    return !hasEntitlement && config.missingEntitlementFallbackLink
+      ? config.missingEntitlementFallbackLink
+      : config.link;
   }
 
   private prefixDomain({

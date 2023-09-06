@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/filename-case
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -748,6 +749,10 @@ export const drawerNodeItems = ({
     {
       translationKey: 'header.userMenu.toolsForPurchasing',
       items: [
+        // entitlment required --- item.link[entitlement][en]
+        // item.link
+        // ako ima renderujemo odredjeni link
+        // ako nema renderujemo drugi link sa nekom ikonicom [requisitions, bookmarks]
         {
           translationKey: 'header.userMenu.requisitions',
           link: {

@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 
 import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 
+import { Entitlement } from 'src/types/entitlements';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import Link from 'src/components/link';
 import Hide from 'src/components/hide';
@@ -18,6 +19,8 @@ export interface NavigationLinkProps {
   color?: string;
   leftIcon?: ReactNode;
   hideTextBelow?: BreakpointName;
+  requiredEntitlement?: Entitlement;
+  missingEntitlementLinkIcon?: ReactNode;
   onClick?: () => void;
 }
 
@@ -29,6 +32,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   variant = 'navigationLink',
   color = 'gray.900',
   leftIcon,
+  missingEntitlementLinkIcon,
   hideTextBelow,
   onClick,
 }) => {
@@ -41,6 +45,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
       fontWeight={fontWeight}
       color={color}
       leftIcon={leftIcon}
+      rightIcon={missingEntitlementLinkIcon}
       onClick={onClick}
     >
       {translationKey && (

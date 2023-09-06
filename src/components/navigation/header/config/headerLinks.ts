@@ -1,4 +1,8 @@
+import { Language } from '@smg-automotive/i18n-pkg';
+
 import { BreakpointName } from 'src/themes/shared/breakpoints';
+
+import { LocalizedLinks } from 'src/components/navigation/link';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
 
@@ -19,6 +23,7 @@ export type NavigationLinkConfigProps = Omit<
       motoscout24: boolean;
     };
   };
+  missingEntitlementFallbackLink?: LocalizedLinks;
 };
 
 export const headerLinks: NavigationLinkConfigProps[] = [

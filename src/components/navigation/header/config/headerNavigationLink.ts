@@ -17,6 +17,7 @@ export class HeaderNavigationLink extends Link {
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
   userAvatar?: ReactNode;
+  missingEntitlementLinkIcon?: ReactNode;
 
   constructor({
     config,
@@ -33,6 +34,8 @@ export class HeaderNavigationLink extends Link {
     variant,
     color,
     userAvatar,
+    hasEntitlement = false,
+    missingEntitlementLinkIcon,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -48,6 +51,8 @@ export class HeaderNavigationLink extends Link {
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
+    hasEntitlement?: boolean;
+    missingEntitlementLinkIcon?: ReactNode;
   }) {
     super({
       config,
@@ -57,6 +62,7 @@ export class HeaderNavigationLink extends Link {
       useAbsoluteUrls,
       linkProtocol,
       domains,
+      hasEntitlement,
     });
     this.isNew = isNew;
     this.iconRight = iconRight;
@@ -65,5 +71,6 @@ export class HeaderNavigationLink extends Link {
     this.variant = variant;
     this.color = color;
     this.userAvatar = userAvatar;
+    this.missingEntitlementLinkIcon = missingEntitlementLinkIcon;
   }
 }

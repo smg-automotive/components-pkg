@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
+import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
@@ -70,6 +71,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config,
     user,
     urlPathParams,
+    entitlements = [],
   }: {
     brand: Brand;
     environment?: Environment;
@@ -77,8 +79,9 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config: HeaderNavigationConfigInterface;
     user: User | null;
     urlPathParams?: Record<string, string | number>;
+    entitlements?: Entitlement[];
   }) {
-    super({ brand, environment, useAbsoluteUrls });
+    super({ brand, environment, useAbsoluteUrls, entitlements });
     this.config = config;
     this.homeUrl = '/';
     this.menuHeight = '60px';
@@ -121,13 +124,21 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   };
 
   mapLink(link: HeaderNavigationLinkConfig) {
+    const hasEntitlement = link.requiredEntitlement
+      ? this.entitlements?.includes(link.requiredEntitlement)
+      : false;
+
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
         link: this.replacePathParams(link.link),
+        missingEntitlementFallbackLink: this.replacePathParams(
+          link.missingEntitlementFallbackLink,
+        ),
         onClick: link.onClick,
         target: undefined,
         visibilitySettings: link.visibilitySettings,
+        requiredEntitlement: link.requiredEntitlement,
       },
       brand: this.brand,
       userType: this.userType,
@@ -142,6 +153,9 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       variant: link.variant,
       color: link.color,
       userAvatar: link.userAvatar,
+      hasEntitlement,
+      missingEntitlementLinkIcon:
+        !hasEntitlement && link.missingEntitlementLinkIcon,
     });
   }
 
