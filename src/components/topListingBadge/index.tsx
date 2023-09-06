@@ -28,6 +28,7 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
         zIndex="docked"
         overflow="hidden"
         position="relative"
+        pointerEvents="none"
       >
         <Badge
           transform="rotate(-45deg) translateX(-50%) translateY(9px)"
