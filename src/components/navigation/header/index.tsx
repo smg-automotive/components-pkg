@@ -69,6 +69,7 @@ const Navigation: FC<NavigationProps> = ({
     drawerNodeItems,
     user?.id,
     user?.type,
+    entitlements,
   ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
