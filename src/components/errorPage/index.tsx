@@ -21,9 +21,10 @@ import Divider from '../divider';
 import Button from '../button';
 import AspectRatio from '../aspectRatio';
 
-const illustrations = {
+const illustrations: Record<ErrorStatusCode, string> = {
   404: errorIllustrationNotFound,
   500: errorIllustrationSomethingWentWrong,
+  clientSide: errorIllustrationSomethingWentWrong,
 };
 
 interface Props {
