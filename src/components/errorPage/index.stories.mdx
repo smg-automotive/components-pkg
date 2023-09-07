@@ -19,7 +19,7 @@ export const Template = (args) => <ErrorPage {...args} />;
     }}
     argTypes={{
       statusCode: {
-        options: [404, 500],
+        options: [404, 500, 'clientSide'],
         control: 'select',
       },
       language: {

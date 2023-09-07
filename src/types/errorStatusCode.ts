@@ -1,1 +1,1 @@
-export type ErrorStatusCode = 404 | 500;
+export type ErrorStatusCode = 404 | 500 | 'clientSide';
