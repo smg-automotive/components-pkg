@@ -50,7 +50,7 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       config: {
         headerItems: headerLinks,
-        drawerItems: drawerNodeItems({ onLogout }),
+        drawerItems: drawerNodeItems({ onLogout, environment }),
       },
       user,
       urlPathParams,
