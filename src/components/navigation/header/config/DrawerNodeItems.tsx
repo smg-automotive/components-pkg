@@ -303,10 +303,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myVehicles',
           link: {
-            de: '/de/vehicles',
-            en: 'de/vehicles',
-            fr: '/fr/vehicles',
-            it: '/it/vehicles',
+            de: 'https://dealer.autoscout24.ch/de/vehicles',
+            en: 'https://dealer.autoscout24.ch/de/vehicles',
+            fr: 'https://dealer.autoscout24.ch/fr/vehicles',
+            it: 'https://dealer.autoscout24.ch/it/vehicles',
           },
           visibilitySettings: {
             userType: {
