@@ -303,10 +303,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myVehicles',
           link: {
-            de: 'https://dealer.autoscout24.ch/de/vehicles',
-            en: 'https://dealer.autoscout24.ch/de/vehicles',
-            fr: 'https://dealer.autoscout24.ch/fr/vehicles',
-            it: 'https://dealer.autoscout24.ch/it/vehicles',
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -341,10 +341,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myMotorcycles',
           link: {
-            de: 'https://dealer.motoscout24.ch/de/vehicles',
-            en: 'https://dealer.motoscout24.ch/de/vehicles',
-            fr: 'https://dealer.motoscout24.ch/fr/vehicles',
-            it: 'https://dealer.motoscout24.ch/it/vehicles',
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
           },
           visibilitySettings: {
             userType: {
