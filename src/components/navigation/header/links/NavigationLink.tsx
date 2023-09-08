@@ -19,7 +19,6 @@ export interface NavigationLinkProps {
   color?: string;
   leftIcon?: ReactNode;
   hideTextBelow?: BreakpointName;
-  requiredEntitlement?: Entitlement;
   missingEntitlementLinkIcon?: ReactNode;
   onClick?: () => void;
 }
