@@ -7,6 +7,7 @@ import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import {
+  EntitlementConfig,
   LinkConfig,
   LinkInstance,
   LocalizedLinks,
@@ -34,7 +35,7 @@ export interface HeaderNavigationLinkInstance extends LinkInstance {
 
 export interface HeaderNavigationLinkConfig extends LinkConfig {
   isNew?: boolean;
-  iconRight?: ReactNode;
+  rightIcon?: ReactNode;
   showUnderMoreLinkBelow?: BreakpointName;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
@@ -123,22 +124,32 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     return link;
   };
 
+  mapEntitlementConfig(entitlementConfig: EntitlementConfig) {
+    return {
+      missingEntitlementFallbackLink: this.replacePathParams(
+        entitlementConfig.missingEntitlementFallbackLink,
+      ),
+      missingEntitlementLinkIcon: entitlementConfig.missingEntitlementLinkIcon,
+      requiredEntitlement: entitlementConfig.requiredEntitlement,
+    } as EntitlementConfig;
+  }
+
   mapLink(link: HeaderNavigationLinkConfig) {
-    const hasEntitlement = link.requiredEntitlement
-      ? this.entitlements?.includes(link.requiredEntitlement)
+    const { entitlementConfig } = link;
+
+    const hasEntitlement = entitlementConfig
+      ? this.entitlements?.includes(entitlementConfig.requiredEntitlement)
       : false;
 
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
         link: this.replacePathParams(link.link),
-        missingEntitlementFallbackLink: this.replacePathParams(
-          link.missingEntitlementFallbackLink,
-        ),
         onClick: link.onClick,
         target: undefined,
         visibilitySettings: link.visibilitySettings,
-        requiredEntitlement: link.requiredEntitlement,
+        entitlementConfig:
+          entitlementConfig && this.mapEntitlementConfig(entitlementConfig),
       },
       brand: this.brand,
       userType: this.userType,
@@ -147,15 +158,13 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       linkProtocol: this.linkProtocol,
       domains: this.domains,
       isNew: link.isNew,
-      iconRight: link.iconRight,
+      rightIcon: link.rightIcon,
       showUnderMoreLinkBelow: link.showUnderMoreLinkBelow,
       fontWeight: link.fontWeight,
       variant: link.variant,
       color: link.color,
       userAvatar: link.userAvatar,
       hasEntitlement,
-      missingEntitlementLinkIcon:
-        !hasEntitlement && link.missingEntitlementLinkIcon,
     });
   }
 

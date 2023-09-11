@@ -17,7 +17,6 @@ export class HeaderNavigationLink extends Link {
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
   userAvatar?: ReactNode;
-  missingEntitlementLinkIcon?: ReactNode;
 
   constructor({
     config,
@@ -28,14 +27,13 @@ export class HeaderNavigationLink extends Link {
     linkProtocol,
     domains,
     isNew,
-    iconRight,
+    rightIcon,
     showUnderMoreLinkBelow,
     fontWeight,
     variant,
     color,
     userAvatar,
     hasEntitlement = false,
-    missingEntitlementLinkIcon,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -45,14 +43,13 @@ export class HeaderNavigationLink extends Link {
     linkProtocol: string;
     domains: Record<Brand, Record<Environment, string>>;
     isNew?: boolean;
-    iconRight?: ReactNode;
+    rightIcon?: ReactNode;
     showUnderMoreLinkBelow?: BreakpointName;
     fontWeight?: 'regular' | 'bold';
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
     hasEntitlement?: boolean;
-    missingEntitlementLinkIcon?: ReactNode;
   }) {
     super({
       config,
@@ -63,14 +60,13 @@ export class HeaderNavigationLink extends Link {
       linkProtocol,
       domains,
       hasEntitlement,
+      rightIcon,
     });
     this.isNew = isNew;
-    this.iconRight = iconRight;
     this.showUnderMoreLinkBelow = showUnderMoreLinkBelow;
     this.fontWeight = fontWeight;
     this.variant = variant;
     this.color = color;
     this.userAvatar = userAvatar;
-    this.missingEntitlementLinkIcon = missingEntitlementLinkIcon;
   }
 }

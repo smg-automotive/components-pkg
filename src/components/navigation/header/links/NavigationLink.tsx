@@ -11,7 +11,7 @@ export interface NavigationLinkProps {
   link?: Record<Language, string>;
   translationKey?: string;
   isNew?: boolean;
-  iconRight?: ReactNode;
+  rightIcon?: ReactNode;
   showUnderMoreLinkBelow?: BreakpointName;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
@@ -30,7 +30,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   variant = 'navigationLink',
   color = 'gray.900',
   leftIcon,
-  missingEntitlementLinkIcon,
+  rightIcon,
   hideTextBelow,
   onClick,
 }) => {
@@ -43,7 +43,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
       fontWeight={fontWeight}
       color={color}
       leftIcon={leftIcon}
-      rightIcon={missingEntitlementLinkIcon}
+      rightIcon={rightIcon}
       onClick={onClick}
     >
       {translationKey && (

@@ -39,7 +39,7 @@ const Navigation: FC<NavigationProps> = ({
   user,
   hasNotification,
   useAbsoluteUrls = false,
-  entitlements,
+  entitlements = [],
   onLogin,
   onLogout,
 }) => {
