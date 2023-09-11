@@ -13,7 +13,7 @@ import { NavigationItem } from './NavigationItem';
 import { HeaderLink } from './links/HeaderLink';
 import { Drawer as UseNavigationDrawer } from './hooks/useNavigationDrawer';
 import { HeaderNavigationLink } from './config/headerNavigationLink';
-import { DrawerNode } from './config/drawerNodeItems';
+import { DrawerNode } from './config/DrawerNodeItems';
 
 interface NavigationItemsProps {
   platform: Platform;

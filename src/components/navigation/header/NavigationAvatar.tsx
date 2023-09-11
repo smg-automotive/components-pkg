@@ -9,7 +9,7 @@ import Avatar from 'src/components/avatar';
 import { User } from './types';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
-import { DrawerNode } from './config/drawerNodeItems';
+import { DrawerNode } from './config/DrawerNodeItems';
 
 interface NavigationAvatarProps {
   user: User | null;
