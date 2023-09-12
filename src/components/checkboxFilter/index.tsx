@@ -2,8 +2,6 @@ import React, { ReactNode } from 'react';
 
 import { chakra, Flex, StackDivider } from '@chakra-ui/react';
 
-import { useMediaQuery } from 'src/hooks';
-
 import Stack from '../stack';
 import Checkbox from '../checkbox';
 
@@ -51,43 +49,34 @@ function CheckboxFilter<ItemKey extends string>({
   onApply,
   numberOfColumns = 1,
 }: Props<ItemKey>) {
-  const isDesktop = useMediaQuery(
-    { above: 'md' },
-    { ssr: true, fallback: false },
+  const itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items.reduce(
+    (acc, item, index) => {
+      const columnIndex = index % numberOfColumns;
+      if (!acc[columnIndex]) {
+        acc[columnIndex] = [];
+      }
+      (acc[columnIndex] as Item<ItemKey>[]).push(item);
+      return acc;
+    },
+    [] as Item<ItemKey>[] | Item<ItemKey>[][],
   );
-  const shouldRenderMultipleColumns = isDesktop && numberOfColumns > 1;
 
-  let itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items;
-
-  if (shouldRenderMultipleColumns) {
-    itemsPerColumn = items.reduce(
-      (acc, item, index) => {
-        const columnIndex = index % numberOfColumns;
-        if (!acc[columnIndex]) {
-          acc[columnIndex] = [];
-        }
-        (acc[columnIndex] as Item<ItemKey>[]).push(item);
-        return acc;
-      },
-      [] as Item<ItemKey>[] | Item<ItemKey>[][],
-    );
-  }
+  const isSingleColumn = numberOfColumns === 1;
 
   return (
     <Stack
       spacing="2xl"
       divider={
-        shouldRenderMultipleColumns ? (
-          <StackDivider borderColor="gray.100" />
-        ) : undefined
+        isSingleColumn ? undefined : <StackDivider borderColor="gray.100" />
       }
-      direction={shouldRenderMultipleColumns ? 'row' : 'column'}
+      direction={isSingleColumn ? 'column' : 'row'}
+      align="stretch"
     >
-      {itemsPerColumn.map((columnItems) => {
+      {itemsPerColumn.map((columnItems, index) => {
         if (Array.isArray(columnItems)) {
           return (
             <Flex
-              key={`filter_column_${name}`}
+              key={`filter_column_${index}`}
               gap="2xl"
               direction="column"
               flex="1"
