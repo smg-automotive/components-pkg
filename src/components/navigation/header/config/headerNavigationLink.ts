@@ -28,13 +28,14 @@ export class HeaderNavigationLink extends Link {
     linkProtocol,
     domains,
     isNew,
-    iconRight,
+    rightIcon,
     showUnderMoreLinkBelow,
     fontWeight,
     variant,
     color,
     userAvatar,
     isInternal = false,
+    hasEntitlement = false,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -52,13 +53,14 @@ export class HeaderNavigationLink extends Link {
           >
         >;
     isNew?: boolean;
-    iconRight?: ReactNode;
+    rightIcon?: ReactNode;
     showUnderMoreLinkBelow?: BreakpointName;
     fontWeight?: 'regular' | 'bold';
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
     isInternal?: boolean;
+    hasEntitlement?: boolean;
   }) {
     super({
       config,
@@ -69,9 +71,10 @@ export class HeaderNavigationLink extends Link {
       linkProtocol,
       domains,
       isInternal,
+      hasEntitlement,
+      rightIcon,
     });
     this.isNew = isNew;
-    this.iconRight = iconRight;
     this.showUnderMoreLinkBelow = showUnderMoreLinkBelow;
     this.fontWeight = fontWeight;
     this.variant = variant;

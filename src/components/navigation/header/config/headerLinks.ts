@@ -1,5 +1,7 @@
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
+import { EntitlementConfig } from 'src/components/navigation/link';
+
 import { NavigationLinkProps } from '../links/NavigationLink';
 
 export type NavigationLinkConfigProps = Omit<
@@ -20,6 +22,7 @@ export type NavigationLinkConfigProps = Omit<
     };
   };
   isInternal?: boolean;
+  entitlementConfig?: EntitlementConfig;
 };
 
 export const headerLinks: NavigationLinkConfigProps[] = [

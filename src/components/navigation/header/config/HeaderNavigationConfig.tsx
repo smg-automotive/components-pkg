@@ -2,10 +2,12 @@ import { ReactNode } from 'react';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
+import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import {
+  EntitlementConfig,
   LinkConfig,
   LinkInstance,
   LocalizedLinks,
@@ -19,7 +21,7 @@ import {
   DrawerNodeItems,
   DrawerNodeItemsConfig,
   NavigationLinkConfigNode,
-} from './drawerNodeItems';
+} from './DrawerNodeItems';
 
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;
@@ -33,7 +35,7 @@ export interface HeaderNavigationLinkInstance extends LinkInstance {
 
 export interface HeaderNavigationLinkConfig extends LinkConfig {
   isNew?: boolean;
-  iconRight?: ReactNode;
+  rightIcon?: ReactNode;
   showUnderMoreLinkBelow?: BreakpointName;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
@@ -71,6 +73,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config,
     user,
     urlPathParams,
+    entitlements = [],
   }: {
     brand: Brand;
     environment?: Environment;
@@ -78,8 +81,9 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config: HeaderNavigationConfigInterface;
     user: User | null;
     urlPathParams?: Record<string, string | number>;
+    entitlements?: Entitlement[];
   }) {
-    super({ brand, environment, useAbsoluteUrls });
+    super({ brand, environment, useAbsoluteUrls, entitlements });
     this.config = config;
     this.homeUrl = '/';
     this.menuHeight = '60px';
@@ -121,7 +125,23 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     return link;
   };
 
+  mapEntitlementConfig(entitlementConfig: EntitlementConfig) {
+    return {
+      missingEntitlementFallbackLink: this.replacePathParams(
+        entitlementConfig.missingEntitlementFallbackLink,
+      ),
+      missingEntitlementLinkIcon: entitlementConfig.missingEntitlementLinkIcon,
+      requiredEntitlement: entitlementConfig.requiredEntitlement,
+    } as EntitlementConfig;
+  }
+
   mapLink(link: HeaderNavigationLinkConfig) {
+    const { entitlementConfig } = link;
+
+    const hasEntitlement = entitlementConfig
+      ? this.entitlements?.includes(entitlementConfig.requiredEntitlement)
+      : false;
+
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
@@ -129,6 +149,8 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
         onClick: link.onClick,
         target: undefined,
         visibilitySettings: link.visibilitySettings,
+        entitlementConfig:
+          entitlementConfig && this.mapEntitlementConfig(entitlementConfig),
       },
       isInternal: link.isInternal ? link.isInternal : false,
       brand: this.brand,
@@ -138,12 +160,13 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       linkProtocol: this.linkProtocol,
       domains: this.domains,
       isNew: link.isNew,
-      iconRight: link.iconRight,
+      rightIcon: link.rightIcon,
       showUnderMoreLinkBelow: link.showUnderMoreLinkBelow,
       fontWeight: link.fontWeight,
       variant: link.variant,
       color: link.color,
       userAvatar: link.userAvatar,
+      hasEntitlement,
     });
   }
 

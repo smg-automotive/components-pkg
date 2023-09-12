@@ -1,5 +1,5 @@
-// eslint-disable-next-line unicorn/filename-case
 import { Environment } from 'src/types/environment';
+import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { LinkConfig, LinkInstance } from './link';
@@ -18,15 +18,18 @@ export abstract class BaseConfig<T> {
           Record<'professional' | 'private', Record<Environment, string>>
         >
       >;
+  entitlements?: Entitlement[];
 
   constructor({
     brand,
     environment = 'production',
     useAbsoluteUrls = false,
+    entitlements = [],
   }: {
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
+    entitlements?: Entitlement[];
   }) {
     this.brand = brand;
     this.environment = environment;
@@ -66,6 +69,7 @@ export abstract class BaseConfig<T> {
       },
     };
     this.linkProtocol = 'https';
+    this.entitlements = entitlements;
   }
 
   abstract getMappedConfig(): T;
