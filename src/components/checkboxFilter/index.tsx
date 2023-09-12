@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import { chakra, Flex, StackDivider } from '@chakra-ui/react';
+import { chakra, Flex, StackDivider, useMediaQuery } from '@chakra-ui/react';
+
+import { breakpoints } from 'src/themes';
 
 import Stack from '../stack';
 import Checkbox from '../checkbox';
@@ -49,17 +51,25 @@ function CheckboxFilter<ItemKey extends string>({
   onApply,
   numberOfColumns = 1,
 }: Props<ItemKey>) {
-  const itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items.reduce(
-    (acc, item, index) => {
-      const columnIndex = index % numberOfColumns;
-      if (!acc[columnIndex]) {
-        acc[columnIndex] = [];
-      }
-      (acc[columnIndex] as Item<ItemKey>[]).push(item);
-      return acc;
-    },
-    [] as Item<ItemKey>[] | Item<ItemKey>[][],
-  );
+  let itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items;
+  const [isSmallLandscapeViewport] = useMediaQuery(`md`, {
+    ssr: true,
+    fallback: false,
+  });
+
+  if (!isSmallLandscapeViewport) {
+    itemsPerColumn = items.reduce(
+      (acc, item, index) => {
+        const columnIndex = index % numberOfColumns;
+        if (!acc[columnIndex]) {
+          acc[columnIndex] = [];
+        }
+        (acc[columnIndex] as Item<ItemKey>[]).push(item);
+        return acc;
+      },
+      [] as Item<ItemKey>[] | Item<ItemKey>[][],
+    );
+  }
 
   const isSingleColumn = numberOfColumns === 1;
 
