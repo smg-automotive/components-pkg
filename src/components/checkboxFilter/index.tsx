@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { chakra, Flex, Grid, StackDivider } from '@chakra-ui/react';
+import { chakra, Flex, StackDivider } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import Checkbox from '../checkbox';
