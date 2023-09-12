@@ -28,34 +28,36 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     const totalPageButtonsCount = siblingCount + pageButtonsCount;
 
     if (totalPageButtonsCount >= totalPages) {
-      return range(1, totalPages);
+      return range(0, totalPages - 1);
     }
 
-    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
+    const leftSiblingIndex = Math.max(currentPage - siblingCount, 0); // Start from 0 internally
+    const rightSiblingIndex = Math.min(
+      currentPage + siblingCount,
+      totalPages - 1,
+    );
 
     const shouldShowLeftDots = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
+    const shouldShowRightDots = rightSiblingIndex < totalPages - 3;
 
-    const firstPageNumber = 1;
+    const firstPageNumber = 1; // Start from 1 for UI
     const lastPageNumber = totalPages;
 
     // Show dots on right side
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
-      const leftRange = range(1, leftItemCount);
-
-      return [...leftRange, Dots, totalPages];
+      const leftRange = range(0, leftItemCount - 1);
+      return [...leftRange, Dots, lastPageNumber];
     }
 
     // Show dots on left side
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
+      const rightRange = range(totalPages - rightItemCount, totalPages - 1);
       return [firstPageNumber, Dots, ...rightRange];
     }
 
-    // Show dots on both side
+    // Show dots on both sides
     if (shouldShowLeftDots && shouldShowRightDots) {
       const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageNumber, Dots, ...middleRange, Dots, lastPageNumber];
@@ -77,13 +79,16 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     onChange(currentPage - 1);
   };
 
-  // workaround for pagination API as it starts from 0
-  const currentPagePlusOne = currentPage + 1;
-  const pageNumberMinusOne = (pageNumber: number) => pageNumber - 1;
-
   const isFirstPage = currentPage === 0;
   const isLastPage =
-    currentPagePlusOne === paginationRange[paginationRange.length - 1];
+    currentPage === paginationRange[paginationRange.length - 1];
+
+  const pageNumberToDispaly = (pageNumber: number) => {
+    if (pageNumber === totalPages) {
+      return pageNumber;
+    }
+    return pageNumber + 1;
+  };
 
   return (
     <Box
@@ -116,14 +121,14 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
         return (
           <PaginationButton
             key={`paginationButton-${index}`}
-            isActive={pageNumber === currentPagePlusOne}
+            isActive={pageNumber === currentPage}
             ariaLabel={`go to page ${pageNumber} of ${totalPages}`}
             onClick={(e) => {
               e.preventDefault();
-              onChange(pageNumberMinusOne(pageNumber as number));
+              onChange(Number(pageNumber));
             }}
           >
-            {pageNumber}
+            {pageNumberToDispaly(Number(pageNumber))}
           </PaginationButton>
         );
       })}
