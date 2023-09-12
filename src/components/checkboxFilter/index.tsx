@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { chakra, StackDivider } from '@chakra-ui/react';
+import { chakra, Flex, Grid, StackDivider } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import Checkbox from '../checkbox';
@@ -47,7 +47,7 @@ function CheckboxFilter<ItemKey extends string>({
   name,
   items,
   onApply,
-  numberOfColumns = 3,
+  numberOfColumns = 1,
 }: Props<ItemKey>) {
   const itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items.reduce(
     (acc, item, index) => {
@@ -74,7 +74,12 @@ function CheckboxFilter<ItemKey extends string>({
       {itemsPerColumn.map((columnItems) => {
         if (Array.isArray(columnItems)) {
           return (
-            <Stack key={`filter_column_${name}`} spacing="2xl">
+            <Flex
+              key={`filter_column_${name}`}
+              gap="2xl"
+              direction="column"
+              flex="1"
+            >
               {columnItems.map((item) => {
                 return (
                   <CheckboxWrapper
@@ -86,7 +91,7 @@ function CheckboxFilter<ItemKey extends string>({
                   />
                 );
               })}
-            </Stack>
+            </Flex>
           );
         } else {
           return (

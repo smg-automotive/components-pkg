@@ -8,14 +8,23 @@ type Props = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
+  numberOfColumns?: number;
 };
 
-const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
+const StoryTemplate: FC<Props> = ({
+  onApplyAction,
+  defaultFacets,
+  image,
+  numberOfColumns,
+}) => {
   // coming from backend
   const facets = {
     new: 10,
     used: 20,
     'old-timer': 1,
+    broken: 15,
+    'not-working': 5,
+    iconic: 100,
     ...defaultFacets,
   };
 
@@ -24,6 +33,9 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
     new: true,
     used: true,
     'old-timer': false,
+    broken: false,
+    'not-working': false,
+    iconic: false,
   });
 
   return (
@@ -49,49 +61,26 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
           isChecked: conditionQuery['old-timer'],
         },
         {
-          label: 'New',
-          key: 'new',
-          facet: facets.new,
-          isChecked: conditionQuery.new,
-        },
-        {
-          label: 'Used',
-          key: 'used',
-          facet: facets.used,
-          isChecked: conditionQuery.used,
-        },
-        {
-          label: 'Old-timer',
+          label: 'Broken',
           image,
-          key: 'old-timer',
-          facet: facets['old-timer'],
-          isChecked: conditionQuery['old-timer'],
+          key: 'broken',
+          facet: facets['broken'],
+          isChecked: conditionQuery['broken'],
         },
         {
-          label: 'New',
-          key: 'new',
-          facet: facets.new,
-          isChecked: conditionQuery.new,
-        },
-        {
-          label: 'Used',
-          key: 'used',
-          facet: facets.used,
-          isChecked: conditionQuery.used,
-        },
-        {
-          label: 'Old-timer',
+          label: 'Iconic',
           image,
-          key: 'old-timer',
-          facet: facets['old-timer'],
-          isChecked: conditionQuery['old-timer'],
+          key: 'iconic',
+          facet: facets['iconic'],
+          isChecked: conditionQuery['iconic'],
         },
         {
-          label: 'Old-timer',
+          label: 'Not working',
           image,
-          key: 'old-timer',
-          facet: facets['old-timer'],
-          isChecked: conditionQuery['old-timer'],
+          // eslint-disable-next-line sonarjs/no-duplicate-string
+          key: 'not-working',
+          facet: facets['not-working'],
+          isChecked: conditionQuery['not-working'],
         },
       ]}
       name="condition-filter"
@@ -99,6 +88,7 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
         onApplyAction({ item, newFilterState });
         setConditionQuery(newFilterState);
       }}
+      numberOfColumns={numberOfColumns}
     />
   );
 };
