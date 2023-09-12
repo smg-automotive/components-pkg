@@ -31,7 +31,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
       return range(0, totalPages - 1);
     }
 
-    const leftSiblingIndex = Math.max(currentPage - siblingCount, 0); // Start from 0 internally
+    const leftSiblingIndex = Math.max(currentPage - siblingCount, 0);
     const rightSiblingIndex = Math.min(
       currentPage + siblingCount,
       totalPages - 1,
@@ -40,8 +40,8 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
     const shouldShowLeftDots = leftSiblingIndex > 2;
     const shouldShowRightDots = rightSiblingIndex < totalPages - 3;
 
-    const firstPageNumber = 1; // Start from 1 for UI
-    const lastPageNumber = totalPages;
+    const firstPageNumber = 0;
+    const lastPageNumber = totalPages - 1;
 
     // Show dots on right side
     if (!shouldShowLeftDots && shouldShowRightDots) {
