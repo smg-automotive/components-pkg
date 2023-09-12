@@ -5,7 +5,7 @@ import {
   DrawerNode,
   DrawerNodeItems,
   NavigationLinkNode,
-} from '../config/drawerNodeItems';
+} from '../config/DrawerNodeItems';
 
 export const drawerHandlerFactory = ({
   nodeName,

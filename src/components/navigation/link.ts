@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
 import { Environment } from 'src/types/environment';
+import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { UserType } from './header/types';
@@ -17,12 +19,19 @@ export interface VisibilitySettings {
 }
 export type LocalizedLinks = Record<Language, string>;
 
+export interface EntitlementConfig {
+  requiredEntitlement: Entitlement;
+  missingEntitlementFallbackLink: LocalizedLinks;
+  missingEntitlementLinkIcon: ReactNode;
+}
+
 export interface LinkConfig {
   translationKey?: string;
   link?: LocalizedLinks;
   onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
+  entitlementConfig?: EntitlementConfig;
 }
 
 export interface LinkInstance {
@@ -40,6 +49,7 @@ export class Link {
   target?: LinkTargets;
   onClick?: () => void;
   isVisible: boolean;
+  rightIcon?: ReactNode;
 
   constructor({
     config,
@@ -49,6 +59,8 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     domains,
+    hasEntitlement = false,
+    rightIcon,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -57,6 +69,9 @@ export class Link {
     useAbsoluteUrls: boolean;
     linkProtocol: string;
     domains: Record<Brand, Record<Environment, string>>;
+    hasEntitlement?: boolean;
+    rightIcon?: ReactNode;
+    shouldDisplayMissingEntitlementIcon?: boolean;
   }) {
     this.translationKey = config.translationKey;
     this.target = config.target;
@@ -67,14 +82,42 @@ export class Link {
       userType,
     });
 
+    const link = this.resolveLink({ hasEntitlement, config });
+
     this.link = this.prefixDomain({
-      link: config.link,
+      link,
       brand,
       environment,
       useAbsoluteUrls,
       linkProtocol,
       domains,
     });
+
+    this.rightIcon = Link.shouldDisplayMissingEntitlementIcon(
+      hasEntitlement,
+      config.entitlementConfig,
+    )
+      ? config.entitlementConfig?.missingEntitlementLinkIcon
+      : rightIcon;
+  }
+
+  private static shouldDisplayMissingEntitlementIcon(
+    hasEntitlement: boolean,
+    entitlementConfig?: EntitlementConfig,
+  ) {
+    return !hasEntitlement && !!entitlementConfig?.missingEntitlementLinkIcon;
+  }
+
+  private resolveLink({
+    hasEntitlement,
+    config: { link, entitlementConfig },
+  }: {
+    hasEntitlement: boolean;
+    config: LinkConfig;
+  }) {
+    return !hasEntitlement && entitlementConfig?.missingEntitlementFallbackLink
+      ? entitlementConfig.missingEntitlementFallbackLink
+      : link;
   }
 
   private prefixDomain({
