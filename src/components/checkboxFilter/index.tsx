@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import { chakra, Flex, StackDivider, useMediaQuery } from '@chakra-ui/react';
+import { chakra, Flex, StackDivider } from '@chakra-ui/react';
+
+import { useMediaQuery } from 'src/hooks';
 
 import Stack from '../stack';
 import Checkbox from '../checkbox';
@@ -49,13 +51,15 @@ function CheckboxFilter<ItemKey extends string>({
   onApply,
   numberOfColumns = 1,
 }: Props<ItemKey>) {
-  let itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items;
-  const [isSmallLandscapeViewport] = useMediaQuery(`md`, {
-    ssr: true,
-    fallback: false,
-  });
+  const isDesktop = useMediaQuery(
+    { above: 'md' },
+    { ssr: true, fallback: false },
+  );
+  const shouldRenderMultipleColumns = isDesktop && numberOfColumns > 1;
 
-  if (!isSmallLandscapeViewport) {
+  let itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items;
+
+  if (shouldRenderMultipleColumns) {
     itemsPerColumn = items.reduce(
       (acc, item, index) => {
         const columnIndex = index % numberOfColumns;
@@ -69,15 +73,15 @@ function CheckboxFilter<ItemKey extends string>({
     );
   }
 
-  const isSingleColumn = numberOfColumns === 1;
-
   return (
     <Stack
       spacing="2xl"
       divider={
-        isSingleColumn ? undefined : <StackDivider borderColor="gray.100" />
+        shouldRenderMultipleColumns ? (
+          <StackDivider borderColor="gray.100" />
+        ) : undefined
       }
-      direction={isSingleColumn ? 'column' : 'row'}
+      direction={shouldRenderMultipleColumns ? 'row' : 'column'}
     >
       {itemsPerColumn.map((columnItems) => {
         if (Array.isArray(columnItems)) {
