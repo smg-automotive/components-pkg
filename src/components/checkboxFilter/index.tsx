@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { chakra } from '@chakra-ui/react';
+import { chakra, StackDivider } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import Checkbox from '../checkbox';
@@ -36,6 +36,7 @@ type Props<ItemKey extends string> = {
    * @param newState        contains the new state of the whole filter group
    */
   onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
+  numberOfColumns?: number;
 };
 
 const addThousandSeparatorToNumber = (value: number) => {
@@ -46,65 +47,124 @@ function CheckboxFilter<ItemKey extends string>({
   name,
   items,
   onApply,
+  numberOfColumns = 3,
 }: Props<ItemKey>) {
+  const itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items.reduce(
+    (acc, item, index) => {
+      const columnIndex = index % numberOfColumns;
+      if (!acc[columnIndex]) {
+        acc[columnIndex] = [];
+      }
+      (acc[columnIndex] as Item<ItemKey>[]).push(item);
+      return acc;
+    },
+    [] as Item<ItemKey>[] | Item<ItemKey>[][],
+  );
+
+  const isSingleColumn = numberOfColumns === 1;
+
   return (
-    <Stack spacing="2xl">
-      {items.map((item) => {
-        return (
-          <Checkbox
-            key={`filter_${name}_${item.label}`}
-            name={`filter_${name}_${item.label}`}
-            label={
-              item.image ? (
-                <chakra.span display="flex" alignItems="center">
-                  {item.image}
-                  <chakra.span
-                    w="full"
-                    display="flex"
-                    justifyContent="space-between"
-                    flexWrap="wrap"
-                    marginLeft="sm"
-                  >
-                    <chakra.span>{item.label}</chakra.span>
-                    <chakra.span>
-                      {addThousandSeparatorToNumber(item.facet)}
-                    </chakra.span>
-                  </chakra.span>
-                </chakra.span>
-              ) : (
-                <chakra.span
-                  w="full"
-                  display="flex"
-                  justifyContent="space-between"
-                >
-                  <chakra.span>{item.label}</chakra.span>
-                  <chakra.span>
-                    {addThousandSeparatorToNumber(item.facet)}
-                  </chakra.span>
-                </chakra.span>
-              )
-            }
-            onChange={(event) => {
-              const isChecked = event.target.checked;
-              const previousState = items.reduce<Partial<State<ItemKey>>>(
-                (acc, currentItem) => {
-                  acc[currentItem.key] = currentItem.isChecked;
-                  return acc;
-                },
-                {},
-              );
-              onApply(
-                { ...item, isChecked },
-                { ...previousState, [item.key]: isChecked },
-              );
-            }}
-            isDisabled={item.facet === 0 && !item.isChecked}
-            isChecked={item.isChecked}
-            value={item.key}
-          />
-        );
+    <Stack
+      spacing="2xl"
+      divider={
+        isSingleColumn ? undefined : <StackDivider borderColor="gray.100" />
+      }
+      direction={isSingleColumn ? 'column' : 'row'}
+    >
+      {itemsPerColumn.map((columnItems) => {
+        if (Array.isArray(columnItems)) {
+          return (
+            <Stack key={`filter_column_${name}`} spacing="2xl">
+              {columnItems.map((item) => {
+                return (
+                  <CheckboxWrapper
+                    key={`filter_${name}_${item.label}`}
+                    name={name}
+                    items={columnItems}
+                    item={item}
+                    onApply={onApply}
+                  />
+                );
+              })}
+            </Stack>
+          );
+        } else {
+          return (
+            <CheckboxWrapper
+              key={`filter_${name}_${columnItems.label}`}
+              name={name}
+              items={itemsPerColumn as Item<ItemKey>[]}
+              item={columnItems}
+              onApply={onApply}
+            />
+          );
+        }
       })}
     </Stack>
+  );
+}
+
+type CheckboxWrapperProps<ItemKey extends string> = {
+  items: Item<ItemKey>[];
+  name: string;
+  item: Item<ItemKey>;
+  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
+  numberOfColumns?: number;
+};
+
+function CheckboxWrapper<ItemKey extends string>({
+  items,
+  item,
+  name,
+  onApply,
+}: CheckboxWrapperProps<ItemKey>) {
+  return (
+    <Checkbox
+      name={`filter_${name}_${item.label}`}
+      label={
+        item.image ? (
+          <chakra.span display="flex" alignItems="center">
+            {item.image}
+            <chakra.span
+              w="full"
+              display="flex"
+              justifyContent="space-between"
+              flexWrap="wrap"
+              marginLeft="sm"
+            >
+              <chakra.span>{item.label}</chakra.span>
+              <chakra.span>
+                {addThousandSeparatorToNumber(item.facet)}
+              </chakra.span>
+            </chakra.span>
+          </chakra.span>
+        ) : (
+          <chakra.span w="full" display="flex" justifyContent="space-between">
+            <chakra.span>{item.label}</chakra.span>
+            <chakra.span>
+              {addThousandSeparatorToNumber(item.facet)}
+            </chakra.span>
+          </chakra.span>
+        )
+      }
+      onChange={(event) => {
+        const isChecked = event.target.checked;
+        const previousState = items.reduce<Partial<State<ItemKey>>>(
+          (acc, currentItem) => {
+            acc[currentItem.key] = currentItem.isChecked;
+            return acc;
+          },
+          {},
+        );
+        onApply(
+          { ...item, isChecked },
+          { ...previousState, [item.key]: isChecked },
+        );
+      }}
+      isDisabled={item.facet === 0 && !item.isChecked}
+      isChecked={item.isChecked}
+      value={item.key}
+    />
   );
 }
 

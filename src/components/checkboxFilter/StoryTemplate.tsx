@@ -48,6 +48,51 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
           facet: facets['old-timer'],
           isChecked: conditionQuery['old-timer'],
         },
+        {
+          label: 'New',
+          key: 'new',
+          facet: facets.new,
+          isChecked: conditionQuery.new,
+        },
+        {
+          label: 'Used',
+          key: 'used',
+          facet: facets.used,
+          isChecked: conditionQuery.used,
+        },
+        {
+          label: 'Old-timer',
+          image,
+          key: 'old-timer',
+          facet: facets['old-timer'],
+          isChecked: conditionQuery['old-timer'],
+        },
+        {
+          label: 'New',
+          key: 'new',
+          facet: facets.new,
+          isChecked: conditionQuery.new,
+        },
+        {
+          label: 'Used',
+          key: 'used',
+          facet: facets.used,
+          isChecked: conditionQuery.used,
+        },
+        {
+          label: 'Old-timer',
+          image,
+          key: 'old-timer',
+          facet: facets['old-timer'],
+          isChecked: conditionQuery['old-timer'],
+        },
+        {
+          label: 'Old-timer',
+          image,
+          key: 'old-timer',
+          facet: facets['old-timer'],
+          isChecked: conditionQuery['old-timer'],
+        },
       ]}
       name="condition-filter"
       onApply={(item, newFilterState) => {
