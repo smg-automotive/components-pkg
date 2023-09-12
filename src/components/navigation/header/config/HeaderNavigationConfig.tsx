@@ -39,6 +39,7 @@ export interface HeaderNavigationLinkConfig extends LinkConfig {
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
   userAvatar?: ReactNode;
+  isInternal?: boolean;
 }
 
 interface HeaderNavigationConfigInterface {
@@ -129,6 +130,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
         target: undefined,
         visibilitySettings: link.visibilitySettings,
       },
+      isInternal: link.isInternal ? link.isInternal : false,
       brand: this.brand,
       userType: this.userType,
       environment: this.environment,

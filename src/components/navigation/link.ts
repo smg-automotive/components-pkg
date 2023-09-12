@@ -14,6 +14,7 @@ export interface VisibilitySettings {
     professional: boolean;
     guest?: boolean;
   };
+  isInternal?: boolean;
 }
 export type LocalizedLinks = Record<Language, string>;
 
@@ -23,6 +24,7 @@ export interface LinkConfig {
   onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
+  isInternal?: boolean;
 }
 
 export interface LinkInstance {
@@ -49,6 +51,7 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     domains,
+    isInternal,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -56,7 +59,16 @@ export class Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Record<Brand, Record<Environment, string>>;
+    domains:
+      | Record<Brand, Record<'main', Record<Environment, string>>>
+      | Record<
+          Brand,
+          Record<
+            'internal',
+            Record<'professional' | 'private', Record<Environment, string>>
+          >
+        >;
+    isInternal?: boolean;
   }) {
     this.translationKey = config.translationKey;
     this.target = config.target;
@@ -74,6 +86,8 @@ export class Link {
       useAbsoluteUrls,
       linkProtocol,
       domains,
+      isInternal,
+      userType,
     });
   }
 
@@ -84,18 +98,42 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     domains,
+    isInternal = false,
+    userType,
   }: {
     link?: LocalizedLinks;
     brand: Brand;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Record<Brand, Record<Environment, string>>;
+    domains:
+      | Record<Brand, Record<'main', Record<Environment, string>>>
+      | Record<
+          Brand,
+          Record<
+            'internal',
+            Record<'professional' | 'private', Record<Environment, string>>
+          >
+        >;
+    isInternal?: boolean;
+    userType?: UserType;
   }) {
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
 
-    const domain = domains[brand][environment];
+    const domain = isInternal
+      ? (
+          domains[brand] as Record<
+            'internal',
+            Record<'professional' | 'private', Record<Environment, string>>
+          >
+        )['internal'][userType as UserType.Private | UserType.Professional][
+          environment
+        ]
+      : (domains[brand] as Record<'main', Record<Environment, string>>)['main'][
+          environment
+        ];
+
     const baseUrl = `${linkProtocol}://${domain}`;
 
     return {

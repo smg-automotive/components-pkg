@@ -19,6 +19,7 @@ export type NavigationLinkConfigProps = Omit<
       motoscout24: boolean;
     };
   };
+  isInternal?: boolean;
 };
 
 export const headerLinks: NavigationLinkConfigProps[] = [

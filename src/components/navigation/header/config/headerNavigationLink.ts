@@ -17,6 +17,7 @@ export class HeaderNavigationLink extends Link {
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
   userAvatar?: ReactNode;
+  isInternal?: boolean;
 
   constructor({
     config,
@@ -33,6 +34,7 @@ export class HeaderNavigationLink extends Link {
     variant,
     color,
     userAvatar,
+    isInternal = false,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -40,7 +42,15 @@ export class HeaderNavigationLink extends Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Record<Brand, Record<Environment, string>>;
+    domains:
+      | Record<Brand, Record<'main', Record<Environment, string>>>
+      | Record<
+          Brand,
+          Record<
+            'internal',
+            Record<'professional' | 'private', Record<Environment, string>>
+          >
+        >;
     isNew?: boolean;
     iconRight?: ReactNode;
     showUnderMoreLinkBelow?: BreakpointName;
@@ -48,6 +58,7 @@ export class HeaderNavigationLink extends Link {
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
+    isInternal?: boolean;
   }) {
     super({
       config,
@@ -57,6 +68,7 @@ export class HeaderNavigationLink extends Link {
       useAbsoluteUrls,
       linkProtocol,
       domains,
+      isInternal,
     });
     this.isNew = isNew;
     this.iconRight = iconRight;
@@ -65,5 +77,6 @@ export class HeaderNavigationLink extends Link {
     this.variant = variant;
     this.color = color;
     this.userAvatar = userAvatar;
+    this.isInternal = isInternal;
   }
 }

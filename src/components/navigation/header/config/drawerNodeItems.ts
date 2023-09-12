@@ -1,5 +1,3 @@
-import { Environment } from 'src/types/environment';
-
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -31,10 +29,8 @@ export type DrawerNodeLinks = {
 
 export const drawerNodeItems = ({
   onLogout,
-  environment,
 }: {
   onLogout: () => void;
-  environment?: Environment;
 }): DrawerNodeItemsConfig => ({
   search: [
     {
@@ -306,23 +302,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.myVehicles',
+          isInternal: true,
           link: {
-            de:
-              environment === 'preprod'
-                ? 'https://int-dealer.autoscout24.ch/de/vehicles'
-                : 'https://dealer.autoscout24.ch/de/vehicles',
-            en:
-              environment === 'preprod'
-                ? 'https://int-dealer.autoscout24.ch/de/vehicles'
-                : 'https://dealer.autoscout24.ch/de/vehicles',
-            fr:
-              environment === 'preprod'
-                ? 'https://int-dealer.autoscout24.ch/fr/vehicles'
-                : 'https://dealer.autoscout24.ch/fr/vehicles',
-            it:
-              environment === 'preprod'
-                ? 'https://int-dealer.autoscout24.ch/it/vehicles'
-                : 'https://dealer.autoscout24.ch/it/vehicles',
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -355,24 +340,13 @@ export const drawerNodeItems = ({
           },
         },
         {
+          isInternal: true,
           translationKey: 'header.userMenu.myMotorcycles',
           link: {
-            de:
-              environment === 'preprod'
-                ? 'https://int-dealer.motoscout24.ch/de/vehicles'
-                : 'https://dealer.motoscout24.ch/de/vehicles',
-            en:
-              environment === 'preprod'
-                ? 'https://int-dealer.motoscout24.ch/de/vehicles'
-                : 'https://dealer.motoscout24.ch/de/vehicles',
-            fr:
-              environment === 'preprod'
-                ? 'https://int-dealer.motoscout24.ch/fr/vehicles'
-                : 'https://dealer.motoscout24.ch/fr/vehicles',
-            it:
-              environment === 'preprod'
-                ? 'https://int-dealer.motoscout24.ch/it/vehicles'
-                : 'https://dealer.motoscout24.ch/it/vehicles',
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -405,12 +379,13 @@ export const drawerNodeItems = ({
           },
         },
         {
+          isInternal: true,
           translationKey: 'header.userMenu.dealerDashboard',
           link: {
-            de: 'https://dealer.autoscout24.ch/de/login',
-            en: 'https://dealer.autoscout24.ch/de/login',
-            fr: 'https://dealer.autoscout24.ch/fr/login',
-            it: 'https://dealer.autoscout24.ch/it/login',
+            de: '/de/login',
+            en: '/de/login',
+            fr: '/fr/login',
+            it: '/it/login',
           },
           visibilitySettings: {
             userType: {
@@ -424,12 +399,13 @@ export const drawerNodeItems = ({
           },
         },
         {
+          isInternal: true,
           translationKey: 'header.userMenu.dealerDashboard',
           link: {
-            de: 'https://dealer.motoscout24.ch/de',
-            en: 'https://dealer.motoscout24.ch/de',
-            fr: 'https://dealer.motoscout24.ch/fr',
-            it: 'https://dealer.motoscout24.ch/it',
+            de: '/de',
+            en: '/de',
+            fr: '/fr',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
@@ -540,10 +516,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.motorcyclePark',
           link: {
-            de: 'https://www.motoscout24.ch/de/member/vehiclepool',
-            en: 'https://www.motoscout24.ch/de/member/vehiclepool',
-            fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
-            it: 'https://www.motoscout24.ch/it/member/vehiclepool',
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -695,12 +671,13 @@ export const drawerNodeItems = ({
           },
         },
         {
+          isInternal: true,
           translationKey: 'header.userMenu.boosteras24',
           link: {
-            de: 'https://dealer.autoscout24.ch/de/booster',
-            en: 'https://dealer.autoscout24.ch/de/booster',
-            fr: 'https://dealer.autoscout24.ch/fr/booster',
-            it: 'https://dealer.autoscout24.ch/it/booster',
+            de: '/de/booster',
+            en: '/de/booster',
+            fr: '/fr/booster',
+            it: '/it/booster',
           },
           visibilitySettings: {
             userType: {
@@ -1363,12 +1340,13 @@ export const drawerNodeItems = ({
           },
         },
         {
+          isInternal: true,
           translationKey: 'header.estimate',
           link: {
-            de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-            en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-            fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
-            it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
+            de: '/de/fahrzeugbewertung',
+            en: '/de/fahrzeugbewertung',
+            fr: '/fr/evaluation-vehicules',
+            it: '/it/valuazione-vehicoli',
           },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {
