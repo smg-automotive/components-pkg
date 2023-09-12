@@ -2,8 +2,6 @@ import React, { ReactNode } from 'react';
 
 import { chakra, Flex, StackDivider, useMediaQuery } from '@chakra-ui/react';
 
-import { breakpoints } from 'src/themes';
-
 import Stack from '../stack';
 import Checkbox from '../checkbox';
 
