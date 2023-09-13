@@ -56,17 +56,9 @@ function CheckboxFilter<ItemKey extends string>({
         columnGap: 'var(--chakra-space-2xl)',
       }}
     >
-      {items.map((item, index) => {
-        const marginBottom = index % 2 === 0 ? '2xl' : '0';
+      {items.map((item) => {
         return (
-          <Box
-            key={item.key}
-            width="full"
-            marginBottom={{
-              md: numberOfColumns > 1 ? marginBottom : '2xl',
-              base: '2xl',
-            }}
-          >
+          <Box key={item.key} width="full" marginBottom="2xl">
             <Checkbox
               name={`filter_${name}_${item.label}`}
               label={
