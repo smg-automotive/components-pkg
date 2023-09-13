@@ -19,7 +19,13 @@ export type Props = {
 } & Pick<BoxProps, 'marginTop' | 'marginBottom'>;
 
 const Pagination: FC<PropsWithChildren<Props>> = (props) => {
-  const { onChange, totalPages, currentPage, marginTop, marginBottom } = props;
+  const {
+    onChange,
+    totalPages,
+    currentPage = 0,
+    marginTop,
+    marginBottom,
+  } = props;
   const { paginationContainer, dots } = useMultiStyleConfig('Pagination');
 
   const paginationRange = useMemo(() => {
