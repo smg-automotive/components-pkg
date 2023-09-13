@@ -49,19 +49,23 @@ function CheckboxFilter<ItemKey extends string>({
   onApply,
   numberOfColumns = 1,
 }: Props<ItemKey>) {
-  const itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items.reduce(
-    (acc, item, index) => {
-      const columnIndex = index % numberOfColumns;
-      if (!acc[columnIndex]) {
-        acc[columnIndex] = [];
-      }
-      (acc[columnIndex] as Item<ItemKey>[]).push(item);
-      return acc;
-    },
-    [] as Item<ItemKey>[] | Item<ItemKey>[][],
-  );
-
   const isSingleColumn = numberOfColumns === 1;
+
+  let itemsPerColumn: Item<ItemKey>[] | Item<ItemKey>[][] = items;
+
+  if (!isSingleColumn) {
+    itemsPerColumn = items.reduce(
+      (acc, item, index) => {
+        const columnIndex = index % numberOfColumns;
+        if (!acc[columnIndex]) {
+          acc[columnIndex] = [];
+        }
+        (acc[columnIndex] as Item<ItemKey>[]).push(item);
+        return acc;
+      },
+      [] as Item<ItemKey>[] | Item<ItemKey>[][],
+    );
+  }
 
   return (
     <Stack
@@ -70,7 +74,6 @@ function CheckboxFilter<ItemKey extends string>({
         isSingleColumn ? undefined : <StackDivider borderColor="gray.100" />
       }
       direction={isSingleColumn ? 'column' : 'row'}
-      align="stretch"
     >
       {itemsPerColumn.map((columnItems, index) => {
         if (Array.isArray(columnItems)) {
@@ -86,7 +89,7 @@ function CheckboxFilter<ItemKey extends string>({
                   <CheckboxWrapper
                     key={`filter_${name}_${item.label}`}
                     name={name}
-                    items={columnItems}
+                    items={itemsPerColumn as Item<ItemKey>[]}
                     item={item}
                     onApply={onApply}
                   />
@@ -155,13 +158,12 @@ function CheckboxWrapper<ItemKey extends string>({
       }
       onChange={(event) => {
         const isChecked = event.target.checked;
-        const previousState = items.reduce<Partial<State<ItemKey>>>(
-          (acc, currentItem) => {
+        const previousState = items
+          .flat()
+          .reduce<Partial<State<ItemKey>>>((acc, currentItem) => {
             acc[currentItem.key] = currentItem.isChecked;
             return acc;
-          },
-          {},
-        );
+          }, {});
         onApply(
           { ...item, isChecked },
           { ...previousState, [item.key]: isChecked },
