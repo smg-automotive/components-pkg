@@ -53,7 +53,7 @@ function CheckboxFilter<ItemKey extends string>({
       sx={{
         columns: { md: numberOfColumns, base: 1 },
         columnRule: 'solid var(--chakra-colors-gray-100) 1px',
-        columnGap: 'var(--chakra-space-2xl)',
+        columnGap: 'var(--chakra-space-4xl)',
       }}
     >
       {items.map((item) => {
