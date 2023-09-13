@@ -152,15 +152,7 @@ export class Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains:
-      | Record<Brand, Record<'main', Record<Environment, string>>>
-      | Record<
-          Brand,
-          Record<
-            'internal',
-            Record<'professional' | 'private', Record<Environment, string>>
-          >
-        >;
+    domains: Domains;
     isInternal?: boolean;
     userType?: UserType;
   }) {
