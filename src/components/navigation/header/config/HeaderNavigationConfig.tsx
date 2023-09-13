@@ -41,7 +41,6 @@ export interface HeaderNavigationLinkConfig extends LinkConfig {
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
   userAvatar?: ReactNode;
-  isInternal?: boolean;
 }
 
 interface HeaderNavigationConfigInterface {

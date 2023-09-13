@@ -5,7 +5,7 @@ import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
-import { Link, LinkConfig } from 'src/components/navigation/link';
+import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
 
 import { UserType } from '../types';
 
@@ -17,7 +17,6 @@ export class HeaderNavigationLink extends Link {
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
   userAvatar?: ReactNode;
-  isInternal?: boolean;
 
   constructor({
     config,
@@ -43,15 +42,7 @@ export class HeaderNavigationLink extends Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains:
-      | Record<Brand, Record<'main', Record<Environment, string>>>
-      | Record<
-          Brand,
-          Record<
-            'internal',
-            Record<'professional' | 'private', Record<Environment, string>>
-          >
-        >;
+    domains: Domains;
     isNew?: boolean;
     rightIcon?: ReactNode;
     showUnderMoreLinkBelow?: BreakpointName;

@@ -44,6 +44,16 @@ export interface LinkInstance {
   onClick?: () => void;
 }
 
+export type Domains =
+  | Record<Brand, Record<'main', Record<Environment, string>>>
+  | Record<
+      Brand,
+      Record<
+        'internal',
+        Record<'professional' | 'private', Record<Environment, string>>
+      >
+    >;
+
 // !!CMP Link
 export class Link {
   translationKey?: string;
@@ -52,6 +62,7 @@ export class Link {
   onClick?: () => void;
   isVisible: boolean;
   rightIcon?: ReactNode;
+  isInternal?: boolean;
 
   constructor({
     config,
@@ -71,15 +82,7 @@ export class Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains:
-      | Record<Brand, Record<'main', Record<Environment, string>>>
-      | Record<
-          Brand,
-          Record<
-            'internal',
-            Record<'professional' | 'private', Record<Environment, string>>
-          >
-        >;
+    domains: Domains;
     isInternal?: boolean;
     hasEntitlement?: boolean;
     rightIcon?: ReactNode;
@@ -164,18 +167,19 @@ export class Link {
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
 
-    const domain = isInternal
-      ? (
-          domains[brand] as Record<
-            'internal',
-            Record<'professional' | 'private', Record<Environment, string>>
-          >
-        )['internal'][userType as UserType.Private | UserType.Professional][
-          environment
-        ]
-      : (domains[brand] as Record<'main', Record<Environment, string>>)['main'][
-          environment
-        ];
+    const domain =
+      !isInternal || userType === UserType.Guest
+        ? (domains[brand] as Record<'main', Record<Environment, string>>)[
+            'main'
+          ][environment]
+        : (
+            domains[brand] as Record<
+              'internal',
+              Record<'professional' | 'private', Record<Environment, string>>
+            >
+          )['internal'][userType as UserType.Private | UserType.Professional][
+            environment
+          ];
 
     const baseUrl = `${linkProtocol}://${domain}`;
 

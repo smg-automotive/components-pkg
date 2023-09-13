@@ -2,22 +2,14 @@ import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
-import { LinkConfig, LinkInstance } from './link';
+import { Domains, LinkConfig, LinkInstance } from './link';
 
 export abstract class BaseConfig<T> {
   brand: Brand;
   environment: Environment;
   useAbsoluteUrls: boolean;
   linkProtocol: string;
-  domains:
-    | Record<Brand, Record<'main', Record<Environment, string>>>
-    | Record<
-        Brand,
-        Record<
-          'internal',
-          Record<'professional' | 'private', Record<Environment, string>>
-        >
-      >;
+  domains: Domains;
   entitlements?: Entitlement[];
 
   constructor({
