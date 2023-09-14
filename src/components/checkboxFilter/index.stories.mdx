@@ -30,7 +30,7 @@ import CheckboxFilter from './index';
 
 export const Template = (args) => {
   return (
-    <Box w="6xl">
+    <Box w="8xl">
       <CheckboxFilterTemplate {...args} />
     </Box>
   );
@@ -86,6 +86,18 @@ export const Template = (args) => {
     image: (
       <img src="https://placekitten.com/g/50/50" alt="placeholder image" />
     ),
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Checkbox with multiple columns
+
+<Story
+  name="Checkbox with multiple columns"
+  args={{
+    onApplyAction: action('onApply'),
+    numberOfColumnsOnDesktop: 3,
   }}
 >
   {Template.bind({})}

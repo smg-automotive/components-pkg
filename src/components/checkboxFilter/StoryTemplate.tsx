@@ -8,14 +8,23 @@ type Props = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
+  numberOfColumnsOnDesktop?: number;
 };
 
-const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
+const StoryTemplate: FC<Props> = ({
+  onApplyAction,
+  defaultFacets,
+  image,
+  numberOfColumnsOnDesktop,
+}) => {
   // coming from backend
   const facets = {
     new: 10,
     used: 20,
     'old-timer': 1,
+    broken: 15,
+    'not-working': 5,
+    iconic: 100,
     ...defaultFacets,
   };
 
@@ -24,6 +33,9 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
     new: true,
     used: true,
     'old-timer': false,
+    broken: false,
+    'not-working': false,
+    iconic: false,
   });
 
   return (
@@ -48,12 +60,35 @@ const StoryTemplate: FC<Props> = ({ onApplyAction, defaultFacets, image }) => {
           facet: facets['old-timer'],
           isChecked: conditionQuery['old-timer'],
         },
+        {
+          label: 'Broken',
+          image,
+          key: 'broken',
+          facet: facets['broken'],
+          isChecked: conditionQuery['broken'],
+        },
+        {
+          label: 'Iconic',
+          image,
+          key: 'iconic',
+          facet: facets['iconic'],
+          isChecked: conditionQuery['iconic'],
+        },
+        {
+          label: 'Not working',
+          image,
+          // eslint-disable-next-line sonarjs/no-duplicate-string
+          key: 'not-working',
+          facet: facets['not-working'],
+          isChecked: conditionQuery['not-working'],
+        },
       ]}
       name="condition-filter"
       onApply={(item, newFilterState) => {
         onApplyAction({ item, newFilterState });
         setConditionQuery(newFilterState);
       }}
+      numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
     />
   );
 };
