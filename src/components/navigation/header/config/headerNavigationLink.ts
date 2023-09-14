@@ -5,7 +5,7 @@ import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
-import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
+import { Link, LinkConfig } from 'src/components/navigation/link';
 
 import { UserType } from '../types';
 
@@ -33,7 +33,6 @@ export class HeaderNavigationLink extends Link {
     variant,
     color,
     userAvatar,
-    isInternal = false,
     hasEntitlement = false,
   }: {
     config: LinkConfig;
@@ -42,7 +41,7 @@ export class HeaderNavigationLink extends Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Domains;
+    domains: Record<Brand, Record<Environment, string>>;
     isNew?: boolean;
     rightIcon?: ReactNode;
     showUnderMoreLinkBelow?: BreakpointName;
@@ -50,7 +49,6 @@ export class HeaderNavigationLink extends Link {
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
-    isInternal?: boolean;
     hasEntitlement?: boolean;
   }) {
     super({
@@ -61,7 +59,6 @@ export class HeaderNavigationLink extends Link {
       useAbsoluteUrls,
       linkProtocol,
       domains,
-      isInternal,
       hasEntitlement,
       rightIcon,
     });
@@ -71,6 +68,5 @@ export class HeaderNavigationLink extends Link {
     this.variant = variant;
     this.color = color;
     this.userAvatar = userAvatar;
-    this.isInternal = isInternal;
   }
 }
