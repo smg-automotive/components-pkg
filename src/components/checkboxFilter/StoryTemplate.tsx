@@ -8,7 +8,7 @@ type Props = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
-  numberOfColumns?: number;
+  numberOfColumnsOnDesktop?: number;
 };
 
 const StoryTemplate: FC<Props> = ({
