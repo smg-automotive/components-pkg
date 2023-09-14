@@ -21,7 +21,6 @@ export type NavigationLinkConfigProps = Omit<
       motoscout24: boolean;
     };
   };
-  isInternal?: boolean;
   entitlementConfig?: EntitlementConfig;
 };
 
