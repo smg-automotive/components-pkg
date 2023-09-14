@@ -35,7 +35,7 @@ type Props<ItemKey extends string> = {
    * @param newState        contains the new state of the whole filter group
    */
   onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
-  numberOfColumns?: number;
+  numberOfColumnsOnDesktop?: number;
 };
 
 const addThousandSeparatorToNumber = (value: number) => {
@@ -46,12 +46,12 @@ function CheckboxFilter<ItemKey extends string>({
   name,
   items,
   onApply,
-  numberOfColumns = 1,
+  numberOfColumnsOnDesktop = 1,
 }: Props<ItemKey>) {
   return (
     <Box
       sx={{
-        columns: { md: numberOfColumns, base: 1 },
+        columns: { md: numberOfColumnsOnDesktop, base: 1 },
         columnRule: 'solid var(--chakra-colors-gray-100) 1px',
         columnGap: 'var(--chakra-space-4xl)',
       }}
