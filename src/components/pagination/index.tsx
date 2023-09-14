@@ -128,7 +128,9 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
           <PaginationButton
             key={`paginationButton-${index}`}
             isActive={pageNumber === currentPage}
-            ariaLabel={`go to page ${pageNumber} of ${totalPages}`}
+            ariaLabel={`go to page ${pageNumberToDispaly(
+              Number(pageNumber),
+            )} of ${totalPages}`}
             onClick={(e) => {
               e.preventDefault();
               onChange(Number(pageNumber));
