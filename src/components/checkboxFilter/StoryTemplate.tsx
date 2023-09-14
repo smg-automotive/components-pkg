@@ -15,7 +15,7 @@ const StoryTemplate: FC<Props> = ({
   onApplyAction,
   defaultFacets,
   image,
-  numberOfColumns,
+  numberOfColumnsOnDesktop,
 }) => {
   // coming from backend
   const facets = {
@@ -88,7 +88,7 @@ const StoryTemplate: FC<Props> = ({
         onApplyAction({ item, newFilterState });
         setConditionQuery(newFilterState);
       }}
-      numberOfColumns={numberOfColumns}
+      numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
     />
   );
 };
