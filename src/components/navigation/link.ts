@@ -33,6 +33,8 @@ export interface LinkConfig {
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
   isInternal?: boolean;
+  forceMotoscoutLink?: boolean;
+  forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
 }
 
@@ -63,6 +65,8 @@ export class Link {
   isVisible: boolean;
   rightIcon?: ReactNode;
   isInternal?: boolean;
+  forceMotoscoutLink?: boolean;
+  forceAutoscoutLink?: boolean;
 
   constructor({
     config,
@@ -73,6 +77,8 @@ export class Link {
     linkProtocol,
     domains,
     isInternal,
+    forceMotoscoutLink,
+    forceAutoscoutLink,
     hasEntitlement = false,
     rightIcon,
   }: {
@@ -84,6 +90,8 @@ export class Link {
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
+    forceMotoscoutLink?: boolean;
+    forceAutoscoutLink?: boolean;
     hasEntitlement?: boolean;
     rightIcon?: ReactNode;
     shouldDisplayMissingEntitlementIcon?: boolean;
@@ -107,6 +115,8 @@ export class Link {
       linkProtocol,
       domains,
       isInternal,
+      forceMotoscoutLink,
+      forceAutoscoutLink,
       userType,
     });
 
@@ -144,6 +154,8 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     isInternal = false,
+    forceMotoscoutLink = false,
+    forceAutoscoutLink = false,
     userType,
     domains,
   }: {
@@ -154,14 +166,27 @@ export class Link {
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
+    forceMotoscoutLink?: boolean;
+    forceAutoscoutLink?: boolean;
     userType?: UserType;
   }) {
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
 
+    const forceBrandDomain = () => {
+      if (forceAutoscoutLink) {
+        return Brand.AutoScout24;
+      } else if (forceMotoscoutLink) {
+        return Brand.MotoScout24;
+      } else {
+        return brand;
+      }
+    };
+    const forceBrand = forceBrandDomain();
+
     const domain =
       !isInternal || userType === UserType.Guest
-        ? (domains[brand] as Record<'main', Record<Environment, string>>)[
+        ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
         : (

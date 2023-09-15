@@ -515,6 +515,7 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.motorcyclePark',
+          forceMotoscoutLink: true,
           link: {
             de: '/de/member/vehiclepool',
             en: '/de/member/vehiclepool',
@@ -534,11 +535,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.carPark',
+          forceAutoscoutLink: true,
           link: {
-            de: 'https://www.autoscout24.ch/de/member/vehiclepool',
-            en: 'https://www.autoscout24.ch/de/member/vehiclepool',
-            fr: 'https://www.autoscout24.ch/fr/member/vehiclepool',
-            it: 'https://www.autoscout24.ch/it/member/vehiclepool',
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
