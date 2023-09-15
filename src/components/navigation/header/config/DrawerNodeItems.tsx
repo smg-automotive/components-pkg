@@ -162,6 +162,7 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.searchMenu.searchMotorcycles',
+          forceMotoscoutLink: true,
           link: {
             de: '/de',
             en: '/de',
@@ -181,6 +182,7 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.searchMenu.searchCars',
+          forceAutoscoutLink: true,
           link: {
             de: '/de',
             en: '/de',

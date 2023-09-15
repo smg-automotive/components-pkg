@@ -190,7 +190,7 @@ export class Link {
             'main'
           ][environment]
         : (
-            domains[brand] as Record<
+            domains[forceBrand] as Record<
               'internal',
               Record<'professional' | 'private', Record<Environment, string>>
             >
