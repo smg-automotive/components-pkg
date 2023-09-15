@@ -77,6 +77,8 @@ export class HeaderNavigationLink extends Link {
     this.variant = variant;
     this.color = color;
     this.isInternal = isInternal;
+    this.forceAutoscoutLink = forceAutoscoutLink;
+    this.forceMotoscoutLink = forceMotoscoutLink;
     this.userAvatar = userAvatar;
   }
 }
