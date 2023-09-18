@@ -21,7 +21,7 @@ type Props = {
   hint?: string;
   tooltip?: string;
   size?: 'sm' | 'lg';
-  labelButtonText?: 'string';
+  labelButtonText?: string;
   labelButtonOnClick?: () => void;
 };
 
