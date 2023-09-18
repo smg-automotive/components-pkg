@@ -80,9 +80,7 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
     >
       {label && !tooltip && !labelButtonText ? formLabel : null}
       {label && tooltip ? formLabelWithTooltip : null}
-      {label && labelButtonText && labelButtonOnClick
-        ? formLabelWithButton
-        : null}
+      {label && labelButtonText ? formLabelWithButton : null}
       {children}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
       {hint ? <FormHelperText>{hint}</FormHelperText> : null}
