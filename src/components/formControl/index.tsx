@@ -1,8 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 import {
+  Button,
   FormControl as ChakraFormControl,
   FormErrorMessage,
   FormHelperText,
+  Link,
 } from '@chakra-ui/react';
 
 import Tooltip from '../tooltip';
@@ -19,6 +21,8 @@ type Props = {
   hint?: string;
   tooltip?: string;
   size?: 'sm' | 'lg';
+  labelButtonText?: 'string';
+  labelButtonOnClick?: () => void;
 };
 
 const FormControl: FC<PropsWithChildren<Props>> = ({
@@ -30,6 +34,8 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
   label,
   hint,
   tooltip,
+  labelButtonText,
+  labelButtonOnClick,
   size = 'lg',
 }) => {
   const isInvalid = !!errorMessage;
@@ -50,6 +56,21 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
     </Stack>
   );
 
+  const formLabelWithButton = (
+    <Stack direction="row" justify="space-between">
+      {formLabel}
+      <Link
+        as={Button}
+        onClick={labelButtonOnClick}
+        textStyle="body-small"
+        color="blue.700"
+        padding="0"
+      >
+        {labelButtonText}
+      </Link>
+    </Stack>
+  );
+
   return (
     <ChakraFormControl
       isDisabled={isDisabled}
@@ -57,8 +78,11 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
       isRequired={isRequired}
       id={id}
     >
-      {label && !tooltip ? formLabel : null}
+      {label && !tooltip && !labelButtonText ? formLabel : null}
       {label && tooltip ? formLabelWithTooltip : null}
+      {label && labelButtonText && labelButtonOnClick
+        ? formLabelWithButton
+        : null}
       {children}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
       {hint ? <FormHelperText>{hint}</FormHelperText> : null}

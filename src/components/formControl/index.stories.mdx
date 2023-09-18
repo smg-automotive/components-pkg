@@ -89,6 +89,21 @@ export const Template = (args) => {
   </Story>
 </Canvas>
 
+## With button
+
+<Canvas>
+  <Story
+    name="With button"
+    args={{
+      label: 'Label',
+      labelButtonText: 'button',
+      labelButtonOnClick: () => console.log('click')
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Disabled
 
 <Canvas>
