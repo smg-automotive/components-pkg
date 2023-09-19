@@ -18,5 +18,5 @@ export const MagnifierLargeIcon: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  }
+  },
 );
