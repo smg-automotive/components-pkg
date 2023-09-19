@@ -25,5 +25,5 @@ export const ViewMotorcycleIcon: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  }
+  },
 );
