@@ -8,7 +8,7 @@ export const DriveSystemLargeIcon: ComponentWithAs<'svg', IconProps> =
     viewBox: '0 0 48 48',
     path: (
       <>
-        <title>Gearbox icon</title>
+        <title>Drive System icon</title>
         <path
           fill="currentColor"
           d="M11 40a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm0-4a1 1 0 1 0 1 1 1 1 0 0 0-1-1zm21-16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm0-6a2 2 0 1 0 2 2 2 2 0 0 0-2-2z"
