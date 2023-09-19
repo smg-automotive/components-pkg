@@ -15,7 +15,7 @@ describe('The DevOverlay Component', () => {
         toggleTranslation={jest.fn()}
         activeTheme={Brand.AutoScout24}
         displayTranslationKeys={false}
-      />
+      />,
     );
 
     expect(screen.getByText('Dev Overlay')).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('The DevOverlay Component', () => {
         activeTheme={Brand.AutoScout24}
         toggleTranslation={jest.fn()}
         displayTranslationKeys={false}
-      />
+      />,
     );
 
     expect(screen.getByText('Dummy')).toBeInTheDocument();

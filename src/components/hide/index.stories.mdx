@@ -118,7 +118,7 @@ it('should show only on mobile devices', () => {
   render(
     <Hide above="sm">
       <a href="...">my-link</a>
-    </Hide>
+    </Hide>,
   );
   const ctaContainer = screen.getByTestId('hide-container');
   expect(
@@ -126,7 +126,7 @@ it('should show only on mobile devices', () => {
       name: 'my-link',
       // this is needed to find it in the DOM
       hidden: true,
-    })
+    }),
   ).toBeInTheDocument();
 });
 ```

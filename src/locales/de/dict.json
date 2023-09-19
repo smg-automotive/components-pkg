@@ -9,6 +9,11 @@
       "buttonLabel": "Zur Startseite",
       "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
       "title": "Tut uns leid, da ist was schief gegangen"
+    },
+    "clientSide": {
+      "buttonLabel": "Zur Startseite",
+      "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
+      "title": "In deinem Browser wurde ein Fehler geworfen"
     }
   },
   "filterSelectButton": {

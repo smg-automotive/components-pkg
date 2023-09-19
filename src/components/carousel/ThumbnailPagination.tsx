@@ -40,11 +40,11 @@ const ThumbnailPagination: FC<Props> = ({
 
   const scrollPrev = useCallback(
     () => paginationCarousel && paginationCarousel.scrollPrev(),
-    [paginationCarousel]
+    [paginationCarousel],
   );
   const scrollNext = useCallback(
     () => paginationCarousel && paginationCarousel.scrollNext(),
-    [paginationCarousel]
+    [paginationCarousel],
   );
 
   const onThumbnailClick = useCallback(
@@ -54,7 +54,7 @@ const ThumbnailPagination: FC<Props> = ({
         mainCarousel.scrollTo(index);
       }
     },
-    [mainCarousel, paginationCarousel]
+    [mainCarousel, paginationCarousel],
   );
 
   const onScroll = useCallback(() => {
@@ -68,7 +68,7 @@ const ThumbnailPagination: FC<Props> = ({
 
     const progress = Math.max(
       0,
-      Math.min(1, paginationCarousel.scrollProgress())
+      Math.min(1, paginationCarousel.scrollProgress()),
     );
     const slideWidth = 1 / thumbnails.length;
     setPaginationButtonVisibility({

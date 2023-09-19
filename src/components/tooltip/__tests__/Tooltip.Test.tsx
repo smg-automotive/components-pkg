@@ -10,7 +10,7 @@ const renderWrapper = () =>
   render(
     <Tooltip label={tooltipLabel}>
       <span data-testid="test-tooltip">Hover me</span>
-    </Tooltip>
+    </Tooltip>,
   );
 
 describe('<Tooltip />', () => {
@@ -21,7 +21,9 @@ describe('<Tooltip />', () => {
 
   it('shows tooltip label on hover', async () => {
     renderWrapper();
-    userEvent.hover(screen.getByTestId('test-tooltip'));
+    const user = userEvent.setup();
+
+    await user.hover(screen.getByTestId('test-tooltip'));
     const tooltipLabelElement = await screen.findByText(tooltipLabel);
     expect(tooltipLabelElement).toBeInTheDocument();
   });
@@ -29,10 +31,10 @@ describe('<Tooltip />', () => {
   it('does not show tooltip label on unhover', async () => {
     const user = userEvent.setup();
     renderWrapper();
-    user.hover(screen.getByTestId('test-tooltip'));
-    user.unhover(screen.getByTestId('test-tooltip'));
+    await user.hover(screen.getByTestId('test-tooltip'));
+    await user.unhover(screen.getByTestId('test-tooltip'));
     return waitFor(() =>
-      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument()
+      expect(screen.queryByText(tooltipLabel)).not.toBeInTheDocument(),
     );
   });
 });

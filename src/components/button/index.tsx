@@ -2,6 +2,7 @@ import React, { ElementType, FC, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
+  ResponsiveValue,
 } from '@chakra-ui/react';
 
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
@@ -18,10 +19,12 @@ type IconButton = {
   icon: ReactElement;
 };
 
+type ButtonSize = 'md' | 'lg';
+
 type SharedProps = {
   as?: 'button';
-  variant?: 'primary' | 'secondary' | 'success';
-  size?: 'md' | 'lg';
+  variant?: 'primary' | 'secondary' | 'success' | 'transparent';
+  size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;

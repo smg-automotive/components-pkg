@@ -1,6 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const parts = ['carTitle', 'price', 'dealerName', 'dealerAddress'];
+const wordBreak = 'break-word';
 
 const VehicleReference: ComponentStyleConfig = {
   parts,
@@ -9,7 +10,7 @@ const VehicleReference: ComponentStyleConfig = {
       color: 'gray.900',
       textStyle: { '2xs': 'heading5', md: 'heading3' },
       noOfLines: { '2xs': 1, md: 'none' },
-      wordBreak: 'break-word',
+      wordBreak,
     },
     price: {
       color: 'gray.900',
@@ -19,13 +20,13 @@ const VehicleReference: ComponentStyleConfig = {
       color: 'gray.900',
       textStyle: 'heading4',
       display: { '2xs': 'none', md: 'flex' },
-      wordBreak: 'break-word',
+      wordBreak,
     },
     dealerAddress: {
       color: 'gray.900',
       textStyle: 'body',
       display: { '2xs': 'none', md: 'flex' },
-      wordBreak: 'break-word',
+      wordBreak,
     },
   },
 };

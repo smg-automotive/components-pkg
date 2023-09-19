@@ -12,7 +12,7 @@ interface AccordionButtonProps extends ChakraAccordionButtonProps {
 }
 
 const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
-  props
+  props,
 ) => {
   const { children, leftIcon, ...buttonProps } = props;
 

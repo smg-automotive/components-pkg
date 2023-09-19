@@ -23,6 +23,10 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
       }
     : {};
 
+  if (!linkInstance) {
+    return null;
+  }
+
   if (!linkInstance.link?.[language] && !linkInstance.onClick) {
     return (
       <Text {...boldStyles}>

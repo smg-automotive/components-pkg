@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { Image } from '@chakra-ui/react';
+import { Image, List, ListItem } from '@chakra-ui/react';
 
 import Text from 'src/components/text';
 import Stack from 'src/components/stack';
@@ -27,23 +27,28 @@ const FooterApps: FC<Props> = ({ config }) => {
         spacing="md"
       >
         <Text textStyle="heading5">{t('footer.apps.title')}</Text>
-        <FooterLink linkInstance={config.apps.android[0]}>
-          <Image
-            src={googleplay}
-            alt={'Googleplay Icon'}
-            width="136px"
-            height="40px"
-          />
-        </FooterLink>
-
-        <FooterLink linkInstance={config.apps.apple[0]}>
-          <Image
-            src={appstore}
-            alt={'Appsore Icon'}
-            width="136px"
-            height="40px"
-          />
-        </FooterLink>
+        <List spacing="md">
+          <ListItem display="flex" alignItems="center">
+            <FooterLink linkInstance={config.apps.android[0]}>
+              <Image
+                src={googleplay}
+                alt={'Googleplay Icon'}
+                width="136px"
+                height="40px"
+              />
+            </FooterLink>
+          </ListItem>
+          <ListItem display="flex" alignItems="center">
+            <FooterLink linkInstance={config.apps.apple[0]}>
+              <Image
+                src={appstore}
+                alt={'Appsore Icon'}
+                width="136px"
+                height="40px"
+              />
+            </FooterLink>
+          </ListItem>
+        </List>
       </Stack>
     </GridItem>
   );

@@ -5,7 +5,7 @@ import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
-import { Link, LinkConfig } from 'src/components/navigation/link';
+import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
 
 import { UserType } from '../types';
 
@@ -27,12 +27,16 @@ export class HeaderNavigationLink extends Link {
     linkProtocol,
     domains,
     isNew,
-    iconRight,
+    rightIcon,
     showUnderMoreLinkBelow,
     fontWeight,
     variant,
     color,
     userAvatar,
+    isInternal = false,
+    forceMotoscoutLink = false,
+    forceAutoscoutLink = false,
+    hasEntitlement = false,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -40,14 +44,18 @@ export class HeaderNavigationLink extends Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Record<Brand, Record<Environment, string>>;
+    domains: Domains;
     isNew?: boolean;
-    iconRight?: ReactNode;
+    rightIcon?: ReactNode;
     showUnderMoreLinkBelow?: BreakpointName;
     fontWeight?: 'regular' | 'bold';
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
+    isInternal?: boolean;
+    forceMotoscoutLink?: boolean;
+    forceAutoscoutLink?: boolean;
+    hasEntitlement?: boolean;
   }) {
     super({
       config,
@@ -57,13 +65,20 @@ export class HeaderNavigationLink extends Link {
       useAbsoluteUrls,
       linkProtocol,
       domains,
+      isInternal,
+      forceMotoscoutLink,
+      forceAutoscoutLink,
+      hasEntitlement,
+      rightIcon,
     });
     this.isNew = isNew;
-    this.iconRight = iconRight;
     this.showUnderMoreLinkBelow = showUnderMoreLinkBelow;
     this.fontWeight = fontWeight;
     this.variant = variant;
     this.color = color;
+    this.isInternal = isInternal;
+    this.forceAutoscoutLink = forceAutoscoutLink;
+    this.forceMotoscoutLink = forceMotoscoutLink;
     this.userAvatar = userAvatar;
   }
 }

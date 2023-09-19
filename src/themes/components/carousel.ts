@@ -96,6 +96,58 @@ const numbersPaginationButton = {
   },
 };
 
+const dotsPaginationIndicator = {
+  backgroundColor: 'transparent',
+  touchAction: 'pan-x',
+  display: 'inline-flex',
+  textDecoration: 'none',
+  border: 0,
+  padding: 0,
+  width: '6px',
+  height: '6px',
+  marginX: '6px',
+  _last: {
+    width: '4px',
+    height: '4px',
+    _after: {
+      width: 'full',
+      height: '4px',
+      content: '""',
+    },
+  },
+  _after: {
+    backgroundColor: 'gray.300',
+    opacity: opacity[40],
+    borderRadius: 'full',
+    width: 'full',
+    height: '6px',
+    content: '""',
+  },
+};
+
+const dotsPaginationIndicatorActive = {
+  ...dotsPaginationIndicator,
+  width: '8px',
+  height: '8px',
+  _last: {
+    width: '8px',
+    height: '8px',
+    _after: {
+      width: 'full',
+      height: '8px',
+      content: '""',
+    },
+  },
+  _after: {
+    backgroundColor: 'white',
+    borderRadius: 'full',
+    opacity: opacity[100],
+    width: 'full',
+    height: '8px',
+    content: '""',
+  },
+};
+
 const Carousel: ComponentStyleConfig = {
   parts,
   baseStyle: {
@@ -155,6 +207,16 @@ const Carousel: ComponentStyleConfig = {
         backgroundColor: 'gray.900',
       },
     },
+    dotsPaginationContainer: {
+      position: 'absolute',
+      width: 'full',
+      bottom: 'lg',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    dotsPaginationIndicator,
+    dotsPaginationIndicatorActive,
   },
   variants: {
     fullScreen,

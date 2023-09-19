@@ -10,7 +10,7 @@ const Grid: ComponentWithAs<'div', GridProps> = forwardRef<GridProps, 'div'>(
   (props, ref) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return <ChakraGrid {...(props as GridProps)} ref={ref} />;
-  }
+  },
 );
 
 Grid.displayName = 'Grid';

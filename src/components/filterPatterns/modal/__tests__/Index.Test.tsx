@@ -19,11 +19,11 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
 
     expect(screen.queryByText('Modal content')).toBeNull();
-    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     expect(await screen.findByText('Modal content')).toBeInTheDocument();
   });
 
@@ -32,12 +32,12 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} isApplied={true} onResetFilter={mockOnReset}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
 
-    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    userEvent.click(
-      await screen.findByRole('button', { name: 'Zurücksetzen' })
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      await screen.findByRole('button', { name: 'Zurücksetzen' }),
     );
     await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
@@ -46,13 +46,30 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} isApplied={false}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
-    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the bottom and on the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(2);
+  });
+
+  it('should show no action button', async () => {
+    render(
+      <ModalFilter
+        {...validProps}
+        isApplied={false}
+        showCallToActionButton={false}
+      >
+        <div>Modal content</div>
+      </ModalFilter>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    // close button on the top right
+    expect(
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
+    ).toHaveLength(1);
   });
 
   it('should show the primary action button if a filter is applied', async () => {
@@ -64,15 +81,25 @@ describe('<ModalFilter />', () => {
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
-    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
-    userEvent.click(screen.getByRole('button', { name: 'Search' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Search' }));
     await waitFor(() => expect(mockSearchButton).toHaveBeenCalledTimes(1));
+  });
+
+  it('should show a custom header', async () => {
+    render(
+      <ModalFilter {...validProps} header={<div>custom header</div>}>
+        <div>Modal content</div>
+      </ModalFilter>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    expect(await screen.findByText('custom header')).toBeInTheDocument();
   });
 
   it('should call the callback if the modal opens', async () => {
@@ -80,9 +107,9 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} onModalOpen={mockOnOpen}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
-    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
   });
 
@@ -91,15 +118,17 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter {...validProps} onModalClose={mockOnClose} isApplied={true}>
         <div>Modal content</div>
-      </ModalFilter>
+      </ModalFilter>,
     );
-    userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
 
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
 
-    userEvent.click(screen.getAllByRole('button', { name: 'Schliessen' })[0]);
+    await userEvent.click(
+      screen.getAllByRole('button', { name: 'Schliessen' })[0],
+    );
 
     await waitFor(() => expect(mockOnClose).toHaveBeenCalledTimes(1));
   });

@@ -8,7 +8,13 @@ const renderWrapper = ({
   name = 'condition-filter',
   options = [
     { label: 'New', key: 'new', facet: 77, isChecked: false },
-    { label: 'Used', key: 'used', facet: 0, isChecked: false },
+    {
+      label: 'Used',
+      key: 'used',
+      facet: 0,
+      isChecked: false,
+      image: <img src="limousine.jpeg" />,
+    },
   ],
   onApply = jest.fn(),
 } = {}) =>
@@ -25,13 +31,13 @@ describe('<CheckBoxFilter />', () => {
   it('should call onApply', async () => {
     const onApply = jest.fn();
     renderWrapper({ onApply });
-    userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
+    await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(
         { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false }
-      )
+        { new: true, used: false },
+      ),
     );
   });
 
@@ -64,7 +70,24 @@ describe('<CheckBoxFilter />', () => {
     expect(
       screen.getByRole('checkbox', {
         name: 'Used 1’000’000',
-      })
+      }),
     ).toBeInTheDocument();
+  });
+
+  it('should render an image when is passed', () => {
+    const image = <img src="kombi.jpeg" />;
+    renderWrapper({
+      options: [
+        {
+          label: 'Used',
+          key: 'used',
+          facet: 0,
+          isChecked: false,
+          image,
+        },
+      ],
+    });
+
+    expect(screen.getByRole('img')).toHaveAttribute('src', 'kombi.jpeg');
   });
 });

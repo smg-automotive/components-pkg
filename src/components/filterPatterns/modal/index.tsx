@@ -30,6 +30,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onModalClose,
   onModalOpen,
   onResetFilter,
+  showCallToActionButton = true,
+  header,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -77,30 +79,43 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           size="full"
           motionPreset="slideInBottom"
         >
-          <ModalContent h="full" w="full">
+          <ModalContent h="full" w="full" padding="2xl">
             <ModalHeader
               display="flex"
               flexDirection="column"
               alignItems="flex-start"
-              padding="2xl"
+              padding="0"
             >
-              <FilterHeading
-                language={language}
-                isApplied={isApplied}
-                label={label}
-                numberOfAppliedFilters={numberOfAppliedFilters}
-                onClose={onClose}
-                onResetFilter={onResetFilter}
-              />
+              {header ? (
+                header
+              ) : (
+                <FilterHeading
+                  language={language}
+                  isApplied={isApplied}
+                  label={label}
+                  numberOfAppliedFilters={numberOfAppliedFilters}
+                  onClose={onClose}
+                  onResetFilter={onResetFilter}
+                />
+              )}
             </ModalHeader>
-            <ModalBody overflowY="scroll">{children}</ModalBody>
-            <ModalFooter padding="2xl">
-              <FilterActionButton
-                actionButton={actionButton}
-                isApplied={isApplied}
-                onClose={onClose}
-              />
-            </ModalFooter>
+            <ModalBody
+              overflowY="scroll"
+              padding="0"
+              marginTop="2xl"
+              marginBottom={showCallToActionButton ? '2xl' : '0'}
+            >
+              {children}
+            </ModalBody>
+            {showCallToActionButton ? (
+              <ModalFooter padding="0">
+                <FilterActionButton
+                  actionButton={actionButton}
+                  isApplied={isApplied}
+                  onClose={onClose}
+                />
+              </ModalFooter>
+            ) : null}
           </ModalContent>
         </ChakraModal>
       </>

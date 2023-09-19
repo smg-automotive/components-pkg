@@ -5,7 +5,7 @@ import { AccordionItemProps, useQuery } from '@chakra-ui/react';
 import AccordionItem from '../accordion/AccordionItem';
 
 const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
-  props
+  props,
 ) => {
   const { children, ...rest } = props;
   const query = useQuery({ above: 'md' });

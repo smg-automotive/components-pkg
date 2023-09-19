@@ -3,6 +3,7 @@ export const zIndices = {
   auto: 'auto',
   base: 0,
   docked: 10,
+  header: 900,
   dropdown: 1000,
   sticky: 1100,
   banner: 1200,
@@ -12,6 +13,5 @@ export const zIndices = {
   skipLink: 1600,
   toast: 1700,
   tooltip: 1800,
-  header: 1900,
   fullScreenModal: 2000,
 };

@@ -20,7 +20,7 @@ const renderWrapper = ({
       label={label}
       isDisabled={isDisabled}
       isChecked={isChecked}
-    />
+    />,
   );
 
 describe('<Radio>', () => {
@@ -41,7 +41,7 @@ describe('<Radio>', () => {
   it('triggers onChange event when clicking on radio', async () => {
     const onChange = jest.fn();
     renderWrapper({ onChange });
-    userEvent.click(screen.getByRole('radio', { name: 'Option' }));
+    await userEvent.click(screen.getByRole('radio', { name: 'Option' }));
 
     await waitFor(() => expect(onChange).toHaveBeenCalled());
   });
@@ -50,7 +50,7 @@ describe('<Radio>', () => {
     const onChange = jest.fn();
     renderWrapper({ onChange, isDisabled: true });
     const radio = screen.getByRole('radio', { name: 'Option' });
-    userEvent.click(radio);
+    await userEvent.click(radio);
 
     await waitFor(() => expect(radio).toBeDisabled());
     expect(onChange).not.toHaveBeenCalled();

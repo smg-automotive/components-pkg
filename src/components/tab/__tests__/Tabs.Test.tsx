@@ -34,7 +34,7 @@ const renderWrapper = ({
           <p>Drei</p>
         </TabPanel>
       </TabPanels>
-    </Tabs>
+    </Tabs>,
   );
 
 describe('<Tabs />', () => {
@@ -48,7 +48,7 @@ describe('<Tabs />', () => {
   });
   it('changes tab on click', async () => {
     renderWrapper({});
-    userEvent.click(screen.getByText('Two'));
+    await userEvent.click(screen.getByText('Two'));
     expect(await screen.findByText('Zwei')).toBeInTheDocument();
   });
   it('displays the tabs with the last tab opens by default', () => {
@@ -58,10 +58,10 @@ describe('<Tabs />', () => {
   });
   it('displays the tabs with one tab disabled', async () => {
     renderWrapper({ isDisabled: true });
-    userEvent.click(screen.getByText('Two'));
+    await userEvent.click(screen.getByText('Two'));
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
     expect(screen.getByText('Eins')).toBeInTheDocument();
-    userEvent.click(screen.getByText('Three'));
+    await userEvent.click(screen.getByText('Three'));
     expect(await screen.findByText('Drei')).toBeInTheDocument();
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
   });

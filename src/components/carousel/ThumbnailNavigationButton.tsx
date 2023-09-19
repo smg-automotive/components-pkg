@@ -20,7 +20,7 @@ const ThumbnailNavigationButton: FC<Props> = ({ direction, onClick }) => {
     'Carousel',
     {
       variant: 'fullScreen',
-    }
+    },
   );
   const side = direction === 'previous' ? { left: '0' } : { right: '0' };
 

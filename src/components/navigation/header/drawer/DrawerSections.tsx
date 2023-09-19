@@ -9,7 +9,7 @@ import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
 import List from 'src/components/list';
 import Box from 'src/components/box';
 
-import { NavigationLinkNode } from '../config/drawerNodeItems';
+import { NavigationLinkNode } from '../config/DrawerNodeItems';
 
 import { DrawerNavigationLink } from './DrawerNavigationLink';
 

@@ -16,7 +16,7 @@ const renderWrapper = ({
       price={price}
       sellerName={sellerName}
       sellerAddress={sellerAddress}
-    />
+    />,
   );
 
 describe('<VehicleReference>', () => {

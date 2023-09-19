@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react';
 
 const AccordionItem: FC<PropsWithChildren<ChakraAccordionItemProps>> = (
-  props
+  props,
 ) => {
   const { children, ...itemProps } = props;
 

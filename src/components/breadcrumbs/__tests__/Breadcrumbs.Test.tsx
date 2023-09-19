@@ -15,7 +15,7 @@ const renderWrapper = ({
           <BreadcrumbLink href={crumb?.url}>{crumb.title}</BreadcrumbLink>
         </BreadcrumbItem>
       ))}
-    </Breadcrumbs>
+    </Breadcrumbs>,
   );
 
 describe('<Breadcrumbs>', () => {

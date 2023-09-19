@@ -20,5 +20,5 @@ export const ChevronUpSmallIcon: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  }
+  },
 );

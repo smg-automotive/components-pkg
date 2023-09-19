@@ -22,5 +22,5 @@ export const MotoScout24AppLogo: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  }
+  },
 );

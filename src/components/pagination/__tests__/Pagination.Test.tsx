@@ -24,7 +24,7 @@ describe('<Pagination />', () => {
   describe('render', () => {
     it('should render pagination without dots', () => {
       render(
-        <Pagination totalPages={5} currentPage={1} onChange={mockOnChange} />
+        <Pagination totalPages={5} currentPage={1} onChange={mockOnChange} />,
       );
 
       const leftDots = screen.queryByLabelText('left side dots');
@@ -36,7 +36,7 @@ describe('<Pagination />', () => {
 
     it('should render pagination with dots on right side', () => {
       render(
-        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />
+        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />,
       );
 
       const leftDots = screen.queryByLabelText('left side dots');
@@ -48,7 +48,7 @@ describe('<Pagination />', () => {
 
     it('should render pagination with dots on left side', () => {
       render(
-        <Pagination totalPages={10} currentPage={10} onChange={mockOnChange} />
+        <Pagination totalPages={10} currentPage={10} onChange={mockOnChange} />,
       );
 
       const leftDots = screen.queryByLabelText('left side dots');
@@ -60,7 +60,7 @@ describe('<Pagination />', () => {
 
     it('should render pagination with dots on both side', () => {
       render(
-        <Pagination totalPages={10} currentPage={5} onChange={mockOnChange} />
+        <Pagination totalPages={10} currentPage={5} onChange={mockOnChange} />,
       );
 
       const leftDots = screen.queryByLabelText('left side dots');
@@ -72,7 +72,7 @@ describe('<Pagination />', () => {
 
     it('should respect current page', () => {
       render(
-        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />
+        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />,
       );
 
       const currentPage = screen.getByText('2');
@@ -83,7 +83,7 @@ describe('<Pagination />', () => {
   describe('onChange', () => {
     it('should call the onChange handler by click on a button', async () => {
       render(
-        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />
+        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />,
       );
 
       await userEvent.click(screen.getByText('2'));
@@ -93,7 +93,11 @@ describe('<Pagination />', () => {
     describe('first page is active', () => {
       it('should not be able to change the page by click on Prev button', () => {
         render(
-          <Pagination totalPages={10} currentPage={0} onChange={mockOnChange} />
+          <Pagination
+            totalPages={10}
+            currentPage={0}
+            onChange={mockOnChange}
+          />,
         );
 
         expect(screen.getByLabelText('previous page')).toBeDisabled();
@@ -101,7 +105,11 @@ describe('<Pagination />', () => {
 
       it('should be able to change the page by click on Next button', async () => {
         render(
-          <Pagination totalPages={10} currentPage={0} onChange={mockOnChange} />
+          <Pagination
+            totalPages={10}
+            currentPage={0}
+            onChange={mockOnChange}
+          />,
         );
 
         await userEvent.click(screen.getByLabelText('next page'));
@@ -112,7 +120,11 @@ describe('<Pagination />', () => {
     describe('last page is active', () => {
       it('should not be able to change the page by click on Next button', () => {
         render(
-          <Pagination totalPages={10} currentPage={9} onChange={mockOnChange} />
+          <Pagination
+            totalPages={10}
+            currentPage={9}
+            onChange={mockOnChange}
+          />,
         );
 
         expect(screen.getByLabelText('next page')).toBeDisabled();
@@ -120,7 +132,11 @@ describe('<Pagination />', () => {
 
       it('should be able to change the page by click on Prev button', async () => {
         render(
-          <Pagination totalPages={10} currentPage={9} onChange={mockOnChange} />
+          <Pagination
+            totalPages={10}
+            currentPage={9}
+            onChange={mockOnChange}
+          />,
         );
 
         await userEvent.click(screen.getByLabelText('previous page'));

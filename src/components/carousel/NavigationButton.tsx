@@ -14,7 +14,7 @@ interface Props {
 const NavigationButton: FC<Props> = ({ direction, onClick, fullScreen }) => {
   const { button, buttonContainer, icon } = useMultiStyleConfig(
     'Carousel',
-    fullScreen ? { variant: 'fullScreen' } : {}
+    fullScreen ? { variant: 'fullScreen' } : {},
   );
   const side = direction === 'previous' ? { left: '0' } : { right: '0' };
   const icons = {

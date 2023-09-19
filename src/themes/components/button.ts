@@ -20,7 +20,7 @@ const buttonSizes = {
 const variants = {
   primary: {
     bg: 'brand.primary',
-    color: 'gray.900',
+    color: 'black',
     boxShadow: 'button',
     _hover: {
       filter: 'brightness(1.1)',
@@ -68,6 +68,23 @@ const variants = {
       bg: 'gray.100',
       boxShadow: 'none',
       color: 'gray.400',
+      pointerEvents: 'none',
+    },
+  },
+  transparent: {
+    bg: 'white',
+    color: 'gray.900',
+    border: 'none',
+    borderColor: 'gray.900',
+    _hover: {
+      bg: 'gray.100',
+    },
+    _active: {
+      bg: 'gray.200',
+    },
+    _disabled: {
+      color: 'gray.300',
+      borderColor: 'gray.300',
       pointerEvents: 'none',
     },
   },

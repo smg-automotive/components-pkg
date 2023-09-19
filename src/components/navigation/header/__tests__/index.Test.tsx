@@ -10,7 +10,7 @@ import { UserType } from '../types';
 
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
-import { drawerNodeItems } from '../config/drawerNodeItems';
+import { drawerNodeItems } from '../config/DrawerNodeItems';
 import Navigation from '..';
 
 describe('Header', () => {
@@ -24,7 +24,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
-      />
+      />,
     );
 
     let drawerBody = screen.queryByTestId('drawer-body');
@@ -45,7 +45,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
-      />
+      />,
     );
 
     let drawerBody = screen.queryByTestId('drawer-body');
@@ -66,7 +66,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
-      />
+      />,
     );
 
     const login = screen.getByText('Login');
@@ -82,7 +82,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
-      />
+      />,
     );
 
     const user = screen.getByText('John Doe');
@@ -98,7 +98,7 @@ describe('Header', () => {
         hasNotification
         onLogin={jest.fn}
         onLogout={jest.fn}
-      />
+      />,
     );
 
     const notification = screen.getByTestId('notification-icon');

@@ -531,19 +531,6 @@ export const footerConfig: FooterConfigInterface = {
         },
         target: '_blank',
       },
-      {
-        translationKey: '',
-        visibilitySettings: {
-          brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
-        },
-        link: {
-          de: 'https://twitter.com/motoscout24_ch?lang=de',
-          en: 'https://twitter.com/motoscout24_ch?lang=en',
-          fr: 'https://twitter.com/motoscout24_ch?lang=fr',
-          it: 'https://twitter.com/motoscout24_ch?lang=it',
-        },
-        target: '_blank',
-      },
     ],
     youtube: [
       {

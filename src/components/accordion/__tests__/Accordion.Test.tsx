@@ -23,7 +23,7 @@ const renderWrapper = ({ ...props }) =>
         </AccordionButton>
         <AccordionPanel>Section 2 content</AccordionPanel>
       </AccordionItem>
-    </Accordion>
+    </Accordion>,
   );
 
 describe('<Accordion />', () => {
@@ -37,21 +37,21 @@ describe('<Accordion />', () => {
       renderWrapper({});
 
       const firstAccordionButton = screen.getByTestId(
-        'test-accordion-button-1'
+        'test-accordion-button-1',
       );
       const secondAccordionButton = screen.getByTestId(
-        'test-accordion-button-2'
+        'test-accordion-button-2',
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
-        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true')
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
       expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'false');
 
-      userEvent.click(secondAccordionButton);
+      await userEvent.click(secondAccordionButton);
       await waitFor(() =>
-        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false')
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false'),
       );
       expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true');
     });
@@ -64,17 +64,17 @@ describe('<Accordion />', () => {
       });
 
       const firstAccordionButton = screen.getByTestId(
-        'test-accordion-button-1'
+        'test-accordion-button-1',
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
-        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true')
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
-        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false')
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'false'),
       );
     });
   });
@@ -84,20 +84,20 @@ describe('<Accordion />', () => {
       renderWrapper({ allowMultiple: true, defaultIndex: [] });
 
       const firstAccordionButton = screen.getByTestId(
-        'test-accordion-button-1'
+        'test-accordion-button-1',
       );
       const secondAccordionButton = screen.getByTestId(
-        'test-accordion-button-2'
+        'test-accordion-button-2',
       );
 
-      userEvent.click(firstAccordionButton);
+      await userEvent.click(firstAccordionButton);
       await waitFor(() =>
-        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true')
+        expect(firstAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
 
-      userEvent.click(secondAccordionButton);
+      await userEvent.click(secondAccordionButton);
       await waitFor(() =>
-        expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true')
+        expect(secondAccordionButton).toHaveAttribute('aria-expanded', 'true'),
       );
     });
   });

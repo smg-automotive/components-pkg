@@ -7,6 +7,7 @@ import Tabs from './tabs';
 import Table from './table';
 import Switch from './switch';
 import Spinner from './spinner';
+import Slider from './slider';
 import Skeleton from './skeleton';
 import SimpleHeader from './simpleHeader';
 import Select from './select';
@@ -72,4 +73,5 @@ export const components: Record<string, ComponentStyleConfig> = {
   Textarea,
   Tooltip,
   VehicleReference,
+  Slider,
 };

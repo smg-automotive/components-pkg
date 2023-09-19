@@ -24,7 +24,8 @@ interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreen' | 'base';
+  variant?: 'fullScreen' | 'base' | 'topScroll';
+  size?: 'md' | 'lg' | 'full';
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -32,16 +33,21 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   primaryActionButton,
   secondaryActionButton,
   children,
+  size,
   motionPreset = 'scale',
   variant = 'base',
   ...modalProps
 }) => {
+  const modalSize =
+    size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
+  const bothActionButtons = primaryActionButton && secondaryActionButton;
+
   return (
     <ChakraModal
       isCentered
       motionPreset={motionPreset}
       variant={variant}
-      size={variant === 'base' ? { xs: 'full', sm: 'md' } : 'full'}
+      size={modalSize}
       {...modalProps}
     >
       <ModalOverlay />
@@ -50,7 +56,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           <>
             <ModalHeader>
               <H3>{title}</H3>
-              <ModalCloseButton />
+              <ModalCloseButton fontSize="base" />
             </ModalHeader>
             <Divider />
           </>
@@ -64,21 +70,25 @@ const Modal: FC<PropsWithChildren<Props>> = ({
             <ModalFooter
               display="flex"
               justifyContent={
-                secondaryActionButton && primaryActionButton
-                  ? 'space-between'
-                  : 'flex-end'
+                bothActionButtons ? 'space-between' : 'flex-start'
               }
+              gap={bothActionButtons ? 'sm' : 0}
             >
               {secondaryActionButton ? (
                 <Button
                   variant="secondary"
                   onClick={secondaryActionButton.action}
+                  width={{ base: 'full', sm: 'fit-content' }}
                 >
                   {secondaryActionButton.label}
                 </Button>
               ) : null}
               {primaryActionButton ? (
-                <Button variant="primary" onClick={primaryActionButton.action}>
+                <Button
+                  variant="primary"
+                  onClick={primaryActionButton.action}
+                  width={{ base: 'full', sm: 'fit-content' }}
+                >
                   {primaryActionButton.label}
                 </Button>
               ) : null}

@@ -16,13 +16,13 @@ const NumbersPagination: FC<Props> = ({
   numberOfSlides,
   mainCarousel,
 }) => {
-  const onNumbersClick = useCallback(
+  const onClick = useCallback(
     (index: number) => {
       if (mainCarousel) {
         mainCarousel.scrollTo(index);
       }
     },
-    [mainCarousel]
+    [mainCarousel],
   );
   const pagination = Array.from({ length: numberOfSlides }, (_, i) => i);
 
@@ -35,7 +35,7 @@ const NumbersPagination: FC<Props> = ({
             isCurrent={index === currentSlideIndex}
             currentPageNumber={index + 1}
             totalNumbers={numberOfSlides}
-            onClick={() => onNumbersClick(index)}
+            onClick={() => onClick(index)}
           />
         ))}
       </Flex>

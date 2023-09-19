@@ -62,7 +62,7 @@ describe('The footer configuration', () => {
   it('returns only one link item per social media type', () => {
     const footerConfigInstance = new FooterConfig({
       config: footerConfig,
-      brand: Brand.MotoScout24,
+      brand: Brand.AutoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
     });
@@ -72,6 +72,28 @@ describe('The footer configuration', () => {
     expect(config.socialMedia.twitter.length).toEqual(1);
     expect(config.socialMedia.instagram.length).toEqual(1);
     expect(config.socialMedia.youtube.length).toEqual(1);
+  });
+
+  it('returns twitter link item only for AutoScout24', () => {
+    let footerConfigInstance = new FooterConfig({
+      config: footerConfig,
+      brand: Brand.AutoScout24,
+      environment: 'production',
+      useAbsoluteUrls: true,
+    });
+    let config = footerConfigInstance.getMappedConfig();
+
+    expect(config.socialMedia.twitter.length).toEqual(1);
+
+    footerConfigInstance = new FooterConfig({
+      config: footerConfig,
+      brand: Brand.MotoScout24,
+      environment: 'production',
+      useAbsoluteUrls: true,
+    });
+    config = footerConfigInstance.getMappedConfig();
+
+    expect(config.socialMedia.twitter.length).toEqual(0);
   });
 
   it('returns five company links', () => {

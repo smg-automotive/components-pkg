@@ -15,7 +15,7 @@ export const pxBreakpoints = Object.fromEntries(
   Object.entries(emBreakpoints).map(([name, emValue]) => [
     name,
     `${convertRemEmToPx(emValue)}px`,
-  ])
+  ]),
 ) as Record<BreakpointName, string>;
 
 export const breakpoints = Object.fromEntries(
@@ -25,7 +25,7 @@ export const breakpoints = Object.fromEntries(
       em: parseFloat(emBreakpoints[name as BreakpointName]),
       px: parseFloat(pxBreakpoints[name as BreakpointName]),
     },
-  ])
+  ]),
 ) as Record<
   BreakpointName,
   {

@@ -19,7 +19,7 @@ const renderWrapper = ({
       value={value}
       min={min}
       data-testid="test-datepicker"
-    />
+    />,
   );
 
 describe('<DatePicker />', () => {

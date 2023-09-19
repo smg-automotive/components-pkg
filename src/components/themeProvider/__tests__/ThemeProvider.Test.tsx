@@ -17,7 +17,7 @@ const renderWrapper = (theme: Props['theme']) =>
   testingLibraryRender(
     <ThemeProvider theme={theme}>
       <TestComponent />
-    </ThemeProvider>
+    </ThemeProvider>,
   );
 
 describe('ThemeProvider', () => {

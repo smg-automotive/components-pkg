@@ -30,6 +30,47 @@ export const ModalTemplate = (args) => {
   );
 };
 
+export const ModalTemplateWithMoreContent = (args) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <Box>
+      <Button onClick={onOpen}>Open</Button>
+      <Modal isOpen={isOpen} onClose={onClose} {...args}>
+        <Box p="4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
+          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
+          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
+          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
+          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
+          Phasellus malesuada egestas est sit amet venenatis.
+        </Box>
+        <Box p="4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
+          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
+          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
+          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
+          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
+          Phasellus malesuada egestas est sit amet venenatis.
+        </Box>
+        <Box p="4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
+          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
+          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
+          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
+          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
+          Phasellus malesuada egestas est sit amet venenatis.
+        </Box>
+      </Modal>
+    </Box>
+  );
+};
+
 # Modal
 
 <Canvas>
@@ -37,6 +78,13 @@ export const ModalTemplate = (args) => {
     name="Modal"
     args={{
       title: 'Modal Header',
+      size: 'md',
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'lg'],
+        control: { type: 'select' },
+      },
     }}
   >
     {ModalTemplate.bind({})}
@@ -110,5 +158,26 @@ export const ModalTemplate = (args) => {
     }}
   >
     {ModalTemplate.bind({})}
+  </Story>
+</Canvas>
+
+# Scrollable Modal
+
+<Canvas>
+  <Story
+    name="Large Scrollable Modal"
+    args={{
+      title: 'Modal Header',
+      size: 'md',
+      variant: 'topScroll',
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'lg'],
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {ModalTemplateWithMoreContent.bind({})}
   </Story>
 </Canvas>
