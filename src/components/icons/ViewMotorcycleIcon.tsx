@@ -15,6 +15,7 @@ export const ViewMotorcycleIcon: ComponentWithAs<'svg', IconProps> = createIcon(
           fillRule="nonzero"
         />
         <path
+          fill="currentColor"
           fillRule="evenodd"
           clipRule="evenodd"
           transform="translate(6.491 -3.555)"
@@ -25,5 +26,5 @@ export const ViewMotorcycleIcon: ComponentWithAs<'svg', IconProps> = createIcon(
     defaultProps: {
       boxSize: 'sm',
     },
-  },
+  }
 );
