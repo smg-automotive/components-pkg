@@ -72,15 +72,15 @@ const variants = {
     },
   },
   transparent: {
-    bg: 'white',
+    bg: 'transparent',
     color: 'gray.900',
     border: 'none',
     borderColor: 'gray.900',
     _hover: {
-      bg: 'gray.100',
+      color: 'gray.600',
     },
     _active: {
-      bg: 'gray.200',
+      color: 'gray.400',
     },
     _disabled: {
       color: 'gray.300',
