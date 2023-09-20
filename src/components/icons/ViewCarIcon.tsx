@@ -2,12 +2,12 @@ import React from 'react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const ViewIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'ViewIcon',
+export const ViewCarIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+  displayName: 'ViewCarIcon',
   viewBox: '0 0 48 48',
   path: (
     <>
-      <title>View icon</title>
+      <title>View car icon</title>
       <g fill="currentColor">
         <path d="M24 23h3.98v2H24v-2Z" />
         <path d="M44 23.78A4.78 4.78 0 0 0 39.22 19h-5.68L27 9H8l-4 9 1.82.83L9.29 11H18v10h2V11h2v10h17.22A2.79 2.79 0 0 1 42 23.78V33h-4.1a5 5 0 0 0-9.8 0H24l-2 2h6.1a5 5 0 0 0 9.8 0H44V23.78ZM24 19v-8h1.89l5.26 8H24Zm9 18a3 3 0 1 1 0-5.999A3 3 0 0 1 33 37Z" />
