@@ -162,11 +162,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.searchMenu.searchMotorcycles',
+          forceMotoscoutLink: true,
           link: {
-            de: 'https://www.motoscout24.ch/de',
-            en: 'https://www.motoscout24.ch/de',
-            fr: 'https://www.motoscout24.ch/fr',
-            it: 'https://www.motoscout24.ch/it',
+            de: '/de',
+            en: '/de',
+            fr: '/fr',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
@@ -181,11 +182,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.searchMenu.searchCars',
+          forceAutoscoutLink: true,
           link: {
-            de: 'https://www.autoscout24.ch/de',
-            en: 'https://www.autoscout24.ch/de',
-            fr: 'https://www.autoscout24.ch/fr',
-            it: 'https://www.autoscout24.ch/it',
+            de: '/de',
+            en: '/de',
+            fr: '/fr',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
@@ -302,11 +304,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.myVehicles',
+          isInternal: true,
           link: {
-            de: 'https://dealer.autoscout24.ch/de/vehicles',
-            en: 'https://dealer.autoscout24.ch/de/vehicles',
-            fr: 'https://dealer.autoscout24.ch/fr/vehicles',
-            it: 'https://dealer.autoscout24.ch/it/vehicles',
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -340,11 +343,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.myMotorcycles',
+          isInternal: true,
           link: {
-            de: 'https://dealer.motoscout24.ch/de/vehicles',
-            en: 'https://dealer.motoscout24.ch/de/vehicles',
-            fr: 'https://dealer.motoscout24.ch/fr/vehicles',
-            it: 'https://dealer.motoscout24.ch/it/vehicles',
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
           },
           visibilitySettings: {
             userType: {
@@ -378,11 +382,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.dealerDashboard',
+          isInternal: true,
           link: {
-            de: 'https://dealer.autoscout24.ch/de/login',
-            en: 'https://dealer.autoscout24.ch/de/login',
-            fr: 'https://dealer.autoscout24.ch/fr/login',
-            it: 'https://dealer.autoscout24.ch/it/login',
+            de: '/de/login',
+            en: '/de/login',
+            fr: '/fr/login',
+            it: '/it/login',
           },
           visibilitySettings: {
             userType: {
@@ -397,11 +402,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.dealerDashboard',
+          isInternal: true,
           link: {
-            de: 'https://dealer.motoscout24.ch/de',
-            en: 'https://dealer.motoscout24.ch/de',
-            fr: 'https://dealer.motoscout24.ch/fr',
-            it: 'https://dealer.motoscout24.ch/it',
+            de: '/de',
+            en: '/de',
+            fr: '/fr',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
@@ -511,11 +517,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.motorcyclePark',
+          forceMotoscoutLink: true,
           link: {
-            de: 'https://www.motoscout24.ch/de/member/vehiclepool',
-            en: 'https://www.motoscout24.ch/de/member/vehiclepool',
-            fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
-            it: 'https://www.motoscout24.ch/it/member/vehiclepool',
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -530,11 +537,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.carPark',
+          forceAutoscoutLink: true,
           link: {
-            de: 'https://www.autoscout24.ch/de/member/vehiclepool',
-            en: 'https://www.autoscout24.ch/de/member/vehiclepool',
-            fr: 'https://www.autoscout24.ch/fr/member/vehiclepool',
-            it: 'https://www.autoscout24.ch/it/member/vehiclepool',
+            de: '/de/member/vehiclepool',
+            en: '/de/member/vehiclepool',
+            fr: '/fr/member/vehiclepool',
+            it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -668,11 +676,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.boosteras24',
+          isInternal: true,
           link: {
-            de: 'https://dealer.autoscout24.ch/de/booster',
-            en: 'https://dealer.autoscout24.ch/de/booster',
-            fr: 'https://dealer.autoscout24.ch/fr/booster',
-            it: 'https://dealer.autoscout24.ch/it/booster',
+            de: '/de/booster',
+            en: '/de/booster',
+            fr: '/fr/booster',
+            it: '/it/booster',
           },
           visibilitySettings: {
             userType: {
@@ -1336,11 +1345,12 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.estimate',
+          isInternal: true,
           link: {
-            de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-            en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-            fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
-            it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
+            de: '/de/fahrzeugbewertung',
+            en: '/de/fahrzeugbewertung',
+            fr: '/fr/evaluation-vehicules',
+            it: '/it/valuazione-vehicoli',
           },
           showUnderMoreLinkBelow: 'sm',
           visibilitySettings: {

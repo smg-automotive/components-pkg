@@ -16,6 +16,7 @@ export interface VisibilitySettings {
     professional: boolean;
     guest?: boolean;
   };
+  isInternal?: boolean;
 }
 export type LocalizedLinks = Record<Language, string>;
 
@@ -31,6 +32,9 @@ export interface LinkConfig {
   onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
+  isInternal?: boolean;
+  forceMotoscoutLink?: boolean;
+  forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
 }
 
@@ -42,6 +46,16 @@ export interface LinkInstance {
   onClick?: () => void;
 }
 
+export type Domains =
+  | Record<Brand, Record<'main', Record<Environment, string>>>
+  | Record<
+      Brand,
+      Record<
+        'internal',
+        Record<'professional' | 'private', Record<Environment, string>>
+      >
+    >;
+
 // !!CMP Link
 export class Link {
   translationKey?: string;
@@ -50,6 +64,9 @@ export class Link {
   onClick?: () => void;
   isVisible: boolean;
   rightIcon?: ReactNode;
+  isInternal?: boolean;
+  forceMotoscoutLink?: boolean;
+  forceAutoscoutLink?: boolean;
 
   constructor({
     config,
@@ -59,6 +76,9 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     domains,
+    isInternal,
+    forceMotoscoutLink,
+    forceAutoscoutLink,
     hasEntitlement = false,
     rightIcon,
   }: {
@@ -68,7 +88,10 @@ export class Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Record<Brand, Record<Environment, string>>;
+    domains: Domains;
+    isInternal?: boolean;
+    forceMotoscoutLink?: boolean;
+    forceAutoscoutLink?: boolean;
     hasEntitlement?: boolean;
     rightIcon?: ReactNode;
     shouldDisplayMissingEntitlementIcon?: boolean;
@@ -91,6 +114,10 @@ export class Link {
       useAbsoluteUrls,
       linkProtocol,
       domains,
+      isInternal,
+      forceMotoscoutLink,
+      forceAutoscoutLink,
+      userType,
     });
 
     this.rightIcon = Link.shouldDisplayMissingEntitlementIcon(
@@ -126,6 +153,10 @@ export class Link {
     environment,
     useAbsoluteUrls,
     linkProtocol,
+    isInternal = false,
+    forceMotoscoutLink = false,
+    forceAutoscoutLink = false,
+    userType,
     domains,
   }: {
     link?: LocalizedLinks;
@@ -133,12 +164,39 @@ export class Link {
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
-    domains: Record<Brand, Record<Environment, string>>;
+    domains: Domains;
+    isInternal?: boolean;
+    forceMotoscoutLink?: boolean;
+    forceAutoscoutLink?: boolean;
+    userType?: UserType;
   }) {
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
 
-    const domain = domains[brand][environment];
+    const forceBrandDomain = () => {
+      if (forceAutoscoutLink) {
+        return Brand.AutoScout24;
+      } else if (forceMotoscoutLink) {
+        return Brand.MotoScout24;
+      } else {
+        return brand;
+      }
+    };
+    const forceBrand = forceBrandDomain();
+
+    const domain =
+      !isInternal || userType === UserType.Guest
+        ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
+            'main'
+          ][environment]
+        : (
+            domains[forceBrand] as Record<
+              'internal',
+              Record<'professional' | 'private', Record<Environment, string>>
+            >
+          )['internal'][userType as UserType.Private | UserType.Professional][
+            environment
+          ];
     const baseUrl = `${linkProtocol}://${domain}`;
 
     return {
