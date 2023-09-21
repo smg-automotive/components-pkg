@@ -72,7 +72,7 @@ const variants = {
     },
   },
   transparent: {
-    bg: 'white',
+    bg: 'transparent',
     color: 'gray.900',
     border: 'none',
     borderColor: 'gray.900',
