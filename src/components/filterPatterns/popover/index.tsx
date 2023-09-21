@@ -1,10 +1,10 @@
+import FocusLock from 'react-focus-lock';
 import React, { FC } from 'react';
 import { I18nContext } from '@smg-automotive/i18n-pkg';
 import {
   ButtonGroup,
   chakra,
   Button as ChakraButton,
-  FocusLock,
   IconButton,
   Popover,
   PopoverTrigger,
@@ -30,7 +30,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   header,
-  initialFocusRef,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -123,12 +122,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                 />
               ) : null}
             </ButtonGroup>
-            <FocusLock
-              restoreFocus={true}
-              persistentFocus={false}
-              autoFocus={!initialFocusRef}
-              initialFocusRef={initialFocusRef}
-            >
+            <FocusLock returnFocus={true} persistentFocus={false}>
               <FilterPopover
                 actionButton={actionButton}
                 isApplied={isApplied}

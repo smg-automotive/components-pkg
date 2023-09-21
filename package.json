@@ -132,6 +132,7 @@
     "framer-motion": "10.16.4",
     "fs-extra": "11.1.1",
     "merge-json-file": "1.0.1",
+    "react-focus-lock": "^2.9.5",
     "use-debounce": "9.0.4",
     "yargs": "17.7.2"
   }
