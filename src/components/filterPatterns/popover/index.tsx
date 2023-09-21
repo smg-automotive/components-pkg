@@ -4,11 +4,11 @@ import {
   ButtonGroup,
   chakra,
   Button as ChakraButton,
+  FocusLock,
   IconButton,
   Popover,
   PopoverTrigger,
   useDisclosure,
-  FocusLock,
 } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
