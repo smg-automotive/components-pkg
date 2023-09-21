@@ -77,10 +77,10 @@ const variants = {
     border: 'none',
     borderColor: 'gray.900',
     _hover: {
-      color: 'gray.600',
+      bg: 'gray.100',
     },
     _active: {
-      color: 'gray.400',
+      bg: 'gray.200',
     },
     _disabled: {
       color: 'gray.300',
