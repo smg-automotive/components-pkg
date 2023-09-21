@@ -8,6 +8,7 @@ import {
   Popover,
   PopoverTrigger,
   useDisclosure,
+  FocusLock,
 } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
@@ -29,6 +30,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   header,
+  initialFocusRef,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -121,18 +123,25 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                 />
               ) : null}
             </ButtonGroup>
-            <FilterPopover
-              actionButton={actionButton}
-              isApplied={isApplied}
-              label={label}
-              numberOfAppliedFilters={numberOfAppliedFilters}
-              onClose={onClose}
-              onResetFilter={onResetFilter}
-              showCallToActionButton={showCallToActionButton}
-              header={header}
+            <FocusLock
+              restoreFocus={true}
+              persistentFocus={false}
+              autoFocus={!initialFocusRef}
+              initialFocusRef={initialFocusRef}
             >
-              {children}
-            </FilterPopover>
+              <FilterPopover
+                actionButton={actionButton}
+                isApplied={isApplied}
+                label={label}
+                numberOfAppliedFilters={numberOfAppliedFilters}
+                onClose={onClose}
+                onResetFilter={onResetFilter}
+                showCallToActionButton={showCallToActionButton}
+                header={header}
+              >
+                {children}
+              </FilterPopover>
+            </FocusLock>
           </Popover>
         )}
       </I18nContext.Consumer>
