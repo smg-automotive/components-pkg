@@ -1,3 +1,4 @@
+import FocusLock from 'react-focus-lock';
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
@@ -43,45 +44,47 @@ const Popover: FC<Props> = ({
   return (
     <Portal>
       <Box zIndex="popover" w="full" h="full" position="relative">
-        <PopoverContent
-          backgroundColor="white"
-          borderRadius="sm"
-          padding="2xl"
-          shadow="xs"
-          w="6xl"
-        >
-          <PopoverHeader>
-            {header ? (
-              header
-            ) : (
-              <FilterHeading
-                isApplied={isApplied}
-                label={label}
-                numberOfAppliedFilters={numberOfAppliedFilters}
-                onClose={onClose}
-                language={language}
-                onResetFilter={onResetFilter}
-              />
-            )}
-          </PopoverHeader>
-          <PopoverBody
-            marginTop="2xl"
-            marginBottom={showCallToActionButton ? '2xl' : '0'}
-            maxH="6xl"
-            overflowY="scroll"
+        <FocusLock returnFocus={true} persistentFocus={false}>
+          <PopoverContent
+            backgroundColor="white"
+            borderRadius="sm"
+            padding="2xl"
+            shadow="xs"
+            w="6xl"
           >
-            {children}
-          </PopoverBody>
-          {showCallToActionButton ? (
-            <PopoverFooter>
-              <FilterActionButton
-                actionButton={actionButton}
-                isApplied={isApplied}
-                onClose={onClose}
-              />
-            </PopoverFooter>
-          ) : null}
-        </PopoverContent>
+            <PopoverHeader>
+              {header ? (
+                header
+              ) : (
+                <FilterHeading
+                  isApplied={isApplied}
+                  label={label}
+                  numberOfAppliedFilters={numberOfAppliedFilters}
+                  onClose={onClose}
+                  language={language}
+                  onResetFilter={onResetFilter}
+                />
+              )}
+            </PopoverHeader>
+            <PopoverBody
+              marginTop="2xl"
+              marginBottom={showCallToActionButton ? '2xl' : '0'}
+              maxH="6xl"
+              overflowY="scroll"
+            >
+              {children}
+            </PopoverBody>
+            {showCallToActionButton ? (
+              <PopoverFooter>
+                <FilterActionButton
+                  actionButton={actionButton}
+                  isApplied={isApplied}
+                  onClose={onClose}
+                />
+              </PopoverFooter>
+            ) : null}
+          </PopoverContent>
+        </FocusLock>
       </Box>
     </Portal>
   );

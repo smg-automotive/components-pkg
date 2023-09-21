@@ -1,4 +1,3 @@
-import FocusLock from 'react-focus-lock';
 import React, { FC } from 'react';
 import { I18nContext } from '@smg-automotive/i18n-pkg';
 import {
@@ -122,20 +121,19 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                 />
               ) : null}
             </ButtonGroup>
-            <FocusLock returnFocus={true} persistentFocus={false}>
-              <FilterPopover
-                actionButton={actionButton}
-                isApplied={isApplied}
-                label={label}
-                numberOfAppliedFilters={numberOfAppliedFilters}
-                onClose={onClose}
-                onResetFilter={onResetFilter}
-                showCallToActionButton={showCallToActionButton}
-                header={header}
-              >
-                {children}
-              </FilterPopover>
-            </FocusLock>
+
+            <FilterPopover
+              actionButton={actionButton}
+              isApplied={isApplied}
+              label={label}
+              numberOfAppliedFilters={numberOfAppliedFilters}
+              onClose={onClose}
+              onResetFilter={onResetFilter}
+              showCallToActionButton={showCallToActionButton}
+              header={header}
+            >
+              {children}
+            </FilterPopover>
           </Popover>
         )}
       </I18nContext.Consumer>
