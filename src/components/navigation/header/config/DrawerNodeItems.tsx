@@ -632,7 +632,7 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
-              motoscout24: false,
+              motoscout24: true,
             },
           },
         },
