@@ -637,25 +637,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.topListingPro',
-          link: {
-            de: '/de/features/top-list/manage',
-            en: '/de/features/top-list/manage',
-            fr: '/fr/features/top-list/manage',
-            it: '/it/features/top-list/manage',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.topCars',
           link: {
             de: '/de/member/topvehicles',
