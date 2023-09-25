@@ -33,8 +33,6 @@ export interface LinkConfig {
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
   isInternal?: boolean;
-  forceMotoscoutLink?: boolean;
-  forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
 }
 
@@ -65,8 +63,6 @@ export class Link {
   isVisible: boolean;
   rightIcon?: ReactNode;
   isInternal?: boolean;
-  forceMotoscoutLink?: boolean;
-  forceAutoscoutLink?: boolean;
 
   constructor({
     config,
@@ -77,8 +73,6 @@ export class Link {
     linkProtocol,
     domains,
     isInternal,
-    forceMotoscoutLink,
-    forceAutoscoutLink,
     hasEntitlement = false,
     rightIcon,
   }: {
@@ -90,8 +84,6 @@ export class Link {
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
-    forceMotoscoutLink?: boolean;
-    forceAutoscoutLink?: boolean;
     hasEntitlement?: boolean;
     rightIcon?: ReactNode;
     shouldDisplayMissingEntitlementIcon?: boolean;
@@ -115,8 +107,6 @@ export class Link {
       linkProtocol,
       domains,
       isInternal,
-      forceMotoscoutLink,
-      forceAutoscoutLink,
       userType,
     });
 
@@ -154,8 +144,6 @@ export class Link {
     useAbsoluteUrls,
     linkProtocol,
     isInternal = false,
-    forceMotoscoutLink = false,
-    forceAutoscoutLink = false,
     userType,
     domains,
   }: {
@@ -166,28 +154,15 @@ export class Link {
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
-    forceMotoscoutLink?: boolean;
-    forceAutoscoutLink?: boolean;
     userType?: UserType;
   }) {
-    const forceBrandDomain = () => {
-      if (forceAutoscoutLink) {
-        return Brand.AutoScout24;
-      } else if (forceMotoscoutLink) {
-        return Brand.MotoScout24;
-      } else {
-        return brand;
-      }
-    };
-    const forceBrand = forceBrandDomain();
-
     const domain =
       !isInternal || userType === UserType.Guest
-        ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
+        ? (domains[brand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
         : (
-            domains[forceBrand] as Record<
+            domains[brand] as Record<
               'internal',
               Record<'professional' | 'private', Record<Environment, string>>
             >
@@ -196,7 +171,7 @@ export class Link {
           ];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
-    if (link && (isInternal || forceAutoscoutLink || forceMotoscoutLink)) {
+    if (link && isInternal) {
       return {
         de: `${baseUrl}${link.de}`,
         fr: `${baseUrl}${link.fr}`,

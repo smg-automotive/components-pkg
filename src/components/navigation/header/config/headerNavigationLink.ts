@@ -34,8 +34,6 @@ export class HeaderNavigationLink extends Link {
     color,
     userAvatar,
     isInternal = false,
-    forceMotoscoutLink = false,
-    forceAutoscoutLink = false,
     hasEntitlement = false,
   }: {
     config: LinkConfig;
@@ -53,8 +51,6 @@ export class HeaderNavigationLink extends Link {
     color?: string;
     userAvatar?: ReactNode;
     isInternal?: boolean;
-    forceMotoscoutLink?: boolean;
-    forceAutoscoutLink?: boolean;
     hasEntitlement?: boolean;
   }) {
     super({
@@ -66,8 +62,6 @@ export class HeaderNavigationLink extends Link {
       linkProtocol,
       domains,
       isInternal,
-      forceMotoscoutLink,
-      forceAutoscoutLink,
       hasEntitlement,
       rightIcon,
     });
@@ -77,8 +71,6 @@ export class HeaderNavigationLink extends Link {
     this.variant = variant;
     this.color = color;
     this.isInternal = isInternal;
-    this.forceAutoscoutLink = forceAutoscoutLink;
-    this.forceMotoscoutLink = forceMotoscoutLink;
     this.userAvatar = userAvatar;
   }
 }

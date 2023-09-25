@@ -162,12 +162,11 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.searchMenu.searchMotorcycles',
-          forceMotoscoutLink: true,
           link: {
-            de: '/de',
-            en: '/de',
-            fr: '/fr',
-            it: '/it',
+            de: 'https://www.motoscout24.ch/de',
+            en: 'https://www.motoscout24.ch/de',
+            fr: 'https://www.motoscout24.ch/fr',
+            it: 'https://www.motoscout24.ch/it',
           },
           visibilitySettings: {
             userType: {
@@ -182,12 +181,11 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.searchMenu.searchCars',
-          forceAutoscoutLink: true,
           link: {
-            de: '/de',
-            en: '/de',
-            fr: '/fr',
-            it: '/it',
+            de: 'https://www.autoscout24.ch/de',
+            en: 'https://www.autoscout24.ch/de',
+            fr: 'https://www.autoscout24.ch/fr',
+            it: 'https://www.autoscout24.ch/it',
           },
           visibilitySettings: {
             userType: {
@@ -517,12 +515,11 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.motorcyclePark',
-          forceMotoscoutLink: true,
           link: {
-            de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
+            de: 'https://www.motoscout24.ch/de/member/vehiclepool',
+            en: 'https://www.motoscout24.ch/de/member/vehiclepool',
+            fr: 'https://www.motoscout24.ch/fr/member/vehiclepool',
+            it: 'https://www.motoscout24.ch/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -537,12 +534,11 @@ export const drawerNodeItems = ({
         },
         {
           translationKey: 'header.userMenu.carPark',
-          forceAutoscoutLink: true,
           link: {
-            de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
+            de: 'https://www.autoscout24.ch/de/member/vehiclepool',
+            en: 'https://www.autoscout24.ch/de/member/vehiclepool',
+            fr: 'https://www.autoscout24.ch/fr/member/vehiclepool',
+            it: 'https://www.autoscout24.ch/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
