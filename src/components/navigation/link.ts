@@ -182,9 +182,7 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal ||
-      !userType ||
-      ![UserType.Private, UserType.Professional].includes(userType)
+      !isInternal || userType === UserType.Guest
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
