@@ -183,8 +183,8 @@ export class Link {
 
     const domain =
       !isInternal ||
-      userType !== (UserType.Private || UserType.Professional) ||
-      !userType
+      !userType ||
+      ![UserType.Private, UserType.Professional].includes(userType)
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
