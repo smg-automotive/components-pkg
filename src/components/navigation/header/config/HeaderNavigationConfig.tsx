@@ -88,7 +88,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.menuHeight = '60px';
     this.user = user;
     this.userType =
-      user && ![UserType.Private, UserType.Professional].includes(user.type)
+      user && user.type === (UserType.Private || UserType.Professional)
         ? user.type
         : UserType.Guest;
     this.urlPathParams = urlPathParams;
