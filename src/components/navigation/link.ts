@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { MappedUserType } from '@smg-automotive/auth';
+
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
@@ -191,9 +192,9 @@ export class Link {
               'internal',
               Record<'professional' | 'private', Record<Environment, string>>
             >
-          )['internal'][userType as MappedUserType.Private | MappedUserType.Professional][
-            environment
-          ];
+          )['internal'][
+            userType as MappedUserType.Private | MappedUserType.Professional
+          ][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (link && (isInternal || forceAutoscoutLink || forceMotoscoutLink)) {

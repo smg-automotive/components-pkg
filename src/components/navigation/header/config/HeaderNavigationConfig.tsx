@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 
+import { MappedUserType, MergedUser } from '@smg-automotive/auth';
+
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
-import { MergedUser, MappedUserType } from '@smg-automotive/auth';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import {

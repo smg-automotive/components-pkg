@@ -2,6 +2,8 @@ import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import { MergedUser } from '@smg-automotive/auth';
+
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
@@ -9,7 +11,6 @@ import { Brand } from 'src/types/brand';
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 import Box from 'src/components/box';
-import { MergedUser } from '@smg-automotive/auth';
 
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
