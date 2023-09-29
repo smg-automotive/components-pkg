@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
-
+import { MappedUserType } from '@smg-automotive/auth';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
@@ -40,7 +40,7 @@ export class HeaderNavigationLink extends Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType;
+    userType?: UserType.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;

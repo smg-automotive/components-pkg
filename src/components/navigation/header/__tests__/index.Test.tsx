@@ -7,7 +7,7 @@ import { screen } from '@storybook/testing-library';
 import { Brand } from 'src/types/brand';
 
 import { UserType } from '../types';
-
+import { MergedUser, MappedUserType } from '@smg-automotive/auth';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
@@ -18,7 +18,7 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{ id: '1', userName: 'John Doe', userType: MappedUserType.Private, account_id: '5', email: '', exp: 123 }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -39,7 +39,7 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{ id: '1', userName: 'John Doe', userType: MappedUserType.Private, account_id: '5', email: '', exp: 123 }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -76,7 +76,7 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{ id: '1', userName: 'John Doe', userType: MappedUserType.Private, account_id: '5', email: '', exp: 123 }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -92,7 +92,7 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{ id: '1', userName: 'John Doe', userType: MappedUserType.Private, account_id: '5', email: '', exp: 123 }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification
@@ -113,12 +113,7 @@ describe('Header', () => {
         headerItems: headerLinks,
         drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
       },
-      user: {
-        id: 1,
-        name: 'John Doe',
-        type: UserType.Private,
-        accountId: 5,
-      },
+      user: { id: '1', userName: 'John Doe', userType: MappedUserType.Private, account_id: '5', email: '', exp: 123 },
     });
     const config = headerConfigInstance.getMappedConfig();
     expect(config).toEqual({

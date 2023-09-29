@@ -9,8 +9,8 @@ import { Brand } from 'src/types/brand';
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 import Box from 'src/components/box';
+import { MergedUser } from '@smg-automotive/auth';
 
-import { User } from './types';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
@@ -24,7 +24,7 @@ interface NavigationProps {
   environment: Environment;
   brand: Brand;
   language: Language;
-  user: User | null;
+  user: MergedUser | null;
   hasNotification: boolean;
   useAbsoluteUrls?: boolean;
   entitlements?: Entitlement[];
@@ -44,8 +44,8 @@ const Navigation: FC<NavigationProps> = ({
   onLogout,
 }) => {
   const config = useMemo(() => {
-    const urlPathParams = user?.accountId
-      ? { accountId: user?.accountId }
+    const urlPathParams = user?.account_id
+      ? { accountId: user?.account_id }
       : undefined;
     const headerNavigationConfigInstance = new HeaderNavigationConfig({
       brand,
@@ -68,7 +68,7 @@ const Navigation: FC<NavigationProps> = ({
     headerLinks,
     drawerNodeItems,
     user?.id,
-    user?.type,
+    user?.userType,
     entitlements,
   ]);
 

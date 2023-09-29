@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-
+import { MappedUserType } from '@smg-automotive/auth';
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
@@ -84,7 +84,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType;
+    userType?: UserType.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -168,7 +168,7 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    userType?: UserType;
+    userType?: UserType.Guest | MappedUserType;
   }) {
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
@@ -182,9 +182,7 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal ||
-      !userType ||
-      ![UserType.Private, UserType.Professional].includes(userType)
+      !isInternal || userType === UserType.Guest
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
@@ -193,7 +191,7 @@ export class Link {
               'internal',
               Record<'professional' | 'private', Record<Environment, string>>
             >
-          )['internal'][userType as UserType.Private | UserType.Professional][
+          )['internal'][userType as MappedUserType.Private | MappedUserType.Professional][
             environment
           ];
     const baseUrl = `${linkProtocol}://${domain}`;
@@ -223,7 +221,7 @@ export class Link {
   }: {
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType?: UserType;
+    userType?: UserType.Guest | MappedUserType;
   }) {
     if (!visibilitySettings.brand[brand]) {
       return false;
