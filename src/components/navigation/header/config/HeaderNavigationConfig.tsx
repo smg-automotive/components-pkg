@@ -16,7 +16,7 @@ import {
 } from 'src/components/navigation/link';
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
-import { UserType } from '../types';
+import { UserTypeExternal } from '../types';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import {
@@ -63,7 +63,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   homeUrl: string;
   menuHeight: string;
   user: MergedUser | null;
-  userType: UserType.Guest | MappedUserType;
+  userType: UserTypeExternal.Guest | MappedUserType;
   mappedConfig?: HeaderNavigationConfigInstance;
   urlPathParams?: Record<string, string | number>;
 
@@ -89,7 +89,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
-    this.userType = user ? user.userType : UserType.Guest;
+    this.userType = user ? user.userType : UserTypeExternal.Guest;
     this.urlPathParams = urlPathParams;
   }
 

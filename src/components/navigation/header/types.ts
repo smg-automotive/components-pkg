@@ -1,6 +1,4 @@
-export enum UserType {
-  Private = 'private',
-  Professional = 'professional',
+export enum UserTypeExternal {
   Guest = 'guest',
 }
 

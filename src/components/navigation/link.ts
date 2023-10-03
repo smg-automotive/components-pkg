@@ -6,7 +6,7 @@ import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
-import { UserType } from './header/types';
+import { UserTypeExternal } from './header/types';
 
 export type LinkTargets = '_blank';
 
@@ -85,7 +85,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -169,7 +169,7 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    userType?: UserType.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
   }) {
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
@@ -183,7 +183,7 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal || userType === UserType.Guest
+      !isInternal || userType === UserTypeExternal.Guest
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
@@ -222,14 +222,14 @@ export class Link {
   }: {
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType?: UserType.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
   }) {
     if (!visibilitySettings.brand[brand]) {
       return false;
     }
 
     if (
-      userType === UserType.Guest &&
+      userType === UserTypeExternal.Guest &&
       visibilitySettings.userType &&
       visibilitySettings.userType[userType] !== undefined
     ) {
@@ -238,7 +238,7 @@ export class Link {
 
     return !(
       userType &&
-      userType !== UserType.Guest &&
+      userType !== UserTypeExternal.Guest &&
       visibilitySettings.userType &&
       !visibilitySettings.userType[userType]
     );
