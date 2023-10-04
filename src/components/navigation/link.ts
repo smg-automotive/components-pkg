@@ -170,9 +170,6 @@ export class Link {
     forceAutoscoutLink?: boolean;
     userType?: UserType;
   }) {
-    const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
-    if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
-
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
         return Brand.AutoScout24;
@@ -185,7 +182,9 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal || userType === UserType.Guest
+      !isInternal ||
+      !userType ||
+      ![UserType.Private, UserType.Professional].includes(userType)
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
@@ -198,6 +197,16 @@ export class Link {
             environment
           ];
     const baseUrl = `${linkProtocol}://${domain}`;
+    const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
+    if (link && (isInternal || forceAutoscoutLink || forceMotoscoutLink)) {
+      return {
+        de: `${baseUrl}${link.de}`,
+        fr: `${baseUrl}${link.fr}`,
+        it: `${baseUrl}${link.it}`,
+        en: `${baseUrl}${link.en}`,
+      };
+    }
+    if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
 
     return {
       de: `${baseUrl}${link.de}`,
