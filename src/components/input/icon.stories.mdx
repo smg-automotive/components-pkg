@@ -1,0 +1,59 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Input from './index.tsx';
+import { Template } from './index.stories.mdx';
+
+import { MagnifierIcon } from '../icons';
+
+<Meta
+  title="Components/Forms/Input/Icon"
+  component={Input}
+  parameters={{
+    controls: {
+      sort: 'alpha',
+      expanded: true,
+    },
+  }}
+/>
+
+# Input
+
+## Icon
+
+### Default
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      size: 'lg',
+      placeholder: 'Placeholder',
+      icon: MagnifierIcon,
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'lg'],
+        control: 'select',
+      },
+      isDisabled: {
+        table: {
+          disable: true,
+        },
+      },
+      isInvalid: {
+        table: {
+          disable: true,
+        },
+      },
+      autoFocus: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />

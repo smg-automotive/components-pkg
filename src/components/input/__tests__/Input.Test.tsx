@@ -97,4 +97,19 @@ describe('<Input>', () => {
 
     expect(input).toHaveFocus();
   });
+
+  it('renders the icon component', () => {
+    const Icon = () => <div>icon</div>;
+    render(
+      <Input
+        name="test-input"
+        placeholder="placeholder"
+        icon={Icon}
+        type="text"
+      />,
+    );
+    const icon = screen.getByText('icon');
+
+    expect(icon).toBeInTheDocument();
+  });
 });

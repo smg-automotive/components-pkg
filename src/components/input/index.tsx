@@ -1,12 +1,19 @@
 import { useDebouncedCallback } from 'use-debounce';
 import React, {
   ChangeEventHandler,
+  ComponentType,
   FocusEventHandler,
   forwardRef,
+  Fragment,
+  PropsWithChildren,
   useEffect,
   useState,
 } from 'react';
-import { Input as ChakraInput } from '@chakra-ui/react';
+import {
+  Input as ChakraInput,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 type SharedProps = {
   placeholder?: string;
@@ -18,6 +25,7 @@ type SharedProps = {
   autoFocus?: boolean;
   name: string;
   type?: 'text' | 'number' | 'password';
+  icon?: ComponentType;
 };
 
 type ControlledInputProps = {
@@ -51,6 +59,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       debounce = false,
       setInputValue,
       type = 'text',
+      icon: Icon,
       ...props
     },
     ref,
@@ -80,14 +89,27 @@ const Input = forwardRef<HTMLInputElement, Props>(
     };
     const onChangeHandler = debounce ? debouncedOnChangeHandler : onChange;
 
+    const Wrapper = Icon
+      ? ({ children }: PropsWithChildren) => (
+          <InputGroup size={props.size}>{children}</InputGroup>
+        )
+      : Fragment;
+
     return (
-      <ChakraInput
-        {...props}
-        type={type}
-        value={inputValue}
-        onChange={onChangeHandler}
-        ref={ref}
-      />
+      <Wrapper>
+        {Icon ? (
+          <InputLeftElement pointerEvents="none">
+            <Icon />
+          </InputLeftElement>
+        ) : null}
+        <ChakraInput
+          {...props}
+          type={type}
+          value={inputValue}
+          onChange={onChangeHandler}
+          ref={ref}
+        />
+      </Wrapper>
     );
   },
 );
