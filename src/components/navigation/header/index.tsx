@@ -45,8 +45,8 @@ const Navigation: FC<NavigationProps> = ({
   onLogout,
 }) => {
   const config = useMemo(() => {
-    const urlPathParams = user?.account_id
-      ? { accountId: user?.account_id }
+    const urlPathParams = user?.sellerId
+      ? { accountId: user?.sellerId }
       : undefined;
     const headerNavigationConfigInstance = new HeaderNavigationConfig({
       brand,
