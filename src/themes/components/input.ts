@@ -5,8 +5,7 @@ import {
 } from '@chakra-ui/styled-system';
 import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 
-const { definePartsStyle, defineMultiStyleConfig } =
-  createMultiStyleConfigHelpers(parts.keys);
+const { definePartsStyle } = createMultiStyleConfigHelpers(parts.keys);
 
 const $height = cssVar('input-height');
 const $paddingX = cssVar('input-padding-x');
@@ -85,7 +84,8 @@ const variants = {
   outline: variantOutline,
 };
 
-export default defineMultiStyleConfig({
+export default {
+  parts: parts.keys,
   baseStyle,
   sizes,
   variants,
@@ -93,4 +93,4 @@ export default defineMultiStyleConfig({
     size: 'md',
     variant: 'outline',
   },
-});
+};
