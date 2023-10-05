@@ -3,17 +3,21 @@ import React, {
   ChangeEventHandler,
   ComponentType,
   FocusEventHandler,
+  ForwardedRef,
   forwardRef,
-  Fragment,
-  PropsWithChildren,
+  MutableRefObject,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import {
   Input as ChakraInput,
-  InputGroup,
   InputLeftElement,
+  InputRightElement,
 } from '@chakra-ui/react';
+
+import InputWrapper from './InputWrapper';
+import ClearButton from './ClearButton';
 
 type SharedProps = {
   placeholder?: string;
@@ -26,6 +30,7 @@ type SharedProps = {
   name: string;
   type?: 'text' | 'number' | 'password';
   icon?: ComponentType;
+  isClearable?: boolean;
 };
 
 type ControlledInputProps = {
@@ -49,7 +54,44 @@ type DebouncedInputPros = {
   setInputValue: (value: string) => void;
 } & SharedProps;
 
-type Props = ControlledInputProps | InputPros | DebouncedInputPros;
+export type Props = ControlledInputProps | InputPros | DebouncedInputPros;
+
+const renderIcon = (Icon?: ComponentType) =>
+  Icon ? (
+    <InputLeftElement pointerEvents="none">
+      <Icon />
+    </InputLeftElement>
+  ) : null;
+
+const renderClearButton = ({
+  isClearable,
+  inputRef,
+}: {
+  isClearable: boolean;
+  inputRef: MutableRefObject<HTMLInputElement | null>;
+}) =>
+  isClearable ? (
+    <InputRightElement>
+      <ClearButton inputRef={inputRef} />
+    </InputRightElement>
+  ) : null;
+
+const copyRefBeforeForwarding =
+  <T extends Element>({
+    forwardedRef,
+    localRef,
+  }: {
+    forwardedRef: ForwardedRef<T>;
+    localRef: MutableRefObject<T | null>;
+  }) =>
+  (node: T | null) => {
+    localRef.current = node;
+    if (typeof forwardedRef === 'function') {
+      forwardedRef(node);
+    } else if (forwardedRef) {
+      forwardedRef.current = node;
+    }
+  };
 
 const Input = forwardRef<HTMLInputElement, Props>(
   (
@@ -60,14 +102,15 @@ const Input = forwardRef<HTMLInputElement, Props>(
       setInputValue,
       type = 'text',
       icon: Icon,
+      isClearable = false,
       ...props
     },
     ref,
   ) => {
-    const [internalUIValue, setInternalUIValue] = useState(value);
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const [internalUIValue, setInternalUIValue] = useState(value || '');
     // https://lawsofux.com/doherty-threshold/
     const debounceThreshold = debounce ? 400 : 0;
-    const inputValue = debounce ? internalUIValue : value;
 
     const setValueDebounced = useDebouncedCallback((newValue) => {
       if (setInputValue) setInputValue(newValue);
@@ -75,7 +118,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
 
     useEffect(() => {
       if (internalUIValue !== value && !setValueDebounced.isPending()) {
-        setInternalUIValue(value);
+        setInternalUIValue(value || '');
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
@@ -87,29 +130,35 @@ const Input = forwardRef<HTMLInputElement, Props>(
       setInternalUIValue(targetValue);
       setValueDebounced(targetValue);
     };
-    const onChangeHandler = debounce ? debouncedOnChangeHandler : onChange;
+    const defaultOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (
+      e,
+    ) => {
+      onChange && onChange(e);
+      setInternalUIValue(e.target.value);
+    };
 
-    const Wrapper = Icon
-      ? ({ children }: PropsWithChildren) => (
-          <InputGroup size={props.size}>{children}</InputGroup>
-        )
-      : Fragment;
+    const onChangeHandler = debounce
+      ? debouncedOnChangeHandler
+      : defaultOnChangeHandler;
 
     return (
-      <Wrapper>
-        {Icon ? (
-          <InputLeftElement pointerEvents="none">
-            <Icon />
-          </InputLeftElement>
-        ) : null}
+      <InputWrapper size={props.size} shouldWrap={!!Icon || isClearable}>
+        {renderIcon(Icon)}
         <ChakraInput
           {...props}
           type={type}
-          value={inputValue}
+          value={internalUIValue}
           onChange={onChangeHandler}
-          ref={ref}
+          ref={copyRefBeforeForwarding({
+            forwardedRef: ref,
+            localRef: inputRef,
+          })}
         />
-      </Wrapper>
+        {renderClearButton({
+          isClearable: isClearable && !!internalUIValue,
+          inputRef,
+        })}
+      </InputWrapper>
     );
   },
 );

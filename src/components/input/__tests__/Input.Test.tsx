@@ -15,6 +15,7 @@ const renderWrapper = ({
   value = '',
   autoFocus = false,
   icon,
+  isClearable,
 }: Partial<Props> = {}) =>
   render(
     <Input
@@ -24,6 +25,7 @@ const renderWrapper = ({
       onBlur={onBlur}
       autoFocus={autoFocus}
       icon={icon}
+      isClearable={isClearable}
       {...(value || value === '' ? { value } : {})}
       {...(debounce ? { debounce, setInputValue, value } : { onChange })}
     />,
@@ -110,5 +112,52 @@ describe('<Input>', () => {
     const icon = screen.getByText('icon');
 
     expect(icon).toBeInTheDocument();
+  });
+
+  describe('clearable', () => {
+    it('clears the input value', async () => {
+      renderWrapper({ placeholder: 'placeholder', isClearable: true });
+      const input = screen.getByPlaceholderText('placeholder');
+
+      await userEvent.type(input, 'test');
+      const clearButton = screen.getByRole('button');
+      await userEvent.click(clearButton);
+
+      expect(input).toHaveValue('');
+    });
+
+    it('focuses the input after clearing', async () => {
+      renderWrapper({ placeholder: 'placeholder', isClearable: true });
+      const input = screen.getByPlaceholderText('placeholder');
+
+      await userEvent.type(input, 'test');
+      const clearButton = screen.getByRole('button');
+      await userEvent.click(clearButton);
+
+      expect(input).toHaveFocus();
+    });
+
+    it('triggers onChange event', async () => {
+      const onChange = jest.fn();
+      renderWrapper({
+        placeholder: 'placeholder',
+        isClearable: true,
+        onChange,
+      });
+
+      const input = screen.getByPlaceholderText('placeholder');
+
+      await userEvent.type(input, 'test');
+      const clearButton = screen.getByRole('button');
+      await userEvent.click(clearButton);
+
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({
+          target: expect.objectContaining({
+            value: '',
+          }),
+        }),
+      );
+    });
   });
 });
