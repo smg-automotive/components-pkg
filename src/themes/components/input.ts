@@ -18,7 +18,6 @@ const baseStyle = definePartsStyle({
     height: $height.reference,
     px: $paddingX.reference,
     py: $paddingY.reference,
-    borderRadius: 'sm',
     minWidth: 0,
     outline: 0,
     position: 'relative',
@@ -58,7 +57,9 @@ const variantOutline = definePartsStyle({
   field: {
     border: '1px solid',
     borderColor: 'gray.400',
+    borderRadius: 'sm',
     bg: 'inherit',
+    color: 'gray.900',
     _placeholder: {
       color: 'gray.400',
     },
