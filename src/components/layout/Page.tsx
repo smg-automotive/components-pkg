@@ -9,6 +9,7 @@ interface Props {
   maxContentWidth: keyof typeof sizes.container;
   skyScraperAd?: ReactNode;
   footer?: ReactNode;
+  isSrpAds?: boolean;
 }
 
 const PageLayout: FC<PropsWithChildren<Props>> = ({
@@ -17,6 +18,7 @@ const PageLayout: FC<PropsWithChildren<Props>> = ({
   skyScraperAd,
   footer,
   children,
+  isSrpAds,
 }) => {
   return (
     <BaseLayout
@@ -24,6 +26,7 @@ const PageLayout: FC<PropsWithChildren<Props>> = ({
       footer={footer}
       skyScraperAd={skyScraperAd}
       maxContentWidth={maxContentWidth}
+      isSrpAds={isSrpAds}
     >
       {children}
     </BaseLayout>
