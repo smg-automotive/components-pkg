@@ -18,7 +18,6 @@ import PageLayout from './Page';
       </Box>
     ),
     maxContentWidth: 'lg',
-    isSrpAds: false,
     footer: (
       <Box h="400px" bg="gray.50">
         <Divider />
@@ -104,28 +103,3 @@ export const Template = (args) => <PageLayout {...args} />;
 </Canvas>
 
 <ArgsTable story="Layout with ads" />
-
-## Layout with large ads on SRP in xl breakpoint
-
-<Canvas>
-  <Story
-    name="Layout with large ads on SRP in xl breakpoint"
-    args={{
-      skyScraperAd: (
-        <Flex
-          bg="red.100"
-          h="600px"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Text>Ads</Text>
-        </Flex>
-      ),
-      isSrpAds: true,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<ArgsTable story="Layout with large ads on SRP in xl breakpoint" />
