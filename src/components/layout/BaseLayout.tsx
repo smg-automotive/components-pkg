@@ -1,9 +1,8 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import { chakra, Container, useMediaQuery } from '@chakra-ui/react';
+import { chakra, Container } from '@chakra-ui/react';
 
 import { sizes } from 'src/themes/shared/sizes';
-import { breakpoints } from 'src/themes';
 
 import Flex from '../flex';
 import Divider from '../divider';
@@ -22,8 +21,6 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
   maxContentWidth,
   children,
 }) => {
-  const [desktopLarge] = useMediaQuery(`(min-width: ${breakpoints.xl.px}px)`);
-
   return (
     <>
       {header ? (
@@ -47,8 +44,8 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
         {skyScraperAd ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
-            width={desktopLarge ? '500px' : '300px'}
-            minWidth={desktopLarge ? '500px' : '300px'}
+            width={{ lg: '300px', xl: '500px' }}
+            minWidth={{ lg: '300px', xl: '500px' }}
             marginRight="2xl"
             position="relative"
             paddingBottom={{ md: '5xl', base: '3xl' }}
