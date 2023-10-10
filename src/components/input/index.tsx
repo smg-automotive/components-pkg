@@ -76,7 +76,7 @@ const renderClearButton = ({
     </InputRightElement>
   ) : null;
 
-const copyRefBeforeForwarding =
+const bindRefBeforeForwarding =
   <T extends Element>({
     forwardedRef,
     localRef,
@@ -149,7 +149,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           type={type}
           value={internalUIValue}
           onChange={onChangeHandler}
-          ref={copyRefBeforeForwarding({
+          ref={bindRefBeforeForwarding({
             forwardedRef: ref,
             localRef: inputRef,
           })}
