@@ -40,14 +40,14 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
         onChange={
-          value
+          value || value === ''
             ? (e) => {
                 setCurrentValue(e.target.value);
                 onChangeHandler(e);
               }
             : onChangeHandler
         }
-        value={value ? currentValue : undefined}
+        value={value || value === '' ? currentValue : undefined}
       />
     </Container>
   );
@@ -71,6 +71,8 @@ export const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
       autoFocus: false,
       value: '',
       type: 'text',
+      isClearable: false,
+      name: 'test',
     }}
     argTypes={{
       value: {
