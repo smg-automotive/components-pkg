@@ -34,8 +34,8 @@ const Select = forwardRef<HTMLSelectElement, Props>(
   ({ options, ...props }, ref) => {
     return (
       <ChakraSelect {...props} icon={<ChevronDownLargeIcon />} ref={ref}>
-        {options.map((option) => (
-          <option value={option.value} key={option.value}>
+        {options.map((option, index) => (
+          <option value={option.value} key={`${option.value}-${index}`}>
             {option.label}
           </option>
         ))}
