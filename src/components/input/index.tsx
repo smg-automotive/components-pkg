@@ -105,7 +105,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       isClearable = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [internalUIValue, setInternalUIValue] = useState(value || '');
@@ -125,14 +125,14 @@ const Input = forwardRef<HTMLInputElement, Props>(
     }, [value]);
 
     const defaultOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (
-      e
+      e,
     ) => {
       onChange && onChange(e);
       setInternalUIValue(e.target.value);
     };
 
     const debouncedOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       const targetValue = event.target.value;
       setInternalUIValue(targetValue);
@@ -162,7 +162,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
         })}
       </InputWrapper>
     );
-  }
+  },
 );
 Input.displayName = 'Input';
 
