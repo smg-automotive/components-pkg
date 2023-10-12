@@ -1,3 +1,5 @@
+import { Brand } from 'src/types/brand';
+
 import { shared } from '../shared';
 import { components } from '../components';
 import { colors } from './colors';
@@ -8,5 +10,6 @@ export const theme: Record<string, any> = {
   colors,
   components,
   name: 'MotoScout 24',
+  brand: Brand.MotoScout24,
   color: colors.brand.primary,
 };
