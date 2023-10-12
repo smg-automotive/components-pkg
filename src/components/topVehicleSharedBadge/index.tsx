@@ -14,7 +14,7 @@ const badgeText = {
   [Brand.MotoScout24]: 'TopMoto',
 };
 
-const TopListingBadge: FC<PropsWithChildren<Props>> = ({
+const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
   children,
   aspectRatio,
 }) => {
@@ -40,4 +40,4 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default TopListingBadge;
+export default TopVehicleSharedBadge;
