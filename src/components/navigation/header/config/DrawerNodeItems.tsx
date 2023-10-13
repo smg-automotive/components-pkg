@@ -1,3 +1,5 @@
+import { Entitlement } from 'src/types/entitlements';
+
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -1116,12 +1118,22 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
-              motoscout24: false,
+              autoscout24: true,
+              motoscout24: true,
             },
+          },
+          entitlementConfig: {
+            requiredEntitlement: Entitlement.BusinessImage,
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_businessimage',
+              en: '/de/productdescription/as24_businessimage',
+              fr: '/fr/productdescription/as24_businessimage',
+              it: '/it/productdescription/as24_businessimage',
+            },
+            missingEntitlementLinkIcon: null,
           },
         },
         {

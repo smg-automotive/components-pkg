@@ -1,5 +1,4 @@
 import { Environment } from 'src/types/environment';
-import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { Domains, LinkConfig, LinkInstance } from './link';
@@ -10,7 +9,7 @@ export abstract class BaseConfig<T> {
   useAbsoluteUrls: boolean;
   linkProtocol: string;
   domains: Domains;
-  entitlements?: Entitlement[];
+  entitlements?: string[];
 
   constructor({
     brand,
@@ -21,7 +20,7 @@ export abstract class BaseConfig<T> {
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
-    entitlements?: Entitlement[];
+    entitlements?: string[];
   }) {
     this.brand = brand;
     this.environment = environment;
