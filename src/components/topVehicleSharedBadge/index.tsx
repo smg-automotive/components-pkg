@@ -25,9 +25,9 @@ const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
       <Box
         w="full"
         textAlign="center"
-        fontWeight="bold"
-        color="blue.700"
-        p="xxs"
+        textStyle="heading4"
+        p="xs"
+        textColor="gray.900"
       >
         {badgeText[brand as Brand]}
       </Box>
