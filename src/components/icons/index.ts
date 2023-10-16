@@ -84,3 +84,4 @@ export { SaveSearchIcon } from './SaveSearchIcon';
 export { AutoScout24Icon } from './AutoScout24Icon';
 export { MotoScout24Icon } from './MotoScout24Icon';
 export { MagnifierLargeIcon } from './MagnifierLargeIcon';
+export { RocketIcon } from './RocketIcon';
