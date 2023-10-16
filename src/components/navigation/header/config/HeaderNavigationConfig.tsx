@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
-import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
@@ -80,7 +79,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config: HeaderNavigationConfigInterface;
     user: User | null;
     urlPathParams?: Record<string, string | number>;
-    entitlements?: Entitlement[];
+    entitlements?: string[];
   }) {
     super({ brand, environment, useAbsoluteUrls, entitlements });
     this.config = config;
