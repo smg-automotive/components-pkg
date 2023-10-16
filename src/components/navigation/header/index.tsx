@@ -3,7 +3,6 @@ import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
 import { Environment } from 'src/types/environment';
-import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
@@ -27,7 +26,7 @@ interface NavigationProps {
   user: User | null;
   hasNotification: boolean;
   useAbsoluteUrls?: boolean;
-  entitlements?: Entitlement[];
+  entitlements?: string[];
   onLogin: () => void;
   onLogout: () => void;
 }
