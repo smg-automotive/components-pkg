@@ -1,4 +1,8 @@
+import React from 'react';
+
 import { Entitlement } from 'src/types/entitlements';
+
+import { CartIcon } from 'src/components/icons';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
@@ -1133,7 +1137,7 @@ export const drawerNodeItems = ({
               fr: '/fr/productdescription/as24_businessimage',
               it: '/it/productdescription/as24_businessimage',
             },
-            missingEntitlementLinkIcon: null,
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
         {
