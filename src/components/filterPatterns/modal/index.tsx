@@ -79,12 +79,13 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           size="full"
           motionPreset="slideInBottom"
         >
-          <ModalContent h="full" w="full">
+          <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
             <ModalHeader
               display="flex"
               flexDirection="column"
               alignItems="flex-start"
-              paddingY="2xl"
+              paddingY="0"
+              paddingX="2xl"
             >
               {header ? (
                 header
@@ -101,15 +102,15 @@ export const ModalFilter: FC<ModalFilterProps> = ({
             </ModalHeader>
             <ModalBody
               overflowY="scroll"
-              padding="0"
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
+              paddingY="0"
               paddingX="2xl"
             >
               {children}
             </ModalBody>
             {showCallToActionButton ? (
-              <ModalFooter paddingX="2xl">
+              <ModalFooter paddingY="0" paddingX="2xl">
                 <FilterActionButton
                   actionButton={actionButton}
                   isApplied={isApplied}
