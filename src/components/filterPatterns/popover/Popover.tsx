@@ -46,11 +46,11 @@ const Popover: FC<Props> = ({
         <PopoverContent
           backgroundColor="white"
           borderRadius="sm"
-          padding="2xl"
+          paddingY="2xl"
           shadow="xs"
           w="6xl"
         >
-          <PopoverHeader>
+          <PopoverHeader paddingX="2xl">
             {header ? (
               header
             ) : (
@@ -69,11 +69,12 @@ const Popover: FC<Props> = ({
             marginBottom={showCallToActionButton ? '2xl' : '0'}
             maxH="6xl"
             overflowY="scroll"
+            paddingX="2xl"
           >
             {children}
           </PopoverBody>
           {showCallToActionButton ? (
-            <PopoverFooter>
+            <PopoverFooter paddingX="2xl">
               <FilterActionButton
                 actionButton={actionButton}
                 isApplied={isApplied}
