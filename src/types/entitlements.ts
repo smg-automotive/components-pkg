@@ -3,4 +3,8 @@
 // support for them. This will be subject to change.
 export enum Entitlement {
   BusinessImage = 'business-image',
+  Optimizer = 'optimizer',
+  OptimizerPro = 'optimizer-pro',
+  AutoRadar = 'auto-radar',
+  AutoRadarFast = 'auto-radar-fast',
 }
