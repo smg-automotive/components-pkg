@@ -21,7 +21,7 @@ export interface VisibilitySettings {
 export type LocalizedLinks = Record<Language, string>;
 
 export interface EntitlementConfig {
-  requiredEntitlement: Entitlement;
+  singleRequiredEntitlement: Entitlement[];
   missingEntitlementFallbackLink: LocalizedLinks;
   missingEntitlementLinkIcon: ReactNode;
 }
