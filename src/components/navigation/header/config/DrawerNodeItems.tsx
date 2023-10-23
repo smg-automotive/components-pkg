@@ -1140,7 +1140,7 @@ export const drawerNodeItems = ({
             },
           },
           entitlementConfig: {
-            requiredEntitlement: Entitlement.BusinessImage,
+            singleRequiredEntitlement: [Entitlement.BusinessImage],
             missingEntitlementFallbackLink: {
               de: '/de/productdescription/as24_businessimage',
               en: '/de/productdescription/as24_businessimage',
