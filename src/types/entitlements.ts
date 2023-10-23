@@ -3,4 +3,5 @@
 // support for them. This will be subject to change.
 export enum Entitlement {
   BusinessImage = 'business-image',
+  OptimizerPro = 'optimizer-pro',
 }

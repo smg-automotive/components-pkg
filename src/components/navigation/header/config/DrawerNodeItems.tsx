@@ -925,13 +925,23 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: false,
-              professional: false,
+              private: true,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
-              motoscout24: false,
+              autoscout24: true,
+              motoscout24: true,
             },
+          },
+          entitlementConfig: {
+            requiredEntitlement: Entitlement.OptimizerPro,
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_optimizer_pro',
+              en: '/de/productdescription/as24_optimizer_pro',
+              fr: '/fr/productdescription/as24_optimizer_pro',
+              it: '/it/productdescription/as24_optimizer_pro',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
       ],
