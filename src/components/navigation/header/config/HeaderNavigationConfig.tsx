@@ -131,7 +131,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
         entitlementConfig.missingEntitlementFallbackLink,
       ),
       missingEntitlementLinkIcon: entitlementConfig.missingEntitlementLinkIcon,
-      requiredEntitlement: entitlementConfig.requiredEntitlement,
+      singleRequiredEntitlement: entitlementConfig.singleRequiredEntitlement,
     } as EntitlementConfig;
   }
 
@@ -139,7 +139,9 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     const { entitlementConfig } = link;
 
     const hasEntitlement = entitlementConfig
-      ? this.entitlements?.includes(entitlementConfig.requiredEntitlement)
+      ? entitlementConfig.singleRequiredEntitlement.some(
+          (entitlement) => this.entitlements?.includes(entitlement),
+        )
       : false;
 
     return new HeaderNavigationLink({
