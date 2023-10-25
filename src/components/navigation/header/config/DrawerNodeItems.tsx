@@ -888,12 +888,25 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
+              autoscout24: true,
               motoscout24: false,
             },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.AutoRadar,
+              Entitlement.AutoRadarFast,
+            ],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_autoradar ',
+              en: '/de/productdescription/as24_autoradar ',
+              fr: '/fr/productdescription/as24_autoradar ',
+              it: '/it/productdescription/as24_autoradar ',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
         {
@@ -1269,12 +1282,25 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
+              autoscout24: true,
               motoscout24: false,
             },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.AutoRadar,
+              Entitlement.AutoRadarFast,
+            ],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_autoradar ',
+              en: '/de/productdescription/as24_autoradar ',
+              fr: '/fr/productdescription/as24_autoradar ',
+              it: '/it/productdescription/as24_autoradar ',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
         {

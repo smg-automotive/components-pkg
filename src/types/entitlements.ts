@@ -5,4 +5,6 @@ export enum Entitlement {
   BusinessImage = 'business-image',
   Optimizer = 'optimizer',
   OptimizerPro = 'optimizer-pro',
+  AutoRadar = 'auto-radar',
+  AutoRadarFast = 'auto-radar-fast',
 }
