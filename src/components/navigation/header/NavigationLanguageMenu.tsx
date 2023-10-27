@@ -13,15 +13,13 @@ interface NavigationLanguageMenuProps {
 export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
-  const handleClick = (language: Language) => {
+  const replaceLanguage = (language: Language) => {
     const updatedUrl = window.location.href.replace(
       `/${activeLanguage}`,
       `/${language}`,
     );
 
-    if (updatedUrl) {
-      window.location.href = updatedUrl;
-    }
+    window.location.href = updatedUrl;
   };
 
   return (
@@ -35,9 +33,9 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         marginTop="-2px"
         offset={[-110, 18]}
         items={[
-          { text: 'Deutsche', onClick: () => handleClick('de') },
-          { text: 'Français', onClick: () => handleClick('fr') },
-          { text: 'Italiana', onClick: () => handleClick('it') },
+          { text: 'Deutsche', onClick: () => replaceLanguage('de') },
+          { text: 'Français', onClick: () => replaceLanguage('fr') },
+          { text: 'Italiana', onClick: () => replaceLanguage('it') },
         ]}
       ></Box>
     </Hide>
