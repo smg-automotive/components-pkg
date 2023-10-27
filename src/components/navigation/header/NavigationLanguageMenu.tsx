@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { replaceLanguageInUrl } from 'src/utilities/replaceLanguageInUrl';
 import Menu from 'src/components/menu';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
@@ -22,9 +23,9 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         marginTop="-2px"
         offset={[-110, 18]}
         items={[
-          { text: 'Deutsch', onClick: () => (window.location.href = '/de') },
-          { text: 'Français', onClick: () => (window.location.href = '/fr') },
-          { text: 'Italiano', onClick: () => (window.location.href = '/it') },
+          { text: 'Deutsch', onClick: () => replaceLanguageInUrl('de') },
+          { text: 'Français', onClick: () => replaceLanguageInUrl('fr') },
+          { text: 'Italiano', onClick: () => replaceLanguageInUrl('it') },
         ]}
       ></Box>
     </Hide>
