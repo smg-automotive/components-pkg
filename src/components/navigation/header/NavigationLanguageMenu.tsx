@@ -33,9 +33,9 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         marginTop="-2px"
         offset={[-110, 18]}
         items={[
-          { text: 'Deutsche', onClick: () => replaceLanguage('de') },
+          { text: 'Deutsch', onClick: () => replaceLanguage('de') },
           { text: 'Français', onClick: () => replaceLanguage('fr') },
-          { text: 'Italiana', onClick: () => replaceLanguage('it') },
+          { text: 'Italiano', onClick: () => replaceLanguage('it') },
         ]}
       ></Box>
     </Hide>
