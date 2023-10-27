@@ -4,6 +4,7 @@ import { replaceLanguageInUrl } from 'src/utilities/replaceLanguageInUrl';
 import Menu from 'src/components/menu';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
+import { Language } from '@smg-automotive/i18n-pkg';
 
 interface NavigationLanguageMenuProps {
   activeLanguage: string;
@@ -12,6 +13,13 @@ interface NavigationLanguageMenuProps {
 export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
+  const handleClick = (language: Language) => {
+    const newUrl = replaceLanguageInUrl(language);
+    if (newUrl) {
+      window.location.href = newUrl;
+    }
+  };
+
   return (
     <Hide below="sm">
       <Box
@@ -23,9 +31,9 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         marginTop="-2px"
         offset={[-110, 18]}
         items={[
-          { text: 'Deutsch', onClick: () => replaceLanguageInUrl('de') },
-          { text: 'Français', onClick: () => replaceLanguageInUrl('fr') },
-          { text: 'Italiano', onClick: () => replaceLanguageInUrl('it') },
+          { text: 'Deutsche', onClick: () => handleClick('de') },
+          { text: 'Français', onClick: () => handleClick('fr') },
+          { text: 'Italiana', onClick: () => handleClick('it') },
         ]}
       ></Box>
     </Hide>
