@@ -8,5 +8,8 @@ export const replaceLanguageInUrl = (language: Language) => {
   const [_empty, currentLanguage, ..._rest] =
     window.location.pathname.split('/');
 
-  window.location.href.replace(currentLanguage, language);
+  window.location.href = window.location.href.replace(
+    `/${currentLanguage}`,
+    `/${language}`,
+  );
 };
