@@ -22,7 +22,7 @@ export interface VisibilitySettings {
 export type LocalizedLinks = Record<Language, string>;
 
 export interface EntitlementConfig {
-  requiredEntitlement: Entitlement;
+  singleRequiredEntitlement: Entitlement[];
   missingEntitlementFallbackLink: LocalizedLinks;
   missingEntitlementLinkIcon: ReactNode;
 }
@@ -183,7 +183,7 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal || userType === UserTypeExternal.Guest
+      !isInternal || !userType || userType === UserTypeExternal.Guest
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]

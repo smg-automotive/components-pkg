@@ -1,3 +1,9 @@
+import React from 'react';
+
+import { Entitlement } from 'src/types/entitlements';
+
+import { CartIcon } from 'src/components/icons';
+
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -882,12 +888,25 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
+              autoscout24: true,
               motoscout24: false,
             },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.AutoRadar,
+              Entitlement.AutoRadarFast,
+            ],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_autoradar ',
+              en: '/de/productdescription/as24_autoradar ',
+              fr: '/fr/productdescription/as24_autoradar ',
+              it: '/it/productdescription/as24_autoradar ',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
         {
@@ -915,17 +934,59 @@ export const drawerNodeItems = ({
             de: '/de/member/vehicleacquisition',
             en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
-            it: 'it/member/vehicleacquisition',
+            it: '/it/member/vehicleacquisition',
           },
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [Entitlement.OptimizerPro],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_optimizer_pro',
+              en: '/de/productdescription/as24_optimizer_pro',
+              fr: '/fr/productdescription/as24_optimizer_pro',
+              it: '/it/productdescription/as24_optimizer_pro',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
+          },
+        },
+        {
+          translationKey: 'header.userMenu.marketPriceCheck',
+          link: {
+            de: '/de/member/vehicleacquisition',
+            en: '/de/member/vehicleacquisition',
+            fr: '/fr/member/vehicleacquisition',
+            it: '/it/member/vehicleacquisition',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
             },
             brand: {
               autoscout24: false,
-              motoscout24: false,
+              motoscout24: true,
             },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.OptimizerPro,
+              Entitlement.Optimizer,
+            ],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_optimizer_pro',
+              en: '/de/productdescription/as24_optimizer_pro',
+              fr: '/fr/productdescription/as24_optimizer_pro',
+              it: '/it/productdescription/as24_optimizer_pro',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
       ],
@@ -1116,12 +1177,22 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
-              motoscout24: false,
+              autoscout24: true,
+              motoscout24: true,
             },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [Entitlement.BusinessImage],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_businessimage',
+              en: '/de/productdescription/as24_businessimage',
+              fr: '/fr/productdescription/as24_businessimage',
+              it: '/it/productdescription/as24_businessimage',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
         {
@@ -1211,12 +1282,25 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
+              autoscout24: true,
               motoscout24: false,
             },
+          },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.AutoRadar,
+              Entitlement.AutoRadarFast,
+            ],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/as24_autoradar ',
+              en: '/de/productdescription/as24_autoradar ',
+              fr: '/fr/productdescription/as24_autoradar ',
+              it: '/it/productdescription/as24_autoradar ',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
           },
         },
         {

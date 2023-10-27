@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import { chakra, Container, Flex } from '@chakra-ui/react';
+import { chakra, Container } from '@chakra-ui/react';
 
 import { sizes } from 'src/themes/shared/sizes';
 
+import Flex from '../flex';
 import Divider from '../divider';
 
 interface Props {
@@ -43,8 +44,8 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
         {skyScraperAd ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
-            width="300px"
-            minWidth="300px"
+            width={{ lg: '300px', xl: '500px' }}
+            minWidth={{ lg: '300px', xl: '500px' }}
             marginRight="2xl"
             position="relative"
             paddingBottom={{ md: '5xl', base: '3xl' }}

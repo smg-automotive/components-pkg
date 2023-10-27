@@ -4,7 +4,6 @@ import { MappedUserType, MergedUser } from '@smg-automotive/auth';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
-import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
@@ -82,7 +81,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config: HeaderNavigationConfigInterface;
     user: MergedUser | null;
     urlPathParams?: Record<string, string | number>;
-    entitlements?: Entitlement[];
+    entitlements?: string[];
   }) {
     super({ brand, environment, useAbsoluteUrls, entitlements });
     this.config = config;
@@ -132,7 +131,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
         entitlementConfig.missingEntitlementFallbackLink,
       ),
       missingEntitlementLinkIcon: entitlementConfig.missingEntitlementLinkIcon,
-      requiredEntitlement: entitlementConfig.requiredEntitlement,
+      singleRequiredEntitlement: entitlementConfig.singleRequiredEntitlement,
     } as EntitlementConfig;
   }
 
@@ -140,7 +139,9 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     const { entitlementConfig } = link;
 
     const hasEntitlement = entitlementConfig
-      ? this.entitlements?.includes(entitlementConfig.requiredEntitlement)
+      ? entitlementConfig.singleRequiredEntitlement.some(
+          (entitlement) => this.entitlements?.includes(entitlement),
+        )
       : false;
 
     return new HeaderNavigationLink({
