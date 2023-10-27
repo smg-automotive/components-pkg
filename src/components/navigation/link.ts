@@ -1,11 +1,13 @@
 import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import { MappedUserType } from '@smg-automotive/auth';
+
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
-import { UserType } from './header/types';
+import { UserTypeExternal } from './header/types';
 
 export type LinkTargets = '_blank';
 
@@ -84,7 +86,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -168,7 +170,7 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    userType?: UserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
   }) {
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
@@ -182,9 +184,7 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal ||
-      !userType ||
-      ![UserType.Private, UserType.Professional].includes(userType)
+      !isInternal || userType === UserTypeExternal.Guest
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
@@ -193,9 +193,9 @@ export class Link {
               'internal',
               Record<'professional' | 'private', Record<Environment, string>>
             >
-          )['internal'][userType as UserType.Private | UserType.Professional][
-            environment
-          ];
+          )['internal'][
+            userType as MappedUserType.Private | MappedUserType.Professional
+          ][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (link && (isInternal || forceAutoscoutLink || forceMotoscoutLink)) {
@@ -223,14 +223,14 @@ export class Link {
   }: {
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType?: UserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
   }) {
     if (!visibilitySettings.brand[brand]) {
       return false;
     }
 
     if (
-      userType === UserType.Guest &&
+      userType === UserTypeExternal.Guest &&
       visibilitySettings.userType &&
       visibilitySettings.userType[userType] !== undefined
     ) {
@@ -239,7 +239,7 @@ export class Link {
 
     return !(
       userType &&
-      userType !== UserType.Guest &&
+      userType !== UserTypeExternal.Guest &&
       visibilitySettings.userType &&
       !visibilitySettings.userType[userType]
     );

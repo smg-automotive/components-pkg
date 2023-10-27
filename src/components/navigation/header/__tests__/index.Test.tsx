@@ -4,9 +4,9 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { screen } from '@storybook/testing-library';
 
-import { Brand } from 'src/types/brand';
+import { MappedUserType } from '@smg-automotive/auth';
 
-import { UserType } from '../types';
+import { Brand } from 'src/types/brand';
 
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
@@ -18,7 +18,16 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: '',
+          exp: 123,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -39,7 +48,16 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: '',
+          exp: 123,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -76,7 +94,16 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: '',
+          exp: 123,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification={false}
@@ -92,7 +119,16 @@ describe('Header', () => {
     render(
       <Navigation
         environment="preprod"
-        user={{ id: 1, name: 'John Doe', type: UserType.Private, accountId: 5 }}
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: '',
+          exp: 123,
+        }}
         brand={Brand.AutoScout24}
         language="en"
         hasNotification
@@ -114,10 +150,14 @@ describe('Header', () => {
         drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
       },
       user: {
-        id: 1,
-        name: 'John Doe',
-        type: UserType.Private,
-        accountId: 5,
+        id: '1',
+        userName: 'John Doe',
+        userType: MappedUserType.Private,
+        sellerId: '5',
+        sellerIds: ['5'],
+        isImpersonated: false,
+        email: '',
+        exp: 123,
       },
     });
     const config = headerConfigInstance.getMappedConfig();

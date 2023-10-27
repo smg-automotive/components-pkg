@@ -73,7 +73,7 @@ export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
 export { default as Modal } from './modal';
 export { default as HeaderNavigation } from './navigation/header';
-export { UserType } from './navigation/header/types';
+export { UserTypeExternal } from './navigation/header/types';
 export { default as GalleryHeader } from './galleryHeader';
 export { default as SelectMenu } from './selectMenu';
 export { default as TopVehicleSharedBadge } from './topVehicleSharedBadge';

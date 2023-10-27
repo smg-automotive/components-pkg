@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
+import { MergedUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
 
-import { User } from './types';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/DrawerNodeItems';
 
 interface NavigationAvatarProps {
-  user: User | null;
+  user: MergedUser | null;
   isOpen: boolean;
   drawer: Drawer;
   hasNotification: boolean;
@@ -46,7 +46,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
           <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
-            {user.name}
+            {user.userName}
           </Box>
         </Hide>
         <DrawerIndicator isOpen={isDrawerOpened} />
