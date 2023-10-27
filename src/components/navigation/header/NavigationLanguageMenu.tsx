@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import { replaceLanguageInUrl } from 'src/utilities/replaceLanguageInUrl';
 import Menu from 'src/components/menu';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
@@ -15,9 +14,13 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
   const handleClick = (language: Language) => {
-    const newUrl = replaceLanguageInUrl(language);
-    if (newUrl) {
-      window.location.href = newUrl;
+    const updatedUrl = window.location.href.replace(
+      `/${activeLanguage}`,
+      `/${language}`,
+    );
+
+    if (updatedUrl) {
+      window.location.href = updatedUrl;
     }
   };
 
