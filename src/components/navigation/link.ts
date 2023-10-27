@@ -24,8 +24,9 @@ export type LocalizedLinks = Record<Language, string>;
 
 export interface EntitlementConfig {
   singleRequiredEntitlement: Entitlement[];
-  missingEntitlementFallbackLink: LocalizedLinks;
-  missingEntitlementLinkIcon: ReactNode;
+  missingEntitlementFallbackLink?: LocalizedLinks;
+  missingEntitlementLinkIcon?: ReactNode;
+  missingEntitlementTranslationKey?: string;
 }
 
 export interface LinkConfig {
@@ -96,9 +97,7 @@ export class Link {
     forceAutoscoutLink?: boolean;
     hasEntitlement?: boolean;
     rightIcon?: ReactNode;
-    shouldDisplayMissingEntitlementIcon?: boolean;
   }) {
-    this.translationKey = config.translationKey;
     this.target = config.target;
     this.onClick = config.onClick;
     this.isVisible = Link.determineVisibility({
@@ -128,6 +127,22 @@ export class Link {
     )
       ? config.entitlementConfig?.missingEntitlementLinkIcon
       : rightIcon;
+
+    this.translationKey = Link.shouldDisplayMissingEntitlementTranslation(
+      hasEntitlement,
+      config.entitlementConfig,
+    )
+      ? config.entitlementConfig?.missingEntitlementTranslationKey
+      : config.translationKey;
+  }
+
+  private static shouldDisplayMissingEntitlementTranslation(
+    hasEntitlement: boolean,
+    entitlementConfig?: EntitlementConfig,
+  ) {
+    return (
+      !hasEntitlement && !!entitlementConfig?.missingEntitlementTranslationKey
+    );
   }
 
   private static shouldDisplayMissingEntitlementIcon(
