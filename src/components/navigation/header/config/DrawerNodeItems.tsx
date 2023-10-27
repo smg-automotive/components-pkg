@@ -934,7 +934,7 @@ export const drawerNodeItems = ({
             de: '/de/member/vehicleacquisition',
             en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
-            it: 'it/member/vehicleacquisition',
+            it: '/it/member/vehicleacquisition',
           },
           visibilitySettings: {
             userType: {
@@ -963,7 +963,7 @@ export const drawerNodeItems = ({
             de: '/de/member/vehicleacquisition',
             en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
-            it: 'it/member/vehicleacquisition',
+            it: '/it/member/vehicleacquisition',
           },
           visibilitySettings: {
             userType: {
