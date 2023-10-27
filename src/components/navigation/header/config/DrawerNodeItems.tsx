@@ -641,6 +641,13 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.ListingVisibilityStandard,
+              Entitlement.ListingVisibilityPremium,
+            ],
+            missingEntitlementTranslationKey: 'header.userMenu.topListing',
+          },
         },
         {
           translationKey: 'header.userMenu.topCars',

@@ -125,12 +125,11 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
 
   mapEntitlementConfig(entitlementConfig: EntitlementConfig) {
     return {
+      ...entitlementConfig,
       missingEntitlementFallbackLink: this.replacePathParams(
         entitlementConfig.missingEntitlementFallbackLink,
       ),
-      missingEntitlementLinkIcon: entitlementConfig.missingEntitlementLinkIcon,
-      singleRequiredEntitlement: entitlementConfig.singleRequiredEntitlement,
-    } as EntitlementConfig;
+    };
   }
 
   mapLink(link: HeaderNavigationLinkConfig) {
