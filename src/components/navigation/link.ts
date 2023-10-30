@@ -88,7 +88,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -196,7 +196,7 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    userType: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
   }) {
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
@@ -253,7 +253,7 @@ export class Link {
     hasEntitlement: boolean;
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | MappedUserType;
     userEntitlements: string[];
     entitlementConfig?: EntitlementConfig;
   }) {
@@ -284,7 +284,7 @@ export class Link {
     // The guest user type was introduced at a later stage.
     // Rather than modifying visibility settings for the guest user type across all link nodes,
     // our goal is to selectively hide a single link in the navigation for guest users.
-    if (visibilitySettings?.userType?.[userType] !== undefined) {
+    if (userType && visibilitySettings?.userType?.[userType] !== undefined) {
       return !!visibilitySettings.userType[userType];
     }
 
