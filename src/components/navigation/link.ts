@@ -22,8 +22,10 @@ export type LocalizedLinks = Record<Language, string>;
 
 export interface EntitlementConfig {
   singleRequiredEntitlement: Entitlement[];
-  missingEntitlementFallbackLink: LocalizedLinks;
-  missingEntitlementLinkIcon: ReactNode;
+  missingEntitlementFallbackLink?: LocalizedLinks;
+  missingEntitlementLinkIcon?: ReactNode;
+  missingEntitlementTranslationKey?: string;
+  hideIfEntitlementIsPresent?: Entitlement;
 }
 
 export interface LinkConfig {
@@ -79,12 +81,12 @@ export class Link {
     isInternal,
     forceMotoscoutLink,
     forceAutoscoutLink,
-    hasEntitlement = false,
+    userEntitlements = [],
     rightIcon,
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserType;
+    userType: UserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -92,14 +94,24 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    hasEntitlement?: boolean;
+    userEntitlements?: string[];
     rightIcon?: ReactNode;
     shouldDisplayMissingEntitlementIcon?: boolean;
   }) {
     this.translationKey = config.translationKey;
     this.target = config.target;
     this.onClick = config.onClick;
+
+    const hasEntitlement = config.entitlementConfig
+      ? config.entitlementConfig.singleRequiredEntitlement.some((entitlement) =>
+          userEntitlements.includes(entitlement),
+        )
+      : true;
+
     this.isVisible = Link.determineVisibility({
+      userEntitlements,
+      entitlementConfig: config.entitlementConfig,
+      hasEntitlement,
       visibilitySettings: config.visibilitySettings,
       brand,
       userType,
@@ -217,31 +229,71 @@ export class Link {
   }
 
   private static determineVisibility({
+    hasEntitlement,
     visibilitySettings,
     brand,
     userType,
+    userEntitlements,
+    entitlementConfig,
   }: {
+    hasEntitlement: boolean;
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType?: UserType;
+    userType: UserType;
+    userEntitlements: string[];
+    entitlementConfig?: EntitlementConfig;
   }) {
     if (!visibilitySettings.brand[brand]) {
       return false;
     }
 
-    if (
-      userType === UserType.Guest &&
-      visibilitySettings.userType &&
-      visibilitySettings.userType[userType] !== undefined
-    ) {
+    const hasRestrictedEntitlement = Link.hasRestrictedEntitlement({
+      entitlementConfig,
+      userEntitlements,
+    });
+
+    if (hasRestrictedEntitlement) {
+      return false;
+    }
+
+    const areEntitlementAndFallbackLinkMissing =
+      Link.areEntitlementAndFallbackLinkMissing({
+        hasEntitlement,
+        entitlementConfig,
+      });
+
+    if (areEntitlementAndFallbackLinkMissing) {
+      return false;
+    }
+
+    if (visibilitySettings?.userType?.[userType] !== undefined) {
       return !!visibilitySettings.userType[userType];
     }
 
-    return !(
-      userType &&
-      userType !== UserType.Guest &&
-      visibilitySettings.userType &&
-      !visibilitySettings.userType[userType]
+    return true;
+  }
+
+  private static hasRestrictedEntitlement({
+    entitlementConfig,
+    userEntitlements,
+  }: {
+    entitlementConfig?: EntitlementConfig;
+    userEntitlements: string[];
+  }) {
+    return entitlementConfig && entitlementConfig.hideIfEntitlementIsPresent
+      ? userEntitlements.includes(entitlementConfig.hideIfEntitlementIsPresent)
+      : false;
+  }
+
+  private static areEntitlementAndFallbackLinkMissing({
+    hasEntitlement,
+    entitlementConfig,
+  }: {
+    hasEntitlement: boolean;
+    entitlementConfig?: EntitlementConfig;
+  }) {
+    return (
+      !hasEntitlement && !!entitlementConfig?.missingEntitlementFallbackLink
     );
   }
 }

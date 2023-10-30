@@ -136,12 +136,6 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   mapLink(link: HeaderNavigationLinkConfig) {
     const { entitlementConfig } = link;
 
-    const hasEntitlement = entitlementConfig
-      ? entitlementConfig.singleRequiredEntitlement.some(
-          (entitlement) => this.entitlements?.includes(entitlement),
-        )
-      : false;
-
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
@@ -168,7 +162,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       variant: link.variant,
       color: link.color,
       userAvatar: link.userAvatar,
-      hasEntitlement,
+      userEntitlements: this.entitlements,
     });
   }
 
