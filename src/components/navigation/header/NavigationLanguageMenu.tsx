@@ -19,7 +19,7 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
       `/${language}`,
     );
 
-    window.location.href = updatedUrl;
+    window.location.replace(updatedUrl);
   };
 
   return (
