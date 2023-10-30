@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
+import { MappedUserType } from '@smg-automotive/auth';
 
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
-import { UserType } from './header/types';
+import { UserTypeExternal } from './header/types';
 
 export type LinkTargets = '_blank';
 
@@ -86,7 +87,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType: UserType;
+    userType: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     linkProtocol: string;
@@ -96,9 +97,7 @@ export class Link {
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
     rightIcon?: ReactNode;
-    shouldDisplayMissingEntitlementIcon?: boolean;
   }) {
-    this.translationKey = config.translationKey;
     this.target = config.target;
     this.onClick = config.onClick;
 
@@ -138,6 +137,22 @@ export class Link {
     )
       ? config.entitlementConfig?.missingEntitlementLinkIcon
       : rightIcon;
+
+    this.translationKey = Link.shouldDisplayMissingEntitlementTranslation(
+      hasEntitlement,
+      config.entitlementConfig,
+    )
+      ? config.entitlementConfig?.missingEntitlementTranslationKey
+      : config.translationKey;
+  }
+
+  private static shouldDisplayMissingEntitlementTranslation(
+    hasEntitlement: boolean,
+    entitlementConfig?: EntitlementConfig,
+  ) {
+    return (
+      !hasEntitlement && !!entitlementConfig?.missingEntitlementTranslationKey
+    );
   }
 
   private static shouldDisplayMissingEntitlementIcon(
@@ -180,7 +195,7 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    userType?: UserType;
+    userType: UserTypeExternal.Guest | MappedUserType;
   }) {
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
@@ -194,9 +209,7 @@ export class Link {
     const forceBrand = forceBrandDomain();
 
     const domain =
-      !isInternal ||
-      !userType ||
-      ![UserType.Private, UserType.Professional].includes(userType)
+      !isInternal || !userType || userType === UserTypeExternal.Guest
         ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
             'main'
           ][environment]
@@ -205,9 +218,9 @@ export class Link {
               'internal',
               Record<'professional' | 'private', Record<Environment, string>>
             >
-          )['internal'][userType as UserType.Private | UserType.Professional][
-            environment
-          ];
+          )['internal'][
+            userType as MappedUserType.Private | MappedUserType.Professional
+          ][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
     if (link && (isInternal || forceAutoscoutLink || forceMotoscoutLink)) {
@@ -239,7 +252,7 @@ export class Link {
     hasEntitlement: boolean;
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType: UserType;
+    userType: UserTypeExternal.Guest | MappedUserType;
     userEntitlements: string[];
     entitlementConfig?: EntitlementConfig;
   }) {

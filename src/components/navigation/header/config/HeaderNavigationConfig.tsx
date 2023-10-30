@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { MappedUserType, MergedUser } from '@smg-automotive/auth';
+
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
@@ -13,7 +15,7 @@ import {
 } from 'src/components/navigation/link';
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
-import { User, UserType } from '../types';
+import { UserTypeExternal } from '../types';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import {
@@ -50,7 +52,7 @@ interface HeaderNavigationConfigInterface {
 interface HeaderNavigationConfigInstance {
   homeUrl: string;
   menuHeight: string;
-  user: User | null;
+  user: MergedUser | null;
   headerItems: HeaderNavigationLink[];
   drawerItems: DrawerNodeItems;
 }
@@ -59,8 +61,8 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   config: HeaderNavigationConfigInterface;
   homeUrl: string;
   menuHeight: string;
-  user: User | null;
-  userType: UserType;
+  user: MergedUser | null;
+  userType: UserTypeExternal.Guest | MappedUserType;
   mappedConfig?: HeaderNavigationConfigInstance;
   urlPathParams?: Record<string, string | number>;
 
@@ -77,7 +79,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     environment?: Environment;
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
-    user: User | null;
+    user: MergedUser | null;
     urlPathParams?: Record<string, string | number>;
     entitlements?: string[];
   }) {
@@ -86,7 +88,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     this.homeUrl = '/';
     this.menuHeight = '60px';
     this.user = user;
-    this.userType = user ? user.type : UserType.Guest;
+    this.userType = user ? user.userType : UserTypeExternal.Guest;
     this.urlPathParams = urlPathParams;
   }
 
@@ -125,12 +127,11 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
 
   mapEntitlementConfig(entitlementConfig: EntitlementConfig) {
     return {
+      ...entitlementConfig,
       missingEntitlementFallbackLink: this.replacePathParams(
         entitlementConfig.missingEntitlementFallbackLink,
       ),
-      missingEntitlementLinkIcon: entitlementConfig.missingEntitlementLinkIcon,
-      singleRequiredEntitlement: entitlementConfig.singleRequiredEntitlement,
-    } as EntitlementConfig;
+    };
   }
 
   mapLink(link: HeaderNavigationLinkConfig) {

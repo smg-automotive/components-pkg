@@ -674,6 +674,13 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          entitlementConfig: {
+            singleRequiredEntitlement: [
+              Entitlement.ListingVisibilityStandard,
+              Entitlement.ListingVisibilityPremium,
+            ],
+            missingEntitlementTranslationKey: 'header.userMenu.topListing',
+          },
         },
         {
           translationKey: 'header.userMenu.topCars',
@@ -967,7 +974,7 @@ export const drawerNodeItems = ({
             de: '/de/member/vehicleacquisition',
             en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
-            it: 'it/member/vehicleacquisition',
+            it: '/it/member/vehicleacquisition',
           },
           visibilitySettings: {
             userType: {
@@ -996,7 +1003,7 @@ export const drawerNodeItems = ({
             de: '/de/member/vehicleacquisition',
             en: '/de/member/vehicleacquisition',
             fr: '/fr/member/vehicleacquisition',
-            it: 'it/member/vehicleacquisition',
+            it: '/it/member/vehicleacquisition',
           },
           visibilitySettings: {
             userType: {
