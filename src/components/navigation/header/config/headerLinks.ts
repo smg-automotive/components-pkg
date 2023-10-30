@@ -175,7 +175,7 @@ export const headerLinks: NavigationLinkConfigProps[] = [
       de: '/de/c/h/information',
       en: '/en/c/h/information',
       fr: '/fr/c/h/information',
-      it: '/it/c/h/information',
+      it: '/it/c/h/informazione',
     },
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
