@@ -1,9 +1,10 @@
-import { Environment } from 'src/types/environment';
+import { MappedUserType } from '@smg-automotive/auth';
+
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { Link } from '../link';
-import { UserType } from '../header/types';
+import { UserTypeExternal } from '../header/types';
 
 describe('Link', () => {
   describe('determineVisiblity', () => {
@@ -21,7 +22,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Private,
+        userType: MappedUserType.Private,
         userEntitlements: [],
       });
 
@@ -40,7 +41,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.AutoScout24,
-        userType: UserType.Private,
+        userType: MappedUserType.Private,
         userEntitlements: [],
       });
 
@@ -60,7 +61,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Private,
+        userType: MappedUserType.Private,
         userEntitlements: [],
       });
 
@@ -79,7 +80,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.AutoScout24,
-        userType: UserType.Professional,
+        userType: MappedUserType.Professional,
         userEntitlements: [],
       });
 
@@ -99,7 +100,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.AutoScout24,
-        userType: UserType.Guest,
+        userType: UserTypeExternal.Guest,
         userEntitlements: [],
       });
 
@@ -120,7 +121,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Private,
+        userType: MappedUserType.Private,
         userEntitlements: [restrictedEntitlement],
         entitlementConfig: {
           hideIfEntitlementIsPresent: restrictedEntitlement,
@@ -130,30 +131,31 @@ describe('Link', () => {
 
       expect(isVisible).toEqual(false);
     });
-    it('should return false if entitlement is missing with fallback link', () => {
-      // const restrictedEntitlement = Entitlement.AutoRadar;
-      // const isVisible = Link['determineVisibility']({
-      //   hasEntitlement: true,
-      //   visibilitySettings: {
-      //     userType: {
-      //       private: true,
-      //       professional: true,
-      //     },
-      //     brand: {
-      //       autoscout24: true,
-      //       motoscout24: true,
-      //     },
-      //   },
-      //   brand: Brand.MotoScout24,
-      //   userType: UserType.Private,
-      //   userEntitlements: [restrictedEntitlement],
-      //   entitlementConfig: {
-      //     hideIfEntitlementIsPresent: restrictedEntitlement,
-      //     singleRequiredEntitlement: [Entitlement.Optimizer],
-      //   },
-      // });
+    it('should return false if entitlement is missing and hideIfRequiredEntitlementIsMissing is set to false', () => {
+      const hideIfRequiredEntitlementIsMissingMock = true;
+      const isVisible = Link['determineVisibility']({
+        hasEntitlement: false,
+        visibilitySettings: {
+          userType: {
+            private: true,
+            professional: true,
+          },
+          brand: {
+            autoscout24: true,
+            motoscout24: true,
+          },
+        },
+        brand: Brand.MotoScout24,
+        userType: MappedUserType.Private,
+        userEntitlements: [],
+        entitlementConfig: {
+          hideIfRequiredEntitlementIsMissing:
+            hideIfRequiredEntitlementIsMissingMock,
+          singleRequiredEntitlement: [Entitlement.Optimizer],
+        },
+      });
 
-      expect(false).toEqual(true);
+      expect(isVisible).toEqual(false);
     });
     it('should return false if visibility settings for user type are false', () => {
       const privateUserVisibility = false;
@@ -170,7 +172,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Private,
+        userType: MappedUserType.Private,
         userEntitlements: [],
       });
 
@@ -191,7 +193,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Private,
+        userType: MappedUserType.Private,
         userEntitlements: [],
       });
 
@@ -211,7 +213,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Guest,
+        userType: UserTypeExternal.Guest,
         userEntitlements: [],
       });
 
@@ -233,7 +235,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: UserType.Guest,
+        userType: UserTypeExternal.Guest,
         userEntitlements: [],
       });
 

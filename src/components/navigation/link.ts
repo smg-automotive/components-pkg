@@ -27,6 +27,7 @@ export interface EntitlementConfig {
   missingEntitlementLinkIcon?: ReactNode;
   missingEntitlementTranslationKey?: string;
   hideIfEntitlementIsPresent?: Entitlement;
+  hideIfRequiredEntitlementIsMissing?: boolean;
 }
 
 export interface LinkConfig {
@@ -269,16 +270,20 @@ export class Link {
       return false;
     }
 
-    const areEntitlementAndFallbackLinkMissing =
-      Link.areEntitlementAndFallbackLinkMissing({
+    const hideIfRequiredEntitlementIsMissing =
+      Link.hideIfRequiredEntitlementIsMissing({
         hasEntitlement,
         entitlementConfig,
       });
 
-    if (areEntitlementAndFallbackLinkMissing) {
+    if (hideIfRequiredEntitlementIsMissing) {
       return false;
     }
 
+    // This scenario is essential when dealing with guest users.
+    // The guest user type was introduced at a later stage.
+    // Rather than modifying visibility settings for the guest user type across all link nodes,
+    // our goal is to selectively hide a single link in the navigation for guest users.
     if (visibilitySettings?.userType?.[userType] !== undefined) {
       return !!visibilitySettings.userType[userType];
     }
@@ -298,7 +303,7 @@ export class Link {
       : false;
   }
 
-  private static areEntitlementAndFallbackLinkMissing({
+  private static hideIfRequiredEntitlementIsMissing({
     hasEntitlement,
     entitlementConfig,
   }: {
@@ -306,7 +311,7 @@ export class Link {
     entitlementConfig?: EntitlementConfig;
   }) {
     return (
-      !hasEntitlement && !!entitlementConfig?.missingEntitlementFallbackLink
+      !hasEntitlement && entitlementConfig?.hideIfRequiredEntitlementIsMissing
     );
   }
 }

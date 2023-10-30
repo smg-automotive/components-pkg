@@ -475,6 +475,7 @@ export const drawerNodeItems = ({
             },
           },
           entitlementConfig: {
+            hideIfRequiredEntitlementIsMissing: true,
             singleRequiredEntitlement: [Entitlement.OptimizerPro],
           },
         },
