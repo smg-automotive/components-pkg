@@ -58,7 +58,7 @@ export const FilterHeading: FC<Props> = ({
             <Link
               as="button"
               disabled={!isApplied}
-              onClick={() => onResetFilter}
+              onClick={() => onResetFilter()}
             >
               {t('filterSelectButton.reset')}
             </Link>
