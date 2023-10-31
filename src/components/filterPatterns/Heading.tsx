@@ -55,7 +55,11 @@ export const FilterHeading: FC<Props> = ({
                 />
               ) : null}
             </Flex>
-            <Link as="button" disabled={!isApplied} onClick={onResetFilter}>
+            <Link
+              as="button"
+              disabled={!isApplied}
+              onClick={() => onResetFilter}
+            >
               {t('filterSelectButton.reset')}
             </Link>
           </>

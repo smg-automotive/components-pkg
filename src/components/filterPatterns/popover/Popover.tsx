@@ -51,9 +51,7 @@ const Popover: FC<Props> = ({
           w="6xl"
         >
           <PopoverHeader paddingX="2xl">
-            {header ? (
-              header
-            ) : (
+            {header ?? (
               <FilterHeading
                 isApplied={isApplied}
                 label={label}
