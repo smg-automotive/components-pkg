@@ -4,7 +4,6 @@ import { Button, chakra, IconButton } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Text from 'src/components/text';
-import Link from 'src/components/link';
 import { CloseIcon } from 'src/components/icons';
 
 import Flex from 'src/components/flex';
