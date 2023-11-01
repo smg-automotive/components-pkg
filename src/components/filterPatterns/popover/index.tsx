@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import { I18nContext } from '@smg-automotive/i18n-pkg';
 import {
   ButtonGroup,
@@ -115,7 +115,10 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   h="md"
                   icon={<CloseIcon w="xs" h="xs" />}
                   minW="md"
-                  onClick={onResetFilter}
+                  onClick={(event: MouseEvent<HTMLElement>) => {
+                    event.stopPropagation();
+                    onResetFilter();
+                  }}
                   w="md"
                   {...appliedOrOpenColorScheme}
                 />
