@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
@@ -58,7 +58,10 @@ export const FilterHeading: FC<Props> = ({
             <Link
               as="button"
               disabled={!isApplied}
-              onClick={() => onResetFilter()}
+              onClick={(event: MouseEvent<HTMLElement>) => {
+                event.stopPropagation();
+                onResetFilter();
+              }}
             >
               {t('filterSelectButton.reset')}
             </Link>
