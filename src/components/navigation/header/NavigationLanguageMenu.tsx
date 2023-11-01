@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import { Language } from '@smg-automotive/i18n-pkg';
+
 import Menu from 'src/components/menu';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
@@ -11,6 +13,15 @@ interface NavigationLanguageMenuProps {
 export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
+  const replaceLanguage = (language: Language) => {
+    const updatedUrl = window.location.href.replace(
+      `/${activeLanguage}`,
+      `/${language}`,
+    );
+
+    window.location.replace(updatedUrl);
+  };
+
   return (
     <Hide below="sm">
       <Box
@@ -22,9 +33,9 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         marginTop="-2px"
         offset={[-110, 18]}
         items={[
-          { text: 'Deutsch', onClick: () => (window.location.href = '/de') },
-          { text: 'Français', onClick: () => (window.location.href = '/fr') },
-          { text: 'Italiano', onClick: () => (window.location.href = '/it') },
+          { text: 'Deutsch', onClick: () => replaceLanguage('de') },
+          { text: 'Français', onClick: () => replaceLanguage('fr') },
+          { text: 'Italiano', onClick: () => replaceLanguage('it') },
         ]}
       ></Box>
     </Hide>
