@@ -66,7 +66,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
       <I18nContext.Consumer>
         {({ t }) => (
           <Popover
-            returnFocusOnClose={true}
+            returnFocusOnClose={false}
             placement="bottom-start"
             isLazy={true}
             isOpen={isOpen}
