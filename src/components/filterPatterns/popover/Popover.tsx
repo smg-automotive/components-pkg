@@ -51,6 +51,7 @@ const Popover: FC<Props> = ({
           paddingY="2xl"
           shadow="xs"
           w="6xl"
+          ref={popoverContentRef}
         >
           <PopoverHeader paddingX="2xl">
             {header ?? (
