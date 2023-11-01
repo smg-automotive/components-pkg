@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, RefObject } from 'react';
 import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
@@ -15,6 +15,7 @@ import { FilterPatternProps } from './props';
 type Props = {
   onClose?: () => void;
   language: Language;
+  contentRef: RefObject<HTMLElement>;
 } & Pick<
   FilterPatternProps,
   'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
@@ -27,6 +28,7 @@ export const FilterHeading: FC<Props> = ({
   label,
   numberOfAppliedFilters,
   onResetFilter,
+  contentRef,
 }) => {
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
@@ -55,7 +57,14 @@ export const FilterHeading: FC<Props> = ({
                 />
               ) : null}
             </Flex>
-            <Link as="button" disabled={!isApplied} onClick={onResetFilter}>
+            <Link
+              as="button"
+              disabled={!isApplied}
+              onClick={() => {
+                onResetFilter();
+                contentRef.current?.focus();
+              }}
+            >
               {t('filterSelectButton.reset')}
             </Link>
           </>
