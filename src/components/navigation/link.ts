@@ -280,10 +280,10 @@ export class Link {
       return false;
     }
 
-    // This scenario is essential when dealing with guest users.
-    // The guest user type was introduced at a later stage.
-    // Rather than modifying visibility settings for the guest user type across all link nodes,
-    // our goal is to selectively hide a single link in the navigation for guest users.
+    // This scenario is essential when dealing with guest users. The guest user
+    // type was introduced at a later stage. Rather than modifying visibility
+    // settings for the guest user type across all link nodes, our goal is to
+    // selectively hide a single link in the navigation for guest users.
     if (userType && visibilitySettings?.userType?.[userType] !== undefined) {
       return !!visibilitySettings.userType[userType];
     }

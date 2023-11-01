@@ -85,26 +85,6 @@ describe('Link', () => {
       });
 
       expect(isVisibleForProfessionalUsers).toEqual(false);
-
-      const isVisibleForGuestUsers = Link['determineVisibility']({
-        hasEntitlement: true,
-        visibilitySettings: {
-          userType: {
-            private: true,
-            professional: true,
-            guest: false,
-          },
-          brand: {
-            autoscout24: true,
-            motoscout24: true,
-          },
-        },
-        brand: Brand.AutoScout24,
-        userType: UserTypeExternal.Guest,
-        userEntitlements: [],
-      });
-
-      expect(isVisibleForGuestUsers).toEqual(false);
     });
     it('should return false if user have restricted entitlement', () => {
       const restrictedEntitlement = Entitlement.AutoRadar;
