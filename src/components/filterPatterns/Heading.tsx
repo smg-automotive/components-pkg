@@ -1,9 +1,10 @@
-import React, { FC, MouseEvent } from 'react';
+import React, { FC } from 'react';
 import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
-import { Button, chakra, IconButton } from '@chakra-ui/react';
+import { chakra, IconButton } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Text from 'src/components/text';
+import Link from 'src/components/link';
 import { CloseIcon } from 'src/components/icons';
 
 import Flex from 'src/components/flex';
@@ -54,15 +55,9 @@ export const FilterHeading: FC<Props> = ({
                 />
               ) : null}
             </Flex>
-            <Button
-              disabled={!isApplied}
-              onClick={(event: MouseEvent<HTMLElement>) => {
-                event.stopPropagation();
-                onResetFilter();
-              }}
-            >
+            <Link as="button" disabled={!isApplied} onClick={onResetFilter}>
               {t('filterSelectButton.reset')}
-            </Button>
+            </Link>
           </>
         )}
       </I18nContext.Consumer>
