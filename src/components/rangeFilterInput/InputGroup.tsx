@@ -51,7 +51,7 @@ function InputGroup<Name extends string>({
       {unit ? <InputLeftElement unit={unit} /> : null}
       <NumberInputField
         placeholder={inputProps.placeholder ? inputProps.placeholder : ''}
-        fontSize="body"
+        fontSize="base"
         autoFocus={refocus}
         aria-label={inputProps.ariaLabel}
       />
