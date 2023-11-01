@@ -15,7 +15,7 @@ import { FilterPatternProps } from './props';
 type Props = {
   onClose?: () => void;
   language: Language;
-  contentRef: RefObject<HTMLElement>;
+  contentRef?: RefObject<HTMLElement>;
 } & Pick<
   FilterPatternProps,
   'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
@@ -62,7 +62,7 @@ export const FilterHeading: FC<Props> = ({
               disabled={!isApplied}
               onClick={() => {
                 onResetFilter();
-                contentRef.current?.focus();
+                contentRef?.current?.focus();
               }}
             >
               {t('filterSelectButton.reset')}
