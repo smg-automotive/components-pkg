@@ -427,6 +427,36 @@ export const drawerNodeItems = ({
           },
         },
         {
+          translationKey: 'header.userMenu.optimizer',
+          link: {
+            de: '/de/member/optimizer',
+            en: '/de/member/optimizer',
+            fr: '/fr/member/optimizer',
+            it: '/it/member/optimizer',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+          entitlementConfig: {
+            hideIfEntitlementIsPresent: Entitlement.OptimizerPro,
+            singleRequiredEntitlement: [Entitlement.Optimizer],
+            missingEntitlementFallbackLink: {
+              de: '/de/productdescription/optimizer',
+              en: '/de/productdescription/optimizer',
+              fr: '/fr/productdescription/optimizer',
+              it: '/it/productdescription/optimizer',
+            },
+            missingEntitlementLinkIcon: <CartIcon />,
+          },
+        },
+        {
           translationKey: 'header.userMenu.optimizerPro',
           link: {
             de: '/de/member/optimizerpro',
@@ -437,12 +467,16 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
-              autoscout24: false,
-              motoscout24: false,
+              autoscout24: true,
+              motoscout24: true,
             },
+          },
+          entitlementConfig: {
+            hideIfRequiredEntitlementIsMissing: true,
+            singleRequiredEntitlement: [Entitlement.OptimizerPro],
           },
         },
         {
@@ -1406,7 +1440,6 @@ export const drawerNodeItems = ({
             userType: {
               private: false,
               professional: true,
-              guest: false,
             },
             brand: {
               autoscout24: false,

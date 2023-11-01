@@ -37,7 +37,7 @@ export class HeaderNavigationLink extends Link {
     isInternal = false,
     forceMotoscoutLink = false,
     forceAutoscoutLink = false,
-    hasEntitlement = false,
+    userEntitlements = [],
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -56,7 +56,7 @@ export class HeaderNavigationLink extends Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    hasEntitlement?: boolean;
+    userEntitlements?: string[];
   }) {
     super({
       config,
@@ -69,7 +69,7 @@ export class HeaderNavigationLink extends Link {
       isInternal,
       forceMotoscoutLink,
       forceAutoscoutLink,
-      hasEntitlement,
+      userEntitlements,
       rightIcon,
     });
     this.isNew = isNew;

@@ -26,6 +26,8 @@ export interface EntitlementConfig {
   missingEntitlementFallbackLink?: LocalizedLinks;
   missingEntitlementLinkIcon?: ReactNode;
   missingEntitlementTranslationKey?: string;
+  hideIfEntitlementIsPresent?: Entitlement;
+  hideIfRequiredEntitlementIsMissing?: boolean;
 }
 
 export interface LinkConfig {
@@ -81,7 +83,7 @@ export class Link {
     isInternal,
     forceMotoscoutLink,
     forceAutoscoutLink,
-    hasEntitlement = false,
+    userEntitlements = [],
     rightIcon,
   }: {
     config: LinkConfig;
@@ -94,12 +96,22 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    hasEntitlement?: boolean;
+    userEntitlements?: string[];
     rightIcon?: ReactNode;
   }) {
     this.target = config.target;
     this.onClick = config.onClick;
+
+    const hasEntitlement = config.entitlementConfig
+      ? config.entitlementConfig.singleRequiredEntitlement.some((entitlement) =>
+          userEntitlements.includes(entitlement),
+        )
+      : true;
+
     this.isVisible = Link.determineVisibility({
+      userEntitlements,
+      entitlementConfig: config.entitlementConfig,
+      hasEntitlement,
       visibilitySettings: config.visibilitySettings,
       brand,
       userType,
@@ -231,31 +243,75 @@ export class Link {
   }
 
   private static determineVisibility({
+    hasEntitlement,
     visibilitySettings,
     brand,
     userType,
+    userEntitlements,
+    entitlementConfig,
   }: {
+    hasEntitlement: boolean;
     visibilitySettings: VisibilitySettings;
     brand: Brand;
     userType?: UserTypeExternal.Guest | MappedUserType;
+    userEntitlements: string[];
+    entitlementConfig?: EntitlementConfig;
   }) {
     if (!visibilitySettings.brand[brand]) {
       return false;
     }
 
-    if (
-      userType === UserTypeExternal.Guest &&
-      visibilitySettings.userType &&
-      visibilitySettings.userType[userType] !== undefined
-    ) {
+    const hasRestrictedEntitlement = Link.hasRestrictedEntitlement({
+      entitlementConfig,
+      userEntitlements,
+    });
+
+    if (hasRestrictedEntitlement) {
+      return false;
+    }
+
+    const hideIfRequiredEntitlementIsMissing =
+      Link.hideIfRequiredEntitlementIsMissing({
+        hasEntitlement,
+        entitlementConfig,
+      });
+
+    if (hideIfRequiredEntitlementIsMissing) {
+      return false;
+    }
+
+    // This scenario is essential when dealing with guest users. The guest user
+    // type was introduced at a later stage. Rather than modifying visibility
+    // settings for the guest user type across all link nodes, our goal is to
+    // selectively hide a single link in the navigation for guest users.
+    if (userType && visibilitySettings?.userType?.[userType] !== undefined) {
       return !!visibilitySettings.userType[userType];
     }
 
-    return !(
-      userType &&
-      userType !== UserTypeExternal.Guest &&
-      visibilitySettings.userType &&
-      !visibilitySettings.userType[userType]
+    return true;
+  }
+
+  private static hasRestrictedEntitlement({
+    entitlementConfig,
+    userEntitlements,
+  }: {
+    entitlementConfig?: EntitlementConfig;
+    userEntitlements: string[];
+  }) {
+    return entitlementConfig && entitlementConfig.hideIfEntitlementIsPresent
+      ? userEntitlements.includes(entitlementConfig.hideIfEntitlementIsPresent)
+      : false;
+  }
+
+  private static hideIfRequiredEntitlementIsMissing({
+    hasEntitlement,
+    entitlementConfig,
+  }: {
+    hasEntitlement: boolean;
+    entitlementConfig?: EntitlementConfig;
+  }) {
+    return (
+      !hasEntitlement && entitlementConfig?.hideIfRequiredEntitlementIsMissing
     );
   }
 }
