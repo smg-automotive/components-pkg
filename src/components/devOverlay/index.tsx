@@ -95,7 +95,11 @@ const DevOverlay: FC<DevOverlayProps> = ({
       <div>
         <span>🚗</span>
         &nbsp;
-        <Switch onChange={toggleTheme} isChecked={isThemeSwitcherChecked} />
+        <Switch
+          onChange={toggleTheme}
+          isChecked={isThemeSwitcherChecked}
+          variant="themeSwitch"
+        />
         &nbsp;
         <span>🏍️</span>
       </div>
@@ -108,6 +112,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
         <Switch
           onChange={toggleTranslation}
           isChecked={displayTranslationKeys}
+          variant="themeSwitch"
         />
         &nbsp;
         <span>🔑</span>
