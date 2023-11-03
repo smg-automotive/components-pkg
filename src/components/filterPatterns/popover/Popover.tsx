@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
   PopoverBody,
@@ -40,6 +40,8 @@ const Popover: FC<Props> = ({
   children,
 }) => {
   const { language } = useI18n();
+  const popoverContentRef = useRef<HTMLElement | null>(null);
+
   return (
     <Portal>
       <Box zIndex="popover" w="full" h="full" position="relative">
@@ -49,11 +51,10 @@ const Popover: FC<Props> = ({
           paddingY="2xl"
           shadow="xs"
           w="6xl"
+          ref={popoverContentRef}
         >
           <PopoverHeader paddingX="2xl">
-            {header ? (
-              header
-            ) : (
+            {header ?? (
               <FilterHeading
                 isApplied={isApplied}
                 label={label}
@@ -61,6 +62,7 @@ const Popover: FC<Props> = ({
                 onClose={onClose}
                 language={language}
                 onResetFilter={onResetFilter}
+                contentRef={popoverContentRef}
               />
             )}
           </PopoverHeader>
