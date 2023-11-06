@@ -11,7 +11,7 @@ export const linkBaseStyle: SystemStyleObject = {
   },
   _disabled: {
     textDecoration: 'none',
-    color: 'gray.300',
+    color: 'gray.500',
   },
 };
 
