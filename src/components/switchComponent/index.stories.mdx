@@ -8,8 +8,23 @@ import Switch from './index.tsx';
 
 ## Overview
 
+export const Template = (args) => {
+  return <Switch {...args} />;
+};
+
 <Canvas>
-  <Story name="Switch">
-    <Switch />
+  <Story
+    name="Switch"
+    args={{
+      variant: 'default',
+    }}
+    argTypes={{
+      variant: {
+        options: ['themeSwitch', 'default'],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
