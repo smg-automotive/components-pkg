@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import { useDisclosure, Grid } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 
 import Button from '../button';
 import Box from '../box';
@@ -33,11 +33,13 @@ export const Template = (args) => {
     >
       <Button onClick={onOpen}>Open</Button>
       <Drawer isOpen={isOpen} onClose={onClose} {...args}>
-        <DrawerOverlay /> 
-        <DrawerContent withCloseButton={args?.withCloseButton} marginTop={headerHeight} p="md">
-          <DrawerBody p="lg">
-            There is a drawer content
-          </DrawerBody>
+        <DrawerOverlay />
+        <DrawerContent
+          withCloseButton={args?.withCloseButton}
+          marginTop={headerHeight}
+          p="md"
+        >
+          <DrawerBody p="lg">There is a drawer content</DrawerBody>
         </DrawerContent>
       </Drawer>
     </Box>
