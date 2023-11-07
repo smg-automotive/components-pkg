@@ -6,6 +6,7 @@ import Button from '../button';
 import Box from '../box';
 import DrawerOverlay from './DrawerOverlay';
 import DrawerContent from './DrawerContent';
+import DrawerBody from './DrawerBody';
 
 import Drawer from './index';
 
@@ -33,8 +34,12 @@ export const Template = (args) => {
       <Button onClick={onOpen}>Open</Button>
       <Drawer isOpen={isOpen} onClose={onClose} {...args}>
         <DrawerOverlay />
-        <DrawerContent marginTop={headerHeight} p="md">
-          There is a drawer content
+        <DrawerContent
+          withCloseButton={args?.withCloseButton}
+          marginTop={headerHeight}
+          p="md"
+        >
+          <DrawerBody p="lg">There is a drawer content</DrawerBody>
         </DrawerContent>
       </Drawer>
     </Box>
@@ -48,10 +53,16 @@ export const Template = (args) => {
     name="Drawer"
     args={{
       placement: 'top',
+      size: 'half',
+      withCloseButton: false,
     }}
     argTypes={{
       placement: {
         options: ['top', 'bottom', 'left', 'right'],
+        control: 'select',
+      },
+      size: {
+        options: ['xl', 'half', 'full'],
         control: 'select',
       },
     }}

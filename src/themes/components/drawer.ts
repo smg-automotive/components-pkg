@@ -52,11 +52,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = () => ({
 });
 
 const sizes = {
-  xs: getSize('xs'),
-  sm: getSize('md'),
-  md: getSize('lg'),
-  lg: getSize('2xl'),
   xl: getSize('4xl'),
+  half: getSize('50vw'),
   full: getSize('full'),
 };
 

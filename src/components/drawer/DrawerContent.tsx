@@ -3,15 +3,19 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   DrawerContent as ChakraDrawerContent,
   DrawerContentProps as ChakraDrawerContentProps,
+  DrawerCloseButton,
 } from '@chakra-ui/react';
 
-const DrawerContent: FC<PropsWithChildren<ChakraDrawerContentProps>> = (
-  props,
-) => {
-  const { children, ...drawerContentProps } = props;
+interface Props extends ChakraDrawerContentProps {
+  withCloseButton?: boolean;
+}
+
+const DrawerContent: FC<PropsWithChildren<Props>> = (props) => {
+  const { children, withCloseButton, ...drawerContentProps } = props;
 
   return (
     <ChakraDrawerContent {...drawerContentProps}>
+      {withCloseButton && <DrawerCloseButton />}
       {children}
     </ChakraDrawerContent>
   );
