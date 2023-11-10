@@ -1,9 +1,12 @@
-import { PartsStyleObject, SystemStyleObject } from '@chakra-ui/react';
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { fontWeights } from '../shared/fontWeights';
 
-const sizes: Record<string, PartsStyleObject<typeof parts>> = {
+const { definePartsStyle, defineMultiStyleConfig } =
+  createMultiStyleConfigHelpers(parts.keys);
+
+const sizes = {
   sm: {
     label: { fontSize: 'sm' },
   },
@@ -12,7 +15,7 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
 };
 
-const baseStyleControl: SystemStyleObject = {
+const baseStyleControl = defineStyle({
   width: 'xs',
   height: 'xs',
   border: '1px',
@@ -31,19 +34,19 @@ const baseStyleControl: SystemStyleObject = {
   _invalid: {
     borderColor: 'red.500',
   },
-};
+});
 
-const baseStyleContainer: SystemStyleObject = {
+const baseStyleContainer = defineStyle({
   _disabled: {
     cursor: 'not-allowed',
   },
-};
+});
 
-const baseStyleIcon: SystemStyleObject = {
+const baseStyleIcon = defineStyle({
   padding: 'xs',
-};
+});
 
-const baseStyleLabel: SystemStyleObject = {
+const baseStyleLabel = defineStyle({
   width: 'full',
   textStyle: 'body',
   fontWeight: {
@@ -54,7 +57,7 @@ const baseStyleLabel: SystemStyleObject = {
   _disabled: {
     color: 'gray.400',
   },
-};
+});
 
 const alignCenter = {
   container: {
@@ -80,12 +83,12 @@ const alignTopForSmallSize = {
   },
 };
 
-const baseStyle: PartsStyleObject<typeof parts> = {
+const baseStyle = definePartsStyle({
   control: baseStyleControl,
   container: baseStyleContainer,
   icon: baseStyleIcon,
   label: baseStyleLabel,
-};
+});
 
 const variants = {
   alignTop: alignTop,
@@ -93,11 +96,11 @@ const variants = {
   alignTopForSmallSize: alignTopForSmallSize,
 };
 
-export default {
+export default defineMultiStyleConfig({
   baseStyle,
   sizes,
   variants,
   defaultProps: {
-    variant: 'allignCenter',
+    variant: 'alignCenter',
   },
-};
+});
