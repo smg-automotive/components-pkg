@@ -1,13 +1,10 @@
-import {
-  ComponentStyleConfig,
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/react';
+import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
 import { accordionAnatomy as parts } from '@chakra-ui/anatomy';
 
-const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys);
+const { definePartsStyle, defineMultiStyleConfig } =
+  createMultiStyleConfigHelpers(parts.keys);
 
-const variantLight = defineStyle({
+const variantLight = definePartsStyle({
   button: {
     _hover: {
       bg: 'gray.50',
@@ -25,7 +22,7 @@ const variantLight = defineStyle({
   },
 });
 
-const variantDark = defineStyle({
+const variantDark = definePartsStyle({
   button: {
     textStyle: 'heading5',
     _hover: {
@@ -48,7 +45,7 @@ const variantDark = defineStyle({
   },
 });
 
-const variantMinimal = defineStyle({
+const variantMinimal = definePartsStyle({
   button: {
     textStyle: 'body',
     paddingX: 0,
@@ -71,7 +68,7 @@ const variantMinimal = defineStyle({
   },
 });
 
-const baseStyle = defineStyle({
+const baseStyle = definePartsStyle({
   container: {
     borderTop: '1px',
     _last: {
@@ -114,4 +111,4 @@ export default defineMultiStyleConfig({
   defaultProps: {
     variant: 'light',
   },
-}) as ComponentStyleConfig;
+});
