@@ -70,7 +70,7 @@ const Popover: FC<Props> = ({
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
             maxH="6xl"
-            overflowY="scroll"
+            overflowY="auto"
             paddingX="2xl"
           >
             {children}

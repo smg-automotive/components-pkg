@@ -101,7 +101,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               )}
             </ModalHeader>
             <ModalBody
-              overflowY="scroll"
+              overflowY="auto"
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
               paddingY="0"
