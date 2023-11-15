@@ -46,11 +46,14 @@ function RangeFilterInputWithSlider<
     });
   }, [from.value, to.value]);
 
-  const handleSliderChange = (newValue: NumericMinMaxValue) => {
+  const handleSliderChange = (event: ChangeSliderCallback) => {
     if (!isSliding) {
       setIsSliding(true);
     }
-    setValuesWhileSliding(newValue);
+    setValuesWhileSliding((prevValuesWhileSliding) => ({
+      ...prevValuesWhileSliding,
+      [event.touched]: event.value[event.touched],
+    }));
   };
 
   const handleSliderRelease = (event: ChangeSliderCallback) => {

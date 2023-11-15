@@ -24,7 +24,7 @@ export type Facet = {
 interface RangeSliderWithChartProps {
   facets: Array<Facet>;
   selection: NumericMinMaxValue;
-  onSliderChange: (values: NumericMinMaxValue) => void;
+  onSliderChange: (event: ChangeCallback) => void;
   onSliderRelease: (event: ChangeCallback) => void;
 }
 
@@ -93,16 +93,30 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
     return initialMinIndex !== currentMinIndex ? 'min' : 'max';
   };
 
-  const handleChangeEnd = ([newMinIndex, newMaxIndex]: number[]) => {
+  const getChangeEvent = ([
+    newMinIndex,
+    newMaxIndex,
+  ]: number[]): ChangeCallback | null => {
     const changedThumb = getChangedThumb(startRange, [
       newMinIndex,
       newMaxIndex,
     ]);
-    if (changedThumb) {
-      onSliderRelease({
-        touched: changedThumb,
-        value: toMinMax(newMinIndex, newMaxIndex, selection),
-      });
+
+    if (!changedThumb) return null;
+
+    return {
+      touched: changedThumb,
+      value: toMinMax(newMinIndex, newMaxIndex, selection),
+    };
+  };
+
+  const handleChange = (
+    [newMinIndex, newMaxIndex]: number[],
+    callback: (event: ChangeCallback) => void,
+  ) => {
+    const changeEvent = getChangeEvent([newMinIndex, newMaxIndex]);
+    if (changeEvent) {
+      callback(changeEvent);
     }
   };
 
@@ -115,10 +129,12 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
         step={1}
         min={0}
         max={scale.length}
-        onChange={([newMinIndex, newMaxIndex]) => {
-          onSliderChange(toMinMax(newMinIndex, newMaxIndex, selection));
-        }}
-        onChangeEnd={handleChangeEnd}
+        onChange={([newMinIndex, newMaxIndex]) =>
+          handleChange([newMinIndex, newMaxIndex], onSliderChange)
+        }
+        onChangeEnd={([newMinIndex, newMaxIndex]) =>
+          handleChange([newMinIndex, newMaxIndex], onSliderRelease)
+        }
         onChangeStart={setStartRange}
         value={toRange(selection)}
       />
