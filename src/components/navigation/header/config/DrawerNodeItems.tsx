@@ -1589,10 +1589,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.magazine',
           link: {
-            de: '/de/c/h/information',
-            en: '/en/c/h/information',
-            fr: '/fr/c/h/information',
-            it: '/it/c/h/informazione',
+            de: 'https://guide.motoscout24.ch/de/',
+            en: 'https://guide.motoscout24.ch/de/',
+            fr: 'https://guide.motoscout24.ch/fr/',
+            it: 'https://guide.motoscout24.ch/it/',
           },
           showUnderMoreLinkBelow: 'lg',
           visibilitySettings: {
