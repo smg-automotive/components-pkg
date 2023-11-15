@@ -59,7 +59,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   const toMinMax = (
     minIndex: number,
     maxIndex: number,
-    previousSelection: NumericMinMaxValue,
+    previousSelection: NumericMinMaxValue
   ): NumericMinMaxValue => ({
     min: minIndex ? toValue(minIndex) : null,
     max: maxIndex ? toValue(maxIndex) : previousSelection.max,
@@ -79,7 +79,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   const getChangedThumb = (
     initial: number[],
-    current: number[],
+    current: number[]
   ): 'max' | 'min' | null => {
     const [initialMinIndex, initialMaxIndex] = initial;
     const [currentMinIndex, currentMaxIndex] = current;
@@ -111,10 +111,10 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   };
 
   const handleChange = (
-    [newMinIndex, newMaxIndex]: number[],
-    callback: (event: ChangeCallback) => void,
+    newValues: number[],
+    callback: (event: ChangeCallback) => void
   ) => {
-    const changeEvent = getChangeEvent([newMinIndex, newMaxIndex]);
+    const changeEvent = getChangeEvent(newValues);
     if (changeEvent) {
       callback(changeEvent);
     }
@@ -129,12 +129,8 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
         step={1}
         min={0}
         max={scale.length}
-        onChange={([newMinIndex, newMaxIndex]) =>
-          handleChange([newMinIndex, newMaxIndex], onSliderChange)
-        }
-        onChangeEnd={([newMinIndex, newMaxIndex]) =>
-          handleChange([newMinIndex, newMaxIndex], onSliderRelease)
-        }
+        onChange={(newValues) => handleChange(newValues, onSliderChange)}
+        onChangeEnd={(newValues) => handleChange(newValues, onSliderRelease)}
         onChangeStart={setStartRange}
         value={toRange(selection)}
       />
