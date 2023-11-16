@@ -59,7 +59,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   const toMinMax = (
     minIndex: number,
     maxIndex: number,
-    previousSelection: NumericMinMaxValue,
+    previousSelection: NumericMinMaxValue
   ): NumericMinMaxValue => ({
     min: minIndex ? toValue(minIndex) : null,
     max: maxIndex ? toValue(maxIndex) : previousSelection.max,
@@ -79,7 +79,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   const getChangedThumb = (
     initial: number[],
-    current: number[],
+    current: number[]
   ): 'max' | 'min' | null => {
     const [initialMinIndex, initialMaxIndex] = initial;
     const [currentMinIndex, currentMaxIndex] = current;
@@ -99,7 +99,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   ]: number[]): ChangeCallback | null => {
     const changedThumb = getChangedThumb(
       startRange ? startRange : toRange(selection),
-      [newMinIndex, newMaxIndex],
+      [newMinIndex, newMaxIndex]
     );
 
     if (!changedThumb) return null;
@@ -112,7 +112,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   const handleChange = (
     newValues: number[],
-    callback: (event: ChangeCallback) => void,
+    callback: (event: ChangeCallback) => void
   ) => {
     const changeEvent = getChangeEvent(newValues);
     if (changeEvent) {
@@ -122,10 +122,11 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   return (
     <>
-      <Box position="relative" top="sm" minH="3xl">
+      <Box position="relative" top="sm" h="3xl">
         <Chart range={toRange(selection)} facets={sortedFacetsByFromKey} />
       </Box>
       <RangeSlider
+        h="sm"
         step={1}
         min={0}
         max={scale.length}
