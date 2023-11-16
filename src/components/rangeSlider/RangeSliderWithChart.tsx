@@ -24,7 +24,7 @@ export type Facet = {
 interface RangeSliderWithChartProps {
   facets: Array<Facet>;
   selection: NumericMinMaxValue;
-  onSliderChange: (values: NumericMinMaxValue) => void;
+  onSliderChange: (event: ChangeCallback) => void;
   onSliderRelease: (event: ChangeCallback) => void;
 }
 
@@ -34,7 +34,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   onSliderChange,
   onSliderRelease,
 }) => {
-  const [startRange, setStartRange] = useState<number[]>([]);
+  const [startRange, setStartRange] = useState<number[] | null>(null);
 
   const sortedFacetsByFromKey = facets.sort((a, b) => a.from - b.from);
 
@@ -93,16 +93,30 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
     return initialMinIndex !== currentMinIndex ? 'min' : 'max';
   };
 
-  const handleChangeEnd = ([newMinIndex, newMaxIndex]: number[]) => {
-    const changedThumb = getChangedThumb(startRange, [
-      newMinIndex,
-      newMaxIndex,
-    ]);
-    if (changedThumb) {
-      onSliderRelease({
-        touched: changedThumb,
-        value: toMinMax(newMinIndex, newMaxIndex, selection),
-      });
+  const getChangeEvent = ([
+    newMinIndex,
+    newMaxIndex,
+  ]: number[]): ChangeCallback | null => {
+    const changedThumb = getChangedThumb(
+      startRange ? startRange : toRange(selection),
+      [newMinIndex, newMaxIndex],
+    );
+
+    if (!changedThumb) return null;
+
+    return {
+      touched: changedThumb,
+      value: toMinMax(newMinIndex, newMaxIndex, selection),
+    };
+  };
+
+  const handleChange = (
+    newValues: number[],
+    callback: (event: ChangeCallback) => void,
+  ) => {
+    const changeEvent = getChangeEvent(newValues);
+    if (changeEvent) {
+      callback(changeEvent);
     }
   };
 
@@ -115,10 +129,14 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
         step={1}
         min={0}
         max={scale.length}
-        onChange={([newMinIndex, newMaxIndex]) => {
-          onSliderChange(toMinMax(newMinIndex, newMaxIndex, selection));
+        onChange={(newValues) => handleChange(newValues, onSliderChange)}
+        onChangeEnd={(newValues) => {
+          const callback = (event: ChangeCallback) => {
+            onSliderRelease(event);
+            setStartRange(newValues);
+          };
+          handleChange(newValues, callback);
         }}
-        onChangeEnd={handleChangeEnd}
         onChangeStart={setStartRange}
         value={toRange(selection)}
       />
