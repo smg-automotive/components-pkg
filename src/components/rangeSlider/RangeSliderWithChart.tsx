@@ -122,10 +122,11 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   return (
     <>
-      <Box position="relative" top="sm">
+      <Box position="relative" top="sm" h="3xl">
         <Chart range={toRange(selection)} facets={sortedFacetsByFromKey} />
       </Box>
       <RangeSlider
+        h="sm"
         step={1}
         min={0}
         max={scale.length}
