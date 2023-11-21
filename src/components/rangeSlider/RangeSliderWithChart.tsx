@@ -43,7 +43,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   const toIndex = (value: number) => {
     const closestValue = scale.reduce((prev, curr) => {
       return Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev;
-    });
+    }, 0);
 
     return scale.indexOf(closestValue);
   };
