@@ -9,6 +9,7 @@ const InputLeftElement: FC<{ unit: string }> = ({ unit }) => {
       paddingLeft="sm"
       height="full"
       fontSize="sm"
+      width="auto"
     >
       {unit}
     </ChakraInputLeftElement>
