@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import {
-  chakra,
-  Button as ChakraButton,
   Modal as ChakraModal,
   ModalBody,
   ModalContent,
@@ -12,12 +10,11 @@ import {
 
 import TranslationProvider from 'src/components/translationProvider';
 
-import { ChevronRightSmallIcon } from 'src/components/icons';
-
 import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 
 import { ModalFilterProps } from './props';
+import { OpenFilterButton } from './OpenFilterButton';
 
 export const ModalFilter: FC<ModalFilterProps> = ({
   actionButton,
@@ -43,36 +40,12 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <>
-        <ChakraButton
+        <OpenFilterButton
+          displayValue={displayValue}
+          isApplied={isApplied}
+          label={label}
           onClick={onOpen}
-          rightIcon={<ChevronRightSmallIcon color="gray.900" />}
-          display="flex"
-          justifyContent="space-between"
-          w="full"
-          h="lg"
-          paddingX="0"
-          paddingY="md"
-          color="gray.900"
-        >
-          <chakra.span
-            display="flex"
-            justifyContent="space-between"
-            w="full"
-            minW="0"
-          >
-            <chakra.span mr="2xl" whiteSpace="nowrap">
-              {label}
-            </chakra.span>
-            <chakra.span
-              fontWeight="bold"
-              overflow="hidden"
-              textOverflow="ellipsis"
-              whiteSpace="nowrap"
-            >
-              {displayValue && isApplied ? displayValue : null}
-            </chakra.span>
-          </chakra.span>
-        </ChakraButton>
+        />
         <ChakraModal
           isOpen={isOpen}
           onClose={onClose}
