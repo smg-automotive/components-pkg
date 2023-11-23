@@ -8,13 +8,14 @@ import { FilterPatternProps } from '../props';
 type Props = Pick<
   FilterPatternProps,
   'label' | 'displayValue' | 'isApplied'
-> & { onClick: () => void };
+> & { onClick: () => void; paddingY?: 'sm' | 'md' };
 
 export const OpenFilterButton: FC<Props> = ({
   displayValue,
   isApplied,
   label,
   onClick,
+  paddingY = 'md',
 }) => {
   return (
     <ChakraButton
@@ -25,7 +26,7 @@ export const OpenFilterButton: FC<Props> = ({
       w="full"
       h="lg"
       paddingX="0"
-      paddingY="md"
+      paddingY={paddingY}
       color="gray.900"
     >
       <chakra.span
