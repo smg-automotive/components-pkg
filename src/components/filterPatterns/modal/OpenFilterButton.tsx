@@ -1,21 +1,36 @@
 import React, { FC } from 'react';
-import { chakra, Button as ChakraButton } from '@chakra-ui/react';
+import {
+  chakra,
+  Button as ChakraButton,
+  ResponsiveValue,
+} from '@chakra-ui/react';
 
 import { ChevronRightSmallIcon } from 'src/components/icons';
 
 import { FilterPatternProps } from '../props';
 
+type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
   'label' | 'displayValue' | 'isApplied'
-> & { onClick: () => void; paddingY?: 'sm' | 'md' };
+> & { onClick: () => void; variant?: Variant };
+
+const paddingY: Record<Variant, ResponsiveValue<string>> = {
+  sm: 'sm',
+  md: 'md',
+};
+
+const height: Record<Variant, ResponsiveValue<string>> = {
+  sm: 'md',
+  md: 'lg',
+};
 
 export const OpenFilterButton: FC<Props> = ({
   displayValue,
   isApplied,
   label,
   onClick,
-  paddingY = 'md',
+  variant = 'md',
 }) => {
   return (
     <ChakraButton
@@ -24,9 +39,9 @@ export const OpenFilterButton: FC<Props> = ({
       display="flex"
       justifyContent="space-between"
       w="full"
-      h="lg"
+      h={height[variant]}
       paddingX="0"
-      paddingY={paddingY}
+      paddingY={paddingY[variant]}
       color="gray.900"
     >
       <chakra.span
