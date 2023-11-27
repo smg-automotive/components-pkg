@@ -5,6 +5,7 @@ type Props = {
   size?: 'md' | 'lg';
   min?: Date;
   value?: string;
+  isInvalid?: boolean;
 } & Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'>;
 
 const DatePicker = forwardRef<HTMLInputElement, Props>(
