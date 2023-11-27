@@ -35,7 +35,7 @@ export const OpenFilterButton: FC<Props> = ({
   return (
     <ChakraButton
       onClick={onClick}
-      rightIcon={<ChevronRightSmallIcon color="gray.900" />}
+      rightIcon={<ChevronRightSmallIcon color="gray.500" />}
       display="flex"
       justifyContent="space-between"
       w="full"
