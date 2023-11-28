@@ -46,6 +46,7 @@ export { default as Pagination } from './pagination';
 export { PopoverFilter } from './filterPatterns/popover';
 export { ModalFilter } from './filterPatterns/modal';
 export { FilterHeading } from './filterPatterns/Heading';
+export { OpenFilterButton } from './filterPatterns/modal/OpenFilterButton';
 export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';
