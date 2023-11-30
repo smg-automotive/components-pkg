@@ -67,9 +67,17 @@ const Popover: FC<Props> = ({
             )}
           </PopoverHeader>
           <PopoverBody
+            sx={{
+              '--call-to-action-height':
+                'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))',
+            }}
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
-            maxH="6xl"
+            maxH={
+              showCallToActionButton
+                ? '6xl'
+                : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
+            }
             overflowY="auto"
             paddingX="2xl"
           >
