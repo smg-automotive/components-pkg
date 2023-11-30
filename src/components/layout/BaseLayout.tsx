@@ -11,6 +11,7 @@ interface Props {
   header?: ReactNode;
   footer?: ReactNode;
   skyScraperAd?: ReactNode;
+  heroAd?: ReactNode;
   maxContentWidth: keyof typeof sizes.container;
 }
 
@@ -18,6 +19,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
   header,
   footer,
   skyScraperAd,
+  heroAd,
   maxContentWidth,
   children,
 }) => {
@@ -29,6 +31,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           <Divider />
         </>
       ) : null}
+      {heroAd ? heroAd : null}
       <Flex justifyContent="center">
         <Container
           as="main"
