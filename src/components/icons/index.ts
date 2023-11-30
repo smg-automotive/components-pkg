@@ -5,6 +5,7 @@ export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
+export { ArrowUpNarrowIcon } from './ArrowUpNarrowIcon';
 export { AutoScout24AppLogo } from './AutoScout24AppLogo';
 export { AvatarIcon } from './AvatarIcon';
 export { AvatarWithNotificationIcon } from './AvatarWithNotificationIcon';
