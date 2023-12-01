@@ -53,6 +53,11 @@ import PageLayout from './Page';
         disable: true,
       },
     },
+    heroAd: {
+      table: {
+        disable: true,
+      },
+    },
     children: {
       table: {
         disable: true,
@@ -80,11 +85,11 @@ export const Template = (args) => <PageLayout {...args} />;
 
 <ArgsTable story="Layout without ads" />
 
-## Layout with ads
+## Layout with sidebar ads
 
 <Canvas>
   <Story
-    name="Layout with ads"
+    name="Layout with sidebar ads"
     args={{
       skyScraperAd: (
         <Flex
@@ -93,7 +98,7 @@ export const Template = (args) => <PageLayout {...args} />;
           justifyContent="center"
           alignItems="center"
         >
-          <Text>Ads</Text>
+          <Text>Sidebar Ads</Text>
         </Flex>
       ),
     }}
@@ -102,4 +107,38 @@ export const Template = (args) => <PageLayout {...args} />;
   </Story>
 </Canvas>
 
-<ArgsTable story="Layout with ads" />
+<ArgsTable story="Layout with sidebar ads" />
+
+## Layout with hero and sidebar ads
+
+    <Canvas>
+          <Story
+              name="Layout with hero and sidebar ads"
+              args={{
+                skyScraperAd: (
+                  <Flex
+                    bg="red.100"
+                    h="600px"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Text>Sidebar Ads</Text>
+                  </Flex>
+                ),
+                heroAd: (
+                  <Flex
+                    bg="blue.100"
+                    h="300px"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Text>Hero Ad</Text>
+                  </Flex>
+                )
+              }}
+            >
+              {Template.bind({})}
+              </Story>
+          </Canvas>
+
+    <ArgsTable story="Layout with hero and sidebar ads" />
