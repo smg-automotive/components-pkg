@@ -2,8 +2,8 @@ import React from 'react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const EyeCrossed: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'EyeCrossed',
+export const EyeCrossedIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+  displayName: 'EyeCrossedIcon',
   viewBox: '0 0 24 24',
   path: (
     <>
