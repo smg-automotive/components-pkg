@@ -37,6 +37,7 @@ export { EquipmentIcon } from './EquipmentIcon';
 export { ErrorIcon } from './ErrorIcon';
 export { ExchangeIcon } from './ExchangeIcon';
 export { EyeIcon } from './EyeIcon';
+export { EyeCrossed } from './EyeCrossed';
 export { FacebookIcon } from './FacebookIcon';
 export { FlagIcon } from './FlagIcon';
 export { GasStationIcon } from './GasStationIcon';
