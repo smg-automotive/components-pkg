@@ -22,6 +22,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   initialPopoverState = 'closed',
   isApplied,
   label,
+  appliedLabel,
   language,
   numberOfAppliedFilters,
   onPopoverClose,
@@ -104,7 +105,10 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     textOverflow="ellipsis"
                     whiteSpace="nowrap"
                   >
-                    {[label, displayValue && isApplied ? displayValue : null]
+                    {[
+                      isApplied ? appliedLabel ?? label : label,
+                      displayValue && isApplied ? displayValue : null,
+                    ]
                       .filter(Boolean)
                       .join(': ')}
                   </chakra.span>

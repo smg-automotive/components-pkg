@@ -215,4 +215,21 @@ describe('<PopoverFilter />', () => {
     );
     expect(screen.getByText('Treibstoff')).toBeInTheDocument();
   });
+
+  it('should allow to overwrite the applied label if the real label is for example too long', () => {
+    render(
+      <PopoverFilter
+        {...validProps}
+        label="Treibstoff von Agrola"
+        appliedLabel="T-Stoff"
+        isApplied={true}
+        displayValue="Benzin, Wasserstoff"
+      >
+        <div>Popover content</div>
+      </PopoverFilter>,
+    );
+    expect(
+      screen.getByText('T-Stoff: Benzin, Wasserstoff'),
+    ).toBeInTheDocument();
+  });
 });
