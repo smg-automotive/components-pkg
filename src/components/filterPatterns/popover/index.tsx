@@ -104,7 +104,9 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     textOverflow="ellipsis"
                     whiteSpace="nowrap"
                   >
-                    {displayValue && isApplied ? displayValue : label}
+                    {[label, displayValue && isApplied ? displayValue : null]
+                      .filter(Boolean)
+                      .join(': ')}
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
