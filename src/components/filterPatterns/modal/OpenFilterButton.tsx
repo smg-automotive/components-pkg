@@ -31,20 +31,23 @@ export const OpenFilterButton: FC<Props> = ({
   label,
   onClick,
   variant = 'md',
-  isDisabled,
+  isDisabled = false,
 }) => {
   return (
     <ChakraButton
       onClick={onClick}
-      rightIcon={<ChevronRightSmallIcon color="gray.500" />}
+      rightIcon={
+        <ChevronRightSmallIcon color={isDisabled ? 'gray.300' : 'gray.500'} />
+      }
       display="flex"
       justifyContent="space-between"
       w="full"
       h={height[variant]}
       paddingX="0"
       paddingY={paddingY[variant]}
-      color="gray.900"
       isDisabled={isDisabled}
+      cursor={isDisabled ? 'not-allowed' : 'pointer'}
+      color={isDisabled ? 'gray.300' : 'gray.900'}
     >
       <chakra.span
         display="flex"
