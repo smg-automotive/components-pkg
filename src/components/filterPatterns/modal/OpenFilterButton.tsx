@@ -13,7 +13,7 @@ type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
   'label' | 'displayValue' | 'isApplied'
-> & { onClick: () => void; variant?: Variant };
+> & { onClick: () => void; variant?: Variant; isDisabled?: boolean };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
   sm: 'sm',
@@ -31,6 +31,7 @@ export const OpenFilterButton: FC<Props> = ({
   label,
   onClick,
   variant = 'md',
+  isDisabled,
 }) => {
   return (
     <ChakraButton
@@ -43,6 +44,7 @@ export const OpenFilterButton: FC<Props> = ({
       paddingX="0"
       paddingY={paddingY[variant]}
       color="gray.900"
+      isDisabled={isDisabled}
     >
       <chakra.span
         display="flex"
