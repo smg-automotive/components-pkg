@@ -49,7 +49,7 @@ const Popover: FC<Props> = ({
           backgroundColor="white"
           borderRadius="sm"
           paddingY="2xl"
-          shadow="xs"
+          shadow="md"
           w="6xl"
           ref={popoverContentRef}
         >
