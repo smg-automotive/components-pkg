@@ -42,6 +42,10 @@ const Popover: FC<Props> = ({
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
 
+  const maxH = showCallToActionButton
+    ? '6xl'
+    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
+
   return (
     <Portal>
       <Box zIndex="popover" w="full" h="full" position="relative">
@@ -73,15 +77,21 @@ const Popover: FC<Props> = ({
             }}
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
-            maxH={
-              showCallToActionButton
-                ? '6xl'
-                : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
-            }
-            overflowY="auto"
-            paddingX="2xl"
+            maxH={maxH}
+            position="relative"
+            _after={{
+              content: '""',
+              position: 'absolute',
+              bottom: 0,
+              width: '100%',
+              height: 'sm',
+              background:
+                'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
+            }}
           >
-            {children}
+            <Box overflowY="auto" maxH={maxH} paddingX="2xl">
+              {children}
+            </Box>
           </PopoverBody>
           {showCallToActionButton ? (
             <PopoverFooter paddingX="2xl">

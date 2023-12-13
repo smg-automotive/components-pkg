@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import {
+  Box,
   Modal as ChakraModal,
   ModalBody,
   ModalContent,
@@ -76,13 +77,31 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               )}
             </ModalHeader>
             <ModalBody
-              overflowY="auto"
+              position="relative"
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
               paddingY="0"
-              paddingX="2xl"
+              _after={{
+                content: '""',
+                position: 'absolute',
+                bottom: '-12px',
+                width: '100%',
+                height: { base: '10px', sm: '14px' },
+                background:
+                  'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
+              }}
             >
-              {children}
+              <Box
+                overflowY="auto"
+                paddingX="2xl"
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                bottom="-12px"
+              >
+                {children}
+              </Box>
             </ModalBody>
             {showCallToActionButton ? (
               <ModalFooter paddingY="0" paddingX="2xl">
