@@ -29,6 +29,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   header,
+  isDisabled = false,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -45,6 +46,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           isApplied={isApplied}
           label={label}
           onClick={onOpen}
+          isDisabled={isDisabled}
         />
         <ChakraModal
           isOpen={isOpen}
