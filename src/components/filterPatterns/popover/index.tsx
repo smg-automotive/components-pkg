@@ -116,6 +116,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               </PopoverTrigger>
               {isApplied ? (
                 <IconButton
+                  isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}
                   borderRadius="sm"
                   h="md"
