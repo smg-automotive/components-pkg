@@ -19,7 +19,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter {...validProps}>
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
 
     expect(screen.queryByText('Popover content')).toBeNull();
@@ -36,7 +36,7 @@ describe('<PopoverFilter />', () => {
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Zurücksetzen' }));
@@ -52,15 +52,15 @@ describe('<PopoverFilter />', () => {
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
 
     return waitFor(() =>
       expect(
-        screen.getAllByRole('button', { name: 'Zurücksetzen' })[0]
-      ).toBeDisabled()
+        screen.getAllByRole('button', { name: 'Zurücksetzen' })[0],
+      ).toBeDisabled(),
     );
   });
 
@@ -68,12 +68,12 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter {...validProps} isApplied={false}>
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the bottom and on the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(2);
   });
 
@@ -85,12 +85,12 @@ describe('<PopoverFilter />', () => {
         showCallToActionButton={false}
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button on the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
   });
 
@@ -103,12 +103,12 @@ describe('<PopoverFilter />', () => {
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the top right
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
     await userEvent.click(screen.getByRole('button', { name: 'Search' }));
     await waitFor(() => expect(mockSearchButton).toHaveBeenCalledTimes(1));
@@ -118,7 +118,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter {...validProps} header={<div>custom header</div>}>
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     expect(await screen.findByText('custom header')).toBeInTheDocument();
@@ -129,7 +129,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter {...validProps} onPopoverOpen={mockOnOpen}>
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
@@ -144,16 +144,16 @@ describe('<PopoverFilter />', () => {
         isApplied={true}
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
 
     expect(
-      await screen.findAllByRole('button', { name: 'Schliessen' })
+      await screen.findAllByRole('button', { name: 'Schliessen' }),
     ).toHaveLength(1);
 
     await userEvent.click(
-      screen.getAllByRole('button', { name: 'Schliessen' })[0]
+      screen.getAllByRole('button', { name: 'Schliessen' })[0],
     );
 
     await waitFor(() => expect(mockOnClose).toHaveBeenCalledTimes(1));
@@ -163,7 +163,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter {...validProps} initialPopoverState="open">
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     expect(screen.getByText('Popover content')).toBeInTheDocument();
   });
@@ -176,7 +176,7 @@ describe('<PopoverFilter />', () => {
         numberOfAppliedFilters={5}
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     expect(screen.getByText('5')).toBeInTheDocument();
   });
@@ -189,10 +189,10 @@ describe('<PopoverFilter />', () => {
         displayValue="Benzin, Wasserstoff"
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     expect(
-      screen.getByText('Treibstoff: Benzin, Wasserstoff')
+      screen.getByText('Treibstoff: Benzin, Wasserstoff'),
     ).toBeInTheDocument();
   });
 
@@ -200,7 +200,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter {...validProps} isApplied={true} displayValue="">
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     expect(screen.getByText('Treibstoff')).toBeInTheDocument();
   });
@@ -213,7 +213,7 @@ describe('<PopoverFilter />', () => {
         displayValue="Benzin, Wasserstoff"
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     expect(screen.getByText('Treibstoff')).toBeInTheDocument();
   });
@@ -228,10 +228,10 @@ describe('<PopoverFilter />', () => {
         displayValue="Benzin, Wasserstoff"
       >
         <div>Popover content</div>
-      </PopoverFilter>
+      </PopoverFilter>,
     );
     expect(
-      screen.getByText('T-Stoff: Benzin, Wasserstoff')
+      screen.getByText('T-Stoff: Benzin, Wasserstoff'),
     ).toBeInTheDocument();
   });
 });
