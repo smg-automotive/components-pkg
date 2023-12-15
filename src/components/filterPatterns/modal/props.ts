@@ -6,4 +6,5 @@ export type ModalFilterProps = FilterPatternProps &
     onModalOpen?: () => void;
     onModalClose?: () => void;
     initialModalState?: 'open' | 'closed';
+    isDisabled?: boolean;
   };
