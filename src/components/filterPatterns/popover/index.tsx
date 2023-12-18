@@ -122,7 +122,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   h="md"
                   icon={<CloseIcon w="xs" h="xs" />}
                   minW="md"
-                  onClick={onResetFilter}
+                  onClick={() => onResetFilter('filterButton')}
                   w="md"
                   {...appliedOrOpenColorScheme}
                 />
@@ -134,7 +134,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               label={label}
               numberOfAppliedFilters={numberOfAppliedFilters}
               onClose={onClose}
-              onResetFilter={onResetFilter}
+              onResetFilter={() => onResetFilter('filter')}
               showCallToActionButton={showCallToActionButton}
               header={header}
             >

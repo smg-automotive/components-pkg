@@ -71,7 +71,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                   label={label}
                   numberOfAppliedFilters={numberOfAppliedFilters}
                   onClose={onClose}
-                  onResetFilter={onResetFilter}
+                  onResetFilter={() => onResetFilter('filter')}
                 />
               )}
             </ModalHeader>
