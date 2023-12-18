@@ -16,6 +16,7 @@ import FilterActionButton from '../ActionButton';
 
 import { ModalFilterProps } from './props';
 import { OpenFilterButton } from './OpenFilterButton';
+import ScrollableBox from 'src/components/scrollableBox';
 
 export const ModalFilter: FC<ModalFilterProps> = ({
   actionButton,
@@ -49,12 +50,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           onClick={onOpen}
           isDisabled={isDisabled}
         />
-        <ChakraModal
-          isOpen={isOpen}
-          onClose={onClose}
-          size="full"
-          motionPreset="slideInBottom"
-        >
+        <ChakraModal isOpen={isOpen} onClose={onClose} size="full">
           <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
             <ModalHeader
               display="flex"
@@ -77,31 +73,19 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               )}
             </ModalHeader>
             <ModalBody
-              position="relative"
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
-              paddingY="0"
-              _after={{
-                content: '""',
-                position: 'absolute',
-                bottom: '-12px',
-                width: '100%',
-                height: { base: '10px', sm: '14px' },
-                background:
-                  'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
-              }}
+              padding="0"
             >
-              <Box
-                overflowY="auto"
-                paddingX="2xl"
-                position="absolute"
-                top="0"
-                left="0"
-                right="0"
-                bottom="-12px"
+              <ScrollableBox
+                maxH="6xl"
+                indicatorHeight={{
+                  base: 'sm',
+                  sm: 'lg',
+                }}
               >
                 {children}
-              </Box>
+              </ScrollableBox>
             </ModalBody>
             {showCallToActionButton ? (
               <ModalFooter paddingY="0" paddingX="2xl">

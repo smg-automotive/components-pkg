@@ -13,6 +13,7 @@ import Box from 'src/components/box';
 import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 import { PopoverFilterProps } from './props';
+import ScrollableBox from 'src/components/scrollableBox';
 
 type Props = {
   onClose: () => void;
@@ -77,21 +78,8 @@ const Popover: FC<Props> = ({
             }}
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
-            maxH={maxH}
-            position="relative"
-            _after={{
-              content: '""',
-              position: 'absolute',
-              bottom: 0,
-              width: '100%',
-              height: 'sm',
-              background:
-                'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
-            }}
           >
-            <Box overflowY="auto" maxH={maxH} paddingX="2xl">
-              {children}
-            </Box>
+            <ScrollableBox maxH={maxH}>{children}</ScrollableBox>
           </PopoverBody>
           {showCallToActionButton ? (
             <PopoverFooter paddingX="2xl">
