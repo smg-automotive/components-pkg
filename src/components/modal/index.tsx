@@ -1,6 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import {
   Modal as ChakraModal,
+  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
@@ -12,7 +13,6 @@ import {
 import { H3 } from '../heading';
 import Divider from '../divider';
 import Button from '../button';
-import ModalBodyWrapper from './ModalBodyWrapper';
 
 type ActionButton = {
   action: () => void;
@@ -24,9 +24,8 @@ interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreen' | 'base' | 'topScroll';
+  variant?: 'fullScreen' | 'base' | 'topScroll' | 'noBodyPadding';
   size?: 'md' | 'lg' | 'full';
-  wrapWithModalBody?: boolean;
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -37,7 +36,6 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   size,
   motionPreset = 'scale',
   variant = 'base',
-  wrapWithModalBody = true,
   ...modalProps
 }) => {
   const modalSize =
@@ -64,9 +62,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           </>
         )}
 
-        <ModalBodyWrapper shouldWrap={wrapWithModalBody}>
-          {children}
-        </ModalBodyWrapper>
+        <ModalBody>{children}</ModalBody>
 
         {(primaryActionButton || secondaryActionButton) && (
           <>
