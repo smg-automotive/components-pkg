@@ -1,2 +1,2 @@
-import { Slide } from '@chakra-ui/transition';
+import { Slide } from '@chakra-ui/react';
 export default Slide;
