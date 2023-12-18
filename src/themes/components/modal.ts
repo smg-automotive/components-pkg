@@ -111,13 +111,6 @@ const variants = {
       borderRadius: '0',
     },
   },
-  noBodyPadding: {
-    ...baseStyle,
-    body: {
-      ...baseStyle.body,
-      p: '0',
-    },
-  },
 };
 
 function getSize(value: string) {

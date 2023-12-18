@@ -24,8 +24,9 @@ interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreen' | 'base' | 'topScroll' | 'noBodyPadding';
+  variant?: 'fullScreen' | 'base' | 'topScroll';
   size?: 'md' | 'lg' | 'full';
+  disableBodyPadding?: boolean;
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -36,11 +37,14 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   size,
   motionPreset = 'scale',
   variant = 'base',
+  disableBodyPadding = false,
   ...modalProps
 }) => {
   const modalSize =
     size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
   const bothActionButtons = primaryActionButton && secondaryActionButton;
+
+  const bodyPadding = disableBodyPadding ? { p: 0 } : {};
 
   return (
     <ChakraModal
@@ -62,7 +66,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           </>
         )}
 
-        <ModalBody>{children}</ModalBody>
+        <ModalBody {...bodyPadding}>{children}</ModalBody>
 
         {(primaryActionButton || secondaryActionButton) && (
           <>
