@@ -116,7 +116,6 @@ const variants = {
     body: {
       ...baseStyle.body,
       p: '0',
-      zIndex: '123',
     },
   },
 };
