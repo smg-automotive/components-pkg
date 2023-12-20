@@ -69,7 +69,6 @@ function CheckboxFilter<ItemKey extends string>({
                       w="full"
                       display="flex"
                       justifyContent="space-between"
-                      flexWrap="wrap"
                       marginLeft="sm"
                     >
                       <chakra.span>{item.label}</chakra.span>
