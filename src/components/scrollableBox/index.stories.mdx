@@ -20,7 +20,7 @@ export const TemplateInsideModal = (args) => {
       <Box>
       <Button onClick={onOpen}>Open</Button>
       <Modal isOpen={isOpen} onClose={onClose} {...args}>
-      <ScrollableBox position={{base: 'absolute', sm: 'relative'}} maxH={{base: 'full', sm: '7xl'}} indicatorHeight={{base: '56px', sm: 'lg'}}>
+      <ScrollableBox position={{base: 'absolute', sm: 'relative'}} maxH={{base: 'full', sm: '7xl'}} indicatorHeight={args.indicatorHeight}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
       elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
       amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
@@ -60,17 +60,17 @@ export const TemplateInsideModal = (args) => {
   <Story
     name="ScrollableBox"
     args={{
-      indicatorHeight: '10px',
-      maxH: '100px'
+      indicatorHeight: 'md',
+      maxH: '200px',
+      width: '400px',
+      borderWidth: '1px',
+      borderColor: 'gray-500',
+      withScrollSpace: true
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
-
-## Without overflow
-
-## With overflow
 
 ## Inside modal
 
@@ -81,6 +81,7 @@ name="ScrollableBoxInideModal"
 args={{
 title: 'Scrollable Box Inide Modal',
          size: 'md',
+         indicatorHeight: {base: '56px', sm: 'lg'}
 }}
 argTypes={{
 size: {
@@ -92,7 +93,3 @@ options: ['md', 'lg', 'full'],
 {TemplateInsideModal.bind({})}
 </Story>
 </Canvas>
-
-## Inside full size modal
-
-## Inside popover

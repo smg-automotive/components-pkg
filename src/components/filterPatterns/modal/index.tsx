@@ -10,13 +10,13 @@ import {
 } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
+import ScrollableBox from 'src/components/scrollableBox';
 
 import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 
 import { ModalFilterProps } from './props';
 import { OpenFilterButton } from './OpenFilterButton';
-import ScrollableBox from 'src/components/scrollableBox';
 
 export const ModalFilter: FC<ModalFilterProps> = ({
   actionButton,
@@ -76,14 +76,9 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
               padding="0"
+              position="relative"
             >
-              <ScrollableBox
-                maxH="6xl"
-                indicatorHeight={{
-                  base: 'sm',
-                  sm: 'lg',
-                }}
-              >
+              <ScrollableBox indicatorHeight="56px" position="absolute">
                 {children}
               </ScrollableBox>
             </ModalBody>

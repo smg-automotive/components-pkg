@@ -4,15 +4,20 @@ import { Box, BoxProps } from '@chakra-ui/react';
 interface ScrollableBoxProps extends BoxProps {
   indicatorHeight?:
     | string
-    | { base: string; sm: string; md: string; lg: string };
+    | Partial<{ base: string; sm: string; md: string; lg: string }>;
   gradient?: string;
+  height?: string | number;
+  withScrollSpace?: boolean;
 }
 
 const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
   children,
   indicatorHeight = 'md',
   gradient = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
-  maxH = '6xl',
+  maxH,
+  height = 'full',
+  paddingX = 'md',
+  withScrollSpace = true,
   ...rest
 }) => {
   const scrollableRef = useRef<HTMLInputElement>(null);
@@ -28,12 +33,12 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
         scrollableElement.clientHeight;
 
       if (isScrolledToBottom) {
-        indicatorRef.current.style.display = 'none';
+        indicatorRef.current.style.opacity = '0';
         return;
       }
 
-      if (indicatorElement.style.display === 'none') {
-        indicatorElement.style.display = 'block';
+      if (indicatorElement.style.opacity === '0') {
+        indicatorElement.style.opacity = '1';
       }
     }
   };
@@ -51,31 +56,36 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
     }
 
     return () => {
-      if (scrollableElement) {
+      if (scrollableElement && indicatorElement) {
         scrollableElement.removeEventListener('scroll', handleScroll);
       }
     };
   }, []);
 
   return (
-    <Box position="relative" h="full">
+    <Box position="relative" top="0" bottom="0" left="0" right="0" {...rest}>
       <Box
         ref={scrollableRef}
         overflowY="auto"
-        paddingX="2xl"
+        paddingX={withScrollSpace ? 'md' : '0'}
+        h={height}
         maxH={maxH}
-        {...rest}
+        w="full"
       >
         {children}
       </Box>
       <Box
-        display="none"
         ref={indicatorRef}
+        display="none"
         position="absolute"
         bottom="0"
-        width="100%"
+        width={
+          withScrollSpace ? 'calc(100% - 2 * var(--chakra-space-md))' : '100%'
+        }
+        left={withScrollSpace ? 'md' : '0'}
         height={indicatorHeight}
         background={gradient}
+        transition="opacity 0.4s ease-in-out"
       />
     </Box>
   );

@@ -62,7 +62,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           </>
         )}
 
-        <ModalBody>{children}</ModalBody>
+        <ModalBody position="relative">{children}</ModalBody>
 
         {(primaryActionButton || secondaryActionButton) && (
           <>

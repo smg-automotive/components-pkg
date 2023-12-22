@@ -79,7 +79,9 @@ const Popover: FC<Props> = ({
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
           >
-            <ScrollableBox maxH={maxH}>{children}</ScrollableBox>
+            <ScrollableBox maxH={maxH} indicatorHeight="sm">
+              {children}
+            </ScrollableBox>
           </PopoverBody>
           {showCallToActionButton ? (
             <PopoverFooter paddingX="2xl">
