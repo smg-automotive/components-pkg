@@ -7,7 +7,7 @@ interface ScrollableBoxProps extends BoxProps {
     | Partial<{ base: string; sm: string; md: string; lg: string }>;
   gradient?: string;
   height?: string | number;
-  withScrollSpace?: boolean;
+  scrollSpace?: string;
 }
 
 const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
@@ -16,7 +16,7 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
   gradient = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
   maxH,
   height = 'full',
-  withScrollSpace = true,
+  scrollSpace = 'lg',
   ...rest
 }) => {
   const scrollableRef = useRef<HTMLInputElement>(null);
@@ -66,7 +66,7 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
       <Box
         ref={scrollableRef}
         overflowY="auto"
-        paddingX={withScrollSpace ? 'lg' : '0'}
+        paddingX={scrollSpace}
         h={height}
         maxH={maxH}
         w="full"
@@ -79,9 +79,11 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
         position="absolute"
         bottom="0"
         width={
-          withScrollSpace ? 'calc(100% - 2 * var(--chakra-space-lg))' : '100%'
+          scrollSpace
+            ? `calc(100% - 2 * var(--chakra-space-${scrollSpace}))`
+            : '100%'
         }
-        left={withScrollSpace ? 'lg' : '0'}
+        left={scrollSpace}
         height={indicatorHeight}
         background={gradient}
         transition="opacity 0.4s ease-in-out"

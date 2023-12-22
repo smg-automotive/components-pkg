@@ -17,6 +17,7 @@ import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
+  widthScrollableBox?: string;
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
@@ -42,10 +43,6 @@ const Popover: FC<Props> = ({
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
-
-  const maxH = showCallToActionButton
-    ? '6xl'
-    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
 
   return (
     <Portal>
@@ -79,7 +76,14 @@ const Popover: FC<Props> = ({
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
           >
-            <ScrollableBox maxH={maxH} indicatorHeight="sm">
+            <ScrollableBox
+              maxH={
+                showCallToActionButton
+                  ? '6xl'
+                  : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
+              }
+              indicatorHeight="sm"
+            >
               {children}
             </ScrollableBox>
           </PopoverBody>

@@ -9,6 +9,7 @@ export { default as Alert } from './alert';
 export { default as Badge } from './badge';
 export { default as Button } from './button';
 export { default as Box } from './box';
+export { default as ScrollableBox } from './scrollableBox';
 export { default as Breadcrumbs } from './breadcrumbs';
 export { default as BreadcrumbsItem } from './breadcrumbs/Item';
 export { default as BreadcrumbLink } from './breadcrumbs/Link';
