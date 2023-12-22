@@ -83,6 +83,7 @@ const Popover: FC<Props> = ({
                   : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
               }
               indicatorHeight="sm"
+              scrollSpace="2xl"
             >
               {children}
             </ScrollableBox>
