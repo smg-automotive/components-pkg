@@ -15,7 +15,7 @@ const DrawerContent: FC<PropsWithChildren<Props>> = (props) => {
 
   return (
     <ChakraDrawerContent {...drawerContentProps}>
-      {withCloseButton && <DrawerCloseButton />}
+      {withCloseButton && <DrawerCloseButton fontSize="base" />}
       {children}
     </ChakraDrawerContent>
   );

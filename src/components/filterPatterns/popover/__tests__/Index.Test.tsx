@@ -43,7 +43,7 @@ describe('<PopoverFilter />', () => {
     await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
 
-  it('should be possible to reset the filter on the popover', async () => {
+  it('should disable the reset of the filter via reset button if popover is opened', async () => {
     const mockOnReset = jest.fn();
     render(
       <PopoverFilter
@@ -56,10 +56,12 @@ describe('<PopoverFilter />', () => {
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    await userEvent.click(
-      screen.getAllByRole('button', { name: 'Zurücksetzen' })[0],
+
+    return waitFor(() =>
+      expect(
+        screen.getAllByRole('button', { name: 'Zurücksetzen' })[0],
+      ).toBeDisabled(),
     );
-    await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
 
   it('should show a close button if no filter is applied', async () => {

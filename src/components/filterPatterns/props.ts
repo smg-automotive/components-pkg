@@ -24,7 +24,7 @@ export type FilterPatternProps = {
   /**
    * Callback that is called if the reset filter button is pressed.
    */
-  onResetFilter: () => void;
+  onResetFilter: (placement: 'filterButton' | 'filter') => void;
   /**
    * If a call-to-action button is displayed in the filter footer
    * @default true

@@ -19,7 +19,7 @@ export const TemplateInsideModal = (args) => {
   return (
       <Box>
       <Button onClick={onOpen}>Open</Button>
-      <Modal isOpen={isOpen} onClose={onClose} {...args}>
+      <Modal isOpen={isOpen} onClose={onClose} {...args} disableBodyPadding={true}>
       <ScrollableBox position={{base: 'absolute', sm: 'relative'}} maxH={{base: 'full', sm: '7xl'}} indicatorHeight={args.indicatorHeight}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
       elementum ultricies vestibulum. Sed odio diam, tristique id velit sit

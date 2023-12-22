@@ -16,7 +16,6 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
   gradient = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
   maxH,
   height = 'full',
-  paddingX = 'md',
   withScrollSpace = true,
   ...rest
 }) => {
@@ -67,7 +66,7 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
       <Box
         ref={scrollableRef}
         overflowY="auto"
-        paddingX={withScrollSpace ? 'md' : '0'}
+        paddingX={withScrollSpace ? 'lg' : '0'}
         h={height}
         maxH={maxH}
         w="full"
@@ -80,9 +79,9 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
         position="absolute"
         bottom="0"
         width={
-          withScrollSpace ? 'calc(100% - 2 * var(--chakra-space-md))' : '100%'
+          withScrollSpace ? 'calc(100% - 2 * var(--chakra-space-lg))' : '100%'
         }
-        left={withScrollSpace ? 'md' : '0'}
+        left={withScrollSpace ? 'lg' : '0'}
         height={indicatorHeight}
         background={gradient}
         transition="opacity 0.4s ease-in-out"
