@@ -8,12 +8,12 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
+import ScrollableBox from 'src/components/scrollableBox';
 import Box from 'src/components/box';
 
 import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 import { PopoverFilterProps } from './props';
-import ScrollableBox from 'src/components/scrollableBox';
 
 type Props = {
   onClose: () => void;

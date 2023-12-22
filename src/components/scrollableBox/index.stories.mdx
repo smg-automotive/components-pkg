@@ -1,56 +1,77 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useDisclosure } from '@chakra-ui/react';
 
-import ScrollableBox from './index.tsx';
-import Box from '../box';
-import Button from '../button';
 import Modal from '../modal';
+import Button from '../button';
+import Box from '../box';
+import ScrollableBox from './index.tsx';
 
 <Meta title="Layout/ScrollableBox" component={ScrollableBox} />
 
-export const Template = (args) => <ScrollableBox {...args}>
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-  Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-</ScrollableBox>;
-
+export const Template = (args) => (
+  <ScrollableBox {...args}>
+    Lorem Ipsum is simply dummy text of the printing and typesetting
+    industry.Lorem Ipsum has been the industry standard dummy text ever since
+    the 1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but also
+    the leap into electronic typesetting, remaining essentially unchanged. It
+    was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software
+    like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular
+    belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+    classical Latin literature from 45 BC, making it over 2000 years old.
+    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+    looked up one of the more obscure Latin words, consectetur, from a Lorem
+    Ipsum passage, and going through the cites of the word in classical
+    literature, discovered the undoubtable source.
+  </ScrollableBox>
+);
 
 export const TemplateInsideModal = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-      <Box>
+    <Box>
       <Button onClick={onOpen}>Open</Button>
-      <Modal isOpen={isOpen} onClose={onClose} {...args} disableBodyPadding={true}>
-      <ScrollableBox position={{base: 'absolute', sm: 'relative'}} maxH={{base: 'full', sm: '7xl'}} indicatorHeight={args.indicatorHeight}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-      elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-      amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-      condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-      nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-      ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-      purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-      Phasellus malesuada egestas est sit amet venenatis.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-      elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-      amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-      condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-      nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-      ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-      purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-      Phasellus malesuada egestas est sit amet venenatis.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-      elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-      amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-      condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-      nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-      ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-      purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-      Phasellus malesuada egestas est sit amet venenatis.
-      </ScrollableBox>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        {...args}
+        disableBodyPadding={true}
+      >
+        <ScrollableBox
+          position={{ base: 'absolute', sm: 'relative' }}
+          maxH={{ base: 'full', sm: '7xl' }}
+          indicatorHeight={args.indicatorHeight}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
+          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
+          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
+          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
+          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
+          Phasellus malesuada egestas est sit amet venenatis. Lorem ipsum dolor
+          sit amet, consectetur adipiscing elit. Integer elementum ultricies
+          vestibulum. Sed odio diam, tristique id velit sit amet, sodales
+          aliquet magna. Fusce vitae orci vel nulla vehicula condimentum.
+          Maecenas sollicitudin volutpat tellus, laoreet fringilla nibh. Vivamus
+          luctus enim id quam feugiat, maximus porttitor justo ultrices. Nam
+          tellus erat, porta nec consectetur eget, aliquet id purus. Suspendisse
+          at elementum arcu. Suspendisse ac lobortis velit. Phasellus malesuada
+          egestas est sit amet venenatis. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer elementum ultricies vestibulum.
+          Sed odio diam, tristique id velit sit amet, sodales aliquet magna.
+          Fusce vitae orci vel nulla vehicula condimentum. Maecenas sollicitudin
+          volutpat tellus, laoreet fringilla nibh. Vivamus luctus enim id quam
+          feugiat, maximus porttitor justo ultrices. Nam tellus erat, porta nec
+          consectetur eget, aliquet id purus. Suspendisse at elementum arcu.
+          Suspendisse ac lobortis velit. Phasellus malesuada egestas est sit
+          amet venenatis.
+        </ScrollableBox>
       </Modal>
-      </Box>
-      );
+    </Box>
+  );
 };
-
 
 # Scrollable Box
 
@@ -58,14 +79,14 @@ export const TemplateInsideModal = (args) => {
 
 <Canvas>
   <Story
-    name="ScrollableBox"
+    name="Scrollable Box"
     args={{
       indicatorHeight: 'md',
       maxH: '200px',
       width: '400px',
       borderWidth: '1px',
       borderColor: 'gray-500',
-      withScrollSpace: true
+      withScrollSpace: true,
     }}
   >
     {Template.bind({})}
@@ -75,21 +96,20 @@ export const TemplateInsideModal = (args) => {
 ## Inside modal
 
 <Canvas>
-<Story
-name="ScrollableBoxInideModal"
-
-args={{
-title: 'Scrollable Box Inide Modal',
-         size: 'md',
-         indicatorHeight: {base: '56px', sm: 'lg'}
-}}
-argTypes={{
-size: {
-options: ['md', 'lg', 'full'],
-         control: { type: 'select' },
+  <Story
+    name="Scrollable Box inside Modal"
+    args={{
+      title: 'Scrollable Box Inide Modal',
+      size: 'md',
+      indicatorHeight: { base: '56px', sm: 'lg' },
+    }}
+    argTypes={{
+      size: {
+        options: ['md', 'lg', 'full'],
+        control: { type: 'select' },
       },
-}}
->
-{TemplateInsideModal.bind({})}
-</Story>
+    }}
+  >
+    {TemplateInsideModal.bind({})}
+  </Story>
 </Canvas>
