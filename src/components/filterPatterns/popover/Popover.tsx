@@ -27,6 +27,8 @@ type Props = {
   | 'onResetFilter'
   | 'showCallToActionButton'
   | 'header'
+  | 'withScrollableBox'
+  | 'contentPaddingX'
   | 'children'
 >;
 
@@ -39,6 +41,8 @@ const Popover: FC<Props> = ({
   onResetFilter,
   showCallToActionButton,
   header,
+  withScrollableBox,
+  contentPaddingX = '2xl',
   children,
 }) => {
   const { language } = useI18n();
@@ -75,18 +79,28 @@ const Popover: FC<Props> = ({
             }}
             marginTop="2xl"
             marginBottom={showCallToActionButton ? '2xl' : '0'}
+            maxH={
+              showCallToActionButton
+                ? '6xl'
+                : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
+            }
+            paddingX={withScrollableBox ? 0 : contentPaddingX}
           >
-            <ScrollableBox
-              maxH={
-                showCallToActionButton
-                  ? '6xl'
-                  : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
-              }
-              indicatorHeight="sm"
-              scrollSpace="2xl"
-            >
-              {children}
-            </ScrollableBox>
+            {withScrollableBox ? (
+              <ScrollableBox
+                indicatorHeight="sm"
+                scrollSpace={contentPaddingX}
+                maxH={
+                  showCallToActionButton
+                    ? '6xl'
+                    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
+                }
+              >
+                {children}
+              </ScrollableBox>
+            ) : (
+              children
+            )}
           </PopoverBody>
           {showCallToActionButton ? (
             <PopoverFooter paddingX="2xl">
