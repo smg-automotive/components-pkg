@@ -1,10 +1,23 @@
-import React, { FC, PropsWithChildren, useEffect, useRef } from 'react';
+import React, {
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from 'react';
 import { Box, BoxProps } from '@chakra-ui/react';
 
 interface ScrollableBoxProps extends BoxProps {
   indicatorHeight?:
     | string
-    | Partial<{ base: string; sm: string; md: string; lg: string }>;
+    | Partial<{
+        base: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+        '2xl': string;
+      }>;
   gradient?: string;
   height?: string | number;
   scrollSpace?: string;
@@ -16,7 +29,7 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
   gradient = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%)',
   maxH,
   height = 'full',
-  scrollSpace = 'lg',
+  scrollSpace = '2xl',
   ...rest
 }) => {
   const scrollableRef = useRef<HTMLInputElement>(null);
@@ -42,20 +55,28 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const scrollableElement = scrollableRef.current;
     const indicatorElement = indicatorRef.current;
 
-    if (scrollableElement && indicatorElement) {
-      if (scrollableElement.scrollHeight > scrollableElement.clientHeight) {
-        indicatorElement.style.display = 'block';
-      }
+    if (
+      scrollableElement &&
+      indicatorElement &&
+      scrollableElement.scrollHeight > scrollableElement.clientHeight
+    ) {
+      indicatorElement.style.display = 'block';
+    }
+  }, [scrollableRef, indicatorRef]);
 
+  useEffect(() => {
+    const scrollableElement = scrollableRef.current;
+
+    if (scrollableElement) {
       scrollableElement.addEventListener('scroll', handleScroll);
     }
 
     return () => {
-      if (scrollableElement && indicatorElement) {
+      if (scrollableElement) {
         scrollableElement.removeEventListener('scroll', handleScroll);
       }
     };

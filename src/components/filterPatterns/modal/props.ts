@@ -7,4 +7,5 @@ export type ModalFilterProps = FilterPatternProps &
     onModalClose?: () => void;
     initialModalState?: 'open' | 'closed';
     isDisabled?: boolean;
+    withScrollableBox?: boolean;
   };
