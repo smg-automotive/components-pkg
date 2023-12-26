@@ -75,7 +75,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
             <ModalBody
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
-              padding="0"
+              paddingY="0"
+              paddingX={withScrollableBox ? '0' : '2xl'}
               position="relative"
             >
               {withScrollableBox ? (

@@ -30,7 +30,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   header,
-  withScrollableBox = true,
+  withScrollableBox = false,
   contentPaddingX = '2xl',
   children,
 }) => {
