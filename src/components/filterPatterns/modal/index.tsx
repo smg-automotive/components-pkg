@@ -80,7 +80,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               position="relative"
             >
               {withScrollableBox ? (
-                <ScrollableBox indicatorHeight="56px" position="absolute">
+                <ScrollableBox indicatorHeight="38px" position="absolute">
                   {children}
                 </ScrollableBox>
               ) : (
