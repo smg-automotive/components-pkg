@@ -24,6 +24,7 @@ export type Props<NameFrom, NameTo> = {
   onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
   to: RangeFilterInputField<NameTo>;
   unit?: string;
+  chartHeight?: 'sm' | 'normal';
 } & PickedNumberInputProps;
 
 function RangeFilterInputWithSlider<
