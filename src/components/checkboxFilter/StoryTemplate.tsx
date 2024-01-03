@@ -82,6 +82,15 @@ const StoryTemplate: FC<Props> = ({
           facet: facets['not-working'],
           isChecked: conditionQuery['not-working'],
         },
+        {
+          label:
+            'Large word Nequeporroquisquamestquidoloremipsumquiadolorsitamet,consectetur,adipiscivelit...',
+          image,
+          // eslint-disable-next-line sonarjs/no-duplicate-string
+          key: 'not-working',
+          facet: facets['not-working'],
+          isChecked: conditionQuery['not-working'],
+        },
       ]}
       name="condition-filter"
       onApply={(item, newFilterState) => {

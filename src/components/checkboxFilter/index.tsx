@@ -70,8 +70,11 @@ function CheckboxFilter<ItemKey extends string>({
                       display="flex"
                       justifyContent="space-between"
                       marginLeft="sm"
+                      gap="xs"
                     >
-                      <chakra.span>{item.label}</chakra.span>
+                      <chakra.span wordBreak="break-all">
+                        {item.label}
+                      </chakra.span>
                       <chakra.span>
                         {addThousandSeparatorToNumber(item.facet)}
                       </chakra.span>
