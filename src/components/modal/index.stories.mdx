@@ -181,3 +181,17 @@ export const ModalTemplateWithMoreContent = (args) => {
     {ModalTemplateWithMoreContent.bind({})}
   </Story>
 </Canvas>
+
+# Modal Without Modal Body Padding
+
+<Canvas>
+  <Story
+    name="Modal Without Modal Body Padding"
+    args={{
+      title: 'Modal Header',
+      disableBodyPadding: true,
+    }}
+  >
+    {ModalTemplate.bind({})}
+  </Story>
+</Canvas>

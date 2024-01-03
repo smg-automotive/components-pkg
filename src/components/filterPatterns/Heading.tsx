@@ -61,7 +61,7 @@ export const FilterHeading: FC<Props> = ({
               as="button"
               disabled={!isApplied}
               onClick={() => {
-                onResetFilter();
+                onResetFilter('filter');
                 contentRef?.current?.focus();
               }}
             >
