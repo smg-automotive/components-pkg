@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { Box, chakra } from '@chakra-ui/react';
 
+import HighlightedText from '../text/HighlightedText';
 import Checkbox from '../checkbox';
 
 type Item<ItemKey> = {
@@ -10,6 +11,7 @@ type Item<ItemKey> = {
   facet: number;
   isChecked: boolean;
   image?: ReactNode;
+  highlightIndices?: Array<readonly [number, number]>;
 };
 
 type State<ItemKey extends string> = { [key in ItemKey]: boolean };
@@ -72,7 +74,10 @@ function CheckboxFilter<ItemKey extends string>({
                       flexWrap="wrap"
                       marginLeft="sm"
                     >
-                      <chakra.span>{item.label}</chakra.span>
+                      <HighlightedText
+                        text={item.label}
+                        highlightIndices={item.highlightIndices}
+                      />
                       <chakra.span>
                         {addThousandSeparatorToNumber(item.facet)}
                       </chakra.span>
@@ -84,7 +89,11 @@ function CheckboxFilter<ItemKey extends string>({
                     display="flex"
                     justifyContent="space-between"
                   >
-                    <chakra.span w="full">{item.label}</chakra.span>
+                    <HighlightedText
+                      text={item.label}
+                      highlightIndices={item.highlightIndices}
+                      w="full"
+                    />
                     <chakra.span>
                       {addThousandSeparatorToNumber(item.facet)}
                     </chakra.span>

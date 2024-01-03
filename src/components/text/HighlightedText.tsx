@@ -57,7 +57,11 @@ const HighlightedText: FC<Props> = ({
     </Text>,
   );
 
-  return <>{result}</>;
+  return (
+    <Text as="span" {...textProps}>
+      {result}
+    </Text>
+  );
 };
 
 export default HighlightedText;
