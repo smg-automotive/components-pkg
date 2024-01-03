@@ -118,7 +118,7 @@
     "webpack": "5.89.0"
   },
   "dependencies": {
-    "@smg-automotive/auth": "3.0.4",
+    "@smg-automotive/auth": "3.0.5",
     "@chakra-ui/anatomy": "2.2.2",
     "@chakra-ui/react": "2.8.2",
     "@chakra-ui/styled-system": "2.9.2",
