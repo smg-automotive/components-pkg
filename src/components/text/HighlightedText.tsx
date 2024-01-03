@@ -32,7 +32,7 @@ const HighlightedText: FC<Props> = ({
         {...textProps}
       >
         {text.substring(currentIndex, start)}
-      </Text>
+      </Text>,
     );
 
     // Append the matching part
@@ -44,7 +44,7 @@ const HighlightedText: FC<Props> = ({
         {...textProps}
       >
         {text.substring(start, end + 1)}
-      </Text>
+      </Text>,
     );
 
     currentIndex = end + 1;
@@ -54,7 +54,7 @@ const HighlightedText: FC<Props> = ({
   result.push(
     <Text key={`non-highlight-end-${text}`} as="span" {...textProps}>
       {text.substring(currentIndex)}
-    </Text>
+    </Text>,
   );
 
   return (

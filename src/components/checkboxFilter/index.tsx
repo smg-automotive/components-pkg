@@ -11,7 +11,7 @@ type Item<ItemKey> = {
   facet: number;
   isChecked: boolean;
   image?: ReactNode;
-  highlightIndices?: Array<readonly [number, number]>;
+  highlightIndices?: ReadonlyArray<[number, number]>;
 };
 
 type State<ItemKey extends string> = { [key in ItemKey]: boolean };
