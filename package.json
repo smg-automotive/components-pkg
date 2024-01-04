@@ -118,7 +118,7 @@
     "webpack": "5.89.0"
   },
   "dependencies": {
-    "@smg-automotive/auth": "3.0.4",
+    "@smg-automotive/auth": "3.0.5",
     "@chakra-ui/anatomy": "2.2.2",
     "@chakra-ui/react": "2.8.2",
     "@chakra-ui/styled-system": "2.9.2",
@@ -130,7 +130,7 @@
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
     "embla-carousel-react": "7.1.0",
-    "framer-motion": "10.17.0",
+    "framer-motion": "10.17.4",
     "fs-extra": "11.2.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "10.0.0",
