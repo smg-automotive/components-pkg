@@ -59,6 +59,7 @@ const StoryTemplate: FC<Props> = ({
           key: 'old-timer',
           facet: facets['old-timer'],
           isChecked: conditionQuery['old-timer'],
+          highlightIndices: [[1, 3]],
         },
         {
           label: 'Broken',
