@@ -69,10 +69,11 @@ function CheckboxFilter<ItemKey extends string>({
                       w="full"
                       display="flex"
                       justifyContent="space-between"
-                      flexWrap="wrap"
                       marginLeft="sm"
                     >
-                      <chakra.span>{item.label}</chakra.span>
+                      <chakra.span wordBreak="break-all" ml="sm">
+                        {item.label}
+                      </chakra.span>
                       <chakra.span>
                         {addThousandSeparatorToNumber(item.facet)}
                       </chakra.span>
@@ -84,7 +85,9 @@ function CheckboxFilter<ItemKey extends string>({
                     display="flex"
                     justifyContent="space-between"
                   >
-                    <chakra.span w="full">{item.label}</chakra.span>
+                    <chakra.span w="full" wordBreak="break-all" ml="sm">
+                      {item.label}
+                    </chakra.span>
                     <chakra.span>
                       {addThousandSeparatorToNumber(item.facet)}
                     </chakra.span>
