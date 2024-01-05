@@ -26,7 +26,7 @@ interface RangeSliderWithChartProps {
   selection: NumericMinMaxValue;
   onSliderChange: (event: ChangeCallback) => void;
   onSliderRelease: (event: ChangeCallback) => void;
-  chartHeight?: 'sm' | 'normal';
+  chartHeight?: string;
 }
 
 const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
@@ -34,7 +34,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   selection,
   onSliderChange,
   onSliderRelease,
-  chartHeight = 'normal',
+  chartHeight = '3xl',
 }) => {
   const [startRange, setStartRange] = useState<number[] | null>(null);
 
@@ -124,11 +124,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
 
   return (
     <>
-      <Box
-        position="relative"
-        top="sm"
-        h={chartHeight === 'sm' ? '2xl' : '3xl'}
-      >
+      <Box position="relative" top="sm" h={chartHeight}>
         <Chart range={toRange(selection)} facets={sortedFacetsByFromKey} />
       </Box>
       <RangeSlider

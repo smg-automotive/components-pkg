@@ -24,13 +24,21 @@ export type Props<NameFrom, NameTo> = {
   onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
   to: RangeFilterInputField<NameTo>;
   unit?: string;
-  chartHeight?: 'sm' | 'normal';
+  chartHeight?: string;
 } & PickedNumberInputProps;
 
 function RangeFilterInputWithSlider<
   NameFrom extends string,
   NameTo extends string,
->({ facets, unit, onChange, from, to, ...rest }: Props<NameFrom, NameTo>) {
+>({
+  facets,
+  unit,
+  onChange,
+  from,
+  to,
+  chartHeight,
+  ...rest
+}: Props<NameFrom, NameTo>) {
   const value = {
     min: from.value,
     max: to.value,
@@ -95,6 +103,7 @@ function RangeFilterInputWithSlider<
           onSliderRelease={handleSliderRelease}
           selection={appliedValue()}
           facets={facets}
+          chartHeight={chartHeight}
           {...rest}
         />
       </Box>
