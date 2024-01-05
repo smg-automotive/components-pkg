@@ -76,7 +76,7 @@ function CheckboxFilter<ItemKey extends string>({
                       <HighlightedText
                         text={item.label}
                         highlightIndices={item.highlightIndices}
-                        wordBreak="break-all"
+                        wordBreak="break-word"
                       />
                       <chakra.span ml="sm">
                         {addThousandSeparatorToNumber(item.facet)}
@@ -93,7 +93,7 @@ function CheckboxFilter<ItemKey extends string>({
                       text={item.label}
                       highlightIndices={item.highlightIndices}
                       w="full"
-                      wordBreak="break-all"
+                      wordBreak="break-word"
                     />
                     <chakra.span ml="sm">
                       {addThousandSeparatorToNumber(item.facet)}
@@ -108,11 +108,11 @@ function CheckboxFilter<ItemKey extends string>({
                     acc[currentItem.key] = currentItem.isChecked;
                     return acc;
                   },
-                  {},
+                  {}
                 );
                 onApply(
                   { ...item, isChecked },
-                  { ...previousState, [item.key]: isChecked },
+                  { ...previousState, [item.key]: isChecked }
                 );
               }}
               isDisabled={item.facet === 0 && !item.isChecked}
