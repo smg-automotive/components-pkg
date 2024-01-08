@@ -7,6 +7,7 @@ import { Facet } from './RangeSliderWithChart';
 interface Props {
   facets?: Array<Facet>;
   range: number[];
+  height?: 'sm' | 'normal';
 }
 
 const Chart: React.FC<Props> = ({ facets, range }) => {
@@ -17,7 +18,7 @@ const Chart: React.FC<Props> = ({ facets, range }) => {
   const maxValue = Math.max(...facets.map(({ value }) => value));
 
   return (
-    <Flex justify="space-between" h="3xl" data-testid="chart">
+    <Flex justify="space-between" h="full" data-testid="chart">
       {facets.map(({ from }, index) => (
         <Box
           h="full"
