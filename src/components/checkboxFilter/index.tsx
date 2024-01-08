@@ -108,11 +108,11 @@ function CheckboxFilter<ItemKey extends string>({
                     acc[currentItem.key] = currentItem.isChecked;
                     return acc;
                   },
-                  {}
+                  {},
                 );
                 onApply(
                   { ...item, isChecked },
-                  { ...previousState, [item.key]: isChecked }
+                  { ...previousState, [item.key]: isChecked },
                 );
               }}
               isDisabled={item.facet === 0 && !item.isChecked}
