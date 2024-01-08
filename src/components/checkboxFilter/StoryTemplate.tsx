@@ -59,6 +59,7 @@ const StoryTemplate: FC<Props> = ({
           key: 'old-timer',
           facet: facets['old-timer'],
           isChecked: conditionQuery['old-timer'],
+          highlightIndices: [[1, 3]],
         },
         {
           label: 'Broken',
@@ -76,6 +77,15 @@ const StoryTemplate: FC<Props> = ({
         },
         {
           label: 'Not working',
+          image,
+          // eslint-disable-next-line sonarjs/no-duplicate-string
+          key: 'not-working',
+          facet: facets['not-working'],
+          isChecked: conditionQuery['not-working'],
+        },
+        {
+          label:
+            'Large word Nequeporroquisquamestquidoloremipsumquiadolorsitamet,consectetur,adipiscivelit...',
           image,
           // eslint-disable-next-line sonarjs/no-duplicate-string
           key: 'not-working',
