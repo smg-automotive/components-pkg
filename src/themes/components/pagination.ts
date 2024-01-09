@@ -9,7 +9,7 @@ const baseStyle = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    textStyle: { base: 'body-small', sm: 'body' },
+    textStyle: 'body',
   },
   paginationButton: {
     display: 'inline-flex',
