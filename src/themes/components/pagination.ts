@@ -8,7 +8,7 @@ const baseStyle = {
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: { base: 'space-evenly', sm: 'center' },
     textStyle: 'body',
   },
   paginationButton: {
