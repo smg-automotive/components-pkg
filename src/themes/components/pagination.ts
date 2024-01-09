@@ -9,7 +9,7 @@ const baseStyle = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    textStyle: 'body',
+    textStyle: { base: 'body-small', sm: 'body' },
   },
   paginationButton: {
     display: 'inline-flex',
@@ -20,8 +20,8 @@ const baseStyle = {
     minWidth: 'md',
     height: 'md',
     borderRadius: 'sm',
-    padding: 'sm',
-    marginX: 'xxs',
+    padding: { base: 'xs', sm: 'sm' },
+    marginX: { base: '0', sm: 'xxs' },
     _hover: {
       backgroundColor: 'gray.100',
     },
@@ -36,7 +36,7 @@ const baseStyle = {
     },
   },
   dots: {
-    minWidth: 'md',
+    minWidth: { base: 'none', sm: 'md' },
     height: 'auto',
     textAlign: 'center',
   },
