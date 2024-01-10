@@ -1,6 +1,10 @@
 import React, { cloneElement, FC, useState } from 'react';
 
-import { Tooltip as ChakraTooltip, Portal, TooltipProps } from '@chakra-ui/react';
+import {
+  Tooltip as ChakraTooltip,
+  Portal,
+  TooltipProps,
+} from '@chakra-ui/react';
 
 type Props = {
   children: React.ReactNode;
