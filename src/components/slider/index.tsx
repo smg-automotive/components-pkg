@@ -86,7 +86,7 @@ const DiscreteSlider = <T,>({
             key={index}
             value={stepValue as number}
             fontWeight={sliderStepValue === stepValue ? 'bold' : 'normal'}
-            ml={`-${label.length * 3.85}`}
+            ml={`-${label.length}%`}
             mt={'25'}
             fontSize={'sm'}
           >
