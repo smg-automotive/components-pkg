@@ -49,15 +49,13 @@ const DiscreteSlider = <T,>({
 
   const sliderMarks = getSliderMarks(marks, step, applyIndentation);
   const handleOnChange = (val: number) => {
-    let stepValue = val;
-    if (val < step && applyIndentation) stepValue = step;
+    const stepValue = val < step && applyIndentation ? step : val;
 
-    const selectedObject = sliderMarks.find(
+    const selectedValue = sliderMarks.find(
       (mark) => mark.stepValue === stepValue,
-    );
-    const valueToUse = (selectedObject?.value as NonNullable<T>) ?? stepValue;
+    )?.value;
 
-    onValueChanged(valueToUse);
+    onValueChanged((selectedValue as NonNullable<T>) ?? stepValue);
     setSliderStepValue(stepValue);
   };
 
