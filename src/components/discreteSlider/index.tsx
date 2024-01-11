@@ -7,7 +7,8 @@ import {
   SliderTrack,
 } from '@chakra-ui/react';
 
-import { useSliderStepState } from './hooks/useSliderStepValue';
+const emptyItemOffset = 0;
+const firstItemOffset = 1;
 
 export type SliderMark<T> = {
   stepValue?: number;
@@ -18,51 +19,54 @@ export type SliderMark<T> = {
 export type SliderProps<T> = {
   applyIndentation?: boolean;
   marks: SliderMark<T>[];
-  defaultMark: SliderMark<T>;
+  value: T;
   onValueChanged: (arg: T) => void;
+};
+
+const getSliderStepValue = <T,>(
+  marks: SliderMark<T>[],
+  applyIndentation: boolean,
+  value: T,
+) => {
+  const selectedMarkIndex = marks.findIndex((mark) => mark.value === value);
+  const stepIndexOffset = applyIndentation ? firstItemOffset : emptyItemOffset;
+  if (selectedMarkIndex < emptyItemOffset) {
+    return stepIndexOffset;
+  }
+  return selectedMarkIndex + stepIndexOffset;
 };
 
 const getSliderMarks = <T,>(
   marks: SliderMark<T>[],
-  step: number = 1,
   applyIndentation: boolean = false,
 ) =>
   marks.map((mark, index) => ({
     ...mark,
-    stepValue: (index + +applyIndentation) * step,
+    stepValue: index + Number(applyIndentation),
   }));
-
-const step = 1;
 
 const DiscreteSlider = <T,>({
   marks,
   applyIndentation = false,
   onValueChanged = () => {},
-  defaultMark,
+  value,
 }: SliderProps<T>) => {
-  const [sliderStepValue, setSliderStepValue] = useSliderStepState({
-    step,
-    applyIndentation,
-    marks,
-    defaultMark,
-  });
+  const sliderStepValue = getSliderStepValue(marks, applyIndentation, value);
 
-  const sliderMarks = getSliderMarks(marks, step, applyIndentation);
-  const handleOnChange = (val: number) => {
-    const stepValue = val < step && applyIndentation ? step : val;
+  const sliderMarks = getSliderMarks(marks, applyIndentation);
 
-    const selectedValue = sliderMarks.find(
-      (mark) => mark.stepValue === stepValue,
+  const handleOnChange = (newStepValue: number) => {
+    const newSliderMark = sliderMarks.find(
+      (mark) => mark.stepValue === newStepValue,
     )?.value;
 
-    onValueChanged((selectedValue as NonNullable<T>) ?? stepValue);
-    setSliderStepValue(stepValue);
+    onValueChanged(newSliderMark as NonNullable<T>);
   };
 
   return (
     <ChakraSlider
-      step={step}
-      max={(sliderMarks.length - Number(!applyIndentation)) * step}
+      step={1}
+      max={sliderMarks.length - Number(!applyIndentation)}
       value={sliderStepValue}
       onChange={handleOnChange}
       focusThumbOnChange={false}

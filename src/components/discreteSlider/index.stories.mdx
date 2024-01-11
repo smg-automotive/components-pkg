@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Center } from '@chakra-ui/react';
@@ -16,11 +17,11 @@ import DiscreteSlider from './index';
       description:
         'An array of marks of generic type T. Each mark is an object that represents a position on the discreteSlider. It has a label, which is a string representing the visual label on the mark, and an arbitrary value that can be of any type.',
     },
-    defaultMark: {
+    value: {
       control: 'object',
-      name: 'defaultMark',
+      name: 'value',
       description:
-        "The default value and label where the discreteSlider's thumb will be upon initialization.",
+        "The default value where the discreteSlider's thumb will be upon initialization.",
     },
     onValueChanged: {
       control: 'action',
@@ -53,10 +54,22 @@ This can be useful in scenarios where you want to offer a small selection of opt
 ## Overview
 
 export const Template = (args) => {
+  const marks = [
+    { label: '14 days', value: 1 },
+    { label: '30 days', value: 2 },
+    { label: '60 days', value: 3 },
+    { label: 'Unlimited', value: 4 },
+  ];
+  const [step, setStep] = useState(marks[0].value);
   return (
     <Center>
       <Box width={392}>
-        <DiscreteSlider {...args} />
+        <DiscreteSlider
+          {...args}
+          marks={marks}
+          value={step}
+          onValueChanged={setStep}
+        />
       </Box>
     </Center>
   );
@@ -66,13 +79,6 @@ export const Template = (args) => {
   <Story
     name="Overview"
     args={{
-      marks: [
-        { label: '14 days', value: 1 },
-        { label: '30 days', value: 2 },
-        { label: '60 days', value: 3 },
-        { label: 'Unlimited', value: 4 },
-      ],
-      defaultMark: { label: '30 days', value: 2 },
       applyIndentation: true,
     }}
   >
