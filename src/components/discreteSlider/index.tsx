@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Slider as ChakraSlider,
   SliderMark as ChakraSliderMark,
@@ -7,29 +7,19 @@ import {
   SliderTrack,
 } from '@chakra-ui/react';
 
-type SliderMark<T> = {
+import { useSliderStepState } from './hooks/useSliderStepValue';
+
+export type SliderMark<T> = {
   stepValue?: number;
   label: string;
   value: T;
 };
 
-type SliderProps<T> = {
+export type SliderProps<T> = {
   applyIndentation?: boolean;
   marks: SliderMark<T>[];
   defaultMark: SliderMark<T>;
   onValueChanged: (arg: T) => void;
-};
-
-const getDefaultStepValue = <T,>(
-  marks: SliderMark<T>[],
-  step: number = 1,
-  applyIndentation: boolean = false,
-  defaultMark: SliderMark<T>,
-) => {
-  return (
-    (defaultMark && (marks.indexOf(defaultMark) + +applyIndentation) * step) ||
-    step - +!applyIndentation
-  );
 };
 
 const getSliderMarks = <T,>(
@@ -43,20 +33,19 @@ const getSliderMarks = <T,>(
   }));
 
 const step = 1;
+
 const DiscreteSlider = <T,>({
   marks,
   applyIndentation = false,
   onValueChanged = () => {},
   defaultMark,
 }: SliderProps<T>) => {
-  const defaultStepValue = getDefaultStepValue(
-    marks,
+  const [sliderStepValue, setSliderStepValue] = useSliderStepState({
     step,
     applyIndentation,
+    marks,
     defaultMark,
-  );
-  const [sliderStepValue, setSliderStepValue] =
-    useState<number>(defaultStepValue);
+  });
 
   const sliderMarks = getSliderMarks(marks, step, applyIndentation);
   const handleOnChange = (val: number) => {

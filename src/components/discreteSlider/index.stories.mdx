@@ -16,9 +16,9 @@ import DiscreteSlider from './index';
       description:
         'An array of marks of generic type T. Each mark is an object that represents a position on the discreteSlider. It has a label, which is a string representing the visual label on the mark, and an arbitrary value that can be of any type.',
     },
-    defaultValue: {
+    defaultMark: {
       control: 'object',
-      name: 'defaultValue',
+      name: 'defaultMark',
       description:
         "The default value and label where the discreteSlider's thumb will be upon initialization.",
     },
@@ -28,9 +28,9 @@ import DiscreteSlider from './index';
       description:
         'A function that is called whenever the discreteSlider value changes. It receives the current discreteSlider value as an argument.',
     },
-    useIndentation: {
+    applyIndentation: {
       control: 'boolean',
-      name: 'useIndentation',
+      name: 'applyIndentation',
       table: {
         defaultValue: { summary: 'False' },
       },
@@ -72,8 +72,8 @@ export const Template = (args) => {
         { label: '60 days', value: 3 },
         { label: 'Unlimited', value: 4 },
       ],
-      defaultValue: { label: '30 days', value: 2 },
-      useIndentation: true,
+      defaultMark: { label: '30 days', value: 2 },
+      applyIndentation: true,
     }}
   >
     {Template.bind({})}
