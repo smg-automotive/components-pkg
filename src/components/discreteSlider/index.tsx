@@ -14,54 +14,54 @@ type SliderMark<T> = {
 };
 
 type SliderProps<T> = {
-  useIndentation?: boolean;
+  applyIndentation?: boolean;
   marks: SliderMark<T>[];
-  defaultValue: SliderMark<T>;
+  defaultMark: SliderMark<T>;
   onValueChanged: (arg: T) => void;
 };
 
 const getDefaultStepValue = <T,>(
   marks: SliderMark<T>[],
   step: number = 1,
-  useIndentation: boolean = false,
-  defaultValue: SliderMark<T>,
+  applyIndentation: boolean = false,
+  defaultMark: SliderMark<T>,
 ) => {
   return (
-    (defaultValue && (marks.indexOf(defaultValue) + +useIndentation) * step) ||
-    step - +!useIndentation
+    (defaultMark && (marks.indexOf(defaultMark) + +applyIndentation) * step) ||
+    step - +!applyIndentation
   );
 };
 
 const getSliderMarks = <T,>(
   marks: SliderMark<T>[],
   step: number = 1,
-  useIndentation: boolean = false,
+  applyIndentation: boolean = false,
 ) =>
   marks.map((mark, index) => ({
     ...mark,
-    stepValue: (index + +useIndentation) * step,
+    stepValue: (index + +applyIndentation) * step,
   }));
 
 const step = 1;
 const DiscreteSlider = <T,>({
   marks,
-  useIndentation = false,
+  applyIndentation = false,
   onValueChanged = () => {},
-  defaultValue,
+  defaultMark,
 }: SliderProps<T>) => {
   const defaultStepValue = getDefaultStepValue(
     marks,
     step,
-    useIndentation,
-    defaultValue,
+    applyIndentation,
+    defaultMark,
   );
   const [sliderStepValue, setSliderStepValue] =
     useState<number>(defaultStepValue);
 
-  const sliderMarks = getSliderMarks(marks, step, useIndentation);
+  const sliderMarks = getSliderMarks(marks, step, applyIndentation);
   const handleOnChange = (val: number) => {
     let stepValue = val;
-    if (val < step && useIndentation) stepValue = step;
+    if (val < step && applyIndentation) stepValue = step;
 
     const selectedObject = sliderMarks.find(
       (mark) => mark.stepValue === stepValue,
@@ -75,7 +75,7 @@ const DiscreteSlider = <T,>({
   return (
     <ChakraSlider
       step={step}
-      max={(sliderMarks.length - +!useIndentation) * step}
+      max={(sliderMarks.length - +!applyIndentation) * step}
       value={sliderStepValue}
       onChange={handleOnChange}
       focusThumbOnChange={false}

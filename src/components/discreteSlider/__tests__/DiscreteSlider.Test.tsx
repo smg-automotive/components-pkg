@@ -20,8 +20,8 @@ const renderWrapper = ({
   render(
     <DiscreteSlider
       marks={marks}
-      defaultValue={defaultValue}
-      useIndentation={useIndentation}
+      defaultMark={defaultValue}
+      applyIndentation={useIndentation}
       onValueChanged={onValueChanged}
     />,
   );

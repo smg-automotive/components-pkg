@@ -14,19 +14,19 @@ import DiscreteSlider from './index';
       control: 'object',
       name: 'marks',
       description:
-        'An array of marks of generic type T. Each mark is an object that represents a position on the slider. It has a label, which is a string representing the visual label on the mark, and an arbitrary value that can be of any type.',
+        'An array of marks of generic type T. Each mark is an object that represents a position on the discreteSlider. It has a label, which is a string representing the visual label on the mark, and an arbitrary value that can be of any type.',
     },
     defaultValue: {
       control: 'object',
       name: 'defaultValue',
       description:
-        "The default value and label where the slider's thumb will be upon initialization.",
+        "The default value and label where the discreteSlider's thumb will be upon initialization.",
     },
     onValueChanged: {
       control: 'action',
       name: 'onValueChanged',
       description:
-        'A function that is called whenever the slider value changes. It receives the current slider value as an argument.',
+        'A function that is called whenever the discreteSlider value changes. It receives the current discreteSlider value as an argument.',
     },
     useIndentation: {
       control: 'boolean',
@@ -35,7 +35,7 @@ import DiscreteSlider from './index';
         defaultValue: { summary: 'False' },
       },
       description:
-        'An optional parameter that lets you define whether the first slider step should be indented or start right at the beginning of the SliderTrack.',
+        'An optional parameter that lets you define whether the first discreteSlider step should be indented or start right at the beginning of the SliderTrack.',
     },
   }}
 />
