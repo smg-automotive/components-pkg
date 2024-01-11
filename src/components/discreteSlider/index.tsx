@@ -78,17 +78,15 @@ const DiscreteSlider = <T,>({
             value={stepValue as number}
             fontWeight={sliderStepValue === stepValue ? 'bold' : 'normal'}
             ml={`-${label.length}%`}
-            mt={'2xl'}
-            fontSize={'sm'}
           >
             {label}
           </ChakraSliderMark>
         );
       })}
       <SliderTrack>
-        <SliderFilledTrack bg={'gray.900'} />
+        <SliderFilledTrack />
       </SliderTrack>
-      <SliderThumb boxSize={'sm'} />
+      <SliderThumb />
     </ChakraSlider>
   );
 };
