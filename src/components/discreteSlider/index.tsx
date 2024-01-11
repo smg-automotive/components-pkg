@@ -86,7 +86,7 @@ const DiscreteSlider = <T,>({
       <SliderTrack>
         <SliderFilledTrack bg={'gray.900'} />
       </SliderTrack>
-      <SliderThumb boxSize={24} />
+      <SliderThumb boxSize={'sm'} />
     </ChakraSlider>
   );
 };
