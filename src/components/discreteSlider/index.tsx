@@ -38,7 +38,7 @@ const getSliderStepValue = <T,>(
 
 const getSliderMarks = <T,>(
   marks: SliderMark<T>[],
-  applyIndentation: boolean = false,
+  applyIndentation: boolean,
 ) =>
   marks.map((mark, index) => ({
     ...mark,
@@ -48,7 +48,7 @@ const getSliderMarks = <T,>(
 const DiscreteSlider = <T,>({
   marks,
   applyIndentation = false,
-  onValueChanged = () => {},
+  onValueChanged,
   value,
 }: SliderProps<T>) => {
   const sliderStepValue = getSliderStepValue(marks, applyIndentation, value);
