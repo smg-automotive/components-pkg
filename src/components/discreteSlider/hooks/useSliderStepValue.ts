@@ -33,8 +33,7 @@ export const useSliderStepState = <T>({
     applyIndentation,
     defaultMark,
   );
-  const [sliderStepValue, setSliderStepValue] =
-    useState<number>(defaultStepValue);
+  const [sliderStepValue, setSliderStepValue] = useState(defaultStepValue);
 
   return [sliderStepValue, setSliderStepValue];
 };

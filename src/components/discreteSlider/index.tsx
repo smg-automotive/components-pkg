@@ -64,7 +64,7 @@ const DiscreteSlider = <T,>({
   return (
     <ChakraSlider
       step={step}
-      max={(sliderMarks.length - +!applyIndentation) * step}
+      max={(sliderMarks.length - Number(!applyIndentation)) * step}
       value={sliderStepValue}
       onChange={handleOnChange}
       focusThumbOnChange={false}
