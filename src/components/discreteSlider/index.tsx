@@ -10,13 +10,13 @@ import {
 const emptyItemOffset = 0;
 const firstItemOffset = 1;
 
-export type SliderMark<T> = {
+type SliderMark<T> = {
   stepValue?: number;
   label: string;
   value: T;
 };
 
-export type SliderProps<T> = {
+type SliderProps<T> = {
   applyIndentation?: boolean;
   marks: SliderMark<T>[];
   value: T;
@@ -47,7 +47,7 @@ const getSliderMarks = <T,>(
 
 const DiscreteSlider = <T,>({
   marks,
-  applyIndentation = false,
+  applyIndentation = true,
   onValueChanged,
   value,
 }: SliderProps<T>) => {
