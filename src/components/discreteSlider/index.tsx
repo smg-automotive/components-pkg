@@ -23,17 +23,20 @@ type SliderProps<T> = {
   onValueChanged: (arg: T) => void;
 };
 
+const getItemOffset = (applyIndentation: boolean) => {
+  return applyIndentation ? firstItemOffset : emptyItemOffset;
+};
+
 const getSliderStepValue = <T,>(
   marks: SliderMark<T>[],
   applyIndentation: boolean,
   value: T,
 ) => {
   const selectedMarkIndex = marks.findIndex((mark) => mark.value === value);
-  const stepIndexOffset = applyIndentation ? firstItemOffset : emptyItemOffset;
   if (selectedMarkIndex < emptyItemOffset) {
-    return stepIndexOffset;
+    return getItemOffset(applyIndentation);
   }
-  return selectedMarkIndex + stepIndexOffset;
+  return selectedMarkIndex + getItemOffset(applyIndentation);
 };
 
 const getSliderMarks = <T,>(
@@ -42,7 +45,7 @@ const getSliderMarks = <T,>(
 ) =>
   marks.map((mark, index) => ({
     ...mark,
-    stepValue: index + Number(applyIndentation),
+    stepValue: index + getItemOffset(applyIndentation),
   }));
 
 const DiscreteSlider = <T,>({
@@ -66,7 +69,7 @@ const DiscreteSlider = <T,>({
   return (
     <ChakraSlider
       step={1}
-      max={sliderMarks.length - Number(!applyIndentation)}
+      max={sliderMarks.length - 1 + getItemOffset(applyIndentation)}
       value={sliderStepValue}
       onChange={handleOnChange}
       focusThumbOnChange={false}
