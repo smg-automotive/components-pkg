@@ -76,7 +76,7 @@ function CheckboxFilter<ItemKey extends string>({
                       <HighlightedText
                         text={item.label}
                         highlightIndices={item.highlightIndices}
-                        overflowWrap="anywhere"
+                        wordBreak="break-word"
                       />
                       <chakra.span ml="sm">
                         {addThousandSeparatorToNumber(item.facet)}
@@ -93,7 +93,7 @@ function CheckboxFilter<ItemKey extends string>({
                       text={item.label}
                       highlightIndices={item.highlightIndices}
                       w="full"
-                      overflowWrap="anywhere"
+                      wordBreak="break-word"
                     />
                     <chakra.span ml="sm">
                       {addThousandSeparatorToNumber(item.facet)}
