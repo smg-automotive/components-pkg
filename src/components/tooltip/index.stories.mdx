@@ -1,39 +1,17 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { useDisclosure } from '@chakra-ui/react';
 
-import Modal from '../modal';
 import { TooltipIcon } from '../icons';
-import Button from '../button';
-import Box from '../box';
 import Tooltip from './index.tsx';
 
 <Meta title="Components/Overlay/Tooltip" component={Tooltip} />
 
-export const TooltipTemplate = (args) => {
+export const Template = (args) => {
   return (
     <Tooltip {...args}>
       <TooltipIcon />
     </Tooltip>
   );
 };
-
-export const ModalTemplate = (args) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const ref = React.useRef(null);
-
-return (
-
-<Box>
-  <Button onClick={onOpen}>Open Tooltip inside Modal</Button>
-  <Modal isOpen={isOpen} onClose={onClose}>
-    <Box ref={ref}>
-      <Tooltip {...args} containerRef={ref}>
-        <TooltipIcon />
-      </Tooltip>
-    </Box>
-  </Modal>
-</Box>
-); };
 
 # Tooltip
 
@@ -65,20 +43,6 @@ return (
       },
     }}
   >
-    {TooltipTemplate.bind({})}
-  </Story>
-</Canvas>
-
-## Stacking Order (Inside Modal component)
-
-<Canvas>
-  <Story
-    name="Override Stacking Order"
-    args={{
-      label: 'I am a tooltip in the modal',
-      placement: 'auto',
-    }}
-  >
-    {ModalTemplate.bind({})}
+    {Template.bind({})}
   </Story>
 </Canvas>
