@@ -93,6 +93,13 @@ const baseStyleThumb = defineStyle((props) => {
   };
 });
 
+const baseStyleMark = defineStyle(() => {
+  return {
+    mt: '2xl',
+    fontSize: 'sm',
+  };
+});
+
 const baseStyleFilledTrack = defineStyle(() => ({
   width: 'inherit',
   height: 'inherit',
@@ -104,6 +111,7 @@ const baseStyle = definePartsStyle((props) => ({
   track: baseStyleTrack(props),
   thumb: baseStyleThumb(props),
   filledTrack: baseStyleFilledTrack(),
+  mark: baseStyleMark(),
 }));
 
 export default defineMultiStyleConfig({
