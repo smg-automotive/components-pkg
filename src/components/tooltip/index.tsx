@@ -8,7 +8,7 @@ import {
 
 type Props = {
   children: React.ReactNode;
-  containerRef?: React.RefObject<HTMLElement>;
+  containerRef?: React.RefObject<HTMLElement | null>;
 } & Pick<TooltipProps, 'label' | 'placement' | 'maxWidth'>;
 
 const Tooltip: FC<Props> = ({ children, containerRef, ...props }) => {
