@@ -97,3 +97,5 @@ export { SmallCarIcon } from './SmallCarIcon';
 export { SedanIcon } from './SedanIcon';
 export { WagonIcon } from './WagonIcon';
 export { PickUpIcon } from './PickUpIcon';
+export { InformationIcon } from './InformationIcon';
+export { PartialClockIcon } from './PartialClockIcon';
