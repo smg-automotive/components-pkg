@@ -10,7 +10,8 @@ const SimpleHeader: ComponentMultiStyleConfig = {
     header: baseStyleHeader,
     title: {
       textStyle: { '2xs': 'heading3', md: 'heading1' },
-      wordBreak: 'break-word',
+      overflowWrap: 'anywhere',
+      wordBreak: 'normal',
     },
   },
 };
