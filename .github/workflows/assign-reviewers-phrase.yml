@@ -1,8 +1,10 @@
-name: Review Assign
+name: Assign reviewers for phrase-translations branches
 
 on:
   pull_request:
     types: [opened, ready_for_review, reopened]
+    paths:
+      - 'locales/**'
 
 jobs:
   assign:
