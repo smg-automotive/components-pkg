@@ -11,7 +11,6 @@
    npm install @smg-automotive/components
    ```
 2. run the setup script
-
    ```sh
    npx components setup --path=<path to you public dir>
    ```
