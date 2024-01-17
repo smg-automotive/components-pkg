@@ -8,7 +8,6 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
-import ScrollableBox from 'src/components/scrollableBox';
 import Box from 'src/components/box';
 
 import { FilterHeading } from '../Heading';
@@ -28,7 +27,8 @@ type Props = {
   | 'showCallToActionButton'
   | 'header'
   | 'withScrollableBox'
-  | 'contentPaddingX'
+  | 'bodyPaddingX'
+  | 'overflowY'
   | 'children'
 >;
 
@@ -41,8 +41,8 @@ const Popover: FC<Props> = ({
   onResetFilter,
   showCallToActionButton,
   header,
-  withScrollableBox,
-  contentPaddingX = '2xl',
+  bodyPaddingX = '2xl',
+  overflowY = 'auto',
   children,
 }) => {
   const { language } = useI18n();
@@ -84,24 +84,10 @@ const Popover: FC<Props> = ({
                 ? '6xl'
                 : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
             }
-            overflowY="auto"
-            paddingX={withScrollableBox ? 0 : contentPaddingX}
+            overflowY={overflowY}
+            paddingX={bodyPaddingX}
           >
-            {withScrollableBox ? (
-              <ScrollableBox
-                indicatorHeight="sm"
-                scrollSpace={contentPaddingX}
-                maxH={
-                  showCallToActionButton
-                    ? '6xl'
-                    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
-                }
-              >
-                {children}
-              </ScrollableBox>
-            ) : (
-              children
-            )}
+            {children}
           </PopoverBody>
           {showCallToActionButton ? (
             <PopoverFooter paddingX="2xl">

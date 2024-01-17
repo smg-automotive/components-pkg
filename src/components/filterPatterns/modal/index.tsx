@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 
 import TranslationProvider from 'src/components/translationProvider';
-import ScrollableBox from 'src/components/scrollableBox';
 
 import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
@@ -31,7 +30,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   showCallToActionButton = true,
   header,
   isDisabled = false,
-  withScrollableBox,
+  overflowY = 'auto',
+  bodyPaddingX = '2xl',
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -73,20 +73,15 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               )}
             </ModalHeader>
             <ModalBody
-              overflowY="auto"
+              // @ts-expect-error Overflow props are not typed in Chakra
+              overflowY={overflowY}
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
               paddingY="0"
-              paddingX={withScrollableBox ? '0' : '2xl'}
+              paddingX={bodyPaddingX}
               position="relative"
             >
-              {withScrollableBox ? (
-                <ScrollableBox indicatorHeight="60px" position="absolute">
-                  {children}
-                </ScrollableBox>
-              ) : (
-                children
-              )}
+              {children}
             </ModalBody>
             {showCallToActionButton ? (
               <ModalFooter paddingY="0" paddingX="2xl">
