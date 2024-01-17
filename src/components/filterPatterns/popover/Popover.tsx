@@ -84,6 +84,7 @@ const Popover: FC<Props> = ({
                 ? '6xl'
                 : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
             }
+            overflowY="auto"
             paddingX={withScrollableBox ? 0 : contentPaddingX}
           >
             {withScrollableBox ? (

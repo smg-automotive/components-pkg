@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  PropsWithChildren,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-} from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { Box, BoxProps } from '@chakra-ui/react';
 
 interface ScrollableBoxProps extends BoxProps {
@@ -32,60 +26,9 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
   scrollSpace = '2xl',
   ...rest
 }) => {
-  const scrollableRef = useRef<HTMLInputElement>(null);
-  const indicatorRef = useRef<HTMLInputElement>(null);
-
-  const handleScroll = () => {
-    const scrollableElement = scrollableRef.current;
-    const indicatorElement = indicatorRef.current;
-
-    if (scrollableElement && indicatorElement) {
-      const isScrolledToBottom =
-        scrollableElement.scrollHeight - scrollableElement.scrollTop ===
-        scrollableElement.clientHeight;
-
-      if (isScrolledToBottom) {
-        indicatorRef.current.style.opacity = '0';
-        return;
-      }
-
-      if (indicatorElement.style.opacity === '0') {
-        indicatorElement.style.opacity = '1';
-      }
-    }
-  };
-
-  useLayoutEffect(() => {
-    const scrollableElement = scrollableRef.current;
-    const indicatorElement = indicatorRef.current;
-
-    if (
-      scrollableElement &&
-      indicatorElement &&
-      scrollableElement.scrollHeight > scrollableElement.clientHeight
-    ) {
-      indicatorElement.style.display = 'block';
-    }
-  }, [scrollableRef, indicatorRef]);
-
-  useEffect(() => {
-    const scrollableElement = scrollableRef.current;
-
-    if (scrollableElement) {
-      scrollableElement.addEventListener('scroll', handleScroll);
-    }
-
-    return () => {
-      if (scrollableElement) {
-        scrollableElement.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, []);
-
   return (
     <Box position="relative" top="0" bottom="0" left="0" right="0" {...rest}>
       <Box
-        ref={scrollableRef}
         overflowY="auto"
         paddingX={scrollSpace}
         h={height}
@@ -93,10 +36,9 @@ const ScrollableBox: FC<PropsWithChildren<ScrollableBoxProps>> = ({
         w="full"
       >
         {children}
+        <Box height={indicatorHeight} />
       </Box>
       <Box
-        ref={indicatorRef}
-        display="none"
         position="absolute"
         bottom="0"
         width={

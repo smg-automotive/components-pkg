@@ -31,7 +31,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   showCallToActionButton = true,
   header,
   isDisabled = false,
-  withScrollableBox = false,
+  withScrollableBox,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -73,6 +73,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               )}
             </ModalHeader>
             <ModalBody
+              overflowY="auto"
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
               paddingY="0"
@@ -80,7 +81,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               position="relative"
             >
               {withScrollableBox ? (
-                <ScrollableBox indicatorHeight="38px" position="absolute">
+                <ScrollableBox indicatorHeight="60px" position="absolute">
                   {children}
                 </ScrollableBox>
               ) : (
