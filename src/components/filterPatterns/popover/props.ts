@@ -7,6 +7,6 @@ export type PopoverFilterProps = FilterPatternProps &
     onPopoverClose?: () => void;
     onPopoverOpen?: () => void;
     appliedLabel?: string;
-    withScrollableBox?: boolean;
-    contentPaddingX?: string;
+    disableBodyPadding?: boolean;
+    disableBodyOverflow?: boolean;
   };

@@ -8,6 +8,6 @@ export type ModalFilterProps = FilterPatternProps &
     initialModalState?: 'open' | 'closed';
     isDisabled?: boolean;
     withScrollableBox?: boolean;
-    bodyPaddingX?: string;
-    overflowY?: string;
+    disableBodyPadding?: boolean;
+    disableBodyOverflow?: boolean;
   };

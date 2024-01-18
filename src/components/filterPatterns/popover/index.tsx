@@ -30,8 +30,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   header,
-  bodyPaddingX = '2xl',
-  overflowY = 'auto',
+  disableBodyPadding = false,
+  disableBodyOverflow = false,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -139,8 +139,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               onResetFilter={() => onResetFilter('filter')}
               showCallToActionButton={showCallToActionButton}
               header={header}
-              bodyPaddingX={bodyPaddingX}
-              overflowY={overflowY}
+              disableBodyPadding={disableBodyPadding}
+              disableBodyOverflow={disableBodyOverflow}
             >
               {children}
             </FilterPopover>

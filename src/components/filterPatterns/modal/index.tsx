@@ -30,8 +30,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   showCallToActionButton = true,
   header,
   isDisabled = false,
-  overflowY = 'auto',
-  bodyPaddingX = '2xl',
+  disableBodyPadding = false,
+  disableBodyOverflow = false,
   children,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
@@ -73,12 +73,11 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               )}
             </ModalHeader>
             <ModalBody
-              // @ts-expect-error Overflow props are not typed in Chakra
-              overflowY={overflowY}
+              overflowY={disableBodyOverflow ? 'hidden' : 'auto'}
               marginTop="2xl"
               marginBottom={showCallToActionButton ? '2xl' : '0'}
               paddingY="0"
-              paddingX={bodyPaddingX}
+              paddingX={disableBodyPadding ? '0' : '2xl'}
               position="relative"
             >
               {children}

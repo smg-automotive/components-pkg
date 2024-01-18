@@ -16,7 +16,6 @@ import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
-  widthScrollableBox?: string;
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
@@ -26,9 +25,8 @@ type Props = {
   | 'onResetFilter'
   | 'showCallToActionButton'
   | 'header'
-  | 'withScrollableBox'
-  | 'bodyPaddingX'
-  | 'overflowY'
+  | 'disableBodyOverflow'
+  | 'disableBodyPadding'
   | 'children'
 >;
 
@@ -41,8 +39,8 @@ const Popover: FC<Props> = ({
   onResetFilter,
   showCallToActionButton,
   header,
-  bodyPaddingX = '2xl',
-  overflowY = 'auto',
+  disableBodyPadding = false,
+  disableBodyOverflow = false,
   children,
 }) => {
   const { language } = useI18n();
@@ -84,8 +82,8 @@ const Popover: FC<Props> = ({
                 ? '6xl'
                 : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
             }
-            overflowY={overflowY}
-            paddingX={bodyPaddingX}
+            overflowY={disableBodyOverflow ? 'hidden' : 'auto'}
+            paddingX={disableBodyPadding ? '0' : '2xl'}
           >
             {children}
           </PopoverBody>
