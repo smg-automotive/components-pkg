@@ -16,6 +16,7 @@ const baseStyle = defineStyle(() => {
     p: 'sm',
     color: 'white',
     textStyle: 'body',
+    zIndex: 'tooltip',
   };
 });
 
