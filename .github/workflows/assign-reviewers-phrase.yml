@@ -1,0 +1,17 @@
+name: Assign reviewers for phrase-translations branches
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+    paths:
+      - 'locales/**'
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.ref == 'phrase-translations'
+    steps:
+      - uses: hkusu/review-assign-action@v1
+        with:
+          reviewers: ${{ vars.AUTOMOTIVE_FRONTEND }}
+          max-num-of-reviewers: 4
