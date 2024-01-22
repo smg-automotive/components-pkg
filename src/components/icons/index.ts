@@ -29,6 +29,7 @@ export { ChevronUpSmallIcon } from './ChevronUpSmallIcon';
 export { CloseIcon } from './CloseIcon';
 export { ConsumptionIcon } from './ConsumptionIcon';
 export { CreditIcon } from './CreditIcon';
+export { CreditCardIcon } from './CreditCardIcon';
 export { DaylightIcon } from './DaylightIcon';
 export { DeleteIcon } from './DeleteIcon';
 export { DragIcon } from './DragIcon';
