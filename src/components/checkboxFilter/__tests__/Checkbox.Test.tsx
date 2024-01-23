@@ -41,13 +41,6 @@ describe('<CheckBoxFilter />', () => {
     );
   });
 
-  it('should disable the checkbox filter with facet zero', () => {
-    renderWrapper();
-
-    const checkboxFilter = screen.getByRole('checkbox', { name: /Used/ });
-    expect(checkboxFilter).toBeDisabled();
-  });
-
   it('should not disable the checkbox if the checkbox is selected', () => {
     renderWrapper({
       options: [

@@ -115,7 +115,6 @@ function CheckboxFilter<ItemKey extends string>({
                   { ...previousState, [item.key]: isChecked },
                 );
               }}
-              isDisabled={item.facet === 0 && !item.isChecked}
               isChecked={item.isChecked}
               value={item.key}
               fullWidth
