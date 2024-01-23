@@ -8,6 +8,7 @@ const baseStyleContent = {
   p: '2xl',
   // required for arrow to popup above shadow
   zIndex: 0,
+  backgroundColor: 'white',
 };
 
 const baseStyleArrow = {
