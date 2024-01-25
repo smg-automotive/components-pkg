@@ -13,7 +13,6 @@ import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
 import Radio from './radio';
-import Popover from './popover';
 import Pagination from './pagination';
 import NumberInput from './numberInput';
 import Modal from './modal';
@@ -62,7 +61,6 @@ export const components: Record<string, ComponentStyleConfig> = {
   Modal,
   NumberInput,
   Pagination,
-  Popover,
   Radio,
   Section,
   Select,

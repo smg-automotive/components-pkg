@@ -24,8 +24,16 @@ const Popover: FC<PopoverProps> = ({ content, children, placement }) => {
       gutter={12}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
-      <PopoverContent>
-        <PopoverArrow />
+      <PopoverContent
+        borderRadius="sm"
+        boxShadow="md"
+        maxW="6xl"
+        p="2xl"
+        // required for arrow to popup above shadow
+        zIndex="0"
+        backgroundColor="white"
+      >
+        <PopoverArrow backgroundColor="white" />
         <PopoverBody>{content}</PopoverBody>
       </PopoverContent>
     </ChakraPopover>
