@@ -7,6 +7,8 @@ import {
   SliderTrack,
 } from '@chakra-ui/react';
 
+import { Box } from '../index';
+
 const emptyItemOffset = 0;
 const firstItemOffset = 1;
 
@@ -80,9 +82,8 @@ const DiscreteSlider = <T,>({
             key={index}
             value={stepValue as number}
             fontWeight={sliderStepValue === stepValue ? 'bold' : 'normal'}
-            ml={`-${label.length}%`}
           >
-            {label}
+            <Box style={{ pointerEvents: 'all' }}>{label}</Box>
           </ChakraSliderMark>
         );
       })}
