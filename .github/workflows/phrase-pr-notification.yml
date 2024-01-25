@@ -1,0 +1,16 @@
+name: Send slack notification for Phrase PR
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened, synchronize]
+
+jobs:
+  send-slack-notification:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.ref == 'phrase-translations'
+    steps:
+      - name: Send Slack Notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_AU_PHRASE }}
+        run: |
+            curl -X POST -H 'Content-type: application/json' --data '{"text":":wave: A Phrase pull request have been opened or updated in <https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}|${{ github.repository }}>"}' $SLACK_WEBHOOK_URL
