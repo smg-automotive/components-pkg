@@ -6,7 +6,7 @@ import { Space } from 'src/themes';
 type Props = {
   marginX?: Space;
   href?: string;
-} & Pick<TabProps, 'isDisabled' | 'as'>;
+} & Pick<TabProps, 'isDisabled' | 'as' | 'onClick'>;
 
 const Tab: FC<PropsWithChildren<Props>> = (props) => {
   return <ChakraTab {...props}>{props.children}</ChakraTab>;
