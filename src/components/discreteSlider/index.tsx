@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   Slider as ChakraSlider,
   SliderMark as ChakraSliderMark,
@@ -14,7 +14,7 @@ const firstItemOffset = 1;
 
 type SliderMark<T> = {
   stepValue?: number;
-  label: string;
+  label: ReactNode;
   value: T;
 };
 
