@@ -1,0 +1,51 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { TooltipIcon } from '../icons';
+import Box from '../box';
+import Popover from './index.tsx';
+
+<Meta title="Components/Overlay/Popover" component={Popover} />
+
+export const Template = (args) => {
+  return (
+    <Box height="200px">
+      <Popover {...args}>
+        <TooltipIcon />
+      </Popover>
+    </Box>
+  );
+};
+
+# Popover
+
+## Overview
+
+<Canvas>
+  <Story
+    name="Popover"
+    args={{
+      content: 'I am popover content',
+      placement: 'auto',
+    }}
+    argTypes={{
+      placement: {
+        options: [
+          'auto',
+          'auto-start',
+          'auto-end',
+          'top',
+          'bottom',
+          'right',
+          'left',
+          'top-start',
+          'top-end',
+          'bottom-start',
+          'bottom-end',
+        ],
+        control: 'select',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -43,6 +43,7 @@ export { default as ListItem } from './list/ListItem';
 export { default as Menu } from './menu';
 export { default as MissingImage } from './missingImage';
 export { default as Pagination } from './pagination';
+export { default as Popover } from './popover';
 export { PopoverFilter } from './filterPatterns/popover';
 export { ModalFilter } from './filterPatterns/modal';
 export { FilterHeading } from './filterPatterns/Heading';
