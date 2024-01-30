@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   Slider as ChakraSlider,
   SliderMark as ChakraSliderMark,
@@ -12,15 +12,15 @@ import Box from '../box';
 const emptyItemOffset = 0;
 const firstItemOffset = 1;
 
-type SliderMark<T> = {
+export type DiscreteSliderMark<T> = {
   stepValue?: number;
-  label: string;
+  label: ReactNode;
   value: T;
 };
 
-type SliderProps<T> = {
+type DiscreteSliderProps<T> = {
   applyIndentation?: boolean;
-  marks: SliderMark<T>[];
+  marks: DiscreteSliderMark<T>[];
   value: T;
   onValueChanged: (arg: T) => void;
 };
@@ -30,7 +30,7 @@ const getItemOffset = (applyIndentation: boolean) => {
 };
 
 const getSliderStepValue = <T,>(
-  marks: SliderMark<T>[],
+  marks: DiscreteSliderMark<T>[],
   applyIndentation: boolean,
   value: T,
 ) => {
@@ -42,7 +42,7 @@ const getSliderStepValue = <T,>(
 };
 
 const getSliderMarks = <T,>(
-  marks: SliderMark<T>[],
+  marks: DiscreteSliderMark<T>[],
   applyIndentation: boolean,
 ) =>
   marks.map((mark, index) => ({
@@ -55,7 +55,7 @@ const DiscreteSlider = <T,>({
   applyIndentation = true,
   onValueChanged,
   value,
-}: SliderProps<T>) => {
+}: DiscreteSliderProps<T>) => {
   const sliderStepValue = getSliderStepValue(marks, applyIndentation, value);
 
   const sliderMarks = getSliderMarks(marks, applyIndentation);
