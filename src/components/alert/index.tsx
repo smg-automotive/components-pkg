@@ -33,12 +33,14 @@ const Alert: FC<AlertProps> = ({
   link,
   type,
   icon,
+  dismissible,
+  onDismiss,
   ...rest
 }) => {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
 
-  return isOpen || !rest.dismissible ? (
-    <ChakraAlert status={type}>
+  return isOpen || !dismissible ? (
+    <ChakraAlert status={type} {...rest}>
       <AlertIcon>{icon}</AlertIcon>
       <Flex direction="column" w="100%">
         {title ? <AlertTitle>{title}</AlertTitle> : null}
@@ -49,13 +51,13 @@ const Alert: FC<AlertProps> = ({
           </Link>
         ) : null}
       </Flex>
-      {rest.dismissible ? (
+      {dismissible ? (
         <CloseButton
           alignSelf="flex-start"
           position="relative"
           onClick={() => {
             onClose();
-            rest.onDismiss?.();
+            onDismiss?.();
           }}
         />
       ) : null}
