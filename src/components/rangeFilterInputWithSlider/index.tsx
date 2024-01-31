@@ -17,11 +17,19 @@ export type ChangeSliderCallback = {
   value: NumericMinMaxValue;
 };
 
+type ChangeRangeInputWithSliderCallback<Name> = {
+  changeType?: 'inputChange' | 'sliderChange';
+} & ChangeCallback<Name>;
+
 export type Props<NameFrom, NameTo> = {
   facets: Array<Facet>;
   from: RangeFilterInputField<NameFrom>;
-  onChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
-  onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
+  onChange: (
+    event: ChangeRangeInputWithSliderCallback<NameFrom | NameTo>,
+  ) => void;
+  onBlur?: (
+    event: ChangeRangeInputWithSliderCallback<NameFrom | NameTo>,
+  ) => void;
   to: RangeFilterInputField<NameTo>;
   unit?: string;
   chartHeight?: string;
@@ -70,6 +78,7 @@ function RangeFilterInputWithSlider<
     onChange({
       name: event.touched === 'min' ? from.name : to.name,
       value: event.value[event.touched],
+      changeType: 'sliderChange',
     });
   };
 
@@ -92,7 +101,7 @@ function RangeFilterInputWithSlider<
       [event.name === from.name ? 'min' : 'max']: event.value,
     });
 
-    onChange(event);
+    onChange({ ...event, changeType: 'inputChange' });
   };
 
   return (
