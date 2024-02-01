@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import CheckboxCollapsible from './index.tsx';
+import CollapsibleCheckboxGroup from './index.tsx';
 
 <Meta
-  title="Components/Forms/CheckboxCollapsible Group"
-  component={CheckboxCollapsible}
+  title="Components/Forms/CollapsibleCheckboxGroup"
+  component={CollapsibleCheckboxGroup}
 />
 
 export const Template = ({ ...args }) => {
   const [state, setState] = useState({
-    [0]: true,
+    [0]: false,
     [1]: false,
     [2]: false,
     [3]: false,
@@ -66,7 +66,7 @@ export const Template = ({ ...args }) => {
   const isIndeterminate =
     checkboxes.some((checkbox) => checkbox.isChecked) && !allChecked;
   return (
-    <CheckboxCollapsible
+    <CollapsibleCheckboxGroup
       {...args}
       isChecked={allChecked}
       onChange={parentOnChange}
@@ -76,7 +76,7 @@ export const Template = ({ ...args }) => {
   );
 };
 
-# CheckboxCollapsible
+# CollapsibleCheckboxGroup
 
 ## Overview
 
@@ -89,7 +89,6 @@ export const Template = ({ ...args }) => {
       isDisabled: false,
       isInvalid: false,
       label: 'Parent item',
-      addDividerAfterIndex: [2],
       size: 'md',
     }}
   >

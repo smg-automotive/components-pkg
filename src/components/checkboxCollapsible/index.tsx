@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC, Fragment, useState } from 'react';
 
 import { Box, Collapse } from '@chakra-ui/react';
 
@@ -7,14 +7,15 @@ import { ChevronDownLargeIcon } from '../icons';
 import Flex from '../flex';
 import Divider from '../divider';
 import Checkbox, { CheckboxProps } from '../checkbox';
+import CollapsibleCheckbox from './CollapsibleCheckbox';
 
-interface CheckboxCollapsibleProps extends CheckboxProps {
+interface CollapsibleCheckboxGroupProps extends CheckboxProps {
   checkboxes?: CheckboxProps[];
   addDividerAfterIndex?: number[];
   size?: 'sm' | 'lg';
 }
 
-const CheckboxCollapsible: FC<CheckboxCollapsibleProps> = ({
+const CollapsibleCheckboxGroup: FC<CollapsibleCheckboxGroupProps> = ({
   name,
   label,
   value,
@@ -28,25 +29,26 @@ const CheckboxCollapsible: FC<CheckboxCollapsibleProps> = ({
   variant = 'alignCenter',
   checkboxes,
 }) => {
-  const isOpen = isIndeterminate || isChecked;
+  const [isOpen, setIsOpen] = useState(isIndeterminate || isChecked);
   return (
-    <Stack spacing="md">
+    <Stack spacing="lg">
       <Flex alignItems="center">
-        <Checkbox
+        <CollapsibleCheckbox
           name={name}
-          label={
-            <>
-              {label}
-              <ChevronDownLargeIcon
-                w="xs"
-                h="xs"
-                transition="0.2s"
-                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                marginLeft={20}
-                boxSize={18}
-              />
-            </>
+          icon={
+            <ChevronDownLargeIcon
+              w="xs"
+              h="xs"
+              transition="0.2s"
+              color="gray.500"
+              transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+              marginLeft={20}
+              boxSize={18}
+              onClick={() => setIsOpen(!isOpen)}
+              cursor="pointer"
+            />
           }
+          label={label}
           value={value}
           onChange={onChange}
           isChecked={isChecked}
@@ -55,11 +57,10 @@ const CheckboxCollapsible: FC<CheckboxCollapsibleProps> = ({
           isIndeterminate={isIndeterminate}
           size={size}
           variant={variant}
-          fontWeight="bold"
         />
       </Flex>
       <Collapse in={isOpen}>
-        <Stack spacing="md">
+        <Stack spacing="lg">
           {checkboxes?.map((item, index) => (
             <Fragment key={item.name}>
               <Box
@@ -82,6 +83,6 @@ const CheckboxCollapsible: FC<CheckboxCollapsibleProps> = ({
     </Stack>
   );
 };
-CheckboxCollapsible.displayName = 'CheckboxCollapsible';
+CollapsibleCheckboxGroup.displayName = 'CollapsibleCheckboxGroup';
 
-export default CheckboxCollapsible;
+export default CollapsibleCheckboxGroup;
