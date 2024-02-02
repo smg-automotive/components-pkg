@@ -18,7 +18,7 @@ export type ChangeSliderCallback = {
 };
 
 type ChangeRangeInputWithSliderCallback<Name> = {
-  changeType?: 'inputChange' | 'sliderChange';
+  changeType?: 'inputfield' | 'slider';
 } & ChangeCallback<Name>;
 
 export type Props<NameFrom, NameTo> = {
@@ -78,7 +78,7 @@ function RangeFilterInputWithSlider<
     onChange({
       name: event.touched === 'min' ? from.name : to.name,
       value: event.value[event.touched],
-      changeType: 'sliderChange',
+      changeType: 'slider',
     });
   };
 
@@ -101,7 +101,7 @@ function RangeFilterInputWithSlider<
       [event.name === from.name ? 'min' : 'max']: event.value,
     });
 
-    onChange({ ...event, changeType: 'inputChange' });
+    onChange({ ...event, changeType: 'inputfield' });
   };
 
   return (
