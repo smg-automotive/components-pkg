@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { Box, chakra } from '@chakra-ui/react';
+import { Box, chakra, ColorProps } from '@chakra-ui/react';
 
 import HighlightedText from '../text/HighlightedText';
 import Checkbox from '../checkbox';
@@ -38,6 +38,7 @@ type Props<ItemKey extends string> = {
    */
   onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
   numberOfColumnsOnDesktop?: number;
+  color?: ColorProps['textColor'];
 };
 
 const addThousandSeparatorToNumber = (value: number) => {
@@ -49,6 +50,7 @@ function CheckboxFilter<ItemKey extends string>({
   items,
   onApply,
   numberOfColumnsOnDesktop = 1,
+  color = 'gray.400',
 }: Props<ItemKey>) {
   return (
     <Box
@@ -78,7 +80,7 @@ function CheckboxFilter<ItemKey extends string>({
                         highlightIndices={item.highlightIndices}
                         wordBreak="break-word"
                       />
-                      <chakra.span ml="sm">
+                      <chakra.span ml="sm" color={color}>
                         {addThousandSeparatorToNumber(item.facet)}
                       </chakra.span>
                     </chakra.span>
@@ -95,7 +97,7 @@ function CheckboxFilter<ItemKey extends string>({
                       w="full"
                       wordBreak="break-word"
                     />
-                    <chakra.span ml="sm">
+                    <chakra.span ml="sm" color={color}>
                       {addThousandSeparatorToNumber(item.facet)}
                     </chakra.span>
                   </chakra.span>
@@ -108,11 +110,11 @@ function CheckboxFilter<ItemKey extends string>({
                     acc[currentItem.key] = currentItem.isChecked;
                     return acc;
                   },
-                  {},
+                  {}
                 );
                 onApply(
                   { ...item, isChecked },
-                  { ...previousState, [item.key]: isChecked },
+                  { ...previousState, [item.key]: isChecked }
                 );
               }}
               isChecked={item.isChecked}
