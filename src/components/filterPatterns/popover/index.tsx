@@ -19,6 +19,7 @@ import FilterPopover from './Popover';
 export const PopoverFilter: FC<PopoverFilterProps> = ({
   actionButton,
   displayValue,
+  Icon,
   initialPopoverState = 'closed',
   isApplied,
   label,
@@ -105,6 +106,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     textOverflow="ellipsis"
                     whiteSpace="nowrap"
                   >
+                    {Icon ? <Icon h="xs" w="xs" /> : null}
                     {[
                       isApplied ? appliedLabel ?? label : label,
                       displayValue && isApplied ? displayValue : null,
@@ -130,6 +132,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             </ButtonGroup>
             <FilterPopover
               actionButton={actionButton}
+              Icon={Icon}
               isApplied={isApplied}
               label={label}
               numberOfAppliedFilters={numberOfAppliedFilters}

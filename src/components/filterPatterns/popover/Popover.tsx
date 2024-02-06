@@ -19,6 +19,7 @@ type Props = {
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
+  | 'Icon'
   | 'isApplied'
   | 'label'
   | 'numberOfAppliedFilters'
@@ -30,6 +31,7 @@ type Props = {
 
 const Popover: FC<Props> = ({
   actionButton,
+  Icon,
   isApplied,
   label,
   numberOfAppliedFilters,
@@ -56,6 +58,7 @@ const Popover: FC<Props> = ({
           <PopoverHeader paddingX="2xl">
             {header ?? (
               <FilterHeading
+                Icon={Icon}
                 isApplied={isApplied}
                 label={label}
                 numberOfAppliedFilters={numberOfAppliedFilters}

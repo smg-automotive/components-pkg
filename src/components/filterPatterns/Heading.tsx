@@ -18,12 +18,13 @@ type Props = {
   contentRef?: RefObject<HTMLElement>;
 } & Pick<
   FilterPatternProps,
-  'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
+  'Icon' | 'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
 
 export const FilterHeading: FC<Props> = ({
   onClose,
   language,
+  Icon,
   isApplied,
   label,
   numberOfAppliedFilters,
@@ -45,6 +46,7 @@ export const FilterHeading: FC<Props> = ({
                 <chakra.span wordBreak="break-all" mr="sm">
                   {label}
                 </chakra.span>
+                {Icon ? <Icon h="sm" w="sm" /> : null}
                 {numberOfAppliedFilters ? (
                   <Count count={numberOfAppliedFilters} />
                 ) : null}
