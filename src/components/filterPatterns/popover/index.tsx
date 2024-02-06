@@ -105,8 +105,10 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     overflow="hidden"
                     textOverflow="ellipsis"
                     whiteSpace="nowrap"
+                    display="flex"
+                    alignItems="center"
                   >
-                    {Icon ? <Icon h="xs" w="xs" /> : null}
+                    {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
                     {[
                       isApplied ? appliedLabel ?? label : label,
                       displayValue && isApplied ? displayValue : null,

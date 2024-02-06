@@ -46,7 +46,7 @@ export const FilterHeading: FC<Props> = ({
                 <chakra.span wordBreak="break-all" mr="sm">
                   {label}
                 </chakra.span>
-                {Icon ? <Icon h="sm" w="sm" /> : null}
+                {Icon ? <Icon h="sm" w="sm" mr="sm" /> : null}
                 {numberOfAppliedFilters ? (
                   <Count count={numberOfAppliedFilters} />
                 ) : null}
