@@ -62,7 +62,7 @@ function CheckboxFilter<ItemKey extends string>({
         return (
           <Box key={item.key} width="full" marginBottom="2xl">
             <Checkbox
-              variant={item.image ? "alignCenter" : "alignTop"}
+              variant={item.image ? 'alignCenter' : 'alignTop'}
               name={`filter_${name}_${item.label}`}
               label={
                 item.image ? (
@@ -109,11 +109,11 @@ function CheckboxFilter<ItemKey extends string>({
                     acc[currentItem.key] = currentItem.isChecked;
                     return acc;
                   },
-                  {}
+                  {},
                 );
                 onApply(
                   { ...item, isChecked },
-                  { ...previousState, [item.key]: isChecked }
+                  { ...previousState, [item.key]: isChecked },
                 );
               }}
               isChecked={item.isChecked}
