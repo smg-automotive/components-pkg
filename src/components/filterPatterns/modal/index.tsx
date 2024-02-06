@@ -20,6 +20,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   actionButton,
   displayValue,
   initialModalState = 'closed',
+  Icon,
   isApplied,
   label,
   language,
@@ -43,6 +44,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
       <>
         <OpenFilterButton
           displayValue={displayValue}
+          Icon={Icon}
           isApplied={isApplied}
           label={label}
           onClick={onOpen}
@@ -67,6 +69,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               ) : (
                 <FilterHeading
                   language={language}
+                  Icon={Icon}
                   isApplied={isApplied}
                   label={label}
                   numberOfAppliedFilters={numberOfAppliedFilters}

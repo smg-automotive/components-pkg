@@ -1,6 +1,5 @@
-import { ComponentType, FC, ReactElement, ReactNode, SVGProps } from 'react';
+import { FC, ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { ComponentWithAs } from '@chakra-ui/system';
 import { IconProps } from '@chakra-ui/react';
 
 export type FilterPatternProps = {
