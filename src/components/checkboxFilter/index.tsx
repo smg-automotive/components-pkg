@@ -110,11 +110,11 @@ function CheckboxFilter<ItemKey extends string>({
                     acc[currentItem.key] = currentItem.isChecked;
                     return acc;
                   },
-                  {}
+                  {},
                 );
                 onApply(
                   { ...item, isChecked },
-                  { ...previousState, [item.key]: isChecked }
+                  { ...previousState, [item.key]: isChecked },
                 );
               }}
               isChecked={item.isChecked}
