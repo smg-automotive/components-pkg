@@ -60,7 +60,7 @@ function CheckboxFilter<ItemKey extends string>({
     >
       {items.map((item) => {
         return (
-          <Box key={item.key} width="full" marginBottom="2xl">
+          <Box key={item.key} width="full" marginBottom="lg">
             <Checkbox
               name={`filter_${name}_${item.label}`}
               label={
