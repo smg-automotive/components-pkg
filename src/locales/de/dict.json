@@ -63,7 +63,7 @@
       },
       "brand": {
         "advancedSearch": "Erweiterte Suche",
-        "dealerSearch": "Garagen und Händler:in suchen",
+        "dealerSearch": "Garagen und Händler suchen",
         "makes": "Markenübersicht",
         "models": "Modellübersicht"
       },
@@ -121,7 +121,6 @@
       "autoRadar": "AutoRadar",
       "b2bPlattform": "B2B-Plattform",
       "bookmarks": "Merkliste",
-      "boosteras24": "Booster as24",
       "businessImage": "BusinessImage",
       "carPark": "Zum Fahrzeugpark",
       "changePassword": "Passwort ändern",

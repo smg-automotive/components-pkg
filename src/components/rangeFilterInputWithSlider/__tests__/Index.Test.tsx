@@ -93,6 +93,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
         expect(mockOnChange).toHaveBeenCalledWith({
           value: 500,
           name: 'priceFrom',
+          changeType: 'inputfield',
         }),
       );
     });
@@ -115,6 +116,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
         expect(mockOnChange).toHaveBeenCalledWith({
           value: 300,
           name: 'priceTo',
+          changeType: 'inputfield',
         }),
       );
     });
@@ -179,6 +181,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
           expect(mockOnChange).toHaveBeenCalledWith({
             name: 'priceFrom',
             value: 1000,
+            changeType: 'slider',
           });
         },
         { timeout: 1500 },

@@ -741,27 +741,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.boosteras24',
-          isInternal: true,
-          link: {
-            de: '/de/booster',
-            en: '/de/booster',
-            fr: '/fr/booster',
-            it: '/it/booster',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          isNew: true,
-        },
-        {
           translationKey: 'header.userMenu.onlineAdvertising',
           link: {
             de: '/de/member/displayads',
