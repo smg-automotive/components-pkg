@@ -78,7 +78,7 @@ function CheckboxFilter<ItemKey extends string>({
                         highlightIndices={item.highlightIndices}
                         wordBreak="break-word"
                       />
-                      <chakra.span ml="sm">
+                      <chakra.span ml="sm" color="gray.400">
                         {addThousandSeparatorToNumber(item.facet)}
                       </chakra.span>
                     </chakra.span>
@@ -95,7 +95,7 @@ function CheckboxFilter<ItemKey extends string>({
                       w="full"
                       wordBreak="break-word"
                     />
-                    <chakra.span ml="sm">
+                    <chakra.span ml="sm" color="gray.400">
                       {addThousandSeparatorToNumber(item.facet)}
                     </chakra.span>
                   </chakra.span>
