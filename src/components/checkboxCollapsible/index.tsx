@@ -1,6 +1,6 @@
 import React, { FC, Fragment, useState } from 'react';
 
-import { Box, Collapse } from '@chakra-ui/react';
+import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import { ChevronDownLargeIcon } from '../icons';
@@ -29,23 +29,31 @@ const CollapsibleCheckboxGroup: FC<CollapsibleCheckboxGroupProps> = ({
   variant = 'alignCenter',
   checkboxes,
 }) => {
-  const [isOpen, setIsOpen] = useState(isIndeterminate || isChecked);
+  const { isOpen, onToggle } = useDisclosure({
+    defaultIsOpen: isIndeterminate || isChecked,
+  });
+
   return (
     <Stack spacing="lg">
       <Flex alignItems="center">
         <CollapsibleCheckbox
           name={name}
           icon={
-            <ChevronDownLargeIcon
-              w="xs"
-              h="xs"
-              transition="0.2s"
-              color="gray.500"
-              transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-              marginLeft={20}
-              boxSize={18}
-              onClick={() => setIsOpen(!isOpen)}
-              cursor="pointer"
+            <IconButton
+              aria-label={isOpen ? 'Collapse' : 'Expand'}
+              icon={
+                <ChevronDownLargeIcon
+                  w="xs"
+                  h="xs"
+                  transition="0.2s"
+                  color="gray.500"
+                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                  marginLeft={20}
+                  boxSize={18}
+                  onClick={onToggle}
+                  cursor="pointer"
+                />
+              }
             />
           }
           label={label}
