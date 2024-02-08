@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import DiscreteSlider from '../index';
 
@@ -43,14 +43,11 @@ describe('DiscreteSlider', () => {
     expect(screen.getByRole('slider')).toBeInTheDocument();
   });
 
-  it('calls onValueChanged when value is changed', async () => {
-    const valueToChange = 1;
-    const onValueChanged = jest.fn();
-    renderWrapper({ onValueChanged });
+  it('should move the thumb', async () => {
+    renderWrapper();
 
     const slider = screen.getByRole('slider');
-    await userEvent.type(slider, String(valueToChange));
-
-    expect(onValueChanged).toHaveBeenCalledTimes(1);
+    await userEvent.keyboard('[ArrowRight]');
+    await waitFor(() => expect(slider).toHaveAttribute('aria-valuenow', '1'));
   });
 });
