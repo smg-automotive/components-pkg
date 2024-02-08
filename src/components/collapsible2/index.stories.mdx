@@ -6,12 +6,12 @@ import { IconButton } from '@chakra-ui/react';
 import { ChevronDownLargeIcon } from '../icons';
 import Box from '../box';
 
-import CheckboxFilterTemplate from './StoryTemplate.tsx';
+import Collapsible2Template from './StoryTemplate.tsx';
 
-import CheckboxFilter from './index';
+import Collapsible2 from './index';
 
 <Meta
-  title="Components/Filter/Checkbox"
+  title="Components/Filter/Collapsible2"
   argTypes={{
     onApplyAction: {
       table: {
@@ -34,14 +34,14 @@ import CheckboxFilter from './index';
 export const Template = (args) => {
   return (
     <Box w="8xl">
-      <CheckboxFilterTemplate {...args} />
+      <Collapsible2Template {...args} />
     </Box>
   );
 };
 
-# Checkbox
+# Collapsible2
 
-<ArgsTable of={CheckboxFilter} />
+<ArgsTable of={Collapsible2} />
 
 ## Overview
 
@@ -54,40 +54,15 @@ export const Template = (args) => {
   {Template.bind({})}
 </Story>
 
-## Label with image, with large text
+## Collapsible2
 
 <Story
-  name="Label with image, with large text"
-  args={{
-    onApplyAction: action('onApply'),
-    image: (
-      <img src="https://placekitten.com/g/220/100" alt="placeholder image" />
-    ),
-  }}
->
-  {Template.bind({})}
-</Story>
-
-## Checkbox with multiple columns
-
-<Story
-  name="Checkbox with multiple columns"
-  args={{
-    onApplyAction: action('onApply'),
-    numberOfColumnsOnDesktop: 3,
-  }}
->
-  {Template.bind({})}
-</Story>
-
-## Checkbox collapsible
-
-<Story
-  name="Checkbox collapsible"
+  name="Collapsible2"
   args={{
     onApplyAction: action('onApply'),
     numberOfColumnsOnDesktop: 3,
     isCollapsible: true,
+    isParent: true,
     icon: (
       <IconButton
         icon={
