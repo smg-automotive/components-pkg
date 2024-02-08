@@ -60,8 +60,9 @@ function CheckboxFilter<ItemKey extends string>({
     >
       {items.map((item) => {
         return (
-          <Box key={item.key} width="full" marginBottom="2xl">
+          <Box key={item.key} width="full" marginBottom="lg">
             <Checkbox
+              variant={item.image ? 'alignCenter' : 'alignTop'}
               name={`filter_${name}_${item.label}`}
               label={
                 item.image ? (
@@ -78,7 +79,7 @@ function CheckboxFilter<ItemKey extends string>({
                         highlightIndices={item.highlightIndices}
                         wordBreak="break-word"
                       />
-                      <chakra.span ml="sm">
+                      <chakra.span ml="sm" color="gray.400">
                         {addThousandSeparatorToNumber(item.facet)}
                       </chakra.span>
                     </chakra.span>
@@ -95,7 +96,7 @@ function CheckboxFilter<ItemKey extends string>({
                       w="full"
                       wordBreak="break-word"
                     />
-                    <chakra.span ml="sm">
+                    <chakra.span ml="sm" color="gray.400">
                       {addThousandSeparatorToNumber(item.facet)}
                     </chakra.span>
                   </chakra.span>
