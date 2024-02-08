@@ -2,7 +2,7 @@ import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 
 import Text from 'src/components/text';
-import { ChevronLeftSmallIcon } from 'src/components/icons';
+import { ChevronLeftSmallIcon, FlashIcon } from 'src/components/icons';
 import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
@@ -172,6 +172,22 @@ export const CustomHeader = () => (
       numberOfAppliedFilters: 5,
       showCallToActionButton: false,
       header: <CustomHeader />,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With icon
+
+<Canvas>
+  <Story
+    name="With icon"
+    args={{
+      label: 'Treibstoff',
+      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+      numberOfAppliedFilters: 5,
+      Icon: FlashIcon,
     }}
   >
     {Template.bind({})}

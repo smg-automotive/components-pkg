@@ -12,7 +12,7 @@ import { FilterPatternProps } from '../props';
 type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
-  'label' | 'displayValue' | 'isApplied'
+  'label' | 'displayValue' | 'Icon' | 'isApplied'
 > & { onClick: () => void; variant?: Variant; isDisabled?: boolean };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
@@ -27,6 +27,7 @@ const height: Record<Variant, ResponsiveValue<string>> = {
 
 export const OpenFilterButton: FC<Props> = ({
   displayValue,
+  Icon,
   isApplied,
   label,
   onClick,
@@ -55,8 +56,14 @@ export const OpenFilterButton: FC<Props> = ({
         w="full"
         minW="0"
       >
-        <chakra.span mr="2xl" whiteSpace="nowrap">
+        <chakra.span
+          mr="2xl"
+          whiteSpace="nowrap"
+          display="flex"
+          alignItems="center"
+        >
           {label}
+          {Icon ? <Icon h="xs" w="xs" ml="xs" /> : null}
         </chakra.span>
         <chakra.span
           fontWeight="bold"
