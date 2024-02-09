@@ -9,19 +9,16 @@ import { Item, State } from '../checkboxFilter/type';
 import CheckboxWithOptions from '../checkboxFilter/CheckboxWithOptions';
 
 interface CheckboxCollapsibleProps<ItemKey extends string> {
+  parent: Item<ItemKey>;
   checkboxes: Item<ItemKey>[];
-  addDividerAfterIndex?: number[];
+  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
+  isParentChecked: boolean;
+  isCollapsible?: boolean;
+  isIndeterminate?: boolean;
   isDisabled?: boolean;
   isInvalid?: boolean;
-  isIndeterminate?: boolean;
-  size?: 'sm' | 'lg';
-  fontWeight?: 'regular' | 'bold';
-  parent: Item<ItemKey>;
-  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
-  isCollapsible?: boolean;
-  isParentChecked: boolean;
+  addDividerAfterIndex?: number[];
   highlightIndices?: ReadonlyArray<[number, number]>;
-  onParentChange?: (newState: State<ItemKey>) => void;
 }
 
 function CheckboxCollapsible<ItemKey extends string>({
