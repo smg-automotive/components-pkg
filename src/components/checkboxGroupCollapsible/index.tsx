@@ -47,6 +47,7 @@ function CheckboxCollapsible<ItemKey extends string>({
           icon={
             <IconButton
               aria-label={isOpen ? 'Collapse' : 'Expand'}
+              onClick={onToggle}
               icon={
                 <ChevronDownLargeIcon
                   w="xs"
@@ -56,7 +57,6 @@ function CheckboxCollapsible<ItemKey extends string>({
                   ml="sm"
                   transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
                   boxSize={18}
-                  onClick={onToggle}
                   cursor="pointer"
                 />
               }
