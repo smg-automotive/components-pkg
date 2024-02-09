@@ -114,7 +114,7 @@ const StoryTemplate: FC<Props> = ({
       isIndeterminate={indeterminate}
       onApply={(item, newFilterState) => {
         onApplyAction({ item, newFilterState });
-        setConditionQuery(newFilterState);
+        setConditionQuery((prevState) => ({ ...prevState, newFilterState }));
       }}
     />
   );
