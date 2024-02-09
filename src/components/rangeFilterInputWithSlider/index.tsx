@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import RangeSliderWithScale from '../rangeSlider/RangeSliderWithScale';
 import RangeSliderWithChart, {
   Facet,
   NumericMinMaxValue,
@@ -21,8 +22,16 @@ type ChangeRangeInputWithSliderCallback<Name> = {
   changeType?: 'inputfield' | 'slider';
 } & ChangeCallback<Name>;
 
+type RangeSliderProps = {
+  facets?: Array<Facet>;
+  rangeSliderScale?: Array<number>;
+  chartHeight?: string;
+} & (
+  | { facets: Array<Facet>; chartHeight?: string; rangeSliderScale?: never }
+  | { rangeSliderScale: Array<number>; facets?: never; chartHeight?: never }
+);
+
 export type Props<NameFrom, NameTo> = {
-  facets: Array<Facet>;
   from: RangeFilterInputField<NameFrom>;
   onChange: (
     event: ChangeRangeInputWithSliderCallback<NameFrom | NameTo>,
@@ -32,13 +41,14 @@ export type Props<NameFrom, NameTo> = {
   ) => void;
   to: RangeFilterInputField<NameTo>;
   unit?: string;
-  chartHeight?: string;
-} & PickedNumberInputProps;
+} & RangeSliderProps &
+  PickedNumberInputProps;
 
 function RangeFilterInputWithSlider<
   NameFrom extends string,
   NameTo extends string,
 >({
+  rangeSliderScale,
   facets,
   unit,
   onChange,
@@ -107,14 +117,23 @@ function RangeFilterInputWithSlider<
   return (
     <Flex direction="column">
       <Box order={{ base: 1, sm: 0 }} px="md" py={{ base: 'md', sm: 0 }}>
-        <RangeSliderWithChart
-          onSliderChange={handleSliderChange}
-          onSliderRelease={handleSliderRelease}
-          selection={appliedValue()}
-          facets={facets}
-          chartHeight={chartHeight}
-          {...rest}
-        />
+        {facets ? (
+          <RangeSliderWithChart
+            onSliderChange={handleSliderChange}
+            onSliderRelease={handleSliderRelease}
+            selection={appliedValue()}
+            facets={facets}
+            chartHeight={chartHeight}
+          />
+        ) : null}
+        {rangeSliderScale ? (
+          <RangeSliderWithScale
+            onSliderChange={handleSliderChange}
+            onSliderRelease={handleSliderRelease}
+            selection={appliedValue()}
+            scale={rangeSliderScale}
+          />
+        ) : null}
       </Box>
       <RangeFilterInput
         from={{
