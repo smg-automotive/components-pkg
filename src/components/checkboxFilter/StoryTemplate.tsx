@@ -93,7 +93,6 @@ const StoryTemplate: FC<Props> = ({
           isChecked: conditionQuery['not-working'],
         },
       ]}
-      name="condition-filter"
       onApply={(item, newFilterState) => {
         onApplyAction({ item, newFilterState });
         setConditionQuery(newFilterState);

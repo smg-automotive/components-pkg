@@ -11,7 +11,6 @@ type Props = {
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
   isCollapsible?: boolean;
-  onParentAction?: (args: unknown) => void;
 };
 
 const StoryTemplate: FC<Props> = ({
@@ -19,7 +18,6 @@ const StoryTemplate: FC<Props> = ({
   defaultFacets,
   image,
   isCollapsible,
-  onParentAction,
 }) => {
   // coming from backend
   const facets = {
@@ -117,10 +115,6 @@ const StoryTemplate: FC<Props> = ({
       onApply={(item, newFilterState) => {
         onApplyAction({ item, newFilterState });
         setConditionQuery(newFilterState);
-      }}
-      onParentChange={(newState) => {
-        onParentAction?.(newState);
-        setConditionQuery(newState);
       }}
     />
   );

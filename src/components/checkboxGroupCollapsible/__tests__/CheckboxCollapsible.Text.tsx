@@ -34,7 +34,7 @@ const renderWrapper = ({
       isParentChecked={isParentChecked}
       checkboxes={options}
       onApply={onApply}
-    />
+    />,
   );
 
 describe('<CheckboxCollapsible />', () => {
@@ -43,7 +43,7 @@ describe('<CheckboxCollapsible />', () => {
 
     expect(screen.getByLabelText('Expand')).toBeInTheDocument();
     expect(
-      screen.getByRole('checkbox', { name: /Parent/ })
+      screen.getByRole('checkbox', { name: /Parent/ }),
     ).toBeInTheDocument();
   });
 
@@ -71,8 +71,8 @@ describe('<CheckboxCollapsible />', () => {
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(
         { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false }
-      )
+        { new: true, used: false },
+      ),
     );
   });
 
@@ -94,8 +94,8 @@ describe('<CheckboxCollapsible />', () => {
           facet: 133,
           isParent: true,
         },
-        { new: true, used: true, parent: true }
-      )
+        { new: true, used: true, parent: true },
+      ),
     );
   });
 });
