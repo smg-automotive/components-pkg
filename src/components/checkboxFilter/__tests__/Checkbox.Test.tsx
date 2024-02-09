@@ -5,7 +5,6 @@ import { render, screen, waitFor } from '@testing-library/react';
 import CheckboxFilter from '../index';
 
 const renderWrapper = ({
-  name = 'condition-filter',
   options = [
     { label: 'New', key: 'new', facet: 77, isChecked: false },
     {
@@ -17,8 +16,7 @@ const renderWrapper = ({
     },
   ],
   onApply = jest.fn(),
-} = {}) =>
-  render(<CheckboxFilter name={name} items={options} onApply={onApply} />);
+} = {}) => render(<CheckboxFilter items={options} onApply={onApply} />);
 
 describe('<CheckBoxFilter />', () => {
   it('should render a checkbox for each option', () => {
@@ -36,8 +34,8 @@ describe('<CheckBoxFilter />', () => {
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(
         { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false },
-      ),
+        { new: true, used: false }
+      )
     );
   });
 
@@ -63,7 +61,7 @@ describe('<CheckBoxFilter />', () => {
     expect(
       screen.getByRole('checkbox', {
         name: 'Used 1’000’000',
-      }),
+      })
     ).toBeInTheDocument();
   });
 
