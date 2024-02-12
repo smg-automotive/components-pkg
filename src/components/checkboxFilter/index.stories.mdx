@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import Box from '../box';
 
 import CheckboxFilterTemplate from './StoryTemplate.tsx';
+import GroupedCheckboxFilterStoryTemplate from './GroupedCheckboxFilterStoryTemplate.tsx';
 
 import CheckboxFilter from './index';
 
@@ -32,6 +33,14 @@ export const Template = (args) => {
   return (
     <Box w="8xl">
       <CheckboxFilterTemplate {...args} />
+    </Box>
+  );
+};
+
+export const GroupedTemplate = (args) => {
+  return (
+    <Box w="8xl">
+      <GroupedCheckboxFilterStoryTemplate {...args} />
     </Box>
   );
 };
@@ -75,4 +84,16 @@ export const Template = (args) => {
   }}
 >
   {Template.bind({})}
+</Story>
+
+## Grouped checkbox filter
+
+<Story
+  name="Grouped checkbox filter"
+  args={{
+    onApplyAction: action('onApply'),
+    numberOfColumnsOnDesktop: 3,
+  }}
+>
+  {GroupedTemplate.bind({})}
 </Story>

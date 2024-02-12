@@ -15,12 +15,12 @@ import CheckboxCollapsible from './index';
         disable: true,
       },
     },
-    onParentAction: {
+    defaultFacets: {
       table: {
         disable: true,
       },
     },
-    defaultFacets: {
+    onParentCheckboxChange: {
       table: {
         disable: true,
       },
@@ -51,9 +51,7 @@ export const Template = (args) => {
   name="Overview"
   args={{
     onApplyAction: action('onApply'),
-    isCollapsible: true,
-    onParentAction: action('onParentChange'),
-    isInvalidate: false,
+    onParentCheckboxChange: action('onParentCheckboxChange'),
     image: (
       <img src="https://placekitten.com/g/220/100" alt="placeholder image" />
     ),

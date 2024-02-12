@@ -20,6 +20,10 @@
     "close": "Schliessen",
     "reset": "Zurücksetzen"
   },
+  "chevronExpandCollapseButton": {
+    "expand": "Expandieren",
+    "collapse": "Zusammenbruch"
+  },
   "footer": {
     "apps": {
       "title": "Mobile Apps"

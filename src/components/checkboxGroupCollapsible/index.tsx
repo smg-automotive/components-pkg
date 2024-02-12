@@ -1,53 +1,56 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+
+import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import { ChevronDownLargeIcon } from '../icons';
-import Divider from '../divider';
-import { Item, State } from '../checkboxFilter/type';
+import { Item } from '../checkboxFilter/type';
 import CheckboxWithOptions from '../checkboxFilter/CheckboxWithOptions';
 
 interface CheckboxCollapsibleProps<ItemKey extends string> {
-  parent: Item<ItemKey>;
+  item: Item<ItemKey>;
   checkboxes: Item<ItemKey>[];
-  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
-  isParentChecked: boolean;
-  isCollapsible?: boolean;
-  isIndeterminate?: boolean;
-  isDisabled?: boolean;
-  isInvalid?: boolean;
-  addDividerAfterIndex?: number[];
-  highlightIndices?: ReadonlyArray<[number, number]>;
+  onApply: (updatedItem: Item<ItemKey>) => void;
+  onToggleGroup?: () => void;
 }
 
 function CheckboxCollapsible<ItemKey extends string>({
-  parent,
+  item,
   checkboxes,
   onApply,
-  isParentChecked,
-  isCollapsible,
-  isIndeterminate,
-  isInvalid,
-  isDisabled,
-  addDividerAfterIndex,
+  onToggleGroup,
 }: CheckboxCollapsibleProps<ItemKey>) {
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: false });
+  const { t } = useI18n();
+  const numberOfAppliedChildren = checkboxes.filter(
+    (checkbox) => checkbox.isChecked
+  ).length;
+
   return (
     <Stack spacing="md">
       <Box width="full" display="flex" alignItems="center">
         <CheckboxWithOptions
-          isCollapsible={isCollapsible}
-          item={{ ...parent, isParent: true, isChecked: isParentChecked }}
-          items={checkboxes}
+          item={item}
           onApply={onApply}
-          isIndeterminate={isIndeterminate}
-          isInvalid={isInvalid}
-          isDisabled={isDisabled}
+          aria-expanded={isOpen ? 'Collapsed' : 'Expanded'}
+          isIndeterminate={
+            numberOfAppliedChildren > 0 &&
+            numberOfAppliedChildren < checkboxes.length
+          }
           icon={
             <IconButton
-              aria-label={isOpen ? 'Collapse' : 'Expand'}
-              onClick={onToggle}
+              aria-expanded={isOpen}
+              aria-label={`${
+                isOpen
+                  ? t('chevronExpandCollapseButton.collapse')
+                  : t('chevronExpandCollapseButton.expand')
+              } ${item.label}`}
+              onClick={() => {
+                onToggle();
+                onToggleGroup?.();
+              }}
               icon={
                 <ChevronDownLargeIcon
                   w="xs"
@@ -65,21 +68,24 @@ function CheckboxCollapsible<ItemKey extends string>({
         />
       </Box>
       <Collapse in={isOpen}>
-        <Stack spacing="lg">
-          {checkboxes?.map((item, index) => (
-            <Fragment key={item.key}>
-              <CheckboxWithOptions
-                item={item}
-                items={checkboxes}
-                onApply={onApply}
-                isCollapsible={isCollapsible}
-                isInvalid={isInvalid}
-                isDisabled={isDisabled}
-              />
-              {addDividerAfterIndex?.includes(index) ? <Divider /> : null}
-            </Fragment>
+        <Box
+          as={Stack}
+          spacing="lg"
+          pl={checkboxes.length > 0 ? 'lg' : '0px'}
+          pr={checkboxes.length > 0 ? '2xl' : '0px'}
+        >
+          {checkboxes?.map((checkbox) => (
+            <CheckboxWithOptions
+              key={checkbox.key}
+              item={{
+                ...checkbox,
+                isChecked: item.isChecked ? true : checkbox.isChecked,
+              }}
+              onApply={onApply}
+              isIndeterminate={false}
+            />
           ))}
-        </Stack>
+        </Box>
       </Collapse>
     </Stack>
   );

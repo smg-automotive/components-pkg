@@ -20,6 +20,10 @@
     "close": "Close",
     "reset": "Reset"
   },
+  "chevronExpandCollapseButton": {
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
   "footer": {
     "apps": {
       "title": "Mobile Apps"

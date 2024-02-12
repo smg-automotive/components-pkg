@@ -4,7 +4,7 @@ import { Box, chakra } from '@chakra-ui/react';
 
 import HighlightedText from '../text/HighlightedText';
 import Checkbox from '../checkbox';
-import { Item, State } from './type';
+import { Item } from './type';
 
 const addThousandSeparatorToNumber = (value: number) => {
   return new Intl.NumberFormat('de-CH').format(value);
@@ -12,45 +12,28 @@ const addThousandSeparatorToNumber = (value: number) => {
 
 type Props<ItemKey extends string> = {
   item: Item<ItemKey>;
-  items: Item<ItemKey>[];
-  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
+  onApply: (updatedItem: Item<ItemKey>) => void;
   icon?: ReactNode;
-  isCollapsible?: boolean;
   isIndeterminate?: boolean;
-  isInvalid?: boolean;
-  isDisabled?: boolean;
 };
 
 function CheckboxWithOptions<ItemKey extends string>({
   item,
-  items,
   onApply,
   icon,
-  isCollapsible,
   isIndeterminate,
-  isInvalid,
-  isDisabled,
 }: Props<ItemKey>) {
-  const isNested = !item.isParent && isCollapsible;
   return (
-    <Box
-      width="full"
-      marginBottom="lg"
-      display="flex"
-      pl={isNested ? 'lg' : '0px'}
-      pr={isNested ? '2xl' : '0px'}
-    >
+    <Box width="full" marginBottom="lg" display="flex">
       <Checkbox
-        variant={item.image ? 'alignCenter' : 'alignTop'}
+        variant={item?.image ? 'alignCenter' : 'alignTop'}
         name={`filter_${item.key}_${item.label}`}
         isChecked={item.isChecked}
         value={item.key}
         fullWidth
         isIndeterminate={isIndeterminate}
-        isInvalid={isInvalid}
-        isDisabled={isDisabled}
         label={
-          item.image ? (
+          item?.image ? (
             <chakra.span display="flex" alignItems="center">
               {item.image}
               <chakra.span
@@ -89,34 +72,8 @@ function CheckboxWithOptions<ItemKey extends string>({
         }
         onChange={(event) => {
           const isChecked = event.target.checked;
-          const previousState = items.reduce<Partial<State<ItemKey>>>(
-            (acc, currentItem) => {
-              acc[currentItem.key] = currentItem.isChecked;
-              return acc;
-            },
-            {},
-          );
-
-          const newState = items.reduce<Partial<State<ItemKey>>>(
-            (acc, currentItem) => {
-              if (item.isParent) {
-                acc[currentItem.key] = isChecked;
-                return acc;
-              } else {
-                acc[currentItem.key] = currentItem.isChecked;
-                return acc;
-              }
-            },
-            {},
-          );
-
-          onApply(
-            { ...item, isChecked },
-            {
-              ...(item.isParent ? newState : previousState),
-              [item.key]: isChecked,
-            },
-          );
+          // console.log('isChecked', isChecked, { ...item, isChecked });
+          onApply({ ...item, isChecked });
         }}
       />
       {icon ? icon : null}

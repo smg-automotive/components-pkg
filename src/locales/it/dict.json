@@ -20,6 +20,10 @@
     "close": "Vicino",
     "reset": "Ripristina"
   },
+  "chevronExpandCollapseButton": {
+    "expand": "Espandere",
+    "collapse": "Crollo"
+  },
   "footer": {
     "apps": {
       "title": "App download"

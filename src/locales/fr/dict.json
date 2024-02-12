@@ -20,6 +20,10 @@
     "close": "Fermer",
     "reset": "Réinitialiser"
   },
+  "chevronExpandCollapseButton": {
+    "expand": "Développer",
+    "collapse": "Effondrement"
+  },
   "footer": {
     "apps": {
       "title": "App download"
