@@ -102,3 +102,7 @@ export { PickUpIcon } from './PickUpIcon';
 export { InformationIcon } from './InformationIcon';
 export { PartialClockIcon } from './PartialClockIcon';
 export { LockIcon } from './LockIcon';
+export { PackageBasicIcon } from './PackageBasicIcon';
+export { PackagePlusIcon } from './PackagePlusIcon';
+export { PackagePremiumIcon } from './PackagePremiumIcon';
+export { PackageUnlimitedIcon } from './PackageUnlimitedIcon';
