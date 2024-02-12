@@ -45,11 +45,9 @@ const Popover: FC<Props> = ({
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
-  const maxHeight = showCallToActionButton
-    ? '6xl'
-    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
-
-  console.log({ enforceHeight, maxHeight });
+  // const maxHeight = showCallToActionButton
+  //   ? '6xl'
+  //   : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
 
   return (
     <Portal>
