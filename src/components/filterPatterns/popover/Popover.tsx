@@ -49,6 +49,8 @@ const Popover: FC<Props> = ({
     ? '6xl'
     : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
 
+  console.log({ enforceHeight, maxHeight });
+
   return (
     <Portal>
       <Box zIndex="popover" w="full" h="full" position="relative">
@@ -58,6 +60,8 @@ const Popover: FC<Props> = ({
           paddingY="2xl"
           shadow="md"
           w="6xl"
+          minHeight={enforceHeight ? '7xl' : undefined}
+          height={enforceHeight ? '7xl' : undefined}
           ref={popoverContentRef}
         >
           <PopoverHeader paddingX="2xl">
@@ -80,9 +84,14 @@ const Popover: FC<Props> = ({
                 'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))',
             }}
             marginTop="2xl"
+            maxH={
+              showCallToActionButton
+                ? '6xl'
+                : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
+            }
             marginBottom={showCallToActionButton ? '2xl' : '0'}
-            height={enforceHeight ? maxHeight : undefined}
-            maxHeight={maxHeight}
+            // height={enforceHeight ? maxHeight : undefined}
+            // maxHeight={maxHeight}
             overflowY="auto"
             paddingX="2xl"
           >
