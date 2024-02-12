@@ -13,7 +13,7 @@ interface CheckboxCollapsibleProps<
   ItemKey extends string,
   FilterName extends string
 > {
-  item: Item<ItemKey, FilterName>;
+  parentItem: Item<ItemKey, FilterName>;
   checkboxes: Item<ItemKey, FilterName>[];
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   onToggleGroup?: () => void;
@@ -23,7 +23,7 @@ function CheckboxCollapsible<
   ItemKey extends string,
   FilterName extends string
 >({
-  item,
+  parentItem,
   checkboxes,
   onApply,
   onToggleGroup,
@@ -38,7 +38,7 @@ function CheckboxCollapsible<
     <Stack spacing="md">
       <Box width="full" display="flex" alignItems="center">
         <CheckboxWithOptions
-          item={item}
+          item={parentItem}
           onApply={onApply}
           aria-expanded={isOpen ? 'Collapsed' : 'Expanded'}
           isIndeterminate={
@@ -53,7 +53,7 @@ function CheckboxCollapsible<
                 isOpen
                   ? t('chevronExpandCollapseButton.collapse')
                   : t('chevronExpandCollapseButton.expand')
-              } ${item.label}`}
+              } ${parentItem.label}`}
               onClick={() => {
                 onToggle();
                 onToggleGroup?.();
@@ -87,9 +87,20 @@ function CheckboxCollapsible<
               key={checkbox.key}
               item={{
                 ...checkbox,
-                isChecked: item.isChecked ? true : checkbox.isChecked,
+                isChecked: parentItem.isChecked ? true : checkbox.isChecked,
               }}
-              onApply={onApply}
+              onApply={(updatedItem) => {
+                if (
+                  updatedItem.isChecked &&
+                  checkboxes
+                    .filter((box) => box.key != updatedItem.key)
+                    .every((box) => box.isChecked)
+                ) {
+                  onApply({ ...parentItem, isChecked: true });
+                } else {
+                  onApply(updatedItem);
+                }
+              }}
               isIndeterminate={false}
             />
           ))}

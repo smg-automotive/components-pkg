@@ -25,7 +25,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
             <CheckboxCollapsible
               key={item.parent.key}
               checkboxes={item.childCheckboxes}
-              item={item.parent}
+              parentItem={item.parent}
               onApply={onApply}
             />
           );
