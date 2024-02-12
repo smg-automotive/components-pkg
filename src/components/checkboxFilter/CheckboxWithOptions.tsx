@@ -20,7 +20,12 @@ type Props<ItemKey extends string, FilterName extends string> = {
 function CheckboxWithOptions<
   ItemKey extends string,
   FilterName extends string
->({ item, onApply, icon, isIndeterminate }: Props<ItemKey, FilterName>) {
+>({
+  item,
+  onApply,
+  icon,
+  isIndeterminate = false,
+}: Props<ItemKey, FilterName>) {
   return (
     <Box width="full" marginBottom="lg" display="flex">
       <Checkbox
@@ -70,7 +75,6 @@ function CheckboxWithOptions<
         }
         onChange={(event) => {
           const isChecked = event.target.checked;
-          // console.log('isChecked', isChecked, { ...item, isChecked });
           onApply({ ...item, isChecked });
         }}
       />

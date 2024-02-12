@@ -21,6 +21,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
     >
       {items.map((item) => {
         if (item.childCheckboxes.length > 0)
+          // TODO: rename to CheckboxCollapsibleWithChildren
           return (
             <CheckboxCollapsible
               key={item.parent.key}
@@ -29,10 +30,10 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
               onApply={onApply}
             />
           );
+        // TODO: rename to CheckboxWithFacet
         return (
           <CheckboxWithOptions
             key={item.parent.key}
-            isIndeterminate={false}
             item={item.parent}
             onApply={onApply}
           />

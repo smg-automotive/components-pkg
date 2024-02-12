@@ -4,7 +4,7 @@ import { CheckboxFilterItem, Item } from './type';
 
 import CheckboxFilter from './index';
 
-type Values = 'new' | 'demonstration' | 'brandnew';
+type Values = 'new' | 'demonstration' | 'brandnew' | 'used';
 
 type Props<ItemKey extends string, FilterName extends string> = {
   onApplyAction: (args: unknown) => void;
@@ -16,6 +16,17 @@ type Props<ItemKey extends string, FilterName extends string> = {
     childCheckboxes: Item<ItemKey, FilterName>[];
   }[];
 };
+
+// TODO: remove
+const example = [
+  { type: 'mild-petrol', group: 'petrol' },
+  { type: 'petrol', group: 'petrol' },
+  { type: 'electro', group: null },
+];
+const fooFromExample = [
+  { parent: 'petrol', child: ['mild-petrol', 'petrol'] },
+  { parent: 'electro', child: [] },
+];
 
 type FilterType = 'conditionType' | 'conditionTypeGroup';
 const parentFilterName: FilterType = 'conditionTypeGroup';
@@ -55,6 +66,18 @@ function StoryTemplate<ItemKey extends string, FilterName extends string>({
         },
       ],
     },
+    {
+      parent: {
+        label: 'Used',
+        key: 'used',
+        facet: 50,
+        isChecked: filter.conditionType.includes('used'),
+        filterName: parentFilterName,
+      },
+      childCheckboxes: [],
+    },
+    // TODO: add example with image
+    // TODO: add example with multiple columns
   ];
 
   const getAllChildrenByParentName = (parentName: FilterType): string[] => {
@@ -90,8 +113,11 @@ function StoryTemplate<ItemKey extends string, FilterName extends string>({
     }
   };
 
-  // FIXME
+  // FIXME:
   const updateChildFilter = (updatedItem: Item<Values, FilterType>) => {
+    // TODO: if all children of the parent are checked -> remove all from filter and update group
+    // TODO: if child is unchecked was checked trough group -> remove group and add all children expect the unchecked one
+    // TODO: add/remove normally if only a subset of the group are selected
     setFilter((prevState) => {
       const state = {
         ...prevState,
@@ -105,8 +131,7 @@ function StoryTemplate<ItemKey extends string, FilterName extends string>({
   };
 
   const onApply = (updatedItem: Item<Values, FilterType>) => {
-    const filterToUpdate = updatedItem.filterName as FilterType;
-    if (filterToUpdate === parentFilterName) {
+    if (updatedItem.filterName === parentFilterName) {
       updateParentFilter(updatedItem);
     } else {
       updateChildFilter(updatedItem);

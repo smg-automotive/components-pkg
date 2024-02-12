@@ -30,6 +30,7 @@ export type Props<ItemKey extends string, FilterName extends string> = {
    * @param item.isChecked  The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
    * @param item.image      image/icon shown on the UI
    */
+  // TODO: check if it can be done without breaking contract
   items: CheckboxFilterItem<ItemKey, FilterName>[];
   /**
    * Callback function that is triggered after any checkbox has been clicked.
@@ -41,6 +42,7 @@ export type Props<ItemKey extends string, FilterName extends string> = {
   icon?: ReactNode;
 };
 
+// TODO: move this from here (not a type)
 export const addThousandSeparatorToNumber = (value: number) => {
   return new Intl.NumberFormat('de-CH').format(value);
 };
