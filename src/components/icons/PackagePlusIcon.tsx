@@ -9,25 +9,18 @@ export const PackagePlusIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     <>
       <title>Plus package icon</title>
       <path
-        d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
-        stroke="#333333"
-        strokeWidth="2"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="2"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
         fill="none"
       />
       <path
-        d="M12 8V16"
-        stroke="#333333"
-        strokeWidth="2"
+        stroke="currentColor"
         strokeLinejoin="round"
-        fill="none"
-      />
-      <path
-        d="M8 12H16"
-        stroke="#333333"
         strokeWidth="2"
-        strokeLinejoin="round"
+        d="M12 8v8M8 12h8"
         fill="none"
       />
     </>

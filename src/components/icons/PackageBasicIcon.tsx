@@ -9,14 +9,14 @@ export const PackageBasicIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     <>
       <title>Basic package icon</title>
       <rect
-        x="1.14352"
-        y="11.7266"
-        width="14.9686"
-        height="14.9686"
-        rx="2"
-        transform="rotate(-45 1.14352 11.7266)"
-        stroke="#333333"
+        width="14.969"
+        height="14.969"
+        x="1.144"
+        y="11.727"
+        stroke="currentColor"
         strokeWidth="2"
+        rx="2"
+        transform="rotate(-45 1.144 11.727)"
         fill="none"
       />
     </>
