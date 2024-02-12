@@ -21,8 +21,10 @@ function StoryTemplate<ItemKey extends string>({
   numberOfColumnsOnDesktop,
   items,
 }: Props<ItemKey>) {
-  const [conditionType, setConditionType] = useState<string[]>([]);
-  const [conditionTypeGroup, setConditionTypeGroup] = useState<string[]>([]);
+  const [filter, setFilter] = useState({
+    conditionType: [],
+    conditionTypeGroup: [],
+  });
 
   const checkboxes = [
     {
@@ -30,7 +32,7 @@ function StoryTemplate<ItemKey extends string>({
         label: 'New',
         key: 'new',
         facet: 100,
-        isChecked: conditionTypeGroup.includes('new'),
+        isChecked: filter.conditionTypeGroup.includes('new'),
         filterName: 'conditionTypeGroup',
       },
       childCheckboxes: [
@@ -38,14 +40,14 @@ function StoryTemplate<ItemKey extends string>({
           label: 'Demonstration',
           key: 'demonstration',
           facet: 77,
-          isChecked: conditionType.includes('demonstration'),
+          isChecked: filter.conditionType.includes('demonstration'),
           filterName: 'conditionType',
         },
         {
           label: 'Brand new',
           key: 'brandnew',
           facet: 33,
-          isChecked: conditionType.includes('brandnew'),
+          isChecked: filter.conditionType.includes('brandnew'),
           filterName: 'conditionType',
         },
       ],
@@ -56,33 +58,17 @@ function StoryTemplate<ItemKey extends string>({
     <CheckboxFilter
       items={checkboxes}
       onApply={(item) => {
+        setFilter((prevState) => {
+          const state = {
+            ...prevState,
+            [item.filterName]: item.isChecked
+              ? [...prevState[item.filterName], item.key]
+              : prevState[item.filterName].filter((key) => key != item.key),
+          };
+          onApplyAction(state);
+          return state;
+        });
         console.log({ item });
-        if (item.filterName === 'conditionType') {
-          setConditionType((prevState) => {
-            let newState = [];
-            if (item.isChecked) {
-              newState = [...prevState, item.key];
-            } else {
-              newState = prevState.filter((s) => s !== item.key);
-            }
-
-            if (newState.length === 2) {
-              setConditionTypeGroup(['new']);
-              return [];
-            } else {
-              setConditionTypeGroup([]);
-              return newState;
-            }
-          });
-        }
-        if (item.filterName === 'conditionTypeGroup') {
-          setConditionTypeGroup((prevState) => {
-            if (item.isChecked) {
-              return [...prevState, item.key];
-            }
-            return prevState.filter((s) => s !== item.key);
-          });
-        }
       }}
       numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
     />

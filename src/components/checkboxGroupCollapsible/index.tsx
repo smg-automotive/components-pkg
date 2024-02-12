@@ -41,6 +41,7 @@ function CheckboxCollapsible<ItemKey extends string>({
           }
           icon={
             <IconButton
+              aria-controls="checkboxCollapsibleBox"
               aria-expanded={isOpen}
               aria-label={`${
                 isOpen
@@ -69,6 +70,7 @@ function CheckboxCollapsible<ItemKey extends string>({
       </Box>
       <Collapse in={isOpen}>
         <Box
+          id="checkboxCollapsibleBox"
           as={Stack}
           spacing="lg"
           pl={checkboxes.length > 0 ? 'lg' : '0px'}
