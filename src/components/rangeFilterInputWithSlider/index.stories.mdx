@@ -45,11 +45,11 @@ return (
 </Box>
 ); };
 
-## Overview
+## With histograms
 
 <Canvas>
   <Story
-    name="Overview"
+    name="With histograms"
     args={{
       unit: 'CHF',
       from: {
@@ -127,6 +127,33 @@ return (
           to: 300000,
           value: 22,
         },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With custom range slider scale
+
+<Canvas>
+  <Story
+    name="With custom range slider scale"
+    args={{
+      unit: 'CHF',
+      from: {
+        name: 'priceFrom',
+        placeholder: '0',
+        value: 100,
+      },
+      to: {
+        name: 'priceTo',
+        placeholder: '1000000+',
+        value: 10000,
+      },
+      rangeSliderScale: [
+        0, 100, 200, 1000, 2000, 5000, 10000, 30000, 60000, 300000, 1000000,
+        90000, 200000,
       ],
     }}
   >
