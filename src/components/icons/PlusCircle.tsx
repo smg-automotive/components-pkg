@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const PackagePlusIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const PlusCircle: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'Plus',
   viewBox: '0 0 24 24',
   path: (
