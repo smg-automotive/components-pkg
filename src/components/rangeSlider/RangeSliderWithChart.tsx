@@ -1,18 +1,11 @@
 import React from 'react';
 
 import Box from '../box';
-import RangeSliderWithScale from './RangeSliderWithScale';
+import RangeSliderWithScale, {
+  ChangeCallback,
+  NumericMinMaxValue,
+} from './RangeSliderWithScale';
 import Chart from './Chart';
-
-export type NumericMinMaxValue = {
-  min: number | null | undefined;
-  max: number | null | undefined;
-};
-
-export type ChangeCallback = {
-  touched: 'min' | 'max';
-  value: NumericMinMaxValue;
-};
 
 export type Facet = {
   from: number;

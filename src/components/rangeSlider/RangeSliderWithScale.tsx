@@ -12,17 +12,38 @@ export type ChangeCallback = {
   value: NumericMinMaxValue;
 };
 
-export type Facet = {
-  from: number;
-  to?: number | null;
-  value: number;
-};
-
 interface RangeSliderWithScaleProps {
+  /**
+   * Array of numbers that represents the custom scale of the range slider
+   * @example [0, 100, 200, 300, 400]
+   * @default []
+   * @required
+   */
   scale: Array<number>;
+  /**
+   * Object that contains the min and max values of the range slider
+   * @example { min: 0, max: 100 }
+   * @default { min: null, max: null }
+   * @required
+   */
   selection: NumericMinMaxValue;
+  /**
+   * Callback function that is triggered when slider is moving
+   * @param event     contains touched - what thumb is moved and value
+   */
   onSliderChange: (event: ChangeCallback) => void;
+  /**
+   * Callback function that is triggered when slider is released
+   * @param event     contains touched - what thumb is moved and value
+   */
   onSliderRelease: (event: ChangeCallback) => void;
+  /**
+   * Function that renders the chart with wrapper
+   * @param range     contains the range of the slider
+   * @returns         the chart component
+   * @example         (range: Array<number>) => <Chart range={range} />
+   * @default         null
+   */
   renderChart?: (range: number[]) => React.ReactNode;
 }
 

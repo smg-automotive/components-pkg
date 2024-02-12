@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import RangeSliderWithScale from '../rangeSlider/RangeSliderWithScale';
+import RangeSliderWithScale, {
+  NumericMinMaxValue,
+} from '../rangeSlider/RangeSliderWithScale';
 import RangeSliderWithChart, {
   Facet,
-  NumericMinMaxValue,
 } from '../rangeSlider/RangeSliderWithChart';
 import RangeFilterInput, {
   ChangeCallback,
@@ -77,7 +78,7 @@ function RangeFilterInputWithSlider<
     if (!isSliding) {
       setIsSliding(true);
     }
-    setValuesWhileSliding((prevValuesWhileSliding) => ({
+    setValuesWhileSliding((prevValuesWhileSliding: NumericMinMaxValue) => ({
       ...prevValuesWhileSliding,
       [event.touched]: event.value[event.touched],
     }));
@@ -125,15 +126,14 @@ function RangeFilterInputWithSlider<
             facets={facets}
             chartHeight={chartHeight}
           />
-        ) : null}
-        {rangeSliderScale ? (
+        ) : (
           <RangeSliderWithScale
             onSliderChange={handleSliderChange}
             onSliderRelease={handleSliderRelease}
             selection={appliedValue()}
             scale={rangeSliderScale}
           />
-        ) : null}
+        )}
       </Box>
       <RangeFilterInput
         from={{
