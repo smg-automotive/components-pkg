@@ -8,7 +8,8 @@ import { ModalFilter } from '../index';
 const validProps: ModalFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },
   displayValue: '',
-  isApplied: false,
+  isLocalStateApplied: true,
+  isRouterStateApplied: true,
   label: 'Treibstoff',
   language: 'de',
   onResetFilter: jest.fn(),
@@ -30,7 +31,11 @@ describe('<ModalFilter />', () => {
   it('should be possible to reset the filter on the modal', async () => {
     const mockOnReset = jest.fn();
     render(
-      <ModalFilter {...validProps} isApplied={true} onResetFilter={mockOnReset}>
+      <ModalFilter
+        {...validProps}
+        isRouterStateApplied={true}
+        onResetFilter={mockOnReset}
+      >
         <div>Modal content</div>
       </ModalFilter>,
     );
@@ -44,7 +49,7 @@ describe('<ModalFilter />', () => {
 
   it('should show a close button if no filter is applied', async () => {
     render(
-      <ModalFilter {...validProps} isApplied={false}>
+      <ModalFilter {...validProps} isLocalStateApplied={false}>
         <div>Modal content</div>
       </ModalFilter>,
     );
@@ -59,7 +64,7 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter
         {...validProps}
-        isApplied={false}
+        isLocalStateApplied={false}
         showCallToActionButton={false}
       >
         <div>Modal content</div>
@@ -77,7 +82,7 @@ describe('<ModalFilter />', () => {
     render(
       <ModalFilter
         {...validProps}
-        isApplied={true}
+        isLocalStateApplied={true}
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Modal content</div>
@@ -116,7 +121,11 @@ describe('<ModalFilter />', () => {
   it('should call the callback if the modal closes', async () => {
     const mockOnClose = jest.fn();
     render(
-      <ModalFilter {...validProps} onModalClose={mockOnClose} isApplied={true}>
+      <ModalFilter
+        {...validProps}
+        onModalClose={mockOnClose}
+        isLocalStateApplied={true}
+      >
         <div>Modal content</div>
       </ModalFilter>,
     );

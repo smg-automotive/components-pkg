@@ -8,7 +8,8 @@ import { PopoverFilter } from '../index';
 const validProps: PopoverFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },
   displayValue: '',
-  isApplied: false,
+  isLocalStateApplied: false,
+  isRouterStateApplied: false,
   label: 'Treibstoff',
   language: 'de',
   onResetFilter: jest.fn(),
@@ -32,7 +33,8 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter
         {...validProps}
-        isApplied={true}
+        isLocalStateApplied={true}
+        isRouterStateApplied={true}
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
@@ -48,7 +50,8 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter
         {...validProps}
-        isApplied={true}
+        isLocalStateApplied={true}
+        isRouterStateApplied={true}
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
@@ -66,7 +69,7 @@ describe('<PopoverFilter />', () => {
 
   it('should show a close button if no filter is applied', async () => {
     render(
-      <PopoverFilter {...validProps} isApplied={false}>
+      <PopoverFilter {...validProps} isLocalStateApplied={false}>
         <div>Popover content</div>
       </PopoverFilter>,
     );
@@ -81,7 +84,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter
         {...validProps}
-        isApplied={false}
+        isLocalStateApplied={false}
         showCallToActionButton={false}
       >
         <div>Popover content</div>
@@ -99,7 +102,7 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter
         {...validProps}
-        isApplied={true}
+        isLocalStateApplied={true}
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Popover content</div>
@@ -141,7 +144,7 @@ describe('<PopoverFilter />', () => {
       <PopoverFilter
         {...validProps}
         onPopoverClose={mockOnClose}
-        isApplied={true}
+        isLocalStateApplied={true}
       >
         <div>Popover content</div>
       </PopoverFilter>,
@@ -185,7 +188,8 @@ describe('<PopoverFilter />', () => {
     render(
       <PopoverFilter
         {...validProps}
-        isApplied={true}
+        isLocalStateApplied={true}
+        isRouterStateApplied={true}
         displayValue="Benzin, Wasserstoff"
       >
         <div>Popover content</div>
@@ -198,18 +202,18 @@ describe('<PopoverFilter />', () => {
 
   it('should only show the label when there is no display value', () => {
     render(
-      <PopoverFilter {...validProps} isApplied={true} displayValue="">
+      <PopoverFilter {...validProps} isLocalStateApplied={true} displayValue="">
         <div>Popover content</div>
       </PopoverFilter>,
     );
     expect(screen.getByText('Treibstoff')).toBeInTheDocument();
   });
 
-  it('should only show the label when isApplied is false', () => {
+  it('should only show the label when isRouterStateApplied is false', () => {
     render(
       <PopoverFilter
         {...validProps}
-        isApplied={false}
+        isRouterStateApplied={false}
         displayValue="Benzin, Wasserstoff"
       >
         <div>Popover content</div>
@@ -224,7 +228,8 @@ describe('<PopoverFilter />', () => {
         {...validProps}
         label="Treibstoff von Agrola"
         appliedLabel="T-Stoff"
-        isApplied={true}
+        isLocalStateApplied={true}
+        isRouterStateApplied={true}
         displayValue="Benzin, Wasserstoff"
       >
         <div>Popover content</div>
