@@ -20,7 +20,7 @@ type Props = {
   PopoverFilterProps,
   | 'actionButton'
   | 'Icon'
-  | 'isApplied'
+  | 'isLocalStateApplied'
   | 'label'
   | 'numberOfAppliedFilters'
   | 'onResetFilter'
@@ -32,7 +32,7 @@ type Props = {
 const Popover: FC<Props> = ({
   actionButton,
   Icon,
-  isApplied,
+  isLocalStateApplied,
   label,
   numberOfAppliedFilters,
   onClose,
@@ -59,7 +59,7 @@ const Popover: FC<Props> = ({
             {header ?? (
               <FilterHeading
                 Icon={Icon}
-                isApplied={isApplied}
+                isLocalStateApplied={isLocalStateApplied}
                 label={label}
                 numberOfAppliedFilters={numberOfAppliedFilters}
                 onClose={onClose}
@@ -90,7 +90,7 @@ const Popover: FC<Props> = ({
             <PopoverFooter paddingX="2xl">
               <FilterActionButton
                 actionButton={actionButton}
-                isApplied={isApplied}
+                isLocalStateApplied={isLocalStateApplied}
                 onClose={onClose}
               />
             </PopoverFooter>

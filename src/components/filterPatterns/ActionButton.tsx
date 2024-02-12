@@ -15,10 +15,10 @@ export type ActionButtonProps = {
     href?: () => void;
   };
   onClose: () => void;
-} & Pick<FilterPatternProps, 'isApplied'>;
+} & Pick<FilterPatternProps, 'isLocalStateApplied'>;
 
 const FilterActionButton: FC<ActionButtonProps> = ({
-  isApplied,
+  isLocalStateApplied,
   actionButton,
   onClose,
 }) => {
@@ -27,17 +27,17 @@ const FilterActionButton: FC<ActionButtonProps> = ({
   return (
     <Button
       onClick={
-        isApplied
+        isLocalStateApplied
           ? () => {
               actionButton.onClick?.();
               onClose();
             }
           : onClose
       }
-      variant={isApplied ? 'primary' : 'secondary'}
+      variant={isLocalStateApplied ? 'primary' : 'secondary'}
       width="full"
     >
-      {isApplied ? actionButton.label : t('filterSelectButton.close')}
+      {isLocalStateApplied ? actionButton.label : t('filterSelectButton.close')}
     </Button>
   );
 };

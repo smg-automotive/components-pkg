@@ -18,14 +18,18 @@ type Props = {
   contentRef?: RefObject<HTMLElement>;
 } & Pick<
   FilterPatternProps,
-  'Icon' | 'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
+  | 'Icon'
+  | 'isLocalStateApplied'
+  | 'label'
+  | 'numberOfAppliedFilters'
+  | 'onResetFilter'
 >;
 
 export const FilterHeading: FC<Props> = ({
   onClose,
   language,
   Icon,
-  isApplied,
+  isLocalStateApplied,
   label,
   numberOfAppliedFilters,
   onResetFilter,
@@ -61,7 +65,7 @@ export const FilterHeading: FC<Props> = ({
             </Flex>
             <Link
               as="button"
-              disabled={!isApplied}
+              disabled={!isLocalStateApplied}
               onClick={() => {
                 onResetFilter('filter');
                 contentRef?.current?.focus();

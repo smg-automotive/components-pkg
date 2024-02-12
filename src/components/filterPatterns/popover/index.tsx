@@ -21,7 +21,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   displayValue,
   Icon,
   initialPopoverState = 'closed',
-  isApplied,
+  isRouterStateApplied,
+  isLocalStateApplied,
   label,
   appliedLabel,
   language,
@@ -41,7 +42,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
 
   const appliedOrOpenColorScheme = {
     backgroundColor: 'gray.900',
-    ...(isApplied
+    ...(isRouterStateApplied
       ? {
           _hover: {
             backgroundColor: 'black',
@@ -79,8 +80,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               <PopoverTrigger>
                 <ChakraButton
                   borderRadius="sm"
-                  borderRightColor={isApplied ? 'white' : undefined}
-                  borderRightWidth={isApplied ? '1px' : undefined}
+                  borderRightColor={isRouterStateApplied ? 'white' : undefined}
+                  borderRightWidth={isRouterStateApplied ? '1px' : undefined}
                   display="flex"
                   flex="1"
                   h="md"
@@ -88,7 +89,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   minW="0"
                   paddingX="md"
                   rightIcon={
-                    isApplied ? undefined : (
+                    isRouterStateApplied ? undefined : (
                       <ChevronDownSmallIcon
                         w="xs"
                         h="xs"
@@ -97,7 +98,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                       />
                     )
                   }
-                  {...(isApplied || isOpen
+                  {...(isRouterStateApplied || isOpen
                     ? appliedOrOpenColorScheme
                     : defaultColorSchema)}
                 >
@@ -110,15 +111,17 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   >
                     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
                     {[
-                      isApplied ? appliedLabel ?? label : label,
-                      displayValue && isApplied ? displayValue : null,
+                      isRouterStateApplied ? appliedLabel ?? label : label,
+                      displayValue && isRouterStateApplied
+                        ? displayValue
+                        : null,
                     ]
                       .filter(Boolean)
                       .join(': ')}
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
-              {isApplied ? (
+              {isRouterStateApplied ? (
                 <IconButton
                   isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}
@@ -135,7 +138,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             <FilterPopover
               actionButton={actionButton}
               Icon={Icon}
-              isApplied={isApplied}
+              isLocalStateApplied={isLocalStateApplied}
               label={label}
               numberOfAppliedFilters={numberOfAppliedFilters}
               onClose={onClose}

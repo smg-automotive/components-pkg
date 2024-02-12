@@ -12,10 +12,15 @@ export type FilterPatternProps = {
    */
   Icon?: FC<IconProps>;
   /**
-   * To know if a filter is applied or not.
+   * To know if a filter is applied or not based on local state of the application.
    * Controls styling and to know which button is shown.
    */
-  isApplied: boolean;
+  isLocalStateApplied: boolean;
+  /**
+   * To know if a filter is applied or not based on the router state of the application.
+   * Controls styling and to know what filters are actually applied.
+   */
+  isRouterStateApplied: boolean;
   /**
    * Label for the filter button and the modal/popover title.
    */
