@@ -89,18 +89,7 @@ function CheckboxCollapsible<
                 ...checkbox,
                 isChecked: parentItem.isChecked ? true : checkbox.isChecked,
               }}
-              onApply={(updatedItem) => {
-                if (
-                  updatedItem.isChecked &&
-                  checkboxes
-                    .filter((box) => box.key != updatedItem.key)
-                    .every((box) => box.isChecked)
-                ) {
-                  onApply({ ...parentItem, isChecked: true });
-                } else {
-                  onApply(updatedItem);
-                }
-              }}
+              onApply={onApply}
               isIndeterminate={false}
             />
           ))}
