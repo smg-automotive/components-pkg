@@ -2,12 +2,12 @@ import React from 'react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const StarCircle: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'Premium',
+export const StarCircleIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+  displayName: 'StarCircle',
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title>Premium package icon</title>
+      <title>Star circle icon</title>
       <path
         fill="currentColor"
         fillRule="evenodd"
