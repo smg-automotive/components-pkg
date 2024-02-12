@@ -6,13 +6,26 @@ import CheckboxFilter from '../index';
 
 const renderWrapper = ({
   options = [
-    { label: 'New', key: 'new', facet: 77, isChecked: false },
     {
-      label: 'Used',
-      key: 'used',
-      facet: 0,
-      isChecked: false,
-      image: <img src="limousine.jpeg" />,
+      parent: {
+        label: 'New',
+        key: 'new',
+        facet: 77,
+        isChecked: false,
+        filterName: 'conditionType',
+      },
+      childCheckboxes: [],
+    },
+    {
+      parent: {
+        label: 'Used',
+        key: 'used',
+        facet: 0,
+        isChecked: false,
+        image: <img src="limousine.jpeg" />,
+        filterName: 'conditionType',
+      },
+      childCheckboxes: [],
     },
   ],
   onApply = jest.fn(),
@@ -34,16 +47,34 @@ describe('<CheckBoxFilter />', () => {
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(
         { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false },
-      ),
+        { new: true, used: false }
+      )
     );
   });
 
   it('should not disable the checkbox if the checkbox is selected', () => {
     renderWrapper({
       options: [
-        { label: 'New', key: 'new', facet: 77, isChecked: false },
-        { label: 'Used', key: 'used', facet: 0, isChecked: true },
+        {
+          parent: {
+            label: 'New',
+            key: 'new',
+            facet: 77,
+            isChecked: false,
+            filterName: 'conditionType',
+          },
+          childCheckboxes: [],
+        },
+        {
+          parent: {
+            label: 'Used',
+            key: 'used',
+            facet: 0,
+            isChecked: true,
+            filterName: 'conditionType',
+          },
+          childCheckboxes: [],
+        },
       ],
     });
 
@@ -54,14 +85,32 @@ describe('<CheckBoxFilter />', () => {
   it('should separate the facet number with a thousand separator', () => {
     renderWrapper({
       options: [
-        { label: 'New', key: 'new', facet: 77, isChecked: false },
-        { label: 'Used', key: 'used', facet: 1000000, isChecked: false },
+        {
+          parent: {
+            label: 'New',
+            key: 'new',
+            facet: 77,
+            isChecked: false,
+            filterName: 'conditionType',
+          },
+          childCheckboxes: [],
+        },
+        {
+          parent: {
+            label: 'Used',
+            key: 'used',
+            facet: 1000000,
+            isChecked: false,
+            filterName: 'conditionType',
+          },
+          childCheckboxes: [],
+        },
       ],
     });
     expect(
       screen.getByRole('checkbox', {
         name: 'Used 1’000’000',
-      }),
+      })
     ).toBeInTheDocument();
   });
 
@@ -70,11 +119,15 @@ describe('<CheckBoxFilter />', () => {
     renderWrapper({
       options: [
         {
-          label: 'Used',
-          key: 'used',
-          facet: 0,
-          isChecked: false,
-          image,
+          parent: {
+            label: 'Used',
+            key: 'used',
+            facet: 0,
+            isChecked: false,
+            image,
+            filterName: 'conditionType',
+          },
+          childCheckboxes: [],
         },
       ],
     });

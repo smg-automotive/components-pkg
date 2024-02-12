@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 
-export type Item<ItemKey> = {
+export type Item<ItemKey, FilterName> = {
   key: ItemKey;
   label: string;
   facet: number;
-  filterName: string;
+  filterName: FilterName;
   isChecked?: boolean;
   image?: ReactNode;
   highlightIndices?: ReadonlyArray<[number, number]>;
@@ -12,7 +12,15 @@ export type Item<ItemKey> = {
 
 export type State<ItemKey extends string> = { [key in ItemKey]: boolean };
 
-export type Props<ItemKey extends string> = {
+export type CheckboxFilterItem<
+  ItemKey extends string,
+  FilterName extends string
+> = {
+  parent: Item<ItemKey, FilterName>;
+  childCheckboxes: Item<ItemKey, FilterName>[];
+};
+
+export type Props<ItemKey extends string, FilterName extends string> = {
   /**
    * @template ItemKey
    * @param {Item} item     renders one checkbox { key: ItemKey, label: string, facet: number, isChecked: boolean }
@@ -22,13 +30,13 @@ export type Props<ItemKey extends string> = {
    * @param item.isChecked  The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
    * @param item.image      image/icon shown on the UI
    */
-  items: { parent: Item<ItemKey>; childCheckboxes: Item<ItemKey>[] }[];
+  items: CheckboxFilterItem<ItemKey, FilterName>[];
   /**
    * Callback function that is triggered after any checkbox has been clicked.
    * @param updatedItem     contains the modified checkbox with the new value
    * @param newState        contains the new state of the whole filter group
    */
-  onApply: (updatedItem: Item<ItemKey>) => void;
+  onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   numberOfColumnsOnDesktop?: number;
   icon?: ReactNode;
 };

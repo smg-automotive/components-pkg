@@ -2,15 +2,15 @@ import React from 'react';
 
 import { Box } from '@chakra-ui/react';
 
-import CheckboxCollapsible from '../checkboxGroupCollapsible';
+import CheckboxCollapsible from './CheckboxGroupCollapsible';
 import { Props } from './type';
 import CheckboxWithOptions from './CheckboxWithOptions';
 
-function CheckboxFilter<ItemKey extends string>({
+function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   items,
   onApply,
   numberOfColumnsOnDesktop = 1,
-}: Props<ItemKey>) {
+}: Props<ItemKey, FilterName>) {
   return (
     <Box
       sx={{

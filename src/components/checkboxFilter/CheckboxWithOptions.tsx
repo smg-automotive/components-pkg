@@ -10,19 +10,17 @@ const addThousandSeparatorToNumber = (value: number) => {
   return new Intl.NumberFormat('de-CH').format(value);
 };
 
-type Props<ItemKey extends string> = {
-  item: Item<ItemKey>;
-  onApply: (updatedItem: Item<ItemKey>) => void;
+type Props<ItemKey extends string, FilterName extends string> = {
+  item: Item<ItemKey, FilterName>;
+  onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   icon?: ReactNode;
   isIndeterminate?: boolean;
 };
 
-function CheckboxWithOptions<ItemKey extends string>({
-  item,
-  onApply,
-  icon,
-  isIndeterminate,
-}: Props<ItemKey>) {
+function CheckboxWithOptions<
+  ItemKey extends string,
+  FilterName extends string
+>({ item, onApply, icon, isIndeterminate }: Props<ItemKey, FilterName>) {
   return (
     <Box width="full" marginBottom="lg" display="flex">
       <Checkbox

@@ -1,32 +1,33 @@
 import React, { ReactNode, useState } from 'react';
 
-import { Item } from './type';
+import { CheckboxFilterItem, Item } from './type';
 
 import CheckboxFilter from './index';
 
-type Values = 'new' | 'used' | 'old-timer';
+type Values = 'new' | 'demonstration' | 'brandnew';
 
-type Props<ItemKey extends string> = {
+type Props<ItemKey extends string, FilterName extends string> = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
   numberOfColumnsOnDesktop?: number;
-  items: { parent: Item<ItemKey>; childCheckboxes: Item<ItemKey>[] }[];
+  items: {
+    parent: Item<ItemKey, FilterName>;
+    childCheckboxes: Item<ItemKey, FilterName>[];
+  }[];
 };
 
-function StoryTemplate<ItemKey extends string>({
+type FilterType = 'conditionType' | 'conditionTypeGroup';
+function StoryTemplate<ItemKey extends string, FilterName extends string>({
   onApplyAction,
-  defaultFacets,
-  image,
   numberOfColumnsOnDesktop,
-  items,
-}: Props<ItemKey>) {
-  const [filter, setFilter] = useState({
+}: Props<ItemKey, FilterName>) {
+  const [filter, setFilter] = useState<Record<FilterType, string[]>>({
     conditionType: [],
     conditionTypeGroup: [],
   });
 
-  const checkboxes = [
+  const checkboxes: CheckboxFilterItem<Values, FilterType>[] = [
     {
       parent: {
         label: 'New',
@@ -59,11 +60,12 @@ function StoryTemplate<ItemKey extends string>({
       items={checkboxes}
       onApply={(item) => {
         setFilter((prevState) => {
+          const filterToUpdate = item.filterName as FilterType;
           const state = {
             ...prevState,
-            [item.filterName]: item.isChecked
-              ? [...prevState[item.filterName], item.key]
-              : prevState[item.filterName].filter((key) => key != item.key),
+            [filterToUpdate]: item.isChecked
+              ? [...prevState[filterToUpdate], item.key]
+              : prevState[filterToUpdate].filter((key) => key != item.key),
           };
           onApplyAction(state);
           return state;

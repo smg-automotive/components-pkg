@@ -1,26 +1,29 @@
-import React, { ReactNode, useState } from 'react';
-
-import { Item } from './type';
+import React, { FC, ReactNode, useState } from 'react';
 
 import CheckboxFilter from './index';
+import { CheckboxFilterItem } from './type';
 
-type Values = 'new' | 'used' | 'old-timer';
+type Values =
+  | 'new'
+  | 'used'
+  | 'old-timer'
+  | 'broken'
+  | 'iconic'
+  | 'not-working';
 
-type Props<ItemKey extends string> = {
+type Props = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
   numberOfColumnsOnDesktop?: number;
-  items: { parent: Item<ItemKey>; childCheckboxes: Item<ItemKey>[] }[];
 };
 
-function StoryTemplate<ItemKey extends string>({
+const StoryTemplate: FC<Props> = ({
   onApplyAction,
   defaultFacets,
   image,
   numberOfColumnsOnDesktop,
-  items,
-}: Props<ItemKey>) {
+}) => {
   // coming from backend
   const facets = {
     new: 10,
@@ -42,13 +45,14 @@ function StoryTemplate<ItemKey extends string>({
     iconic: false,
   });
 
-  const checkboxes = [
+  const checkboxes: CheckboxFilterItem<Values, 'conditionType'>[] = [
     {
       parent: {
         label: 'New',
         key: 'new',
         facet: facets.new,
         isChecked: conditionQuery.new,
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -58,6 +62,7 @@ function StoryTemplate<ItemKey extends string>({
         key: 'used',
         facet: facets.used,
         isChecked: conditionQuery.used,
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -69,6 +74,7 @@ function StoryTemplate<ItemKey extends string>({
         facet: facets['old-timer'],
         isChecked: conditionQuery['old-timer'],
         highlightIndices: [[1, 3]],
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -79,6 +85,7 @@ function StoryTemplate<ItemKey extends string>({
         key: 'broken',
         facet: facets['broken'],
         isChecked: conditionQuery['broken'],
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -89,6 +96,7 @@ function StoryTemplate<ItemKey extends string>({
         key: 'iconic',
         facet: facets['iconic'],
         isChecked: conditionQuery['iconic'],
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -100,6 +108,7 @@ function StoryTemplate<ItemKey extends string>({
         key: 'not-working',
         facet: facets['not-working'],
         isChecked: conditionQuery['not-working'],
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -112,6 +121,7 @@ function StoryTemplate<ItemKey extends string>({
         key: 'not-working',
         facet: facets['not-working'],
         isChecked: conditionQuery['not-working'],
+        filterName: 'conditionType',
       },
       childCheckboxes: [],
     },
@@ -119,7 +129,7 @@ function StoryTemplate<ItemKey extends string>({
 
   return (
     <CheckboxFilter
-      items={items ? items : checkboxes}
+      items={checkboxes}
       onApply={(item) => {
         onApplyAction({ item });
         setConditionQuery((prevState) => ({
@@ -130,6 +140,6 @@ function StoryTemplate<ItemKey extends string>({
       numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
     />
   );
-}
+};
 
 export default StoryTemplate;

@@ -6,22 +6,28 @@ import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import { ChevronDownLargeIcon } from '../icons';
-import { Item } from '../checkboxFilter/type';
-import CheckboxWithOptions from '../checkboxFilter/CheckboxWithOptions';
+import { Item } from './type';
+import CheckboxWithOptions from './CheckboxWithOptions';
 
-interface CheckboxCollapsibleProps<ItemKey extends string> {
-  item: Item<ItemKey>;
-  checkboxes: Item<ItemKey>[];
-  onApply: (updatedItem: Item<ItemKey>) => void;
+interface CheckboxCollapsibleProps<
+  ItemKey extends string,
+  FilterName extends string
+> {
+  item: Item<ItemKey, FilterName>;
+  checkboxes: Item<ItemKey, FilterName>[];
+  onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   onToggleGroup?: () => void;
 }
 
-function CheckboxCollapsible<ItemKey extends string>({
+function CheckboxCollapsible<
+  ItemKey extends string,
+  FilterName extends string
+>({
   item,
   checkboxes,
   onApply,
   onToggleGroup,
-}: CheckboxCollapsibleProps<ItemKey>) {
+}: CheckboxCollapsibleProps<ItemKey, FilterName>) {
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: false });
   const { t } = useI18n();
   const numberOfAppliedChildren = checkboxes.filter(
