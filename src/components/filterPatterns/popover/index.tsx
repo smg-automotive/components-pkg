@@ -19,6 +19,7 @@ import FilterPopover from './Popover';
 export const PopoverFilter: FC<PopoverFilterProps> = ({
   actionButton,
   displayValue,
+  enforceHeight,
   Icon,
   initialPopoverState = 'closed',
   isApplied,
@@ -142,6 +143,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               onResetFilter={() => onResetFilter('filter')}
               showCallToActionButton={showCallToActionButton}
               header={header}
+              enforceHeight={enforceHeight}
             >
               {children}
             </FilterPopover>
