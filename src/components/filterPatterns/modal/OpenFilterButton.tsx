@@ -12,7 +12,7 @@ import { FilterPatternProps } from '../props';
 type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
-  'label' | 'displayValue' | 'Icon' | 'isLocalStateApplied'
+  'label' | 'displayValue' | 'Icon' | 'isRouterStateApplied'
 > & { onClick: () => void; variant?: Variant; isDisabled?: boolean };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
@@ -28,7 +28,7 @@ const height: Record<Variant, ResponsiveValue<string>> = {
 export const OpenFilterButton: FC<Props> = ({
   displayValue,
   Icon,
-  isLocalStateApplied,
+  isRouterStateApplied,
   label,
   onClick,
   variant = 'md',
@@ -71,7 +71,7 @@ export const OpenFilterButton: FC<Props> = ({
           textOverflow="ellipsis"
           whiteSpace="nowrap"
         >
-          {displayValue && isLocalStateApplied ? displayValue : null} KURAC
+          {displayValue && isRouterStateApplied ? displayValue : null}
         </chakra.span>
       </chakra.span>
     </ChakraButton>

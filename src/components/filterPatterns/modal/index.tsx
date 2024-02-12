@@ -22,6 +22,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   initialModalState = 'closed',
   Icon,
   isLocalStateApplied,
+  isRouterStateApplied,
   label,
   language,
   numberOfAppliedFilters,
@@ -45,7 +46,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
         <OpenFilterButton
           displayValue={displayValue}
           Icon={Icon}
-          isLocalStateApplied={isLocalStateApplied}
+          isRouterStateApplied={isRouterStateApplied}
           label={label}
           onClick={onOpen}
           isDisabled={isDisabled}

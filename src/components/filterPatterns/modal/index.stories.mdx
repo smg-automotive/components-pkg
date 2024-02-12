@@ -122,18 +122,47 @@ export const CustomHeader = () => (
   </Story>
 </Canvas>
 
-## Applied
+## Applied with only local state
 
 <Canvas>
   <Story
-    name="Applied"
+    name="Applied with only local state"
     args={{
       label: 'Treibstoff',
-      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In KURAC',
+      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
       numberOfAppliedFilters: 5,
+      isLocalStateApplied: true,
+    }}
+    argTypes={{
+      isLocalStateApplied: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Applied with router state
+
+<Canvas>
+  <Story
+    name="Applied with router state"
+    args={{
+      label: 'Treibstoff',
+      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+      numberOfAppliedFilters: 5,
+      isLocalStateApplied: true,
       isRouterStateApplied: true,
     }}
     argTypes={{
+      isLocalStateApplied: {
+        table: {
+          disable: true,
+        },
+      },
       isRouterStateApplied: {
         table: {
           disable: true,
