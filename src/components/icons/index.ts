@@ -101,3 +101,4 @@ export { WagonIcon } from './WagonIcon';
 export { PickUpIcon } from './PickUpIcon';
 export { InformationIcon } from './InformationIcon';
 export { PartialClockIcon } from './PartialClockIcon';
+export { LockIcon } from './LockIcon';
