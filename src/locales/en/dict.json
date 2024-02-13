@@ -1,7 +1,7 @@
 {
-  "chevronExpandCollapseButton": {
-    "collapse": "Collapse",
-    "expand": "Expand"
+  "checkboxFilter": {
+    "collapsed": "Show more",
+    "expanded": "Show less"
   },
   "errorPage": {
     "404": {

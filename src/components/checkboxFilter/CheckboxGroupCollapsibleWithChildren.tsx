@@ -29,6 +29,7 @@ function CheckboxGroupCollapsibleWithChildren<
   const numberOfAppliedChildren = checkboxes.filter(
     (checkbox) => checkbox.isChecked,
   ).length;
+  const groupDomId = `checkbox-group-${item.key}-${item.filterName ?? ''}`;
 
   return (
     <>
@@ -36,20 +37,20 @@ function CheckboxGroupCollapsibleWithChildren<
         <CheckboxWithFacet
           item={item}
           onApply={onApply}
-          aria-expanded={isOpen ? 'Collapsed' : 'Expanded'}
+          aria-expanded={isOpen}
           isIndeterminate={
             numberOfAppliedChildren > 0 &&
             numberOfAppliedChildren < checkboxes.length
           }
           icon={
             <IconButton
-              aria-controls="checkboxCollapsibleBox"
+              aria-controls={groupDomId}
               aria-expanded={isOpen}
-              aria-label={`${
+              aria-label={`${item.label}: ${
                 isOpen
-                  ? t('chevronExpandCollapseButton.collapse')
-                  : t('chevronExpandCollapseButton.expand')
-              } ${item.label}`}
+                  ? t('checkboxFilter.expanded')
+                  : t('checkboxFilter.collapsed')
+              }`}
               onClick={() => {
                 onToggle();
                 onToggleCheckboxGroup?.(item);
@@ -72,7 +73,7 @@ function CheckboxGroupCollapsibleWithChildren<
       </Box>
       <Collapse in={isOpen}>
         <Box
-          id="checkboxCollapsibleBox"
+          id={groupDomId}
           pl={checkboxes.length > 0 ? 'lg' : '0px'}
           pr={checkboxes.length > 0 ? '2xl' : '0px'}
         >
@@ -81,6 +82,7 @@ function CheckboxGroupCollapsibleWithChildren<
               key={checkbox.key}
               item={{
                 ...checkbox,
+                // to force checked on children when parent is checked
                 isChecked: item.isChecked ? true : checkbox.isChecked,
               }}
               onApply={onApply}
