@@ -4,14 +4,13 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
-import Stack from '../stack';
 import { ChevronDownLargeIcon } from '../icons';
 import { Item, Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 
 interface CheckboxCollapsibleProps<
   ItemKey extends string,
-  FilterName extends string,
+  FilterName extends string
 > {
   item: Item<ItemKey, FilterName>;
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
@@ -20,7 +19,7 @@ interface CheckboxCollapsibleProps<
 
 function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
-  FilterName extends string,
+  FilterName extends string
 >({
   item,
   onApply,
@@ -30,11 +29,11 @@ function CheckboxGroupCollapsibleWithChildren<
   const { t } = useI18n();
   const checkboxes = item.childCheckboxes ?? [];
   const numberOfAppliedChildren = checkboxes.filter(
-    (checkbox) => checkbox.isChecked,
+    (checkbox) => checkbox.isChecked
   ).length;
 
   return (
-    <Stack spacing="md">
+    <>
       <Box width="full" display="flex" alignItems="center">
         <CheckboxWithFacet
           item={item}
@@ -76,8 +75,6 @@ function CheckboxGroupCollapsibleWithChildren<
       <Collapse in={isOpen}>
         <Box
           id="checkboxCollapsibleBox"
-          as={Stack}
-          spacing="lg"
           pl={checkboxes.length > 0 ? 'lg' : '0px'}
           pr={checkboxes.length > 0 ? '2xl' : '0px'}
         >
@@ -94,7 +91,7 @@ function CheckboxGroupCollapsibleWithChildren<
           ))}
         </Box>
       </Collapse>
-    </Stack>
+    </>
   );
 }
 CheckboxGroupCollapsibleWithChildren.displayName =

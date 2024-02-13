@@ -13,7 +13,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   onToggleCheckboxGroup,
 }: Props<ItemKey, FilterName>) {
   const hasGroups = items.some(
-    (item) => (item.childCheckboxes ?? []).length > 0
+    (item) => (item.childCheckboxes ?? []).length > 0,
   );
   return (
     <Box
