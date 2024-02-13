@@ -10,7 +10,7 @@ import CheckboxWithFacet from './CheckboxWithFacet';
 
 interface CheckboxCollapsibleProps<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 > {
   item: Item<ItemKey, FilterName>;
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
@@ -19,7 +19,7 @@ interface CheckboxCollapsibleProps<
 
 function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 >({
   item,
   onApply,
@@ -29,7 +29,7 @@ function CheckboxGroupCollapsibleWithChildren<
   const { t } = useI18n();
   const checkboxes = item.childCheckboxes ?? [];
   const numberOfAppliedChildren = checkboxes.filter(
-    (checkbox) => checkbox.isChecked
+    (checkbox) => checkbox.isChecked,
   ).length;
 
   return (
