@@ -25,8 +25,6 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
           return (
             <CheckboxCollapsible
               key={item.key}
-              // TODO: can be removed since it's part of item
-              checkboxes={item.childCheckboxes}
               parentItem={item}
               onApply={onApply}
             />
