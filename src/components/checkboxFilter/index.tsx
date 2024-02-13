@@ -12,6 +12,9 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   numberOfColumnsOnDesktop = 1,
   onToggleCheckboxGroup,
 }: Props<ItemKey, FilterName>) {
+  const hasGroups = items.some(
+    (item) => (item.childCheckboxes ?? []).length > 0
+  );
   return (
     <Box
       sx={{
@@ -31,7 +34,12 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
             />
           );
         return (
-          <CheckboxWithFacet key={item.key} item={item} onApply={onApply} />
+          <CheckboxWithFacet
+            key={item.key}
+            item={item}
+            onApply={onApply}
+            indentFacet={hasGroups}
+          />
         );
       })}
     </Box>

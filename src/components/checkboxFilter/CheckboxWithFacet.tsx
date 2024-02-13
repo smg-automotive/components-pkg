@@ -15,6 +15,7 @@ type Props<ItemKey extends string, FilterName extends string> = {
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   icon?: ReactNode;
   isIndeterminate?: boolean;
+  indentFacet?: boolean;
 };
 
 function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
@@ -22,6 +23,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   onApply,
   icon,
   isIndeterminate = false,
+  indentFacet = false,
 }: Props<ItemKey, FilterName>) {
   return (
     <Box width="full" marginBottom="lg" display="flex">
@@ -47,7 +49,11 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
                   highlightIndices={item.highlightIndices}
                   wordBreak="break-word"
                 />
-                <chakra.span ml="sm" color="gray.400">
+                <chakra.span
+                  ml="sm"
+                  mr={indentFacet ? '2xl' : 0}
+                  color="gray.400"
+                >
                   {addThousandSeparatorToNumber(item.facet)}
                 </chakra.span>
               </chakra.span>
@@ -64,7 +70,11 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
                 w="full"
                 wordBreak="break-word"
               />
-              <chakra.span ml="sm" color="gray.400">
+              <chakra.span
+                ml="sm"
+                mr={indentFacet ? '2xl' : 0}
+                color="gray.400"
+              >
                 {addThousandSeparatorToNumber(item.facet)}
               </chakra.span>
             </chakra.span>
