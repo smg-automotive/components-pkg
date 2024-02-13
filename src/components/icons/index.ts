@@ -101,3 +101,8 @@ export { WagonIcon } from './WagonIcon';
 export { PickUpIcon } from './PickUpIcon';
 export { InformationIcon } from './InformationIcon';
 export { PartialClockIcon } from './PartialClockIcon';
+export { LockIcon } from './LockIcon';
+export { TiltedRectangleIcon } from './TiltedRectangleIcon';
+export { PlusCircleIcon } from './PlusCircleIcon';
+export { StarCircleIcon } from './StarCircleIcon';
+export { InfinityCircleIcon } from './InfinityCircleIcon';
