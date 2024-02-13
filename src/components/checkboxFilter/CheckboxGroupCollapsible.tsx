@@ -11,7 +11,7 @@ import CheckboxWithOptions from './CheckboxWithOptions';
 
 interface CheckboxCollapsibleProps<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 > {
   parentItem: Item<ItemKey, FilterName>;
   checkboxes: Item<ItemKey, FilterName>[];
@@ -21,7 +21,7 @@ interface CheckboxCollapsibleProps<
 
 function CheckboxCollapsible<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 >({
   parentItem,
   checkboxes,
@@ -31,7 +31,7 @@ function CheckboxCollapsible<
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: false });
   const { t } = useI18n();
   const numberOfAppliedChildren = checkboxes.filter(
-    (checkbox) => checkbox.isChecked
+    (checkbox) => checkbox.isChecked,
   ).length;
 
   return (

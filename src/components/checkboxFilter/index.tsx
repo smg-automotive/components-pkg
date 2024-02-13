@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Box } from '@chakra-ui/react';
 
-import CheckboxCollapsible from './CheckboxGroupCollapsible';
 import { Props } from './type';
 import CheckboxWithOptions from './CheckboxWithOptions';
+import CheckboxCollapsible from './CheckboxGroupCollapsible';
 
 function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   items,
@@ -20,23 +20,20 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
       }}
     >
       {items.map((item) => {
-        if (item.childCheckboxes.length > 0)
+        if (item.childCheckboxes && item.childCheckboxes.length > 0)
           // TODO: rename to CheckboxCollapsibleWithChildren
           return (
             <CheckboxCollapsible
-              key={item.parent.key}
+              key={item.key}
+              // TODO: can be removed since it's part of item
               checkboxes={item.childCheckboxes}
-              parentItem={item.parent}
+              parentItem={item}
               onApply={onApply}
             />
           );
         // TODO: rename to CheckboxWithFacet
         return (
-          <CheckboxWithOptions
-            key={item.parent.key}
-            item={item.parent}
-            onApply={onApply}
-          />
+          <CheckboxWithOptions key={item.key} item={item} onApply={onApply} />
         );
       })}
     </Box>

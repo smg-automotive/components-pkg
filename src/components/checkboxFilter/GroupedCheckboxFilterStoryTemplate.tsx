@@ -1,20 +1,16 @@
 import React, { ReactNode, useState } from 'react';
 
-import { CheckboxFilterItem, Item } from './type';
+import { Item } from './type';
 
 import CheckboxFilter from './index';
 
 type Values = 'new' | 'demonstration' | 'brandnew' | 'used';
 
-type Props<ItemKey extends string, FilterName extends string> = {
+type Props = {
   onApplyAction: (args: unknown) => void;
   defaultFacets?: Partial<{ [_key in Values]: number }>;
   image?: ReactNode;
   numberOfColumnsOnDesktop?: number;
-  items: {
-    parent: Item<ItemKey, FilterName>;
-    childCheckboxes: Item<ItemKey, FilterName>[];
-  }[];
 };
 
 // TODO: remove
@@ -31,24 +27,19 @@ const fooFromExample = [
 type FilterType = 'conditionType' | 'conditionTypeGroup';
 const parentFilterName: FilterType = 'conditionTypeGroup';
 const childFilterName: FilterType = 'conditionType';
-function StoryTemplate<ItemKey extends string, FilterName extends string>({
-  onApplyAction,
-  numberOfColumnsOnDesktop,
-}: Props<ItemKey, FilterName>) {
+function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
   const [filter, setFilter] = useState<Record<FilterType, string[]>>({
     conditionType: [],
     conditionTypeGroup: [],
   });
 
-  const checkboxes: CheckboxFilterItem<Values, FilterType>[] = [
+  const checkboxes: Item<Values, FilterType>[] = [
     {
-      parent: {
-        label: 'New',
-        key: 'new',
-        facet: 100,
-        isChecked: filter.conditionTypeGroup.includes('new'),
-        filterName: parentFilterName,
-      },
+      label: 'New',
+      key: 'new',
+      facet: 100,
+      isChecked: filter.conditionTypeGroup.includes('new'),
+      filterName: parentFilterName,
       childCheckboxes: [
         {
           label: 'Demonstration',
@@ -67,24 +58,23 @@ function StoryTemplate<ItemKey extends string, FilterName extends string>({
       ],
     },
     {
-      parent: {
-        label: 'Used',
-        key: 'used',
-        facet: 50,
-        isChecked: filter.conditionType.includes('used'),
-        filterName: parentFilterName,
-      },
+      label: 'Used',
+      key: 'used',
+      facet: 50,
+      isChecked: filter.conditionType.includes('used'),
+      filterName: parentFilterName,
       childCheckboxes: [],
     },
     // TODO: add example with image
     // TODO: add example with multiple columns
   ];
 
-  const getAllChildrenByParentName = (parentName: FilterType): string[] => {
+  const getAllChildrenByParentName = (parentName?: FilterType): string[] => {
+    if (!parentName) return [];
     return (
       checkboxes
-        .find((box) => box.parent.filterName === parentName)
-        ?.childCheckboxes.map((child) => child.key) ?? []
+        .find((box) => box.filterName === parentName)
+        ?.childCheckboxes?.map((child) => child.key) ?? []
     );
   };
 
@@ -95,7 +85,7 @@ function StoryTemplate<ItemKey extends string, FilterName extends string>({
         return {
           [parentFilterName]: [...prevState[parentFilterName], updatedItem.key],
           [childFilterName]: [...prevState[childFilterName]].filter(
-            (child) => !childrenToUpdate.includes(child)
+            (child) => !childrenToUpdate.includes(child),
           ),
         } as Record<FilterType, string[]>;
       });
@@ -103,10 +93,10 @@ function StoryTemplate<ItemKey extends string, FilterName extends string>({
       setFilter((prevState) => {
         return {
           [parentFilterName]: prevState[parentFilterName].filter(
-            (parent) => parent !== updatedItem.key
+            (parent) => parent !== updatedItem.key,
           ),
           [childFilterName]: [...prevState[childFilterName]].filter(
-            (child) => !childrenToUpdate.includes(child)
+            (child) => !childrenToUpdate.includes(child),
           ),
         } as Record<FilterType, string[]>;
       });

@@ -7,24 +7,20 @@ import CheckboxFilter from '../index';
 const renderWrapper = ({
   options = [
     {
-      parent: {
-        label: 'New',
-        key: 'new',
-        facet: 77,
-        isChecked: false,
-        filterName: 'conditionType',
-      },
+      label: 'New',
+      key: 'new',
+      facet: 77,
+      isChecked: false,
+      filterName: 'conditionType',
       childCheckboxes: [],
     },
     {
-      parent: {
-        label: 'Used',
-        key: 'used',
-        facet: 0,
-        isChecked: false,
-        image: <img src="limousine.jpeg" />,
-        filterName: 'conditionType',
-      },
+      label: 'Used',
+      key: 'used',
+      facet: 0,
+      isChecked: false,
+      image: <img src="limousine.jpeg" />,
+      filterName: 'conditionType',
       childCheckboxes: [],
     },
   ],
@@ -47,8 +43,8 @@ describe('<CheckBoxFilter />', () => {
     await waitFor(() =>
       expect(onApply).toHaveBeenCalledWith(
         { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false }
-      )
+        { new: true, used: false },
+      ),
     );
   });
 
@@ -56,23 +52,19 @@ describe('<CheckBoxFilter />', () => {
     renderWrapper({
       options: [
         {
-          parent: {
-            label: 'New',
-            key: 'new',
-            facet: 77,
-            isChecked: false,
-            filterName: 'conditionType',
-          },
+          label: 'New',
+          key: 'new',
+          facet: 77,
+          isChecked: false,
+          filterName: 'conditionType',
           childCheckboxes: [],
         },
         {
-          parent: {
-            label: 'Used',
-            key: 'used',
-            facet: 0,
-            isChecked: true,
-            filterName: 'conditionType',
-          },
+          label: 'Used',
+          key: 'used',
+          facet: 0,
+          isChecked: true,
+          filterName: 'conditionType',
           childCheckboxes: [],
         },
       ],
@@ -86,23 +78,19 @@ describe('<CheckBoxFilter />', () => {
     renderWrapper({
       options: [
         {
-          parent: {
-            label: 'New',
-            key: 'new',
-            facet: 77,
-            isChecked: false,
-            filterName: 'conditionType',
-          },
+          label: 'New',
+          key: 'new',
+          facet: 77,
+          isChecked: false,
+          filterName: 'conditionType',
           childCheckboxes: [],
         },
         {
-          parent: {
-            label: 'Used',
-            key: 'used',
-            facet: 1000000,
-            isChecked: false,
-            filterName: 'conditionType',
-          },
+          label: 'Used',
+          key: 'used',
+          facet: 1000000,
+          isChecked: false,
+          filterName: 'conditionType',
           childCheckboxes: [],
         },
       ],
@@ -110,7 +98,7 @@ describe('<CheckBoxFilter />', () => {
     expect(
       screen.getByRole('checkbox', {
         name: 'Used 1’000’000',
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -119,14 +107,12 @@ describe('<CheckBoxFilter />', () => {
     renderWrapper({
       options: [
         {
-          parent: {
-            label: 'Used',
-            key: 'used',
-            facet: 0,
-            isChecked: false,
-            image,
-            filterName: 'conditionType',
-          },
+          label: 'Used',
+          key: 'used',
+          facet: 0,
+          isChecked: false,
+          image,
+          filterName: 'conditionTyp¨e',
           childCheckboxes: [],
         },
       ],

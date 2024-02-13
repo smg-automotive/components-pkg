@@ -1,23 +1,14 @@
 import { ReactNode } from 'react';
 
 export type Item<ItemKey, FilterName> = {
+  childCheckboxes?: Item<ItemKey, FilterName>[];
+  facet: number;
+  filterName?: FilterName;
+  highlightIndices?: ReadonlyArray<[number, number]>;
+  image?: ReactNode;
+  isChecked?: boolean;
   key: ItemKey;
   label: string;
-  facet: number;
-  filterName: FilterName;
-  isChecked?: boolean;
-  image?: ReactNode;
-  highlightIndices?: ReadonlyArray<[number, number]>;
-};
-
-export type State<ItemKey extends string> = { [key in ItemKey]: boolean };
-
-export type CheckboxFilterItem<
-  ItemKey extends string,
-  FilterName extends string
-> = {
-  parent: Item<ItemKey, FilterName>;
-  childCheckboxes: Item<ItemKey, FilterName>[];
 };
 
 export type Props<ItemKey extends string, FilterName extends string> = {
@@ -30,8 +21,7 @@ export type Props<ItemKey extends string, FilterName extends string> = {
    * @param item.isChecked  The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
    * @param item.image      image/icon shown on the UI
    */
-  // TODO: check if it can be done without breaking contract
-  items: CheckboxFilterItem<ItemKey, FilterName>[];
+  items: Item<ItemKey, FilterName>[];
   /**
    * Callback function that is triggered after any checkbox has been clicked.
    * @param updatedItem     contains the modified checkbox with the new value

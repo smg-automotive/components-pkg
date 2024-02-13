@@ -18,8 +18,8 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
   "exclude": ["dist", "node_modules"],
-  "include": ["src"],
+  "include": ["src"]
 }

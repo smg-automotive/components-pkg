@@ -19,7 +19,7 @@ type Props<ItemKey extends string, FilterName extends string> = {
 
 function CheckboxWithOptions<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 >({
   item,
   onApply,

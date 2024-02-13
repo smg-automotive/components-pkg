@@ -1,4 +1,8 @@
 {
+  "chevronExpandCollapseButton": {
+    "collapse": "Zusammenbruch",
+    "expand": "Expandieren"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Zur Startseite",
@@ -19,10 +23,6 @@
   "filterSelectButton": {
     "close": "Schliessen",
     "reset": "Zurücksetzen"
-  },
-  "chevronExpandCollapseButton": {
-    "expand": "Expandieren",
-    "collapse": "Zusammenbruch"
   },
   "footer": {
     "apps": {
