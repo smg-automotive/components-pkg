@@ -32,8 +32,3 @@ export type Props<ItemKey extends string, FilterName extends string> = {
   icon?: ReactNode;
   onToggleCheckboxGroup?: (pressedItem: Item<ItemKey, FilterName>) => void;
 };
-
-// TODO: move this from here (not a type)
-export const addThousandSeparatorToNumber = (value: number) => {
-  return new Intl.NumberFormat('de-CH').format(value);
-};
