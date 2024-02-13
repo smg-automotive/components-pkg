@@ -14,13 +14,13 @@ type Props<ItemKey extends string, FilterName extends string> = {
   item: Item<ItemKey, FilterName>;
   isIndeterminate?: boolean;
   indentFacet?: boolean;
-  icon?: ReactNode;
+  contentRight?: ReactNode;
 } & Pick<CheckboxFilterProps<ItemKey, FilterName>, 'onApply'>;
 
 function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   item,
   onApply,
-  icon,
+  contentRight,
   isIndeterminate = false,
   indentFacet = false,
 }: Props<ItemKey, FilterName>) {
@@ -84,7 +84,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
           onApply({ ...item, isChecked });
         }}
       />
-      {icon ? icon : null}
+      {contentRight ? contentRight : null}
     </Box>
   );
 }

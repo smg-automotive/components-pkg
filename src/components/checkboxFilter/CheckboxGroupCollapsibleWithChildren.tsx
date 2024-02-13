@@ -42,7 +42,7 @@ function CheckboxGroupCollapsibleWithChildren<
             numberOfAppliedChildren > 0 &&
             numberOfAppliedChildren < checkboxes.length
           }
-          icon={
+          contentRight={
             <IconButton
               aria-controls={groupDomId}
               aria-expanded={isOpen}
