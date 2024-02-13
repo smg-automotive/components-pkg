@@ -35,6 +35,8 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
     conditionTypeGroup: [],
   });
 
+  console.log(filter);
+
   const checkboxes: Item<Values, FilterType>[] = [
     {
       label: 'New',
@@ -63,7 +65,7 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
       label: 'Used',
       key: 'used',
       facet: 50,
-      isChecked: filter.conditionType.includes('used'),
+      isChecked: filter.conditionTypeGroup.includes('used'),
       filterName: parentFilterName,
       childCheckboxes: [],
     },
@@ -71,10 +73,10 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
     // TODO: add example with multiple columns
   ];
 
-  const getAllChildrenByParentName = (parentName?: FilterType): string[] => {
-    if (!parentName) return [];
+  const getAllChildrenByParentKey = (key?: Values): string[] => {
+    if (!key) return [];
     const childCheckboxesKeys = checkboxes
-      .find((box) => box.filterName === parentName)
+      .find((box) => box.key === key)
       ?.childCheckboxes?.map((child) => child.key);
     return childCheckboxesKeys ?? [];
   };
@@ -84,7 +86,7 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
     childFilter: string[],
     updatedItem: Item<Values, FilterType>
   ): Filter => {
-    const childrenToUpdate = getAllChildrenByParentName(updatedItem.filterName);
+    const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName]: parentFilter.filter(
         (parent) => parent !== updatedItem.key
@@ -100,7 +102,7 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
     childFilter: string[],
     updatedItem: Item<Values, FilterType>
   ): Filter => {
-    const childrenToUpdate = getAllChildrenByParentName(updatedItem.filterName);
+    const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName as FilterType]: [...parentFilter, updatedItem.key],
       [childFilterName]: childFilter.filter(
@@ -121,25 +123,104 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
     });
   };
 
-  // FIXME:
+  const getParentItemByChildrenKey = (key?: Values) => {
+    if (!key) return null;
+    return checkboxes.find((box) =>
+      box.childCheckboxes?.find((child) => child.key === key)
+    );
+  };
+
+  const removeParentFilterAndAddAllChildrenExceptTheUpdatedOne = (
+    parentFilter: string[],
+    childFilter: string[],
+    updatedItem: Item<Values, FilterType>,
+    parentItem: Item<Values, FilterType>
+  ): Filter => {
+    const childrenToUpdate = getAllChildrenByParentKey(parentItem.key).filter(
+      (childKey) => childKey !== updatedItem.key
+    );
+    return {
+      [parentFilterName]: parentFilter.filter(
+        (parent) => parent !== parentItem.key
+      ),
+      [childFilterName]: [...childFilter, ...childrenToUpdate],
+    } as Filter;
+  };
+
+  const removeAllChildrenAndAddParent = (
+    parentFilter: string[],
+    childFilter: string[],
+    parentItem: Item<Values, FilterType>
+  ): Filter => {
+    const childrenToRemove = getAllChildrenByParentKey(parentItem.key);
+    return {
+      [parentFilterName]: [...parentFilter, parentItem.key],
+      [childFilterName]: childFilter.filter(
+        (childKey) => !childrenToRemove.includes(childKey)
+      ),
+    } as Filter;
+  };
+
+  const addChildFilter = (
+    parentFilter: string[],
+    childFilter: string[],
+    updatedItem: Item<Values, FilterType>
+  ) => {
+    return {
+      [parentFilterName]: parentFilter,
+      [childFilterName]: [...childFilter, updatedItem.key],
+    } as Filter;
+  };
+
+  const removeChildFilter = (
+    parentFilter: string[],
+    childFilter: string[],
+    updatedItem: Item<Values, FilterType>
+  ) => {
+    return {
+      [parentFilterName]: parentFilter,
+      [childFilterName]: childFilter.filter(
+        (childKey) => childKey !== updatedItem.key
+      ),
+    } as Filter;
+  };
+
   const updateChildFilter = (updatedItem: Item<Values, FilterType>) => {
-    console.log(updatedItem);
-    // TODO: if all children of the parent are checked -> remove all from filter and update group
-    // TODO: if child is unchecked was checked trough group -> remove group and add all children expect the unchecked one
-    // TODO: add/remove normally if only a subset of the group are selected
+    const parentItem = getParentItemByChildrenKey(updatedItem.key);
     setFilter((prevState) => {
-      const state = {
-        ...prevState,
-        [childFilterName]: updatedItem.isChecked
-          ? [...prevState[childFilterName], updatedItem.key]
-          : prevState[childFilterName].filter((key) => key != updatedItem.key),
-      };
-      onApplyAction(state);
-      return state;
+      const parentFilter = prevState[parentFilterName];
+      const childFilter = prevState[childFilterName];
+      if (parentItem && parentItem.childCheckboxes) {
+        if (parentItem.isChecked) {
+          return removeParentFilterAndAddAllChildrenExceptTheUpdatedOne(
+            parentFilter,
+            childFilter,
+            updatedItem,
+            parentItem
+          );
+        }
+        if (updatedItem.isChecked) {
+          const childrenWithoutModified = parentItem.childCheckboxes.filter(
+            (child) => child.key !== updatedItem.key
+          );
+          if (childrenWithoutModified.every((child) => child.isChecked)) {
+            return removeAllChildrenAndAddParent(
+              parentFilter,
+              childFilter,
+              parentItem
+            );
+          }
+          return addChildFilter(parentFilter, childFilter, updatedItem);
+        } else {
+          return removeChildFilter(parentFilter, childFilter, updatedItem);
+        }
+      }
+      return prevState;
     });
   };
 
   const onApply = (updatedItem: Item<Values, FilterType>) => {
+    onApplyAction(updatedItem);
     if (updatedItem.filterName === parentFilterName) {
       updateParentFilter(updatedItem);
     } else {
