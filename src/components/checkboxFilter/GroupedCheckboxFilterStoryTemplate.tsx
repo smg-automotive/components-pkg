@@ -27,8 +27,10 @@ const fooFromExample = [
 type FilterType = 'conditionType' | 'conditionTypeGroup';
 const parentFilterName: FilterType = 'conditionTypeGroup';
 const childFilterName: FilterType = 'conditionType';
+
+type Filter = Record<FilterType, string[]>;
 function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
-  const [filter, setFilter] = useState<Record<FilterType, string[]>>({
+  const [filter, setFilter] = useState<Filter>({
     conditionType: [],
     conditionTypeGroup: [],
   });
@@ -71,40 +73,57 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
 
   const getAllChildrenByParentName = (parentName?: FilterType): string[] => {
     if (!parentName) return [];
-    return (
-      checkboxes
-        .find((box) => box.filterName === parentName)
-        ?.childCheckboxes?.map((child) => child.key) ?? []
-    );
+    const childCheckboxesKeys = checkboxes
+      .find((box) => box.filterName === parentName)
+      ?.childCheckboxes?.map((child) => child.key);
+    return childCheckboxesKeys ?? [];
+  };
+
+  const removeParentFilter = (
+    parentFilter: string[],
+    childFilter: string[],
+    updatedItem: Item<Values, FilterType>
+  ): Filter => {
+    const childrenToUpdate = getAllChildrenByParentName(updatedItem.filterName);
+    return {
+      [parentFilterName]: parentFilter.filter(
+        (parent) => parent !== updatedItem.key
+      ),
+      [childFilterName]: childFilter.filter(
+        (child) => !childrenToUpdate.includes(child)
+      ),
+    } as Filter;
+  };
+
+  const addParentFilter = (
+    parentFilter: string[],
+    childFilter: string[],
+    updatedItem: Item<Values, FilterType>
+  ): Filter => {
+    const childrenToUpdate = getAllChildrenByParentName(updatedItem.filterName);
+    return {
+      [parentFilterName as FilterType]: [...parentFilter, updatedItem.key],
+      [childFilterName]: childFilter.filter(
+        (child) => !childrenToUpdate.includes(child)
+      ),
+    } as Filter;
   };
 
   const updateParentFilter = (updatedItem: Item<Values, FilterType>) => {
-    const childrenToUpdate = getAllChildrenByParentName(updatedItem.filterName);
-    if (updatedItem.isChecked) {
-      setFilter((prevState) => {
-        return {
-          [parentFilterName]: [...prevState[parentFilterName], updatedItem.key],
-          [childFilterName]: [...prevState[childFilterName]].filter(
-            (child) => !childrenToUpdate.includes(child),
-          ),
-        } as Record<FilterType, string[]>;
-      });
-    } else {
-      setFilter((prevState) => {
-        return {
-          [parentFilterName]: prevState[parentFilterName].filter(
-            (parent) => parent !== updatedItem.key,
-          ),
-          [childFilterName]: [...prevState[childFilterName]].filter(
-            (child) => !childrenToUpdate.includes(child),
-          ),
-        } as Record<FilterType, string[]>;
-      });
-    }
+    setFilter((prevState) => {
+      const parentFilter = prevState[parentFilterName];
+      const childFilter = prevState[childFilterName];
+      if (updatedItem.isChecked) {
+        return addParentFilter(parentFilter, childFilter, updatedItem);
+      } else {
+        return removeParentFilter(parentFilter, childFilter, updatedItem);
+      }
+    });
   };
 
   // FIXME:
   const updateChildFilter = (updatedItem: Item<Values, FilterType>) => {
+    console.log(updatedItem);
     // TODO: if all children of the parent are checked -> remove all from filter and update group
     // TODO: if child is unchecked was checked trough group -> remove group and add all children expect the unchecked one
     // TODO: add/remove normally if only a subset of the group are selected
