@@ -45,9 +45,9 @@ const Popover: FC<Props> = ({
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
-  // const maxHeight = showCallToActionButton
-  //   ? '6xl'
-  //   : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
+  const maxHeight = showCallToActionButton
+    ? '6xl'
+    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
 
   return (
     <Portal>
@@ -88,8 +88,8 @@ const Popover: FC<Props> = ({
                 : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
             }
             marginBottom={showCallToActionButton ? '2xl' : '0'}
-            // height={enforceHeight ? maxHeight : undefined}
-            // maxHeight={maxHeight}
+            height={enforceHeight ? maxHeight : undefined}
+            maxHeight={maxHeight}
             overflowY="auto"
             paddingX="2xl"
           >
