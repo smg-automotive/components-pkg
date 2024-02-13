@@ -4,7 +4,14 @@ import { Item } from './type';
 
 import CheckboxFilter from './index';
 
-type Values = 'new' | 'demonstration' | 'brandnew' | 'used';
+type Values =
+  | 'new'
+  | 'demonstration'
+  | 'brandnew'
+  | 'used'
+  | 'lowered'
+  | 'accident'
+  | 'small-accident';
 
 type Props = {
   onApplyAction: (args: unknown) => void;
@@ -12,17 +19,6 @@ type Props = {
   image?: ReactNode;
   numberOfColumnsOnDesktop?: number;
 };
-
-// TODO: remove
-const example = [
-  { type: 'mild-petrol', group: 'petrol' },
-  { type: 'petrol', group: 'petrol' },
-  { type: 'electro', group: null },
-];
-const fooFromExample = [
-  { parent: 'petrol', child: ['mild-petrol', 'petrol'] },
-  { parent: 'electro', child: [] },
-];
 
 type FilterType = 'conditionType' | 'conditionTypeGroup';
 const parentFilterName: FilterType = 'conditionTypeGroup';
@@ -69,8 +65,39 @@ function StoryTemplate({ onApplyAction, numberOfColumnsOnDesktop }: Props) {
       filterName: parentFilterName,
       childCheckboxes: [],
     },
-    // TODO: add example with image
-    // TODO: add example with multiple columns
+    {
+      label: 'Lowered',
+      key: 'lowered',
+      facet: 20,
+      isChecked: filter.conditionTypeGroup.includes('lowered'),
+      filterName: parentFilterName,
+      childCheckboxes: [],
+      image: (
+        <img src="https://placekitten.com/g/100/50" alt="placeholder image" />
+      ),
+    },
+    {
+      label: 'Accident',
+      key: 'accident',
+      facet: 10,
+      isChecked: filter.conditionTypeGroup.includes('accident'),
+      filterName: parentFilterName,
+      childCheckboxes: [
+        {
+          label: 'Only a little bit accident',
+          key: 'small-accident',
+          facet: 77,
+          isChecked: filter.conditionType.includes('small-accident'),
+          filterName: childFilterName,
+          image: (
+            <img
+              src="https://placekitten.com/g/100/50"
+              alt="placeholder image"
+            />
+          ),
+        },
+      ],
+    },
   ];
 
   const getAllChildrenByParentKey = (key?: Values): string[] => {
