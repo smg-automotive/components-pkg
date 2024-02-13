@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Language } from '@smg-automotive/i18n-pkg';
 
 export type Item<ItemKey, FilterName> = {
   childCheckboxes?: Item<ItemKey, FilterName>[];
@@ -32,4 +33,5 @@ export type Props<ItemKey extends string, FilterName extends string> = {
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   numberOfColumnsOnDesktop?: number;
   onToggleCheckboxGroup?: (pressedItem: Item<ItemKey, FilterName>) => void;
+  language: Language;
 };

@@ -25,7 +25,8 @@ const renderWrapper = ({
     },
   ],
   onApply = jest.fn(),
-} = {}) => render(<CheckboxFilter items={options} onApply={onApply} />);
+} = {}) =>
+  render(<CheckboxFilter items={options} onApply={onApply} language="de" />);
 
 describe('<CheckBoxFilter />', () => {
   it('should render a checkbox for each option', () => {

@@ -256,6 +256,7 @@ function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
       items={checkboxes}
       onApply={onApply}
       onToggleCheckboxGroup={onToggleCheckboxGroupAction}
+      language="en"
     />
   );
 }

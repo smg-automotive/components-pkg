@@ -125,6 +125,7 @@ const StoryTemplate: FC<Props> = ({
         }));
       }}
       numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
+      language="en"
     />
   );
 };
