@@ -88,7 +88,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   minW="0"
                   paddingX="md"
                   rightIcon={
-                    isApplied && !displayValue ? undefined : (
+                    isApplied && displayValue ? undefined : (
                       <ChevronDownSmallIcon
                         w="xs"
                         h="xs"
