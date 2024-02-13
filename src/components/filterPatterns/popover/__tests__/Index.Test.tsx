@@ -27,11 +27,12 @@ describe('<PopoverFilter />', () => {
     expect(await screen.findByText('Popover content')).toBeInTheDocument();
   });
 
-  it('should show the reset button if the filter is applied', async () => {
+  it('should show the reset button if the filter is applied and display value is provided', async () => {
     const mockOnReset = jest.fn();
     render(
       <PopoverFilter
         {...validProps}
+        displayValue="Automatic"
         isApplied={true}
         onResetFilter={mockOnReset}
       >
@@ -49,13 +50,16 @@ describe('<PopoverFilter />', () => {
       <PopoverFilter
         {...validProps}
         isApplied={true}
+        displayValue="Manual"
         onResetFilter={mockOnReset}
       >
         <div>Popover content</div>
       </PopoverFilter>,
     );
 
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff: Manual' }),
+    );
 
     return waitFor(() =>
       expect(
