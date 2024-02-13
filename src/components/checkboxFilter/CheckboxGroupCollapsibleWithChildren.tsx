@@ -10,14 +10,14 @@ import CheckboxWithFacet from './CheckboxWithFacet';
 
 type CheckboxCollapsibleProps<
   ItemKey extends string,
-  FilterName extends string,
+  FilterName extends string
 > = {
   item: Item<ItemKey, FilterName>;
 } & Pick<Props<ItemKey, FilterName>, 'onApply' | 'onToggleCheckboxGroup'>;
 
 function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
-  FilterName extends string,
+  FilterName extends string
 >({
   item,
   onApply,
@@ -27,7 +27,7 @@ function CheckboxGroupCollapsibleWithChildren<
   const { t } = useI18n();
   const checkboxes = item.childCheckboxes ?? [];
   const numberOfAppliedChildren = checkboxes.filter(
-    (checkbox) => checkbox.isChecked,
+    (checkbox) => checkbox.isChecked
   ).length;
   const groupDomId = `checkbox-group-${item.key}-${item.filterName ?? ''}`;
 
@@ -55,15 +55,17 @@ function CheckboxGroupCollapsibleWithChildren<
                 onToggle();
                 onToggleCheckboxGroup?.(item);
               }}
+              w="full"
+              h="full"
+              display="flex"
+              justifyContent="flex-end"
               icon={
                 <ChevronDownLargeIcon
                   w="xs"
                   h="xs"
                   transition="0.2s"
                   color="gray.500"
-                  ml="sm"
                   transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                  boxSize={18}
                   cursor="pointer"
                 />
               }
@@ -72,11 +74,7 @@ function CheckboxGroupCollapsibleWithChildren<
         />
       </Box>
       <Collapse in={isOpen}>
-        <Box
-          id={groupDomId}
-          pl={checkboxes.length > 0 ? 'lg' : '0px'}
-          pr={checkboxes.length > 0 ? '2xl' : '0px'}
-        >
+        <Box id={groupDomId} ml={checkboxes.length > 0 ? 'lg' : '0px'}>
           {checkboxes?.map((checkbox) => (
             <CheckboxWithFacet
               key={checkbox.key}
@@ -87,6 +85,7 @@ function CheckboxGroupCollapsibleWithChildren<
               }}
               onApply={onApply}
               isIndeterminate={false}
+              indentFacet={true}
             />
           ))}
         </Box>

@@ -1,8 +1,10 @@
 import React, { ReactNode } from 'react';
 
-import { Box, chakra } from '@chakra-ui/react';
+import { chakra } from '@chakra-ui/react';
 
 import HighlightedText from '../text/HighlightedText';
+import GridItem from '../grid/GridItem';
+import Grid from '../grid';
 import Checkbox from '../checkbox';
 import { Props as CheckboxFilterProps, Item } from './type';
 
@@ -25,7 +27,11 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   indentFacet = false,
 }: Props<ItemKey, FilterName>) {
   return (
-    <Box width="full" marginBottom="lg" display="flex">
+    <Grid
+      width="full"
+      marginBottom="lg"
+      templateColumns={contentRight || indentFacet ? '1fr 34px' : '1fr'}
+    >
       <Checkbox
         variant={item?.image ? 'alignCenter' : 'alignTop'}
         name={`filter_${item.key}_${item.label}`}
@@ -48,11 +54,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
                   highlightIndices={item.highlightIndices}
                   wordBreak="break-word"
                 />
-                <chakra.span
-                  ml="sm"
-                  mr={indentFacet ? '2xl' : 0}
-                  color="gray.400"
-                >
+                <chakra.span ml="sm" color="gray.400">
                   {addThousandSeparatorToNumber(item.facet)}
                 </chakra.span>
               </chakra.span>
@@ -69,11 +71,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
                 w="full"
                 wordBreak="break-word"
               />
-              <chakra.span
-                ml="sm"
-                mr={indentFacet ? '2xl' : 0}
-                color="gray.400"
-              >
+              <chakra.span ml="sm" color="gray.400">
                 {addThousandSeparatorToNumber(item.facet)}
               </chakra.span>
             </chakra.span>
@@ -84,8 +82,9 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
           onApply({ ...item, isChecked });
         }}
       />
-      {contentRight ? contentRight : null}
-    </Box>
+
+      {contentRight ? <GridItem>{contentRight}</GridItem> : null}
+    </Grid>
   );
 }
 export default CheckboxWithFacet;

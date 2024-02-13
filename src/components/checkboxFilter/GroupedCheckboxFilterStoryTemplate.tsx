@@ -11,7 +11,8 @@ type Values =
   | 'used'
   | 'lowered'
   | 'accident'
-  | 'small-accident';
+  | 'small-accident'
+  | 'big-accident';
 
 type Props = {
   onApplyAction: (args: unknown) => void;
@@ -91,6 +92,14 @@ function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
               alt="placeholder image"
             />
           ),
+        },
+        {
+          label:
+            'Exponentially super duper bad accident that caused the airbags to deploy and the car to be totaled. Only buy when you are a mechanic.',
+          key: 'big-accident',
+          facet: 3,
+          isChecked: filter.conditionType.includes('big-accident'),
+          filterName: childFilterName,
         },
       ],
     },
