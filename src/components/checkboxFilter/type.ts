@@ -30,6 +30,7 @@ export type Props<ItemKey extends string, FilterName extends string> = {
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
   numberOfColumnsOnDesktop?: number;
   icon?: ReactNode;
+  onToggleCheckboxGroup?: (pressedItem: Item<ItemKey, FilterName>) => void;
 };
 
 // TODO: move this from here (not a type)

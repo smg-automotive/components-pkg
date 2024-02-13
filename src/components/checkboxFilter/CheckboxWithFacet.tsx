@@ -17,10 +17,7 @@ type Props<ItemKey extends string, FilterName extends string> = {
   isIndeterminate?: boolean;
 };
 
-function CheckboxWithOptions<
-  ItemKey extends string,
-  FilterName extends string,
->({
+function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   item,
   onApply,
   icon,
@@ -82,4 +79,4 @@ function CheckboxWithOptions<
     </Box>
   );
 }
-export default CheckboxWithOptions;
+export default CheckboxWithFacet;

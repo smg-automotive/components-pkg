@@ -6,38 +6,38 @@ import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
 import Stack from '../stack';
 import { ChevronDownLargeIcon } from '../icons';
-import { Item } from './type';
-import CheckboxWithOptions from './CheckboxWithOptions';
+import { Item, Props } from './type';
+import CheckboxWithFacet from './CheckboxWithFacet';
 
 interface CheckboxCollapsibleProps<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 > {
-  parentItem: Item<ItemKey, FilterName>;
+  item: Item<ItemKey, FilterName>;
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
-  onToggleGroup?: () => void;
+  onToggleCheckboxGroup: Props<ItemKey, FilterName>['onToggleCheckboxGroup'];
 }
 
-function CheckboxCollapsible<
+function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 >({
-  parentItem,
+  item,
   onApply,
-  onToggleGroup,
+  onToggleCheckboxGroup,
 }: CheckboxCollapsibleProps<ItemKey, FilterName>) {
   const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: false });
   const { t } = useI18n();
-  const checkboxes = parentItem.childCheckboxes ?? [];
+  const checkboxes = item.childCheckboxes ?? [];
   const numberOfAppliedChildren = checkboxes.filter(
-    (checkbox) => checkbox.isChecked
+    (checkbox) => checkbox.isChecked,
   ).length;
 
   return (
     <Stack spacing="md">
       <Box width="full" display="flex" alignItems="center">
-        <CheckboxWithOptions
-          item={parentItem}
+        <CheckboxWithFacet
+          item={item}
           onApply={onApply}
           aria-expanded={isOpen ? 'Collapsed' : 'Expanded'}
           isIndeterminate={
@@ -52,10 +52,10 @@ function CheckboxCollapsible<
                 isOpen
                   ? t('chevronExpandCollapseButton.collapse')
                   : t('chevronExpandCollapseButton.expand')
-              } ${parentItem.label}`}
+              } ${item.label}`}
               onClick={() => {
                 onToggle();
-                onToggleGroup?.();
+                onToggleCheckboxGroup?.(item);
               }}
               icon={
                 <ChevronDownLargeIcon
@@ -82,11 +82,11 @@ function CheckboxCollapsible<
           pr={checkboxes.length > 0 ? '2xl' : '0px'}
         >
           {checkboxes?.map((checkbox) => (
-            <CheckboxWithOptions
+            <CheckboxWithFacet
               key={checkbox.key}
               item={{
                 ...checkbox,
-                isChecked: parentItem.isChecked ? true : checkbox.isChecked,
+                isChecked: item.isChecked ? true : checkbox.isChecked,
               }}
               onApply={onApply}
               isIndeterminate={false}
@@ -97,6 +97,7 @@ function CheckboxCollapsible<
     </Stack>
   );
 }
-CheckboxCollapsible.displayName = 'CheckboxCollapsible';
+CheckboxGroupCollapsibleWithChildren.displayName =
+  'CheckboxGroupCollapsibleWithChildren';
 
-export default CheckboxCollapsible;
+export default CheckboxGroupCollapsibleWithChildren;

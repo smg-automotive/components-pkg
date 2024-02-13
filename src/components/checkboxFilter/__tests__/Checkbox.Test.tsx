@@ -41,10 +41,14 @@ describe('<CheckBoxFilter />', () => {
     await userEvent.click(screen.getByRole('checkbox', { name: /New/ }));
 
     await waitFor(() =>
-      expect(onApply).toHaveBeenCalledWith(
-        { label: 'New', key: 'new', isChecked: true, facet: 77 },
-        { new: true, used: false },
-      ),
+      expect(onApply).toHaveBeenCalledWith({
+        label: 'New',
+        key: 'new',
+        isChecked: true,
+        facet: 77,
+        filterName: 'conditionType',
+        childCheckboxes: [],
+      }),
     );
   });
 

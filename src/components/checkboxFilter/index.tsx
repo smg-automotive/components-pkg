@@ -3,13 +3,14 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { Props } from './type';
-import CheckboxWithOptions from './CheckboxWithOptions';
-import CheckboxCollapsible from './CheckboxGroupCollapsible';
+import CheckboxWithFacet from './CheckboxWithFacet';
+import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
 
 function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   items,
   onApply,
   numberOfColumnsOnDesktop = 1,
+  onToggleCheckboxGroup,
 }: Props<ItemKey, FilterName>) {
   return (
     <Box
@@ -21,17 +22,16 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
     >
       {items.map((item) => {
         if (item.childCheckboxes && item.childCheckboxes.length > 0)
-          // TODO: rename to CheckboxCollapsibleWithChildren
           return (
-            <CheckboxCollapsible
+            <CheckboxGroupCollapsibleWithChildren
               key={item.key}
-              parentItem={item}
+              item={item}
               onApply={onApply}
+              onToggleCheckboxGroup={onToggleCheckboxGroup}
             />
           );
-        // TODO: rename to CheckboxWithFacet
         return (
-          <CheckboxWithOptions key={item.key} item={item} onApply={onApply} />
+          <CheckboxWithFacet key={item.key} item={item} onApply={onApply} />
         );
       })}
     </Box>
