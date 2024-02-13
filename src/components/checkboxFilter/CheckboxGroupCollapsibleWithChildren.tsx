@@ -8,14 +8,12 @@ import { ChevronDownLargeIcon } from '../icons';
 import { Item, Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 
-interface CheckboxCollapsibleProps<
+type CheckboxCollapsibleProps<
   ItemKey extends string,
   FilterName extends string,
-> {
+> = {
   item: Item<ItemKey, FilterName>;
-  onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
-  onToggleCheckboxGroup: Props<ItemKey, FilterName>['onToggleCheckboxGroup'];
-}
+} & Pick<Props<ItemKey, FilterName>, 'onApply' | 'onToggleCheckboxGroup'>;
 
 function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,

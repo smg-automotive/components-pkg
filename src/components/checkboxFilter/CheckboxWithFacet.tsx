@@ -4,7 +4,7 @@ import { Box, chakra } from '@chakra-ui/react';
 
 import HighlightedText from '../text/HighlightedText';
 import Checkbox from '../checkbox';
-import { Item } from './type';
+import { Props as CheckboxFilterProps, Item } from './type';
 
 const addThousandSeparatorToNumber = (value: number) => {
   return new Intl.NumberFormat('de-CH').format(value);
@@ -12,11 +12,10 @@ const addThousandSeparatorToNumber = (value: number) => {
 
 type Props<ItemKey extends string, FilterName extends string> = {
   item: Item<ItemKey, FilterName>;
-  onApply: (updatedItem: Item<ItemKey, FilterName>) => void;
-  icon?: ReactNode;
   isIndeterminate?: boolean;
   indentFacet?: boolean;
-};
+  icon?: ReactNode;
+} & Pick<CheckboxFilterProps<ItemKey, FilterName>, 'onApply'>;
 
 function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   item,
