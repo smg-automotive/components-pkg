@@ -8,4 +8,5 @@ export type PopoverFilterProps = FilterPatternProps &
     onPopoverClose?: () => void;
     onPopoverOpen?: () => void;
     appliedLabel?: string;
+    enforceHeight?: boolean;
   };
