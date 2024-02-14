@@ -2,6 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
+import { Item } from '../type';
 import CheckboxFilter from '../index';
 
 const renderWrapper = ({
@@ -25,10 +26,17 @@ const renderWrapper = ({
     },
   ],
   onApply = jest.fn(),
-} = {}) =>
+}: { options?: Item<string, string>[]; onApply?: () => void } = {}) =>
   render(<CheckboxFilter items={options} onApply={onApply} language="de" />);
 
 describe('<CheckBoxFilter />', () => {
+  beforeEach(() => {
+    Object.defineProperty(window, 'scrollTo', {
+      value: jest.fn(),
+      writable: true,
+    });
+  });
+
   it('should render a checkbox for each option', () => {
     renderWrapper();
 
@@ -124,5 +132,82 @@ describe('<CheckBoxFilter />', () => {
     });
 
     expect(screen.getByRole('img')).toHaveAttribute('src', 'kombi.jpeg');
+  });
+
+  describe('collapsible checkbox group filter', () => {
+    it('should render a collapsible checkbox group when childCheckboxes is defined', async () => {
+      renderWrapper({
+        options: [
+          {
+            label: 'Used',
+            key: 'used',
+            facet: 0,
+            isChecked: false,
+            filterName: 'conditionTypeGroup',
+            childCheckboxes: [
+              {
+                label: 'Almost new',
+                key: 'almost-new',
+                facet: 0,
+                isChecked: false,
+                filterName: 'conditionType',
+              },
+            ],
+          },
+        ],
+      });
+      expect(
+        screen.getByRole('checkbox', {
+          name: /Used/,
+        }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole('checkbox', {
+          name: /Almost new/,
+        }),
+      ).toBeNull();
+      const expandButton = screen.getByRole('button', {
+        name: 'Used: Mehr anzeigen',
+      });
+      expect(expandButton).toHaveAttribute('aria-expanded', 'false');
+      await userEvent.click(expandButton);
+      expect(expandButton).toHaveAttribute('aria-expanded', 'true');
+      expect(
+        screen.getByRole('checkbox', {
+          name: /Almost new/,
+        }),
+      ).toBeInTheDocument();
+    });
+
+    it('should show the child as checked if the parent is checked', async () => {
+      renderWrapper({
+        options: [
+          {
+            label: 'Used',
+            key: 'used',
+            facet: 0,
+            isChecked: true,
+            filterName: 'conditionTypeGroup',
+            childCheckboxes: [
+              {
+                label: 'Almost new',
+                key: 'almost-new',
+                facet: 0,
+                isChecked: false,
+                filterName: 'conditionType',
+              },
+            ],
+          },
+        ],
+      });
+      await userEvent.click(
+        screen.getByRole('button', { name: 'Used: Mehr anzeigen' }),
+      );
+      expect(
+        screen.getByRole('checkbox', {
+          name: /Almost new/,
+        }),
+      ).toBeChecked();
+    });
   });
 });
