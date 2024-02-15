@@ -151,14 +151,37 @@ export const CustomHeader = () => (
   </Story>
 </Canvas>
 
-## Applied
+## Applied with display value
 
 <Canvas>
   <Story
-    name="Applied"
+    name="Applied with display value"
     args={{
       label: 'Treibstoff',
       displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+      numberOfAppliedFilters: 5,
+      isApplied: true,
+    }}
+    argTypes={{
+      isApplied: {
+        table: {
+          disable: true,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Applied without display value
+
+<Canvas>
+  <Story
+    name="Applied without display value"
+    args={{
+      label: 'Treibstoff',
+      displayValue: '',
       numberOfAppliedFilters: 5,
       isApplied: true,
     }}
