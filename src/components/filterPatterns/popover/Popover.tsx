@@ -19,6 +19,7 @@ type Props = {
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
+  | 'enforceHeight'
   | 'Icon'
   | 'isApplied'
   | 'label'
@@ -33,6 +34,7 @@ const Popover: FC<Props> = ({
   actionButton,
   Icon,
   isApplied,
+  enforceHeight,
   label,
   numberOfAppliedFilters,
   onClose,
@@ -43,6 +45,9 @@ const Popover: FC<Props> = ({
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
+  const maxHeight = showCallToActionButton
+    ? '6xl'
+    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
 
   return (
     <Portal>
@@ -53,6 +58,8 @@ const Popover: FC<Props> = ({
           paddingY="2xl"
           shadow="md"
           w="6xl"
+          minHeight={enforceHeight ? '7xl' : undefined}
+          height={enforceHeight ? '7xl' : undefined}
           ref={popoverContentRef}
         >
           <PopoverHeader paddingX="2xl">
@@ -75,12 +82,14 @@ const Popover: FC<Props> = ({
                 'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))',
             }}
             marginTop="2xl"
-            marginBottom={showCallToActionButton ? '2xl' : '0'}
             maxH={
               showCallToActionButton
                 ? '6xl'
                 : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
             }
+            marginBottom={showCallToActionButton ? '2xl' : '0'}
+            height={enforceHeight ? maxHeight : undefined}
+            maxHeight={maxHeight}
             overflowY="auto"
             paddingX="2xl"
           >
