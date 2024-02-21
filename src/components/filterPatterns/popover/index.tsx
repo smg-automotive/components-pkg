@@ -82,8 +82,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               <PopoverTrigger>
                 <ChakraButton
                   borderRadius="sm"
-                  borderRightColor={isDisplayAndApplied ? 'white' : undefined}
-                  borderRightWidth={isDisplayAndApplied ? '1px' : undefined}
+                  borderRightColor={displayValue ? 'white' : undefined}
+                  borderRightWidth={displayValue ? '1px' : undefined}
                   display="flex"
                   flex="1"
                   h="md"
