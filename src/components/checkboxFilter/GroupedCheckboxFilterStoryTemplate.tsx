@@ -6,7 +6,9 @@ import CheckboxFilter from './index';
 
 type Values =
   | 'new'
+  | 'long'
   | 'demonstration'
+  | 'foo'
   | 'brandnew'
   | 'used'
   | 'lowered'
@@ -99,6 +101,23 @@ function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
           key: 'big-accident',
           facet: 3,
           isChecked: filter.conditionType.includes('big-accident'),
+          filterName: childFilterName,
+        },
+      ],
+    },
+    {
+      label:
+        'Super duper long group name that will break on multiple lines. Usually on Italian and French but also happens on other things',
+      key: 'long',
+      facet: 100,
+      isChecked: filter.conditionTypeGroup.includes('long'),
+      filterName: parentFilterName,
+      childCheckboxes: [
+        {
+          label: 'Foo',
+          key: 'foo',
+          facet: 77,
+          isChecked: filter.conditionType.includes('foo'),
           filterName: childFilterName,
         },
       ],

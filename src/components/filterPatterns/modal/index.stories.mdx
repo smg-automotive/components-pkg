@@ -44,7 +44,6 @@ export const Template = (args) => (
       onResetFilter={action('onResetFilter')}
     >
       <CheckboxFilter
-        name="fuel-type"
         items={[
           { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
           { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
@@ -76,6 +75,7 @@ export const Template = (args) => (
           },
         ]}
         onApply={() => null}
+        language="de"
       />
     </ModalFilter>
   </Box>
