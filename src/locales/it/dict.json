@@ -1,4 +1,8 @@
 {
+  "checkboxFilter": {
+    "collapsed": "Mostra dettagli",
+    "expanded": "Nascondi dettagli"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Alla pagina iniziale",

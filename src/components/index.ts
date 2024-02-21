@@ -16,6 +16,7 @@ export { default as Carousel } from './carousel';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
 export { default as CheckboxFilter } from './checkboxFilter';
+export { Item as CheckboxFilterItem } from './checkboxFilter/type';
 export { default as CheckboxGroup } from './checkboxGroup';
 export { default as Count } from './count';
 export { default as DatePicker } from './datePicker';

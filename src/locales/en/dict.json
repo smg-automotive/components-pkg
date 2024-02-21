@@ -1,4 +1,8 @@
 {
+  "checkboxFilter": {
+    "collapsed": "Show more",
+    "expanded": "Show less"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Go to home",
