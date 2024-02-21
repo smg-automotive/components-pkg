@@ -56,7 +56,7 @@ function CheckboxGroupCollapsibleWithChildren<
                 onToggleCheckboxGroup?.(item);
               }}
               w="full"
-              h="full"
+              h="sm"
               display="flex"
               justifyContent="flex-end"
               icon={
