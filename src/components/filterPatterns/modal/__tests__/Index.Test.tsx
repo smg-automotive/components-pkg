@@ -30,12 +30,7 @@ describe('<ModalFilter />', () => {
   it('should be possible to reset the filter on the modal', async () => {
     const mockOnReset = jest.fn();
     render(
-      <ModalFilter
-        {...validProps}
-        isApplied={true}
-        onResetFilter={mockOnReset}
-        numberOfAppliedFilters={2}
-      >
+      <ModalFilter {...validProps} isApplied={true} onResetFilter={mockOnReset}>
         <div>Modal content</div>
       </ModalFilter>,
     );
@@ -45,25 +40,6 @@ describe('<ModalFilter />', () => {
       await screen.findByRole('button', { name: 'Zurücksetzen' }),
     );
     await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
-  });
-
-  it('reset button should be disabled if number of applied filters is 0, even if applied is true', async () => {
-    const mockOnReset = jest.fn();
-    render(
-      <ModalFilter
-        {...validProps}
-        isApplied={true}
-        onResetFilter={mockOnReset}
-        numberOfAppliedFilters={0}
-      >
-        <div>Modal content</div>
-      </ModalFilter>,
-    );
-
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
-    expect(
-      await screen.findByRole('button', { name: 'Zurücksetzen' }),
-    ).toBeDisabled();
   });
 
   it('should show a close button if no filter is applied', async () => {

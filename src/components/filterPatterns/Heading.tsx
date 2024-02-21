@@ -61,7 +61,7 @@ export const FilterHeading: FC<Props> = ({
             </Flex>
             <Link
               as="button"
-              disabled={!numberOfAppliedFilters || !isApplied}
+              disabled={!isApplied}
               onClick={() => {
                 onResetFilter('filter');
                 contentRef?.current?.focus();

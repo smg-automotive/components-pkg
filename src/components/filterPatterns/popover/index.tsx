@@ -113,8 +113,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   >
                     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
                     {[
-                      isApplied ? appliedLabel ?? label : label,
-                      displayValue && isApplied ? displayValue : null,
+                      displayValue ? appliedLabel ?? label : label,
+                      displayValue,
                     ]
                       .filter(Boolean)
                       .join(': ')}
