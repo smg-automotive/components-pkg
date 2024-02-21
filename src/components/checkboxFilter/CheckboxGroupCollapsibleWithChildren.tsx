@@ -10,14 +10,14 @@ import CheckboxWithFacet from './CheckboxWithFacet';
 
 type CheckboxCollapsibleProps<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 > = {
   item: Item<ItemKey, FilterName>;
 } & Pick<Props<ItemKey, FilterName>, 'onApply' | 'onToggleCheckboxGroup'>;
 
 function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
-  FilterName extends string
+  FilterName extends string,
 >({
   item,
   onApply,
@@ -27,7 +27,7 @@ function CheckboxGroupCollapsibleWithChildren<
   const { t } = useI18n();
   const checkboxes = item.childCheckboxes ?? [];
   const numberOfAppliedChildren = checkboxes.filter(
-    (checkbox) => checkbox.isChecked
+    (checkbox) => checkbox.isChecked,
   ).length;
   const groupDomId = `checkbox-group-${item.key}-${item.filterName ?? ''}`;
 
