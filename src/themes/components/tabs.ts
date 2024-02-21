@@ -32,6 +32,11 @@ const baseStyleTabpanel = {
   margin: 'sm',
 };
 
+const customStyleTab = {
+  padding: 'lg',
+  borderColor: 'transparent',
+};
+
 const baseStyle = {
   tab: baseStyleTab,
   tablist: baseStyleTablist,
@@ -56,6 +61,13 @@ const variants = {
     },
     tab: baseStyleTab,
     tabpanel: baseStyleTabpanel,
+  },
+  custom: {
+    tablist: {
+      borderBottom: 0,
+      borderColor: 'transparent',
+    },
+    tab: customStyleTab,
   },
 };
 

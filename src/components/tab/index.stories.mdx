@@ -87,3 +87,20 @@ export const Template = (args) => (
 </Canvas>
 
 <ArgsTable story="With second tab selected" />
+
+## Custom tab variant
+
+<Canvas>
+  <Story
+    name="Custom tab variant"
+    args={{
+      isDisabled: false,
+      defaultIndex: 1,
+      variant: 'custom'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With custom tab variant" />
