@@ -18,34 +18,56 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   const hasGroups = items.some(
     (item) => (item.childCheckboxes ?? []).length > 0,
   );
+
+  // Calculate number of items per column
+  const itemsPerColumn = Math.ceil(items.length / numberOfColumnsOnDesktop);
+
+  // Create an array to store items grouped by columns
+  const columns = Array.from(
+    { length: numberOfColumnsOnDesktop },
+    (_, columnIndex) => {
+      const columnStartIndex = columnIndex * itemsPerColumn;
+      const columnEndIndex = Math.min(
+        (columnIndex + 1) * itemsPerColumn,
+        items.length,
+      );
+      return items.slice(columnStartIndex, columnEndIndex);
+    },
+  );
+
   return (
     <TranslationProvider language={language} scopes={['checkboxFilter']}>
       <Box
         sx={{
-          columns: { md: numberOfColumnsOnDesktop, base: 1 },
-          columnRule: 'solid var(--chakra-colors-gray-100) 1px',
-          columnGap: 'var(--chakra-space-4xl)',
+          display: 'grid',
+          gridTemplateColumns: {
+            base: '1fr',
+            md: `repeat(${numberOfColumnsOnDesktop}, 1fr)`,
+          },
+          gap: 'var(--chakra-space-4xl)',
         }}
       >
-        {items.map((item) => {
-          if (item.childCheckboxes && item.childCheckboxes.length > 0)
-            return (
-              <CheckboxGroupCollapsibleWithChildren
-                key={item.key}
-                item={item}
-                onApply={onApply}
-                onToggleCheckboxGroup={onToggleCheckboxGroup}
-              />
-            );
-          return (
-            <CheckboxWithFacet
-              key={item.key}
-              item={item}
-              onApply={onApply}
-              indentFacet={hasGroups}
-            />
-          );
-        })}
+        {columns.map((columnItems, columnIndex) => (
+          <div key={columnIndex}>
+            {columnItems.map((item) => (
+              <div key={item.key}>
+                {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
+                  <CheckboxGroupCollapsibleWithChildren
+                    item={item}
+                    onApply={onApply}
+                    onToggleCheckboxGroup={onToggleCheckboxGroup}
+                  />
+                ) : (
+                  <CheckboxWithFacet
+                    item={item}
+                    onApply={onApply}
+                    indentFacet={hasGroups}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
       </Box>
     </TranslationProvider>
   );
