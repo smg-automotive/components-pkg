@@ -19,7 +19,6 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
     (item) => (item.childCheckboxes ?? []).length > 0,
   );
 
-  // Calculate number of items per column
   const itemsPerColumn = Math.ceil(items.length / numberOfColumnsOnDesktop);
 
   // Create an array to store items grouped by columns
@@ -31,7 +30,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         (columnIndex + 1) * itemsPerColumn,
         items.length,
       );
-      return items.slice(columnStartIndex, columnEndIndex);
+      return [...items].slice(columnStartIndex, columnEndIndex);
     },
   );
 
@@ -48,9 +47,9 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         }}
       >
         {columns.map((columnItems, columnIndex) => (
-          <div key={columnIndex}>
+          <div key={columnIndex} data-testid="column">
             {columnItems.map((item) => (
-              <div key={item.key}>
+              <div key={item.key} data-testid={`item-${item.key}`}>
                 {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
                   <CheckboxGroupCollapsibleWithChildren
                     item={item}
