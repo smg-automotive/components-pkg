@@ -64,8 +64,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
     color: 'gray.900',
   };
 
-  const isDisplayAndApplied = isApplied && displayValue;
-
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <I18nContext.Consumer>
@@ -91,7 +89,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   minW="0"
                   paddingX="md"
                   rightIcon={
-                    isDisplayAndApplied ? undefined : (
+                    displayValue ? undefined : (
                       <ChevronDownSmallIcon
                         w="xs"
                         h="xs"
@@ -121,7 +119,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
-              {isDisplayAndApplied ? (
+              {isApplied && displayValue ? (
                 <IconButton
                   isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}
