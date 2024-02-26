@@ -1,23 +1,23 @@
-import { opacity } from '../shared/opacity';
-
 const baseStyleTab = {
   textStyle: 'body',
   transitionProperty: 'common',
   transitionDuration: 'normal',
   borderBottom: '1px',
   borderColor: 'transparent',
-  p: 'sm',
+  px: 'sm',
+  py: 'md',
   marginBottom: '-1px',
   color: 'gray.600',
   _selected: {
     fontWeight: 'bold',
     color: 'gray.900',
     borderColor: 'currentColor',
+    borderBottomWidth: '2px',
   },
   _disabled: {
     _active: { bg: 'none' },
     cursor: 'not-allowed',
-    opacity: opacity[40],
+    color: 'gray.300',
   },
 };
 
