@@ -119,7 +119,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
-              {isApplied && displayValue ? (
+              {displayValue ? (
                 <IconButton
                   isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}
