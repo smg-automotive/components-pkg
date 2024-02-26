@@ -4,8 +4,7 @@ const baseStyleTab = {
   transitionDuration: 'normal',
   borderBottom: '1px',
   borderColor: 'transparent',
-  px: 'sm',
-  py: 'md',
+  p: 'md',
   marginBottom: '-1px',
   color: 'gray.600',
   _selected: {
