@@ -15,6 +15,7 @@ export const Template = (args) => (
         <Tab>One</Tab>
         <Tab {...args}>Two</Tab>
         <Tab>Three</Tab>
+        <Tab>Fourth</Tab>
       </TabList>
 
       <TabPanels>
@@ -26,6 +27,9 @@ export const Template = (args) => (
         </TabPanel>
         <TabPanel>
           <p>Three</p>
+        </TabPanel>
+        <TabPanel>
+          <p>Fourth</p>
         </TabPanel>
       </TabPanels>
     </Tabs>
@@ -104,3 +108,20 @@ export const Template = (args) => (
 </Canvas>
 
 <ArgsTable story="With custom tab variant" />
+
+## Custom tab variant with link tab
+
+<Canvas>
+  <Story
+    name="Custom tab variant with link tab"
+    args={{
+      isDisabled: false,
+      defaultIndex: 1,
+      variant: 'custom',
+    }}
+  >
+    {Template.bind({} )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="With custom tab variant and link tab" />

@@ -34,7 +34,19 @@ const baseStyleTabpanel = {
 
 const customStyleTab = {
   padding: 'lg',
-  borderColor: 'transparent',
+  fontWeight: 'bold',
+  borderBottom: '0',
+  color: 'gray.900',
+  backgroundColor: '#D2D2D2',
+  borderRight: '1px',
+  borderColor: 'gray.50',
+  '&:last-of-type': {
+    borderColor: 'transparent',
+  },
+  _selected: {
+    backgroundColor: 'white',
+    borderColor: 'gray.600',
+  },
 };
 
 const baseStyle = {
