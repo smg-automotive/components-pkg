@@ -7,13 +7,15 @@ import Link, { LinkProps } from '../link';
 
 type Props = {
   marginX?: Space;
-  asLink?: boolean;
+  isLink?: boolean;
   linkProps?: LinkProps;
 } & Pick<TabProps, 'isDisabled' | 'as'>;
 
 const Tab: FC<PropsWithChildren<Props>> = (props) => {
-  return props.asLink ? (
-    <Link {...props.linkProps}>{props.children}</Link>
+  return props.isLink ? (
+    <ChakraTab {...props}>
+      <Link {...props.linkProps}>{props.children}</Link>
+    </ChakraTab>
   ) : (
     <ChakraTab {...props}>{props.children}</ChakraTab>
   );

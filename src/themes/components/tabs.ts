@@ -39,8 +39,20 @@ const customStyleTab = {
   backgroundColor: '#D2D2D2',
   borderRight: '1px',
   borderColor: 'gray.50',
+  minWidth: '149px',
+  '> a': {
+    fontWeight: 'bold',
+    color: 'gray.900',
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+  },
   '&:last-of-type': {
     borderColor: 'transparent',
+    borderTopRightRadius: 'sm',
+  },
+  '&:first-of-type': {
+    borderTopLeftRadius: 'sm',
   },
   _selected: {
     backgroundColor: 'white',
