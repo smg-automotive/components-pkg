@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@chakra-ui/react';
+import { Box, Grid } from '@chakra-ui/react';
 
 import TranslationProvider from '../translationProvider';
 
@@ -36,20 +36,28 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
 
   return (
     <TranslationProvider language={language} scopes={['checkboxFilter']}>
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            base: '1fr',
-            md: `repeat(${numberOfColumnsOnDesktop}, 1fr)`,
-          },
-          gap: 'var(--chakra-space-4xl)',
+      <Grid
+        gridTemplateColumns={{
+          base: '1fr',
+          md: `repeat(${numberOfColumnsOnDesktop}, 1fr)`,
         }}
+        gap="4xl"
       >
         {columns.map((columnItems, columnIndex) => (
-          <div key={columnIndex} data-testid="column">
+          <Box key={columnIndex} data-testid="column" position="relative">
+            {/* Column separator */}
+            {columns.length - 1 !== columnIndex && (
+              <Box
+                position="absolute"
+                top={0}
+                right="-1.5rem"
+                width="1px"
+                height="100%"
+                bg="gray.100"
+              />
+            )}
             {columnItems.map((item) => (
-              <div key={item.key} data-testid={`item-${item.key}`}>
+              <Box key={item.key} data-testid={`item-${item.key}`}>
                 {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
                   <CheckboxGroupCollapsibleWithChildren
                     item={item}
@@ -63,11 +71,11 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
                     indentFacet={hasGroups}
                   />
                 )}
-              </div>
+              </Box>
             ))}
-          </div>
+          </Box>
         ))}
-      </Box>
+      </Grid>
     </TranslationProvider>
   );
 }
