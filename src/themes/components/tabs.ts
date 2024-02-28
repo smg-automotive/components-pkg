@@ -39,9 +39,10 @@ const customStyleTab = {
   backgroundColor: '#D2D2D2',
   minWidth: { base: '3xl', md: '4xl' },
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  '&:last-of-type, a': {
+  '& > a:last-of-type': {
     borderTopRightRadius: 'sm',
     borderLeft: '1px',
+    borderColor: 'gray.600',
   },
   '&:first-of-type': {
     borderTopLeftRadius: 'sm',
@@ -50,7 +51,6 @@ const customStyleTab = {
   _selected: {
     boxShadow: 'none',
     backgroundColor: 'white',
-    borderColor: 'gray.600',
   },
 };
 
