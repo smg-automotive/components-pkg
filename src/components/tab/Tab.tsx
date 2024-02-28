@@ -5,7 +5,6 @@ import { Space } from 'src/themes';
 
 type Props = {
   marginX?: Space;
-  href?: string;
 } & Pick<TabProps, 'isDisabled' | 'as'>;
 
 const Tab: FC<PropsWithChildren<Props>> = (props) => {
