@@ -39,7 +39,7 @@ const customStyleTab = {
   backgroundColor: '#D2D2D2',
   minWidth: { base: '3xl', md: '4xl' },
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  '&:last-of-type': {
+  '&:last-of-type, a': {
     borderTopRightRadius: 'sm',
     borderLeft: '1px',
   },
