@@ -4,6 +4,7 @@ import { Box, Grid } from '@chakra-ui/react';
 
 import TranslationProvider from '../translationProvider';
 
+import Divider from '../divider';
 import { Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
@@ -21,8 +22,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
 
   const itemsPerColumn = Math.ceil(items.length / numberOfColumnsOnDesktop);
 
-  // Create an array to store items grouped by columns
-  const columns = Array.from(
+  const groupItemsByColumns = Array.from(
     { length: numberOfColumnsOnDesktop },
     (_, columnIndex) => {
       const columnStartIndex = columnIndex * itemsPerColumn;
@@ -43,11 +43,10 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         }}
         gap="4xl"
       >
-        {columns.map((columnItems, columnIndex) => (
+        {groupItemsByColumns.map((columnItems, columnIndex) => (
           <Box key={columnIndex} data-testid="column" position="relative">
-            {/* Column separator */}
-            {columns.length - 1 !== columnIndex && (
-              <Box
+            {groupItemsByColumns.length - 1 !== columnIndex && (
+              <Divider
                 position="absolute"
                 top={0}
                 right="-1.5rem"
