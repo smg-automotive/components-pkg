@@ -5,7 +5,7 @@ import { Space } from 'src/themes';
 
 type Props = {
   marginX?: Space;
-} & Pick<TabProps, 'isDisabled' | 'as'>;
+} & Pick<TabProps, 'isDisabled' | 'as' | 'pointerEvents'>;
 
 const Tab: FC<PropsWithChildren<Props>> = (props) => {
   return <ChakraTab {...props}>{props.children}</ChakraTab>;
