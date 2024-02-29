@@ -33,14 +33,15 @@ const baseStyleTabpanel = {
 
 const customStyleTab = {
   paddingX: 'lg',
-  paddingY: 'sm',
+  paddingY: { base: 'md', md: 'sm' },
   fontWeight: 'bold',
   borderBottom: '0',
   color: 'gray.900',
   backgroundColor: '#D2D2D2',
   overflow: 'hidden',
   marginBottom: 0,
-  minWidth: { base: 'full', md: '4xl' },
+  minWidth: { base: '3xl', md: '4xl' },
+  flex: { base: 1, md: 0 },
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   borderTopLeftRadius: 'sm',
   _selected: {
