@@ -39,7 +39,7 @@ const customStyleTab = {
   backgroundColor: '#D2D2D2',
   overflow: 'hidden',
   marginBottom: 0,
-  minWidth: { base: '3xl', md: '4xl' },
+  minWidth: { base: 'full', md: '4xl' },
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   borderTopLeftRadius: 'sm',
   _selected: {
