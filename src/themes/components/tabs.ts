@@ -32,7 +32,8 @@ const baseStyleTabpanel = {
 };
 
 const customStyleTab = {
-  padding: 'lg',
+  paddingX: 'lg',
+  paddingY: 'sm',
   fontWeight: 'bold',
   borderBottom: '0',
   color: 'gray.900',
