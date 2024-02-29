@@ -37,20 +37,31 @@ const customStyleTab = {
   borderBottom: '0',
   color: 'gray.900',
   backgroundColor: '#D2D2D2',
+  overflow: 'hidden',
+  marginBottom: 0,
   minWidth: { base: '3xl', md: '4xl' },
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  '& > a:first-of-type': {
-    borderTopRightRadius: 'sm',
-    borderLeft: '1px',
-    borderColor: 'gray.600',
-  },
-  '&:first-of-type': {
-    borderTopLeftRadius: 'sm',
-    borderLeft: 0,
-  },
+  borderTopLeftRadius: 'sm',
   _selected: {
     boxShadow: 'none',
     backgroundColor: 'white',
+  },
+};
+
+const customStyleTablist = {
+  borderBottom: 0,
+  borderColor: 'transparent',
+  '& a:first-of-type > span > button': {
+    borderTopRightRadius: 'sm',
+    borderTopLeftRadius: 'none',
+    borderLeft: '1px',
+    borderColor: 'gray.600',
+  },
+  '& a:first-of-type > button': {
+    borderTopRightRadius: 'sm',
+    borderTopLeftRadius: 'none',
+    borderLeft: '1px',
+    borderColor: 'gray.600',
   },
 };
 
@@ -80,10 +91,7 @@ const variants = {
     tabpanel: baseStyleTabpanel,
   },
   custom: {
-    tablist: {
-      borderBottom: 0,
-      borderColor: 'transparent',
-    },
+    tablist: customStyleTablist,
     tab: customStyleTab,
   },
 };
