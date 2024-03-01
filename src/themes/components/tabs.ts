@@ -42,7 +42,7 @@ const customStyleTab = {
   marginBottom: 0,
   minWidth: { base: '3xl', md: '4xl' },
   flex: { base: 1, md: 0 },
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  boxShadow: 'inset 1px -1px 10px #bbb',
   borderTopLeftRadius: 'sm',
   _selected: {
     boxShadow: 'none',
