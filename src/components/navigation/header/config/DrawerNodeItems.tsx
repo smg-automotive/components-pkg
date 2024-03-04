@@ -207,25 +207,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.searchMenu.vehicleRating',
-          link: {
-            de: '/de/content/fahrzeugbewertung',
-            en: '/de/content/fahrzeugbewertung',
-            fr: '/fr/content/evaluation-vehicule',
-            it: '/it/content/valutazione-veicolo',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.searchMenu.insuranceComparison',
           link: {
             de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
