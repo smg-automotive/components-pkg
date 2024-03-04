@@ -61,14 +61,30 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                       {t(`errorPage.${statusCode}.description`)}
                     </Text>
                   </Stack>
-                  <Button
-                    href={`/${language}`}
-                    as="a"
-                    onClick={onButtonClick}
-                    variant="secondary"
-                  >
-                    {t(`errorPage.${statusCode}.buttonLabel`)}
-                  </Button>
+                  <Flex>
+                    <Button
+                      onClick={() => {
+                        onButtonClick?.();
+                        const updatedUrl = window.location.href.replace(
+                          new RegExp(`/${language}(/.*)$`),
+                          `/${language}`
+                        );
+                        window.location.replace(updatedUrl);
+                      }}
+                      variant="secondary"
+                    >
+                      {t(`errorPage.${statusCode}.buttonLabel`)}
+                    </Button>
+                    {statusCode === 'clientSide' ? (
+                      <Button
+                        onClick={() => {
+                          window.location.reload();
+                        }}
+                      >
+                        {t('errorPage.reloadPage')}
+                      </Button>
+                    ) : null}
+                  </Flex>
                 </Stack>
               </Stack>
             </Flex>
