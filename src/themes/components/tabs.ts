@@ -73,9 +73,10 @@ const customStyleTablist = {
 };
 
 const customStyleTabPanel = {
-  ...baseStyleTabpanel,
+  textStyle: 'body',
   boxShadow: '0px 8px 24px 0px #0000001A',
   padding: '2xl',
+  margin: 0,
 };
 
 const baseStyle = {
