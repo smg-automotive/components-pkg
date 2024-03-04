@@ -41,6 +41,7 @@ const customStyleTab = {
   overflow: 'hidden',
   marginBottom: 0,
   minWidth: { base: '3xl', md: '4xl' },
+  width: 'full',
   flex: { base: 1, md: 0 },
   boxShadow: 'inset 1px -1px 10px #bbb',
   borderTopLeftRadius: 'sm',
@@ -53,6 +54,10 @@ const customStyleTab = {
 const customStyleTablist = {
   borderBottom: 0,
   borderColor: 'transparent',
+  '& a:first-of-type': {
+    flex: { base: 1, md: 0 },
+    minWidth: { base: '3xl', md: '4xl' },
+  },
   '& a:first-of-type > span > button': {
     borderTopRightRadius: 'sm',
     borderTopLeftRadius: 'none',
