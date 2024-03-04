@@ -72,6 +72,12 @@ const customStyleTablist = {
   },
 };
 
+const customStyleTabPanel = {
+  ...baseStyleTabpanel,
+  boxShadow: '0px 8px 24px 0px #0000001A',
+  padding: '2xl',
+};
+
 const baseStyle = {
   tab: baseStyleTab,
   tablist: baseStyleTablist,
@@ -100,6 +106,7 @@ const variants = {
   custom: {
     tablist: customStyleTablist,
     tab: customStyleTab,
+    tabpanel: customStyleTabPanel,
   },
 };
 
