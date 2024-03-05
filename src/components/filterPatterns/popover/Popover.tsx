@@ -57,14 +57,14 @@ const Popover: FC<Props> = ({
         <PopoverContent
           backgroundColor="white"
           borderRadius="sm"
-          paddingY="2xl"
+          // paddingY="2xl"
           shadow="md"
           w="6xl"
           minHeight={enforceHeight ? '7xl' : undefined}
           height={enforceHeight ? '7xl' : undefined}
           ref={popoverContentRef}
         >
-          <Box as={Stack} h="full">
+          <Box as={Stack} h="full" paddingY="2xl">
             <PopoverHeader paddingX="2xl">
               {header ?? (
                 <FilterHeading
