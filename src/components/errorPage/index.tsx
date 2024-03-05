@@ -34,6 +34,7 @@ interface Props {
 }
 
 const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
+  const showReloadPage = statusCode === 'clientSide';
   return (
     <TranslationProvider language={language} scopes={['errorPage']}>
       <I18nContext.Consumer>
@@ -61,21 +62,15 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                       {t(`errorPage.${statusCode}.description`)}
                     </Text>
                   </Stack>
-                  <Flex>
-                    <Button
-                      onClick={() => {
-                        onButtonClick?.();
-                        const updatedUrl = window.location.href.replace(
-                          new RegExp(`/${language}(/.*)$`),
-                          `/${language}`
-                        );
-                        window.location.replace(updatedUrl);
-                      }}
-                      variant="secondary"
-                    >
-                      {t(`errorPage.${statusCode}.buttonLabel`)}
-                    </Button>
-                    {statusCode === 'clientSide' ? (
+                  <SimpleGrid
+                    columns={{
+                      base: 1,
+                      sm: showReloadPage ? 2 : 1,
+                    }}
+                    alignItems="center"
+                    spacing="md"
+                  >
+                    {showReloadPage ? (
                       <Button
                         onClick={() => {
                           window.location.reload();
@@ -84,7 +79,16 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                         {t('errorPage.reloadPage')}
                       </Button>
                     ) : null}
-                  </Flex>
+                    <Button
+                      onClick={() => {
+                        onButtonClick?.();
+                        window.location.href = `${window.location.origin}/${language}`;
+                      }}
+                      variant="secondary"
+                    >
+                      {t(`errorPage.${statusCode}.buttonLabel`)}
+                    </Button>
+                  </SimpleGrid>
                 </Stack>
               </Stack>
             </Flex>
