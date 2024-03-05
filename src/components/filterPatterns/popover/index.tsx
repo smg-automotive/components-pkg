@@ -146,6 +146,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               showCallToActionButton={showCallToActionButton}
               header={header}
               enforceHeight={enforceHeight}
+              isOpen={isOpen}
             >
               {children}
             </FilterPopover>
