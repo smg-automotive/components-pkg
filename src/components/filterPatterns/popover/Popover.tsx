@@ -17,7 +17,6 @@ import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
-  isOpen?: boolean;
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
@@ -57,7 +56,6 @@ const Popover: FC<Props> = ({
         <PopoverContent
           backgroundColor="white"
           borderRadius="sm"
-          // paddingY="2xl"
           shadow="md"
           w="6xl"
           minHeight={enforceHeight ? '7xl' : undefined}
