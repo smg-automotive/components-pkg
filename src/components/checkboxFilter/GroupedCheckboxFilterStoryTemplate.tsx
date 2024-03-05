@@ -61,72 +61,6 @@ function StoryTemplate({
         },
       ],
     },
-    {
-      label: 'Used',
-      key: 'used',
-      facet: 50,
-      isChecked: filter.conditionTypeGroup.includes('used'),
-      filterName: parentFilterName,
-      childCheckboxes: [],
-    },
-    {
-      label: 'Lowered',
-      key: 'lowered',
-      facet: 20,
-      isChecked: filter.conditionTypeGroup.includes('lowered'),
-      filterName: parentFilterName,
-      childCheckboxes: [],
-      image: (
-        <img src="https://placekitten.com/g/100/50" alt="placeholder image" />
-      ),
-    },
-    {
-      label: 'Accident',
-      key: 'accident',
-      facet: 10,
-      isChecked: filter.conditionTypeGroup.includes('accident'),
-      filterName: parentFilterName,
-      childCheckboxes: [
-        {
-          label: 'Only a little bit accident',
-          key: 'small-accident',
-          facet: 77,
-          isChecked: filter.conditionType.includes('small-accident'),
-          filterName: childFilterName,
-          image: (
-            <img
-              src="https://placekitten.com/g/100/50"
-              alt="placeholder image"
-            />
-          ),
-        },
-        {
-          label:
-            'Exponentially super duper bad accident that caused the airbags to deploy and the car to be totaled. Only buy when you are a mechanic.',
-          key: 'big-accident',
-          facet: 3,
-          isChecked: filter.conditionType.includes('big-accident'),
-          filterName: childFilterName,
-        },
-      ],
-    },
-    {
-      label:
-        'Super duper long group name that will break on multiple lines. Usually on Italian and French but also happens on other things',
-      key: 'long',
-      facet: 100,
-      isChecked: filter.conditionTypeGroup.includes('long'),
-      filterName: parentFilterName,
-      childCheckboxes: [
-        {
-          label: 'Foo',
-          key: 'foo',
-          facet: 77,
-          isChecked: filter.conditionType.includes('foo'),
-          filterName: childFilterName,
-        },
-      ],
-    },
   ];
 
   const getAllChildrenByParentKey = (key?: Values): string[] => {
@@ -140,15 +74,15 @@ function StoryTemplate({
   const removeParentFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>,
+    updatedItem: Item<Values, FilterType>
   ): Filter => {
     const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName]: parentFilter.filter(
-        (parent) => parent !== updatedItem.key,
+        (parent) => parent !== updatedItem.key
       ),
       [childFilterName]: childFilter.filter(
-        (child) => !childrenToUpdate.includes(child),
+        (child) => !childrenToUpdate.includes(child)
       ),
     } as Filter;
   };
@@ -156,13 +90,13 @@ function StoryTemplate({
   const addParentFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>,
+    updatedItem: Item<Values, FilterType>
   ): Filter => {
     const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName as FilterType]: [...parentFilter, updatedItem.key],
       [childFilterName]: childFilter.filter(
-        (child) => !childrenToUpdate.includes(child),
+        (child) => !childrenToUpdate.includes(child)
       ),
     } as Filter;
   };
@@ -182,7 +116,7 @@ function StoryTemplate({
   const getParentItemByChildrenKey = (key?: Values) => {
     if (!key) return null;
     return checkboxes.find((box) =>
-      box.childCheckboxes?.find((child) => child.key === key),
+      box.childCheckboxes?.find((child) => child.key === key)
     );
   };
 
@@ -190,14 +124,14 @@ function StoryTemplate({
     parentFilter: string[],
     childFilter: string[],
     updatedItem: Item<Values, FilterType>,
-    parentItem: Item<Values, FilterType>,
+    parentItem: Item<Values, FilterType>
   ): Filter => {
     const childrenToUpdate = getAllChildrenByParentKey(parentItem.key).filter(
-      (childKey) => childKey !== updatedItem.key,
+      (childKey) => childKey !== updatedItem.key
     );
     return {
       [parentFilterName]: parentFilter.filter(
-        (parent) => parent !== parentItem.key,
+        (parent) => parent !== parentItem.key
       ),
       [childFilterName]: [...childFilter, ...childrenToUpdate],
     } as Filter;
@@ -206,13 +140,13 @@ function StoryTemplate({
   const removeAllChildrenAndAddParent = (
     parentFilter: string[],
     childFilter: string[],
-    parentItem: Item<Values, FilterType>,
+    parentItem: Item<Values, FilterType>
   ): Filter => {
     const childrenToRemove = getAllChildrenByParentKey(parentItem.key);
     return {
       [parentFilterName]: [...parentFilter, parentItem.key],
       [childFilterName]: childFilter.filter(
-        (childKey) => !childrenToRemove.includes(childKey),
+        (childKey) => !childrenToRemove.includes(childKey)
       ),
     } as Filter;
   };
@@ -220,7 +154,7 @@ function StoryTemplate({
   const addChildFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>,
+    updatedItem: Item<Values, FilterType>
   ) => {
     return {
       [parentFilterName]: parentFilter,
@@ -231,12 +165,12 @@ function StoryTemplate({
   const removeChildFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>,
+    updatedItem: Item<Values, FilterType>
   ) => {
     return {
       [parentFilterName]: parentFilter,
       [childFilterName]: childFilter.filter(
-        (childKey) => childKey !== updatedItem.key,
+        (childKey) => childKey !== updatedItem.key
       ),
     } as Filter;
   };
@@ -252,18 +186,18 @@ function StoryTemplate({
             parentFilter,
             childFilter,
             updatedItem,
-            parentItem,
+            parentItem
           );
         }
         if (updatedItem.isChecked) {
           const childrenWithoutModified = parentItem.childCheckboxes.filter(
-            (child) => child.key !== updatedItem.key,
+            (child) => child.key !== updatedItem.key
           );
           if (childrenWithoutModified.every((child) => child.isChecked)) {
             return removeAllChildrenAndAddParent(
               parentFilter,
               childFilter,
-              parentItem,
+              parentItem
             );
           }
           return addChildFilter(parentFilter, childFilter, updatedItem);

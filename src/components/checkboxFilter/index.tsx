@@ -17,21 +17,28 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   language,
 }: Props<ItemKey, FilterName>) {
   const hasGroups = items.some(
-    (item) => (item.childCheckboxes ?? []).length > 0,
+    (item) => (item.childCheckboxes ?? []).length > 0
   );
 
   const itemsPerColumn = Math.ceil(items.length / numberOfColumnsOnDesktop);
 
+  const numberOfColumns =
+    items.length < numberOfColumnsOnDesktop
+      ? items.length || 1
+      : items.length / numberOfColumnsOnDesktop;
+
   const groupItemsByColumns = Array.from(
-    { length: numberOfColumnsOnDesktop },
+    {
+      length: numberOfColumns,
+    },
     (_, columnIndex) => {
       const columnStartIndex = columnIndex * itemsPerColumn;
       const columnEndIndex = Math.min(
         (columnIndex + 1) * itemsPerColumn,
-        items.length,
+        items.length
       );
       return [...items].slice(columnStartIndex, columnEndIndex);
-    },
+    }
   );
 
   return (
