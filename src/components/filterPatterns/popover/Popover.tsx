@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 
 import Stack from 'src/components/stack';
-import Flex from 'src/components/flex';
 import Box from 'src/components/box';
 
 import { FilterHeading } from '../Heading';
