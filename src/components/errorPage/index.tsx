@@ -34,6 +34,7 @@ interface Props {
 }
 
 const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
+  const showReloadPage = statusCode === 'clientSide';
   return (
     <TranslationProvider language={language} scopes={['errorPage']}>
       <I18nContext.Consumer>
@@ -61,14 +62,33 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                       {t(`errorPage.${statusCode}.description`)}
                     </Text>
                   </Stack>
-                  <Button
-                    href={`/${language}`}
-                    as="a"
-                    onClick={onButtonClick}
-                    variant="secondary"
+                  <SimpleGrid
+                    columns={{
+                      base: 1,
+                      sm: showReloadPage ? 2 : 1,
+                    }}
+                    alignItems="center"
+                    spacing="md"
                   >
-                    {t(`errorPage.${statusCode}.buttonLabel`)}
-                  </Button>
+                    {showReloadPage ? (
+                      <Button
+                        onClick={() => {
+                          window.location.reload();
+                        }}
+                      >
+                        {t('errorPage.reloadPage')}
+                      </Button>
+                    ) : null}
+                    <Button
+                      onClick={() => {
+                        onButtonClick?.();
+                        window.location.href = `${window.location.origin}/${language}`;
+                      }}
+                      variant="secondary"
+                    >
+                      {t(`errorPage.${statusCode}.buttonLabel`)}
+                    </Button>
+                  </SimpleGrid>
                 </Stack>
               </Stack>
             </Flex>
