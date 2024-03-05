@@ -75,7 +75,10 @@ const customStyleTablist = {
 const customStyleTabPanel = {
   textStyle: 'body',
   boxShadow: '0px 8px 24px 0px #0000001A',
+  backgroundColor: 'white',
   padding: '2xl',
+  borderRadius: 'xs',
+  borderTopLeftRadius: 0,
   margin: 0,
 };
 
