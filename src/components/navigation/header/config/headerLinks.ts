@@ -79,9 +79,9 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
+        guest: false,
         private: false,
         professional: true,
-        guest: false,
       },
       brand: {
         autoscout24: true,
