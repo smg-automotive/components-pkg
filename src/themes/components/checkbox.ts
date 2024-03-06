@@ -26,6 +26,8 @@ const baseStyleControl = defineStyle({
   },
   _checked: {
     borderColor: 'gray.900',
+    backgroundColor: 'gray.900',
+    color: 'white',
   },
   _disabled: {
     borderColor: 'gray.400',
@@ -34,6 +36,11 @@ const baseStyleControl = defineStyle({
   _invalid: {
     borderColor: 'red.500',
   },
+  _indeterminate: {
+    borderColor: 'gray.900',
+    backgroundColor: 'gray.900',
+    color: 'white',
+  }
 });
 
 const baseStyleContainer = defineStyle({
