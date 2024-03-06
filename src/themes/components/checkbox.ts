@@ -40,7 +40,7 @@ const baseStyleControl = defineStyle({
     borderColor: 'gray.900',
     backgroundColor: 'gray.900',
     color: 'white',
-  }
+  },
 });
 
 const baseStyleContainer = defineStyle({
