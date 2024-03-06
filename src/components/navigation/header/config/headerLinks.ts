@@ -40,32 +40,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     visibilitySettings: {
       userType: {
         private: true,
-        professional: true,
+        professional: false,
       },
       brand: {
         autoscout24: true,
         motoscout24: false,
-      },
-    },
-  },
-  {
-    translationKey: 'header.sell',
-    link: {
-      de: '/de/member/insertion/type',
-      en: '/de/member/insertion/type',
-      fr: '/fr/member/insertion/type',
-      it: '/it/member/insertion/type',
-    },
-    showUnderMoreLinkBelow: 'sm',
-    visibilitySettings: {
-      userType: {
-        private: false,
-        professional: true,
-        guest: false,
-      },
-      brand: {
-        autoscout24: false,
-        motoscout24: true,
       },
     },
   },
@@ -85,6 +64,27 @@ export const headerLinks: NavigationLinkConfigProps[] = [
       },
       brand: {
         autoscout24: false,
+        motoscout24: true,
+      },
+    },
+  },
+  {
+    translationKey: 'header.sell',
+    link: {
+      de: '/de/member/insertion/type',
+      en: '/de/member/insertion/type',
+      fr: '/fr/member/insertion/type',
+      it: '/it/member/insertion/type',
+    },
+    showUnderMoreLinkBelow: 'sm',
+    visibilitySettings: {
+      userType: {
+        private: false,
+        professional: true,
+        guest: false,
+      },
+      brand: {
+        autoscout24: true,
         motoscout24: true,
       },
     },
