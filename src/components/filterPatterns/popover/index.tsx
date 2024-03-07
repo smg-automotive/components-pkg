@@ -33,6 +33,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   showCallToActionButton = true,
   header,
   children,
+  height = 'md',
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -84,7 +85,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   borderRightWidth={displayValue ? '1px' : undefined}
                   display="flex"
                   flex="1"
-                  h="md"
+                  height={height}
                   justifyContent="space-between"
                   minW="0"
                   paddingX="md"
