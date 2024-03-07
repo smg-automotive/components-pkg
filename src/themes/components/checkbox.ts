@@ -28,6 +28,10 @@ const baseStyleControl = defineStyle({
     borderColor: 'gray.900',
     backgroundColor: 'gray.900',
     color: 'white',
+    _disabled: {
+      backgroundColor: 'gray.400',
+      color: 'white',
+    },
   },
   _disabled: {
     borderColor: 'gray.400',
