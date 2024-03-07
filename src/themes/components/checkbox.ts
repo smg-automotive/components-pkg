@@ -69,7 +69,7 @@ const baseStyleLabel = defineStyle({
   },
   color: 'gray.900',
   _disabled: {
-    color: 'gray.400',
+    color: 'gray.500',
   },
 });
 
