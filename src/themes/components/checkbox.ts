@@ -23,6 +23,8 @@ const baseStyleControl = defineStyle({
   borderColor: 'gray.400',
   _hover: {
     borderColor: 'gray.900',
+    outline: '3px solid',
+    outlineColor: 'blue.100'
   },
   _checked: {
     borderColor: 'gray.900',
@@ -36,6 +38,7 @@ const baseStyleControl = defineStyle({
   _disabled: {
     borderColor: 'gray.400',
     color: 'gray.400',
+    outline: 'none',
   },
   _invalid: {
     borderColor: 'red.500',
