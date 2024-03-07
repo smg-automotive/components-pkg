@@ -24,7 +24,7 @@ const baseStyleControl = defineStyle({
   _hover: {
     borderColor: 'gray.900',
     outline: '3px solid',
-    outlineColor: 'blue.100'
+    outlineColor: 'blue.100',
   },
   _checked: {
     borderColor: 'gray.900',
