@@ -26,6 +26,10 @@ const baseStyleControl = defineStyle({
     outline: '3px solid',
     outlineColor: 'blue.100',
   },
+  _focusVisible: {
+    outline: '3px solid',
+    outlineColor: 'blue.300',
+  },
   _checked: {
     borderColor: 'gray.900',
     backgroundColor: 'gray.900',
@@ -42,6 +46,9 @@ const baseStyleControl = defineStyle({
   },
   _invalid: {
     borderColor: 'red.500',
+    _hover: {
+      outline: 'none',
+    },
   },
   _indeterminate: {
     borderColor: 'gray.900',
