@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmblaCarouselType } from 'embla-carousel-react';
+import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
@@ -28,12 +28,12 @@ const paginationCarousel = {
   scrollPrev: mockScrollPrev,
   clickAllowed: jest.fn().mockReturnValue(true),
   on: jest.fn(),
-} as unknown as EmblaCarouselType;
+} as unknown as UseEmblaCarouselType[1];
 
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {
   scrollTo: mockMainScrollTo,
-} as unknown as EmblaCarouselType;
+} as unknown as UseEmblaCarouselType[1];
 
 const paginationCarouselRef = () => null;
 
