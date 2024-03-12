@@ -18,7 +18,8 @@
       "buttonLabel": "Zur Startseite",
       "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
       "title": "In deinem Browser ist ein Fehler aufgetreten"
-    }
+    },
+    "reloadPage": "Seite neu laden"
   },
   "filterSelectButton": {
     "close": "Schliessen",
@@ -113,7 +114,6 @@
       "searchMerchant": "Händler suchen",
       "searchMotorcycles": "Motorräder suchen",
       "simpleSearch": "Einfache Suche (Startseite)",
-      "vehicleRating": "Fahrzeugbewertung",
       "vehicles": "Fahrzeuge",
       "viewedListings": "Angesehene Inserate"
     },
