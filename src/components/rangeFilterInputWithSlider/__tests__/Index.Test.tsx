@@ -51,12 +51,6 @@ const mockedTo = {
   placeholder: '1000000+',
 };
 
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
-
 const renderWrapper = ({ onChange = jest.fn(), facets = mockedFacets }) => {
   return render(
     <RangeFilterInputWithSlider
