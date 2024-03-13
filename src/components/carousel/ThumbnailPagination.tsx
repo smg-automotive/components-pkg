@@ -55,7 +55,7 @@ const ThumbnailPagination: FC<Props> = ({
     [mainCarousel, paginationCarousel],
   );
 
-  const onScroll = useCallback(() => {
+  const evalPaginationButtonVisibility = useCallback(() => {
     if (
       !paginationCarousel ||
       paginationCarousel.slidesNotInView().length === 0
@@ -77,9 +77,12 @@ const ThumbnailPagination: FC<Props> = ({
 
   useEffect(() => {
     if (!paginationCarousel) return;
-    onScroll();
-    paginationCarousel.on('scroll', onScroll);
-  }, [paginationCarousel, onScroll]);
+
+    evalPaginationButtonVisibility();
+
+    paginationCarousel.on('scroll', evalPaginationButtonVisibility);
+    paginationCarousel.on('slidesInView', evalPaginationButtonVisibility);
+  }, [paginationCarousel, evalPaginationButtonVisibility]);
 
   return (
     <Box ref={paginationCarouselRef} __css={pagination} aria-label="Pagination">
