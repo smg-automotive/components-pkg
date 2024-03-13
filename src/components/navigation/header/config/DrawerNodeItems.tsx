@@ -244,25 +244,6 @@ export const drawerNodeItems = ({
             },
           },
         },
-        {
-          translationKey: 'header.searchMenu.recentSearches',
-          link: {
-            de: '/de/letzte-suchen',
-            en: '/de/letzte-suchen',
-            fr: '/fr/dernieres-recherches',
-            it: '/it/ultime-ricerche',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
       ],
     },
   ],
