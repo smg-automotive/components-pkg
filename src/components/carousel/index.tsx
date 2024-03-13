@@ -68,7 +68,7 @@ const Carousel: FC<Props> = (props) => {
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
-    speed: 20,
+    duration: 20,
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
@@ -87,11 +87,11 @@ const Carousel: FC<Props> = (props) => {
   );
   const onClick = useCallback(
     (index: number) => {
-      if (onSlideClick && mainCarousel && mainCarousel.clickAllowed()) {
+      if (onSlideClick) {
         onSlideClick(index);
       }
     },
-    [mainCarousel, onSlideClick],
+    [onSlideClick],
   );
 
   const numberOfSlides = props.children.length;
