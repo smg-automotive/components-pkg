@@ -10,15 +10,17 @@ import { ChevronRightSmallIcon } from 'src/components/icons';
 
 import { FilterPatternProps } from '../props';
 
+export type PaddingX = '0' | 'md';
 type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
   'label' | 'displayValue' | 'Icon' | 'isApplied'
 > &
-  Pick<ButtonProps, 'paddingX' | 'backgroundColor'> & {
+  Pick<ButtonProps, 'backgroundColor'> & {
     onClick: () => void;
     variant?: Variant;
     isDisabled?: boolean;
+    paddingX?: PaddingX;
   };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
