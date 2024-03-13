@@ -193,3 +193,20 @@ export const CustomHeader = () => (
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## With different background color
+
+<Canvas>
+  <Story
+    name="With different background color"
+    args={{
+      label: 'Treibstoff',
+      displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+      numberOfAppliedFilters: 5,
+      backgroundColor: 'gray.100',
+      paddingX: 'md',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

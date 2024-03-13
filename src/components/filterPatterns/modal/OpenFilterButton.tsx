@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import {
+  ButtonProps,
   chakra,
   Button as ChakraButton,
   ResponsiveValue,
@@ -13,7 +14,12 @@ type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
   'label' | 'displayValue' | 'Icon' | 'isApplied'
-> & { onClick: () => void; variant?: Variant; isDisabled?: boolean };
+> &
+  Pick<ButtonProps, 'paddingX' | 'backgroundColor'> & {
+    onClick: () => void;
+    variant?: Variant;
+    isDisabled?: boolean;
+  };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
   sm: 'sm',
@@ -33,6 +39,8 @@ export const OpenFilterButton: FC<Props> = ({
   onClick,
   variant = 'md',
   isDisabled = false,
+  paddingX = 0,
+  backgroundColor = 'unset',
 }) => {
   return (
     <ChakraButton
@@ -44,11 +52,12 @@ export const OpenFilterButton: FC<Props> = ({
       justifyContent="space-between"
       w="full"
       h={height[variant]}
-      paddingX="0"
+      paddingX={paddingX}
       paddingY={paddingY[variant]}
       isDisabled={isDisabled}
       cursor={isDisabled ? 'not-allowed' : 'pointer'}
       color={isDisabled ? 'gray.300' : 'gray.900'}
+      backgroundColor={backgroundColor}
     >
       <chakra.span
         display="flex"
