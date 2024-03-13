@@ -45,6 +45,7 @@ export { FlagIcon } from './FlagIcon';
 export { FlashIcon } from './FlashIcon';
 export { GasStationIcon } from './GasStationIcon';
 export { HeartIcon } from './HeartIcon';
+export { HistoryClockIcon } from './HistoryClockIcon';
 export { HouseIcon } from './HouseIcon';
 export { ImageIcon } from './ImageIcon';
 export { InfoIcon } from './InfoIcon';
