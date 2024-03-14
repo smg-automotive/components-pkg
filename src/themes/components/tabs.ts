@@ -11,7 +11,8 @@ const baseStyleTab = {
     fontWeight: 'bold',
     color: 'gray.900',
     borderColor: 'currentColor',
-    borderBottomWidth: '2px',
+    borderBottomWidth: '3px',
+    marginBottom: '-3px',
   },
   _disabled: {
     _active: { bg: 'none' },
