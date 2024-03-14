@@ -125,7 +125,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}
                   borderRadius="sm"
-                  h="md"
                   icon={<CloseIcon w="xs" h="xs" />}
                   minW="md"
                   onClick={() => onResetFilter('filterButton')}
