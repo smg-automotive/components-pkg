@@ -25,6 +25,7 @@ const baseStyleTablist = {
   borderBottom: '1px',
   borderColor: 'gray.200',
   justifyContent: 'start',
+  width: 'max-content',
 };
 
 const baseStyleTabpanel = {

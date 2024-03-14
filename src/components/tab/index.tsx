@@ -19,7 +19,11 @@ type Props = {
 >;
 
 const Tabs: FC<PropsWithChildren<Props>> = (props) => {
-  return <ChakraTabs {...props}>{props.children}</ChakraTabs>;
+  return (
+    <ChakraTabs overflowX="auto" {...props}>
+      {props.children}
+    </ChakraTabs>
+  );
 };
 
 export default Tabs;
