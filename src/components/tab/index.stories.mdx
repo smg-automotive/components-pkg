@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
+import Box from '../box';
 import TabPanels from './TabPanels';
 import TabPanel from './TabPanel';
 import TabList from './TabList';
@@ -9,48 +10,19 @@ import Tabs from './index';
 
 <Meta title="Components/Navigation/Tabs" component={Tabs} />
 
-export const Template = (args) => (
-  <Tabs {...args}>
-      <TabList>
-        <Tab>One</Tab>
-        <Tab {...args}>Two</Tab>
-        <Tab>Three</Tab>
-        <Tab>Four</Tab>
-        <Tab>Five</Tab>
-        <Tab>Six</Tab>
-        <Tab>Seven</Tab>
-        <Tab>Eight</Tab>
-      </TabList>
+export const Template = (args) => {
+    const numberOfTabs = args.numberOfTabs ?? 3;
+    const tabs = Array.from({ length: numberOfTabs }, (_, index) => (index + 1))
+    return (<Tabs {...args}>
+        <TabList>
+            {tabs.map((index)=> <Tab key={`tab-${index}`}>Tab: {index}</Tab>)}
+        </TabList>
+        <TabPanels>
+            {tabs.map((index)=> <TabPanel key={`tab-panel-${index}`}><Box backgroundColor="gray.50" w="full" h="300px"><p>Tab panel: {index}</p></Box></TabPanel>)}
+        </TabPanels>
+    </Tabs>)
 
-      <TabPanels>
-        <TabPanel>
-          <p>One</p>
-        </TabPanel>
-        <TabPanel>
-          <p>Two</p>
-        </TabPanel>
-          <TabPanel>
-              <p>Three</p>
-          </TabPanel>
-          <TabPanel>
-              <p>Four</p>
-          </TabPanel>
-          <TabPanel>
-              <p>Five</p>
-          </TabPanel>
-          <TabPanel>
-              <p>Six</p>
-          </TabPanel>
-          <TabPanel>
-              <p>Seven</p>
-          </TabPanel>
-          <TabPanel>
-              <p>Eight</p>
-          </TabPanel>
-      </TabPanels>
-    </Tabs>
-
-);
+}
 
 # Tab
 
@@ -62,6 +34,7 @@ export const Template = (args) => (
     args={{
       isDisabled: false,
       defaultIndex: 0,
+      numberOfTabs: 3,
     }}
     argTypes={{
       variant: {
@@ -84,6 +57,7 @@ export const Template = (args) => (
     args={{
       isDisabled: true,
       defaultIndex: 0,
+      numberOfTabs: 3,
     }}
   >
     {Template.bind({})}
@@ -100,6 +74,7 @@ export const Template = (args) => (
     args={{
       isDisabled: false,
       defaultIndex: 1,
+      numberOfTabs: 3,
     }}
   >
     {Template.bind({})}

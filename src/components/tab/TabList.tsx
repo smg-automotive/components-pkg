@@ -1,10 +1,14 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { TabList as ChakraTabList, TabListProps } from '@chakra-ui/react';
+import { TabList as ChakraTabList } from '@chakra-ui/react';
 
-type Props = Pick<TabListProps, 'w' | 'width' | 'maxW' | 'maxWidth'>;
+import Box from '../box';
 
-const TabList: FC<PropsWithChildren<Props>> = ({ children, ...rest }) => {
-  return <ChakraTabList {...rest}>{children}</ChakraTabList>;
+const TabList: FC<PropsWithChildren> = (props) => {
+  return (
+    <Box overflowX="auto" overflowY="hidden">
+      <ChakraTabList {...props}>{props.children}</ChakraTabList>
+    </Box>
+  );
 };
 
 export default TabList;
