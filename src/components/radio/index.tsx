@@ -10,6 +10,7 @@ interface Props {
   isChecked?: boolean;
   isInvalid?: boolean;
   isDisabled?: boolean;
+  fontWeight?: 'regular' | 'bold';
 }
 
 const Radio = forwardRef<HTMLInputElement, Props>(
@@ -23,6 +24,7 @@ const Radio = forwardRef<HTMLInputElement, Props>(
       isChecked = false,
       isInvalid,
       isDisabled = false,
+      fontWeight = 'regular',
     },
     ref,
   ) => {
@@ -36,6 +38,7 @@ const Radio = forwardRef<HTMLInputElement, Props>(
         isInvalid={isInvalid}
         isDisabled={isDisabled}
         ref={ref}
+        fontWeight={fontWeight}
       >
         {label}
       </ChakraRadio>
