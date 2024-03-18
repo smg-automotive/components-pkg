@@ -5,7 +5,7 @@ import Box from '../box';
 
 const TabList: FC<PropsWithChildren> = (props) => {
   return (
-    <Box overflowX="auto" overflowY="hidden">
+    <Box overflowX="auto">
       <ChakraTabList {...props}>{props.children}</ChakraTabList>
     </Box>
   );
