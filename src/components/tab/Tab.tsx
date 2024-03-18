@@ -8,7 +8,11 @@ type Props = {
 } & Pick<TabProps, 'isDisabled' | 'as'>;
 
 const Tab: FC<PropsWithChildren<Props>> = (props) => {
-  return <ChakraTab {...props}>{props.children}</ChakraTab>;
+  return (
+    <ChakraTab minW={0} {...props}>
+      {props.children}
+    </ChakraTab>
+  );
 };
 
 export default Tab;
