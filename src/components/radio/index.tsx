@@ -1,10 +1,10 @@
-import React, { ChangeEvent, forwardRef, ReactNode } from 'react';
+import React, { ChangeEvent, forwardRef } from 'react';
 import { Radio as ChakraRadio, RadioGroup } from '@chakra-ui/react';
 
 interface Props {
   name?: string;
   value: string;
-  label?: ReactNode;
+  label?: string;
   size?: 'sm' | 'md';
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   isChecked?: boolean;
