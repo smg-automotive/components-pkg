@@ -32,9 +32,13 @@ export const Template = ({ isChecked, ...args }) => {
     }}
     argTypes={{
       size: {
-        options: ['sm', 'md'],
+        options: ['sm', 'base', 'md'],
         control: 'select',
       },
+      fontWeight: {
+         options: ['fontRegular', 'fontBold'],
+        control: 'select',
+      }
     }}
   >
     {Template.bind({})}

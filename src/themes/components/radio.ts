@@ -1,6 +1,7 @@
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { radioAnatomy as parts } from '@chakra-ui/anatomy';
 
+import { fontWeights } from '../shared/fontWeights';
 import checkbox from './checkbox';
 
 const { definePartsStyle, defineMultiStyleConfig } =
@@ -9,6 +10,12 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const sizes = {
   sm: {
     label: { fontSize: 'sm' },
+  },
+  base: {
+    label: { fontSize: 'base' },
+  },
+  md: {
+    label: { fontSize: 'md' },
   },
 };
 
@@ -29,6 +36,19 @@ const baseStyleControl = defineStyle({
   },
 });
 
+const variants = {
+  fontBold: definePartsStyle({
+    label: defineStyle({
+      fontWeight: fontWeights.bold,
+    }),
+  }),
+  fontRegular: definePartsStyle({
+    label: defineStyle({
+      fontWeight: fontWeights.regular,
+    }),
+  }),
+};
+
 const baseStyle = definePartsStyle({
   label: checkbox.baseStyle?.label,
   container: checkbox.baseStyle?.container,
@@ -38,4 +58,5 @@ const baseStyle = definePartsStyle({
 export default defineMultiStyleConfig({
   sizes,
   baseStyle,
+  variants,
 });

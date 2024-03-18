@@ -10,7 +10,7 @@ interface Props {
   isChecked?: boolean;
   isInvalid?: boolean;
   isDisabled?: boolean;
-  fontWeight?: 'regular' | 'bold';
+  variant?: 'fontRegular' | 'fontBold';
 }
 
 const Radio = forwardRef<HTMLInputElement, Props>(
@@ -19,12 +19,12 @@ const Radio = forwardRef<HTMLInputElement, Props>(
       name,
       value,
       label,
-      size = 'md',
+      size = 'base',
       onChange,
       isChecked = false,
       isInvalid,
       isDisabled = false,
-      fontWeight = 'regular',
+      variant = 'fontRegular',
     },
     ref,
   ) => {
@@ -38,7 +38,7 @@ const Radio = forwardRef<HTMLInputElement, Props>(
         isInvalid={isInvalid}
         isDisabled={isDisabled}
         ref={ref}
-        fontWeight={fontWeight}
+        variant={variant}
       >
         {label}
       </ChakraRadio>
