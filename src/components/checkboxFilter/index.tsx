@@ -9,6 +9,22 @@ import { Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
 
+const groupItems = <ItemKey extends string, FilterName extends string>(
+  items: Props<ItemKey, FilterName>['items'],
+  numberOfColumns = 1,
+) => {
+  const groupedItems = [];
+  const itemsPerColumn = Math.ceil(items.length / numberOfColumns);
+
+  for (let i = 0; i < numberOfColumns; i++) {
+    const start = i * itemsPerColumn;
+    const end = start + itemsPerColumn;
+    groupedItems.push(items.slice(start, end));
+  }
+
+  return groupedItems;
+};
+
 function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   items,
   onApply,
@@ -20,26 +36,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
     (item) => (item.childCheckboxes ?? []).length > 0,
   );
 
-  const itemsPerColumn = Math.ceil(items.length / numberOfColumnsOnDesktop);
-
-  const numberOfColumns =
-    items.length < numberOfColumnsOnDesktop
-      ? items.length || 1
-      : items.length / numberOfColumnsOnDesktop;
-
-  const groupItemsByColumns = Array.from(
-    {
-      length: numberOfColumns,
-    },
-    (_, columnIndex) => {
-      const columnStartIndex = columnIndex * itemsPerColumn;
-      const columnEndIndex = Math.min(
-        (columnIndex + 1) * itemsPerColumn,
-        items.length,
-      );
-      return [...items].slice(columnStartIndex, columnEndIndex);
-    },
-  );
+  const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
 
   return (
     <TranslationProvider language={language} scopes={['checkboxFilter']}>
@@ -50,9 +47,9 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         }}
         gap="4xl"
       >
-        {groupItemsByColumns.map((columnItems, columnIndex) => (
+        {groupedItems.map((columnItems, columnIndex) => (
           <Box key={columnIndex} data-testid="column" position="relative">
-            {groupItemsByColumns.length - 1 !== columnIndex && (
+            {groupedItems.length - 1 !== columnIndex && (
               <Divider
                 position="absolute"
                 top={0}
