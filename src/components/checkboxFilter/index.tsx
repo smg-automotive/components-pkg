@@ -1,9 +1,9 @@
-import React from 'react';
-
-import { Box, Grid } from '@chakra-ui/react';
+import React, { Fragment } from 'react';
 
 import TranslationProvider from '../translationProvider';
 
+import GridItem from '../grid/GridItem';
+import Grid from '../grid';
 import Divider from '../divider';
 import { Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
@@ -47,19 +47,19 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         gap="4xl"
       >
         {groupedItems.map((columnItems, columnIndex) => (
-          <Box key={columnIndex} data-testid="column" position="relative">
+          <GridItem key={columnIndex} data-testid="column" position="relative">
             {groupedItems.length - 1 !== columnIndex && (
               <Divider
                 position="absolute"
                 top={0}
                 right="-1.5rem"
                 width="1px"
-                height="100%"
+                height="full"
                 bg="gray.100"
               />
             )}
             {columnItems.map((item) => (
-              <Box key={item.key} data-testid={`item-${item.key}`}>
+              <Fragment key={item.key}>
                 {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
                   <CheckboxGroupCollapsibleWithChildren
                     item={item}
@@ -73,9 +73,9 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
                     indentFacet={hasGroups}
                   />
                 )}
-              </Box>
+              </Fragment>
             ))}
-          </Box>
+          </GridItem>
         ))}
       </Grid>
     </TranslationProvider>

@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 
 import { Item } from '../type';
 import CheckboxFilter from '../index';
@@ -290,11 +290,22 @@ describe('<CheckBoxFilter />', () => {
 
       const columns = screen.getAllByTestId('column');
       expect(columns).toHaveLength(columnsNumber);
-
-      columns.forEach((_, index) => {
-        const items = screen.getByTestId(`item-${options[index].key}`);
-        expect(items).toBeInTheDocument();
-      });
+      const [firstColumn, secondColumn] = columns;
+      expect(
+        within(firstColumn).getByRole('checkbox', { name: /Used/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(firstColumn).getByRole('checkbox', { name: /New/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(firstColumn).getByRole('checkbox', { name: /Oldtimer/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(secondColumn).getByRole('checkbox', { name: /Newtimer/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(secondColumn).getByRole('checkbox', { name: /Halftimer/ }),
+      ).toBeInTheDocument();
     });
   });
 });
