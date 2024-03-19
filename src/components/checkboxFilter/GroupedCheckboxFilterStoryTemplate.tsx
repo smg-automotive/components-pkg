@@ -61,6 +61,72 @@ function StoryTemplate({
         },
       ],
     },
+    {
+      label: 'Used',
+      key: 'used',
+      facet: 50,
+      isChecked: filter.conditionTypeGroup.includes('used'),
+      filterName: parentFilterName,
+      childCheckboxes: [],
+    },
+    {
+      label: 'Lowered',
+      key: 'lowered',
+      facet: 20,
+      isChecked: filter.conditionTypeGroup.includes('lowered'),
+      filterName: parentFilterName,
+      childCheckboxes: [],
+      image: (
+        <img src="https://placekitten.com/g/100/50" alt="placeholder image" />
+      ),
+    },
+    {
+      label: 'Accident',
+      key: 'accident',
+      facet: 10,
+      isChecked: filter.conditionTypeGroup.includes('accident'),
+      filterName: parentFilterName,
+      childCheckboxes: [
+        {
+          label: 'Only a little bit accident',
+          key: 'small-accident',
+          facet: 77,
+          isChecked: filter.conditionType.includes('small-accident'),
+          filterName: childFilterName,
+          image: (
+            <img
+              src="https://placekitten.com/g/100/50"
+              alt="placeholder image"
+            />
+          ),
+        },
+        {
+          label:
+            'Exponentially super duper bad accident that caused the airbags to deploy and the car to be totaled. Only buy when you are a mechanic.',
+          key: 'big-accident',
+          facet: 3,
+          isChecked: filter.conditionType.includes('big-accident'),
+          filterName: childFilterName,
+        },
+      ],
+    },
+    {
+      label:
+        'Super duper long group name that will break on multiple lines. Usually on Italian and French but also happens on other things',
+      key: 'long',
+      facet: 100,
+      isChecked: filter.conditionTypeGroup.includes('long'),
+      filterName: parentFilterName,
+      childCheckboxes: [
+        {
+          label: 'Foo',
+          key: 'foo',
+          facet: 77,
+          isChecked: filter.conditionType.includes('foo'),
+          filterName: childFilterName,
+        },
+      ],
+    },
   ];
 
   const getAllChildrenByParentKey = (key?: Values): string[] => {

@@ -35,7 +35,6 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   const hasGroups = items.some(
     (item) => (item.childCheckboxes ?? []).length > 0,
   );
-
   const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
 
   return (
