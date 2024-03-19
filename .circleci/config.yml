@@ -20,7 +20,7 @@ slack_context: &SLACK_NOTIFICATION_CONTEXT
     - &SLACK_NOTIFICATION_CONTEXT_ENTRY FE Slack notifications
 
 phrase_context: &PHRASE_CONTEXT
-  context: 
+  context:
     - CLI Phrase
     - *SLACK_NOTIFICATION_CONTEXT_ENTRY
 
@@ -41,7 +41,7 @@ slack_notify: &SLACK_NOTIFY
     branch_pattern: main
 
 orbs:
-  slack: circleci/slack@4.12.6
+  slack: circleci/slack@4.13.1
 
 jobs:
   install:
@@ -141,7 +141,6 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-          version: 20.10.14
       - run: /build/build.sh
       - run: /push/push.sh
       - <<: *SLACK_NOTIFY

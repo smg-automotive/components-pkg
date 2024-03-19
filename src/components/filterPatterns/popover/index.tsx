@@ -33,6 +33,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   showCallToActionButton = true,
   header,
   children,
+  triggerHeight = 'md',
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -64,8 +65,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
     color: 'gray.900',
   };
 
-  const isDisplayAndApplied = isApplied && displayValue;
-
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <I18nContext.Consumer>
@@ -82,16 +81,16 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               <PopoverTrigger>
                 <ChakraButton
                   borderRadius="sm"
-                  borderRightColor={isDisplayAndApplied ? 'white' : undefined}
-                  borderRightWidth={isDisplayAndApplied ? '1px' : undefined}
+                  borderRightColor={displayValue ? 'white' : undefined}
+                  borderRightWidth={displayValue ? '1px' : undefined}
                   display="flex"
                   flex="1"
-                  h="md"
+                  height={triggerHeight}
                   justifyContent="space-between"
                   minW="0"
                   paddingX="md"
                   rightIcon={
-                    isDisplayAndApplied ? undefined : (
+                    displayValue ? undefined : (
                       <ChevronDownSmallIcon
                         w="xs"
                         h="xs"
@@ -113,15 +112,15 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   >
                     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
                     {[
-                      isApplied ? appliedLabel ?? label : label,
-                      displayValue && isApplied ? displayValue : null,
+                      displayValue ? appliedLabel ?? label : label,
+                      displayValue,
                     ]
                       .filter(Boolean)
                       .join(': ')}
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
-              {isDisplayAndApplied ? (
+              {displayValue ? (
                 <IconButton
                   isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}

@@ -18,7 +18,8 @@
       "buttonLabel": "Alla pagina iniziale",
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Siamo spiacenti, il tuo browser ha generato un errore"
-    }
+    },
+    "reloadPage": "Ricaricare la pagina"
   },
   "filterSelectButton": {
     "close": "Vicino",
@@ -108,12 +109,10 @@
       "dealer": "commercianti",
       "findPartsAndAccessories": "Pezzi e accessori",
       "insuranceComparison": "Confronto di assicurazioni",
-      "recentSearches": "Ultime ricerche",
       "searchCars": "Ricerca veicolo",
       "searchMerchant": "Ricerca commerciante",
       "searchMotorcycles": "Ricerca moto",
       "simpleSearch": "Ricerca semplice (pagina iniziale)",
-      "vehicleRating": "Valutare veicolo",
       "vehicles": "Veicoli",
       "viewedListings": "Annunci visualizzati"
     },

@@ -18,7 +18,8 @@
       "buttonLabel": "Vers la page d’accueil",
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, votre navigateur a généré une erreur"
-    }
+    },
+    "reloadPage": "Rechargez la page"
   },
   "filterSelectButton": {
     "close": "Fermer",
@@ -108,12 +109,10 @@
       "dealer": "Points de vente",
       "findPartsAndAccessories": "Pièces et accessoires",
       "insuranceComparison": "Comparaison d’assurances",
-      "recentSearches": "Dernières recherches",
       "searchCars": "Rechercher des véhicules",
       "searchMerchant": "Rechercher point de vente",
       "searchMotorcycles": "Rechercher des motos",
       "simpleSearch": "Recherche simple (page d'accueil)",
-      "vehicleRating": "Evaluer le véhicule",
       "vehicles": "Véhicules",
       "viewedListings": "Annonces vues"
     },

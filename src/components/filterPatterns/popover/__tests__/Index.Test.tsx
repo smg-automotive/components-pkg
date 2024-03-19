@@ -227,19 +227,6 @@ describe('<PopoverFilter />', () => {
     expect(screen.getByText('Treibstoff')).toBeInTheDocument();
   });
 
-  it('should only show the label when isApplied is false', () => {
-    render(
-      <PopoverFilter
-        {...validProps}
-        isApplied={false}
-        displayValue="Benzin, Wasserstoff"
-      >
-        <div>Popover content</div>
-      </PopoverFilter>,
-    );
-    expect(screen.getByText('Treibstoff')).toBeInTheDocument();
-  });
-
   it('should allow to overwrite the applied label if the real label is for example too long', () => {
     render(
       <PopoverFilter
