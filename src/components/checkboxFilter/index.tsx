@@ -17,7 +17,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   language,
 }: Props<ItemKey, FilterName>) {
   const hasGroups = items.some(
-    (item) => (item.childCheckboxes ?? []).length > 0
+    (item) => (item.childCheckboxes ?? []).length > 0,
   );
 
   const itemsPerColumn = Math.ceil(items.length / numberOfColumnsOnDesktop);
@@ -35,10 +35,10 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
       const columnStartIndex = columnIndex * itemsPerColumn;
       const columnEndIndex = Math.min(
         (columnIndex + 1) * itemsPerColumn,
-        items.length
+        items.length,
       );
       return [...items].slice(columnStartIndex, columnEndIndex);
-    }
+    },
   );
 
   return (

@@ -74,15 +74,15 @@ function StoryTemplate({
   const removeParentFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ): Filter => {
     const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName]: parentFilter.filter(
-        (parent) => parent !== updatedItem.key
+        (parent) => parent !== updatedItem.key,
       ),
       [childFilterName]: childFilter.filter(
-        (child) => !childrenToUpdate.includes(child)
+        (child) => !childrenToUpdate.includes(child),
       ),
     } as Filter;
   };
@@ -90,13 +90,13 @@ function StoryTemplate({
   const addParentFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ): Filter => {
     const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName as FilterType]: [...parentFilter, updatedItem.key],
       [childFilterName]: childFilter.filter(
-        (child) => !childrenToUpdate.includes(child)
+        (child) => !childrenToUpdate.includes(child),
       ),
     } as Filter;
   };
@@ -116,7 +116,7 @@ function StoryTemplate({
   const getParentItemByChildrenKey = (key?: Values) => {
     if (!key) return null;
     return checkboxes.find((box) =>
-      box.childCheckboxes?.find((child) => child.key === key)
+      box.childCheckboxes?.find((child) => child.key === key),
     );
   };
 
@@ -124,14 +124,14 @@ function StoryTemplate({
     parentFilter: string[],
     childFilter: string[],
     updatedItem: Item<Values, FilterType>,
-    parentItem: Item<Values, FilterType>
+    parentItem: Item<Values, FilterType>,
   ): Filter => {
     const childrenToUpdate = getAllChildrenByParentKey(parentItem.key).filter(
-      (childKey) => childKey !== updatedItem.key
+      (childKey) => childKey !== updatedItem.key,
     );
     return {
       [parentFilterName]: parentFilter.filter(
-        (parent) => parent !== parentItem.key
+        (parent) => parent !== parentItem.key,
       ),
       [childFilterName]: [...childFilter, ...childrenToUpdate],
     } as Filter;
@@ -140,13 +140,13 @@ function StoryTemplate({
   const removeAllChildrenAndAddParent = (
     parentFilter: string[],
     childFilter: string[],
-    parentItem: Item<Values, FilterType>
+    parentItem: Item<Values, FilterType>,
   ): Filter => {
     const childrenToRemove = getAllChildrenByParentKey(parentItem.key);
     return {
       [parentFilterName]: [...parentFilter, parentItem.key],
       [childFilterName]: childFilter.filter(
-        (childKey) => !childrenToRemove.includes(childKey)
+        (childKey) => !childrenToRemove.includes(childKey),
       ),
     } as Filter;
   };
@@ -154,7 +154,7 @@ function StoryTemplate({
   const addChildFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ) => {
     return {
       [parentFilterName]: parentFilter,
@@ -165,12 +165,12 @@ function StoryTemplate({
   const removeChildFilter = (
     parentFilter: string[],
     childFilter: string[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ) => {
     return {
       [parentFilterName]: parentFilter,
       [childFilterName]: childFilter.filter(
-        (childKey) => childKey !== updatedItem.key
+        (childKey) => childKey !== updatedItem.key,
       ),
     } as Filter;
   };
@@ -186,18 +186,18 @@ function StoryTemplate({
             parentFilter,
             childFilter,
             updatedItem,
-            parentItem
+            parentItem,
           );
         }
         if (updatedItem.isChecked) {
           const childrenWithoutModified = parentItem.childCheckboxes.filter(
-            (child) => child.key !== updatedItem.key
+            (child) => child.key !== updatedItem.key,
           );
           if (childrenWithoutModified.every((child) => child.isChecked)) {
             return removeAllChildrenAndAddParent(
               parentFilter,
               childFilter,
-              parentItem
+              parentItem,
             );
           }
           return addChildFilter(parentFilter, childFilter, updatedItem);
