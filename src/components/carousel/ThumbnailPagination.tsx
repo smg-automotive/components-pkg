@@ -6,8 +6,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { EmblaCarouselType } from 'embla-carousel-react';
 
+import { UseEmblaCarouselType } from 'embla-carousel-react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import Flex from '../flex';
@@ -18,9 +18,9 @@ import Thumbnail from './Thumbnail';
 interface Props {
   currentSlideIndex: number;
   thumbnails: ReactNode[];
-  mainCarousel?: EmblaCarouselType;
+  mainCarousel?: UseEmblaCarouselType[1];
   paginationCarouselRef?: LegacyRef<HTMLDivElement>;
-  paginationCarousel?: EmblaCarouselType;
+  paginationCarousel?: UseEmblaCarouselType[1];
 }
 
 const ThumbnailPagination: FC<Props> = ({
@@ -50,14 +50,12 @@ const ThumbnailPagination: FC<Props> = ({
   const onThumbnailClick = useCallback(
     (index: number) => {
       if (!mainCarousel || !paginationCarousel) return;
-      if (paginationCarousel.clickAllowed()) {
-        mainCarousel.scrollTo(index);
-      }
+      mainCarousel.scrollTo(index);
     },
     [mainCarousel, paginationCarousel],
   );
 
-  const onScroll = useCallback(() => {
+  const evalPaginationButtonVisibility = useCallback(() => {
     if (
       !paginationCarousel ||
       paginationCarousel.slidesNotInView().length === 0
@@ -79,9 +77,12 @@ const ThumbnailPagination: FC<Props> = ({
 
   useEffect(() => {
     if (!paginationCarousel) return;
-    onScroll();
-    paginationCarousel.on('scroll', onScroll);
-  }, [paginationCarousel, onScroll]);
+
+    evalPaginationButtonVisibility();
+
+    paginationCarousel.on('scroll', evalPaginationButtonVisibility);
+    paginationCarousel.on('slidesInView', evalPaginationButtonVisibility);
+  }, [paginationCarousel, evalPaginationButtonVisibility]);
 
   return (
     <Box ref={paginationCarouselRef} __css={pagination} aria-label="Pagination">
