@@ -1,0 +1,26 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as ClearableStories from './clearable.stories.tsx';
+
+import Input from './index.tsx';
+
+<Meta of={ClearableStories} />
+
+# Input
+
+## Clearable
+
+### Uncontrolled
+
+<Canvas>
+  <Story of={ClearableStories.Uncontrolled} />
+</Canvas>
+
+<Controls />
+
+### Controlled
+
+<Canvas>
+  <Story of={ClearableStories.Controlled} />
+</Canvas>
+
+<Controls />

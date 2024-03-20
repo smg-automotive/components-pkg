@@ -1,0 +1,16 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as UnorderedListStories from './UnorderedList.stories.tsx';
+
+<Meta of={UnorderedListStories} />
+
+# List
+
+## Overview
+
+Use `showContainer` to see the difference between `icon-inside` and `icon-outside` variants.
+
+<Canvas>
+  <Story of={UnorderedListStories.UnorderedList} />
+</Canvas>
+
+<Controls />

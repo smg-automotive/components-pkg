@@ -1,0 +1,26 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as HeadingStories from './Heading.stories.tsx';
+
+<Meta of={HeadingStories} />
+
+# Filter heading
+
+<Controls />
+
+## With close button
+
+<Canvas>
+  <Story of={HeadingStories.WithCloseButton} />
+</Canvas>
+
+## Without close button
+
+<Canvas>
+  <Story of={HeadingStories.WithoutCloseButton} />
+</Canvas>
+
+## Applied
+
+<Canvas>
+  <Story of={HeadingStories.Applied} />
+</Canvas>

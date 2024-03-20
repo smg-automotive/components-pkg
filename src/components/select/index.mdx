@@ -1,0 +1,34 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+# Select
+
+## Overview
+
+<Canvas>
+  <Story of={IndexStories.Overview} />
+</Canvas>
+
+<Controls />
+
+## Focused
+
+<Canvas>
+  <Story of={IndexStories.Focused} />
+</Canvas>
+
+<Controls />
+
+<Canvas>
+  <Story of={IndexStories.Invalid} />
+</Canvas>
+
+<Controls />
+
+<Canvas>
+  <Story of={IndexStories.Disabled} />
+</Canvas>
+
+<Controls />

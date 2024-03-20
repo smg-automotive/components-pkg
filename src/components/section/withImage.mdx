@@ -1,0 +1,45 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as WithImageStories from './withImage.stories.tsx';
+
+<Meta of={WithImageStories} />
+
+
+# Sections
+
+## With Image
+
+### Hero
+
+<Canvas>
+  <Story of={WithImageStories.Hero} />
+</Canvas>
+
+<Controls />
+
+### Hero Responsive
+
+Bigger image on mobile and tablet viewports.
+
+<Canvas>
+  <Story of={WithImageStories.HeroResponsive} />
+</Canvas>
+
+<Controls />
+
+### Regular
+
+<Canvas>
+  <Story of={WithImageStories.Regular} />
+</Canvas>
+
+<Controls />
+
+### Regular Responsive
+
+Bigger image on mobile and tablet viewports.
+
+<Canvas>
+  <Story of={WithImageStories.RegularResponsive} />
+</Canvas>
+
+<Controls />

@@ -1,0 +1,34 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as WithVehicleReferenceStories from './WithVehicleReference.stories.tsx';
+
+<Meta of={WithVehicleReferenceStories} />
+
+# Layout with vehicle reference
+
+## With title
+
+<Canvas>
+  <Story of={WithVehicleReferenceStories.WithTitle} />
+</Canvas>
+
+<Controls />
+
+## With back link
+
+<Canvas>
+  <Story of={WithVehicleReferenceStories.WithBackLink} />
+</Canvas>
+
+<Controls />
+
+## Without back link and title
+
+<Canvas>
+  <Story of={WithVehicleReferenceStories.WithoutBackLinkAndTitle} />
+</Canvas>
+
+<Canvas>
+  <Story of={WithVehicleReferenceStories.WithoutHeader} />
+</Canvas>
+
+<Controls />

@@ -1,0 +1,22 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+# Rating
+
+## Large
+
+<Canvas>
+  <Story of={IndexStories.Large} />
+</Canvas>
+
+<Controls />
+
+## Small
+
+<Canvas>
+  <Story of={IndexStories.Small} />
+</Canvas>
+
+<Controls />

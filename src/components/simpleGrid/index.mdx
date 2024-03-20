@@ -1,0 +1,30 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+# SimpleGrid
+
+## Overview
+
+<Canvas>
+  <Story of={IndexStories.Overview} />
+</Canvas>
+
+<Controls />
+
+## Responsive
+
+2 columns on `2xs` 3 on `sm`. The same approach can be taken for other props.
+
+<Canvas>
+  <Story of={IndexStories.Responsive} />
+</Canvas>
+
+## Auto-responsive
+
+Adds a column when there's enough space for another child according to `minChildWidth`
+
+<Canvas>
+  <Story of={IndexStories.AutoResponsive} />
+</Canvas>

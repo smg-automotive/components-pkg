@@ -1,0 +1,18 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as DebounceStories from './debounce.stories.tsx';
+
+import { action } from '@storybook/addon-actions';
+
+import Input from './index.tsx';
+
+<Meta of={DebounceStories} />
+
+# Input
+
+## Debounced
+
+<Canvas>
+  <Story of={DebounceStories.Default} />
+</Canvas>
+
+<Controls />

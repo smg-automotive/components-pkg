@@ -1,0 +1,26 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as SizeStories from './size.stories.tsx';
+
+import Radio from './index.tsx';
+
+<Meta of={SizeStories} />
+
+# Radio
+
+## Sizes
+
+### Medium
+
+<Canvas>
+  <Story of={SizeStories.Medium} />
+</Canvas>
+
+<Controls />
+
+### Small
+
+<Canvas>
+  <Story of={SizeStories.Small} />
+</Canvas>
+
+<Controls />

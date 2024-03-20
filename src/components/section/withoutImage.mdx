@@ -1,0 +1,24 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as WithoutImageStories from './withoutImage.stories.tsx';
+
+<Meta of={WithoutImageStories} />
+
+# Sections
+
+## Without Image
+
+### Hero
+
+<Canvas>
+  <Story of={WithoutImageStories.Hero} />
+</Canvas>
+
+<Controls />
+
+### Regular
+
+<Canvas>
+  <Story of={WithoutImageStories.Regular} />
+</Canvas>
+
+<Controls />

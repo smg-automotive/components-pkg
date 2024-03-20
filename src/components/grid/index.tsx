@@ -3,7 +3,7 @@ import {
   Grid as ChakraGrid,
   ComponentWithAs,
   forwardRef,
-  GridProps,
+  type GridProps,
 } from '@chakra-ui/react';
 
 const Grid: ComponentWithAs<'div', GridProps> = forwardRef<GridProps, 'div'>(
@@ -16,4 +16,4 @@ const Grid: ComponentWithAs<'div', GridProps> = forwardRef<GridProps, 'div'>(
 Grid.displayName = 'Grid';
 
 export default Grid;
-export { GridProps };
+export { type GridProps };

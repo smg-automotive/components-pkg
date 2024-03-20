@@ -1,0 +1,25 @@
+import { Controls, Meta, Story } from '@storybook/blocks';
+import { action } from '@storybook/addon-actions';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+# Checkbox
+
+<Controls />
+
+## Overview
+
+<Story of={IndexStories.Overview} />
+
+## Label with image, with large text
+
+<Story of={IndexStories.LabelWithImageWithLargeText} />
+
+## Checkbox with multiple columns
+
+<Story of={IndexStories.CheckboxWithMultipleColumns} />
+
+## Grouped checkbox filter
+
+<Story of={IndexStories.GroupedCheckboxFilter} />

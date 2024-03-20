@@ -1,0 +1,22 @@
+import { Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+## Overview
+
+<Canvas>
+  <Story of={IndexStories.Overview} />
+</Canvas>
+
+## With initial value
+
+<Canvas>
+  <Story of={IndexStories.WithInitialValue} />
+</Canvas>
+
+## Without unit
+
+<Canvas>
+  <Story of={IndexStories.WithoutUnit} />
+</Canvas>

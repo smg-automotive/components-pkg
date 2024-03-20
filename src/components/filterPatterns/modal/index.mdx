@@ -1,0 +1,38 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+# Modal filter
+
+<Controls />
+
+## Default empty
+
+<Canvas>
+  <Story of={IndexStories.DefaultEmpty} />
+</Canvas>
+
+## Applied
+
+<Canvas>
+  <Story of={IndexStories.Applied} />
+</Canvas>
+
+## Without call-to-action button
+
+<Canvas>
+  <Story of={IndexStories.WithoutCallToActionButton} />
+</Canvas>
+
+## With custom header
+
+<Canvas>
+  <Story of={IndexStories.WithCustomHeader} />
+</Canvas>
+
+## With icon
+
+<Canvas>
+  <Story of={IndexStories.WithIcon} />
+</Canvas>

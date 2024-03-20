@@ -1,0 +1,42 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as StateStories from './state.stories.tsx';
+
+import Input from './index.tsx';
+
+<Meta of={StateStories} />
+
+# Input
+
+## States
+
+### Default
+
+<Canvas>
+  <Story of={StateStories.Default} />
+</Canvas>
+
+<Controls />
+
+### Focused
+
+<Canvas>
+  <Story of={StateStories.Focused} />
+</Canvas>
+
+<Controls />
+
+### Disabled
+
+<Canvas>
+  <Story of={StateStories.Disabled} />
+</Canvas>
+
+<Controls />
+
+### Invalid
+
+<Canvas>
+  <Story of={StateStories.Invalid} />
+</Canvas>
+
+<Controls />

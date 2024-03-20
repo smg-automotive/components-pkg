@@ -1,0 +1,30 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+<Meta of={IndexStories} />
+
+# Vehicle reference
+
+## Vehicle reference with image
+
+<Canvas>
+  <Story of={IndexStories.VehicleReferenceWithImage} />
+</Canvas>
+
+<Controls />
+
+## Vehicle reference missing image
+
+<Canvas>
+  <Story of={IndexStories.VehicleReferenceMissingImage} />
+</Canvas>
+
+<Controls />
+
+## Vehicle reference with minimal props
+
+<Canvas>
+  <Story of={IndexStories.VehicleReferenceWithMinimalProps} />
+</Canvas>
+
+<Controls />

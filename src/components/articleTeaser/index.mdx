@@ -1,0 +1,28 @@
+import { Controls, Canvas, Meta, Story } from '@storybook/blocks';
+import * as IndexStories from './index.stories.tsx';
+
+import { Box } from '@chakra-ui/react';
+
+import ArticleTeaser from './index.tsx';
+
+<Meta of={IndexStories} />
+
+# ArticleTeaser
+
+## Overview
+
+<Canvas>
+  <Story of={IndexStories.Overview} />
+</Canvas>
+
+<Controls />
+
+## Responsive
+
+Bigger image on mobile viewport.
+
+<Canvas>
+  <Story of={IndexStories.Responsive} />
+</Canvas>
+
+<Controls />
