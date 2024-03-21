@@ -19,6 +19,7 @@ type Values =
 type Props = {
   onApplyAction: (args: unknown) => void;
   onToggleCheckboxGroupAction: (args: unknown) => void;
+  numberOfColumnsOnDesktop?: number;
 };
 
 type FilterType = 'conditionType' | 'conditionTypeGroup';
@@ -26,7 +27,11 @@ const parentFilterName: FilterType = 'conditionTypeGroup';
 const childFilterName: FilterType = 'conditionType';
 
 type Filter = Record<FilterType, string[]>;
-function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
+function StoryTemplate({
+  onApplyAction,
+  onToggleCheckboxGroupAction,
+  numberOfColumnsOnDesktop,
+}: Props) {
   const [filter, setFilter] = useState<Filter>({
     conditionType: [],
     conditionTypeGroup: [],
@@ -285,6 +290,7 @@ function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
       onApply={onApply}
       onToggleCheckboxGroup={onToggleCheckboxGroupAction}
       language="en"
+      numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
     />
   );
 }
