@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
-import Input from './index.tsx';
+import Input from './index';
 
 const Container = ({ children }) => {
   return (

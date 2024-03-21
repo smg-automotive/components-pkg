@@ -6,7 +6,7 @@ import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
-import { ModalFilter } from './index.tsx';
+import { ModalFilter } from './index';
 
 const Template = (args) => (
   <Box paddingX="lg">

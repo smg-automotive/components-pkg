@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react';
 
-import { Input } from 'src/index.ts';
+import { Input } from 'src/index';
 
-import FormControl from './index.tsx';
+import FormControl from './index';
 
 const Template = (args) => {
   return (

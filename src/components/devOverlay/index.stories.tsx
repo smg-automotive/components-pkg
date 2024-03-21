@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 
 import { Brand } from 'src/types/brand';
@@ -6,9 +7,9 @@ import { Brand } from 'src/types/brand';
 import ThemeProvider from '../themeProvider';
 import { FullHeight } from '../index';
 
-import DevOverlayComponent from './index';
+import DevOverlayComponent, { type DevOverlayProps } from './index';
 
-const Template = ({ ...args }) => {
+const Template = (args: DevOverlayProps) => {
   const [{ activeTheme }, updateArgs] = useArgs();
   const toggleTheme = () => {
     if (activeTheme === Brand.AutoScout24) {
@@ -25,12 +26,19 @@ const Template = ({ ...args }) => {
   );
 };
 
-export default {
+const meta: Meta<typeof DevOverlayComponent> = {
   title: 'Theme/DevOverlay',
   component: DevOverlayComponent,
 
   parameters: {
     layout: 'fullscreen',
+  },
+
+  argTypes: {
+    activeTheme: {
+      options: [Brand.AutoScout24, Brand.MotoScout24],
+      control: 'select',
+    },
   },
 };
 
@@ -52,11 +60,6 @@ export const DevOverlay = {
 
     activeTheme: Brand.AutoScout24,
   },
-
-  argTypes: {
-    activeTheme: {
-      options: [Brand.AutoScout24, Brand.MotoScout24],
-      control: 'select',
-    },
-  },
 };
+
+export default meta;

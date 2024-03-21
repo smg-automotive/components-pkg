@@ -6,7 +6,7 @@ import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
-import { PopoverFilter } from './index.tsx';
+import { PopoverFilter } from './index';
 
 const Template = (args) => (
   <Box w={{ base: 'full', sm: '250px' }} h="400px">

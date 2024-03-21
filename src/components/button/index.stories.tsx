@@ -1,19 +1,25 @@
-import { Stack } from 'src/index.ts';
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
-import { ShareIcon, TrashIcon, VideoIcon } from '../index.ts';
-import Button from './index.tsx';
+import { Stack } from 'src/index';
 
-const Template = (args) => <Button {...args}>{args.label}</Button>;
+import { ShareIcon, TrashIcon, VideoIcon } from '../index';
+
+import Button, { type ButtonProps } from './index';
+
+const Template = (
+  args: Exclude<ButtonProps, 'children'> & { label: string },
+) => <Button {...args}>{args.label}</Button>;
 const variants = ['primary', 'secondary', 'success', 'transparent'];
 
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
 };
 
 export const Primary = {
   render: Template.bind({}),
-  name: 'Primary',
 
   args: {
     isDisabled: false,
@@ -37,7 +43,6 @@ export const Primary = {
 
 export const Secondary = {
   render: Template.bind({}),
-  name: 'Secondary',
 
   args: {
     isDisabled: false,
@@ -61,7 +66,6 @@ export const Secondary = {
 
 export const Success = {
   render: Template.bind({}),
-  name: 'Success',
 
   args: {
     isDisabled: false,
@@ -85,7 +89,6 @@ export const Success = {
 
 export const Transparent = {
   render: Template.bind({}),
-  name: 'Transparent',
 
   args: {
     isDisabled: false,
@@ -116,28 +119,30 @@ export const Transparent = {
 export const Sizes = {
   render: () => (
     <Stack spacing="lg" direction="row">
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
+      <Button size="md" as="button">
+        Medium
+      </Button>
+      <Button size="lg" as="button">
+        Large
+      </Button>
     </Stack>
   ),
-
-  name: 'Sizes',
 };
 
 export const Disabled = {
   render: () => (
     <Stack spacing="lg" direction="row">
-      <Button isDisabled={true}>Primary Button</Button>
-      <Button variant="secondary" isDisabled={true}>
+      <Button isDisabled={true} onClick={action('onClick')}>
+        Primary Button
+      </Button>
+      <Button variant="secondary" isDisabled={true} onClick={action('onClick')}>
         Secondary Button
       </Button>
-      <Button variant="success" isDisabled={true}>
+      <Button variant="success" isDisabled={true} onClick={action('onClick')}>
         Success Button
       </Button>
     </Stack>
   ),
-
-  name: 'Disabled',
 };
 
 export const ButtonAsLink = {
@@ -255,3 +260,5 @@ export const IconButton = {
     },
   },
 };
+
+export default meta;

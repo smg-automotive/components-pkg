@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-import CheckboxGroup from './index.tsx';
+import CheckboxGroup, { type CheckboxGroupProps } from './index';
 
-const Template = ({ ...args }) => {
+const Template = (args: CheckboxGroupProps) => {
   const [state, setState] = useState({
     [0]: true,
     [1]: false,
@@ -77,8 +77,6 @@ export default {
 
 export const Overview = {
   render: Template.bind({}),
-  name: 'Overview',
-
   args: {
     name: 'Control',
     value: 1,

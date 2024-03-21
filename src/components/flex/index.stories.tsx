@@ -1,5 +1,6 @@
 import Box from '../box';
-import Flex from './index.tsx';
+
+import Flex from './index';
 
 const Template = (args) => (
   <Flex {...args}>

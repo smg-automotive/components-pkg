@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import {
   CardBody,
@@ -7,20 +8,30 @@ import {
   CardHeader,
 } from './index';
 
-const Template = ({ tileContent, bodyContent, footerContent, maxWidth }) => (
+const Template = ({
+  titleContent,
+  bodyContent,
+  footerContent,
+  maxWidth,
+}: {
+  maxWidth: number;
+  titleContent?: string;
+  bodyContent?: string;
+  footerContent?: string;
+}) => (
   <CardComponent maxW={`${maxWidth}px`}>
-    {tileContent ? <CardHeader>{tileContent}</CardHeader> : null}
+    {titleContent ? <CardHeader>{titleContent}</CardHeader> : null}
     {bodyContent ? <CardBody>{bodyContent}</CardBody> : null}
     {footerContent ? <CardFooter>{footerContent}</CardFooter> : null}
   </CardComponent>
 );
 
-export default {
+const meta: Meta<typeof CardComponent> = {
   title: 'Components/Data display/Card',
   component: CardComponent,
 
   args: {
-    tileContent: 'I am title',
+    titleContent: 'I am title',
     bodyContent: 'I am body',
     footerContent: 'I am footer',
     maxWidth: 400,
@@ -38,5 +49,6 @@ export default {
 
 export const Card = {
   render: Template.bind({}),
-  name: 'Card',
 };
+
+export default meta;

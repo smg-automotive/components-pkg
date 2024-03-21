@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
 
-import Textarea from './index.tsx';
+import Textarea from './index';
 
 const Container = ({ children }) => {
   return (

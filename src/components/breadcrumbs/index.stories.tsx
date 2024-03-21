@@ -5,7 +5,9 @@ import BreadcrumbItem from './Item';
 
 import BreadcrumbsComponent from './index';
 
-const Template = (args) => (
+const Template = (args: {
+  crumbs: Array<{ title: string; href?: string }>;
+}) => (
   <BreadcrumbsComponent>
     {args.crumbs.map((crumb, i) => (
       <BreadcrumbItem key={i}>
@@ -22,8 +24,6 @@ export default {
 
 export const Breadcrumbs = {
   render: Template.bind({}),
-  name: 'Breadcrumbs',
-
   args: {
     crumbs: [
       {

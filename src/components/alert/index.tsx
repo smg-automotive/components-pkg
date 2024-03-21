@@ -15,12 +15,12 @@ import { BareAlertProps } from './Bare';
 
 type SharedProps = Omit<BareAlertProps, 'onClose'>;
 
-type DismissibleProps = SharedProps & {
+export type DismissibleProps = SharedProps & {
   onDismiss?: () => void;
   dismissible?: true;
 };
 
-type NonDismissibleProps = SharedProps & {
+export type NonDismissibleProps = SharedProps & {
   onDismiss?: never;
   dismissible?: false;
 };

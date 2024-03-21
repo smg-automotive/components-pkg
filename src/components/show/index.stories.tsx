@@ -1,4 +1,4 @@
-import Show from './index.tsx';
+import Show from './index';
 
 const Template = ({ text, ...args }) => {
   const breakpoint = args.below || args.above || '[please pass a breakpoint]';

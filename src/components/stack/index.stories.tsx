@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
-import Stack from './index.tsx';
+import Stack from './index';
 
 const Template = (args) => {
   return (

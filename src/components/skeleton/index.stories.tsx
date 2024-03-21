@@ -1,5 +1,6 @@
 import { Box } from '../index';
-import Skeleton from './index.tsx';
+
+import Skeleton from './index';
 
 export default {
   title: 'Components/Feedback/Skeleton',

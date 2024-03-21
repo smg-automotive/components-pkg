@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Meta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
-import { Stack } from 'src/index.ts';
+import { Stack } from 'src/index';
 
-import Checkbox from './index.tsx';
+import Checkbox, { type CheckboxProps } from './index';
 
-const Template = ({ isChecked, ...args }) => {
+const Template = ({ isChecked, ...args }: CheckboxProps) => {
   const [checked, setChecked] = useState(isChecked);
   return (
     <Checkbox
       {...args}
       isChecked={checked}
-      onChange={(e) => setChecked(e.target.checked)}
+      onChange={(e) => {
+        setChecked(e.target.checked);
+        action('onChange')(e);
+      }}
     />
   );
 };
@@ -26,31 +31,41 @@ const IndeterminateTemplate = () => {
         isChecked={allChecked}
         isIndeterminate={isIndeterminate}
         onChange={(e) => setCheckedItems([e.target.checked, e.target.checked])}
+        name="parent-checkbox"
       />
-      <Stack pl="lg" mt="s" spacing="s">
+      <Stack paddingX="lg" marginY="s" spacing="s">
         <Checkbox
           label="Child Checkbox 1"
           isChecked={checkedItems[0]}
           onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
+          name="child-checkbox-1"
         />
         <Checkbox
           label="Child Checkbox 2"
           isChecked={checkedItems[1]}
           onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
+          name="child-checkbox-2"
         />
       </Stack>
     </>
   );
 };
 
-export default {
+const meta: Meta<typeof Checkbox> = {
   title: 'Components/Forms/Checkbox',
   component: Checkbox,
+  argTypes: {
+    value: {
+      table: { disable: true },
+    },
+    isChecked: {
+      table: { disable: true },
+    },
+  },
 };
 
 export const Overview = {
   render: Template.bind({}),
-  name: 'Overview',
 
   args: {
     name: 'Control',
@@ -64,7 +79,6 @@ export const Overview = {
 
 export const Selected = {
   render: Template.bind({}),
-  name: 'Selected',
 
   args: {
     name: 'Control',
@@ -77,7 +91,6 @@ export const Selected = {
 
 export const Invalid = {
   render: Template.bind({}),
-  name: 'Invalid',
 
   args: {
     name: 'Control',
@@ -92,15 +105,19 @@ export const Invalid = {
 export const Disabled = {
   render: () => (
     <Stack spacing="lg" direction="row">
-      <Checkbox isDisabled={true} label="Disabled" />
-      <Checkbox isDisabled={true} isChecked={true} label="Disabled checked" />
+      <Checkbox isDisabled={true} label="Disabled" name="disabled-1" />
+      <Checkbox
+        isDisabled={true}
+        isChecked={true}
+        label="Disabled checked"
+        name="disabled-2"
+      />
     </Stack>
   ),
-
-  name: 'Disabled',
 };
 
 export const Indeterminate = {
   render: IndeterminateTemplate.bind({}),
-  name: 'Indeterminate',
 };
+
+export default meta;

@@ -1,17 +1,14 @@
-import React from 'react';
+import { Meta } from '@storybook/react';
 
 import CenterComponent from './index';
 
-const Template = () => {
-  return <CenterComponent>I am centered!</CenterComponent>;
-};
-
-export default {
+const meta: Meta<typeof CenterComponent> = {
   title: 'Layout/Center',
   component: CenterComponent,
+  args: {
+    children: 'I am centered',
+  },
 };
 
-export const Center = {
-  render: Template.bind({}),
-  name: 'Center',
-};
+export const Center = {};
+export default meta;

@@ -1,7 +1,7 @@
 import { Box, Center } from '@chakra-ui/react';
 
 import { FullHeight } from '../index';
-import SingleColumnCenteredLayout from './SingleColumnCentered.tsx';
+import SingleColumnCenteredLayout from './SingleColumnCentered';
 
 const WithContent = () => (
   <FullHeight>

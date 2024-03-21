@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
-import SimpleGrid from './index.tsx';
+import SimpleGrid from './index';
 
 const Template = ({ maxW, ...args }) => {
   return (

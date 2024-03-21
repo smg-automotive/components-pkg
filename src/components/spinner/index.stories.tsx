@@ -1,6 +1,6 @@
-import { Stack } from 'src/index.ts';
+import { Stack } from 'src/index';
 
-import Spinner from './index.tsx';
+import Spinner from './index';
 
 const Template = (args) => {
   return <Spinner {...args} />;

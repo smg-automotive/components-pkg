@@ -11,7 +11,7 @@ import Accordion, { type AccordionProps } from './index';
 const Template = (
   args: AccordionProps & {
     items: { title: string; content: string; leftIcon?: React.ReactNode }[];
-  }
+  },
 ) => (
   <Accordion
     allowMultiple={args?.allowMultiple}
@@ -32,15 +32,17 @@ const Template = (
 const meta: Meta<typeof Template> = {
   title: 'Patterns/Navigation/Accordion',
   component: Accordion,
+  args: {
+    allowMultiple: true,
+    variant: 'light',
+  },
   argTypes: {
     allowMultiple: {
       control: { type: 'boolean' },
-      defaultValue: true,
     },
     variant: {
       options: ['light', 'dark', 'minimal'],
       control: { type: 'select' },
-      defaultValue: 'light',
     },
     items: {
       table: { disable: true },
@@ -51,7 +53,6 @@ const meta: Meta<typeof Template> = {
 export const Overview = {
   render: Template.bind({}),
   args: {
-    allowMultiple: true,
     items: [
       {
         title: 'Section 1',
@@ -70,8 +71,6 @@ export const WithIcons = {
   name: 'With icons',
 
   args: {
-    allowMultiple: false,
-    variant: 'light',
     items: [
       {
         title: 'Section 1',

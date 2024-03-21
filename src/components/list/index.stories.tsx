@@ -1,5 +1,6 @@
-import ListItem from './ListItem.tsx';
-import List from './index.tsx';
+import ListItem from './ListItem';
+
+import List from './index';
 
 const Template = (args) => (
   <List {...args}>

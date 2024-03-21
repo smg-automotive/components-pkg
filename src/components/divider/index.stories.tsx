@@ -1,13 +1,31 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
-import DividerComponent from './index';
+import DividerComponent, { DividerProps } from './index';
 
-export default {
+const meta: Meta<typeof DividerComponent> = {
   title: 'Components/Utils/Divider',
   component: DividerComponent,
+
+  args: {
+    orientation: 'horizontal',
+  },
+
+  argTypes: {
+    orientation: {
+      options: ['horizontal', 'vertical'],
+      control: 'select',
+    },
+  },
 };
 
 export const Divider = {
-  render: () => <DividerComponent />,
-  name: 'Divider',
+  render: ({ orientation, ...args }: DividerProps) => (
+    <DividerComponent
+      {...args}
+      orientation={orientation}
+      height={orientation === 'vertical' ? '50px' : args.height}
+    />
+  ),
 };
+export default meta;

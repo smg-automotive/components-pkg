@@ -1,25 +1,23 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { ErrorIcon } from '../index';
-import Alert, { type AlertProps } from './index';
+import { Template } from './Template';
 
-export const Template = ({ onDismiss, dismissible, ...args }: Exclude<Alert ) => (
-  <Alert
-    description="Your Chakra experience may be degraded."
-    dismissible={dismissible}
-    onDismiss={dismissible && onDismiss ? action('onDismiss') : undefined}
-    {...args}
-  />
-);
+import Alert from './index';
 
-export default {
+const meta: Meta<typeof Alert> = {
   title: 'Components/Feedback/Alert',
   component: Alert,
 
   args: {
     type: 'info',
-    dismissible: false,
-    onDismiss: false,
+    description: 'Your Chakra experience may be degraded.',
+    dismissible: true,
+    onDismiss: action('onDismiss'),
+    title: '',
+    link: undefined,
   },
 
   argTypes: {
@@ -27,20 +25,18 @@ export default {
       options: ['error', 'warning', 'info', 'success'],
       control: 'select',
     },
-
     dismissible: {
       control: 'boolean',
     },
-
     onDismiss: {
-      control: 'boolean',
+      description: 'Callback when the alert is dismissed',
+      control: { type: null },
     },
   },
 };
 
 export const Overview = {
   render: Template.bind({}),
-  name: 'Overview',
 
   args: {
     type: 'info',
@@ -50,11 +46,10 @@ export const Overview = {
 
 export const WithLink = {
   render: Template.bind({}),
-  name: 'With Link',
 
   args: {
     type: 'info',
-
+    dismissible: false,
     link: {
       url: 'https://www.autoscout24.ch/de',
       text: 'Link',
@@ -64,10 +59,10 @@ export const WithLink = {
 
 export const WithTitle = {
   render: Template.bind({}),
-  name: 'With Title',
 
   args: {
     type: 'info',
+    dismissible: false,
     title: 'Your browser is outdated!',
   },
 };
@@ -78,13 +73,12 @@ export const WithCustomIcon = {
 
   args: {
     type: 'error',
+    dismissible: false,
     title: 'Your browser is outdated!',
-
     link: {
       url: 'https://www.autoscout24.ch/de',
       text: 'Link',
     },
-
     icon: <ErrorIcon />,
   },
 
@@ -99,11 +93,10 @@ export const WithCustomIcon = {
 
 export const Dismissible = {
   render: Template.bind({}),
-  name: 'Dismissible',
-
   args: {
     type: 'info',
     dismissible: true,
-    onDismiss: true,
   },
 };
+
+export default meta;

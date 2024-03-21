@@ -1,7 +1,7 @@
 import Text from '../text';
 import SimpleHeader from '../simpleHeader';
 import Section from '../section';
-import TwoColumnsLayout from './TwoColumnsLayout.tsx';
+import TwoColumnsLayout from './TwoColumnsLayout';
 
 const Template = ({
   rightContent,

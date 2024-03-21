@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import DatePickerComponent from './index';
+import DatePickerComponent, { DatePickerProps } from './index';
 
-const Container = ({ children }) => {
+const Container: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Box w="100%" maxW="250px">
       {children}
@@ -12,7 +13,18 @@ const Container = ({ children }) => {
   );
 };
 
-const Template = ({ value, onChange, onBlur, onFocus, min, ...args }) => {
+const Template = ({
+  value,
+  onChange,
+  onBlur,
+  onFocus,
+  min,
+  ...args
+}: Omit<DatePickerProps, 'onChange' | 'onBlur' | 'onFocus'> & {
+  onChange?: boolean;
+  onBlur?: boolean;
+  onFocus?: boolean;
+}) => {
   const [currentValue, setCurrentValue] = useState(value);
   const onChangeHandler = onChange
     ? action('change')
@@ -23,7 +35,7 @@ const Template = ({ value, onChange, onBlur, onFocus, min, ...args }) => {
     <Container>
       <DatePickerComponent
         {...args}
-        min={min ? new Date(min) : null}
+        min={min ? new Date(min) : undefined}
         onBlur={onBlur ? action('blur') : undefined}
         onFocus={onFocus ? action('focus') : undefined}
         onChange={(e) => {
@@ -31,28 +43,24 @@ const Template = ({ value, onChange, onBlur, onFocus, min, ...args }) => {
           onChangeHandler(e);
         }}
         value={value ? currentValue : undefined}
-        name="datepicker"
       />
     </Container>
   );
 };
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Components/Forms/Date Picker',
-  component: DatePickerComponent,
 
   parameters: {
     controls: {
       sort: 'alpha',
       expanded: true,
     },
-
-    actions: ['change', 'blur', 'focus'],
   },
 
   args: {
-    onChange: true,
     onBlur: true,
+    onChange: true,
     onFocus: true,
   },
 
@@ -60,12 +68,20 @@ export default {
     min: {
       control: 'date',
     },
+    onBlur: {
+      control: 'boolean',
+    },
+    onFocus: {
+      control: 'boolean',
+    },
+    onChange: {
+      control: 'boolean',
+    },
   },
 };
 
 export const DatePicker = {
   render: Template.bind({}),
-  name: 'Date Picker',
 
   args: {
     size: 'lg',
@@ -81,3 +97,5 @@ export const DatePicker = {
     },
   },
 };
+
+export default meta;

@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
 
-import Input from './index.tsx';
-import { Template } from './index.stories.tsx';
+import { Template } from './index.stories';
+
+import Input from './index';
 
 export default {
   title: 'Components/Forms/Input/Debounced',

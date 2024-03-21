@@ -1,5 +1,6 @@
-import { ArrowLeftIcon, ErrorIcon } from '../index.ts';
-import Link from './index.tsx';
+import { ArrowLeftIcon, ErrorIcon } from '../index';
+
+import Link from './index';
 
 export default {
   title: 'Components/Navigation/Link',

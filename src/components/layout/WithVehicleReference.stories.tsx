@@ -2,7 +2,7 @@ import SimpleHeader from '../simpleHeader';
 import Input from '../input';
 import FormControl from '../formControl';
 import Button from '../button';
-import LayoutWithVehicleReference from './WithVehicleReference.tsx';
+import LayoutWithVehicleReference from './WithVehicleReference';
 
 const Template = (args) => <LayoutWithVehicleReference {...args} />;
 

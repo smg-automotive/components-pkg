@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
-import VehicleReference from './index.tsx';
+import VehicleReference from './index';
 
 const Template = (args) => (
   <Box maxW={{ '2xs': '100%', md: '450px' }}>

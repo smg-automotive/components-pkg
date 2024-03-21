@@ -1,6 +1,6 @@
 import { useToast } from 'src/hooks';
 
-import { Button, ErrorIcon } from '../index.ts';
+import { Button, ErrorIcon } from '../index';
 
 const Template = (args) => {
   const toast = useToast();

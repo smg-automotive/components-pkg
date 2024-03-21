@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Radio from './index.tsx';
+import Radio from './index';
 
 export const Template = ({ isChecked, ...args }) => {
   const [checked, setChecked] = useState(isChecked);

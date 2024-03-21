@@ -1,6 +1,6 @@
-import { Stack } from 'src/index.ts';
+import { Stack } from 'src/index';
 
-import EnergyLabel from './index.tsx';
+import EnergyLabel from './index';
 
 const Template = (args) => <EnergyLabel {...args} />;
 

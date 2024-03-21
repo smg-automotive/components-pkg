@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { Box } from '../index';
-import Select from './index.tsx';
+
+import Select from './index';
 
 const Container = ({ children }) => {
   return (

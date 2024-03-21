@@ -1,6 +1,6 @@
 import Box from 'src/components/box';
 
-import Navigation from './index.tsx';
+import Navigation from './index';
 
 const Template = (args) => {
   return (

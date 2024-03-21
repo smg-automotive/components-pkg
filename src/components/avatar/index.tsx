@@ -3,7 +3,7 @@ import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
 
-type Props = {
+export type Props = {
   withNotification?: boolean;
   color?: string;
 };

@@ -1,14 +1,24 @@
-import Alert from './index.tsx';
-import { Template } from './index.stories.tsx';
+import { Template } from './Template';
+
+import Alert from './index';
 
 export default {
   title: 'Components/Feedback/Alert/States',
   component: Alert,
+
+  args: {
+    description: 'Your Chakra experience may be degraded.',
+  },
+
+  argTypes: {
+    description: {
+      table: { disable: true },
+    },
+  },
 };
 
 export const Info = {
   render: Template.bind({}),
-  name: 'Info',
 
   args: {
     type: 'info',
@@ -17,7 +27,6 @@ export const Info = {
 
 export const Success = {
   render: Template.bind({}),
-  name: 'Success',
 
   args: {
     type: 'success',
@@ -26,7 +35,6 @@ export const Success = {
 
 export const Warning = {
   render: Template.bind({}),
-  name: 'Warning',
 
   args: {
     type: 'warning',
@@ -35,7 +43,6 @@ export const Warning = {
 
 export const Error = {
   render: Template.bind({}),
-  name: 'Error',
 
   args: {
     type: 'error',

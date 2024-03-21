@@ -1,8 +1,13 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import ArticleTeaser from './index';
+import ArticleTeaser, { type Props } from './index';
 
-const Template = ({ nativeImageSize, ...args }) => (
+const Template = ({
+  nativeImageSize,
+  ...args
+}: Props & { nativeImageSize: string }) => (
   <Box maxW={{ '2xs': '100%', md: '600px' }}>
     <ArticleTeaser
       {...args}
@@ -11,7 +16,7 @@ const Template = ({ nativeImageSize, ...args }) => (
   </Box>
 );
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Patterns/Content/Article Teaser',
   component: ArticleTeaser,
 
@@ -33,12 +38,10 @@ export default {
 
 export const Overview = {
   render: Template.bind({}),
-  name: 'Overview',
 };
 
 export const Responsive = {
   render: Template.bind({}),
-  name: 'Responsive',
 
   args: {
     maxImgW: {
@@ -47,3 +50,5 @@ export const Responsive = {
     },
   },
 };
+
+export default meta;

@@ -1,4 +1,4 @@
-import Hide from './index.tsx';
+import Hide from './index';
 
 const Template = ({ text, ...args }) => {
   const breakpoint = args.below || args.above || '[please pass a breakpoint]';

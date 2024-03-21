@@ -1,4 +1,4 @@
-import Section from './index.tsx';
+import Section from './index';
 
 const Template = (args) => <Section {...args} />;
 

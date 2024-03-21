@@ -1,4 +1,4 @@
-import Rating from './index.tsx';
+import Rating from './index';
 
 const Template = (args) => {
   return <Rating {...args} />;

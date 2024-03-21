@@ -1,5 +1,6 @@
-import Radio from './index.tsx';
-import { Template } from './index.stories.tsx';
+import { Template } from './index.stories';
+
+import Radio from './index';
 
 export default {
   title: 'Components/Forms/Radio/States',

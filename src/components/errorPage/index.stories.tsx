@@ -1,4 +1,4 @@
-import ErrorPage from './index.tsx';
+import ErrorPage from './index';
 
 const Template = (args) => <ErrorPage {...args} />;
 

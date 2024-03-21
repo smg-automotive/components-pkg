@@ -5,7 +5,7 @@ import { Sizes } from 'src/themes';
 
 import Stack from '../stack';
 
-type Props = {
+export type Props = {
   title: string;
   text: string;
   imageUrl: string;

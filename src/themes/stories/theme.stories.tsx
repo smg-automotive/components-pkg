@@ -2,17 +2,17 @@ import { ColorPalette } from '@storybook/blocks';
 
 import { Brand } from 'src/types/brand';
 
-import ZindicesShowcase from './ZindicesShowcase.tsx';
-import TypographyShowcase from './TypographyShowcase.tsx';
-import SpaceShowcase from './SpaceShowcase.tsx';
-import SizeShowcase from './SizeShowcase.tsx';
-import ShadowShowcase from './ShadowShowcase.tsx';
-import OpacityShowcase from './OpacityShowcase.tsx';
-import ContainerShowcase from './ContainerShowcase.tsx';
-import ColorShowcase from './ColorShowcase.tsx';
-import BreakpointShowcase from './BreakpointShowcase.tsx';
-import BorderShowcase from './BorderShowcase.tsx';
-import BorderRadiusShowcase from './BorderRadiusShowcase.tsx';
+import ZindicesShowcase from './ZindicesShowcase';
+import TypographyShowcase from './TypographyShowcase';
+import SpaceShowcase from './SpaceShowcase';
+import SizeShowcase from './SizeShowcase';
+import ShadowShowcase from './ShadowShowcase';
+import OpacityShowcase from './OpacityShowcase';
+import ContainerShowcase from './ContainerShowcase';
+import ColorShowcase from './ColorShowcase';
+import BreakpointShowcase from './BreakpointShowcase';
+import BorderShowcase from './BorderShowcase';
+import BorderRadiusShowcase from './BorderRadiusShowcase';
 
 export default {
   title: 'Foundations/Theme',

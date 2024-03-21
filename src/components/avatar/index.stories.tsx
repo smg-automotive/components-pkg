@@ -1,19 +1,28 @@
-import React from 'react';
+import { Meta } from '@storybook/react';
 
 import AvatarComponent from './index';
 
-const Template = (args) => <AvatarComponent {...args} />;
-
-export default {
+const meta: Meta<typeof AvatarComponent> = {
   title: 'Patterns/Data Display/Avatar',
   component: AvatarComponent,
-};
-
-export const Avatar = {
-  render: Template.bind({}),
-  name: 'Avatar',
 
   args: {
     withNotification: false,
   },
+
+  argTypes: {
+    color: {
+      control: 'color',
+    },
+  },
 };
+
+export const Avatar = {};
+
+export const WithNotification = {
+  args: {
+    withNotification: true,
+  },
+};
+
+export default meta;

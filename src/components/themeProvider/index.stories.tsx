@@ -2,7 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
-import ThemeProvider from './index.tsx';
+import ThemeProvider from './index';
 
 const Template = (args) => {
   return (

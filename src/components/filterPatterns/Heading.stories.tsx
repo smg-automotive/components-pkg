@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 
-import { FilterHeading } from './Heading.tsx';
+import { FilterHeading } from './Heading';
 
 const Template = (args) => (
   <FilterHeading
