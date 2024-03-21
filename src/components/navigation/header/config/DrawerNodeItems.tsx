@@ -148,25 +148,6 @@ export const drawerNodeItems = ({
       translationKey: 'header.searchMenu.additional',
       items: [
         {
-          translationKey: 'header.searchMenu.findPartsAndAccessories',
-          link: {
-            de: '/de/ersatzteile-zubehoer',
-            en: '/de/ersatzteile-zubehoer',
-            fr: '/fr/pieces-accessoires',
-            it: '/it/ricambi-accessori',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.searchMenu.searchMotorcycles',
           forceMotoscoutLink: true,
           link: {
