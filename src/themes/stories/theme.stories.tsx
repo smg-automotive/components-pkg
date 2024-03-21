@@ -1,3 +1,5 @@
+import { ColorPalette } from '@storybook/blocks';
+
 import { Brand } from 'src/types/brand';
 
 import ZindicesShowcase from './ZindicesShowcase.tsx';

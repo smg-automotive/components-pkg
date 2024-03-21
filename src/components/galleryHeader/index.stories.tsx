@@ -35,11 +35,4 @@ export const GalleryHeader = {
     subtitle: 'Subtitle',
     language: 'de',
   },
-
-  argTypes: {
-    language: {
-      options: ['de', 'fr', 'it', 'en'],
-      control: 'select',
-    },
-  },
 };

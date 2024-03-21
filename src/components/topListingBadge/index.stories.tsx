@@ -7,7 +7,7 @@ import TopListingBadgeComponent from './index';
 const Template = (args) => (
   <Box maxW="400px">
     <TopListingBadgeComponent {...args}>
-      <Image src="https://placekitten.com/g/800/800" objectFit="cover" />
+      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
     </TopListingBadgeComponent>
   </Box>
 );

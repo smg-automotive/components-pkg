@@ -1,11 +1,10 @@
+import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
 
-import CheckboxFilterTemplate from './StoryTemplate.tsx';
-import GroupedCheckboxFilterStoryTemplate from './GroupedCheckboxFilterStoryTemplate.tsx';
-
-import CheckboxFilter from './index';
+import CheckboxFilterTemplate from './StoryTemplate';
+import GroupedCheckboxFilterStoryTemplate from './GroupedCheckboxFilterStoryTemplate';
 
 const Template = (args) => {
   return (
@@ -63,7 +62,7 @@ export const LabelWithImageWithLargeText = {
   args: {
     onApplyAction: action('onApply'),
     image: (
-      <img src="https://placekitten.com/g/220/100" alt="placeholder image" />
+      <img src="https://via.placeholder.com/220x100" alt="placeholder image" />
     ),
   },
 };

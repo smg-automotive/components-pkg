@@ -72,7 +72,7 @@ function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
       filterName: parentFilterName,
       childCheckboxes: [],
       image: (
-        <img src="https://placekitten.com/g/100/50" alt="placeholder image" />
+        <img src="https://via.placeholder.com/100x50" alt="placeholder image" />
       ),
     },
     {
@@ -90,7 +90,7 @@ function StoryTemplate({ onApplyAction, onToggleCheckboxGroupAction }: Props) {
           filterName: childFilterName,
           image: (
             <img
-              src="https://placekitten.com/g/100/50"
+              src="https://via.placeholder.com/100x50"
               alt="placeholder image"
             />
           ),

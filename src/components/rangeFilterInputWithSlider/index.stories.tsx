@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
@@ -5,7 +6,7 @@ import Box from '../box';
 import RangeFilterInputWithSlider from './';
 
 const Template = ({ facets, from, to, unit, ...rest }) => {
-  const [filters, setFilters] = React.useState({
+  const [filters, setFilters] = useState({
     priceFrom: from.value,
     priceTo: to.value,
   });

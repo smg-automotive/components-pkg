@@ -6,7 +6,7 @@ import TopVehicleBadgeComponent from './index';
 const Template = (args) => (
   <Box maxW="400px">
     <TopVehicleBadgeComponent {...args}>
-      <Image src="https://placekitten.com/g/800/800" objectFit="cover" />
+      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
     </TopVehicleBadgeComponent>
   </Box>
 );

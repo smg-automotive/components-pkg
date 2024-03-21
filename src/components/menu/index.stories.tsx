@@ -23,6 +23,6 @@ export const Menu = {
   name: 'Menu',
 
   args: {
-    title: 'Lanague',
+    title: 'Language',
   },
 };

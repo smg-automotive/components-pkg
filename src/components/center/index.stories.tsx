@@ -3,7 +3,7 @@ import React from 'react';
 import CenterComponent from './index';
 
 const Template = () => {
-  return <CenterComponent>I am centerd!</CenterComponent>;
+  return <CenterComponent>I am centered!</CenterComponent>;
 };
 
 export default {
