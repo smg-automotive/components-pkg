@@ -2,7 +2,9 @@ import React from 'react';
 
 import BoxComponent from './index';
 
-const Template = (args) => <BoxComponent {...args}>I am in the box</BoxComponent>;
+const Template = (args) => (
+  <BoxComponent {...args}>I am in the box</BoxComponent>
+);
 
 export default {
   title: 'Layout/Box',

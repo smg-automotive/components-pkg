@@ -49,12 +49,13 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'react/prop-types': 'off',
         'import/namespace': ['error', { allowComputed: true }],
+        'sonarjs/no-duplicate-string': 'off',
       },
     },
     {
-      files: ['*.mdx'],
+      files: ['*.stories.@(ts|tsx)'],
       rules: {
-        'sonarjs/no-duplicate-string': 'off',
+        'unicorn/filename-case': 'off',
       },
     },
   ],

@@ -16,7 +16,12 @@ export default {
       price: `CHF 23'900.–`,
       sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
       sellerAddress: `2540 Grenchen (SO)`,
-      image: <img src="https://via.placeholder.com/400x300" alt="vehicle reference image" />,
+      image: (
+        <img
+          src="https://via.placeholder.com/400x300"
+          alt="vehicle reference image"
+        />
+      ),
       callToAction: (
         <Button variant="secondary" onClick={() => ({})} width="full">
           View vehicle

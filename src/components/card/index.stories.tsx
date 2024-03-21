@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Card as CardComponent, CardBody, CardFooter, CardHeader } from './index';
+import {
+  CardBody,
+  Card as CardComponent,
+  CardFooter,
+  CardHeader,
+} from './index';
 
 const Template = ({ tileContent, bodyContent, footerContent, maxWidth }) => (
   <CardComponent maxW={`${maxWidth}px`}>

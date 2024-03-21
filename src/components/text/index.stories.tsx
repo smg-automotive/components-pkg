@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { shared } from 'src/themes';
 
 import HighlightedText from './HighlightedText';

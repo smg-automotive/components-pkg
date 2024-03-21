@@ -39,7 +39,12 @@ export default {
     ),
 
     leftContentColumns: 6,
-    rightContent: <img src="https://via.placeholder.com/400x300" alt="vehicle reference image" />,
+    rightContent: (
+      <img
+        src="https://via.placeholder.com/400x300"
+        alt="vehicle reference image"
+      />
+    ),
     rightContentColumns: 6,
   },
 
@@ -115,7 +120,12 @@ export const WithRightContent = {
   name: 'With right content',
 
   args: {
-    rightContent: <img src="https://via.placeholder.com/400x300" alt="vehicle reference image" />,
+    rightContent: (
+      <img
+        src="https://via.placeholder.com/400x300"
+        alt="vehicle reference image"
+      />
+    ),
   },
 };
 

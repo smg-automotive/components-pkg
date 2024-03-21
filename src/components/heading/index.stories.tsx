@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { H1 as H1Component, H2 as H2Component, H3 as H3Component, H4 as H4Component, H5 as H5Component, H6 as H6Component } from './index';
+import {
+  H1 as H1Component,
+  H2 as H2Component,
+  H3 as H3Component,
+  H4 as H4Component,
+  H5 as H5Component,
+  H6 as H6Component,
+} from './index';
 
 export default {
   title: 'Components/Utils/Heading',

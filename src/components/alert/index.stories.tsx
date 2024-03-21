@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 
-import { ErrorIcon } from '../index.ts';
-import Alert from './index.tsx';
+import { ErrorIcon } from '../index';
+import Alert, { type AlertProps } from './index';
 
-export const Template = ({ onDismiss, dismissible, ...args }) => (
+export const Template = ({ onDismiss, dismissible, ...args }: Exclude<Alert ) => (
   <Alert
     description="Your Chakra experience may be degraded."
     dismissible={dismissible}

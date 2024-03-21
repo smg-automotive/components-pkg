@@ -1,19 +1,24 @@
 import React from 'react';
+import type { Meta } from '@storybook/react';
 
 import { CheckmarkIcon, TimeIcon, TooltipIcon } from '../icons';
 import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
 
-import Accordion from './index';
+import Accordion, { type AccordionProps } from './index';
 
-const Template = (args) => (
+const Template = (
+  args: AccordionProps & {
+    items: { title: string; content: string; leftIcon?: React.ReactNode }[];
+  }
+) => (
   <Accordion
     allowMultiple={args?.allowMultiple}
     allowToggle={args?.allowToggle}
     variant={args?.variant}
   >
-    {args?.items.map((item, i) => (
+    {args?.items?.map((item, i) => (
       <AccordionItem key={i}>
         <AccordionButton leftIcon={item?.leftIcon}>
           {item.title}
@@ -24,18 +29,29 @@ const Template = (args) => (
   </Accordion>
 );
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Patterns/Navigation/Accordion',
   component: Accordion,
+  argTypes: {
+    allowMultiple: {
+      control: { type: 'boolean' },
+      defaultValue: true,
+    },
+    variant: {
+      options: ['light', 'dark', 'minimal'],
+      control: { type: 'select' },
+      defaultValue: 'light',
+    },
+    items: {
+      table: { disable: true },
+    },
+  },
 };
 
 export const Overview = {
   render: Template.bind({}),
-  name: 'Overview',
-
   args: {
     allowMultiple: true,
-
     items: [
       {
         title: 'Section 1',
@@ -54,8 +70,8 @@ export const WithIcons = {
   name: 'With icons',
 
   args: {
-    allowMultiple: true,
-
+    allowMultiple: false,
+    variant: 'light',
     items: [
       {
         title: 'Section 1',
@@ -68,17 +84,12 @@ export const WithIcons = {
         content: 'Second section content.',
       },
       {
-        title: 'Opening hours',
+        title: 'Section 3',
         leftIcon: <TimeIcon />,
-        content: 'First section content.',
+        content: 'Third section content.',
       },
     ],
   },
-
-  argTypes: {
-    variant: {
-      type: 'select',
-      options: ['light', 'dark', 'minimal'],
-    },
-  },
 };
+
+export default meta;
