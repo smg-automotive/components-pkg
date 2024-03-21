@@ -11,7 +11,7 @@ import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWith
 
 const groupItems = <ItemKey extends string, FilterName extends string>(
   items: Props<ItemKey, FilterName>['items'],
-  numberOfColumns = 1,
+  numberOfColumns = 1
 ) => {
   const groupedItems = [];
   const itemsPerColumn = Math.ceil(items.length / numberOfColumns);
@@ -33,7 +33,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   language,
 }: Props<ItemKey, FilterName>) {
   const hasGroups = items.some(
-    (item) => (item.childCheckboxes ?? []).length > 0,
+    (item) => (item.childCheckboxes ?? []).length > 0
   );
   const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
 
@@ -44,7 +44,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
           base: '1fr',
           md: `repeat(${numberOfColumnsOnDesktop}, 1fr)`,
         }}
-        gap="4xl"
+        gap={{ md: '4xl' }}
       >
         {groupedItems.map((columnItems, columnIndex) => (
           <GridItem key={columnIndex} data-testid="column" position="relative">
