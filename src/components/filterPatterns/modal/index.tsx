@@ -32,6 +32,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   header,
   isDisabled = false,
   children,
+  paddingX,
+  backgroundColor,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialModalState === 'open',
@@ -49,6 +51,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           label={label}
           onClick={onOpen}
           isDisabled={isDisabled}
+          paddingX={paddingX}
+          backgroundColor={backgroundColor}
         />
         <ChakraModal
           isOpen={isOpen}
