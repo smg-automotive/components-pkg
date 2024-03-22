@@ -23,11 +23,11 @@ const baseStyleControl = defineStyle({
   borderColor: 'gray.400',
   _hover: {
     borderColor: 'gray.900',
-    outline: '3px solid',
+    outline: '2px solid',
     outlineColor: 'blue.100',
   },
   _focusVisible: {
-    outline: '3px solid',
+    outline: '2px solid',
     outlineColor: 'blue.300',
   },
   _checked: {
