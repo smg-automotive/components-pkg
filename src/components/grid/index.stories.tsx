@@ -1,53 +1,12 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import { Box } from '../index';
 import GridItem from './GridItem';
 
 import GridComponent from './index';
 
-const Template = ({ ...args }) => {
-  return (
-    <GridComponent {...args}>
-      <GridItem area="make">
-        <Box border="1px solid purple" padding="md">
-          make
-        </Box>
-      </GridItem>
-      <GridItem area="model">
-        <Box border="1px solid purple" padding="md">
-          model
-        </Box>
-      </GridItem>
-      <GridItem area="version">
-        <Box border="1px solid purple" padding="md">
-          version
-        </Box>
-      </GridItem>
-      <GridItem area="doors">
-        <Box border="1px solid purple" padding="md">
-          doors
-        </Box>
-      </GridItem>
-      <GridItem area="horsePower">
-        <Box border="1px solid purple" padding="md">
-          horsePower
-        </Box>
-      </GridItem>
-      <GridItem area="fuelType">
-        <Box border="1px solid purple" padding="md">
-          fuelType
-        </Box>
-      </GridItem>
-      <GridItem area="driveType">
-        <Box border="1px solid purple" padding="md">
-          driveType
-        </Box>
-      </GridItem>
-    </GridComponent>
-  );
-};
-
-export default {
+const meta: Meta<typeof GridComponent> = {
   title: 'Layout/Grid',
   component: GridComponent,
 
@@ -72,6 +31,43 @@ export default {
       base: 'repeat(2, 1fr)',
       md: 'repeat(4, 1fr)',
     },
+    children: [
+      <GridItem area="make" key="make">
+        <Box border="1px solid purple" padding="md">
+          make
+        </Box>
+      </GridItem>,
+      <GridItem area="model" key="model">
+        <Box border="1px solid purple" padding="md">
+          model
+        </Box>
+      </GridItem>,
+      <GridItem area="version" key="version">
+        <Box border="1px solid purple" padding="md">
+          version
+        </Box>
+      </GridItem>,
+      <GridItem area="doors" key="doors">
+        <Box border="1px solid purple" padding="md">
+          doors
+        </Box>
+      </GridItem>,
+      <GridItem area="horsePower" key="horsePower">
+        <Box border="1px solid purple" padding="md">
+          horsePower
+        </Box>
+      </GridItem>,
+      <GridItem area="fuelType" key="fuelType">
+        <Box border="1px solid purple" padding="md">
+          fuelType
+        </Box>
+      </GridItem>,
+      <GridItem area="driveType" key="driveType">
+        <Box border="1px solid purple" padding="md">
+          driveType
+        </Box>
+      </GridItem>,
+    ],
   },
 
   argTypes: {
@@ -82,10 +78,11 @@ export default {
         type: 'select',
       },
     },
+    children: {
+      table: { disable: true },
+    },
   },
 };
 
-export const Grid = {
-  render: Template.bind({}),
-  name: 'Grid',
-};
+export const Grid = {};
+export default meta;

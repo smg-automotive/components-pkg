@@ -26,6 +26,7 @@ module.exports = {
           'postcss.config.js',
           './.jest/**/*',
           './.storybook/**/*',
+          './**/StorybookShared.tsx',
         ],
       },
     ],
@@ -57,6 +58,7 @@ module.exports = {
       files: ['*.stories.@(ts|tsx)'],
       rules: {
         'unicorn/filename-case': 'off',
+        'import/namespace': ['error', { allowComputed: true }],
       },
     },
   ],

@@ -1,53 +1,16 @@
 import { MagnifierIcon } from '../icons';
+import { parameters } from './StorybookShared';
 
-import { Template } from './index.stories';
-
-import Input from './index';
+import meta from './index.stories';
 
 export default {
+  ...meta,
   title: 'Components/Forms/Input/Icon',
-  component: Input,
-
-  parameters: {
-    controls: {
-      sort: 'alpha',
-      expanded: true,
-    },
-  },
+  parameters,
 };
 
-export const Default = {
-  render: Template.bind({}),
-  name: 'Default',
-
+export const WithIcon = {
   args: {
-    size: 'lg',
-    placeholder: 'Placeholder',
     icon: MagnifierIcon,
-  },
-
-  argTypes: {
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
-
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-
-    autoFocus: {
-      table: {
-        disable: true,
-      },
-    },
   },
 };

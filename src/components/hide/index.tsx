@@ -3,13 +3,9 @@ import { BoxProps, HideProps, useQuery } from '@chakra-ui/react';
 
 import Box from '../box';
 
-const Hide: FC<Omit<HideProps, 'ssr'> & Omit<BoxProps, 'sx'>> = ({
-  children,
-  breakpoint,
-  above,
-  below,
-  ...props
-}) => {
+export type Props = Omit<HideProps, 'ssr'> & Omit<BoxProps, 'sx'>;
+
+const Hide: FC<Props> = ({ children, breakpoint, above, below, ...props }) => {
   const queryProps = { breakpoint, above, below };
   const query = useQuery(queryProps);
   const media = query && `@media ${query}`;

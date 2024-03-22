@@ -1,3 +1,5 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Text from 'src/components/text';
@@ -6,9 +8,11 @@ import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
+import { type ModalFilterProps } from './props';
+
 import { ModalFilter } from './index';
 
-const Template = (args) => (
+const Template = (args: ModalFilterProps) => (
   <Box paddingX="lg">
     <ModalFilter
       {...args}
@@ -71,7 +75,7 @@ const CustomHeader = () => (
   </Flex>
 );
 
-export default {
+const meta: Meta<typeof ModalFilter> = {
   title: 'Patterns/Filter/Modal',
   component: ModalFilter,
 
@@ -82,6 +86,13 @@ export default {
       label: '12324 Fahrzeuge',
       onClick: action('actionButton - onClick'),
     },
+
+    label: 'Treibstoff',
+    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+    numberOfAppliedFilters: 5,
+    showCallToActionButton: true,
+    isApplied: false,
+    isDisabled: false,
   },
 
   argTypes: {
@@ -98,17 +109,13 @@ export default {
   },
 
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
 };
 
 export const DefaultEmpty = {
   render: Template.bind({}),
   name: 'Default empty',
-
-  args: {
-    label: 'Treibstoff',
-  },
 
   argTypes: {
     actionButton: {
@@ -121,12 +128,8 @@ export const DefaultEmpty = {
 
 export const Applied = {
   render: Template.bind({}),
-  name: 'Applied',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
     isApplied: true,
   },
 
@@ -144,9 +147,6 @@ export const WithoutCallToActionButton = {
   name: 'Without call-to-action button',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
     showCallToActionButton: false,
   },
 };
@@ -156,10 +156,6 @@ export const WithCustomHeader = {
   name: 'With custom header',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
-    showCallToActionButton: false,
     header: <CustomHeader />,
   },
 };
@@ -169,9 +165,8 @@ export const WithIcon = {
   name: 'With icon',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
     Icon: FlashIcon,
   },
 };
+
+export default meta;

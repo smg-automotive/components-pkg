@@ -1,19 +1,20 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import FormLabelComponent from './index';
 
-const Template = (args) => {
-  return (
-    <Box w="100%" maxW="250px">
-      <FormLabelComponent {...args} />
-    </Box>
-  );
-};
-
-export default {
+const meta: Meta<typeof FormLabelComponent> = {
   title: 'Components/Forms/Form Label',
   component: FormLabelComponent,
+
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="250px">
+        <Story />
+      </Box>
+    ),
+  ],
 
   args: {
     children: 'I am label',
@@ -28,7 +29,5 @@ export default {
   },
 };
 
-export const FormLabel = {
-  render: Template.bind({}),
-  name: 'Form Label',
-};
+export const FormLabel = {};
+export default meta;

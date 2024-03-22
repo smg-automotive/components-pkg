@@ -1,38 +1,49 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import { H1, H2 } from 'src/components/heading';
 import Box from 'src/components/box';
 
 import GalleryHeaderComponent from './index';
 
-const Template = (args) => (
-  <Box backgroundColor="black">
-    <GalleryHeaderComponent
-      currentSlide={2}
-      slidesCount={3}
-      onClose={() => null}
-      {...args}
-    >
+const meta: Meta<typeof GalleryHeaderComponent> = {
+  title: 'Components/Navigation/GalleryHeader',
+  component: GalleryHeaderComponent,
+
+  decorators: [
+    (Story) => (
+      <Box backgroundColor="black">
+        <Story />
+      </Box>
+    ),
+  ],
+
+  args: {
+    language: 'de',
+    currentSlide: 1,
+    slidesCount: 10,
+    onClose: action('onClose'),
+    children: (
       <>
         <H1 textStyle="body-large">Title</H1>
         <H2 textStyle="body-large">Subtitle</H2>
       </>
-    </GalleryHeaderComponent>
-  </Box>
-);
+    ),
+  },
 
-export default {
-  title: 'Components/Navigation/GalleryHeader',
-  component: GalleryHeaderComponent,
-};
-
-export const GalleryHeader = {
-  render: Template.bind({}),
-  name: 'GalleryHeader',
-
-  args: {
-    title: 'Gallery Header',
-    subtitle: 'Subtitle',
-    language: 'de',
+  argTypes: {
+    language: {
+      control: { type: 'select' },
+      options: ['de', 'en', 'fr', 'it'],
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
+
+export const GalleryHeader = {};
+export default meta;

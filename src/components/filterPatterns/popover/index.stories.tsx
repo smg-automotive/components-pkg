@@ -1,3 +1,5 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Text from 'src/components/text';
@@ -6,9 +8,11 @@ import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
+import { PopoverFilterProps } from './props';
+
 import { PopoverFilter } from './index';
 
-const Template = (args) => (
+const Template = (args: PopoverFilterProps) => (
   <Box w={{ base: 'full', sm: '250px' }} h="400px">
     <PopoverFilter
       {...args}
@@ -77,18 +81,22 @@ const CustomHeader = () => (
   </Flex>
 );
 
-export default {
+const meta: Meta<typeof PopoverFilter> = {
   title: 'Patterns/Filter/Popover',
   component: PopoverFilter,
 
   args: {
     language: 'de',
     enforceHeight: true,
+    label: 'Treibstoff',
+    initialPopoverState: 'closed',
+    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+    numberOfAppliedFilters: 5,
+    isApplied: false,
 
     actionButton: {
       label: '12324 Fahrzeuge',
       onClick: action('actionButton - onClick'),
-      height: ['md', 'lg'],
     },
   },
 
@@ -103,6 +111,11 @@ export default {
         disable: true,
       },
     },
+
+    initialPopoverState: {
+      options: ['open', 'closed'],
+      control: 'select',
+    },
   },
 };
 
@@ -111,7 +124,7 @@ export const DefaultEmpty = {
   name: 'Default empty',
 
   args: {
-    label: 'Treibstoff',
+    displayValue: '',
   },
 
   argTypes: {
@@ -130,14 +143,10 @@ export const DefaultInitiallyOpen = {
   args: {
     label: 'Treibstoff',
     initialPopoverState: 'open',
+    displayValue: '',
   },
 
   argTypes: {
-    initialPopoverState: {
-      options: ['open', 'closed'],
-      control: 'select',
-    },
-
     actionButton: {
       table: {
         disable: true,
@@ -151,9 +160,6 @@ export const AppliedWithDisplayValue = {
   name: 'Applied with display value',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
     isApplied: true,
   },
 
@@ -171,9 +177,7 @@ export const AppliedWithoutDisplayValue = {
   name: 'Applied without display value',
 
   args: {
-    label: 'Treibstoff',
     displayValue: '',
-    numberOfAppliedFilters: 5,
     isApplied: true,
   },
 
@@ -191,9 +195,7 @@ export const WithoutCallToActionButton = {
   name: 'Without call-to-action button',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
+    displayValue: '',
     showCallToActionButton: false,
   },
 };
@@ -203,10 +205,7 @@ export const WithCustomHeader = {
   name: 'With custom header',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
-    showCallToActionButton: false,
+    displayValue: '',
     header: <CustomHeader />,
   },
 };
@@ -216,9 +215,9 @@ export const WithIcon = {
   name: 'With icon',
 
   args: {
-    label: 'Treibstoff',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
+    displayValue: '',
     Icon: FlashIcon,
   },
 };
+
+export default meta;

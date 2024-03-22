@@ -1,21 +1,38 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+
+import { Box } from 'src/index';
 
 import { FilterHeading } from './Heading';
 
-const Template = (args) => (
-  <FilterHeading
-    {...args}
-    onClose={args.onClose ? action('onClose') : undefined}
-    onResetFilter={action('onResetFilter')}
-  />
-);
-
-export default {
+const meta: Meta<typeof FilterHeading> = {
   title: 'Patterns/Filter/Heading',
   component: FilterHeading,
+  decorators: [
+    (Story) => (
+      <Box
+        width="300px"
+        p="sm"
+        border="1px"
+        borderColor="gray.300"
+        rounded="sm"
+        boxShadow="sm"
+      >
+        <Story />
+      </Box>
+    ),
+  ],
+
+  parameters: {
+    layout: 'centered',
+  },
 
   args: {
     language: 'de',
+    onClose: action('onClose'),
+    onResetFilter: action('onResetFilter'),
+    label: 'Treibstoff',
   },
 
   argTypes: {
@@ -24,7 +41,7 @@ export default {
       control: 'select',
     },
 
-    onResetFilter: {
+    contentRef: {
       table: {
         disable: true,
       },
@@ -33,63 +50,22 @@ export default {
 };
 
 export const WithCloseButton = {
-  render: Template.bind({}),
   name: 'With close button',
-
-  args: {
-    label: 'Treibstoff',
-    onClose: true,
-  },
-
-  argTypes: {
-    onClose: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
 export const WithoutCloseButton = {
-  render: Template.bind({}),
   name: 'Without close button',
 
   args: {
-    label: 'Treibstoff',
-    onClose: false,
-  },
-
-  argTypes: {
-    onClose: {
-      table: {
-        disable: true,
-      },
-    },
+    onClose: undefined,
   },
 };
 
 export const Applied = {
-  render: Template.bind({}),
-  name: 'Applied',
-
   args: {
-    label: 'Treibstoff',
     numberOfAppliedFilters: 5,
     isApplied: true,
-    onClose: true,
-  },
-
-  argTypes: {
-    isApplied: {
-      table: {
-        disable: true,
-      },
-    },
-
-    onClose: {
-      table: {
-        disable: true,
-      },
-    },
   },
 };
+
+export default meta;

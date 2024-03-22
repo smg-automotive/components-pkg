@@ -1,18 +1,16 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+
 import { Stack } from 'src/index';
 
 import EnergyLabel from './index';
 
-const Template = (args) => <EnergyLabel {...args} />;
-
-export default {
+const meta: Meta<typeof EnergyLabel> = {
   title: 'Components/Data display/Energy Label',
   component: EnergyLabel,
 };
 
 export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
-
   args: {
     efficiency: 'A',
   },
@@ -37,6 +35,6 @@ export const Variations = {
       <EnergyLabel efficiency="G" />
     </Stack>
   ),
-
-  name: 'Variations',
 };
+
+export default meta;

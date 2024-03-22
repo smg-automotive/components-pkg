@@ -1,22 +1,30 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import { Input } from 'src/index';
 
-import FormControl from './index';
+import FormControl, { type Props } from './index';
 
-const Template = (args) => {
+const Template = (args: Props) => {
   return (
-    <Box w="100%" maxW="250px">
-      <FormControl id="test-input" {...args}>
-        <Input name="test-input" placeholder="placeholder" />
-      </FormControl>
-    </Box>
+    <FormControl {...args}>
+      <Input name={args.id} placeholder="placeholder" />
+    </FormControl>
   );
 };
 
-export default {
+const meta: Meta<typeof FormControl> = {
   title: 'Components/Forms/Form Control',
   component: FormControl,
+
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="250px">
+        <Story />
+      </Box>
+    ),
+  ],
 
   args: {
     label: 'Label',
@@ -26,6 +34,7 @@ export default {
     isRequired: false,
     errorMessage: '',
     size: 'lg',
+    id: 'test-input',
   },
 
   argTypes: {
@@ -44,7 +53,6 @@ export default {
 
 export const Overview = {
   render: Template.bind({}),
-  name: 'Overview',
 };
 
 export const WithLabel = {
@@ -59,7 +67,6 @@ export const WithLabel = {
 
 export const Required = {
   render: Template.bind({}),
-  name: 'Required',
 
   args: {
     label: 'Label',
@@ -101,7 +108,6 @@ export const WithButton = {
 
 export const Disabled = {
   render: Template.bind({}),
-  name: 'Disabled',
 
   args: {
     label: 'Label',
@@ -111,10 +117,11 @@ export const Disabled = {
 
 export const Invalid = {
   render: Template.bind({}),
-  name: 'Invalid',
 
   args: {
     label: 'Label',
     errorMessage: 'Error message',
   },
 };
+
+export default meta;

@@ -1,16 +1,13 @@
+import { Meta } from '@storybook/react';
+
 import ErrorPage from './index';
 
-const Template = (args) => <ErrorPage {...args} />;
-
-export default {
+const meta: Meta<typeof ErrorPage> = {
   title: 'Patterns/Content/Error',
   component: ErrorPage,
 };
 
 export const Error = {
-  render: Template.bind({}),
-  name: 'Error',
-
   args: {
     statusCode: 404,
     language: 'de',
@@ -38,3 +35,5 @@ export const Error = {
     layout: 'fullscreen',
   },
 };
+
+export default meta;

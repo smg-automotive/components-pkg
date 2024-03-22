@@ -1,4 +1,6 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
+import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
 
 import {
   H1 as H1Component,
@@ -9,9 +11,21 @@ import {
   H6 as H6Component,
 } from './index';
 
-export default {
+const meta: Meta<typeof H1Component> = {
   title: 'Components/Utils/Heading',
   component: H1Component,
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Stories />
+        </>
+      ),
+    },
+  },
 };
 
 export const H1 = {
@@ -43,3 +57,5 @@ export const H6 = {
   render: () => <H6Component>Title</H6Component>,
   name: 'H6',
 };
+
+export default meta;

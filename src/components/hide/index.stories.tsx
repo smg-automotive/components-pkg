@@ -1,13 +1,28 @@
-import Hide from './index';
+import React from 'react';
+import { Meta } from '@storybook/react';
 
-const Template = ({ text, ...args }) => {
+import Box from '../box';
+
+import Hide, { type Props } from './index';
+
+const Template = ({ text, ...args }: Props & { text: string }) => {
   const breakpoint = args.below || args.above || '[please pass a breakpoint]';
-  return <Hide {...args}>{text.replace('BREAKPOINT', breakpoint)}</Hide>;
+  return (
+    <Hide {...args}>
+      <Box border="1px" borderColor="gray.600" p="md" rounded="sm">
+        {text.replace('BREAKPOINT', breakpoint)}
+      </Box>
+    </Hide>
+  );
 };
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Components/Utils/Hide',
   component: Hide,
+
+  parameters: {
+    layout: 'centered',
+  },
 
   argTypes: {
     below: {
@@ -94,3 +109,5 @@ export const HideWhenMatchingAQuery = {
     },
   },
 };
+
+export default meta;

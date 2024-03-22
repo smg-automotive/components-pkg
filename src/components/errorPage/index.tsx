@@ -27,7 +27,7 @@ const illustrations: Record<ErrorStatusCode, string> = {
   clientSide: errorIllustrationSomethingWentWrong,
 };
 
-interface Props {
+export interface Props {
   statusCode: ErrorStatusCode;
   language: Language;
   onButtonClick?: () => void;

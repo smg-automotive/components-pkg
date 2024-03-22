@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/blocks';
+import { Canvas, Meta, Story, Controls } from '@storybook/blocks';
 
 import * as IndexStories from './index.stories.tsx';
 
@@ -6,6 +6,10 @@ import * as IndexStories from './index.stories.tsx';
 
 # Drawer
 
+Check the story directly for the proper drawer placement.
+
 <Canvas>
-  <Story of={IndexStories.Drawer} />
+  <Story of={IndexStories.Drawer} parameters={{ layout: 'padded' }} withToolbar __primary/>
 </Canvas>
+
+<Controls />

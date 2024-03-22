@@ -1,27 +1,18 @@
 import { action } from '@storybook/addon-actions';
 
-import { Template } from './index.stories';
-
-import Input from './index';
+import { parameters } from './StorybookShared';
+import meta from './index.stories';
 
 export default {
+  ...meta,
   title: 'Components/Forms/Input/Debounced',
-  component: Input,
-
-  parameters: {
-    controls: {
-      sort: 'alpha',
-      expanded: true,
-    },
-
-    actions: ['setInputvalue'],
-  },
+  parameters,
 };
 
-export const Default = {
-  render: Template.bind({}),
-  name: 'Default',
-
+/**
+ * This is a debounced input, head to the actions tab and see that `setInputValue` is not fired on every key stroke
+ */
+export const Debounced = {
   args: {
     size: 'lg',
     placeholder: 'Placeholder',
@@ -29,31 +20,6 @@ export const Default = {
     isInvalid: false,
     autoFocus: false,
     debounce: true,
-    setInputValue: action('setInputvalue'),
-  },
-
-  argTypes: {
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
-
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-
-    autoFocus: {
-      table: {
-        disable: true,
-      },
-    },
+    setInputValue: action('setInputValue'),
   },
 };

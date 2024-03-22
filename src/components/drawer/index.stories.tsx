@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 import { useDisclosure } from '@chakra-ui/react';
 
 import Button from '../button';
@@ -7,9 +8,11 @@ import DrawerOverlay from './DrawerOverlay';
 import DrawerContent from './DrawerContent';
 import DrawerBody from './DrawerBody';
 
-import DrawerComponent from './index';
+import DrawerComponent, { type DrawerProps } from './index';
 
-const Template = (args) => {
+const Template = (
+  args: Omit<DrawerProps, 'isOpen' | 'onClose'> & { withCloseButton?: boolean },
+) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const headerHeight = '60px';
   return (
@@ -22,7 +25,7 @@ const Template = (args) => {
       bg="gray.100"
       zIndex="popover"
     >
-      <Button onClick={onOpen}>Open</Button>
+      <Button onClick={isOpen ? onClose : onOpen}>Toggle drawer</Button>
       <DrawerComponent isOpen={isOpen} onClose={onClose} {...args}>
         <DrawerOverlay />
         <DrawerContent
@@ -37,18 +40,17 @@ const Template = (args) => {
   );
 };
 
-export default {
+const meta: Meta<typeof DrawerComponent> = {
   title: 'Components/Data display/Drawer',
   component: DrawerComponent,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export const Drawer = {
   render: Template.bind({}),
-  name: 'Drawer',
+
+  parameters: {
+    layout: 'fullscreen',
+  },
 
   args: {
     placement: 'top',
@@ -68,3 +70,5 @@ export const Drawer = {
     },
   },
 };
+
+export default meta;

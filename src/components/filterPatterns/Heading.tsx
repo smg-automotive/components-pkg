@@ -12,7 +12,7 @@ import Flex from 'src/components/flex';
 import Count from '../count';
 import { FilterPatternProps } from './props';
 
-type Props = {
+export type Props = {
   onClose?: () => void;
   language: Language;
   contentRef?: RefObject<HTMLElement>;
