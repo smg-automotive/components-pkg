@@ -1,11 +1,12 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+
 import { sizes } from 'src/themes/shared/sizes';
 
 import { Box, Divider, Flex, Text } from '../index';
 import PageLayout from './Page';
 
-const Template = (args) => <PageLayout {...args} />;
-
-export default {
+const meta: Meta<typeof PageLayout> = {
   title: 'Layout/Pages/Page',
   component: PageLayout,
 
@@ -86,14 +87,13 @@ export default {
     layout: 'fullscreen',
   },
 };
+export default meta;
 
 export const LayoutWithoutAds = {
-  render: Template.bind({}),
   name: 'Layout without ads',
 };
 
 export const LayoutWithSidebarAds = {
-  render: Template.bind({}),
   name: 'Layout with sidebar ads',
 
   args: {
@@ -106,7 +106,6 @@ export const LayoutWithSidebarAds = {
 };
 
 export const LayoutWithHeroAndSidebarAds = {
-  render: Template.bind({}),
   name: 'Layout with hero and sidebar ads',
 
   args: {

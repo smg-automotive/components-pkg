@@ -1,7 +1,11 @@
+import React from 'react';
+
+import { Meta } from '@storybook/react';
+
 import Text from '../text';
 import SimpleHeader from '../simpleHeader';
 import Section from '../section';
-import TwoColumnsLayout from './TwoColumnsLayout';
+import TwoColumnsLayout, { TwoColumnsLayoutProps } from './TwoColumnsLayout';
 
 const Template = ({
   rightContent,
@@ -9,6 +13,11 @@ const Template = ({
   rightContentColumns,
   leftContentColumns,
   ...args
+}: Omit<TwoColumnsLayoutProps, 'left' | 'right'> & {
+  leftContent: TwoColumnsLayoutProps['left']['content'];
+  leftContentColumns: TwoColumnsLayoutProps['left']['columns'];
+  rightContent: TwoColumnsLayoutProps['right']['content'];
+  rightContentColumns: TwoColumnsLayoutProps['right']['columns'];
 }) => (
   <TwoColumnsLayout
     {...args}
@@ -17,17 +26,12 @@ const Template = ({
   />
 );
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Layout/Pages/Layout with two columns',
-  component: TwoColumnsLayout,
+  component: Template,
 
   args: {
-    header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
-    ),
+    header: <SimpleHeader title="I am a simple header!" url="#" />,
 
     leftContent: (
       <Text>
@@ -46,6 +50,8 @@ export default {
       />
     ),
     rightContentColumns: 6,
+
+    title: '',
   },
 
   argTypes: {
@@ -96,18 +102,6 @@ export default {
         disable: true,
       },
     },
-
-    left: {
-      table: {
-        disable: true,
-      },
-    },
-
-    right: {
-      table: {
-        disable: true,
-      },
-    },
   },
 
   parameters: {
@@ -115,8 +109,9 @@ export default {
   },
 };
 
+export default meta;
+
 export const WithRightContent = {
-  render: Template.bind({}),
   name: 'With right content',
 
   args: {
@@ -130,7 +125,6 @@ export const WithRightContent = {
 };
 
 export const WithCustomTitle = {
-  render: Template.bind({}),
   name: 'With custom title',
 
   args: {
@@ -152,7 +146,6 @@ export const WithCustomTitle = {
 };
 
 export const WithCustomColumnWidths = {
-  render: Template.bind({}),
   name: 'With custom column widths',
 
   args: {

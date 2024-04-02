@@ -1,12 +1,15 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+
+import { sizes } from 'src/themes/shared/sizes';
+
 import SimpleHeader from '../simpleHeader';
 import Input from '../input';
 import FormControl from '../formControl';
 import Button from '../button';
 import LayoutWithVehicleReference from './WithVehicleReference';
 
-const Template = (args) => <LayoutWithVehicleReference {...args} />;
-
-export default {
+const meta: Meta<typeof LayoutWithVehicleReference> = {
   title: 'Layout/Pages/Layout with vehicle reference',
   component: LayoutWithVehicleReference,
 
@@ -29,6 +32,8 @@ export default {
       ),
     },
 
+    header: <SimpleHeader title="I am a simple header!" url="#header" />,
+
     children: (
       <>
         <FormControl id="name" label="Name">
@@ -42,6 +47,12 @@ export default {
         </FormControl>
       </>
     ),
+
+    maxContentWidth: 'lg',
+
+    rightColumnSize: 4,
+
+    leftColumnSize: 8,
   },
 
   argTypes: {
@@ -56,6 +67,32 @@ export default {
         disable: true,
       },
     },
+
+    maxContentWidth: {
+      options: Object.keys(sizes.container),
+
+      control: {
+        type: 'select',
+      },
+    },
+
+    rightColumnSize: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 11,
+        step: 1,
+      },
+    },
+
+    leftColumnSize: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 11,
+        step: 1,
+      },
+    },
   },
 
   parameters: {
@@ -63,60 +100,37 @@ export default {
   },
 };
 
+export default meta;
+
 export const WithTitle = {
-  render: Template.bind({}),
   name: 'With title',
 
   args: {
-    title: 'Nachricht an den Verkäufer',
-    header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
-    ),
+    title: 'Message for the seller',
   },
 };
 
 export const WithBackLink = {
-  render: Template.bind({}),
   name: 'With back link',
 
   args: {
     backLink: {
       text: 'Back',
-      url: 'https://www.autoscout24.ch/de',
+      url: '#back',
     },
-
-    header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
-    ),
   },
 };
 
 export const WithoutBackLinkAndTitle = {
-  render: Template.bind({}),
   name: 'Without back link and title',
-
-  args: {
-    header: (
-      <SimpleHeader
-        title="I am a simple header!"
-        url="https://www.autoscout24.ch/de"
-      />
-    ),
-  },
 };
 
 export const WithoutHeader = {
-  render: Template.bind({}),
   name: 'Without header',
 
   args: {
-    title: 'Nachricht an den Verkäufer',
+    title: 'Message to the seller',
     maxContentWidth: 'xl',
+    header: null,
   },
 };
