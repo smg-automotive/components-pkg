@@ -1,68 +1,106 @@
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+
 import { ArrowLeftIcon, ErrorIcon } from '../index';
 
-import Link from './index';
+import LinkComponent from './index';
 
-export default {
+const meta: Meta<typeof LinkComponent> = {
   title: 'Components/Navigation/Link',
-  component: Link,
+  component: LinkComponent,
+
+  args: {
+    href: '#href',
+    children: 'I am a link',
+  },
+
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+
+    rel: {
+      control: 'text',
+    },
+
+    target: {
+      control: 'text',
+    },
+
+    isExternal: {
+      control: 'boolean',
+    },
+
+    variant: {
+      control: 'select',
+      options: ['baseLink', 'navigationLink', 'subNavigationLink'],
+    },
+
+    fontWeight: {
+      control: 'select',
+      options: ['regular', 'bold'],
+    },
+
+    color: {
+      control: 'color',
+    },
+  },
 };
 
-export const Overview = {
-  render: () => <Link href="https://autoscout24.ch">AutoScout24 Homepage</Link>,
-  name: 'Overview',
-};
+export default meta;
+
+export const Link = {};
 
 export const LinkWithLeftIcon = {
-  render: () => <Link leftIcon={<ArrowLeftIcon />}>Back</Link>,
   name: 'Link with Left icon',
+  args: {
+    leftIcon: <ArrowLeftIcon />,
+    children: 'Back',
+  },
 };
 
 export const LinkWithRightIcon = {
-  render: () => (
-    <Link rightIcon={<ErrorIcon />} href="https://google.com" target="_blank">
-      Go to External Link
-    </Link>
-  ),
   name: 'Link with Right icon',
+  args: {
+    rightIcon: <ErrorIcon />,
+    children: 'Go to External Link',
+  },
 };
 
-export const LinkWithLeftRightIcons = {
-  render: () => (
-    <Link leftIcon={<ArrowLeftIcon />} rightIcon={<ErrorIcon />}>
-      Terms & Conditions
-    </Link>
-  ),
-  name: 'Link with Left & Right icons',
+export const LinkWithBothIcons = {
+  name: 'Link with both icons',
+  args: {
+    leftIcon: <ArrowLeftIcon />,
+    rightIcon: <ErrorIcon />,
+    children: 'Terms & conditions',
+  },
 };
 
-export const LinkAsPartOfAParagraph = {
-  render: () => (
+export const LinkAsPartOfAParagraph: StoryObj<typeof Link> = {
+  name: 'Link as part of a paragraph',
+  args: {
+    children: 'Terms & conditions',
+  },
+  render: (args) => (
     <p>
-      You need to accept<Link>Terms & Conditions</Link>before you proceed
+      You must accept <LinkComponent {...args} /> to continue
     </p>
   ),
-  name: 'Link as part of a paragraph',
 };
 
 export const LinkWithRelAndTarget = {
-  render: () => (
-    <Link
-      rel="nofollow noopener noreferrer"
-      target="_blank"
-      href="https://autoscout24.ch"
-    >
-      AutoScout24 Homepage
-    </Link>
-  ),
-
   name: 'Link with rel and target',
+  args: {
+    rel: 'noopener noreferrer',
+    target: '_blank',
+  },
 };
 
-export const LinkWithExternalRel = {
-  render: () => (
-    <Link isExternal={true} href="https://autoscout24.ch">
-      AutoScout24 Homepage
-    </Link>
-  ),
-  name: 'Link with external rel',
+export const ExternalLink = {
+  args: {
+    isExternal: true,
+    children: 'Go to External Link',
+  },
 };
