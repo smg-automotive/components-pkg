@@ -1,25 +1,25 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+
 import ListItem from './ListItem';
 
-import List from './index';
+import ListComponent, { Props } from './index';
 
-const Template = (args) => (
-  <List {...args}>
-    <ListItem>Item 1</ListItem>
-    <ListItem>Item 2</ListItem>
-    <ListItem>Item 3</ListItem>
-  </List>
+const Template = ({ items, ...args }: Props & { items: number }) => (
+  <ListComponent {...args}>
+    {Array.from({ length: items }, (_, i) => (
+      <ListItem key={i}>Item {i + 1}</ListItem>
+    ))}
+  </ListComponent>
 );
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Components/Data display/List/Unstyled list',
-  component: List,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  component: ListComponent,
 
   args: {
     size: 'md',
+    items: 5,
   },
 
   argTypes: {
@@ -29,6 +29,7 @@ export default {
     },
   },
 };
+export default meta;
 
 export const UnstyledList = {
   render: Template.bind({}),
