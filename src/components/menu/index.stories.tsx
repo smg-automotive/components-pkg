@@ -1,28 +1,33 @@
 import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+
+import Box from '../box';
 
 import MenuComponent from './index';
 
-const Template = ({ title }) => {
-  const menuItems = [
-    { text: 'Detusch', onClick: action('Detusch') },
-    { text: 'English', onClick: action('English') },
-    { text: 'Français', onClick: action('Français') },
-    { text: 'Italiano', onClick: action('Italiano') },
-  ];
-  return <MenuComponent title={title} items={menuItems} />;
-};
-
-export default {
+const meta: Meta<typeof MenuComponent> = {
   title: 'Patterns/Data Display/Menu',
   component: MenuComponent,
-};
-
-export const Menu = {
-  render: Template.bind({}),
-  name: 'Menu',
 
   args: {
+    items: [
+      { text: 'Detusch', onClick: action('Detusch') },
+      { text: 'English', onClick: action('English') },
+      { text: 'Français', onClick: action('Français') },
+      { text: 'Italiano', onClick: action('Italiano') },
+    ],
     title: 'Language',
   },
+};
+export default meta;
+
+export const Menu: StoryObj<typeof MenuComponent> = {
+  decorators: [
+    (Story) => (
+      <Box h="200px">
+        <Story />
+      </Box>
+    ),
+  ],
 };
