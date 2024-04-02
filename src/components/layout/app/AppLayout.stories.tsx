@@ -1,3 +1,7 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
+
 import Center from 'src/components/center';
 import Box from 'src/components/box';
 
@@ -47,18 +51,27 @@ const Template = () => {
   );
 };
 
-export default {
+const meta: Meta<typeof AppLayout> = {
   title: 'Layout/App',
   component: AppLayout,
-  args: {},
-  argTypes: {},
 
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Stories />
+        </>
+      ),
+    },
   },
 };
 
+export default meta;
+
 export const App = {
-  render: Template.bind(),
-  name: 'App',
+  render: Template.bind({}),
 };
