@@ -1,29 +1,34 @@
-import Section from './index';
+import React from 'react';
+import { Meta } from '@storybook/react';
 
-const Template = ({ nativeImageSize, ...args }) => (
-  <Section
+import withoutImageMeta from './withoutImage.stories';
+
+import SectionComponent, { Props } from './index';
+
+const Template = ({
+  nativeImageSize = '320x320',
+  ...args
+}: Props & { nativeImageSize?: string }) => (
+  <SectionComponent
     {...args}
     image={<img src={`https://via.placeholder.com/${nativeImageSize}`} />}
   />
 );
 
-export default {
+const meta: Meta<typeof Template> = {
+  ...withoutImageMeta,
   title: 'Patterns/Sections/WithImage',
-  component: Section,
+  component: SectionComponent,
+  render: Template.bind({}),
 
   args: {
-    title:
-      'Thank you for sending a message! We have sent a copy to your inbox.',
-    text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+    ...withoutImageMeta.args,
     nativeImageSize: '320x320',
     maxImgW: '2xl',
   },
 
   argTypes: {
-    variant: {
-      options: ['hero', 'regular'],
-      control: 'select',
-    },
+    ...withoutImageMeta.argTypes,
 
     maxImgW: {
       options: ['xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'],
@@ -31,20 +36,18 @@ export default {
     },
   },
 };
+export default meta;
 
 export const Hero = {
-  render: Template.bind({}),
-  name: 'Hero',
-
   args: {
     variant: 'hero',
   },
 };
 
+/**
+ * Max image width is responsive, change viewport size to see the effect
+ */
 export const HeroResponsive = {
-  render: Template.bind({}),
-  name: 'Hero Responsive',
-
   args: {
     variant: 'hero',
 
@@ -56,18 +59,15 @@ export const HeroResponsive = {
 };
 
 export const Regular = {
-  render: Template.bind({}),
-  name: 'Regular',
-
   args: {
     variant: 'regular',
   },
 };
 
+/**
+ * Max image width is responsive, change viewport size to see the effect
+ */
 export const RegularResponsive = {
-  render: Template.bind({}),
-  name: 'Regular Responsive',
-
   args: {
     variant: 'regular',
 

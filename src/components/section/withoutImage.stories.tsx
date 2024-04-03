@@ -1,15 +1,16 @@
-import Section from './index';
+import { Meta } from '@storybook/react';
 
-const Template = (args) => <Section {...args} />;
+import SectionComponent from './index';
 
-export default {
+const meta: Meta<typeof SectionComponent> = {
   title: 'Patterns/Sections/WithoutImage',
-  component: Section,
+  component: SectionComponent,
 
   args: {
     title:
       'Thank you for sending a message! We have sent a copy to your inbox.',
     text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
+    maxImgW: undefined,
   },
 
   argTypes: {
@@ -17,22 +18,21 @@ export default {
       options: ['hero', 'regular'],
       control: 'select',
     },
+
+    maxImgW: {
+      table: { disable: true },
+    },
   },
 };
+export default meta;
 
 export const Hero = {
-  render: Template.bind({}),
-  name: 'Hero',
-
   args: {
     variant: 'hero',
   },
 };
 
 export const Regular = {
-  render: Template.bind({}),
-  name: 'Regular',
-
   args: {
     variant: 'regular',
   },
