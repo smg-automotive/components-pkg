@@ -1,16 +1,19 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import VehicleReference from './index';
 
-const Template = (args) => (
-  <Box maxW={{ '2xs': '100%', md: '450px' }}>
-    <VehicleReference {...args} />
-  </Box>
-);
-
-export default {
+const meta: Meta<typeof VehicleReference> = {
   title: 'Patterns/Data display/Vehicle reference',
   component: VehicleReference,
+  decorators: [
+    (Story) => (
+      <Box maxW={{ '2xs': '100%', md: '450px' }}>
+        <Story />
+      </Box>
+    ),
+  ],
 
   argTypes: {
     image: {
@@ -20,9 +23,9 @@ export default {
     },
   },
 };
+export default meta;
 
 export const VehicleReferenceWithImage = {
-  render: Template.bind({}),
   name: 'Vehicle reference with image',
 
   args: {
@@ -35,7 +38,6 @@ export const VehicleReferenceWithImage = {
 };
 
 export const VehicleReferenceMissingImage = {
-  render: Template.bind({}),
   name: 'Vehicle reference missing image',
 
   args: {
@@ -47,7 +49,6 @@ export const VehicleReferenceMissingImage = {
 };
 
 export const VehicleReferenceWithMinimalProps = {
-  render: Template.bind({}),
   name: 'Vehicle reference with minimal props',
 
   args: {
