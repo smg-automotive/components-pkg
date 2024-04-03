@@ -1,14 +1,10 @@
-import { Stack } from 'src/index';
+import { Meta } from '@storybook/react';
 
-import Spinner from './index';
+import SpinnerComponent from './index';
 
-const Template = (args) => {
-  return <Spinner {...args} />;
-};
-
-export default {
+const meta: Meta<typeof SpinnerComponent> = {
   title: 'Components/Feedback/Spinner',
-  component: Spinner,
+  component: SpinnerComponent,
 
   args: {
     size: 'sm',
@@ -24,21 +20,34 @@ export default {
     },
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
+export const Spinner = {};
+
+export const SizesXs = {
+  name: 'Size > xs',
+  args: {
+    size: 'xs',
+  },
 };
 
-export const Sizes = {
-  render: () => (
-    <Stack spacing="lg" direction="row">
-      <Spinner size="xs" />
-      <Spinner size="sm" />
-      <Spinner size="md" />
-      <Spinner size="lg" />
-    </Stack>
-  ),
+export const SizesSm = {
+  name: 'Size > sm',
+  args: {
+    size: 'sm',
+  },
+};
 
-  name: 'Sizes',
+export const SizesMd = {
+  name: 'Size > md',
+  args: {
+    size: 'md',
+  },
+};
+
+export const SizesLg = {
+  name: 'Size > lg',
+  args: {
+    size: 'lg',
+  },
 };
