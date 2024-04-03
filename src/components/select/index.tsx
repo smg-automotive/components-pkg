@@ -16,7 +16,7 @@ type OptionsAndValue<T extends string | number> = {
   value?: T;
 };
 
-type Props = Pick<
+export type Props = Pick<
   ChakraSelectProps,
   | 'placeholder'
   | 'isInvalid'

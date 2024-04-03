@@ -1,92 +1,85 @@
-import { useState } from 'react';
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
 import { Box } from '../index';
 
-import Select from './index';
+import SelectComponent, { Props } from './index';
 
-const Container = ({ children }) => {
+const Template = (props: Props) => {
+  const [args, updateArgs] = useArgs<Props>();
   return (
-    <Box w="100%" maxW="250px">
-      {children}
-    </Box>
+    <SelectComponent
+      {...({
+        ...props,
+        ...args,
+      } as Props)}
+      onChange={(e) => {
+        updateArgs({ value: e.target.value });
+        args.onChange && args.onChange(e);
+      }}
+    />
   );
 };
 
-const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
-  const [currentValue, setCurrentValue] = useState(value);
-  const onChangeHandler = onChange
-    ? action('change')
-    : () => {
-        return;
-      };
-  return (
-    <Container>
-      <Select
-        {...args}
-        onBlur={onBlur ? action('blur') : undefined}
-        onFocus={onFocus ? action('focus') : undefined}
-        onChange={
-          value
-            ? (e) => {
-                setCurrentValue(e.target.value);
-                onChangeHandler(e);
-              }
-            : onChangeHandler
-        }
-        value={value ? currentValue : undefined}
-      />
-    </Container>
-  );
-};
-
-export default {
+const meta: Meta<typeof SelectComponent> = {
   title: 'Components/Forms/Select',
-  component: Select,
+  component: SelectComponent,
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="250px">
+        <Story />
+      </Box>
+    ),
+  ],
+  render: Template.bind({}),
 
   args: {
     placeholder: 'Select an option',
     isDisabled: false,
     isInvalid: false,
     size: 'lg',
-    onChange: true,
-    onFocus: false,
-    onBlur: false,
+    onChange: action('onChange'),
+    onFocus: action('onFocus'),
+    onBlur: action('onBlur'),
     autoFocus: false,
+    name: 'test-select',
 
     options: [
       {
-        value: 'o1',
+        value: 1,
         label: 'Option 1',
       },
       {
-        value: 'o2',
+        value: 2,
         label: 'Option 2',
       },
       {
-        value: 'o3',
+        value: 3,
         label: 'Option 3',
       },
       {
-        value: 'o4',
+        value: 4,
         label: 'Option 4',
       },
       {
-        value: 'o5',
+        value: 5,
         label: 'Option 5',
       },
       {
-        value: 'o6',
+        value: 6,
         label: 'Option 6',
       },
     ],
 
-    value: '',
+    value: undefined,
   },
 
   argTypes: {
     value: {
       description: 'use value prop when you want controlled select',
+      control: 'text',
     },
 
     size: {
@@ -100,40 +93,45 @@ export default {
       sort: 'alpha',
       expanded: true,
     },
-
-    actions: ['change', 'blur', 'focus'],
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
-};
+export const Select = {};
 
-export const Focused = {
-  render: Template.bind({}),
-  name: 'Focused',
+export const StateFocused = {
+  name: 'State > Focused',
 
   args: {
-    onFocus: true,
     autoFocus: true,
   },
 };
 
-export const Invalid = {
-  render: Template.bind({}),
-  name: 'Invalid',
-
+export const StateInvalid = {
+  name: 'State > Invalid',
   args: {
     isInvalid: true,
   },
 };
 
-export const Disabled = {
-  render: Template.bind({}),
-  name: 'Disabled',
+export const StateDisabled = {
+  name: 'State > Disabled',
 
   args: {
     isDisabled: true,
+  },
+};
+
+export const SizeMedium = {
+  name: 'Size > Medium',
+  args: {
+    size: 'md',
+  },
+};
+
+export const SizeLarge = {
+  name: 'Size > Large',
+  args: {
+    size: 'lg',
   },
 };
