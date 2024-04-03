@@ -1,35 +1,25 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import { TooltipIcon } from '../icons';
-import Box from '../box';
 
 import PopoverComponent from './index';
 
-const Template = (args) => {
-  return (
-    <Box height="200px">
-      <PopoverComponent {...args}>
-        <TooltipIcon />
-      </PopoverComponent>
-    </Box>
-  );
-};
-
-export default {
+const meta: Meta<typeof PopoverComponent> = {
   title: 'Components/Overlay/Popover',
   component: PopoverComponent,
-};
-
-export const Popover = {
-  render: Template.bind({}),
-  name: 'Popover',
 
   args: {
     content: 'I am popover content',
     placement: 'auto',
+    children: <TooltipIcon />,
   },
 
   argTypes: {
+    children: {
+      table: { disable: true },
+    },
+
     placement: {
       options: [
         'auto',
@@ -49,3 +39,7 @@ export const Popover = {
     },
   },
 };
+
+export default meta;
+
+export const Popover = {};
