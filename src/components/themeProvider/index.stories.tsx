@@ -1,12 +1,37 @@
+import React from 'react';
+import {
+  Controls,
+  Description,
+  Primary,
+  Subtitle,
+  Title,
+} from '@storybook/blocks';
 import { Box, Flex } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
 import ThemeProvider from './index';
 
-const Template = (args) => {
-  return (
-    <ThemeProvider {...args}>
+export default {
+  title: 'Theme/Provider',
+  component: ThemeProvider,
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+        </>
+      ),
+    },
+  },
+
+  args: {
+    theme: Brand.AutoScout24,
+    children: (
       <Flex direction="row" align="center" justify="space-between" maxW="170px">
         <Box
           bg="brand.100"
@@ -20,16 +45,7 @@ const Template = (args) => {
         />
         <Box w={100}>brand-100</Box>
       </Flex>
-    </ThemeProvider>
-  );
-};
-
-export default {
-  title: 'Theme/Provider',
-  component: ThemeProvider,
-
-  args: {
-    theme: Brand.AutoScout24,
+    ),
   },
 
   argTypes: {
@@ -40,11 +56,15 @@ export default {
         type: 'select',
       },
     },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
 export const AutoScout24 = {
-  render: Template.bind({}),
   name: 'AutoScout24',
 
   args: {
@@ -53,7 +73,6 @@ export const AutoScout24 = {
 };
 
 export const MotoScout24 = {
-  render: Template.bind({}),
   name: 'MotoScout24',
 
   args: {
