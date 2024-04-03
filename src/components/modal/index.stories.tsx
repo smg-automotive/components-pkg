@@ -1,87 +1,75 @@
 import React from 'react';
-
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { useDisclosure } from '@chakra-ui/react';
+import { Text, useDisclosure } from '@chakra-ui/react';
 
 import Button from '../button';
-import Box from '../box';
 
-import ModalComponent from './index';
+import ModalComponent, { Props } from './index';
 
-const ModalTemplate = (args) => {
+const Template = ({
+  contentParagraphs,
+  primaryActionLabel,
+  secondaryActionLabel,
+  ...args
+}: Props & {
+  contentParagraphs?: number;
+  primaryActionLabel?: string;
+  secondaryActionLabel?: string;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box>
+    <>
       <Button onClick={onOpen}>Open</Button>
-      <ModalComponent isOpen={isOpen} onClose={onClose} {...args}>
-        <Box p="4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-          Phasellus malesuada egestas est sit amet venenatis.
-        </Box>
+      <ModalComponent
+        {...{
+          ...args,
+          primaryActionButton: primaryActionLabel
+            ? {
+                action: action('Primary'),
+                label: primaryActionLabel,
+              }
+            : undefined,
+          secondaryActionButton: secondaryActionLabel
+            ? {
+                action: action('Secondary'),
+                label: secondaryActionLabel,
+              }
+            : undefined,
+        }}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        {Array.from({ length: contentParagraphs || 1 }).map((_, index) => (
+          <Text p="4" key={`paragraph-${index}`}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            elementum ultricies vestibulum. Sed odio diam, tristique id velit
+            sit amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
+            condimentum. Maecenas sollicitudin volutpat tellus, laoreet
+            fringilla nibh. Vivamus luctus enim id quam feugiat, maximus
+            porttitor justo ultrices. Nam tellus erat, porta nec consectetur
+            eget, aliquet id purus. Suspendisse at elementum arcu. Suspendisse
+            ac lobortis velit. Phasellus malesuada egestas est sit amet
+            venenatis.
+          </Text>
+        ))}
       </ModalComponent>
-    </Box>
+    </>
   );
 };
 
-const ModalTemplateWithMoreContent = (args) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  return (
-    <Box>
-      <Button onClick={onOpen}>Open</Button>
-      <ModalComponent isOpen={isOpen} onClose={onClose} {...args}>
-        <Box p="4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-          Phasellus malesuada egestas est sit amet venenatis.
-        </Box>
-        <Box p="4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-          Phasellus malesuada egestas est sit amet venenatis.
-        </Box>
-        <Box p="4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          elementum ultricies vestibulum. Sed odio diam, tristique id velit sit
-          amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
-          condimentum. Maecenas sollicitudin volutpat tellus, laoreet fringilla
-          nibh. Vivamus luctus enim id quam feugiat, maximus porttitor justo
-          ultrices. Nam tellus erat, porta nec consectetur eget, aliquet id
-          purus. Suspendisse at elementum arcu. Suspendisse ac lobortis velit.
-          Phasellus malesuada egestas est sit amet venenatis.
-        </Box>
-      </ModalComponent>
-    </Box>
-  );
-};
-
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Components/Data display/Modal',
   component: ModalComponent,
-};
-
-export const Modal = {
-  render: ModalTemplate.bind({}),
-  name: 'Modal',
+  render: Template.bind({}),
 
   args: {
+    contentParagraphs: 1,
     title: 'Modal Header',
     size: 'md',
+    variant: 'base',
+    disableBodyPadding: false,
+    motionPreset: 'scale',
   },
 
   argTypes: {
@@ -92,91 +80,92 @@ export const Modal = {
         type: 'select',
       },
     },
+
+    variant: {
+      options: ['fullScreen', 'base', 'topScroll'],
+
+      control: {
+        type: 'select',
+      },
+    },
+
+    motionPreset: {
+      options: [
+        'slideInBottom',
+        'slideInRight',
+        'slideInTop',
+        'slideInLeft',
+        'scale',
+        'none',
+      ],
+
+      control: {
+        type: 'select',
+      },
+    },
+
+    primaryActionLabel: {
+      control: {
+        type: 'text',
+      },
+    },
+
+    secondaryActionLabel: {
+      control: {
+        type: 'text',
+      },
+    },
   },
 };
+
+export default meta;
+
+export const Modal = {};
 
 export const ModalWithoutHeader = {
-  render: ModalTemplate.bind({}),
-  name: 'Modal Without Header',
-
   args: {
-    primaryActionButton: {
-      action: action('Submit'),
-      label: 'Submit',
-    },
+    title: undefined,
   },
 };
 
-export const ModalWithFooter = {
-  render: ModalTemplate.bind({}),
-  name: 'Modal With Footer',
-
+export const ModalWithPrimaryAction = {
   args: {
-    title: 'Modal Header',
-
-    primaryActionButton: {
-      action: action('Submit'),
-      label: 'Submit',
-    },
+    primaryActionLabel: 'Submit',
   },
 };
 
-export const ModalWith2ActionButtons = {
-  render: ModalTemplate.bind({}),
-  name: 'Modal With 2 Action Buttons',
-
+export const ModalWithSecondaryAction = {
   args: {
-    title: 'Modal Header',
+    secondaryActionLabel: 'Fire',
+  },
+};
 
-    primaryActionButton: {
-      action: action('Submit'),
-      label: 'Submit',
-    },
-
-    secondaryActionButton: {
-      action: action('Fire'),
-      label: 'Fire',
-    },
+export const ModalWithTwoActionButtons = {
+  args: {
+    primaryActionLabel: 'Submit',
+    secondaryActionLabel: 'Fire',
   },
 };
 
 export const FullScreenModal = {
-  render: ModalTemplate.bind({}),
-  name: 'Full screen Modal',
-
   args: {
     title: 'Full screen modal',
     variant: 'fullScreen',
+    size: undefined,
   },
 };
 
 export const LargeScrollableModal = {
-  render: ModalTemplateWithMoreContent.bind({}),
-  name: 'Large Scrollable Modal',
-
   args: {
     title: 'Modal Header',
     size: 'md',
     variant: 'topScroll',
-  },
-
-  argTypes: {
-    size: {
-      options: ['md', 'lg'],
-
-      control: {
-        type: 'select',
-      },
-    },
+    contentParagraphs: 3,
   },
 };
 
 export const ModalWithoutModalBodyPadding = {
-  render: ModalTemplate.bind({}),
-  name: 'Modal Without Modal Body Padding',
-
   args: {
-    title: 'Modal Header',
     disableBodyPadding: true,
   },
 };
