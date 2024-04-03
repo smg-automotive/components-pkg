@@ -1,29 +1,18 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import { TooltipIcon } from '../icons';
 
 import TooltipComponent from './index';
 
-const Template = (args) => {
-  return (
-    <TooltipComponent {...args}>
-      <TooltipIcon />
-    </TooltipComponent>
-  );
-};
-
-export default {
+const meta: Meta<typeof TooltipComponent> = {
   title: 'Components/Overlay/Tooltip',
   component: TooltipComponent,
-};
-
-export const Tooltip = {
-  render: Template.bind({}),
-  name: 'Tooltip',
 
   args: {
     label: 'I am a tooltip text',
     placement: 'auto',
+    children: <TooltipIcon />,
   },
 
   argTypes: {
@@ -44,5 +33,13 @@ export const Tooltip = {
 
       control: 'select',
     },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
+export default meta;
+
+export const Tooltip = {};
