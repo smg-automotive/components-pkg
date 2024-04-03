@@ -40,9 +40,20 @@ const Template = (
   );
 };
 
+/**
+ * Drawer is misplaced in the documentation view due to positioning.
+ * Visit the story directly to see the proper placement.
+ */
 const meta: Meta<typeof DrawerComponent> = {
   title: 'Components/Data display/Drawer',
   component: DrawerComponent,
+  decorators: [
+    (Story) => (
+      <Box height="60px">
+        <Story />
+      </Box>
+    ),
+  ],
 };
 
 export const Drawer = {
