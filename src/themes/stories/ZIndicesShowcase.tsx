@@ -9,7 +9,7 @@ import {
   useTheme,
 } from '@chakra-ui/react';
 
-const ZindicesShowcase: FC = () => {
+const ZIndicesShowcase: FC = () => {
   const theme = useTheme();
   return (
     <TableContainer>
@@ -32,4 +32,4 @@ const ZindicesShowcase: FC = () => {
     </TableContainer>
   );
 };
-export default ZindicesShowcase;
+export default ZIndicesShowcase;
