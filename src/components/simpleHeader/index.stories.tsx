@@ -1,20 +1,16 @@
-import React from 'react';
+import { Meta } from '@storybook/react';
 
 import SimpleHeaderComponent from './index';
 
-const Template = (args) => <SimpleHeaderComponent {...args} />;
-
-export default {
+const meta: Meta<typeof SimpleHeaderComponent> = {
   title: 'Patterns/Navigation/Simple Header',
   component: SimpleHeaderComponent,
-};
-
-export const SimpleHeader = {
-  render: Template.bind({}),
-  name: 'Simple Header',
 
   args: {
     title: 'Nachricht an den Verkäufer',
-    url: 'https://www.autoscout24.ch/de',
+    url: '#href',
   },
 };
+export default meta;
+
+export const SimpleHeader = {};
