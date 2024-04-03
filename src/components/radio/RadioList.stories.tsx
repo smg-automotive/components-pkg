@@ -1,21 +1,14 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Spacer } from '@chakra-ui/react';
 
-import { Box, Flex } from '../index';
+import { Flex } from '../index';
 import RadioListComponent from './RadioList';
 
-const Container = ({ children }) => {
+const DummyOption = () => {
   return (
-    <Box padding="xl" background="purple">
-      {children}
-    </Box>
-  );
-};
-
-const DummyOption = (name) => {
-  return (
-    <Flex key={name}>
+    <Flex>
       <div>
         <div>A5 Coupé 2.0 40 TDO Sport qu. S-Tronic</div>
         <div>2018 - 2020</div>
@@ -34,39 +27,36 @@ const DummyOption = (name) => {
   );
 };
 
-const Template = (args) => {
-  return (
-    <Container>
-      <RadioListComponent {...args} />
-    </Container>
-  );
-};
-
-export default {
+const meta: Meta<typeof RadioListComponent> = {
   title: 'Components/Forms/RadioList',
   component: RadioListComponent,
 
-  parameters: {
-    layout: 'fullscreen',
-  },
-};
-
-export const RadioList = {
-  render: Template.bind({}),
-  name: 'RadioList',
-
   args: {
-    name: 'Demo',
-    onChange: action,
+    name: 'radio-list',
+    onChange: action('onChange'),
 
     options: [
-      <DummyOption key="one" name="one" />,
-      <DummyOption key="two" name="two" />,
-      <DummyOption key="three" name="three" />,
+      <DummyOption key="one" />,
+      <DummyOption key="two" />,
+      <DummyOption key="three" />,
     ],
   },
 
   argTypes: {
-    name: 'Demo',
+    options: {
+      control: { disable: true },
+    },
+  },
+};
+export default meta;
+
+export const RadioList = {};
+
+export const WithDefaultValue = {
+  name: 'With default value',
+
+  args: {
+    name: 'radio-list-wit-value',
+    defaultValue: 'two',
   },
 };
