@@ -1,60 +1,71 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
 import { SortIcon } from '../icons';
+import Box from '../box';
 
-import SelectMenuComponent from './index';
+import SelectMenuComponent, { SelectMenuProps } from './index';
 
-const Template = ({ title, ...args }) => {
-  const [value, setValue] = useState('de');
-  const handleChange = (val) => setValue(val);
-
-  const menuOptions = [
-    { value: 'de', label: 'Detusch', onClick: action('Detusch') },
-    { value: 'en', label: 'English', onClick: action('English') },
-    { value: 'fr', label: 'Français', onClick: action('Français') },
-    { value: 'it', label: 'Italiano', onClick: action('Italiano') },
-  ];
+const Template = (props: SelectMenuProps) => {
+  const [args, updateArgs] = useArgs<SelectMenuProps>();
 
   return (
     <SelectMenuComponent
-      onChange={handleChange}
-      title={title}
-      value={value}
-      options={menuOptions}
-      {...args}
+      {...{ ...props, ...args }}
+      onChange={(v) => {
+        updateArgs({ value: v.toString() });
+        args.onChange && args.onChange(v);
+      }}
     />
   );
 };
 
-export default {
+const meta: Meta<typeof SelectMenuComponent> = {
   title: 'Patterns/Data Display/SelectMenu',
   component: SelectMenuComponent,
-};
-
-export const SelectMenu = {
+  decorators: [
+    (Story) => (
+      <Box h="200px">
+        <Story />
+      </Box>
+    ),
+  ],
   render: Template.bind({}),
-  name: 'SelectMenu',
 
   args: {
     title: 'Language',
+    options: [
+      { value: 'de', label: 'Detusch', onClick: action('Detusch') },
+      { value: 'en', label: 'English', onClick: action('English') },
+      { value: 'fr', label: 'Français', onClick: action('Français') },
+      { value: 'it', label: 'Italiano', onClick: action('Italiano') },
+    ],
+    value: 'de',
+    onChange: action('onChange'),
+  },
+
+  argTypes: {
+    menuColor: {
+      control: 'color',
+    },
+    menuOptionColor: {
+      control: 'color',
+    },
   },
 };
+export default meta;
 
-export const ShowHideIndicator = {
-  render: Template.bind({}),
-  name: 'Show/Hide Indicator',
+export const SelectMenu = {};
 
+export const WithoutIndicator = {
   args: {
-    title: 'Language',
     withIndicator: false,
   },
 };
 
 export const TitleWithIcon = {
-  render: Template.bind({}),
-  name: 'Title with icon',
-
   args: {
     title: 'Language',
     leftIcon: <SortIcon />,
@@ -64,9 +75,6 @@ export const TitleWithIcon = {
 };
 
 export const WithCustomMenuAndMenuOptionColors = {
-  render: Template.bind({}),
-  name: 'With custom menu and menu option colors',
-
   args: {
     title: 'Language',
     menuColor: 'blue.700',
