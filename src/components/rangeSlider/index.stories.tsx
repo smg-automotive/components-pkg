@@ -1,31 +1,31 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
 
-import RangeSlider from './';
+import RangeSliderComponent from './';
 
-const Template = (args) => {
-  return (
-    <Box w={340}>
-      <RangeSlider
-        onChange={(event) => {
-          action('change')(event);
-        }}
-        onChangeEnd={(event) => {
-          action('changeEnd')(event);
-        }}
-        {...args}
-      />
-    </Box>
-  );
-};
-
-export default {
+const meta: Meta<typeof RangeSliderComponent> = {
   title: 'Components/Filter/Range Slider',
-  component: RangeSlider,
-};
+  component: RangeSliderComponent,
 
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
+  decorators: [
+    (Story) => (
+      <Box maxW={340}>
+        <Story />
+      </Box>
+    ),
+  ],
+
+  args: {
+    onChange: action('onChange'),
+    onChangeEnd: action('onChangeEnd'),
+    min: 0,
+    max: 10,
+    defaultValue: [3, 5],
+  },
 };
+export default meta;
+
+export const RangeSlider = {};
