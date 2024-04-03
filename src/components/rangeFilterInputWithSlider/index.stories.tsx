@@ -1,53 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
 
-import RangeFilterInputWithSlider from './';
+import RangeFilterInputWithSlider, { Props } from './';
 
-const Template = ({ facets, from, to, unit, ...rest }) => {
-  const [filters, setFilters] = useState({
-    priceFrom: from.value,
-    priceTo: to.value,
-  });
+const Template = (props: Props<'priceFrom', 'priceTo'>) => {
+  const [args, updateArgs] = useArgs<Props<'priceFrom', 'priceTo'>>();
 
   return (
-    <Box maxW={380}>
-      <RangeFilterInputWithSlider
-        onChange={(event) => {
-          setFilters({
-            ...filters,
-            [event.name]: event.value,
-          });
-          action('change')(event);
-        }}
-        onBlur={(event) => {
-          action('onBlur')(event);
-        }}
-        facets={facets}
-        from={{
-          ...from,
-          value: filters.priceFrom,
-        }}
-        to={{
-          ...to,
-          value: filters.priceTo,
-        }}
-        unit={unit}
-        {...rest}
-      />
-    </Box>
+    <RangeFilterInputWithSlider
+      {...({
+        ...props,
+        ...args,
+      } as Props<'priceFrom', 'priceTo'>)}
+      onChange={(event) => {
+        if (event.name === 'priceFrom') {
+          updateArgs({ from: { ...args.from, value: event.value } });
+        }
+
+        if (event.name === 'priceTo') {
+          updateArgs({ to: { ...args.to, value: event.value } });
+        }
+        action('change')(event);
+      }}
+      onBlur={(event) => {
+        action('onBlur')(event);
+      }}
+      from={{
+        ...props.from,
+        ...args.from,
+      }}
+      to={{
+        ...props.to,
+        ...args.to,
+      }}
+    />
   );
 };
 
-export default {
+const meta: Meta<typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>> = {
   title: 'Components/Filter/Range Filter Input With Slider',
-  component: RangeFilterInputWithSlider,
-};
-
-export const WithHistograms = {
+  component: RangeFilterInputWithSlider<'priceFrom', 'priceTo'>,
+  decorators: [
+    (Story) => (
+      <Box maxW={380}>
+        <Story />
+      </Box>
+    ),
+  ],
   render: Template.bind({}),
-  name: 'With histograms',
 
   args: {
     unit: 'CHF',
@@ -63,7 +67,26 @@ export const WithHistograms = {
       placeholder: '1000000+',
       value: 10000,
     },
+  },
 
+  argTypes: {
+    facets: {
+      description:
+        'Array of objects with `from`, `to` and `value` keys. Use it to display the chart bars and control the scale of the slider',
+    },
+
+    chartHeight: {
+      description: 'Use it to control the maximal height of the chart',
+      control: 'text',
+    },
+  },
+};
+export default meta;
+
+export const WithHistograms = {
+  name: 'With histograms',
+
+  args: {
     facets: [
       {
         from: 0,
@@ -131,30 +154,34 @@ export const WithHistograms = {
       },
     ],
   },
+
+  argTypes: {
+    rangeSliderScale: {
+      table: { disable: true },
+    },
+  },
 };
 
 export const WithCustomRangeSliderScale = {
-  render: Template.bind({}),
   name: 'With custom range slider scale',
 
   args: {
-    unit: 'CHF',
-
-    from: {
-      name: 'priceFrom',
-      placeholder: '0',
-      value: 100,
-    },
-
-    to: {
-      name: 'priceTo',
-      placeholder: '1000000+',
-      value: 10000,
-    },
-
     rangeSliderScale: [
       0, 100, 200, 1000, 2000, 5000, 10000, 30000, 60000, 300000, 1000000,
       90000, 200000,
     ],
+  },
+
+  argTypes: {
+    facets: {
+      table: {
+        disable: true,
+      },
+    },
+    chartHeight: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };

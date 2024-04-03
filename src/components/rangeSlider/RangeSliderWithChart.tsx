@@ -1,4 +1,5 @@
 import React from 'react';
+import { BoxProps } from '@chakra-ui/react';
 
 import Box from '../box';
 import RangeSliderWithScale, {
@@ -13,12 +14,12 @@ export type Facet = {
   value: number;
 };
 
-interface RangeSliderWithChartProps {
+export interface RangeSliderWithChartProps {
   facets: Array<Facet>;
   selection: NumericMinMaxValue;
   onSliderChange: (event: ChangeCallback) => void;
   onSliderRelease: (event: ChangeCallback) => void;
-  chartHeight?: string;
+  chartHeight?: BoxProps['h'];
 }
 
 const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
