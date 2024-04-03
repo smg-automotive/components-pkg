@@ -1,30 +1,38 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box, Image } from '@chakra-ui/react';
 
 import TopVehicleBadgeComponent from './index';
 
-const Template = (args) => (
-  <Box maxW="400px">
-    <TopVehicleBadgeComponent {...args}>
-      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
-    </TopVehicleBadgeComponent>
-  </Box>
-);
-
-export default {
+const meta: Meta<typeof TopVehicleBadgeComponent> = {
   title: 'Components/Features/TopVehicleBadge',
   component: TopVehicleBadgeComponent,
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="400px">
+        <Story />
+      </Box>
+    ),
+  ],
 
   args: {
     aspectRatio: 4 / 3,
+    children: (
+      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
+    ),
   },
 
   argTypes: {
-    aspectRatio: 'number',
+    aspectRatio: {
+      control: 'number',
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
+export default meta;
 
-export const TopVehicleBadge = {
-  render: Template.bind({}),
-  name: 'TopVehicleBadge',
-};
+export const TopVehicleBadge = {};

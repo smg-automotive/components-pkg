@@ -1,31 +1,39 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import { Box, Image } from '@chakra-ui/react';
 
 import TopListingBadgeComponent from './index';
 
-const Template = (args) => (
-  <Box maxW="400px">
-    <TopListingBadgeComponent {...args}>
-      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
-    </TopListingBadgeComponent>
-  </Box>
-);
-
-export default {
+const meta: Meta<typeof TopListingBadgeComponent> = {
   title: 'Components/Features/TopListingBadge',
   component: TopListingBadgeComponent,
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="400px">
+        <Story />
+      </Box>
+    ),
+  ],
 
   args: {
     aspectRatio: 4 / 3,
+    children: (
+      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
+    ),
   },
 
   argTypes: {
-    aspectRatio: 'number',
+    aspectRatio: {
+      control: 'number',
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
+export default meta;
 
-export const TopListingBadge = {
-  render: Template.bind({}),
-  name: 'TopListingBadge',
-};
+export const TopListingBadge = {};
