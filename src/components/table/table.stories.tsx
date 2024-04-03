@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import { colors } from 'src/themes/autoscout24/colors';
 
@@ -14,7 +15,7 @@ import {
   Tr,
 } from './index';
 
-const Template = (args) => (
+const Template: typeof TableComponent = (args) => (
   <TableContainer>
     <TableComponent {...args}>
       <TableCaption>Imperial to metric conversion factors</TableCaption>
@@ -53,8 +54,10 @@ const Template = (args) => (
   </TableContainer>
 );
 
-export default {
+const meta: Meta<typeof TableComponent> = {
   title: 'Components/Data Display/Table',
+  component: TableComponent,
+  render: Template.bind({}),
 
   args: {
     variant: 'simple',
@@ -78,8 +81,6 @@ export default {
     },
   },
 };
+export default meta;
 
-export const Table = {
-  render: Template.bind({}),
-  name: 'Table',
-};
+export const Table = {};
