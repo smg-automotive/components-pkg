@@ -1,47 +1,39 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+
 import Box from '../box';
 import TabPanels from './TabPanels';
 import TabPanel from './TabPanel';
 import TabList from './TabList';
 import Tab from './Tab';
 
-import Tabs from './index';
+import TabsComponent from './index';
 
-const Template = (args) => {
-  const numberOfTabs = args.numberOfTabs ?? 3;
-  const tabs = Array.from({ length: numberOfTabs }, (_, index) => index + 1);
-  return (
-    <Tabs {...args}>
-      <TabList width="max-content">
-        {tabs.map((index) => (
+const meta: Meta<typeof TabsComponent> = {
+  title: 'Components/Navigation/Tabs',
+  component: TabsComponent,
+
+  args: {
+    defaultIndex: 2,
+    children: [
+      <TabList width="max-content" key="tab-list">
+        {Array.from({ length: 3 }).map((_, index) => (
           <Tab key={`tab-${index}`}>Tab: {index}</Tab>
         ))}
-      </TabList>
-      <TabPanels>
-        {tabs.map((index) => (
+      </TabList>,
+      <TabPanels key="tab-panels">
+        {Array.from({ length: 3 }).map((_, index) => (
           <TabPanel key={`tab-panel-${index}`}>
             <Box backgroundColor="gray.50" w="full" h="300px">
               <p>Tab panel: {index}</p>
             </Box>
           </TabPanel>
         ))}
-      </TabPanels>
-    </Tabs>
-  );
-};
-
-export default {
-  title: 'Components/Navigation/Tabs',
-  component: Tabs,
-};
-
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
-
-  args: {
-    isDisabled: false,
-    defaultIndex: 0,
-    numberOfTabs: 3,
+      </TabPanels>,
+    ],
+    onChange: action('onChange'),
+    isLazy: true,
   },
 
   argTypes: {
@@ -49,27 +41,21 @@ export const Overview = {
       options: ['spaceBetween', 'spaceAround'],
       control: 'select',
     },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
+export default meta;
 
-export const WithOneTabDisabled = {
-  render: Template.bind({}),
-  name: 'With one tab disabled',
-
-  args: {
-    isDisabled: true,
-    defaultIndex: 0,
-    numberOfTabs: 3,
-  },
-};
+export const Tabs = {};
 
 export const WithSecondTabSelected = {
-  render: Template.bind({}),
   name: 'With second tab selected',
 
   args: {
-    isDisabled: false,
     defaultIndex: 1,
-    numberOfTabs: 3,
   },
 };
