@@ -6,7 +6,7 @@ import React, {
 
 import { Textarea as ChakraTextarea } from '@chakra-ui/react';
 
-interface Props {
+export interface Props {
   name: string;
   value?: string;
   placeholder?: string;

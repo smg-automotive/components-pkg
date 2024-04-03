@@ -1,66 +1,48 @@
-import { useState } from 'react';
-
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
-
 import { Box } from '@chakra-ui/react';
 
-import Textarea from './index';
+import TextareaComponent, { Props } from './index';
 
-const Container = ({ children }) => {
+const Template = (_props: Props) => {
+  const [args, updateArgs] = useArgs<Props>();
+
   return (
-    <Box w="100%" maxW="250px">
-      {children}
-    </Box>
+    <TextareaComponent
+      {...args}
+      onChange={(e) => {
+        updateArgs({ value: e.target.value });
+        args.onChange && args.onChange(e);
+      }}
+    />
   );
 };
 
-const Template = ({ value, onChange, onBlur, onFocus, ...args }) => {
-  const [currentValue, setCurrentValue] = useState(value);
-  const onChangeHandler = onChange
-    ? action('change')
-    : () => {
-        return;
-      };
-  return (
-    <Container>
-      <Textarea
-        {...args}
-        name="Control"
-        onBlur={onBlur ? action('blur') : undefined}
-        onFocus={onFocus ? action('focus') : undefined}
-        onChange={
-          value
-            ? (e) => {
-                setCurrentValue(e.target.value);
-                onChangeHandler(e);
-              }
-            : onChangeHandler
-        }
-        value={value ? currentValue : undefined}
-      />
-    </Container>
-  );
-};
-
-export default {
+const meta: Meta<typeof TextareaComponent> = {
   title: 'Components/Forms/Textarea',
-  component: Textarea,
-};
-
-export const Overview = {
+  component: TextareaComponent,
   render: Template.bind({}),
-  name: 'Overview',
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="250px">
+        <Story />
+      </Box>
+    ),
+  ],
 
   args: {
     placeholder: 'Placeholder',
     isInvalid: false,
     isDisabled: false,
     autoFocus: false,
-    onChange: true,
-    onFocus: false,
-    onBlur: false,
+    onChange: action('onChange'),
+    onFocus: action('onFocus'),
+    onBlur: action('onBlur'),
     rows: 10,
     cols: 50,
+    name: 'test-textarea',
   },
 
   argTypes: {
@@ -71,77 +53,41 @@ export const Overview = {
         type: 'select',
       },
     },
+    onBlur: {
+      control: 'none',
+    },
+    onFocus: {
+      control: 'none',
+    },
+    onChange: {
+      control: 'none',
+    },
   },
 };
+export default meta;
 
-export const Focused = {
-  render: Template.bind({}),
-  name: 'Focused',
+export const Textarea = {};
+
+export const StateFocused = {
+  name: 'State > Focused',
 
   args: {
-    placeholder: 'Placeholder',
-    isInvalid: false,
-    isDisabled: false,
     autoFocus: true,
-    rows: 10,
-    cols: 50,
-  },
-
-  argTypes: {
-    textStyle: {
-      options: ['body', 'body-small'],
-
-      control: {
-        type: 'select',
-      },
-    },
   },
 };
 
-export const Invalid = {
-  render: Template.bind({}),
-  name: 'Invalid',
+export const StateInvalid = {
+  name: 'State > Invalid',
 
   args: {
-    placeholder: 'Placeholder',
     isInvalid: true,
-    isDisabled: false,
-    autoFocus: false,
-    rows: 10,
-    cols: 50,
-  },
-
-  argTypes: {
-    textStyle: {
-      options: ['body', 'body-small'],
-
-      control: {
-        type: 'select',
-      },
-    },
   },
 };
 
-export const Didabled = {
-  render: Template.bind({}),
-  name: 'Didabled',
+export const StateDisabled = {
+  name: 'State > Disabled',
 
   args: {
-    placeholder: 'Placeholder',
     isDisabled: true,
-    isInvalid: false,
-    autoFocus: false,
-    rows: 10,
-    cols: 50,
-  },
-
-  argTypes: {
-    textStyle: {
-      options: ['body', 'body-small'],
-
-      control: {
-        type: 'select',
-      },
-    },
   },
 };
