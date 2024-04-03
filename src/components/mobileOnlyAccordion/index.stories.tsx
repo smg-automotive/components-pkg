@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meta } from '@storybook/react';
 
 import ListItem from '../list/ListItem';
 import List from '../list';
@@ -6,45 +7,46 @@ import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
 
-import MobileOnlyAccordionComponent from './index';
+import MobileOnlyAccordionComponent, { Props } from './index';
 
-const Template = (args) => (
-  <MobileOnlyAccordionComponent variant={args.variant}>
-    <MobileOnlyAccordionItem>
-      <MobileOnlyAccordionButton>{args.title}</MobileOnlyAccordionButton>
-      <MobileOnlyAccordionPanel>{args.children}</MobileOnlyAccordionPanel>
-    </MobileOnlyAccordionItem>
-    <MobileOnlyAccordionItem>
-      <MobileOnlyAccordionButton>{args.title}</MobileOnlyAccordionButton>
-      <MobileOnlyAccordionPanel>{args.children}</MobileOnlyAccordionPanel>
-    </MobileOnlyAccordionItem>
+const Template = ({
+  sections,
+  sectionItems,
+  ...props
+}: Props & { sections: number; sectionItems: number }) => (
+  <MobileOnlyAccordionComponent {...props}>
+    {Array.from({ length: sections }).map((_section, i) => (
+      <MobileOnlyAccordionItem key={`section-${i}`}>
+        <MobileOnlyAccordionButton>Section {i + 1}</MobileOnlyAccordionButton>
+        <MobileOnlyAccordionPanel>
+          <List>
+            {Array.from({ length: sectionItems }).map((_item, j) => (
+              <ListItem key={`item-${j}`}>Item {j + 1}</ListItem>
+            ))}
+          </List>
+        </MobileOnlyAccordionPanel>
+      </MobileOnlyAccordionItem>
+    ))}
   </MobileOnlyAccordionComponent>
 );
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Patterns/Navigation/MobileOnlyAccordion',
   component: MobileOnlyAccordionComponent,
-};
-
-export const MobileOnlyAccordion = {
-  render: Template.bind({}),
-  name: 'Mobile Only Accordion',
-
-  parameters: {
-    viewport: {},
-  },
 
   args: {
     variant: 'light',
-    title: 'Section title',
+    allowMultiple: false,
+    allowToggle: true,
 
-    children: (
-      <List>
-        <ListItem>Item 1</ListItem>
-        <ListItem>Item 2</ListItem>
-        <ListItem>Item 3</ListItem>
-      </List>
-    ),
+    sections: 3,
+    sectionItems: 3,
+  },
+
+  parameters: {
+    viewport: {
+      defaultViewport: 'sm',
+    },
   },
 
   argTypes: {
@@ -53,4 +55,13 @@ export const MobileOnlyAccordion = {
       control: 'select',
     },
   },
+};
+
+export default meta;
+
+/**
+ * Make sure you're viewing this on a mobile viewport to see the accordion.
+ */
+export const MobileOnlyAccordion = {
+  render: Template.bind({}),
 };
