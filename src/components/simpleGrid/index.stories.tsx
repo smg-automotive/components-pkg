@@ -1,37 +1,19 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import SimpleGrid from './index';
+import SimpleGridComponent from './index';
 
-const Template = ({ maxW, ...args }) => {
-  return (
-    <Box w="100%" maxW={maxW}>
-      <SimpleGrid {...args}>
-        <Box h="50px" bg="blue.100">
-          1
-        </Box>
-        <Box h="50px" bg="green.100">
-          2
-        </Box>
-        <Box h="50px" bg="orange.100">
-          3
-        </Box>
-        <Box h="50px" bg="blue.200">
-          4
-        </Box>
-        <Box h="50px" bg="green.200">
-          5
-        </Box>
-        <Box h="50px" bg="orange.300">
-          6
-        </Box>
-      </SimpleGrid>
-    </Box>
-  );
-};
-
-export default {
+const meta: Meta<typeof SimpleGridComponent> = {
   title: 'Layout/SimpleGrid',
-  component: SimpleGrid,
+  component: SimpleGridComponent,
+  decorators: [
+    (Story) => (
+      <Box maxW={600} m="auto">
+        <Story />
+      </Box>
+    ),
+  ],
 
   parameters: {
     controls: {
@@ -42,6 +24,26 @@ export default {
   args: {
     columns: 3,
     spacing: 'md',
+    children: [
+      <Box h="50px" bg="blue.100" key="1">
+        1
+      </Box>,
+      <Box h="50px" bg="green.100" key="2">
+        2
+      </Box>,
+      <Box h="50px" bg="orange.100" key="3">
+        3
+      </Box>,
+      <Box h="50px" bg="blue.200" key="4">
+        4
+      </Box>,
+      <Box h="50px" bg="green.200" key="5">
+        5
+      </Box>,
+      <Box h="50px" bg="orange.300" key="6">
+        6
+      </Box>,
+    ],
   },
 
   argTypes: {
@@ -69,27 +71,21 @@ export default {
       },
     },
 
-    maxW: {
+    children: {
       table: {
         disable: true,
       },
     },
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
+export const SimpleGrid = {};
 
-  args: {
-    maxW: '300px',
-  },
-};
-
+/**
+ * 2 columns on `2xs` 3 on `sm`. The same approach can be taken for other props.
+ */
 export const Responsive = {
-  render: Template.bind({}),
-  name: 'Responsive',
-
   args: {
     columns: {
       '2xs': 2,
@@ -98,8 +94,10 @@ export const Responsive = {
   },
 };
 
+/**
+ * Adds a column when there's enough space for another child according to `minChildWidth`
+ */
 export const AutoResponsive = {
-  render: Template.bind({}),
   name: 'Auto-responsive',
 
   args: {
