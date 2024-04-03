@@ -1,12 +1,10 @@
-import React from 'react';
+import { Meta } from '@storybook/react';
 
 import { Brand } from 'src/types/brand';
 
 import FooterComponent from './index';
 
-const Template = (args) => <FooterComponent {...args} />;
-
-export default {
+const meta: Meta<typeof FooterComponent> = {
   title: 'Patterns/Navigation/Footer',
   component: FooterComponent,
 
@@ -17,7 +15,7 @@ export default {
   args: {
     brand: Brand.AutoScout24,
     language: 'de',
-    environement: 'preprod',
+    environment: 'preprod',
     useAbsoluteUrls: true,
   },
 
@@ -32,14 +30,12 @@ export default {
       control: 'select',
     },
 
-    environement: {
+    environment: {
       options: ['preprod', 'production'],
       control: 'select',
     },
   },
 };
+export default meta;
 
-export const Footer = {
-  render: Template.bind({}),
-  name: 'Footer',
-};
+export const Footer = {};
