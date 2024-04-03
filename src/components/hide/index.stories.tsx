@@ -16,6 +16,38 @@ const Template = ({ text, ...args }: Props & { text: string }) => {
   );
 };
 
+/**
+ * ## Testing
+ *
+ * If you are using testing-library, you will face some limitations in
+ * testing different viewport sizes. It is sometimes not possible to
+ * properly query the DOM elements inside the `Hide` component because
+ * they would be hidden on the Jest viewport (`1024px`) size and
+ * testing-library does not allow you to overwrite that behavior.
+ * In that case, you should use the `hidden: true` flag as follows:
+ *
+ * ```tsx
+ * import { render, screen, within } from '@testing-library/react';
+ *
+ * import { Hide } from '@smg-automotive/components';
+ *
+ * it('should show only on mobile devices', () => {
+ *   render(
+ *     <Hide above="sm">
+ *       <a href="...">my-link</a>
+ *     </Hide>,
+ *   );
+ *   const ctaContainer = screen.getByTestId('hide-container');
+ *   expect(
+ *     within(ctaContainer).getByRole('link', {
+ *       name: 'my-link',
+ *       // this is needed to find it in the DOM
+ *       hidden: true,
+ *     }),
+ *   ).toBeInTheDocument();
+ * });
+ * ```
+ **/
 const meta: Meta<typeof Template> = {
   title: 'Components/Utils/Hide',
   component: Hide,

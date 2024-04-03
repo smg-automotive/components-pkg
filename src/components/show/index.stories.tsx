@@ -1,13 +1,61 @@
-import Show from './index';
+import React from 'react';
+import { Meta } from '@storybook/react';
 
-const Template = ({ text, ...args }) => {
+import Box from '../box';
+
+import Show, { type Props } from './index';
+
+const Template = ({ text, ...args }: Props & { text: string }) => {
   const breakpoint = args.below || args.above || '[please pass a breakpoint]';
-  return <Show {...args}>{text.replace('BREAKPOINT', breakpoint)}</Show>;
+  return (
+    <Show {...args}>
+      <Box border="1px" borderColor="gray.600" p="md" rounded="sm">
+        {text.replace('BREAKPOINT', breakpoint)}
+      </Box>
+    </Show>
+  );
 };
 
-export default {
+/**
+ * ## Testing
+ *
+ * If you are using testing-library, you will face some limitations in
+ * testing different viewport sizes. It is sometimes not possible to
+ * properly query the DOM elements inside the `Show` component because
+ * they would be hidden on the Jest viewport (`1024px`) size and
+ * testing-library does not allow you to overwrite that behavior.
+ * In that case, you should use the `hidden: true` flag as follows:
+ *
+ * ```tsx
+ * import { render, screen, within } from '@testing-library/react';
+ *
+ * import { Show } from '@smg-automotive/components';
+ *
+ * it('should show only on desktop devices', () => {
+ *   render(
+ *     <Show above="sm">
+ *       <a href="...">my-link</a>
+ *     </Show>,
+ *   );
+ *   const ctaContainer = screen.getByTestId('show-container');
+ *   expect(
+ *     within(ctaContainer).getByRole('link', {
+ *       name: 'my-link',
+ *       // this is needed to find it in the DOM
+ *       hidden: true,
+ *     }),
+ *   ).toBeInTheDocument();
+ * });
+ * ```
+ **/
+const meta: Meta<typeof Template> = {
   title: 'Components/Utils/Show',
   component: Show,
+  render: Template.bind({}),
+
+  parameters: {
+    layout: 'centered',
+  },
 
   argTypes: {
     below: {
@@ -35,7 +83,6 @@ export default {
 };
 
 export const ShowAboveAViewport = {
-  render: Template.bind({}),
   name: 'Show above a viewport',
 
   args: {
@@ -53,7 +100,6 @@ export const ShowAboveAViewport = {
 };
 
 export const ShowBelowAViewport = {
-  render: Template.bind({}),
   name: 'Show below a viewport',
 
   args: {
@@ -70,14 +116,17 @@ export const ShowBelowAViewport = {
   },
 };
 
+/**
+ * Only visible on mobile portrait devices.
+ */
 export const ShowWhenMatchingAQuery = {
   render: Template.bind({}),
   name: 'Show when matching a query',
 
   args: {
     breakpoint:
-      '(orientation: landscape) and (hover: none) and (pointer: coarse)',
-    text: 'I am only shown on mobile landscape',
+      '(orientation: portrait) and (hover: none) and (pointer: coarse)',
+    text: 'I am visible on mobile landscape',
   },
 
   argTypes: {
@@ -94,3 +143,5 @@ export const ShowWhenMatchingAQuery = {
     },
   },
 };
+
+export default meta;
