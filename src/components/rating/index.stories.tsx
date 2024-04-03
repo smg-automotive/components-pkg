@@ -1,26 +1,30 @@
-import Rating from './index';
+import { Meta } from '@storybook/react';
 
-const Template = (args) => {
-  return <Rating {...args} />;
-};
+import RatingComponent from './index';
 
-export default {
+const meta: Meta<typeof RatingComponent> = {
   title: 'Components/Data display/Rating',
-  component: Rating,
+  component: RatingComponent,
 
   argTypes: {
     size: {
-      table: {
-        disable: true,
+      control: 'select',
+      options: ['small', 'large'],
+    },
+
+    rating: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 5,
+        step: 0.1,
       },
     },
   },
 };
+export default meta;
 
 export const Large = {
-  render: Template.bind({}),
-  name: 'Large',
-
   args: {
     rating: 4.5,
     size: 'large',
@@ -28,9 +32,6 @@ export const Large = {
 };
 
 export const Small = {
-  render: Template.bind({}),
-  name: 'Small',
-
   args: {
     rating: 4.5,
     size: 'small',
