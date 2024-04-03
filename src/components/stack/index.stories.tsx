@@ -1,26 +1,12 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import Stack from './index';
+import StackComponent from './index';
 
-const Template = (args) => {
-  return (
-    <Stack {...args}>
-      <Box w="40px" h="40px" bg="blue.100">
-        1
-      </Box>
-      <Box w="50px" h="50px" bg="green.100">
-        2
-      </Box>
-      <Box w="60px" h="60px" bg="orange.100">
-        3
-      </Box>
-    </Stack>
-  );
-};
-
-export default {
+const meta: Meta<typeof StackComponent> = {
   title: 'Layout/Stack',
-  component: Stack,
+  component: StackComponent,
 
   parameters: {
     controls: {
@@ -32,7 +18,18 @@ export default {
     align: 'center',
     direction: 'row',
     spacing: 'md',
-    wrap: true,
+    wrap: 'wrap',
+    children: [
+      <Box w="40px" h="40px" bg="blue.100" key="1">
+        1
+      </Box>,
+      <Box w="50px" h="50px" bg="green.100" key="2">
+        2
+      </Box>,
+      <Box w="60px" h="60px" bg="orange.100" key="3">
+        3
+      </Box>,
+    ],
   },
 
   argTypes: {
@@ -74,18 +71,22 @@ export default {
         type: 'select',
       },
     },
+
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
-};
+export const Stack = {};
 
+/**
+ * Default `col` direction switches to `row` on `sm` viewport.
+ */
 export const Responsive = {
-  render: Template.bind({}),
-  name: 'Responsive',
-
   args: {
     direction: {
       '2xs': 'column',
