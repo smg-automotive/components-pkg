@@ -35,7 +35,7 @@ const Template = ({ query, ...props }: Args) => {
   const checkboxes: Item<Values, FilterType>[] = args.items.map((item) => ({
     ...item,
     isChecked: query[item.filterName || 'conditionTypeGroup'].includes(
-      item.key
+      item.key,
     ),
     childCheckboxes: item.childCheckboxes?.map((child) => ({
       ...child,
@@ -54,15 +54,15 @@ const Template = ({ query, ...props }: Args) => {
   const removeParentFilter = (
     parentFilter: Values[],
     childFilter: Values[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ): Filters => {
     const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName]: parentFilter.filter(
-        (parent) => parent !== updatedItem.key
+        (parent) => parent !== updatedItem.key,
       ),
       [childFilterName]: childFilter.filter(
-        (child) => !childrenToUpdate.includes(child)
+        (child) => !childrenToUpdate.includes(child),
       ),
     };
   };
@@ -70,13 +70,13 @@ const Template = ({ query, ...props }: Args) => {
   const addParentFilter = (
     parentFilter: Values[],
     childFilter: Values[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ): Filters => {
     const childrenToUpdate = getAllChildrenByParentKey(updatedItem.key);
     return {
       [parentFilterName]: [...parentFilter, updatedItem.key],
       [childFilterName]: childFilter.filter(
-        (child) => !childrenToUpdate.includes(child)
+        (child) => !childrenToUpdate.includes(child),
       ),
     };
   };
@@ -95,7 +95,7 @@ const Template = ({ query, ...props }: Args) => {
   const getParentItemByChildrenKey = (key?: Values) => {
     if (!key) return undefined;
     return checkboxes.find((box) =>
-      box.childCheckboxes?.find((child) => child.key === key)
+      box.childCheckboxes?.find((child) => child.key === key),
     );
   };
 
@@ -103,14 +103,14 @@ const Template = ({ query, ...props }: Args) => {
     parentFilter: Values[],
     childFilter: Values[],
     updatedItem: Item<Values, FilterType>,
-    parentItem: Item<Values, FilterType>
+    parentItem: Item<Values, FilterType>,
   ): Filters => {
     const childrenToUpdate = getAllChildrenByParentKey(parentItem.key).filter(
-      (childKey) => childKey !== updatedItem.key
+      (childKey) => childKey !== updatedItem.key,
     );
     return {
       [parentFilterName]: parentFilter.filter(
-        (parent) => parent !== parentItem.key
+        (parent) => parent !== parentItem.key,
       ),
       [childFilterName]: [...childFilter, ...childrenToUpdate],
     };
@@ -119,13 +119,13 @@ const Template = ({ query, ...props }: Args) => {
   const removeAllChildrenAndAddParent = (
     parentFilter: Values[],
     childFilter: Values[],
-    parentItem: Item<Values, FilterType>
+    parentItem: Item<Values, FilterType>,
   ): Filters => {
     const childrenToRemove = getAllChildrenByParentKey(parentItem.key);
     return {
       [parentFilterName]: [...parentFilter, parentItem.key],
       [childFilterName]: childFilter.filter(
-        (childKey) => !childrenToRemove.includes(childKey)
+        (childKey) => !childrenToRemove.includes(childKey),
       ),
     };
   };
@@ -133,7 +133,7 @@ const Template = ({ query, ...props }: Args) => {
   const addChildFilter = (
     parentFilter: Values[],
     childFilter: Values[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ): Filters => {
     return {
       [parentFilterName]: parentFilter,
@@ -144,12 +144,12 @@ const Template = ({ query, ...props }: Args) => {
   const removeChildFilter = (
     parentFilter: Values[],
     childFilter: Values[],
-    updatedItem: Item<Values, FilterType>
+    updatedItem: Item<Values, FilterType>,
   ) => {
     return {
       [parentFilterName]: parentFilter,
       [childFilterName]: childFilter.filter(
-        (childKey) => childKey !== updatedItem.key
+        (childKey) => childKey !== updatedItem.key,
       ),
     };
   };
@@ -158,7 +158,7 @@ const Template = ({ query, ...props }: Args) => {
     parentFilter: Values[],
     childFilter: Values[],
     updatedItem: Item<Values, FilterType>,
-    parentItem?: Item<Values, FilterType>
+    parentItem?: Item<Values, FilterType>,
   ): Filters => {
     if (parentItem && parentItem.childCheckboxes) {
       if (parentItem.isChecked) {
@@ -166,18 +166,18 @@ const Template = ({ query, ...props }: Args) => {
           parentFilter,
           childFilter,
           updatedItem,
-          parentItem
+          parentItem,
         );
       }
       if (updatedItem.isChecked) {
         const childrenWithoutModified = parentItem.childCheckboxes.filter(
-          (child) => child.key !== updatedItem.key
+          (child) => child.key !== updatedItem.key,
         );
         if (childrenWithoutModified.every((child) => child.isChecked)) {
           return removeAllChildrenAndAddParent(
             parentFilter,
             childFilter,
-            parentItem
+            parentItem,
           );
         }
         return addChildFilter(parentFilter, childFilter, updatedItem);
@@ -197,7 +197,7 @@ const Template = ({ query, ...props }: Args) => {
         parentFilter,
         childFilter,
         updatedItem,
-        parentItem
+        parentItem,
       ),
     });
   };
