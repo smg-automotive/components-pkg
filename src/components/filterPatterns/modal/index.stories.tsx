@@ -13,49 +13,47 @@ import { type ModalFilterProps } from './props';
 import { ModalFilter } from './index';
 
 const Template = (args: ModalFilterProps) => (
-  <Box paddingX="lg">
-    <ModalFilter
-      {...args}
-      onModalOpen={action('onModalOpen')}
-      onModalClose={action('onModalClose')}
-      onResetFilter={action('onResetFilter')}
-    >
-      <CheckboxFilter
-        items={[
-          { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
-          { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
-          { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
-          { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
-          {
-            label: 'CNG Benzin',
-            key: 'cng-petrol',
-            facet: 20,
-            isChecked: false,
-          },
-          {
-            label: 'HEV Benzin',
-            key: 'hev-petrol',
-            facet: 10,
-            isChecked: false,
-          },
-          {
-            label: 'LPG Benzin',
-            key: 'lpg-petrol',
-            facet: 10,
-            isChecked: true,
-          },
-          {
-            label: 'PHEV Benzin',
-            key: 'phev-petrol',
-            facet: 0,
-            isChecked: false,
-          },
-        ]}
-        onApply={() => null}
-        language="de"
-      />
-    </ModalFilter>
-  </Box>
+  <ModalFilter
+    {...args}
+    onModalOpen={action('onModalOpen')}
+    onModalClose={action('onModalClose')}
+    onResetFilter={action('onResetFilter')}
+  >
+    <CheckboxFilter
+      items={[
+        { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
+        { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
+        { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
+        { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
+        {
+          label: 'CNG Benzin',
+          key: 'cng-petrol',
+          facet: 20,
+          isChecked: false,
+        },
+        {
+          label: 'HEV Benzin',
+          key: 'hev-petrol',
+          facet: 10,
+          isChecked: false,
+        },
+        {
+          label: 'LPG Benzin',
+          key: 'lpg-petrol',
+          facet: 10,
+          isChecked: true,
+        },
+        {
+          label: 'PHEV Benzin',
+          key: 'phev-petrol',
+          facet: 0,
+          isChecked: false,
+        },
+      ]}
+      onApply={() => null}
+      language="de"
+    />
+  </ModalFilter>
 );
 
 const CustomHeader = () => (
@@ -78,6 +76,13 @@ const CustomHeader = () => (
 const meta: Meta<typeof ModalFilter> = {
   title: 'Patterns/Filter/Modal',
   component: ModalFilter,
+  decorators: [
+    (Story) => (
+      <Box w="600px">
+        <Story />
+      </Box>
+    ),
+  ],
 
   args: {
     language: 'de',
@@ -112,6 +117,7 @@ const meta: Meta<typeof ModalFilter> = {
     layout: 'centered',
   },
 };
+export default meta;
 
 export const DefaultEmpty = {
   render: Template.bind({}),
@@ -169,4 +175,11 @@ export const WithIcon = {
   },
 };
 
-export default meta;
+export const WithDifferentBackgroundColor = {
+  render: Template.bind({}),
+  name: 'With different background color',
+  args: {
+    backgroundColor: 'gray.100',
+    paddingX: 'md',
+  },
+};
