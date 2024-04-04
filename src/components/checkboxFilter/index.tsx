@@ -51,3 +51,4 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   );
 }
 export default CheckboxFilter;
+export { Props };
