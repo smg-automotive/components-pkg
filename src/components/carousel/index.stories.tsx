@@ -1,31 +1,92 @@
+import React, { FC } from 'react';
+import { Meta } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
-import StoryTemplate from './StoryTemplate';
-import Carousel, { PaginationType } from './index.tsx';
+import FullHeight from '../fullHeight';
+import Flex from '../flex';
+import Box from '../box';
 
-const Template = (args) => {
-  // mdx has a limitation that you cannot pass an array of objects as children. Extracting it to a separate component solves the issue
-  return <StoryTemplate args={args} action={action} />;
-};
+import CarouselComponent, { PaginationType } from './index';
 
-export default {
+const images = [
+  'https://via.placeholder.com/800x600',
+  'https://via.placeholder.com/900x600',
+  'https://via.placeholder.com/900x500',
+  'https://via.placeholder.com/700x500',
+  'https://via.placeholder.com/450x500',
+  'https://via.placeholder.com/750x500',
+];
+
+interface SlideProps {
+  index: number;
+  fullScreen: boolean;
+  imageSrc: string;
+}
+const Slide: FC<SlideProps> = ({ index, imageSrc, fullScreen }) => (
+  <Flex
+    justifyContent="center"
+    alignItems="center"
+    height={fullScreen ? 'full' : '600px'}
+    position="relative"
+  >
+    <img
+      src={imageSrc}
+      alt="a great kitten"
+      style={{
+        objectFit: 'cover',
+        height: '100%',
+        width: '100%',
+      }}
+    />
+    <Box position="absolute" backgroundColor="gray.400" p="md" color="white">
+      Slide {index}
+    </Box>
+  </Flex>
+);
+
+const meta: Meta<typeof CarouselComponent> = {
   title: 'Components/Data display/Carousel',
-  component: Carousel,
+  component: CarouselComponent,
+  decorators: [
+    (Story) => {
+      const [args] = useArgs();
+      return args.fullScreen ? (
+        <FullHeight>
+          <Story />
+        </FullHeight>
+      ) : (
+        <Box m="auto" maxW="900px" p="md">
+          <Story />
+        </Box>
+      );
+    },
+  ],
+
+  args: {
+    onSlideClick: action('onSlideClick'),
+    onSlideSelect: action('onSlideSelect'),
+    paginationType: PaginationType.None,
+    children: images.map((imageSrc, i) => (
+      <Slide
+        key={`slide-${i + 1}`}
+        index={i + 1}
+        fullScreen={false}
+        imageSrc={imageSrc}
+      />
+    )),
+  },
 
   argTypes: {
     fullScreen: {
-      table: {
-        disable: true,
-      },
+      table: { disable: true },
     },
-
-    numberOfSlides: {
-      control: {
-        type: 'number',
-        min: 1,
-        max: 20,
-        step: 1,
-      },
+    children: {
+      table: { disable: true },
+    },
+    paginationType: {
+      options: [PaginationType.None, PaginationType.Number, PaginationType.Dot],
+      control: { type: 'select' },
     },
   },
 
@@ -33,55 +94,61 @@ export default {
     layout: 'fullscreen',
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
-  name: 'Overview',
-
-  args: {
-    startIndex: 0,
-    onSlideClick: true,
-    fullScreen: false,
-    numberOfSlides: 6,
-  },
-};
-
-export const FullScreen = {
-  render: Template.bind({}),
-  name: 'Full screen',
-
-  args: {
-    startIndex: 0,
-    onSlideClick: true,
-    fullScreen: true,
-    numberOfSlides: 6,
-    onSlideEnter: true,
-    onSlideLeave: true,
-  },
-};
+export const Carousel = {};
 
 export const WithNumbersPagination = {
-  render: Template.bind({}),
-  name: 'With Numbers Pagination',
-
   args: {
-    startIndex: 0,
-    onSlideClick: true,
-    fullScreen: false,
-    numberOfSlides: 6,
     paginationType: PaginationType.Number,
   },
 };
 
 export const WithDotsPagination = {
-  render: Template.bind({}),
-  name: 'With Dots Pagination',
-
   args: {
-    startIndex: 0,
-    onSlideClick: true,
-    fullScreen: false,
-    numberOfSlides: 6,
     paginationType: PaginationType.Dot,
+  },
+};
+
+export const StartingFromSpecificSlide = {
+  args: {
+    startIndex: 2,
+  },
+};
+
+export const FullScreen = {
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      source: { type: 'code' },
+    },
+  },
+  argTypes: {
+    paginationType: {
+      table: { disable: true },
+    },
+  },
+  args: {
+    fullScreen: true,
+    children: images.map((imageSrc, i) => ({
+      slide: (
+        <Slide
+          index={i + 1}
+          key={`slide-${i + 1}`}
+          fullScreen={true}
+          imageSrc={imageSrc}
+        />
+      ),
+      onSlideEnter: () => action('onSlideEnter')(i),
+      onSlideLeave: () => action('onSlideLeave')(i),
+      thumbnail: (
+        <Slide
+          index={i + 1}
+          key={`thumbnail-${i + 1}`}
+          fullScreen={true}
+          imageSrc={imageSrc}
+        />
+      ),
+    })),
   },
 };
