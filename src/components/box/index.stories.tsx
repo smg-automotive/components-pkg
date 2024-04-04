@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { space } from 'src/themes/shared/space';
 
@@ -25,12 +25,8 @@ const meta: Meta<typeof BoxComponent> = {
     borderWidth: {
       control: 'number',
     },
-    children: {
-      table: { disable: true },
-    },
   },
 };
-
-export const Box = {};
-
 export default meta;
+
+export const Overview: StoryObj<typeof BoxComponent> = {};

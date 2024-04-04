@@ -1,35 +1,14 @@
 import React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { CheckmarkIcon, TimeIcon, TooltipIcon } from '../icons';
 import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
 
-import Accordion, { type AccordionProps } from './index';
+import Accordion from './index';
 
-const Template = (
-  args: AccordionProps & {
-    items: { title: string; content: string; leftIcon?: React.ReactNode }[];
-  },
-) => (
-  <Accordion
-    allowMultiple={args?.allowMultiple}
-    allowToggle={args?.allowToggle}
-    variant={args?.variant}
-  >
-    {args?.items?.map((item, i) => (
-      <AccordionItem key={i}>
-        <AccordionButton leftIcon={item?.leftIcon}>
-          {item.title}
-        </AccordionButton>
-        <AccordionPanel>{item.content}</AccordionPanel>
-      </AccordionItem>
-    ))}
-  </Accordion>
-);
-
-const meta: Meta<typeof Template> = {
+const meta: Meta<typeof Accordion> = {
   title: 'Patterns/Navigation/Accordion',
   component: Accordion,
   args: {
@@ -44,51 +23,39 @@ const meta: Meta<typeof Template> = {
       options: ['light', 'dark', 'minimal'],
       control: { type: 'select' },
     },
-    items: {
+    children: {
       table: { disable: true },
     },
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
+type StoryType = StoryObj<typeof Accordion>;
+export const Overview: StoryType = {
   args: {
-    items: [
-      {
-        title: 'Section 1',
-        content: 'First section content.',
-      },
-      {
-        title: 'Section 2',
-        content: 'Second section content.',
-      },
-    ],
+    children: Array.from({ length: 3 }).map((_, i) => (
+      <AccordionItem key={`item-${i}`}>
+        <AccordionButton>Section {i + 1}</AccordionButton>
+        <AccordionPanel>Section {i + 1} content.</AccordionPanel>
+      </AccordionItem>
+    )),
   },
 };
 
-export const WithIcons = {
-  render: Template.bind({}),
+const icons = [
+  <TooltipIcon color="orange.400" key="icon-1" />,
+  <CheckmarkIcon color="green.400" key="icon-2" />,
+  <TimeIcon key="icon-3" />,
+];
+export const WithIcons: StoryType = {
   name: 'With icons',
 
   args: {
-    items: [
-      {
-        title: 'Section 1',
-        leftIcon: <TooltipIcon color="orange.400" />,
-        content: 'First section content.',
-      },
-      {
-        title: 'Section 2',
-        leftIcon: <CheckmarkIcon color="green.400" />,
-        content: 'Second section content.',
-      },
-      {
-        title: 'Section 3',
-        leftIcon: <TimeIcon />,
-        content: 'Third section content.',
-      },
-    ],
+    children: icons.map((icon, i) => (
+      <AccordionItem key={`item-${i}`}>
+        <AccordionButton leftIcon={icon}>Section {i + 1}</AccordionButton>
+        <AccordionPanel>Section {i + 1} content.</AccordionPanel>
+      </AccordionItem>
+    )),
   },
 };
-
-export default meta;

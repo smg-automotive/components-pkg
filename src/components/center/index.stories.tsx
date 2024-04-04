@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import CenterComponent from './index';
 
@@ -9,6 +9,6 @@ const meta: Meta<typeof CenterComponent> = {
     children: 'I am centered',
   },
 };
-
-export const Center = {};
 export default meta;
+
+export const Overview: StoryObj<typeof CenterComponent> = {};

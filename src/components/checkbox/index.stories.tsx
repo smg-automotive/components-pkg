@@ -1,123 +1,90 @@
-import React, { useState } from 'react';
-import { Meta } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
-import { Stack } from 'src/index';
-
-import Checkbox, { type CheckboxProps } from './index';
-
-const Template = ({ isChecked, ...args }: CheckboxProps) => {
-  const [checked, setChecked] = useState(isChecked);
-  return (
-    <Checkbox
-      {...args}
-      isChecked={checked}
-      onChange={(e) => {
-        setChecked(e.target.checked);
-        action('onChange')(e);
-      }}
-    />
-  );
-};
-
-const IndeterminateTemplate = () => {
-  const [checkedItems, setCheckedItems] = useState([false, false]);
-  const allChecked = checkedItems.every(Boolean);
-  const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
-  return (
-    <>
-      <Checkbox
-        label="Parent Checkbox"
-        isChecked={allChecked}
-        isIndeterminate={isIndeterminate}
-        onChange={(e) => setCheckedItems([e.target.checked, e.target.checked])}
-        name="parent-checkbox"
-      />
-      <Stack paddingX="lg" marginY="s" spacing="s">
-        <Checkbox
-          label="Child Checkbox 1"
-          isChecked={checkedItems[0]}
-          onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
-          name="child-checkbox-1"
-        />
-        <Checkbox
-          label="Child Checkbox 2"
-          isChecked={checkedItems[1]}
-          onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
-          name="child-checkbox-2"
-        />
-      </Stack>
-    </>
-  );
-};
+import Checkbox from './index';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Forms/Checkbox',
   component: Checkbox,
-  argTypes: {
-    value: {
-      table: { disable: true },
-    },
-    isChecked: {
-      table: { disable: true },
-    },
-  },
-};
+  render: (props) => {
+    const [args, updateArgs] = useArgs();
 
-export const Overview = {
-  render: Template.bind({}),
+    return (
+      <Checkbox
+        {...args}
+        {...props}
+        onChange={(e) => {
+          updateArgs({ isChecked: e.target.checked });
+          args.onChange?.(e);
+        }}
+      />
+    );
+  },
 
   args: {
-    name: 'Control',
-    value: 1,
+    name: 'test-checkbox',
+    value: '1',
     isChecked: false,
     isDisabled: false,
     isInvalid: false,
-    label: 'Regular',
+    label: 'Test Checkbox',
+    onChange: action('onChange'),
+  },
+
+  argTypes: {
+    label: {
+      control: 'text',
+    },
   },
 };
+export default meta;
 
-export const Selected = {
-  render: Template.bind({}),
+type StoryType = StoryObj<typeof Checkbox>;
+export const StateDefault: StoryType = {
+  name: 'State > Default',
+};
 
+export const StateChecked: StoryType = {
+  name: 'State > Checked',
   args: {
-    name: 'Control',
-    value: 1,
     isChecked: true,
-    isDisabled: false,
-    label: 'Selected',
+    label: 'Checked',
   },
 };
 
-export const Invalid = {
-  render: Template.bind({}),
-
+export const StateInvalid: StoryType = {
+  name: 'State > Invalid',
   args: {
-    name: 'Control',
-    value: 1,
-    isChecked: false,
-    isDisabled: false,
     isInvalid: true,
     label: 'Invalid',
   },
 };
 
-export const Disabled = {
-  render: () => (
-    <Stack spacing="lg" direction="row">
-      <Checkbox isDisabled={true} label="Disabled" name="disabled-1" />
-      <Checkbox
-        isDisabled={true}
-        isChecked={true}
-        label="Disabled checked"
-        name="disabled-2"
-      />
-    </Stack>
-  ),
+/**
+ * Indeterminate state is used when some of the children checkoxes are checked
+ **/
+export const StateIndeterminate = {
+  name: 'State > Indeterminate',
+  args: {
+    isIndeterminate: true,
+  },
 };
 
-export const Indeterminate = {
-  render: IndeterminateTemplate.bind({}),
+export const Disabled: StoryType = {
+  name: 'State > Disabled',
+  args: {
+    isDisabled: true,
+    label: 'Disabled',
+  },
 };
 
-export default meta;
+export const DisabledChecked: StoryType = {
+  name: 'State > Disabled & Checked',
+  args: {
+    isDisabled: true,
+    isChecked: true,
+    label: 'Disabled & Checked',
+  },
+};

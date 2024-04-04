@@ -1,36 +1,27 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Stack } from 'src/index';
+import { iconControl } from 'src/storybook/ControlTypes';
+import { ShareIcon, VideoIcon } from 'src';
 
-import { ShareIcon, TrashIcon, VideoIcon } from '../index';
-
-import Button, { type ButtonProps } from './index';
-
-const Template = (
-  args: Exclude<ButtonProps, 'children'> & { label: string },
-) => <Button {...args}>{args.label}</Button>;
-const variants = ['primary', 'secondary', 'success', 'transparent'];
+import Button from './index';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-};
-
-export const Primary = {
-  render: Template.bind({}),
 
   args: {
     isDisabled: false,
-    label: 'Primary Button',
     variant: 'primary',
     size: 'lg',
+    children: 'Button',
+    onClick: action('onClick'),
   },
 
   argTypes: {
     variant: {
-      options: variants,
+      options: ['primary', 'secondary', 'success', 'transparent'],
       control: 'select',
     },
 
@@ -38,159 +29,112 @@ export const Primary = {
       options: ['md', 'lg'],
       control: 'select',
     },
+
+    children: {
+      control: 'text',
+    },
+
+    leftIcon: iconControl,
+    rightIcon: iconControl,
+    icon: iconControl,
+  },
+};
+export default meta;
+type StoryType = StoryObj<typeof Button>;
+
+export const Overview: StoryType = {};
+
+export const VariantPrimary: StoryType = {
+  name: 'Variant > Primary',
+  args: {
+    children: 'Primary Button',
   },
 };
 
-export const Secondary = {
-  render: Template.bind({}),
-
+export const VariantSecondary: StoryType = {
+  name: 'Variant > Secondary',
   args: {
-    isDisabled: false,
-    label: 'Secondary Button',
+    children: 'Secondary Button',
     variant: 'secondary',
-    size: 'lg',
-  },
-
-  argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
   },
 };
 
-export const Success = {
-  render: Template.bind({}),
-
+export const VariantSuccess: StoryType = {
+  name: 'Variant > Success',
   args: {
-    isDisabled: false,
-    label: 'Success Button',
+    children: 'Success Button',
     variant: 'success',
-    size: 'lg',
-  },
-
-  argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
   },
 };
 
-export const Transparent = {
-  render: Template.bind({}),
+export const VariantTransparent: StoryType = {
+  name: 'Variant > Transparent',
+  args: {
+    variant: 'transparent',
+    children: 'Transparent Button',
+  },
+};
+
+export const SizesMedium: StoryType = {
+  name: 'Sizes > Medium',
+  args: {
+    size: 'md',
+  },
+};
+
+export const SizesLarge: StoryType = {
+  name: 'Sizes > Large',
+  args: {
+    size: 'lg',
+  },
+};
+
+export const StateDisabled: StoryType = {
+  name: 'Sate > Disabled',
+  args: {
+    isDisabled: true,
+  },
+};
+
+export const AsLink: StoryType = {
+  args: {
+    as: 'a',
+    href: '#href',
+  },
+};
+
+export const WithLeftIcon: StoryType = {
+  args: {
+    leftIcon: <VideoIcon />,
+  },
+};
+
+export const WithRightIcon: StoryType = {
+  args: {
+    rightIcon: <VideoIcon />,
+  },
+};
+
+export const IconButton: StoryType = {
+  name: 'Icon button',
 
   args: {
-    isDisabled: false,
-    variant: 'transparent',
-    icon: <TrashIcon />,
-    size: 'lg',
+    children: undefined,
+    icon: <ShareIcon />,
+    ariaLabel: 'Share to Facebook',
   },
 
   argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
-
-    disabled: {
+    children: {
       table: {
         disable: true,
       },
     },
-  },
-};
 
-export const Sizes = {
-  render: () => (
-    <Stack spacing="lg" direction="row">
-      <Button size="md" as="button">
-        Medium
-      </Button>
-      <Button size="lg" as="button">
-        Large
-      </Button>
-    </Stack>
-  ),
-};
-
-export const Disabled = {
-  render: () => (
-    <Stack spacing="lg" direction="row">
-      <Button isDisabled={true} onClick={action('onClick')}>
-        Primary Button
-      </Button>
-      <Button variant="secondary" isDisabled={true} onClick={action('onClick')}>
-        Secondary Button
-      </Button>
-      <Button variant="success" isDisabled={true} onClick={action('onClick')}>
-        Success Button
-      </Button>
-    </Stack>
-  ),
-};
-
-export const ButtonAsLink = {
-  render: Template.bind({}),
-  name: 'Button as Link',
-
-  args: {
-    label: 'Primary Button',
-    variant: 'primary',
-    size: 'lg',
-    as: 'a',
-    href: 'https://google.com',
-    isExternal: true,
-  },
-
-  argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
-  },
-};
-
-export const ButtonWithLeftIcon = {
-  render: Template.bind({}),
-  name: 'Button with left icon',
-
-  args: {
-    label: 'Button with left icon',
-    variant: 'primary',
-    size: 'lg',
-    leftIcon: <VideoIcon />,
-  },
-
-  argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
+    rightIcon: {
+      table: {
+        disable: true,
+      },
     },
 
     leftIcon: {
@@ -200,65 +144,3 @@ export const ButtonWithLeftIcon = {
     },
   },
 };
-
-export const ButtonWithRightIcon = {
-  render: Template.bind({}),
-  name: 'Button with right icon',
-
-  args: {
-    label: 'Button with right icon',
-    variant: 'primary',
-    size: 'lg',
-    rightIcon: <VideoIcon />,
-  },
-
-  argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
-
-    rightIcon: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export const IconButton = {
-  render: Template.bind({}),
-  name: 'Icon button',
-
-  args: {
-    variant: 'primary',
-    size: 'lg',
-    icon: <ShareIcon />,
-    ariaLabel: 'Share to Facebook',
-  },
-
-  argTypes: {
-    variant: {
-      options: variants,
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
-
-    icon: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export default meta;

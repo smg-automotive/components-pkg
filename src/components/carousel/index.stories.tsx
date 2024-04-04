@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
@@ -96,30 +96,33 @@ const meta: Meta<typeof CarouselComponent> = {
 };
 export default meta;
 
-export const Carousel = {};
+type StoryType = StoryObj<typeof CarouselComponent>;
+export const Overview: StoryType = {};
 
-export const WithNumbersPagination = {
+export const WithNumbersPagination: StoryType = {
   args: {
     paginationType: PaginationType.Number,
   },
 };
 
-export const WithDotsPagination = {
+export const WithDotsPagination: StoryType = {
   args: {
     paginationType: PaginationType.Dot,
   },
 };
 
-export const StartingFromSpecificSlide = {
+export const StartingFromSpecificSlide: StoryType = {
   args: {
     startIndex: 2,
   },
 };
 
-export const FullScreen = {
+export const FullScreen: StoryType = {
   parameters: {
     layout: 'fullscreen',
     docs: {
+      // TEMP: This is a workaround as the library that generates the source code
+      // for the docs does not support the array of objects as children.
       source: { type: 'code' },
     },
   },

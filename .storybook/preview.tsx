@@ -7,7 +7,6 @@ import {
 import { Decorator, Preview } from '@storybook/react';
 import { ChakraProvider, ChakraProviderProps } from '@chakra-ui/react';
 
-import { colors } from '../src/themes/shared/colors';
 import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
   autoScout24Theme,
@@ -71,25 +70,23 @@ const preview: Preview = {
       },
     },
   },
+  argTypes: {
+    children: {
+      control: { type: null },
+    },
+    size: { control: { type: 'select' } },
+    variant: { control: { type: 'select' } },
+  },
   parameters: {
     docs: {
       theme: storybookTheme,
+      controls: {
+        expanded: true,
+        sort: 'requiredFirst',
+      },
     },
     viewport: {
       viewports,
-    },
-    controls: {
-      expanded: true,
-      presetColors: Object.entries(colors).flatMap(([name, value]) => {
-        if (typeof value === 'object') {
-          return Object.entries(value).map(([shade, color]) => ({
-            color,
-            title: `${name}.${shade}`,
-          }));
-        }
-
-        return [{ color: value, title: name }];
-      }),
     },
   },
 };

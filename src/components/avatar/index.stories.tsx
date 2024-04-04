@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import AvatarComponent from './index';
 
@@ -16,13 +16,12 @@ const meta: Meta<typeof AvatarComponent> = {
     },
   },
 };
+export default meta;
 
-export const Avatar = {};
+export const Overview: StoryObj<typeof AvatarComponent> = {};
 
-export const WithNotification = {
+export const WithNotification: StoryObj<typeof AvatarComponent> = {
   args: {
     withNotification: true,
   },
 };
-
-export default meta;

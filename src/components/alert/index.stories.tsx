@@ -1,9 +1,8 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { ErrorIcon } from '../index';
-import { Template } from './Template';
 
 import Alert from './index';
 
@@ -14,8 +13,7 @@ const meta: Meta<typeof Alert> = {
   args: {
     type: 'info',
     description: 'Your Chakra experience may be degraded.',
-    dismissible: true,
-    onDismiss: action('onDismiss'),
+    dismissible: false,
     title: '',
     link: undefined,
   },
@@ -34,49 +32,33 @@ const meta: Meta<typeof Alert> = {
     },
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
+type StoryType = StoryObj<typeof Alert>;
+export const Overview: StoryType = {};
 
+export const WithLink: StoryType = {
   args: {
-    type: 'info',
-    dismissible: false,
-  },
-};
-
-export const WithLink = {
-  render: Template.bind({}),
-
-  args: {
-    type: 'info',
-    dismissible: false,
     link: {
-      url: 'https://www.autoscout24.ch/de',
+      url: '#href',
       text: 'Link',
     },
   },
 };
 
-export const WithTitle = {
-  render: Template.bind({}),
-
+export const WithTitle: StoryType = {
   args: {
-    type: 'info',
-    dismissible: false,
     title: 'Your browser is outdated!',
   },
 };
 
-export const WithCustomIcon = {
-  render: Template.bind({}),
-  name: 'With custom Icon',
-
+export const WithCustomIcon: StoryType = {
   args: {
     type: 'error',
     dismissible: false,
     title: 'Your browser is outdated!',
     link: {
-      url: 'https://www.autoscout24.ch/de',
+      url: '#href',
       text: 'Link',
     },
     icon: <ErrorIcon />,
@@ -91,12 +73,38 @@ export const WithCustomIcon = {
   },
 };
 
-export const Dismissible = {
-  render: Template.bind({}),
+export const Dismissible: StoryType = {
   args: {
     type: 'info',
     dismissible: true,
+    onDismiss: action('onDismiss'),
   },
 };
 
-export default meta;
+export const TypeInfo: StoryType = {
+  name: 'Type > Info',
+  args: {
+    type: 'info',
+  },
+};
+
+export const TypeSuccess: StoryType = {
+  name: 'Type > Success',
+  args: {
+    type: 'success',
+  },
+};
+
+export const TypeWarning: StoryType = {
+  name: 'Type > Warning',
+  args: {
+    type: 'warning',
+  },
+};
+
+export const TypeError: StoryType = {
+  name: 'Type > Error',
+  args: {
+    type: 'error',
+  },
+};

@@ -6,11 +6,13 @@ export { default as ArticleTeaser } from './articleTeaser';
 export { default as AspectRatio } from './aspectRatio';
 export { default as Alert } from './alert';
 export { default as Badge } from './badge';
-export { default as Button } from './button';
 export { default as Box } from './box';
 export { default as Breadcrumbs } from './breadcrumbs';
 export { default as BreadcrumbsItem } from './breadcrumbs/Item';
 export { default as BreadcrumbLink } from './breadcrumbs/Link';
+export { default as Button } from './button';
+export * from './card';
+
 export { default as Carousel } from './carousel';
 export { default as Center } from './center';
 export { default as Checkbox } from './checkbox';
@@ -96,7 +98,7 @@ export { default as VehicleReference } from './vehicleReference';
 
 export * from './heading';
 export * from './icons';
-export * from './card';
+
 export * from './layout';
 export * from './table';
 export * from './carousel';

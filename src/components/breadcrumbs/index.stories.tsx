@@ -1,42 +1,29 @@
 import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import BreadcrumbLink from './Link';
 import BreadcrumbItem from './Item';
 
 import BreadcrumbsComponent from './index';
 
-const Template = (args: {
-  crumbs: Array<{ title: string; href?: string }>;
-}) => (
-  <BreadcrumbsComponent>
-    {args.crumbs.map((crumb, i) => (
-      <BreadcrumbItem key={i}>
-        <BreadcrumbLink href={crumb?.href}>{crumb.title}</BreadcrumbLink>
-      </BreadcrumbItem>
-    ))}
-  </BreadcrumbsComponent>
-);
-
-export default {
+const meta: Meta<typeof BreadcrumbsComponent> = {
   title: 'Patterns/Navigation/Breadcrumbs',
   component: BreadcrumbsComponent,
 };
+export default meta;
 
-export const Breadcrumbs = {
-  render: Template.bind({}),
+export const Breadcrumbs: StoryObj<typeof BreadcrumbsComponent> = {
   args: {
-    crumbs: [
-      {
-        title: 'VW',
-        href: '#',
-      },
-      {
-        title: 'Golf',
-        href: '##',
-      },
-      {
-        title: 'VW GOLF 2.0 TSI GTI DSG Performance',
-      },
+    children: [
+      <BreadcrumbItem key="vw">
+        <BreadcrumbLink href="#vw">VW</BreadcrumbLink>
+      </BreadcrumbItem>,
+      <BreadcrumbItem key="golf">
+        <BreadcrumbLink href="#golf">Golf</BreadcrumbLink>
+      </BreadcrumbItem>,
+      <BreadcrumbItem key="vw">
+        <BreadcrumbLink>2.0 TSI GTI DSG Performance</BreadcrumbLink>
+      </BreadcrumbItem>,
     ],
   },
 };
