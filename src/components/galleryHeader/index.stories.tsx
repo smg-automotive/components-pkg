@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { H1, H2 } from 'src/components/heading';
@@ -44,6 +44,6 @@ const meta: Meta<typeof GalleryHeaderComponent> = {
     },
   },
 };
-
-export const GalleryHeader = {};
 export default meta;
+
+export const Overview: StoryObj<typeof GalleryHeaderComponent> = {};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import FormLabelComponent from './index';
@@ -26,8 +26,11 @@ const meta: Meta<typeof FormLabelComponent> = {
       options: ['sm', 'lg'],
       control: 'select',
     },
+    children: {
+      control: 'text',
+    },
   },
 };
-
-export const FormLabel = {};
 export default meta;
+
+export const Overview: StoryObj<typeof FormLabelComponent> = {};

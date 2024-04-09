@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import FullHeightComponent from './index';
@@ -28,6 +28,6 @@ const meta: Meta<typeof FullHeightComponent> = {
     },
   },
 };
-
-export const FullHeight = {};
 export default meta;
+
+export const Overview: StoryObj<typeof FullHeightComponent> = {};
