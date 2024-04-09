@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import VehicleReference from './index';
@@ -25,7 +25,8 @@ const meta: Meta<typeof VehicleReference> = {
 };
 export default meta;
 
-export const VehicleReferenceWithImage = {
+type StoryType = StoryObj<typeof VehicleReference>;
+export const VehicleReferenceWithImage: StoryType = {
   name: 'Vehicle reference with image',
 
   args: {
@@ -37,7 +38,7 @@ export const VehicleReferenceWithImage = {
   },
 };
 
-export const VehicleReferenceMissingImage = {
+export const VehicleReferenceMissingImage: StoryType = {
   name: 'Vehicle reference missing image',
 
   args: {
@@ -48,7 +49,7 @@ export const VehicleReferenceMissingImage = {
   },
 };
 
-export const VehicleReferenceWithMinimalProps = {
+export const VehicleReferenceWithMinimalProps: StoryType = {
   name: 'Vehicle reference with minimal props',
 
   args: {
