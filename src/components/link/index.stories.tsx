@@ -48,12 +48,12 @@ const meta: Meta<typeof LinkComponent> = {
     },
   },
 };
-
 export default meta;
 
-export const Link = {};
+type StoryType = StoryObj<typeof LinkComponent>;
+export const Link: StoryType = {};
 
-export const LinkWithLeftIcon = {
+export const LinkWithLeftIcon: StoryType = {
   name: 'Link with Left icon',
   args: {
     leftIcon: <ArrowLeftIcon />,
@@ -61,7 +61,7 @@ export const LinkWithLeftIcon = {
   },
 };
 
-export const LinkWithRightIcon = {
+export const LinkWithRightIcon: StoryType = {
   name: 'Link with Right icon',
   args: {
     rightIcon: <ErrorIcon />,
@@ -69,7 +69,7 @@ export const LinkWithRightIcon = {
   },
 };
 
-export const LinkWithBothIcons = {
+export const LinkWithBothIcons: StoryType = {
   name: 'Link with both icons',
   args: {
     leftIcon: <ArrowLeftIcon />,
@@ -78,7 +78,7 @@ export const LinkWithBothIcons = {
   },
 };
 
-export const LinkAsPartOfAParagraph: StoryObj<typeof Link> = {
+export const LinkAsPartOfAParagraph: StoryType = {
   name: 'Link as part of a paragraph',
   args: {
     children: 'Terms & conditions',
@@ -90,7 +90,7 @@ export const LinkAsPartOfAParagraph: StoryObj<typeof Link> = {
   ),
 };
 
-export const LinkWithRelAndTarget = {
+export const LinkWithRelAndTarget: StoryType = {
   name: 'Link with rel and target',
   args: {
     rel: 'noopener noreferrer',
@@ -98,7 +98,7 @@ export const LinkWithRelAndTarget = {
   },
 };
 
-export const ExternalLink = {
+export const ExternalLink: StoryType = {
   args: {
     isExternal: true,
     children: 'Go to External Link',
