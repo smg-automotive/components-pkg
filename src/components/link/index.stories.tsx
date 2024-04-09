@@ -51,7 +51,7 @@ const meta: Meta<typeof LinkComponent> = {
 export default meta;
 
 type StoryType = StoryObj<typeof LinkComponent>;
-export const Link: StoryType = {};
+export const Overview: StoryType = {};
 
 export const LinkWithLeftIcon: StoryType = {
   name: 'Link with Left icon',

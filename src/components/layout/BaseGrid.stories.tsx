@@ -56,4 +56,4 @@ export default meta;
 /**
  * Base grid for XL layouts
  **/
-export const BaseGrid: StoryObj<typeof BaseGridComponent> = {};
+export const Overview: StoryObj<typeof BaseGridComponent> = {};

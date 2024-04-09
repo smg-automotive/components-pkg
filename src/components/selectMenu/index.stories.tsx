@@ -58,7 +58,7 @@ const meta: Meta<typeof SelectMenuComponent> = {
 export default meta;
 
 type StoryType = StoryObj<typeof SelectMenuComponent>;
-export const SelectMenu: StoryType = {};
+export const Overview: StoryType = {};
 
 export const WithoutIndicator: StoryType = {
   args: {

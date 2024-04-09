@@ -83,4 +83,4 @@ const meta: Meta<typeof TableComponent> = {
 };
 export default meta;
 
-export const Table: StoryObj<typeof TableComponent> = {};
+export const Overview: StoryObj<typeof TableComponent> = {};

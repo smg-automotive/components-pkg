@@ -96,7 +96,7 @@ const meta: Meta<typeof InputComponent> = {
 export default meta;
 
 type StoryType = StoryObj<typeof InputComponent>;
-export const Input: StoryType = {};
+export const Overview: StoryType = {};
 
 export const StateFocused: StoryType = {
   name: 'States > Focused',

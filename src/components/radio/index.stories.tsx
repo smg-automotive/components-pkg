@@ -52,7 +52,7 @@ export default meta;
 
 type StoryType = StoryObj<typeof RadioComponent>;
 
-export const RadioButton: StoryType = {};
+export const Overview: StoryType = {};
 
 export const SizeBase: StoryType = {
   name: 'Sizes > Base',

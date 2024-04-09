@@ -51,7 +51,7 @@ const meta: Meta<typeof RadioListComponent> = {
 export default meta;
 
 type StoryType = StoryObj<typeof RadioListComponent>;
-export const RadioList: StoryType = {};
+export const Overview: StoryType = {};
 
 export const WithDefaultValue: StoryType = {
   name: 'With default value',
