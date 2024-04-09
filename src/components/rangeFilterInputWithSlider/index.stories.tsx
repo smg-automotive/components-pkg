@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
@@ -24,18 +24,7 @@ const Template = (props: Props<'priceFrom', 'priceTo'>) => {
         if (event.name === 'priceTo') {
           updateArgs({ to: { ...args.to, value: event.value } });
         }
-        action('change')(event);
-      }}
-      onBlur={(event) => {
-        action('onBlur')(event);
-      }}
-      from={{
-        ...props.from,
-        ...args.from,
-      }}
-      to={{
-        ...props.to,
-        ...args.to,
+        args.onChange?.(event);
       }}
     />
   );
@@ -67,6 +56,9 @@ const meta: Meta<typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>> = {
       placeholder: '1000000+',
       value: 10000,
     },
+
+    onChange: action('onChange'),
+    onBlur: action('onBlur'),
   },
 
   argTypes: {
@@ -83,7 +75,10 @@ const meta: Meta<typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>> = {
 };
 export default meta;
 
-export const WithHistograms = {
+type StoryType = StoryObj<
+  typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>
+>;
+export const WithHistograms: StoryType = {
   name: 'With histograms',
 
   args: {
@@ -162,7 +157,7 @@ export const WithHistograms = {
   },
 };
 
-export const WithCustomRangeSliderScale = {
+export const WithCustomRangeSliderScale: StoryType = {
   name: 'With custom range slider scale',
 
   args: {
