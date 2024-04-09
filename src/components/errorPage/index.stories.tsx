@@ -1,16 +1,16 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import ErrorPage from './index';
 
 const meta: Meta<typeof ErrorPage> = {
   title: 'Patterns/Content/Error',
   component: ErrorPage,
-};
 
-export const Error = {
   args: {
     statusCode: 404,
     language: 'de',
+    onButtonClick: action('onButtonClick'),
   },
 
   argTypes: {
@@ -23,17 +23,12 @@ export const Error = {
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
-
-    brandLogo: {
-      table: {
-        disable: true,
-      },
-    },
   },
 
   parameters: {
     layout: 'fullscreen',
   },
 };
-
 export default meta;
+
+export const Overview: StoryObj<typeof ErrorPage> = {};
