@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
 
 import {
@@ -14,6 +14,16 @@ import {
 const meta: Meta<typeof H1Component> = {
   title: 'Components/Utils/Heading',
   component: H1Component,
+
+  args: {
+    children: 'Title',
+  },
+  argTypes: {
+    children: {
+      control: 'text',
+    },
+  },
+
   parameters: {
     docs: {
       page: () => (
@@ -27,35 +37,33 @@ const meta: Meta<typeof H1Component> = {
     },
   },
 };
+export default meta;
 
-export const H1 = {
-  render: () => <H1Component>Title</H1Component>,
+export const H1: StoryObj<typeof H1Component> = {
   name: 'H1',
 };
 
-export const H2 = {
-  render: () => <H2Component>Title</H2Component>,
+export const H2: StoryObj<typeof H2Component> = {
+  render: (args) => <H2Component {...args} />,
   name: 'H2',
 };
 
-export const H3 = {
-  render: () => <H3Component>Title</H3Component>,
+export const H3: StoryObj<typeof H3Component> = {
+  render: (args) => <H3Component {...args} />,
   name: 'H3',
 };
 
-export const H4 = {
-  render: () => <H4Component>Title</H4Component>,
+export const H4: StoryObj<typeof H4Component> = {
+  render: (args) => <H4Component {...args} />,
   name: 'H4',
 };
 
-export const H5 = {
-  render: () => <H5Component>Title</H5Component>,
+export const H5: StoryObj<typeof H5Component> = {
+  render: (args) => <H5Component {...args} />,
   name: 'H5',
 };
 
-export const H6 = {
-  render: () => <H6Component>Title</H6Component>,
+export const H6: StoryObj<typeof H6Component> = {
+  render: (args) => <H6Component {...args} />,
   name: 'H6',
 };
-
-export default meta;
