@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
@@ -50,9 +50,10 @@ const meta: Meta<typeof TabsComponent> = {
 };
 export default meta;
 
-export const Tabs = {};
+type StoryType = StoryObj<typeof TabsComponent>;
+export const Overview: StoryType = {};
 
-export const WithSecondTabSelected = {
+export const WithSecondTabSelected: StoryType = {
   name: 'With second tab selected',
 
   args: {

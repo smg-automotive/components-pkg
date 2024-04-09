@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { colors } from 'src/themes/autoscout24/colors';
 
@@ -83,4 +83,4 @@ const meta: Meta<typeof TableComponent> = {
 };
 export default meta;
 
-export const Table = {};
+export const Table: StoryObj<typeof TableComponent> = {};
