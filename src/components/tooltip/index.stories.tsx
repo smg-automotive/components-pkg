@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { TooltipIcon } from '../icons';
 
@@ -42,4 +42,4 @@ const meta: Meta<typeof TooltipComponent> = {
 };
 export default meta;
 
-export const Tooltip = {};
+export const Overview: StoryObj<typeof TooltipComponent> = {};
