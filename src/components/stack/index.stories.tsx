@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import StackComponent from './index';
@@ -81,12 +81,13 @@ const meta: Meta<typeof StackComponent> = {
 };
 export default meta;
 
-export const Stack = {};
+type StoryType = StoryObj<typeof StackComponent>;
+export const Overview: StoryType = {};
 
 /**
  * Default `col` direction switches to `row` on `sm` viewport.
  */
-export const Responsive = {
+export const Responsive: StoryType = {
   args: {
     direction: {
       '2xs': 'column',
