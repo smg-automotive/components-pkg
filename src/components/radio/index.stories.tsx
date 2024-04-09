@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
@@ -50,9 +50,11 @@ const meta: Meta<typeof RadioComponent> = {
 };
 export default meta;
 
-export const RadioButton = {};
+type StoryType = StoryObj<typeof RadioComponent>;
 
-export const SizeBase = {
+export const RadioButton: StoryType = {};
+
+export const SizeBase: StoryType = {
   name: 'Sizes > Base',
 
   args: {
@@ -69,7 +71,7 @@ export const SizeBase = {
   },
 };
 
-export const SizeMedium = {
+export const SizeMedium: StoryType = {
   name: 'Sizes > Medium',
 
   args: {
@@ -86,7 +88,7 @@ export const SizeMedium = {
   },
 };
 
-export const SizesSmall = {
+export const SizesSmall: StoryType = {
   name: 'Sizes > Small',
 
   args: {
@@ -103,7 +105,7 @@ export const SizesSmall = {
   },
 };
 
-export const StateDefault = {
+export const StateDefault: StoryType = {
   name: 'States > Default',
 
   args: {
@@ -126,7 +128,7 @@ export const StateDefault = {
   },
 };
 
-export const StateDisabled = {
+export const StateDisabled: StoryType = {
   name: 'States > Disabled',
 
   args: {
@@ -150,7 +152,7 @@ export const StateDisabled = {
   },
 };
 
-export const StateInvalid = {
+export const StateInvalid: StoryType = {
   name: 'States > Invalid',
 
   args: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Spacer } from '@chakra-ui/react';
 
@@ -50,9 +50,10 @@ const meta: Meta<typeof RadioListComponent> = {
 };
 export default meta;
 
-export const RadioList = {};
+type StoryType = StoryObj<typeof RadioListComponent>;
+export const RadioList: StoryType = {};
 
-export const WithDefaultValue = {
+export const WithDefaultValue: StoryType = {
   name: 'With default value',
 
   args: {
