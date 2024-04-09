@@ -4,7 +4,7 @@ import Stack from 'src/components/stack';
 import {
   FacebookIcon,
   InstagramIcon,
-  TwitterIcon,
+  LinkedinIcon,
   YoutubeIcon,
 } from 'src/components/icons';
 import Center from 'src/components/center';
@@ -26,8 +26,8 @@ const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
         <FooterLink linkInstance={config.socialMedia.instagram[0]}>
           <InstagramIcon />
         </FooterLink>
-        <FooterLink linkInstance={config.socialMedia.twitter[0]}>
-          <TwitterIcon />
+        <FooterLink linkInstance={config.socialMedia.linkedin[0]}>
+          <LinkedinIcon />
         </FooterLink>
         <FooterLink linkInstance={config.socialMedia.youtube[0]}>
           <YoutubeIcon />

@@ -55,6 +55,7 @@ export { ImageIcon } from './ImageIcon';
 export { InfoIcon } from './InfoIcon';
 export { InstagramIcon } from './InstagramIcon';
 export { InteriorIcon } from './InteriorIcon';
+export { LinkedinIcon } from './LinkedinIcon';
 export { ListIcon } from './ListIcon';
 export { LocationPinIcon } from './LocationPinIcon';
 export { MagnifierIcon } from './MagnifierIcon';

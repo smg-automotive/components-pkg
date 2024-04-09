@@ -26,6 +26,7 @@ export interface FooterConfigInstance {
     facebook: LinkInstance[];
     instagram: LinkInstance[];
     twitter: LinkInstance[];
+    linkedin: LinkInstance[];
     youtube: LinkInstance[];
   };
   companies: LinkInstance[];
@@ -63,6 +64,7 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
         facebook: this.mapLinkArray(this.config.socialMedia.facebook),
         instagram: this.mapLinkArray(this.config.socialMedia.instagram),
         twitter: this.mapLinkArray(this.config.socialMedia.twitter),
+        linkedin: this.mapLinkArray(this.config.socialMedia.linkedin),
         youtube: this.mapLinkArray(this.config.socialMedia.youtube),
       },
       companies: this.mapLinkArray(this.config.companies),
