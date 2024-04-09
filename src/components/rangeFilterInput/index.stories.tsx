@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Box } from '@chakra-ui/react';
@@ -43,9 +43,10 @@ const meta: Meta<typeof RangeFilterInputComponent> = {
 };
 export default meta;
 
-export const RangeFilterInput = {};
+type StoryType = StoryObj<typeof RangeFilterInputComponent>;
+export const RangeFilterInput: StoryType = {};
 
-export const WithInitialValue = {
+export const WithInitialValue: StoryType = {
   name: 'With initial value',
 
   args: {
@@ -63,7 +64,7 @@ export const WithInitialValue = {
   },
 };
 
-export const WithoutUnit = {
+export const WithoutUnit: StoryType = {
   name: 'Without unit',
 
   args: {
