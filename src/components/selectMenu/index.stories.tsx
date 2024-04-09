@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
@@ -57,9 +57,10 @@ const meta: Meta<typeof SelectMenuComponent> = {
 };
 export default meta;
 
-export const SelectMenu = {};
+type StoryType = StoryObj<typeof SelectMenuComponent>;
+export const SelectMenu: StoryType = {};
 
-export const WithoutIndicator = {
+export const WithoutIndicator: StoryType = {
   args: {
     withIndicator: false,
   },
