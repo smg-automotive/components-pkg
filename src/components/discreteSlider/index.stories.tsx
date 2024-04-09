@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Meta } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 import { Center } from '@chakra-ui/react';
 
@@ -7,27 +8,38 @@ import Box from '../box';
 
 import DiscreteSlider, { type DiscreteSliderProps } from './index';
 
-const Template = (args: DiscreteSliderProps<number>) => {
-  const [step, setStep] = useState(args.value || args.marks[0].value);
+const Template = (props: DiscreteSliderProps<number>) => {
+  const [args, updateArgs] = useArgs<DiscreteSliderProps<number>>();
+
   return (
-    <Center>
-      <Box width={392}>
-        <DiscreteSlider
-          {...args}
-          value={step}
-          onValueChanged={(v) => {
-            setStep(v);
-            args.onValueChanged && args.onValueChanged(v);
-          }}
-        />
-      </Box>
-    </Center>
+    <DiscreteSlider
+      {...{
+        ...props,
+        ...args,
+      }}
+      value={args.value || args.marks[0].value}
+      onValueChanged={(v) => {
+        args.onValueChanged?.(v);
+        updateArgs({ value: v });
+      }}
+    />
   );
 };
 
-const meta: Meta<typeof DiscreteSlider> = {
+const meta: Meta<typeof DiscreteSlider<number>> = {
   title: 'Components/Filter/Discrete Slider',
-  component: DiscreteSlider,
+  component: DiscreteSlider<number>,
+  render: Template.bind({}),
+
+  decorators: [
+    (Story) => (
+      <Center>
+        <Box w="100%" maxW={392}>
+          <Story />
+        </Box>
+      </Center>
+    ),
+  ],
 
   args: {
     marks: [
@@ -37,6 +49,8 @@ const meta: Meta<typeof DiscreteSlider> = {
       { label: 'Unlimited', value: 4 },
     ],
     onValueChanged: action('onValueChanged'),
+    applyIndentation: true,
+    value: 1,
   },
 
   parameters: {
@@ -56,6 +70,11 @@ const meta: Meta<typeof DiscreteSlider> = {
     },
 
     value: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 4,
+      },
       description:
         "The default value where the discreteSlider's thumb will be upon initialization.",
     },
@@ -69,7 +88,7 @@ const meta: Meta<typeof DiscreteSlider> = {
       control: 'boolean',
       table: {
         defaultValue: {
-          summary: 'True',
+          summary: 'true',
         },
       },
 
@@ -78,18 +97,6 @@ const meta: Meta<typeof DiscreteSlider> = {
     },
   },
 };
-
-export const Overview = {
-  render: Template.bind({}),
-  args: {
-    applyIndentation: true,
-    marks: [
-      { label: '14 days', value: 1 },
-      { label: '30 days', value: 2 },
-      { label: '60 days', value: 3 },
-      { label: 'Unlimited', value: 4 },
-    ],
-  },
-};
-
 export default meta;
+
+export const Overview: StoryObj<typeof DiscreteSlider<number>> = {};
