@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Box from 'src/components/box';
 
@@ -26,6 +26,7 @@ const Template = ({
 const meta: Meta<typeof Template> = {
   title: 'Components/Data display/List/Ordered list',
   component: OrderedListComponent,
+  render: Template.bind({}),
 
   decorators: [
     (Story) => (
@@ -65,7 +66,4 @@ export default meta;
 /**
  * Use `showContainer` to see the difference between `icon-inside` and `icon-outside` variants.
  * */
-export const OrderedList = {
-  render: Template.bind({}),
-  name: 'Ordered list',
-};
+export const Overview: StoryObj<typeof OrderedListComponent> = {};

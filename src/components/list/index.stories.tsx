@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import ListItem from './ListItem';
 
@@ -16,6 +16,7 @@ const Template = ({ items, ...args }: Props & { items: number }) => (
 const meta: Meta<typeof Template> = {
   title: 'Components/Data display/List/Unstyled list',
   component: ListComponent,
+  render: Template.bind({}),
 
   args: {
     size: 'md',
@@ -31,7 +32,4 @@ const meta: Meta<typeof Template> = {
 };
 export default meta;
 
-export const UnstyledList = {
-  render: Template.bind({}),
-  name: 'Unstyled list',
-};
+export const Overview: StoryObj<typeof Template> = {};
