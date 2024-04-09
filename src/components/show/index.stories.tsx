@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '../box';
 
@@ -81,8 +81,10 @@ const meta: Meta<typeof Template> = {
     },
   },
 };
+export default meta;
 
-export const ShowAboveAViewport = {
+type StoryType = StoryObj<typeof Template>;
+export const ShowAboveAViewport: StoryType = {
   name: 'Show above a viewport',
 
   args: {
@@ -99,7 +101,7 @@ export const ShowAboveAViewport = {
   },
 };
 
-export const ShowBelowAViewport = {
+export const ShowBelowAViewport: StoryType = {
   name: 'Show below a viewport',
 
   args: {
@@ -119,8 +121,7 @@ export const ShowBelowAViewport = {
 /**
  * Only visible on mobile portrait devices.
  */
-export const ShowWhenMatchingAQuery = {
-  render: Template.bind({}),
+export const ShowWhenMatchingAQuery: StoryType = {
   name: 'Show when matching a query',
 
   args: {
@@ -143,5 +144,3 @@ export const ShowWhenMatchingAQuery = {
     },
   },
 };
-
-export default meta;
