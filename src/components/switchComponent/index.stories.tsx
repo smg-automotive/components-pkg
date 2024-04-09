@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
@@ -22,10 +22,7 @@ const meta: Meta<typeof SwitchComponent> = {
       />
     );
   },
-};
-export default meta;
 
-export const Switch = {
   args: {
     variant: 'default',
     isChecked: false,
@@ -39,3 +36,6 @@ export const Switch = {
     },
   },
 };
+export default meta;
+
+export const Overview: StoryObj<typeof SwitchComponent> = {};
