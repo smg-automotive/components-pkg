@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box, Image } from '@chakra-ui/react';
 
 import TopVehicleBadgeComponent from './index';
@@ -35,4 +35,4 @@ const meta: Meta<typeof TopVehicleBadgeComponent> = {
 };
 export default meta;
 
-export const TopVehicleBadge = {};
+export const Overview: StoryObj<typeof TopVehicleBadgeComponent> = {};
