@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { TooltipIcon } from '../icons';
 
@@ -16,10 +16,6 @@ const meta: Meta<typeof PopoverComponent> = {
   },
 
   argTypes: {
-    children: {
-      table: { disable: true },
-    },
-
     placement: {
       options: [
         'auto',
@@ -42,4 +38,4 @@ const meta: Meta<typeof PopoverComponent> = {
 
 export default meta;
 
-export const Popover = {};
+export const Overview: StoryObj<typeof PopoverComponent> = {};
