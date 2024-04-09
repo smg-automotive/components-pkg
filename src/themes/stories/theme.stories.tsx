@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import {
   ColorPalette,
   Description,
@@ -19,10 +20,13 @@ import BreakpointShowcase from './BreakpointShowcase';
 import BorderShowcase from './BorderShowcase';
 import BorderRadiusShowcase from './BorderRadiusShowcase';
 
-export default {
+const meta: Meta<FC> = {
   title: 'Foundations/Theme',
   parameters: {
     docs: {
+      source: {
+        code: null,
+      },
       page: () => (
         <>
           <Title />
@@ -34,63 +38,53 @@ export default {
     },
   },
 };
+export default meta;
 
-export const BorderRadius = {
+type StoryType = StoryObj<FC>;
+export const BorderRadius: StoryType = {
   render: () => <BorderRadiusShowcase />,
-  name: 'borderRadius',
 };
 
-export const Border = {
+export const Border: StoryType = {
   render: () => <BorderShowcase />,
-  name: 'border',
 };
 
-export const Breakpoints = {
+export const Breakpoints: StoryType = {
   render: () => <BreakpointShowcase />,
-  name: 'breakpoints',
 };
 
-export const Colors = {
+export const Colors: StoryType = {
   render: () => (
     <ColorPalette>
       <ColorShowcase />
     </ColorPalette>
   ),
-
-  name: 'colors',
 };
 
-export const Containers = {
+export const Containers: StoryType = {
   render: () => <ContainerShowcase />,
-  name: 'containers',
 };
 
-export const Opacity = {
+export const Opacity: StoryType = {
   render: () => <OpacityShowcase />,
-  name: 'opacity',
 };
 
-export const Shadows = {
+export const Shadows: StoryType = {
   render: () => <ShadowShowcase />,
-  name: 'shadows',
 };
 
-export const Sizes = {
+export const Sizes: StoryType = {
   render: () => <SizeShowcase />,
-  name: 'sizes',
 };
 
-export const Space = {
+export const Space: StoryType = {
   render: () => <SpaceShowcase />,
-  name: 'space',
 };
 
-export const Typography = {
+export const Typography: StoryType = {
   render: () => <TypographyShowcase />,
-  name: 'typography',
 };
 
-export const ZIndices = {
+export const ZIndices: StoryType = {
   render: () => <ZIndicesShowcase />,
-  name: 'zIndices',
 };
