@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
@@ -93,10 +93,12 @@ const meta: Meta<typeof InputComponent> = {
     );
   },
 };
+export default meta;
 
-export const Input = {};
+type StoryType = StoryObj<typeof InputComponent>;
+export const Input: StoryType = {};
 
-export const StateFocused = {
+export const StateFocused: StoryType = {
   name: 'States > Focused',
   args: {
     size: 'lg',
@@ -107,7 +109,7 @@ export const StateFocused = {
   },
 };
 
-export const StateDisabled = {
+export const StateDisabled: StoryType = {
   name: 'States > Disabled',
   args: {
     size: 'lg',
@@ -118,7 +120,7 @@ export const StateDisabled = {
   },
 };
 
-export const StateInvalid = {
+export const StateInvalid: StoryType = {
   name: 'States > Invalid',
   args: {
     size: 'lg',
@@ -129,21 +131,21 @@ export const StateInvalid = {
   },
 };
 
-export const SizeMedium = {
+export const SizeMedium: StoryType = {
   name: 'Sizes > Medium',
   args: {
     size: 'md',
   },
 };
 
-export const SizeLarge = {
+export const SizeLarge: StoryType = {
   name: 'Sizes > Large',
   args: {
     size: 'lg',
   },
 };
 
-export const ClearableNotControlled = {
+export const ClearableNotControlled: StoryType = {
   name: 'Clearable > Not controlled',
   args: {
     isClearable: true,
@@ -152,7 +154,7 @@ export const ClearableNotControlled = {
   },
 };
 
-export const ClearableControlled = {
+export const ClearableControlled: StoryType = {
   name: 'Clearable > Controlled',
   args: {
     isClearable: true,
@@ -164,7 +166,7 @@ export const ClearableControlled = {
 /**
  * This is a debounced input, head to the actions tab and see that `setInputValue` is not fired on every key stroke
  */
-export const Debounced = {
+export const Debounced: StoryType = {
   args: {
     size: 'lg',
     placeholder: 'Placeholder',
@@ -176,10 +178,8 @@ export const Debounced = {
   },
 };
 
-export const WithIcon = {
+export const WithIcon: StoryType = {
   args: {
     icon: MagnifierIcon,
   },
 };
-
-export default meta;
