@@ -1,4 +1,5 @@
 import React, { createElement } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { Box, Center, Text } from '@chakra-ui/react';
 
@@ -34,8 +35,9 @@ const Template = () => {
   );
 };
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Foundations/Icons',
+  component: Template,
 
   parameters: {
     docs: {
@@ -53,7 +55,6 @@ export default {
     },
   },
 };
+export default meta;
 
-export const Icons = {
-  render: Template.bind({}),
-};
+export const Overview: StoryObj<typeof Template> = {};
