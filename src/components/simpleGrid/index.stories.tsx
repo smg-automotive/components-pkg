@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
 import SimpleGridComponent from './index';
@@ -80,12 +80,13 @@ const meta: Meta<typeof SimpleGridComponent> = {
 };
 export default meta;
 
-export const SimpleGrid = {};
+type StoryType = StoryObj<typeof SimpleGridComponent>;
+export const Overview: StoryType = {};
 
 /**
  * 2 columns on `2xs` 3 on `sm`. The same approach can be taken for other props.
  */
-export const Responsive = {
+export const Responsive: StoryType = {
   args: {
     columns: {
       '2xs': 2,
@@ -97,7 +98,7 @@ export const Responsive = {
 /**
  * Adds a column when there's enough space for another child according to `minChildWidth`
  */
-export const AutoResponsive = {
+export const AutoResponsive: StoryType = {
   name: 'Auto-responsive',
 
   args: {
