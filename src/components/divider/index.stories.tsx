@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import DividerComponent, { DividerProps } from './index';
 
@@ -18,8 +18,9 @@ const meta: Meta<typeof DividerComponent> = {
     },
   },
 };
+export default meta;
 
-export const Divider = {
+export const Overview: StoryObj<typeof DividerComponent> = {
   render: ({ orientation, ...args }: DividerProps) => (
     <DividerComponent
       {...args}
@@ -28,4 +29,3 @@ export const Divider = {
     />
   ),
 };
-export default meta;
