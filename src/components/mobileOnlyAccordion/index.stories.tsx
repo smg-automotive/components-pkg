@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import ListItem from '../list/ListItem';
 import List from '../list';
@@ -33,6 +33,7 @@ const Template = ({
 const meta: Meta<typeof Template> = {
   title: 'Patterns/Navigation/MobileOnlyAccordion',
   component: MobileOnlyAccordionComponent,
+  render: Template.bind({}),
 
   args: {
     variant: 'light',
@@ -62,6 +63,4 @@ export default meta;
 /**
  * Make sure you're viewing this on a mobile viewport to see the accordion.
  */
-export const MobileOnlyAccordion = {
-  render: Template.bind({}),
-};
+export const Overview: StoryObj<typeof MobileOnlyAccordionComponent> = {};
