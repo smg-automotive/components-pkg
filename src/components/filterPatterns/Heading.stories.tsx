@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Box } from 'src/index';
@@ -48,12 +48,14 @@ const meta: Meta<typeof FilterHeading> = {
     },
   },
 };
+export default meta;
 
-export const WithCloseButton = {
+type StoryType = StoryObj<typeof FilterHeading>;
+export const WithCloseButton: StoryType = {
   name: 'With close button',
 };
 
-export const WithoutCloseButton = {
+export const WithoutCloseButton: StoryType = {
   name: 'Without close button',
 
   args: {
@@ -61,11 +63,9 @@ export const WithoutCloseButton = {
   },
 };
 
-export const Applied = {
+export const Applied: StoryType = {
   args: {
     numberOfAppliedFilters: 5,
     isApplied: true,
   },
 };
-
-export default meta;

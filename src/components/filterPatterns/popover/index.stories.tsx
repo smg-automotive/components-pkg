@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Text from 'src/components/text';
@@ -8,18 +8,54 @@ import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
-import { PopoverFilterProps } from './props';
-
 import { PopoverFilter } from './index';
 
-const Template = (args: PopoverFilterProps) => (
-  <Box w={{ base: 'full', sm: '250px' }} h="400px">
-    <PopoverFilter
-      {...args}
-      onPopoverOpen={action('onPopoverOpen')}
-      onPopoverClose={action('onPopoverClose')}
-      onResetFilter={action('onResetFilter')}
+const CustomHeader = () => (
+  <Flex justifyContent="center" alignItems="center" width="full">
+    <ChevronLeftSmallIcon color="blue.700" />
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      width="full"
     >
+      <Text textStyle="body-small" color="gray.500">
+        VW
+      </Text>
+      <Text textStyle="heading3">Modell auswählen</Text>
+    </Flex>
+  </Flex>
+);
+
+const meta: Meta<typeof PopoverFilter> = {
+  title: 'Patterns/Filter/Popover',
+  component: PopoverFilter,
+
+  decorators: [
+    (Story) => (
+      <Box w={{ base: 'full', sm: '250px' }} h="400px">
+        <Story />
+      </Box>
+    ),
+  ],
+
+  args: {
+    language: 'de',
+    enforceHeight: true,
+    label: 'Treibstoff',
+    initialPopoverState: 'closed',
+    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
+    numberOfAppliedFilters: 5,
+    isApplied: false,
+
+    actionButton: {
+      label: '12324 Fahrzeuge',
+      onClick: action('actionButton - onClick'),
+    },
+    onPopoverOpen: action('onPopoverOpen'),
+    onPopoverClose: action('onPopoverClose'),
+    onResetFilter: action('onResetFilter'),
+    children: (
       <CheckboxFilter
         items={[
           { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
@@ -60,103 +96,50 @@ const Template = (args: PopoverFilterProps) => (
         onApply={() => null}
         language="de"
       />
-    </PopoverFilter>
-  </Box>
-);
-
-const CustomHeader = () => (
-  <Flex justifyContent="center" alignItems="center" width="full">
-    <ChevronLeftSmallIcon color="blue.700" />
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      width="full"
-    >
-      <Text textStyle="body-small" color="gray.500">
-        VW
-      </Text>
-      <Text textStyle="heading3">Modell auswählen</Text>
-    </Flex>
-  </Flex>
-);
-
-const meta: Meta<typeof PopoverFilter> = {
-  title: 'Patterns/Filter/Popover',
-  component: PopoverFilter,
-
-  args: {
-    language: 'de',
-    enforceHeight: true,
-    label: 'Treibstoff',
-    initialPopoverState: 'closed',
-    displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
-    numberOfAppliedFilters: 5,
-    isApplied: false,
-
-    actionButton: {
-      label: '12324 Fahrzeuge',
-      onClick: action('actionButton - onClick'),
-    },
+    ),
   },
 
   argTypes: {
     language: {
-      options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
 
-    children: {
+    initialPopoverState: {
+      control: 'select',
+    },
+
+    triggerHeight: {
+      control: 'select',
+    },
+
+    actionButton: {
       table: {
         disable: true,
       },
     },
-
-    initialPopoverState: {
-      options: ['open', 'closed'],
-      control: 'select',
-    },
   },
 };
+export default meta;
 
-export const DefaultEmpty = {
-  render: Template.bind({}),
+type StoryType = StoryObj<typeof PopoverFilter>;
+export const DefaultEmpty: StoryType = {
   name: 'Default empty',
 
   args: {
     displayValue: '',
   },
-
-  argTypes: {
-    actionButton: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
-export const DefaultInitiallyOpen = {
-  render: Template.bind({}),
+export const DefaultInitiallyOpen: StoryType = {
   name: 'Default initially open',
 
   args: {
-    label: 'Treibstoff',
     initialPopoverState: 'open',
     displayValue: '',
   },
-
-  argTypes: {
-    actionButton: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
-export const AppliedWithDisplayValue = {
-  render: Template.bind({}),
+export const AppliedWithDisplayValue: StoryType = {
   name: 'Applied with display value',
 
   args: {
@@ -172,8 +155,7 @@ export const AppliedWithDisplayValue = {
   },
 };
 
-export const AppliedWithoutDisplayValue = {
-  render: Template.bind({}),
+export const AppliedWithoutDisplayValue: StoryType = {
   name: 'Applied without display value',
 
   args: {
@@ -190,8 +172,7 @@ export const AppliedWithoutDisplayValue = {
   },
 };
 
-export const WithoutCallToActionButton = {
-  render: Template.bind({}),
+export const WithoutCallToActionButton: StoryType = {
   name: 'Without call-to-action button',
 
   args: {
@@ -200,8 +181,7 @@ export const WithoutCallToActionButton = {
   },
 };
 
-export const WithCustomHeader = {
-  render: Template.bind({}),
+export const WithCustomHeader: StoryType = {
   name: 'With custom header',
 
   args: {
@@ -210,8 +190,7 @@ export const WithCustomHeader = {
   },
 };
 
-export const WithIcon = {
-  render: Template.bind({}),
+export const WithIcon: StoryType = {
   name: 'With icon',
 
   args: {
@@ -219,5 +198,3 @@ export const WithIcon = {
     Icon: FlashIcon,
   },
 };
-
-export default meta;

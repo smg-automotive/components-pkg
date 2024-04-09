@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Text from 'src/components/text';
@@ -8,53 +8,7 @@ import Flex from 'src/components/flex';
 import CheckboxFilter from 'src/components/checkboxFilter';
 import Box from 'src/components/box';
 
-import { type ModalFilterProps } from './props';
-
 import { ModalFilter } from './index';
-
-const Template = (args: ModalFilterProps) => (
-  <ModalFilter
-    {...args}
-    onModalOpen={action('onModalOpen')}
-    onModalClose={action('onModalClose')}
-    onResetFilter={action('onResetFilter')}
-  >
-    <CheckboxFilter
-      items={[
-        { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
-        { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
-        { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
-        { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
-        {
-          label: 'CNG Benzin',
-          key: 'cng-petrol',
-          facet: 20,
-          isChecked: false,
-        },
-        {
-          label: 'HEV Benzin',
-          key: 'hev-petrol',
-          facet: 10,
-          isChecked: false,
-        },
-        {
-          label: 'LPG Benzin',
-          key: 'lpg-petrol',
-          facet: 10,
-          isChecked: true,
-        },
-        {
-          label: 'PHEV Benzin',
-          key: 'phev-petrol',
-          facet: 0,
-          isChecked: false,
-        },
-      ]}
-      onApply={() => null}
-      language="de"
-    />
-  </ModalFilter>
-);
 
 const CustomHeader = () => (
   <Flex justifyContent="center" alignItems="center" width="full">
@@ -78,7 +32,7 @@ const meta: Meta<typeof ModalFilter> = {
   component: ModalFilter,
   decorators: [
     (Story) => (
-      <Box w="600px">
+      <Box w="300px">
         <Story />
       </Box>
     ),
@@ -98,6 +52,45 @@ const meta: Meta<typeof ModalFilter> = {
     showCallToActionButton: true,
     isApplied: false,
     isDisabled: false,
+    onModalOpen: action('onModalOpen'),
+    onModalClose: action('onModalClose'),
+    onResetFilter: action('onResetFilter'),
+    children: (
+      <CheckboxFilter
+        items={[
+          { label: 'Benzin', key: 'petrol', facet: 20, isChecked: true },
+          { label: 'Diesel', key: 'diesel', facet: 17, isChecked: true },
+          { label: 'Elektro', key: 'electric', facet: 4, isChecked: false },
+          { label: 'Hybrid', key: 'hybrid', facet: 0, isChecked: false },
+          {
+            label: 'CNG Benzin',
+            key: 'cng-petrol',
+            facet: 20,
+            isChecked: false,
+          },
+          {
+            label: 'HEV Benzin',
+            key: 'hev-petrol',
+            facet: 10,
+            isChecked: false,
+          },
+          {
+            label: 'LPG Benzin',
+            key: 'lpg-petrol',
+            facet: 10,
+            isChecked: true,
+          },
+          {
+            label: 'PHEV Benzin',
+            key: 'phev-petrol',
+            facet: 0,
+            isChecked: false,
+          },
+        ]}
+        onApply={() => null}
+        language="de"
+      />
+    ),
   },
 
   argTypes: {
@@ -105,11 +98,11 @@ const meta: Meta<typeof ModalFilter> = {
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
-
-    children: {
-      table: {
-        disable: true,
-      },
+    initialModalState: {
+      control: 'select',
+    },
+    paddingX: {
+      control: 'select',
     },
   },
 
@@ -119,8 +112,8 @@ const meta: Meta<typeof ModalFilter> = {
 };
 export default meta;
 
-export const DefaultEmpty = {
-  render: Template.bind({}),
+type StoryType = StoryObj<typeof ModalFilter>;
+export const DefaultEmpty: StoryType = {
   name: 'Default empty',
 
   argTypes: {
@@ -132,9 +125,7 @@ export const DefaultEmpty = {
   },
 };
 
-export const Applied = {
-  render: Template.bind({}),
-
+export const Applied: StoryType = {
   args: {
     isApplied: true,
   },
@@ -148,8 +139,7 @@ export const Applied = {
   },
 };
 
-export const WithoutCallToActionButton = {
-  render: Template.bind({}),
+export const WithoutCallToActionButton: StoryType = {
   name: 'Without call-to-action button',
 
   args: {
@@ -157,8 +147,7 @@ export const WithoutCallToActionButton = {
   },
 };
 
-export const WithCustomHeader = {
-  render: Template.bind({}),
+export const WithCustomHeader: StoryType = {
   name: 'With custom header',
 
   args: {
@@ -166,8 +155,7 @@ export const WithCustomHeader = {
   },
 };
 
-export const WithIcon = {
-  render: Template.bind({}),
+export const WithIcon: StoryType = {
   name: 'With icon',
 
   args: {
@@ -175,8 +163,7 @@ export const WithIcon = {
   },
 };
 
-export const WithDifferentBackgroundColor = {
-  render: Template.bind({}),
+export const WithDifferentBackgroundColor: StoryType = {
   name: 'With different background color',
   args: {
     backgroundColor: 'gray.100',
