@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 
 import { Brand } from 'src/types/brand';
@@ -10,25 +10,47 @@ import { FullHeight } from '../index';
 import DevOverlayComponent, { type DevOverlayProps } from './index';
 
 const Template = (args: DevOverlayProps) => {
-  const [{ activeTheme }, updateArgs] = useArgs();
+  const [{ activeTheme, displayTranslationKeys }, updateArgs] = useArgs();
   const toggleTheme = () => {
-    if (activeTheme === Brand.AutoScout24) {
-      return updateArgs({ activeTheme: Brand.MotoScout24 });
-    }
-    return updateArgs({ activeTheme: Brand.AutoScout24 });
+    return updateArgs({
+      activeTheme:
+        activeTheme === Brand.AutoScout24
+          ? Brand.MotoScout24
+          : Brand.AutoScout24,
+    });
   };
+  const toggleTranslation = () => {
+    return updateArgs({
+      displayTranslationKeys: !displayTranslationKeys,
+    });
+  };
+
   return (
-    <ThemeProvider theme={activeTheme}>
-      <FullHeight>
-        <DevOverlayComponent {...args} toggleTheme={toggleTheme} />
-      </FullHeight>
-    </ThemeProvider>
+    <DevOverlayComponent
+      {...args}
+      toggleTheme={toggleTheme}
+      toggleTranslation={toggleTranslation}
+    />
   );
 };
 
 const meta: Meta<typeof DevOverlayComponent> = {
   title: 'Theme/DevOverlay',
   component: DevOverlayComponent,
+
+  decorators: [
+    (Story) => {
+      const [{ activeTheme }] = useArgs();
+
+      return (
+        <ThemeProvider theme={activeTheme}>
+          <FullHeight>
+            <Story />
+          </FullHeight>
+        </ThemeProvider>
+      );
+    },
+  ],
 
   parameters: {
     layout: 'fullscreen',
@@ -41,10 +63,10 @@ const meta: Meta<typeof DevOverlayComponent> = {
     },
   },
 };
+export default meta;
 
-export const DevOverlay = {
+export const Overview: StoryObj<typeof DevOverlayComponent> = {
   render: Template.bind({}),
-  name: 'DevOverlay',
 
   args: {
     variables: [
@@ -59,7 +81,7 @@ export const DevOverlay = {
     ],
 
     activeTheme: Brand.AutoScout24,
+
+    displayTranslationKeys: false,
   },
 };
-
-export default meta;
