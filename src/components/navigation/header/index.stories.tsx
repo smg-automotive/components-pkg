@@ -1,10 +1,18 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
+import { MappedUserType } from '@smg-automotive/auth';
+
+import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
 
 import Navigation from './index';
 
+/**
+ * Header dropdown navigation uses drawers to display the content.
+ * They will pop up from the top of the screen.
+ * To experience "page-like" behaviour visit story directly
+ **/
 const meta: Meta<typeof Navigation> = {
   title: 'Patterns/Navigation/Header',
   component: Navigation,
@@ -18,6 +26,14 @@ const meta: Meta<typeof Navigation> = {
 
   parameters: {
     layout: 'fullscreen',
+  },
+
+  args: {
+    brand: Brand.AutoScout24,
+    language: 'de',
+    environment: 'preprod',
+    useAbsoluteUrls: false,
+    entitlements: [],
   },
 
   argTypes: {
@@ -45,31 +61,25 @@ const meta: Meta<typeof Navigation> = {
 };
 export default meta;
 
-export const Unauthenticated = {
+type StoryType = StoryObj<typeof Navigation>;
+export const Unauthenticated: StoryType = {
   args: {
     user: null,
-    language: 'de',
-    brand: 'autoscout24',
-    environment: 'preprod',
   },
 };
 
-/**
- * For the mega dropdown to work properly visit the story directly
- **/
-export const Professional = {
+export const Professional: StoryType = {
   args: {
     user: {
-      id: 123,
+      id: '123',
       userName: 'Amir Professional',
-      userType: 'professional',
-      accountId: 525,
+      userType: MappedUserType.Professional,
+      exp: 1630000000,
+      email: 'amir@professional.com',
+      sellerId: '6001',
+      sellerIds: ['6001'],
+      isImpersonated: false,
     },
-
-    language: 'de',
-    brand: 'autoscout24',
-    useAbsoluteUrls: true,
-    environment: 'preprod',
 
     entitlements: [
       'business-image',
@@ -83,21 +93,17 @@ export const Professional = {
   },
 };
 
-/**
- * For the mega dropdown to work properly visit the story directly
- **/
-export const Private = {
+export const Private: StoryType = {
   args: {
     user: {
-      id: 123,
+      id: '123',
       userName: 'John Private',
-      userType: 'private',
-      accountId: 525,
+      userType: MappedUserType.Professional,
+      exp: 1630000000,
+      email: 'john@private.com',
+      sellerId: '6001',
+      sellerIds: ['6001'],
+      isImpersonated: true,
     },
-
-    useAbsoluteUrls: true,
-    language: 'de',
-    brand: 'autoscout24',
-    environment: 'preprod',
   },
 };

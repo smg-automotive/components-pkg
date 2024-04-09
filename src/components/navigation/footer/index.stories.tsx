@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Brand } from 'src/types/brand';
 
@@ -38,4 +38,4 @@ const meta: Meta<typeof FooterComponent> = {
 };
 export default meta;
 
-export const Footer = {};
+export const Overview: StoryObj<typeof FooterComponent> = {};
