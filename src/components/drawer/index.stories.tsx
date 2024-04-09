@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useDisclosure } from '@chakra-ui/react';
 
 import Button from '../button';
@@ -11,15 +11,18 @@ import DrawerBody from './DrawerBody';
 import DrawerComponent, { type DrawerProps } from './index';
 
 const Template = (
-  args: Omit<DrawerProps, 'isOpen' | 'onClose'> & { withCloseButton?: boolean },
+  args: Omit<DrawerProps, 'isOpen' | 'onClose'> & {
+    withCloseButton?: boolean;
+    viewMode?: string;
+  },
 ) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const headerHeight = '60px';
   return (
     <Box
       width="100%"
       height={headerHeight}
-      position="absolute"
       pt="xs"
       px="sm"
       bg="gray.100"
@@ -30,7 +33,7 @@ const Template = (
         <DrawerOverlay />
         <DrawerContent
           withCloseButton={args?.withCloseButton}
-          marginTop={headerHeight}
+          marginTop={args.viewMode === 'docs' ? 0 : headerHeight}
           p="md"
         >
           <DrawerBody p="lg">There is a drawer content</DrawerBody>
@@ -40,24 +43,15 @@ const Template = (
   );
 };
 
-/**
- * Drawer is misplaced in the documentation view due to positioning.
- * Visit the story directly to see the proper placement.
- */
-const meta: Meta<typeof DrawerComponent> = {
+const meta: Meta<typeof Template> = {
   title: 'Components/Data display/Drawer',
-  component: DrawerComponent,
-  decorators: [
-    (Story) => (
-      <Box height="60px">
-        <Story />
-      </Box>
-    ),
-  ],
-};
-
-export const Drawer = {
   render: Template.bind({}),
+
+  decorators: [
+    (Story, { args, viewMode }) => {
+      return <Story args={{ ...args, viewMode }} />;
+    },
+  ],
 
   parameters: {
     layout: 'fullscreen',
@@ -81,5 +75,6 @@ export const Drawer = {
     },
   },
 };
-
 export default meta;
+
+export const Overview: StoryObj<typeof Template> = {};
