@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Box from '../box';
@@ -28,4 +28,4 @@ const meta: Meta<typeof RangeSliderComponent> = {
 };
 export default meta;
 
-export const RangeSlider = {};
+export const Overview: StoryObj<typeof RangeSliderComponent> = {};
