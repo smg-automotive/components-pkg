@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Box } from '../index';
 import GridItem from './GridItem';
@@ -78,11 +78,8 @@ const meta: Meta<typeof GridComponent> = {
         type: 'select',
       },
     },
-    children: {
-      table: { disable: true },
-    },
   },
 };
-
-export const Grid = {};
 export default meta;
+
+export const Overview: StoryObj<typeof GridComponent> = {};
