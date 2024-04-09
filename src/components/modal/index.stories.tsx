@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Text, useDisclosure } from '@chakra-ui/react';
 
@@ -117,37 +117,37 @@ const meta: Meta<typeof Template> = {
     },
   },
 };
-
 export default meta;
 
-export const Modal = {};
+type StoryType = StoryObj<typeof Template>;
+export const Overview: StoryType = {};
 
-export const ModalWithoutHeader = {
+export const ModalWithoutHeader: StoryType = {
   args: {
     title: undefined,
   },
 };
 
-export const ModalWithPrimaryAction = {
+export const ModalWithPrimaryAction: StoryType = {
   args: {
     primaryActionLabel: 'Submit',
   },
 };
 
-export const ModalWithSecondaryAction = {
+export const ModalWithSecondaryAction: StoryType = {
   args: {
     secondaryActionLabel: 'Fire',
   },
 };
 
-export const ModalWithTwoActionButtons = {
+export const ModalWithTwoActionButtons: StoryType = {
   args: {
     primaryActionLabel: 'Submit',
     secondaryActionLabel: 'Fire',
   },
 };
 
-export const FullScreenModal = {
+export const FullScreenModal: StoryType = {
   args: {
     title: 'Full screen modal',
     variant: 'fullScreen',
@@ -155,7 +155,7 @@ export const FullScreenModal = {
   },
 };
 
-export const LargeScrollableModal = {
+export const LargeScrollableModal: StoryType = {
   args: {
     title: 'Modal Header',
     size: 'md',
@@ -164,7 +164,7 @@ export const LargeScrollableModal = {
   },
 };
 
-export const ModalWithoutModalBodyPadding = {
+export const ModalWithoutModalBodyPadding: StoryType = {
   args: {
     disableBodyPadding: true,
   },
