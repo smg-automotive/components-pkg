@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '../box';
 
@@ -51,6 +51,7 @@ const Template = ({ text, ...args }: Props & { text: string }) => {
 const meta: Meta<typeof Template> = {
   title: 'Components/Utils/Hide',
   component: Hide,
+  render: Template.bind({}),
 
   parameters: {
     layout: 'centered',
@@ -80,9 +81,10 @@ const meta: Meta<typeof Template> = {
     },
   },
 };
+export default meta;
 
-export const HideAboveAViewport = {
-  render: Template.bind({}),
+type StoryType = StoryObj<typeof Template>;
+export const HideAboveAViewport: StoryType = {
   name: 'Hide above a viewport',
 
   args: {
@@ -99,8 +101,7 @@ export const HideAboveAViewport = {
   },
 };
 
-export const HideBelowAViewport = {
-  render: Template.bind({}),
+export const HideBelowAViewport: StoryType = {
   name: 'Hide below a viewport',
 
   args: {
@@ -117,8 +118,7 @@ export const HideBelowAViewport = {
   },
 };
 
-export const HideWhenMatchingAQuery = {
-  render: Template.bind({}),
+export const HideWhenMatchingAQuery: StoryType = {
   name: 'Hide when matching a query',
 
   args: {
@@ -141,5 +141,3 @@ export const HideWhenMatchingAQuery = {
     },
   },
 };
-
-export default meta;
