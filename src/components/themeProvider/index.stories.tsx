@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import {
   Controls,
   Description,
@@ -12,7 +13,7 @@ import { Brand } from 'src/types/brand';
 
 import ThemeProvider from './index';
 
-export default {
+const meta: Meta<typeof ThemeProvider> = {
   title: 'Theme/Provider',
   component: ThemeProvider,
   parameters: {
@@ -63,8 +64,10 @@ export default {
     },
   },
 };
+export default meta;
 
-export const AutoScout24 = {
+type StoryType = StoryObj<typeof ThemeProvider>;
+export const AutoScout24: StoryType = {
   name: 'AutoScout24',
 
   args: {
@@ -72,7 +75,7 @@ export const AutoScout24 = {
   },
 };
 
-export const MotoScout24 = {
+export const MotoScout24: StoryType = {
   name: 'MotoScout24',
 
   args: {
