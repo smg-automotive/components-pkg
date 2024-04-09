@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
@@ -66,9 +66,10 @@ const meta: Meta<typeof TextareaComponent> = {
 };
 export default meta;
 
-export const Textarea = {};
+type StoryType = StoryObj<typeof TextareaComponent>;
+export const Textarea: StoryType = {};
 
-export const StateFocused = {
+export const StateFocused: StoryType = {
   name: 'State > Focused',
 
   args: {
@@ -76,7 +77,7 @@ export const StateFocused = {
   },
 };
 
-export const StateInvalid = {
+export const StateInvalid: StoryType = {
   name: 'State > Invalid',
 
   args: {
@@ -84,7 +85,7 @@ export const StateInvalid = {
   },
 };
 
-export const StateDisabled = {
+export const StateDisabled: StoryType = {
   name: 'State > Disabled',
 
   args: {
