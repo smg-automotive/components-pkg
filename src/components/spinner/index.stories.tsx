@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import SpinnerComponent from './index';
 
@@ -22,30 +22,31 @@ const meta: Meta<typeof SpinnerComponent> = {
 };
 export default meta;
 
-export const Spinner = {};
+type StoryType = StoryObj<typeof SpinnerComponent>;
+export const Overview: StoryType = {};
 
-export const SizesXs = {
+export const SizesXs: StoryType = {
   name: 'Size > xs',
   args: {
     size: 'xs',
   },
 };
 
-export const SizesSm = {
+export const SizesSm: StoryType = {
   name: 'Size > sm',
   args: {
     size: 'sm',
   },
 };
 
-export const SizesMd = {
+export const SizesMd: StoryType = {
   name: 'Size > md',
   args: {
     size: 'md',
   },
 };
 
-export const SizesLg = {
+export const SizesLg: StoryType = {
   name: 'Size > lg',
   args: {
     size: 'lg',
