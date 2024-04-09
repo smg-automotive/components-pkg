@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
 
 import Center from 'src/components/center';
@@ -10,10 +10,13 @@ import AppLayoutFooter from './Footer';
 import AppLayoutContent from './Content';
 import AppLayout from './AppLayout';
 
-const Template = () => {
-  return (
-    <AppLayout>
-      <AppLayoutHeader>
+const meta: Meta<typeof AppLayout> = {
+  title: 'Layout/App',
+  component: AppLayout,
+
+  args: {
+    children: [
+      <AppLayoutHeader key="header">
         <Box
           height="70px"
           width="full"
@@ -23,8 +26,8 @@ const Template = () => {
         >
           <Center>Dummy Header</Center>
         </Box>
-      </AppLayoutHeader>
-      <AppLayoutContent>
+      </AppLayoutHeader>,
+      <AppLayoutContent key="content">
         <Box
           height="70px"
           width="full"
@@ -35,8 +38,8 @@ const Template = () => {
         >
           <Center>Dummy Content</Center>
         </Box>
-      </AppLayoutContent>
-      <AppLayoutFooter>
+      </AppLayoutContent>,
+      <AppLayoutFooter key="footer">
         <Box
           height="70px"
           width="full"
@@ -46,14 +49,9 @@ const Template = () => {
         >
           <Center>Dummy Footer</Center>
         </Box>
-      </AppLayoutFooter>
-    </AppLayout>
-  );
-};
-
-const meta: Meta<typeof AppLayout> = {
-  title: 'Layout/App',
-  component: AppLayout,
+      </AppLayoutFooter>,
+    ],
+  },
 
   parameters: {
     layout: 'fullscreen',
@@ -72,6 +70,4 @@ const meta: Meta<typeof AppLayout> = {
 
 export default meta;
 
-export const App = {
-  render: Template.bind({}),
-};
+export const Overview: StoryObj<typeof AppLayout> = {};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { sizes } from 'src/themes/shared/sizes';
 
@@ -102,7 +102,8 @@ const meta: Meta<typeof LayoutWithVehicleReference> = {
 
 export default meta;
 
-export const WithTitle = {
+type StoryType = StoryObj<typeof LayoutWithVehicleReference>;
+export const WithTitle: StoryType = {
   name: 'With title',
 
   args: {
@@ -110,7 +111,7 @@ export const WithTitle = {
   },
 };
 
-export const WithBackLink = {
+export const WithBackLink: StoryType = {
   name: 'With back link',
 
   args: {
@@ -121,11 +122,11 @@ export const WithBackLink = {
   },
 };
 
-export const WithoutBackLinkAndTitle = {
+export const WithoutBackLinkAndTitle: StoryType = {
   name: 'Without back link and title',
 };
 
-export const WithoutHeader = {
+export const WithoutHeader: StoryType = {
   name: 'Without header',
 
   args: {

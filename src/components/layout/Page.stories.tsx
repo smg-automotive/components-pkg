@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { sizes } from 'src/themes/shared/sizes';
 
@@ -89,11 +89,12 @@ const meta: Meta<typeof PageLayout> = {
 };
 export default meta;
 
-export const LayoutWithoutAds = {
+type StoryType = StoryObj<typeof PageLayout>;
+export const LayoutWithoutAds: StoryType = {
   name: 'Layout without ads',
 };
 
-export const LayoutWithSidebarAds = {
+export const LayoutWithSidebarAds: StoryType = {
   name: 'Layout with sidebar ads',
 
   args: {
@@ -105,7 +106,7 @@ export const LayoutWithSidebarAds = {
   },
 };
 
-export const LayoutWithHeroAndSidebarAds = {
+export const LayoutWithHeroAndSidebarAds: StoryType = {
   name: 'Layout with hero and sidebar ads',
 
   args: {
