@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import HighlightedTextComponent from './HighlightedText';
 
@@ -16,4 +16,4 @@ const meta: Meta<typeof HighlightedTextComponent> = {
 };
 export default meta;
 
-export const HighlightedText = {};
+export const Overview: StoryObj<typeof HighlightedTextComponent> = {};

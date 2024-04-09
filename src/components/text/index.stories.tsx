@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { shared } from 'src/themes';
 
@@ -41,4 +41,4 @@ const meta: Meta<typeof TextComponent> = {
 };
 export default meta;
 
-export const Text = {};
+export const Overview: StoryObj<typeof TextComponent> = {};
