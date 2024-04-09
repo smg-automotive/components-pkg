@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import SimpleHeaderComponent from './index';
 
@@ -13,4 +13,4 @@ const meta: Meta<typeof SimpleHeaderComponent> = {
 };
 export default meta;
 
-export const SimpleHeader = {};
+export const Overview: StoryObj<typeof SimpleHeaderComponent> = {};
