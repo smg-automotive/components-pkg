@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import RatingComponent from './index';
 
@@ -24,14 +24,15 @@ const meta: Meta<typeof RatingComponent> = {
 };
 export default meta;
 
-export const Large = {
+type StoryType = StoryObj<typeof RatingComponent>;
+export const Large: StoryType = {
   args: {
     rating: 4.5,
     size: 'large',
   },
 };
 
-export const Small = {
+export const Small: StoryType = {
   args: {
     rating: 4.5,
     size: 'small',
