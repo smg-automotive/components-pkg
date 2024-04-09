@@ -1,89 +1,45 @@
-import React, { FC, PropsWithChildren, useState } from 'react';
-import { Meta } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
 import DatePickerComponent, { DatePickerProps } from './index';
 
-const Container: FC<PropsWithChildren> = ({ children }) => {
+const Template = (props: DatePickerProps) => {
+  const [args, updateArgs] = useArgs<DatePickerProps>();
+
   return (
-    <Box w="100%" maxW="250px">
-      {children}
-    </Box>
+    <DatePickerComponent
+      {...{
+        ...props,
+        ...args,
+      }}
+      onChange={(e) => {
+        args.onChange?.(e);
+        updateArgs({ value: e.target.value });
+      }}
+    />
   );
 };
 
-const Template = ({
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  min,
-  ...args
-}: Omit<DatePickerProps, 'onChange' | 'onBlur' | 'onFocus'> & {
-  onChange?: boolean;
-  onBlur?: boolean;
-  onFocus?: boolean;
-}) => {
-  const [currentValue, setCurrentValue] = useState(value);
-  const onChangeHandler = onChange
-    ? action('change')
-    : () => {
-        return;
-      };
-  return (
-    <Container>
-      <DatePickerComponent
-        {...args}
-        min={min ? new Date(min) : undefined}
-        onBlur={onBlur ? action('blur') : undefined}
-        onFocus={onFocus ? action('focus') : undefined}
-        onChange={(e) => {
-          setCurrentValue(e.target.value);
-          onChangeHandler(e);
-        }}
-        value={value ? currentValue : undefined}
-      />
-    </Container>
-  );
-};
-
-const meta: Meta<typeof Template> = {
+const meta: Meta<typeof DatePickerComponent> = {
   title: 'Components/Forms/Date Picker',
-
-  parameters: {
-    controls: {
-      sort: 'alpha',
-      expanded: true,
-    },
-  },
-
-  args: {
-    onBlur: true,
-    onChange: true,
-    onFocus: true,
-  },
-
-  argTypes: {
-    min: {
-      control: 'date',
-    },
-    onBlur: {
-      control: 'boolean',
-    },
-    onFocus: {
-      control: 'boolean',
-    },
-    onChange: {
-      control: 'boolean',
-    },
-  },
-};
-
-export const DatePicker = {
+  component: DatePickerComponent,
   render: Template.bind({}),
 
+  decorators: [
+    (Story) => (
+      <Box w="100%" maxW="250px">
+        <Story />
+      </Box>
+    ),
+  ],
+
   args: {
+    onBlur: action('onBlur'),
+    onChange: action('onChange'),
+    onFocus: action('onFocus'),
     size: 'lg',
     min: new Date(),
     value: '',
@@ -91,11 +47,18 @@ export const DatePicker = {
   },
 
   argTypes: {
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
+    min: {
+      control: 'date',
+      description:
+        "Disregard the time input in the control - storybook doesn't support a lone date input",
+    },
+    value: {
+      control: 'date',
+      description:
+        "Disregard the time input in the control - storybook doesn't support a lone date input",
     },
   },
 };
-
 export default meta;
+
+export const Overview: StoryObj<typeof DatePickerComponent> = {};
