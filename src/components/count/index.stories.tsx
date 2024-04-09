@@ -1,20 +1,21 @@
+import { Meta, StoryObj } from '@storybook/react';
+
 import CountComponent from './index';
 
-export default {
+const meta: Meta<typeof CountComponent> = {
   title: 'Components/Data display/Count',
   component: CountComponent,
-
   argTypes: {
     variant: {
-      type: 'select',
       options: ['primary', 'inverted'],
     },
   },
 };
+export default meta;
 
-export const Count = {
+export const Overview: StoryObj<typeof CountComponent> = {
   args: {
     variant: 'primary',
-    count: '50',
+    count: 50,
   },
 };

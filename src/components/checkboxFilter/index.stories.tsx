@@ -290,7 +290,7 @@ const meta: Meta<typeof Template> = {
 export default meta;
 
 type StoryType = StoryObj<typeof Template>;
-export const CheckboxFilter: StoryType = {};
+export const Overview: StoryType = {};
 
 export const WithInitiallyCheckedItems: StoryType = {
   args: {

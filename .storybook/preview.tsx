@@ -73,10 +73,32 @@ const preview: Preview = {
   argTypes: {
     children: {
       control: { type: null },
+      if: {
+        arg: 'children',
+        exists: true,
+      },
     },
-    size: { control: { type: 'select' } },
-    variant: { control: { type: 'select' } },
-    fontWeight: { control: { type: 'select' } },
+    size: {
+      control: { type: 'select' },
+      if: {
+        arg: 'size',
+        exists: true,
+      },
+    },
+    variant: {
+      control: { type: 'select' },
+      if: {
+        arg: 'variant',
+        exists: true,
+      },
+    },
+    fontWeight: {
+      control: { type: 'select' },
+      if: {
+        arg: 'fontWeight',
+        exists: true,
+      },
+    },
   },
   parameters: {
     docs: {
