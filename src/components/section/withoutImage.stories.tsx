@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import SectionComponent from './index';
 
@@ -26,13 +26,14 @@ const meta: Meta<typeof SectionComponent> = {
 };
 export default meta;
 
-export const Hero = {
+type StoryType = StoryObj<typeof SectionComponent>;
+export const Hero: StoryType = {
   args: {
     variant: 'hero',
   },
 };
 
-export const Regular = {
+export const Regular: StoryType = {
   args: {
     variant: 'regular',
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import withoutImageMeta from './withoutImage.stories';
 
@@ -38,7 +38,8 @@ const meta: Meta<typeof Template> = {
 };
 export default meta;
 
-export const Hero = {
+type StoryType = StoryObj<typeof Template>;
+export const Hero: StoryType = {
   args: {
     variant: 'hero',
   },
@@ -47,7 +48,7 @@ export const Hero = {
 /**
  * Max image width is responsive, change viewport size to see the effect
  */
-export const HeroResponsive = {
+export const HeroResponsive: StoryType = {
   args: {
     variant: 'hero',
 
@@ -58,7 +59,7 @@ export const HeroResponsive = {
   },
 };
 
-export const Regular = {
+export const Regular: StoryType = {
   args: {
     variant: 'regular',
   },
@@ -67,7 +68,7 @@ export const Regular = {
 /**
  * Max image width is responsive, change viewport size to see the effect
  */
-export const RegularResponsive = {
+export const RegularResponsive: StoryType = {
   args: {
     variant: 'regular',
 
