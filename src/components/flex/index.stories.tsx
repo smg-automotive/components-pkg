@@ -1,20 +1,9 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Box from '../box';
 
-import Flex, { type FlexProps } from './index';
-
-const Template = (args: FlexProps) => (
-  <Flex {...args}>
-    <Box p="sm" bg="green.200" margin="sm">
-      Element 1
-    </Box>
-    <Box p="md" bg="orange.300" margin="sm">
-      Element 2
-    </Box>
-  </Flex>
-);
+import Flex from './index';
 
 const meta: Meta<typeof Flex> = {
   title: 'Layout/Flex',
@@ -24,6 +13,14 @@ const meta: Meta<typeof Flex> = {
     direction: 'row',
     align: 'center',
     justify: 'center',
+    children: [
+      <Box p="sm" bg="green.200" margin="sm" key="child-1">
+        Element 1
+      </Box>,
+      <Box p="md" bg="orange.300" margin="sm" key="child-2">
+        Element 2
+      </Box>,
+    ],
   },
 
   argTypes: {
@@ -48,17 +45,14 @@ const meta: Meta<typeof Flex> = {
     },
   },
 };
+export default meta;
 
-export const Row = {
-  render: Template.bind({}),
-};
+type StoryType = StoryObj<typeof Flex>;
+export const Row: StoryType = {};
 
-export const Column = {
-  render: Template.bind({}),
+export const Column: StoryType = {
   args: {
     direction: 'column',
     align: 'stretch',
   },
 };
-
-export default meta;
