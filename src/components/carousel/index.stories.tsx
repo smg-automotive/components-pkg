@@ -10,12 +10,12 @@ import Box from '../box';
 import CarouselComponent, { PaginationType } from './index';
 
 const images = [
-  'https://via.placeholder.com/800x600',
-  'https://via.placeholder.com/900x600',
-  'https://via.placeholder.com/900x500',
-  'https://via.placeholder.com/700x500',
-  'https://via.placeholder.com/450x500',
-  'https://via.placeholder.com/750x500',
+  'https://picsum.photos/800/600',
+  'https://picsum.photos/900/600',
+  'https://picsum.photos/900/500',
+  'https://picsum.photos/700/500',
+  'https://picsum.photos/450/500',
+  'https://picsum.photos/750/500',
 ];
 
 interface SlideProps {

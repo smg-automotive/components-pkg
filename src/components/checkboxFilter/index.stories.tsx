@@ -305,9 +305,7 @@ export const LabelWithImage: StoryType = {
   args: {
     items: items.map((item, i) => ({
       ...item,
-      image: (
-        <img src="https://via.placeholder.com/220x100" alt={`image ${i}`} />
-      ),
+      image: <img src="https://picsum.photos/220/100" alt={`image ${i}`} />,
     })),
   },
 };

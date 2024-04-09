@@ -16,10 +16,10 @@ const meta: Meta<typeof ArticleTeaser> = {
   ],
 
   args: {
-    title: 'Placeholder.com',
+    title: 'Lorem Picsum',
     text: 'A very cool service that provides placeholder images. You can learn more about the options and usage here.',
-    url: 'https://placeholder.com',
-    imageUrl: 'https://via.placeholder.com/320x320',
+    url: 'https://picsum.photos/',
+    imageUrl: 'https://picsum.photos/320/320',
     maxImgW: '4xl',
   },
 

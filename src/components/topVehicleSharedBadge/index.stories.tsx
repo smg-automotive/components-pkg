@@ -17,9 +17,7 @@ const meta: Meta<typeof TopVehicleBadgeComponent> = {
 
   args: {
     aspectRatio: 4 / 3,
-    children: (
-      <Image src="https://via.placeholder.com/800x800" objectFit="cover" />
-    ),
+    children: <Image src="https://picsum.photos/800/800" objectFit="cover" />,
   },
 
   argTypes: {

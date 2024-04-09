@@ -11,7 +11,9 @@ const Template = ({
 }: Props & { nativeImageSize?: string }) => (
   <SectionComponent
     {...args}
-    image={<img src={`https://via.placeholder.com/${nativeImageSize}`} />}
+    image={
+      <img src={`https://picsum.photos/${nativeImageSize.replace('x', '/')}`} />
+    }
   />
 );
 

@@ -34,7 +34,7 @@ export const VehicleReferenceWithImage: StoryType = {
     price: `CHF 23'900.–`,
     sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
     sellerAddress: `2540 Grenchen (SO)`,
-    image: <img src="https://via.placeholder.com/400x400" />,
+    image: <img src="https://picsum.photos/400/400" />,
   },
 };
 

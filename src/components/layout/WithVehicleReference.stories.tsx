@@ -21,7 +21,7 @@ const meta: Meta<typeof LayoutWithVehicleReference> = {
       sellerAddress: `2540 Grenchen (SO)`,
       image: (
         <img
-          src="https://via.placeholder.com/400x300"
+          src="https://picsum.photos/400/300"
           alt="vehicle reference image"
         />
       ),
