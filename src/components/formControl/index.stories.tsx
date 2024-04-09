@@ -1,18 +1,11 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
 import { Input } from 'src/index';
 
-import FormControl, { type Props } from './index';
-
-const Template = (args: Props) => {
-  return (
-    <FormControl {...args}>
-      <Input name={args.id} placeholder="placeholder" />
-    </FormControl>
-  );
-};
+import FormControl from './index';
 
 const meta: Meta<typeof FormControl> = {
   title: 'Components/Forms/Form Control',
@@ -35,6 +28,7 @@ const meta: Meta<typeof FormControl> = {
     errorMessage: '',
     size: 'lg',
     id: 'test-input',
+    children: <Input name="test-input" placeholder="placeholder" />,
   },
 
   argTypes: {
@@ -50,13 +44,12 @@ const meta: Meta<typeof FormControl> = {
     },
   },
 };
+export default meta;
 
-export const Overview = {
-  render: Template.bind({}),
-};
+type StoryType = StoryObj<typeof FormControl>;
+export const Overview: StoryType = {};
 
-export const WithLabel = {
-  render: Template.bind({}),
+export const WithLabel: StoryType = {
   name: 'With label',
 
   args: {
@@ -65,9 +58,7 @@ export const WithLabel = {
   },
 };
 
-export const Required = {
-  render: Template.bind({}),
-
+export const Required: StoryType = {
   args: {
     label: 'Label',
     hint: '',
@@ -75,8 +66,7 @@ export const Required = {
   },
 };
 
-export const WithHint = {
-  render: Template.bind({}),
+export const WithHint: StoryType = {
   name: 'With hint',
 
   args: {
@@ -85,8 +75,7 @@ export const WithHint = {
   },
 };
 
-export const WithTooltip = {
-  render: Template.bind({}),
+export const WithTooltip: StoryType = {
   name: 'With tooltip',
 
   args: {
@@ -96,32 +85,19 @@ export const WithTooltip = {
   },
 };
 
-export const WithButton = {
-  render: Template.bind({}),
+export const WithButton: StoryType = {
   name: 'With button',
 
   args: {
     label: 'Label',
     labelButtonText: 'button',
+    labelButtonOnClick: action('label button clicked'),
   },
 };
 
-export const Disabled = {
-  render: Template.bind({}),
-
-  args: {
-    label: 'Label',
-    disabled: true,
-  },
-};
-
-export const Invalid = {
-  render: Template.bind({}),
-
+export const Invalid: StoryType = {
   args: {
     label: 'Label',
     errorMessage: 'Error message',
   },
 };
-
-export default meta;
