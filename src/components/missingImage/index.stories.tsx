@@ -9,6 +9,13 @@ import MissingImageComponent from './index';
 const meta: Meta<typeof MissingImageComponent> = {
   title: 'Patterns/Data display/Missing image',
   component: MissingImageComponent,
+  decorators: [
+    (Story) => (
+      <AspectRatio ratio={4 / 3} width="500px">
+        <Story />
+      </AspectRatio>
+    ),
+  ],
   parameters: {
     docs: {
       page: () => (
@@ -24,14 +31,4 @@ const meta: Meta<typeof MissingImageComponent> = {
 };
 export default meta;
 
-export const MissingImage: StoryObj<typeof MissingImageComponent> = {
-  name: 'Missing image',
-
-  decorators: [
-    (Story) => (
-      <AspectRatio ratio={4 / 3} width="500px">
-        <Story />
-      </AspectRatio>
-    ),
-  ],
-};
+export const Overview: StoryObj<typeof MissingImageComponent> = {};
