@@ -65,7 +65,7 @@ export const StateInvalid: StoryType = {
 /**
  * Indeterminate state is used when some of the children checkoxes are checked
  **/
-export const StateIndeterminate = {
+export const StateIndeterminate: StoryType = {
   name: 'State > Indeterminate',
   args: {
     isIndeterminate: true,
