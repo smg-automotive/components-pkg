@@ -76,6 +76,7 @@ const preview: Preview = {
     },
     size: { control: { type: 'select' } },
     variant: { control: { type: 'select' } },
+    fontWeight: { control: { type: 'select' } },
   },
   parameters: {
     docs: {

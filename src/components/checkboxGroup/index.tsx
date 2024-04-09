@@ -7,6 +7,9 @@ import Divider from '../divider';
 import Checkbox, { CheckboxProps } from '../checkbox';
 
 export interface CheckboxGroupProps extends CheckboxProps {
+  /**
+   * Array of children checkboxes
+   */
   checkboxes?: CheckboxProps[];
   addDividerAfterIndex?: number[];
   size?: 'sm' | 'lg';
