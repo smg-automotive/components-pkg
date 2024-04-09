@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
@@ -14,7 +14,7 @@ const Template = (props: Props) => {
       {...args}
       onChange={(page) => {
         updateArgs({ currentPage: page });
-        action('onChange')(page);
+        args.onChange?.(page);
       }}
     />
   );
@@ -41,6 +41,7 @@ const meta: Meta<typeof PaginationComponent> = {
   args: {
     totalPages: 10,
     currentPage: 0,
+    onChange: action('onChange'),
   },
 
   argTypes: {
@@ -55,4 +56,4 @@ const meta: Meta<typeof PaginationComponent> = {
 };
 export default meta;
 
-export const Pagination = {};
+export const Overview: StoryObj<typeof PaginationComponent> = {};
