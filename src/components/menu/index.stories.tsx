@@ -10,6 +10,14 @@ const meta: Meta<typeof MenuComponent> = {
   title: 'Patterns/Data Display/Menu',
   component: MenuComponent,
 
+  decorators: [
+    (Story) => (
+      <Box h="200px">
+        <Story />
+      </Box>
+    ),
+  ],
+
   args: {
     items: [
       { text: 'Detusch', onClick: action('Detusch') },
@@ -22,12 +30,4 @@ const meta: Meta<typeof MenuComponent> = {
 };
 export default meta;
 
-export const Menu: StoryObj<typeof MenuComponent> = {
-  decorators: [
-    (Story) => (
-      <Box h="200px">
-        <Story />
-      </Box>
-    ),
-  ],
-};
+export const Overview: StoryObj<typeof MenuComponent> = {};
