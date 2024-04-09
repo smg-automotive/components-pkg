@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Button, ErrorIcon } from '../index';
 import useToast, { ToastOptions } from './UseToast';
@@ -45,4 +45,4 @@ const meta: Meta<typeof useToast> = {
 };
 export default meta;
 
-export const Toast = {};
+export const Overview: StoryObj<typeof useToast> = {};
