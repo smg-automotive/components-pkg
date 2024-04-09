@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Box } from '../index';
 
@@ -27,4 +27,4 @@ const meta: Meta<typeof SkeletonComponent> = {
 };
 export default meta;
 
-export const Overview = {};
+export const Overview: StoryObj<typeof SkeletonComponent> = {};
