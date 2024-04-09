@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import { action } from '@storybook/addon-actions';
 
@@ -97,9 +97,10 @@ const meta: Meta<typeof SelectComponent> = {
 };
 export default meta;
 
-export const Select = {};
+type StoryType = StoryObj<typeof SelectComponent>;
+export const Overview: StoryType = {};
 
-export const StateFocused = {
+export const StateFocused: StoryType = {
   name: 'State > Focused',
 
   args: {
@@ -107,14 +108,14 @@ export const StateFocused = {
   },
 };
 
-export const StateInvalid = {
+export const StateInvalid: StoryType = {
   name: 'State > Invalid',
   args: {
     isInvalid: true,
   },
 };
 
-export const StateDisabled = {
+export const StateDisabled: StoryType = {
   name: 'State > Disabled',
 
   args: {
@@ -122,14 +123,14 @@ export const StateDisabled = {
   },
 };
 
-export const SizeMedium = {
+export const SizeMedium: StoryType = {
   name: 'Size > Medium',
   args: {
     size: 'md',
   },
 };
 
-export const SizeLarge = {
+export const SizeLarge: StoryType = {
   name: 'Size > Large',
   args: {
     size: 'lg',
