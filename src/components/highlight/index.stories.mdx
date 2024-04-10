@@ -1,0 +1,27 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import Highlight from './index.tsx';
+import Text from '../text';
+
+<Meta title="Components/Utils/Highlight" component={Highlight} />
+
+export const Template = (args) => {
+  console.log('ARGS', args.children.props.children.length);
+  return <Highlight {...args}>{args.children}</Highlight>;
+};
+
+# Highlight
+
+## AutoScout24 Highlight
+
+<Canvas>
+  <Story
+    name="AS24 Highlight"
+    args={{
+      variant: 'as24',
+      children: <Text>Profi Ratgeber</Text>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
