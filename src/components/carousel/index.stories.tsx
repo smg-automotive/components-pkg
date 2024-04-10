@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
 import FullHeight from '../fullHeight';
