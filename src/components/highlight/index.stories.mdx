@@ -2,12 +2,16 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Highlight from './index.tsx';
 import Text from '../text';
+import Box from '../box';
 
 <Meta title="Components/Utils/Highlight" component={Highlight} />
 
 export const Template = (args) => {
-  console.log('ARGS', args.children.props.children.length);
-  return <Highlight {...args}>{args.children}</Highlight>;
+
+return <Box padding="md" backgroundColor={args.bgColor}>
+
+  <Highlight {...args}>{args.children}</Highlight>
+  </Box>
 };
 
 # Highlight
@@ -19,7 +23,36 @@ export const Template = (args) => {
     name="AS24 Highlight"
     args={{
       variant: 'as24',
-      children: <Text>Profi Ratgeber</Text>,
+      children: <Text>Profi Ratgen</Text>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Motoscout24 Highlight
+
+<Canvas>
+  <Story
+    name="MS24 Highlight"
+    args={{
+      variant: 'ms24',
+      children: <Text>Profi Ratgen</Text>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## White Highlight
+
+<Canvas>
+  <Story
+    name="White Highlight"
+    args={{
+      variant: 'white',
+      children: <Text>Profi Ratgen</Text>,
+      bgColor: 'aqua',
     }}
   >
     {Template.bind({})}

@@ -1,45 +1,56 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, isValidElement, PropsWithChildren, ReactNode } from 'react';
 
 import { Box } from '@chakra-ui/react';
 
-import as24Highlight from 'src/assets/images/highlight.svg';
+import whiteHighlight from 'src/assets/images/white_highlight.svg';
+import ms24Highlight from 'src/assets/images/ms24_highlight.svg';
+import as24Highlight from 'src/assets/images/as24_highlight.svg';
 
 type HighlightProps = {
-  variant: 'as24' | 'ms24' | 'neutral';
+  variant: 'as24' | 'ms24' | 'white';
+};
+
+const getTextFromChildren = (child: ReactNode): string => {
+  let text = '';
+
+  if (Array.isArray(child)) {
+    child.forEach((nestedChild) => {
+      text += getTextFromChildren(nestedChild);
+    });
+  } else if (typeof child === 'string' || typeof child === 'number') {
+    text += child.toString();
+  } else if (isValidElement(child) && child.props.children) {
+    text += getTextFromChildren(child.props.children);
+  }
+  return text;
+};
+
+const highlightVariant = {
+  as24: as24Highlight,
+  ms24: ms24Highlight,
+  white: whiteHighlight,
 };
 
 const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
-  // Convert children to a string and get its length
-  const childrenLength = React.Children.toArray(children).reduce(
-    (acc, child) => {
-      // If the child is a string or a number, add its length to the accumulator
-      if (typeof child === 'string' || typeof child === 'number') {
-        return acc + child.toString().length;
-      }
-      // Otherwise, just return the current accumulator value
-      return acc;
-    },
-    0
-  );
+  const text = getTextFromChildren(children);
 
-  console.log('CHILDREN LENGTH', childrenLength);
   return (
     <Box
-      bgImage={as24Highlight}
+      bgImage={highlightVariant[variant]}
       bgRepeat="no-repeat"
       bgPosition="center"
       bgSize="contain"
       paddingLeft="xs"
-      paddingRight="md"
+      paddingRight={text.length <= 11 ? 'lg' : 'md'}
       width="fit-content"
       display="flex"
       justifyContent="center"
       height="auto"
     >
-      <Box marginY="sm">{children}</Box>
+      <Box marginBottom="xxs">{children}</Box>
     </Box>
   );
 };
