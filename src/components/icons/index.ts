@@ -113,3 +113,7 @@ export { TiltedRectangleIcon } from './TiltedRectangleIcon';
 export { PlusCircleIcon } from './PlusCircleIcon';
 export { StarCircleIcon } from './StarCircleIcon';
 export { InfinityCircleIcon } from './InfinityCircleIcon';
+export { VehicleTypesMotorcycleStarIcon } from './VehicleTypesMotorcycleStarIcon';
+export { CategoryAOneIcon } from './CategoryAOneIcon';
+export { CategoryAIcon } from './CategoryAIcon';
+export { CategoryAMinusIcon } from './CategoryAMinusIcon';
