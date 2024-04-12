@@ -21,7 +21,7 @@ export const Breadcrumbs: StoryObj<typeof BreadcrumbsComponent> = {
       <BreadcrumbItem key="golf">
         <BreadcrumbLink href="#golf">Golf</BreadcrumbLink>
       </BreadcrumbItem>,
-      <BreadcrumbItem key="vw">
+      <BreadcrumbItem key="model">
         <BreadcrumbLink>2.0 TSI GTI DSG Performance</BreadcrumbLink>
       </BreadcrumbItem>,
     ],

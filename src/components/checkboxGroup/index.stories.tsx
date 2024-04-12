@@ -94,7 +94,7 @@ const meta: Meta<typeof CheckboxGroup> = {
         label: 'Third child',
         name: 'Third child',
         isChecked: false,
-        onChange: action('onChange, fourth child'),
+        onChange: action('onChange, third child'),
       },
       {
         label: 'Fourth child',

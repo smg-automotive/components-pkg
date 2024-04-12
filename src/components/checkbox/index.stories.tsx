@@ -13,8 +13,10 @@ const meta: Meta<typeof Checkbox> = {
 
     return (
       <Checkbox
-        {...args}
-        {...props}
+        {...{
+          ...args,
+          ...props,
+        }}
         onChange={(e) => {
           updateArgs({ isChecked: e.target.checked });
           args.onChange?.(e);
