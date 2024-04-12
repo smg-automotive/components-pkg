@@ -26,6 +26,7 @@ export interface FooterConfigInstance {
     facebook: LinkInstance[];
     instagram: LinkInstance[];
     twitter: LinkInstance[];
+    linkedin: LinkInstance[];
     youtube: LinkInstance[];
   };
   companies: LinkInstance[];
@@ -62,8 +63,10 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
       socialMedia: {
         facebook: this.mapLinkArray(this.config.socialMedia.facebook),
         instagram: this.mapLinkArray(this.config.socialMedia.instagram),
-        twitter: this.mapLinkArray(this.config.socialMedia.twitter),
+        linkedin: this.mapLinkArray(this.config.socialMedia.linkedin),
         youtube: this.mapLinkArray(this.config.socialMedia.youtube),
+        // NOTE: The Twitter icon asset is currently not in use but has been retained for potential future integration.
+        twitter: this.mapLinkArray(this.config.socialMedia.twitter),
       },
       companies: this.mapLinkArray(this.config.companies),
     };
