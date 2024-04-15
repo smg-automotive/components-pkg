@@ -35,16 +35,16 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
-  const text = getTextFromChildren(children);
+  const textLength = getTextFromChildren(children)?.length || 0;
 
   return (
     <Box
       bgImage={highlightVariant[variant]}
       bgRepeat="no-repeat"
       bgPosition="center"
-      bgSize="contain"
+      bgSize={textLength > 22 ? 'cover' : 'contain'}
       paddingLeft="xs"
-      paddingRight={text.length <= 11 ? 'lg' : 'md'}
+      paddingRight={textLength <= 11 ? 'lg' : 'md'}
       width="fit-content"
       display="flex"
       justifyContent="center"
