@@ -87,6 +87,7 @@ export { UserTypeExternal } from './navigation/header/types';
 export { default as GalleryHeader } from './galleryHeader';
 export { default as SelectMenu } from './selectMenu';
 export { default as TopVehicleSharedBadge } from './topVehicleSharedBadge';
+export { default as Highlight } from './highlight';
 
 export {
   default as ThemeProvider,
