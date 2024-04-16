@@ -20,5 +20,6 @@ const Avatar: FC<Props> = ({ withNotification, color }) => {
     <AvatarIcon __css={baseStyle} {...(color && { color })} />
   );
 };
+Avatar.displayName = 'Avatar';
 
 export default Avatar;
