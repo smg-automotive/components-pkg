@@ -8,7 +8,7 @@ import {
 
 import BareAlert, { BareAlertProps } from '../components/alert/Bare';
 
-interface ToastOptions extends BareAlertProps {
+export interface ToastOptions extends BareAlertProps {
   position?: ToastPosition;
 }
 

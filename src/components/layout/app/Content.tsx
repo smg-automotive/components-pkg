@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentWithAs, forwardRef } from '@chakra-ui/react';
 
-import GridItem, { GridItemProps } from 'src/components/grid/GridItem';
+import GridItem, { type GridItemProps } from 'src/components/grid/GridItem';
 
 const AppLayoutContent: ComponentWithAs<'div', GridItemProps> = forwardRef<
   GridItemProps,

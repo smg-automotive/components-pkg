@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, ReactElement } from 'react';
+import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import {
   Box,
   Popover as ChakraPopover,
@@ -12,7 +12,7 @@ import {
 
 type PopoverProps = PropsWithChildren<
   {
-    content: ReactElement;
+    content: ReactNode;
   } & Pick<ChakraPopoverProps, 'placement'>
 >;
 

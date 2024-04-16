@@ -13,7 +13,8 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
+    defaultName: 'Documentation',
   },
   refs: {
     '@chakra-ui/react': {

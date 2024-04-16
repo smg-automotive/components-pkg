@@ -19,12 +19,14 @@ module.exports = {
       {
         devDependencies: [
           './**/stories/**/*',
-          './**/*.stories.@(tsx|mdx)',
+          './**/*.stories.tsx',
+          './**/*.mdx',
           './**/*.Test.@(ts|tsx)',
           'rollup.config.mjs',
           'postcss.config.js',
           './.jest/**/*',
           './.storybook/**/*',
+          './**/StorybookShared.tsx',
         ],
       },
     ],
@@ -49,12 +51,14 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'react/prop-types': 'off',
         'import/namespace': ['error', { allowComputed: true }],
+        'sonarjs/no-duplicate-string': 'off',
       },
     },
     {
-      files: ['*.mdx'],
+      files: ['*.stories.@(ts|tsx)'],
       rules: {
-        'sonarjs/no-duplicate-string': 'off',
+        'unicorn/filename-case': 'off',
+        'import/namespace': ['error', { allowComputed: true }],
       },
     },
   ],

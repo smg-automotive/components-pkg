@@ -1,12 +1,13 @@
 import React, { forwardRef } from 'react';
 import { Input, InputProps } from '@chakra-ui/react';
 
-type Props = {
+export interface Props
+  extends Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'> {
   size?: 'md' | 'lg';
   min?: Date;
   value?: string;
   isInvalid?: boolean;
-} & Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'>;
+}
 
 const DatePicker = forwardRef<HTMLInputElement, Props>(
   ({ min, ...props }, ref) => {
