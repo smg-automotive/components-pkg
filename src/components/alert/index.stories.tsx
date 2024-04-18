@@ -50,7 +50,6 @@ export const WithLinkOnClick: StoryType = {
   name: 'With Link > onClick event',
   args: {
     link: {
-      url: '',
       text: 'Link',
       onClick: action('onClick'),
     },
