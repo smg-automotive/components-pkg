@@ -44,7 +44,11 @@ const Alert: FC<AlertProps> = ({
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
-          <Link href={link.url} isExternal={link?.isExternal}>
+          <Link
+            href={link.url}
+            isExternal={link?.isExternal}
+            onClick={() => link?.onClick?.()}
+          >
             {link.text}
           </Link>
         ) : null}
