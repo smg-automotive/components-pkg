@@ -12,9 +12,13 @@ export const styleTypes = [
 ] as const;
 type StyleType = (typeof styleTypes)[number];
 
-const OrderedList: FC<
-  PropsWithChildren<ListProps & { start?: number; styleType?: StyleType }>
-> = ({ children, styleType = 'decimal', ...props }) => {
+export type Props = PropsWithChildren<ListProps & { styleType?: StyleType }>;
+
+const OrderedList: FC<Props> = ({
+  children,
+  styleType = 'decimal',
+  ...props
+}) => {
   return (
     // default implementation in chakra forces 1em margin-start
     // https://github.com/chakra-ui/chakra-ui/blob/main/packages/components/layout/src/list.tsx#L95

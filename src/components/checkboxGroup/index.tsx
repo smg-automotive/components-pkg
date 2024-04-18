@@ -6,7 +6,10 @@ import Stack from '../stack';
 import Divider from '../divider';
 import Checkbox, { CheckboxProps } from '../checkbox';
 
-interface CheckboxGroupProps extends CheckboxProps {
+export interface CheckboxGroupProps extends CheckboxProps {
+  /**
+   * Array of children checkboxes
+   */
   checkboxes?: CheckboxProps[];
   addDividerAfterIndex?: number[];
   size?: 'sm' | 'lg';

@@ -12,7 +12,7 @@ import Stack from '../stack';
 import { TooltipIcon } from '../icons';
 import FormLabel from '../formLabel';
 
-type Props = {
+export type Props = {
   isDisabled?: boolean;
   isRequired?: boolean;
   errorMessage?: string;

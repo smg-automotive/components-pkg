@@ -16,12 +16,12 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  paginationType?: PaginationType;
 };
 
 type DefaultProps = {
   fullScreen?: never;
   children: ReactNode[];
+  paginationType?: Exclude<PaginationType, PaginationType.Thumbnail>;
 } & SharedProps;
 
 type FullScreenSlide = {
@@ -32,10 +32,11 @@ type FullScreenSlide = {
 };
 type FullScreenProps = {
   fullScreen: true;
+  paginationType?: never;
   children: Array<FullScreenSlide>;
 } & SharedProps;
 
-type Props = DefaultProps | FullScreenProps;
+export type Props = DefaultProps | FullScreenProps;
 
 export enum PaginationType {
   Thumbnail = 'thumbnail',

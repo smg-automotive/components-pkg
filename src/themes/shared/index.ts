@@ -31,7 +31,7 @@ export const shared = {
   fonts,
   zIndices,
 };
-export { Sizes } from './sizes';
-export { Space } from './space';
-export { FontWeights } from './fontWeights';
+export { type Sizes } from './sizes';
+export { type Space } from './space';
+export { type FontWeights } from './fontWeights';
 export { breakpoints } from './breakpoints';

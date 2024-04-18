@@ -4,7 +4,8 @@
     "dist",
     "node_modules",
     "src/**/*.Test.ts*",
-    "src/**/*.TypeTest.ts*"
+    "src/**/*.TypeTest.ts*",
+    "src/**/*.stories.ts*"
   ],
   "include": ["src"]
 }

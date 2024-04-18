@@ -11,7 +11,7 @@ import { Sizes } from 'src/themes';
 
 import Stack from '../stack';
 
-interface Props {
+export interface Props {
   variant?: 'hero' | 'regular';
   title: string;
   text?: string;
