@@ -1,4 +1,4 @@
-import React, { FC, isValidElement, PropsWithChildren, ReactNode } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 import { Box } from '@chakra-ui/react';
 
@@ -8,21 +8,6 @@ import as24Highlight from 'src/assets/images/as24_highlight.svg';
 
 type HighlightProps = {
   variant: 'as24' | 'ms24' | 'white';
-};
-
-const getTextFromChildren = (child: ReactNode): string => {
-  let text = '';
-
-  if (Array.isArray(child)) {
-    child.forEach((nestedChild) => {
-      text += getTextFromChildren(nestedChild);
-    });
-  } else if (typeof child === 'string' || typeof child === 'number') {
-    text += child.toString();
-  } else if (isValidElement(child) && child.props.children) {
-    text += getTextFromChildren(child.props.children);
-  }
-  return text;
 };
 
 const highlightVariant = {
@@ -35,22 +20,27 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
-  const textLength = getTextFromChildren(children)?.length || 0;
-
   return (
     <Box
-      bgImage={highlightVariant[variant]}
-      bgRepeat="no-repeat"
-      bgPosition="center"
-      bgSize={textLength > 22 ? 'cover' : 'contain'}
-      paddingLeft="xs"
-      paddingRight={textLength <= 11 ? 'lg' : 'md'}
-      width="fit-content"
-      display="flex"
-      justifyContent="center"
-      height="auto"
+      position="relative"
+      overflow="hidden"
+      width="max-content"
+      minHeight="sm"
     >
-      <Box marginBottom="xxs">{children}</Box>
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        width="100%"
+        height="100%"
+        zIndex="1"
+        bgImage={highlightVariant[variant]}
+        bgRepeat="no-repeat"
+        bgSize="100% 100%"
+      />
+      <Box position="relative" width="100%" zIndex="2" paddingX="xs">
+        {children}
+      </Box>
     </Box>
   );
 };
