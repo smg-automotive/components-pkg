@@ -44,13 +44,15 @@ const Alert: FC<AlertProps> = ({
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
-          <Link
-            href={link.url}
-            isExternal={link?.isExternal}
-            onClick={() => link?.onClick?.()}
-          >
-            {link.text}
-          </Link>
+          link.as === 'button' ? (
+            <Link as="button" onClick={() => link.onClick?.()}>
+              {link.text}
+            </Link>
+          ) : (
+            <Link href={link.url} isExternal={link.isExternal}>
+              {link.text}
+            </Link>
+          )
         ) : null}
       </Flex>
       {rest.dismissible ? (
