@@ -51,6 +51,7 @@ export const WithLinkOnClick: StoryType = {
   args: {
     link: {
       text: 'Link',
+      as: 'button',
       onClick: action('onClick'),
     },
   },
