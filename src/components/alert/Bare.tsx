@@ -17,7 +17,7 @@ export interface BareAlertProps {
     text: string;
     url?: string;
     isExternal?: boolean;
-    as?: 'button';
+    as?: 'link' | 'button';
     onClick?: () => void;
   };
   type?: 'error' | 'warning' | 'info' | 'success';
