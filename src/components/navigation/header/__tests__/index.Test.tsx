@@ -1,9 +1,6 @@
 /* eslint-disable unicorn/filename-case */
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-
-import { screen } from '@storybook/testing-library';
-
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';

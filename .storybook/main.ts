@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-webpack5-compiler-babel',
   ],
   framework: {
     name: '@storybook/react-webpack5',
@@ -20,6 +21,9 @@ const config: StorybookConfig = {
     '@chakra-ui/react': {
       disable: true,
     },
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
   webpackFinal: async (webpack) => {
     webpack.resolve = webpack.resolve || {};

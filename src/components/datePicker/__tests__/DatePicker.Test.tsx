@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { fireEvent } from '@storybook/testing-library';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import DatePicker, { DatePickerProps } from '..';
 
