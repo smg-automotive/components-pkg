@@ -132,7 +132,7 @@
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
     "embla-carousel-react": "7.1.0",
-    "framer-motion": "11.1.5",
+    "framer-motion": "11.1.7",
     "fs-extra": "11.2.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "10.0.0",
