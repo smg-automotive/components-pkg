@@ -2,17 +2,18 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Box } from '@chakra-ui/react';
 
+import { Brand } from 'src/types/brand';
 import whiteHighlight from 'src/assets/images/white_highlight.svg';
 import ms24Highlight from 'src/assets/images/ms24_highlight.svg';
 import as24Highlight from 'src/assets/images/as24_highlight.svg';
 
 type HighlightProps = {
-  variant: 'as24' | 'ms24' | 'white';
+  variant: Brand.AutoScout24 | Brand.MotoScout24 | 'white';
 };
 
 const highlightVariant = {
-  as24: as24Highlight,
-  ms24: ms24Highlight,
+  [Brand.AutoScout24]: as24Highlight,
+  [Brand.MotoScout24]: ms24Highlight,
   white: whiteHighlight,
 };
 
