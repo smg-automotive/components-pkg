@@ -14,10 +14,10 @@ export interface BareAlertProps {
   title?: string;
   description: string;
   link?: {
+    as?: 'link' | 'button';
     text: string;
     url?: string;
     isExternal?: boolean;
-    as?: 'link' | 'button';
     onClick?: () => void;
   };
   type?: 'error' | 'warning' | 'info' | 'success';
