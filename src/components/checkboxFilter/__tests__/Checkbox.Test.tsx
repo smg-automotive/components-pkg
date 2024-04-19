@@ -185,7 +185,7 @@ describe('<CheckBoxFilter />', () => {
       await userEvent.click(expandButton);
       expect(expandButton).toHaveAttribute('aria-expanded', 'true');
       expect(
-        screen.getByRole('checkbox', {
+        await screen.findByRole('checkbox', {
           name: /Almost new/,
         }),
       ).toBeInTheDocument();
@@ -216,7 +216,7 @@ describe('<CheckBoxFilter />', () => {
         screen.getByRole('button', { name: 'Used: Mehr anzeigen' }),
       );
       expect(
-        screen.getByRole('checkbox', {
+        await screen.findByRole('checkbox', {
           name: /Almost new/,
         }),
       ).toBeChecked();
