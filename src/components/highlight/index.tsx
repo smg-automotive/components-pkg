@@ -33,12 +33,12 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
         left="0"
         width="100%"
         height="100%"
-        zIndex="1"
+        zIndex="3"
         bgImage={highlightVariant[variant]}
         bgRepeat="no-repeat"
         bgSize="100% 100%"
       />
-      <Box position="relative" width="100%" zIndex="2" paddingX="xs">
+      <Box position="relative" width="100%" zIndex="5" paddingX="xs">
         {children}
       </Box>
     </Box>
