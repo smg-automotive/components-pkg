@@ -3,11 +3,12 @@ import { BoxProps, ShowProps, useQuery } from '@chakra-ui/react';
 
 import Box from '../box';
 
-type Props = {
-  showDisplay?: string;
-};
+export type Props = Omit<ShowProps, 'ssr'> &
+  Omit<BoxProps, 'sx'> & {
+    showDisplay?: string;
+  };
 
-const Show: FC<Omit<ShowProps, 'ssr'> & Omit<BoxProps, 'sx'> & Props> = ({
+const Show: FC<Props> = ({
   children,
   breakpoint,
   above,

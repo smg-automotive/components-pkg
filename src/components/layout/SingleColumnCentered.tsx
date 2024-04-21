@@ -6,7 +6,7 @@ import { sizes } from 'src/themes/shared/sizes';
 
 import BaseLayout from './BaseLayout';
 
-type SingleColumnCenteredLayoutProps = PropsWithChildren<{
+export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
   maxContentWidth?: keyof typeof sizes.container;
 }>;
 

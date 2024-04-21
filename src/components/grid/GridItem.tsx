@@ -3,7 +3,7 @@ import {
   GridItem as ChakraGridItem,
   ComponentWithAs,
   forwardRef,
-  GridItemProps,
+  type GridItemProps,
 } from '@chakra-ui/react';
 
 const GridItem: ComponentWithAs<'div', GridItemProps> = forwardRef<
@@ -17,4 +17,4 @@ const GridItem: ComponentWithAs<'div', GridItemProps> = forwardRef<
 GridItem.displayName = 'GridItem';
 
 export default GridItem;
-export { GridItemProps };
+export { type GridItemProps };

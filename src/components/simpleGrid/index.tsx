@@ -20,4 +20,4 @@ type Props = Pick<
 const SimpleGrid: FC<Props> = (props) => <ChakraSimpleGrid {...props} />;
 
 export default SimpleGrid;
-export { Props as GridProps };
+export { type Props as GridProps };

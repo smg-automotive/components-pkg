@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import Grid, { GridProps } from '../grid';
+import Grid, { type GridProps } from '../grid';
 
 export const repeatArea = (count: number, area: string) => {
   return new Array(count).fill(area).join(' ');

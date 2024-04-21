@@ -3,7 +3,7 @@ import { AccordionProps } from '@chakra-ui/react';
 
 import Accordion from '../accordion';
 
-type Props = {
+export type Props = {
   variant?: 'light' | 'dark';
 } & Pick<AccordionProps, 'allowMultiple' | 'allowToggle'>;
 

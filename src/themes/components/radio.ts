@@ -24,6 +24,10 @@ const baseStyleControl = defineStyle({
   borderRadius: '50%',
   _checked: {
     borderColor: 'gray.900',
+    bg: 'gray.900',
+    _disabled: {
+      bg: 'gray.400',
+    },
     _before: {
       content: `""`,
       display: 'inline-block',
@@ -31,7 +35,7 @@ const baseStyleControl = defineStyle({
       w: '50%',
       h: '50%',
       borderRadius: '50%',
-      bg: 'currentColor',
+      bg: 'white',
     },
   },
 });

@@ -8,3 +8,4 @@ const Flex: FC<Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'>> = ({
 }) => <ChakraFlex {...rest}>{children}</ChakraFlex>;
 
 export default Flex;
+export type { FlexProps };

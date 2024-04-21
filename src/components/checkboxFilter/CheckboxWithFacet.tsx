@@ -26,6 +26,14 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   isIndeterminate = false,
   indentFacet = false,
 }: Props<ItemKey, FilterName>) {
+  const renderFacet = (facet: number) => {
+    return (
+      <chakra.span ml="sm" color="gray.400" minW="7ch" textAlign="right">
+        {addThousandSeparatorToNumber(facet)}
+      </chakra.span>
+    );
+  };
+
   return (
     <Grid
       width="full"
@@ -54,9 +62,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
                   highlightIndices={item.highlightIndices}
                   wordBreak="break-word"
                 />
-                <chakra.span ml="sm" color="gray.400">
-                  {addThousandSeparatorToNumber(item.facet)}
-                </chakra.span>
+                {renderFacet(item.facet)}
               </chakra.span>
             </chakra.span>
           ) : (
@@ -71,9 +77,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
                 w="full"
                 wordBreak="break-word"
               />
-              <chakra.span ml="sm" color="gray.400">
-                {addThousandSeparatorToNumber(item.facet)}
-              </chakra.span>
+              {renderFacet(item.facet)}
             </chakra.span>
           )
         }

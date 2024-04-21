@@ -29,6 +29,7 @@ const baseStyleControl = defineStyle({
   _focusVisible: {
     outline: '2px solid',
     outlineColor: 'blue.300',
+    borderColor: 'gray.900',
   },
   _checked: {
     borderColor: 'gray.900',

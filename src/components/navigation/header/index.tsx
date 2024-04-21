@@ -103,7 +103,7 @@ const Navigation: FC<NavigationProps> = ({
           margin="auto"
           display="flex"
           justifyContent="space-between"
-          px={{ base: 'sm', xs: 'lg' }}
+          px={{ base: 'sm', xs: 'lg', sm: '2xl' }}
         >
           <NavigationItems
             platform={brand}

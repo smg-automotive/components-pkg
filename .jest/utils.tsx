@@ -5,7 +5,7 @@ import { render as testingLibraryRender } from '@testing-library/react';
 import { Brand } from 'src/types/brand';
 
 import ThemeProvider, {
-  Props as ThemeProviderProps,
+  type Props as ThemeProviderProps,
 } from '../src/components/themeProvider';
 
 const Wrapper = (theme: ThemeProviderProps['theme']): FC<PropsWithChildren> => {

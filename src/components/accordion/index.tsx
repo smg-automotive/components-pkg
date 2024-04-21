@@ -9,3 +9,4 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
 };
 
 export default Accordion;
+export type { AccordionProps };
