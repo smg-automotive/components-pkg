@@ -12,15 +12,16 @@ type HighlightProps = {
 };
 
 const highlightVariant = {
-  [Brand.AutoScout24]: `url("${as24Highlight}")`,
-  [Brand.MotoScout24]: `url("${ms24Highlight}")`,
-  white: `url("${whiteHighlight}")`,
+  [Brand.AutoScout24]: as24Highlight,
+  [Brand.MotoScout24]: ms24Highlight,
+  white: whiteHighlight,
 };
 
 const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
+  console.log('HighlightProps', highlightVariant);
   return (
     <Box
       position="relative"
