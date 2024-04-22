@@ -21,6 +21,7 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
+  const svgUrl = `url(${highlightVariant[variant]})`;
   return (
     <Box
       position="relative"
@@ -35,7 +36,7 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
         width="100%"
         height="100%"
         zIndex="highlightBackground"
-        bgImage={highlightVariant[variant]}
+        bgImage={svgUrl}
         bgRepeat="no-repeat"
         bgSize="100% 100%"
       />
