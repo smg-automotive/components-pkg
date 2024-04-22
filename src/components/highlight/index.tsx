@@ -12,16 +12,15 @@ type HighlightProps = {
 };
 
 const highlightVariant = {
-  [Brand.AutoScout24]: as24Highlight,
-  [Brand.MotoScout24]: ms24Highlight,
-  white: whiteHighlight,
+  [Brand.AutoScout24]: `url("${as24Highlight}")`,
+  [Brand.MotoScout24]: `url("${ms24Highlight}")`,
+  white: `url("${whiteHighlight}")`,
 };
 
 const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
-  const svgUrl = `url(${highlightVariant[variant]})`;
   return (
     <Box
       position="relative"
@@ -36,7 +35,7 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
         width="100%"
         height="100%"
         zIndex="highlightBackground"
-        bgImage={svgUrl}
+        bgImage={highlightVariant[variant]}
         bgRepeat="no-repeat"
         bgSize="100% 100%"
       />
