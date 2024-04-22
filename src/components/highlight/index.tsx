@@ -21,7 +21,6 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
   variant,
   children,
 }) => {
-  console.log('HighlightProps', highlightVariant);
   return (
     <Box
       position="relative"
