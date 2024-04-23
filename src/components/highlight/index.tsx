@@ -34,8 +34,8 @@ const Highlight: FC<PropsWithChildren<HighlightProps>> = ({
         left="0"
         width="100%"
         height="100%"
+        sx={{ backgroundImage: `url(${highlightVariant[variant]})` }}
         zIndex="highlightBackground"
-        bgImage={highlightVariant[variant]}
         bgRepeat="no-repeat"
         bgSize="100% 100%"
       />
