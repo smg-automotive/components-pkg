@@ -45,9 +45,7 @@ const Alert: FC<AlertProps> = ({
         <AlertDescription>{description}</AlertDescription>
         {link ? (
           link.as === 'button' ? (
-            <Link as="button" onClick={() => link.onClick?.()}>
-              {link.text}
-            </Link>
+            <Link onClick={() => link.onClick?.()}>{link.text}</Link>
           ) : (
             <Link href={link.url} isExternal={link.isExternal}>
               {link.text}
