@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { action } from '@storybook/addon-actions';
 import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
 
 import Navigation from './index';
-import { action } from '@storybook/addon-actions';
 
 /**
  * Header dropdown navigation uses drawers to display the content.

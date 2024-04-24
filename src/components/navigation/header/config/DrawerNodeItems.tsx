@@ -64,10 +64,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.advancedSearch',
           link: {
-            de: '/de/auto/suche',
-            en: '/de/auto/suche',
-            fr: '/fr/voiture/recherche',
-            it: '/it/automobile/ricerca',
+            de: '/de/s/advanced',
+            en: '/de/s/advanced',
+            fr: '/fr/s/advanced',
+            it: '/it/s/advanced',
           },
           visibilitySettings: {
             userType: {
@@ -76,25 +76,6 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.searchMenu.advancedSearch',
-          link: {
-            de: '/de/motorrad/suche',
-            en: '/de/motorrad/suche',
-            fr: '/fr/moto/recherche',
-            it: '/it/moto/ricerca',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
               motoscout24: true,
             },
           },
