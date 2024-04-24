@@ -57,7 +57,7 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
-        eventLabel: 'carPrivate',
+        eventLabel: 'private',
       }),
   },
   {
@@ -83,7 +83,7 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
-        eventLabel: 'motorcyclePrivate',
+        eventLabel: 'private',
       }),
   },
   {
@@ -161,7 +161,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'insurance',
-        eventLabel: 'car',
       }),
   },
   {
@@ -187,7 +186,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'insurance',
-        eventLabel: 'motorcycle',
       }),
   },
   {
@@ -213,7 +211,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'magazine',
-        eventLabel: 'autoscout',
       }),
   },
   {
@@ -239,7 +236,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'magazine',
-        eventLabel: 'motoscout',
       }),
   },
 ];
