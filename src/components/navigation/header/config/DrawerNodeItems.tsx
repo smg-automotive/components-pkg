@@ -1391,7 +1391,7 @@ export const drawerNodeItems = ({
               professional: true,
             },
             brand: {
-              autoscout24: false,
+              autoscout24: true,
               motoscout24: true,
             },
           },
