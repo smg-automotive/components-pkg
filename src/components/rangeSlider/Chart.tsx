@@ -26,7 +26,7 @@ const Chart: React.FC<Props> = ({ facets, range }) => {
           flexGrow={1}
           key={from}
           bg={
-            index < range[0] || index > range[1] - 1 ? 'gray.300' : 'gray.900'
+            index < range[0] || index > range[1] - 1 ? 'gray.200' : 'gray.400'
           }
           transition="transform 1s"
           transformOrigin="bottom"
