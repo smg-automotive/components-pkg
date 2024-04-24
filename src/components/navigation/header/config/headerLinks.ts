@@ -57,7 +57,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
-        eventLabel: 'private',
       }),
   },
   {
@@ -83,7 +82,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
-        eventLabel: 'private',
       }),
   },
   {
@@ -110,7 +108,6 @@ export const headerLinks = ({
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
-        eventLabel: 'professional',
       }),
   },
   {

@@ -1374,7 +1374,6 @@ export const drawerNodeItems = ({
             trackEvent?.({
               eventCategory: navigationEventCategory,
               eventAction: 'sell',
-              eventLabel: 'private',
             }),
         },
         {
@@ -1400,7 +1399,6 @@ export const drawerNodeItems = ({
             trackEvent?.({
               eventCategory: navigationEventCategory,
               eventAction: 'sell',
-              eventLabel: 'professional',
             }),
         },
         {
@@ -1426,7 +1424,6 @@ export const drawerNodeItems = ({
             trackEvent?.({
               eventCategory: navigationEventCategory,
               eventAction: 'sell',
-              eventLabel: 'private',
             }),
         },
         {
