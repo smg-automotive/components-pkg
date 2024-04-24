@@ -7,6 +7,7 @@ import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
 
 import Navigation from './index';
+import { action } from '@storybook/addon-actions';
 
 /**
  * Header dropdown navigation uses drawers to display the content.
@@ -34,6 +35,7 @@ const meta: Meta<typeof Navigation> = {
     environment: 'preprod',
     useAbsoluteUrls: false,
     entitlements: [],
+    trackEvent: action('track navigation item click'),
   },
 
   argTypes: {
