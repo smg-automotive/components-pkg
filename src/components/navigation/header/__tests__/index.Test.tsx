@@ -143,7 +143,7 @@ describe('Header', () => {
       environment: 'preprod',
       useAbsoluteUrls: false,
       config: {
-        headerItems: headerLinks,
+        headerItems: headerLinks({ trackEvent: jest.fn() }),
         drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
       },
       user: {

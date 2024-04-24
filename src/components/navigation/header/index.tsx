@@ -4,6 +4,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 
 import { MergedUser } from '@smg-automotive/auth';
 
+import { CustomEvent } from 'src/types/tracking';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -30,6 +31,7 @@ interface NavigationProps {
   entitlements?: string[];
   onLogin: () => void;
   onLogout: () => void;
+  trackEvent?: (event: CustomEvent) => void;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -42,6 +44,7 @@ const Navigation: FC<NavigationProps> = ({
   entitlements = [],
   onLogin,
   onLogout,
+  trackEvent,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -52,7 +55,7 @@ const Navigation: FC<NavigationProps> = ({
       environment,
       useAbsoluteUrls,
       config: {
-        headerItems: headerLinks,
+        headerItems: headerLinks({ trackEvent }),
         drawerItems: drawerNodeItems({ onLogout }),
       },
       user,
