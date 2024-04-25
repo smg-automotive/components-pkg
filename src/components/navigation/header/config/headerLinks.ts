@@ -1,3 +1,4 @@
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { EntitlementConfig } from 'src/components/navigation/link';
@@ -25,9 +26,14 @@ export type NavigationLinkConfigProps = Omit<
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
+  tracking?: CustomEvent;
 };
 
-export const headerLinks: NavigationLinkConfigProps[] = [
+export const headerLinks = ({
+  trackEvent,
+}: {
+  trackEvent?: (event: CustomEvent) => void;
+}): NavigationLinkConfigProps[] => [
   {
     translationKey: 'header.sell',
     link: {
@@ -47,6 +53,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'sell',
+      }),
   },
   {
     translationKey: 'header.sell',
@@ -67,6 +78,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'sell',
+      }),
   },
   {
     translationKey: 'header.sell',
@@ -88,6 +104,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'sell',
+      }),
   },
   {
     translationKey: 'header.estimate',
@@ -108,6 +129,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'estimate',
+      }),
   },
   {
     translationKey: 'header.assure',
@@ -128,6 +154,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'insurance',
+      }),
   },
   {
     translationKey: 'header.assure',
@@ -148,6 +179,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'insurance',
+      }),
   },
   {
     translationKey: 'header.magazine',
@@ -168,6 +204,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'magazine',
+      }),
   },
   {
     translationKey: 'header.magazine',
@@ -188,5 +229,10 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'magazine',
+      }),
   },
 ];

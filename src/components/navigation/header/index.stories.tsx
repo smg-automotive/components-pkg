@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { action } from '@storybook/addon-actions';
 import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
@@ -34,6 +35,7 @@ const meta: Meta<typeof Navigation> = {
     environment: 'preprod',
     useAbsoluteUrls: false,
     entitlements: [],
+    trackEvent: action('track navigation item click'),
   },
 
   argTypes: {
