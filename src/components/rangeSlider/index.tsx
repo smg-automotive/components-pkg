@@ -21,7 +21,7 @@ const RangeSlider: FC<RangeSliderProps> = ({
     max={max}
     {...restProps}
   >
-    <RangeSliderTrack>
+    <RangeSliderTrack bg="gray.200">
       <RangeSliderFilledTrack />
     </RangeSliderTrack>
     <RangeSliderThumb index={0} />
