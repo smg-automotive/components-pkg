@@ -186,12 +186,12 @@ export const headerLinks = ({
       }),
   },
   {
-    translationKey: 'header.magazine',
+    translationKey: 'header.electromobility',
     link: {
-      de: 'https://guide.autoscout24.ch/de/',
-      en: 'https://guide.autoscout24.ch/de/',
-      fr: 'https://guide.autoscout24.ch/fr/',
-      it: 'https://guide.autoscout24.ch/it/',
+      de: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+      en: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+      fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
+      it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
     },
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
@@ -207,7 +207,7 @@ export const headerLinks = ({
     onClick: () =>
       trackEvent?.({
         eventCategory: navigationEventCategory,
-        eventAction: 'magazine',
+        eventAction: 'electromobility',
       }),
   },
   {
