@@ -111,12 +111,14 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     alignItems="center"
                   >
                     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
-                    {[
-                      displayValue ? appliedLabel ?? label : label,
-                      displayValue,
-                    ]
-                      .filter(Boolean)
-                      .join(': ')}
+                    <chakra.span overflow="hidden" textOverflow="ellipsis">
+                      {[
+                        displayValue ? appliedLabel ?? label : label,
+                        displayValue,
+                      ]
+                        .filter(Boolean)
+                        .join(': ')}
+                    </chakra.span>
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
