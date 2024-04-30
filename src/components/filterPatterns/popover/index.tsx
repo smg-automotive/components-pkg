@@ -105,7 +105,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                 >
                   <chakra.span
                     overflow="hidden"
-                    textOverflow="ellipsis"
                     whiteSpace="nowrap"
                     display="flex"
                     alignItems="center"
