@@ -7,6 +7,12 @@ import { Input } from 'src/index';
 
 import FormControl from './index';
 
+/**
+ * Form Control is the wrapper that provides context and functionality for all children.
+ * Here we take the input as children for visualitation. In case you need to explore the children properties,
+ * search for the corresponding component.
+ **/
+
 const meta: Meta<typeof FormControl> = {
   title: 'Components/Forms/Form Control',
   component: FormControl,
