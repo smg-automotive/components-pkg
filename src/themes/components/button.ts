@@ -9,7 +9,7 @@ const baseStyle: SystemStyleObject = {
 const buttonSizes = {
   md: {
     height: 'md',
-    textStyle: 'button-sm',
+    textStyle: 'button',
   },
   lg: {
     height: 'lg',
