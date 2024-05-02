@@ -76,7 +76,6 @@ const meta: Meta<typeof CheckboxGroup> = {
     isInvalid: false,
     label: 'Parent item',
     addDividerAfterIndex: [2],
-    size: 'lg',
     checkboxes: [
       {
         label: 'First child',

@@ -6,15 +6,6 @@ import { fontWeights } from '../shared/fontWeights';
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const sizes = {
-  sm: {
-    label: { fontSize: 'sm' },
-  },
-  lg: {
-    label: { fontSize: 'base' },
-  },
-};
-
 const baseStyleControl = defineStyle({
   width: 'xs',
   height: 'xs',
@@ -120,7 +111,6 @@ const variants = {
 
 export default defineMultiStyleConfig({
   baseStyle,
-  sizes,
   variants,
   defaultProps: {
     variant: 'alignCenter',
