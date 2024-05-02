@@ -10,7 +10,6 @@ export interface CheckboxProps {
   label?: ReactNode | string;
   isInvalid?: boolean;
   isIndeterminate?: boolean;
-  size?: 'sm' | 'lg';
   fontWeight?: 'regular' | 'bold';
   variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
   readOnly?: boolean;
@@ -28,7 +27,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       label,
       isInvalid,
       isIndeterminate = false,
-      size = 'lg',
       fontWeight = 'regular',
       variant = 'alignCenter',
       readOnly = false,
@@ -47,7 +45,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onChange={onChange}
       isInvalid={isInvalid}
       isIndeterminate={isIndeterminate}
-      size={size}
       fontWeight={fontWeight}
       variant={variant}
       readOnly={readOnly}
