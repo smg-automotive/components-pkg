@@ -8,9 +8,6 @@ const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
 
 const sizes = {
-  sm: {
-    label: { fontSize: 'sm' },
-  },
   base: {
     label: { fontSize: 'base' },
   },
