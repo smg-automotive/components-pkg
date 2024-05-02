@@ -38,7 +38,7 @@ const meta: Meta<typeof RadioComponent> = {
 
   argTypes: {
     size: {
-      options: ['sm', 'base', 'md'],
+      options: ['base', 'md'],
       control: 'select',
     },
 
@@ -77,23 +77,6 @@ export const SizeMedium: StoryType = {
   args: {
     size: 'md',
     name: 'test-radio-md',
-  },
-
-  argTypes: {
-    size: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export const SizesSmall: StoryType = {
-  name: 'Sizes > Small',
-
-  args: {
-    size: 'sm',
-    name: 'test-radio-sm',
   },
 
   argTypes: {
