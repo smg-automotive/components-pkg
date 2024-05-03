@@ -54,13 +54,13 @@ const meta: Meta<typeof TextareaComponent> = {
       },
     },
     onBlur: {
-      control: 'none',
+      control: {},
     },
     onFocus: {
-      control: 'none',
+      control: {},
     },
     onChange: {
-      control: 'none',
+      control: {},
     },
   },
 };

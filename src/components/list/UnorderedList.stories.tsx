@@ -57,7 +57,7 @@ const meta: Meta<typeof Template> = {
 
     styleType: {
       control: 'select',
-      options: styleTypes,
+      options: [...styleTypes],
     },
 
     showContainer: {
