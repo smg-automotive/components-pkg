@@ -128,7 +128,7 @@
     "@emotion/react": "11.11.4",
     "@emotion/styled": "11.11.5",
     "@smg-automotive/auth": "4.0.0",
-    "@smg-automotive/i18n-pkg": "1.5.0",
+    "@smg-automotive/i18n-pkg": "1.5.1",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
     "embla-carousel-react": "7.1.0",
