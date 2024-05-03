@@ -43,19 +43,19 @@ const meta: Meta<typeof InputComponent> = {
 
     setInputValue: {
       description: 'used to set value for debounced input',
-      control: 'none',
+      control: {},
     },
 
     onBlur: {
-      control: 'none',
+      control: {},
     },
 
     onFocus: {
-      control: 'none',
+      control: {},
     },
 
     onChange: {
-      control: 'none',
+      control: {},
     },
   },
 

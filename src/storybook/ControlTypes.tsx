@@ -4,7 +4,7 @@ import * as Icons from '../components/icons';
 
 export const iconControl = {
   control: {
-    type: 'select',
+    type: 'select' as const,
   },
   options: Object.keys(Icons).map((name) => name.replace(/Icon$/, '')),
   mapping: Object.fromEntries(

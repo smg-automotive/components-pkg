@@ -28,7 +28,7 @@ const meta: Meta<typeof Alert> = {
     },
     onDismiss: {
       description: 'Callback when the alert is dismissed',
-      control: { type: null },
+      control: {},
     },
   },
 };
