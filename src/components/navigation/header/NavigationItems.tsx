@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { Language } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
 import Stack from 'src/components/stack';
@@ -21,6 +22,7 @@ interface NavigationItemsProps {
   drawer: UseNavigationDrawer;
   isOpen: boolean;
   createDrawerHandler: ({ nodeName }: { nodeName: DrawerNode }) => () => void;
+  language: Language;
 }
 
 export const NavigationItems: FC<NavigationItemsProps> = ({
@@ -29,6 +31,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
   drawer,
   isOpen,
   createDrawerHandler,
+  language,
 }) => {
   const logo = platform === 'autoscout24' ? logoAutoScout24 : logoMotoScout24;
 
@@ -41,7 +44,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
 
   return (
     <Stack direction="row" spacing={{ base: 'lg', sm: '2xl' }} align="center">
-      <Link href="/">
+      <Link href={`/${language}`}>
         <Image
           width={{ sm: '124px', base: '101px' }}
           height={{ sm: '30px', base: 'sm' }}

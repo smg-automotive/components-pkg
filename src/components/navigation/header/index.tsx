@@ -114,6 +114,7 @@ const Navigation: FC<NavigationProps> = ({
             drawer={drawer}
             isOpen={isOpen}
             createDrawerHandler={createDrawerHandler}
+            language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
             <NavigationAvatar
