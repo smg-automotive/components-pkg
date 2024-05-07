@@ -88,8 +88,7 @@ const baseStyleThumb = defineStyle((props) => {
       boxShadow: 'outline',
     },
     _active: {
-      boxShadow: '0 0 0 8px #2988E14D',
-      zIndex: 0,
+      boxShadow: '0 0 0 8px #2988E14D', // this is blue.50 with 30% opacity
     },
     _disabled: {
       bg: 'gray.300',
