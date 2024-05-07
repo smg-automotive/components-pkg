@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-type Props = {
+export type Props = {
   rating: number;
   size: 'large' | 'small';
 };

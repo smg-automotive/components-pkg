@@ -98,6 +98,7 @@
   "header": {
     "assure": "Versichern",
     "carSubscription": "Auto-Abo",
+    "electromobility": "Elektromobilität",
     "estimate": "Schätzen",
     "login": "Anmelden",
     "magazine": "Magazin",
@@ -107,9 +108,7 @@
       "additional": "Weiteres",
       "advancedSearch": "Erweiterte Suche",
       "dealer": "Händler",
-      "findPartsAndAccessories": "Teile & Zubehör suchen",
       "insuranceComparison": "Versicherungsvergleich",
-      "recentSearches": "Letzte Suchen",
       "searchCars": "Autos suchen",
       "searchMerchant": "Händler suchen",
       "searchMotorcycles": "Motorräder suchen",

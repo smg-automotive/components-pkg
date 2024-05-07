@@ -24,6 +24,7 @@ export interface FooterConfigInterface {
     facebook: LinkConfig[];
     instagram: LinkConfig[];
     twitter: LinkConfig[];
+    linkedin: LinkConfig[];
     youtube: LinkConfig[];
   };
   companies: LinkConfig[];
@@ -528,6 +529,21 @@ export const footerConfig: FooterConfigInterface = {
           en: 'https://twitter.com/autoscout24_ch?lang=en',
           fr: 'https://twitter.com/autoscout24_ch?lang=fr',
           it: 'https://twitter.com/autoscout24_ch?lang=it',
+        },
+        target: '_blank',
+      },
+    ],
+    linkedin: [
+      {
+        translationKey: '',
+        visibilitySettings: {
+          brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
+        },
+        link: {
+          de: 'https://www.linkedin.com/company/autoscout24.ch/',
+          en: 'https://www.linkedin.com/company/autoscout24.ch/',
+          fr: 'https://www.linkedin.com/company/autoscout24.ch/',
+          it: 'https://www.linkedin.com/company/autoscout24.ch/',
         },
         target: '_blank',
       },

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { Entitlement } from 'src/types/entitlements';
 
 import { CartIcon } from 'src/components/icons';
@@ -34,8 +35,10 @@ export type DrawerNodeLinks = {
 };
 
 export const drawerNodeItems = ({
+  trackEvent,
   onLogout,
 }: {
+  trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
 }): DrawerNodeItemsConfig => ({
   search: [
@@ -64,10 +67,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.advancedSearch',
           link: {
-            de: '/de/auto/suche',
-            en: '/de/auto/suche',
-            fr: '/fr/voiture/recherche',
-            it: '/it/automobile/ricerca',
+            de: '/de/s/advanced',
+            en: '/de/s/advanced',
+            fr: '/fr/s/advanced',
+            it: '/it/s/advanced',
           },
           visibilitySettings: {
             userType: {
@@ -76,25 +79,6 @@ export const drawerNodeItems = ({
             },
             brand: {
               autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.searchMenu.advancedSearch',
-          link: {
-            de: '/de/motorrad/suche',
-            en: '/de/motorrad/suche',
-            fr: '/fr/moto/recherche',
-            it: '/it/moto/ricerca',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
               motoscout24: true,
             },
           },
@@ -147,25 +131,6 @@ export const drawerNodeItems = ({
     {
       translationKey: 'header.searchMenu.additional',
       items: [
-        {
-          translationKey: 'header.searchMenu.findPartsAndAccessories',
-          link: {
-            de: '/de/ersatzteile-zubehoer',
-            en: '/de/ersatzteile-zubehoer',
-            fr: '/fr/pieces-accessoires',
-            it: '/it/ricambi-accessori',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
         {
           translationKey: 'header.searchMenu.searchMotorcycles',
           forceMotoscoutLink: true,
@@ -241,25 +206,6 @@ export const drawerNodeItems = ({
             brand: {
               autoscout24: false,
               motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.searchMenu.recentSearches',
-          link: {
-            de: '/de/letzte-suchen',
-            en: '/de/letzte-suchen',
-            fr: '/fr/dernieres-recherches',
-            it: '/it/ultime-ricerche',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
             },
           },
         },
@@ -1417,13 +1363,18 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
               motoscout24: false,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'sell',
+            }),
         },
         {
           translationKey: 'header.sell',
@@ -1440,10 +1391,15 @@ export const drawerNodeItems = ({
               professional: true,
             },
             brand: {
-              autoscout24: false,
+              autoscout24: true,
               motoscout24: true,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'sell',
+            }),
         },
         {
           translationKey: 'header.sell',
@@ -1464,6 +1420,11 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'sell',
+            }),
         },
         {
           translationKey: 'header.estimate',
@@ -1485,6 +1446,11 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'estimate',
+            }),
         },
         {
           translationKey: 'header.assure',
@@ -1505,6 +1471,11 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'insurance',
+            }),
         },
         {
           translationKey: 'header.assure',
@@ -1525,14 +1496,19 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'insurance',
+            }),
         },
         {
-          translationKey: 'header.magazine',
+          translationKey: 'header.electromobility',
           link: {
-            de: 'https://guide.autoscout24.ch/de/',
-            en: 'https://guide.autoscout24.ch/de/',
-            fr: 'https://guide.autoscout24.ch/fr/',
-            it: 'https://guide.autoscout24.ch/it/',
+            de: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+            en: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+            fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
+            it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
           },
           showUnderMoreLinkBelow: 'lg',
           visibilitySettings: {
@@ -1545,6 +1521,11 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'electromobility',
+            }),
         },
         {
           translationKey: 'header.magazine',
@@ -1565,6 +1546,11 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'magazine',
+            }),
         },
       ],
     },

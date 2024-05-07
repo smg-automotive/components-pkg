@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
@@ -35,7 +35,7 @@ const mainCarousel = {
   scrollTo: mockMainScrollTo,
 } as unknown as UseEmblaCarouselType[1];
 
-const paginationCarouselRef = () => null;
+const paginationCarouselRef = createRef<HTMLDivElement>();
 
 describe('<ThumbnailPagination/>', () => {
   beforeEach(() => {

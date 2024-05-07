@@ -11,7 +11,7 @@ import { CloseIcon } from 'src/components/icons';
 
 import Box from 'src/components/box';
 
-interface GalleryHeaderProps {
+export interface GalleryHeaderProps {
   currentSlide: number;
   slidesCount: number;
   onClose: () => void;

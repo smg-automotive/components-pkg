@@ -94,12 +94,6 @@ export const textStyles = {
     lineHeight: lineHeights.sm,
     fontSize: fontSizes.base,
   },
-  'button-sm': {
-    fontFamily: fonts.makeItSans,
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.sm,
-    fontSize: fontSizes.sm,
-  },
   label: {
     fontFamily: fonts.makeItSans,
     fontWeight: fontWeights.bold,

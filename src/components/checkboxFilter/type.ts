@@ -28,6 +28,7 @@ export type Props<ItemKey extends string, FilterName extends string> = {
   items: Item<ItemKey, FilterName>[];
   /**
    * Callback function that is triggered after any checkbox has been clicked.
+   * In case of the nested checkboxes it needs to update the parent/children respectively
    * @param updatedItem     contains the modified checkbox with the new value
    */
   onApply: (updatedItem: Item<ItemKey, FilterName>) => void;

@@ -15,12 +15,12 @@ import { BareAlertProps } from './Bare';
 
 type SharedProps = Omit<BareAlertProps, 'onClose'>;
 
-type DismissibleProps = SharedProps & {
+export type DismissibleProps = SharedProps & {
   onDismiss?: () => void;
   dismissible?: true;
 };
 
-type NonDismissibleProps = SharedProps & {
+export type NonDismissibleProps = SharedProps & {
   onDismiss?: never;
   dismissible?: false;
 };
@@ -44,9 +44,13 @@ const Alert: FC<AlertProps> = ({
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
-          <Link href={link.url} isExternal={link?.isExternal}>
-            {link.text}
-          </Link>
+          link.as === 'button' ? (
+            <Link onClick={() => link.onClick?.()}>{link.text}</Link>
+          ) : (
+            <Link href={link.url} isExternal={link.isExternal}>
+              {link.text}
+            </Link>
+          )
         ) : null}
       </Flex>
       {rest.dismissible ? (

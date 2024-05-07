@@ -1,12 +1,29 @@
-import React from 'react';
-
-import { Box } from '@chakra-ui/react';
+import React, { Fragment } from 'react';
 
 import TranslationProvider from '../translationProvider';
 
+import GridItem from '../grid/GridItem';
+import Grid from '../grid';
+import Divider from '../divider';
 import { Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
+
+const groupItems = <ItemKey extends string, FilterName extends string>(
+  items: Props<ItemKey, FilterName>['items'],
+  numberOfColumns = 1,
+) => {
+  const groupedItems = [];
+  const itemsPerColumn = Math.ceil(items.length / numberOfColumns);
+
+  for (let i = 0; i < numberOfColumns; i++) {
+    const start = i * itemsPerColumn;
+    const end = start + itemsPerColumn;
+    groupedItems.push(items.slice(start, end));
+  }
+
+  return groupedItems;
+};
 
 function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   items,
@@ -18,36 +35,51 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   const hasGroups = items.some(
     (item) => (item.childCheckboxes ?? []).length > 0,
   );
+  const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
+
   return (
     <TranslationProvider language={language} scopes={['checkboxFilter']}>
-      <Box
-        sx={{
-          columns: { md: numberOfColumnsOnDesktop, base: 1 },
-          columnRule: 'solid var(--chakra-colors-gray-100) 1px',
-          columnGap: 'var(--chakra-space-4xl)',
+      <Grid
+        gridTemplateColumns={{
+          base: '1fr',
+          md: `repeat(${numberOfColumnsOnDesktop}, 1fr)`,
         }}
+        gap={{ md: '4xl' }}
       >
-        {items.map((item) => {
-          if (item.childCheckboxes && item.childCheckboxes.length > 0)
-            return (
-              <CheckboxGroupCollapsibleWithChildren
-                key={item.key}
-                item={item}
-                onApply={onApply}
-                onToggleCheckboxGroup={onToggleCheckboxGroup}
+        {groupedItems.map((columnItems, columnIndex) => (
+          <GridItem key={columnIndex} data-testid="column" position="relative">
+            {groupedItems.length - 1 !== columnIndex && (
+              <Divider
+                position="absolute"
+                top={0}
+                right="-1.5rem"
+                width="1px"
+                height="full"
+                bg="gray.100"
               />
-            );
-          return (
-            <CheckboxWithFacet
-              key={item.key}
-              item={item}
-              onApply={onApply}
-              indentFacet={hasGroups}
-            />
-          );
-        })}
-      </Box>
+            )}
+            {columnItems.map((item) => (
+              <Fragment key={item.key}>
+                {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
+                  <CheckboxGroupCollapsibleWithChildren
+                    item={item}
+                    onApply={onApply}
+                    onToggleCheckboxGroup={onToggleCheckboxGroup}
+                  />
+                ) : (
+                  <CheckboxWithFacet
+                    item={item}
+                    onApply={onApply}
+                    indentFacet={hasGroups}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </GridItem>
+        ))}
+      </Grid>
     </TranslationProvider>
   );
 }
 export default CheckboxFilter;
+export { Props };

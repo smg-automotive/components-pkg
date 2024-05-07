@@ -3,7 +3,7 @@ import { useMultiStyleConfig } from '@chakra-ui/react';
 
 import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
 
-type Props = {
+export type Props = {
   withNotification?: boolean;
   color?: string;
 };
@@ -20,5 +20,6 @@ const Avatar: FC<Props> = ({ withNotification, color }) => {
     <AvatarIcon __css={baseStyle} {...(color && { color })} />
   );
 };
+Avatar.displayName = 'Avatar';
 
 export default Avatar;

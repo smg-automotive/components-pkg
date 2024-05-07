@@ -5,6 +5,7 @@ import RangeSliderWithScale, {
 } from '../rangeSlider/RangeSliderWithScale';
 import RangeSliderWithChart, {
   Facet,
+  RangeSliderWithChartProps,
 } from '../rangeSlider/RangeSliderWithChart';
 import RangeFilterInput, {
   ChangeCallback,
@@ -26,7 +27,7 @@ type ChangeRangeInputWithSliderCallback<Name> = {
 type RangeSliderProps = {
   facets?: Array<Facet>;
   rangeSliderScale?: Array<number>;
-  chartHeight?: string;
+  chartHeight?: RangeSliderWithChartProps['chartHeight'];
 } & (
   | { facets: Array<Facet>; chartHeight?: string; rangeSliderScale?: never }
   | { rangeSliderScale: Array<number>; facets?: never; chartHeight?: never }

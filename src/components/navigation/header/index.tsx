@@ -4,6 +4,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 
 import { MergedUser } from '@smg-automotive/auth';
 
+import { CustomEvent } from 'src/types/tracking';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -30,6 +31,7 @@ interface NavigationProps {
   entitlements?: string[];
   onLogin: () => void;
   onLogout: () => void;
+  trackEvent?: (event: CustomEvent) => void;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -42,6 +44,7 @@ const Navigation: FC<NavigationProps> = ({
   entitlements = [],
   onLogin,
   onLogout,
+  trackEvent,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -52,8 +55,8 @@ const Navigation: FC<NavigationProps> = ({
       environment,
       useAbsoluteUrls,
       config: {
-        headerItems: headerLinks,
-        drawerItems: drawerNodeItems({ onLogout }),
+        headerItems: headerLinks({ trackEvent }),
+        drawerItems: drawerNodeItems({ trackEvent, onLogout }),
       },
       user,
       urlPathParams,
@@ -103,7 +106,7 @@ const Navigation: FC<NavigationProps> = ({
           margin="auto"
           display="flex"
           justifyContent="space-between"
-          px={{ base: 'sm', xs: 'lg' }}
+          px={{ base: 'sm', xs: 'lg', sm: '2xl' }}
         >
           <NavigationItems
             platform={brand}
@@ -111,6 +114,7 @@ const Navigation: FC<NavigationProps> = ({
             drawer={drawer}
             isOpen={isOpen}
             createDrawerHandler={createDrawerHandler}
+            language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
             <NavigationAvatar

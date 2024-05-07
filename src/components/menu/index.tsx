@@ -12,7 +12,7 @@ import { FontWeights } from 'src/themes';
 import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
-  text: string;
+  text: JSX.Element | string;
   onClick: () => void;
 }
 

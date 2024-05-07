@@ -9,3 +9,4 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
 };
 
 export default Drawer;
+export type { DrawerProps };

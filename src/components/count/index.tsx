@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
-type Props = {
+export interface Props {
   variant?: 'primary' | 'inverted';
   count: number;
   ariaLabel?: string;
-};
+}
 
 const Count: FC<Props> = ({ variant = 'primary', count, ariaLabel }) => {
   return (

@@ -18,7 +18,7 @@ export type DiscreteSliderMark<T> = {
   value: T;
 };
 
-type DiscreteSliderProps<T> = {
+export type DiscreteSliderProps<T> = {
   applyIndentation?: boolean;
   marks: DiscreteSliderMark<T>[];
   value: T;

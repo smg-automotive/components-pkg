@@ -6,15 +6,6 @@ import { fontWeights } from '../shared/fontWeights';
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);
 
-const sizes = {
-  sm: {
-    label: { fontSize: 'sm' },
-  },
-  lg: {
-    label: { fontSize: 'base' },
-  },
-};
-
 const baseStyleControl = defineStyle({
   width: 'xs',
   height: 'xs',
@@ -23,12 +14,13 @@ const baseStyleControl = defineStyle({
   borderColor: 'gray.400',
   _hover: {
     borderColor: 'gray.900',
-    outline: '3px solid',
+    outline: '2px solid',
     outlineColor: 'blue.100',
   },
   _focusVisible: {
-    outline: '3px solid',
+    outline: '2px solid',
     outlineColor: 'blue.300',
+    borderColor: 'gray.900',
   },
   _checked: {
     borderColor: 'gray.900',
@@ -119,7 +111,6 @@ const variants = {
 
 export default defineMultiStyleConfig({
   baseStyle,
-  sizes,
   variants,
   defaultProps: {
     variant: 'alignCenter',

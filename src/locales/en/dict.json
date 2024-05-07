@@ -98,6 +98,7 @@
   "header": {
     "assure": "Assure",
     "carSubscription": "Car subscription",
+    "electromobility": "Electromobility",
     "estimate": "Estimate",
     "login": "Login",
     "magazine": "Magazine",
@@ -107,9 +108,7 @@
       "additional": "Additional",
       "advancedSearch": "Advanced Search",
       "dealer": "Dealer",
-      "findPartsAndAccessories": "Find Parts & Accessories",
       "insuranceComparison": "Insurance comparison",
-      "recentSearches": "Recent searches",
       "searchCars": "Rechercher des véhicules",
       "searchMerchant": "Search a merchant",
       "searchMotorcycles": "Search motorcycles",

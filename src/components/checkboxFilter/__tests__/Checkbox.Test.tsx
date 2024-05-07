@@ -1,11 +1,12 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 
 import { Item } from '../type';
 import CheckboxFilter from '../index';
 
 const renderWrapper = ({
+  numberOfColumnsOnDesktop = 2,
   options = [
     {
       label: 'New',
@@ -26,8 +27,19 @@ const renderWrapper = ({
     },
   ],
   onApply = jest.fn(),
-}: { options?: Item<string, string>[]; onApply?: () => void } = {}) =>
-  render(<CheckboxFilter items={options} onApply={onApply} language="de" />);
+}: {
+  options?: Item<string, string>[];
+  onApply?: () => void;
+  numberOfColumnsOnDesktop?: number;
+} = {}) =>
+  render(
+    <CheckboxFilter
+      items={options}
+      onApply={onApply}
+      language="de"
+      numberOfColumnsOnDesktop={numberOfColumnsOnDesktop}
+    />,
+  );
 
 describe('<CheckBoxFilter />', () => {
   beforeEach(() => {
@@ -173,7 +185,7 @@ describe('<CheckBoxFilter />', () => {
       await userEvent.click(expandButton);
       expect(expandButton).toHaveAttribute('aria-expanded', 'true');
       expect(
-        screen.getByRole('checkbox', {
+        await screen.findByRole('checkbox', {
           name: /Almost new/,
         }),
       ).toBeInTheDocument();
@@ -204,10 +216,96 @@ describe('<CheckBoxFilter />', () => {
         screen.getByRole('button', { name: 'Used: Mehr anzeigen' }),
       );
       expect(
-        screen.getByRole('checkbox', {
+        await screen.findByRole('checkbox', {
           name: /Almost new/,
         }),
       ).toBeChecked();
+    });
+
+    it('renders correct number of columns and items', () => {
+      const columnsNumber = 2;
+      const options = [
+        {
+          label: 'Used',
+          key: 'used',
+          facet: 0,
+          isChecked: true,
+          filterName: 'conditionTypeGroup',
+          childCheckboxes: [
+            {
+              label: 'Almost new',
+              key: 'almost-new',
+              facet: 0,
+              isChecked: false,
+              filterName: 'conditionType',
+            },
+          ],
+        },
+        {
+          label: 'New',
+          key: 'new',
+          facet: 0,
+          isChecked: true,
+          filterName: 'conditionTypeGroup',
+          childCheckboxes: [
+            {
+              label: 'New new',
+              key: 'new-new',
+              facet: 0,
+              isChecked: false,
+              filterName: 'conditionType',
+            },
+          ],
+        },
+        {
+          label: 'Oldtimer',
+          key: 'oldtimer',
+          facet: 0,
+          isChecked: false,
+          filterName: 'conditionType',
+          childCheckboxes: [],
+        },
+        {
+          label: 'Newtimer',
+          key: 'newtimer',
+          facet: 0,
+          isChecked: false,
+          filterName: 'conditionType',
+          childCheckboxes: [],
+        },
+        {
+          label: 'Halftimer',
+          key: 'halftimer',
+          facet: 0,
+          isChecked: false,
+          filterName: 'conditionType',
+          childCheckboxes: [],
+        },
+      ];
+
+      renderWrapper({
+        numberOfColumnsOnDesktop: columnsNumber,
+        options,
+      });
+
+      const columns = screen.getAllByTestId('column');
+      expect(columns).toHaveLength(columnsNumber);
+      const [firstColumn, secondColumn] = columns;
+      expect(
+        within(firstColumn).getByRole('checkbox', { name: /Used/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(firstColumn).getByRole('checkbox', { name: /New/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(firstColumn).getByRole('checkbox', { name: /Oldtimer/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(secondColumn).getByRole('checkbox', { name: /Newtimer/ }),
+      ).toBeInTheDocument();
+      expect(
+        within(secondColumn).getByRole('checkbox', { name: /Halftimer/ }),
+      ).toBeInTheDocument();
     });
   });
 });
