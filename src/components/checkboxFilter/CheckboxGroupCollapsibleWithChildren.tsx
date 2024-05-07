@@ -74,7 +74,7 @@ function CheckboxGroupCollapsibleWithChildren<
         />
       </Box>
       <Collapse in={isOpen}>
-        <Box id={groupDomId} ml={checkboxes.length > 0 ? 'lg' : '0px'}>
+        <Box id={groupDomId} ml={checkboxes.length > 0 ? '2xl' : '0px'}>
           {checkboxes?.map((checkbox) => (
             <CheckboxWithFacet
               key={checkbox.key}
