@@ -76,14 +76,15 @@ const Carousel: FC<Props> = (props) => {
     dragFree: true,
     slidesToScroll: 'auto',
     inViewThreshold: 1,
+    duration: 20,
   });
 
   const scrollPrev = useCallback(
-    () => mainCarousel && mainCarousel.scrollPrev(),
+    () => mainCarousel && mainCarousel.scrollPrev(true),
     [mainCarousel],
   );
   const scrollNext = useCallback(
-    () => mainCarousel && mainCarousel.scrollNext(),
+    () => mainCarousel && mainCarousel.scrollNext(true),
     [mainCarousel],
   );
   const onClick = useCallback(

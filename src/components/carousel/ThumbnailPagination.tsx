@@ -39,18 +39,18 @@ const ThumbnailPagination: FC<Props> = ({
   });
 
   const scrollPrev = useCallback(
-    () => paginationCarousel && paginationCarousel.scrollPrev(),
+    () => paginationCarousel && paginationCarousel.scrollPrev(true),
     [paginationCarousel],
   );
   const scrollNext = useCallback(
-    () => paginationCarousel && paginationCarousel.scrollNext(),
+    () => paginationCarousel && paginationCarousel.scrollNext(true),
     [paginationCarousel],
   );
 
   const onThumbnailClick = useCallback(
     (index: number) => {
       if (!mainCarousel || !paginationCarousel) return;
-      mainCarousel.scrollTo(index);
+      mainCarousel.scrollTo(index, true);
     },
     [mainCarousel, paginationCarousel],
   );
