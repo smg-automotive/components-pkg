@@ -49,8 +49,7 @@ const Alert: FC<AlertProps> = ({
               as="button"
               onClick={() => link.onClick?.()}
               textAlign="left"
-              display="inline-block"
-              width="fit-content"
+              width="max-content"
             >
               {link.text}
             </Link>
@@ -58,8 +57,7 @@ const Alert: FC<AlertProps> = ({
             <Link
               href={link.url}
               isExternal={link.isExternal}
-              display="inline-block"
-              width="fit-content"
+              width="max-content"
             >
               {link.text}
             </Link>
