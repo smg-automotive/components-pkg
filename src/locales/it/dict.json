@@ -1,4 +1,8 @@
 {
+  "checkboxFilter": {
+    "collapsed": "Mostra dettagli",
+    "expanded": "Nascondi dettagli"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Alla pagina iniziale",
@@ -14,7 +18,8 @@
       "buttonLabel": "Alla pagina iniziale",
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Siamo spiacenti, il tuo browser ha generato un errore"
-    }
+    },
+    "reloadPage": "Ricaricare la pagina"
   },
   "filterSelectButton": {
     "close": "Vicino",
@@ -69,7 +74,7 @@
       },
       "legal": {
         "agb": "Condizioni generali",
-        "cookieSettings": "Gestisci le preferenze",
+        "cookieSettings": "Impostazioni sulla privacy",
         "dataProtection": "Protezione dei dati",
         "imprint": "Colofone",
         "rules": "Regole d'inserzione",
@@ -93,6 +98,7 @@
   "header": {
     "assure": "Assicurare",
     "carSubscription": "Auto-Abo",
+    "electromobility": "Elettromobilità",
     "estimate": "Stimare",
     "login": "Connexion",
     "magazine": "Rivista",
@@ -102,14 +108,11 @@
       "additional": "Altre",
       "advancedSearch": "Ricerca avanzata",
       "dealer": "commercianti",
-      "findPartsAndAccessories": "Pezzi e accessori",
       "insuranceComparison": "Confronto di assicurazioni",
-      "recentSearches": "Ultime ricerche",
       "searchCars": "Ricerca veicolo",
       "searchMerchant": "Ricerca commerciante",
       "searchMotorcycles": "Ricerca moto",
       "simpleSearch": "Ricerca semplice (pagina iniziale)",
-      "vehicleRating": "Valutare veicolo",
       "vehicles": "Veicoli",
       "viewedListings": "Annunci visualizzati"
     },
@@ -121,7 +124,6 @@
       "autoRadar": "AutoRadar",
       "b2bPlattform": "Piattaforma B2B",
       "bookmarks": "Preferiti",
-      "boosteras24": "Booster as24",
       "businessImage": "BusinessImage",
       "carPark": "Parco auto",
       "changePassword": "Modificare la password",

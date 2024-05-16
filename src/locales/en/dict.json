@@ -1,4 +1,8 @@
 {
+  "checkboxFilter": {
+    "collapsed": "Show more",
+    "expanded": "Show less"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Go to home",
@@ -14,7 +18,8 @@
       "buttonLabel": "Go to home",
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, your browser threw an error"
-    }
+    },
+    "reloadPage": "Refresh page"
   },
   "filterSelectButton": {
     "close": "Close",
@@ -69,7 +74,7 @@
       },
       "legal": {
         "agb": "GTC",
-        "cookieSettings": "Manage Preferences",
+        "cookieSettings": "Privacy Settings",
         "dataProtection": "Data Protection",
         "imprint": "imprint",
         "rules": "Insertion Rules",
@@ -93,6 +98,7 @@
   "header": {
     "assure": "Assure",
     "carSubscription": "Car subscription",
+    "electromobility": "Electromobility",
     "estimate": "Estimate",
     "login": "Login",
     "magazine": "Magazine",
@@ -102,14 +108,11 @@
       "additional": "Additional",
       "advancedSearch": "Advanced Search",
       "dealer": "Dealer",
-      "findPartsAndAccessories": "Find Parts & Accessories",
       "insuranceComparison": "Insurance comparison",
-      "recentSearches": "Recent searches",
       "searchCars": "Rechercher des véhicules",
       "searchMerchant": "Search a merchant",
       "searchMotorcycles": "Search motorcycles",
       "simpleSearch": "Simple Search (Home)",
-      "vehicleRating": "Vehicle Rating",
       "vehicles": "Vehicles",
       "viewedListings": "Viewed listings"
     },
@@ -121,7 +124,6 @@
       "autoRadar": "AutoRadar",
       "b2bPlattform": "B2B-Plattform",
       "bookmarks": "Bookmarks",
-      "boosteras24": "Boosteras24",
       "businessImage": "BusinessImage",
       "carPark": "Car park",
       "changePassword": "Change password",

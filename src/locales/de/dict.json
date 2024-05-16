@@ -1,4 +1,8 @@
 {
+  "checkboxFilter": {
+    "collapsed": "Mehr anzeigen",
+    "expanded": "Weniger anzeigen"
+  },
   "errorPage": {
     "404": {
       "buttonLabel": "Zur Startseite",
@@ -14,7 +18,8 @@
       "buttonLabel": "Zur Startseite",
       "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
       "title": "In deinem Browser ist ein Fehler aufgetreten"
-    }
+    },
+    "reloadPage": "Seite neu laden"
   },
   "filterSelectButton": {
     "close": "Schliessen",
@@ -69,7 +74,7 @@
       },
       "legal": {
         "agb": "AGB",
-        "cookieSettings": "Voreinstellungen verwalten",
+        "cookieSettings": "Privatsphäre-Einstellungen",
         "dataProtection": "Datenschutz",
         "imprint": "Impressum",
         "rules": "Insertionsregeln",
@@ -93,6 +98,7 @@
   "header": {
     "assure": "Versichern",
     "carSubscription": "Auto-Abo",
+    "electromobility": "Elektromobilität",
     "estimate": "Schätzen",
     "login": "Anmelden",
     "magazine": "Magazin",
@@ -102,14 +108,11 @@
       "additional": "Weiteres",
       "advancedSearch": "Erweiterte Suche",
       "dealer": "Händler",
-      "findPartsAndAccessories": "Teile & Zubehör suchen",
       "insuranceComparison": "Versicherungsvergleich",
-      "recentSearches": "Letzte Suchen",
       "searchCars": "Autos suchen",
       "searchMerchant": "Händler suchen",
       "searchMotorcycles": "Motorräder suchen",
       "simpleSearch": "Einfache Suche (Startseite)",
-      "vehicleRating": "Fahrzeugbewertung",
       "vehicles": "Fahrzeuge",
       "viewedListings": "Angesehene Inserate"
     },
@@ -121,7 +124,6 @@
       "autoRadar": "AutoRadar",
       "b2bPlattform": "B2B-Plattform",
       "bookmarks": "Merkliste",
-      "boosteras24": "Booster as24",
       "businessImage": "BusinessImage",
       "carPark": "Zum Fahrzeugpark",
       "changePassword": "Passwort ändern",
