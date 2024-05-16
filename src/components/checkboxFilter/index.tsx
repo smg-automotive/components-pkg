@@ -1,128 +1,85 @@
-import React, { ReactNode } from 'react';
+import React, { Fragment } from 'react';
 
-import { Box, chakra } from '@chakra-ui/react';
+import TranslationProvider from '../translationProvider';
 
-import HighlightedText from '../text/HighlightedText';
-import Checkbox from '../checkbox';
+import GridItem from '../grid/GridItem';
+import Grid from '../grid';
+import Divider from '../divider';
+import { Props } from './type';
+import CheckboxWithFacet from './CheckboxWithFacet';
+import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
 
-type Item<ItemKey> = {
-  key: ItemKey;
-  label: string;
-  facet: number;
-  isChecked: boolean;
-  image?: ReactNode;
-  highlightIndices?: ReadonlyArray<[number, number]>;
+const groupItems = <ItemKey extends string, FilterName extends string>(
+  items: Props<ItemKey, FilterName>['items'],
+  numberOfColumns = 1,
+) => {
+  const groupedItems = [];
+  const itemsPerColumn = Math.ceil(items.length / numberOfColumns);
+
+  for (let i = 0; i < numberOfColumns; i++) {
+    const start = i * itemsPerColumn;
+    const end = start + itemsPerColumn;
+    groupedItems.push(items.slice(start, end));
+  }
+
+  return groupedItems;
 };
 
-type State<ItemKey extends string> = { [key in ItemKey]: boolean };
-
-type Props<ItemKey extends string> = {
-  /**
-   * Name of the filter - only used on the DOM.
-   */
-  name: string;
-  /**
-   * @template ItemKey
-   * @param {Item} item     renders one checkbox { key: ItemKey, label: string, facet: number, isChecked: boolean }
-   * @param item.key        unique name of the checkbox
-   * @param item.label      label shown on the UI
-   * @param item.facet      Numeric value shown next to the checkbox label. Indicates how many search results are going to be visible after the checkbox has been applied.
-   * @param item.isChecked  The checkbox filter is a controlled component and the updated filter value must be passed in order to see the correct state.
-   * @param item.image      image/icon shown on the UI
-   */
-  items: Item<ItemKey>[];
-  /**
-   * Callback function that is triggered after any checkbox has been clicked.
-   * @param updatedItem     contains the modified checkbox with the new value
-   * @param newState        contains the new state of the whole filter group
-   */
-  onApply: (updatedItem: Item<ItemKey>, newState: State<ItemKey>) => void;
-  numberOfColumnsOnDesktop?: number;
-};
-
-const addThousandSeparatorToNumber = (value: number) => {
-  return new Intl.NumberFormat('de-CH').format(value);
-};
-
-function CheckboxFilter<ItemKey extends string>({
-  name,
+function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   items,
   onApply,
   numberOfColumnsOnDesktop = 1,
-}: Props<ItemKey>) {
+  onToggleCheckboxGroup,
+  language,
+}: Props<ItemKey, FilterName>) {
+  const hasGroups = items.some(
+    (item) => (item.childCheckboxes ?? []).length > 0,
+  );
+  const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
+
   return (
-    <Box
-      sx={{
-        columns: { md: numberOfColumnsOnDesktop, base: 1 },
-        columnRule: 'solid var(--chakra-colors-gray-100) 1px',
-        columnGap: 'var(--chakra-space-4xl)',
-      }}
-    >
-      {items.map((item) => {
-        return (
-          <Box key={item.key} width="full" marginBottom="2xl">
-            <Checkbox
-              name={`filter_${name}_${item.label}`}
-              label={
-                item.image ? (
-                  <chakra.span display="flex" alignItems="center">
-                    {item.image}
-                    <chakra.span
-                      w="full"
-                      display="flex"
-                      justifyContent="space-between"
-                      marginLeft="sm"
-                    >
-                      <HighlightedText
-                        text={item.label}
-                        highlightIndices={item.highlightIndices}
-                        wordBreak="break-word"
-                      />
-                      <chakra.span ml="sm">
-                        {addThousandSeparatorToNumber(item.facet)}
-                      </chakra.span>
-                    </chakra.span>
-                  </chakra.span>
+    <TranslationProvider language={language} scopes={['checkboxFilter']}>
+      <Grid
+        gridTemplateColumns={{
+          base: '1fr',
+          md: `repeat(${numberOfColumnsOnDesktop}, 1fr)`,
+        }}
+        gap={{ md: '4xl' }}
+      >
+        {groupedItems.map((columnItems, columnIndex) => (
+          <GridItem key={columnIndex} data-testid="column" position="relative">
+            {groupedItems.length - 1 !== columnIndex && (
+              <Divider
+                position="absolute"
+                top={0}
+                right="-1.5rem"
+                width="1px"
+                height="full"
+                bg="gray.100"
+              />
+            )}
+            {columnItems.map((item) => (
+              <Fragment key={item.key}>
+                {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
+                  <CheckboxGroupCollapsibleWithChildren
+                    item={item}
+                    onApply={onApply}
+                    onToggleCheckboxGroup={onToggleCheckboxGroup}
+                  />
                 ) : (
-                  <chakra.span
-                    width="full"
-                    display="flex"
-                    justifyContent="space-between"
-                  >
-                    <HighlightedText
-                      text={item.label}
-                      highlightIndices={item.highlightIndices}
-                      w="full"
-                      wordBreak="break-word"
-                    />
-                    <chakra.span ml="sm">
-                      {addThousandSeparatorToNumber(item.facet)}
-                    </chakra.span>
-                  </chakra.span>
-                )
-              }
-              onChange={(event) => {
-                const isChecked = event.target.checked;
-                const previousState = items.reduce<Partial<State<ItemKey>>>(
-                  (acc, currentItem) => {
-                    acc[currentItem.key] = currentItem.isChecked;
-                    return acc;
-                  },
-                  {},
-                );
-                onApply(
-                  { ...item, isChecked },
-                  { ...previousState, [item.key]: isChecked },
-                );
-              }}
-              isChecked={item.isChecked}
-              value={item.key}
-              fullWidth
-            />
-          </Box>
-        );
-      })}
-    </Box>
+                  <CheckboxWithFacet
+                    item={item}
+                    onApply={onApply}
+                    indentFacet={hasGroups}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </GridItem>
+        ))}
+      </Grid>
+    </TranslationProvider>
   );
 }
 export default CheckboxFilter;
+export { Props };

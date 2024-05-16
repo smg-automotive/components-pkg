@@ -19,6 +19,8 @@ import FilterPopover from './Popover';
 export const PopoverFilter: FC<PopoverFilterProps> = ({
   actionButton,
   displayValue,
+  enforceHeight,
+  Icon,
   initialPopoverState = 'closed',
   isApplied,
   label,
@@ -31,6 +33,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   showCallToActionButton = true,
   header,
   children,
+  triggerHeight = 'md',
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -78,16 +81,16 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               <PopoverTrigger>
                 <ChakraButton
                   borderRadius="sm"
-                  borderRightColor={isApplied ? 'white' : undefined}
-                  borderRightWidth={isApplied ? '1px' : undefined}
+                  borderRightColor={displayValue ? 'white' : undefined}
+                  borderRightWidth={displayValue ? '1px' : undefined}
                   display="flex"
                   flex="1"
-                  h="md"
+                  height={triggerHeight}
                   justifyContent="space-between"
                   minW="0"
                   paddingX="md"
                   rightIcon={
-                    isApplied ? undefined : (
+                    displayValue ? undefined : (
                       <ChevronDownSmallIcon
                         w="xs"
                         h="xs"
@@ -102,24 +105,27 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                 >
                   <chakra.span
                     overflow="hidden"
-                    textOverflow="ellipsis"
                     whiteSpace="nowrap"
+                    display="flex"
+                    alignItems="center"
                   >
-                    {[
-                      isApplied ? appliedLabel ?? label : label,
-                      displayValue && isApplied ? displayValue : null,
-                    ]
-                      .filter(Boolean)
-                      .join(': ')}
+                    {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
+                    <chakra.span overflow="hidden" textOverflow="ellipsis">
+                      {[
+                        displayValue ? appliedLabel ?? label : label,
+                        displayValue,
+                      ]
+                        .filter(Boolean)
+                        .join(': ')}
+                    </chakra.span>
                   </chakra.span>
                 </ChakraButton>
               </PopoverTrigger>
-              {isApplied ? (
+              {displayValue ? (
                 <IconButton
                   isDisabled={isOpen}
                   aria-label={t('filterSelectButton.reset')}
                   borderRadius="sm"
-                  h="md"
                   icon={<CloseIcon w="xs" h="xs" />}
                   minW="md"
                   onClick={() => onResetFilter('filterButton')}
@@ -130,6 +136,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             </ButtonGroup>
             <FilterPopover
               actionButton={actionButton}
+              Icon={Icon}
               isApplied={isApplied}
               label={label}
               numberOfAppliedFilters={numberOfAppliedFilters}
@@ -137,6 +144,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               onResetFilter={() => onResetFilter('filter')}
               showCallToActionButton={showCallToActionButton}
               header={header}
+              enforceHeight={enforceHeight}
             >
               {children}
             </FilterPopover>

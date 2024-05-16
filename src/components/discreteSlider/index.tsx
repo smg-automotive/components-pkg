@@ -18,7 +18,7 @@ export type DiscreteSliderMark<T> = {
   value: T;
 };
 
-type DiscreteSliderProps<T> = {
+export type DiscreteSliderProps<T> = {
   applyIndentation?: boolean;
   marks: DiscreteSliderMark<T>[];
   value: T;
@@ -61,6 +61,8 @@ const DiscreteSlider = <T,>({
   const sliderMarks = getSliderMarks(marks, applyIndentation);
 
   const handleOnChange = (newStepValue: number) => {
+    if (applyIndentation && newStepValue < firstItemOffset) return;
+
     const newSliderMark = sliderMarks.find(
       (mark) => mark.stepValue === newStepValue,
     )?.value;

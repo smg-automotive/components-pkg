@@ -12,18 +12,19 @@ import Flex from 'src/components/flex';
 import Count from '../count';
 import { FilterPatternProps } from './props';
 
-type Props = {
+export type Props = {
   onClose?: () => void;
   language: Language;
   contentRef?: RefObject<HTMLElement>;
 } & Pick<
   FilterPatternProps,
-  'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
+  'Icon' | 'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
 
 export const FilterHeading: FC<Props> = ({
   onClose,
   language,
+  Icon,
   isApplied,
   label,
   numberOfAppliedFilters,
@@ -45,6 +46,7 @@ export const FilterHeading: FC<Props> = ({
                 <chakra.span wordBreak="break-all" mr="sm">
                   {label}
                 </chakra.span>
+                {Icon ? <Icon h="sm" w="sm" mr="sm" /> : null}
                 {numberOfAppliedFilters ? (
                   <Count count={numberOfAppliedFilters} />
                 ) : null}

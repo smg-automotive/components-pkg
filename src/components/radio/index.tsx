@@ -1,15 +1,16 @@
 import React, { ChangeEvent, forwardRef } from 'react';
 import { Radio as ChakraRadio, RadioGroup } from '@chakra-ui/react';
 
-interface Props {
+export interface Props {
   name?: string;
   value: string;
   label?: string;
-  size?: 'sm' | 'md';
+  size?: 'md' | 'base';
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   isChecked?: boolean;
   isInvalid?: boolean;
   isDisabled?: boolean;
+  variant?: 'fontRegular' | 'fontBold';
 }
 
 const Radio = forwardRef<HTMLInputElement, Props>(
@@ -18,11 +19,12 @@ const Radio = forwardRef<HTMLInputElement, Props>(
       name,
       value,
       label,
-      size = 'md',
+      size = 'base',
       onChange,
       isChecked = false,
       isInvalid,
       isDisabled = false,
+      variant = 'fontRegular',
     },
     ref,
   ) => {
@@ -36,6 +38,7 @@ const Radio = forwardRef<HTMLInputElement, Props>(
         isInvalid={isInvalid}
         isDisabled={isDisabled}
         ref={ref}
+        variant={variant}
       >
         {label}
       </ChakraRadio>

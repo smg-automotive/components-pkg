@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
+import RangeSliderWithScale, {
+  NumericMinMaxValue,
+} from '../rangeSlider/RangeSliderWithScale';
 import RangeSliderWithChart, {
   Facet,
-  NumericMinMaxValue,
+  RangeSliderWithChartProps,
 } from '../rangeSlider/RangeSliderWithChart';
 import RangeFilterInput, {
   ChangeCallback,
@@ -17,20 +20,37 @@ export type ChangeSliderCallback = {
   value: NumericMinMaxValue;
 };
 
+type ChangeRangeInputWithSliderCallback<Name> = {
+  changeType?: 'inputfield' | 'slider';
+} & ChangeCallback<Name>;
+
+type RangeSliderProps = {
+  facets?: Array<Facet>;
+  rangeSliderScale?: Array<number>;
+  chartHeight?: RangeSliderWithChartProps['chartHeight'];
+} & (
+  | { facets: Array<Facet>; chartHeight?: string; rangeSliderScale?: never }
+  | { rangeSliderScale: Array<number>; facets?: never; chartHeight?: never }
+);
+
 export type Props<NameFrom, NameTo> = {
-  facets: Array<Facet>;
   from: RangeFilterInputField<NameFrom>;
-  onChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
-  onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
+  onChange: (
+    event: ChangeRangeInputWithSliderCallback<NameFrom | NameTo>,
+  ) => void;
+  onBlur?: (
+    event: ChangeRangeInputWithSliderCallback<NameFrom | NameTo>,
+  ) => void;
   to: RangeFilterInputField<NameTo>;
   unit?: string;
-  chartHeight?: string;
-} & PickedNumberInputProps;
+} & RangeSliderProps &
+  PickedNumberInputProps;
 
 function RangeFilterInputWithSlider<
   NameFrom extends string,
   NameTo extends string,
 >({
+  rangeSliderScale,
   facets,
   unit,
   onChange,
@@ -59,7 +79,7 @@ function RangeFilterInputWithSlider<
     if (!isSliding) {
       setIsSliding(true);
     }
-    setValuesWhileSliding((prevValuesWhileSliding) => ({
+    setValuesWhileSliding((prevValuesWhileSliding: NumericMinMaxValue) => ({
       ...prevValuesWhileSliding,
       [event.touched]: event.value[event.touched],
     }));
@@ -70,6 +90,7 @@ function RangeFilterInputWithSlider<
     onChange({
       name: event.touched === 'min' ? from.name : to.name,
       value: event.value[event.touched],
+      changeType: 'slider',
     });
   };
 
@@ -92,20 +113,28 @@ function RangeFilterInputWithSlider<
       [event.name === from.name ? 'min' : 'max']: event.value,
     });
 
-    onChange(event);
+    onChange({ ...event, changeType: 'inputfield' });
   };
 
   return (
     <Flex direction="column">
       <Box order={{ base: 1, sm: 0 }} px="md" py={{ base: 'md', sm: 0 }}>
-        <RangeSliderWithChart
-          onSliderChange={handleSliderChange}
-          onSliderRelease={handleSliderRelease}
-          selection={appliedValue()}
-          facets={facets}
-          chartHeight={chartHeight}
-          {...rest}
-        />
+        {facets ? (
+          <RangeSliderWithChart
+            onSliderChange={handleSliderChange}
+            onSliderRelease={handleSliderRelease}
+            selection={appliedValue()}
+            facets={facets}
+            chartHeight={chartHeight}
+          />
+        ) : (
+          <RangeSliderWithScale
+            onSliderChange={handleSliderChange}
+            onSliderRelease={handleSliderRelease}
+            selection={appliedValue()}
+            scale={rangeSliderScale}
+          />
+        )}
       </Box>
       <RangeFilterInput
         from={{

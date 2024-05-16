@@ -34,7 +34,7 @@ const size = {
     [$height.variable]: 'sizes.lg',
   }),
   md: defineStyle({
-    textStyle: 'body-small',
+    textStyle: 'body',
     [$paddingX.variable]: 'space.md',
     [$paddingY.variable]: 'space.xs',
     [$height.variable]: 'sizes.md',

@@ -1,3 +1,4 @@
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { EntitlementConfig } from 'src/components/navigation/link';
@@ -25,9 +26,14 @@ export type NavigationLinkConfigProps = Omit<
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
+  tracking?: CustomEvent;
 };
 
-export const headerLinks: NavigationLinkConfigProps[] = [
+export const headerLinks = ({
+  trackEvent,
+}: {
+  trackEvent?: (event: CustomEvent) => void;
+}): NavigationLinkConfigProps[] => [
   {
     translationKey: 'header.sell',
     link: {
@@ -40,34 +46,18 @@ export const headerLinks: NavigationLinkConfigProps[] = [
     visibilitySettings: {
       userType: {
         private: true,
-        professional: true,
+        professional: false,
       },
       brand: {
         autoscout24: true,
         motoscout24: false,
       },
     },
-  },
-  {
-    translationKey: 'header.sell',
-    link: {
-      de: '/de/member/insertion/type',
-      en: '/de/member/insertion/type',
-      fr: '/fr/member/insertion/type',
-      it: '/it/member/insertion/type',
-    },
-    showUnderMoreLinkBelow: 'sm',
-    visibilitySettings: {
-      userType: {
-        private: false,
-        professional: true,
-        guest: false,
-      },
-      brand: {
-        autoscout24: false,
-        motoscout24: true,
-      },
-    },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'sell',
+      }),
   },
   {
     translationKey: 'header.sell',
@@ -88,6 +78,37 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'sell',
+      }),
+  },
+  {
+    translationKey: 'header.sell',
+    link: {
+      de: '/de/member/insertion/type',
+      en: '/de/member/insertion/type',
+      fr: '/fr/member/insertion/type',
+      it: '/it/member/insertion/type',
+    },
+    showUnderMoreLinkBelow: 'sm',
+    visibilitySettings: {
+      userType: {
+        guest: false,
+        private: false,
+        professional: true,
+      },
+      brand: {
+        autoscout24: true,
+        motoscout24: true,
+      },
+    },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'sell',
+      }),
   },
   {
     translationKey: 'header.estimate',
@@ -108,6 +129,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'estimate',
+      }),
   },
   {
     translationKey: 'header.assure',
@@ -128,6 +154,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'insurance',
+      }),
   },
   {
     translationKey: 'header.assure',
@@ -148,14 +179,19 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'insurance',
+      }),
   },
   {
-    translationKey: 'header.magazine',
+    translationKey: 'header.electromobility',
     link: {
-      de: 'https://guide.autoscout24.ch/de/',
-      en: 'https://guide.autoscout24.ch/de/',
-      fr: 'https://guide.autoscout24.ch/fr/',
-      it: 'https://guide.autoscout24.ch/it/',
+      de: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+      en: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+      fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
+      it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
     },
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
@@ -168,6 +204,11 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: false,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'electromobility',
+      }),
   },
   {
     translationKey: 'header.magazine',
@@ -188,5 +229,10 @@ export const headerLinks: NavigationLinkConfigProps[] = [
         motoscout24: true,
       },
     },
+    onClick: () =>
+      trackEvent?.({
+        eventCategory: navigationEventCategory,
+        eventAction: 'magazine',
+      }),
   },
 ];

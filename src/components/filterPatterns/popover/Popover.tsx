@@ -8,6 +8,7 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
+import Stack from 'src/components/stack';
 import Box from 'src/components/box';
 
 import { FilterHeading } from '../Heading';
@@ -19,6 +20,8 @@ type Props = {
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
+  | 'enforceHeight'
+  | 'Icon'
   | 'isApplied'
   | 'label'
   | 'numberOfAppliedFilters'
@@ -30,7 +33,9 @@ type Props = {
 
 const Popover: FC<Props> = ({
   actionButton,
+  Icon,
   isApplied,
+  enforceHeight,
   label,
   numberOfAppliedFilters,
   onClose,
@@ -41,6 +46,9 @@ const Popover: FC<Props> = ({
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
+  const maxHeight = showCallToActionButton
+    ? '6xl'
+    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
 
   return (
     <Portal>
@@ -48,50 +56,56 @@ const Popover: FC<Props> = ({
         <PopoverContent
           backgroundColor="white"
           borderRadius="sm"
-          paddingY="2xl"
           shadow="md"
           w="6xl"
+          minHeight={enforceHeight ? '7xl' : undefined}
+          height={enforceHeight ? '7xl' : undefined}
           ref={popoverContentRef}
         >
-          <PopoverHeader paddingX="2xl">
-            {header ?? (
-              <FilterHeading
-                isApplied={isApplied}
-                label={label}
-                numberOfAppliedFilters={numberOfAppliedFilters}
-                onClose={onClose}
-                language={language}
-                onResetFilter={onResetFilter}
-                contentRef={popoverContentRef}
-              />
-            )}
-          </PopoverHeader>
-          <PopoverBody
-            sx={{
-              '--call-to-action-height':
-                'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))',
-            }}
-            marginTop="2xl"
-            marginBottom={showCallToActionButton ? '2xl' : '0'}
-            maxH={
-              showCallToActionButton
-                ? '6xl'
-                : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
-            }
-            overflowY="auto"
-            paddingX="2xl"
-          >
-            {children}
-          </PopoverBody>
-          {showCallToActionButton ? (
-            <PopoverFooter paddingX="2xl">
-              <FilterActionButton
-                actionButton={actionButton}
-                isApplied={isApplied}
-                onClose={onClose}
-              />
-            </PopoverFooter>
-          ) : null}
+          <Box as={Stack} h="full" paddingY="2xl">
+            <PopoverHeader paddingX="2xl">
+              {header ?? (
+                <FilterHeading
+                  Icon={Icon}
+                  isApplied={isApplied}
+                  label={label}
+                  numberOfAppliedFilters={numberOfAppliedFilters}
+                  onClose={onClose}
+                  language={language}
+                  onResetFilter={onResetFilter}
+                  contentRef={popoverContentRef}
+                />
+              )}
+            </PopoverHeader>
+            <PopoverBody
+              sx={{
+                '--call-to-action-height':
+                  'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))',
+              }}
+              marginTop="2xl"
+              maxH={
+                showCallToActionButton
+                  ? '6xl'
+                  : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
+              }
+              marginBottom={showCallToActionButton ? '2xl' : '0'}
+              height={enforceHeight ? maxHeight : undefined}
+              maxHeight={maxHeight}
+              overflowY="auto"
+              paddingX="2xl"
+            >
+              {children}
+            </PopoverBody>
+            {showCallToActionButton ? (
+              <PopoverFooter paddingX="2xl">
+                <FilterActionButton
+                  actionButton={actionButton}
+                  isApplied={isApplied}
+                  onClose={onClose}
+                />
+              </PopoverFooter>
+            ) : null}
+          </Box>
         </PopoverContent>
       </Box>
     </Portal>

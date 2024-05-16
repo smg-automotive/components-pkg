@@ -6,7 +6,7 @@ import Box from '../box';
 
 type Efficiency = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
-interface Props {
+export interface Props {
   efficiency: Efficiency;
 }
 

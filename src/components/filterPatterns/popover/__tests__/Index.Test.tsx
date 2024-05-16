@@ -27,11 +27,12 @@ describe('<PopoverFilter />', () => {
     expect(await screen.findByText('Popover content')).toBeInTheDocument();
   });
 
-  it('should show the reset button if the filter is applied', async () => {
+  it('should show the reset button if the filter is applied and display value is provided', async () => {
     const mockOnReset = jest.fn();
     render(
       <PopoverFilter
         {...validProps}
+        displayValue="Automatic"
         isApplied={true}
         onResetFilter={mockOnReset}
       >
@@ -43,11 +44,12 @@ describe('<PopoverFilter />', () => {
     await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
   });
 
-  it('should disable the reset of the filter via reset button if popover is opened', async () => {
+  it('should NOT show the reset button if the filter is applied but no display value', async () => {
     const mockOnReset = jest.fn();
     render(
       <PopoverFilter
         {...validProps}
+        displayValue=""
         isApplied={true}
         onResetFilter={mockOnReset}
       >
@@ -55,7 +57,27 @@ describe('<PopoverFilter />', () => {
       </PopoverFilter>,
     );
 
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    expect(
+      screen.queryByRole('button', { name: 'Zurücksetzen' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('should disable the reset of the filter via reset button if popover is opened', async () => {
+    const mockOnReset = jest.fn();
+    render(
+      <PopoverFilter
+        {...validProps}
+        isApplied={true}
+        displayValue="Manual"
+        onResetFilter={mockOnReset}
+      >
+        <div>Popover content</div>
+      </PopoverFilter>,
+    );
+
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff: Manual' }),
+    );
 
     return waitFor(() =>
       expect(
@@ -199,19 +221,6 @@ describe('<PopoverFilter />', () => {
   it('should only show the label when there is no display value', () => {
     render(
       <PopoverFilter {...validProps} isApplied={true} displayValue="">
-        <div>Popover content</div>
-      </PopoverFilter>,
-    );
-    expect(screen.getByText('Treibstoff')).toBeInTheDocument();
-  });
-
-  it('should only show the label when isApplied is false', () => {
-    render(
-      <PopoverFilter
-        {...validProps}
-        isApplied={false}
-        displayValue="Benzin, Wasserstoff"
-      >
         <div>Popover content</div>
       </PopoverFilter>,
     );

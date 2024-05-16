@@ -1,11 +1,16 @@
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
+import { IconProps } from '@chakra-ui/react';
 
 export type FilterPatternProps = {
   /**
    * Shows the value of the filter in default and open state.
    */
   displayValue: string;
+  /**
+   * Showing an icon (e.g. EV indicator) on the filter button and heading
+   */
+  Icon?: FC<IconProps>;
   /**
    * To know if a filter is applied or not.
    * Controls styling and to know which button is shown.

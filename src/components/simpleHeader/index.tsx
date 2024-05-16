@@ -10,7 +10,7 @@ import {
 
 import { CloseIcon } from '../icons';
 
-interface Props {
+export interface Props {
   title: string;
   url: string;
 }

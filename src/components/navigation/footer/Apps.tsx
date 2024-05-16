@@ -35,6 +35,7 @@ const FooterApps: FC<Props> = ({ config }) => {
                 alt={'Googleplay Icon'}
                 width="136px"
                 height="40px"
+                loading="lazy"
               />
             </FooterLink>
           </ListItem>
@@ -45,6 +46,7 @@ const FooterApps: FC<Props> = ({ config }) => {
                 alt={'Appsore Icon'}
                 width="136px"
                 height="40px"
+                loading="lazy"
               />
             </FooterLink>
           </ListItem>

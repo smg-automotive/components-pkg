@@ -20,6 +20,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   actionButton,
   displayValue,
   initialModalState = 'closed',
+  Icon,
   isApplied,
   label,
   language,
@@ -31,6 +32,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   header,
   isDisabled = false,
   children,
+  paddingX,
+  backgroundColor,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialModalState === 'open',
@@ -43,10 +46,13 @@ export const ModalFilter: FC<ModalFilterProps> = ({
       <>
         <OpenFilterButton
           displayValue={displayValue}
+          Icon={Icon}
           isApplied={isApplied}
           label={label}
           onClick={onOpen}
           isDisabled={isDisabled}
+          paddingX={paddingX}
+          backgroundColor={backgroundColor}
         />
         <ChakraModal
           isOpen={isOpen}
@@ -67,6 +73,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
               ) : (
                 <FilterHeading
                   language={language}
+                  Icon={Icon}
                   isApplied={isApplied}
                   label={label}
                   numberOfAppliedFilters={numberOfAppliedFilters}

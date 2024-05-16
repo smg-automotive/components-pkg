@@ -6,7 +6,7 @@ import TwoColumnsLayout, {
   ColumnSize,
   TwoColumnsLayoutProps,
 } from './TwoColumnsLayout';
-interface Props extends Omit<TwoColumnsLayoutProps, 'left' | 'right'> {
+export interface Props extends Omit<TwoColumnsLayoutProps, 'left' | 'right'> {
   vehicle: VehicleReferenceProps;
   leftColumnSize?: ColumnSize;
   rightColumnSize?: ColumnSize;

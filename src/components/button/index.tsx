@@ -73,7 +73,7 @@ type IconButtonProps =
   | Overwrite<SubmitType, IconProps>
   | Overwrite<LinkProps, IconProps>;
 
-export type Props = LinkProps | ButtonProps | IconButtonProps;
+export type Props = ButtonProps | IconButtonProps | LinkProps;
 
 const Button: FC<Props> = (props) => {
   const {
