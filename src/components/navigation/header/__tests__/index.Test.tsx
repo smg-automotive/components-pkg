@@ -52,7 +52,7 @@ describe('Header', () => {
           sellerId: '5',
           sellerIds: ['5'],
           isImpersonated: false,
-          email: '',
+          email: 'john.doe@me.com',
           exp: 123,
         }}
         brand={Brand.AutoScout24}
@@ -65,7 +65,7 @@ describe('Header', () => {
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
-    const searchItem = screen.getByText('John Doe');
+    const searchItem = screen.getByText('john.doe@me.com');
 
     fireEvent.click(searchItem);
     drawerBody = screen.queryByTestId('drawer-body');
@@ -87,7 +87,7 @@ describe('Header', () => {
     const login = screen.getByText('Login');
     expect(login).toBeInTheDocument();
   });
-  it('should display user name if there is a user', async () => {
+  it('should display user email if there is a user', async () => {
     render(
       <Navigation
         environment="preprod"
@@ -98,7 +98,7 @@ describe('Header', () => {
           sellerId: '5',
           sellerIds: ['5'],
           isImpersonated: false,
-          email: '',
+          email: 'john.doe@me.com',
           exp: 123,
         }}
         brand={Brand.AutoScout24}
@@ -109,7 +109,7 @@ describe('Header', () => {
       />,
     );
 
-    const user = screen.getByText('John Doe');
+    const user = screen.getByText('john.doe@me.com');
     expect(user).toBeInTheDocument();
   });
   it('should display notification icon if there is a notification', async () => {

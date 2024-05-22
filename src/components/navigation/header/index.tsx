@@ -130,6 +130,7 @@ const Navigation: FC<NavigationProps> = ({
         </Box>
       </Box>
       <NavigationDrawer
+        user={user}
         drawer={drawer}
         isOpen={isOpen}
         onClose={onClose}
