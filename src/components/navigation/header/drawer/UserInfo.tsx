@@ -24,7 +24,9 @@ const DrawerUserInfo: FC<Props> = ({ user }) => {
           <Box as="span" fontWeight="bold">
             {user.email}
           </Box>
-          <Box as="span">({user.userName})</Box>
+          {user.email !== user.userName ? (
+            <Box as="span">({user.userName})</Box>
+          ) : null}
         </Stack>
       </Stack>
       <Divider />
