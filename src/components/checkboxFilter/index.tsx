@@ -26,6 +26,7 @@ const groupItems = <ItemKey extends string, FilterName extends string>(
 };
 
 function CheckboxFilter<ItemKey extends string, FilterName extends string>({
+  alwaysExpanded = false,
   items,
   onApply,
   numberOfColumnsOnDesktop = 1,
@@ -62,6 +63,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
               <Fragment key={item.key}>
                 {item.childCheckboxes && item.childCheckboxes.length > 0 ? (
                   <CheckboxGroupCollapsibleWithChildren
+                    alwaysExpanded={alwaysExpanded}
                     item={item}
                     onApply={onApply}
                     onToggleCheckboxGroup={onToggleCheckboxGroup}
@@ -70,7 +72,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
                   <CheckboxWithFacet
                     item={item}
                     onApply={onApply}
-                    indentFacet={hasGroups}
+                    indentFacet={hasGroups && !alwaysExpanded}
                   />
                 )}
               </Fragment>

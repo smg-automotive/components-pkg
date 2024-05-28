@@ -13,17 +13,21 @@ type CheckboxCollapsibleProps<
   FilterName extends string,
 > = {
   item: Item<ItemKey, FilterName>;
-} & Pick<Props<ItemKey, FilterName>, 'onApply' | 'onToggleCheckboxGroup'>;
+} & Pick<
+  Props<ItemKey, FilterName>,
+  'onApply' | 'onToggleCheckboxGroup' | 'alwaysExpanded'
+>;
 
 function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
   FilterName extends string,
 >({
+  alwaysExpanded = false,
   item,
   onApply,
   onToggleCheckboxGroup,
 }: CheckboxCollapsibleProps<ItemKey, FilterName>) {
-  const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: false });
+  const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: alwaysExpanded });
   const { t } = useI18n();
   const checkboxes = item.childCheckboxes ?? [];
   const numberOfAppliedChildren = checkboxes.filter(
@@ -43,37 +47,39 @@ function CheckboxGroupCollapsibleWithChildren<
             numberOfAppliedChildren < checkboxes.length
           }
           contentRight={
-            <IconButton
-              aria-controls={groupDomId}
-              aria-expanded={isOpen}
-              aria-label={`${item.label}: ${
-                isOpen
-                  ? t('checkboxFilter.expanded')
-                  : t('checkboxFilter.collapsed')
-              }`}
-              onClick={() => {
-                onToggle();
-                onToggleCheckboxGroup?.(item);
-              }}
-              w="full"
-              h="sm"
-              display="flex"
-              justifyContent="flex-end"
-              icon={
-                <ChevronDownLargeIcon
-                  w="xs"
-                  h="xs"
-                  transition="0.2s"
-                  color="gray.500"
-                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                  cursor="pointer"
-                />
-              }
-            />
+            alwaysExpanded ? null : (
+              <IconButton
+                aria-controls={groupDomId}
+                aria-expanded={isOpen}
+                aria-label={`${item.label}: ${
+                  isOpen
+                    ? t('checkboxFilter.expanded')
+                    : t('checkboxFilter.collapsed')
+                }`}
+                onClick={() => {
+                  onToggle();
+                  onToggleCheckboxGroup?.(item);
+                }}
+                w="full"
+                h="sm"
+                display="flex"
+                justifyContent="flex-end"
+                icon={
+                  <ChevronDownLargeIcon
+                    w="xs"
+                    h="xs"
+                    transition="0.2s"
+                    color="gray.500"
+                    transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                    cursor="pointer"
+                  />
+                }
+              />
+            )
           }
         />
       </Box>
-      <Collapse in={isOpen}>
+      <Collapse in={alwaysExpanded || isOpen}>
         <Box id={groupDomId} ml={checkboxes.length > 0 ? '2xl' : '0px'}>
           {checkboxes?.map((checkbox) => (
             <CheckboxWithFacet
@@ -85,7 +91,7 @@ function CheckboxGroupCollapsibleWithChildren<
               }}
               onApply={onApply}
               isIndeterminate={false}
-              indentFacet={true}
+              indentFacet={!alwaysExpanded}
             />
           ))}
         </Box>
