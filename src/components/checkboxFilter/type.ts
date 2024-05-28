@@ -13,6 +13,7 @@ export type Item<ItemKey, FilterName> = {
 };
 
 export type Props<ItemKey extends string, FilterName extends string> = {
+  alwaysExpanded?: boolean;
   /**
    * @template ItemKey
    * @template FilterName

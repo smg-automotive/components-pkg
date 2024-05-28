@@ -332,6 +332,7 @@ export const WithMultipleColumns: StoryType = {
 
 export const WithGroupedItems: StoryType = {
   args: {
+    alwaysExpanded: false,
     numberOfColumnsOnDesktop: 2,
     items: [
       {
