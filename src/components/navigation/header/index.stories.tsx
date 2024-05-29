@@ -74,7 +74,7 @@ export const Professional: StoryType = {
   args: {
     user: {
       id: '123',
-      userName: 'Amir Professional',
+      userName: '65431-amir',
       userType: MappedUserType.Professional,
       exp: 1630000000,
       email: 'amir@professional.com',

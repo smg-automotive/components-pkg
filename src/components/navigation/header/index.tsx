@@ -46,6 +46,7 @@ const Navigation: FC<NavigationProps> = ({
   onLogout,
   trackEvent,
 }) => {
+  const showUserEmail = environment === 'preprod';
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
       ? { accountId: user?.sellerId }
@@ -124,16 +125,19 @@ const Navigation: FC<NavigationProps> = ({
               drawer={drawer}
               hasNotification={hasNotification}
               onLogin={onLogin}
+              showUserEmail={showUserEmail}
             />
             <NavigationLanguageMenu activeLanguage={language} />
           </Stack>
         </Box>
       </Box>
       <NavigationDrawer
+        user={user}
         drawer={drawer}
         isOpen={isOpen}
         onClose={onClose}
         menuHeight={config.menuHeight}
+        showUserEmail={showUserEmail}
       />
     </TranslationProvider>
   );
