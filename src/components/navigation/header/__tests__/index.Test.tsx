@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/filename-case */
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
@@ -52,7 +52,7 @@ describe('Header', () => {
           sellerId: '5',
           sellerIds: ['5'],
           isImpersonated: false,
-          email: '',
+          email: 'john.doe@me.com',
           exp: 123,
         }}
         brand={Brand.AutoScout24}
@@ -65,11 +65,70 @@ describe('Header', () => {
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
-    const searchItem = screen.getByText('John Doe');
+    const searchItem = screen.getByText('john.doe@me.com');
 
     fireEvent.click(searchItem);
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
+  });
+  it('displays user info in the drawer', async () => {
+    render(
+      <Navigation
+        environment="preprod"
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: 'john.doe@me.com',
+          exp: 123,
+        }}
+        brand={Brand.AutoScout24}
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+      />,
+    );
+
+    const searchItem = screen.getByText('john.doe@me.com');
+    fireEvent.click(searchItem);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(within(drawerBody).getByText('john.doe@me.com')).toBeInTheDocument();
+    expect(within(drawerBody).getByText('(John Doe)')).toBeInTheDocument();
+  });
+  it("doesn't displays user name if it's same as email", async () => {
+    render(
+      <Navigation
+        environment="preprod"
+        user={{
+          id: '1',
+          userName: 'john.doe@me.com',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: 'john.doe@me.com',
+          exp: 123,
+        }}
+        brand={Brand.AutoScout24}
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+      />,
+    );
+
+    const searchItem = screen.getByText('john.doe@me.com');
+    fireEvent.click(searchItem);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(
+      within(drawerBody).getAllByText('john.doe@me.com', { exact: false }),
+    ).toHaveLength(1);
   });
   it('should display login button if there is no user', async () => {
     render(
@@ -87,7 +146,7 @@ describe('Header', () => {
     const login = screen.getByText('Login');
     expect(login).toBeInTheDocument();
   });
-  it('should display user name if there is a user', async () => {
+  it('should display user email if there is a user', async () => {
     render(
       <Navigation
         environment="preprod"
@@ -98,7 +157,32 @@ describe('Header', () => {
           sellerId: '5',
           sellerIds: ['5'],
           isImpersonated: false,
-          email: '',
+          email: 'john.doe@me.com',
+          exp: 123,
+        }}
+        brand={Brand.AutoScout24}
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+      />,
+    );
+
+    const user = screen.getByText('john.doe@me.com');
+    expect(user).toBeInTheDocument();
+  });
+  it('should display user name if there is a user on production', async () => {
+    render(
+      <Navigation
+        environment="production"
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: 'john.doe@me.com',
           exp: 123,
         }}
         brand={Brand.AutoScout24}
@@ -111,6 +195,36 @@ describe('Header', () => {
 
     const user = screen.getByText('John Doe');
     expect(user).toBeInTheDocument();
+  });
+  it('does not display user info in the drawer on production', async () => {
+    render(
+      <Navigation
+        environment="production"
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: 'john.doe@me.com',
+          exp: 123,
+        }}
+        brand={Brand.AutoScout24}
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+      />,
+    );
+
+    const searchItem = screen.getByText('John Doe');
+    fireEvent.click(searchItem);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(
+      within(drawerBody).queryByText('john.doe@me.com'),
+    ).not.toBeInTheDocument();
   });
   it('should display notification icon if there is a notification', async () => {
     render(

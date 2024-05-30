@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-
+import { MergedUser } from '@smg-automotive/auth';
 import { DrawerBody } from '@chakra-ui/react';
 
 import Grid from 'src/components/grid';
@@ -9,13 +9,16 @@ import DrawerContent from 'src/components/drawer/DrawerContent';
 import Drawer from 'src/components/drawer';
 
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
+import DrawerUserInfo from './UserInfo';
 import { DrawerMenu } from './DrawerMenu';
 
 interface NavigationDrawerProps {
+  user: MergedUser | null;
   drawer: useNavigationDrawerType;
   isOpen: boolean;
   onClose: () => void;
   menuHeight: string;
+  showUserEmail?: boolean;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -23,6 +26,8 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   isOpen,
   onClose,
   menuHeight,
+  user,
+  showUserEmail = false,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -30,7 +35,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
       <DrawerContent marginTop={menuHeight}>
         <DrawerBody
           data-testid="drawer-body"
-          py={{ md: '2xl' }}
+          py="lg"
           px={{ md: 'xs' }}
           maxWidth="container.2xl"
           width="full"
@@ -41,6 +46,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
             gridGap={{ md: '3xl' }}
           >
+            {showUserEmail ? <DrawerUserInfo user={user} /> : null}
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
