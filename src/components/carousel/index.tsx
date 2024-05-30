@@ -106,8 +106,14 @@ const Carousel: FC<Props> = (props) => {
 
     setSelectedIndex(newIndex);
     if (paginationCarousel && hasThumbnailPagination) {
-      const slidesToScroll = paginationCarousel.slidesInView().length;
-      paginationCarousel.scrollTo(Math.floor(newIndex / slidesToScroll));
+      const { slideRegistry } = paginationCarousel.internalEngine();
+      const snapIndexThatSlideBelongsTo = slideRegistry.findIndex((group) =>
+        group.includes(newIndex),
+      );
+
+      if (typeof snapIndexThatSlideBelongsTo !== 'undefined') {
+        paginationCarousel.scrollTo(snapIndexThatSlideBelongsTo);
+      }
     }
     if (onSlideSelect) {
       onSlideSelect(newIndex);
