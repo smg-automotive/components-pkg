@@ -5,7 +5,7 @@ export interface Props {
   name?: string;
   value: string;
   label?: string;
-  size?: 'md' | 'base';
+  size?: 'sm' | 'md' | 'base';
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   isChecked?: boolean;
   isInvalid?: boolean;
