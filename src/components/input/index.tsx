@@ -6,6 +6,7 @@ import React, {
   ForwardedRef,
   forwardRef,
   MutableRefObject,
+  ReactElement,
   useEffect,
   useRef,
   useState,
@@ -13,6 +14,7 @@ import React, {
 import {
   Input as ChakraInput,
   InputLeftElement,
+  InputRightAddon,
   InputRightElement,
 } from '@chakra-ui/react';
 
@@ -31,6 +33,7 @@ type SharedProps = {
   type?: 'text' | 'number' | 'password';
   icon?: ComponentType;
   isClearable?: boolean;
+  rightAddonElement?: ReactElement;
 };
 
 type ControlledInputProps = {
@@ -103,6 +106,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       type = 'text',
       icon: Icon,
       isClearable = false,
+      rightAddonElement: RightAddonElement,
       ...props
     },
     ref,
@@ -144,22 +148,28 @@ const Input = forwardRef<HTMLInputElement, Props>(
       : defaultOnChangeHandler;
 
     return (
-      <InputWrapper size={props.size} shouldWrap={!!Icon || isClearable}>
-        {renderIcon(Icon)}
-        <ChakraInput
-          {...props}
-          type={type}
-          value={inputValue}
-          onChange={onChangeHandler}
-          ref={bindRefBeforeForwarding({
-            forwardedRef: ref,
-            localRef: inputRef,
+      <InputWrapper size={props.size} shouldWrap={!!RightAddonElement}>
+        <InputWrapper size={props.size} shouldWrap={!!Icon || isClearable}>
+          {renderIcon(Icon)}
+          <ChakraInput
+            {...props}
+            type={type}
+            value={inputValue}
+            onChange={onChangeHandler}
+            ref={bindRefBeforeForwarding({
+              forwardedRef: ref,
+              localRef: inputRef,
+            })}
+            borderRightRadius={RightAddonElement && '0'}
+          />
+          {renderClearButton({
+            isClearable: isClearable && !!internalUIValue,
+            inputRef,
           })}
-        />
-        {renderClearButton({
-          isClearable: isClearable && !!internalUIValue,
-          inputRef,
-        })}
+        </InputWrapper>
+        {RightAddonElement ? (
+          <InputRightAddon>{RightAddonElement}</InputRightAddon>
+        ) : null}
       </InputWrapper>
     );
   },
