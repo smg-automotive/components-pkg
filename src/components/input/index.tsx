@@ -79,6 +79,11 @@ const renderClearButton = ({
     </InputRightElement>
   ) : null;
 
+const renderRightAddonElement = (RightAddonElement?: ReactElement) =>
+  RightAddonElement ? (
+    <InputRightAddon>{RightAddonElement}</InputRightAddon>
+  ) : null;
+
 const bindRefBeforeForwarding =
   <T extends Element>({
     forwardedRef,
@@ -167,9 +172,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
             inputRef,
           })}
         </InputWrapper>
-        {RightAddonElement ? (
-          <InputRightAddon>{RightAddonElement}</InputRightAddon>
-        ) : null}
+        {renderRightAddonElement(RightAddonElement)}
       </InputWrapper>
     );
   },
