@@ -14,6 +14,9 @@ const sizes = {
   md: {
     label: { fontSize: 'md' },
   },
+  sm: {
+    label: { fontSize: 'sm' },
+  },
 };
 
 const baseStyleControl = defineStyle({
