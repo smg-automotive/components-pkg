@@ -38,7 +38,7 @@ const meta: Meta<typeof RadioComponent> = {
 
   argTypes: {
     size: {
-      options: ['base', 'md', 'sm'],
+      options: ['base', 'md'],
       control: 'select',
     },
 
