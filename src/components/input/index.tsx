@@ -6,7 +6,7 @@ import React, {
   ForwardedRef,
   forwardRef,
   MutableRefObject,
-  ReactNode,
+  ReactElement,
   useEffect,
   useRef,
   useState,
@@ -33,7 +33,7 @@ type SharedProps = {
   type?: 'text' | 'number' | 'password';
   icon?: ComponentType;
   isClearable?: boolean;
-  rightAddonElement?: ReactNode;
+  rightAddonElement?: ReactElement;
 };
 
 type ControlledInputProps = {
@@ -79,7 +79,7 @@ const renderClearButton = ({
     </InputRightElement>
   ) : null;
 
-const renderRightAddonElement = (RightAddonElement?: ReactNode) =>
+const renderRightAddonElement = (RightAddonElement?: ReactElement) =>
   RightAddonElement ? (
     <InputRightAddon>{RightAddonElement}</InputRightAddon>
   ) : null;
