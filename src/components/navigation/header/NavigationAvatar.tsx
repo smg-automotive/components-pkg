@@ -18,7 +18,6 @@ interface NavigationAvatarProps {
   hasNotification: boolean;
   createDrawerHandler: ({ nodeName }: { nodeName: DrawerNode }) => () => void;
   onLogin: () => void;
-  showUserEmail?: boolean;
 }
 
 export const NavigationAvatar: FC<NavigationAvatarProps> = ({
@@ -28,7 +27,6 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   hasNotification,
   createDrawerHandler,
   onLogin,
-  showUserEmail = false,
 }) => {
   const isDrawerOpened = isOpen && drawer?.current === DrawerNode.User;
   const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
@@ -48,7 +46,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
           <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
-            {showUserEmail ? user.email : user.userName}
+            {user.email}
           </Box>
         </Hide>
         <DrawerIndicator isOpen={isDrawerOpened} />
