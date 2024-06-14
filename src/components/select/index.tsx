@@ -25,6 +25,7 @@ export type Props = Pick<
   | 'onFocus'
   | 'onChange'
   | 'autoFocus'
+  | 'borderLeftRadius'
 > & {
   size?: 'md' | 'lg';
   name: string;
