@@ -18,7 +18,6 @@ interface NavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   menuHeight: string;
-  showUserEmail?: boolean;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -27,7 +26,6 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   onClose,
   menuHeight,
   user,
-  showUserEmail = false,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -46,7 +44,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
             gridGap={{ md: '3xl' }}
           >
-            {showUserEmail ? <DrawerUserInfo user={user} /> : null}
+            <DrawerUserInfo user={user} />
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
