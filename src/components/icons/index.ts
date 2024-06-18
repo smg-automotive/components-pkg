@@ -18,6 +18,7 @@ export { CarIcon } from './CarIcon';
 export { CopyIcon } from './CopyIcon';
 export { ChartIcon } from './ChartIcon';
 export { CheckmarkIcon } from './CheckmarkIcon';
+export { CheckmarkCircleIcon } from './CheckmarkCircleIcon';
 export { CheckShieldIcon } from './CheckShieldIcon';
 export { ChevronDownLargeIcon } from './ChevronDownLargeIcon';
 export { ChevronDownSmallIcon } from './ChevronDownSmallIcon';
