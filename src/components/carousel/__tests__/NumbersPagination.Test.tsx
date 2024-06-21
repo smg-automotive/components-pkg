@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmblaCarouselType } from 'embla-carousel-react';
+import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
@@ -8,7 +8,7 @@ import NumbersPagination from '../NumbersPagination';
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {
   scrollTo: mockMainScrollTo,
-} as unknown as EmblaCarouselType;
+} as unknown as UseEmblaCarouselType[1];
 
 describe('<NumbersPagination />', () => {
   beforeEach(() => {

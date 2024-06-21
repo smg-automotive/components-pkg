@@ -69,30 +69,31 @@ const Carousel: FC<Props> = (props) => {
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop: true,
     startIndex: startIndex,
-    speed: 20,
+    duration: 20,
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true,
     slidesToScroll: 'auto',
     inViewThreshold: 1,
+    duration: 20,
   });
 
   const scrollPrev = useCallback(
-    () => mainCarousel && mainCarousel.scrollPrev(),
+    () => mainCarousel && mainCarousel.scrollPrev(true),
     [mainCarousel],
   );
   const scrollNext = useCallback(
-    () => mainCarousel && mainCarousel.scrollNext(),
+    () => mainCarousel && mainCarousel.scrollNext(true),
     [mainCarousel],
   );
   const onClick = useCallback(
     (index: number) => {
-      if (onSlideClick && mainCarousel && mainCarousel.clickAllowed()) {
+      if (onSlideClick) {
         onSlideClick(index);
       }
     },
-    [mainCarousel, onSlideClick],
+    [onSlideClick],
   );
 
   const numberOfSlides = props.children.length;
@@ -105,8 +106,14 @@ const Carousel: FC<Props> = (props) => {
 
     setSelectedIndex(newIndex);
     if (paginationCarousel && hasThumbnailPagination) {
-      const slidesToScroll = paginationCarousel.slidesInView().length;
-      paginationCarousel.scrollTo(Math.floor(newIndex / slidesToScroll));
+      const { slideRegistry } = paginationCarousel.internalEngine();
+      const snapIndexThatSlideBelongsTo = slideRegistry.findIndex((group) =>
+        group.includes(newIndex),
+      );
+
+      if (typeof snapIndexThatSlideBelongsTo !== 'undefined') {
+        paginationCarousel.scrollTo(snapIndexThatSlideBelongsTo);
+      }
     }
     if (onSlideSelect) {
       onSlideSelect(newIndex);

@@ -1,5 +1,6 @@
 import React, { FC, useCallback } from 'react';
-import { EmblaCarouselType } from 'embla-carousel-react';
+
+import { UseEmblaCarouselType } from 'embla-carousel-react';
 
 import Flex from '../flex';
 import Box from '../box';
@@ -8,7 +9,7 @@ import NumbersPaginationButton from './NumbersPaginationButton';
 interface Props {
   currentSlideIndex: number;
   numberOfSlides: number;
-  mainCarousel?: EmblaCarouselType;
+  mainCarousel?: UseEmblaCarouselType[1];
 }
 
 const NumbersPagination: FC<Props> = ({

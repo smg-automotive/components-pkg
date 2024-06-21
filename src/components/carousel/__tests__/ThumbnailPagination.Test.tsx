@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { EmblaCarouselType } from 'embla-carousel-react';
+import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 
@@ -28,12 +28,12 @@ const paginationCarousel = {
   scrollPrev: mockScrollPrev,
   clickAllowed: jest.fn().mockReturnValue(true),
   on: jest.fn(),
-} as unknown as EmblaCarouselType;
+} as unknown as UseEmblaCarouselType[1];
 
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {
   scrollTo: mockMainScrollTo,
-} as unknown as EmblaCarouselType;
+} as unknown as UseEmblaCarouselType[1];
 
 const paginationCarouselRef = createRef<HTMLDivElement>();
 
@@ -174,7 +174,7 @@ describe('<ThumbnailPagination/>', () => {
     await userEvent.click(
       screen.getByLabelText('scroll to next thumbnail group'),
     );
-    await waitFor(() => expect(mockScrollNext).toHaveBeenCalled());
+    await waitFor(() => expect(mockScrollNext).toHaveBeenCalledWith(true));
     expect(mockMainScrollTo).not.toHaveBeenCalled();
   });
 
@@ -193,7 +193,7 @@ describe('<ThumbnailPagination/>', () => {
     await userEvent.click(
       screen.getByLabelText('scroll to previous thumbnail group'),
     );
-    await waitFor(() => expect(mockScrollPrev).toHaveBeenCalled());
+    await waitFor(() => expect(mockScrollPrev).toHaveBeenCalledWith(true));
     expect(mockMainScrollTo).not.toHaveBeenCalled();
   });
 
@@ -208,6 +208,6 @@ describe('<ThumbnailPagination/>', () => {
       />,
     );
     await userEvent.click(screen.getByText('thumbnail 2'));
-    await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1));
+    await waitFor(() => expect(mockMainScrollTo).toHaveBeenCalledWith(1, true));
   });
 });
