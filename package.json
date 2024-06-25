@@ -115,9 +115,9 @@
     "ts-jest": "29.1.5",
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.1.0",
-    "typescript": "5.4.5",
+    "typescript": "5.5.2",
     "unist-util-visit": "5.0.0",
-    "webpack": "5.92.0"
+    "webpack": "5.92.1"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.2.2",
