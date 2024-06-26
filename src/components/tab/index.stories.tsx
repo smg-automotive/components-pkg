@@ -14,16 +14,10 @@ import TabsComponent from './index';
 
 const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Navigation/Tabs',
-  component: TabsComponent,
 
   render: (args) => {
     return (
-      <Tabs
-        {...args}
-        {...(args.variant === ('default' as unknown as undefined) && {
-          variant: undefined,
-        })}
-      >
+      <Tabs {...args}>
         <TabList key="tab-list">
           {Array.from({ length: 3 }).map((_, index) => (
             <Tab key={`tab-${index}`}>Tab: {index}</Tab>
