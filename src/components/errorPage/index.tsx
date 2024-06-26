@@ -82,8 +82,9 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                     <Button
                       onClick={() => {
                         onButtonClick?.();
-                        window.location.href = `${window.location.origin}/${language}`;
                       }}
+                      as="a"
+                      href={`/${language}`}
                       variant="secondary"
                     >
                       {t(`errorPage.${statusCode}.buttonLabel`)}
