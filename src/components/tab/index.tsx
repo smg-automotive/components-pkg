@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 import { Tabs as ChakraTabs, TabsProps } from '@chakra-ui/react';
 
 export type Props = {
-  variant?: 'spaceBetween' | 'spaceAround';
+  variant?: 'spaceBetween' | 'spaceAround' | 'enclosed';
 } & Pick<TabsProps, 'defaultIndex' | 'isLazy' | 'onChange' | 'index'>;
 
 const Tabs: FC<PropsWithChildren<Props>> = (props) => {
