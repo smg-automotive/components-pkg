@@ -57,7 +57,6 @@ const variants = {
   enclosed: {
     tablist: {
       borderBottom: 'none',
-      justifyContent: 'space-around',
     },
     tab: {
       flexBasis: '100%',

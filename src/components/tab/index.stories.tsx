@@ -16,7 +16,7 @@ const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Navigation/Tabs',
   component: TabsComponent,
 
-  render: ({ children, ...args }) => {
+  render: (args) => {
     return (
       <Tabs
         {...args}
