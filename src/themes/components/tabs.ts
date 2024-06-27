@@ -72,7 +72,7 @@ const variants = {
         borderBottom: 'none',
       },
       _last: {
-        border: '1px solid',
+        borderRight: '1px solid',
         borderColor: 'blue.200',
       },
     },
