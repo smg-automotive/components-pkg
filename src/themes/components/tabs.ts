@@ -54,6 +54,23 @@ const variants = {
     tab: baseStyleTab,
     tabpanel: baseStyleTabpanel,
   },
+  enclosed: {
+    tablist: {
+      borderBottom: 'none',
+    },
+    tab: {
+      flexBasis: '100%',
+      borderBottom: '1px',
+      border: '1px solid',
+      borderColor: 'blue.200',
+      backgroundColor: 'blue.50',
+      _selected: {
+        backgroundColor: 'transparent',
+        borderBottom: 'none',
+      },
+    },
+    tabpanel: baseStyleTabpanel,
+  },
 };
 
 export default {
