@@ -60,6 +60,30 @@ export default meta;
 type StoryType = StoryObj<typeof TabsComponent>;
 export const Overview: StoryType = {};
 
+export const VariantSpaceBetween: StoryType = {
+  name: 'Variant > Space Between',
+
+  args: {
+    variant: 'spaceBetween',
+  },
+};
+
+export const VariantSpaceAround: StoryType = {
+  name: 'Variant > Space Around',
+
+  args: {
+    variant: 'spaceAround',
+  },
+};
+
+export const VariantEnclosed: StoryType = {
+  name: 'Variant > Enclosed',
+
+  args: {
+    variant: 'enclosed',
+  },
+};
+
 export const WithSecondTabSelected: StoryType = {
   name: 'With second tab selected',
 
