@@ -214,3 +214,35 @@ export const WithRightAddonElementSelect: StoryType = {
     ),
   },
 };
+
+export const WithLeftAddonElementButton: StoryType = {
+  args: {
+    ...WithIcon.args,
+    leftAddonElement: (
+      <Button
+        borderColor="gray.400"
+        borderRightRadius="0"
+        onClick={() => {}}
+        variant="secondary"
+      >
+        Test
+      </Button>
+    ),
+  },
+};
+
+export const WithLeftAddonElementSelect: StoryType = {
+  args: {
+    type: 'number',
+    placeholder: 'i.e. 791234567',
+    leftAddonElement: (
+      <Box width={96}>
+        <Select
+          name="Test select"
+          options={[{ label: '+41', value: 'CH' }]}
+          borderRightRadius="0"
+        />
+      </Box>
+    ),
+  },
+};
