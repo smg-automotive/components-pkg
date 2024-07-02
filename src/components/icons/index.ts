@@ -119,3 +119,4 @@ export { VehicleTypesMotorcycleStarIcon } from './VehicleTypesMotorcycleStarIcon
 export { CategoryAOneIcon } from './CategoryAOneIcon';
 export { CategoryAIcon } from './CategoryAIcon';
 export { CategoryAMinusIcon } from './CategoryAMinusIcon';
+export { BankNotesIcon } from './BankNotesIcon';
