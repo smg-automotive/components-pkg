@@ -68,6 +68,7 @@ export { default as Spinner } from './spinner';
 export { default as Switch } from './switchComponent';
 export { default as Text } from './text';
 export { default as HighlightedText } from './text/HighlightedText';
+export { default as UnderlinedText } from './text/UnderlinedText';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
 export { default as Skeleton } from './skeleton';
