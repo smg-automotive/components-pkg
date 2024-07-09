@@ -4,14 +4,14 @@ import { useMultiStyleConfig } from '@chakra-ui/system';
 
 import Box from 'src/components/box';
 
-import { HighlightProps } from '.';
+import { MarkProps } from '.';
 
-const Highlight: FC<HighlightProps> = (props) => {
-  const { highlight } = useMultiStyleConfig('MarkedText', props);
+const Highlight: FC<MarkProps> = (props) => {
+  const { mark } = useMultiStyleConfig('MarkedText', props);
 
   return (
     <Box
-      __css={highlight}
+      __css={mark}
       as="svg"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 155 24"

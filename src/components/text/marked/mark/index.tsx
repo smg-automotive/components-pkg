@@ -5,12 +5,9 @@ import { MarkedTextProps } from '..';
 import Underline from './Underline';
 import Highlight from './Highlight';
 
-export type HighlightProps = Pick<
-  MarkedTextProps,
-  'variant' | 'highlightColor'
->;
+export type MarkProps = Pick<MarkedTextProps, 'variant' | 'highlightColor'>;
 
-const MarkedTextHighlight: FC<HighlightProps> = (props) => {
+const MarkedTextMark: FC<MarkProps> = (props) => {
   if (props.variant === 'highlight') {
     return <Highlight {...props} />;
   }
@@ -22,4 +19,4 @@ const MarkedTextHighlight: FC<HighlightProps> = (props) => {
   return null;
 };
 
-export default MarkedTextHighlight;
+export default MarkedTextMark;

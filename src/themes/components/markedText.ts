@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const MarkedText: ComponentStyleConfig = {
-  parts: ['container', 'text', 'highlight'],
+  parts: ['container', 'text', 'mark'],
 
   baseStyle: {
     container: {
@@ -16,7 +16,7 @@ const MarkedText: ComponentStyleConfig = {
       width: '100%',
       backgroundColor: 'transparent',
     },
-    highlight: {
+    mark: {
       position: 'absolute',
       width: '100%',
     },
@@ -24,7 +24,7 @@ const MarkedText: ComponentStyleConfig = {
 
   variants: {
     highlight: {
-      highlight: {
+      mark: {
         top: '0',
         left: '0',
         height: '100%',
@@ -32,7 +32,7 @@ const MarkedText: ComponentStyleConfig = {
       },
     },
     underline: {
-      highlight: {
+      mark: {
         top: '1.15em',
         left: '0.125ch',
         right: '0.125ch',

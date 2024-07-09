@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Box, BoxProps, useMultiStyleConfig } from '@chakra-ui/react';
 
-import Highlight from './highlight';
+import Mark from './mark';
 
 type SharedProps = Exclude<
   BoxProps,
@@ -33,7 +33,7 @@ const MarkedText: FC<MarkedTextProps> = ({
 
   return (
     <Box __css={container} {...boxProps}>
-      <Highlight variant={variant} highlightColor={highlightColor} />
+      <Mark variant={variant} highlightColor={highlightColor} />
       <Box __css={text}>{children}</Box>
     </Box>
   );
