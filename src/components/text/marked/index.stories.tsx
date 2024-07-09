@@ -43,7 +43,7 @@ const meta: Meta<typeof MarkedTextComponent> = {
       options: ['underline', 'highlight'],
     },
     highlightColor: {
-      options: ['white', 'brand.primary'],
+      options: ['white', 'gray.100', 'brand.primary'],
       control: { type: 'select' },
       if: { arg: 'variant', eq: 'highlight' },
     },
@@ -56,7 +56,14 @@ export const Overview: StoryObj<typeof MarkedTextComponent> = {};
 export const BrandHighlight: StoryObj<typeof MarkedTextComponent> = {
   args: {
     variant: 'highlight',
-    highlightColor: 'brand',
+    highlightColor: 'brand.primary',
+  },
+};
+
+export const GrayHighlight: StoryObj<typeof MarkedTextComponent> = {
+  args: {
+    variant: 'highlight',
+    highlightColor: 'gray.100',
   },
 };
 
