@@ -7,6 +7,8 @@ import { Box } from 'src';
 
 import MarkedTextComponent from '.';
 
+const brandHighlight = 'brand.primary';
+
 const meta: Meta<typeof MarkedTextComponent> = {
   title: 'Components/Utils/MarkedText',
   component: MarkedTextComponent,
@@ -28,7 +30,7 @@ const meta: Meta<typeof MarkedTextComponent> = {
     children: 'I am marked text',
     variant: 'highlight',
     fontSize: 'base',
-    highlightColor: 'brand.primary',
+    highlightColor: brandHighlight,
   },
 
   argTypes: {
@@ -43,7 +45,7 @@ const meta: Meta<typeof MarkedTextComponent> = {
       options: ['underline', 'highlight'],
     },
     highlightColor: {
-      options: ['white', 'gray.100', 'brand.primary'],
+      options: ['white', 'gray.100', brandHighlight],
       control: { type: 'select' },
       if: { arg: 'variant', eq: 'highlight' },
     },
@@ -56,7 +58,7 @@ export const Overview: StoryObj<typeof MarkedTextComponent> = {};
 export const BrandHighlight: StoryObj<typeof MarkedTextComponent> = {
   args: {
     variant: 'highlight',
-    highlightColor: 'brand.primary',
+    highlightColor: brandHighlight,
   },
 };
 
