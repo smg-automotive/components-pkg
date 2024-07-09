@@ -10,7 +10,7 @@ type SharedProps = Exclude<
 
 type HighlightProps = SharedProps & {
   variant?: 'highlight';
-  highlightColor?: 'white' | 'brand';
+  highlightColor?: 'white' | 'brand.primary';
 };
 
 type UnderlineProps = SharedProps & {

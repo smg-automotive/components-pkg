@@ -28,7 +28,7 @@ const meta: Meta<typeof MarkedTextComponent> = {
     children: 'I am marked text',
     variant: 'highlight',
     fontSize: 'base',
-    highlightColor: 'brand',
+    highlightColor: 'brand.primary',
   },
 
   argTypes: {
@@ -43,7 +43,7 @@ const meta: Meta<typeof MarkedTextComponent> = {
       options: ['underline', 'highlight'],
     },
     highlightColor: {
-      options: ['white', 'brand'],
+      options: ['white', 'brand.primary'],
       control: { type: 'select' },
       if: { arg: 'variant', eq: 'highlight' },
     },
