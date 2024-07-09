@@ -19,6 +19,7 @@ const MarkedText: ComponentStyleConfig = {
     mark: {
       position: 'absolute',
       width: '100%',
+      left: '0',
     },
   },
 
@@ -26,16 +27,13 @@ const MarkedText: ComponentStyleConfig = {
     highlight: {
       mark: {
         top: '0',
-        left: '0',
         height: '100%',
-        width: '100%',
       },
     },
     underline: {
       mark: {
-        top: '1.15em',
-        left: '0.125ch',
-        right: '0.125ch',
+        px: 'sm',
+        top: '1.25em',
         height: {
           md: '8px',
           base: '6px',
