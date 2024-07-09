@@ -36,7 +36,10 @@ const MarkedText: ComponentStyleConfig = {
         top: '1.15em',
         left: '0.125ch',
         right: '0.125ch',
-        height: '11px',
+        height: {
+          md: '8px',
+          base: '6px',
+        },
       },
     },
   },
