@@ -33,8 +33,10 @@ const MarkedText: ComponentStyleConfig = {
       },
     },
     underline: {
+      text: {
+        lineHeight: 1.5,
+      },
       mark: {
-        px: 'sm',
         top: '1.25em',
         left: '-0.25ch',
         width: 'calc(100% + 0.5ch)',
