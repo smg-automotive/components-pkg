@@ -9,7 +9,6 @@ const MarkedText: ComponentStyleConfig = {
       width: 'max-content',
       display: 'inline-flex',
       alignItems: 'center',
-      px: 'sm',
     },
     text: {
       position: 'relative',
@@ -23,6 +22,9 @@ const MarkedText: ComponentStyleConfig = {
 
   variants: {
     highlight: {
+      container: {
+        px: 'sm',
+      },
       mark: {
         top: '0',
         left: '0',
