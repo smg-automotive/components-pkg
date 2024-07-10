@@ -23,7 +23,7 @@ export type MarkedTextProps = HighlightProps | UnderlineProps;
 const MarkedText: FC<MarkedTextProps> = ({
   children,
   variant = 'highlight',
-  highlightColor,
+  highlightColor = 'brand.primary',
   ...boxProps
 }) => {
   const { container, text } = useMultiStyleConfig('MarkedText', {
