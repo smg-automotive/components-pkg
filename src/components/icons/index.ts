@@ -30,6 +30,7 @@ export { ChevronRightTinyIcon } from './ChevronRightTinyIcon';
 export { ChevronUpLargeIcon } from './ChevronUpLargeIcon';
 export { ChevronUpSmallIcon } from './ChevronUpSmallIcon';
 export { CloseIcon } from './CloseIcon';
+export { CompareIcon } from './CompareIcon';
 export { ConsumptionIcon } from './ConsumptionIcon';
 export { CreditIcon } from './CreditIcon';
 export { CreditCardIcon } from './CreditCardIcon';
