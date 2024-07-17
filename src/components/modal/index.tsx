@@ -24,8 +24,8 @@ export interface Props
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreen' | 'base' | 'topScroll';
-  size?: 'md' | 'lg' | 'full';
+  variant?: 'fullScreen' | 'base' | 'topScroll' | 'grayOut';
+  size?: 'sm' | 'md' | 'lg' | 'full';
   disableBodyPadding?: boolean;
 }
 
