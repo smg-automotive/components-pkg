@@ -56,7 +56,9 @@ const Alert: FC<AlertProps> = ({
             </Link>
           ) : (
             <Link
+              as={link.as === 'link' ? 'a' : link.as}
               href={link.url}
+              onClick={link.onClick}
               isExternal={link.isExternal}
               display="inline-block"
               width="fit-content"
