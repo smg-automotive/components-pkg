@@ -16,7 +16,7 @@ export const CompareIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'currentcolor',
+    fill: 'currentColor',
     fillRule: 'evenodd',
     clipRule: 'evenodd',
   },
