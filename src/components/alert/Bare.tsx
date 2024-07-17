@@ -14,7 +14,7 @@ export interface BareAlertProps {
   title?: string;
   description: string;
   link?: {
-    as?: 'link' | 'button';
+    as?: 'link' | 'button' | ReactNode;
     text: string;
     url?: string;
     isExternal?: boolean;
