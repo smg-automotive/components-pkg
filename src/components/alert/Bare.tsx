@@ -40,7 +40,12 @@ const BareAlert: FC<BareAlertProps> = ({
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
-          <Link href={link.url} isExternal={link?.isExternal}>
+          <Link
+            as={!link.as || link.as === 'link' ? 'a' : link.as}
+            href={link.url}
+            isExternal={link.isExternal}
+            onClick={link.onClick}
+          >
             {link.text}
           </Link>
         ) : null}
