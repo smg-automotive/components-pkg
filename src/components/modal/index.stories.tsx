@@ -1,5 +1,4 @@
 import React from 'react';
-import { t } from '@storybook/theming/dist/create-8dd9d29b';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Text, useDisclosure } from '@chakra-ui/react';
