@@ -751,10 +751,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.requisitions',
           link: {
-            de: '/de/member/searchjobs',
-            en: '/de/member/searchjobs',
-            fr: '/fr/member/searchjobs',
-            it: '/it/member/searchjobs',
+            de: '/de/me/saved-searches',
+            en: '/de/me/saved-searches',
+            fr: '/fr/me/saved-searches',
+            it: '/it/me/saved-searches',
           },
           visibilitySettings: {
             userType: {
