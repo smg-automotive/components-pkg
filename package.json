@@ -113,7 +113,7 @@
     "sort-phraseapp-locales": "0.0.1",
     "space-separated-tokens": "2.0.2",
     "storybook": "8.2.4",
-    "ts-jest": "29.2.2",
+    "ts-jest": "29.2.3",
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.1.0",
     "typescript": "5.5.3",
