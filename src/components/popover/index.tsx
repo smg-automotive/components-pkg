@@ -17,7 +17,12 @@ type PopoverProps = PropsWithChildren<
   } & Pick<ChakraPopoverProps, 'placement'>
 >;
 
-const Popover: FC<PopoverProps> = ({ content, children, placement, trigger = 'hover' }) => {
+const Popover: FC<PopoverProps> = ({
+  content,
+  children,
+  placement,
+  trigger = 'hover',
+}) => {
   return (
     <ChakraPopover
       placement={placement}
