@@ -34,9 +34,24 @@ const meta: Meta<typeof PopoverComponent> = {
       control: 'select',
     },
     showArrow: {
-      options: [true, false],
+      control: 'boolean',
+    },
+    trigger: {
+      options: ['hover', 'click'],
       control: 'select',
-      defaultValue: true,
+      defaultValue: 'hover',
+    },
+    contentWidth: {
+      control: 'text',
+    },
+    contentPadding: {
+      control: 'text',
+    },
+    closeOnBlur: {
+      control: 'boolean',
+    },
+    gutter: {
+      control: 'number',
     },
   },
 };
@@ -50,5 +65,12 @@ export const NoArrow: StoryType = {
   name: 'No arrow',
   args: {
     showArrow: false,
+  },
+};
+
+export const OpenOnClick: StoryType = {
+  name: 'Open on click',
+  args: {
+    trigger: 'click',
   },
 };
