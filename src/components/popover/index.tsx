@@ -16,6 +16,7 @@ type PopoverProps = PropsWithChildren<
     trigger?: 'hover' | 'click';
     contentWidth?: string;
     contentPadding?: string;
+    showArrow?: boolean;
   } & Pick<ChakraPopoverProps, 'placement'>
 >;
 
@@ -26,6 +27,7 @@ const Popover: FC<PopoverProps> = ({
   trigger = 'hover',
   contentWidth,
   contentPadding = '2xl',
+  showArrow = true,
 }) => {
   return (
     <ChakraPopover
@@ -48,7 +50,7 @@ const Popover: FC<PopoverProps> = ({
             backgroundColor="white"
             width={contentWidth ? contentWidth : 'auto'}
           >
-            <PopoverArrow backgroundColor="white" />
+            {showArrow ? <PopoverArrow backgroundColor="white" /> : null}
             <PopoverBody>{content}</PopoverBody>
           </PopoverContent>
         </Box>

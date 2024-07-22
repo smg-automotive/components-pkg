@@ -33,9 +33,22 @@ const meta: Meta<typeof PopoverComponent> = {
 
       control: 'select',
     },
+    showArrow: {
+      options: [true, false],
+      control: 'select',
+      defaultValue: true,
+    },
   },
 };
 
 export default meta;
+type StoryType = StoryObj<typeof PopoverComponent>;
 
 export const Overview: StoryObj<typeof PopoverComponent> = {};
+
+export const NoArrow: StoryType = {
+  name: 'No arrow',
+  args: {
+    showArrow: false,
+  },
+};
