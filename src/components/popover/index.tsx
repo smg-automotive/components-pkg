@@ -17,6 +17,8 @@ type PopoverProps = PropsWithChildren<
     contentWidth?: string;
     contentPadding?: string;
     showArrow?: boolean;
+    closeOnBlur?: boolean;
+    gutter?: number;
   } & Pick<ChakraPopoverProps, 'placement'>
 >;
 
@@ -28,14 +30,16 @@ const Popover: FC<PopoverProps> = ({
   contentWidth,
   contentPadding = '2xl',
   showArrow = true,
+  closeOnBlur = false,
+  gutter = 12,
 }) => {
   return (
     <ChakraPopover
       placement={placement}
-      closeOnBlur={false}
+      closeOnBlur={closeOnBlur}
       trigger={trigger}
       arrowSize={12}
-      gutter={12}
+      gutter={gutter}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
