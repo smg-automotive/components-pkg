@@ -21,9 +21,18 @@ import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 
+const getComparisonUrl = (comparisonItems?: number[] | null) => {
+  if (!comparisonItems || !Array.isArray(comparisonItems)) return null;
+
+  const baseUrl = 'comparison';
+  if (comparisonItems.length === 0) return baseUrl;
+  return `${baseUrl}/${comparisonItems.join('/')}`;
+};
+
 interface NavigationProps {
   environment: Environment;
   brand: Brand;
+  comparisonItems?: number[] | null;
   language: Language;
   user: MergedUser | null;
   hasNotification: boolean;
@@ -37,6 +46,7 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({
   environment,
   brand,
+  comparisonItems,
   language,
   user,
   hasNotification,
@@ -56,7 +66,11 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       config: {
         headerItems: headerLinks({ trackEvent }),
-        drawerItems: drawerNodeItems({ trackEvent, onLogout }),
+        drawerItems: drawerNodeItems({
+          trackEvent,
+          onLogout,
+          comparisonUrl: getComparisonUrl(comparisonItems),
+        }),
       },
       user,
       urlPathParams,

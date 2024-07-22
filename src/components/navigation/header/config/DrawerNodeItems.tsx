@@ -35,9 +35,11 @@ export type DrawerNodeLinks = {
 };
 
 export const drawerNodeItems = ({
+  comparisonUrl,
   trackEvent,
   onLogout,
 }: {
+  comparisonUrl?: string | null;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
 }): DrawerNodeItemsConfig => ({
@@ -83,6 +85,29 @@ export const drawerNodeItems = ({
             },
           },
         },
+        ...(comparisonUrl
+          ? [
+              {
+                translationKey: 'header.searchMenu.comparison',
+                link: {
+                  de: `/de/${comparisonUrl}`,
+                  en: `/en/${comparisonUrl}`,
+                  fr: `/fr/${comparisonUrl}`,
+                  it: `/it/${comparisonUrl}`,
+                },
+                visibilitySettings: {
+                  userType: {
+                    private: true,
+                    professional: true,
+                  },
+                  brand: {
+                    autoscout24: true,
+                    motoscout24: true,
+                  },
+                },
+              },
+            ]
+          : []),
       ],
     },
     {
