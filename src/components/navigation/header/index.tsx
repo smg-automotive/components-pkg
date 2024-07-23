@@ -24,7 +24,7 @@ import { drawerNodeItems } from './config/DrawerNodeItems';
 interface NavigationProps {
   environment: Environment;
   brand: Brand;
-  comparisonItems?: number[] | null;
+  comparisonItemIds?: number[] | null;
   language: Language;
   user: MergedUser | null;
   hasNotification: boolean;
@@ -38,7 +38,7 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({
   environment,
   brand,
-  comparisonItems,
+  comparisonItemIds,
   language,
   user,
   hasNotification,
@@ -58,7 +58,11 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       config: {
         headerItems: headerLinks({ trackEvent }),
-        drawerItems: drawerNodeItems({ trackEvent, onLogout, comparisonItems }),
+        drawerItems: drawerNodeItems({
+          trackEvent,
+          onLogout,
+          comparisonItemIds,
+        }),
       },
       user,
       urlPathParams,

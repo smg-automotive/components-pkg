@@ -35,36 +35,36 @@ export type DrawerNodeLinks = {
 };
 
 const shouldShowComparisonLink = (
-  comparisonItems?: number[] | null,
-): comparisonItems is number[] => {
-  return !!comparisonItems && Array.isArray(comparisonItems);
+  comparisonItemIds?: number[] | null,
+): comparisonItemIds is number[] => {
+  return !!comparisonItemIds && Array.isArray(comparisonItemIds);
 };
 
-const getComparisonUrl = (comparisonItems: number[]) => {
+const getComparisonUrl = (comparisonItemIds: number[]) => {
   const baseUrl = 'comparison';
-  if (comparisonItems.length === 0) return baseUrl;
-  return `${baseUrl}/${comparisonItems.join('/')}`;
+  if (comparisonItemIds.length === 0) return baseUrl;
+  return `${baseUrl}/${comparisonItemIds.join('/')}`;
 };
 
 const getComparisonNodeItem = ({
-  comparisonItems,
+  comparisonItemIds,
   trackEvent,
 }: {
-  comparisonItems?: number[] | null;
+  comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
 }): NavigationLinkConfigProps[] => {
-  return shouldShowComparisonLink(comparisonItems)
+  return shouldShowComparisonLink(comparisonItemIds)
     ? [
         {
           translationKey: 'header.searchMenu.comparison',
           translationParameters: {
-            numberOfItems: comparisonItems.length,
+            numberOfItems: comparisonItemIds.length,
           },
           link: {
-            de: `/de/${getComparisonUrl(comparisonItems)}`,
-            en: `/en/${getComparisonUrl(comparisonItems)}`,
-            fr: `/fr/${getComparisonUrl(comparisonItems)}`,
-            it: `/it/${getComparisonUrl(comparisonItems)}`,
+            de: `/de/${getComparisonUrl(comparisonItemIds)}`,
+            en: `/en/${getComparisonUrl(comparisonItemIds)}`,
+            fr: `/fr/${getComparisonUrl(comparisonItemIds)}`,
+            it: `/it/${getComparisonUrl(comparisonItemIds)}`,
           },
           visibilitySettings: {
             userType: {
@@ -87,11 +87,11 @@ const getComparisonNodeItem = ({
 };
 
 export const drawerNodeItems = ({
-  comparisonItems,
+  comparisonItemIds,
   trackEvent,
   onLogout,
 }: {
-  comparisonItems?: number[] | null;
+  comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
 }): DrawerNodeItemsConfig => ({
@@ -137,7 +137,7 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItems, trackEvent }),
+        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
       ],
     },
     {
@@ -841,7 +841,7 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItems, trackEvent }),
+        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {
