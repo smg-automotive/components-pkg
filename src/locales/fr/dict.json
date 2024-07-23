@@ -107,6 +107,7 @@
     "searchMenu": {
       "additional": "Autres",
       "advancedSearch": "Recherche avancée",
+      "comparison": "Outil de Comparaison ({{ numberOfItems }})",
       "dealer": "Points de vente",
       "insuranceComparison": "Comparaison d’assurances",
       "searchCars": "Rechercher des véhicules",
