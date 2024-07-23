@@ -46,7 +46,13 @@ const getComparisonUrl = (comparisonItems: number[]) => {
   return `${baseUrl}/${comparisonItems.join('/')}`;
 };
 
-const getComparisonNodeItem = (comparisonItems?: number[] | null) => {
+const getComparisonNodeItem = ({
+  comparisonItems,
+  trackEvent,
+}: {
+  comparisonItems?: number[] | null;
+  trackEvent?: (event: CustomEvent) => void;
+}): NavigationLinkConfigProps[] => {
   return shouldShowComparisonLink(comparisonItems)
     ? [
         {
@@ -70,6 +76,11 @@ const getComparisonNodeItem = (comparisonItems?: number[] | null) => {
               motoscout24: true,
             },
           },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'open_comparison_tool',
+            }),
         },
       ]
     : [];
@@ -126,7 +137,7 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem(comparisonItems),
+        ...getComparisonNodeItem({ comparisonItems, trackEvent }),
       ],
     },
     {
@@ -830,7 +841,7 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem(comparisonItems),
+        ...getComparisonNodeItem({ comparisonItems, trackEvent }),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {
