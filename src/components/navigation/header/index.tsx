@@ -21,14 +21,6 @@ import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 
-const getComparisonUrl = (comparisonItems?: number[] | null) => {
-  if (!comparisonItems || !Array.isArray(comparisonItems)) return null;
-
-  const baseUrl = 'comparison';
-  if (comparisonItems.length === 0) return baseUrl;
-  return `${baseUrl}/${comparisonItems.join('/')}`;
-};
-
 interface NavigationProps {
   environment: Environment;
   brand: Brand;
@@ -66,11 +58,7 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       config: {
         headerItems: headerLinks({ trackEvent }),
-        drawerItems: drawerNodeItems({
-          trackEvent,
-          onLogout,
-          comparisonUrl: getComparisonUrl(comparisonItems),
-        }),
+        drawerItems: drawerNodeItems({ trackEvent, onLogout, comparisonItems }),
       },
       user,
       urlPathParams,

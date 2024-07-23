@@ -36,7 +36,7 @@ const meta: Meta<typeof Navigation> = {
     useAbsoluteUrls: false,
     entitlements: [],
     trackEvent: action('track navigation item click'),
-    comparisonItems: [],
+    comparisonItems: [1, 2, 3],
   },
 
   argTypes: {

@@ -34,12 +34,24 @@ export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
 };
 
+const shouldShowComparisonLink = (
+  comparisonItems?: number[] | null,
+): comparisonItems is number[] => {
+  return !!comparisonItems && Array.isArray(comparisonItems);
+};
+
+const getComparisonUrl = (comparisonItems: number[]) => {
+  const baseUrl = 'comparison';
+  if (comparisonItems.length === 0) return baseUrl;
+  return `${baseUrl}/${comparisonItems.join('/')}`;
+};
+
 export const drawerNodeItems = ({
-  comparisonUrl,
+  comparisonItems,
   trackEvent,
   onLogout,
 }: {
-  comparisonUrl?: string | null;
+  comparisonItems?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
 }): DrawerNodeItemsConfig => ({
@@ -85,15 +97,18 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...(comparisonUrl
+        ...(shouldShowComparisonLink(comparisonItems)
           ? [
               {
                 translationKey: 'header.searchMenu.comparison',
+                translationParameters: {
+                  numberOfItems: comparisonItems.length,
+                },
                 link: {
-                  de: `/de/${comparisonUrl}`,
-                  en: `/en/${comparisonUrl}`,
-                  fr: `/fr/${comparisonUrl}`,
-                  it: `/it/${comparisonUrl}`,
+                  de: `/de/${getComparisonUrl(comparisonItems)}`,
+                  en: `/en/${getComparisonUrl(comparisonItems)}`,
+                  fr: `/fr/${getComparisonUrl(comparisonItems)}`,
+                  it: `/it/${getComparisonUrl(comparisonItems)}`,
                 },
                 visibilitySettings: {
                   userType: {
