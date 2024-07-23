@@ -46,6 +46,35 @@ const getComparisonUrl = (comparisonItems: number[]) => {
   return `${baseUrl}/${comparisonItems.join('/')}`;
 };
 
+const getComparisonNodeItem = (comparisonItems?: number[] | null) => {
+  return shouldShowComparisonLink(comparisonItems)
+    ? [
+        {
+          translationKey: 'header.searchMenu.comparison',
+          translationParameters: {
+            numberOfItems: comparisonItems.length,
+          },
+          link: {
+            de: `/de/${getComparisonUrl(comparisonItems)}`,
+            en: `/en/${getComparisonUrl(comparisonItems)}`,
+            fr: `/fr/${getComparisonUrl(comparisonItems)}`,
+            it: `/it/${getComparisonUrl(comparisonItems)}`,
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+        },
+      ]
+    : [];
+};
+
 export const drawerNodeItems = ({
   comparisonItems,
   trackEvent,
@@ -97,32 +126,7 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...(shouldShowComparisonLink(comparisonItems)
-          ? [
-              {
-                translationKey: 'header.searchMenu.comparison',
-                translationParameters: {
-                  numberOfItems: comparisonItems.length,
-                },
-                link: {
-                  de: `/de/${getComparisonUrl(comparisonItems)}`,
-                  en: `/en/${getComparisonUrl(comparisonItems)}`,
-                  fr: `/fr/${getComparisonUrl(comparisonItems)}`,
-                  it: `/it/${getComparisonUrl(comparisonItems)}`,
-                },
-                visibilitySettings: {
-                  userType: {
-                    private: true,
-                    professional: true,
-                  },
-                  brand: {
-                    autoscout24: true,
-                    motoscout24: true,
-                  },
-                },
-              },
-            ]
-          : []),
+        ...getComparisonNodeItem(comparisonItems),
       ],
     },
     {
@@ -826,6 +830,7 @@ export const drawerNodeItems = ({
             },
           },
         },
+        ...getComparisonNodeItem(comparisonItems),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {
