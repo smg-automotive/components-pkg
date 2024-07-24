@@ -107,6 +107,7 @@
     "searchMenu": {
       "additional": "Altre",
       "advancedSearch": "Ricerca avanzata",
+      "comparison": "Strumento di Confronto ({{ numberOfItems }})",
       "dealer": "commercianti",
       "insuranceComparison": "Confronto di assicurazioni",
       "searchCars": "Ricerca veicolo",

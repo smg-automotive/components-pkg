@@ -32,6 +32,7 @@ export interface EntitlementConfig {
 
 export interface LinkConfig {
   translationKey?: string;
+  translationParameters?: Record<string, string | number>;
   link?: LocalizedLinks;
   onClick?: () => void;
   target?: LinkTargets;
@@ -63,6 +64,7 @@ export type Domains =
 // !!CMP Link
 export class Link {
   translationKey?: string;
+  translationParameters?: Record<string, string | number>;
   link?: LocalizedLinks;
   target?: LinkTargets;
   onClick?: () => void;
@@ -145,6 +147,7 @@ export class Link {
     )
       ? config.entitlementConfig?.missingEntitlementTranslationKey
       : config.translationKey;
+    this.translationParameters = config.translationParameters;
   }
 
   private static shouldDisplayMissingEntitlementTranslation(

@@ -10,6 +10,7 @@ import Badge from 'src/components/badge';
 export interface NavigationLinkProps {
   link?: Record<Language, string>;
   translationKey?: string;
+  translationParameters?: Record<string, string | number>;
   isNew?: boolean;
   rightIcon?: ReactNode;
   showUnderMoreLinkBelow?: BreakpointName;
@@ -25,6 +26,7 @@ export interface NavigationLinkProps {
 const NavigationLink: FC<NavigationLinkProps> = ({
   link,
   translationKey,
+  translationParameters = {},
   isNew,
   fontWeight = 'regular',
   variant = 'navigationLink',
@@ -48,7 +50,7 @@ const NavigationLink: FC<NavigationLinkProps> = ({
     >
       {translationKey && (
         <Hide below={hideTextBelow}>
-          {t(translationKey)}
+          {t(translationKey, translationParameters)}
           {isNew ? (
             <Badge variant="navigationLinkBadge" text="New"></Badge>
           ) : null}

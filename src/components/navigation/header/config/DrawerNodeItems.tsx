@@ -34,10 +34,64 @@ export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
 };
 
+const shouldShowComparisonLink = (
+  comparisonItemIds?: number[] | null,
+): comparisonItemIds is number[] => {
+  return !!comparisonItemIds && Array.isArray(comparisonItemIds);
+};
+
+const getComparisonUrl = (comparisonItemIds: number[]) => {
+  const baseUrl = 'comparison';
+  if (comparisonItemIds.length === 0) return baseUrl;
+  return `${baseUrl}/${comparisonItemIds.join('/')}`;
+};
+
+const getComparisonNodeItem = ({
+  comparisonItemIds,
+  trackEvent,
+}: {
+  comparisonItemIds?: number[] | null;
+  trackEvent?: (event: CustomEvent) => void;
+}): NavigationLinkConfigProps[] => {
+  return shouldShowComparisonLink(comparisonItemIds)
+    ? [
+        {
+          translationKey: 'header.searchMenu.comparison',
+          translationParameters: {
+            numberOfItems: comparisonItemIds.length,
+          },
+          link: {
+            de: `/de/${getComparisonUrl(comparisonItemIds)}`,
+            en: `/en/${getComparisonUrl(comparisonItemIds)}`,
+            fr: `/fr/${getComparisonUrl(comparisonItemIds)}`,
+            it: `/it/${getComparisonUrl(comparisonItemIds)}`,
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'open_comparison_tool',
+            }),
+        },
+      ]
+    : [];
+};
+
 export const drawerNodeItems = ({
+  comparisonItemIds,
   trackEvent,
   onLogout,
 }: {
+  comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
 }): DrawerNodeItemsConfig => ({
@@ -83,6 +137,7 @@ export const drawerNodeItems = ({
             },
           },
         },
+        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
       ],
     },
     {
@@ -786,6 +841,7 @@ export const drawerNodeItems = ({
             },
           },
         },
+        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {
