@@ -13,9 +13,11 @@ import {
 type PopoverProps = PropsWithChildren<
   {
     content: ReactNode;
-    trigger?: 'hover' | 'click';
     showArrow?: boolean;
-  } & Pick<ChakraPopoverProps, 'placement' | 'closeOnBlur' | 'gutter' | 'size'>
+  } & Pick<
+    ChakraPopoverProps,
+    'placement' | 'closeOnBlur' | 'gutter' | 'size' | 'trigger'
+  >
 >;
 
 const Popover: FC<PopoverProps> = ({

@@ -13,6 +13,7 @@ const meta: Meta<typeof PopoverComponent> = {
     content: 'I am popover content',
     placement: 'auto',
     children: <TooltipIcon />,
+    size: 'md',
   },
 
   argTypes: {
@@ -30,7 +31,10 @@ const meta: Meta<typeof PopoverComponent> = {
         'bottom-start',
         'bottom-end',
       ],
-
+      control: 'select',
+    },
+    size: {
+      options: ['md', 'xl'],
       control: 'select',
     },
     showArrow: {
