@@ -14,12 +14,8 @@ type PopoverProps = PropsWithChildren<
   {
     content: ReactNode;
     trigger?: 'hover' | 'click';
-    contentWidth?: string;
-    contentPadding?: string;
     showArrow?: boolean;
-    closeOnBlur?: boolean;
-    gutter?: number;
-  } & Pick<ChakraPopoverProps, 'placement'>
+  } & Pick<ChakraPopoverProps, 'placement' | 'closeOnBlur' | 'gutter' | 'size'>
 >;
 
 const Popover: FC<PopoverProps> = ({
@@ -27,11 +23,10 @@ const Popover: FC<PopoverProps> = ({
   children,
   placement,
   trigger = 'hover',
-  contentWidth,
-  contentPadding = '2xl',
   showArrow = true,
   closeOnBlur = false,
   gutter = 12,
+  size = 'md',
 }) => {
   return (
     <ChakraPopover
@@ -40,6 +35,7 @@ const Popover: FC<PopoverProps> = ({
       trigger={trigger}
       arrowSize={12}
       gutter={gutter}
+      size={size}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
@@ -48,11 +44,9 @@ const Popover: FC<PopoverProps> = ({
             borderRadius="sm"
             boxShadow="md"
             maxW="6xl"
-            p={contentPadding}
             // required for arrow to popup above shadow
             zIndex="0"
             backgroundColor="white"
-            width={contentWidth ? contentWidth : 'auto'}
           >
             {showArrow ? <PopoverArrow backgroundColor="white" /> : null}
             <PopoverBody>{content}</PopoverBody>

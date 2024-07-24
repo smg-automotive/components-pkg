@@ -41,12 +41,6 @@ const meta: Meta<typeof PopoverComponent> = {
       control: 'select',
       defaultValue: 'hover',
     },
-    contentWidth: {
-      control: 'text',
-    },
-    contentPadding: {
-      control: 'text',
-    },
     closeOnBlur: {
       control: 'boolean',
     },
