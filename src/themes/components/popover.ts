@@ -5,7 +5,7 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const sizes = {
   xl: definePartsStyle({
     content: {
-      width: '326px',
+      width: '6xl',
       p: 'md',
     },
   }),
