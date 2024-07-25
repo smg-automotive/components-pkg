@@ -71,6 +71,7 @@ export { PrintIcon } from './PrintIcon';
 export { RangeIcon } from './RangeIcon';
 export { RoadIcon } from './RoadIcon';
 export { RotateIcon } from './RotateIcon';
+export { SafeNumberIcon } from './SafeNumberIcon';
 export { ShareIcon } from './ShareIcon';
 export { StarIcon } from './StarIcon';
 export { SteeringWheelIcon } from './SteeringWheelIcon';
