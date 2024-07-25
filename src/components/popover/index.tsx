@@ -10,13 +10,20 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
-type PopoverProps = PropsWithChildren<
+export type PopoverProps = PropsWithChildren<
   {
     content: ReactNode;
     showArrow?: boolean;
   } & Pick<
     ChakraPopoverProps,
-    'placement' | 'closeOnBlur' | 'gutter' | 'size' | 'trigger'
+    | 'placement'
+    | 'closeOnBlur'
+    | 'gutter'
+    | 'size'
+    | 'trigger'
+    | 'onClose'
+    | 'onOpen'
+    | 'isOpen'
   >
 >;
 
@@ -29,6 +36,9 @@ const Popover: FC<PopoverProps> = ({
   closeOnBlur = false,
   gutter = 12,
   size = 'md',
+  onClose,
+  onOpen,
+  isOpen,
 }) => {
   return (
     <ChakraPopover
@@ -38,6 +48,9 @@ const Popover: FC<PopoverProps> = ({
       arrowSize={12}
       gutter={gutter}
       size={size}
+      onClose={onClose}
+      onOpen={onOpen}
+      isOpen={isOpen}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
