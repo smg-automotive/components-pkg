@@ -77,6 +77,7 @@ export { SteeringWheelIcon } from './SteeringWheelIcon';
 export { ThreeSixtyIcon } from './ThreeSixtyIcon';
 export { TimeIcon } from './TimeIcon';
 export { TooltipIcon } from './TooltipIcon';
+export { TopListingIcon } from './TopListingIcon';
 export { TrailerIcon } from './TrailerIcon';
 export { TransmissionIcon } from './TransmissionIcon';
 export { TrashIcon } from './Trash';
