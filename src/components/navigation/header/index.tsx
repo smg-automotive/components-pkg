@@ -135,11 +135,13 @@ const Navigation: FC<NavigationProps> = ({
               href={`/${language}/${getComparisonUrl(comparisonItemIds ?? [])}`}
               display={
                 shouldShowComparisonLink(comparisonItemIds)
-                  ? { base: 'none', sm: 'block' }
+                  ? // TODO: from 414px onwards visible ?
+                    { base: 'none', sm: 'block' }
                   : 'none'
               }
+              // TODO: aria-label
             >
-              <CompareIcon />
+              <CompareIcon color="gray.900" />
               <Box position="absolute" top={-10} right={-15}>
                 {comparisonItemIds && comparisonItemIds.length > 0 ? (
                   <Count count={comparisonItemIds.length} />
