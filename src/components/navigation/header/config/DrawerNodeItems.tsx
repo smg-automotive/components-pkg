@@ -34,13 +34,13 @@ export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
 };
 
-const shouldShowComparisonLink = (
+export const shouldShowComparisonLink = (
   comparisonItemIds?: number[] | null,
 ): comparisonItemIds is number[] => {
   return !!comparisonItemIds && Array.isArray(comparisonItemIds);
 };
 
-const getComparisonUrl = (comparisonItemIds: number[]) => {
+export const getComparisonUrl = (comparisonItemIds: number[]) => {
   const baseUrl = 'comparison';
   if (comparisonItemIds.length === 0) return baseUrl;
   return `${baseUrl}/${comparisonItemIds.join('/')}`;
@@ -76,6 +76,7 @@ const getComparisonNodeItem = ({
               motoscout24: true,
             },
           },
+          isNew: true,
           onClick: () =>
             trackEvent?.({
               eventCategory: navigationEventCategory,
