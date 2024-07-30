@@ -131,23 +131,24 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
-            {shouldShowComparisonLink(comparisonItemIds) ? (
-              <Hide below="sm">
-                <chakra.a
-                  position="relative"
-                  href={`/${language}/${getComparisonUrl(comparisonItemIds)}`}
-                >
-                  <CompareIcon />
-                  <Box position="absolute" top={-10} right={-15}>
-                    {comparisonItemIds.length > 0 ? (
-                      <Count count={comparisonItemIds.length} />
-                    ) : (
-                      <Badge variant="navigationLinkBadge" text="New" />
-                    )}
-                  </Box>
-                </chakra.a>
-              </Hide>
-            ) : null}
+            <chakra.a
+              position="relative"
+              href={`/${language}/${getComparisonUrl(comparisonItemIds ?? [])}`}
+              display={
+                shouldShowComparisonLink(comparisonItemIds)
+                  ? { base: 'none', sm: 'block' }
+                  : 'none'
+              }
+            >
+              <CompareIcon />
+              <Box position="absolute" top={-10} right={-15}>
+                {comparisonItemIds && comparisonItemIds.length > 0 ? (
+                  <Count count={comparisonItemIds.length} />
+                ) : (
+                  <Badge variant="navigationLinkBadge" text="New" />
+                )}
+              </Box>
+            </chakra.a>
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
