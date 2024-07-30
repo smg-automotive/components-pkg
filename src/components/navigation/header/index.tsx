@@ -10,7 +10,6 @@ import { Brand } from 'src/types/brand';
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 import { CompareIcon } from 'src/components/icons';
-import Hide from 'src/components/hide';
 import Count from 'src/components/count';
 import Box from 'src/components/box';
 
