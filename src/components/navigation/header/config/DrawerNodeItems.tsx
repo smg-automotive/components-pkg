@@ -66,6 +66,7 @@ const getComparisonNodeItem = ({
             fr: `/fr/${getComparisonUrl(comparisonItemIds)}`,
             it: `/it/${getComparisonUrl(comparisonItemIds)}`,
           },
+          isNew: true,
           visibilitySettings: {
             userType: {
               private: true,
