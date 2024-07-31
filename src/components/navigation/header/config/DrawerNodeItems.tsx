@@ -76,7 +76,6 @@ const getComparisonNodeItem = ({
               motoscout24: true,
             },
           },
-          isNew: true,
           onClick: () =>
             trackEvent?.({
               eventCategory: navigationEventCategory,

@@ -1,7 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { MergedUser } from '@smg-automotive/auth';
-import { chakra } from '@chakra-ui/react';
 
 import { CustomEvent } from 'src/types/tracking';
 import { Environment } from 'src/types/environment';
@@ -9,11 +8,8 @@ import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
-import { CompareIcon } from 'src/components/icons';
-import Count from 'src/components/count';
-import Box from 'src/components/box';
 
-import Badge from 'src/components/badge';
+import Box from 'src/components/box';
 
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
@@ -22,11 +18,8 @@ import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
-import {
-  drawerNodeItems,
-  getComparisonUrl,
-  shouldShowComparisonLink,
-} from './config/DrawerNodeItems';
+import { drawerNodeItems } from './config/DrawerNodeItems';
+import ComparisonItem from './ComparisonItem';
 
 interface NavigationProps {
   environment: Environment;
@@ -130,26 +123,7 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
-            <chakra.a
-              position="relative"
-              href={`/${language}/${getComparisonUrl(comparisonItemIds ?? [])}`}
-              display={
-                shouldShowComparisonLink(comparisonItemIds)
-                  ? // TODO: from 414px onwards visible ?
-                    { base: 'none', sm: 'block' }
-                  : 'none'
-              }
-              // TODO: aria-label
-            >
-              <CompareIcon color="gray.900" />
-              <Box position="absolute" top={-10} right={-15}>
-                {comparisonItemIds && comparisonItemIds.length > 0 ? (
-                  <Count count={comparisonItemIds.length} />
-                ) : (
-                  <Badge variant="navigationLinkBadge" text="New" />
-                )}
-              </Box>
-            </chakra.a>
+            <ComparisonItem />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
