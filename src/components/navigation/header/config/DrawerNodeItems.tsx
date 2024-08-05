@@ -6,9 +6,9 @@ import { Entitlement } from 'src/types/entitlements';
 import { CartIcon } from 'src/components/icons';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
+import { getComparisonUrl, shouldShowComparisonLink } from '../ComparisonItem';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
-import { getComparisonUrl, shouldShowComparisonLink } from '../ComparisonItem';
 
 export interface NavigationLinkNode {
   translationKey?: string;
