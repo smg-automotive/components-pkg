@@ -1405,7 +1405,7 @@ export const drawerNodeItems = ({
             fr: '/fr/vendre-voiture',
             it: '/it/vendere-auto',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: true,
@@ -1430,7 +1430,7 @@ export const drawerNodeItems = ({
             fr: '/fr/member/insertion/type',
             it: '/it/member/insertion/type',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: false,
@@ -1455,7 +1455,7 @@ export const drawerNodeItems = ({
             fr: '/fr/publier-annonce-moto',
             it: '/it/pubblicare-annuncio-moto',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: true,
