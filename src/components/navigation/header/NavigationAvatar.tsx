@@ -3,6 +3,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 import { MergedUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
+import Text from 'src/components/text';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
@@ -10,7 +11,6 @@ import Avatar from 'src/components/avatar';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/DrawerNodeItems';
-import Text from 'src/components/text';
 
 interface NavigationAvatarProps {
   user: MergedUser | null;
