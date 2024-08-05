@@ -123,7 +123,7 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
-            <ComparisonItem />
+            <ComparisonItem comparisonItemIds={comparisonItemIds} />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
