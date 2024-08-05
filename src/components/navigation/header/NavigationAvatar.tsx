@@ -10,6 +10,7 @@ import Avatar from 'src/components/avatar';
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/DrawerNodeItems';
+import Text from 'src/components/text';
 
 interface NavigationAvatarProps {
   user: MergedUser | null;
@@ -45,9 +46,14 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
+          <Text
+            fontWeight="bold"
+            {...(isDrawerOpened && { color: 'blue.700' })}
+            noOfLines={1}
+            maxW="4xl"
+          >
             {user.email}
-          </Box>
+          </Text>
         </Hide>
         <DrawerIndicator isOpen={isDrawerOpened} />
       </HStack>
