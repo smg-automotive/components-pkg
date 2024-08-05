@@ -1433,6 +1433,7 @@ export const drawerNodeItems = ({
           showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
+              guest: false,
               private: false,
               professional: true,
             },
