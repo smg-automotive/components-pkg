@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { CompareIcon } from 'src/components/icons';
 import Count from 'src/components/count';
 import Box from 'src/components/box';
@@ -21,15 +22,22 @@ export const getComparisonUrl = (comparisonItemIds: number[]) => {
 
 type Props = {
   comparisonItemIds?: number[] | null;
+  trackEvent?: (event: CustomEvent) => void;
 };
 
-const ComparisonItem: FC<Props> = ({ comparisonItemIds }) => {
+const ComparisonItem: FC<Props> = ({ comparisonItemIds, trackEvent }) => {
   const { t, language } = useI18n();
 
   return (
     <chakra.a
       position="relative"
       href={`/${language}/${getComparisonUrl(comparisonItemIds ?? [])}`}
+      onClick={() =>
+        trackEvent?.({
+          eventCategory: navigationEventCategory,
+          eventAction: 'open_comparison_tool',
+        })
+      }
       display={
         shouldShowComparisonLink(comparisonItemIds)
           ? { base: 'none', sm: 'block' }
