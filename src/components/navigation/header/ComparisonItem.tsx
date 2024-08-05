@@ -7,10 +7,17 @@ import Count from 'src/components/count';
 import Box from 'src/components/box';
 import Badge from 'src/components/badge';
 
-import {
-  getComparisonUrl,
-  shouldShowComparisonLink,
-} from './config/DrawerNodeItems';
+export const shouldShowComparisonLink = (
+  comparisonItemIds?: number[] | null,
+): comparisonItemIds is number[] => {
+  return !!comparisonItemIds && Array.isArray(comparisonItemIds);
+};
+
+export const getComparisonUrl = (comparisonItemIds: number[]) => {
+  const baseUrl = 'comparison';
+  if (comparisonItemIds.length === 0) return baseUrl;
+  return `${baseUrl}/${comparisonItemIds.join('/')}`;
+};
 
 type Props = {
   comparisonItemIds?: number[] | null;
@@ -25,8 +32,7 @@ const ComparisonItem: FC<Props> = ({ comparisonItemIds }) => {
       href={`/${language}/${getComparisonUrl(comparisonItemIds ?? [])}`}
       display={
         shouldShowComparisonLink(comparisonItemIds)
-          ? // TODO: from 414px onwards visible ?
-            { base: 'none', sm: 'block' }
+          ? { base: 'none', sm: 'block' }
           : 'none'
       }
       aria-label={t('header.searchMenu.comparison')}

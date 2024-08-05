@@ -8,6 +8,7 @@ import { CartIcon } from 'src/components/icons';
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
+import { getComparisonUrl, shouldShowComparisonLink } from '../ComparisonItem';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -32,18 +33,6 @@ export type DrawerNodeItemsConfig = {
 
 export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
-};
-
-export const shouldShowComparisonLink = (
-  comparisonItemIds?: number[] | null,
-): comparisonItemIds is number[] => {
-  return !!comparisonItemIds && Array.isArray(comparisonItemIds);
-};
-
-export const getComparisonUrl = (comparisonItemIds: number[]) => {
-  const baseUrl = 'comparison';
-  if (comparisonItemIds.length === 0) return baseUrl;
-  return `${baseUrl}/${comparisonItemIds.join('/')}`;
 };
 
 const getComparisonNodeItem = ({
@@ -1492,7 +1481,7 @@ export const drawerNodeItems = ({
             fr: '/fr/evaluation-vehicules',
             it: '/it/valuazione-vehicoli',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: true,
