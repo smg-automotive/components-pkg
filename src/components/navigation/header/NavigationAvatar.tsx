@@ -50,7 +50,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
             fontWeight="bold"
             {...(isDrawerOpened && { color: 'blue.700' })}
             noOfLines={1}
-            maxW="4xl"
+            maxW="3xl"
           >
             {user.email}
           </Text>
