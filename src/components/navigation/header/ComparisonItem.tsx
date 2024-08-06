@@ -28,6 +28,8 @@ type Props = {
 const ComparisonItem: FC<Props> = ({ comparisonItemIds, trackEvent }) => {
   const { t, language } = useI18n();
 
+  if (!shouldShowComparisonLink(comparisonItemIds)) return null;
+
   return (
     <chakra.a
       position="relative"
@@ -38,11 +40,7 @@ const ComparisonItem: FC<Props> = ({ comparisonItemIds, trackEvent }) => {
           eventAction: 'open_comparison_tool',
         })
       }
-      display={
-        shouldShowComparisonLink(comparisonItemIds)
-          ? { base: 'none', sm: 'block' }
-          : 'none'
-      }
+      display={{ base: 'none', sm: 'block' }}
       aria-label={t('header.searchMenu.comparison')}
     >
       <CompareIcon color="gray.900" />
