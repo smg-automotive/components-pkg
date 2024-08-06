@@ -6,9 +6,10 @@ import { Entitlement } from 'src/types/entitlements';
 import { CartIcon } from 'src/components/icons';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
-import { getComparisonUrl, shouldShowComparisonLink } from '../ComparisonItem';
+import { shouldShowComparisonLink } from '../ComparisonItem';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
+import { comparisonLinkConfig } from './comparison';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -45,32 +46,8 @@ const getComparisonNodeItem = ({
   return shouldShowComparisonLink(comparisonItemIds)
     ? [
         {
-          translationKey: 'header.searchMenu.comparison',
-          translationParameters: {
-            numberOfItems: comparisonItemIds.length,
-          },
-          link: {
-            de: `/de/${getComparisonUrl(comparisonItemIds)}`,
-            en: `/en/${getComparisonUrl(comparisonItemIds)}`,
-            fr: `/fr/${getComparisonUrl(comparisonItemIds)}`,
-            it: `/it/${getComparisonUrl(comparisonItemIds)}`,
-          },
+          ...comparisonLinkConfig({ comparisonItemIds, trackEvent }),
           isNew: true,
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'open_comparison_tool',
-            }),
         },
       ]
     : [];

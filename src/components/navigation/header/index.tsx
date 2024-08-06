@@ -16,6 +16,7 @@ import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
+import { iconItems } from './config/iconItems';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
@@ -63,6 +64,7 @@ const Navigation: FC<NavigationProps> = ({
           onLogout,
           comparisonItemIds,
         }),
+        iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
       user,
       urlPathParams,
@@ -123,10 +125,12 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
-            <ComparisonItem
-              comparisonItemIds={comparisonItemIds}
-              trackEvent={trackEvent}
-            />
+            {config.iconItems.comparison ? (
+              <ComparisonItem
+                link={config.iconItems.comparison}
+                count={comparisonItemIds?.length ?? 0}
+              />
+            ) : null}
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}

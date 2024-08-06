@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
-import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { CompareIcon } from 'src/components/icons';
 import Count from 'src/components/count';
 import Box from 'src/components/box';
 import Badge from 'src/components/badge';
+
+import { Link } from '../link';
 
 export const shouldShowComparisonLink = (
   comparisonItemIds?: number[] | null,
@@ -21,32 +22,25 @@ export const getComparisonUrl = (comparisonItemIds: number[]) => {
 };
 
 type Props = {
-  comparisonItemIds?: number[] | null;
-  trackEvent?: (event: CustomEvent) => void;
+  link: Link;
+  count: number;
 };
 
-const ComparisonItem: FC<Props> = ({ comparisonItemIds, trackEvent }) => {
+const ComparisonItem: FC<Props> = ({ link, count }) => {
   const { t, language } = useI18n();
-
-  if (!shouldShowComparisonLink(comparisonItemIds)) return null;
 
   return (
     <chakra.a
       position="relative"
-      href={`/${language}/${getComparisonUrl(comparisonItemIds ?? [])}`}
-      onClick={() =>
-        trackEvent?.({
-          eventCategory: navigationEventCategory,
-          eventAction: 'open_comparison_tool',
-        })
-      }
+      href={link.link?.[language]}
+      onClick={link.onClick}
       display={{ base: 'none', sm: 'block' }}
-      aria-label={t('header.searchMenu.comparison')}
+      aria-label={t(link.translationKey ?? '', link.translationParameters)}
     >
       <CompareIcon color="gray.900" />
       <Box position="absolute" top={-10} right={-15}>
-        {comparisonItemIds && comparisonItemIds.length > 0 ? (
-          <Count count={comparisonItemIds.length} />
+        {count > 0 ? (
+          <Count count={count} />
         ) : (
           <Badge variant="navigationLinkBadge" text="New" />
         )}
