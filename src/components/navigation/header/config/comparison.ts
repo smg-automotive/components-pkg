@@ -1,5 +1,7 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 
+import { LinkConfig } from 'src/components/navigation/link';
+
 import { getComparisonUrl } from '../ComparisonItem';
 
 export const comparisonLinkConfig = ({
@@ -36,5 +38,5 @@ export const comparisonLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'open_comparison_tool',
       }),
-  };
+  } satisfies LinkConfig;
 };
