@@ -1,4 +1,10 @@
-import React, { ElementType, FC, ReactElement, ReactNode } from 'react';
+import React, {
+  ElementType,
+  FC,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+} from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
@@ -75,7 +81,7 @@ type IconButtonProps =
 
 export type Props = ButtonProps | IconButtonProps | LinkProps;
 
-const Button: FC<Props> = (props) => {
+const Button: FC<Props> = forwardRef((props: Props, ref) => {
   const {
     variant = 'primary',
     size = 'lg',
@@ -89,6 +95,7 @@ const Button: FC<Props> = (props) => {
 
   return (
     <ChakraButton
+      ref={ref}
       leftIcon={props.children ? props.leftIcon : icon}
       rightIcon={props.children ? props.rightIcon : undefined}
       iconSpacing={props.children ? 'xs' : 0}
@@ -108,6 +115,7 @@ const Button: FC<Props> = (props) => {
       {props.children}
     </ChakraButton>
   );
-};
+});
+Button.displayName = 'Button';
 
 export default Button;
