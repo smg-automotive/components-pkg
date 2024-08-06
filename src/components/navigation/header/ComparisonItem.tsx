@@ -15,9 +15,9 @@ export const shouldShowComparisonLink = (
 };
 
 export const getComparisonUrl = (comparisonItemIds: number[]) => {
-  const baseUrl = 'comparison';
-  if (comparisonItemIds.length === 0) return baseUrl;
-  return `${baseUrl}/${comparisonItemIds.join('/')}`;
+  const basePathSegment = 'comparison';
+  if (comparisonItemIds.length === 0) return basePathSegment;
+  return `${basePathSegment}/${comparisonItemIds.join('/')}`;
 };
 
 type Props = {
