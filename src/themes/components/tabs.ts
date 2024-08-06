@@ -76,7 +76,7 @@ const variants = {
         borderColor: 'blue.200',
       },
     },
-    tabpanel: baseStyleTabpanel,
+    tabpanel: { ...baseStyleTabpanel, margin: '0' },
   },
 };
 
