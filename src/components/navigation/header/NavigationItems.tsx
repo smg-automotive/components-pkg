@@ -61,6 +61,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
       {headerLinks.map((link, index) => (
         <HeaderLink key={`link-${index}`} link={link} />
       ))}
+      {/* on mobile, the items from the more drawer are inside the search drawer */}
       <Show
         breakpoint={`(min-width: ${breakpoints.sm.px + 1}px) and (max-width: ${breakpoints.lg.px}px)`}
       >
