@@ -24,11 +24,12 @@ import {
   DrawerNodeItemsConfig,
   NavigationLinkConfigNode,
 } from './DrawerNodeItems';
+import { ShowUnderMoreBreakpoint } from './showUnderMoreConstants';
 
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;
   iconRight?: ReactNode;
-  showUnderMoreLinkBelow?: BreakpointName;
+  showUnderMoreLinkBelow?: ShowUnderMoreBreakpoint;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
@@ -38,7 +39,7 @@ export interface HeaderNavigationLinkInstance extends LinkInstance {
 export interface HeaderNavigationLinkConfig extends LinkConfig {
   isNew?: boolean;
   rightIcon?: ReactNode;
-  showUnderMoreLinkBelow?: BreakpointName;
+  showUnderMoreLinkBelow?: ShowUnderMoreBreakpoint;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;

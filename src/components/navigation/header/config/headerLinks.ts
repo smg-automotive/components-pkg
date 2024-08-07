@@ -10,13 +10,14 @@ import {
   estimate,
   magazine,
   sell,
+  ShowUnderMoreBreakpoint,
 } from './showUnderMoreConstants';
 
 export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
   'isVisible'
 > & {
-  showUnderMoreLinkBelow?: BreakpointName;
+  showUnderMoreLinkBelow?: ShowUnderMoreBreakpoint;
   color?: string;
   visibilitySettings: {
     userType: {

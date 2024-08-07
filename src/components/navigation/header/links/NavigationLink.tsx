@@ -6,6 +6,7 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 import Link from 'src/components/link';
 import Hide from 'src/components/hide';
 import Badge from 'src/components/badge';
+import { ShowUnderMoreBreakpoint } from '../config/showUnderMoreConstants';
 
 export interface NavigationLinkProps {
   link?: Record<Language, string>;
@@ -13,7 +14,7 @@ export interface NavigationLinkProps {
   translationParameters?: Record<string, string | number>;
   isNew?: boolean;
   rightIcon?: ReactNode;
-  showUnderMoreLinkBelow?: BreakpointName;
+  showUnderMoreLinkBelow?: ShowUnderMoreBreakpoint;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;
