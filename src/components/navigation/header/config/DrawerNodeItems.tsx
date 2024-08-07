@@ -22,6 +22,7 @@ import {
 } from './sell';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
+import { estimateLinkConfig } from './estimate';
 import { comparisonLinkConfig } from './comparison';
 
 export interface NavigationLinkNode {
@@ -269,30 +270,8 @@ export const drawerNodeItems = ({
           showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
         },
         {
-          translationKey: 'header.estimate',
-          isInternal: true,
-          link: {
-            de: '/de/fahrzeugbewertung',
-            en: '/de/fahrzeugbewertung',
-            fr: '/fr/evaluation-vehicules',
-            it: '/it/valuazione-vehicoli',
-          },
+          ...estimateLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'estimate',
-            }),
         },
         {
           translationKey: 'header.assure',
@@ -1554,30 +1533,8 @@ export const drawerNodeItems = ({
           showUnderMoreLinkBelow: sell,
         },
         {
-          translationKey: 'header.estimate',
-          isInternal: true,
-          link: {
-            de: '/de/fahrzeugbewertung',
-            en: '/de/fahrzeugbewertung',
-            fr: '/fr/evaluation-vehicules',
-            it: '/it/valuazione-vehicoli',
-          },
+          ...estimateLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: estimate,
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'estimate',
-            }),
         },
         {
           translationKey: 'header.assure',

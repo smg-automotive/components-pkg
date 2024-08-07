@@ -16,6 +16,7 @@ import {
   privateMotoScoutSellLinkConfig,
   professionalSellLinkConfig,
 } from './sell';
+import { estimateLinkConfig } from './estimate';
 
 export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
@@ -59,29 +60,8 @@ export const headerLinks = ({
     showUnderMoreLinkBelow: sell,
   },
   {
-    translationKey: 'header.estimate',
-    link: {
-      de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-      en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-      fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
-      it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
-    },
+    ...estimateLinkConfig({ trackEvent }),
     showUnderMoreLinkBelow: estimate,
-    visibilitySettings: {
-      userType: {
-        private: true,
-        professional: false,
-      },
-      brand: {
-        autoscout24: true,
-        motoscout24: false,
-      },
-    },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'estimate',
-      }),
   },
   {
     translationKey: 'header.assure',
