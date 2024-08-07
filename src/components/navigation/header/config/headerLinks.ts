@@ -11,6 +11,11 @@ import {
   sell,
   ShowUnderMoreBreakpoint,
 } from './showUnderMoreConstants';
+import {
+  privateAutoScoutSellLinkConfig,
+  privateMotoScoutSellLinkConfig,
+  professionalSellLinkConfig,
+} from './sell';
 
 export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
@@ -42,80 +47,16 @@ export const headerLinks = ({
   trackEvent?: (event: CustomEvent) => void;
 }): NavigationLinkConfigProps[] => [
   {
-    translationKey: 'header.sell',
-    link: {
-      de: '/de/auto-verkaufen',
-      en: '/de/auto-verkaufen',
-      fr: '/fr/vendre-voiture',
-      it: '/it/vendere-auto',
-    },
+    ...privateAutoScoutSellLinkConfig({ trackEvent }),
     showUnderMoreLinkBelow: sell,
-    visibilitySettings: {
-      userType: {
-        private: true,
-        professional: false,
-      },
-      brand: {
-        autoscout24: true,
-        motoscout24: false,
-      },
-    },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'sell',
-      }),
   },
   {
-    translationKey: 'header.sell',
-    link: {
-      de: '/de/motorrad-inserieren',
-      en: '/de/motorrad-inserieren',
-      fr: '/fr/publier-annonce-moto',
-      it: '/it/pubblicare-annuncio-moto',
-    },
+    ...privateMotoScoutSellLinkConfig({ trackEvent }),
     showUnderMoreLinkBelow: sell,
-    visibilitySettings: {
-      userType: {
-        private: true,
-        professional: false,
-      },
-      brand: {
-        autoscout24: false,
-        motoscout24: true,
-      },
-    },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'sell',
-      }),
   },
   {
-    translationKey: 'header.sell',
-    link: {
-      de: '/de/member/insertion/type',
-      en: '/de/member/insertion/type',
-      fr: '/fr/member/insertion/type',
-      it: '/it/member/insertion/type',
-    },
+    ...professionalSellLinkConfig({ trackEvent }),
     showUnderMoreLinkBelow: sell,
-    visibilitySettings: {
-      userType: {
-        guest: false,
-        private: false,
-        professional: true,
-      },
-      brand: {
-        autoscout24: true,
-        motoscout24: true,
-      },
-    },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'sell',
-      }),
   },
   {
     translationKey: 'header.estimate',
