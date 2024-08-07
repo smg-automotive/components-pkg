@@ -42,7 +42,7 @@ export const headerLinks = ({
       fr: '/fr/vendre-voiture',
       it: '/it/vendere-auto',
     },
-    showUnderMoreLinkBelow: 'sm',
+    showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
         private: true,
@@ -67,7 +67,7 @@ export const headerLinks = ({
       fr: '/fr/publier-annonce-moto',
       it: '/it/pubblicare-annuncio-moto',
     },
-    showUnderMoreLinkBelow: 'sm',
+    showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
         private: true,
@@ -92,7 +92,7 @@ export const headerLinks = ({
       fr: '/fr/member/insertion/type',
       it: '/it/member/insertion/type',
     },
-    showUnderMoreLinkBelow: 'sm',
+    showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
         guest: false,
@@ -118,7 +118,7 @@ export const headerLinks = ({
       fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
       it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
     },
-    showUnderMoreLinkBelow: 'sm',
+    showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
         private: true,

@@ -3,6 +3,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 import { MergedUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
+import Text from 'src/components/text';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
@@ -45,9 +46,14 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
+          <Text
+            fontWeight="bold"
+            {...(isDrawerOpened && { color: 'blue.700' })}
+            noOfLines={1}
+            maxW="3xl"
+          >
             {user.email}
-          </Box>
+          </Text>
         </Hide>
         <DrawerIndicator isOpen={isDrawerOpened} />
       </HStack>

@@ -6,8 +6,10 @@ import { Entitlement } from 'src/types/entitlements';
 import { CartIcon } from 'src/components/icons';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
+import { shouldShowComparisonLink } from '../ComparisonItem';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
+import { comparisonLinkConfig } from './comparison';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -34,53 +36,25 @@ export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
 };
 
-const shouldShowComparisonLink = (
-  comparisonItemIds?: number[] | null,
-): comparisonItemIds is number[] => {
-  return !!comparisonItemIds && Array.isArray(comparisonItemIds);
-};
-
-const getComparisonUrl = (comparisonItemIds: number[]) => {
-  const baseUrl = 'comparison';
-  if (comparisonItemIds.length === 0) return baseUrl;
-  return `${baseUrl}/${comparisonItemIds.join('/')}`;
-};
-
 const getComparisonNodeItem = ({
   comparisonItemIds,
   trackEvent,
+  eventLabel,
 }: {
   comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
+  eventLabel: string;
 }): NavigationLinkConfigProps[] => {
   return shouldShowComparisonLink(comparisonItemIds)
     ? [
         {
-          translationKey: 'header.searchMenu.comparison',
-          translationParameters: {
-            numberOfItems: comparisonItemIds.length,
-          },
-          link: {
-            de: `/de/${getComparisonUrl(comparisonItemIds)}`,
-            en: `/en/${getComparisonUrl(comparisonItemIds)}`,
-            fr: `/fr/${getComparisonUrl(comparisonItemIds)}`,
-            it: `/it/${getComparisonUrl(comparisonItemIds)}`,
-          },
+          ...comparisonLinkConfig({ comparisonItemIds }),
           isNew: true,
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
           onClick: () =>
             trackEvent?.({
               eventCategory: navigationEventCategory,
               eventAction: 'open_comparison_tool',
+              eventLabel,
             }),
         },
       ]
@@ -138,7 +112,11 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
+        ...getComparisonNodeItem({
+          comparisonItemIds,
+          trackEvent,
+          eventLabel: 'drawer-search',
+        }),
       ],
     },
     {
@@ -842,7 +820,11 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
+        ...getComparisonNodeItem({
+          comparisonItemIds,
+          trackEvent,
+          eventLabel: 'drawer-user',
+        }),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {
@@ -1416,7 +1398,7 @@ export const drawerNodeItems = ({
             fr: '/fr/vendre-voiture',
             it: '/it/vendere-auto',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: true,
@@ -1441,9 +1423,10 @@ export const drawerNodeItems = ({
             fr: '/fr/member/insertion/type',
             it: '/it/member/insertion/type',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
+              guest: false,
               private: false,
               professional: true,
             },
@@ -1466,7 +1449,7 @@ export const drawerNodeItems = ({
             fr: '/fr/publier-annonce-moto',
             it: '/it/pubblicare-annuncio-moto',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: true,
@@ -1492,7 +1475,7 @@ export const drawerNodeItems = ({
             fr: '/fr/evaluation-vehicules',
             it: '/it/valuazione-vehicoli',
           },
-          showUnderMoreLinkBelow: 'sm',
+          showUnderMoreLinkBelow: 'md',
           visibilitySettings: {
             userType: {
               private: true,
