@@ -1,4 +1,4 @@
-import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
+import { CustomEvent } from 'src/types/tracking';
 
 import { EntitlementConfig } from 'src/components/navigation/link';
 
@@ -16,7 +16,9 @@ import {
   privateMotoScoutSellLinkConfig,
   professionalSellLinkConfig,
 } from './sell';
+import { magazineLinkConfig } from './magazine';
 import { estimateLinkConfig } from './estimate';
+import { electromobilityLinkConfig } from './electroMobility';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
 
 export type NavigationLinkConfigProps = Omit<
@@ -73,53 +75,11 @@ export const headerLinks = ({
     showUnderMoreLinkBelow: assure,
   },
   {
-    translationKey: 'header.electromobility',
-    link: {
-      de: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
-      en: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
-      fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
-      it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
-    },
+    ...electromobilityLinkConfig({ trackEvent }),
     showUnderMoreLinkBelow: electromobility,
-    visibilitySettings: {
-      userType: {
-        private: true,
-        professional: true,
-      },
-      brand: {
-        autoscout24: true,
-        motoscout24: false,
-      },
-    },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'electromobility',
-      }),
   },
   {
-    translationKey: 'header.magazine',
-    link: {
-      de: 'https://guide.motoscout24.ch/de/',
-      en: 'https://guide.motoscout24.ch/de/',
-      fr: 'https://guide.motoscout24.ch/fr/',
-      it: 'https://guide.motoscout24.ch/it/',
-    },
+    ...magazineLinkConfig({ trackEvent }),
     showUnderMoreLinkBelow: magazine,
-    visibilitySettings: {
-      userType: {
-        private: true,
-        professional: true,
-      },
-      brand: {
-        autoscout24: false,
-        motoscout24: true,
-      },
-    },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'magazine',
-      }),
   },
 ];
