@@ -6,7 +6,6 @@ import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
-import { BreakpointName } from 'src/themes/shared/breakpoints';
 import {
   EntitlementConfig,
   LinkConfig,
@@ -16,6 +15,7 @@ import {
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
 import { UserTypeExternal } from '../types';
+import { ShowUnderMoreBreakpoint } from './showUnderMoreConstants';
 import { IconItems, IconItemsConfig, IconItemsLinks } from './iconItems';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -24,7 +24,6 @@ import {
   DrawerNodeItemsConfig,
   NavigationLinkConfigNode,
 } from './DrawerNodeItems';
-import { ShowUnderMoreBreakpoint } from './showUnderMoreConstants';
 
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;

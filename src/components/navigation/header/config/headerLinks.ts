@@ -1,5 +1,4 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { EntitlementConfig } from 'src/components/navigation/link';
 

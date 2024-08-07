@@ -4,7 +4,6 @@ import { MappedUserType } from '@smg-automotive/auth';
 
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
-import { BreakpointName } from 'src/themes/shared/breakpoints';
 
 import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
 
