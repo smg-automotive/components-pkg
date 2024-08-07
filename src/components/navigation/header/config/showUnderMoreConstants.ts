@@ -1,4 +1,4 @@
-export const sell = 'xs';
+export const sell = 'sm';
 export const estimate = 'sm';
 export const assure = 'md';
 export const electromobility = 'lg';
