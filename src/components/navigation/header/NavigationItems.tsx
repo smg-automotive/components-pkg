@@ -4,6 +4,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
 import Stack from 'src/components/stack';
+import Show from 'src/components/show';
 import Link from 'src/components/link';
 import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
 import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
@@ -12,6 +13,7 @@ import { Platform } from './types';
 import { NavigationItem } from './NavigationItem';
 import { HeaderLink } from './links/HeaderLink';
 import { Drawer as UseNavigationDrawer } from './hooks/useNavigationDrawer';
+import { showMoreDrawer } from './config/showUnderMoreConstants';
 import { HeaderNavigationLink } from './config/headerNavigationLink';
 import { DrawerNode } from './config/DrawerNodeItems';
 
@@ -34,6 +36,9 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
 }) => {
   const logo = platform === 'autoscout24' ? logoAutoScout24 : logoMotoScout24;
 
+  const moreDrawerHandler = createDrawerHandler({
+    nodeName: DrawerNode.More,
+  });
   const searchDrawerHandler = createDrawerHandler({
     nodeName: DrawerNode.Search,
   });
@@ -56,6 +61,13 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
       {headerLinks.map((link, index) => (
         <HeaderLink key={`link-${index}`} link={link} />
       ))}
+      <Show breakpoint={showMoreDrawer}>
+        <NavigationItem
+          translationKey="header.more"
+          drawerHandler={moreDrawerHandler}
+          isOpen={isOpen && drawer?.current === DrawerNode.More}
+        />
+      </Show>
     </Stack>
   );
 };

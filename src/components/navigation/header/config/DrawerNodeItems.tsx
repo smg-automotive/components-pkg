@@ -13,6 +13,7 @@ import {
   estimate,
   magazine,
   sell,
+  showMoreDrawerInsideSearchDrawer,
 } from './showUnderMoreConstants';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
@@ -26,6 +27,7 @@ export interface NavigationLinkNode {
 export enum DrawerNode {
   Search = 'search',
   User = 'user',
+  More = 'more',
 }
 
 export type NavigationLinkConfigNode = Omit<NavigationLinkNode, 'items'> & {
@@ -257,7 +259,7 @@ export const drawerNodeItems = ({
             fr: '/fr/vendre-voiture',
             it: '/it/vendere-auto',
           },
-          showUnderMoreLinkBelow: sell,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -282,7 +284,7 @@ export const drawerNodeItems = ({
             fr: '/fr/member/insertion/type',
             it: '/it/member/insertion/type',
           },
-          showUnderMoreLinkBelow: sell,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               guest: false,
@@ -308,7 +310,7 @@ export const drawerNodeItems = ({
             fr: '/fr/publier-annonce-moto',
             it: '/it/pubblicare-annuncio-moto',
           },
-          showUnderMoreLinkBelow: sell,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -334,7 +336,7 @@ export const drawerNodeItems = ({
             fr: '/fr/evaluation-vehicules',
             it: '/it/valuazione-vehicoli',
           },
-          showUnderMoreLinkBelow: estimate,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -359,7 +361,7 @@ export const drawerNodeItems = ({
             fr: '/fr/assurance-auto',
             it: '/it/assicurazione-auto',
           },
-          showUnderMoreLinkBelow: assure,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -384,7 +386,7 @@ export const drawerNodeItems = ({
             fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
             it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
           },
-          showUnderMoreLinkBelow: assure,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -409,7 +411,7 @@ export const drawerNodeItems = ({
             fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
             it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
           },
-          showUnderMoreLinkBelow: electromobility,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -434,7 +436,7 @@ export const drawerNodeItems = ({
             fr: 'https://guide.motoscout24.ch/fr/',
             it: 'https://guide.motoscout24.ch/it/',
           },
-          showUnderMoreLinkBelow: magazine,
+          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
           visibilitySettings: {
             userType: {
               private: true,
@@ -1591,6 +1593,214 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+        },
+      ],
+    },
+  ],
+  more: [
+    {
+      items: [
+        {
+          translationKey: 'header.sell',
+          link: {
+            de: '/de/auto-verkaufen',
+            en: '/de/auto-verkaufen',
+            fr: '/fr/vendre-voiture',
+            it: '/it/vendere-auto',
+          },
+          showUnderMoreLinkBelow: sell,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'sell',
+            }),
+        },
+        {
+          translationKey: 'header.sell',
+          link: {
+            de: '/de/member/insertion/type',
+            en: '/de/member/insertion/type',
+            fr: '/fr/member/insertion/type',
+            it: '/it/member/insertion/type',
+          },
+          showUnderMoreLinkBelow: sell,
+          visibilitySettings: {
+            userType: {
+              guest: false,
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'sell',
+            }),
+        },
+        {
+          translationKey: 'header.sell',
+          link: {
+            de: '/de/motorrad-inserieren',
+            en: '/de/motorrad-inserieren',
+            fr: '/fr/publier-annonce-moto',
+            it: '/it/pubblicare-annuncio-moto',
+          },
+          showUnderMoreLinkBelow: sell,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'sell',
+            }),
+        },
+        {
+          translationKey: 'header.estimate',
+          isInternal: true,
+          link: {
+            de: '/de/fahrzeugbewertung',
+            en: '/de/fahrzeugbewertung',
+            fr: '/fr/evaluation-vehicules',
+            it: '/it/valuazione-vehicoli',
+          },
+          showUnderMoreLinkBelow: estimate,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'estimate',
+            }),
+        },
+        {
+          translationKey: 'header.assure',
+          link: {
+            de: '/de/autoversicherung',
+            en: '/de/autoversicherung',
+            fr: '/fr/assurance-auto',
+            it: '/it/assicurazione-auto',
+          },
+          showUnderMoreLinkBelow: assure,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'insurance',
+            }),
+        },
+        {
+          translationKey: 'header.assure',
+          link: {
+            de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+            en: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+            fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+            it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
+          },
+          showUnderMoreLinkBelow: assure,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'insurance',
+            }),
+        },
+        {
+          translationKey: 'header.electromobility',
+          link: {
+            de: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+            en: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
+            fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
+            it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
+          },
+          showUnderMoreLinkBelow: electromobility,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'electromobility',
+            }),
+        },
+        {
+          translationKey: 'header.magazine',
+          link: {
+            de: 'https://guide.motoscout24.ch/de/',
+            en: 'https://guide.motoscout24.ch/de/',
+            fr: 'https://guide.motoscout24.ch/fr/',
+            it: 'https://guide.motoscout24.ch/it/',
+          },
+          showUnderMoreLinkBelow: magazine,
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'magazine',
+            }),
         },
       ],
     },
