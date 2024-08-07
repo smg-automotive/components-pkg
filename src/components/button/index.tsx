@@ -1,4 +1,4 @@
-import React, { ElementType, FC, ReactElement, ReactNode } from 'react';
+import React, { ElementType, forwardRef, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
@@ -75,39 +75,44 @@ type IconButtonProps =
 
 export type Props = ButtonProps | IconButtonProps | LinkProps;
 
-const Button: FC<Props> = (props) => {
-  const {
-    variant = 'primary',
-    size = 'lg',
-    isDisabled = false,
-    as = 'button',
-    isExternal,
-    ariaLabel,
-    icon,
-    ...rest
-  } = props;
+const Button = forwardRef<HTMLLinkElement | HTMLButtonElement, Props>(
+  (props, ref) => {
+    const {
+      variant = 'primary',
+      size = 'lg',
+      isDisabled = false,
+      as = 'button',
+      isExternal,
+      ariaLabel,
+      icon,
+      ...rest
+    } = props;
 
-  return (
-    <ChakraButton
-      leftIcon={props.children ? props.leftIcon : icon}
-      rightIcon={props.children ? props.rightIcon : undefined}
-      iconSpacing={props.children ? 'xs' : 0}
-      as={as}
-      variant={variant}
-      size={size}
-      isDisabled={isDisabled}
-      aria-label={props.children ? undefined : ariaLabel}
-      {...rest}
-      {...(props.as === 'a'
-        ? {
-            target: isExternal ? '_blank' : undefined,
-            rel: props.rel || (isExternal ? 'noopener noreferrer' : undefined),
-          }
-        : {})}
-    >
-      {props.children}
-    </ChakraButton>
-  );
-};
+    return (
+      <ChakraButton
+        ref={ref}
+        leftIcon={props.children ? props.leftIcon : icon}
+        rightIcon={props.children ? props.rightIcon : undefined}
+        iconSpacing={props.children ? 'xs' : 0}
+        as={as}
+        variant={variant}
+        size={size}
+        isDisabled={isDisabled}
+        aria-label={props.children ? undefined : ariaLabel}
+        {...rest}
+        {...(props.as === 'a'
+          ? {
+              target: isExternal ? '_blank' : undefined,
+              rel:
+                props.rel || (isExternal ? 'noopener noreferrer' : undefined),
+            }
+          : {})}
+      >
+        {props.children}
+      </ChakraButton>
+    );
+  },
+);
+Button.displayName = 'Button';
 
 export default Button;
