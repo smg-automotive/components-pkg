@@ -4,6 +4,13 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 import { EntitlementConfig } from 'src/components/navigation/link';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
+import {
+  assure,
+  electromobility,
+  estimate,
+  magazine,
+  sell,
+} from './showUnderMoreConstants';
 
 export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
@@ -42,7 +49,7 @@ export const headerLinks = ({
       fr: '/fr/vendre-voiture',
       it: '/it/vendere-auto',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: sell,
     visibilitySettings: {
       userType: {
         private: true,
@@ -67,7 +74,7 @@ export const headerLinks = ({
       fr: '/fr/publier-annonce-moto',
       it: '/it/pubblicare-annuncio-moto',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: sell,
     visibilitySettings: {
       userType: {
         private: true,
@@ -92,7 +99,7 @@ export const headerLinks = ({
       fr: '/fr/member/insertion/type',
       it: '/it/member/insertion/type',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: sell,
     visibilitySettings: {
       userType: {
         guest: false,
@@ -118,7 +125,7 @@ export const headerLinks = ({
       fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
       it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: estimate,
     visibilitySettings: {
       userType: {
         private: true,
@@ -143,7 +150,7 @@ export const headerLinks = ({
       fr: '/fr/assurance-auto',
       it: '/it/assicurazione-auto',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: assure,
     visibilitySettings: {
       userType: {
         private: true,
@@ -168,7 +175,7 @@ export const headerLinks = ({
       fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
       it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: assure,
     visibilitySettings: {
       userType: {
         private: true,
@@ -193,7 +200,7 @@ export const headerLinks = ({
       fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
       it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
     },
-    showUnderMoreLinkBelow: 'lg',
+    showUnderMoreLinkBelow: electromobility,
     visibilitySettings: {
       userType: {
         private: true,
@@ -218,7 +225,7 @@ export const headerLinks = ({
       fr: 'https://guide.motoscout24.ch/fr/',
       it: 'https://guide.motoscout24.ch/it/',
     },
-    showUnderMoreLinkBelow: 'lg',
+    showUnderMoreLinkBelow: magazine,
     visibilitySettings: {
       userType: {
         private: true,
