@@ -517,25 +517,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.shoppingCard',
-          link: {
-            de: '/de/member/insertion/checkout/?steps=40-47',
-            en: '/de/member/insertion/checkout/?steps=40-47',
-            fr: '/fr/member/insertion/checkout/?steps=40-47',
-            it: '/it/member/insertion/checkout/?steps=40-47',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.motorcyclePark',
           forceMotoscoutLink: true,
           link: {
