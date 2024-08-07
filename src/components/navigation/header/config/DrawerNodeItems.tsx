@@ -39,15 +39,23 @@ export type DrawerNodeLinks = {
 const getComparisonNodeItem = ({
   comparisonItemIds,
   trackEvent,
+  eventLabel,
 }: {
   comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
+  eventLabel: string;
 }): NavigationLinkConfigProps[] => {
   return shouldShowComparisonLink(comparisonItemIds)
     ? [
         {
-          ...comparisonLinkConfig({ comparisonItemIds, trackEvent }),
+          ...comparisonLinkConfig({ comparisonItemIds }),
           isNew: true,
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'open_comparison_tool',
+              eventLabel,
+            }),
         },
       ]
     : [];
@@ -104,7 +112,11 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
+        ...getComparisonNodeItem({
+          comparisonItemIds,
+          trackEvent,
+          eventLabel: 'drawer-search',
+        }),
       ],
     },
     {
@@ -808,7 +820,11 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
+        ...getComparisonNodeItem({
+          comparisonItemIds,
+          trackEvent,
+          eventLabel: 'drawer-user',
+        }),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {

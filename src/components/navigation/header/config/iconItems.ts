@@ -1,4 +1,4 @@
-import { CustomEvent } from 'src/types/tracking';
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 
 import { Link, LinkConfig } from 'src/components/navigation/link';
 
@@ -17,6 +17,14 @@ export const iconItems = ({
   trackEvent?: (event: CustomEvent) => void;
 }): IconItemsConfig => ({
   comparison: shouldShowComparisonLink(comparisonItemIds)
-    ? comparisonLinkConfig({ comparisonItemIds, trackEvent })
+    ? {
+        ...comparisonLinkConfig({ comparisonItemIds }),
+        onClick: () =>
+          trackEvent?.({
+            eventCategory: navigationEventCategory,
+            eventAction: 'open_comparison_tool',
+            eventLabel: 'icon',
+          }),
+      }
     : null,
 });

@@ -1,15 +1,11 @@
-import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-
 import { LinkConfig } from 'src/components/navigation/link';
 
 import { getComparisonUrl } from '../ComparisonItem';
 
 export const comparisonLinkConfig = ({
   comparisonItemIds,
-  trackEvent,
 }: {
   comparisonItemIds: number[];
-  trackEvent?: (event: CustomEvent) => void;
 }) => {
   return {
     translationKey: 'header.searchMenu.comparison',
@@ -33,10 +29,5 @@ export const comparisonLinkConfig = ({
         motoscout24: true,
       },
     },
-    onClick: () =>
-      trackEvent?.({
-        eventCategory: navigationEventCategory,
-        eventAction: 'open_comparison_tool',
-      }),
   } satisfies LinkConfig;
 };
