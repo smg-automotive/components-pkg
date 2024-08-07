@@ -1,5 +1,6 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { LinkConfig } from 'src/components/navigation/link';
+
+import { NavigationLinkConfigProps } from './headerLinks';
 
 const sellLinkConfig = ({
   trackEvent,
@@ -8,12 +9,13 @@ const sellLinkConfig = ({
 }) => {
   return {
     translationKey: 'header.sell',
+    showUnderMoreLinkBelow: 'md',
     onClick: () =>
       trackEvent?.({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
       }),
-  } satisfies Omit<LinkConfig, 'visibilitySettings'>;
+  } satisfies Omit<NavigationLinkConfigProps, 'visibilitySettings'>;
 };
 
 export const privateAutoScoutSellLinkConfig = ({
@@ -39,7 +41,7 @@ export const privateAutoScoutSellLinkConfig = ({
         motoscout24: false,
       },
     },
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };
 
 export const professionalSellLinkConfig = ({
@@ -66,7 +68,7 @@ export const professionalSellLinkConfig = ({
         motoscout24: true,
       },
     },
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };
 
 export const privateMotoScoutSellLinkConfig = ({
@@ -92,5 +94,5 @@ export const privateMotoScoutSellLinkConfig = ({
         motoscout24: true,
       },
     },
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };

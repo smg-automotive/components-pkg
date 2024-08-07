@@ -1,5 +1,6 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { LinkConfig } from 'src/components/navigation/link';
+
+import { NavigationLinkConfigProps } from './headerLinks';
 
 export const magazineLinkConfig = ({
   trackEvent,
@@ -14,6 +15,7 @@ export const magazineLinkConfig = ({
       fr: 'https://guide.motoscout24.ch/fr/',
       it: 'https://guide.motoscout24.ch/it/',
     },
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,
@@ -29,5 +31,5 @@ export const magazineLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'magazine',
       }),
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };

@@ -1,5 +1,6 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { LinkConfig } from 'src/components/navigation/link';
+
+import { NavigationLinkConfigProps } from './headerLinks';
 
 export const autoScoutAssureLinkConfig = ({
   trackEvent,
@@ -14,6 +15,7 @@ export const autoScoutAssureLinkConfig = ({
       fr: '/fr/assurance-auto',
       it: '/it/assicurazione-auto',
     },
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,
@@ -29,7 +31,7 @@ export const autoScoutAssureLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'insurance',
       }),
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };
 
 export const motoScoutAssureLinkConfig = ({
@@ -45,6 +47,7 @@ export const motoScoutAssureLinkConfig = ({
       fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
       it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
     },
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,
@@ -60,5 +63,5 @@ export const motoScoutAssureLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'insurance',
       }),
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };

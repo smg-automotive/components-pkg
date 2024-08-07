@@ -1,16 +1,9 @@
 import { CustomEvent } from 'src/types/tracking';
 
+import { BreakpointName } from 'src/themes/shared/breakpoints';
 import { EntitlementConfig } from 'src/components/navigation/link';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
-import {
-  assure,
-  electromobility,
-  estimate,
-  magazine,
-  sell,
-  ShowUnderMoreBreakpoint,
-} from './showUnderMoreConstants';
 import {
   privateAutoScoutSellLinkConfig,
   privateMotoScoutSellLinkConfig,
@@ -25,7 +18,7 @@ export type NavigationLinkConfigProps = Omit<
   NavigationLinkProps,
   'isVisible'
 > & {
-  showUnderMoreLinkBelow?: ShowUnderMoreBreakpoint;
+  showUnderMoreLinkBelow?: BreakpointName;
   color?: string;
   visibilitySettings: {
     userType: {
@@ -50,36 +43,12 @@ export const headerLinks = ({
 }: {
   trackEvent?: (event: CustomEvent) => void;
 }): NavigationLinkConfigProps[] => [
-  {
-    ...privateAutoScoutSellLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: sell,
-  },
-  {
-    ...privateMotoScoutSellLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: sell,
-  },
-  {
-    ...professionalSellLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: sell,
-  },
-  {
-    ...estimateLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: estimate,
-  },
-  {
-    ...autoScoutAssureLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: assure,
-  },
-  {
-    ...motoScoutAssureLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: assure,
-  },
-  {
-    ...electromobilityLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: electromobility,
-  },
-  {
-    ...magazineLinkConfig({ trackEvent }),
-    showUnderMoreLinkBelow: magazine,
-  },
+  privateAutoScoutSellLinkConfig({ trackEvent }),
+  privateMotoScoutSellLinkConfig({ trackEvent }),
+  professionalSellLinkConfig({ trackEvent }),
+  estimateLinkConfig({ trackEvent }),
+  autoScoutAssureLinkConfig({ trackEvent }),
+  motoScoutAssureLinkConfig({ trackEvent }),
+  electromobilityLinkConfig({ trackEvent }),
+  magazineLinkConfig({ trackEvent }),
 ];

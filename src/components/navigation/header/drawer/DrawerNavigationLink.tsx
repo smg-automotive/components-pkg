@@ -10,7 +10,7 @@ export const DrawerNavigationLink: FC<{
   item: NavigationLinkProps;
 }> = ({ item }) => {
   return (
-    <Show breakpoint={item.showUnderMoreLinkBelow}>
+    <Show below={item.showUnderMoreLinkBelow}>
       <Box as={ListItem} paddingBottom={{ base: 'lg', md: 'md' }}>
         <NavigationLink
           {...item}

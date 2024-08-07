@@ -8,14 +8,6 @@ import { CartIcon } from 'src/components/icons';
 import { NavigationLinkProps } from '../links/NavigationLink';
 import { shouldShowComparisonLink } from '../ComparisonItem';
 import {
-  assure,
-  electromobility,
-  estimate,
-  magazine,
-  sell,
-  showMoreDrawerInsideSearchDrawer,
-} from './showUnderMoreConstants';
-import {
   privateAutoScoutSellLinkConfig,
   privateMotoScoutSellLinkConfig,
   professionalSellLinkConfig,
@@ -262,35 +254,35 @@ export const drawerNodeItems = ({
         },
         {
           ...privateAutoScoutSellLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...professionalSellLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...privateMotoScoutSellLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...estimateLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...autoScoutAssureLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...motoScoutAssureLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...electromobilityLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
         {
           ...magazineLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: showMoreDrawerInsideSearchDrawer,
+          showUnderMoreLinkBelow: 'sm',
         },
       ],
     },
@@ -1439,38 +1431,14 @@ export const drawerNodeItems = ({
   more: [
     {
       items: [
-        {
-          ...privateAutoScoutSellLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: sell,
-        },
-        {
-          ...professionalSellLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: sell,
-        },
-        {
-          ...privateMotoScoutSellLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: sell,
-        },
-        {
-          ...estimateLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: estimate,
-        },
-        {
-          ...autoScoutAssureLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: assure,
-        },
-        {
-          ...motoScoutAssureLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: assure,
-        },
-        {
-          ...electromobilityLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: electromobility,
-        },
-        {
-          ...magazineLinkConfig({ trackEvent }),
-          showUnderMoreLinkBelow: magazine,
-        },
+        privateAutoScoutSellLinkConfig({ trackEvent }),
+        professionalSellLinkConfig({ trackEvent }),
+        privateMotoScoutSellLinkConfig({ trackEvent }),
+        estimateLinkConfig({ trackEvent }),
+        autoScoutAssureLinkConfig({ trackEvent }),
+        motoScoutAssureLinkConfig({ trackEvent }),
+        electromobilityLinkConfig({ trackEvent }),
+        magazineLinkConfig({ trackEvent }),
       ],
     },
   ],

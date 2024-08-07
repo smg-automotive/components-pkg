@@ -7,15 +7,13 @@ import Link from 'src/components/link';
 import Hide from 'src/components/hide';
 import Badge from 'src/components/badge';
 
-import { ShowUnderMoreBreakpoint } from '../config/showUnderMoreConstants';
-
 export interface NavigationLinkProps {
   link?: Record<Language, string>;
   translationKey?: string;
   translationParameters?: Record<string, string | number>;
   isNew?: boolean;
   rightIcon?: ReactNode;
-  showUnderMoreLinkBelow?: ShowUnderMoreBreakpoint;
+  showUnderMoreLinkBelow?: BreakpointName;
   fontWeight?: 'regular' | 'bold';
   variant?: 'navigationLink' | 'subNavigationLink';
   color?: string;

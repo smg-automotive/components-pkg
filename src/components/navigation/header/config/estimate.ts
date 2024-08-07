@@ -1,5 +1,6 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { LinkConfig } from 'src/components/navigation/link';
+
+import { NavigationLinkConfigProps } from './headerLinks';
 
 export const estimateLinkConfig = ({
   trackEvent,
@@ -14,6 +15,7 @@ export const estimateLinkConfig = ({
       fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
       it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
     },
+    showUnderMoreLinkBelow: 'md',
     visibilitySettings: {
       userType: {
         private: true,
@@ -29,5 +31,5 @@ export const estimateLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'estimate',
       }),
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };

@@ -1,5 +1,6 @@
 import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { LinkConfig } from 'src/components/navigation/link';
+
+import { NavigationLinkConfigProps } from './headerLinks';
 
 export const electromobilityLinkConfig = ({
   trackEvent,
@@ -14,6 +15,7 @@ export const electromobilityLinkConfig = ({
       fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
       it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
     },
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,
@@ -29,5 +31,5 @@ export const electromobilityLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'electromobility',
       }),
-  } satisfies LinkConfig;
+  } satisfies NavigationLinkConfigProps;
 };

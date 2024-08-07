@@ -9,7 +9,7 @@ export const HeaderLink: FC<{
   link: HeaderNavigationLink;
 }> = ({ link }) => {
   return (
-    <Hide breakpoint={link.showUnderMoreLinkBelow}>
+    <Hide below={link.showUnderMoreLinkBelow}>
       <NavigationLink {...link} fontWeight="bold" />
     </Hide>
   );
