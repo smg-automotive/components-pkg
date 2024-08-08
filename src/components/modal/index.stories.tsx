@@ -74,7 +74,7 @@ const meta: Meta<typeof Template> = {
 
   argTypes: {
     size: {
-      options: ['md', 'lg'],
+      options: ['sm', 'md', 'lg'],
 
       control: {
         type: 'select',
@@ -82,7 +82,7 @@ const meta: Meta<typeof Template> = {
     },
 
     variant: {
-      options: ['fullScreen', 'base', 'topScroll'],
+      options: ['fullScreen', 'base', 'topScroll', 'grayOut'],
 
       control: {
         type: 'select',
@@ -167,5 +167,14 @@ export const LargeScrollableModal: StoryType = {
 export const ModalWithoutModalBodyPadding: StoryType = {
   args: {
     disableBodyPadding: true,
+  },
+};
+
+export const ModalWithGrayOverlay: StoryType = {
+  args: {
+    size: 'sm',
+    variant: 'grayOut',
+    contentParagraphs: 1,
+    title: undefined,
   },
 };

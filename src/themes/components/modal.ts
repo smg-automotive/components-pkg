@@ -85,6 +85,14 @@ const variants = {
       marginTop: '5xl',
     },
   },
+  grayOut: {
+    ...baseStyle,
+    overlay: {
+      ...baseStyle.overlay,
+      bg: 'gray.100',
+      opacity: '1 !important',
+    },
+  },
   fullScreen: {
     overlay: {
       bg: 'black',
@@ -130,6 +138,7 @@ function getSize(value: string) {
 }
 
 const sizes = {
+  sm: getSize('6xl'),
   md: getSize('7xl'),
   lg: getSize('8xl'),
   full: getSize('full'),
