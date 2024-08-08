@@ -2,11 +2,11 @@ import React, { FC, useCallback, useMemo, useState } from 'react';
 
 import Fuse, { IFuseOptions } from 'fuse.js';
 
-import { List } from '@smg-automotive/components';
-
 import Flex from '../flex';
 import { SearchField, SearchFieldOptions } from './SearchField';
 import { ListItemType, SearchableListItem } from './SearchableListItem';
+
+import List from './';
 
 export type Props = {
   listItems: Array<ListItemType>;
