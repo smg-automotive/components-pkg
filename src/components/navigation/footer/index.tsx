@@ -37,7 +37,7 @@ const Footer: FC<FooterProps> = ({
 }) => {
   const config = useMemo(() => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig(experiments),
+      config: footerConfig({ experiments }),
       brand,
       environment,
       useAbsoluteUrls,
