@@ -30,7 +30,11 @@ export interface FooterConfigInterface {
   companies: LinkConfig[];
 }
 
-export const footerConfig: FooterConfigInterface = {
+export const footerConfig = ({
+  experiments = {},
+}: {
+  experiments?: Record<string, string>;
+} = {}): FooterConfigInterface => ({
   sections: [
     {
       title: [
@@ -175,12 +179,20 @@ export const footerConfig: FooterConfigInterface = {
           visibilitySettings: {
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
-          link: {
-            de: '/de/auto-verkaufen',
-            en: '/de/auto-verkaufen',
-            fr: '/fr/vendre-voiture',
-            it: '/it/vendere-auto',
-          },
+          link:
+            experiments?.c2b === 'on'
+              ? {
+                  de: '/de/sell',
+                  en: '/en/sell',
+                  fr: '/fr/sell',
+                  it: '/it/sell',
+                }
+              : {
+                  de: '/de/auto-verkaufen',
+                  en: '/de/auto-verkaufen',
+                  fr: '/fr/vendre-voiture',
+                  it: '/it/vendere-auto',
+                },
         },
         {
           translationKey: 'footer.sections.list.vehicles',
@@ -657,4 +669,4 @@ export const footerConfig: FooterConfigInterface = {
       target: '_blank',
     },
   ],
-};
+});

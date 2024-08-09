@@ -7,7 +7,7 @@ import { footerConfig } from '..';
 describe('The footer configuration', () => {
   it('returns a mapped instance', () => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.MotoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -23,7 +23,7 @@ describe('The footer configuration', () => {
 
   it('returns six sections', () => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.MotoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -34,7 +34,7 @@ describe('The footer configuration', () => {
 
   it('returns only one visible title per section', () => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.MotoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -48,7 +48,7 @@ describe('The footer configuration', () => {
 
   it('returns only one link item per app type', () => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.MotoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -61,7 +61,7 @@ describe('The footer configuration', () => {
 
   it('returns only one link item per social media type', () => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.AutoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -76,7 +76,7 @@ describe('The footer configuration', () => {
 
   it('returns twitter link item only for AutoScout24', () => {
     let footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.AutoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -86,7 +86,7 @@ describe('The footer configuration', () => {
     expect(config.socialMedia.twitter.length).toEqual(1);
 
     footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.MotoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
@@ -98,7 +98,7 @@ describe('The footer configuration', () => {
 
   it('returns five company links', () => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig(),
       brand: Brand.MotoScout24,
       environment: 'production',
       useAbsoluteUrls: true,
