@@ -34,6 +34,7 @@ interface NavigationProps {
   onLogin: () => void;
   onLogout: () => void;
   trackEvent?: (event: CustomEvent) => void;
+  experiments?: Record<string, string>;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -48,6 +49,7 @@ const Navigation: FC<NavigationProps> = ({
   onLogin,
   onLogout,
   trackEvent,
+  experiments = {},
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -58,7 +60,7 @@ const Navigation: FC<NavigationProps> = ({
       environment,
       useAbsoluteUrls,
       config: {
-        headerItems: headerLinks({ trackEvent }),
+        headerItems: headerLinks({ trackEvent, experiments }),
         drawerItems: drawerNodeItems({
           trackEvent,
           onLogout,
