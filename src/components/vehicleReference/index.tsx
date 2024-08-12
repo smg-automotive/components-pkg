@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ComponentProps, FC, ReactNode } from 'react';
 
 import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
@@ -14,6 +14,7 @@ interface Props {
   sellerName?: string | null;
   sellerAddress?: string | null;
   callToAction?: ReactNode;
+  direction?: ComponentProps<typeof Stack>['direction'];
 }
 
 const VehicleReference: FC<Props> = ({
@@ -23,12 +24,13 @@ const VehicleReference: FC<Props> = ({
   sellerName,
   sellerAddress,
   callToAction,
+  direction = { '2xs': 'row', md: 'column' },
 }) => {
   const styles = useMultiStyleConfig(`VehicleReference`);
 
   return (
     <article>
-      <Stack direction={{ '2xs': 'row', md: 'column' }} spacing="md">
+      <Stack direction={direction} spacing="md">
         <AspectRatio
           minW="2xl"
           ratio={4 / 3}
