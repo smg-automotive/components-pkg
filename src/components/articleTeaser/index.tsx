@@ -25,14 +25,7 @@ const ArticleTeaser: FC<Props> = ({
   return (
     <article>
       <a href={url} target="_blank" rel="noopener noreferrer">
-        <Stack
-          direction={{
-            '2xs': 'column',
-            sm: 'row',
-          }}
-          spacing="lg"
-          align="center"
-        >
+        <Stack direction="column" spacing="lg" align="center">
           <chakra.img maxW={maxImgW} src={imageUrl} />
           <Stack direction="column" spacing="sm">
             <chakra.h2 __css={styles.title}>{title}</chakra.h2>
