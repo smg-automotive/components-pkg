@@ -34,7 +34,7 @@ const VehicleReference: FC<Props> = ({
       <AspectRatio ratio={4 / 3} borderRadius="sm" overflow="hidden">
         {image ? image : <MissingImage />}
       </AspectRatio>
-      <Stack spacing={{ base: 'xs', md: 'md' }} justify="center">
+      <Stack spacing={{ base: 'xs', md: 'md' }} justify="space-between">
         <chakra.h1 __css={styles.carTitle}>{vehicleTitle}</chakra.h1>
         <chakra.span __css={styles.price}>{price}</chakra.span>
         <Box>
