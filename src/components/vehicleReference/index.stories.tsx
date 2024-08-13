@@ -9,7 +9,7 @@ const meta: Meta<typeof VehicleReference> = {
   component: VehicleReference,
   decorators: [
     (Story) => (
-      <Box maxW={{ '2xs': '100%', md: '450px' }}>
+      <Box maxW={{ '2xs': '100%', md: '600px' }}>
         <Story />
       </Box>
     ),
@@ -35,7 +35,7 @@ export const VehicleReferenceWithImage: StoryType = {
     sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
     sellerAddress: `2540 Grenchen (SO)`,
     image: <img src="https://picsum.photos/400/400" />,
-    direction: { '2xs': 'row', md: 'column' },
+    templateColumns: { base: '96px 1fr', md: '240px 1fr' },
   },
 };
 
