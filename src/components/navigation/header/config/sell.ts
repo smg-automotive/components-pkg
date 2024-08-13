@@ -20,17 +20,27 @@ const sellLinkConfig = ({
 
 export const privateAutoScoutSellLinkConfig = ({
   trackEvent,
+  experiments,
 }: {
   trackEvent?: (event: CustomEvent) => void;
+  experiments?: Record<string, string>;
 }) => {
   return {
     ...sellLinkConfig({ trackEvent }),
-    link: {
-      de: '/de/auto-verkaufen',
-      en: '/de/auto-verkaufen',
-      fr: '/fr/vendre-voiture',
-      it: '/it/vendere-auto',
-    },
+    link:
+      experiments?.c2b === 'on'
+        ? {
+            de: '/de/sell',
+            en: '/en/sell',
+            fr: '/fr/sell',
+            it: '/it/sell',
+          }
+        : {
+            de: '/de/auto-verkaufen',
+            en: '/de/auto-verkaufen',
+            fr: '/fr/vendre-voiture',
+            it: '/it/vendere-auto',
+          },
     visibilitySettings: {
       userType: {
         private: true,

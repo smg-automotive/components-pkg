@@ -25,6 +25,7 @@ interface FooterProps {
   language: Language;
   environment?: Environment;
   useAbsoluteUrls?: boolean;
+  experiments?: Record<string, string>;
 }
 
 const Footer: FC<FooterProps> = ({
@@ -32,16 +33,17 @@ const Footer: FC<FooterProps> = ({
   language,
   environment,
   useAbsoluteUrls,
+  experiments = {},
 }) => {
   const config = useMemo(() => {
     const footerConfigInstance = new FooterConfig({
-      config: footerConfig,
+      config: footerConfig({ experiments }),
       brand,
       environment,
       useAbsoluteUrls,
     });
     return footerConfigInstance.getMappedConfig();
-  }, [brand, environment, useAbsoluteUrls]);
+  }, [brand, environment, useAbsoluteUrls, experiments]);
 
   return (
     <TranslationProvider language={language} scopes={['footer']}>
