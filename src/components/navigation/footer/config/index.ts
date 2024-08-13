@@ -174,26 +174,56 @@ export const footerConfig = ({
         },
       ],
       items: [
-        {
-          translationKey: 'footer.sections.list.vehicles',
-          visibilitySettings: {
-            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
-          },
-          link:
-            experiments?.c2b === 'on'
-              ? {
+        ...(experiments?.c2b === 'on'
+          ? [
+              {
+                translationKey: 'footer.sections.list.vehicles',
+                visibilitySettings: {
+                  brand: {
+                    [Brand.AutoScout24]: true,
+                    [Brand.MotoScout24]: false,
+                  },
+                },
+                link: {
                   de: '/de/sell',
                   en: '/en/sell',
                   fr: '/fr/sell',
                   it: '/it/sell',
-                }
-              : {
+                },
+              },
+              {
+                translationKey: 'footer.sections.list.direct',
+                visibilitySettings: {
+                  brand: {
+                    [Brand.AutoScout24]: true,
+                    [Brand.MotoScout24]: false,
+                  },
+                },
+                link: {
+                  de: '/de/direct',
+                  en: '/en/direct',
+                  fr: '/fr/direct',
+                  it: '/it/direct',
+                },
+              },
+            ]
+          : [
+              {
+                translationKey: 'footer.sections.list.vehicles',
+                visibilitySettings: {
+                  brand: {
+                    [Brand.AutoScout24]: true,
+                    [Brand.MotoScout24]: false,
+                  },
+                },
+                link: {
                   de: '/de/auto-verkaufen',
                   en: '/de/auto-verkaufen',
                   fr: '/fr/vendre-voiture',
                   it: '/it/vendere-auto',
                 },
-        },
+              },
+            ]),
         {
           translationKey: 'footer.sections.list.vehicles',
           visibilitySettings: {
