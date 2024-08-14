@@ -1,5 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { useMultiStyleConfig } from '@chakra-ui/react';
+import {
+  ResponsiveObject,
+  ResponsiveValue,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
 
 import Box from '../box';
 
@@ -9,6 +13,7 @@ interface Props {
   totalSlides: number;
   isCurrent: boolean;
   fullScreen: boolean;
+  slidesPerView: ResponsiveObject<number>;
 }
 
 const Slide: FC<PropsWithChildren<Props>> = ({
@@ -18,6 +23,7 @@ const Slide: FC<PropsWithChildren<Props>> = ({
   isCurrent,
   children,
   fullScreen,
+  slidesPerView,
 }) => {
   const { slide } = useMultiStyleConfig(
     'Carousel',
@@ -27,6 +33,7 @@ const Slide: FC<PropsWithChildren<Props>> = ({
   return (
     <Box
       __css={slide}
+      flexBasis={`calc(100% / ${slidesPerView})`}
       onClick={onClick}
       aria-roledescription="slide"
       aria-label={`${slideIndex + 1} of ${totalSlides}`}

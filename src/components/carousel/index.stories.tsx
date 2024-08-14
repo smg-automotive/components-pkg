@@ -117,6 +117,12 @@ export const StartingFromSpecificSlide: StoryType = {
   },
 };
 
+export const SlidesPerView: StoryType = {
+  args: {
+    slidesPerView: { base: 1, sm: 2, md: 3, lg: 4 },
+  },
+};
+
 export const FullScreen: StoryType = {
   parameters: {
     layout: 'fullscreen',

@@ -1,6 +1,11 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
+import {
+  ResponsiveObject,
+  ResponsiveValue,
+  useMediaQuery,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
 
 import { breakpoints } from 'src/themes';
 
@@ -16,6 +21,7 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
+  slidesPerView?: ResponsiveObject<number>;
 };
 
 type DefaultProps = {
@@ -52,6 +58,7 @@ const Carousel: FC<Props> = (props) => {
     onSlideSelect,
     fullScreen,
     paginationType = PaginationType.None,
+    slidesPerView = { base: 1 },
   } = props;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
@@ -187,6 +194,7 @@ const Carousel: FC<Props> = (props) => {
           totalSlides={numberOfSlides}
           isCurrent={startIndex === selectedIndex}
           fullScreen={!!fullScreen}
+          slidesPerView={slidesPerView}
         >
           {props.fullScreen
             ? props.children[startIndex]?.slide
@@ -214,6 +222,7 @@ const Carousel: FC<Props> = (props) => {
                 totalSlides={numberOfSlides}
                 isCurrent={index === selectedIndex}
                 fullScreen={!!fullScreen}
+                slidesPerView={slidesPerView}
               >
                 {slide && typeof slide === 'object' && 'slide' in slide
                   ? slide.slide
