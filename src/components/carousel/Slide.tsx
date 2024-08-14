@@ -1,9 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
-import {
-  ResponsiveObject,
-  ResponsiveValue,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
+import { ResponsiveObject, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Box from '../box';
 
@@ -30,10 +26,17 @@ const Slide: FC<PropsWithChildren<Props>> = ({
     fullScreen ? { variant: 'fullScreen' } : {},
   );
 
+  const flexBasis = Object.entries(slidesPerView).reduce<
+    ResponsiveObject<string>
+  >((acc, [breakpoint, value]) => {
+    acc[breakpoint] = `calc(100% / ${value})`;
+    return acc;
+  }, {});
+
   return (
     <Box
       __css={slide}
-      flexBasis={`calc(100% / ${slidesPerView})`}
+      flexBasis={flexBasis}
       onClick={onClick}
       aria-roledescription="slide"
       aria-label={`${slideIndex + 1} of ${totalSlides}`}

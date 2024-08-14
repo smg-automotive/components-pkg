@@ -2,7 +2,6 @@ import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import {
   ResponsiveObject,
-  ResponsiveValue,
   useMediaQuery,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
@@ -77,6 +76,7 @@ const Carousel: FC<Props> = (props) => {
     loop: true,
     startIndex: startIndex,
     duration: 20,
+    align: 'start',
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
