@@ -4,6 +4,7 @@ import { chakra, ResponsiveValue, useMultiStyleConfig } from '@chakra-ui/react';
 import { Sizes } from 'src/themes';
 
 import Stack from '../stack';
+import Box from '../box';
 
 export type Props = {
   title: string;
@@ -27,10 +28,10 @@ const ArticleTeaser: FC<Props> = ({
       <a href={url} target="_blank" rel="noopener noreferrer">
         <Stack direction="column" spacing="lg" align="center">
           <chakra.img maxW={maxImgW} src={imageUrl} />
-          <Stack direction="column" spacing="sm">
+          <Box as={Stack} direction="column" spacing="sm" width="full">
             <chakra.h2 __css={styles.title}>{title}</chakra.h2>
             <chakra.span __css={styles.text}>{text}</chakra.span>
-          </Stack>
+          </Box>
         </Stack>
       </a>
     </article>
