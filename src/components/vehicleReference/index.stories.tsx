@@ -35,7 +35,6 @@ export const VehicleReferenceWithImage: StoryType = {
     sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
     sellerAddress: `2540 Grenchen (SO)`,
     image: <img src="https://picsum.photos/400/400" />,
-    templateColumns: { base: '96px 1fr', md: '240px 1fr' },
   },
 };
 

@@ -25,16 +25,19 @@ const VehicleReference: FC<Props> = ({
   sellerName,
   sellerAddress,
   callToAction,
-  templateColumns = { base: '96px 1fr', md: '1fr' },
+  templateColumns = { base: 'auto 1fr', md: '1fr' },
 }) => {
   const styles = useMultiStyleConfig(`VehicleReference`);
 
   return (
     <Grid as="article" templateColumns={templateColumns} gap="md">
-      <AspectRatio ratio={4 / 3} borderRadius="sm" overflow="hidden">
+      <AspectRatio minW="2xl" ratio={4 / 3} borderRadius="sm" overflow="hidden">
         {image ? image : <MissingImage />}
       </AspectRatio>
-      <Stack spacing={{ base: 'xs', md: 'md' }} justify="space-between">
+      <Stack
+        spacing={{ base: 'xs', md: 'md' }}
+        justify={{ base: 'center', md: 'space-between' }}
+      >
         <chakra.p __css={styles.carTitle}>{vehicleTitle}</chakra.p>
         <chakra.span __css={styles.price}>{price}</chakra.span>
         <Box>
