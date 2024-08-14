@@ -27,7 +27,7 @@ const ArticleTeaser: FC<Props> = ({
       <a href={url} target="_blank" rel="noopener noreferrer">
         <Stack direction="column" spacing="lg" align="center">
           <chakra.img maxW={maxImgW} src={imageUrl} />
-          <Stack direction="column" spacing="sm">
+          <Stack direction="column" spacing="sm" width="full">
             <chakra.h2 __css={styles.title}>{title}</chakra.h2>
             <chakra.span __css={styles.text}>{text}</chakra.span>
           </Stack>

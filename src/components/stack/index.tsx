@@ -16,6 +16,7 @@ type Props = Pick<
   | 'paddingY'
   | 'paddingX'
   | 'alignItems'
+  | 'width'
 >;
 
 const Stack: FC<Props> = ({ children, ...rest }) => (
