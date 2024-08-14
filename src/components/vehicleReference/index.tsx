@@ -30,25 +30,32 @@ const VehicleReference: FC<Props> = ({
   const styles = useMultiStyleConfig(`VehicleReference`);
 
   return (
-    <Grid as="article" templateColumns={templateColumns} gap="md">
-      <AspectRatio minW="2xl" ratio={4 / 3} borderRadius="sm" overflow="hidden">
-        {image ? image : <MissingImage />}
-      </AspectRatio>
-      <Stack
-        spacing={{ base: 'xs', md: 'md' }}
-        justify={{ base: 'center', md: 'space-between' }}
-      >
-        <chakra.p __css={styles.carTitle}>{vehicleTitle}</chakra.p>
-        <chakra.span __css={styles.price}>{price}</chakra.span>
-        <Box>
-          <chakra.p __css={styles.dealerName}>{sellerName}</chakra.p>
-          <chakra.p __css={styles.dealerAddress}>{sellerAddress}</chakra.p>
-        </Box>
-      </Stack>
+    <Box as="article">
+      <Grid templateColumns={templateColumns} gap="md">
+        <AspectRatio
+          minW="2xl"
+          ratio={4 / 3}
+          borderRadius="sm"
+          overflow="hidden"
+        >
+          {image ? image : <MissingImage />}
+        </AspectRatio>
+        <Stack
+          spacing={{ base: 'xs', md: 'md' }}
+          justify={{ base: 'center', md: 'space-between' }}
+        >
+          <chakra.p __css={styles.carTitle}>{vehicleTitle}</chakra.p>
+          <chakra.span __css={styles.price}>{price}</chakra.span>
+          <Box>
+            <chakra.p __css={styles.dealerName}>{sellerName}</chakra.p>
+            <chakra.p __css={styles.dealerAddress}>{sellerAddress}</chakra.p>
+          </Box>
+        </Stack>
+      </Grid>
       {callToAction ? (
         <Box marginTop={{ base: 'lg', md: 'sm' }}>{callToAction}</Box>
       ) : null}
-    </Grid>
+    </Box>
   );
 };
 
