@@ -101,7 +101,7 @@ export const Private: StoryType = {
     user: {
       id: '123',
       userName: 'John Private',
-      userType: MappedUserType.Professional,
+      userType: MappedUserType.Private,
       exp: 1630000000,
       email: 'john@private.com',
       sellerId: '6001',
