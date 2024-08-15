@@ -100,10 +100,10 @@ export const Private: StoryType = {
   args: {
     user: {
       id: '123',
-      userName: 'John Private',
+      userName: 'John Doe Private',
       userType: MappedUserType.Private,
       exp: 1630000000,
-      email: 'john@private.com',
+      email: 'john.doe@private.com',
       sellerId: '6001',
       sellerIds: ['6001'],
       isImpersonated: true,
