@@ -22,6 +22,7 @@ type SharedProps = {
   onSlideSelect?: (index: number) => void;
   slidesPerView?: ResponsiveObject<number>;
   loop?: boolean;
+  slidesToScroll?: 'auto' | number;
 };
 
 type DefaultProps = {
@@ -60,6 +61,7 @@ const Carousel: FC<Props> = (props) => {
     paginationType = PaginationType.None,
     slidesPerView = { base: 1 },
     loop = true,
+    slidesToScroll = 1,
   } = props;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
@@ -79,7 +81,7 @@ const Carousel: FC<Props> = (props) => {
     startIndex: startIndex,
     duration: 20,
     align: 'start',
-    slidesToScroll: 'auto',
+    slidesToScroll,
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
