@@ -21,6 +21,7 @@ type SharedProps = {
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
   slidesPerView?: ResponsiveObject<number>;
+  loop?: boolean;
 };
 
 type DefaultProps = {
@@ -58,6 +59,7 @@ const Carousel: FC<Props> = (props) => {
     fullScreen,
     paginationType = PaginationType.None,
     slidesPerView = { base: 1 },
+    loop = true,
   } = props;
 
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
@@ -73,10 +75,11 @@ const Carousel: FC<Props> = (props) => {
     fullScreen ? { variant: 'fullScreen' } : {},
   );
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
-    loop: true,
+    loop,
     startIndex: startIndex,
     duration: 20,
     align: 'start',
+    slidesToScroll: 'auto',
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
