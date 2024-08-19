@@ -64,6 +64,8 @@ const Carousel: FC<Props> = (props) => {
     slidesToScroll = 1,
   } = props;
 
+  const [canScrollPrevious, setCanScrollPrevious] = useState(loop);
+  const [canScrollNext, setCanScrollNext] = useState(loop);
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
   const [isSmallLandscapeViewport] = useMediaQuery(
     `(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`,
@@ -117,6 +119,8 @@ const Carousel: FC<Props> = (props) => {
     const previousIndex = mainCarousel.previousScrollSnap();
 
     setSelectedIndex(newIndex);
+    setCanScrollPrevious(mainCarousel.canScrollPrev());
+    setCanScrollNext(mainCarousel.canScrollNext());
     if (paginationCarousel && hasThumbnailPagination) {
       const { slideRegistry } = paginationCarousel.internalEngine();
       const snapIndexThatSlideBelongsTo = slideRegistry.findIndex((group) =>
@@ -235,16 +239,20 @@ const Carousel: FC<Props> = (props) => {
               </Slide>
             ))}
           </Flex>
-          <NavigationButton
-            onClick={scrollPrev}
-            direction="previous"
-            fullScreen={!!fullScreen}
-          />
-          <NavigationButton
-            onClick={scrollNext}
-            direction="next"
-            fullScreen={!!fullScreen}
-          />
+          {canScrollPrevious ? (
+            <NavigationButton
+              onClick={scrollPrev}
+              direction="previous"
+              fullScreen={!!fullScreen}
+            />
+          ) : null}
+          {canScrollNext ? (
+            <NavigationButton
+              onClick={scrollNext}
+              direction="next"
+              fullScreen={!!fullScreen}
+            />
+          ) : null}
           {paginationType === PaginationType.Dot ? (
             <DotsPagination
               currentSlideIndex={selectedIndex}
