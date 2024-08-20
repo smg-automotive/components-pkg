@@ -27,7 +27,7 @@ const meta: Meta<typeof SearchableList> = {
         onClick: () => {},
         showChevron: false,
         isSelected: false,
-        facet: 13,
+        facet: '13',
       },
       {
         value: '2',
@@ -93,21 +93,12 @@ const meta: Meta<typeof SearchableList> = {
         isSelected: false,
       },
     ],
-    fuseOptions: {
-      keys: ['label'],
-      includeMatches: true,
-      threshold: 0,
-      ignoreLocation: true,
-      minMatchCharLength: 1,
-      shouldSort: false,
-    },
     searchFieldOptions: {},
   },
 
-  render: ({ listItems, fuseOptions, searchFieldOptions }: Props) => (
+  render: ({ listItems, searchFieldOptions }: Props) => (
     <SearchableList
       listItems={listItems}
-      fuseOptions={fuseOptions}
       searchFieldOptions={searchFieldOptions}
     />
   ),
