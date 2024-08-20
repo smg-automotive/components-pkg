@@ -12,6 +12,7 @@ export interface CheckboxProps {
   isIndeterminate?: boolean;
   fontWeight?: 'regular' | 'bold';
   variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
+  paddingY?: string;
   readOnly?: boolean;
   fullWidth?: boolean;
 }

@@ -90,6 +90,7 @@ export { type UserTypeExternal } from './navigation/header/types';
 export { default as GalleryHeader } from './galleryHeader';
 export { default as SelectMenu } from './selectMenu';
 export { default as TopVehicleSharedBadge } from './topVehicleSharedBadge';
+export { SearchField } from './input/SearchField';
 
 export {
   default as ThemeProvider,

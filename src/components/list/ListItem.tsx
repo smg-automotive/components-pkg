@@ -1,7 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { ListItem as ChakraListItem } from '@chakra-ui/react';
+import { ListItem as ChakraListItem, ListItemProps } from '@chakra-ui/react';
 
-const ListItem: FC<PropsWithChildren> = ({ children, ...rest }) => {
+const ListItem: FC<PropsWithChildren<ListItemProps>> = ({
+  children,
+  ...rest
+}) => {
   return <ChakraListItem {...rest}>{children}</ChakraListItem>;
 };
 

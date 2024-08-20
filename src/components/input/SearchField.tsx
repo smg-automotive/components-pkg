@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useRef } from 'react';
 
-import Input from '../input/index';
-
 import { MagnifierIcon } from '../icons/index';
 // eslint-disable-next-line no-restricted-imports
 import useMediaQuery from '../../hooks/useMediaQuery';
+
+import Input from './index';
 
 export type SearchFieldOptions = {
   placeholder?: string;

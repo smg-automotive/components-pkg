@@ -246,3 +246,5 @@ export const WithLeftAddonElementSelect: StoryType = {
     ),
   },
 };
+
+// TODO: search field story
