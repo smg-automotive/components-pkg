@@ -134,10 +134,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/auto-haendler-garage/suche',
-            en: '/de/auto-haendler-garage/suche',
-            fr: '/fr/voiture-concessionaires-garages/recherche',
-            it: '/it/auto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
           visibilitySettings: {
             userType: {
@@ -153,10 +153,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/moto-haendler-garage/suche',
-            en: '/de/moto-haendler-garage/suche',
-            fr: '/fr/moto-concessionaires-garage/recherche',
-            it: '/it/moto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
           visibilitySettings: {
             userType: {
