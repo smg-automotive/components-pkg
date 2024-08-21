@@ -82,6 +82,7 @@
         "title": "Mentions légales et sécurité"
       },
       "list": {
+        "direct": "AutoScout24 Direct",
         "productsAndPrices": "Produits et prix",
         "title": "Insérer",
         "vehicles": "Véhicules"
@@ -166,7 +167,6 @@
       "requisitions": "Profil de recherche",
       "reviews": "Évaluations",
       "settings": "Préférences",
-      "shoppingCard": "Panier",
       "statistics": "Statistiques",
       "toolsForPurchasing": "Outils pour l'achat",
       "toolsForSelling": "Outils pour la vente",

@@ -82,6 +82,7 @@
         "title": "Basi legali"
       },
       "list": {
+        "direct": "AutoScout24 Direct",
         "productsAndPrices": "Prodotti e prezzi",
         "title": "Inserire",
         "vehicles": "Veicoli"
@@ -166,7 +167,6 @@
       "requisitions": "Ordini di ricerca",
       "reviews": "Valutazioni",
       "settings": "Preferenze",
-      "shoppingCard": "Carrello",
       "statistics": "Statistiche",
       "toolsForPurchasing": "Strumenti per l'acquisto",
       "toolsForSelling": "Gestire veicoli",

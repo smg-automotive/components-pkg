@@ -82,6 +82,7 @@
         "title": "Legal & Security"
       },
       "list": {
+        "direct": "AutoScout24 Direct",
         "productsAndPrices": "Products and Prices",
         "title": "Advertise",
         "vehicles": "Vehicles"
@@ -166,7 +167,6 @@
       "requisitions": "Requisitions",
       "reviews": "Reviews",
       "settings": "Ideas",
-      "shoppingCard": "Shopping card",
       "statistics": "The statistics",
       "toolsForPurchasing": "Tools for purchasing",
       "toolsForSelling": "Tools for Selling",

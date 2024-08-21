@@ -6,8 +6,19 @@ import { Entitlement } from 'src/types/entitlements';
 import { CartIcon } from 'src/components/icons';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
+import { shouldShowComparisonLink } from '../ComparisonItem';
+import {
+  privateAutoScoutSellLinkConfig,
+  privateMotoScoutSellLinkConfig,
+  professionalSellLinkConfig,
+} from './sell';
+import { magazineLinkConfig } from './magazine';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
+import { estimateLinkConfig } from './estimate';
+import { electromobilityLinkConfig } from './electroMobility';
+import { comparisonLinkConfig } from './comparison';
+import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -34,53 +45,25 @@ export type DrawerNodeLinks = {
   [key in DrawerNode]: HeaderNavigationLink[];
 };
 
-const shouldShowComparisonLink = (
-  comparisonItemIds?: number[] | null,
-): comparisonItemIds is number[] => {
-  return !!comparisonItemIds && Array.isArray(comparisonItemIds);
-};
-
-const getComparisonUrl = (comparisonItemIds: number[]) => {
-  const baseUrl = 'comparison';
-  if (comparisonItemIds.length === 0) return baseUrl;
-  return `${baseUrl}/${comparisonItemIds.join('/')}`;
-};
-
 const getComparisonNodeItem = ({
   comparisonItemIds,
   trackEvent,
+  eventLabel,
 }: {
   comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
+  eventLabel: string;
 }): NavigationLinkConfigProps[] => {
   return shouldShowComparisonLink(comparisonItemIds)
     ? [
         {
-          translationKey: 'header.searchMenu.comparison',
-          translationParameters: {
-            numberOfItems: comparisonItemIds.length,
-          },
-          link: {
-            de: `/de/${getComparisonUrl(comparisonItemIds)}`,
-            en: `/en/${getComparisonUrl(comparisonItemIds)}`,
-            fr: `/fr/${getComparisonUrl(comparisonItemIds)}`,
-            it: `/it/${getComparisonUrl(comparisonItemIds)}`,
-          },
+          ...comparisonLinkConfig({ comparisonItemIds }),
           isNew: true,
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
           onClick: () =>
             trackEvent?.({
               eventCategory: navigationEventCategory,
               eventAction: 'open_comparison_tool',
+              eventLabel,
             }),
         },
       ]
@@ -138,7 +121,11 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
+        ...getComparisonNodeItem({
+          comparisonItemIds,
+          trackEvent,
+          eventLabel: 'drawer-search',
+        }),
       ],
     },
     {
@@ -147,10 +134,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/auto-haendler-garage/suche',
-            en: '/de/auto-haendler-garage/suche',
-            fr: '/fr/voiture-concessionaires-garages/recherche',
-            it: '/it/auto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
           visibilitySettings: {
             userType: {
@@ -166,10 +153,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/moto-haendler-garage/suche',
-            en: '/de/moto-haendler-garage/suche',
-            fr: '/fr/moto-concessionaires-garage/recherche',
-            it: '/it/moto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
           visibilitySettings: {
             userType: {
@@ -264,6 +251,38 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+        },
+        {
+          ...privateAutoScoutSellLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...professionalSellLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...privateMotoScoutSellLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...estimateLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...autoScoutAssureLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...motoScoutAssureLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...electromobilityLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
+          ...magazineLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
         },
       ],
     },
@@ -535,25 +554,6 @@ export const drawerNodeItems = ({
             brand: {
               autoscout24: false,
               motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.shoppingCard',
-          link: {
-            de: '/de/member/insertion/checkout/?steps=40-47',
-            en: '/de/member/insertion/checkout/?steps=40-47',
-            fr: '/fr/member/insertion/checkout/?steps=40-47',
-            it: '/it/member/insertion/checkout/?steps=40-47',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
             },
           },
         },
@@ -842,7 +842,11 @@ export const drawerNodeItems = ({
             },
           },
         },
-        ...getComparisonNodeItem({ comparisonItemIds, trackEvent }),
+        ...getComparisonNodeItem({
+          comparisonItemIds,
+          trackEvent,
+          eventLabel: 'drawer-user',
+        }),
         {
           translationKey: 'header.userMenu.b2bPlattform',
           link: {
@@ -1408,207 +1412,14 @@ export const drawerNodeItems = ({
   more: [
     {
       items: [
-        {
-          translationKey: 'header.sell',
-          link: {
-            de: '/de/auto-verkaufen',
-            en: '/de/auto-verkaufen',
-            fr: '/fr/vendre-voiture',
-            it: '/it/vendere-auto',
-          },
-          showUnderMoreLinkBelow: 'sm',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'sell',
-            }),
-        },
-        {
-          translationKey: 'header.sell',
-          link: {
-            de: '/de/member/insertion/type',
-            en: '/de/member/insertion/type',
-            fr: '/fr/member/insertion/type',
-            it: '/it/member/insertion/type',
-          },
-          showUnderMoreLinkBelow: 'sm',
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'sell',
-            }),
-        },
-        {
-          translationKey: 'header.sell',
-          link: {
-            de: '/de/motorrad-inserieren',
-            en: '/de/motorrad-inserieren',
-            fr: '/fr/publier-annonce-moto',
-            it: '/it/pubblicare-annuncio-moto',
-          },
-          showUnderMoreLinkBelow: 'sm',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: true,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'sell',
-            }),
-        },
-        {
-          translationKey: 'header.estimate',
-          isInternal: true,
-          link: {
-            de: '/de/fahrzeugbewertung',
-            en: '/de/fahrzeugbewertung',
-            fr: '/fr/evaluation-vehicules',
-            it: '/it/valuazione-vehicoli',
-          },
-          showUnderMoreLinkBelow: 'sm',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'estimate',
-            }),
-        },
-        {
-          translationKey: 'header.assure',
-          link: {
-            de: '/de/autoversicherung',
-            en: '/de/autoversicherung',
-            fr: '/fr/assurance-auto',
-            it: '/it/assicurazione-auto',
-          },
-          showUnderMoreLinkBelow: 'md',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'insurance',
-            }),
-        },
-        {
-          translationKey: 'header.assure',
-          link: {
-            de: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
-            en: 'https://www.financescout24.ch/de/motorradversicherung?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
-            fr: 'https://www.financescout24.ch/fr/assurance-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
-            it: 'https://www.financescout24.ch/it/assicurazione-moto?utm_source=motoscout24.ch&utm_medium=web&utm_campaign=main_navigation_moto_',
-          },
-          showUnderMoreLinkBelow: 'md',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: true,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'insurance',
-            }),
-        },
-        {
-          translationKey: 'header.electromobility',
-          link: {
-            de: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
-            en: 'https://guide.autoscout24.ch/de/elektromobilitaet/',
-            fr: 'https://guide.autoscout24.ch/fr/mobilite-electrique/',
-            it: 'https://guide.autoscout24.ch/it/mobilita-elettrica/',
-          },
-          showUnderMoreLinkBelow: 'lg',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'electromobility',
-            }),
-        },
-        {
-          translationKey: 'header.magazine',
-          link: {
-            de: 'https://guide.motoscout24.ch/de/',
-            en: 'https://guide.motoscout24.ch/de/',
-            fr: 'https://guide.motoscout24.ch/fr/',
-            it: 'https://guide.motoscout24.ch/it/',
-          },
-          showUnderMoreLinkBelow: 'lg',
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: true,
-            },
-          },
-          onClick: () =>
-            trackEvent?.({
-              eventCategory: navigationEventCategory,
-              eventAction: 'magazine',
-            }),
-        },
+        privateAutoScoutSellLinkConfig({ trackEvent }),
+        professionalSellLinkConfig({ trackEvent }),
+        privateMotoScoutSellLinkConfig({ trackEvent }),
+        estimateLinkConfig({ trackEvent }),
+        autoScoutAssureLinkConfig({ trackEvent }),
+        motoScoutAssureLinkConfig({ trackEvent }),
+        electromobilityLinkConfig({ trackEvent }),
+        magazineLinkConfig({ trackEvent }),
       ],
     },
   ],

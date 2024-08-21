@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
+import { breakpoints } from 'src/themes';
 import Stack from 'src/components/stack';
 import Show from 'src/components/show';
 import Link from 'src/components/link';
@@ -60,7 +61,10 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
       {headerLinks.map((link, index) => (
         <HeaderLink key={`link-${index}`} link={link} />
       ))}
-      <Show below="lg">
+      {/* on mobile, the items from the more drawer are inside the search drawer */}
+      <Show
+        breakpoint={`(min-width: ${breakpoints.sm.px + 1}px) and (max-width: ${breakpoints.lg.px}px)`}
+      >
         <NavigationItem
           translationKey="header.more"
           drawerHandler={moreDrawerHandler}
