@@ -162,12 +162,14 @@ const Carousel: ComponentStyleConfig = {
     slide: {
       flexGrow: '0',
       flexShrink: '0',
+      paddingLeft: { base: 'md', md: '2xl' },
       flexBasis: 'full',
     },
     slideContainer: {
       height: 'full',
       alignItems: 'center',
       display: 'flex',
+      marginLeft: { base: '-md', md: '-2xl' },
     },
     buttonContainer: {
       position: 'absolute',
