@@ -411,10 +411,10 @@ export const drawerNodeItems = ({
           translationKey: 'header.userMenu.dealerDashboard',
           isInternal: true,
           link: {
-            de: '/de/login',
-            en: '/de/login',
-            fr: '/fr/login',
-            it: '/it/login',
+            de: '/de',
+            en: '/de',
+            fr: '/fr',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
