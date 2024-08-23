@@ -126,4 +126,3 @@ export { BankNotesIcon } from './BankNotesIcon';
 export { ChatBubbleIcon } from './ChatBubbleIcon';
 export { DigitalContractIcon } from './DigitalContractIcon';
 export { OptimizerIcon } from './OptimizerIcon';
-export { ChevronDownLargeBoldIcon } from './PerronIcon';

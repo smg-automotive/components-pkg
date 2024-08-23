@@ -4,7 +4,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
-import { ChevronDownLargeBoldIcon } from '../icons';
+import { ChevronDownSmallIcon } from '../icons';
 import { Item, Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 
@@ -65,7 +65,7 @@ function CheckboxGroupCollapsibleWithChildren<
                 display="flex"
                 justifyContent="flex-end"
                 icon={
-                  <ChevronDownLargeBoldIcon
+                  <ChevronDownSmallIcon
                     transition="0.2s"
                     color="gray.900"
                     transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
