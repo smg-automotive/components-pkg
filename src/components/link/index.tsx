@@ -30,14 +30,17 @@ interface Props {
     | 'navigationLink'
     | 'subNavigationLink'
     | 'footerLink'
+    | 'link'
+    | 'primary'
+    | 'secondary'
     | undefined;
-  fontWeight?: 'regular' | 'bold' | TypographyProps['fontWeight'];
+  fontWeight?: TypographyProps['fontWeight'];
   ariaLabel?: string;
   color?: string;
   disabled?: boolean;
   to?: string;
   href?: string | ReactNode | null;
-  onClick?: ButtonProps['onClick'];
+  onClick?: ButtonProps['onClick'] | null;
   prefetch?: boolean;
   order?: FlexboxProps['order'];
   zIndex?: PositionProps['zIndex'];
@@ -49,8 +52,10 @@ interface Props {
   mx?: SpaceProps['mx'];
   marginX?: SpaceProps['mx'];
   mt?: SpaceProps['mt'];
+  ml?: SpaceProps['ml'];
   marginTop?: SpaceProps['mt'];
   padding?: SpaceProps['padding'];
+  paddingX?: SpaceProps['paddingX'];
   position?: PositionProps['position'];
   pointerEvents?: InteractivityProps['pointerEvents'];
   alignItems?: FlexboxProps['alignItems'];
@@ -61,12 +66,14 @@ interface Props {
   whiteSpace?: TypographyProps['whiteSpace'];
   wordBreak?: TypographyProps['wordBreak'];
   noOfLines?: TypographyProps['noOfLines'];
+  textOverflow?: TypographyProps['textOverflow'];
   textStyle?: OtherProps['textStyle'];
   display?: LayoutProps['display'];
   width?: LayoutProps['width'];
   w?: LayoutProps['width'];
   type?: ButtonProps['type'];
   replace?: boolean;
+  role?: Pick<React.HTMLAttributes<HTMLDivElement>, 'role'>;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
