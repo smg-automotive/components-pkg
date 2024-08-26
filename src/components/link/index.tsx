@@ -9,6 +9,7 @@ import {
 import {
   ButtonProps,
   chakra,
+  ColorProps,
   FlexboxProps,
   LayoutProps,
   OtherProps,
@@ -24,17 +25,23 @@ interface Props {
   rightIcon?: ReactNode;
   rel?: string;
   target?: string;
-  variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink' | 'footerLink';
+  variant?:
+    | 'baseLink'
+    | 'navigationLink'
+    | 'subNavigationLink'
+    | 'footerLink'
+    | undefined;
   fontWeight?: 'regular' | 'bold' | TypographyProps['fontWeight'];
   ariaLabel?: string;
   color?: string;
   disabled?: boolean;
   to?: string;
-  href?: string | null;
-  onClick?: () => void | null;
+  href?: string | ReactNode | null;
+  onClick?: ButtonProps['onClick'];
   prefetch?: boolean;
   order?: FlexboxProps['order'];
   zIndex?: PositionProps['zIndex'];
+  top?: PositionProps['top'];
   fontSize?: TypographyProps['fontSize'];
   textDecoration?: TextDecorationProps['textDecoration'];
   alignSelf?: FlexboxProps['alignSelf'];
@@ -43,15 +50,23 @@ interface Props {
   marginX?: SpaceProps['mx'];
   mt?: SpaceProps['mt'];
   marginTop?: SpaceProps['mt'];
+  padding?: SpaceProps['padding'];
   position?: PositionProps['position'];
   pointerEvents?: InteractivityProps['pointerEvents'];
   alignItems?: FlexboxProps['alignItems'];
   flexShrink?: FlexboxProps['flexShrink'];
+  justifyContent?: FlexboxProps['justifyContent'];
   textAlign?: TypographyProps['textAlign'];
+  textColor?: ColorProps['textColor'];
+  whiteSpace?: TypographyProps['whiteSpace'];
+  wordBreak?: TypographyProps['wordBreak'];
+  noOfLines?: TypographyProps['noOfLines'];
   textStyle?: OtherProps['textStyle'];
   display?: LayoutProps['display'];
   width?: LayoutProps['width'];
+  w?: LayoutProps['width'];
   type?: ButtonProps['type'];
+  replace?: boolean;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
