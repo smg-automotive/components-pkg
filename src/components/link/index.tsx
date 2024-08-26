@@ -1,8 +1,15 @@
 import React, { ElementType, forwardRef, ReactNode, useMemo } from 'react';
 
 import {
+  InteractivityProps,
+  PositionProps,
+  SpaceProps,
+  TextDecorationProps,
+} from '@chakra-ui/styled-system';
+import {
   ButtonProps,
   chakra,
+  FlexboxProps,
   LayoutProps,
   OtherProps,
   TypographyProps,
@@ -10,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   as?: ElementType;
   isExternal?: boolean;
   leftIcon?: ReactNode;
@@ -18,13 +25,28 @@ interface Props {
   rel?: string;
   target?: string;
   variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink' | 'footerLink';
-  fontWeight?: 'regular' | 'bold';
+  fontWeight?: 'regular' | 'bold' | TypographyProps['fontWeight'];
   ariaLabel?: string;
   color?: string;
   disabled?: boolean;
   to?: string;
-  href?: string;
-  onClick?: () => void;
+  href?: string | null;
+  onClick?: () => void | null;
+  prefetch?: boolean;
+  order?: FlexboxProps['order'];
+  zIndex?: PositionProps['zIndex'];
+  fontSize?: TypographyProps['fontSize'];
+  textDecoration?: TextDecorationProps['textDecoration'];
+  alignSelf?: FlexboxProps['alignSelf'];
+  overflowX?: LayoutProps['overflowX'];
+  mx?: SpaceProps['mx'];
+  marginX?: SpaceProps['mx'];
+  mt?: SpaceProps['mt'];
+  marginTop?: SpaceProps['mt'];
+  position?: PositionProps['position'];
+  pointerEvents?: InteractivityProps['pointerEvents'];
+  alignItems?: FlexboxProps['alignItems'];
+  flexShrink?: FlexboxProps['flexShrink'];
   textAlign?: TypographyProps['textAlign'];
   textStyle?: OtherProps['textStyle'];
   display?: LayoutProps['display'];
