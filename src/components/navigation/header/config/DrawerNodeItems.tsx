@@ -1185,6 +1185,25 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.contactDetails',
+          link: {
+            de: '/de/member/masterdata/addressedit',
+            en: '/en/member/masterdata/addressedit',
+            fr: '/fr/member/masterdata/addressedit',
+            it: '/it/member/masterdata/addressedit',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
               professional: true,
             },
             brand: {
