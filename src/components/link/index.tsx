@@ -1,25 +1,24 @@
-import React, {
-  ElementType,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  useMemo,
-} from 'react';
-import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import React, { ElementType, forwardRef, ReactNode, useMemo } from 'react';
 
-interface Props {
+import {
+  chakra,
+  LinkProps as ChakraLinkProps,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
+
+interface Props extends Partial<ChakraLinkProps> {
   children: ReactNode;
   as?: ElementType;
-  leftIcon?: ReactElement;
-  rightIcon?: ReactElement;
-  isExternal?: boolean;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
   rel?: string;
   target?: string;
-  variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
-  [key: string]: unknown;
+  variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink' | 'footerLink';
   fontWeight?: 'regular' | 'bold';
   ariaLabel?: string;
   color?: string;
+  disabled?: boolean;
+  to?: string;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(

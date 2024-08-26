@@ -19,7 +19,7 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
 
   const boldStyles = bold
     ? {
-        fontWeight: 'bold',
+        fontWeight: 'bold' as const,
       }
     : {};
 
