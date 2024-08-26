@@ -77,6 +77,7 @@ interface Props {
   textStyle?: OtherProps['textStyle'];
   display?: LayoutProps['display'];
   width?: LayoutProps['width'];
+  minWidth?: LayoutProps['minWidth'];
   w?: LayoutProps['width'];
   type?: ButtonProps['type'];
   replace?: boolean;
