@@ -1,4 +1,10 @@
-import React, { ElementType, forwardRef, ReactNode, useMemo } from 'react';
+import React, {
+  AriaRole,
+  ElementType,
+  forwardRef,
+  ReactNode,
+  useMemo,
+} from 'react';
 
 import {
   InteractivityProps,
@@ -40,7 +46,7 @@ interface Props {
   disabled?: boolean;
   to?: string;
   href?: string | ReactNode | null;
-  onClick?: ButtonProps['onClick'] | null;
+  onClick?: ButtonProps['onClick'] | ((e: MouseEvent) => void) | null;
   prefetch?: boolean;
   order?: FlexboxProps['order'];
   zIndex?: PositionProps['zIndex'];
@@ -56,6 +62,7 @@ interface Props {
   marginTop?: SpaceProps['mt'];
   padding?: SpaceProps['padding'];
   paddingX?: SpaceProps['paddingX'];
+  paddingY?: SpaceProps['paddingY'];
   position?: PositionProps['position'];
   pointerEvents?: InteractivityProps['pointerEvents'];
   alignItems?: FlexboxProps['alignItems'];
@@ -73,7 +80,7 @@ interface Props {
   w?: LayoutProps['width'];
   type?: ButtonProps['type'];
   replace?: boolean;
-  role?: Pick<React.HTMLAttributes<HTMLDivElement>, 'role'>;
+  role?: AriaRole;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
