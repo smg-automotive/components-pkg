@@ -1,14 +1,18 @@
 import React, { ElementType, forwardRef, ReactNode, useMemo } from 'react';
 
 import {
+  ButtonProps,
   chakra,
-  LinkProps as ChakraLinkProps,
+  LayoutProps,
+  OtherProps,
+  TypographyProps,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-interface Props extends Partial<ChakraLinkProps> {
+interface Props {
   children: ReactNode;
   as?: ElementType;
+  isExternal?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   rel?: string;
@@ -19,6 +23,13 @@ interface Props extends Partial<ChakraLinkProps> {
   color?: string;
   disabled?: boolean;
   to?: string;
+  href?: string;
+  onClick?: () => void;
+  textAlign?: TypographyProps['textAlign'];
+  textStyle?: OtherProps['textStyle'];
+  display?: LayoutProps['display'];
+  width?: LayoutProps['width'];
+  type?: ButtonProps['type'];
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
