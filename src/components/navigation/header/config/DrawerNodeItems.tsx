@@ -961,7 +961,7 @@ export const drawerNodeItems = ({
             de: 'http://bi.scout24.ch',
             en: 'http://bi.scout24.ch',
             fr: 'http://bi.scout24.ch',
-            it: 'http://bi. scout24.ch',
+            it: 'http://bi.scout24.ch',
           },
           visibilitySettings: {
             userType: {
