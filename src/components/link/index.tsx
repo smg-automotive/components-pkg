@@ -1,17 +1,21 @@
 import React, { forwardRef, ReactNode, useMemo } from 'react';
 
 import {
+  ButtonProps,
   chakra,
   LinkProps as ChakraLinkProps,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-interface Props extends Partial<ChakraLinkProps> {
+interface Props extends Partial<Omit<ChakraLinkProps, 'href' | 'onClick'>> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  ariaLabel?: string;
+  ariaLabel?: string | null;
   disabled?: boolean;
   to?: string;
+  href?: string | ReactNode | null;
+  onClick?: ButtonProps['onClick'] | ((e: MouseEvent) => void) | null;
+  replace?: boolean;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
