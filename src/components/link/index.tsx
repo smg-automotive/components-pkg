@@ -1,87 +1,17 @@
-import React, {
-  AriaRole,
-  ElementType,
-  forwardRef,
-  ReactNode,
-  useMemo,
-} from 'react';
+import React, { forwardRef, ReactNode, useMemo } from 'react';
 
 import {
-  InteractivityProps,
-  PositionProps,
-  SpaceProps,
-  TextDecorationProps,
-} from '@chakra-ui/styled-system';
-import {
-  ButtonProps,
   chakra,
-  ColorProps,
-  FlexboxProps,
-  LayoutProps,
-  OtherProps,
-  TypographyProps,
+  LinkProps as ChakraLinkProps,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-interface Props {
-  children?: ReactNode;
-  as?: ElementType;
-  isExternal?: boolean;
+interface Props extends Partial<ChakraLinkProps> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  rel?: string;
-  target?: string;
-  variant?:
-    | 'baseLink'
-    | 'navigationLink'
-    | 'subNavigationLink'
-    | 'footerLink'
-    | 'link'
-    | 'primary'
-    | 'secondary'
-    | undefined;
-  fontWeight?: TypographyProps['fontWeight'];
   ariaLabel?: string;
-  color?: string;
   disabled?: boolean;
   to?: string;
-  href?: string | ReactNode | null;
-  onClick?: ButtonProps['onClick'] | ((e: MouseEvent) => void) | null;
-  prefetch?: boolean;
-  order?: FlexboxProps['order'];
-  zIndex?: PositionProps['zIndex'];
-  top?: PositionProps['top'];
-  fontSize?: TypographyProps['fontSize'];
-  textDecoration?: TextDecorationProps['textDecoration'];
-  alignSelf?: FlexboxProps['alignSelf'];
-  overflowX?: LayoutProps['overflowX'];
-  mx?: SpaceProps['mx'];
-  marginX?: SpaceProps['mx'];
-  mt?: SpaceProps['mt'];
-  ml?: SpaceProps['ml'];
-  marginTop?: SpaceProps['mt'];
-  padding?: SpaceProps['padding'];
-  paddingX?: SpaceProps['paddingX'];
-  paddingY?: SpaceProps['paddingY'];
-  position?: PositionProps['position'];
-  pointerEvents?: InteractivityProps['pointerEvents'];
-  alignItems?: FlexboxProps['alignItems'];
-  flexShrink?: FlexboxProps['flexShrink'];
-  justifyContent?: FlexboxProps['justifyContent'];
-  textAlign?: TypographyProps['textAlign'];
-  textColor?: ColorProps['textColor'];
-  whiteSpace?: TypographyProps['whiteSpace'];
-  wordBreak?: TypographyProps['wordBreak'];
-  noOfLines?: TypographyProps['noOfLines'];
-  textOverflow?: TypographyProps['textOverflow'];
-  textStyle?: OtherProps['textStyle'];
-  display?: LayoutProps['display'];
-  width?: LayoutProps['width'];
-  minWidth?: LayoutProps['minWidth'];
-  w?: LayoutProps['width'];
-  type?: ButtonProps['type'];
-  replace?: boolean;
-  role?: AriaRole;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
