@@ -20,7 +20,7 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  slidesPerView?: ResponsiveObject<number>;
+  slidesPerView?: ResponsiveObject<number> | 1;
   loop?: boolean;
   slidesToScroll?: 'auto' | number;
 };
@@ -59,7 +59,7 @@ const Carousel: FC<Props> = (props) => {
     onSlideSelect,
     fullScreen,
     paginationType = PaginationType.None,
-    slidesPerView = { base: 1 },
+    slidesPerView = 1,
     loop = true,
     slidesToScroll = 1,
   } = props;
@@ -222,7 +222,10 @@ const Carousel: FC<Props> = (props) => {
           }
           __css={carousel}
         >
-          <Flex __css={slideContainer}>
+          <Flex
+            __css={slideContainer}
+            marginLeft={slidesPerView === 1 ? 0 : { base: '-md', md: '-2xl' }}
+          >
             {props.children.map((slide, index) => (
               <Slide
                 key={`slide-${index}`}
