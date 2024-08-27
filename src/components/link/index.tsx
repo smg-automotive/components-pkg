@@ -1,21 +1,15 @@
-import React, { forwardRef, ReactNode, useMemo } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 
 import {
-  ButtonProps,
   chakra,
+  Link as ChakraLink,
   LinkProps as ChakraLinkProps,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-interface Props extends Partial<Omit<ChakraLinkProps, 'href' | 'onClick'>> {
+interface Props extends Partial<ChakraLinkProps> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  ariaLabel?: string | null;
-  disabled?: boolean;
-  to?: string;
-  href?: string | ReactNode | null;
-  onClick?: ButtonProps['onClick'] | ((e: MouseEvent) => void) | null;
-  replace?: boolean;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
@@ -30,18 +24,11 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
-      ariaLabel,
       ...rest
     },
     ref,
   ) => {
     const styles = useMultiStyleConfig('Link', { variant });
-
-    const Component = useMemo(() => {
-      return chakra(as, {
-        baseStyle: styles.link,
-      });
-    }, [as, styles.link]);
 
     const textStyle = {
       ...(leftIcon ? styles.leftIcon : {}),
@@ -49,18 +36,18 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
     };
 
     return (
-      <Component
+      <ChakraLink
+        as={as}
         target={target || (isExternal ? '_blank' : undefined)}
         rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         ref={ref}
-        aria-label={ariaLabel}
-        {...rest}
         fontWeight={fontWeight}
+        {...rest}
       >
         {leftIcon}
         <chakra.span __css={textStyle}>{children}</chakra.span>
         {rightIcon}
-      </Component>
+      </ChakraLink>
     );
   },
 );
