@@ -1177,6 +1177,25 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.contactDetails',
           link: {
+            de: '/de/profile',
+            en: '/en/profile',
+            fr: '/fr/profile',
+            it: '/it/profile',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.contactDetails',
+          link: {
             de: '/de/member/masterdata/addressedit',
             en: '/de/member/masterdata/addressedit',
             fr: '/fr/member/masterdata/addressedit',
@@ -1184,7 +1203,7 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
             },
             brand: {
