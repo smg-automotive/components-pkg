@@ -1178,7 +1178,7 @@ export const drawerNodeItems = ({
           translationKey: 'header.userMenu.contactDetails',
           link: {
             de: '/de/profile',
-            en: '/de/profile',
+            en: '/en/profile',
             fr: '/fr/profile',
             it: '/it/profile',
           },
@@ -1197,7 +1197,7 @@ export const drawerNodeItems = ({
           translationKey: 'header.userMenu.contactDetails',
           link: {
             de: '/de/member/masterdata/addressedit',
-            en: '/en/member/masterdata/addressedit',
+            en: '/de/member/masterdata/addressedit',
             fr: '/fr/member/masterdata/addressedit',
             it: '/it/member/masterdata/addressedit',
           },
