@@ -101,6 +101,17 @@ export const WithButton: StoryType = {
   },
 };
 
+export const WithTooltipAndButton: StoryType = {
+  name: 'With tooltip and button',
+
+  args: {
+    label: 'Label',
+    tooltip: 'I am a tooltip text',
+    labelButtonText: 'button',
+    labelButtonOnClick: action('label button clicked'),
+  },
+};
+
 export const Invalid: StoryType = {
   args: {
     label: 'Label',

@@ -71,6 +71,21 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
     </Stack>
   );
 
+  const formLabelWithTooltipAndButton = (
+    <Stack direction="row" justify="space-between">
+      {formLabelWithTooltip}
+      <Link
+        as={Button}
+        onClick={labelButtonOnClick}
+        textStyle="body-small"
+        color="blue.700"
+        padding="0"
+      >
+        {labelButtonText}
+      </Link>
+    </Stack>
+  );
+
   return (
     <ChakraFormControl
       isDisabled={isDisabled}
@@ -79,8 +94,11 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
       id={id}
     >
       {label && !tooltip && !labelButtonText ? formLabel : null}
-      {label && tooltip ? formLabelWithTooltip : null}
-      {label && labelButtonText ? formLabelWithButton : null}
+      {label && tooltip && !labelButtonText ? formLabelWithTooltip : null}
+      {label && !tooltip && labelButtonText ? formLabelWithButton : null}
+      {label && tooltip && labelButtonText
+        ? formLabelWithTooltipAndButton
+        : null}
       {children}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
       {hint ? <FormHelperText>{hint}</FormHelperText> : null}
