@@ -7,7 +7,7 @@ const meta: Meta<typeof CountComponent> = {
   component: CountComponent,
   argTypes: {
     variant: {
-      options: ['primary', 'inverted'],
+      options: ['primary', 'inverted', 'info', 'success', 'warning', 'error'],
     },
   },
 };
