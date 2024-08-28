@@ -10,6 +10,7 @@ import {
 interface Props extends Partial<Omit<ChakraLinkProps, 'href' | 'onClick'>> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  ariaLabel?: string | null;
   disabled?: boolean;
   to?: string;
   href?: string | ReactNode | null;
@@ -30,6 +31,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
+      ariaLabel,
       ...rest
     },
     ref,
@@ -53,6 +55,7 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         ref={ref}
         fontWeight={fontWeight}
+        aria-label={ariaLabel}
         {...rest}
       >
         {leftIcon}
