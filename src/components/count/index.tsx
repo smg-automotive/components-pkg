@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
-export type Variant =
+type Variant =
   | 'primary'
   | 'inverted'
   | 'info'
