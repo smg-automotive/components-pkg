@@ -13,10 +13,12 @@ import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
 import Radio from './radio';
+import Popover from './popover';
 import Pagination from './pagination';
 import NumberInput from './numberInput';
 import Modal from './modal';
 import Menu from './menu';
+import MarkedText from './markedText';
 import List from './list';
 import Link from './link';
 import Input from './input';
@@ -57,6 +59,7 @@ export const components: Record<string, ComponentStyleConfig> = {
   Input,
   Link,
   List,
+  MarkedText,
   Menu,
   Modal,
   NumberInput,
@@ -74,4 +77,5 @@ export const components: Record<string, ComponentStyleConfig> = {
   Tooltip,
   VehicleReference,
   Slider,
+  Popover,
 };

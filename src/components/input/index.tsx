@@ -6,13 +6,16 @@ import React, {
   ForwardedRef,
   forwardRef,
   MutableRefObject,
+  ReactElement,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import {
   Input as ChakraInput,
+  InputLeftAddon,
   InputLeftElement,
+  InputRightAddon,
   InputRightElement,
 } from '@chakra-ui/react';
 
@@ -31,6 +34,8 @@ type SharedProps = {
   type?: 'text' | 'number' | 'password';
   icon?: ComponentType;
   isClearable?: boolean;
+  rightAddonElement?: ReactElement;
+  leftAddonElement?: ReactElement;
 };
 
 type ControlledInputProps = {
@@ -76,6 +81,14 @@ const renderClearButton = ({
     </InputRightElement>
   ) : null;
 
+const renderLeftAddonElement = (LeftAddonElement?: ReactElement) =>
+  LeftAddonElement ? <InputLeftAddon>{LeftAddonElement}</InputLeftAddon> : null;
+
+const renderRightAddonElement = (RightAddonElement?: ReactElement) =>
+  RightAddonElement ? (
+    <InputRightAddon>{RightAddonElement}</InputRightAddon>
+  ) : null;
+
 const bindRefBeforeForwarding =
   <T extends Element>({
     forwardedRef,
@@ -103,6 +116,8 @@ const Input = forwardRef<HTMLInputElement, Props>(
       type = 'text',
       icon: Icon,
       isClearable = false,
+      rightAddonElement: RightAddonElement,
+      leftAddonElement: LeftAddonElement,
       ...props
     },
     ref,
@@ -144,22 +159,31 @@ const Input = forwardRef<HTMLInputElement, Props>(
       : defaultOnChangeHandler;
 
     return (
-      <InputWrapper size={props.size} shouldWrap={!!Icon || isClearable}>
-        {renderIcon(Icon)}
-        <ChakraInput
-          {...props}
-          type={type}
-          value={inputValue}
-          onChange={onChangeHandler}
-          ref={bindRefBeforeForwarding({
-            forwardedRef: ref,
-            localRef: inputRef,
+      <InputWrapper
+        size={props.size}
+        shouldWrap={Boolean(LeftAddonElement || RightAddonElement)}
+      >
+        {renderLeftAddonElement(LeftAddonElement)}
+        <InputWrapper size={props.size} shouldWrap={!!Icon || isClearable}>
+          {renderIcon(Icon)}
+          <ChakraInput
+            {...props}
+            type={type}
+            value={inputValue}
+            onChange={onChangeHandler}
+            ref={bindRefBeforeForwarding({
+              forwardedRef: ref,
+              localRef: inputRef,
+            })}
+            borderRightRadius={RightAddonElement ? '0' : 'sm'}
+            borderLeftRadius={LeftAddonElement ? '0' : 'sm'}
+          />
+          {renderClearButton({
+            isClearable: isClearable && !!internalUIValue,
+            inputRef,
           })}
-        />
-        {renderClearButton({
-          isClearable: isClearable && !!internalUIValue,
-          inputRef,
-        })}
+        </InputWrapper>
+        {renderRightAddonElement(RightAddonElement)}
       </InputWrapper>
     );
   },

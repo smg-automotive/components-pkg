@@ -82,6 +82,7 @@
         "title": "Legal & Security"
       },
       "list": {
+        "direct": "AutoScout24 Direct",
         "productsAndPrices": "Products and Prices",
         "title": "Advertise",
         "vehicles": "Vehicles"
@@ -107,6 +108,7 @@
     "searchMenu": {
       "additional": "Additional",
       "advancedSearch": "Advanced Search",
+      "comparison": "Comparison tool ({{ numberOfItems }})",
       "dealer": "Dealer",
       "insuranceComparison": "Insurance comparison",
       "searchCars": "Rechercher des véhicules",
@@ -165,7 +167,6 @@
       "requisitions": "Requisitions",
       "reviews": "Reviews",
       "settings": "Ideas",
-      "shoppingCard": "Shopping card",
       "statistics": "The statistics",
       "toolsForPurchasing": "Tools for purchasing",
       "toolsForSelling": "Tools for Selling",

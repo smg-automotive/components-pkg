@@ -3,6 +3,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 import { MergedUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
+import Text from 'src/components/text';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 import Avatar from 'src/components/avatar';
@@ -18,7 +19,6 @@ interface NavigationAvatarProps {
   hasNotification: boolean;
   createDrawerHandler: ({ nodeName }: { nodeName: DrawerNode }) => () => void;
   onLogin: () => void;
-  showUserEmail?: boolean;
 }
 
 export const NavigationAvatar: FC<NavigationAvatarProps> = ({
@@ -28,7 +28,6 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   hasNotification,
   createDrawerHandler,
   onLogin,
-  showUserEmail = false,
 }) => {
   const isDrawerOpened = isOpen && drawer?.current === DrawerNode.User;
   const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
@@ -47,9 +46,14 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Box fontWeight="bold" {...(isDrawerOpened && { color: 'blue.700' })}>
-            {showUserEmail ? user.email : user.userName}
-          </Box>
+          <Text
+            fontWeight="bold"
+            {...(isDrawerOpened && { color: 'blue.700' })}
+            noOfLines={1}
+            maxW="3xl"
+          >
+            {user.email}
+          </Text>
         </Hide>
         <DrawerIndicator isOpen={isDrawerOpened} />
       </HStack>

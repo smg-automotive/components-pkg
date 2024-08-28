@@ -12,6 +12,8 @@ export default {
   setupFilesAfterEnv: [
     '<rootDir>/.jest/setup/jestDomExpects.ts',
     '<rootDir>/.jest/setup/mockMatchMedia.ts',
+    '<rootDir>/.jest/setup/resizeObserver.ts',
+    '<rootDir>/.jest/setup/intersectionObserver.ts',
   ],
   testEnvironment: 'jsdom',
 };

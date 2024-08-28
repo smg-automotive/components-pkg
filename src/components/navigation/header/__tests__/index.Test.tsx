@@ -5,6 +5,7 @@ import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
 
+import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
@@ -171,61 +172,6 @@ describe('Header', () => {
     const user = screen.getByText('john.doe@me.com');
     expect(user).toBeInTheDocument();
   });
-  it('should display user name if there is a user on production', async () => {
-    render(
-      <Navigation
-        environment="production"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-      />,
-    );
-
-    const user = screen.getByText('John Doe');
-    expect(user).toBeInTheDocument();
-  });
-  it('does not display user info in the drawer on production', async () => {
-    render(
-      <Navigation
-        environment="production"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-      />,
-    );
-
-    const searchItem = screen.getByText('John Doe');
-    fireEvent.click(searchItem);
-
-    const drawerBody = screen.getByTestId('drawer-body');
-    expect(
-      within(drawerBody).queryByText('john.doe@me.com'),
-    ).not.toBeInTheDocument();
-  });
   it('should display notification icon if there is a notification', async () => {
     render(
       <Navigation
@@ -259,6 +205,7 @@ describe('Header', () => {
       config: {
         headerItems: headerLinks({ trackEvent: jest.fn() }),
         drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
+        iconItems: iconItems({ trackEvent: jest.fn() }),
       },
       user: {
         id: '1',
@@ -275,6 +222,7 @@ describe('Header', () => {
     expect(config).toEqual({
       drawerItems: expect.any(Object),
       headerItems: expect.any(Object),
+      iconItems: { comparison: null },
       homeUrl: expect.any(String),
       menuHeight: expect.any(String),
       user: expect.any(Object),

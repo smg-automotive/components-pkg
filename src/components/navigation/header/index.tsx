@@ -1,7 +1,5 @@
 import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
-
 import { Language } from '@smg-automotive/i18n-pkg';
-
 import { MergedUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
@@ -10,6 +8,7 @@ import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
+
 import Box from 'src/components/box';
 
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
@@ -17,13 +16,16 @@ import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
+import { iconItems } from './config/iconItems';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
+import ComparisonItem from './ComparisonItem';
 
 interface NavigationProps {
   environment: Environment;
   brand: Brand;
+  comparisonItemIds?: number[] | null;
   language: Language;
   user: MergedUser | null;
   hasNotification: boolean;
@@ -32,11 +34,13 @@ interface NavigationProps {
   onLogin: () => void;
   onLogout: () => void;
   trackEvent?: (event: CustomEvent) => void;
+  experiments?: Record<string, string>;
 }
 
 const Navigation: FC<NavigationProps> = ({
   environment,
   brand,
+  comparisonItemIds,
   language,
   user,
   hasNotification,
@@ -45,8 +49,8 @@ const Navigation: FC<NavigationProps> = ({
   onLogin,
   onLogout,
   trackEvent,
+  experiments = {},
 }) => {
-  const showUserEmail = environment === 'preprod';
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
       ? { accountId: user?.sellerId }
@@ -56,8 +60,13 @@ const Navigation: FC<NavigationProps> = ({
       environment,
       useAbsoluteUrls,
       config: {
-        headerItems: headerLinks({ trackEvent }),
-        drawerItems: drawerNodeItems({ trackEvent, onLogout }),
+        headerItems: headerLinks({ trackEvent, experiments }),
+        drawerItems: drawerNodeItems({
+          trackEvent,
+          onLogout,
+          comparisonItemIds,
+        }),
+        iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
       user,
       urlPathParams,
@@ -118,6 +127,12 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
+            {config.iconItems.comparison ? (
+              <ComparisonItem
+                link={config.iconItems.comparison}
+                count={comparisonItemIds?.length ?? 0}
+              />
+            ) : null}
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
@@ -125,7 +140,6 @@ const Navigation: FC<NavigationProps> = ({
               drawer={drawer}
               hasNotification={hasNotification}
               onLogin={onLogin}
-              showUserEmail={showUserEmail}
             />
             <NavigationLanguageMenu activeLanguage={language} />
           </Stack>
@@ -137,7 +151,6 @@ const Navigation: FC<NavigationProps> = ({
         isOpen={isOpen}
         onClose={onClose}
         menuHeight={config.menuHeight}
-        showUserEmail={showUserEmail}
       />
     </TranslationProvider>
   );

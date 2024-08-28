@@ -1,6 +1,10 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useMediaQuery, useMultiStyleConfig } from '@chakra-ui/react';
+import {
+  ResponsiveObject,
+  useMediaQuery,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
 
 import { breakpoints } from 'src/themes';
 
@@ -16,6 +20,9 @@ type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
+  slidesPerView?: ResponsiveObject<number> | 1;
+  loop?: boolean;
+  slidesToScroll?: 'auto' | number;
 };
 
 type DefaultProps = {
@@ -52,8 +59,13 @@ const Carousel: FC<Props> = (props) => {
     onSlideSelect,
     fullScreen,
     paginationType = PaginationType.None,
+    slidesPerView = 1,
+    loop = true,
+    slidesToScroll = 1,
   } = props;
 
+  const [canScrollPrevious, setCanScrollPrevious] = useState(loop);
+  const [canScrollNext, setCanScrollNext] = useState(loop);
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
   const [isSmallLandscapeViewport] = useMediaQuery(
     `(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`,
@@ -67,32 +79,35 @@ const Carousel: FC<Props> = (props) => {
     fullScreen ? { variant: 'fullScreen' } : {},
   );
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
-    loop: true,
+    loop,
     startIndex: startIndex,
-    speed: 20,
+    duration: 20,
+    align: 'start',
+    slidesToScroll,
   });
   const [paginationCarouselRef, paginationCarousel] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true,
     slidesToScroll: 'auto',
     inViewThreshold: 1,
+    duration: 20,
   });
 
   const scrollPrev = useCallback(
-    () => mainCarousel && mainCarousel.scrollPrev(),
+    () => mainCarousel && mainCarousel.scrollPrev(true),
     [mainCarousel],
   );
   const scrollNext = useCallback(
-    () => mainCarousel && mainCarousel.scrollNext(),
+    () => mainCarousel && mainCarousel.scrollNext(true),
     [mainCarousel],
   );
   const onClick = useCallback(
     (index: number) => {
-      if (onSlideClick && mainCarousel && mainCarousel.clickAllowed()) {
+      if (onSlideClick) {
         onSlideClick(index);
       }
     },
-    [mainCarousel, onSlideClick],
+    [onSlideClick],
   );
 
   const numberOfSlides = props.children.length;
@@ -104,9 +119,17 @@ const Carousel: FC<Props> = (props) => {
     const previousIndex = mainCarousel.previousScrollSnap();
 
     setSelectedIndex(newIndex);
+    setCanScrollPrevious(mainCarousel.canScrollPrev());
+    setCanScrollNext(mainCarousel.canScrollNext());
     if (paginationCarousel && hasThumbnailPagination) {
-      const slidesToScroll = paginationCarousel.slidesInView().length;
-      paginationCarousel.scrollTo(Math.floor(newIndex / slidesToScroll));
+      const { slideRegistry } = paginationCarousel.internalEngine();
+      const snapIndexThatSlideBelongsTo = slideRegistry.findIndex((group) =>
+        group.includes(newIndex),
+      );
+
+      if (typeof snapIndexThatSlideBelongsTo !== 'undefined') {
+        paginationCarousel.scrollTo(snapIndexThatSlideBelongsTo);
+      }
     }
     if (onSlideSelect) {
       onSlideSelect(newIndex);
@@ -180,6 +203,7 @@ const Carousel: FC<Props> = (props) => {
           totalSlides={numberOfSlides}
           isCurrent={startIndex === selectedIndex}
           fullScreen={!!fullScreen}
+          slidesPerView={slidesPerView}
         >
           {props.fullScreen
             ? props.children[startIndex]?.slide
@@ -198,7 +222,10 @@ const Carousel: FC<Props> = (props) => {
           }
           __css={carousel}
         >
-          <Flex __css={slideContainer}>
+          <Flex
+            __css={slideContainer}
+            marginLeft={slidesPerView === 1 ? 0 : { base: '-md', md: '-2xl' }}
+          >
             {props.children.map((slide, index) => (
               <Slide
                 key={`slide-${index}`}
@@ -207,6 +234,7 @@ const Carousel: FC<Props> = (props) => {
                 totalSlides={numberOfSlides}
                 isCurrent={index === selectedIndex}
                 fullScreen={!!fullScreen}
+                slidesPerView={slidesPerView}
               >
                 {slide && typeof slide === 'object' && 'slide' in slide
                   ? slide.slide
@@ -214,16 +242,20 @@ const Carousel: FC<Props> = (props) => {
               </Slide>
             ))}
           </Flex>
-          <NavigationButton
-            onClick={scrollPrev}
-            direction="previous"
-            fullScreen={!!fullScreen}
-          />
-          <NavigationButton
-            onClick={scrollNext}
-            direction="next"
-            fullScreen={!!fullScreen}
-          />
+          {canScrollPrevious ? (
+            <NavigationButton
+              onClick={scrollPrev}
+              direction="previous"
+              fullScreen={!!fullScreen}
+            />
+          ) : null}
+          {canScrollNext ? (
+            <NavigationButton
+              onClick={scrollNext}
+              direction="next"
+              fullScreen={!!fullScreen}
+            />
+          ) : null}
           {paginationType === PaginationType.Dot ? (
             <DotsPagination
               currentSlideIndex={selectedIndex}

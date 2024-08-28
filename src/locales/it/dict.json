@@ -82,6 +82,7 @@
         "title": "Basi legali"
       },
       "list": {
+        "direct": "AutoScout24 Direct",
         "productsAndPrices": "Prodotti e prezzi",
         "title": "Inserire",
         "vehicles": "Veicoli"
@@ -100,13 +101,14 @@
     "carSubscription": "Auto-Abo",
     "electromobility": "Elettromobilità",
     "estimate": "Stimare",
-    "login": "Connexion",
+    "login": "Accedere",
     "magazine": "Rivista",
     "more": "Plus",
     "search": "Ricerca",
     "searchMenu": {
       "additional": "Altre",
       "advancedSearch": "Ricerca avanzata",
+      "comparison": "Strumento di Confronto ({{ numberOfItems }})",
       "dealer": "commercianti",
       "insuranceComparison": "Confronto di assicurazioni",
       "searchCars": "Ricerca veicolo",
@@ -165,7 +167,6 @@
       "requisitions": "Ordini di ricerca",
       "reviews": "Valutazioni",
       "settings": "Preferenze",
-      "shoppingCard": "Carrello",
       "statistics": "Statistiche",
       "toolsForPurchasing": "Strumenti per l'acquisto",
       "toolsForSelling": "Gestire veicoli",

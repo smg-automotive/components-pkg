@@ -4,6 +4,7 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
+import { Button, Select } from '../index';
 import { MagnifierIcon } from '../icons';
 
 import InputComponent, { InputProps } from './index';
@@ -60,7 +61,7 @@ const meta: Meta<typeof InputComponent> = {
   },
 
   decorators: (Story) => (
-    <Box w="100%" maxW="250px">
+    <Box w="100%" maxW="550px">
       <Story />
     </Box>
   ),
@@ -181,5 +182,67 @@ export const Debounced: StoryType = {
 export const WithIcon: StoryType = {
   args: {
     icon: MagnifierIcon,
+    autoFocus: true,
+  },
+};
+
+export const WithRightAddonElementButton: StoryType = {
+  args: {
+    ...WithIcon.args,
+    rightAddonElement: (
+      <Button
+        borderColor="gray.400"
+        borderLeftRadius="0"
+        onClick={() => {}}
+        variant="secondary"
+      >
+        Test
+      </Button>
+    ),
+  },
+};
+
+export const WithRightAddonElementSelect: StoryType = {
+  args: {
+    ...WithIcon.args,
+    rightAddonElement: (
+      <Select
+        name="Test select"
+        options={[{ label: '+10 km', value: '10' }]}
+        borderLeftRadius="0"
+      />
+    ),
+  },
+};
+
+export const WithLeftAddonElementButton: StoryType = {
+  args: {
+    ...WithIcon.args,
+    leftAddonElement: (
+      <Button
+        borderColor="gray.400"
+        borderRightRadius="0"
+        onClick={() => {}}
+        variant="secondary"
+      >
+        Test
+      </Button>
+    ),
+  },
+};
+
+export const WithLeftAddonElementSelect: StoryType = {
+  args: {
+    type: 'number',
+    placeholder: 'i.e. 791234567',
+    leftAddonElement: (
+      <Box width={96}>
+        <Select
+          name="Test select"
+          options={[{ label: '+41', value: 'CH' }]}
+          borderRightRadius="0"
+        />
+      </Box>
+    ),
   },
 };

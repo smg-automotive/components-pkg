@@ -8,37 +8,44 @@ import TabPanel from './TabPanel';
 import TabList from './TabList';
 import Tab from './Tab';
 
+import Tabs from './index';
+
 import TabsComponent from './index';
 
 const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Navigation/Tabs',
-  component: TabsComponent,
+
+  render: (args) => {
+    return (
+      <Tabs {...args}>
+        <TabList key="tab-list">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <Tab key={`tab-${index}`}>Tab: {index}</Tab>
+          ))}
+        </TabList>
+        <TabPanels key="tab-panels">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <TabPanel key={`tab-panel-${index}`}>
+              <Box backgroundColor="gray.50" w="full" h="300px">
+                <p>Tab panel: {index}</p>
+              </Box>
+            </TabPanel>
+          ))}
+        </TabPanels>
+      </Tabs>
+    );
+  },
 
   args: {
     defaultIndex: 2,
-    children: [
-      <TabList width="max-content" key="tab-list">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <Tab key={`tab-${index}`}>Tab: {index}</Tab>
-        ))}
-      </TabList>,
-      <TabPanels key="tab-panels">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <TabPanel key={`tab-panel-${index}`}>
-            <Box backgroundColor="gray.50" w="full" h="300px">
-              <p>Tab panel: {index}</p>
-            </Box>
-          </TabPanel>
-        ))}
-      </TabPanels>,
-    ],
     onChange: action('onChange'),
     isLazy: true,
+    variant: 'default' as unknown as undefined,
   },
 
   argTypes: {
     variant: {
-      options: ['spaceBetween', 'spaceAround'],
+      options: ['spaceBetween', 'spaceAround', 'enclosed', 'default'],
       control: 'select',
     },
     children: {
@@ -52,6 +59,30 @@ export default meta;
 
 type StoryType = StoryObj<typeof TabsComponent>;
 export const Overview: StoryType = {};
+
+export const VariantSpaceBetween: StoryType = {
+  name: 'Variant > Space Between',
+
+  args: {
+    variant: 'spaceBetween',
+  },
+};
+
+export const VariantSpaceAround: StoryType = {
+  name: 'Variant > Space Around',
+
+  args: {
+    variant: 'spaceAround',
+  },
+};
+
+export const VariantEnclosed: StoryType = {
+  name: 'Variant > Enclosed',
+
+  args: {
+    variant: 'enclosed',
+  },
+};
 
 export const WithSecondTabSelected: StoryType = {
   name: 'With second tab selected',
