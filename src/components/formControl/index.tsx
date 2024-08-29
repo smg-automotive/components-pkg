@@ -86,6 +86,20 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
     </Stack>
   );
 
+  let labelComponent = null;
+
+  if (label) {
+    if (tooltip && labelButtonText) {
+      labelComponent = formLabelWithTooltipAndButton;
+    } else if (tooltip) {
+      labelComponent = formLabelWithTooltip;
+    } else if (labelButtonText) {
+      labelComponent = formLabelWithButton;
+    } else {
+      labelComponent = formLabel;
+    }
+  }
+
   return (
     <ChakraFormControl
       isDisabled={isDisabled}
@@ -93,12 +107,7 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
       isRequired={isRequired}
       id={id}
     >
-      {label && !tooltip && !labelButtonText ? formLabel : null}
-      {label && tooltip && !labelButtonText ? formLabelWithTooltip : null}
-      {label && !tooltip && labelButtonText ? formLabelWithButton : null}
-      {label && tooltip && labelButtonText
-        ? formLabelWithTooltipAndButton
-        : null}
+      {labelComponent}
       {children}
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
       {hint ? <FormHelperText>{hint}</FormHelperText> : null}
