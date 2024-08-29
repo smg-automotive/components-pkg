@@ -7,14 +7,22 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
+/*
+Props : {
+  replace?: boolean;
+  prefetch?: boolean;
+}
+
+These props are needed because of NextLink passed to Link through 'as' prop.
+* */
+
 interface Props extends Partial<Omit<ChakraLinkProps, 'href' | 'onClick'>> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  ariaLabel?: string | null;
   disabled?: boolean;
-  to?: string;
   href?: string | ReactNode | null;
   onClick?: ButtonProps['onClick'] | ((e: MouseEvent) => void) | null;
+  to?: string;
   replace?: boolean;
   prefetch?: boolean;
 }
@@ -31,7 +39,6 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
-      ariaLabel,
       ...rest
     },
     ref,
@@ -55,7 +62,6 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         ref={ref}
         fontWeight={fontWeight}
-        aria-label={ariaLabel}
         {...rest}
       >
         {leftIcon}
