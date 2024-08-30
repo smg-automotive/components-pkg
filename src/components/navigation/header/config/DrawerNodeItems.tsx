@@ -134,10 +134,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/auto-haendler-garage/suche',
-            en: '/de/auto-haendler-garage/suche',
-            fr: '/fr/voiture-concessionaires-garages/recherche',
-            it: '/it/auto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
           visibilitySettings: {
             userType: {
@@ -153,10 +153,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/moto-haendler-garage/suche',
-            en: '/de/moto-haendler-garage/suche',
-            fr: '/fr/moto-concessionaires-garage/recherche',
-            it: '/it/moto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
           visibilitySettings: {
             userType: {
@@ -411,10 +411,10 @@ export const drawerNodeItems = ({
           translationKey: 'header.userMenu.dealerDashboard',
           isInternal: true,
           link: {
-            de: '/de/login',
-            en: '/de/login',
-            fr: '/fr/login',
-            it: '/it/login',
+            de: '/de',
+            en: '/de',
+            fr: '/fr',
+            it: '/it',
           },
           visibilitySettings: {
             userType: {
@@ -511,7 +511,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
@@ -1177,6 +1177,25 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.contactDetails',
           link: {
+            de: '/de/profile',
+            en: '/en/profile',
+            fr: '/fr/profile',
+            it: '/it/profile',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.contactDetails',
+          link: {
             de: '/de/member/masterdata/addressedit',
             en: '/de/member/masterdata/addressedit',
             fr: '/fr/member/masterdata/addressedit',
@@ -1184,7 +1203,7 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
             },
             brand: {
