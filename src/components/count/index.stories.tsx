@@ -7,7 +7,7 @@ const meta: Meta<typeof CountComponent> = {
   component: CountComponent,
   argTypes: {
     variant: {
-      options: ['primary', 'inverted'],
+      options: ['primary', 'inverted', 'info', 'success', 'warning', 'error'],
     },
   },
 };
@@ -16,6 +16,6 @@ export default meta;
 export const Overview: StoryObj<typeof CountComponent> = {
   args: {
     variant: 'primary',
-    count: 50,
+    count: 1000,
   },
 };

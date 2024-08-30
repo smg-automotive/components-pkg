@@ -10,9 +10,7 @@ import Tab from './Tab';
 
 import Tabs from './index';
 
-import TabsComponent from './index';
-
-const meta: Meta<typeof TabsComponent> = {
+const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
 
   render: (args) => {
@@ -57,7 +55,7 @@ const meta: Meta<typeof TabsComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof TabsComponent>;
+type StoryType = StoryObj<typeof Tabs>;
 export const Overview: StoryType = {};
 
 export const VariantSpaceBetween: StoryType = {
