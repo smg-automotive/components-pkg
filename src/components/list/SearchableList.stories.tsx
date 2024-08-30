@@ -45,28 +45,37 @@ const meta: Meta<typeof SearchableList> = {
       },
       {
         value: '4',
-        label: 'Ocean Breeze',
+        label: 'Option with Children',
         onClick: () => {},
         showChevron: false,
         isSelected: false,
-      },
-      {
-        value: '5',
-        label: 'Mountain Peak',
-        onClick: () => {},
-        showChevron: false,
-        isSelected: false,
-      },
-      {
-        value: '6',
-        label: 'Desert Rose',
-        onClick: () => {},
-        showChevron: false,
-        isSelected: false,
+        children: [
+          {
+            value: '10',
+            label: 'Mountain Peak One',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+          },
+          {
+            value: '11',
+            label: 'Desert Rose One',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+          },
+          {
+            value: '12',
+            label: 'Forest Glade Wild',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+          },
+        ],
       },
       {
         value: '7',
-        label: 'Forest Glade',
+        label: 'Forest Glade Nature Reserve',
         onClick: () => {},
         showChevron: false,
         isSelected: false,
@@ -93,19 +102,176 @@ const meta: Meta<typeof SearchableList> = {
         isSelected: false,
       },
     ],
-    searchFieldOptions: {},
+    searchFieldOptions: {
+      placeholder: 'Search for options example',
+    },
   },
 
-  render: ({ listItems, searchFieldOptions }: Props) => (
+  render: ({
+    listItems,
+    searchFieldOptions,
+    listOptions = { columns: 1 },
+  }: Props) => (
     <SearchableList
       listItems={listItems}
       searchFieldOptions={searchFieldOptions}
+      listOptions={listOptions}
     />
   ),
 };
 export default meta;
 
+type StoryType = StoryObj<typeof SearchableList>;
+
 /**
  * Use `showContainer` to see the difference between `icon-inside` and `icon-outside` variants.
  * */
-export const Overview: StoryObj<typeof SearchableList> = {};
+export const Overview: StoryType = {};
+
+export const VariantCheckbox: StoryType = {
+  name: 'Variant > Checkbox Options',
+  args: {
+    listItems: [
+      {
+        value: '5',
+        label: 'Checkbox Option One',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+      {
+        value: '6',
+        label: 'Checkbox with Children',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+        children: [
+          {
+            value: '100',
+            label: 'Mountain Peak',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+            isCheckbox: true,
+          },
+          {
+            value: '101',
+            label: 'Desert Rose',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+            isCheckbox: true,
+          },
+          {
+            value: '102',
+            label: 'Forest Glade',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+            isCheckbox: true,
+          },
+        ],
+      },
+    ],
+    searchFieldOptions: {
+      placeholder: 'Search for options',
+    },
+    listOptions: { columns: 1, childrenSpacing: '2xl' },
+  },
+};
+
+export const VariantColumns: StoryType = {
+  name: 'Variant > Multiple Columns',
+  args: {
+    listItems: [
+      {
+        value: '5',
+        label: 'Checkbox Option Two',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+      {
+        value: '5',
+        label: 'Another Checkbox Option',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+      {
+        value: '6',
+        label: 'Checkbox with Children',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+        children: [
+          {
+            value: '100',
+            label: 'Mountain Peak',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+            isCheckbox: true,
+          },
+          {
+            value: '101',
+            label: 'Desert Rose',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+            isCheckbox: true,
+          },
+          {
+            value: '102',
+            label: 'Forest Glade',
+            onClick: () => {},
+            showChevron: false,
+            isSelected: false,
+            isCheckbox: true,
+          },
+        ],
+      },
+      {
+        value: '5',
+        label: 'Yes one more Checkbox Option ',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+      {
+        value: '5',
+        label: 'Example',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+      {
+        value: '5',
+        label: 'Checkbox Option',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+      {
+        value: '5',
+        label: 'Checkbox Option Over 9000',
+        onClick: () => {},
+        showChevron: false,
+        isSelected: false,
+        isCheckbox: true,
+      },
+    ],
+    searchFieldOptions: {
+      placeholder: 'Search for options',
+    },
+    listOptions: { columns: 2, childrenSpacing: '2xl' },
+  },
+};

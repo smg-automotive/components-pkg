@@ -18,7 +18,7 @@ export type Props = {
   insertion?: FC;
   ariaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
-  listOptions?: { columns: number; childrenSpacing?: 'md' | '2xl' };
+  listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
 };
 
 type FuseSearch = Fuse<ListItemWithChildren> & {
@@ -120,7 +120,7 @@ export const SearchableList: FC<Props> = ({
   }, [listItems]);
 
   const { placeholder = '' } = searchFieldOptions;
-  const { columns, childrenSpacing } = listOptions;
+  const { columns = 1, childrenSpacing = 'md' } = listOptions;
 
   const fuse = useMemo(() => {
     // Not casting the instance will result in the options not being typed
