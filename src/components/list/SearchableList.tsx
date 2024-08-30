@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import Fuse, { FuseResult } from 'fuse.js';
 
@@ -83,8 +83,13 @@ const mapItemsFromSearchResult = (
 const empty = () => null;
 
 const search = ({ query, fuse }: { query: string; fuse: FuseSearch }) => {
-  fuse.options.minMatchCharLength = query.length;
+  fuse.options.minMatchCharLength = query.length || 1;
   return fuse.search(query);
+};
+
+const getFuseInstance = (listItems: ListItemWithChildren[]) => {
+  // Not casting the instance will result in the options not being typed
+  return new Fuse(listItems, fuseOptions) as unknown as FuseSearch;
 };
 
 export const SearchableList: FC<Props> = ({
@@ -98,57 +103,66 @@ export const SearchableList: FC<Props> = ({
   const [searchState, setSearchState] = useState<{
     query: string;
     listItems: typeof listItems;
+    fullListItems: typeof listItems;
+    fuse: FuseSearch;
   }>({
     query: '',
     listItems,
+    fullListItems: [...listItems],
+    fuse: getFuseInstance(listItems),
   });
-
-  useEffect(() => {
-    if (searchState.query === '') {
-      setSearchState((currentState) => {
-        return { listItems, query: currentState.query };
-      });
-      return;
-    }
-
-    const searchResults = search({ fuse, query: searchState.query });
-    const filteredListItems = mapItemsFromSearchResult(searchResults);
-    setSearchState((currentState) => {
-      return { listItems: filteredListItems, query: currentState.query };
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listItems]);
-
   const { placeholder = '' } = searchFieldOptions;
   const { columns = 1, childrenSpacing = 'md' } = listOptions;
+  const areaId = 'searchableList';
+  const { query } = searchState;
 
-  const fuse = useMemo(() => {
-    // Not casting the instance will result in the options not being typed
-    return new Fuse<ListItemWithChildren>(
-      listItems,
-      fuseOptions,
-    ) as unknown as FuseSearch;
+  useEffect(() => {
+    setSearchState((currentState) => {
+      const fuse = getFuseInstance(listItems);
+      if (currentState.query === '') {
+        return {
+          listItems,
+          fullListItems: [...listItems],
+          fuse,
+          query: currentState.query,
+        };
+      }
+
+      const searchResults = search({ fuse, query: currentState.query });
+      const filteredListItems = mapItemsFromSearchResult(searchResults);
+      return {
+        listItems: filteredListItems,
+        fuse,
+        query: currentState.query,
+        fullListItems: [...listItems],
+      };
+    });
   }, [listItems]);
 
-  const { query } = searchState;
   const setSearchQuery = useCallback((newQuery: string) => {
-    const trimmedQuery = newQuery.trim();
-    if (!trimmedQuery) {
-      setSearchState(() => {
-        return { listItems, query: trimmedQuery };
+    setSearchState((currentState) => {
+      const trimmedQuery = newQuery.trim();
+
+      if (!trimmedQuery) {
+        return {
+          ...currentState,
+          listItems: currentState.fullListItems,
+          query: trimmedQuery,
+        };
+      }
+
+      const searchResults = search({
+        fuse: currentState.fuse,
+        query: trimmedQuery,
       });
-      return;
-    }
-
-    const searchResults = search({ fuse, query: trimmedQuery });
-    const filteredListItems = mapItemsFromSearchResult(searchResults);
-    setSearchState(() => {
-      return { listItems: filteredListItems, query: trimmedQuery };
+      const filteredListItems = mapItemsFromSearchResult(searchResults);
+      return {
+        ...currentState,
+        listItems: filteredListItems,
+        query: trimmedQuery,
+      };
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const areaId = 'searchableList';
 
   return (
     <Flex gridGap="md" direction="column" width="full">
