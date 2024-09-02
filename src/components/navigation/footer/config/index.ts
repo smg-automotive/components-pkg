@@ -30,7 +30,11 @@ export interface FooterConfigInterface {
   companies: LinkConfig[];
 }
 
-export const footerConfig: FooterConfigInterface = {
+export const footerConfig = ({
+  experiments = {},
+}: {
+  experiments?: Record<string, string>;
+} = {}): FooterConfigInterface => ({
   sections: [
     {
       title: [
@@ -78,10 +82,10 @@ export const footerConfig: FooterConfigInterface = {
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
-            de: '/de/auto-haendler-garage/suche',
-            en: '/de/auto-haendler-garage/suche',
-            fr: '/fr/voiture-concessionaires-garages/recherche',
-            it: '/it/auto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
         },
         {
@@ -90,10 +94,10 @@ export const footerConfig: FooterConfigInterface = {
             brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/moto-haendler-garage/suche',
-            en: '/de/moto-haendler-garage/suche',
-            fr: '/fr/moto-concessionaires-garage/recherche',
-            it: '/it/moto-concessionari-garage/ricerca',
+            de: '/de/sellers',
+            en: '/de/sellers',
+            fr: '/fr/sellers',
+            it: '/it/sellers',
           },
         },
         {
@@ -170,18 +174,56 @@ export const footerConfig: FooterConfigInterface = {
         },
       ],
       items: [
-        {
-          translationKey: 'footer.sections.list.vehicles',
-          visibilitySettings: {
-            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
-          },
-          link: {
-            de: '/de/auto-verkaufen',
-            en: '/de/auto-verkaufen',
-            fr: '/fr/vendre-voiture',
-            it: '/it/vendere-auto',
-          },
-        },
+        ...(experiments?.c2b === 'on'
+          ? [
+              {
+                translationKey: 'footer.sections.list.vehicles',
+                visibilitySettings: {
+                  brand: {
+                    [Brand.AutoScout24]: true,
+                    [Brand.MotoScout24]: false,
+                  },
+                },
+                link: {
+                  de: '/de/sell',
+                  en: '/en/sell',
+                  fr: '/fr/sell',
+                  it: '/it/sell',
+                },
+              },
+              {
+                translationKey: 'footer.sections.list.direct',
+                visibilitySettings: {
+                  brand: {
+                    [Brand.AutoScout24]: true,
+                    [Brand.MotoScout24]: false,
+                  },
+                },
+                link: {
+                  de: '/de/direct',
+                  en: '/en/direct',
+                  fr: '/fr/direct',
+                  it: '/it/direct',
+                },
+              },
+            ]
+          : [
+              {
+                translationKey: 'footer.sections.list.vehicles',
+                visibilitySettings: {
+                  brand: {
+                    [Brand.AutoScout24]: true,
+                    [Brand.MotoScout24]: false,
+                  },
+                },
+                link: {
+                  de: '/de/auto-verkaufen',
+                  en: '/de/auto-verkaufen',
+                  fr: '/fr/vendre-voiture',
+                  it: '/it/vendere-auto',
+                },
+              },
+            ]),
         {
           translationKey: 'footer.sections.list.vehicles',
           visibilitySettings: {
@@ -657,4 +699,4 @@ export const footerConfig: FooterConfigInterface = {
       target: '_blank',
     },
   ],
-};
+});

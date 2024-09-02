@@ -16,6 +16,7 @@ import {
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
 import { UserTypeExternal } from '../types';
+import { IconItems, IconItemsConfig, IconItemsLinks } from './iconItems';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import {
@@ -47,6 +48,7 @@ export interface HeaderNavigationLinkConfig extends LinkConfig {
 interface HeaderNavigationConfigInterface {
   headerItems: NavigationLinkConfigProps[];
   drawerItems: DrawerNodeItemsConfig;
+  iconItems: IconItemsConfig;
 }
 
 interface HeaderNavigationConfigInstance {
@@ -55,6 +57,7 @@ interface HeaderNavigationConfigInstance {
   user: MergedUser | null;
   headerItems: HeaderNavigationLink[];
   drawerItems: DrawerNodeItems;
+  iconItems: IconItemsLinks;
 }
 
 export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigInstance> {
@@ -101,6 +104,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       user: this.user,
       headerItems: this.getHeaderLinks(),
       drawerItems: this.getDrawerNodeItems(),
+      iconItems: this.getIconItems(),
     };
 
     this.mappedConfig = mappedConfig;
@@ -140,6 +144,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     return new HeaderNavigationLink({
       config: {
         translationKey: link.translationKey,
+        translationParameters: link.translationParameters,
         link: this.replacePathParams(link.link),
         onClick: link.onClick,
         target: undefined,
@@ -171,6 +176,19 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     return this.config.headerItems
       .map((link) => this.mapLink(link))
       .filter((item) => item.isVisible);
+  };
+
+  getIconItems = (): IconItemsLinks => {
+    return Object.keys(this.config.iconItems).reduce(
+      (previousValue, currentValue) => {
+        const linkToMap = this.config.iconItems[currentValue as IconItems];
+        previousValue[currentValue as IconItems] = linkToMap
+          ? this.mapLink(linkToMap)
+          : null;
+        return previousValue;
+      },
+      {} as IconItemsLinks,
+    );
   };
 
   getDrawerNodeItems = (): DrawerNodeItems => {

@@ -82,6 +82,7 @@
         "title": "Rechtliches & Sicherheit"
       },
       "list": {
+        "direct": "AutoScout24 Direct",
         "productsAndPrices": "Produkte und Preise",
         "title": "Inserieren",
         "vehicles": "Fahrzeuge"
@@ -107,6 +108,7 @@
     "searchMenu": {
       "additional": "Weiteres",
       "advancedSearch": "Erweiterte Suche",
+      "comparison": "Vergleichstool ({{ numberOfItems }})",
       "dealer": "Händler",
       "insuranceComparison": "Versicherungsvergleich",
       "searchCars": "Autos suchen",
@@ -165,7 +167,6 @@
       "requisitions": "Suchaufträge",
       "reviews": "Bewertungen",
       "settings": "Einstellungen",
-      "shoppingCard": "Warenkorb",
       "statistics": "Statistiken",
       "toolsForPurchasing": "Tools für den Einkauf",
       "toolsForSelling": "Tools für den Verkauf",

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ElementType, FC, ReactNode } from 'react';
 import {
   AlertDescription,
   AlertIcon,
@@ -14,7 +14,7 @@ export interface BareAlertProps {
   title?: string;
   description: string;
   link?: {
-    as?: 'link' | 'button';
+    as?: 'link' | 'button' | ElementType;
     text: string;
     url?: string;
     isExternal?: boolean;
@@ -40,7 +40,12 @@ const BareAlert: FC<BareAlertProps> = ({
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
         {link ? (
-          <Link href={link.url} isExternal={link?.isExternal}>
+          <Link
+            as={link.as === 'link' ? 'a' : link.as}
+            href={link.url}
+            isExternal={link.isExternal}
+            onClick={link.onClick}
+          >
             {link.text}
           </Link>
         ) : null}

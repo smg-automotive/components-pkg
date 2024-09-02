@@ -5,7 +5,7 @@ import TranslationProvider from '../translationProvider';
 import GridItem from '../grid/GridItem';
 import Grid from '../grid';
 import Divider from '../divider';
-import { Props } from './type';
+import { type Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
 
@@ -84,4 +84,4 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   );
 }
 export default CheckboxFilter;
-export { Props };
+export { type Props };

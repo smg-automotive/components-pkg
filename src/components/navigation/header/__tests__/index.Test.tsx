@@ -5,6 +5,7 @@ import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
 
+import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
@@ -204,6 +205,7 @@ describe('Header', () => {
       config: {
         headerItems: headerLinks({ trackEvent: jest.fn() }),
         drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
+        iconItems: iconItems({ trackEvent: jest.fn() }),
       },
       user: {
         id: '1',
@@ -220,6 +222,7 @@ describe('Header', () => {
     expect(config).toEqual({
       drawerItems: expect.any(Object),
       headerItems: expect.any(Object),
+      iconItems: { comparison: null },
       homeUrl: expect.any(String),
       menuHeight: expect.any(String),
       user: expect.any(Object),

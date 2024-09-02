@@ -10,20 +10,47 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
-type PopoverProps = PropsWithChildren<
+export type PopoverProps = PropsWithChildren<
   {
     content: ReactNode;
-  } & Pick<ChakraPopoverProps, 'placement'>
+    showArrow?: boolean;
+  } & Pick<
+    ChakraPopoverProps,
+    | 'placement'
+    | 'closeOnBlur'
+    | 'gutter'
+    | 'size'
+    | 'trigger'
+    | 'onClose'
+    | 'onOpen'
+    | 'isOpen'
+  >
 >;
 
-const Popover: FC<PopoverProps> = ({ content, children, placement }) => {
+const Popover: FC<PopoverProps> = ({
+  content,
+  children,
+  placement,
+  trigger = 'hover',
+  showArrow = true,
+  closeOnBlur = false,
+  gutter = 12,
+  size = 'md',
+  onClose,
+  onOpen,
+  isOpen,
+}) => {
   return (
     <ChakraPopover
       placement={placement}
-      closeOnBlur={false}
-      trigger="hover"
+      closeOnBlur={closeOnBlur}
+      trigger={trigger}
       arrowSize={12}
-      gutter={12}
+      gutter={gutter}
+      size={size}
+      onClose={onClose}
+      onOpen={onOpen}
+      isOpen={isOpen}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
@@ -32,12 +59,11 @@ const Popover: FC<PopoverProps> = ({ content, children, placement }) => {
             borderRadius="sm"
             boxShadow="md"
             maxW="6xl"
-            p="2xl"
             // required for arrow to popup above shadow
             zIndex="0"
             backgroundColor="white"
           >
-            <PopoverArrow backgroundColor="white" />
+            {showArrow ? <PopoverArrow backgroundColor="white" /> : null}
             <PopoverBody>{content}</PopoverBody>
           </PopoverContent>
         </Box>

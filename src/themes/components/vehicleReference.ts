@@ -14,7 +14,7 @@ const VehicleReference: ComponentStyleConfig = {
     },
     price: {
       color: 'gray.900',
-      textStyle: { '2xs': 'heading3', md: 'heading1' },
+      textStyle: { '2xs': 'heading3', md: 'heading2' },
     },
     dealerName: {
       color: 'gray.900',
