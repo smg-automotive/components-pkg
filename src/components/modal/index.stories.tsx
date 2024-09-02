@@ -70,6 +70,7 @@ const meta: Meta<typeof Template> = {
     variant: 'base',
     disableBodyPadding: false,
     motionPreset: 'scale',
+    overlayColor: 'default',
   },
 
   argTypes: {
@@ -82,7 +83,7 @@ const meta: Meta<typeof Template> = {
     },
 
     variant: {
-      options: ['fullScreen', 'base', 'topScroll', 'grayOut'],
+      options: ['fullScreen', 'base', 'topScroll'],
 
       control: {
         type: 'select',
@@ -113,6 +114,14 @@ const meta: Meta<typeof Template> = {
     secondaryActionLabel: {
       control: {
         type: 'text',
+      },
+    },
+
+    overlayColor: {
+      options: ['default', 'gray'],
+
+      control: {
+        type: 'select',
       },
     },
   },
@@ -172,8 +181,7 @@ export const ModalWithoutModalBodyPadding: StoryType = {
 
 export const ModalWithGrayOverlay: StoryType = {
   args: {
-    size: 'sm',
-    variant: 'grayOut',
+    overlayColor: 'gray',
     contentParagraphs: 1,
     title: undefined,
   },
