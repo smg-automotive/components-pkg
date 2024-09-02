@@ -1,25 +1,30 @@
-import React, {
-  ElementType,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  useMemo,
-} from 'react';
-import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import React, { forwardRef, ReactNode, useMemo } from 'react';
 
-interface Props {
-  children: ReactNode;
-  as?: ElementType;
-  leftIcon?: ReactElement;
-  rightIcon?: ReactElement;
-  isExternal?: boolean;
-  rel?: string;
-  target?: string;
-  variant?: 'baseLink' | 'navigationLink' | 'subNavigationLink';
-  [key: string]: unknown;
-  fontWeight?: 'regular' | 'bold';
-  ariaLabel?: string;
-  color?: string;
+import {
+  ButtonProps,
+  chakra,
+  LinkProps as ChakraLinkProps,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
+
+/*
+Props : {
+  replace?: boolean;
+  prefetch?: boolean;
+}
+
+These props are needed because of NextLink passed to Link through 'as' prop.
+* */
+
+interface Props extends Partial<Omit<ChakraLinkProps, 'href' | 'onClick'>> {
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  disabled?: boolean;
+  href?: string | ReactNode | null;
+  onClick?: ButtonProps['onClick'] | ((e: MouseEvent) => void) | null;
+  to?: string;
+  replace?: boolean;
+  prefetch?: boolean;
 }
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
@@ -34,7 +39,6 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       rightIcon,
       variant = 'baseLink',
       fontWeight = 'regular',
-      ariaLabel,
       ...rest
     },
     ref,
@@ -57,9 +61,8 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
         target={target || (isExternal ? '_blank' : undefined)}
         rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         ref={ref}
-        aria-label={ariaLabel}
-        {...rest}
         fontWeight={fontWeight}
+        {...rest}
       >
         {leftIcon}
         <chakra.span __css={textStyle}>{children}</chakra.span>
