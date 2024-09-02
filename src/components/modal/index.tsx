@@ -8,6 +8,7 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalProps,
+  useMultiStyleConfig,
 } from '@chakra-ui/react';
 
 import { H3 } from '../heading';
@@ -27,6 +28,7 @@ export interface Props
   variant?: 'fullScreen' | 'base' | 'topScroll';
   size?: 'md' | 'lg' | 'full';
   disableBodyPadding?: boolean;
+  overlayColor?: 'default' | 'gray';
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -38,13 +40,18 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   motionPreset = 'scale',
   variant = 'base',
   disableBodyPadding = false,
+  overlayColor = 'default',
   ...modalProps
 }) => {
   const modalSize =
     size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
   const bothActionButtons = primaryActionButton && secondaryActionButton;
-
   const bodyPadding = disableBodyPadding ? { p: 0 } : {};
+  const { overlay } = useMultiStyleConfig('Modal');
+  if (overlayColor === 'gray') {
+    overlay.bg = 'gray.100';
+    overlay.opacity = '1 !important';
+  }
 
   return (
     <ChakraModal
@@ -54,7 +61,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
       size={modalSize}
       {...modalProps}
     >
-      <ModalOverlay />
+      <ModalOverlay sx={overlay} />
       <ModalContent>
         {title && (
           <>
