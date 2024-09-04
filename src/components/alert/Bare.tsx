@@ -12,7 +12,7 @@ import { ColourVariant } from 'src/types/colourVariants';
 
 import Link from '../link';
 
-type BareAlertVariant = Extract<
+type BareAlertType = Extract<
   ColourVariant,
   'info' | 'success' | 'warning' | 'error'
 >;
@@ -27,7 +27,7 @@ export interface BareAlertProps {
     isExternal?: boolean;
     onClick?: () => void;
   };
-  type?: BareAlertVariant;
+  type?: BareAlertType;
   icon?: ReactNode;
   onClose?: () => void;
 }
