@@ -5,6 +5,8 @@ import {
   ResponsiveValue,
 } from '@chakra-ui/react';
 
+import { ColourVariant } from 'src/types/colourVariants';
+
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
 type Never<Source> = { [P in keyof Source]?: never };
 
@@ -21,9 +23,14 @@ type IconButton = {
 
 type ButtonSize = 'md' | 'lg';
 
+type ButtonVariant = Extract<
+  ColourVariant,
+  'primary' | 'secondary' | 'success' | 'transparent'
+>;
+
 type SharedProps = {
   as?: 'button';
-  variant?: 'primary' | 'secondary' | 'success' | 'transparent';
+  variant?: ButtonVariant;
   size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;
