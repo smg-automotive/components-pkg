@@ -8,7 +8,14 @@ import {
   Flex,
 } from '@chakra-ui/react';
 
+import { ColourVariant } from 'src/types/colourVariants';
+
 import Link from '../link';
+
+type BareAlertVariant = Extract<
+  ColourVariant,
+  'info' | 'success' | 'warning' | 'error'
+>;
 
 export interface BareAlertProps {
   title?: string;
@@ -20,7 +27,7 @@ export interface BareAlertProps {
     isExternal?: boolean;
     onClick?: () => void;
   };
-  type?: 'error' | 'warning' | 'info' | 'success';
+  type?: BareAlertVariant;
   icon?: ReactNode;
   onClose?: () => void;
 }
