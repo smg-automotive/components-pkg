@@ -3,6 +3,7 @@ import { chakra } from '@chakra-ui/react';
 
 import { ColourVariant } from 'src/types/colourVariants';
 
+// TOFIX: refactor "inverted" variant into "transparent" (used in listings-web)
 export type CountVariant = Extract<
   ColourVariant,
   'primary' | 'inverted' | 'info' | 'success' | 'warning' | 'error'
