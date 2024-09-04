@@ -1,20 +1,19 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
-type Variant =
-  | 'primary'
-  | 'inverted'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error';
+import { ColourVariant } from 'src/types/colourVariants';
+
+export type CountVariant = Extract<
+  ColourVariant,
+  'primary' | 'inverted' | 'info' | 'success' | 'warning' | 'error'
+>;
 
 type ColorConfig = {
   bg: string;
   text: string;
 };
 
-const color: Record<Variant, ColorConfig> = {
+const color: Record<CountVariant, ColorConfig> = {
   primary: {
     bg: 'brand.primary',
     text: 'black',
@@ -42,7 +41,7 @@ const color: Record<Variant, ColorConfig> = {
 };
 
 export interface Props {
-  variant?: Variant;
+  variant?: CountVariant;
   count: number;
   ariaLabel?: string;
 }
