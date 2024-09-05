@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
-import { CountVariant } from 'src/types/countVariant';
+export type CountVariant =
+  | 'primary'
+  | 'inverted'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
 
 type ColorConfig = {
   bg: string;
