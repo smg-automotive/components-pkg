@@ -101,6 +101,7 @@ const baseStyleMark = defineStyle(() => {
     mt: '2xl',
     fontSize: 'sm',
     transform: 'translateX(-50%)',
+    whiteSpace: 'nowrap',
   };
 });
 
