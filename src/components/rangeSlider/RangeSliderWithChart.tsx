@@ -15,7 +15,7 @@ export type Facet = {
 };
 
 export interface RangeSliderWithChartProps {
-  facets: Array<Facet>;
+  facets: Facet[];
   selection: NumericMinMaxValue;
   onSliderChange: (event: ChangeCallback) => void;
   onSliderRelease: (event: ChangeCallback) => void;
@@ -38,7 +38,7 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
       onSliderRelease={onSliderRelease}
       selection={selection}
       scale={scale}
-      renderChart={(range: Array<number>) => (
+      renderChart={(range: number[]) => (
         <Box position="relative" top="sm" h={chartHeight}>
           <Chart range={range} facets={sortedFacetsByFromKey} />
         </Box>

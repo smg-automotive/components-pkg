@@ -19,7 +19,7 @@ interface RangeSliderWithScaleProps {
    * @default []
    * @required
    */
-  scale: Array<number>;
+  scale: number[];
   /**
    * Object that contains the min and max values of the range slider
    * @example { min: 0, max: 100 }
@@ -41,7 +41,7 @@ interface RangeSliderWithScaleProps {
    * Function that renders the chart with wrapper
    * @param range     contains the range of the slider
    * @returns         the chart component
-   * @example         (range: Array<number>) => <Chart range={range} />
+   * @example         (range: number[]) => <Chart range={range} />
    * @default         null
    */
   renderChart?: (range: number[]) => React.ReactNode;

@@ -9,11 +9,11 @@ import { ListItemType, SearchableListItem } from './SearchableListItem';
 import List from './';
 
 export type ListItemWithChildren = ListItemType & {
-  children?: Array<ListItemType>;
+  children?: ListItemType[];
 };
 
 export type Props = {
-  listItems: Array<ListItemWithChildren>;
+  listItems: ListItemWithChildren[];
   noResults?: FC;
   insertion?: FC;
   ariaLabel?: string;
@@ -36,7 +36,7 @@ const fuseOptions = {
 
 const mapItemsFromSearchResult = (
   searchResults: FuseResult<ListItemWithChildren>[],
-): Array<ListItemWithChildren> => {
+): ListItemWithChildren[] => {
   return searchResults.map(({ matches = [], item }) => {
     const parentMatch = matches.find((match) => match.key === 'label');
     const parentHighlightIndices = parentMatch ? parentMatch.indices : [];
@@ -56,7 +56,7 @@ const mapItemsFromSearchResult = (
     }
 
     const itemChildren = item.children || [];
-    const children = childMatches.reduce<Array<ListItemType>>(
+    const children = childMatches.reduce<ListItemType[]>(
       (accumulator, childMatch) => {
         if (childMatch.refIndex === undefined) {
           return accumulator;

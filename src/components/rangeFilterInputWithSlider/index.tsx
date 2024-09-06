@@ -25,12 +25,12 @@ type ChangeRangeInputWithSliderCallback<Name> = {
 } & ChangeCallback<Name>;
 
 type RangeSliderProps = {
-  facets?: Array<Facet>;
-  rangeSliderScale?: Array<number>;
+  facets?: Facet[];
+  rangeSliderScale?: number[];
   chartHeight?: RangeSliderWithChartProps['chartHeight'];
 } & (
-  | { facets: Array<Facet>; chartHeight?: string; rangeSliderScale?: never }
-  | { rangeSliderScale: Array<number>; facets?: never; chartHeight?: never }
+  | { facets: Facet[]; chartHeight?: string; rangeSliderScale?: never }
+  | { rangeSliderScale: number[]; facets?: never; chartHeight?: never }
 );
 
 export type Props<NameFrom, NameTo> = {
