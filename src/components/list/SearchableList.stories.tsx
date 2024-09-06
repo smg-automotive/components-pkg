@@ -123,9 +123,6 @@ export default meta;
 
 type StoryType = StoryObj<typeof SearchableList>;
 
-/**
- * Use `showContainer` to see the difference between `icon-inside` and `icon-outside` variants.
- * */
 export const Overview: StoryType = {};
 
 export const VariantCheckbox: StoryType = {
