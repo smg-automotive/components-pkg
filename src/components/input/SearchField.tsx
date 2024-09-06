@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useRef } from 'react';
 
+import useMediaQuery from 'src/hooks/useMediaQuery';
+
 import { MagnifierIcon } from '../icons/index';
-// eslint-disable-next-line no-restricted-imports
-import useMediaQuery from '../../hooks/useMediaQuery';
 
 import Input from './index';
 
