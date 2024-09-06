@@ -13,14 +13,14 @@ export type SearchFieldOptions = {
   autofocusOnDesktop?: boolean;
 };
 
-type Props = {
+export type SearchFieldProps = {
   name: string;
   ariaControls?: string;
   searchQuery: string;
   setSearchQuery: (newQuery: string) => void;
 } & SearchFieldOptions;
 
-export const SearchField: FC<Props> = ({
+export const SearchField: FC<SearchFieldProps> = ({
   name,
   placeholder = '',
   ariaControls = '',

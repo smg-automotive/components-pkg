@@ -14,8 +14,8 @@ export type ListItemWithChildren = ListItemType & {
 
 export type Props = {
   listItems: ListItemWithChildren[];
-  noResults?: FC;
-  insertion?: FC;
+  NoResults?: FC;
+  Insertion?: FC;
   ariaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
@@ -94,8 +94,8 @@ const getFuseInstance = (listItems: ListItemWithChildren[]) => {
 
 export const SearchableList: FC<Props> = ({
   listItems,
-  noResults: NoResults = empty,
-  insertion: Insertion = empty,
+  NoResults = empty,
+  Insertion = empty,
   ariaLabel = 'searchable list',
   searchFieldOptions = {},
   listOptions = { columns: 1, childrenSpacing: 'md' },
