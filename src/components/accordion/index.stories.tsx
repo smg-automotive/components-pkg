@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CheckmarkIcon, TimeIcon, TooltipIcon } from '../icons';
+import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';
 import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';
@@ -43,7 +43,7 @@ export const Overview: StoryType = {
 };
 
 const icons = [
-  <TooltipIcon color="orange.400" key="icon-1" />,
+  <InformationIcon color="orange.400" key="icon-1" />,
   <CheckmarkIcon color="green.400" key="icon-2" />,
   <TimeIcon key="icon-3" />,
 ];

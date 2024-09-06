@@ -62,7 +62,7 @@ const GalleryHeader: FC<PropsWithChildren<GalleryHeaderProps>> = ({
                 })}
               </Box>
               <Box textAlign="right">
-                <Link ariaLabel="Close gallery" onClick={() => onClose()}>
+                <Link aria-label="Close gallery" onClick={() => onClose()}>
                   <CloseIcon color="white" />
                 </Link>
               </Box>
