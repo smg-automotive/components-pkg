@@ -426,7 +426,9 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: true,
+              professional: isCockpitBetaGroupUser({ id: sellerId })
+                ? false
+                : true,
             },
             brand: {
               autoscout24: true,
