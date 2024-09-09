@@ -16,7 +16,7 @@ export type Props = {
   listItems: ListItemWithChildren[];
   NoResults?: FC;
   EmptyQueryPlaceholder?: FC;
-  ariaLabel?: string;
+  listAriaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
 };
@@ -96,7 +96,7 @@ export const SearchableList: FC<Props> = ({
   listItems,
   NoResults = empty,
   EmptyQueryPlaceholder = empty,
-  ariaLabel = 'searchable list',
+  listAriaLabel = 'searchable list',
   searchFieldOptions = {},
   listOptions = { columns: 1, childrenSpacing: 'md' },
 }) => {
@@ -185,7 +185,7 @@ export const SearchableList: FC<Props> = ({
             columnGap: 'var(--chakra-space-4xl)',
             columnRule: '1px solid var(--chakra-colors-gray-100)',
           }}
-          aria-label={ariaLabel}
+          aria-label={listAriaLabel}
         >
           {searchState.listItems.map((item, itemIndex) => {
             const parentKey = `${itemIndex}-${item.value}`;
