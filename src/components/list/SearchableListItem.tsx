@@ -1,3 +1,4 @@
+import { boolean } from 'yargs';
 import React, { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
 import { Button, ButtonProps } from '@chakra-ui/react';
@@ -20,6 +21,7 @@ type CommonProps = {
   value: string;
   paddingY: ButtonProps['paddingY'] | CheckboxProps['paddingY'];
   name: string;
+  'aria-current': boolean;
 };
 
 type CheckboxListItem = {
@@ -67,6 +69,7 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
     value,
     paddingY: 'sm',
     name: `searchable-list-item-${value}`,
+    'aria-current': isSelected,
   };
 
   const checkboxProps: CheckboxProps = {
