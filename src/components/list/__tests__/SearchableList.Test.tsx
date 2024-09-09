@@ -66,7 +66,7 @@ describe('<SearchableList />', () => {
       <List>
         <SearchableList
           listItems={listItems}
-          insertion={() => <>Insert me</>}
+          EmptyQueryPlaceholder={() => <>Insert me</>}
         />
       </List>,
     );

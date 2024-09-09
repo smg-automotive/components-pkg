@@ -10,6 +10,7 @@ describe('<SearchableListItem />', () => {
       <List>
         <SearchableListItem
           label="I am label"
+          value="dummy"
           facet="30"
           onClick={jest.fn()}
           isSelected={false}
@@ -33,6 +34,7 @@ describe('<SearchableListItem />', () => {
           label="I am label"
           facet="30"
           onClick={jest.fn()}
+          value="dummy"
           isSelected={false}
           highlightIndices={[
             [2, 3],
@@ -52,6 +54,7 @@ describe('<SearchableListItem />', () => {
       <List>
         <SearchableListItem
           label="I am label"
+          value="dummy"
           facet="30"
           onClick={jest.fn()}
           isSelected={true}
