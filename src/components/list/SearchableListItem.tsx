@@ -84,6 +84,7 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
     onChange: undefined,
     width: 'full',
     display: 'flex',
+    paddingX: 'none',
   };
 
   return (
