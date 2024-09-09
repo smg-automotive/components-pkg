@@ -111,7 +111,7 @@ export const SearchableList: FC<Props> = ({
     fullListItems: [...listItems],
     fuse: getFuseInstance(listItems),
   });
-  const { placeholder = '' } = searchFieldOptions;
+  const { placeholder = '', autofocusOnDesktop = true } = searchFieldOptions;
   const { columns = 1, childrenSpacing = 'md' } = listOptions;
   const areaId = 'searchableList';
   const { query } = searchState;
@@ -172,6 +172,7 @@ export const SearchableList: FC<Props> = ({
         setSearchQuery={setSearchQuery}
         ariaControls={areaId}
         placeholder={placeholder}
+        autofocusOnDesktop={autofocusOnDesktop}
       />
       {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
       {searchState.listItems.length > 0 ? (
