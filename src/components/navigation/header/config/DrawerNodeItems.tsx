@@ -70,14 +70,21 @@ const getComparisonNodeItem = ({
     : [];
 };
 
+const isCockpitBetaGroupUser = ({ id }: { id?: string }) => {
+  const betaGroupTesterList = ['61627', '60601'];
+  return id && betaGroupTesterList.includes(id);
+};
+
 export const drawerNodeItems = ({
   comparisonItemIds,
   trackEvent,
   onLogout,
+  sellerId,
 }: {
   comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
+  sellerId?: string;
 }): DrawerNodeItemsConfig => ({
   search: [
     {
@@ -503,19 +510,21 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.cockpit',
           link: {
-            de: '/de/member/cockpit',
-            en: '/de/member/cockpit',
-            fr: '/fr/member/cockpit',
-            it: '/it/member/cockpit',
+            de: '/de/cockpit',
+            en: '/de/cockpit',
+            fr: '/fr/cockpit',
+            it: '/it/cockpit',
           },
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: isCockpitBetaGroupUser({ id: sellerId })
+                ? true
+                : false,
             },
             brand: {
               autoscout24: true,
-              motoscout24: true,
+              motoscout24: false,
             },
           },
         },
