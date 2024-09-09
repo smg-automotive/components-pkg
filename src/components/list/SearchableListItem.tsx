@@ -1,39 +1,60 @@
-import React, { FC, PropsWithChildren } from 'react';
-
+import React, { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
+import { Button, ButtonProps } from '@chakra-ui/react';
 
-import Checkbox from '../checkbox';
-import Box from '../box/index';
+import Checkbox, { CheckboxProps } from '../checkbox';
 import { SearchableListItemLabel } from './SearchableListItemLabel';
 import ListItem from './ListItem';
 
-export type ListItemType = {
+type CommonListItem = {
   label: string;
-  value?: string;
+  value: string;
   facet?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onClick: (event: any) => void;
   isSelected: boolean;
-  showDivider?: boolean;
   showChevron?: boolean;
-  isCheckbox?: boolean;
-  isIndeterminate?: boolean;
   highlightIndices?: readonly RangeTuple[];
-  paddingLeft?: string;
+  isCheckbox?: boolean;
 };
 
-export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = ({
-  label,
-  value,
-  facet,
-  onClick,
-  isSelected,
-  showChevron = true,
-  highlightIndices = [],
-  isCheckbox = false,
-  isIndeterminate = false,
-  children,
-}) => {
+type CommonProps = {
+  value: string;
+  paddingY: ButtonProps['paddingY'] | CheckboxProps['paddingY'];
+  name: string;
+};
+
+type CheckboxListItem = {
+  onClick: (event: ChangeEvent<HTMLInputElement>) => void;
+  isCheckbox: true;
+  isIndeterminate?: boolean;
+} & CommonListItem;
+
+type RadioButtonListItem = {
+  onClick: ButtonProps['onClick'];
+  isCheckbox?: false;
+} & CommonListItem;
+
+export type ListItemType = CheckboxListItem | RadioButtonListItem;
+
+const isCheckboxType = (
+  listItem: ListItemType,
+): listItem is CheckboxListItem => {
+  return !!listItem.isCheckbox;
+};
+
+export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
+  props,
+) => {
+  const isCheckbox = isCheckboxType(props);
+  const {
+    label,
+    value,
+    facet,
+    isSelected,
+    showChevron = true,
+    highlightIndices = [],
+    children,
+  } = props;
+
   const labelProps = {
     label,
     isSelected,
@@ -42,35 +63,38 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = ({
     isCheckbox,
     facet,
   };
+  const commonProps: CommonProps = {
+    value,
+    paddingY: 'sm',
+    name: `searchable-list-item-${value}`,
+  };
+
+  const checkboxProps: CheckboxProps = {
+    ...commonProps,
+    label: <SearchableListItemLabel {...labelProps} />,
+    isChecked: isSelected,
+    isIndeterminate: isCheckbox ? !!props.isIndeterminate : false,
+    fullWidth: true,
+    variant: 'alignTop',
+    onChange: isCheckbox ? props.onClick : undefined,
+  };
+  const radioButtonProps: ButtonProps = {
+    ...commonProps,
+    onClick: !isCheckbox ? props.onClick : undefined,
+    onChange: undefined,
+    width: 'full',
+    display: 'flex',
+  };
 
   return (
     <ListItem css={{ breakInside: 'avoid' }}>
       {isCheckbox ? (
-        <Checkbox
-          label={<SearchableListItemLabel {...labelProps} />}
-          name="test-checkbox"
-          value={value}
-          isChecked={isSelected}
-          isIndeterminate={isIndeterminate}
-          paddingY="sm"
-          fullWidth={true}
-          variant="alignTop"
-          onChange={onClick}
-        />
+        <Checkbox {...checkboxProps} />
       ) : (
-        <Box
-          as="button"
-          onClick={onClick}
-          aria-current={isSelected}
-          value={value}
-          width="full"
-          display="flex"
-          paddingY="sm"
-        >
-          <SearchableListItemLabel {...labelProps} />
-        </Box>
+        <Button {...radioButtonProps}>
+          <SearchableListItemLabel {...labelProps} />;
+        </Button>
       )}
-
       {children}
     </ListItem>
   );

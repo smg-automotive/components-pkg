@@ -6,17 +6,17 @@ import { CheckmarkIcon, ChevronRightSmallIcon } from '../icons/index';
 import Flex from '../flex/index';
 import { ListItemType } from './SearchableListItem';
 
-export const SearchableListItemLabel: FC<
-  Pick<
-    ListItemType,
-    | 'label'
-    | 'isSelected'
-    | 'showChevron'
-    | 'highlightIndices'
-    | 'isCheckbox'
-    | 'facet'
-  >
-> = ({
+type LabelProps = Pick<
+  ListItemType,
+  | 'label'
+  | 'isSelected'
+  | 'showChevron'
+  | 'highlightIndices'
+  | 'facet'
+  | 'isCheckbox'
+>;
+
+export const SearchableListItemLabel: FC<LabelProps> = ({
   label,
   isSelected,
   showChevron = true,
