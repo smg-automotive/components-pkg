@@ -1,4 +1,3 @@
-import { boolean } from 'yargs';
 import React, { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
 import { Button, ButtonProps } from '@chakra-ui/react';
