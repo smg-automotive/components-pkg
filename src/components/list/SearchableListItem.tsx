@@ -92,7 +92,7 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
         <Checkbox {...checkboxProps} />
       ) : (
         <Button {...radioButtonProps}>
-          <SearchableListItemLabel {...labelProps} />;
+          <SearchableListItemLabel {...labelProps} />
         </Button>
       )}
       {children}
