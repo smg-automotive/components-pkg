@@ -70,21 +70,14 @@ const getComparisonNodeItem = ({
     : [];
 };
 
-const isCockpitBetaGroupUser = ({ id }: { id?: string }) => {
-  const betaGroupTesterList = ['61627', '60601'];
-  return id && betaGroupTesterList.includes(id);
-};
-
 export const drawerNodeItems = ({
   comparisonItemIds,
   trackEvent,
   onLogout,
-  sellerId,
 }: {
   comparisonItemIds?: number[] | null;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
-  sellerId?: string;
 }): DrawerNodeItemsConfig => ({
   search: [
     {
@@ -426,14 +419,16 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: isCockpitBetaGroupUser({ id: sellerId })
-                ? false
-                : true,
+              professional: true,
             },
             brand: {
               autoscout24: true,
               motoscout24: false,
             },
+          },
+          entitlementConfig: {
+            hideIfEntitlementIsPresent: Entitlement.CockpitFrontend,
+            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
           },
         },
         {
@@ -520,14 +515,16 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: false,
-              professional: isCockpitBetaGroupUser({ id: sellerId })
-                ? true
-                : false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
               motoscout24: false,
             },
+          },
+          entitlementConfig: {
+            hideIfRequiredEntitlementIsMissing: true,
+            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
           },
         },
         {

@@ -65,7 +65,6 @@ const Navigation: FC<NavigationProps> = ({
           trackEvent,
           onLogout,
           comparisonItemIds,
-          sellerId: user?.sellerId,
         }),
         iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
