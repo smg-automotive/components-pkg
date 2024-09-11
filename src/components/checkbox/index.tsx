@@ -1,5 +1,8 @@
 import React, { ChangeEvent, forwardRef, ReactNode } from 'react';
-import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
+import {
+  Checkbox as ChakraCheckbox,
+  CheckboxProps as ChakraCheckboxProps,
+} from '@chakra-ui/react';
 
 export interface CheckboxProps {
   name: string;
@@ -12,6 +15,7 @@ export interface CheckboxProps {
   isIndeterminate?: boolean;
   fontWeight?: 'regular' | 'bold';
   variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
+  paddingY?: ChakraCheckboxProps['paddingY'];
   readOnly?: boolean;
   fullWidth?: boolean;
 }

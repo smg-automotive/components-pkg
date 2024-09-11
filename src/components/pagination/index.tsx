@@ -7,7 +7,7 @@ import PaginationButton from './PaginationButton';
 
 const Dots = '...';
 const siblingCount = 1;
-const range = (start: number, end: number): Array<number> => {
+const range = (start: number, end: number): number[] => {
   const length = end - start + 1;
   return Array.from({ length }, (_, idx) => idx + start);
 };

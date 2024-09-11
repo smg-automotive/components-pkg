@@ -40,7 +40,7 @@ type FullScreenSlide = {
 type FullScreenProps = {
   fullScreen: true;
   paginationType?: never;
-  children: Array<FullScreenSlide>;
+  children: FullScreenSlide[];
 } & SharedProps;
 
 export type Props = DefaultProps | FullScreenProps;

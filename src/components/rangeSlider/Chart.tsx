@@ -5,7 +5,7 @@ import Box from '../box';
 import { Facet } from './RangeSliderWithChart';
 
 interface Props {
-  facets?: Array<Facet>;
+  facets?: Facet[];
   range: number[];
   height?: 'sm' | 'normal';
 }
