@@ -426,6 +426,10 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          entitlementConfig: {
+            hideIfEntitlementIsPresent: Entitlement.CockpitFrontend,
+            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
+          },
         },
         {
           translationKey: 'header.userMenu.dealerDashboard',
@@ -503,20 +507,24 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.cockpit',
           link: {
-            de: '/de/member/cockpit',
-            en: '/de/member/cockpit',
-            fr: '/fr/member/cockpit',
-            it: '/it/member/cockpit',
+            de: '/de/cockpit',
+            en: '/de/cockpit',
+            fr: '/fr/cockpit',
+            it: '/it/cockpit',
           },
           visibilitySettings: {
             userType: {
               private: false,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
               motoscout24: true,
             },
+          },
+          entitlementConfig: {
+            hideIfRequiredEntitlementIsMissing: true,
+            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
           },
         },
         {
