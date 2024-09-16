@@ -668,6 +668,26 @@ export const drawerNodeItems = ({
           },
         },
         {
+          translationKey: 'header.userMenu.leasingNew',
+          isInternal: true,
+          link: {
+            de: '/de/leasing-dashboard',
+            en: '/de/leasing-dashboard',
+            fr: '/fr/leasing-dashboard',
+            it: '/it/leasing-dashboard',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
           translationKey: 'header.userMenu.topListingPro',
           link: {
             de: '/de/member/toplisting',
