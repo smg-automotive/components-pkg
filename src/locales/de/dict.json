@@ -12,26 +12,26 @@
       "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
       "title": "Tut uns leid, da ist was schief gegangen"
     },
+    "backToHomepage": "Zur Startseite",
+    "backToLogin": "Zurück zum Login",
     "clientSide": {
       "description": "Unser Team arbeitet schon an der Lösung des Problems. Leere den Browserverlauf und lade die Seite neu oder gehe zur Startseite.",
       "title": "In deinem Browser ist ein Fehler aufgetreten"
     },
+    "contactSupport": "Support Kontaktieren",
+    "reloadPage": "Seite neu laden",
+    "UNKNOWN_AUTH_ERROR": {
+      "description": "Es gab ein Problem beim Einloggen. Bitte versuchen Sie es erneut und kontaktieren Sie bei fortbestehenden Problemen unseren Kundensupport.",
+      "title": "Wir konnten Sie nicht einloggen"
+    },
     "UNVERIFIED_EMAIL": {
-      "title": "Bitte verifizieren Sie Ihre E-Mail",
-      "description": "Sie können sich nicht einloggen, da Ihre E-Mail-Adresse nicht verifiziert ist. Bitte überprüfen Sie Ihren Posteingang auf einen Verifizierungslink."
+      "description": "Sie können sich nicht einloggen, da Ihre E-Mail-Adresse nicht verifiziert ist. Bitte überprüfen Sie Ihren Posteingang auf einen Verifizierungslink.",
+      "title": "Bitte verifizieren Sie Ihre E-Mail"
     },
     "USER_BLOCKED": {
-      "title": "Ihr Konto ist gesperrt",
-      "description": "Wir konnten Sie nicht einloggen, da Ihr Konto gesperrt ist."
-    },
-    "UNKNOWN_AUTH_ERROR": {
-      "title": "Wir konnten Sie nicht einloggen",
-      "description": "Es gab ein Problem beim Einloggen. Bitte versuchen Sie es erneut und kontaktieren Sie bei fortbestehenden Problemen unseren Kundensupport."
-    },
-    "backToHomepage": "Zur Startseite",
-    "reloadPage": "Seite neu laden",
-    "backToLogin": "Zurück zum Login",
-    "contactSupport": "Support Kontaktieren"
+      "description": "Wir konnten Sie nicht einloggen, da Ihr Konto gesperrt ist.",
+      "title": "Ihr Konto ist gesperrt"
+    }
   },
   "filterSelectButton": {
     "close": "Schliessen",

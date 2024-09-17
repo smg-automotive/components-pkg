@@ -12,26 +12,26 @@
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, quelque chose a mal tourné"
     },
+    "backToHomepage": "Vers la page d’accueil",
+    "backToLogin": "Retour à la connexion",
     "clientSide": {
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, votre navigateur a généré une erreur"
     },
+    "contactSupport": "Contacter le service clientèle",
+    "reloadPage": "Rechargez la page",
+    "UNKNOWN_AUTH_ERROR": {
+      "description": "Nous rencontrons des difficultés pour vous connecter. Veuillez réessayer, et si le problème persiste, contactez notre service client pour obtenir de l'aide.",
+      "title": "Nous n'avons pas pu vous connecter"
+    },
     "UNVERIFIED_EMAIL": {
-      "title": "Veuillez vérifier votre e-mail",
-      "description": "Vous ne pouvez pas vous connecter car votre adresse e-mail n'est pas vérifiée. Veuillez vérifier votre boîte de réception pour un lien de vérification."
+      "description": "Vous ne pouvez pas vous connecter car votre adresse e-mail n'est pas vérifiée. Veuillez vérifier votre boîte de réception pour un lien de vérification.",
+      "title": "Veuillez vérifier votre e-mail"
     },
     "USER_BLOCKED": {
-      "title": "Votre compte est bloqué",
-      "description": "Nous n'avons pas pu vous connecter car votre compte est bloqué."
-    },
-    "UNKNOWN_AUTH_ERROR": {
-      "title": "Nous n'avons pas pu vous connecter",
-      "description": "Nous rencontrons des difficultés pour vous connecter. Veuillez réessayer, et si le problème persiste, contactez notre service client pour obtenir de l'aide."
-    },
-    "backToHomepage": "Vers la page d’accueil",
-    "reloadPage": "Rechargez la page",
-    "backToLogin": "Retour à la connexion",
-    "contactSupport": "Contacter le service clientèle"
+      "description": "Nous n'avons pas pu vous connecter car votre compte est bloqué.",
+      "title": "Votre compte est bloqué"
+    }
   },
   "filterSelectButton": {
     "close": "Fermer",

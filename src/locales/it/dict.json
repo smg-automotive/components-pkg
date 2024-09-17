@@ -12,26 +12,26 @@
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Spiacenti, qualcosa è andato storto"
     },
+    "backToHomepage": "Alla pagina iniziale",
+    "backToLogin": "Torna al login",
     "clientSide": {
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Siamo spiacenti, il tuo browser ha generato un errore"
     },
+    "contactSupport": "Contattare l'assistenza clienti",
+    "reloadPage": "Ricaricare la pagina",
+    "UNKNOWN_AUTH_ERROR": {
+      "description": "Stiamo riscontrando problemi durante l'accesso. Riprova e, se il problema persiste, contatta il nostro servizio clienti per assistenza.",
+      "title": "Non siamo riusciti ad accedere"
+    },
     "UNVERIFIED_EMAIL": {
-      "title": "Verifica la tua email",
-      "description": "Non puoi accedere perché il tuo indirizzo email non è verificato. Controlla la tua casella di posta per un link di verifica."
+      "description": "Non puoi accedere perché il tuo indirizzo email non è verificato. Controlla la tua casella di posta per un link di verifica.",
+      "title": "Verifica la tua email"
     },
     "USER_BLOCKED": {
-      "title": "Il tuo account è bloccato",
-      "description": "Non siamo riusciti a effettuare l'accesso perché il tuo account è bloccato."
-    },
-    "UNKNOWN_AUTH_ERROR": {
-      "title": "Non siamo riusciti ad accedere",
-      "description": "Stiamo riscontrando problemi durante l'accesso. Riprova e, se il problema persiste, contatta il nostro servizio clienti per assistenza."
-    },
-    "backToHomepage": "Alla pagina iniziale",
-    "reloadPage": "Ricaricare la pagina",
-    "backToLogin": "Torna al login",
-    "contactSupport": "Contattare l'assistenza clienti"
+      "description": "Non siamo riusciti a effettuare l'accesso perché il tuo account è bloccato.",
+      "title": "Il tuo account è bloccato"
+    }
   },
   "filterSelectButton": {
     "close": "Vicino",

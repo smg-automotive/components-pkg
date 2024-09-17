@@ -12,26 +12,26 @@
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, something went wrong"
     },
+    "backToHomepage": "Go to home",
+    "backToLogin": "Go back to Login",
     "clientSide": {
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, your browser threw an error"
     },
+    "contactSupport": "Contact customer support",
+    "reloadPage": "Refresh page",
+    "UNKNOWN_AUTH_ERROR": {
+      "description": "We're having trouble logging you in. Please try again, and if the issue persists, contact our customer support team for assistance.",
+      "title": "We couldn't log you in"
+    },
     "UNVERIFIED_EMAIL": {
-      "title": "Please verify your email",
-      "description": "You cannot log in because your email address is not verified. Please check your inbox for a verification link."
+      "description": "You cannot log in because your email address is not verified. Please check your inbox for a verification link.",
+      "title": "Please verify your email"
     },
     "USER_BLOCKED": {
-      "title": "Your account is blocked",
-      "description": "We couldn't log you in because your account is blocked."
-    },
-    "UNKNOWN_AUTH_ERROR": {
-      "title": "We couldn't log you in",
-      "description": "We're having trouble logging you in. Please try again, and if the issue persists, contact our customer support team for assistance."
-    },
-    "backToHomepage": "Go to home",
-    "reloadPage": "Refresh page",
-    "backToLogin": "Go back to Login",
-    "contactSupport": "Contact customer support"
+      "description": "We couldn't log you in because your account is blocked.",
+      "title": "Your account is blocked"
+    }
   },
   "filterSelectButton": {
     "close": "Close",
