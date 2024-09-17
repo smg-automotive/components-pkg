@@ -41,6 +41,8 @@ const useToast = () => {
     });
 
     toastIdRef.current.push(toastId);
+
+    return { closeToast: () => closeToast(toastId) };
   };
 };
 
