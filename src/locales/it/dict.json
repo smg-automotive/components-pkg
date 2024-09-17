@@ -5,21 +5,33 @@
   },
   "errorPage": {
     "404": {
-      "buttonLabel": "Alla pagina iniziale",
       "description": "Se hai digitato il link o l’hai copiato, ti consigliamo di verificare quanto inserito e di ricaricare la pagina.",
       "title": "Spiacenti, non è possibile trovare questa pagina"
     },
     "500": {
-      "buttonLabel": "Alla pagina iniziale",
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Spiacenti, qualcosa è andato storto"
     },
     "clientSide": {
-      "buttonLabel": "Alla pagina iniziale",
       "description": "La nostra squadra sta già lavorando a una soluzione. Puoi però provare a svuotare la cronologia di navigazione e ricaricare la pagina oppure andare alla pagina iniziale.",
       "title": "Siamo spiacenti, il tuo browser ha generato un errore"
     },
-    "reloadPage": "Ricaricare la pagina"
+    "UNVERIFIED_EMAIL": {
+      "title": "Verifica la tua email",
+      "description": "Non puoi accedere perché il tuo indirizzo email non è verificato. Controlla la tua casella di posta per un link di verifica."
+    },
+    "USER_BLOCKED": {
+      "title": "Il tuo account è bloccato",
+      "description": "Non siamo riusciti a effettuare l'accesso perché il tuo account è bloccato."
+    },
+    "UNKNOWN_AUTH_ERROR": {
+      "title": "Non siamo riusciti ad accedere",
+      "description": "Stiamo riscontrando problemi durante l'accesso. Riprova e, se il problema persiste, contatta il nostro servizio clienti per assistenza."
+    },
+    "backToHomepage": "Alla pagina iniziale",
+    "reloadPage": "Ricaricare la pagina",
+    "backToLogin": "Torna al login",
+    "contactSupport": "Contattare l'assistenza clienti"
   },
   "filterSelectButton": {
     "close": "Vicino",

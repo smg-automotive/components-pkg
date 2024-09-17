@@ -5,21 +5,33 @@
   },
   "errorPage": {
     "404": {
-      "buttonLabel": "Go to home",
       "description": "The page you are trying to reach might no longer exist. If you typed in or copied the link, you could try doing it again.",
       "title": "Sorry, we can’t find that page"
     },
     "500": {
-      "buttonLabel": "Go to home",
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, something went wrong"
     },
     "clientSide": {
-      "buttonLabel": "Go to home",
       "description": "We have found a problem and have reported it to our team to fix it. In the meantime, clear your browser history and refresh the page or go to the home page.",
       "title": "Sorry, your browser threw an error"
     },
-    "reloadPage": "Refresh page"
+    "UNVERIFIED_EMAIL": {
+      "description": "Please verify your email",
+      "title": "You cannot log in because your email address is not verified. Please check your inbox for a verification link."
+    },
+    "USER_BLOCKED": {
+      "description": "Your account is blocked",
+      "title": "We couldn’t log you in because your account is blocked."
+    },
+    "UNKNOWN_AUTH_ERROR": {
+      "description": "We couldn’t log you in",
+      "title": "We're having trouble logging you in. Please try again, and if the issue persists, contact our customer support team for assistance."
+    },
+    "backToHomepage": "Go to home",
+    "reloadPage": "Refresh page",
+    "backToLogin": "Go back to Login",
+    "contactSupport": "Contact customer support"
   },
   "filterSelectButton": {
     "close": "Close",

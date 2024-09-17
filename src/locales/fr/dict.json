@@ -5,21 +5,33 @@
   },
   "errorPage": {
     "404": {
-      "buttonLabel": "Vers la page d’accueil",
       "description": "Avez-vous tapé ou copié le lien? Si oui, nous vous suggérons de vérifier votre saisie et de recharger la page.",
       "title": "Désolé, cette page n’a pas pu être trouvée"
     },
     "500": {
-      "buttonLabel": "Vers la page d’accueil",
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, quelque chose a mal tourné"
     },
     "clientSide": {
-      "buttonLabel": "Vers la page d’accueil",
       "description": "Notre équipe est déjà en train de chercher une solution au problème. Effacez l’historique de navigation/du navigateur et rechargez la page ou allez à la page d’accueil.",
       "title": "Désolé, votre navigateur a généré une erreur"
     },
-    "reloadPage": "Rechargez la page"
+    "UNVERIFIED_EMAIL": {
+      "title": "Veuillez vérifier votre e-mail",
+      "description": "Vous ne pouvez pas vous connecter car votre adresse e-mail n'est pas vérifiée. Veuillez vérifier votre boîte de réception pour un lien de vérification."
+    },
+    "USER_BLOCKED": {
+      "title": "Votre compte est bloqué",
+      "description": "Nous n'avons pas pu vous connecter car votre compte est bloqué."
+    },
+    "UNKNOWN_AUTH_ERROR": {
+      "title": "Nous n'avons pas pu vous connecter",
+      "description": "Nous rencontrons des difficultés pour vous connecter. Veuillez réessayer, et si le problème persiste, contactez notre service client pour obtenir de l'aide."
+    },
+    "backToHomepage": "Vers la page d’accueil",
+    "reloadPage": "Rechargez la page",
+    "backToLogin": "Retour à la connexion",
+    "contactSupport": "Contacter le service clientèle"
   },
   "filterSelectButton": {
     "close": "Fermer",
