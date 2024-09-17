@@ -25,33 +25,54 @@ import Reload from './actions/primary/Reload';
 import BackToLogin from './actions/primary/BackToLogin';
 import { ActionButtonInterface } from './actions/interface';
 
+const Nonce: FC<ActionButtonInterface> = () => {
+  return null;
+};
+
 const config: Record<
   ErrorStatusCode,
-  { illustration: string; buttonColumns: number }
+  {
+    illustration: string;
+    buttonColumns: number;
+    primaryAction: FC<ActionButtonInterface>;
+    secondaryAction: FC<ActionButtonInterface>;
+  }
 > = {
   404: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 1,
+    primaryAction: Nonce,
+    secondaryAction: BackToHomepage,
   },
   500: {
     illustration: errorIllustrationSomethingWentWrong,
     buttonColumns: 1,
+    primaryAction: Nonce,
+    secondaryAction: BackToHomepage,
   },
   clientSide: {
     illustration: errorIllustrationSomethingWentWrong,
     buttonColumns: 2,
+    primaryAction: Reload,
+    secondaryAction: BackToHomepage,
   },
   UNVERIFIED_EMAIL: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 1,
+    primaryAction: Nonce,
+    secondaryAction: Nonce,
   },
   USER_BLOCKED: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 1,
+    primaryAction: Nonce,
+    secondaryAction: ContactSupport,
   },
   UNKNOWN_AUTH_ERROR: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 2,
+    primaryAction: BackToLogin,
+    secondaryAction: ContactSupport,
   },
 };
 
@@ -61,34 +82,9 @@ export interface Props {
   onButtonClick?: () => void;
 }
 
-const Nonce: FC<ActionButtonInterface> = () => {
-  return null;
-};
-
 const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
-  const PrimaryAction = (() => {
-    switch (statusCode) {
-      case 'clientSide':
-        return Reload;
-      case 'UNKNOWN_AUTH_ERROR':
-        return BackToLogin;
-      default:
-        return Nonce;
-    }
-  })();
-
-  const SecondaryAction = (() => {
-    switch (statusCode) {
-      case 'UNVERIFIED_EMAIL':
-        return Nonce;
-      case 'USER_BLOCKED':
-        return ContactSupport;
-      case 'UNKNOWN_AUTH_ERROR':
-        return ContactSupport;
-      default:
-        return BackToHomepage;
-    }
-  })();
+  const PrimaryAction = config[statusCode].primaryAction;
+  const SecondaryAction = config[statusCode].secondaryAction;
 
   return (
     <TranslationProvider language={language} scopes={['errorPage']}>

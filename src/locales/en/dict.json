@@ -17,16 +17,16 @@
       "title": "Sorry, your browser threw an error"
     },
     "UNVERIFIED_EMAIL": {
-      "description": "Please verify your email",
-      "title": "You cannot log in because your email address is not verified. Please check your inbox for a verification link."
+      "title": "Please verify your email",
+      "description": "You cannot log in because your email address is not verified. Please check your inbox for a verification link."
     },
     "USER_BLOCKED": {
-      "description": "Your account is blocked",
-      "title": "We couldn’t log you in because your account is blocked."
+      "title": "Your account is blocked",
+      "description": "We couldn't log you in because your account is blocked."
     },
     "UNKNOWN_AUTH_ERROR": {
-      "description": "We couldn’t log you in",
-      "title": "We're having trouble logging you in. Please try again, and if the issue persists, contact our customer support team for assistance."
+      "title": "We couldn't log you in",
+      "description": "We're having trouble logging you in. Please try again, and if the issue persists, contact our customer support team for assistance."
     },
     "backToHomepage": "Go to home",
     "reloadPage": "Refresh page",
