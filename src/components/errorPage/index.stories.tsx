@@ -15,7 +15,14 @@ const meta: Meta<typeof ErrorPage> = {
 
   argTypes: {
     statusCode: {
-      options: [404, 500, 'clientSide'],
+      options: [
+        404,
+        500,
+        'clientSide',
+        'UNVERIFIED_EMAIL',
+        'USER_BLOCKED',
+        'UNKNOWN_AUTH_ERROR',
+      ],
       control: 'select',
     },
 
