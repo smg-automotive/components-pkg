@@ -20,8 +20,8 @@ const diffValue = calc.subtract($width, $height);
 const $translateX = cssVar('switch-thumb-x');
 
 const baseStyleTrack: SystemStyleFunction = ({ bg, checkedBg }) => {
-  const defaultBg = 'white';
-  const defaultCheckedBg = 'blue';
+  const defaultBg = 'gray.200';
+  const defaultCheckedBg = 'gray.900';
 
   return {
     borderRadius: 'max',
@@ -35,22 +35,33 @@ const baseStyleTrack: SystemStyleFunction = ({ bg, checkedBg }) => {
       boxShadow: 'outline',
     },
     _disabled: {
-      opacity: opacity[40],
+      opacity: opacity[20],
       cursor: 'not-allowed',
     },
     _checked: {
       bg: checkedBg || defaultCheckedBg,
+      _hover: {
+        bg: 'gray.700',
+      },
+    },
+    _hover: {
+      bg: 'gray.300',
     },
   };
 };
 
 const computedStyleTrack: SystemStyleFunction = (props) => {
   const { colorScheme: c } = props;
-  const bg = mode('gray.300', 'white')(props);
-  const checkedBg = mode(`${c}.500`, `${c}.200`)(props);
+  const bg = mode(`${c}.200`, `${c}.200`)(props);
+  const checkedBg = mode(`${c}.900`, `${c}.900`)(props);
 
   return baseStyleTrack({ ...props, bg, checkedBg });
 };
+
+const svgCheck = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path d="M3.389 7.834a.52.52 0 0 0 .722 0l5.743-5.742a.52.52 0 0 0 0-.723L9.15.666a.495.495 0 0 0-.703 0L3.76 5.354 1.553 3.166a.495.495 0 0 0-.703 0l-.704.703a.52.52 0 0 0 0 .723z"/></svg>`;
+const svgCheckHovered = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" fill="none"><path fill="#5D5D5D" d="M3.389 7.834a.52.52 0 0 0 .722 0l5.743-5.742a.52.52 0 0 0 0-.723L9.15.666a.495.495 0 0 0-.703 0L3.76 5.354 1.553 3.166a.495.495 0 0 0-.703 0l-.704.703a.52.52 0 0 0 0 .723z"/></svg>`;
+const encodedSvg = window.btoa(svgCheck);
+const encodedSvgHovered = window.btoa(svgCheckHovered);
 
 const baseStyleThumb: SystemStyleObject = {
   bg: 'white',
@@ -61,6 +72,21 @@ const baseStyleThumb: SystemStyleObject = {
   height: [$height.reference],
   _checked: {
     transform: `translateX(${$translateX.reference})`,
+    '::after': {
+      content: `""`,
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '10px',
+      height: '7.46px',
+      background: `url("data:image/svg+xml;base64,${encodedSvg}") center / cover no-repeat`,
+    },
+    _hover: {
+      '::after': {
+        background: `url("data:image/svg+xml;base64,${encodedSvgHovered}") center / cover no-repeat`,
+      },
+    },
   },
 };
 
@@ -108,7 +134,7 @@ const variants = {
 const defaultProps = {
   variant: 'default',
   size: 'md',
-  colorScheme: 'blue',
+  colorScheme: 'gray',
 };
 
 export default {
