@@ -27,6 +27,9 @@ const meta: Meta<typeof SwitchComponent> = {
     variant: 'default',
     isChecked: false,
     onChange: action('onChange'),
+    label: '',
+    labelPosition: 'row',
+    isDisabled: false,
   },
 
   argTypes: {
