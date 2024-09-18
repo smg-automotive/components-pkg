@@ -18,7 +18,7 @@ const BackToHomepage: FC<ActionButtonInterface> = ({
         onButtonClick?.();
       }}
       as="a"
-      href={`/${homePageLink}`}
+      href={homePageLink}
       variant="secondary"
     >
       {t(`errorPage.backToHomepage`)}
