@@ -20,8 +20,8 @@ const diffValue = calc.subtract($width, $height);
 const $translateX = cssVar('switch-thumb-x');
 
 const baseStyleTrack: SystemStyleFunction = ({ bg, checkedBg }) => {
-  const defaultBg = 'gray.200';
-  const defaultCheckedBg = 'gray.900';
+  const defaultBg = 'white';
+  const defaultCheckedBg = 'blue';
 
   return {
     borderRadius: 'max',
@@ -59,7 +59,7 @@ const computedStyleTrack: SystemStyleFunction = (props) => {
 };
 
 const svgCheck = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path d="M3.389 7.834a.52.52 0 0 0 .722 0l5.743-5.742a.52.52 0 0 0 0-.723L9.15.666a.495.495 0 0 0-.703 0L3.76 5.354 1.553 3.166a.495.495 0 0 0-.703 0l-.704.703a.52.52 0 0 0 0 .723z"/></svg>`;
-const svgCheckHovered = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" fill="none"><path fill="#5D5D5D" d="M3.389 7.834a.52.52 0 0 0 .722 0l5.743-5.742a.52.52 0 0 0 0-.723L9.15.666a.495.495 0 0 0-.703 0L3.76 5.354 1.553 3.166a.495.495 0 0 0-.703 0l-.704.703a.52.52 0 0 0 0 .723z"/></svg>`;
+const svgCheckHovered = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path fill="#5D5D5D" d="M3.389 7.834a.52.52 0 0 0 .722 0l5.743-5.742a.52.52 0 0 0 0-.723L9.15.666a.495.495 0 0 0-.703 0L3.76 5.354 1.553 3.166a.495.495 0 0 0-.703 0l-.704.703a.52.52 0 0 0 0 .723z"/></svg>`;
 const encodedSvg = window.btoa(svgCheck);
 const encodedSvgHovered = window.btoa(svgCheckHovered);
 
