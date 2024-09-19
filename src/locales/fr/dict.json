@@ -21,15 +21,15 @@
     "contactSupport": "Contacter le service clientèle",
     "reloadPage": "Rechargez la page",
     "UNKNOWN_AUTH_ERROR": {
-      "description": "Nous rencontrons des difficultés pour vous connecter. Veuillez réessayer, et si le problème persiste, contactez notre service client pour obtenir de l'aide.",
+      "description": "Nous rencontrons des difficultés pour vous connecter. Veuillez réessayer et, si le problème persiste, contactez notre service clients pour obtenir de l’aide.",
       "title": "Nous n'avons pas pu vous connecter"
     },
     "UNVERIFIED_EMAIL": {
-      "description": "Vous ne pouvez pas vous connecter car votre adresse e-mail n'est pas vérifiée. Veuillez vérifier votre boîte de réception pour un lien de vérification.",
+      "description": "Vous ne pouvez pas vous connecter car votre adresse e-mail n’est pas vérifiée. Veuillez vérifier dans votre boîte de réception si vous avez reçu un lien de vérification.",
       "title": "Veuillez vérifier votre e-mail"
     },
     "USER_BLOCKED": {
-      "description": "Nous n'avons pas pu vous connecter car votre compte est bloqué.",
+      "description": "Votre compte est bloqué. Veuillez contacter notre service clients.",
       "title": "Votre compte est bloqué"
     }
   },
