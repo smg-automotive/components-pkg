@@ -8,8 +8,6 @@ import type {
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
 import { opacity } from '../shared/opacity';
-import { colors as ms24Colors } from '../motoscout24/colors';
-import { colors as as24Colors } from '../autoscout24/colors';
 
 const $width = cssVar('switch-track-width');
 const $height = cssVar('switch-track-height');
@@ -111,24 +109,8 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
 };
 
-const themeSwitchStyles: PartsStyleFunction<typeof parts> = (props) => {
-  return {
-    track: baseStyleTrack({
-      ...props,
-      bg: as24Colors.brand.primary,
-      checkedBg: ms24Colors.brand.primary,
-    }),
-    thumb: {
-      ...baseStyleThumb,
-      bg: 'gray.600',
-      _checked: { bg: 'white' },
-    },
-  };
-};
-
 const variants = {
   default: {},
-  themeSwitch: themeSwitchStyles,
 };
 
 const defaultProps = {

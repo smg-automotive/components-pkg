@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-import { FlexboxProps } from '@chakra-ui/styled-system';
 import {
   Switch as ChakraSwitch,
   SwitchProps as ChakraSwitchProps,
@@ -9,40 +8,31 @@ import {
 
 export type SwitchProps = Pick<
   ChakraSwitchProps,
-  'onChange' | 'isChecked' | 'variant' | 'isDisabled'
+  'onChange' | 'isChecked' | 'isDisabled'
 > & {
-  label?: ReactNode;
-  labelPosition?: FlexboxProps['flexDirection'];
+  id: string;
+  label: ReactNode;
 };
 
 const Switch: FC<SwitchProps> = ({
+  id,
   onChange,
   isChecked,
-  variant,
   isDisabled,
   label,
-  labelPosition = 'row',
 }) => {
   return (
-    <FormControl
-      width="min-content"
-      display="flex"
-      alignItems="center"
-      gap="sm"
-      flexDirection={labelPosition}
-    >
-      {label ? (
-        <FormLabel htmlFor="switch-component" mb="0">
-          {label}
-        </FormLabel>
-      ) : null}
+    <FormControl display="flex" alignItems="center" isDisabled={isDisabled}>
       <ChakraSwitch
-        id="switch-component"
+        id={id}
         onChange={onChange}
         isChecked={isChecked}
-        variant={variant}
         isDisabled={isDisabled}
+        mr="sm"
       />
+      <FormLabel fontWeight="regular" htmlFor={id} mb={0}>
+        {label}
+      </FormLabel>
     </FormControl>
   );
 };

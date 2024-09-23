@@ -24,19 +24,10 @@ const meta: Meta<typeof SwitchComponent> = {
   },
 
   args: {
-    variant: 'default',
     isChecked: false,
     onChange: action('onChange'),
-    label: '',
-    labelPosition: 'row',
+    label: 'Label',
     isDisabled: false,
-  },
-
-  argTypes: {
-    variant: {
-      options: ['themeSwitch', 'default'],
-      control: 'select',
-    },
   },
 };
 export default meta;
