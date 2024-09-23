@@ -21,20 +21,20 @@
     "contactSupport": "Contattare l'assistenza clienti",
     "reloadPage": "Ricaricare la pagina",
     "UNKNOWN_AUTH_ERROR": {
-      "description": "Stiamo riscontrando problemi durante l'accesso. Riprova e, se il problema persiste, contatta il nostro servizio clienti per assistenza.",
+      "description": "Abbiamo difficoltà a effettuare il tuo accesso. Per favore, riprova e, se il problema persiste, contatta il nostro team del servizio clienti per assistenza.",
       "title": "Non siamo riusciti ad accedere"
     },
     "UNVERIFIED_EMAIL": {
-      "description": "Non puoi accedere perché il tuo indirizzo email non è verificato. Controlla la tua casella di posta per un link di verifica.",
+      "description": "Non puoi accedere perché il tuo indirizzo e-mail non è verificato. Controlla la tua casella di posta per un link di verifica.",
       "title": "Verifica la tua email"
     },
     "USER_BLOCKED": {
-      "description": "Non siamo riusciti a effettuare l'accesso perché il tuo account è bloccato.",
+      "description": "Il tuo account è bloccato. Per favore, contatta il nostro servizio clienti.",
       "title": "Il tuo account è bloccato"
     }
   },
   "filterSelectButton": {
-    "close": "Vicino",
+    "close": "Chiudere",
     "reset": "Ripristina"
   },
   "footer": {

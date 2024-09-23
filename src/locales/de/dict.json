@@ -21,15 +21,15 @@
     "contactSupport": "Support Kontaktieren",
     "reloadPage": "Seite neu laden",
     "UNKNOWN_AUTH_ERROR": {
-      "description": "Es gab ein Problem beim Einloggen. Bitte versuchen Sie es erneut und kontaktieren Sie bei fortbestehenden Problemen unseren Kundensupport.",
+      "description": "Login nicht möglich. Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut. Wenn das Problem weiterhin besteht kontaktieren Sie bitte unser Support-Team.",
       "title": "Wir konnten Sie nicht einloggen"
     },
     "UNVERIFIED_EMAIL": {
-      "description": "Sie können sich nicht einloggen, da Ihre E-Mail-Adresse nicht verifiziert ist. Bitte überprüfen Sie Ihren Posteingang auf einen Verifizierungslink.",
+      "description": "Login nicht möglich. Bitte überprüfen Sie Ihren Posteingang und verifizieren Sie Ihre E-Mail-Adresse mit dem beigefügten Link.",
       "title": "Bitte verifizieren Sie Ihre E-Mail"
     },
     "USER_BLOCKED": {
-      "description": "Wir konnten Sie nicht einloggen, da Ihr Konto gesperrt ist.",
+      "description": "Ihr Konto ist gesperrt. Bitte kontaktieren Sie unser Support-Team.",
       "title": "Ihr Konto ist gesperrt"
     }
   },
