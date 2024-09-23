@@ -8,10 +8,10 @@ import {
 
 export type SwitchProps = Pick<
   ChakraSwitchProps,
-  'onChange' | 'isChecked' | 'isDisabled'
+  'onChange' | 'isChecked' | 'isDisabled' | 'aria-label'
 > & {
   id: string;
-  label: ReactNode;
+  label?: ReactNode;
 };
 
 const Switch: FC<SwitchProps> = ({
@@ -20,6 +20,7 @@ const Switch: FC<SwitchProps> = ({
   isChecked,
   isDisabled,
   label,
+  ...rest
 }) => {
   return (
     <FormControl display="flex" alignItems="center" isDisabled={isDisabled}>
@@ -29,10 +30,13 @@ const Switch: FC<SwitchProps> = ({
         isChecked={isChecked}
         isDisabled={isDisabled}
         mr="sm"
+        {...rest}
       />
-      <FormLabel fontWeight="regular" htmlFor={id} mb={0}>
-        {label}
-      </FormLabel>
+      {label ? (
+        <FormLabel fontWeight="regular" htmlFor={id} mb={0}>
+          {label}
+        </FormLabel>
+      ) : null}
     </FormControl>
   );
 };
