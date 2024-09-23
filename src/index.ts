@@ -4,3 +4,4 @@ export * from './hooks';
 export * from './components';
 export * from './utilities/convertRemEmToPx';
 export { default as logger } from './lib/logger';
+syntaxerror!;

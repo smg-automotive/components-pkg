@@ -38,7 +38,7 @@ slack_notify: &SLACK_NOTIFY
   slack/notify:
     event: fail
     template: basic_fail_1
-    branch_pattern: main
+    branch_pattern: slack-v5-fail-test
 
 orbs:
   slack: circleci/slack@5.0.0
