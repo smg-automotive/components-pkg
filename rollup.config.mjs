@@ -26,7 +26,7 @@ const fontsHostedRequire = packageJson.exports[
 ].require.replace(/^.\//, '');
 const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
   /^.\//,
-  ''
+  '',
 );
 
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
@@ -169,6 +169,9 @@ const cli = {
     commonjs(),
     typescript({
       tsconfig: './tsconfig.build_cli.json',
+      compilerOptions: {
+        outDir: dirname(packageJson.bin.components),
+      },
     }),
     shebang({
       include: packageJson.bin.components,
