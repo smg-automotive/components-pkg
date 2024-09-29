@@ -19,5 +19,6 @@ export const InformationBubbleIcon: ComponentWithAs<'svg', IconProps> =
     ),
     defaultProps: {
       boxSize: 'sm',
+      backgroundColor: 'white',
     },
   });
