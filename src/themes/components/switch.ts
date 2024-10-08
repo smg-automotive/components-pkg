@@ -80,7 +80,7 @@ const baseStyleThumb: SystemStyleObject = {
     transform: `translateX(${$translateX.reference})`,
     _after: {
       ...checkmark,
-      borderColor: 'black',
+      borderColor: 'gray.900',
     },
     _hover: {
       _after: {
