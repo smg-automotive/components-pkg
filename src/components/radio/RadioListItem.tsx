@@ -7,16 +7,16 @@ export const RadioListItem = forwardRef<
   HTMLInputElement,
   PropsWithChildren<UseRadioProps>
 >((props, ref) => {
-  const { getInputProps, getCheckboxProps } = useRadio(props);
+  const { getInputProps, getRadioProps } = useRadio(props);
 
   const input = getInputProps();
-  const checkbox = getCheckboxProps();
+  const radioProps = getRadioProps();
 
   return (
     <Box as="label" width="full">
       <input {...input} ref={ref} />
       <Box
-        {...checkbox}
+        {...radioProps}
         cursor="pointer"
         background="white"
         borderRadius="md"
