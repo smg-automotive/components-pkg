@@ -121,23 +121,23 @@
     "webpack": "5.94.0"
   },
   "dependencies": {
-    "@chakra-ui/anatomy": "2.2.2",
-    "@chakra-ui/react": "2.8.2",
-    "@chakra-ui/styled-system": "2.9.2",
+    "@chakra-ui/anatomy": "2.3.4",
+    "@chakra-ui/react": "2.10.1",
+    "@chakra-ui/styled-system": "2.11.1",
     "@chakra-ui/system": "2.6.2",
-    "@chakra-ui/theme-tools": "2.1.2",
-    "@emotion/react": "11.11.4",
-    "@emotion/styled": "11.11.5",
+    "@chakra-ui/theme-tools": "2.2.5",
+    "@emotion/react": "11.13.3",
+    "@emotion/styled": "11.13.0",
     "@smg-automotive/auth": "5.0.6",
     "@smg-automotive/i18n-pkg": "1.5.1",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
-    "embla-carousel-react": "8.0.4",
-    "framer-motion": "11.1.7",
+    "embla-carousel-react": "8.3.0",
+    "framer-motion": "11.11.4",
     "fs-extra": "11.2.0",
     "fuse.js": "7.0.0",
     "merge-json-file": "1.0.1",
-    "use-debounce": "10.0.1",
+    "use-debounce": "10.0.3",
     "yargs": "17.7.2"
   }
 }
