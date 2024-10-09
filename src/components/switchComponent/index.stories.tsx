@@ -17,7 +17,7 @@ const meta: Meta<typeof SwitchComponent> = {
         {...args}
         onChange={(e) => {
           updateArgs({ isChecked: e.target.checked });
-          args.onChange && args.onChange(e);
+          args.onChange?.(e);
         }}
       />
     );

@@ -9,6 +9,11 @@ import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustra
 
 import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
 
+import ContactSupport from './actions/secondary/ContactSupport';
+import BackToHomepage from './actions/secondary/BackToHomepage';
+import Reload from './actions/primary/Reload';
+import BackToLogin from './actions/primary/BackToLogin';
+import { ActionButtonInterface } from './actions/interface';
 import TranslationProvider from '../translationProvider';
 import Text from '../text';
 import Stack from '../stack';
@@ -19,11 +24,6 @@ import { H1 } from '../heading';
 import Flex from '../flex';
 import Divider from '../divider';
 import AspectRatio from '../aspectRatio';
-import ContactSupport from './actions/secondary/ContactSupport';
-import BackToHomepage from './actions/secondary/BackToHomepage';
-import Reload from './actions/primary/Reload';
-import BackToLogin from './actions/primary/BackToLogin';
-import { ActionButtonInterface } from './actions/interface';
 
 const Nonce: FC<ActionButtonInterface> = () => {
   return null;
