@@ -142,7 +142,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     const defaultOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (
       e,
     ) => {
-      onChange && onChange(e);
+      onChange?.(e);
       setInternalUIValue(e.target.value);
     };
 

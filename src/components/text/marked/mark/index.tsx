@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 
-import { MarkedTextProps } from '..';
-
 import Underline from './Underline';
 import Highlight from './Highlight';
+import { MarkedTextProps } from '..';
 
 export type MarkProps = Pick<MarkedTextProps, 'variant' | 'highlightColor'>;
 

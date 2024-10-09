@@ -16,7 +16,7 @@ const Template = (props: SelectMenuProps) => {
       {...{ ...props, ...args }}
       onChange={(v) => {
         updateArgs({ value: v.toString() });
-        args.onChange && args.onChange(v);
+        args.onChange?.(v);
       }}
     />
   );
