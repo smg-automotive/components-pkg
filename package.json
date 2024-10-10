@@ -121,7 +121,7 @@
     "webpack": "5.95.0"
   },
   "dependencies": {
-    "@chakra-ui/anatomy": "2.2.2",
+    "@chakra-ui/anatomy": "2.3.4",
     "@chakra-ui/react": "2.8.2",
     "@chakra-ui/styled-system": "2.9.2",
     "@chakra-ui/system": "2.6.2",
