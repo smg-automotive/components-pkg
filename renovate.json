@@ -16,6 +16,16 @@
         "embla-carousel-react",
         "use-debounce"
       ]
+    },
+    {
+      "groupName": "chakra-ui",
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "matchPackagePatterns": [
+        "@chakra-ui/*"
+      ]
     }
   ]
 }
