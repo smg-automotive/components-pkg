@@ -122,7 +122,7 @@
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.3.4",
-    "@chakra-ui/react": "2.8.2",
+    "@chakra-ui/react": "2.10.2",
     "@chakra-ui/styled-system": "2.11.2",
     "@chakra-ui/system": "2.6.2",
     "@chakra-ui/theme-tools": "2.2.6",
