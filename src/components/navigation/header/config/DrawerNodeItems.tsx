@@ -313,10 +313,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myVehicles',
           link: {
-            de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
+            de: '/de/vehicle-management',
+            en: '/en/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
           },
           visibilitySettings: {
             userType: {
@@ -391,10 +391,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myMotorcycles',
           link: {
-            de: '/de/member/vehiclepool',
-            en: '/en/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
+            de: '/de/vehicle-management',
+            en: '/en/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
           },
           visibilitySettings: {
             userType: {
