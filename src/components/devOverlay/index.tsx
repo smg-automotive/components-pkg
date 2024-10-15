@@ -22,7 +22,7 @@ import Button, { ButtonProps } from '../button';
 export type DevOverlayVariables = Record<string, string | number>[];
 
 export type DevOverlayProps = Omit<ButtonProps, 'onClick' | 'children'> &
-  Omit<SwitchProps, 'onChange'> & {
+  Omit<SwitchProps, 'onChange' | 'label' | 'id'> & {
     hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
     toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
     toggleTranslation: Exclude<SwitchProps['onChange'], undefined>;
@@ -92,31 +92,21 @@ const DevOverlay: FC<DevOverlayProps> = ({
       <Heading as="h4" textStyle="heading4">
         Switch Theme
       </Heading>
-      <div>
-        <span>🚗</span>
-        &nbsp;
-        <Switch
-          onChange={toggleTheme}
-          isChecked={isThemeSwitcherChecked}
-          variant="themeSwitch"
-        />
-        &nbsp;
-        <span>🏍️</span>
-      </div>
+      <Switch
+        id="theme-toggle"
+        onChange={toggleTheme}
+        isChecked={isThemeSwitcherChecked}
+        label={isThemeSwitcherChecked ? <span>🏍️</span> : <span>🚗</span>}
+      />
       <Heading as="h4" textStyle="heading4">
         Switch Translation
       </Heading>
-      <div>
-        <span>🌐</span>
-        &nbsp;
-        <Switch
-          onChange={toggleTranslation}
-          isChecked={displayTranslationKeys}
-          variant="themeSwitch"
-        />
-        &nbsp;
-        <span>🔑</span>
-      </div>
+      <Switch
+        id="translation-toggle"
+        onChange={toggleTranslation}
+        isChecked={displayTranslationKeys}
+        label={displayTranslationKeys ? <span>🔑</span> : <span>🌐</span>}
+      />
     </Box>
   );
 };

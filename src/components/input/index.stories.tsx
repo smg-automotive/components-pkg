@@ -85,7 +85,7 @@ const meta: Meta<typeof InputComponent> = {
                 value,
                 onChange: (e) => {
                   updateArgs({ value: e.target.value });
-                  onChange && onChange(e);
+                  onChange?.(e);
                 },
               }
             : { onChange }),

@@ -23,12 +23,14 @@ const useDebouncedOnChange = ({
       debouncedOnChange.flush();
     }
 
-    onBlur && onBlur(event);
+    onBlur?.(event);
   };
 
   useEffect(() => {
     return () => {
-      debounce && debouncedOnChange.isPending() && debouncedOnChange.flush();
+      if (debounce && debouncedOnChange.isPending()) {
+        debouncedOnChange.flush();
+      }
     };
   }, [debounce, debouncedOnChange]);
 
