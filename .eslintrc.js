@@ -10,6 +10,7 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   rules: {
+    'sonarjs/no-array-index-key': 'off',
     'testing-library/no-await-sync-events': [
       'error',
       { eventModules: ['fire-event'] },
@@ -61,7 +62,7 @@ module.exports = {
         'import/namespace': ['error', { allowComputed: true }],
       },
     },
-{
+    {
       files: ['*.test.@(ts)', '*.Test.@(tsx)'],
       rules: {
         'sonarjs/no-nested-functions': 'off',
