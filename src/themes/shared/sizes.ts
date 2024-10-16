@@ -19,6 +19,8 @@ export const sizes = {
     xl: '1280px',
     '2xl': '1604px',
   },
+  'auth0-width': '25rem',
+  'auth0-height': '33.75rem',
 };
 
 export type Sizes = Exclude<keyof typeof sizes, 'container'>;

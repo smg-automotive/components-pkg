@@ -11,6 +11,7 @@ export const space = {
   '5xl': '4rem',
   '6xl': '6rem',
   '7xl': '8rem',
+  'auth0-spacing': '2.5rem',
 };
 
 export type Space = Exclude<keyof typeof space, undefined>;
