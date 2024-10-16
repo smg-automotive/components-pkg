@@ -21,7 +21,7 @@ const renderWrapper = ({
       key: 'used',
       facet: 0,
       isChecked: false,
-      image: <img src="limousine.jpeg" />,
+      image: <img src="limousine.jpeg" alt="limousine" />,
       filterName: 'conditionType',
       childCheckboxes: [],
     },
@@ -128,7 +128,7 @@ describe('<CheckBoxFilter />', () => {
   });
 
   it('should render an image when is passed', () => {
-    const image = <img src="kombi.jpeg" />;
+    const image = <img src="kombi.jpeg" alt="kombi" />;
     renderWrapper({
       options: [
         {

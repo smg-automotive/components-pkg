@@ -61,5 +61,11 @@ module.exports = {
         'import/namespace': ['error', { allowComputed: true }],
       },
     },
+{
+      files: ['*.test.@(ts)', '*.Test.@(tsx)'],
+      rules: {
+        'sonarjs/no-nested-functions': 'off',
+      },
+    },
   ],
 };

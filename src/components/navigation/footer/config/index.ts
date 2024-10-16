@@ -427,6 +427,7 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           onClick: () => {
+            // eslint-disable-next-line sonarjs/new-cap
             window.OneTrust?.ToggleInfoDisplay();
           },
         },

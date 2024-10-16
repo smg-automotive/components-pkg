@@ -12,7 +12,10 @@ const Template = ({
   <SectionComponent
     {...args}
     image={
-      <img src={`https://picsum.photos/${nativeImageSize.replace('x', '/')}`} />
+      <img
+        src={`https://picsum.photos/${nativeImageSize.replace('x', '/')}`}
+        alt={nativeImageSize}
+      />
     }
   />
 );

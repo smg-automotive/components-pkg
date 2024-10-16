@@ -18,7 +18,7 @@ const BreadcrumbLink: FC<ChakraBreadcrumbLinkProps> = ({
       {children}
     </ChakraBreadcrumbLink>
   ) : (
-    <>{children}</>
+    children
   );
 };
 

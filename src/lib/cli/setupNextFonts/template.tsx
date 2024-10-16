@@ -45,7 +45,7 @@ const makeItSans = localFont({
 const Fonts: FC = () => (
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  // eslint-disable-next-line react/no-unknown-property
+  // eslint-disable-next-line react/no-unknown-property, sonarjs/no-unknown-property
   <style jsx global>{`
     :root {
       --font-primary: ${makeItSans.style.fontFamily};

@@ -6,7 +6,7 @@ import BreadcrumbItem from '../Item';
 import Breadcrumbs from '..';
 
 const renderWrapper = ({
-  crumbs = [{ title: 'title', url: 'http://link.com' }],
+  crumbs = [{ title: 'title', url: 'https://link.com' }],
 }) =>
   render(
     <Breadcrumbs data-testid="breadcrumbs-container">

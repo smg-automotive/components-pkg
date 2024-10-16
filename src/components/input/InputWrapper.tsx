@@ -1,4 +1,4 @@
-import React, { Fragment, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { InputGroup } from '@chakra-ui/react';
 
 import { Props as InputProps } from '../input';
@@ -13,10 +13,6 @@ const InputWrapper = ({
   size,
   shouldWrap,
 }: PropsWithChildren<Props>) =>
-  shouldWrap ? (
-    <InputGroup size={size}>{children}</InputGroup>
-  ) : (
-    <Fragment>{children}</Fragment>
-  );
+  shouldWrap ? <InputGroup size={size}>{children}</InputGroup> : children;
 
 export default InputWrapper;
