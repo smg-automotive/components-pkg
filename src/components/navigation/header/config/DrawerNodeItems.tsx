@@ -576,8 +576,28 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.motorcyclePark',
+          forceMotoscoutLink: true,
+          link: {
+            de: '/de/vehicle-management',
+            en: '/de/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
@@ -596,8 +616,28 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.carPark',
+          forceAutoscoutLink: true,
+          link: {
+            de: '/de/vehicle-management',
+            en: '/de/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
             },
             brand: {
               autoscout24: false,
