@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+
+import { render, screen } from '.jest/utils';
 
 import BreadcrumbLink from '../Link';
 import BreadcrumbItem from '../Item';
