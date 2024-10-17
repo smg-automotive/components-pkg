@@ -129,6 +129,7 @@ export { DigitalContractIcon } from './DigitalContractIcon';
 export { OptimizerIcon } from './OptimizerIcon';
 export { CheckmarkCircleGreenIcon } from './CheckmarkCircleGreenIcon';
 export { ArrowDownBlueIcon } from './ArrowDownBlueIcon';
+export { ArrowDownTealIcon } from './ArrowDownTealIcon';
 export { ArrowUpYellowIcon } from './ArrowUpYellowIcon';
 export { ArrowUpRedIcon } from './ArrowUpRedIcon';
 export { NotAvailableIcon } from './NotAvailableIcon';
