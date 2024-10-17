@@ -10,7 +10,7 @@
       "import": "./dist/esm/index.js"
     },
     "./fonts/hosted": {
-      "require": "./dist/fonts/cjs/hosted.js",
+      "require": "./dist/fonts/cjs/Hosted.js",
       "import": "./dist/fonts/esm/Hosted.js"
     }
   },
