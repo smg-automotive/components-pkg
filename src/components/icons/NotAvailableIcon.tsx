@@ -8,7 +8,7 @@ export const NotAvailableIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   path: (
     <>
       <title>Not Available</title>
-      <circle cx="12" cy="12" r="12" fill="#7F97A1" />
+      <circle cx="12" cy="12" r="12" fill="currentColor" />
       <path d="M18 11.3334H6V12.6667H18V11.3334Z" fill="white" />
     </>
   ),
