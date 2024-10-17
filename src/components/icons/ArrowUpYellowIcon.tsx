@@ -11,7 +11,7 @@ export const ArrowUpYellowIcon: ComponentWithAs<'svg', IconProps> = createIcon({
       <circle cx="12" cy="12" r="12" fill="#F6A30E" />
       <path
         d="M18 11.3334L12 5.33337L6 11.3334L6.94 12.2734L11.3333 7.88671V18.6667L12.6667 18V7.88671L17.06 12.2734L18 11.3334Z"
-        fill="currentColor"
+        fill="white"
       />
     </>
   ),

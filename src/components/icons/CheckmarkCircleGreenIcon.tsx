@@ -12,7 +12,7 @@ export const CheckmarkCircleGreenIcon: ComponentWithAs<'svg', IconProps> =
         <circle cx="12" cy="12" r="12" fill="#54CC59" />
         <path
           d="M9.75 15.1275L6.315 11.6925L5.25 12.75L9.75 17.25L18.75 8.25L17.6925 7.1925L9.75 15.1275Z"
-          fill="currentColor"
+          fill="white"
         />
       </>
     ),
