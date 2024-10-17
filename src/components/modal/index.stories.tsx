@@ -75,7 +75,7 @@ const meta: Meta<typeof Template> = {
 
   argTypes: {
     size: {
-      options: ['md', 'lg'],
+      options: ['md', 'lg', 'full', 'auth0'],
 
       control: {
         type: 'select',

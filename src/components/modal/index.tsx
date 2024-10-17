@@ -26,7 +26,7 @@ export interface Props
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
   variant?: 'fullScreen' | 'base' | 'topScroll';
-  size?: 'md' | 'lg' | 'full';
+  size?: 'md' | 'lg' | 'full' | 'auth0';
   disableBodyPadding?: boolean;
   overlayColor?: 'default' | 'gray';
 }
