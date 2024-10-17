@@ -9,6 +9,26 @@ import { MagnifierIcon } from '../icons';
 
 import InputComponent, { InputProps } from './index';
 
+const Wrapper = ({ value: argValue, onChange, ...props }: InputProps) => {
+  const [{ value }, updateArgs] = useArgs();
+  return (
+    <InputComponent
+      {...({
+        ...props,
+        ...(argValue || argValue === '' || argValue === 0
+          ? {
+              value,
+              onChange: (e) => {
+                updateArgs({ value: e.target.value });
+                onChange?.(e);
+              },
+            }
+          : { onChange }),
+      } as InputProps)}
+    />
+  );
+};
+
 const meta: Meta<typeof InputComponent> = {
   title: 'Components/Forms/Input',
   component: InputComponent,
@@ -74,25 +94,7 @@ const meta: Meta<typeof InputComponent> = {
     },
   },
 
-  render: ({ value: argValue, onChange, ...props }: InputProps) => {
-    const [{ value }, updateArgs] = useArgs();
-    return (
-      <InputComponent
-        {...({
-          ...props,
-          ...(argValue || argValue === '' || argValue === 0
-            ? {
-                value,
-                onChange: (e) => {
-                  updateArgs({ value: e.target.value });
-                  onChange && onChange(e);
-                },
-              }
-            : { onChange }),
-        } as InputProps)}
-      />
-    );
-  },
+  render: Wrapper,
 };
 export default meta;
 

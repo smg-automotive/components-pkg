@@ -6,12 +6,16 @@
       "groupName": "UI dependencies",
       "matchUpdateTypes": ["patch", "minor"],
       "matchPackagePatterns": [
-        "@chakra-ui/*",
         "@emotion/*",
         "framer-motion",
         "embla-carousel-react",
         "use-debounce"
       ]
+    },
+    {
+      "groupName": "chakra-ui",
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchPackagePatterns": ["@chakra-ui/*"]
     }
   ]
 }

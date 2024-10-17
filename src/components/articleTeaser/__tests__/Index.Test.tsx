@@ -6,8 +6,8 @@ import ArticleTeaser from '..';
 const renderWrapper = ({
   title = 'title',
   text = 'text',
-  imageUrl = 'http://img.com',
-  url = 'http://link.com',
+  imageUrl = 'https://img.com',
+  url = 'https://link.com',
 } = {}) =>
   render(
     <ArticleTeaser title={title} text={text} imageUrl={imageUrl} url={url} />,

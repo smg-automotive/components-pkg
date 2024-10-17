@@ -38,11 +38,10 @@ function InputGroup<Name extends string>({
         handleChange({ value: value || undefined, name: inputProps.name })
       }
       onBlur={(event) => {
-        onBlur &&
-          onBlur({
-            value: Number(event.target.value) || undefined,
-            name: inputProps.name,
-          });
+        onBlur?.({
+          value: Number(event.target.value) || undefined,
+          name: inputProps.name,
+        });
         setRefocus(false);
       }}
       onFocus={() => setRefocus(true)}

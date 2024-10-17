@@ -203,7 +203,7 @@ const Template = ({ query, ...props }: Args) => {
   };
 
   const onApply = (updatedItem: Item<Values, FilterType>) => {
-    args.onApply && args.onApply(updatedItem);
+    args.onApply?.(updatedItem);
     if (updatedItem.filterName === parentFilterName) {
       updateParentFilter(updatedItem);
     } else {

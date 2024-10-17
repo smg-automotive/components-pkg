@@ -986,9 +986,13 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.dealerInfoSystem',
           link: {
+            // eslint-disable-next-line sonarjs/no-clear-text-protocols
             de: 'http://bi.scout24.ch',
+            // eslint-disable-next-line sonarjs/no-clear-text-protocols
             en: 'http://bi.scout24.ch',
+            // eslint-disable-next-line sonarjs/no-clear-text-protocols
             fr: 'http://bi.scout24.ch',
+            // eslint-disable-next-line sonarjs/no-clear-text-protocols
             it: 'http://bi.scout24.ch',
           },
           visibilitySettings: {

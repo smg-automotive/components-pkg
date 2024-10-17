@@ -17,7 +17,7 @@ const Template = (props: Props) => {
       } as Props)}
       onChange={(e) => {
         updateArgs({ value: e.target.value });
-        args.onChange && args.onChange(e);
+        args.onChange?.(e);
       }}
     />
   );

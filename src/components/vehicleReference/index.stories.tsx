@@ -41,7 +41,7 @@ export const VehicleReferenceWithImage: StoryType = {
     price: `CHF 23'900.–`,
     sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
     sellerAddress: `2540 Grenchen (SO)`,
-    image: <img src="https://picsum.photos/400/400" />,
+    image: <img src="https://picsum.photos/400/400" alt="400x400" />,
   },
 };
 
@@ -53,7 +53,7 @@ export const VehicleReferenceWithImageAsRow: StoryType = {
     price: `CHF 23'900.–`,
     sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
     sellerAddress: `2540 Grenchen (SO)`,
-    image: <img src="https://picsum.photos/400/400" />,
+    image: <img src="https://picsum.photos/400/400" alt="400x400" />,
     templateColumns: {
       base: 'var(--chakra-sizes-2xl) 1fr',
       md: '200px 1fr',
@@ -69,7 +69,7 @@ export const VehicleReferenceWithImageAndCallToAction: StoryType = {
     price: `CHF 23'900.–`,
     sellerName: `Auto-Center Grenchen AG 2540 Grenchen (SO)`,
     sellerAddress: `2540 Grenchen (SO)`,
-    image: <img src="https://picsum.photos/400/400" />,
+    image: <img src="https://picsum.photos/400/400" alt="400x400" />,
     callToAction: (
       <Button variant="secondary" width="full" onClick={() => null}>
         Press me!
