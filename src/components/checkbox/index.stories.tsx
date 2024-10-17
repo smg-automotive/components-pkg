@@ -3,27 +3,29 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import Checkbox from './index';
+import Checkbox, { CheckboxProps } from './index';
+
+const Wrapper = (props: CheckboxProps) => {
+  const [args, updateArgs] = useArgs();
+
+  return (
+    <Checkbox
+      {...{
+        ...args,
+        ...props,
+      }}
+      onChange={(e) => {
+        updateArgs({ isChecked: e.target.checked });
+        args.onChange?.(e);
+      }}
+    />
+  );
+};
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Forms/Checkbox',
   component: Checkbox,
-  render: (props) => {
-    const [args, updateArgs] = useArgs();
-
-    return (
-      <Checkbox
-        {...{
-          ...args,
-          ...props,
-        }}
-        onChange={(e) => {
-          updateArgs({ isChecked: e.target.checked });
-          args.onChange?.(e);
-        }}
-      />
-    );
-  },
+  render: Wrapper,
 
   args: {
     name: 'test-checkbox',

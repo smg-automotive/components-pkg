@@ -10,7 +10,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import Link from '../link';
+import AlertLink from './Link';
 import { BareAlertProps } from './Bare';
 
 type SharedProps = Omit<BareAlertProps, 'onClose'>;
@@ -43,30 +43,7 @@ const Alert: FC<AlertProps> = ({
       <Flex direction="column" w="100%">
         {title ? <AlertTitle>{title}</AlertTitle> : null}
         <AlertDescription>{description}</AlertDescription>
-        {link ? (
-          link.as === 'button' ? (
-            <Link
-              as="button"
-              onClick={() => link.onClick?.()}
-              textAlign="left"
-              display="inline-block"
-              width="fit-content"
-            >
-              {link.text}
-            </Link>
-          ) : (
-            <Link
-              as={link.as === 'link' ? 'a' : link.as}
-              href={link.url}
-              onClick={link.onClick}
-              isExternal={link.isExternal}
-              display="inline-block"
-              width="fit-content"
-            >
-              {link.text}
-            </Link>
-          )
-        ) : null}
+        {link ? <AlertLink {...link} /> : null}
       </Flex>
       {rest.dismissible ? (
         <CloseButton

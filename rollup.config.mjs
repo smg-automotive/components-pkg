@@ -42,7 +42,7 @@ const cjs = {
   input: 'src/index.ts',
   output: [
     {
-      file: packageJson.main,
+      dir: dirname(packageJson.main),
       format: 'cjs',
       sourcemap: true,
       inlineDynamicImports: true,
@@ -95,7 +95,7 @@ const esm = {
   onwarn,
 };
 
-const tds = {
+const types = {
   input: 'src/index.ts',
   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
   plugins: [dts({ tsconfig: './tsconfig.build.json' })],
@@ -105,7 +105,7 @@ const hostedFontsCjs = {
   input: 'src/fonts/Hosted.tsx',
   output: [
     {
-      file: fontsHostedRequire,
+      dir: dirname(fontsHostedRequire),
       format: 'cjs',
       sourcemap: true,
       inlineDynamicImports: true,
@@ -189,4 +189,4 @@ const cli = {
   onwarn,
 };
 
-export default [cjs, esm, tds, hostedFontsCjs, hostedFontsEsm, cli];
+export default [cjs, esm, types, hostedFontsCjs, hostedFontsEsm, cli];

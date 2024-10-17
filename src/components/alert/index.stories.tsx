@@ -113,7 +113,7 @@ export const TypeWarning: StoryType = {
   },
 };
 
-export const TypeError: StoryType = {
+export const TypeErrorStory: StoryType = {
   name: 'Type > Error',
   args: {
     type: 'error',
