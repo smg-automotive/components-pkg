@@ -1,9 +1,10 @@
 /* eslint-disable unicorn/filename-case */
 import React from 'react';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+
 import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
+import { fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
