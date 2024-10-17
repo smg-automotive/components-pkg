@@ -12,7 +12,7 @@ const renderWrapper = ({
   description = 'Your Chakra experience may be degraded.',
   icon = <MockIcon />,
   link = {
-    url: 'http://link.com',
+    url: 'https://link.com',
     text: 'Link',
     isExternal: true,
   },

@@ -52,6 +52,7 @@ export enum PaginationType {
   Dot = 'dot',
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const Carousel: FC<Props> = (props) => {
   const {
     startIndex = 0,

@@ -112,7 +112,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
                     <chakra.span overflow="hidden" textOverflow="ellipsis">
                       {[
-                        displayValue ? appliedLabel ?? label : label,
+                        displayValue ? (appliedLabel ?? label) : label,
                         displayValue,
                       ]
                         .filter(Boolean)
