@@ -9,11 +9,12 @@ import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustra
 
 import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
 
+import EmailChangeVerificationErrorContent from './content/EmailChangeVerification';
 import ContactSupport from './actions/secondary/ContactSupport';
 import BackToHomepageSecondary from './actions/secondary/BackToHomepage';
-import BackToHomepagePrimary from './actions/primary/BackToHomepage';
 import Reload from './actions/primary/Reload';
 import BackToLogin from './actions/primary/BackToLogin';
+import BackToHomepagePrimary from './actions/primary/BackToHomepage';
 import { ActionButtonInterface } from './actions/interface';
 import TranslationProvider from '../translationProvider';
 import Text from '../text';
@@ -25,7 +26,6 @@ import { H1 } from '../heading';
 import Flex from '../flex';
 import Divider from '../divider';
 import AspectRatio from '../aspectRatio';
-import EmailChangeVerificationErrorContent from './content/EmailChangeVerification-uc';
 
 const Nonce: FC<ActionButtonInterface> = () => {
   return null;
@@ -36,7 +36,7 @@ const config: Record<
   {
     illustration: string;
     buttonColumns: number;
-    content: FC<any>;
+    content: FC<ActionButtonInterface>;
     primaryAction: FC<ActionButtonInterface>;
     secondaryAction: FC<ActionButtonInterface>;
   }
@@ -135,7 +135,7 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                       <Text textAlign="center">
                         {t(`errorPage.${statusCode}.description`)}
                       </Text>
-                      <Content t={t} />
+                      <Content {...actionButtonProps} />
                     </Stack>
                     <SimpleGrid
                       columns={{
