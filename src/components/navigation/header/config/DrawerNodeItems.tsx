@@ -313,10 +313,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myVehicles',
           link: {
-            de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
+            de: '/de/vehicle-management',
+            en: '/en/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
           },
           visibilitySettings: {
             userType: {
@@ -391,10 +391,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.myMotorcycles',
           link: {
-            de: '/de/member/vehiclepool',
-            en: '/en/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
+            de: '/de/vehicle-management',
+            en: '/en/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
           },
           visibilitySettings: {
             userType: {
@@ -576,8 +576,28 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.motorcyclePark',
+          forceMotoscoutLink: true,
+          link: {
+            de: '/de/vehicle-management',
+            en: '/de/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
@@ -596,8 +616,28 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.carPark',
+          forceAutoscoutLink: true,
+          link: {
+            de: '/de/vehicle-management',
+            en: '/de/vehicle-management',
+            fr: '/fr/vehicle-management',
+            it: '/it/vehicle-management',
+          },
+          visibilitySettings: {
+            userType: {
+              private: true,
+              professional: false,
             },
             brand: {
               autoscout24: false,
