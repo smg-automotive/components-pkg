@@ -10,7 +10,8 @@ import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustra
 import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
 
 import ContactSupport from './actions/secondary/ContactSupport';
-import BackToHomepage from './actions/secondary/BackToHomepage';
+import BackToHomepageSecondary from './actions/secondary/BackToHomepage';
+import BackToHomepagePrimary from './actions/primary/BackToHomepage';
 import Reload from './actions/primary/Reload';
 import BackToLogin from './actions/primary/BackToLogin';
 import { ActionButtonInterface } from './actions/interface';
@@ -24,6 +25,7 @@ import { H1 } from '../heading';
 import Flex from '../flex';
 import Divider from '../divider';
 import AspectRatio from '../aspectRatio';
+import EmailChangeVerificationErrorContent from './content/emailChangeVerification';
 
 const Nonce: FC<ActionButtonInterface> = () => {
   return null;
@@ -34,6 +36,7 @@ const config: Record<
   {
     illustration: string;
     buttonColumns: number;
+    content: FC<any>;
     primaryAction: FC<ActionButtonInterface>;
     secondaryAction: FC<ActionButtonInterface>;
   }
@@ -41,38 +44,51 @@ const config: Record<
   404: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 1,
+    content: Nonce,
     primaryAction: Nonce,
-    secondaryAction: BackToHomepage,
+    secondaryAction: BackToHomepageSecondary,
   },
   500: {
     illustration: errorIllustrationSomethingWentWrong,
     buttonColumns: 1,
+    content: Nonce,
     primaryAction: Nonce,
-    secondaryAction: BackToHomepage,
+    secondaryAction: BackToHomepageSecondary,
   },
   clientSide: {
     illustration: errorIllustrationSomethingWentWrong,
     buttonColumns: 2,
+    content: Nonce,
     primaryAction: Reload,
-    secondaryAction: BackToHomepage,
+    secondaryAction: BackToHomepageSecondary,
   },
   UNVERIFIED_EMAIL: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 1,
+    content: Nonce,
     primaryAction: Nonce,
     secondaryAction: Nonce,
   },
   USER_BLOCKED: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 1,
+    content: Nonce,
     primaryAction: Nonce,
     secondaryAction: ContactSupport,
   },
   UNKNOWN_AUTH_ERROR: {
     illustration: errorIllustrationNotFound,
     buttonColumns: 2,
+    content: Nonce,
     primaryAction: BackToLogin,
     secondaryAction: ContactSupport,
+  },
+  EMAIL_CHANGE_VERIFICATION_ERROR: {
+    illustration: errorIllustrationNotFound,
+    buttonColumns: 1,
+    content: EmailChangeVerificationErrorContent,
+    primaryAction: BackToHomepagePrimary,
+    secondaryAction: Nonce,
   },
 };
 
@@ -85,6 +101,7 @@ export interface Props {
 const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
   const PrimaryAction = config[statusCode].primaryAction;
   const SecondaryAction = config[statusCode].secondaryAction;
+  const Content = config[statusCode].content;
 
   return (
     <TranslationProvider language={language} scopes={['errorPage']}>
@@ -118,6 +135,7 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
                       <Text textAlign="center">
                         {t(`errorPage.${statusCode}.description`)}
                       </Text>
+                      <Content t={t} />
                     </Stack>
                     <SimpleGrid
                       columns={{

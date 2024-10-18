@@ -31,6 +31,15 @@
     "USER_BLOCKED": {
       "description": "Votre compte est bloqué. Veuillez contacter notre service clients.",
       "title": "Votre compte est bloqué"
+    },
+    "EMAIL_CHANGE_VERIFICATION_ERROR": {
+      "title": "Ce lien a expiré ou est invalide",
+      "description": "Vous pouvez soit demander un nouveau changement d'email depuis votre compte, soit contacter le service client.",
+      "content": {
+        "email": "<0>Email :</0> helpdesk@autoscout24.ch",
+        "workingHours": "<0>Horaires d'ouverture :</0> Lundi - Vendredi 08h00-12h00 / 13h00-17h00",
+        "phone": "<0>Téléphone :</0> +41 31 744 17 37"
+      }
     }
   },
   "filterSelectButton": {

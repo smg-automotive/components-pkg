@@ -31,6 +31,15 @@
     "USER_BLOCKED": {
       "description": "We couldn't log you in because your account is blocked.",
       "title": "Your account is blocked"
+    },
+    "EMAIL_CHANGE_VERIFICATION_ERROR": {
+      "title": "This Link Has Expired or Is Invalid",
+      "description": "You can either request a new email change from your account or contact customer support.",
+      "content": {
+        "email": "<0>Email:</0> helpdesk@autoscout24.ch",
+        "workingHours": "<0>Working hours:</0> Monday - Friday 08.00-12.00 / 13.00-17.00",
+        "phone": "<0>Phone:</0> +41 31 744 17 37"
+      }
     }
   },
   "filterSelectButton": {

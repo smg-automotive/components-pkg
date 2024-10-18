@@ -22,6 +22,7 @@ const meta: Meta<typeof ErrorPage> = {
         'UNVERIFIED_EMAIL',
         'USER_BLOCKED',
         'UNKNOWN_AUTH_ERROR',
+        'EMAIL_CHANGE_VERIFICATION_ERROR',
       ],
       control: 'select',
     },

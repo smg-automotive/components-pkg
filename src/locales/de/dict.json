@@ -31,6 +31,15 @@
     "USER_BLOCKED": {
       "description": "Ihr Konto ist gesperrt. Bitte kontaktieren Sie unser Support-Team.",
       "title": "Ihr Konto ist gesperrt"
+    },
+    "EMAIL_CHANGE_VERIFICATION_ERROR": {
+      "title": "Dieser Link ist abgelaufen oder ungültig",
+      "description": "Sie können entweder eine neue E-Mail-Änderung aus Ihrem Konto anfordern oder den Kundensupport kontaktieren.",
+      "content": {
+        "email": "<0>E-Mail:</0> helpdesk@autoscout24.ch",
+        "workingHours": "<0>Öffnungszeiten:</0> Montag - Freitag 08.00-12.00 / 13.00-17.00",
+        "phone": "<0>Telefon:</0> +41 31 744 17 37"
+      }
     }
   },
   "filterSelectButton": {
