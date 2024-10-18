@@ -132,6 +132,7 @@ function getSize(value: string) {
 const sizes = {
   md: getSize('7xl'),
   lg: getSize('8xl'),
+  auth0: getSize('auth0-width'),
   full: getSize('full'),
 };
 
