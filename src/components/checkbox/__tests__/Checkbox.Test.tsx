@@ -1,6 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+
+import { cleanup, render, screen, waitFor } from '.jest/utils';
 
 import Checkbox from '../index';
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+
+import { render, screen } from '.jest/utils';
 
 import { SearchableListItem } from '../SearchableListItem';
 import List from '../index';
@@ -21,7 +22,9 @@ describe('<SearchableListItem />', () => {
 
     const highlight = screen.getByText('I am');
     expect(highlight).toHaveStyle('text-decoration: underline');
-    expect(highlight).toHaveStyle('font-weight: bold');
+    expect(highlight).toHaveStyle(
+      'font-weight: var(--chakra-fontWeights-bold)',
+    );
     expect(screen.getByText('label')).not.toHaveStyle(
       'text-decoration: underline',
     );

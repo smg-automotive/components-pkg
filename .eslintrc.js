@@ -66,6 +66,18 @@ module.exports = {
       files: ['*.test.@(ts)', '*.Test.@(tsx)'],
       rules: {
         'sonarjs/no-nested-functions': 'off',
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              {
+                name: '@testing-library/react',
+                message:
+                  'Do not import helpers from @testing-library/react directly. Use .jest/utils instead.',
+              },
+            ],
+          },
+        ],
       },
     },
   ],
