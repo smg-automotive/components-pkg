@@ -1,5 +1,6 @@
-import { Trans } from '@smg-automotive/i18n-pkg';
 import React from 'react';
+import { Trans } from '@smg-automotive/i18n-pkg';
+
 import Box from 'src/components/box';
 
 const EmailChangeVerificationErrorContent = () => {

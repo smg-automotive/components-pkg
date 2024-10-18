@@ -25,7 +25,7 @@ import { H1 } from '../heading';
 import Flex from '../flex';
 import Divider from '../divider';
 import AspectRatio from '../aspectRatio';
-import EmailChangeVerificationErrorContent from './content/emailChangeVerification';
+import EmailChangeVerificationErrorContent from './content/EmailChangeVerification-uc';
 
 const Nonce: FC<ActionButtonInterface> = () => {
   return null;
