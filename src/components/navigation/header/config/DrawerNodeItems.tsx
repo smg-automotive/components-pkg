@@ -1457,6 +1457,25 @@ export const drawerNodeItems = ({
             },
           },
         },
+        {
+          translationKey: 'header.userMenu.infoPortal',
+          link: {
+            de: 'https://as-partner.aryxe.tech/',
+            en: 'https://as-partner.aryxe.tech/',
+            fr: 'https://as-partner.aryxe.tech/fr/page-daccueil/',
+            it: 'https://as-partner.aryxe.tech/it/',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
       ],
     },
   ],
