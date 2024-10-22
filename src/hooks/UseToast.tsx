@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import React, { useRef } from 'react';
 
 import {
@@ -10,6 +11,7 @@ import BareAlert, { BareAlertProps } from '../components/alert/Bare';
 
 export interface ToastOptions extends BareAlertProps {
   position?: ToastPosition;
+  id?: string;
 }
 
 const useToast = () => {
@@ -19,14 +21,25 @@ const useToast = () => {
   const closeToast = (toastId: ToastId) => {
     if (toastId) {
       toast.close(toastId);
-      toastIdRef.current = toastIdRef.current?.filter((id) => id !== toastId);
     }
   };
 
   return (options: ToastOptions) => {
-    const { position = 'top', icon, title, description, link, type } = options;
+    const {
+      position = 'top',
+      id = uuidv4(),
+      icon,
+      title,
+      description,
+      link,
+      type,
+    } = options;
 
-    const toastId = toast({
+    const toastOptions = {
+      onCloseComplete: () =>
+        (toastIdRef.current = toastIdRef.current?.filter(
+          (toastId) => id !== toastId,
+        )),
       position: position,
       render: () => (
         <BareAlert
@@ -35,14 +48,19 @@ const useToast = () => {
           title={title}
           description={description}
           link={link}
-          onClose={() => closeToast(toastId)}
+          onClose={() => closeToast(id)}
         />
       ),
-    });
+    };
 
-    toastIdRef.current.push(toastId);
+    if (toast.isActive(id)) {
+      toast.update(id, toastOptions);
+    } else {
+      toast({ id, ...toastOptions });
+      toastIdRef.current.push(id);
+    }
 
-    return { closeToast: () => closeToast(toastId) };
+    return { closeToast: () => closeToast(id) };
   };
 };
 

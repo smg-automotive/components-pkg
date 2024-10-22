@@ -1,7 +1,8 @@
 import React from 'react';
 import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
-import { render, screen, waitFor } from '@testing-library/react';
+
+import { render, screen, waitFor } from '.jest/utils';
 
 import NumbersPagination from '../NumbersPagination';
 

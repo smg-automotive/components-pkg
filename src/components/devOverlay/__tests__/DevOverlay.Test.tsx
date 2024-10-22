@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 
 import { Brand } from 'src/types/brand';
+import { render, screen } from '.jest/utils';
 
 import DevOverlay from '../index';
 

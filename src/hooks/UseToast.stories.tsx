@@ -18,6 +18,7 @@ const meta: Meta<typeof useToast> = {
     title: 'Your browser is outdated!',
     description: 'Your experience may be degraded.',
     icon: <ErrorIcon />,
+    id: 'unique',
   },
 
   argTypes: {
