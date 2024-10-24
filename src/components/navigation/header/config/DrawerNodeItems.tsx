@@ -1460,10 +1460,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.infoPortal',
           link: {
-            de: 'https://as-partner.aryxe.tech/',
-            en: 'https://as-partner.aryxe.tech/',
-            fr: 'https://as-partner.aryxe.tech/fr/page-daccueil/',
-            it: 'https://as-partner.aryxe.tech/it/',
+            de: 'https://b2b.autoscout24.ch/',
+            en: 'https://b2b.autoscout24.ch/',
+            fr: 'https://b2b.autoscout24.ch/fr/',
+            it: 'https://b2b.autoscout24.ch/it/',
           },
           visibilitySettings: {
             userType: {
