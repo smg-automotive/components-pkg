@@ -21,9 +21,9 @@
     "contactSupport": "Contacter le service clientèle",
     "EMAIL_CHANGE_VERIFICATION_ERROR": {
       "content": {
-        "email": "<0>Email :</0> helpdesk@autoscout24.ch",
-        "phone": "<0>Téléphone :</0> +41 31 744 17 37",
-        "workingHours": "<0>Horaires d'ouverture :</0> Lundi - Vendredi 08h00-12h00 / 13h00-17h00"
+        "email": "<0>Email:</0> helpdesk@autoscout24.ch",
+        "phone": "<0>Téléphone:</0> +41 31 744 17 37",
+        "workingHours": "<0>Horaires d'ouverture:</0> Lundi - Vendredi 08:00-12:00 / 13:00-17:00"
       },
       "description": "Vous pouvez soit demander un nouveau changement d'email depuis votre compte, soit contacter le service client.",
       "title": "Ce lien a expiré ou est invalide"
