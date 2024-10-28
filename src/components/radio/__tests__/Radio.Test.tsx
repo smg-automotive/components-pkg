@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import Radio from '../index';
 
@@ -24,8 +24,6 @@ const renderWrapper = ({
   );
 
 describe('<Radio>', () => {
-  beforeEach(cleanup);
-
   it('is not checked', () => {
     renderWrapper();
     const radio = screen.getByRole('radio', { name: 'Option' });

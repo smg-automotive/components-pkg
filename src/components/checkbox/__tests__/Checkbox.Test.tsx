@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import Checkbox from '../index';
 
@@ -22,8 +22,6 @@ const renderWrapper = ({
   );
 
 describe('<Checkbox>', () => {
-  beforeEach(cleanup);
-
   it('renders checkbox with label', () => {
     renderWrapper();
     const checkbox = screen.getByRole('checkbox', { name: 'Checkbox label' });
