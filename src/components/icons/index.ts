@@ -131,3 +131,4 @@ export { CheckmarkCircleColorIcon } from './CheckmarkCircleColorIcon';
 export { ArrowDownCircleIcon } from './ArrowDownCircleIcon';
 export { ArrowUpCircleIcon } from './ArrowUpCircleIcon';
 export { NotAvailableIcon } from './NotAvailableIcon';
+export { LabelIcon } from './LabelIcon';
