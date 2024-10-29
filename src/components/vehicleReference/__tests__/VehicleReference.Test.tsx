@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '.jest/utils';
 
 import VehicleReference from '..';
 
