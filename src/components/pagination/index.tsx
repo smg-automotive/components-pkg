@@ -116,7 +116,6 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
           return (
             <Box
               __css={dots}
-              // eslint-disable-next-line sonarjs/no-array-index-key
               key={`paginationDots-${index}`}
               aria-label={index === 1 ? 'left side dots' : 'right side dots'}
             >
@@ -127,7 +126,6 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
 
         return (
           <PaginationButton
-            // eslint-disable-next-line sonarjs/no-array-index-key
             key={`paginationButton-${index}`}
             isActive={pageNumber === currentPage}
             ariaLabel={`go to page ${pageNumberToDispaly(

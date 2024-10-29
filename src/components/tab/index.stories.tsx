@@ -18,13 +18,11 @@ const meta: Meta<typeof Tabs> = {
       <Tabs {...args}>
         <TabList key="tab-list">
           {Array.from({ length: 3 }).map((_, index) => (
-            // eslint-disable-next-line sonarjs/no-array-index-key
             <Tab key={`tab-${index}`}>Tab: {index}</Tab>
           ))}
         </TabList>
         <TabPanels key="tab-panels">
           {Array.from({ length: 3 }).map((_, index) => (
-            // eslint-disable-next-line sonarjs/no-array-index-key
             <TabPanel key={`tab-panel-${index}`}>
               <Box backgroundColor="gray.50" w="full" h="300px">
                 <p>Tab panel: {index}</p>
