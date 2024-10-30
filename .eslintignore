@@ -2,3 +2,4 @@
 !/.jest
 !.prettierrc.js
 /coverage
+/src-v2
