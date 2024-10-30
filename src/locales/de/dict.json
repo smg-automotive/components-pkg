@@ -19,6 +19,15 @@
       "title": "In deinem Browser ist ein Fehler aufgetreten"
     },
     "contactSupport": "Support Kontaktieren",
+    "EMAIL_CHANGE_VERIFICATION_ERROR": {
+      "content": {
+        "email": "<0>E-Mail:</0> helpdesk@autoscout24.ch",
+        "phone": "<0>Telefon:</0> +41 31 744 17 37",
+        "workingHours": "<0>Öffnungszeiten:</0> Montag - Freitag 08.00-12.00 / 13.00-17.00"
+      },
+      "description": "Sie können entweder eine neue E-Mail-Änderung aus Ihrem Konto anfordern oder den Kundensupport kontaktieren.",
+      "title": "Dieser Link ist abgelaufen oder ungültig"
+    },
     "reloadPage": "Seite neu laden",
     "UNKNOWN_AUTH_ERROR": {
       "description": "Login nicht möglich. Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut. Wenn das Problem weiterhin besteht kontaktieren Sie bitte unser Support-Team.",

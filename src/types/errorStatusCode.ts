@@ -4,4 +4,5 @@ export type ErrorStatusCode =
   | 'clientSide'
   | 'UNVERIFIED_EMAIL'
   | 'USER_BLOCKED'
-  | 'UNKNOWN_AUTH_ERROR';
+  | 'UNKNOWN_AUTH_ERROR'
+  | 'EMAIL_CHANGE_VERIFICATION_ERROR';

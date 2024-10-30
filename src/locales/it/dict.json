@@ -19,6 +19,15 @@
       "title": "Siamo spiacenti, il tuo browser ha generato un errore"
     },
     "contactSupport": "Contattare l'assistenza clienti",
+    "EMAIL_CHANGE_VERIFICATION_ERROR": {
+      "content": {
+        "email": "<0>Email:</0> helpdesk@autoscout24.ch",
+        "phone": "<0>Telefono:</0> +41 31 744 17 37",
+        "workingHours": "<0>Orari di apertura:</0> Lunedì - Venerdì 08:00-12:00 / 13:00-17:00"
+      },
+      "description": "Puoi richiedere una nuova modifica dell'email dal tuo account oppure contattare l'assistenza clienti.",
+      "title": "Questo link è scaduto o non è valido"
+    },
     "reloadPage": "Ricaricare la pagina",
     "UNKNOWN_AUTH_ERROR": {
       "description": "Abbiamo difficoltà a effettuare il tuo accesso. Per favore, riprova e, se il problema persiste, contatta il nostro team del servizio clienti per assistenza.",
