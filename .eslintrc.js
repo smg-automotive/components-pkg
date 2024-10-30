@@ -21,7 +21,6 @@ module.exports = {
         devDependencies: [
           './**/stories/**/*',
           './**/*.stories.tsx',
-          './**/*.mdx',
           './**/*.Test.@(ts|tsx)',
           'rollup.config.mjs',
           'postcss.config.js',
@@ -34,28 +33,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.mdx'],
-      extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:import/typescript',
-        'plugin:mdx/recommended',
-      ],
-      settings: {
-        'mdx/code-blocks': true,
-        'import/resolver': {
-          typescript: {},
-        },
-        'import/ignore': ['@storybook/addon-docs'],
-      },
-      rules: {
-        'no-nested-ternary': 'off',
-        'react/jsx-props-no-spreading': 'off',
-        'react/prop-types': 'off',
-        'import/namespace': ['error', { allowComputed: true }],
-        'sonarjs/no-duplicate-string': 'off',
-      },
-    },
-    {
       files: ['*.stories.@(ts|tsx)'],
       rules: {
         'unicorn/filename-case': 'off',
@@ -66,6 +43,24 @@ module.exports = {
       files: ['*.test.@(ts)', '*.Test.@(tsx)'],
       rules: {
         'sonarjs/no-nested-functions': 'off',
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              {
+                name: '@testing-library/react',
+                message:
+                  'Do not import helpers from @testing-library/react directly. Use .jest/utils instead.',
+              },
+              {
+                name: 'src/components/themeProvider',
+                importNames: ['default'],
+                message:
+                  'ThemeProvider is already provided by shared provider defined in .jest/utils.',
+              },
+            ],
+          },
+        ],
       },
     },
   ],

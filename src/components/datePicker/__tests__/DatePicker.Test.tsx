@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+
+import { fireEvent, render, screen } from '.jest/utils';
 
 import DatePicker, { DatePickerProps } from '..';
 

@@ -1,7 +1,8 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { act, render, screen } from '@testing-library/react';
+
+import { act, render, screen } from '.jest/utils';
 
 import RangeFilterInput from '../index';
 
