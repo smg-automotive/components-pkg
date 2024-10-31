@@ -78,6 +78,11 @@ const variants = {
     },
     tabpanel: { ...baseStyleTabpanel, margin: '0' },
   },
+  fullWidth: {
+    tab: { ...baseStyleTab, flex: 1 },
+    tablist: baseStyleTablist,
+    tabpanel: baseStyleTabpanel,
+  },
 };
 
 export default {
