@@ -1,6 +1,8 @@
-import { zIndices } from './zIndices';
+import { defineConfig } from '@chakra-ui/react';
+
+import { zIndex } from './zIndex';
 import { textStyles } from './typography';
-import { space } from './space';
+import { spacing } from './spacing';
 import { sizes } from './sizes';
 import { shadows } from './shadows';
 import { opacity } from './opacity';
@@ -12,26 +14,27 @@ import { colors } from './colors';
 import { emBreakpoints } from './breakpoints';
 import { borders } from './borders';
 import { radii } from './borderRadius';
-import { basis } from './basis';
 
-export const shared = {
-  ...basis,
-  colors,
-  breakpoints: emBreakpoints,
-  textStyles,
-  space,
-  sizes,
-  shadows,
-  opacity,
-  borders,
-  radii,
-  lineHeights,
-  fontWeights,
-  fontSizes,
-  fonts,
-  zIndices,
-};
-export { type Sizes } from './sizes';
-export { type Space } from './space';
-export { type FontWeights } from './fontWeights';
+export const sharedConfig = defineConfig({
+  strictTokens: true,
+  cssVarsPrefix: 'chakra',
+  theme: {
+    breakpoints: emBreakpoints,
+    textStyles,
+    tokens: {
+      zIndex,
+      opacity,
+      colors,
+      fonts,
+      fontSizes,
+      fontWeights,
+      lineHeights,
+      sizes,
+      shadows,
+      spacing,
+      radii,
+      borders,
+    },
+  },
+});
 export { breakpoints } from './breakpoints';
