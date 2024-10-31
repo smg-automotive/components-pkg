@@ -1,6 +1,5 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import {
-  Box,
   Popover as ChakraPopover,
   PopoverProps as ChakraPopoverProps,
   PopoverArrow,
@@ -54,19 +53,18 @@ const Popover: FC<PopoverProps> = ({
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
-        <Box zIndex="popover" w="full" h="full" position="relative">
-          <PopoverContent
-            borderRadius="sm"
-            boxShadow="md"
-            maxW="6xl"
-            // required for arrow to popup above shadow
-            zIndex="0"
-            backgroundColor="white"
-          >
-            {showArrow ? <PopoverArrow backgroundColor="white" /> : null}
-            <PopoverBody>{content}</PopoverBody>
-          </PopoverContent>
-        </Box>
+        <PopoverContent
+          borderRadius="sm"
+          boxShadow="md"
+          maxW="6xl"
+          zIndex="popover"
+          backgroundColor="white"
+        >
+          {showArrow ? (
+            <PopoverArrow zIndex="popover" backgroundColor="white" />
+          ) : null}
+          <PopoverBody>{content}</PopoverBody>
+        </PopoverContent>
       </Portal>
     </ChakraPopover>
   );
