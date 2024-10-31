@@ -14,6 +14,7 @@ export default {
     '<rootDir>/.jest/setup/mockMatchMedia.ts',
     '<rootDir>/.jest/setup/resizeObserver.ts',
     '<rootDir>/.jest/setup/intersectionObserver.ts',
+    '<rootDir>/.jest/setup/structuredClone.ts',
   ],
   testEnvironment: 'jsdom',
 };
