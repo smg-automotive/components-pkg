@@ -4,18 +4,17 @@ import {
   ensure as ensureTheme,
   ThemeProvider as StorybookThemeProvider,
 } from '@storybook/theming';
-import { Preview } from '@storybook/react';
+import { Decorator, Preview } from '@storybook/react';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
-  // TODO: branded themes
-  baseSystem,
+  autoScout24System,
+  breakpoints,
+  motoScout24System,
 } from '../src/themes';
-// TODO: Fonts setup
 import storybookTheme from './theme';
+// TODO: Fonts setup
 
-// TODO: themes switcher
 const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
   acc[key] = {
     name: key,
@@ -27,16 +26,47 @@ const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
   return acc;
 }, {});
 
+const themeOptions = [
+  {
+    value: 'autoScout24',
+    title: 'AutoScout24 theme',
+    theme: autoScout24System,
+  },
+  {
+    value: 'motoScout24',
+    title: 'MotoScout24 theme',
+    theme: motoScout24System,
+  },
+];
+
+const themes = themeOptions.reduce((acc, { value, theme }) => {
+  acc[value] = theme;
+  return acc;
+}, {});
+
+const withThemeDecorator: Decorator = (Story, context) => {
+  const theme = context.globals.theme || 'autoScout24';
+  return (
+    <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
+      <ChakraProvider value={themes[theme]}>
+        <Story />
+      </ChakraProvider>
+    </StorybookThemeProvider>
+  );
+};
+
 const preview: Preview = {
-  decorators: [
-    (Story) => (
-      <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
-        <ChakraProvider value={baseSystem}>
-          <Story />
-        </ChakraProvider>
-      </StorybookThemeProvider>
-    ),
-  ],
+  decorators: [withThemeDecorator],
+  globalTypes: {
+    theme: {
+      description: 'Theme for components',
+      defaultValue: 'autoScout24',
+      toolbar: {
+        icon: 'photo',
+        items: themeOptions,
+      },
+    },
+  },
   argTypes: {
     children: {
       control: undefined,
@@ -70,10 +100,6 @@ const preview: Preview = {
   parameters: {
     docs: {
       theme: storybookTheme,
-      controls: {
-        expanded: true,
-        sort: 'requiredFirst',
-      },
     },
     viewport: {
       viewports,

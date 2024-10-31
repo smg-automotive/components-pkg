@@ -1,9 +1,11 @@
-import { mergeConfigs } from '@chakra-ui/react';
+import { defineConfig } from '@chakra-ui/react';
 
 import { sharedConfig } from './shared';
 
-export const autoScout24Config = mergeConfigs(sharedConfig, {
+export const autoScout24Config = defineConfig({
+  ...sharedConfig,
   theme: {
+    ...sharedConfig.theme,
     semanticTokens: {
       colors: {
         brand: {
@@ -13,7 +15,9 @@ export const autoScout24Config = mergeConfigs(sharedConfig, {
       },
     },
     tokens: {
+      ...sharedConfig.theme.tokens,
       colors: {
+        ...sharedConfig.theme.tokens.colors,
         brand: {
           50: { value: '#FEFCD0' },
           100: { value: '#F5F200' },

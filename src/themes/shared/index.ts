@@ -1,5 +1,3 @@
-import { defineConfig } from '@chakra-ui/react';
-
 import { zIndex } from './zIndex';
 import { textStyles } from './typography';
 import { spacing } from './spacing';
@@ -15,7 +13,7 @@ import { emBreakpoints } from './breakpoints';
 import { borders } from './borders';
 import { radii } from './borderRadius';
 
-export const sharedConfig = defineConfig({
+export const sharedConfig = {
   strictTokens: true,
   cssVarsPrefix: 'chakra',
   theme: {
@@ -36,5 +34,6 @@ export const sharedConfig = defineConfig({
       borders,
     },
   },
-});
+};
+
 export { breakpoints } from './breakpoints';
