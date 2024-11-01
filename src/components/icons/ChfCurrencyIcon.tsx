@@ -2,12 +2,12 @@ import React from 'react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const PriceIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'Price',
+export const ChfCurrencyIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+  displayName: 'Chf Currency',
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title>Price icon</title>
+      <title>Chf currency icon</title>
       <path
         fill="currentColor"
         fillRule="evenodd"
