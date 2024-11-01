@@ -12,8 +12,8 @@ import {
   breakpoints,
   motoScout24System,
 } from '../src/themes';
+import Fonts from '../src/fonts/Hosted';
 import storybookTheme from './theme';
-// TODO: Fonts setup
 
 const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
   acc[key] = {
@@ -49,6 +49,7 @@ const withThemeDecorator: Decorator = (Story, context) => {
   return (
     <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
       <ChakraProvider value={themes[theme]}>
+        <Fonts />
         <Story />
       </ChakraProvider>
     </StorybookThemeProvider>
