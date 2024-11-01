@@ -16,6 +16,12 @@ import { radii } from './borderRadius';
 export const sharedConfig = {
   strictTokens: true,
   cssVarsPrefix: 'chakra',
+  globalCss: {
+    html: {
+      lineHeight: '1.5',
+      textStyle: 'body',
+    },
+  },
   theme: {
     breakpoints: emBreakpoints,
     textStyles,
