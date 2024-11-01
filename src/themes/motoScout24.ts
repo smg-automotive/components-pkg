@@ -1,8 +1,12 @@
-import { defineConfig } from '@chakra-ui/react';
+import {
+  createSystem,
+  defaultBaseConfig,
+  defineConfig,
+} from '@chakra-ui/react';
 
 import { sharedConfig } from './shared';
 
-export const motoScout24Config = defineConfig({
+const motoScout24Config = defineConfig({
   ...sharedConfig,
   theme: {
     ...sharedConfig.theme,
@@ -34,3 +38,5 @@ export const motoScout24Config = defineConfig({
     },
   },
 });
+
+export default createSystem(defaultBaseConfig, motoScout24Config);
