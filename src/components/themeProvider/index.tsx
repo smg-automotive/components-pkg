@@ -15,8 +15,9 @@ const themes = {
   [Brand.MotoScout24]: motoScout24System,
 };
 
-const ThemeProvider: FC<PropsWithChildren<Props>> = ({ children, theme }) => {
+export const ThemeProvider: FC<PropsWithChildren<Props>> = ({
+  children,
+  theme,
+}) => {
   return <ChakraProvider value={themes[theme]}>{children}</ChakraProvider>;
 };
-
-export default ThemeProvider;

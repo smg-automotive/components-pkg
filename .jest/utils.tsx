@@ -10,7 +10,8 @@ import {
 
 import { Brand } from 'src/types/brand';
 
-import ThemeProvider, {
+import {
+  ThemeProvider,
   type Props as ThemeProviderProps,
 } from '../src/components/themeProvider';
 

@@ -5,7 +5,7 @@ import { Brand } from 'src/types/brand';
 import { autoScout24System, motoScout24System } from 'src/themes';
 import { screen, testingLibraryRender } from '.jest';
 
-import ThemeProvider, { Props } from '..';
+import { Props, ThemeProvider } from '..';
 
 const TestComponent: FC = () => {
   const context = useChakraContext();
