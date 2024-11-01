@@ -24,8 +24,8 @@ const meta: Meta<FC> = {
   title: 'Foundations/Theme',
   parameters: {
     docs: {
-      source: {
-        code: null,
+      canvas: {
+        sourceState: 'none',
       },
       page: () => (
         <>
