@@ -48,6 +48,7 @@ export { EyeIcon } from './EyeIcon';
 export { EyeCrossedIcon } from './EyeCrossedIcon';
 export { FacebookIcon } from './FacebookIcon';
 export { FlagIcon } from './FlagIcon';
+export { FlameIcon } from './FlameIcon';
 export { FlashIcon } from './FlashIcon';
 export { GasStationIcon } from './GasStationIcon';
 export { HeartIcon } from './HeartIcon';
