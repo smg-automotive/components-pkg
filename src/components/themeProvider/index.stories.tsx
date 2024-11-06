@@ -14,7 +14,7 @@ import { Brand } from 'src/types/brand';
 import { ThemeProvider } from './index';
 
 const meta: Meta<typeof ThemeProvider> = {
-  title: 'Foundations/Providers/Theme',
+  title: 'Foundations/Theme/Provider',
   component: ThemeProvider,
   parameters: {
     docs: {

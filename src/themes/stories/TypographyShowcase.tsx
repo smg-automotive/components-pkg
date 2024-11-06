@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Table, useChakraContext } from '@chakra-ui/react';
+import { Code, Table, useChakraContext } from '@chakra-ui/react';
 
 const TypographyShowcase: FC = () => {
   const context = useChakraContext();
@@ -21,7 +21,7 @@ const TypographyShowcase: FC = () => {
               <Table.Row key={name}>
                 <Table.Cell>{name}</Table.Cell>
                 <Table.Cell whiteSpace="pre">
-                  {JSON.stringify(typography, null, 2)}
+                  <Code>{JSON.stringify(typography.value, null, 2)}</Code>
                 </Table.Cell>
                 <Table.Cell textStyle={name}>
                   The quick brown fox jumps over the lazy dog and runs away.
