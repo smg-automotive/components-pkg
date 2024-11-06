@@ -1,5 +1,3 @@
-import { textStyles } from './typography';
-
 import { zIndex } from './tokens/zIndex';
 import { spacing } from './tokens/spacing';
 import { sizes } from './tokens/sizes';
@@ -13,17 +11,14 @@ import { fonts } from './tokens/fonts';
 import { colors } from './tokens/colors';
 import { borders } from './tokens/borders';
 
+import { textStyles } from './textStyles';
+import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
 
 export const sharedConfig = {
   strictTokens: true,
   cssVarsPrefix: 'chakra',
-  globalCss: {
-    html: {
-      lineHeight: '1.5',
-      textStyle: 'body',
-    },
-  },
+  globalCss,
   theme: {
     breakpoints: emBreakpoints,
     textStyles,

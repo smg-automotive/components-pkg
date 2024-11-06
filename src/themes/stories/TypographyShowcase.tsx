@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Code, Table, useChakraContext } from '@chakra-ui/react';
+import { Code, Table, Text, useChakraContext } from '@chakra-ui/react';
 
 const TypographyShowcase: FC = () => {
   const context = useChakraContext();
@@ -23,8 +23,10 @@ const TypographyShowcase: FC = () => {
                 <Table.Cell whiteSpace="pre">
                   <Code>{JSON.stringify(typography.value, null, 2)}</Code>
                 </Table.Cell>
-                <Table.Cell textStyle={name}>
-                  The quick brown fox jumps over the lazy dog and runs away.
+                <Table.Cell>
+                  <Text textStyle={name}>
+                    The quick brown fox jumps over the lazy dog and runs away.
+                  </Text>
                 </Table.Cell>
               </Table.Row>
             );

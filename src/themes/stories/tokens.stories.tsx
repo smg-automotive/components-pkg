@@ -119,11 +119,7 @@ export const FontSizes: StoryType = {
     <TokenShowcase
       tokenPath="fontSizes"
       renderConversion={conversionToPixels}
-      renderDemo={(name) => (
-        <Text fontSize={name} m={0}>
-          I am {name} size
-        </Text>
-      )}
+      renderDemo={(name) => <Text fontSize={name}>I am {name} size</Text>}
     />
   ),
 };
@@ -132,11 +128,7 @@ export const FontWeights: StoryType = {
   render: () => (
     <TokenShowcase
       tokenPath="fontWeights"
-      renderDemo={(name) => (
-        <Text fontWeight={name} m={0}>
-          I am {name} weight
-        </Text>
-      )}
+      renderDemo={(name) => <Text fontWeight={name}>I am {name} weight</Text>}
     />
   ),
 };
@@ -146,7 +138,7 @@ export const LineHeights: StoryType = {
     <TokenShowcase
       tokenPath="lineHeights"
       renderDemo={(name) => (
-        <Text lineHeight={name} m={0}>
+        <Text lineHeight={name}>
           I am {name} height <br />
           second line for better visibility
         </Text>
