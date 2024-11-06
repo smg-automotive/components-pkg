@@ -16,5 +16,5 @@ export const shadows = defineTokens.shadows({
     value:
       '0px 2px 8px rgba(0, 0, 0, 0.04), 0px 4px 16px rgba(0, 0, 0, 0.07), 0px 12px 32px rgba(0, 0, 0, 0.15), 0px 24px 64px rgba(0, 0, 0, 0.2)',
   },
-  button: { value: '0px 2px 0px var(--chakra-colors-brand-btn-shadow);' },
+  button: { value: '0px 2px 0px {colors.brand.btnShadow};' },
 });
