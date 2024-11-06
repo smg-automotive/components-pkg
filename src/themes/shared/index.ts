@@ -1,17 +1,19 @@
-import { zIndex } from './zIndex';
 import { textStyles } from './typography';
-import { spacing } from './spacing';
-import { sizes } from './sizes';
-import { shadows } from './shadows';
-import { opacity } from './opacity';
-import { lineHeights } from './lineHeights';
-import { fontWeights } from './fontWeights';
-import { fontSizes } from './fontSizes';
-import { fonts } from './fonts';
-import { colors } from './colors';
+
+import { zIndex } from './tokens/zIndex';
+import { spacing } from './tokens/spacing';
+import { sizes } from './tokens/sizes';
+import { shadows } from './tokens/shadows';
+import { radii } from './tokens/radii';
+import { opacity } from './tokens/opacity';
+import { lineHeights } from './tokens/lineHeights';
+import { fontWeights } from './tokens/fontWeights';
+import { fontSizes } from './tokens/fontSizes';
+import { fonts } from './tokens/fonts';
+import { colors } from './tokens/colors';
+import { borders } from './tokens/borders';
+
 import { emBreakpoints } from './breakpoints';
-import { borders } from './borders';
-import { radii } from './borderRadius';
 
 export const sharedConfig = {
   strictTokens: true,
@@ -27,16 +29,16 @@ export const sharedConfig = {
     textStyles,
     tokens: {
       zIndex,
-      opacity,
-      colors,
-      fonts,
-      fontSizes,
-      fontWeights,
-      lineHeights,
+      spacing,
       sizes,
       shadows,
-      spacing,
       radii,
+      opacity,
+      lineHeights,
+      fontWeights,
+      fontSizes,
+      fonts,
+      colors,
       borders,
     },
   },

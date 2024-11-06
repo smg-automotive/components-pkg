@@ -1,4 +1,6 @@
-export const colors = {
+import { defineTokens } from '@chakra-ui/react';
+
+export const colors = defineTokens.colors({
   white: { value: '#FFFFFF' },
   black: { value: '#000000' },
   whiteAlpha: {
@@ -134,4 +136,4 @@ export const colors = {
     800: { value: '#553676' },
     900: { value: '#402859' },
   },
-};
+});

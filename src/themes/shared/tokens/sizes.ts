@@ -1,4 +1,6 @@
-export const sizes = {
+import { defineTokens } from '@chakra-ui/react';
+
+export const sizes = defineTokens.sizes({
   xs: { value: '1rem' },
   sm: { value: '1.5rem' },
   md: { value: '2.25rem' },
@@ -21,4 +23,4 @@ export const sizes = {
   },
   'auth0-width': { value: '25rem' },
   'auth0-height': { value: '33.75rem' },
-};
+});

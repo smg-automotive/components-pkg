@@ -1,4 +1,6 @@
-export const shadows = {
+import { defineTokens } from '@chakra-ui/react';
+
+export const shadows = defineTokens.shadows({
   none: { value: 'none' },
   xs: {
     value: '0px 1px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.1)',
@@ -15,4 +17,4 @@ export const shadows = {
       '0px 2px 8px rgba(0, 0, 0, 0.04), 0px 4px 16px rgba(0, 0, 0, 0.07), 0px 12px 32px rgba(0, 0, 0, 0.15), 0px 24px 64px rgba(0, 0, 0, 0.2)',
   },
   button: { value: '0px 2px 0px var(--chakra-colors-brand-btn-shadow);' },
-};
+});

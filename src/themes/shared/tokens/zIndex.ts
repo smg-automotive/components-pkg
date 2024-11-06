@@ -1,4 +1,6 @@
-export const zIndex = {
+import { defineTokens } from '@chakra-ui/react';
+
+export const zIndex = defineTokens.zIndex({
   hide: { value: -1 },
   auto: { value: 'auto' },
   base: { value: 0 },
@@ -14,4 +16,4 @@ export const zIndex = {
   toast: { value: 1700 },
   fullScreenModal: { value: 2000 },
   tooltip: { value: 2100 },
-};
+});
