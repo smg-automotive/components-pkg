@@ -5,7 +5,12 @@ import {
   ThemeProvider as StorybookThemeProvider,
 } from '@storybook/theming';
 import { Decorator, Preview } from '@storybook/react';
-import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
+import {
+  Box,
+  ChakraProvider,
+  defaultSystem,
+  SystemContext,
+} from '@chakra-ui/react';
 
 import {
   autoScout24System,
@@ -30,33 +35,95 @@ const themeOptions = [
   {
     value: 'autoScout24',
     title: 'AutoScout24 theme',
-    theme: autoScout24System,
+    chakraThemes: [
+      {
+        name: 'AutoScout24',
+        theme: autoScout24System,
+      },
+    ],
   },
   {
     value: 'motoScout24',
     title: 'MotoScout24 theme',
-    theme: motoScout24System,
+    chakraThemes: [
+      {
+        name: 'MotoScout24',
+        theme: motoScout24System,
+      },
+    ],
   },
   {
     value: 'chakra-ui',
     title: 'Default chakra-ui theme',
-    theme: defaultSystem,
+    chakraThemes: [
+      {
+        name: 'Chakra-ui',
+        theme: defaultSystem,
+      },
+    ],
+  },
+  {
+    value: 'autoScout24-chakra-ui',
+    title: 'AutoScout24 side by side with chakra-ui',
+    chakraThemes: [
+      {
+        name: 'AutoScout24',
+        theme: autoScout24System,
+      },
+      {
+        name: 'Chakra-ui',
+        theme: defaultSystem,
+      },
+    ],
+  },
+  {
+    value: 'motoScout24-chakra-ui',
+    title: 'MotoScout24 side by side with chakra-ui',
+    chakraThemes: [
+      {
+        name: 'MotoScout24',
+        theme: motoScout24System,
+      },
+      {
+        name: 'Chakra-ui',
+        theme: defaultSystem,
+      },
+    ],
   },
 ];
 
-const themes = themeOptions.reduce((acc, { value, theme }) => {
-  acc[value] = theme;
+const themesByName: Record<
+  string,
+  Array<{ name: string; theme: SystemContext }>
+> = themeOptions.reduce((acc, { value, chakraThemes }) => {
+  acc[value] = chakraThemes;
   return acc;
 }, {});
 
 const withThemeDecorator: Decorator = (Story, context) => {
-  const theme = context.globals.theme || 'autoScout24';
+  const storyTheme = context.globals.theme || 'autoScout24';
+  const chakraThemes = themesByName[storyTheme];
+  const themesToShow = chakraThemes.length;
+
   return (
     <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
-      <ChakraProvider value={themes[theme]}>
-        <Fonts />
-        <Story />
-      </ChakraProvider>
+      <Fonts />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: '100%',
+        }}
+      >
+        {chakraThemes.map(({ theme, name }, index) => (
+          <div key={index} style={{ width: `${100 / themesToShow}%` }}>
+            <ChakraProvider value={theme}>
+              <Box display={themesToShow === 1 ? 'none' : 'block'}>{name}</Box>
+              <Story />
+            </ChakraProvider>
+          </div>
+        ))}
+      </div>
     </StorybookThemeProvider>
   );
 };

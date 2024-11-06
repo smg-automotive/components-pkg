@@ -7,7 +7,9 @@ import {
 import { sharedConfig } from './shared';
 
 const autoScout24Config = mergeConfigs(
+  sharedConfig,
   {
+    cssVarsPrefix: 'as24',
     theme: {
       semanticTokens: {
         colors: {

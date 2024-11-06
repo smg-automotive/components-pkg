@@ -17,7 +17,6 @@ import { emBreakpoints } from './breakpoints';
 
 export const sharedConfig = {
   strictTokens: true,
-  cssVarsPrefix: 'chakra',
   globalCss,
   theme: {
     breakpoints: emBreakpoints,
