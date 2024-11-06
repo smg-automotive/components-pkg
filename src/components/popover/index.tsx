@@ -10,10 +10,16 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
+type ContentPadding = '2xl' | 0;
+
+type MaxWidth = '6xl' | '8xl';
+
 export type PopoverProps = PropsWithChildren<
   {
     content: ReactNode;
     showArrow?: boolean;
+    contentPadding?: ContentPadding;
+    maxWidth?: MaxWidth;
   } & Pick<
     ChakraPopoverProps,
     | 'placement'
@@ -39,6 +45,8 @@ const Popover: FC<PopoverProps> = ({
   onClose,
   onOpen,
   isOpen,
+  contentPadding = '2xl',
+  maxWidth = '6xl',
 }) => {
   return (
     <ChakraPopover
@@ -58,10 +66,11 @@ const Popover: FC<PopoverProps> = ({
           <PopoverContent
             borderRadius="sm"
             boxShadow="md"
-            maxW="6xl"
+            maxW={maxWidth}
             // required for arrow to popup above shadow
             zIndex="0"
             backgroundColor="white"
+            padding={contentPadding}
           >
             {showArrow ? <PopoverArrow backgroundColor="white" /> : null}
             <PopoverBody>{content}</PopoverBody>
