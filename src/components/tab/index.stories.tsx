@@ -43,7 +43,13 @@ const meta: Meta<typeof Tabs> = {
 
   argTypes: {
     variant: {
-      options: ['spaceBetween', 'spaceAround', 'enclosed', 'default'],
+      options: [
+        'spaceBetween',
+        'spaceAround',
+        'enclosed',
+        'fullWidth',
+        'default',
+      ],
       control: 'select',
     },
     children: {
@@ -79,6 +85,14 @@ export const VariantEnclosed: StoryType = {
 
   args: {
     variant: 'enclosed',
+  },
+};
+
+export const VariantFullWidth: StoryType = {
+  name: 'Variant > Full Width',
+
+  args: {
+    variant: 'fullWidth',
   },
 };
 
