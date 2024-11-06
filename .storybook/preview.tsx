@@ -5,7 +5,7 @@ import {
   ThemeProvider as StorybookThemeProvider,
 } from '@storybook/theming';
 import { Decorator, Preview } from '@storybook/react';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 
 import {
   autoScout24System,
@@ -36,6 +36,11 @@ const themeOptions = [
     value: 'motoScout24',
     title: 'MotoScout24 theme',
     theme: motoScout24System,
+  },
+  {
+    value: 'chakra-ui',
+    title: 'Default chakra-ui theme',
+    theme: defaultSystem,
   },
 ];
 
