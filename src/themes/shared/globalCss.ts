@@ -1,12 +1,21 @@
-import { defineGlobalStyles } from '@chakra-ui/react';
+import { defineGlobalStyles, SystemStyleObject } from '@chakra-ui/react';
 
 export const globalCss = defineGlobalStyles({
-  '*': {
-    fontFeatureSettings: '"cv11"',
-    margin: 0,
+  '*, *::before, *::after': {
+    boxSizing: 'border-box',
   },
-  html: {
+
+  '*': {
+    margin: 0,
+    '-webkit-font-smoothing': 'antialiased',
+  } as SystemStyleObject,
+
+  body: {
     lineHeight: 1.5,
     textStyle: 'body',
+  },
+
+  'input, button, textarea, select': {
+    font: 'inherit',
   },
 });
