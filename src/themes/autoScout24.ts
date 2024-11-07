@@ -6,7 +6,7 @@ import {
 
 import { sharedConfig } from './shared';
 
-const autoScout24Config = mergeConfigs(
+export const autoScout24Config = mergeConfigs(
   {
     cssVarsPrefix: 'as24',
     theme: {
