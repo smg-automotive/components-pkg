@@ -134,3 +134,4 @@ export { ArrowDownCircleIcon } from './ArrowDownCircleIcon';
 export { ArrowUpCircleIcon } from './ArrowUpCircleIcon';
 export { NotAvailableIcon } from './NotAvailableIcon';
 export { LabelIcon } from './LabelIcon';
+export { BulbIcon } from './BulbIcon';
