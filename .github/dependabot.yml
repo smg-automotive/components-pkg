@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # location of package.json
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 0 # this option has no impact on security updates, which have a separate, internal limit of ten open pull requests
+    reviewers:
+      - "smg-automotive/frontend"
