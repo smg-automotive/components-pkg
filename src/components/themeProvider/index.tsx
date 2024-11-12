@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
-import { autoScout24Theme, motoScout24Theme } from 'src/themes';
+import { autoScout24System, motoScout24System } from 'src/themes';
 
 export type Props = {
   // Theme to use
@@ -11,16 +11,13 @@ export type Props = {
 };
 
 const themes = {
-  [Brand.AutoScout24]: autoScout24Theme,
-  [Brand.MotoScout24]: motoScout24Theme,
+  [Brand.AutoScout24]: autoScout24System,
+  [Brand.MotoScout24]: motoScout24System,
 };
 
-const ThemeProvider: FC<PropsWithChildren<Props>> = ({ theme, children }) => {
-  return (
-    <ChakraProvider theme={themes[theme]} resetCSS={true}>
-      {children}
-    </ChakraProvider>
-  );
+export const ThemeProvider: FC<PropsWithChildren<Props>> = ({
+  children,
+  theme,
+}) => {
+  return <ChakraProvider value={themes[theme]}>{children}</ChakraProvider>;
 };
-
-export default ThemeProvider;

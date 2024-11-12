@@ -1,37 +1,41 @@
-import { zIndices } from './zIndices';
-import { textStyles } from './typography';
-import { space } from './space';
-import { sizes } from './sizes';
-import { shadows } from './shadows';
-import { opacity } from './opacity';
-import { lineHeights } from './lineHeights';
-import { fontWeights } from './fontWeights';
-import { fontSizes } from './fontSizes';
-import { fonts } from './fonts';
-import { colors } from './colors';
-import { emBreakpoints } from './breakpoints';
-import { borders } from './borders';
-import { radii } from './borderRadius';
-import { basis } from './basis';
+import { zIndex } from './tokens/zIndex';
+import { spacing } from './tokens/spacing';
+import { sizes } from './tokens/sizes';
+import { shadows } from './tokens/shadows';
+import { radii } from './tokens/radii';
+import { opacity } from './tokens/opacity';
+import { lineHeights } from './tokens/lineHeights';
+import { fontWeights } from './tokens/fontWeights';
+import { fontSizes } from './tokens/fontSizes';
+import { fonts } from './tokens/fonts';
+import { colors } from './tokens/colors';
+import { borders } from './tokens/borders';
 
-export const shared = {
-  ...basis,
-  colors,
-  breakpoints: emBreakpoints,
-  textStyles,
-  space,
-  sizes,
-  shadows,
-  opacity,
-  borders,
-  radii,
-  lineHeights,
-  fontWeights,
-  fontSizes,
-  fonts,
-  zIndices,
+import { textStyles } from './textStyles';
+import { globalCss } from './globalCss';
+import { emBreakpoints } from './breakpoints';
+
+export const sharedConfig = {
+  strictTokens: true,
+  globalCss,
+  theme: {
+    breakpoints: emBreakpoints,
+    textStyles,
+    tokens: {
+      zIndex,
+      spacing,
+      sizes,
+      shadows,
+      radii,
+      opacity,
+      lineHeights,
+      fontWeights,
+      fontSizes,
+      fonts,
+      colors,
+      borders,
+    },
+  },
 };
-export { type Sizes } from './sizes';
-export { type Space } from './space';
-export { type FontWeights } from './fontWeights';
+
 export { breakpoints } from './breakpoints';

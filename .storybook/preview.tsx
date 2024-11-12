@@ -1,48 +1,25 @@
 /* eslint-disable unicorn/filename-case */
-import React, { FC, PropsWithChildren } from 'react';
+import React from 'react';
 import {
   ensure as ensureTheme,
   ThemeProvider as StorybookThemeProvider,
 } from '@storybook/theming';
 import { Decorator, Preview } from '@storybook/react';
-import { ChakraProvider, ChakraProviderProps } from '@chakra-ui/react';
-
-import { breakpoints } from '../src/themes/shared/breakpoints';
 import {
-  autoScout24Theme,
-  autoScoutChakraTheme,
-  motoScout24Theme,
-  motoScoutChakraTheme,
+  Box,
+  ChakraProvider,
+  defaultSystem,
+  SystemContext,
+} from '@chakra-ui/react';
+
+import {
+  autoScout24System,
+  breakpoints,
+  motoScout24System,
 } from '../src/themes';
 import Fonts from '../src/fonts/Hosted';
 import storybookTheme from './theme';
 
-const themes = {
-  [autoScout24Theme.name]: autoScout24Theme,
-  [motoScout24Theme.name]: motoScout24Theme,
-  [motoScoutChakraTheme.name]: motoScoutChakraTheme,
-  [autoScoutChakraTheme.name]: autoScoutChakraTheme,
-};
-
-const ThemeDecorator: FC<
-  PropsWithChildren<{ theme: ChakraProviderProps['theme'] }>
-> = ({ theme, children }) => {
-  return (
-    <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
-      <ChakraProvider theme={theme} resetCSS={true}>
-        <Fonts />
-        {children}
-      </ChakraProvider>
-    </StorybookThemeProvider>
-  );
-};
-
-const withTheme: Decorator = (Story, context) => {
-  const themeName = context.globals.theme || autoScout24Theme.name;
-  const theme = themes[themeName] || autoScout24Theme;
-
-  return <ThemeDecorator theme={theme}>{Story()}</ThemeDecorator>;
-};
 const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
   acc[key] = {
     name: key,
@@ -54,25 +31,118 @@ const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
   return acc;
 }, {});
 
+const themeOptions = [
+  {
+    value: 'autoScout24',
+    title: 'AutoScout24 theme',
+    chakraThemes: [
+      {
+        name: 'AutoScout24',
+        theme: autoScout24System,
+      },
+    ],
+  },
+  {
+    value: 'motoScout24',
+    title: 'MotoScout24 theme',
+    chakraThemes: [
+      {
+        name: 'MotoScout24',
+        theme: motoScout24System,
+      },
+    ],
+  },
+  {
+    value: 'chakra-ui',
+    title: 'Default chakra-ui theme',
+    chakraThemes: [
+      {
+        name: 'Chakra-ui',
+        theme: defaultSystem,
+      },
+    ],
+  },
+  {
+    value: 'autoScout24-chakra-ui',
+    title: 'AutoScout24 side by side with chakra-ui',
+    chakraThemes: [
+      {
+        name: 'AutoScout24',
+        theme: autoScout24System,
+      },
+      {
+        name: 'Chakra-ui',
+        theme: defaultSystem,
+      },
+    ],
+  },
+  {
+    value: 'motoScout24-chakra-ui',
+    title: 'MotoScout24 side by side with chakra-ui',
+    chakraThemes: [
+      {
+        name: 'MotoScout24',
+        theme: motoScout24System,
+      },
+      {
+        name: 'Chakra-ui',
+        theme: defaultSystem,
+      },
+    ],
+  },
+];
+
+const themesByName: Record<
+  string,
+  Array<{ name: string; theme: SystemContext }>
+> = themeOptions.reduce((acc, { value, chakraThemes }) => {
+  acc[value] = chakraThemes;
+  return acc;
+}, {});
+
+const withThemeDecorator: Decorator = (Story, context) => {
+  const storyTheme = context.globals.theme || 'autoScout24';
+  const chakraThemes = themesByName[storyTheme];
+  const themesToShow = chakraThemes.length;
+
+  return (
+    <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
+      <Fonts />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: '100%',
+        }}
+      >
+        {chakraThemes.map(({ theme, name }, index) => (
+          <div key={index} style={{ width: `${100 / themesToShow}%` }}>
+            <ChakraProvider value={theme}>
+              <Box display={themesToShow === 1 ? 'none' : 'block'}>{name}</Box>
+              <Story />
+            </ChakraProvider>
+          </div>
+        ))}
+      </div>
+    </StorybookThemeProvider>
+  );
+};
+
 const preview: Preview = {
-  decorators: [withTheme],
+  decorators: [withThemeDecorator],
   globalTypes: {
     theme: {
-      name: 'Theme',
       description: 'Theme for components',
-      defaultValue: autoScout24Theme.name,
+      defaultValue: 'autoScout24',
       toolbar: {
         icon: 'photo',
-        items: Object.keys(themes).map((themeName) => ({
-          title: themeName,
-          value: themeName,
-        })),
+        items: themeOptions,
       },
     },
   },
   argTypes: {
     children: {
-      control: { type: null },
+      control: undefined,
       if: {
         arg: 'children',
         exists: true,
@@ -103,10 +173,6 @@ const preview: Preview = {
   parameters: {
     docs: {
       theme: storybookTheme,
-      controls: {
-        expanded: true,
-        sort: 'requiredFirst',
-      },
     },
     viewport: {
       viewports,

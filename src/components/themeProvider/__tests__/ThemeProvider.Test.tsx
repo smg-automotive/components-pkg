@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
-import { useTheme } from '@chakra-ui/react';
+import { useChakraContext } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
-import { autoScout24Theme, motoScout24Theme } from 'src/themes';
+import { autoScout24System, motoScout24System } from 'src/themes';
 import { screen, testingLibraryRender } from '.jest';
 
-import ThemeProvider, { Props } from '..';
+import { Props, ThemeProvider } from '..';
 
 const TestComponent: FC = () => {
-  const theme = useTheme();
+  const context = useChakraContext();
+  const color = context.tokens.getByName('colors.brand.100')?.value;
 
-  return <div>{theme.colors.brand[100]}</div>;
+  return <div>{color}</div>;
 };
 
 const renderWrapper = (theme: Props['theme']) =>
@@ -23,19 +24,17 @@ const renderWrapper = (theme: Props['theme']) =>
 describe('ThemeProvider', () => {
   it('provides autoscout24 theme', () => {
     renderWrapper(Brand.AutoScout24);
-    const {
-      colors: { brand },
-    } = autoScout24Theme;
+    const expected =
+      autoScout24System.tokens.getByName('colors.brand.100')?.value;
 
-    expect(screen.getByText(brand[100])).toBeInTheDocument();
+    expect(screen.getByText(expected)).toBeInTheDocument();
   });
 
   it('provides motoscout24 theme', () => {
     renderWrapper(Brand.MotoScout24);
-    const {
-      colors: { brand },
-    } = motoScout24Theme;
+    const expected =
+      motoScout24System.tokens.getByName('colors.brand.100')?.value;
 
-    expect(screen.getByText(brand[100])).toBeInTheDocument();
+    expect(screen.getByText(expected)).toBeInTheDocument();
   });
 });

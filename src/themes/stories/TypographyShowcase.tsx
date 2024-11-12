@@ -1,19 +1,39 @@
-import React, { CSSProperties, FC } from 'react';
-import { Text, useTheme } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { Code, Table, Text, useChakraContext } from '@chakra-ui/react';
 
 const TypographyShowcase: FC = () => {
-  const theme = useTheme();
+  const context = useChakraContext();
+  const textStyles = context._config.theme?.textStyles || {};
 
   return (
-    <>
-      {Object.entries(theme.textStyles).map(([name, typography]) => {
-        return (
-          <Text key={name} mb="lg" style={typography as CSSProperties}>
-            {name}
-          </Text>
-        );
-      })}
-    </>
+    <Table.ScrollArea>
+      <Table.Root>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeader>Name</Table.ColumnHeader>
+            <Table.ColumnHeader>Value</Table.ColumnHeader>
+            <Table.ColumnHeader>Demo</Table.ColumnHeader>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {Object.entries(textStyles).map(([name, typography]) => {
+            return (
+              <Table.Row key={name}>
+                <Table.Cell>{name}</Table.Cell>
+                <Table.Cell whiteSpace="pre">
+                  <Code>{JSON.stringify(typography.value, null, 2)}</Code>
+                </Table.Cell>
+                <Table.Cell>
+                  <Text textStyle={name}>
+                    The quick brown fox jumps over the lazy dog and runs away.
+                  </Text>
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table.Root>
+    </Table.ScrollArea>
   );
 };
 

@@ -1,25 +1,23 @@
 import React, { FC } from 'react';
 import { ColorItem } from '@storybook/addon-docs';
-import { useTheme } from '@chakra-ui/react';
-
-// Not exported form the storybook addon
-type Colors =
-  | string[]
-  | {
-      [key: string]: string;
-    };
+import { useChakraContext } from '@chakra-ui/react';
 
 const ColorShowcase: FC = () => {
-  const theme = useTheme();
-  const colors = Object.entries(theme.colors);
+  const context = useChakraContext();
+  const colors = context._config.theme?.tokens?.colors || {};
 
   return (
     <>
-      {colors.map(([colorName, colorValues]) => {
+      {Object.entries(colors).map(([colorName, colorToken]) => {
         const mappedValues =
-          typeof colorValues === 'object'
-            ? (colorValues as Colors)
-            : { [colorName]: colorValues as string };
+          'value' in colorToken
+            ? { [colorName]: colorToken.value.toString() }
+            : Object.fromEntries(
+                Object.entries(colorToken).map(([shade, shadeValue]) => [
+                  shade,
+                  shadeValue.value.toString(),
+                ]),
+              );
 
         return (
           <ColorItem
