@@ -5,10 +5,10 @@ on:
     branches:
       - talamcol-phrase-keys-added
     paths:
-      - 'locales/de/dict.json'
-      - 'locales/en/dict.json'
-      - 'locales/fr/dict.json'
-      - 'locales/it/dict.json'
+      - 'src/locales/de/dict.json'
+      - 'src/locales/en/dict.json'
+      - 'src/locales/fr/dict.json'
+      - 'src/locales/it/dict.json'
 
 jobs:
   send-slack-notification:
