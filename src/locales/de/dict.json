@@ -129,6 +129,7 @@
     "searchMenu": {
       "additional": "Weiteres",
       "advancedSearch": "Erweiterte Suche",
+      "bar": "foo",
       "comparison": "Vergleichstool ({{ numberOfItems }})",
       "dealer": "Händler",
       "foo": "bar",
