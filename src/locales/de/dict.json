@@ -131,6 +131,7 @@
       "advancedSearch": "Erweiterte Suche",
       "comparison": "Vergleichstool ({{ numberOfItems }})",
       "dealer": "Händler",
+      "foo": "bar",
       "insuranceComparison": "Versicherungsvergleich",
       "searchCars": "Autos suchen",
       "searchMerchant": "Händler suchen",
