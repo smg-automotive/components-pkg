@@ -129,10 +129,8 @@
     "searchMenu": {
       "additional": "Weiteres",
       "advancedSearch": "Erweiterte Suche",
-      "bar": "foo",
       "comparison": "Vergleichstool ({{ numberOfItems }})",
       "dealer": "Händler",
-      "foo": "bar",
       "insuranceComparison": "Versicherungsvergleich",
       "searchCars": "Autos suchen",
       "searchMerchant": "Händler suchen",
@@ -177,7 +175,6 @@
       "manageNotes": "Bemerkungen verwalten",
       "manageVehicles": "Meine Fahrzeuge verwalten",
       "marketPriceCheck": "MarketPriceCheck",
-      "mip": "foo",
       "motorcyclePark": "Zum Motorradpark",
       "myMotorcycles": "Meine Motorräder",
       "myMotorcyclesOld": "Meine Motorräder (alt)",

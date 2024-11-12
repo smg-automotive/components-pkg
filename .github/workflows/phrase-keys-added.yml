@@ -3,7 +3,7 @@ name: Notify Slack on translation updates
 on:
   push:
     branches:
-      - talamcol-phrase-keys-added
+      - main
     paths:
       - 'src/locales/de/dict.json'
       - 'src/locales/en/dict.json'
