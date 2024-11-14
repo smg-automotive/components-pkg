@@ -20,6 +20,26 @@ const conversionToPixels = {
     'Pixel values are only used as a reference for Figma designs. We use rem as units.',
 };
 
+export const AspectRatios: StoryType = {
+  render: () => (
+    <TokenShowcase
+      tokenPath="aspectRatios"
+      renderDemo={(name) => (
+        <Box
+          aspectRatio={name}
+          w="200px"
+          bg="red.100"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          I am {name}
+        </Box>
+      )}
+    />
+  ),
+};
+
 export const BorderRadius: StoryType = {
   render: () => (
     <TokenShowcase<'radii'>

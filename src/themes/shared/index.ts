@@ -10,6 +10,7 @@ import { fontSizes } from './tokens/fontSizes';
 import { fonts } from './tokens/fonts';
 import { colors } from './tokens/colors';
 import { borders } from './tokens/borders';
+import { aspectRatios } from './tokens/aspectRatios';
 
 import { textStyles } from './textStyles';
 import { globalCss } from './globalCss';
@@ -34,6 +35,7 @@ export const sharedConfig = {
       fonts,
       colors,
       borders,
+      aspectRatios,
     },
   },
 };
