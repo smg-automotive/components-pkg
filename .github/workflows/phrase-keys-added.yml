@@ -1,0 +1,43 @@
+name: Notify Slack on translation updates
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/locales/de/dict.json'
+      - 'src/locales/en/dict.json'
+      - 'src/locales/fr/dict.json'
+      - 'src/locales/it/dict.json'
+
+jobs:
+  send-slack-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for added lines in dict.json files
+        id: check_added_lines
+        run: |
+          ADDED_LINES_FOUND="false"
+
+          for file in $(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep -E 'locales/(de|en|fr|it)/dict.json'); do
+            if git diff ${{ github.event.before }} ${{ github.event.after }} "$file" | grep -q '^+[^+]' ; then
+              ADDED_LINES_FOUND="true"
+              break
+            fi
+          done
+
+          echo "ADDED_LINES_FOUND=$ADDED_LINES_FOUND" >> $GITHUB_ENV
+
+      - name: Send Slack Notification
+        if: env.ADDED_LINES_FOUND == 'true'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_AU_PHRASE }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data "{\"text\":\":mag: Please check for unverified translations in <https://github.com/${{ github.repository }}|${{ github.repository }}>.\"}" \
+          $SLACK_WEBHOOK_URL
