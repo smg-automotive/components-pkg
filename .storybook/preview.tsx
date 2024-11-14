@@ -19,6 +19,7 @@ import {
 } from '../src/themes';
 import Fonts from '../src/fonts/Hosted';
 import storybookTheme from './theme';
+import { presetColors } from './colorSwatches';
 
 const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
   acc[key] = {
@@ -128,6 +129,19 @@ const withThemeDecorator: Decorator = (Story, context) => {
   );
 };
 
+const colorControl = (arg: string) => ({
+  [arg]: {
+    control: {
+      type: 'color' as const,
+      presetColors,
+    },
+    if: {
+      arg,
+      exists: true,
+    },
+  },
+});
+
 const preview: Preview = {
   decorators: [withThemeDecorator],
   globalTypes: {
@@ -169,6 +183,10 @@ const preview: Preview = {
         exists: true,
       },
     },
+    ...['color', 'backgroundColor', 'borderColor'].reduce(
+      (acc, arg) => ({ ...acc, ...colorControl(arg) }),
+      {},
+    ),
   },
   parameters: {
     docs: {
