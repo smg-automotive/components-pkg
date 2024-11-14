@@ -39,4 +39,6 @@ export const autoScout24Config = mergeConfigs(
   sharedConfig,
 );
 
-export default createSystem(defaultBaseConfig, autoScout24Config);
+export default createSystem(defaultBaseConfig, autoScout24Config, {
+  preflight: true,
+});

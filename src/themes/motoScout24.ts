@@ -39,4 +39,6 @@ export const motoScout24Config = mergeConfigs(
   sharedConfig,
 );
 
-export default createSystem(defaultBaseConfig, motoScout24Config);
+export default createSystem(defaultBaseConfig, motoScout24Config, {
+  preflight: true,
+});
