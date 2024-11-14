@@ -1,32 +1,31 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { space } from 'src/themes/shared/space';
+import { sharedConfig } from 'src/themes/shared/index';
 
-import BoxComponent from './index';
+import { Box } from './index';
 
-const meta: Meta<typeof BoxComponent> = {
+const meta: Meta<typeof Box> = {
   title: 'Layout/Box',
-  component: BoxComponent,
+  component: Box,
 
   args: {
     padding: '2xl',
-    borderColor: 'gray.900',
-    borderWidth: '1px',
+    color: 'gray.500',
+    border: '1px',
+    borderColor: 'green.500',
     children: 'I am a box',
   },
   argTypes: {
     padding: {
       control: { type: 'select' },
-      options: Object.keys(space),
+      options: Object.keys(sharedConfig.theme.tokens.spacing),
     },
-    borderColor: {
-      control: 'color',
-    },
-    borderWidth: {
-      control: 'number',
+    border: {
+      control: { type: 'select' },
+      options: Object.keys(sharedConfig.theme.tokens.borders),
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof BoxComponent> = {};
+export const Overview: StoryObj<typeof Box> = {};
