@@ -120,7 +120,7 @@
     "webpack": "5.96.1"
   },
   "dependencies": {
-    "@chakra-ui/react": "3.0.2",
+    "@chakra-ui/react": "3.1.1",
     "@emotion/react": "11.13.3",
     "@smg-automotive/auth": "5.0.7",
     "@smg-automotive/i18n-pkg": "1.5.1",
