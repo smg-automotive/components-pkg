@@ -7,7 +7,7 @@ export const globalCss = defineGlobalStyles({
 
   '*': {
     margin: 0,
-    '-webkit-font-smoothing': 'antialiased',
+    WebkitFontSmoothing: 'antialiased',
   } as SystemStyleObject,
 
   body: {
