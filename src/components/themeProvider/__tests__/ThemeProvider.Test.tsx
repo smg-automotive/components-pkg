@@ -5,7 +5,7 @@ import { Brand } from 'src/types/brand';
 import { autoScout24System, motoScout24System } from 'src/themes';
 import { screen, testingLibraryRender } from '.jest';
 
-import { Props, ThemeProvider } from '..';
+import { ThemeProvider, ThemeProviderProps } from '..';
 
 const TestComponent: FC = () => {
   const context = useChakraContext();
@@ -14,7 +14,7 @@ const TestComponent: FC = () => {
   return <div>{color}</div>;
 };
 
-const renderWrapper = (theme: Props['theme']) =>
+const renderWrapper = (theme: ThemeProviderProps['theme']) =>
   testingLibraryRender(
     <ThemeProvider theme={theme}>
       <TestComponent />

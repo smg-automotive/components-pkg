@@ -5,8 +5,10 @@ import { Brand } from 'src/types/brand';
 
 import { autoScout24System, motoScout24System } from 'src/themes';
 
-export type Props = {
-  // Theme to use
+export type ThemeProviderProps = {
+  /**
+   * The brand theme to use
+   */
   theme: Brand;
 };
 
@@ -15,7 +17,7 @@ const themes = {
   [Brand.MotoScout24]: motoScout24System,
 };
 
-export const ThemeProvider: FC<PropsWithChildren<Props>> = ({
+export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
   children,
   theme,
 }) => {

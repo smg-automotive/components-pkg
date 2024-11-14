@@ -12,7 +12,7 @@ import { Brand } from 'src/types/brand';
 
 import {
   ThemeProvider,
-  type Props as ThemeProviderProps,
+  type ThemeProviderProps,
 } from '../src/components/themeProvider';
 
 type WrapperOptions = {
