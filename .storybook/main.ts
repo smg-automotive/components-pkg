@@ -25,6 +25,12 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+  staticDirs: [
+    {
+      from: '../src/assets',
+      to: 'assets',
+    },
+  ],
   webpackFinal: async (webpack) => {
     webpack.resolve = webpack.resolve || {};
     webpack.resolve.plugins = webpack.resolve.plugins || [];
