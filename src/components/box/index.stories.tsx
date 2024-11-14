@@ -8,6 +8,12 @@ const meta: Meta<typeof Box> = {
   title: 'Layout/Box',
   component: Box,
 
+  parameters: {
+    controls: {
+      sort: 'alpha',
+    },
+  },
+
   args: {
     padding: '2xl',
     color: 'gray.500',
