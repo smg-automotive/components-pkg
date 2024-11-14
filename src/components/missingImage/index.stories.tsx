@@ -1,34 +1,25 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Description, Primary, Subtitle, Title } from '@storybook/blocks';
 
-import AspectRatio from '../aspectRatio';
+import { sharedConfig } from 'src/themes/shared';
 
-import MissingImageComponent from './index';
+import { MissingImage } from './index';
 
-const meta: Meta<typeof MissingImageComponent> = {
+const meta: Meta<typeof MissingImage> = {
   title: 'Patterns/Data display/Missing image',
-  component: MissingImageComponent,
-  decorators: [
-    (Story) => (
-      <AspectRatio ratio={4 / 3} width="500px">
-        <Story />
-      </AspectRatio>
-    ),
-  ],
-  parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <Primary />
-        </>
-      ),
+  component: MissingImage,
+  args: {
+    aspectRatio: 'square',
+    width: '500px',
+  },
+  argTypes: {
+    aspectRatio: {
+      options: Object.keys(sharedConfig.theme.tokens.aspectRatios),
+      control: {
+        type: 'select',
+      },
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof MissingImageComponent> = {};
+export const Overview: StoryObj<typeof MissingImage> = {};
