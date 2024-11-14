@@ -1,22 +1,30 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '../box';
+import { Box } from 'src';
 
-import AspectRatioComponent from './index';
+import { AspectRatio } from './index';
 
-const meta: Meta<typeof AspectRatioComponent> = {
-  title: 'Layout/Aspect ratio',
-  component: AspectRatioComponent,
+const meta: Meta<typeof AspectRatio> = {
+  title: 'Layout/Aspect Ratio',
+  component: AspectRatio,
+
   args: {
-    children: <Box backgroundColor="red.500">I am in the box with a ratio</Box>,
+    width: 300,
+    ratio: 4 / 3,
+    children: 'box',
+  },
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+      mapping: {
+        box: <Box bg="red.100">I have an aspect ratio</Box>,
+      },
+    },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof AspectRatioComponent> = {
-  args: {
-    width: 300,
-    ratio: 4 / 3,
-  },
-};
+export const Overview: StoryObj<typeof AspectRatio> = {};
