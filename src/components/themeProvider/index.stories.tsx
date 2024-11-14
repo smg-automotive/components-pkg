@@ -32,18 +32,7 @@ const meta: Meta<typeof ThemeProvider> = {
 
   args: {
     theme: Brand.AutoScout24,
-    children: (
-      <Box
-        display="flex"
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        maxW="170px"
-      >
-        <Box bgColor="brand.primary" h={50} w={50} mr={3} borderRadius={50} />
-        <Box w={100}>brand-primary</Box>
-      </Box>
-    ),
+    children: 'box',
   },
 
   argTypes: {
@@ -57,6 +46,26 @@ const meta: Meta<typeof ThemeProvider> = {
     children: {
       table: {
         disable: true,
+      },
+      mapping: {
+        box: (
+          <Box
+            display="flex"
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            maxW="170px"
+          >
+            <Box
+              bgColor="brand.primary"
+              h={50}
+              w={50}
+              mr={3}
+              borderRadius={50}
+            />
+            <Box w={100}>brand-primary</Box>
+          </Box>
+        ),
       },
     },
   },
