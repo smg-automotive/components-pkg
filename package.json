@@ -44,7 +44,8 @@
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand"
+    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
+    "postinstall": "npx chakra typegen src/themes/autoScout24.ts --clean"
   },
   "author": "SMG Automotive",
   "license": "MIT",
@@ -61,6 +62,7 @@
     "@babel/preset-env": "7.26.0",
     "@babel/preset-react": "7.25.9",
     "@babel/preset-typescript": "7.26.0",
+    "@chakra-ui/cli": "3.1.1",
     "@rollup/plugin-commonjs": "28.0.1",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
