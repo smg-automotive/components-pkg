@@ -11,7 +11,7 @@ const meta: Meta<typeof VehicleReference> = {
   component: VehicleReference,
   decorators: [
     (Story) => (
-      <Box maxW={{ '2xs': '100%', md: '600px' }}>
+      <Box maxW={{ '2xs': 'full', md: '7xl' }}>
         <Story />
       </Box>
     ),
