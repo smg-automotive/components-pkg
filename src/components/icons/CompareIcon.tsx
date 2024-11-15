@@ -15,7 +15,7 @@ export const CompareIcon = createIcon({
   ),
   defaultProps: {
     boxSize: 'sm',
-    fill: 'currentColor',
+    fill: 'currentBg',
     fillRule: 'evenodd',
     clipRule: 'evenodd',
   },
