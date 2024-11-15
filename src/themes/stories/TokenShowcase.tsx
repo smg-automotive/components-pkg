@@ -1,14 +1,19 @@
-import React, { FC } from 'react';
-import { SystemConfig, Table, useChakraContext } from '@chakra-ui/react';
+import React from 'react';
+import {
+  SystemConfig,
+  Table,
+  Tokens,
+  useChakraContext,
+} from '@chakra-ui/react';
 
 type TokenGroupName = keyof NonNullable<
   NonNullable<SystemConfig['theme']>['tokens']
 >;
 
-type TokenShowcaseProps = {
+type TokenShowcaseProps<Token extends keyof Tokens> = {
   tokenPath: string;
   renderValue?: boolean;
-  renderDemo?: (tokenValue: string) => React.ReactNode;
+  renderDemo?: (tokenName: Tokens[Token]) => React.ReactNode;
   renderConversion?: {
     conversionFunction: (value: string) => string;
     unitLabel: string;
@@ -16,12 +21,12 @@ type TokenShowcaseProps = {
   };
 };
 
-const TokenShowcase: FC<TokenShowcaseProps> = ({
+const TokenShowcase = <Token extends keyof Tokens>({
   tokenPath,
   renderValue = true,
   renderConversion,
   renderDemo,
-}) => {
+}: TokenShowcaseProps<Token>) => {
   const context = useChakraContext();
   const [tokenGroup, ...path] = tokenPath.split('.') as [
     TokenGroupName,
@@ -68,7 +73,7 @@ const TokenShowcase: FC<TokenShowcaseProps> = ({
                   </Table.Cell>
                 ) : null}
                 {renderDemo ? (
-                  <Table.Cell>{renderDemo(name)}</Table.Cell>
+                  <Table.Cell>{renderDemo(name as Tokens[Token])}</Table.Cell>
                 ) : null}
               </Table.Row>
             );
