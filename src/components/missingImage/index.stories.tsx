@@ -9,7 +9,7 @@ const meta: Meta<typeof MissingImage> = {
   component: MissingImage,
   args: {
     aspectRatio: 'square',
-    width: '500px',
+    width: '7xl',
   },
   argTypes: {
     aspectRatio: {

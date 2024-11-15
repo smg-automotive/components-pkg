@@ -10,7 +10,7 @@ const meta: Meta<typeof AspectRatio> = {
   component: AspectRatio,
 
   args: {
-    width: 300,
+    width: '6xl',
     ratio: 4 / 3,
     children: 'box',
   },

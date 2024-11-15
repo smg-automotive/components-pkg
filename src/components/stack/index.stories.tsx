@@ -23,9 +23,9 @@ const meta: Meta<typeof Stack> = {
     justify: 'center',
     gap: 'md',
     wrap: 'wrap',
-    margin: 0,
-    padding: 0,
-    width: 900,
+    margin: '0',
+    padding: '0',
+    width: '8xl',
   },
 
   argTypes: {
@@ -40,13 +40,13 @@ const meta: Meta<typeof Stack> = {
       },
       mapping: {
         boxes: [
-          <Box minW="40px" minH="40px" bg="blue.100" key="1">
+          <Box minW="md" minH="md" bg="blue.100" key="1">
             1
           </Box>,
-          <Box minW="50px" minH="50px" bg="green.100" key="2">
+          <Box minW="lg" minH="lg" bg="green.100" key="2">
             2
           </Box>,
-          <Box minW="60px" minH="60px" bg="orange.100" key="3">
+          <Box minW="xl" minH="xl" bg="orange.100" key="3">
             3
           </Box>,
         ],

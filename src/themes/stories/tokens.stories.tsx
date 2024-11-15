@@ -27,7 +27,7 @@ export const AspectRatios: StoryType = {
       renderDemo={(name) => (
         <Box
           aspectRatio={name}
-          w="200px"
+          w="5xl"
           bg="red.100"
           display="flex"
           justifyContent="center"
