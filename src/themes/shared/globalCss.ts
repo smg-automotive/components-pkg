@@ -11,7 +11,7 @@ export const globalCss = defineGlobalStyles({
   } as SystemStyleObject,
 
   body: {
-    lineHeight: 1.5,
+    lineHeight: 'md',
     textStyle: 'body',
   },
 
