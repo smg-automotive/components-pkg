@@ -2,7 +2,11 @@ import React, { ComponentProps, FC, ReactNode } from 'react';
 
 import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
-import { AspectRatio, Box, Grid, MissingImage, Stack } from 'src';
+import { Stack } from '../stack';
+import { MissingImage } from '../missingImage';
+import { Grid } from '../grid';
+import { Box } from '../box';
+import { AspectRatio } from '../aspectRatio';
 
 export type VehicleReferenceProps = {
   image?: ReactNode;
