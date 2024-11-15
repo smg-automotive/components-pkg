@@ -43,9 +43,11 @@
     "format:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
+    "typegen": "npx chakra typegen src/themes/autoScout24.ts --clean",
+    "typegen:watch": "npm run typegen -- --watch",
     "test": "jest",
     "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
-    "postinstall": "npx chakra typegen src/themes/autoScout24.ts --clean"
+    "postinstall": "npm run typegen"
   },
   "author": "SMG Automotive",
   "license": "MIT",
