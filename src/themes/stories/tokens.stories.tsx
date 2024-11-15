@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColorPalette } from '@storybook/blocks';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, chakra } from '@chakra-ui/react';
 
 import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
 
@@ -119,7 +119,9 @@ export const FontSizes: StoryType = {
     <TokenShowcase
       tokenPath="fontSizes"
       renderConversion={conversionToPixels}
-      renderDemo={(name) => <Text fontSize={name}>I am {name} size</Text>}
+      renderDemo={(name) => (
+        <chakra.p fontSize={name}>I am {name} size</chakra.p>
+      )}
     />
   ),
 };
@@ -128,7 +130,9 @@ export const FontWeights: StoryType = {
   render: () => (
     <TokenShowcase
       tokenPath="fontWeights"
-      renderDemo={(name) => <Text fontWeight={name}>I am {name} weight</Text>}
+      renderDemo={(name) => (
+        <chakra.p fontWeight={name}>I am {name} weight</chakra.p>
+      )}
     />
   ),
 };
@@ -138,10 +142,10 @@ export const LineHeights: StoryType = {
     <TokenShowcase
       tokenPath="lineHeights"
       renderDemo={(name) => (
-        <Text lineHeight={name}>
+        <chakra.p lineHeight={name}>
           I am {name} height <br />
           second line for better visibility
-        </Text>
+        </chakra.p>
       )}
     />
   ),
