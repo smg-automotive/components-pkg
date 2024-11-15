@@ -1,10 +1,5 @@
 import React from 'react';
-import { createIcon, IconProps } from '@chakra-ui/react';
-
-type HeartProps = IconProps & {
-  fill?: 'none';
-  stroke?: 'currentColor';
-};
+import { createIcon } from '@chakra-ui/react';
 
 export const HeartIcon = createIcon({
   displayName: 'Heart',
@@ -22,5 +17,5 @@ export const HeartIcon = createIcon({
     boxSize: 'sm',
     fill: 'none',
     stroke: 'currentColor',
-  } as HeartProps,
+  },
 });

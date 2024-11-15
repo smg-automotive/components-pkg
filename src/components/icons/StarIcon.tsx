@@ -1,10 +1,5 @@
 import React from 'react';
-import { createIcon, IconProps } from '@chakra-ui/react';
-
-type StarProps = IconProps & {
-  fill?: 'none';
-  stroke?: 'currentColor';
-};
+import { createIcon } from '@chakra-ui/react';
 
 export const StarIcon = createIcon({
   displayName: 'Star',
@@ -22,5 +17,5 @@ export const StarIcon = createIcon({
     boxSize: 'sm',
     fill: 'none',
     stroke: 'currentColor',
-  } as StarProps,
+  },
 });
