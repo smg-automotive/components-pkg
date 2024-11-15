@@ -13,6 +13,7 @@ import { borders } from './tokens/borders';
 import { aspectRatios } from './tokens/aspectRatios';
 
 import { textStyles } from './textStyles';
+import { slotRecipes } from './slotRecipes';
 import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
 
@@ -37,6 +38,7 @@ export const sharedConfig = {
       borders,
       aspectRatios,
     },
+    slotRecipes,
   },
 };
 

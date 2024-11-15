@@ -1,1 +1,5 @@
-export const slotRecipes = {};
+import { VehicleReference } from './vehicleReference';
+
+export const slotRecipes = {
+  VehicleReference,
+};

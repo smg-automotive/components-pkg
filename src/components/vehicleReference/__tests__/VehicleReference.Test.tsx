@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '.jest/utils';
 
-import VehicleReference from '..';
+import { VehicleReference } from '../index';
 
 const renderWrapper = ({
   vehicleTitle = 'title',

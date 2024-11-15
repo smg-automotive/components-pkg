@@ -5,3 +5,4 @@ export * from './icons';
 export * from './missingImage';
 export * from './stack';
 export * from './themeProvider';
+export * from './vehicleReference';

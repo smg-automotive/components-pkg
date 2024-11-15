@@ -1,15 +1,14 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const parts = ['carTitle', 'price', 'dealerName', 'dealerAddress'];
 const wordBreak = 'break-word';
 
-const VehicleReference: ComponentStyleConfig = {
-  parts,
-  baseStyle: {
+export const VehicleReference = defineSlotRecipe({
+  slots: ['carTitle', 'price', 'dealerName', 'dealerAddress'],
+  base: {
     carTitle: {
       color: 'gray.900',
       textStyle: { '2xs': 'heading5', md: 'heading3' },
-      noOfLines: { '2xs': 1, md: 'none' },
+      lineClamp: { '2xs': 1, md: 'none' },
       wordBreak,
     },
     price: {
@@ -29,6 +28,4 @@ const VehicleReference: ComponentStyleConfig = {
       wordBreak,
     },
   },
-};
-
-export default VehicleReference;
+});
