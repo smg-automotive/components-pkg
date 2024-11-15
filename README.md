@@ -89,6 +89,22 @@ cd <project directory>
 npm link ../smg-automotive-components-pkg
 ```
 
+### Type generation
+
+Chakra UI provides type generation for tokens. This is incorporated into the `typegen` script.
+If you're adding new tokens you will need to re-generate the types:
+
+```bash
+$ npm run typegen
+```
+
+If you're heavily modifying the theme you can watch the changes with:
+```bash
+$ npm run typegen:watch
+```
+
+Since re-installing chakra ui will clean the generated types we're running the type generation as a post-install script.
+
 ## Theming
 
 As agreed upon in the [RFC](https://github.com/smg-automotive/au-docs/discussions/3) we will handle the differences between AS24 and MS24 with two different themes. They can be then used via a theme provider that needs to wrap the application:

@@ -51,19 +51,19 @@ const meta: Meta<typeof ThemeProvider> = {
         box: (
           <Box
             display="flex"
-            direction="row"
+            flexDirection="row"
             alignItems="center"
-            justifyContent="space-between"
-            maxW="170px"
+            justifyContent="start"
+            maxW="5xl"
           >
             <Box
               bgColor="brand.primary"
-              h={50}
-              w={50}
-              mr={3}
-              borderRadius={50}
+              h="lg"
+              w="lg"
+              mr="lg"
+              borderRadius="full"
             />
-            <Box w={100}>brand-primary</Box>
+            brand-primary
           </Box>
         ),
       },

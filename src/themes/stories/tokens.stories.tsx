@@ -22,7 +22,7 @@ const conversionToPixels = {
 
 export const BorderRadius: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'radii'>
       tokenPath="radii"
       renderDemo={(name) => (
         <Box
@@ -38,7 +38,7 @@ export const BorderRadius: StoryType = {
 
 export const Border: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'borders'>
       tokenPath="borders"
       renderDemo={(name) => <Box borderBottom={name} w="3xl" />}
     />
@@ -55,7 +55,7 @@ export const Colors: StoryType = {
 
 export const Opacity: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'opacity'>
       tokenPath="opacity"
       renderDemo={(name) => (
         <Box bgColor="gray.900" rounded="full" opacity={name} w="xl" h="xl" />
@@ -66,7 +66,7 @@ export const Opacity: StoryType = {
 
 export const Shadows: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'shadows'>
       tokenPath="shadows"
       renderValue={false}
       renderDemo={(name) => (
@@ -86,17 +86,20 @@ export const Shadows: StoryType = {
 
 export const Sizes: StoryType = {
   render: () => (
-    <TokenShowcase tokenPath="sizes" renderConversion={conversionToPixels} />
+    <TokenShowcase<'sizes'>
+      tokenPath="sizes"
+      renderConversion={conversionToPixels}
+    />
   ),
 };
 
 export const ContainerSizes: StoryType = {
-  render: () => <TokenShowcase tokenPath="sizes.container" />,
+  render: () => <TokenShowcase<'sizes'> tokenPath="sizes.container" />,
 };
 
 export const Spacing: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'spacing'>
       tokenPath="spacing"
       renderConversion={conversionToPixels}
       renderDemo={(name) => (
@@ -111,12 +114,12 @@ export const Spacing: StoryType = {
 };
 
 export const ZIndices: StoryType = {
-  render: () => <TokenShowcase tokenPath="zIndex" />,
+  render: () => <TokenShowcase<'zIndex'> tokenPath="zIndex" />,
 };
 
 export const FontSizes: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'fontSizes'>
       tokenPath="fontSizes"
       renderConversion={conversionToPixels}
       renderDemo={(name) => (
@@ -128,7 +131,7 @@ export const FontSizes: StoryType = {
 
 export const FontWeights: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'fontWeights'>
       tokenPath="fontWeights"
       renderDemo={(name) => (
         <chakra.p fontWeight={name}>I am {name} weight</chakra.p>
@@ -139,7 +142,7 @@ export const FontWeights: StoryType = {
 
 export const LineHeights: StoryType = {
   render: () => (
-    <TokenShowcase
+    <TokenShowcase<'lineHeights'>
       tokenPath="lineHeights"
       renderDemo={(name) => (
         <chakra.p lineHeight={name}>

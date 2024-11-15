@@ -136,4 +136,6 @@ export const colors = defineTokens.colors({
     800: { value: '#553676' },
     900: { value: '#402859' },
   },
+  none: { value: 'none' },
+  currentColor: { value: 'currentColor' },
 });

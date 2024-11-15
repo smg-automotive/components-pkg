@@ -23,7 +23,7 @@ const TypographyShowcase: FC = () => {
                 <Table.Cell whiteSpace="pre">
                   <Code>{JSON.stringify(typography.value, null, 2)}</Code>
                 </Table.Cell>
-                <Table.Cell textStyle={name}>
+                <Table.Cell textStyle={context.token(name)}>
                   The quick brown fox jumps over the lazy dog and runs away.
                 </Table.Cell>
               </Table.Row>
