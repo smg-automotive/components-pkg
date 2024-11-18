@@ -450,6 +450,10 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          entitlementConfig: {
+            hideIfEntitlementIsPresent: Entitlement.CockpitFrontend,
+            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
+          },
         },
         {
           translationKey: 'header.userMenu.optimizer',
