@@ -1,81 +1,71 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { colors } from 'src/themes/autoscout24/colors';
+import { colors } from 'src/themes/shared/tokens/colors';
 
-import {
-  TableCaption,
-  Table as TableComponent,
-  TableContainer,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from './index';
+import { Table } from './index';
 
-const Template: typeof TableComponent = (args) => (
-  <TableContainer>
-    <TableComponent {...args}>
-      <TableCaption>Imperial to metric conversion factors</TableCaption>
-      <Thead>
-        <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        <Tr>
-          <Td>inches</Td>
-          <Td>millimetres (mm)</Td>
-          <Td isNumeric>25.4</Td>
-        </Tr>
-        <Tr>
-          <Td>feet</Td>
-          <Td>centimetres (cm)</Td>
-          <Td isNumeric>30.48</Td>
-        </Tr>
-        <Tr>
-          <Td>yards</Td>
-          <Td>metres (m)</Td>
-          <Td isNumeric>0.91444</Td>
-        </Tr>
-      </Tbody>
-      <Tfoot>
-        <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
-        </Tr>
-      </Tfoot>
-    </TableComponent>
-  </TableContainer>
-);
-
-const meta: Meta<typeof TableComponent> = {
+const meta: Meta<typeof Table.Root> = {
   title: 'Components/Data Display/Table',
-  component: TableComponent,
-  render: Template.bind({}),
+  component: Table.Root,
+  render: (args) => (
+    <Table.ScrollArea>
+      <Table.Root {...args}>
+        <Table.Caption>Imperial to metric conversion factors</Table.Caption>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeader>To convert</Table.ColumnHeader>
+            <Table.ColumnHeader>into</Table.ColumnHeader>
+            <Table.ColumnHeader isNumeric>multiply by</Table.ColumnHeader>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>inches</Table.Cell>
+            <Table.Cell>millimeters (mm)</Table.Cell>
+            <Table.Cell isNumeric>25.4</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>feet</Table.Cell>
+            <Table.Cell>centimeters (cm)</Table.Cell>
+            <Table.Cell isNumeric>30.48</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>yards</Table.Cell>
+            <Table.Cell>meters (m)</Table.Cell>
+            <Table.Cell isNumeric>0.91444</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+            <Table.ColumnHeader>To convert</Table.ColumnHeader>
+            <Table.ColumnHeader>into</Table.ColumnHeader>
+            <Table.ColumnHeader isNumeric>multiply by</Table.ColumnHeader>
+          </Table.Row>
+        </Table.Footer>
+      </Table.Root>
+    </Table.ScrollArea>
+  ),
 
   args: {
-    variant: 'simple',
+    variant: 'line',
+    interactive: false,
+    striped: false,
+    showColumnBorder: false,
     size: 'md',
+    colorPalette: 'gray',
   },
 
   argTypes: {
     variant: {
-      options: ['simple', 'striped'],
+      options: ['line', 'outline'],
       control: 'select',
     },
-
     size: {
       options: ['sm', 'md'],
       control: 'select',
     },
-
-    colorScheme: {
+    colorPalette: {
       options: Object.keys(colors),
       control: 'select',
     },
@@ -83,4 +73,4 @@ const meta: Meta<typeof TableComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof TableComponent> = {};
+export const Overview: StoryObj<typeof Table.Root> = {};

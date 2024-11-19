@@ -5,5 +5,6 @@ export * from './grid';
 export * from './icons';
 export * from './missingImage';
 export * from './stack';
+export * from './table';
 export * from './themeProvider';
 export * from './vehicleReference';

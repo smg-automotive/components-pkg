@@ -1,179 +1,15 @@
-// import {
-//   createMultiStyleConfigHelpers,
-//   defineStyle,
-// } from '@chakra-ui/styled-system';
-// import { tableAnatomy as parts } from '@chakra-ui/anatomy';
+import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
-// const { defineMultiStyleConfig, definePartsStyle } =
-//   createMultiStyleConfigHelpers(parts.keys);
+const numericStyles = defineStyle({
+  '&[data-is-numeric=true]': {
+    textAlign: 'end',
+  },
+});
 
-// const baseStyle = definePartsStyle({
-//   table: {
-//     fontVariantNumeric: 'lining-nums tabular-nums',
-//     borderCollapse: 'collapse',
-//     width: 'full',
-//   },
-//   th: {
-//     fontWeight: 'bold',
-//     textTransform: 'uppercase',
-//     letterSpacing: 'wider',
-//     textAlign: 'start',
-//   },
-//   td: {
-//     textAlign: 'start',
-//   },
-//   caption: {
-//     textAlign: 'center',
-//     fontWeight: 'medium',
-//   },
-// });
+const borderColor = 'colorPalette.200';
+const subtleColor = 'colorPalette.50';
 
-// const numericStyles = defineStyle({
-//   '&[data-is-numeric=true]': {
-//     textAlign: 'end',
-//   },
-// });
-
-// const variantSimple = definePartsStyle((props) => {
-//   const { colorScheme: c } = props;
-
-//   return {
-//     th: {
-//       color: 'gray.700',
-//       borderBottom: '1px',
-//       borderColor: `${c}.200`,
-//       ...numericStyles,
-//     },
-//     td: {
-//       borderBottom: '1px',
-//       color: 'gray.900',
-//       borderColor: `${c}.200`,
-//       ...numericStyles,
-//     },
-//     caption: {
-//       color: 'gray.700',
-//     },
-//     tfoot: {
-//       tr: {
-//         '&:last-of-type': {
-//           th: { borderBottomWidth: 0 },
-//         },
-//       },
-//     },
-//   };
-// });
-
-// const variantStripe = definePartsStyle((props) => {
-//   const { colorScheme: c } = props;
-
-//   return {
-//     th: {
-//       color: 'gray.600',
-//       borderBottom: '1px',
-//       borderColor: `${c}.200`,
-//       ...numericStyles,
-//     },
-//     td: {
-//       borderBottom: '1px',
-//       borderColor: `${c}.50`,
-//       ...numericStyles,
-//     },
-//     caption: {
-//       color: 'gray.600',
-//     },
-//     tbody: {
-//       tr: {
-//         _odd: {
-//           'th, td': {
-//             borderBottomWidth: '1px',
-//             borderColor: `${c}.50`,
-//             background: `${c}.50`,
-//           },
-//         },
-//         _hover: {
-//           'th, td': {
-//             background: `${c}.100`,
-//           },
-//         },
-//         _last: {
-//           'th, td': {
-//             borderBottomWidth: '1px',
-//             borderColor: `${c}.200`,
-//           },
-//         },
-//       },
-//     },
-//     tfoot: {
-//       tr: {
-//         _last: {
-//           'th, td': { borderBottomWidth: 0 },
-//         },
-//       },
-//     },
-//   };
-// });
-
-// const variants = {
-//   simple: variantSimple,
-//   striped: variantStripe,
-//   unstyled: definePartsStyle({}),
-// };
-
-// const sizes = {
-//   sm: definePartsStyle({
-//     th: {
-//       px: 'xs',
-//       py: 'xs',
-//       textStyle: 'heading5',
-//     },
-//     td: {
-//       px: 'xs',
-//       py: 'xs',
-//       textStyle: 'body',
-//     },
-//     caption: {
-//       px: 'xs',
-//       py: 'xs',
-//       textStyle: 'body',
-//       fontSize: 'sm',
-//     },
-//   }),
-//   md: definePartsStyle({
-//     th: {
-//       px: 'md',
-//       py: 'sm',
-//       textStyle: 'heading4',
-//       fontSize: 'sm',
-//     },
-//     td: {
-//       px: 'md',
-//       py: 'sm',
-//       textStyle: 'body',
-//     },
-//     caption: {
-//       px: 'md',
-//       py: 'sm',
-//       textStyle: 'body',
-//     },
-//   }),
-// };
-
-// const Table = defineMultiStyleConfig({
-//   baseStyle,
-//   variants,
-//   sizes,
-//   defaultProps: {
-//     variant: 'simple',
-//     size: 'md',
-//     colorScheme: 'gray',
-//   },
-// });
-
-// export default Table;
-
-import { defineSlotRecipe } from '@chakra-ui/react';
-
-export const tableSlotRecipe = defineSlotRecipe({
+export const tableRecipe = defineSlotRecipe({
   className: 'chakra-table',
   slots: [
     'root',
@@ -192,27 +28,34 @@ export const tableSlotRecipe = defineSlotRecipe({
       width: 'full',
       textAlign: 'start',
       verticalAlign: 'top',
-    },
-    row: {
-      _selected: {
-        bg: 'colorPalette.subtle',
-      },
+      colorPalette: 'gray',
     },
     cell: {
+      color: 'gray.900',
       textAlign: 'start',
       alignItems: 'center',
+      ...numericStyles,
     },
     columnHeader: {
-      fontWeight: 'medium',
+      color: 'gray.700',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
       textAlign: 'start',
-      color: 'fg',
+      ...numericStyles,
     },
     caption: {
-      fontWeight: 'medium',
-      textStyle: 'xs',
+      textAlign: 'center',
     },
     footer: {
-      fontWeight: 'medium',
+      borderTop: '1px',
+      '&:last-of-type th': {
+        borderBottom: 'none',
+      },
+    },
+    row: {
+      '&:not(:last-of-type)': {
+        borderBottom: 'none',
+      },
     },
   },
   variants: {
@@ -221,19 +64,8 @@ export const tableSlotRecipe = defineSlotRecipe({
         body: {
           '& tr': {
             _hover: {
-              bg: 'colorPalette.subtle',
+              bg: subtleColor,
             },
-          },
-        },
-      },
-    },
-    stickyHeader: {
-      true: {
-        header: {
-          '& :where(tr)': {
-            top: 'var(--table-sticky-offset, 0)',
-            position: 'sticky',
-            zIndex: 1,
           },
         },
       },
@@ -242,8 +74,14 @@ export const tableSlotRecipe = defineSlotRecipe({
       true: {
         row: {
           '&:nth-of-type(odd) td': {
-            bg: 'bg.muted',
+            bg: subtleColor,
           },
+        },
+        cell: {
+          borderColor: subtleColor,
+        },
+        columnHeader: {
+          borderColor: subtleColor,
         },
       },
     },
@@ -264,78 +102,109 @@ export const tableSlotRecipe = defineSlotRecipe({
     variant: {
       line: {
         columnHeader: {
-          borderBottomWidth: '1px',
+          borderBottom: '1px',
+          borderColor,
         },
         cell: {
-          borderBottomWidth: '1px',
+          color: 'gray.900',
+          borderBottom: '1px',
+          borderColor,
         },
-        row: {
-          bg: 'bg',
+        caption: {
+          color: 'gray.700',
         },
       },
       outline: {
-        root: {
-          boxShadow: '0 0 0 1px {colors.border}',
-          overflow: 'hidden',
-        },
         columnHeader: {
-          borderBottomWidth: '1px',
+          borderBottom: '1px',
+          borderColor,
+        },
+        cell: {
+          borderBottom: '1px',
+          borderColor,
         },
         header: {
-          bg: 'bg.muted',
-        },
-        row: {
-          '&:not(:last-of-type)': {
-            borderBottomWidth: '1px',
-          },
+          bg: subtleColor,
         },
         footer: {
-          borderTopWidth: '1px',
+          borderTop: '1px',
+          borderColor,
         },
       },
     },
     size: {
       sm: {
-        root: {
-          textStyle: 'sm',
-        },
         columnHeader: {
-          px: '2',
-          py: '2',
+          px: 'xs',
+          py: 'xs',
+          textStyle: 'heading5',
         },
         cell: {
-          px: '2',
-          py: '2',
+          px: 'xs',
+          py: 'xs',
+          textStyle: 'body',
+        },
+        caption: {
+          px: 'xs',
+          py: 'xs',
+          textStyle: 'body',
+          fontSize: 'sm',
         },
       },
       md: {
-        root: {
-          textStyle: 'sm',
-        },
         columnHeader: {
-          px: '3',
-          py: '3',
+          px: 'md',
+          py: 'sm',
+          textStyle: 'heading4',
+          fontSize: 'sm',
         },
         cell: {
-          px: '3',
-          py: '3',
+          px: 'md',
+          py: 'sm',
+          textStyle: 'body',
         },
-      },
-      lg: {
-        root: {
-          textStyle: 'md',
-        },
-        columnHeader: {
-          px: '4',
-          py: '3',
-        },
-        cell: {
-          px: '4',
-          py: '3',
+        caption: {
+          px: 'md',
+          py: 'sm',
+          textStyle: 'body',
         },
       },
     },
   },
+  compoundVariants: [
+    {
+      interactive: true,
+      striped: true,
+      css: {
+        row: {
+          _hover: {
+            '&:nth-of-type(odd) td': {
+              bg: 'colorPalette.100',
+            },
+          },
+        },
+        body: {
+          '& tr': {
+            _hover: {
+              bg: 'colorPalette.100',
+            },
+          },
+        },
+      },
+    },
+    {
+      striped: true,
+      showColumnBorder: true,
+      css: {
+        cell: {
+          borderColor,
+        },
+        columnHeader: {
+          borderColor,
+        },
+      },
+    },
+  ],
   defaultVariants: {
     variant: 'line',
     size: 'md',
