@@ -18,7 +18,10 @@ export type VehicleReferenceProps = {
   templateColumns?: ComponentProps<typeof Grid>['templateColumns'];
 };
 
-export const VehicleReference: FC<VehicleReferenceProps> = (props) => {
+export const VehicleReference: FC<VehicleReferenceProps> = ({
+  templateColumns = { base: 'auto 1fr', md: '1fr' },
+  ...props
+}) => {
   const recipe = useSlotRecipe({ key: 'VehicleReference' });
   const [recipeProps, componentProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
@@ -30,7 +33,6 @@ export const VehicleReference: FC<VehicleReferenceProps> = (props) => {
     sellerName,
     sellerAddress,
     callToAction,
-    templateColumns = { base: 'auto 1fr', md: '1fr' },
   } = componentProps;
 
   return (
