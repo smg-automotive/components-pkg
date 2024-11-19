@@ -5,7 +5,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { VehicleReference as VehicleReferenceRecipe } from 'src/themes/shared/slotRecipes/vehicleReference';
+import { vehicleReferenceRecipe } from 'src/themes/shared/slotRecipes/vehicleReference';
 
 import { Stack } from '../stack';
 import { MissingImage } from '../missingImage';
@@ -14,7 +14,7 @@ import { Box } from '../box';
 import { AspectRatio } from '../aspectRatio';
 
 type VehicleReferenceVariantProps = RecipeVariantProps<
-  typeof VehicleReferenceRecipe
+  typeof vehicleReferenceRecipe
 >;
 export type VehicleReferenceProps = VehicleReferenceVariantProps & {
   image?: ReactNode;
@@ -30,7 +30,7 @@ export const VehicleReference: FC<VehicleReferenceProps> = ({
   templateColumns = { base: 'auto 1fr', md: '1fr' },
   ...props
 }) => {
-  const recipe = useSlotRecipe({ key: 'VehicleReference' });
+  const recipe = useSlotRecipe({ key: 'vehicleReference' });
   const [recipeProps, componentProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
 

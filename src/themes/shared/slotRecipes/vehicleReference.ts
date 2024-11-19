@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 const wordBreak = 'break-word';
 
-export const VehicleReference = defineSlotRecipe({
+export const vehicleReferenceRecipe = defineSlotRecipe({
   slots: ['carTitle', 'price', 'dealerName', 'dealerAddress'],
   base: {
     carTitle: {

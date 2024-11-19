@@ -1,5 +1,5 @@
-import { VehicleReference } from './vehicleReference';
+import { vehicleReferenceRecipe as vehicleReference } from './vehicleReference';
 
 export const slotRecipes = {
-  VehicleReference,
+  vehicleReference,
 };
