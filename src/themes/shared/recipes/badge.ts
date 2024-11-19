@@ -1,30 +1,29 @@
-import { ComponentStyleConfig, defineStyle } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react';
 
-const baseStyle = defineStyle(({ theme }) => {
-  const color = theme.name === 'AutoScout 24' ? 'black' : 'white';
-
-  return {
-    paddingX: 'xs',
-    paddingY: 'xxs',
+export const badgeRecipe = defineRecipe({
+  base: {
     textTransform: 'uppercase',
     fontSize: 'xs',
-    fontWeight: '700',
+    fontWeight: 'bold',
     background: 'brand.primary',
-    color,
-  };
-});
-
-const navigationLinkBadge = {
-  paddingX: 'xxs',
-  paddingY: 'xxs',
-  position: 'relative',
-  top: '-xs',
-  lineHeight: '100%',
-};
-
-export default {
-  baseStyle,
-  variants: {
-    navigationLinkBadge,
+    color: 'brand.fg',
   },
-} as ComponentStyleConfig;
+  variants: {
+    variant: {
+      base: {
+        paddingX: 'xs',
+        paddingY: 'xxs',
+      },
+      navigationLinkBadge: {
+        paddingX: 'xxs',
+        paddingY: 'xxs',
+        position: 'relative',
+        top: '-xs',
+        lineHeight: 'full',
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'base',
+  },
+});

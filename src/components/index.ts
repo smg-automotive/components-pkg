@@ -1,4 +1,5 @@
 export * from './aspectRatio';
+export * from './badge';
 export * from './box';
 export * from './grid';
 export * from './icons';

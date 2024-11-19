@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import BadgeComponent from './index';
+import { Badge } from './index';
 
-const meta: Meta<typeof BadgeComponent> = {
+const meta: Meta<typeof Badge> = {
   title: 'Components/Data Display/Badge',
-  component: BadgeComponent,
+  component: Badge,
 
   args: {
     text: 'Example Badge',
@@ -20,4 +20,4 @@ const meta: Meta<typeof BadgeComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof BadgeComponent> = {};
+export const Overview: StoryObj<typeof Badge> = {};
