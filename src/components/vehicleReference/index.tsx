@@ -1,6 +1,11 @@
 import React, { ComponentProps, FC, ReactNode } from 'react';
+import {
+  chakra,
+  type RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-import { chakra, useSlotRecipe } from '@chakra-ui/react';
+import { VehicleReference as VehicleReferenceRecipe } from 'src/themes/shared/slotRecipes/vehicleReference';
 
 import { Stack } from '../stack';
 import { MissingImage } from '../missingImage';
@@ -8,7 +13,10 @@ import { Grid } from '../grid';
 import { Box } from '../box';
 import { AspectRatio } from '../aspectRatio';
 
-export type VehicleReferenceProps = {
+type VehicleReferenceVariantProps = RecipeVariantProps<
+  typeof VehicleReferenceRecipe
+>;
+export type VehicleReferenceProps = VehicleReferenceVariantProps & {
   image?: ReactNode;
   vehicleTitle: string;
   price?: string | null;
