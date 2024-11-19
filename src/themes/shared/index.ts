@@ -14,6 +14,7 @@ import { aspectRatios } from './tokens/aspectRatios';
 
 import { textStyles } from './textStyles';
 import { slotRecipes } from './slotRecipes';
+import { recipes } from './recipes';
 import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
 
@@ -38,6 +39,7 @@ export const sharedConfig = {
       borders,
       aspectRatios,
     },
+    recipes,
     slotRecipes,
   },
 };
