@@ -18,7 +18,7 @@ import { recipes } from './recipes';
 import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
 
-export const sharedConfig = {
+export const getSharedConfig = () => ({
   strictTokens: true,
   globalCss,
   theme: {
@@ -42,6 +42,6 @@ export const sharedConfig = {
     recipes,
     slotRecipes,
   },
-};
+});
 
 export { breakpoints } from './breakpoints';
