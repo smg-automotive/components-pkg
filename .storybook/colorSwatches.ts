@@ -1,6 +1,7 @@
-import { sharedConfig } from '../src/themes/shared';
+import { getSharedConfig } from '../src/themes/shared';
 import { autoScout24System, motoScout24System } from '../src/themes';
 
+const sharedConfig = getSharedConfig();
 export const presetColors = [
   {
     color: autoScout24System.token('colors.brand.100'),

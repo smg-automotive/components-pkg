@@ -1,9 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sharedConfig } from 'src/themes/shared/index';
+import { getSharedConfig } from 'src/themes/shared/index';
 
 import { Box } from './index';
 
+const sharedConfig = getSharedConfig();
 const meta: Meta<typeof Box> = {
   title: 'Layout/Box',
   component: Box,

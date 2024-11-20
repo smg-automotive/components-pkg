@@ -1,10 +1,12 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sharedConfig } from 'src/themes/shared';
+import { getSharedConfig } from 'src/themes/shared';
 import { Box } from 'src';
 
 import { Stack, StackProps, StackSeparator } from './index';
+
+const sharedConfig = getSharedConfig();
 
 const meta: Meta<typeof Stack> = {
   title: 'Layout/Stack',

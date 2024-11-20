@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sharedConfig } from 'src/themes/shared';
+import { getSharedConfig } from 'src/themes/shared';
 
 import { MissingImage } from './index';
+
+const sharedConfig = getSharedConfig();
 
 const meta: Meta<typeof MissingImage> = {
   title: 'Patterns/Data display/Missing image',
