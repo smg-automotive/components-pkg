@@ -15,7 +15,7 @@ import { textStyles } from './textStyles';
 import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
 
-export const sharedConfig = {
+export const getSharedConfig = () => ({
   strictTokens: true,
   globalCss,
   theme: {
@@ -36,6 +36,6 @@ export const sharedConfig = {
       borders,
     },
   },
-};
+});
 
 export { breakpoints } from './breakpoints';
