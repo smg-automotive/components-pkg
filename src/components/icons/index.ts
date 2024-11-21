@@ -138,5 +138,4 @@ export { BulbIcon } from './BulbIcon';
 export { NoPhotoIcon } from './NoPhotoIcon';
 export { ThumbsUpIcon } from './ThumbsUpIcon';
 export { ThumbsDownIcon } from './ThumbsDownIcon';
-export { SparklingCarIcon } from './SparklingCarIcon';
 export { MinusIcon } from './MinusIcon';
