@@ -1,7 +1,7 @@
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
-import { autoScout24System } from '../src/themes';
+import { autoScout24System } from 'src/themes';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],

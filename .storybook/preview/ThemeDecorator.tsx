@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-imports */
 import React from 'react';
 import {
   ensure as ensureTheme,
@@ -12,9 +11,10 @@ import {
   SystemContext,
 } from '@chakra-ui/react';
 
+import { autoScout24System, motoScout24System } from 'src/themes';
+import Fonts from 'src/fonts/Hosted';
+
 import storybookTheme from '../theme';
-import { autoScout24System, motoScout24System } from '../../src/themes';
-import Fonts from '../../src/fonts/Hosted';
 
 export const themeSwitcherOptions = [
   {
@@ -77,13 +77,13 @@ export const themeSwitcherOptions = [
   },
 ];
 
-const themesByName: Record<
-  string,
-  Array<{ name: string; theme: SystemContext }>
-> = themeSwitcherOptions.reduce((acc, { value, chakraThemes }) => {
-  acc[value] = chakraThemes;
-  return acc;
-}, {});
+const themesByName = themeSwitcherOptions.reduce(
+  (acc, { value, chakraThemes }) => {
+    acc[value] = chakraThemes;
+    return acc;
+  },
+  {} as Record<string, Array<{ name: string; theme: SystemContext }>>,
+);
 
 export const withThemeDecorator: Decorator = (Story, context) => {
   const storyTheme = context.globals.theme || 'autoScout24';

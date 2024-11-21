@@ -1,7 +1,8 @@
 /* eslint-disable unicorn/filename-case */
 import { Preview } from '@storybook/react';
 
-import { breakpoints } from '../src/themes';
+import { breakpoints } from 'src/themes';
+
 import storybookTheme from './theme';
 import {
   themeSwitcherOptions,
