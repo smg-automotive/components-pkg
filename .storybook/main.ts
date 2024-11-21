@@ -1,4 +1,4 @@
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 import { autoScout24System } from 'src/themes';
@@ -63,8 +63,12 @@ const config: StorybookConfig = {
   ],
   webpackFinal: async (webpack) => {
     webpack.resolve = webpack.resolve || {};
-    webpack.resolve.plugins = webpack.resolve.plugins || [];
-    webpack.resolve.plugins.push(new TsconfigPathsPlugin({}));
+    webpack.resolve.modules = [
+      ...(webpack.resolve.modules || []),
+      path.resolve(__dirname, '..'),
+    ];
+    // webpack.resolve.plugins = webpack.resolve.plugins || [];
+    // webpack.resolve.plugins.push(new TsconfigPathsPlugin({}));
     return webpack;
   },
 };

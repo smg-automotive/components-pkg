@@ -8,31 +8,24 @@ import {
   themeSwitcherOptions,
   withThemeDecorator,
 } from './preview/ThemeDecorator';
-import { presetColors } from './colorSwatches';
+import { colorControls } from './preview/controls';
 
-const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
-  acc[key] = {
-    name: key,
-    styles: {
-      width: `${value.em}em`,
-      height: '100%',
-    },
-  };
-  return acc;
-}, {});
-
-const colorControl = (arg: string) => ({
-  [arg]: {
-    control: {
-      type: 'color' as const,
-      presetColors,
-    },
-    if: {
-      arg,
-      exists: true,
-    },
+const viewports = Object.entries(breakpoints).reduce(
+  (acc, [key, value]) => {
+    acc[key] = {
+      name: key,
+      styles: {
+        width: `${value.em}em`,
+        height: '100%',
+      },
+    };
+    return acc;
   },
-});
+  {} as Record<
+    string,
+    { name: string; styles: { width: string; height: string } }
+  >,
+);
 
 const preview: Preview = {
   decorators: [withThemeDecorator],
@@ -75,10 +68,7 @@ const preview: Preview = {
         exists: true,
       },
     },
-    ...['color', 'backgroundColor', 'borderColor'].reduce(
-      (acc, arg) => ({ ...acc, ...colorControl(arg) }),
-      {},
-    ),
+    ...colorControls,
   },
   parameters: {
     docs: {
