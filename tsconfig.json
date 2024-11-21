@@ -21,8 +21,5 @@
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
   "exclude": ["dist", "node_modules"],
-  "include": [
-    "src/**/*",
-    ".storybook/**/*",
-  ]
+  "include": ["src/**/*", ".storybook/**/*"]
 }
