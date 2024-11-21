@@ -4,11 +4,11 @@ import { createIcon, IconProps } from '@chakra-ui/react';
 
 export const DoubleChevronDownIcon: ComponentWithAs<'svg', IconProps> =
   createIcon({
-    displayName: 'DoubleChevronDownIcon',
+    displayName: 'DoubleChevronDown',
     viewBox: '0 0 24 24',
     path: (
       <>
-        <title>Double Chevron Down Icon</title>
+        <title>Double chevron down icon</title>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

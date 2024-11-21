@@ -4,11 +4,11 @@ import { createIcon, IconProps } from '@chakra-ui/react';
 
 export const NotAvailableSquareIcon: ComponentWithAs<'svg', IconProps> =
   createIcon({
-    displayName: 'NotAvailableSquareIcon',
+    displayName: 'NotAvailableSquare',
     viewBox: '0 0 24 24',
     path: (
       <>
-        <title>Not Available Square Icon</title>
+        <title>Not available square icon</title>
         <path fill="none" d="M.0012.0005h24v23.9998h-24z" />
         <path fill="#EAEAEA" d="M4.0017 4.0014h16.0004v16.0003H4.0017z" />
         <path
