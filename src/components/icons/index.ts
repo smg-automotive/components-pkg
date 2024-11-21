@@ -140,3 +140,7 @@ export { ThumbsUpIcon } from './ThumbsUpIcon';
 export { ThumbsDownIcon } from './ThumbsDownIcon';
 export { SparklingCarIcon } from './SparklingCarIcon';
 export { MinusIcon } from './MinusIcon';
+export { DoubleChevronUpIcon } from './DoubleChevronUpIcon';
+export { DoubleChevronDownIcon } from './DoubleChevronDownIcon';
+export { DoubleLineIcon } from './DoubleLineIcon';
+export { NotAvailableSquareIcon } from './NotAvailableSquareIcon';
