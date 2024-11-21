@@ -8,7 +8,7 @@ import {
   themeSwitcherOptions,
   withThemeDecorator,
 } from './preview/ThemeDecorator';
-import { colorControls } from './preview/controls';
+import { colorControls, tokenControls } from './preview/controls';
 
 const viewports = Object.entries(breakpoints).reduce(
   (acc, [key, value]) => {
@@ -68,6 +68,7 @@ const preview: Preview = {
         exists: true,
       },
     },
+    ...tokenControls,
     ...colorControls,
   },
   parameters: {
