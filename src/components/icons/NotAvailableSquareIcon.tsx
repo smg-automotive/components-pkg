@@ -10,7 +10,7 @@ export const NotAvailableSquareIcon: ComponentWithAs<'svg', IconProps> =
       <>
         <title>Not available square icon</title>
         <path fill="none" d="M.0012.0005h24v23.9998h-24z" />
-        <path fill="#EAEAEA" d="M4.0017 4.0014h16.0004v16.0003H4.0017z" />
+        <path fill="currentColor" d="M4.0017 4.0014h16.0004v16.0003H4.0017z" />
         <path
           fill="none"
           stroke="#858585"
