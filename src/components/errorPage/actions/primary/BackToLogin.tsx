@@ -6,10 +6,13 @@ import { ActionButtonInterface } from '../interface';
 
 const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
   const languageToUse = language === 'en' ? 'de' : language;
+  const logoutLink = `/${languageToUse}/account/logoff`;
   const loginLink = `/${languageToUse}/account/logon`;
+  const query = `?returnurl=${encodeURIComponent(loginLink)}`;
+  const loginWithLogoutLink = `${logoutLink}${query}`;
 
   return (
-    <Button as="a" href={loginLink}>
+    <Button as="a" href={loginWithLogoutLink}>
       {t('errorPage.backToLogin')}
     </Button>
   );
