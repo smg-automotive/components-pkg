@@ -12,7 +12,7 @@ export const DoubleChevronUpIcon: ComponentWithAs<'svg', IconProps> =
         <path
           fillRule="evenodd"
           clipRule="evenodd"
-          d="M6.632 18.1726l5.3487-4.3198 5.3987 4.3215 1.2498-1.5617-6.6531-5.3255-6.6001 5.3288 1.256 1.5567ZM6.632 12.7106l5.3487-4.3198 5.3987 4.3215 1.2498-1.5617-6.6531-5.3255L5.376 11.1159l1.256 1.5567Z"
+          d="M5 17L6.415 18.415L12 12.83L17.589 18.415L19 17L12 10L5 17ZM5 11L6.415 12.415L12 6.83L17.589 12.415L19 11L12 4L5 11Z"
           fill="currentColor"
         />
       </>
