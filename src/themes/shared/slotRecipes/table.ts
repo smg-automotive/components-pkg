@@ -1,10 +1,4 @@
-import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
-
-const numericStyles = defineStyle({
-  '&[data-is-numeric=true]': {
-    textAlign: 'end',
-  },
-});
+import { defineSlotRecipe } from '@chakra-ui/react';
 
 const borderColor = 'colorPalette.200';
 const subtleColor = 'colorPalette.50';
@@ -34,14 +28,12 @@ export const tableRecipe = defineSlotRecipe({
       color: 'gray.900',
       textAlign: 'start',
       alignItems: 'center',
-      ...numericStyles,
     },
     columnHeader: {
       color: 'gray.700',
       fontWeight: 'bold',
       textTransform: 'uppercase',
       textAlign: 'start',
-      ...numericStyles,
     },
     caption: {
       textAlign: 'center',
