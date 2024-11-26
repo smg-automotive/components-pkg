@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { colors } from 'src/themes/shared/tokens/colors';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import { Table } from './index';
 
@@ -48,7 +48,7 @@ const meta: Meta<typeof Table.Root> = {
   ),
 
   args: {
-    variant: 'line',
+    variant: 'line' as const,
     interactive: false,
     striped: false,
     showColumnBorder: false,
@@ -57,18 +57,7 @@ const meta: Meta<typeof Table.Root> = {
   },
 
   argTypes: {
-    variant: {
-      options: ['line', 'outline'],
-      control: 'select',
-    },
-    size: {
-      options: ['sm', 'md'],
-      control: 'select',
-    },
-    colorPalette: {
-      options: Object.keys(colors),
-      control: 'select',
-    },
+    ...getRecipeControls('table'),
   },
 };
 export default meta;

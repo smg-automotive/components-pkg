@@ -1,12 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getSharedConfig } from 'src/themes/shared';
 import { Box } from 'src';
 
 import { Stack, StackProps, StackSeparator } from './index';
-
-const sharedConfig = getSharedConfig();
 
 const meta: Meta<typeof Stack> = {
   title: 'Layout/Stack',
@@ -28,6 +25,7 @@ const meta: Meta<typeof Stack> = {
     margin: '0',
     padding: '0',
     width: '8xl',
+    separator: 'none' as unknown as StackProps['separator'],
   },
 
   argTypes: {
@@ -54,6 +52,14 @@ const meta: Meta<typeof Stack> = {
         ],
       },
     },
+    separator: {
+      control: { type: 'select' },
+      options: ['none', '<StackSeparator />'],
+      mapping: {
+        none: undefined,
+        '<StackSeparator />': <StackSeparator />,
+      },
+    },
 
     direction: {
       control: { type: 'select' },
@@ -70,25 +76,6 @@ const meta: Meta<typeof Stack> = {
         'center',
         'end',
       ],
-    },
-
-    gap: {
-      control: { type: 'select' },
-      options: Object.keys(sharedConfig.theme.tokens.spacing),
-    },
-
-    margin: {
-      control: { type: 'select' },
-      options: Object.keys(sharedConfig.theme.tokens.spacing),
-    },
-
-    padding: {
-      control: { type: 'select' },
-      options: Object.keys(sharedConfig.theme.tokens.spacing),
-    },
-
-    width: {
-      control: { type: 'number' },
     },
 
     wrap: {
@@ -112,28 +99,10 @@ export const Responsive: StoryType = {
       sm: 'row',
     },
   },
-
-  argTypes: {
-    direction: {
-      table: {
-        disable: true,
-      },
-    },
-  },
 };
 
 export const WithASeparator: StoryType = {
   args: {
-    separator: 'separator' as unknown as StackProps['separator'],
-  },
-  argTypes: {
-    separator: {
-      table: {
-        disable: true,
-      },
-      mapping: {
-        separator: <StackSeparator />,
-      },
-    },
+    separator: '<StackSeparator />' as unknown as StackProps['separator'],
   },
 };

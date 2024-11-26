@@ -1,10 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getSharedConfig } from 'src/themes/shared/index';
-
 import { Box } from './index';
 
-const sharedConfig = getSharedConfig();
 const meta: Meta<typeof Box> = {
   title: 'Layout/Box',
   component: Box,
@@ -23,13 +20,10 @@ const meta: Meta<typeof Box> = {
     children: 'I am a box',
   },
   argTypes: {
-    padding: {
-      control: { type: 'select' },
-      options: Object.keys(sharedConfig.theme.tokens.spacing),
-    },
-    border: {
-      control: { type: 'select' },
-      options: Object.keys(sharedConfig.theme.tokens.borders),
+    children: {
+      table: {
+        disable: true,
+      },
     },
   },
 };

@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { Badge } from './index';
 
 const meta: Meta<typeof Badge> = {
@@ -12,10 +14,7 @@ const meta: Meta<typeof Badge> = {
   },
 
   argTypes: {
-    variant: {
-      options: ['base', 'navigationLinkBadge'],
-      control: { type: 'select' },
-    },
+    ...getRecipeControls('badge'),
   },
 };
 export default meta;
