@@ -64,10 +64,10 @@ const config: Record<
   },
   UNVERIFIED_EMAIL: {
     illustration: errorIllustrationNotFound,
-    buttonColumns: 1,
+    buttonColumns: 2,
     content: Nonce,
-    primaryAction: Nonce,
-    secondaryAction: Nonce,
+    primaryAction: BackToLogin,
+    secondaryAction: ContactSupport,
   },
   USER_BLOCKED: {
     illustration: errorIllustrationNotFound,
