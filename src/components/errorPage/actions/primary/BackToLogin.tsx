@@ -9,10 +9,10 @@ const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
   const logoutLink = `/${languageToUse}/account/logoff`;
   const loginLink = `/${languageToUse}/account/logon`;
   const query = `?returnurl=${encodeURIComponent(loginLink)}`;
-  const loginWithLogoutLink = `${logoutLink}${query}`;
+  const logoutBeforeLoginLink = `${logoutLink}${query}`;
 
   return (
-    <Button as="a" href={loginWithLogoutLink}>
+    <Button as="a" href={logoutBeforeLoginLink}>
       {t('errorPage.backToLogin')}
     </Button>
   );
