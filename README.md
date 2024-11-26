@@ -10,6 +10,7 @@
    ```sh
    npm install @smg-automotive/components
    ```
+
 2. run the setup script
    ```sh
    npx components setup --path=<path to you public dir>
@@ -72,6 +73,10 @@
      ```
 
      We recommend adding fallback font families of `Arial, Helvetica, Sans-Serif`
+
+## Migrating to chakra-ui v3
+
+When migrating to chakra-ui v3, we introduced a set of breaking changes aligning with the parent library. You can get the overview of the changes in our components in the [migration guide](./migration-guide.md)
 
 ## Development
 
