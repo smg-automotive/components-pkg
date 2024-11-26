@@ -12,6 +12,7 @@ export const motoScout24Config = mergeConfigs(getSharedConfig(), {
     semanticTokens: {
       colors: {
         brand: {
+          fg: { value: '{colors.white}' },
           primary: { value: '{colors.brand.400}' },
           btnShadow: { value: '{colors.brand.600}' },
         },

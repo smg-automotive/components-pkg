@@ -12,6 +12,7 @@ export const autoScout24Config = mergeConfigs(getSharedConfig(), {
     semanticTokens: {
       colors: {
         brand: {
+          fg: { value: '{colors.black}' },
           primary: { value: '{colors.brand.100}' },
           btnShadow: { value: '{colors.brand.300}' },
         },

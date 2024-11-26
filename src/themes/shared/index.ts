@@ -10,8 +10,11 @@ import { fontSizes } from './tokens/fontSizes';
 import { fonts } from './tokens/fonts';
 import { colors } from './tokens/colors';
 import { borders } from './tokens/borders';
+import { aspectRatios } from './tokens/aspectRatios';
 
 import { textStyles } from './textStyles';
+import { slotRecipes } from './slotRecipes';
+import { recipes } from './recipes';
 import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
 
@@ -34,7 +37,10 @@ export const getSharedConfig = () => ({
       fonts,
       colors,
       borders,
+      aspectRatios,
     },
+    recipes,
+    slotRecipes,
   },
 });
 
