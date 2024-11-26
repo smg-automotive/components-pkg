@@ -34,6 +34,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   header,
   children,
   triggerHeight = 'md',
+  isDisabled,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -89,6 +90,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   justifyContent="space-between"
                   minW="0"
                   paddingX="md"
+                  isDisabled={isDisabled}
                   rightIcon={
                     displayValue ? undefined : (
                       <ChevronDownSmallIcon
