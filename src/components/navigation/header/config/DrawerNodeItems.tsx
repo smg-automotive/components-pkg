@@ -1115,19 +1115,19 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.emailAddress',
           link: {
-            de: '/de/member/masterdata/changeemail',
-            en: '/de/member/masterdata/changeemail',
-            fr: '/fr/member/masterdata/changeemail',
-            it: '/it/member/masterdata/changeemail',
+            de: '/de/account/change-email',
+            en: '/en/account/change-email',
+            fr: '/fr/account/change-email',
+            it: '/it/account/change-email',
           },
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
-              motoscout24: false,
+              motoscout24: true,
             },
           },
         },
