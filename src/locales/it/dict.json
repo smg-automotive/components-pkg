@@ -28,6 +28,10 @@
       "description": "Puoi richiedere una nuova modifica dell'email dal tuo account oppure contattare l'assistenza clienti.",
       "title": "Questo link è scaduto o non è valido"
     },
+    "INITIAL_UNVERIFIED_EMAIL": {
+      "description": "Quasi fatto, per accedere controlla la tua casella di posta e clicca sul link di verifica.",
+      "title": "Verifica il tuo indirizzo email"
+    },
     "reloadPage": "Ricaricare la pagina",
     "UNKNOWN_AUTH_ERROR": {
       "description": "Abbiamo difficoltà a effettuare il tuo accesso. Per favore, riprova e, se il problema persiste, contatta il nostro team del servizio clienti per assistenza.",
