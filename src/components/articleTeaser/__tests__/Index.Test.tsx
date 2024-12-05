@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '.jest/utils';
 
-import ArticleTeaser from '..';
+import { ArticleTeaser } from '..';
 
 const renderWrapper = ({
   title = 'title',
