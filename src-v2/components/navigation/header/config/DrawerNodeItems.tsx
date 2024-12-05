@@ -898,10 +898,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.bookmarks',
           link: {
-            de: '/de/member/favorites',
-            en: '/de/member/favorites',
-            fr: '/fr/member/favorites',
-            it: '/it/member/favorites',
+            de: '/de/me/favorites',
+            en: '/de/me/favorites',
+            fr: '/fr/me/favorites',
+            it: '/it/me/favorites',
           },
           visibilitySettings: {
             userType: {
