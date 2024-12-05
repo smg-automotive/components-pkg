@@ -9,7 +9,7 @@ const meta: Meta<typeof ArticleTeaser> = {
   component: ArticleTeaser,
   decorators: [
     (Story) => (
-      <Box maxWidth={{ '2xs': '100%', md: '600px' }}>
+      <Box maxWidth={{ '2xs': 'full', md: '7xl' }}>
         <Story />
       </Box>
     ),
