@@ -3,9 +3,9 @@ import { chakra, ResponsiveValue, useSlotRecipe } from '@chakra-ui/react';
 
 import { Sizes } from 'src/themes';
 
-import Stack from '../stack';
+import { Stack } from '../stack';
 
-export type Props = {
+export type ArticleTeaserProps = {
   title: string;
   text: string;
   imageUrl: string;
@@ -13,7 +13,7 @@ export type Props = {
   maxImgW?: ResponsiveValue<Sizes>;
 };
 
-const ArticleTeaser: FC<Props> = ({
+export const ArticleTeaser: FC<ArticleTeaserProps> = ({
   title,
   text,
   imageUrl,
@@ -38,5 +38,3 @@ const ArticleTeaser: FC<Props> = ({
     </article>
   );
 };
-
-export { ArticleTeaser };
