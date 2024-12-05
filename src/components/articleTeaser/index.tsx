@@ -1,28 +1,34 @@
 import React, { FC } from 'react';
-import { chakra, ResponsiveValue, useSlotRecipe } from '@chakra-ui/react';
+import {
+  BoxProps,
+  chakra,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-import { Sizes } from 'src/themes';
+import { articleTeaserRecipe } from 'src/themes/shared/slotRecipes/articleTeaser';
 
 import { Stack } from '../stack';
 
-export type ArticleTeaserProps = {
+type ArticleTeaserVariantProps = RecipeVariantProps<typeof articleTeaserRecipe>;
+
+export type ArticleTeaserProps = ArticleTeaserVariantProps & {
   title: string;
   text: string;
   imageUrl: string;
   url: string;
-  maxImgW?: ResponsiveValue<Sizes>;
+  maxImgW?: BoxProps['maxWidth'];
 };
 
 export const ArticleTeaser: FC<ArticleTeaserProps> = ({
-  title,
-  text,
-  imageUrl,
-  url,
   maxImgW = '4xl',
+  ...props
 }) => {
   const recipe = useSlotRecipe({ key: 'articleTeaser' });
-  const [recipeProps, componentProps] = recipe.splitVariantProps({});
+  const [recipeProps, componentProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
+
+  const { title, text, imageUrl, url } = componentProps;
 
   return (
     <article>
