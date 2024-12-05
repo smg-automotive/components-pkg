@@ -1,3 +1,4 @@
+export * from './articleTeaser';
 export * from './aspectRatio';
 export * from './badge';
 export * from './box';
