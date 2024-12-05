@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
-const ArticleTeaser = defineSlotRecipe({
+export const articleTeaserRecipe = defineSlotRecipe({
   slots: ['title', 'text'],
   base: {
     title: {
@@ -13,5 +13,3 @@ const ArticleTeaser = defineSlotRecipe({
     },
   },
 });
-
-export { ArticleTeaser };
