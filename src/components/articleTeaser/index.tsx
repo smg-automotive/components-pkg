@@ -27,9 +27,9 @@ export const ArticleTeaser: FC<ArticleTeaserProps> = ({
   return (
     <article>
       <a href={url} target="_blank" rel="noopener noreferrer">
-        <Stack direction="column" spacing="lg" align="center">
+        <Stack direction="column" gap="lg" align="center">
           <chakra.img maxWidth={maxImgW} src={imageUrl} />
-          <Stack direction="column" spacing="sm" width="full">
+          <Stack direction="column" gap="sm" width="full">
             <chakra.h2 css={styles.title}>{title}</chakra.h2>
             <chakra.span css={styles.text}>{text}</chakra.span>
           </Stack>
