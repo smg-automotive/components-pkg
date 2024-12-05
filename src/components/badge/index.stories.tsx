@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import BadgeComponent from './index';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-const meta: Meta<typeof BadgeComponent> = {
+import { Badge } from './index';
+
+const meta: Meta<typeof Badge> = {
   title: 'Components/Data Display/Badge',
-  component: BadgeComponent,
+  component: Badge,
 
   args: {
     text: 'Example Badge',
@@ -12,12 +14,9 @@ const meta: Meta<typeof BadgeComponent> = {
   },
 
   argTypes: {
-    variant: {
-      options: ['base', 'navigationLinkBadge'],
-      control: { type: 'select' },
-    },
+    ...getRecipeControls('badge'),
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof BadgeComponent> = {};
+export const Overview: StoryObj<typeof Badge> = {};

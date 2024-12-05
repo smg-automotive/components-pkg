@@ -1,0 +1,70 @@
+# Migration guide
+
+<!-- TODO: add accurate version numbers here -->
+## From chakra-ui v2 to chakra-ui v3
+
+### Global changes in spacing props
+
+Passing objects with side keys as `padding` and `margin` props is no longer supported. For the components where we whitelisted those props - all respective sides are now whitelisted. Use the one prop per side instead.
+
+#### Before
+
+```tsx
+<Box margin={{ top: 'sm', left: 'md' }}>I am a box</Box>
+```
+
+#### After
+
+```tsx
+<Box marginTop="sm" marginLeft="md">I am a box</Box>
+```
+
+### Removed props
+
+- `Table.Cell` and `Table.ColumnHeader` no longer accept `isNumeric` prop.
+
+  You can use `textAlign="end"` instead.
+
+### Namespace style components
+
+The following components now use the `namespace` style imports:
+
+- `Table`
+
+#### Before
+
+```tsx
+import { Table, Tbody, Tr, Td } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <Table>
+    <Tbody>
+      <Tr>
+        <Td>Cell 1</Td>
+        <Td>Cell 2</Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+```
+
+#### After
+
+```tsx
+import { Table } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <Table.Root>
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell>Cell 1</Table.Cell>
+        <Table.Cell>Cell 2</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+)
+```
+
+### Parent library changes
+
+Refer to [chakra-ui v2 to v3 migration guide](https://chakra-ui.com/docs/features/chakra-ui-v3) for more changes.
