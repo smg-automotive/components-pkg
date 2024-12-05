@@ -2,6 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
+import { tokenControl } from '.storybook/preview/controls/token';
+
 import { ArticleTeaser } from './index';
 
 const meta: Meta<typeof ArticleTeaser> = {
@@ -21,6 +23,9 @@ const meta: Meta<typeof ArticleTeaser> = {
     url: 'https://picsum.photos/',
     imageUrl: 'https://picsum.photos/320/320',
     maxImgW: '4xl',
+  },
+  argTypes: {
+    ...tokenControl({ name: 'maxImgW', token: 'sizes' }),
   },
 };
 
