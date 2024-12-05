@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { chakra, ResponsiveValue, useMultiStyleConfig } from '@chakra-ui/react';
+import { chakra, ResponsiveValue, useSlotRecipe } from '@chakra-ui/react';
 
 import { Sizes } from 'src/themes';
 
@@ -20,16 +20,18 @@ const ArticleTeaser: FC<Props> = ({
   url,
   maxImgW = '4xl',
 }) => {
-  const styles = useMultiStyleConfig('ArticleTeaser');
+  const recipe = useSlotRecipe({ key: 'articleTeaser' });
+  const [recipeProps, componentProps] = recipe.splitVariantProps({});
+  const styles = recipe(recipeProps);
 
   return (
     <article>
       <a href={url} target="_blank" rel="noopener noreferrer">
         <Stack direction="column" spacing="lg" align="center">
-          <chakra.img maxW={maxImgW} src={imageUrl} />
+          <chakra.img maxWidth={maxImgW} src={imageUrl} />
           <Stack direction="column" spacing="sm" width="full">
-            <chakra.h2 __css={styles.title}>{title}</chakra.h2>
-            <chakra.span __css={styles.text}>{text}</chakra.span>
+            <chakra.h2 css={styles.title}>{title}</chakra.h2>
+            <chakra.span css={styles.text}>{text}</chakra.span>
           </Stack>
         </Stack>
       </a>
@@ -37,4 +39,4 @@ const ArticleTeaser: FC<Props> = ({
   );
 };
 
-export default ArticleTeaser;
+export { ArticleTeaser };

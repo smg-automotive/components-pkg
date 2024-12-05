@@ -1,20 +1,17 @@
-import { ComponentMultiStyleConfig, SystemStyleObject } from '@chakra-ui/react';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-const title: SystemStyleObject = {
-  textStyle: 'heading3',
-  color: 'blue.700',
-};
-const text: SystemStyleObject = {
-  textStyle: 'body',
-  color: 'gray.900',
-};
-
-const ArticleTeaser: ComponentMultiStyleConfig = {
-  parts: ['title', 'text'],
-  baseStyle: {
-    title,
-    text,
+const ArticleTeaser = defineSlotRecipe({
+  slots: ['title', 'text'],
+  base: {
+    title: {
+      textStyle: 'heading3',
+      color: 'blue.700',
+    },
+    text: {
+      textStyle: 'body',
+      color: 'gray.900',
+    },
   },
-};
+});
 
-export default ArticleTeaser;
+export { ArticleTeaser };
