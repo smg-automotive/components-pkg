@@ -91,6 +91,7 @@ export { UtilityVehicleIcon } from './UtilityVehicleIcon';
 export { VehiclePowerIcon } from './VehiclePowerIcon';
 export { VehicleTypesMotorcycleIcon } from './VehicleTypesMotorcycleIcon';
 export { VideoIcon } from './VideoIcon';
+export { VideoCameraIcon } from './VideoCameraIcon';
 export { ViewCarIcon } from './ViewCarIcon';
 export { DriveSystemLargeIcon } from './DriveSystemLargeIcon';
 export { WarningIcon } from './WarningIcon';
