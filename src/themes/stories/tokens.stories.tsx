@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorPalette } from '@storybook/blocks';
+import { ColorPalette, Story } from '@storybook/blocks';
 import { Box, chakra } from '@chakra-ui/react';
 
 import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
@@ -70,6 +70,23 @@ export const Colors: StoryType = {
     <ColorPalette>
       <ColorShowcase />
     </ColorPalette>
+  ),
+};
+
+export const Cursors: StoryType = {
+  render: () => (
+    <TokenShowcase<'cursor'>
+      tokenPath="cursor"
+      renderDemo={(name) => (
+        <Box
+          cursor={name}
+          _hover={{ cursor: name }}
+          w="3xl"
+          h="3xl"
+          bg="red.200"
+        />
+      )}
+    />
   ),
 };
 
