@@ -7,13 +7,11 @@ export const linkRecipe = defineRecipe({
     display: 'inline-flex',
     gap: 'md',
     flexDirection: 'row',
+    fontWeight: 'regular',
+    alignItems: 'center',
     _active: {
       textDecoration: 'none',
       color: 'gray.900',
-    },
-    _disabled: {
-      textDecoration: 'none',
-      color: 'gray.500',
     },
   },
 
@@ -55,6 +53,16 @@ export const linkRecipe = defineRecipe({
         },
         _visited: {
           color: 'white',
+        },
+      },
+    },
+    disabled: {
+      true: {
+        textDecoration: 'none',
+        pointerEvents: 'none',
+        color: 'gray.500',
+        _hover: {
+          textDecoration: 'none',
         },
       },
     },

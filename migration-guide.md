@@ -25,6 +25,12 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 
   You can use `textAlign="end"` instead.
 
+- `Link` no longer accepts `leftIcon` and `rightIcon` props.
+
+  Pass icons as children instead.
+
+- To use `Link` with NextJs `NextLink` leverage `asChild` prop instead of `as`
+
 ### Namespace style components
 
 The following components now use the `namespace` style imports:
