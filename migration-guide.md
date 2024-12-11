@@ -25,6 +25,18 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 
   You can use `textAlign="end"` instead.
 
+  **Reasoning** `isNumeric` was removed from chakra, we decided to not provide a custom implementation.
+
+- `Link` no longer accepts `leftIcon` and `rightIcon` props.
+
+  Pass icons as children instead.
+
+  **Reasoning** We added them as props to apply space. Turns out we can leverage flex layout to achieve the same result and we can therefore simplify the code.
+
+- To use `Link` with NextJs `NextLink` leverage `asChild` prop instead of `as`
+
+  **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
+
 ### Namespace style components
 
 The following components now use the `namespace` style imports:

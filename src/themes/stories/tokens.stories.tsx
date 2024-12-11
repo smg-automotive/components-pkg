@@ -73,6 +73,23 @@ export const Colors: StoryType = {
   ),
 };
 
+export const Cursors: StoryType = {
+  render: () => (
+    <TokenShowcase<'cursor'>
+      tokenPath="cursor"
+      renderDemo={(name) => (
+        <Box
+          cursor={name}
+          _hover={{ cursor: name }}
+          w="3xl"
+          h="3xl"
+          bg="red.200"
+        />
+      )}
+    />
+  ),
+};
+
 export const Opacity: StoryType = {
   render: () => (
     <TokenShowcase<'opacity'>
