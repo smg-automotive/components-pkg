@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorPalette, Story } from '@storybook/blocks';
+import { ColorPalette } from '@storybook/blocks';
 import { Box, chakra } from '@chakra-ui/react';
 
 import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';

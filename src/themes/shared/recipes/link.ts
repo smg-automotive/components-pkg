@@ -28,7 +28,7 @@ export const linkRecipe = defineRecipe({
       navigationLink: {
         color: 'gray.900',
         cursor: 'pointer',
-        fontSize: '16px',
+        fontSize: 'base',
         _hover: {
           textDecoration: 'none',
           color: 'blue.700',
@@ -37,7 +37,7 @@ export const linkRecipe = defineRecipe({
       subNavigationLink: {
         color: 'gray.900',
         cursor: 'pointer',
-        fontSize: '16px',
+        fontSize: 'base',
         _hover: {
           textDecoration: 'underline',
         },
