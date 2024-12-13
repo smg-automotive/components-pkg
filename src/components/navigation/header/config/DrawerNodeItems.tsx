@@ -864,7 +864,7 @@ export const drawerNodeItems = ({
           },
           visibilitySettings: {
             userType: {
-              private: true,
+              private: false,
               professional: true,
             },
             brand: {
