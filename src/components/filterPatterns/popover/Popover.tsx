@@ -52,7 +52,7 @@ const Popover: FC<Props> = ({
 
   return (
     <Portal>
-      <Box zIndex="popover" w="full" h="full" position="relative">
+      <Box zIndex="popover" w="full" h="full">
         <PopoverContent
           backgroundColor="white"
           borderRadius="sm"
