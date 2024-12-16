@@ -1289,10 +1289,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.contactDetails',
           link: {
-            de: '/de/member/masterdata/addressedit',
-            en: '/de/member/masterdata/addressedit',
-            fr: '/fr/member/masterdata/addressedit',
-            it: '/it/member/masterdata/addressedit',
+            de: '/de/profile',
+            en: '/de/profile',
+            fr: '/fr/profile',
+            it: '/it/profile',
           },
           visibilitySettings: {
             userType: {
