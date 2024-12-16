@@ -1271,32 +1271,13 @@ export const drawerNodeItems = ({
           translationKey: 'header.userMenu.contactDetails',
           link: {
             de: '/de/profile',
-            en: '/en/profile',
-            fr: '/fr/profile',
-            it: '/it/profile',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.contactDetails',
-          link: {
-            de: '/de/profile',
             en: '/de/profile',
             fr: '/fr/profile',
             it: '/it/profile',
           },
           visibilitySettings: {
             userType: {
-              private: false,
+              private: true,
               professional: true,
             },
             brand: {
