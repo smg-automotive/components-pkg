@@ -3,11 +3,11 @@ import React, { FC, PropsWithChildren } from 'react';
 import { Drawer as ChakraDrawer, DrawerProps } from '@chakra-ui/react';
 
 export interface Props extends DrawerProps {
-  variant?: 'slider';
+  variant?: 'slider' | 'base';
 }
 
 const Drawer: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, variant, ...drawerProps } = props;
+  const { children, variant = 'base', ...drawerProps } = props;
 
   return (
     <ChakraDrawer variant={variant} {...drawerProps}>

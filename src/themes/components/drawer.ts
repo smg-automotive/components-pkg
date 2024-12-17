@@ -47,16 +47,15 @@ const baseStyleBody: SystemStyleObject = {
 const baseStyle: PartsStyleFunction<typeof parts> = () => ({
   overlay: baseStyleOverlay,
   dialogContainer: baseStyleDialogContainer,
-  dialog: baseStyleDialog(),
   body: baseStyleBody,
 });
 
 const variants = {
+  base: {
+    dialog: baseStyleDialog(),
+  },
   slider: {
-    overlay: baseStyleOverlay,
-    dialogContainer: baseStyleDialogContainer,
     dialog: baseStyleDialog('fullScreenModal'),
-    body: baseStyleBody,
   },
 };
 
