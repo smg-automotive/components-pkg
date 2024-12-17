@@ -35,6 +35,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   children,
   triggerHeight = 'md',
   isDisabled,
+  modifiers,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -77,6 +78,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             isOpen={isOpen}
             onOpen={onOpen}
             onClose={onClose}
+            modifiers={modifiers}
           >
             <ButtonGroup isAttached={true} w="full" maxW="full">
               <PopoverTrigger>
