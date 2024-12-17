@@ -22,10 +22,12 @@ const baseStyleOverlay: SystemStyleObject = {
   zIndex: 'overlay',
 };
 
-const baseStyleDialogContainer: SystemStyleObject = {
-  display: 'flex',
-  zIndex: 'modal',
-  justifyContent: 'center',
+const baseStyleDialogContainer = (zIndex = 'modal') => {
+  return {
+    display: 'flex',
+    zIndex,
+    justifyContent: 'center',
+  };
 };
 
 const baseStyleDialog = (zIndex = 'modal') => {
@@ -46,16 +48,18 @@ const baseStyleBody: SystemStyleObject = {
 
 const baseStyle: PartsStyleFunction<typeof parts> = () => ({
   overlay: baseStyleOverlay,
-  dialogContainer: baseStyleDialogContainer,
+  dialogContainer: baseStyleDialogContainer(),
   body: baseStyleBody,
 });
 
 const variants = {
   base: definePartsStyle({
     dialog: baseStyleDialog(),
+    dialogContainer: baseStyleDialogContainer(),
   }),
   slider: definePartsStyle({
     dialog: baseStyleDialog('fullScreenModal'),
+    dialogContainer: baseStyleDialogContainer('fullScreenModal'),
   }),
 };
 
