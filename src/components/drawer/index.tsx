@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Drawer as ChakraDrawer, DrawerProps } from '@chakra-ui/react';
 
-interface Props extends DrawerProps {
+export interface Props extends DrawerProps {
   variant?: 'slider';
 }
 
@@ -17,4 +17,4 @@ const Drawer: FC<PropsWithChildren<Props>> = (props) => {
 };
 
 export default Drawer;
-export type { DrawerProps };
+export type { Props as DrawerProps };
