@@ -28,9 +28,9 @@ const baseStyleDialogContainer: SystemStyleObject = {
   justifyContent: 'center',
 };
 
-const baseStyleDialog = () => {
+const baseStyleDialog = (zIndex = 'modal') => {
   return {
-    zIndex: 'modal',
+    zIndex,
     bg: 'white',
     color: 'inherit',
     boxShadow: 'xs',
@@ -51,6 +51,15 @@ const baseStyle: PartsStyleFunction<typeof parts> = () => ({
   body: baseStyleBody,
 });
 
+const variants = {
+  slider: {
+    overlay: baseStyleOverlay,
+    dialogContainer: baseStyleDialogContainer,
+    dialog: baseStyleDialog('fullScreenModal'),
+    body: baseStyleBody,
+  },
+};
+
 const sizes = {
   xl: getSize('4xl'),
   half: getSize('50vw'),
@@ -61,6 +70,7 @@ export default {
   baseStyle,
   parts: parts.keys,
   sizes,
+  variants,
   defaultProps: {
     size: 'xl',
   },
