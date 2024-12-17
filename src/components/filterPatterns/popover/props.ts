@@ -10,4 +10,5 @@ export type PopoverFilterProps = FilterPatternProps &
     enforceHeight?: boolean;
     triggerHeight?: 'md' | 'lg';
     isDisabled?: boolean;
+    placement?: 'bottom-start' | 'bottom';
   };

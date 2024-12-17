@@ -20,6 +20,7 @@ export type PopoverProps = PropsWithChildren<
     showArrow?: boolean;
     contentPadding?: ContentPadding;
     maxWidth?: MaxWidth;
+    zIndex?: number;
   } & Pick<
     ChakraPopoverProps,
     | 'placement'
@@ -47,6 +48,7 @@ const Popover: FC<PopoverProps> = ({
   isOpen,
   contentPadding = '2xl',
   maxWidth = '6xl',
+  zIndex = 'popover',
 }) => {
   return (
     <ChakraPopover
@@ -63,7 +65,7 @@ const Popover: FC<PopoverProps> = ({
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
-        <Box zIndex="popover" w="full" h="full">
+        <Box zIndex={zIndex} w="full" h="full">
           <PopoverContent
             borderRadius="sm"
             boxShadow="md"
