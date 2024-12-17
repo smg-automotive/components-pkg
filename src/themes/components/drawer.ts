@@ -51,12 +51,12 @@ const baseStyle: PartsStyleFunction<typeof parts> = () => ({
 });
 
 const variants = {
-  base: {
+  base: definePartsStyle({
     dialog: baseStyleDialog(),
-  },
-  slider: {
+  }),
+  slider: definePartsStyle({
     dialog: baseStyleDialog('fullScreenModal'),
-  },
+  }),
 };
 
 const sizes = {
@@ -72,5 +72,6 @@ export default {
   variants,
   defaultProps: {
     size: 'xl',
+    variant: 'base',
   },
 };

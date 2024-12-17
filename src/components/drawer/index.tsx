@@ -7,7 +7,7 @@ export interface Props extends DrawerProps {
 }
 
 const Drawer: FC<PropsWithChildren<Props>> = (props) => {
-  const { children, variant = 'base', ...drawerProps } = props;
+  const { children, variant, ...drawerProps } = props;
 
   return (
     <ChakraDrawer variant={variant} {...drawerProps}>
