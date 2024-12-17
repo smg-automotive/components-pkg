@@ -35,6 +35,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   children,
   triggerHeight = 'md',
   isDisabled,
+  placement = 'bottom-start',
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -72,7 +73,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
         {({ t }) => (
           <Popover
             returnFocusOnClose={true}
-            placement="bottom-start"
+            placement={placement}
             isLazy={true}
             isOpen={isOpen}
             onOpen={onOpen}
