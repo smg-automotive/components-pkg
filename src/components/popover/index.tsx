@@ -65,7 +65,7 @@ const Popover: FC<PopoverProps> = ({
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
-        <Box zIndex={zIndex} w="full" h="full">
+        <Box zIndex={zIndex} w="full" h="full" position="relative">
           <PopoverContent
             borderRadius="sm"
             boxShadow="md"
