@@ -59,10 +59,11 @@ const Popover: FC<PopoverProps> = ({
       onClose={onClose}
       onOpen={onOpen}
       isOpen={isOpen}
+      isLazy={true}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <Portal>
-        <Box zIndex="popover" w="full" h="full" position="relative">
+        <Box zIndex="popover" w="full" h="full">
           <PopoverContent
             borderRadius="sm"
             boxShadow="md"
