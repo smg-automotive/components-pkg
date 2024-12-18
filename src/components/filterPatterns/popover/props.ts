@@ -11,5 +11,5 @@ export type PopoverFilterProps = FilterPatternProps &
     triggerHeight?: 'md' | 'lg';
     isDisabled?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    modifiers?: Array<{ name: string; options?: Record<string, any> }>;
+    hasFlip?: boolean;
   };
