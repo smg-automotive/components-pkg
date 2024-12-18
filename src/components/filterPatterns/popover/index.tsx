@@ -36,6 +36,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   triggerHeight = 'md',
   isDisabled,
   hasFlip = true,
+  zIndex = 'popover',
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -164,6 +165,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               showCallToActionButton={showCallToActionButton}
               header={header}
               enforceHeight={enforceHeight}
+              zIndex={zIndex}
             >
               {children}
             </FilterPopover>
