@@ -17,6 +17,7 @@ import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
+  zIndex?: string;
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
@@ -43,6 +44,7 @@ const Popover: FC<Props> = ({
   showCallToActionButton,
   header,
   children,
+  zIndex = 'popover',
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLElement | null>(null);
@@ -52,7 +54,7 @@ const Popover: FC<Props> = ({
 
   return (
     <Portal>
-      <Box zIndex="popover" w="full" h="full" position="relative">
+      <Box zIndex={zIndex} w="full" h="full" position="relative">
         <PopoverContent
           backgroundColor="white"
           borderRadius="sm"
