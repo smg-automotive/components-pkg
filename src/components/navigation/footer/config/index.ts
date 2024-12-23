@@ -82,10 +82,10 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
           },
           link: {
-            de: '/de/sellers',
-            en: '/de/sellers',
-            fr: '/fr/sellers',
-            it: '/it/sellers',
+            de: '/de/sellers/search',
+            en: '/de/sellers/search',
+            fr: '/fr/sellers/search',
+            it: '/it/sellers/search',
           },
         },
         {
@@ -94,10 +94,10 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/sellers',
-            en: '/de/sellers',
-            fr: '/fr/sellers',
-            it: '/it/sellers',
+            de: '/de/sellers/search',
+            en: '/de/sellers/search',
+            fr: '/fr/sellers/search',
+            it: '/it/sellers/search',
           },
         },
         {
