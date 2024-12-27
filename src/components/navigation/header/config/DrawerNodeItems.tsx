@@ -136,10 +136,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/sellers',
-            en: '/de/sellers',
-            fr: '/fr/sellers',
-            it: '/it/sellers',
+            de: '/de/sellers/search',
+            en: '/de/sellers/search',
+            fr: '/fr/sellers/search',
+            it: '/it/sellers/search',
           },
           visibilitySettings: {
             userType: {
@@ -155,10 +155,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/sellers',
-            en: '/de/sellers',
-            fr: '/fr/sellers',
-            it: '/it/sellers',
+            de: '/de/sellers/search',
+            en: '/de/sellers/search',
+            fr: '/fr/sellers/search',
+            it: '/it/sellers/search',
           },
           visibilitySettings: {
             userType: {
