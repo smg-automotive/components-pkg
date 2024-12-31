@@ -72,7 +72,7 @@
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/addon-interactions": "8.4.7",
     "@storybook/addon-links": "8.4.7",
-    "@storybook/addon-webpack5-compiler-babel": "3.0.3",
+    "@storybook/addon-webpack5-compiler-babel": "3.0.5",
     "@storybook/blocks": "8.4.7",
     "@storybook/components": "8.4.7",
     "@storybook/core": "8.4.7",
