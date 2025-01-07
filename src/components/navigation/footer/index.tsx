@@ -19,12 +19,14 @@ import FooterCopyright from './Copyright';
 import { FooterConfig } from './config/factory';
 import { footerConfig } from './config';
 import FooterCompanies from './Companies';
+import { Project } from '../../../types/project';
 
 interface FooterProps {
   brand: Brand;
   language: Language;
   environment?: Environment;
   useAbsoluteUrls?: boolean;
+  project: Project;
   experiments?: Record<string, string>;
 }
 
@@ -32,6 +34,7 @@ const Footer: FC<FooterProps> = ({
   brand,
   language,
   environment,
+  project,
   useAbsoluteUrls,
   experiments = {},
 }) => {
@@ -41,6 +44,7 @@ const Footer: FC<FooterProps> = ({
       brand,
       environment,
       useAbsoluteUrls,
+      project,
     });
     return footerConfigInstance.getMappedConfig();
   }, [brand, environment, useAbsoluteUrls, experiments]);

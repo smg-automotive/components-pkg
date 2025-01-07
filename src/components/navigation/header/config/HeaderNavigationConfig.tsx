@@ -74,6 +74,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     brand,
     environment,
     useAbsoluteUrls,
+    project,
     config,
     user,
     urlPathParams,
@@ -81,14 +82,14 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   }: {
     brand: Brand;
     environment?: Environment;
-    project?: Project;
+    project: Project;
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
     user: MergedUser | null;
     urlPathParams?: Record<string, string | number>;
     entitlements?: string[];
   }) {
-    super({ brand, environment, useAbsoluteUrls, entitlements });
+    super({ brand, environment, useAbsoluteUrls, entitlements, project });
     this.config = config;
     this.homeUrl = '/';
     this.menuHeight = '60px';
@@ -161,6 +162,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       userType: this.userType,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
+      project: this.project,
       linkProtocol: this.linkProtocol,
       domains: this.domains,
       isNew: link.isNew,

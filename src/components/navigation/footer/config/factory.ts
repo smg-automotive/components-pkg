@@ -5,6 +5,7 @@ import { Link, LinkConfig, LinkInstance } from 'src/components/navigation/link';
 import { BaseConfig } from 'src/components/navigation/BaseConfig';
 
 import { FooterConfigInterface } from '.';
+import { Project } from '../../../../types/project';
 
 interface LinkSectionConfig {
   title: LinkConfig[];
@@ -40,13 +41,15 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
     brand,
     environment = 'production',
     useAbsoluteUrls = false,
+    project,
   }: {
     config: FooterConfigInterface;
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
+    project: Project;
   }) {
-    super({ brand, environment, useAbsoluteUrls });
+    super({ brand, environment, useAbsoluteUrls, project });
     this.config = config;
   }
 
@@ -93,6 +96,7 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
       brand: this.brand,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
+      project: this.project,
       linkProtocol: this.linkProtocol,
       domains: this.domains,
     });

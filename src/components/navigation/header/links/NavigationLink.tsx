@@ -22,7 +22,7 @@ export interface NavigationLinkProps {
   hideTextBelow?: BreakpointName;
   missingEntitlementLinkIcon?: ReactNode;
   onClick?: () => void;
-  project?: Project;
+  projectIdentifier?: Project;
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({

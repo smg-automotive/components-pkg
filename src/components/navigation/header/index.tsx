@@ -33,7 +33,7 @@ interface NavigationProps {
   language: Language;
   onLogin: () => void;
   onLogout: () => void;
-  project?: Project;
+  project: Project;
   trackEvent?: (event: CustomEvent) => void;
   useAbsoluteUrls?: boolean;
   user: MergedUser | null;

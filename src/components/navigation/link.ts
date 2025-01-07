@@ -42,7 +42,7 @@ export interface LinkConfig {
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
-  project?: Project;
+  projectIdentifier?: Project;
 }
 
 export interface LinkInstance {
@@ -82,6 +82,7 @@ export class Link {
     userType,
     environment,
     useAbsoluteUrls,
+    project,
     linkProtocol,
     domains,
     isInternal,
@@ -102,6 +103,7 @@ export class Link {
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
     rightIcon?: ReactNode;
+    project: Project;
   }) {
     this.target = config.target;
     this.onClick = config.onClick;
@@ -127,7 +129,8 @@ export class Link {
       link,
       brand,
       environment,
-      useAbsoluteUrls,
+      useAbsoluteUrls:
+        project === config.projectIdentifier ? false : useAbsoluteUrls,
       linkProtocol,
       domains,
       isInternal,

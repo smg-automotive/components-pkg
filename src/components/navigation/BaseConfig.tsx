@@ -2,6 +2,7 @@ import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import { Domains, LinkConfig, LinkInstance } from './link';
+import { Project } from '../../types/project';
 
 export abstract class BaseConfig<T> {
   brand: Brand;
@@ -10,21 +11,25 @@ export abstract class BaseConfig<T> {
   linkProtocol: string;
   domains: Domains;
   entitlements?: string[];
+  project: Project;
 
   constructor({
     brand,
     environment = 'production',
     useAbsoluteUrls = false,
+    project,
     entitlements = [],
   }: {
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
     entitlements?: string[];
+    project: Project;
   }) {
     this.brand = brand;
     this.environment = environment;
     this.useAbsoluteUrls = useAbsoluteUrls;
+    this.project = project;
     this.domains = {
       autoscout24: {
         main: {

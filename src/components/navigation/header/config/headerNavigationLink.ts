@@ -9,6 +9,7 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
 
 import { UserTypeExternal } from '../types';
+import { Project } from '../../../../types/project';
 
 export class HeaderNavigationLink extends Link {
   isNew?: boolean;
@@ -38,6 +39,7 @@ export class HeaderNavigationLink extends Link {
     forceMotoscoutLink = false,
     forceAutoscoutLink = false,
     userEntitlements = [],
+    project,
   }: {
     config: LinkConfig;
     brand: Brand;
@@ -57,6 +59,7 @@ export class HeaderNavigationLink extends Link {
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
+    project: Project;
   }) {
     super({
       config,
@@ -71,6 +74,7 @@ export class HeaderNavigationLink extends Link {
       forceAutoscoutLink,
       userEntitlements,
       rightIcon,
+      project,
     });
     this.isNew = isNew;
     this.showUnderMoreLinkBelow = showUnderMoreLinkBelow;
