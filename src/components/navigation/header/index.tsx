@@ -21,35 +21,38 @@ import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
+import { Project } from 'src/types/project';
 
 interface NavigationProps {
-  environment: Environment;
   brand: Brand;
   comparisonItemIds?: number[] | null;
-  language: Language;
-  user: MergedUser | null;
-  hasNotification: boolean;
-  useAbsoluteUrls?: boolean;
   entitlements?: string[];
+  environment: Environment;
+  experiments?: Record<string, string>;
+  hasNotification: boolean;
+  language: Language;
   onLogin: () => void;
   onLogout: () => void;
+  project?: Project;
   trackEvent?: (event: CustomEvent) => void;
-  experiments?: Record<string, string>;
+  useAbsoluteUrls?: boolean;
+  user: MergedUser | null;
 }
 
 const Navigation: FC<NavigationProps> = ({
-  environment,
   brand,
   comparisonItemIds,
-  language,
-  user,
-  hasNotification,
-  useAbsoluteUrls = false,
   entitlements = [],
+  environment,
+  experiments = {},
+  hasNotification,
+  language,
   onLogin,
   onLogout,
+  project,
   trackEvent,
-  experiments = {},
+  useAbsoluteUrls = false,
+  user,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -58,6 +61,7 @@ const Navigation: FC<NavigationProps> = ({
     const headerNavigationConfigInstance = new HeaderNavigationConfig({
       brand,
       environment,
+      project,
       useAbsoluteUrls,
       config: {
         headerItems: headerLinks({ trackEvent, experiments }),

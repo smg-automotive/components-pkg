@@ -24,6 +24,7 @@ import {
   DrawerNodeItemsConfig,
   NavigationLinkConfigNode,
 } from './DrawerNodeItems';
+import { Project } from '../../../../types/project';
 
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;
@@ -80,6 +81,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   }: {
     brand: Brand;
     environment?: Environment;
+    project?: Project;
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
     user: MergedUser | null;

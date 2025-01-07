@@ -6,6 +6,7 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 import Link from 'src/components/link';
 import Hide from 'src/components/hide';
 import Badge from 'src/components/badge';
+import { Project } from 'src/types/project';
 
 export interface NavigationLinkProps {
   link?: Record<Language, string>;
@@ -21,6 +22,7 @@ export interface NavigationLinkProps {
   hideTextBelow?: BreakpointName;
   missingEntitlementLinkIcon?: ReactNode;
   onClick?: () => void;
+  project?: Project;
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({

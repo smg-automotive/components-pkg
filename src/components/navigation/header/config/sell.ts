@@ -15,6 +15,7 @@ const sellLinkConfig = ({
         eventCategory: navigationEventCategory,
         eventAction: 'sell',
       }),
+    project: 'seller-web',
   } satisfies Omit<NavigationLinkConfigProps, 'visibilitySettings'>;
 };
 

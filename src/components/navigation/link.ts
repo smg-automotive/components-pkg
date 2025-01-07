@@ -7,6 +7,7 @@ import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { UserTypeExternal } from './header/types';
+import { Project } from '../../types/project';
 
 export type LinkTargets = '_blank';
 
@@ -41,6 +42,7 @@ export interface LinkConfig {
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
+  project?: Project;
 }
 
 export interface LinkInstance {

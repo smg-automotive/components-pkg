@@ -103,6 +103,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          project: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.advancedSearch',
@@ -122,6 +123,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          project: 'listings-web',
         },
         ...getComparisonNodeItem({
           comparisonItemIds,
@@ -151,6 +153,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          project: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.searchMerchant',
@@ -195,6 +198,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          project: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.searchCars',
@@ -215,6 +219,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          project: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.insuranceComparison',

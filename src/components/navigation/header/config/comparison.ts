@@ -29,5 +29,6 @@ export const comparisonLinkConfig = ({
         motoscout24: true,
       },
     },
+    project: 'listings-web',
   } satisfies LinkConfig;
 };
