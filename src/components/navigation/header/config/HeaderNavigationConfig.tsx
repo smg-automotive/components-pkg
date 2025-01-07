@@ -154,6 +154,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
         visibilitySettings: link.visibilitySettings,
         entitlementConfig:
           entitlementConfig && this.mapEntitlementConfig(entitlementConfig),
+        projectIdentifier: link.projectIdentifier,
       },
       isInternal: link.isInternal ? link.isInternal : false,
       forceMotoscoutLink: link.forceMotoscoutLink,
