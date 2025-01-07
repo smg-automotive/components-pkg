@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 import { Container } from '@chakra-ui/react';
 
+import { Project } from 'src/types/project';
 import { Language } from 'src/types/language';
 
 import { Environment } from 'src/types/environment';
@@ -19,14 +20,13 @@ import FooterCopyright from './Copyright';
 import { FooterConfig } from './config/factory';
 import { footerConfig } from './config';
 import FooterCompanies from './Companies';
-import { Project } from '../../../types/project';
 
 interface FooterProps {
   brand: Brand;
   language: Language;
   environment?: Environment;
   useAbsoluteUrls?: boolean;
-  project: Project;
+  project?: Project;
   experiments?: Record<string, string>;
 }
 

@@ -20,6 +20,6 @@
     "skipLibCheck": true,
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "exclude": ["dist", "node_modules", "**/__tests__/**/*"],
+  "exclude": ["dist", "node_modules"],
   "include": ["src"]
 }

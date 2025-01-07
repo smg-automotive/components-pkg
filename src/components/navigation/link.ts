@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { MappedUserType } from '@smg-automotive/auth';
 
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 
 import { UserTypeExternal } from './header/types';
-import { Project } from '../../types/project';
 
 export type LinkTargets = '_blank';
 
@@ -96,7 +96,7 @@ export class Link {
     userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
-    project: Project;
+    project?: Project;
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
@@ -124,13 +124,16 @@ export class Link {
     });
 
     const link = this.resolveLink({ hasEntitlement, config });
+    const isLinkTargetInSameProject =
+      project &&
+      config.projectIdentifier &&
+      project === config.projectIdentifier;
 
     this.link = this.prefixDomain({
       link,
       brand,
       environment,
-      useAbsoluteUrls:
-        project === config.projectIdentifier ? false : useAbsoluteUrls,
+      useAbsoluteUrls: isLinkTargetInSameProject ? false : useAbsoluteUrls,
       linkProtocol,
       domains,
       isInternal,

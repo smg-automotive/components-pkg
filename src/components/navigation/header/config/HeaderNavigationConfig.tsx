@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { MappedUserType, MergedUser } from '@smg-automotive/auth';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -24,7 +25,6 @@ import {
   DrawerNodeItemsConfig,
   NavigationLinkConfigNode,
 } from './DrawerNodeItems';
-import { Project } from '../../../../types/project';
 
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;
@@ -82,7 +82,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   }: {
     brand: Brand;
     environment?: Environment;
-    project: Project;
+    project?: Project;
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
     user: MergedUser | null;

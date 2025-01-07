@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { MappedUserType } from '@smg-automotive/auth';
 
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -9,7 +10,6 @@ import { BreakpointName } from 'src/themes/shared/breakpoints';
 import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
 
 import { UserTypeExternal } from '../types';
-import { Project } from '../../../../types/project';
 
 export class HeaderNavigationLink extends Link {
   isNew?: boolean;
@@ -46,7 +46,7 @@ export class HeaderNavigationLink extends Link {
     userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
-    project: Project;
+    project?: Project;
     linkProtocol: string;
     domains: Domains;
     isNew?: boolean;

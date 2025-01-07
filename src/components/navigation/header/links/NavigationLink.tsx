@@ -2,11 +2,11 @@ import React, { FC, ReactNode } from 'react';
 
 import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 
+import { Project } from 'src/types/project';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import Link from 'src/components/link';
 import Hide from 'src/components/hide';
 import Badge from 'src/components/badge';
-import { Project } from 'src/types/project';
 
 export interface NavigationLinkProps {
   link?: Record<Language, string>;

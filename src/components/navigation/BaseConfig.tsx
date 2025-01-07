@@ -1,14 +1,14 @@
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
 import { Domains, LinkConfig, LinkInstance } from './link';
-import { Project } from '../../types/project';
 
 export abstract class BaseConfig<T> {
   brand: Brand;
   environment: Environment;
   useAbsoluteUrls: boolean;
-  project: Project;
+  project?: Project;
   linkProtocol: string;
   domains: Domains;
   entitlements?: string[];
@@ -23,7 +23,7 @@ export abstract class BaseConfig<T> {
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
-    project: Project;
+    project?: Project;
     entitlements?: string[];
   }) {
     this.brand = brand;

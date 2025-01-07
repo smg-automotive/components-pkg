@@ -3,6 +3,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { MergedUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -21,7 +22,6 @@ import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
-import { Project } from 'src/types/project';
 
 interface NavigationProps {
   brand: Brand;
@@ -35,7 +35,7 @@ interface NavigationProps {
   onLogout: () => void;
   trackEvent?: (event: CustomEvent) => void;
   useAbsoluteUrls?: boolean;
-  project: Project;
+  project?: Project;
   user: MergedUser | null;
 }
 
