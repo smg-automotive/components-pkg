@@ -96,6 +96,7 @@ export class Link {
     userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    project: Project;
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
@@ -103,7 +104,6 @@ export class Link {
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
     rightIcon?: ReactNode;
-    project: Project;
   }) {
     this.target = config.target;
     this.onClick = config.onClick;

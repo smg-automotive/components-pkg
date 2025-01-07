@@ -26,6 +26,7 @@ export class HeaderNavigationLink extends Link {
     userType,
     environment,
     useAbsoluteUrls,
+    project,
     linkProtocol,
     domains,
     isNew,
@@ -39,13 +40,13 @@ export class HeaderNavigationLink extends Link {
     forceMotoscoutLink = false,
     forceAutoscoutLink = false,
     userEntitlements = [],
-    project,
   }: {
     config: LinkConfig;
     brand: Brand;
     userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    project: Project;
     linkProtocol: string;
     domains: Domains;
     isNew?: boolean;
@@ -59,7 +60,6 @@ export class HeaderNavigationLink extends Link {
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
-    project: Project;
   }) {
     super({
       config,
@@ -67,6 +67,7 @@ export class HeaderNavigationLink extends Link {
       userType,
       environment,
       useAbsoluteUrls,
+      project,
       linkProtocol,
       domains,
       isInternal,
@@ -74,7 +75,6 @@ export class HeaderNavigationLink extends Link {
       forceAutoscoutLink,
       userEntitlements,
       rightIcon,
-      project,
     });
     this.isNew = isNew;
     this.showUnderMoreLinkBelow = showUnderMoreLinkBelow;

@@ -89,7 +89,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     urlPathParams?: Record<string, string | number>;
     entitlements?: string[];
   }) {
-    super({ brand, environment, useAbsoluteUrls, entitlements, project });
+    super({ brand, environment, useAbsoluteUrls, project, entitlements });
     this.config = config;
     this.homeUrl = '/';
     this.menuHeight = '60px';

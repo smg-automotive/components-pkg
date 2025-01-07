@@ -33,9 +33,9 @@ interface NavigationProps {
   language: Language;
   onLogin: () => void;
   onLogout: () => void;
-  project: Project;
   trackEvent?: (event: CustomEvent) => void;
   useAbsoluteUrls?: boolean;
+  project: Project;
   user: MergedUser | null;
 }
 
@@ -49,9 +49,9 @@ const Navigation: FC<NavigationProps> = ({
   language,
   onLogin,
   onLogout,
-  project,
   trackEvent,
   useAbsoluteUrls = false,
+  project,
   user,
 }) => {
   const config = useMemo(() => {
@@ -61,8 +61,8 @@ const Navigation: FC<NavigationProps> = ({
     const headerNavigationConfigInstance = new HeaderNavigationConfig({
       brand,
       environment,
-      project,
       useAbsoluteUrls,
+      project,
       config: {
         headerItems: headerLinks({ trackEvent, experiments }),
         drawerItems: drawerNodeItems({
@@ -83,6 +83,7 @@ const Navigation: FC<NavigationProps> = ({
     brand,
     environment,
     useAbsoluteUrls,
+    project,
     headerLinks,
     drawerNodeItems,
     user?.id,

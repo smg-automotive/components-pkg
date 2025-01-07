@@ -34,8 +34,8 @@ const Footer: FC<FooterProps> = ({
   brand,
   language,
   environment,
-  project,
   useAbsoluteUrls,
+  project,
   experiments = {},
 }) => {
   const config = useMemo(() => {
@@ -47,7 +47,7 @@ const Footer: FC<FooterProps> = ({
       project,
     });
     return footerConfigInstance.getMappedConfig();
-  }, [brand, environment, useAbsoluteUrls, experiments]);
+  }, [brand, environment, useAbsoluteUrls, project, experiments]);
 
   return (
     <TranslationProvider language={language} scopes={['footer']}>

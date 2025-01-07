@@ -8,10 +8,10 @@ export abstract class BaseConfig<T> {
   brand: Brand;
   environment: Environment;
   useAbsoluteUrls: boolean;
+  project: Project;
   linkProtocol: string;
   domains: Domains;
   entitlements?: string[];
-  project: Project;
 
   constructor({
     brand,
@@ -23,8 +23,8 @@ export abstract class BaseConfig<T> {
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
-    entitlements?: string[];
     project: Project;
+    entitlements?: string[];
   }) {
     this.brand = brand;
     this.environment = environment;
