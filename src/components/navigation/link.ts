@@ -75,6 +75,7 @@ export class Link {
   isInternal?: boolean;
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
+  projectIdentifier?: Project;
 
   constructor({
     config,
@@ -107,6 +108,7 @@ export class Link {
   }) {
     this.target = config.target;
     this.onClick = config.onClick;
+    this.projectIdentifier = config.projectIdentifier;
 
     const hasEntitlement = config.entitlementConfig
       ? config.entitlementConfig.singleRequiredEntitlement.some((entitlement) =>
@@ -124,16 +126,13 @@ export class Link {
     });
 
     const link = this.resolveLink({ hasEntitlement, config });
-    const isLinkTargetInSameProject =
-      project &&
-      config.projectIdentifier &&
-      project === config.projectIdentifier;
 
     this.link = this.prefixDomain({
       link,
       brand,
       environment,
-      useAbsoluteUrls: isLinkTargetInSameProject ? false : useAbsoluteUrls,
+      useAbsoluteUrls,
+      project,
       linkProtocol,
       domains,
       isInternal,
@@ -191,6 +190,7 @@ export class Link {
     brand,
     environment,
     useAbsoluteUrls,
+    project,
     linkProtocol,
     isInternal = false,
     forceMotoscoutLink = false,
@@ -202,6 +202,7 @@ export class Link {
     brand: Brand;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    project?: Project;
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
@@ -243,7 +244,15 @@ export class Link {
         en: `${baseUrl}${link.en}`,
       };
     }
-    if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
+    const isLinkTargetInSameProject =
+      project && this.projectIdentifier && project === this.projectIdentifier;
+    if (
+      !useAbsoluteUrls ||
+      isLinkTargetInSameProject ||
+      !link ||
+      isAlreadyAbsolute
+    )
+      return link;
 
     return {
       de: `${baseUrl}${link.de}`,
