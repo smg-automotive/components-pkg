@@ -248,11 +248,12 @@ export class Link {
       project && this.projectIdentifier && project === this.projectIdentifier;
     if (
       !useAbsoluteUrls ||
-      isLinkTargetInSameProject ||
       !link ||
-      isAlreadyAbsolute
-    )
+      isAlreadyAbsolute ||
+      isLinkTargetInSameProject
+    ) {
       return link;
+    }
 
     return {
       de: `${baseUrl}${link.de}`,
