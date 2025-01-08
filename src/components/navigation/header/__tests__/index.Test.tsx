@@ -1,6 +1,7 @@
 /* eslint-disable unicorn/filename-case */
 import React from 'react';
 
+import userEvent from '@testing-library/user-event';
 import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
@@ -11,7 +12,6 @@ import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
 import Navigation from '..';
-import userEvent from '@testing-library/user-event';
 
 describe('Header', () => {
   it('should open search drawer', async () => {
