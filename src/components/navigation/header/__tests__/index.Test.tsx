@@ -11,6 +11,7 @@ import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
 import Navigation from '..';
+import userEvent from '@testing-library/user-event';
 
 describe('Header', () => {
   it('should open search drawer', async () => {
@@ -42,6 +43,38 @@ describe('Header', () => {
     fireEvent.click(searchItem);
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
+  });
+  it('should use relative links when the page is in the same project', async () => {
+    render(
+      <Navigation
+        environment="production"
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: '',
+          exp: 123,
+        }}
+        useAbsoluteUrls={true}
+        brand={Brand.AutoScout24}
+        project="listings-web"
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+      />,
+    );
+
+    await userEvent.click(screen.getByText('Search'));
+    expect(
+      within(screen.getByTestId('drawer-body')).getAllByRole('link', {
+        name: 'Advanced Search',
+        hidden: true,
+      })[0],
+    ).toHaveAttribute('href', '/de/s/advanced');
   });
   it('should open user drawer', async () => {
     render(
