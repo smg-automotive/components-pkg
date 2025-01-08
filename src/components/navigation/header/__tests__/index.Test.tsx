@@ -44,38 +44,6 @@ describe('Header', () => {
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
   });
-  it('should use relative links when the page is in the same project', async () => {
-    render(
-      <Navigation
-        environment="production"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: '',
-          exp: 123,
-        }}
-        useAbsoluteUrls={true}
-        brand={Brand.AutoScout24}
-        project="listings-web"
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-      />,
-    );
-
-    await userEvent.click(screen.getByText('Search'));
-    expect(
-      within(screen.getByTestId('drawer-body')).getAllByRole('link', {
-        name: 'Advanced Search',
-        hidden: true,
-      })[0],
-    ).toHaveAttribute('href', '/de/s/advanced');
-  });
   it('should open user drawer', async () => {
     render(
       <Navigation
@@ -260,6 +228,137 @@ describe('Header', () => {
       homeUrl: expect.any(String),
       menuHeight: expect.any(String),
       user: expect.any(Object),
+    });
+  });
+
+  describe('projectIdentifier', () => {
+    const isAbsoluteUrl = (url: string) => {
+      try {
+        new URL(url);
+        return true;
+      } catch {
+        return false;
+      }
+    };
+    const transformToAbsoluteUrl = (pathname: string) => {
+      return `https://www.autoscout24.ch${pathname}`;
+    };
+
+    const user = {
+      id: '1',
+      userName: 'John Doe',
+      userType: MappedUserType.Private,
+      sellerId: '5',
+      sellerIds: ['5'],
+      isImpersonated: false,
+      email: 'john@doe.ch',
+      exp: 123,
+    };
+    const listingsWebLink = {
+      name: 'Merkliste',
+      pathname: '/de/me/favorites',
+    };
+    const sellerWebLink = {
+      name: 'Meine Fahrzeuge',
+      pathname: '/de/vehicle-management',
+    };
+    const legacyWebLink = {
+      name: 'Versichern',
+      pathname: '/de/autoversicherung',
+    };
+
+    it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {
+      render(
+        <Navigation
+          environment="production"
+          user={user}
+          useAbsoluteUrls={true}
+          brand={Brand.AutoScout24}
+          project="listings-web"
+          language="de"
+          hasNotification={false}
+          onLogin={jest.fn}
+          onLogout={jest.fn}
+        />,
+      );
+
+      await userEvent.click(screen.getByText(user.email));
+
+      const listingsLink = screen
+        .getAllByRole('link', {
+          name: listingsWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(listingsLink!)).toBe(false);
+      expect(listingsLink!).toEqual(listingsWebLink.pathname);
+      const sellerLink = screen
+        .getAllByRole('link', {
+          name: sellerWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(sellerLink!)).toBe(true);
+      expect(sellerLink!).toEqual(
+        transformToAbsoluteUrl(sellerWebLink.pathname),
+      );
+      const legacyLink = screen
+        .getAllByRole('link', {
+          name: legacyWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(legacyLink!)).toBe(true);
+      expect(legacyLink!).toEqual(
+        transformToAbsoluteUrl(legacyWebLink.pathname),
+      );
+    });
+
+    it('should use relative URLs for pages inside seller-web and keep the others absolute', async () => {
+      render(
+        <Navigation
+          environment="production"
+          user={user}
+          useAbsoluteUrls={true}
+          brand={Brand.AutoScout24}
+          project="seller-web"
+          language="de"
+          hasNotification={false}
+          onLogin={jest.fn}
+          onLogout={jest.fn}
+        />,
+      );
+
+      await userEvent.click(screen.getByText(user.email));
+
+      const listingsLink = screen
+        .getAllByRole('link', {
+          name: listingsWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(listingsLink!)).toBe(true);
+      expect(listingsLink!).toEqual(
+        transformToAbsoluteUrl(listingsWebLink.pathname),
+      );
+      const sellerLink = screen
+        .getAllByRole('link', {
+          name: sellerWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(sellerLink!)).toBe(false);
+      expect(sellerLink!).toEqual(sellerWebLink.pathname);
+      const legacyLink = screen
+        .getAllByRole('link', {
+          name: legacyWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(legacyLink!)).toBe(true);
+      expect(legacyLink!).toEqual(
+        transformToAbsoluteUrl(legacyWebLink.pathname),
+      );
     });
   });
 });
