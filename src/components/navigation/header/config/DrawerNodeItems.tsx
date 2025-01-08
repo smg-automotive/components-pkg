@@ -335,6 +335,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.myVehicles',
@@ -413,6 +414,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.dealerDashboard',
@@ -537,6 +539,7 @@ export const drawerNodeItems = ({
             hideIfRequiredEntitlementIsMissing: true,
             singleRequiredEntitlement: [Entitlement.CockpitFrontend],
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.statistics',
@@ -615,6 +618,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.carPark',
@@ -939,6 +943,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'header.userMenu.bookmarks',
@@ -958,6 +963,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         ...getComparisonNodeItem({
           comparisonItemIds,
@@ -1309,6 +1315,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.openingHours',
