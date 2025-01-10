@@ -352,25 +352,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.myVehcilesOld',
-          link: {
-            de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.myMotorcycles',
           isInternal: true,
           link: {
