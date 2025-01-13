@@ -17,11 +17,17 @@ const meta: Meta<typeof FooterComponent> = {
     language: 'de',
     environment: 'preprod',
     useAbsoluteUrls: true,
+    project: undefined,
   },
 
   argTypes: {
     brand: {
       options: [Brand.AutoScout24, Brand.MotoScout24],
+      control: 'select',
+    },
+
+    project: {
+      options: ['listings-web', 'seller-web'],
       control: 'select',
     },
 

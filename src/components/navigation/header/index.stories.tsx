@@ -34,6 +34,7 @@ const meta: Meta<typeof Navigation> = {
     language: 'de',
     environment: 'preprod',
     useAbsoluteUrls: false,
+    project: undefined,
     entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
@@ -52,6 +53,11 @@ const meta: Meta<typeof Navigation> = {
 
     environment: {
       options: ['preprod', 'production'],
+      control: 'select',
+    },
+
+    project: {
+      options: ['listings-web', 'seller-web'],
       control: 'select',
     },
 
