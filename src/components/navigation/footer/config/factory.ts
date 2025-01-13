@@ -1,3 +1,4 @@
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -40,13 +41,15 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
     brand,
     environment = 'production',
     useAbsoluteUrls = false,
+    project,
   }: {
     config: FooterConfigInterface;
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
+    project?: Project;
   }) {
-    super({ brand, environment, useAbsoluteUrls });
+    super({ brand, environment, useAbsoluteUrls, project });
     this.config = config;
   }
 
@@ -93,6 +96,7 @@ export class FooterConfig extends BaseConfig<FooterConfigInstance> {
       brand: this.brand,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
+      project: this.project,
       linkProtocol: this.linkProtocol,
       domains: this.domains,
     });
