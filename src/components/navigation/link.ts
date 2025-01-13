@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { MappedUserType } from '@smg-automotive/auth';
 
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
@@ -41,6 +42,7 @@ export interface LinkConfig {
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
+  projectIdentifier?: Project;
 }
 
 export interface LinkInstance {
@@ -73,6 +75,7 @@ export class Link {
   isInternal?: boolean;
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
+  projectIdentifier?: Project;
 
   constructor({
     config,
@@ -80,6 +83,7 @@ export class Link {
     userType,
     environment,
     useAbsoluteUrls,
+    project,
     linkProtocol,
     domains,
     isInternal,
@@ -93,6 +97,7 @@ export class Link {
     userType?: UserTypeExternal.Guest | MappedUserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    project?: Project;
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
@@ -103,6 +108,7 @@ export class Link {
   }) {
     this.target = config.target;
     this.onClick = config.onClick;
+    this.projectIdentifier = config.projectIdentifier;
 
     const hasEntitlement = config.entitlementConfig
       ? config.entitlementConfig.singleRequiredEntitlement.some((entitlement) =>
@@ -126,6 +132,7 @@ export class Link {
       brand,
       environment,
       useAbsoluteUrls,
+      project,
       linkProtocol,
       domains,
       isInternal,
@@ -183,6 +190,7 @@ export class Link {
     brand,
     environment,
     useAbsoluteUrls,
+    project,
     linkProtocol,
     isInternal = false,
     forceMotoscoutLink = false,
@@ -194,6 +202,7 @@ export class Link {
     brand: Brand;
     environment: Environment;
     useAbsoluteUrls: boolean;
+    project?: Project;
     linkProtocol: string;
     domains: Domains;
     isInternal?: boolean;
@@ -235,7 +244,16 @@ export class Link {
         en: `${baseUrl}${link.en}`,
       };
     }
-    if (!useAbsoluteUrls || !link || isAlreadyAbsolute) return link;
+    const isLinkTargetInSameProject =
+      project && this.projectIdentifier && project === this.projectIdentifier;
+    if (
+      !useAbsoluteUrls ||
+      !link ||
+      isAlreadyAbsolute ||
+      isLinkTargetInSameProject
+    ) {
+      return link;
+    }
 
     return {
       de: `${baseUrl}${link.de}`,

@@ -55,31 +55,20 @@ export const footerConfig = ({
         {
           translationKey: 'footer.sections.brand.advancedSearch',
           visibilitySettings: {
-            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/auto/suche',
-            en: '/de/auto/suche',
-            fr: '/fr/voiture/recherche',
-            it: '/it/automobile/ricerca',
+            de: '/de/s/advanced',
+            en: '/de/s/advanced',
+            fr: '/fr/s/advanced',
+            it: '/it/s/advanced',
           },
-        },
-        {
-          translationKey: 'footer.sections.brand.advancedSearch',
-          visibilitySettings: {
-            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
-          },
-          link: {
-            de: '/de/motorrad/suche',
-            en: '/de/motorrad/suche',
-            fr: '/fr/moto/recherche',
-            it: '/it/moto/ricerca',
-          },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'footer.sections.brand.dealerSearch',
           visibilitySettings: {
-            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
             de: '/de/sellers/search',
@@ -87,18 +76,7 @@ export const footerConfig = ({
             fr: '/fr/sellers/search',
             it: '/it/sellers/search',
           },
-        },
-        {
-          translationKey: 'footer.sections.brand.dealerSearch',
-          visibilitySettings: {
-            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
-          },
-          link: {
-            de: '/de/sellers/search',
-            en: '/de/sellers/search',
-            fr: '/fr/sellers/search',
-            it: '/it/sellers/search',
-          },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'footer.sections.brand.makes',
@@ -190,6 +168,7 @@ export const footerConfig = ({
                   fr: '/fr/sell',
                   it: '/it/sell',
                 },
+                projectIdentifier: 'seller-web' as const,
               },
               {
                 translationKey: 'footer.sections.list.direct',
@@ -205,6 +184,7 @@ export const footerConfig = ({
                   fr: '/fr/direct',
                   it: '/it/direct',
                 },
+                projectIdentifier: 'seller-web' as const,
               },
             ]
           : [

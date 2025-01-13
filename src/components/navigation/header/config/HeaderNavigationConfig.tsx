@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { MappedUserType, MergedUser } from '@smg-automotive/auth';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -73,6 +74,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     brand,
     environment,
     useAbsoluteUrls,
+    project,
     config,
     user,
     urlPathParams,
@@ -80,13 +82,14 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   }: {
     brand: Brand;
     environment?: Environment;
+    project?: Project;
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
     user: MergedUser | null;
     urlPathParams?: Record<string, string | number>;
     entitlements?: string[];
   }) {
-    super({ brand, environment, useAbsoluteUrls, entitlements });
+    super({ brand, environment, useAbsoluteUrls, project, entitlements });
     this.config = config;
     this.homeUrl = '/';
     this.menuHeight = '60px';
@@ -151,6 +154,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
         visibilitySettings: link.visibilitySettings,
         entitlementConfig:
           entitlementConfig && this.mapEntitlementConfig(entitlementConfig),
+        projectIdentifier: link.projectIdentifier,
       },
       isInternal: link.isInternal ? link.isInternal : false,
       forceMotoscoutLink: link.forceMotoscoutLink,
@@ -159,6 +163,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
       userType: this.userType,
       environment: this.environment,
       useAbsoluteUrls: this.useAbsoluteUrls,
+      project: this.project,
       linkProtocol: this.linkProtocol,
       domains: this.domains,
       isNew: link.isNew,
