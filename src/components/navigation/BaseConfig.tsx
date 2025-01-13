@@ -1,3 +1,4 @@
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -7,6 +8,7 @@ export abstract class BaseConfig<T> {
   brand: Brand;
   environment: Environment;
   useAbsoluteUrls: boolean;
+  project?: Project;
   linkProtocol: string;
   domains: Domains;
   entitlements?: string[];
@@ -15,16 +17,19 @@ export abstract class BaseConfig<T> {
     brand,
     environment = 'production',
     useAbsoluteUrls = false,
+    project,
     entitlements = [],
   }: {
     brand: Brand;
     environment?: Environment;
     useAbsoluteUrls?: boolean;
+    project?: Project;
     entitlements?: string[];
   }) {
     this.brand = brand;
     this.environment = environment;
     this.useAbsoluteUrls = useAbsoluteUrls;
+    this.project = project;
     this.domains = {
       autoscout24: {
         main: {
