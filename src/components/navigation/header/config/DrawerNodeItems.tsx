@@ -328,7 +328,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
@@ -336,6 +336,46 @@ export const drawerNodeItems = ({
             },
           },
           projectIdentifier: 'seller-web',
+        },
+        {
+          translationKey: 'header.userMenu.myVehicles',
+          isInternal: true,
+          link: {
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.myMotorcycles',
+          isInternal: true,
+          link: {
+            de: '/de/vehicles',
+            en: '/de/vehicles',
+            fr: '/fr/vehicles',
+            it: '/it/vehicles',
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: false,
+              motoscout24: true,
+            },
+          },
         },
         {
           translationKey: 'header.userMenu.myMotorcycles',
@@ -348,7 +388,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: false,
