@@ -6,13 +6,16 @@ import reactConfig from '@smg-automotive/eslint-config/react';
 export default [
   ...reactConfig,
   {
+    ignores: ['!/.storybook', '!/.jest', '!.prettierrc.js', '/coverage'],
+  },
+  {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2021,
       sourceType: 'module',
       globals: {
         ...globals.browser,
         ...globals.jest,
+        ...globals.es2021,
       },
     },
     rules: {
