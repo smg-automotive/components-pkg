@@ -3,6 +3,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { MergedUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
+import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
@@ -23,33 +24,35 @@ import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
 
 interface NavigationProps {
-  environment: Environment;
   brand: Brand;
   comparisonItemIds?: number[] | null;
-  language: Language;
-  user: MergedUser | null;
-  hasNotification: boolean;
-  useAbsoluteUrls?: boolean;
   entitlements?: string[];
+  environment: Environment;
+  experiments?: Record<string, string>;
+  hasNotification: boolean;
+  language: Language;
   onLogin: () => void;
   onLogout: () => void;
   trackEvent?: (event: CustomEvent) => void;
-  experiments?: Record<string, string>;
+  useAbsoluteUrls?: boolean;
+  project?: Project;
+  user: MergedUser | null;
 }
 
 const Navigation: FC<NavigationProps> = ({
-  environment,
   brand,
   comparisonItemIds,
-  language,
-  user,
-  hasNotification,
-  useAbsoluteUrls = false,
   entitlements = [],
+  environment,
+  experiments = {},
+  hasNotification,
+  language,
   onLogin,
   onLogout,
   trackEvent,
-  experiments = {},
+  useAbsoluteUrls = false,
+  project,
+  user,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -59,12 +62,14 @@ const Navigation: FC<NavigationProps> = ({
       brand,
       environment,
       useAbsoluteUrls,
+      project,
       config: {
         headerItems: headerLinks({ trackEvent, experiments }),
         drawerItems: drawerNodeItems({
           trackEvent,
           onLogout,
           comparisonItemIds,
+          sellerId: user?.sellerId,
         }),
         iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
@@ -78,6 +83,7 @@ const Navigation: FC<NavigationProps> = ({
     brand,
     environment,
     useAbsoluteUrls,
+    project,
     headerLinks,
     drawerNodeItems,
     user?.id,

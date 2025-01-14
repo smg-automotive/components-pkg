@@ -35,6 +35,8 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   children,
   triggerHeight = 'md',
   isDisabled,
+  hasFlip = true,
+  zIndex = 'popover',
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialPopoverState === 'open',
@@ -66,6 +68,21 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
     color: 'gray.900',
   };
 
+  const disableFlip = [
+    {
+      name: 'preventOverflow',
+      options: {
+        boundary: 'viewport',
+      },
+    },
+    {
+      name: 'flip',
+      options: {
+        fallbackPlacements: [],
+      },
+    },
+  ];
+
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <I18nContext.Consumer>
@@ -77,6 +94,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             isOpen={isOpen}
             onOpen={onOpen}
             onClose={onClose}
+            modifiers={!hasFlip ? disableFlip : []}
           >
             <ButtonGroup isAttached={true} w="full" maxW="full">
               <PopoverTrigger>
@@ -147,6 +165,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               showCallToActionButton={showCallToActionButton}
               header={header}
               enforceHeight={enforceHeight}
+              zIndex={zIndex}
             >
               {children}
             </FilterPopover>

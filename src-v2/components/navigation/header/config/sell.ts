@@ -41,6 +41,7 @@ export const privateAutoScoutSellLinkConfig = ({
             fr: '/fr/vendre-voiture',
             it: '/it/vendere-auto',
           },
+    projectIdentifier: experiments?.c2b === 'on' ? 'seller-web' : undefined,
     visibilitySettings: {
       userType: {
         private: true,

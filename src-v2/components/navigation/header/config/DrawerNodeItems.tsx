@@ -72,10 +72,12 @@ const getComparisonNodeItem = ({
 
 export const drawerNodeItems = ({
   comparisonItemIds,
+  sellerId,
   trackEvent,
   onLogout,
 }: {
   comparisonItemIds?: number[] | null;
+  sellerId?: string;
   trackEvent?: (event: CustomEvent) => void;
   onLogout: () => void;
 }): DrawerNodeItemsConfig => ({
@@ -101,6 +103,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.advancedSearch',
@@ -120,6 +123,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         ...getComparisonNodeItem({
           comparisonItemIds,
@@ -134,10 +138,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/sellers',
-            en: '/de/sellers',
-            fr: '/fr/sellers',
-            it: '/it/sellers',
+            de: '/de/sellers/search',
+            en: '/de/sellers/search',
+            fr: '/fr/sellers/search',
+            it: '/it/sellers/search',
           },
           visibilitySettings: {
             userType: {
@@ -149,14 +153,15 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.searchMerchant',
           link: {
-            de: '/de/sellers',
-            en: '/de/sellers',
-            fr: '/fr/sellers',
-            it: '/it/sellers',
+            de: '/de/sellers/search',
+            en: '/de/sellers/search',
+            fr: '/fr/sellers/search',
+            it: '/it/sellers/search',
           },
           visibilitySettings: {
             userType: {
@@ -193,6 +198,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.searchCars',
@@ -213,6 +219,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'header.searchMenu.insuranceComparison',
@@ -328,6 +335,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.myVehicles',
@@ -337,25 +345,6 @@ export const drawerNodeItems = ({
             en: '/de/vehicles',
             fr: '/fr/vehicles',
             it: '/it/vehicles',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.myVehcilesOld',
-          link: {
-            de: '/de/member/vehiclepool',
-            en: '/de/member/vehiclepool',
-            fr: '/fr/member/vehiclepool',
-            it: '/it/member/vehiclepool',
           },
           visibilitySettings: {
             userType: {
@@ -406,6 +395,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.dealerDashboard',
@@ -530,6 +520,7 @@ export const drawerNodeItems = ({
             hideIfRequiredEntitlementIsMissing: true,
             singleRequiredEntitlement: [Entitlement.CockpitFrontend],
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.statistics',
@@ -608,6 +599,7 @@ export const drawerNodeItems = ({
               motoscout24: false,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.carPark',
@@ -689,6 +681,25 @@ export const drawerNodeItems = ({
             brand: {
               autoscout24: true,
               motoscout24: true,
+            },
+          },
+        },
+        {
+          translationKey: 'header.userMenu.partnerHub',
+          link: {
+            de: `https://partnerhub.financescout24.ch/de/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation`,
+            en: `https://partnerhub.financescout24.ch/de/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation`,
+            fr: `https://partnerhub.financescout24.ch/fr/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation`,
+            it: `https://partnerhub.financescout24.ch/it/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation`,
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
             },
           },
         },
@@ -836,6 +847,25 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.insuranceComparison',
           link: {
+            de: `https://partnerhub.financescout24.ch/de/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation_insurance`,
+            en: `https://partnerhub.financescout24.ch/de/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation_insurance`,
+            fr: `https://partnerhub.financescout24.ch/fr/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation_insurance`,
+            it: `https://partnerhub.financescout24.ch/it/landing?dealerId=${sellerId}&utm_source=autoscout24.ch&utm_medium=web&utm_campaign=link_as24_cardealer_portal_headernavigation_insurance`,
+          },
+          visibilitySettings: {
+            userType: {
+              private: false,
+              professional: true,
+            },
+            brand: {
+              autoscout24: true,
+              motoscout24: false,
+            },
+          },
+        },
+        {
+          translationKey: 'header.searchMenu.insuranceComparison',
+          link: {
             de: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             en: 'https://www.financescout24.ch/de/lp/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
             fr: 'https://www.financescout24.ch/fr/lp/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=subnavigation_car_',
@@ -844,7 +874,7 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: true,
+              professional: false,
             },
             brand: {
               autoscout24: true,
@@ -894,6 +924,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         {
           translationKey: 'header.userMenu.bookmarks',
@@ -913,6 +944,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'listings-web',
         },
         ...getComparisonNodeItem({
           comparisonItemIds,
@@ -1115,19 +1147,19 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.emailAddress',
           link: {
-            de: '/de/member/masterdata/changeemail',
-            en: '/de/member/masterdata/changeemail',
-            fr: '/fr/member/masterdata/changeemail',
-            it: '/it/member/masterdata/changeemail',
+            de: '/de/account/change-email',
+            en: '/en/account/change-email',
+            fr: '/fr/account/change-email',
+            it: '/it/account/change-email',
           },
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
+              professional: true,
             },
             brand: {
               autoscout24: true,
-              motoscout24: false,
+              motoscout24: true,
             },
           },
         },
@@ -1257,25 +1289,6 @@ export const drawerNodeItems = ({
           visibilitySettings: {
             userType: {
               private: true,
-              professional: false,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.contactDetails',
-          link: {
-            de: '/de/member/masterdata/addressedit',
-            en: '/de/member/masterdata/addressedit',
-            fr: '/fr/member/masterdata/addressedit',
-            it: '/it/member/masterdata/addressedit',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
               professional: true,
             },
             brand: {
@@ -1283,6 +1296,7 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
+          projectIdentifier: 'seller-web',
         },
         {
           translationKey: 'header.userMenu.openingHours',
