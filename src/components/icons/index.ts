@@ -144,3 +144,4 @@ export { DoubleChevronUpIcon } from './DoubleChevronUpIcon';
 export { DoubleChevronDownIcon } from './DoubleChevronDownIcon';
 export { DoubleLineIcon } from './DoubleLineIcon';
 export { NotAvailableSquareIcon } from './NotAvailableSquareIcon';
+export { WarrantyIcon } from './WarrantyIcon';
