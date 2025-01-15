@@ -245,9 +245,7 @@ describe('<RangeFilterInputWithSlider/>', () => {
 
       const chart = screen.getByTestId('chart');
 
-      // eslint-disable-next-line testing-library/no-node-access
       expect(chart.firstChild).toHaveStyle({ transform: 'scaleY(1)' });
-      // eslint-disable-next-line testing-library/no-node-access
       expect(chart.lastChild).toHaveStyle({ transform: 'scaleY(0.02)' });
     });
   });

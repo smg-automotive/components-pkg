@@ -10,7 +10,6 @@ const GridItem: ComponentWithAs<'div', GridItemProps> = forwardRef<
   GridItemProps,
   'div'
 >((props, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return <ChakraGridItem {...(props as GridItemProps)} ref={ref} />;
 });
 

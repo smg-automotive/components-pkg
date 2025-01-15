@@ -39,7 +39,7 @@
     "build": "rimraf dist && rollup -c",
     "build:storybook": "storybook build",
     "lint:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
-    "lint": "npm run lint:i18n && eslint --ext ts,js,tsx,jsx,json .",
+    "lint": "npm run lint:i18n && eslint .",
     "format:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
@@ -66,7 +66,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.0",
     "@rollup/plugin-typescript": "12.1.2",
-    "@smg-automotive/eslint-config": "4.0.101",
+    "@smg-automotive/eslint-config": "5.0.7",
     "@storybook/addon-actions": "8.4.7",
     "@storybook/addon-docs": "8.4.7",
     "@storybook/addon-essentials": "8.4.7",
@@ -135,8 +135,12 @@
     "framer-motion": "11.18.0",
     "fs-extra": "11.2.0",
     "fuse.js": "7.0.0",
+    "globals": "15.14.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "10.0.4",
     "yargs": "17.7.2"
+  },
+  "overrides": {
+    "eslint": "latest"
   }
 }

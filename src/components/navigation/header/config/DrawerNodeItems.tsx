@@ -1062,10 +1062,10 @@ export const drawerNodeItems = ({
         {
           translationKey: 'header.userMenu.dealerInfoSystem',
           link: {
-            de: 'http://bi.scout24.ch',
-            en: 'http://bi.scout24.ch',
-            fr: 'http://bi.scout24.ch',
-            it: 'http://bi.scout24.ch',
+            de: 'https://bi.scout24.ch',
+            en: 'https://bi.scout24.ch',
+            fr: 'https://bi.scout24.ch',
+            it: 'https://bi.scout24.ch',
           },
           visibilitySettings: {
             userType: {

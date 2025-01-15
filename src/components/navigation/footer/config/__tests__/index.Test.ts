@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/filename-case */
 import { Brand } from 'src/types/brand';
 
 import { FooterConfig } from '../factory';
