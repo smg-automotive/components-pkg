@@ -108,7 +108,7 @@
     "rollup-plugin-dts": "6.1.1",
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-peer-deps-external": "2.2.4",
-    "semantic-release": "24.2.1",
+    "semantic-release": "24.2.0",
     "sort-phraseapp-locales": "0.0.1",
     "space-separated-tokens": "2.0.2",
     "storybook": "8.5.0",
