@@ -133,8 +133,12 @@
     "framer-motion": "11.18.2",
     "fs-extra": "11.3.0",
     "fuse.js": "7.0.0",
+    "globals": "15.14.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "10.0.4",
     "yargs": "17.7.2"
+  },
+  "overrides": {
+    "eslint": "latest"
   }
 }

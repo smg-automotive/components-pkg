@@ -34,10 +34,8 @@ const WrapperFactory = ({
   return ThemeRenderer;
 };
 
-// eslint-disable-next-line import/export
 export * from '@testing-library/react';
 
-// eslint-disable-next-line import/export
 export const render = (
   ui: ReactElement,
   options: RenderOptions & WrapperOptions = {},
@@ -52,7 +50,6 @@ export const render = (
   });
 };
 
-// eslint-disable-next-line import/export
 export const renderHook = <
   Result,
   Props,
