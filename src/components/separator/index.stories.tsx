@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { Separator, SeparatorProps } from './index';
 
 const meta: Meta<typeof Separator> = {
