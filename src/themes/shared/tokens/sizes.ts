@@ -24,4 +24,5 @@ export const sizes = defineTokens.sizes({
   },
   'auth0-width': { value: '25rem' },
   'auth0-height': { value: '33.75rem' },
+  'screen-height': { value: '100vh'}
 });
