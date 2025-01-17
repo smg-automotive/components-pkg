@@ -13,11 +13,8 @@ const meta: Meta<typeof FullHeight> = {
   },
 
   args: {
-    children: (
-      <Box backgroundColor="brand.primary" minHeight="screen-height">
-        I am full height container
-      </Box>
-    ),
+    children: 'box',
+      
   },
 
   argTypes: {
@@ -25,6 +22,13 @@ const meta: Meta<typeof FullHeight> = {
       table: {
         disable: true,
       },
+      mapping: {
+        box: (
+          <Box backgroundColor="brand.primary" minHeight="screen-height">
+            I am full height container
+          </Box>
+        )
+      }
     },
   },
 };
