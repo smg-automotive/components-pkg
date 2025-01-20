@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const CartIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const CartIcon = createIcon({
   displayName: 'Cart',
   viewBox: '0 0 24 24',
   path: (
