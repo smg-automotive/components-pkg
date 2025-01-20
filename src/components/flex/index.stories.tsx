@@ -1,26 +1,25 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '../box';
-
-import Flex from './index';
+import { Flex } from './index';
+import { Box } from 'src';
 
 const meta: Meta<typeof Flex> = {
   title: 'Layout/Flex',
   component: Flex,
-
   args: {
     direction: 'row',
     align: 'center',
     justify: 'center',
-    children: [
+    children: 
+    <>
       <Box p="sm" bg="green.200" margin="sm" key="child-1">
         Element 1
       </Box>,
       <Box p="md" bg="orange.300" margin="sm" key="child-2">
         Element 2
-      </Box>,
-    ],
+      </Box>
+    </>
   },
 
   argTypes: {
@@ -32,7 +31,6 @@ const meta: Meta<typeof Flex> = {
       options: ['stretch', 'center', 'start', 'end'],
       control: 'select',
     },
-
     justify: {
       options: [
         'start',
@@ -43,12 +41,20 @@ const meta: Meta<typeof Flex> = {
       ],
       control: 'select',
     },
+    children: {
+      table: {
+        disable: true
+      }
+    },
   },
 };
 export default meta;
 
 type StoryType = StoryObj<typeof Flex>;
-export const Row: StoryType = {};
+
+export const Overview: StoryObj<typeof Flex> = {};
+
+export const Row: StoryType = {}
 
 export const Column: StoryType = {
   args: {
