@@ -15,7 +15,7 @@ const meta: Meta<typeof Flex> = {
     <>
       <Box p="sm" bg="green.200" margin="sm" key="child-1">
         Element 1
-      </Box>,   
+      </Box>,
       <Box p="md" bg="orange.300" margin="sm" key="child-2">
         Element 2
       </Box>
