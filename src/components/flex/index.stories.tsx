@@ -44,7 +44,7 @@ const meta: Meta<typeof Flex> = {
             Element 1
           </Box>
         ),
-        box2: ( 
+        box2: (
           <Box p="md" bg="orange.300" margin="sm" key="child-2">
             Element 2
           </Box>
