@@ -1,12 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { Box } from '@chakra-ui/react';
 
-import SimpleGridComponent from './index';
+import { SimpleGrid } from './index';
 
-const meta: Meta<typeof SimpleGridComponent> = {
+const meta: Meta<typeof SimpleGrid> = {
   title: 'Layout/SimpleGrid',
-  component: SimpleGridComponent,
+  component: SimpleGrid,
   decorators: [
     (Story) => (
       // m functions differently now.
@@ -83,7 +84,7 @@ const meta: Meta<typeof SimpleGridComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof SimpleGridComponent>;
+type StoryType = StoryObj<typeof SimpleGrid>;
 export const Overview: StoryType = {};
 
 /**
