@@ -24,7 +24,7 @@ const meta: Meta<typeof FullHeight> = {
       },
       mapping: {
         box: (
-          <Box backgroundColor="brand.primary" minHeight="screen-height">
+          <Box backgroundColor="brand.primary" minHeight="full">
             I am full height container
           </Box>
         ),
