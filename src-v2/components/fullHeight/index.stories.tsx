@@ -14,7 +14,7 @@ const meta: Meta<typeof FullHeightComponent> = {
 
   args: {
     children: (
-      <Box backgroundColor="brand.primary" minHeight="100vh">
+      <Box backgroundColor="brand.primary" minHeight="full">
         I am full height container
       </Box>
     ),
