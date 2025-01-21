@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Flex } from './index';
 
-import { Box } from 'src';
+import { Box } from '../box';
 
 const meta: Meta<typeof Flex> = {
   title: 'Layout/Flex',
@@ -34,10 +34,9 @@ const meta: Meta<typeof Flex> = {
       ],
       control: 'select',
     },
-    
     children: {
       table: {
-        disable: true
+        disable: true,
       },
       mapping: {
         box1: (
@@ -45,12 +44,11 @@ const meta: Meta<typeof Flex> = {
             Element 1
           </Box>
         ),
-        box2:
-        ( 
+        box2: ( 
           <Box p="md" bg="orange.300" margin="sm" key="child-2">
             Element 2
           </Box>
-        )
+        ),
       },
     },
   },
@@ -61,7 +59,7 @@ type StoryType = StoryObj<typeof Flex>;
 
 export const Overview: StoryObj<typeof Flex> = {};
 
-export const Row: StoryType = {}
+export const Row: StoryType = {};
 
 export const Column: StoryType = {
   args: {
@@ -69,5 +67,3 @@ export const Column: StoryType = {
     align: 'stretch',
   },
 };
-
-
