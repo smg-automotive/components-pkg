@@ -1,4 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
+
 import { Box } from '../box';
 
 export const FullHeight: FC<PropsWithChildren> = ({ children }) => (
@@ -7,5 +8,4 @@ export const FullHeight: FC<PropsWithChildren> = ({ children }) => (
   </Box>
 );
 
-export default FullHeight;
 export { PropsWithChildren as FullHeightProps };

@@ -14,7 +14,6 @@ const meta: Meta<typeof FullHeight> = {
 
   args: {
     children: 'box',
-      
   },
 
   argTypes: {
@@ -23,12 +22,11 @@ const meta: Meta<typeof FullHeight> = {
         disable: true,
       },
       mapping: {
-        box: (
+        box:
           <Box backgroundColor="brand.primary" minHeight="screen-height">
             I am full height container
           </Box>
-        )
-      }
+      },
     },
   },
 };
