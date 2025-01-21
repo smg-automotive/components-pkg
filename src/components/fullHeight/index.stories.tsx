@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Box } from '../box';
+
 import { FullHeight } from './index';
 
 const meta: Meta<typeof FullHeight> = {
@@ -26,7 +27,7 @@ const meta: Meta<typeof FullHeight> = {
           <Box backgroundColor="brand.primary" minHeight="screen-height">
             I am full height container
           </Box>
-        )
+        ),
       },
     },
   },
