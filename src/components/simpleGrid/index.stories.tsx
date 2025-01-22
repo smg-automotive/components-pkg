@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '@chakra-ui/react';
+import { Box } from 'src';
 
 import { SimpleGrid } from './index';
 
@@ -10,9 +10,7 @@ const meta: Meta<typeof SimpleGrid> = {
   component: SimpleGrid,
   decorators: [
     (Story) => (
-      // m functions differently now.
-      // <Box maxW="container.sm" m="auto">
-      <Box maxW="container.sm">
+      <Box maxW="container.sm" m="auto">
         <Story />
       </Box>
     ),
@@ -57,24 +55,13 @@ const meta: Meta<typeof SimpleGrid> = {
         type: 'select',
       },
     },
+    rowGap: {
+       options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
 
-    // Spacing was removed
-    // spacingY: {
-    //   options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-
-    //   control: {
-    //     type: 'select',
-    //   },
-    // },
-
-    // spacingX: {
-    //   options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-
-    //   control: {
-    //     type: 'select',
-    //   },
-    // },
-
+      control: {
+        type: 'select',
+      },
+    },
     children: {
       table: {
         disable: true,

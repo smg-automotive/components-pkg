@@ -6,6 +6,7 @@ export * from './grid';
 export * from './icons';
 export * from './link';
 export * from './missingImage';
+export * from './simpleGrid';
 export * from './stack';
 export * from './table';
 export * from './themeProvider';
