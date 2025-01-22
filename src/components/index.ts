@@ -3,6 +3,7 @@ export * from './aspectRatio';
 export * from './badge';
 export * from './box';
 export * from './center';
+export * from './fullHeight';
 export * from './flex';
 export * from './grid';
 export * from './icons';
