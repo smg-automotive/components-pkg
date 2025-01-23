@@ -42,7 +42,10 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
 
-  **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
+### Renamed components
+
+- `Divider` component was renamed to `Separator`, the props stay the same.
+
 ### Namespace style components
 
 The following components now use the `namespace` style imports:
