@@ -37,6 +37,10 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 
   **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
 
+- `simpleGrid` no longer accepts `spacingX` and `spacingY` props.
+  Instead use `gap` to define spacing around grid items from all sides (with `rowGap: 0` if only `spacingX` is needed), and `rowGap` instead of `spacingY`.
+
+  **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
 ### Namespace style components
 
 The following components now use the `namespace` style imports:
