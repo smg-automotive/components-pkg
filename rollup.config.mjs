@@ -10,7 +10,7 @@ import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
 
-import packageJson from './package.json' assert { type: 'json' };
+import packageJson from './package.json' with { type: 'json' };
 
 const external = [
   ...Object.keys(packageJson.dependencies || {}),
