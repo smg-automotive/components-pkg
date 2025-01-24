@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import setupNextFonts from './setupNextFonts';
 import setup from './setup';
 import copyFonts from './copyFonts';

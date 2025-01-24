@@ -39,7 +39,7 @@
     "build": "rimraf dist && rollup -c",
     "build:storybook": "storybook build",
     "lint:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
-    "lint": "npm run lint:i18n && eslint --ext ts,js,tsx,jsx,json .",
+    "lint": "npm run lint:i18n && eslint .",
     "format:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
@@ -124,12 +124,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "3.1.1",
-    "@chakra-ui/anatomy": "2.3.4",
-    "@chakra-ui/styled-system": "2.12.0",
-    "@chakra-ui/system": "2.6.2",
-    "@chakra-ui/theme-tools": "2.2.6",
     "@emotion/react": "11.14.0",
-    "@emotion/styled": "11.14.0",
     "@smg-automotive/auth": "5.1.1",
     "@smg-automotive/i18n-pkg": "1.6.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
@@ -138,8 +133,12 @@
     "framer-motion": "11.18.2",
     "fs-extra": "11.3.0",
     "fuse.js": "7.0.0",
+    "globals": "15.14.0",
     "merge-json-file": "1.0.1",
     "use-debounce": "10.0.4",
     "yargs": "17.7.2"
+  },
+  "overrides": {
+    "eslint": "latest"
   }
 }
