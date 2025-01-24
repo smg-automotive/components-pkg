@@ -398,54 +398,6 @@ export const drawerNodeItems = ({
           projectIdentifier: 'seller-web',
         },
         {
-          translationKey: 'header.userMenu.dealerDashboard',
-          isInternal: true,
-          link: {
-            de: '/de',
-            en: '/de',
-            fr: '/fr',
-            it: '/it',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-          entitlementConfig: {
-            hideIfEntitlementIsPresent: Entitlement.CockpitFrontend,
-            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
-          },
-        },
-        {
-          translationKey: 'header.userMenu.dealerDashboard',
-          isInternal: true,
-          link: {
-            de: '/de',
-            en: '/de',
-            fr: '/fr',
-            it: '/it',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: true,
-            },
-          },
-          entitlementConfig: {
-            hideIfEntitlementIsPresent: Entitlement.CockpitFrontend,
-            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
-          },
-        },
-        {
           translationKey: 'header.userMenu.optimizer',
           link: {
             de: '/de/member/optimizer',
@@ -515,10 +467,6 @@ export const drawerNodeItems = ({
               autoscout24: true,
               motoscout24: true,
             },
-          },
-          entitlementConfig: {
-            hideIfRequiredEntitlementIsMissing: true,
-            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
           },
           projectIdentifier: 'seller-web',
         },
