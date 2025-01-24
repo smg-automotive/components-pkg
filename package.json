@@ -39,7 +39,7 @@
     "build": "rimraf dist && rollup -c",
     "build:storybook": "storybook build",
     "lint:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
-    "lint": "npm run lint:i18n && eslint --ext ts,js,tsx,jsx,json .",
+    "lint": "npm run lint:i18n && eslint .",
     "format:i18n": "npx sort-phraseapp-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
