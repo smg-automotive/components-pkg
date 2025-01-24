@@ -4,7 +4,12 @@ import {
   GridItem as ChakraGridItem,
 } from '@chakra-ui/react';
 
-const Grid = ChakraGrid;
+const Grid: ComponentWithAs<'div', GridProps> = forwardRef<GridProps, 'div'>(
+  (props, ref) => {
+    return <ChakraGrid {...(props as GridProps)} ref={ref} />;
+  },
+);
+
 Grid.displayName = 'Grid';
 
 const GridItem = ChakraGridItem;
