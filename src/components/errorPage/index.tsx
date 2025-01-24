@@ -5,6 +5,7 @@ import { chakra } from '@chakra-ui/react';
 
 import { ErrorStatusCode } from 'src/types/errorStatusCode';
 
+import errorIllustrationVerifyEmail from 'src/assets/images/errorIllustrationVerifyEmail.png';
 import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustrationSomethingWentWrong.png';
 
 import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
@@ -64,9 +65,16 @@ const config: Record<
   },
   UNVERIFIED_EMAIL: {
     illustration: errorIllustrationNotFound,
+    buttonColumns: 2,
+    content: Nonce,
+    primaryAction: BackToLogin,
+    secondaryAction: ContactSupport,
+  },
+  INITIAL_UNVERIFIED_EMAIL: {
+    illustration: errorIllustrationVerifyEmail,
     buttonColumns: 1,
     content: Nonce,
-    primaryAction: Nonce,
+    primaryAction: BackToLogin,
     secondaryAction: Nonce,
   },
   USER_BLOCKED: {

@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 import { Container } from '@chakra-ui/react';
 
+import { Project } from 'src/types/project';
 import { Language } from 'src/types/language';
 
 import { Environment } from 'src/types/environment';
@@ -25,6 +26,7 @@ interface FooterProps {
   language: Language;
   environment?: Environment;
   useAbsoluteUrls?: boolean;
+  project?: Project;
   experiments?: Record<string, string>;
 }
 
@@ -33,6 +35,7 @@ const Footer: FC<FooterProps> = ({
   language,
   environment,
   useAbsoluteUrls,
+  project,
   experiments = {},
 }) => {
   const config = useMemo(() => {
@@ -41,9 +44,10 @@ const Footer: FC<FooterProps> = ({
       brand,
       environment,
       useAbsoluteUrls,
+      project,
     });
     return footerConfigInstance.getMappedConfig();
-  }, [brand, environment, useAbsoluteUrls, experiments]);
+  }, [brand, environment, useAbsoluteUrls, project, experiments]);
 
   return (
     <TranslationProvider language={language} scopes={['footer']}>

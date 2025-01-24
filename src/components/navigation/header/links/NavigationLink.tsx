@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 
 import { Language, useI18n } from '@smg-automotive/i18n-pkg';
 
+import { Project } from 'src/types/project';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import Link from 'src/components/link';
 import Hide from 'src/components/hide';
@@ -21,6 +22,7 @@ export interface NavigationLinkProps {
   hideTextBelow?: BreakpointName;
   missingEntitlementLinkIcon?: ReactNode;
   onClick?: () => void;
+  projectIdentifier?: Project;
 }
 
 const NavigationLink: FC<NavigationLinkProps> = ({

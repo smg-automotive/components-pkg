@@ -28,6 +28,10 @@
       "description": "Vous pouvez soit demander un nouveau changement d'email depuis votre compte, soit contacter le service client.",
       "title": "Ce lien a expiré ou est invalide"
     },
+    "INITIAL_UNVERIFIED_EMAIL": {
+      "description": "Presque terminé, pour vous connecter, veuillez vérifier votre boîte de réception et cliquer sur le lien de vérification.",
+      "title": "Veuillez vérifier votre adresse e-mail"
+    },
     "reloadPage": "Rechargez la page",
     "UNKNOWN_AUTH_ERROR": {
       "description": "Nous rencontrons des difficultés pour vous connecter. Veuillez réessayer et, si le problème persiste, contactez notre service clients pour obtenir de l’aide.",
@@ -177,13 +181,12 @@
       "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Parc de motos",
       "myMotorcycles": "Mes motos",
-      "myMotorcyclesOld": "Mes motos (anc. vue)",
-      "myVehcilesOld": "Mes véhicules (anc. vue)",
       "myVehicles": "Mes véhicules",
       "onlineAdvertising": "Publicité online",
       "openingHours": "Heures d'ouverture",
       "optimizer": "OptimizerBasic",
       "optimizerPro": "OptimizerPro",
+      "partnerHub": "PartnerHub",
       "printableList": "Liste Imprimable",
       "printingCenter": "Centre d'impression",
       "qualityLogo": "Sigle de qualité",

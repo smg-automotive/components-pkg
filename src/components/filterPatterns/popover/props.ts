@@ -10,4 +10,6 @@ export type PopoverFilterProps = FilterPatternProps &
     enforceHeight?: boolean;
     triggerHeight?: 'md' | 'lg';
     isDisabled?: boolean;
+    hasFlip?: boolean;
+    zIndex?: string;
   };

@@ -28,6 +28,10 @@
       "description": "You can either request a new email change from your account or contact customer support.",
       "title": "This Link Has Expired or Is Invalid"
     },
+    "INITIAL_UNVERIFIED_EMAIL": {
+      "description": "Almost done, in order to log in please check your inbox and click on the verification link.",
+      "title": "Please verify your email"
+    },
     "reloadPage": "Refresh page",
     "UNKNOWN_AUTH_ERROR": {
       "description": "We're having trouble logging you in. Please try again, and if the issue persists, contact our customer support team for assistance.",
@@ -177,13 +181,12 @@
       "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Motorcycle park",
       "myMotorcycles": "My Motorcycles",
-      "myMotorcyclesOld": "My Motorcycle (old)",
-      "myVehcilesOld": "My Vehicles (old)",
       "myVehicles": "My Vehicles",
       "onlineAdvertising": "Online Advertising",
       "openingHours": "Opening hours",
       "optimizer": "OptimizerBasic",
       "optimizerPro": "OptimizerPro",
+      "partnerHub": "PartnerHub",
       "printableList": "Printable list",
       "printingCenter": "Printing center",
       "qualityLogo": "Quality logo",

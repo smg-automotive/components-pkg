@@ -28,6 +28,10 @@
       "description": "Sie können entweder eine neue E-Mail-Änderung aus Ihrem Konto anfordern oder den Kundensupport kontaktieren.",
       "title": "Dieser Link ist abgelaufen oder ungültig"
     },
+    "INITIAL_UNVERIFIED_EMAIL": {
+      "description": "Fast geschafft! Um sich anzumelden, überprüfen Sie bitte Ihren Posteingang und klicken Sie auf den Bestätigungslink.",
+      "title": "Bitte bestätigen Sie Ihre E-Mail-Adresse"
+    },
     "reloadPage": "Seite neu laden",
     "UNKNOWN_AUTH_ERROR": {
       "description": "Login nicht möglich. Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut. Wenn das Problem weiterhin besteht kontaktieren Sie bitte unser Support-Team.",
@@ -177,13 +181,12 @@
       "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Zum Motorradpark",
       "myMotorcycles": "Meine Motorräder",
-      "myMotorcyclesOld": "Meine Motorräder (alt)",
-      "myVehcilesOld": "Meine Fahrzeuge (alt)",
       "myVehicles": "Meine Fahrzeuge",
       "onlineAdvertising": "Online Werbung",
       "openingHours": "Öffnungszeiten",
       "optimizer": "OptimizerBasic",
       "optimizerPro": "OptimizerPro",
+      "partnerHub": "PartnerHub",
       "printableList": "Druckbare Liste",
       "printingCenter": "Druckcenter",
       "qualityLogo": "Qualitätslogo",

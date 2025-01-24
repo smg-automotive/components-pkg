@@ -13,7 +13,7 @@ const Rating: FC<Props> = ({ rating, size }) => {
       sx={{
         '--rating': rating.toString(),
         '--percent': 'calc((var(--rating) - 0.16) / 5 * 100%)',
-        '--star-color': 'var(--chakra-colors-gray-900)',
+        '--star-color': 'var(--chakra-colors-orange-300)',
       }}
       display="inline-block"
       fontSize={size === 'large' ? 'md' : 'sm'}

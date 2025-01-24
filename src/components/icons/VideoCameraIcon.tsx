@@ -2,17 +2,17 @@ import React from 'react';
 import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const LabelIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'LabelIcon',
+export const VideoCameraIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+  displayName: 'Video Camera',
   viewBox: '0 0 24 24',
   path: (
     <>
-      <title>Label icon</title>
+      <title>Video camera icon</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M19 11.17V7L21 6V12L11 22L2 13L12 3H21V5H12.83L4.83 13L11 19.17L19 11.17ZM15.573 6.99597L13.007 9.56297L14.435 10.991L17.002 8.42497L15.573 6.99597Z"
         fill="currentColor"
+        d="M16 6.00928H2V18.0093H16V15.79L22 17.29V6.62183L16 8.62183V6.00928ZM16 10.73V13.7285L20 14.7285V9.39668L16 10.73ZM4 16.0093V8.00928H14V16.0093H4Z"
       />
     </>
   ),
