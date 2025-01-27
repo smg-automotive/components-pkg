@@ -125,7 +125,7 @@
   "dependencies": {
     "@chakra-ui/react": "3.1.1",
     "@emotion/react": "11.14.0",
-    "@smg-automotive/auth": "5.1.1",
+    "@smg-automotive/auth": "5.1.2",
     "@smg-automotive/i18n-pkg": "1.6.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
