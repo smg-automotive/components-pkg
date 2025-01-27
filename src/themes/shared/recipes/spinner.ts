@@ -7,7 +7,6 @@ export const spinnerRecipe = defineRecipe({
     borderColor: 'gray.900',
     border: '2px',
     borderRadius: 'full',
-    '--spinner-size': 'sm',
     width: 'var(--spinner-size)',
     height: 'var(--spinner-size)',
     animation: 'spin',
@@ -17,10 +16,11 @@ export const spinnerRecipe = defineRecipe({
   },
   variants: {
     size: {
-      xs: { '--spinner-size': 'xs' },
-      sm: { '--spinner-size': 'sm' },
-      md: { '--spinner-size': 'md' },
-      lg: { '--spinner-size': 'lg' },
+      inherit: { '--spinner-size': 'sizes.sm' },
+      xs: { '--spinner-size': 'sizes.xs' },
+      sm: { '--spinner-size': 'sizes.sm' },
+      md: { '--spinner-size': 'sizes.md' },
+      lg: { '--spinner-size': 'sizes.lg' },
     },
   },
   defaultVariants: {
