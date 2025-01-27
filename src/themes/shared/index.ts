@@ -8,7 +8,6 @@ import { lineHeights } from './tokens/lineHeights';
 import { fontWeights } from './tokens/fontWeights';
 import { fontSizes } from './tokens/fontSizes';
 import { fonts } from './tokens/fonts';
-import { durations } from './tokens/durations';
 import { cursor } from './tokens/cursor';
 import { colors } from './tokens/colors';
 import { borders } from './tokens/borders';
@@ -39,7 +38,6 @@ export const getSharedConfig = () => ({
       fontWeights,
       fontSizes,
       fonts,
-      durations,
       cursor,
       colors,
       borders,
