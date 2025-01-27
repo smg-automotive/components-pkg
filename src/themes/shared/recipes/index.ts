@@ -5,6 +5,6 @@ import { spinnerRecipe as spinner } from './spinner';
 export const recipes = {
   badge,
   link,
-  separator,
   spinner,
+  separator,
 };
