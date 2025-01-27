@@ -26,4 +26,4 @@ export const spinnerRecipe = defineRecipe({
   defaultVariants: {
     size: 'sm',
   },
-})
+});
