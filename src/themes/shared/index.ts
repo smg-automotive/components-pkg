@@ -12,6 +12,7 @@ import { cursor } from './tokens/cursor';
 import { colors } from './tokens/colors';
 import { borders } from './tokens/borders';
 import { aspectRatios } from './tokens/aspectRatios';
+import { animations } from './tokens/animations';
 
 import { textStyles } from './textStyles';
 import { slotRecipes } from './slotRecipes';
@@ -40,6 +41,7 @@ export const getSharedConfig = () => ({
       colors,
       borders,
       aspectRatios,
+      animations,
     },
     recipes,
     slotRecipes,
