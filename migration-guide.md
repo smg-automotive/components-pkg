@@ -93,3 +93,9 @@ const MyComponent = () => (
 ### Parent library changes
 
 Refer to [chakra-ui v2 to v3 migration guide](https://chakra-ui.com/docs/features/chakra-ui-v3) for more changes.
+
+### "Unstyled" control in Storybook
+
+`Unstyled` control automatically appears for components which have recipes.
+
+It allows you to see how the component functions without any styling.
