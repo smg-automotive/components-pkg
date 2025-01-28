@@ -97,5 +97,9 @@ Refer to [chakra-ui v2 to v3 migration guide](https://chakra-ui.com/docs/feature
 ### "Unstyled" control in Storybook
 
 `Unstyled` control automatically appears for components which have recipes.
+It allows the user see how the component functions without any styling.
+In comparison to V2 with V3 migration this is now automatically available.
 
-It allows you to see how the component functions without any styling.
+As discussed in the Enablement Team it is decided that feature is preserved in the migration.
+It is not intended for regular usage but rather for implementation of features with known exceptions such as 
+components on `/sell/` page.
