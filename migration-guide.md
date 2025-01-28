@@ -19,6 +19,15 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 <Box marginTop="sm" marginLeft="md">I am a box</Box>
 ```
 
+### Animation and keyframe changes
+
+Animations are now handled through the token system configured in `token/animations.ts` file.
+
+Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the 
+animations token which can then further be used in recipes, slots or as component props.
+
+All animations and keyframes are automatically exported to `sharedConfig`.
+
 ### Removed props
 
 - `Table.Cell` and `Table.ColumnHeader` no longer accept `isNumeric` prop.
