@@ -22,4 +22,6 @@ export const tokenControls = [
   { name: 'colorPalette', token: 'colors' as const },
   { name: 'border', token: 'borders' as const },
   { name: 'aspectRatio', token: 'aspectRatios' as const },
+  { name: 'animations', token: 'animations' as const },
+  { name: 'durations', token: 'durations' as const },
 ].reduce((acc, arg) => ({ ...acc, ...tokenControl(arg) }), {});
