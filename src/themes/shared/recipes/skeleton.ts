@@ -7,6 +7,10 @@ export const skeletonRecipe = defineRecipe({
     borderRadius: 'xs',
     animation: 'pulse',
     background: 'gray.400',
+    
+    "&::before, &::after, *": {
+      visibility: "hidden",
+    },
   },
 
   variants: {
