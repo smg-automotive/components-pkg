@@ -13,6 +13,8 @@ export const cardRecipe = defineSlotRecipe({
       backgroundColor: 'white',
       borderRadius: 'sm',
       boxShadow: 'xs',
+      overflowWrap: 'break-word',
+      overflow: 'hidden',
     },
     header: {
       paddingX: '2xl',
