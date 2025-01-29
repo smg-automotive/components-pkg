@@ -9,7 +9,7 @@ const meta: Meta<typeof Card.Root> = {
 
   args: {
     css: {
-      '--max-width': '400px'
+      '--max-width': '400px',
     },
     maxWidth: 'var(--max-width)',
     children: [

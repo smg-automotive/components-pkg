@@ -2,12 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const cardRecipe = defineSlotRecipe({
   className: 'chakra-card',
-  slots: [
-    'root',
-    'header',
-    'body',
-    'footer',
-  ],
+  slots: [ 'root', 'header', 'body', 'footer' ],
   base: {
     root: {
       backgroundColor: 'white',
