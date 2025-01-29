@@ -66,7 +66,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.0",
     "@rollup/plugin-typescript": "12.1.2",
-    "@smg-automotive/eslint-config": "5.0.10",
+    "@smg-automotive/eslint-config": "5.0.11",
     "@storybook/addon-actions": "8.5.2",
     "@storybook/addon-docs": "8.5.2",
     "@storybook/addon-essentials": "8.5.2",
