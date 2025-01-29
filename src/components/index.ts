@@ -2,6 +2,7 @@ export * from './articleTeaser';
 export * from './aspectRatio';
 export * from './badge';
 export * from './box';
+export * from './card';
 export * from './center';
 export * from './fullHeight';
 export * from './flex';
