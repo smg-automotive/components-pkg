@@ -6,6 +6,7 @@ export * from './center';
 export * from './fullHeight';
 export * from './flex';
 export * from './grid';
+export * from './heading';
 export * from './icons';
 export * from './link';
 export * from './missingImage';
