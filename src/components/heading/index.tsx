@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { 
+import {
   Heading as ChakraHeading,
-  HeadingProps as ChakraHeadingProps 
+  HeadingProps as ChakraHeadingProps,
 } from '@chakra-ui/react';
 
 export type HeadingProps = Omit<ChakraHeadingProps, 'as' | 'asChild'>;
