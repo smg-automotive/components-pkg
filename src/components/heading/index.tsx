@@ -1,7 +1,12 @@
 import React, { FC } from 'react';
-import { Heading as ChakraHeading, HeadingProps } from '@chakra-ui/react';
+import {
+  Heading as ChakraHeading,
+  HeadingProps as ChakraHeadingProps,
+} from '@chakra-ui/react';
 
-export const H1: FC<Omit<HeadingProps, 'as'>> = ({
+export type HeadingProps = Omit<ChakraHeadingProps, 'as' | 'asChild'>;
+
+export const H1: FC<HeadingProps> = ({
   textStyle = 'heading1',
   children,
   ...rest
@@ -11,7 +16,7 @@ export const H1: FC<Omit<HeadingProps, 'as'>> = ({
   </ChakraHeading>
 );
 
-export const H2: FC<Omit<HeadingProps, 'as'>> = ({
+export const H2: FC<HeadingProps> = ({
   textStyle = 'heading2',
   children,
   ...rest
@@ -21,7 +26,7 @@ export const H2: FC<Omit<HeadingProps, 'as'>> = ({
   </ChakraHeading>
 );
 
-export const H3: FC<Omit<HeadingProps, 'as'>> = ({
+export const H3: FC<HeadingProps> = ({
   textStyle = 'heading3',
   children,
   ...rest
@@ -31,7 +36,7 @@ export const H3: FC<Omit<HeadingProps, 'as'>> = ({
   </ChakraHeading>
 );
 
-export const H4: FC<Omit<HeadingProps, 'as'>> = ({
+export const H4: FC<HeadingProps> = ({
   textStyle = 'heading4',
   children,
   ...rest
@@ -41,7 +46,7 @@ export const H4: FC<Omit<HeadingProps, 'as'>> = ({
   </ChakraHeading>
 );
 
-export const H5: FC<Omit<HeadingProps, 'as'>> = ({
+export const H5: FC<HeadingProps> = ({
   textStyle = 'heading5',
   children,
   ...rest
@@ -51,7 +56,7 @@ export const H5: FC<Omit<HeadingProps, 'as'>> = ({
   </ChakraHeading>
 );
 
-export const H6: FC<Omit<HeadingProps, 'as'>> = ({
+export const H6: FC<HeadingProps> = ({
   textStyle = 'heading6',
   children,
   ...rest
