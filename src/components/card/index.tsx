@@ -3,7 +3,7 @@ import { Card as ChakraCard } from '@chakra-ui/react';
 export type {
   CardBodyProps,
   CardFooterProps,
-  CardHeaderProps 
+  CardHeaderProps,
 } from '@chakra-ui/react';
 
 const { Root, Header, Body, Footer } = ChakraCard;
