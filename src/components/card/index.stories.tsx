@@ -12,7 +12,7 @@ const meta: Meta<typeof Card.Root> = {
       '--max-width': '400px',
     },
     maxWidth: 'var(--max-width)',
-    children: [ 'header', 'body', 'footer' ] 
+    children: ['header', 'body', 'footer'],
   },
 
   argTypes: {
@@ -28,10 +28,10 @@ const meta: Meta<typeof Card.Root> = {
         disable: true,
       },
       mapping: {
-        header: ( <Card.Header key="header">Card Header</Card.Header> ),
-        body: ( <Card.Body key="body">Card Body</Card.Body> ),
-        footer: ( <Card.Footer key="footer">Card Footer</Card.Footer> ),
-      }
+        header: (<Card.Header key="header">Card Header</Card.Header>),
+        body: (<Card.Body key="body">Card Body</Card.Body>),
+        footer: (<Card.Footer key="footer">Card Footer</Card.Footer>),
+      },
     },
   },
 };

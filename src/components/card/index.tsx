@@ -1,17 +1,12 @@
 import { Card as ChakraCard } from '@chakra-ui/react';
 
 export type {
-    CardBodyProps,
-    CardFooterProps,
-    CardHeaderProps,
+  CardBodyProps,
+  CardFooterProps,
+  CardHeaderProps,
 } from '@chakra-ui/react';
 
-const {
-    Root,
-    Header,
-    Body,
-    Footer,
-} = ChakraCard;
+const { Root, Header, Body, Footer } = ChakraCard;
 
 Root.displayName = 'Card.Root';
 Header.displayName = 'Card.Header';
