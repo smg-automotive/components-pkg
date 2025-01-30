@@ -17,7 +17,7 @@ export const Card = {
 };
 
 /**
- * @deprecated since version 3.0
+ * @deprecated please use the namespace style import instead
  */
 export {
     Root as CardRoot,
