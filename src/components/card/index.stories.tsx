@@ -28,9 +28,9 @@ const meta: Meta<typeof Card.Root> = {
         disable: true,
       },
       mapping: {
-        header: (<Card.Header key="header">Card Header</Card.Header>),
-        body: (<Card.Body key="body">Card Body</Card.Body>),
-        footer: (<Card.Footer key="footer">Card Footer</Card.Footer>),
+        header: <Card.Header key="header">Card Header</Card.Header>,
+        body: <Card.Body key="body">Card Body</Card.Body>,
+        footer: <Card.Footer key="footer">Card Footer</Card.Footer>,
       },
     },
   },
