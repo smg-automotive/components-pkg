@@ -22,5 +22,15 @@ export const Card = {
     Root,
     Body,
     Header,
-    Footer
+    Footer,
+};
+
+/**
+ * @deprecated since version 3.0
+ */
+export {
+    Root as CardRoot,
+    Body as CardBody,
+    Header as CardHeader,
+    Footer as CardFooter,
 };
