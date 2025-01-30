@@ -12,19 +12,26 @@ const meta: Meta<typeof Card.Root> = {
       '--max-width': '400px',
     },
     maxWidth: 'var(--max-width)',
-    children: [
-      <Card.Header key="header">Card Header</Card.Header>,
-      <Card.Body key="body">Card Body</Card.Body>,
-      <Card.Footer key="footer">Card Footer</Card.Footer>,
-    ],
+    children: [ 'header', 'body', 'footer' ] 
   },
 
   argTypes: {
     maxWidth: {
       control: {
         type: 'number',
+        value: 400,
         step: 50,
       },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+      mapping: {
+        header: ( <Card.Header key="header">Card Header</Card.Header> ),
+        body: ( <Card.Body key="body">Card Body</Card.Body> ),
+        footer: ( <Card.Footer key="footer">Card Footer</Card.Footer> ),
+      }
     },
   },
 };
