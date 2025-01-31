@@ -1,15 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>smg-automotive/renovate-config"
-  ],
+  "extends": ["github>smg-automotive/renovate-config"],
   "packageRules": [
     {
       "groupName": "UI dependencies",
-      "matchUpdateTypes": [
-        "patch",
-        "minor"
-      ],
+      "matchUpdateTypes": ["patch", "minor"],
       "matchPackageNames": [
         "/@emotion/*/",
         "/framer-motion/",
@@ -19,13 +14,8 @@
     },
     {
       "groupName": "chakra-ui",
-      "matchUpdateTypes": [
-        "patch",
-        "minor"
-      ],
-      "matchPackageNames": [
-        "/@chakra-ui/*/"
-      ]
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchPackageNames": ["/@chakra-ui/*/"]
     }
   ]
 }
