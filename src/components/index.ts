@@ -12,6 +12,7 @@ export * from './icons';
 export * from './link';
 export * from './missingImage';
 export * from './separator';
+export * from './simpleGrid';
 export * from './stack';
 export * from './table';
 export * from './themeProvider';
