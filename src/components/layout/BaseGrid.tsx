@@ -8,7 +8,8 @@ export const repeatArea = (count: number, area: string) => {
 
 export type BaseGridLayoutProps = GridProps;
 
-export const BaseGridLayout: FC<PropsWithChildren<BaseGridLayoutProps>> = (props) => {
+export const BaseGridLayout: FC<PropsWithChildren<BaseGridLayoutProps>> = (
+  props) => {
   const { children, ...gridProps } = props;
 
   return (
