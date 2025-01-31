@@ -1,7 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, Center, FullHeight } from 'src';
+import { Box } from 'src';
+
+import { Center } from 'src';
+
+import { FullHeight } from 'src';
 
 import { SingleColumnCenteredLayout } from './SingleColumnCentered';
 
@@ -41,38 +45,56 @@ const meta: Meta<typeof SingleColumnCenteredLayout> = {
 };
 export default meta;
 
-// type StoryType = StoryObj<typeof SingleColumnCenteredLayout>;
-// export const ContentOnly: StoryType = {
-//   name: 'Content only',
-//   args: {
-//     children: (
-//       <Box 
-//         background="blue.300"
-//         css={{'--height': '600px'}}
-//         height='var(--height)'
-//       >
-//         I am the content
-//       </Box>
-//     ),
-//   },
-// };
+type StoryType = StoryObj<typeof SingleColumnCenteredLayout>;
+export const ContentOnly: StoryType = {
+  name: 'Content only',
+  args: {
+    children: 'box',
+  },
+  argTypes: {
+    children: {
+      mapping: {
+        box: 
+          <Box 
+            background="blue.300"
+            css={{'--height': '600px'}}
+            height='var(--height)'
+          >
+            I am the content
+          </Box>,
+      },
+      table: {
+        disable: true,
+      },
+    },
+  },
+};
 
-// export const ContentAndStepper: StoryType = {
-//   args: {
-//     children: [
-//       <Box background="blue.200" key="stepper">
-//         <Center>1-2-3-4-5</Center>
-//       </Box>,
-//       <Box 
-//         background="blue.300"
-//         css={{'--height': '600px'}}
-//         height='var(--height)'
-//         key="content"
-//       >
-//         I am the content
-//       </Box>,
-//     ],
-//   },
-
-//   name: 'Content and Stepper',
-// };
+export const ContentAndStepper: StoryType = {
+  name: 'Content and Stepper',
+  args: {
+    children: ['boxStepper', 'boxContent'],
+  },
+  argTypes: {
+    children: {
+      mapping: {
+        boxStepper:
+          <Box background="blue.200" key="stepper">
+            <Center>1-2-3-4-5</Center>
+          </Box>,
+        boxContent:
+          <Box 
+            background="blue.300"
+            css={{'--height': '600px'}}
+            height='var(--height)'
+            key="content"
+          >
+            I am the content
+          </Box>,
+      },
+      table: {
+        disable: true,
+      },
+    },
+  },
+};
