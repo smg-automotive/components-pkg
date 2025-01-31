@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
-
 import { BoxProps } from '@chakra-ui/react';
+
+import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
 
 export type AvatarProps = {
   withNotification?: boolean;

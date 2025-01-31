@@ -4,5 +4,5 @@ export const avatarSlotRecipe = defineRecipe({
   className: 'chakra-avatar',
   base: {
     cursor: 'pointer',
-  }
+  },
 });
