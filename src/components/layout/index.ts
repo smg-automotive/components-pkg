@@ -1,0 +1,1 @@
+export { repeatArea } from './BaseGrid';
