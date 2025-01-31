@@ -1,6 +1,7 @@
 import { defineTokens } from '@chakra-ui/react';
 
 export const spacing = defineTokens.spacing({
+  auto: { value: 'auto' },
   '0': { value: '0' },
   xxs: { value: '0.125rem' },
   xs: { value: '0.25rem' },
