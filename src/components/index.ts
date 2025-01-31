@@ -13,7 +13,6 @@ export * from './layout';
 export * from './link';
 export * from './missingImage';
 export * from './stack';
-export * from './separator';
 export * from './table';
 export * from './themeProvider';
 export * from './vehicleReference';
