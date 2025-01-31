@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Text } from './index';
-
 import { getSharedConfig } from 'src/themes/shared';
+
+import { Text } from './index';
 
 const sharedConfig = getSharedConfig();
 
