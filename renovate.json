@@ -1,21 +1,31 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>smg-automotive/renovate-config"],
+  "extends": [
+    "github>smg-automotive/renovate-config"
+  ],
   "packageRules": [
     {
       "groupName": "UI dependencies",
-      "matchUpdateTypes": ["patch", "minor"],
-      "matchPackagePatterns": [
-        "@emotion/*",
-        "framer-motion",
-        "embla-carousel-react",
-        "use-debounce"
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "matchPackageNames": [
+        "/@emotion/*/",
+        "/framer-motion/",
+        "/embla-carousel-react/",
+        "/use-debounce/"
       ]
     },
     {
       "groupName": "chakra-ui",
-      "matchUpdateTypes": ["patch", "minor"],
-      "matchPackagePatterns": ["@chakra-ui/*"]
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "matchPackageNames": [
+        "/@chakra-ui/*/"
+      ]
     }
   ]
 }
