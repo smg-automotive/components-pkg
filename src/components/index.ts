@@ -1,5 +1,6 @@
 export * from './articleTeaser';
 export * from './aspectRatio';
+export * from './avatar';
 export * from './badge';
 export * from './box';
 export * from './card';
