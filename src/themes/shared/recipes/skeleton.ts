@@ -1,12 +1,12 @@
 import { defineRecipe } from "@chakra-ui/react"
 
 export const skeletonRecipe = defineRecipe({
-  className: "chakra-skeleton",
+  className: 'chakra-skeleton',
   base: {
     opacity: '70',
     borderRadius: 'xs',
     animation: 'pulse',
-    background: 'gray.400',
+    background: 'gray.100',
     
     "&::before, &::after, *": {
       visibility: "hidden",

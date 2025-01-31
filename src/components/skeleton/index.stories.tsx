@@ -10,15 +10,17 @@ const meta: Meta<typeof Skeleton> = {
   component: Skeleton,
 
   args: {
-    children: (
-      <Box height="2xl" width="container.sm">
-        Dummy content
-      </Box>
-    ),
+    children: 'box',
   },
 
   argTypes: {
     children: {
+      mapping: {
+        box:
+          <Box height="2xl" width="container.sm">
+            Dummy content
+          </Box>
+      },
       table: {
         disable: true,
       },
