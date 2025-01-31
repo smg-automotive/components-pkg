@@ -13,5 +13,6 @@ export * from './link';
 export * from './missingImage';
 export * from './stack';
 export * from './table';
+export * from './text';
 export * from './themeProvider';
 export * from './vehicleReference';
