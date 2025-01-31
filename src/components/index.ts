@@ -14,5 +14,6 @@ export * from './missingImage';
 export * from './simpleGrid';
 export * from './stack';
 export * from './table';
+export * from './text';
 export * from './themeProvider';
 export * from './vehicleReference';
