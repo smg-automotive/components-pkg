@@ -1,15 +1,15 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from 'src';
+import { getSharedConfig } from 'src/themes/shared';
 
-import { Center } from 'src';
+import { Box } from '../box';
 
-import { FullHeight } from 'src';
+import { Center } from '../center';
+
+import { FullHeight } from '../fullHeight';
 
 import { SingleColumnCenteredLayout } from './SingleColumnCentered';
-
-import { getSharedConfig } from 'src/themes/shared';
 
 const sharedConfig = getSharedConfig();
 const sizes = sharedConfig.theme.tokens.sizes;
@@ -79,10 +79,11 @@ export const ContentAndStepper: StoryType = {
   argTypes: {
     children: {
       mapping: {
-        boxStepper:
+        boxStepper: (
           <Box background="blue.200" key="stepper">
             <Center>1-2-3-4-5</Center>
-          </Box>,
+          </Box>
+        ),
         boxContent: (
           <Box
             background="blue.300"

@@ -14,10 +14,11 @@ export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
   maxContentWidth?: keyof typeof sharedConfig.theme.tokens.sizes.container;
 }>;
 
-export const SingleColumnCenteredLayout: FC<SingleColumnCenteredLayoutProps> = ({
-  children,
-  maxContentWidth = 'md',
-}) => {
+export const SingleColumnCenteredLayout: FC<
+  SingleColumnCenteredLayoutProps> = ({
+    children, 
+    maxContentWidth = 'md',
+  }) => {
   const isSingleChild = !Array.isArray(children);
   const [stepper, content] = isSingleChild ? [null, children] : children;
 
