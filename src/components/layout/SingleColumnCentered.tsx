@@ -2,9 +2,9 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Container } from '@chakra-ui/react';
 
-import { Box } from 'src';
-
 import { getSharedConfig } from 'src/themes/shared';
+
+import { Box } from '../box';
 
 import { BaseLayout } from './BaseLayout';
 
