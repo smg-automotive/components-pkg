@@ -1,17 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Container } from '@chakra-ui/react';
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
-import { getSharedConfig } from 'src/themes/shared';
+import { Container } from '@chakra-ui/react';
 
 import { Box } from '../box';
 
 import { BaseLayout } from './BaseLayout';
 
-const sharedConfig = getSharedConfig();
-
 export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
-  maxContentWidth?: keyof typeof sharedConfig.theme.tokens.sizes.container;
+  maxContentWidth?: keyof typeof sizes['container'];
 }>;
 
 export const SingleColumnCenteredLayout: FC<
