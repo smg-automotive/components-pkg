@@ -12,7 +12,7 @@ import { SingleColumnCenteredLayout } from './SingleColumnCentered';
 import { getSharedConfig } from 'src/themes/shared';
 
 const sharedConfig = getSharedConfig();
-const sizes = sharedConfig.theme.tokens.sizes; 
+const sizes = sharedConfig.theme.tokens.sizes;
 
 const meta: Meta<typeof SingleColumnCenteredLayout> = {
   title: 'Layout/Pages/Single Column Centered',
@@ -54,14 +54,15 @@ export const ContentOnly: StoryType = {
   argTypes: {
     children: {
       mapping: {
-        box: 
-          <Box 
+        box: (
+          <Box
             background="blue.300"
-            css={{'--height': '600px'}}
-            height='var(--height)'
+            css={{ '--height': '600px' }}
+            height="var(--height)"
           >
             I am the content
-          </Box>,
+          </Box>
+        ),
       },
       table: {
         disable: true,
@@ -82,15 +83,16 @@ export const ContentAndStepper: StoryType = {
           <Box background="blue.200" key="stepper">
             <Center>1-2-3-4-5</Center>
           </Box>,
-        boxContent:
-          <Box 
+        boxContent: (
+          <Box
             background="blue.300"
-            css={{'--height': '600px'}}
-            height='var(--height)'
+            css={{ '--height': '600px' }}
+            height="var(--height)"
             key="content"
           >
             I am the content
-          </Box>,
+          </Box>
+        ),
       },
       table: {
         disable: true,

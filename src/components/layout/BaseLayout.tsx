@@ -4,9 +4,9 @@ import { chakra, Container } from '@chakra-ui/react';
 
 import { getSharedConfig } from 'src/themes/shared';
 
-import { Flex } from '../flex';
-
 import { Separator } from '../separator';
+
+import { Flex } from '../flex';
 
 const sharedConfig = getSharedConfig();
 const containerSizes = sharedConfig.theme.tokens.sizes.container;
