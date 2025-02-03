@@ -32,7 +32,7 @@ export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
       {header ? (
         <>
           {header}
-          <Separator/>
+          <Separator />
         </>
       ) : null}
       {heroAd ? heroAd : null}
@@ -51,7 +51,7 @@ export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
         {skyScraperAd ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
-            css={{ 
+            css={{
               '--lg-width': '300px',
               '--xl-width': '500px',
             }}

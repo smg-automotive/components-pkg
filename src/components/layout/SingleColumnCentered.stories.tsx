@@ -3,11 +3,11 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { getSharedConfig } from 'src/themes/shared';
 
-import { Box } from '../box';
+import { FullHeight } from '../fullHeight';
 
 import { Center } from '../center';
 
-import { FullHeight } from '../fullHeight';
+import { Box } from '../box';
 
 import { SingleColumnCenteredLayout } from './SingleColumnCentered';
 

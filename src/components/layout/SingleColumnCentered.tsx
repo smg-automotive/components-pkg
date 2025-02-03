@@ -15,10 +15,8 @@ export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
 }>;
 
 export const SingleColumnCenteredLayout: FC<
-  SingleColumnCenteredLayoutProps> = ({
-    children, 
-    maxContentWidth = 'md',
-  }) => {
+  SingleColumnCenteredLayoutProps
+  > = ({ children, maxContentWidth = 'md' }) => {
   const isSingleChild = !Array.isArray(children);
   const [stepper, content] = isSingleChild ? [null, children] : children;
 
