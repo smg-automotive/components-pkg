@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { sizes } from 'src/themes/shared/tokens/sizes';
-
 import { Container } from '@chakra-ui/react';
+
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
 import { Box } from '../box';
 
@@ -13,9 +13,9 @@ export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
 }>;
 
 export const SingleColumnCenteredLayout: FC<
-    SingleColumnCenteredLayoutProps
-  > = ({ children, maxContentWidth = 'md' }) => {
-    
+SingleColumnCenteredLayoutProps
+> = ({ children, maxContentWidth = 'md' }) => {
+
   const isSingleChild = !Array.isArray(children);
   const [stepper, content] = isSingleChild ? [null, children] : children;
 
