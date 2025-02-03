@@ -9,11 +9,13 @@ import { Box } from '../box';
 import { BaseLayout } from './BaseLayout';
 
 export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
-  maxContentWidth?: keyof typeof sizes['container'];
+  maxContentWidth?: keyof (typeof sizes)['container'];
 }>;
 
 export const SingleColumnCenteredLayout: FC<
-  SingleColumnCenteredLayoutProps> = ({ children, maxContentWidth = 'md' }) => {
+    SingleColumnCenteredLayoutProps
+  > = ({ children, maxContentWidth = 'md' }) => {
+    
   const isSingleChild = !Array.isArray(children);
   const [stepper, content] = isSingleChild ? [null, children] : children;
 

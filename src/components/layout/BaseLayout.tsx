@@ -2,21 +2,18 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import { chakra, Container } from '@chakra-ui/react';
 
-import { getSharedConfig } from 'src/themes/shared';
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
 import { Separator } from '../separator';
 
 import { Flex } from '../flex';
-
-const sharedConfig = getSharedConfig();
-const containerSizes = sharedConfig.theme.tokens.sizes.container;
 
 export interface BaseLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
   skyScraperAd?: ReactNode;
   heroAd?: ReactNode;
-  maxContentWidth: keyof typeof containerSizes;
+  maxContentWidth: keyof (typeof sizes)['container'];
 }
 
 export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
