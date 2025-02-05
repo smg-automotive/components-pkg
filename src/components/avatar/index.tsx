@@ -2,8 +2,6 @@ import React, { FC } from 'react';
 
 import { BoxProps, useRecipe } from '@chakra-ui/react';
 
-import { avatarRecipe } from 'src/themes/shared/recipes/avatar';
-
 import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
 
 export type AvatarProps = {
@@ -12,7 +10,7 @@ export type AvatarProps = {
 };
 
 export const Avatar: FC<AvatarProps> = ({ withNotification, color }) => {
-  const recipe = useRecipe({ recipe: avatarRecipe});
+  const recipe = useRecipe({ key: 'avatar' });
   const styles = recipe();
 
   return withNotification ? (
