@@ -57,8 +57,7 @@ export const ContentOnly: StoryType = {
         box: (
           <Box
             background="blue.300"
-            css={{ '--height': '600px' }}
-            height="var(--height)"
+            height="6xl"
           >
             I am the content
           </Box>
@@ -87,8 +86,7 @@ export const ContentAndStepper: StoryType = {
         boxContent: (
           <Box
             background="blue.300"
-            css={{ '--height': '600px' }}
-            height="var(--height)"
+            height="6xl"
             key="content"
           >
             I am the content
