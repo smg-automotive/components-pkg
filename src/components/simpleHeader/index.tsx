@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 
-import { chakra, useSlotRecipe } from '@chakra-ui/react';
+import { chakra, Container, useSlotRecipe } from '@chakra-ui/react';
 
 import { Center } from '../center';
+o
 
 import { CloseIcon } from '../icons';
 
 import { Flex } from '../flex';
-
-import { H1 } from '../heading';
 
 export interface SimpleHeaderProps {
   title: string;
@@ -21,26 +20,30 @@ export const SimpleHeader: FC<SimpleHeaderProps> = ({ title, url, ...props }) =>
   const styles = recipe(recipeProps);
 
   return (
-    <chakra.header>
+    <chakra.header css={styles.header}>
       <Center>
-        <Flex
-          paddingX={{ '2xs': 'lg', 'lg': '0' }}
+        <Container
+          width="full"
+          maxWidth="container.lg"
           minHeight={{ '2xs': 'xl', md: '2xl' }}
-          alignItems="center"
-          justify="space-between"
-          minWidth="full"
+          paddingX={{ '2xs': 'lg', lg: 0 }}
+          centerContent
+          flexDirection="row"
+          justifyContent="space-between"
         >
-          <H1 css={styles.title}>{title}</H1>
-          <Flex
-            alignSelf="baseline"
-            paddingLeft="md"
-            paddingTop={{ md: 'sm' }}
-          >
-            <a href={url}>
-              <CloseIcon />
-            </a>
+          <Flex justify="space-between" minWidth="full">
+            <chakra.h1 __css={styles.title}>{title}</chakra.h1>
+            <Flex
+              alignSelf="baseline"
+              paddingLeft="md"
+              paddingTop={{ md: 'sm' }}
+            >
+              <a href={url}>
+                <CloseIcon />
+              </a>
+            </Flex>
           </Flex>
-        </Flex>
+        </Container>
       </Center>
     </chakra.header>
   );
