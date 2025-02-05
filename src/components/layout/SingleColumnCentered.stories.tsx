@@ -55,10 +55,7 @@ export const ContentOnly: StoryType = {
     children: {
       mapping: {
         box: (
-          <Box
-            background="blue.300"
-            height="6xl"
-          >
+          <Box background="blue.300" height="6xl">
             I am the content
           </Box>
         ),
@@ -84,11 +81,7 @@ export const ContentAndStepper: StoryType = {
           </Box>
         ),
         boxContent: (
-          <Box
-            background="blue.300"
-            height="6xl"
-            key="content"
-          >
+          <Box background="blue.300" height="6xl" key="content">
             I am the content
           </Box>
         ),
