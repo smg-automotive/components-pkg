@@ -49,7 +49,7 @@ export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
             css={{
-              lg: { '--width': '300px' }, 
+              lg: { '--width': '300px' },
               xl: { '--width': '500px' },
             }}
             width="var(--width)"
