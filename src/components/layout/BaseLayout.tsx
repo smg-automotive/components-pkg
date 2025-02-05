@@ -49,11 +49,11 @@ export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
             css={{
-              '--lg-width': '300px',
-              '--xl-width': '500px',
+              lg: { '--width': '300px' }, 
+              xl: { '--width': '500px' },
             }}
-            width={{ lg: 'var(--lg-width)', xl: 'var(--xl-width)' }}
-            minWidth={{ lg: 'var(--lg-width)', xl: 'var(--xl-width)' }}
+            width="var(--width)"
+            minWidth="var(--width)"
             marginRight="2xl"
             position="relative"
             paddingBottom={{ md: '5xl', base: '3xl' }}
