@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { sizes } from 'src/themes/shared/tokens/sizes';
 
-import { Box, Separator, Flex, Text } from '../index';
+import { Box, Flex, Separator, Text } from '../index';
 import { PageLayout } from './Page';
 
 const meta: Meta<typeof PageLayout> = {
@@ -31,7 +31,7 @@ const meta: Meta<typeof PageLayout> = {
       </Box>
     ),
 
-    children: 'content', 
+    children: 'content',
   },
 
   argTypes: {
