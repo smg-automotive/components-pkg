@@ -1,19 +1,20 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Box, Container } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
-import BaseLayout from './BaseLayout';
+import { Box } from '../box';
+
+import { BaseLayout } from './BaseLayout';
 
 export type SingleColumnCenteredLayoutProps = PropsWithChildren<{
-  maxContentWidth?: keyof typeof sizes.container;
+  maxContentWidth?: keyof (typeof sizes)['container'];
 }>;
 
-const SingleColumnCenteredLayout: FC<SingleColumnCenteredLayoutProps> = ({
-  children,
-  maxContentWidth = 'md',
-}) => {
+export const SingleColumnCenteredLayout: FC<
+  SingleColumnCenteredLayoutProps
+> = ({ children, maxContentWidth = 'md' }) => {
   const isSingleChild = !Array.isArray(children);
   const [stepper, content] = isSingleChild ? [null, children] : children;
 
@@ -26,5 +27,3 @@ const SingleColumnCenteredLayout: FC<SingleColumnCenteredLayoutProps> = ({
     </Container>
   );
 };
-
-export default SingleColumnCenteredLayout;

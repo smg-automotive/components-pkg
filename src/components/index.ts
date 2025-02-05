@@ -11,6 +11,7 @@ export * from './grid';
 export * from './heading';
 export * from './text/HighlightedText';
 export * from './icons';
+export * from './layout';
 export * from './link';
 export * from './missingImage';
 export * from './separator';
