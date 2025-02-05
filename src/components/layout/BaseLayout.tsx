@@ -13,7 +13,7 @@ export interface BaseLayoutProps {
   footer?: ReactNode;
   skyScraperAd?: ReactNode;
   heroAd?: ReactNode;
-  maxContentWidth: keyof (typeof sizes)['container'];
+  maxContentWidth: keyof typeof sizes.container;
 }
 
 export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
