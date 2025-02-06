@@ -13,30 +13,19 @@ export interface SimpleHeaderProps {
   url: string;
 }
 
-export const SimpleHeader: FC<SimpleHeaderProps> = ({ title, url, ...props }) => {
+export const SimpleHeader: FC<SimpleHeaderProps> = ({ ...props }) => {
   const recipe = useSlotRecipe({ key: 'simpleHeader' });
-  const [recipeProps] = recipe.splitVariantProps(props);
+  const [recipeProps, componentProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
+  const { title, url } = componentProps;
 
   return (
     <chakra.header css={styles.header}>
       <Center>
-        <Flex
-          width="full"
-          maxWidth="container.lg"
-          minHeight={{ '2xs': 'xl', md: '2xl' }}
-          paddingX={{ '2xs': 'lg', lg: '0' }}
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
+        <Flex css={styles.mainContainer}>
           <Flex justify="space-between" minWidth="full">
             <chakra.h1 css={styles.title}>{title}</chakra.h1>
-            <Flex
-              alignSelf="baseline"
-              paddingLeft="md"
-              paddingTop={{ md: 'sm' }}
-            >
+            <Flex css={styles.iconWrapper}>
               <a href={url}>
                 <CloseIcon />
               </a>
