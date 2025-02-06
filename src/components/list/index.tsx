@@ -1,25 +1,21 @@
-import React, { FC } from 'react';
-import { List as ChakraList, useSlotRecipe } from '@chakra-ui/react';
+import React, { FC, PropsWithChildren } from 'react';
+import { List as ChakraList } from '@chakra-ui/react';
 
-export type ListProps = {
+export { ListRootProps, ListItemProps } from '@chakra-ui/react';
+
+const { Root, Item } = ChakraList;
+
+Root.displayName = 'List.Root';
+Item.displayName = 'List.Item';
+
+export type ListProps = PropsWithChildren & {
   variant?: 'icon-inside' | 'icon-outside';
   size?: 'sm' | 'md';
   start?: number;
-  items: string[];
 };
 
-export const List: FC<ListProps> = ({ ...props }) => {
-  const recipe = useSlotRecipe({ key: 'list' });
-  const [recipeProps, componentProps] = recipe.splitVariantProps(props);
-  const styles = recipe(recipeProps);
-
-  const { items, size, start, variant } = componentProps;
-
-  return (
-    <ChakraList.Root css={styles.root}>
-      {items.map((text, index) => {
-        return <ChakraList.Item key={index}>{text}</ChakraList.Item>
-      })}
-    </ChakraList.Root>
-  );
+export const List = {
+  Root,
+  Item,
 };
+

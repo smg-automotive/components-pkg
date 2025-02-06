@@ -14,15 +14,21 @@ export const listRecipe = defineSlotRecipe({
       marginEnd: 'var(--margin-end)',
       display: 'inline',
       verticalAlign: 'text-bottom',
+      textStyle: 'body',
     },
-    item: {
-
-    },
-    itemLabel: {
-
-    },
-    itemValue: {
-
+  },
+  variants: {
+    sizes: {
+      md: { 
+        root: {
+          textStyle: 'body' 
+        },
+      sm: {
+        root: {
+          textStyle: 'body-small' 
+        },
+        },
+      },
     },
   },
 });
