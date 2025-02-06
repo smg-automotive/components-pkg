@@ -16,6 +16,7 @@ export * from './link';
 export * from './missingImage';
 export * from './separator';
 export * from './simpleGrid';
+export * from './simpleHeader';
 export * from './stack';
 export * from './table';
 export * from './text';
