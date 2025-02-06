@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { chakra, Container, useSlotRecipe } from '@chakra-ui/react';
 
 import { Center } from '../center';
-o
 
 import { CloseIcon } from '../icons';
 
@@ -22,17 +21,17 @@ export const SimpleHeader: FC<SimpleHeaderProps> = ({ title, url, ...props }) =>
   return (
     <chakra.header css={styles.header}>
       <Center>
-        <Container
+        <Flex
           width="full"
           maxWidth="container.lg"
           minHeight={{ '2xs': 'xl', md: '2xl' }}
-          paddingX={{ '2xs': 'lg', lg: 0 }}
-          centerContent
+          paddingX={{ '2xs': 'lg', lg: '0' }}
           flexDirection="row"
           justifyContent="space-between"
+          alignItems="center"
         >
           <Flex justify="space-between" minWidth="full">
-            <chakra.h1 __css={styles.title}>{title}</chakra.h1>
+            <chakra.h1 css={styles.title}>{title}</chakra.h1>
             <Flex
               alignSelf="baseline"
               paddingLeft="md"
@@ -43,7 +42,7 @@ export const SimpleHeader: FC<SimpleHeaderProps> = ({ title, url, ...props }) =>
               </a>
             </Flex>
           </Flex>
-        </Container>
+        </Flex>
       </Center>
     </chakra.header>
   );
