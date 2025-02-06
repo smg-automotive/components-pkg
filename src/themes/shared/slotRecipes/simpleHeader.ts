@@ -2,15 +2,8 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const simpleHeaderRecipe = defineSlotRecipe({
   className: 'chakra-simple-header',
-  slots: ['root', 'header', 'mainContainer', 'title', 'iconWrapper'],
+  slots: ['header', 'mainContainer', 'title', 'iconWrapper'],
   base: {
-    root: {
-      backgroundColor: 'white',
-      borderRadius: 'sm',
-      boxShadow: 'xs',
-      overflowWrap: 'break-word',
-      overflow: 'hidden',
-    },
     header: {
       color: 'gray.900',
     },
