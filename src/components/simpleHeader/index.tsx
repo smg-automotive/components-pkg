@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 
 import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
-import { Center } from '../center';
+import { Flex } from '../flex';
 
 import { CloseIcon } from '../icons';
 
-import { Flex } from '../flex';
+import { Center } from '../center';
+
 
 export interface SimpleHeaderProps {
   title: string;

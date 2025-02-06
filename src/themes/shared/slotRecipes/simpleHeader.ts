@@ -20,7 +20,7 @@ export const simpleHeaderRecipe = defineSlotRecipe({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      minHeight: { '2xs': 'xl', md: '2xl'},
+      minHeight: { '2xs': 'xl', md: '2xl' },
       paddingX: { '2xs': 'lg', lg: '0' },
     },
     title: {
