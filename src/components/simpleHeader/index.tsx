@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { chakra, Container, useSlotRecipe } from '@chakra-ui/react';
+import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
 import { Center } from '../center';
 

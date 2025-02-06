@@ -29,7 +29,7 @@ export const simpleHeaderRecipe = defineSlotRecipe({
     },
     iconWrapper: {
       alignSelf: 'baseline',
-      padding: 'md',
+      paddingLeft: 'md',
       paddingTop: { md: 'sm' },
     },
   },
