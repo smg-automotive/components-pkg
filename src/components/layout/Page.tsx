@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
-import BaseLayout from './BaseLayout';
+import { BaseLayout } from './BaseLayout';
 
 export interface Props {
   header: ReactNode;
@@ -12,7 +12,7 @@ export interface Props {
   footer?: ReactNode;
 }
 
-const PageLayout: FC<PropsWithChildren<Props>> = ({
+export const PageLayout: FC<PropsWithChildren<Props>> = ({
   header,
   maxContentWidth,
   skyScraperAd,
@@ -32,5 +32,3 @@ const PageLayout: FC<PropsWithChildren<Props>> = ({
     </BaseLayout>
   );
 };
-
-export default PageLayout;

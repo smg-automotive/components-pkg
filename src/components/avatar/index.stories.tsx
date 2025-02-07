@@ -1,13 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import AvatarComponent from './index';
+import { Avatar } from './index';
 
-const meta: Meta<typeof AvatarComponent> = {
+const meta: Meta<typeof Avatar> = {
   title: 'Patterns/Data Display/Avatar',
-  component: AvatarComponent,
+  component: Avatar,
 
   args: {
     withNotification: false,
+    color: 'gray.900',
   },
 
   argTypes: {
@@ -18,9 +19,9 @@ const meta: Meta<typeof AvatarComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof AvatarComponent> = {};
+export const Overview: StoryObj<typeof Avatar> = {};
 
-export const WithNotification: StoryObj<typeof AvatarComponent> = {
+export const WithNotification: StoryObj<typeof Avatar> = {
   args: {
     withNotification: true,
   },
