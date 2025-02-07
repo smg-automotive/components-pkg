@@ -13,7 +13,7 @@ export interface SimpleHeaderProps {
   url: string;
 }
 
-export const SimpleHeader: FC<SimpleHeaderProps> = ({ ...props }) => {
+export const SimpleHeader: FC<SimpleHeaderProps> = (props) => {
   const recipe = useSlotRecipe({ key: 'simpleHeader' });
   const [recipeProps, componentProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
