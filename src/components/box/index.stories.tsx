@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-
+import { emBreakpoints } from 'src/themes/shared/breakpoints';
 import { Box } from './index';
 
 const meta: Meta<typeof Box> = {
@@ -29,4 +29,26 @@ const meta: Meta<typeof Box> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof Box> = {};
+export const HideElement: StoryObj<typeof Box> = {
+  name: 'Show/Hide element',
+
+  args: {
+    hideBelow: 'sm', 
+    hideFrom: 'xl',
+  },
+
+  argTypes: {
+    hideBelow: {
+      options: [...Object.keys(emBreakpoints)],
+      control: {
+        type: 'select',
+      },
+    },
+    hideFrom: {
+      options: [...Object.keys(emBreakpoints)],
+      control: {
+        type: 'select',
+      },
+    },
+  },
+};
