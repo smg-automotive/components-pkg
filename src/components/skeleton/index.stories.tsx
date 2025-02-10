@@ -5,7 +5,6 @@ import { Box } from '../box';
 
 import { Skeleton } from './index';
 
-
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Feedback/Skeleton',
   component: Skeleton,
@@ -18,18 +17,19 @@ const meta: Meta<typeof Skeleton> = {
   argTypes: {
     children: {
       mapping: {
-        box:
+        box: (
           <Box height="2xl" width="container.sm">
             Dummy content
           </Box>
-        },
+        ),
+      },
       table: {
         disable: true,
       },
     },
     loading: {
       control: 'boolean',
-    }
+    },
   },
 };
 export default meta;

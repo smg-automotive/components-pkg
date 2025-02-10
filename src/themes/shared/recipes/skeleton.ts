@@ -1,4 +1,4 @@
-import { defineRecipe } from "@chakra-ui/react"
+import { defineRecipe } from '@chakra-ui/react';
 
 export const skeletonRecipe = defineRecipe({
   className: 'chakra-skeleton',
@@ -14,8 +14,8 @@ export const skeletonRecipe = defineRecipe({
         animation: 'skeletonPulse',
         cursor: 'default',
 
-        "&::before, &::after, *": {
-          visibility: "hidden",
+        '&::before, &::after, *': {
+          visibility: 'hidden',
         },
       },
       false: {

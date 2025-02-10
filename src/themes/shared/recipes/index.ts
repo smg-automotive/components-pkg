@@ -9,7 +9,7 @@ export const recipes = {
   avatar,
   badge,
   link,
-  spinner,
   separator,
   skeleton,
+  spinner,
 };
