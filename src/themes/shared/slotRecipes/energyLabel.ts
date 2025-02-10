@@ -17,11 +17,12 @@ export const energyLabelRecipe = defineSlotRecipe({
       width: 'md',
     },
     triangle: {
-      borderBottomColor: 'none',
+      borderTopColor: 'transparent',
+      borderBottomColor: 'transparent',
       '--border-width': '10px',
+      borderBottomWidth: 'var(--border-width)',
       borderTopWidth: 'var(--border-width)',
       borderRightWidth: 'var(--border-width)',
-      // borderRightColor: 
     },
     textWrapper: {
       width: 'full',
@@ -53,18 +54,49 @@ export const energyLabelRecipe = defineSlotRecipe({
           backgroundColor: 'var(--B)',
         },
       },
+      C: {
+        triangle: {
+          borderRightColor: 'var(--C)',
+        },
+        textWrapper: {
+          backgroundColor: 'var(--C)',
+        },
+      },
+      D: {
+        triangle: {
+          borderRightColor: 'var(--D)',
+        },
+        textWrapper: {
+          backgroundColor: 'var(--D)',
+        },
+      },
+      E: {
+        triangle: {
+          borderRightColor: 'var(--E)',
+        },
+        textWrapper: {
+          backgroundColor: 'var(--E)',
+        },
+      },
+      F: {
+        triangle: {
+          borderRightColor: 'var(--F)',
+        },
+        textWrapper: {
+          backgroundColor: 'var(--F)',
+        },
+      },
+      G: {
+        triangle: {
+          borderRightColor: 'var(--G)',
+        },
+        textWrapper: {
+          backgroundColor: 'var(--G)',
+        },
+      },
     },
   },
-  
-  // variants: {
-  //   orientation: {
-  //     vertical: {
-  //       height: 'full',
-  //       borderInlineStartWidth: 'var(--separator-thickness)',
-  //     },
-  //     horizontal: {
-  //       width: 'full',
-  //       borderTopWidth: 'var(--separator-thickness)',
-  //     },
-  //   },
+  defaultVariants: {
+    efficiency: 'A',
+  },
 });

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import EnergyLabel from './index';
+import { EnergyLabel } from './index';
 
 const meta: Meta<typeof EnergyLabel> = {
   title: 'Components/Data display/Energy Label',
