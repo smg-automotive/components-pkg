@@ -147,3 +147,4 @@ export { NotAvailableSquareIcon } from './NotAvailableSquareIcon';
 export { WarrantyIcon } from './WarrantyIcon';
 export { DownloadIcon } from './DownloadIcon';
 export { SwissFlagIcon } from './SwissFlagIcon';
+export { GlobeIcon } from './GlobeIcon';
