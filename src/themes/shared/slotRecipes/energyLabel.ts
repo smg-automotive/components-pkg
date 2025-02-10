@@ -33,7 +33,7 @@ export const energyLabelRecipe = defineSlotRecipe({
     },
     text: {
       color: 'white',
-      textStyle:'heading4',
+      textStyle: 'heading4',
     },
   },
   variants: {
