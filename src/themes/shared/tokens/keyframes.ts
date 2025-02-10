@@ -5,7 +5,9 @@ export const keyframes = defineKeyframes({
     '0%': { transform: 'rotate(0deg)' },
     '100%': { transform: 'rotate(360deg)' },
   },
-  pulse: {
-    "100%": { opacity: "0.5" },
+  skeletonPulse: {
+    "0%": { backgroundColor: 'var(--start-color)' },
+    "50%": { backgroundColor: 'var(--end-color)' },
+    "100%": { backgroundColor: 'var(--start-color)' },
   },
 });
