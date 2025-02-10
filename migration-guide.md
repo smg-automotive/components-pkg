@@ -59,6 +59,11 @@ All animations and keyframes are automatically exported to `sharedConfig`.
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
 
+### Prop changes
+
+  - `energyLabel`'s `efficiency` prop is now mandatory.
+  ***Reasoning*** this way we are ensuring that component is used with a value, because otherwise it would result in `'A'` which doesn't make sense to use as a default.
+
 ### Renamed components
 
 - `Divider` component was renamed to `Separator`, the props stay the same.

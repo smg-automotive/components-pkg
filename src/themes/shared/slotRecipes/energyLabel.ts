@@ -96,7 +96,4 @@ export const energyLabelRecipe = defineSlotRecipe({
       },
     },
   },
-  defaultVariants: {
-    efficiency: 'A',
-  },
 });
