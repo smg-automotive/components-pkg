@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { useSlotRecipe, RecipeVariantProps } from '@chakra-ui/react';
+import { RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
 
 import { energyLabelRecipe } from 'src/themes/shared/slotRecipes/energyLabel';
 
@@ -22,9 +22,7 @@ export const EnergyLabel: FC<EnergyLabelProps> = (props) => {
     <Flex css={styles.root}>
       <Box css={styles.triangle} />
       <Flex css={styles.textWrapper}>
-        <Text css={styles.text}>
-          {String(efficiency)}
-        </Text>
+        <Text css={styles.text}>{String(efficiency)}</Text>
       </Flex>
     </Flex>
   );
