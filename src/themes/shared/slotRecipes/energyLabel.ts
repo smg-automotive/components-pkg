@@ -5,13 +5,13 @@ export const energyLabelRecipe = defineSlotRecipe({
   slots: ['root', 'triangle', 'textWrapper', 'text'],
   base: {
     root: {
-      '--A': '#4CA651',
-      '--B': '#54B646',
-      '--C': '#CAD143',
-      '--D': '#FEF050',
-      '--E': '#F1AE3D',
-      '--F': '#EE6E2D',
-      '--G': '#D02F26',
+      '--labelColor-A': '#4CA651',
+      '--labelColor-B': '#54B646',
+      '--labelColor-C': '#CAD143',
+      '--labelColor-D': '#FEF050',
+      '--labelColor-E': '#F1AE3D',
+      '--labelColor-F': '#EE6E2D',
+      '--labelColor-G': '#D02F26',
       '--height': '20px',
       height: 'var(--height)',
       width: 'md',
@@ -40,58 +40,58 @@ export const energyLabelRecipe = defineSlotRecipe({
     efficiency: {
       A: {
         triangle: {
-          borderRightColor: 'var(--A)',
+          borderRightColor: 'var(--labelColor-A)',
         },
         textWrapper: {
-          backgroundColor: 'var(--A)',
+          backgroundColor: 'var(--labelColor-A)',
         },
       },
       B: {
         triangle: {
-          borderRightColor: 'var(--B)',
+          borderRightColor: 'var(--labelColor-B)',
         },
         textWrapper: {
-          backgroundColor: 'var(--B)',
+          backgroundColor: 'var(--labelColor-B)',
         },
       },
       C: {
         triangle: {
-          borderRightColor: 'var(--C)',
+          borderRightColor: 'var(--labelColor-C)',
         },
         textWrapper: {
-          backgroundColor: 'var(--C)',
+          backgroundColor: 'var(--labelColor-C)',
         },
       },
       D: {
         triangle: {
-          borderRightColor: 'var(--D)',
+          borderRightColor: 'var(--labelColor-D)',
         },
         textWrapper: {
-          backgroundColor: 'var(--D)',
+          backgroundColor: 'var(--labelColor-D)',
         },
       },
       E: {
         triangle: {
-          borderRightColor: 'var(--E)',
+          borderRightColor: 'var(--labelColor-E)',
         },
         textWrapper: {
-          backgroundColor: 'var(--E)',
+          backgroundColor: 'var(--labelColor-E)',
         },
       },
       F: {
         triangle: {
-          borderRightColor: 'var(--F)',
+          borderRightColor: 'var(--labelColor-F)',
         },
         textWrapper: {
-          backgroundColor: 'var(--F)',
+          backgroundColor: 'var(--labelColor-F)',
         },
       },
       G: {
         triangle: {
-          borderRightColor: 'var(--G)',
+          borderRightColor: 'var(--labelColor-G)',
         },
         textWrapper: {
-          backgroundColor: 'var(--G)',
+          backgroundColor: 'var(--labelColor-G)',
         },
       },
     },

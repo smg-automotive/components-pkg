@@ -19,6 +19,14 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 <Box marginTop="sm" marginLeft="md">I am a box</Box>
 ```
 
+### Extended design tokens
+With Chakra V3 we are trying to implement design tokens which are in alignment with the UI/UX Team.
+
+Tokens that have been extended in comparison to ones we had in V2 are:
+
+#### Colors
+  - `transparent`
+
 ### Animation and keyframe changes
 
 Animations are now handled through the token system configured in `token/animations.ts` file.
