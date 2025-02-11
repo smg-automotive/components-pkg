@@ -1,11 +1,8 @@
 import React, { FC } from 'react';
-
 import { useSlotRecipe } from '@chakra-ui/react';
 
 import { Text } from '../text';
-
 import { Flex } from '../flex';
-
 import { Box } from '../box';
 
 export type EnergyLabelProps = {
