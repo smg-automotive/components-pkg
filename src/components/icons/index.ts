@@ -148,3 +148,4 @@ export { WarrantyIcon } from './WarrantyIcon';
 export { DownloadIcon } from './DownloadIcon';
 export { TriangleIcon } from './TriangleIcon';
 export { SwissFlagIcon } from './SwissFlagIcon';
+export { GlobeIcon } from './GlobeIcon';
