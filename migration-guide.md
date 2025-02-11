@@ -19,11 +19,19 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 <Box marginTop="sm" marginLeft="md">I am a box</Box>
 ```
 
+### Extended design tokens
+With Chakra V3 we are trying to implement design tokens which are in alignment with the UI/UX Team.
+
+Tokens that have been extended in comparison to ones we had in V2 are:
+
+#### Colors
+  - `transparent`
+
 ### Animation and keyframe changes
 
 Animations are now handled through the token system configured in `token/animations.ts` file.
 
-Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the 
+Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the
 animations token which can then further be used in recipes, slots or as component props.
 
 All animations and keyframes are automatically exported to `sharedConfig`.
@@ -106,5 +114,5 @@ It allows the user see how the component functions without any styling.
 In comparison to V2 with V3 migration this is now automatically available.
 
 As discussed in the Enablement Team it is decided that feature is preserved in the migration.
-It is not intended for regular usage but rather for implementation of features with known exceptions such as 
+It is not intended for regular usage but rather for implementation of features with known exceptions such as
 components on `/sell/` page.

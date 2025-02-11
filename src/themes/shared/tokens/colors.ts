@@ -138,4 +138,5 @@ export const colors = defineTokens.colors({
   },
   none: { value: 'none' },
   currentColor: { value: 'currentColor' },
+  transparent: { value: 'transparent' },
 });
