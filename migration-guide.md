@@ -31,7 +31,7 @@ Tokens that have been extended in comparison to ones we had in V2 are:
 
 Animations are now handled through the token system configured in `token/animations.ts` file.
 
-Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the 
+Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the
 animations token which can then further be used in recipes, slots or as component props.
 
 All animations and keyframes are automatically exported to `sharedConfig`.
@@ -58,11 +58,6 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
-
-### Prop changes
-
-  - `energyLabel`'s `efficiency` prop is now mandatory.
-  ***Reasoning*** this way we are ensuring that component is used with a value, because otherwise it would result in `'A'` which doesn't make sense to use as a default.
 
 ### Renamed components
 
@@ -119,5 +114,5 @@ It allows the user see how the component functions without any styling.
 In comparison to V2 with V3 migration this is now automatically available.
 
 As discussed in the Enablement Team it is decided that feature is preserved in the migration.
-It is not intended for regular usage but rather for implementation of features with known exceptions such as 
+It is not intended for regular usage but rather for implementation of features with known exceptions such as
 components on `/sell/` page.
