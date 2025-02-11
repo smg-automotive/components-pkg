@@ -1,9 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { List, ListProps } from './index';
 
-const Template = ({ items, size = 'md', ...args }: ListProps & { items: number }) => (
+const Template = ({ items, ...args }: ListProps & { items: number }) => (
   <List.Root {...args}>
     {Array.from({ length: items }, (_, i) => (
       <List.Item key={i}>Item {i + 1}</List.Item>
@@ -13,7 +15,6 @@ const Template = ({ items, size = 'md', ...args }: ListProps & { items: number }
 
 const meta: Meta<typeof Template> = {
   title: 'Components/Data display/List/Unstyled list',
-  component: List.Root,
   render: Template.bind({}),
 
   args: {
@@ -22,10 +23,7 @@ const meta: Meta<typeof Template> = {
   },
 
   argTypes: {
-    size: {
-      options: ['sm', 'md'],
-      control: 'select',
-    },
+    ...getRecipeControls('list'),
   },
 };
 export default meta;

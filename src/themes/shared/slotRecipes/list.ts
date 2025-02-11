@@ -2,12 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const listRecipe = defineSlotRecipe({
   className: 'chakra-list',
-  slots: [
-    'root',
-    'item',
-    'itemLabel',
-    'itemValue'
-  ],
+  slots: ['root', 'item', 'itemLabel', 'itemValue'],
   base: {
     root: {
       '--margin-end': '2',
@@ -17,21 +12,21 @@ export const listRecipe = defineSlotRecipe({
     },
   },
   variants: {
-    sizes: {
-      md: { 
+    size: {
+      md: {
         root: {
-          textStyle: 'body' 
+          textStyle: 'body',
         },
       },
       sm: {
         root: {
-          textStyle: 'body-small' 
+          textStyle: 'body-small',
         },
       },
     },
   },
   defaultVariants: {
-    sizes: 'md',
+    size: 'md',
   },
 });
 
