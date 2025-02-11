@@ -20,6 +20,7 @@ export const skeletonRecipe = defineRecipe({
       },
       false: {
         backgroundColor: 'none',
+        animation: 'fade-in',
       },
     },
   },
