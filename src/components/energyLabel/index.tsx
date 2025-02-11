@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
-import { useSlotRecipe } from '@chakra-ui/react';
+import { type RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
+
+import { energyLabelRecipe } from 'src/themes/shared/slotRecipes/energyLabel';
 
 import { Text } from '../text';
 import { Flex } from '../flex';
 import { Box } from '../box';
 
-export type EnergyLabelProps = {
-  efficiency: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
-};
+type RecipeProps = RecipeVariantProps<typeof energyLabelRecipe>;
+export type EnergyLabelProps = Required<Pick<RecipeProps, 'efficiency'>> &
+  RecipeProps;
 
 export const EnergyLabel: FC<EnergyLabelProps> = (props) => {
   const { efficiency } = props;
