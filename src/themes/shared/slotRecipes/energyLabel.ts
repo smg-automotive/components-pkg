@@ -5,13 +5,6 @@ export const energyLabelRecipe = defineSlotRecipe({
   slots: ['root', 'triangle', 'textWrapper', 'text'],
   base: {
     root: {
-      '--labelColor-A': '#4CA651',
-      '--labelColor-B': '#54B646',
-      '--labelColor-C': '#CAD143',
-      '--labelColor-D': '#FEF050',
-      '--labelColor-E': '#F1AE3D',
-      '--labelColor-F': '#EE6E2D',
-      '--labelColor-G': '#D02F26',
       '--height': '20px',
       height: 'var(--height)',
       width: 'md',
@@ -23,6 +16,7 @@ export const energyLabelRecipe = defineSlotRecipe({
       borderBottomWidth: 'var(--border-width)',
       borderTopWidth: 'var(--border-width)',
       borderRightWidth: 'var(--border-width)',
+      borderRightColor: 'var(--label-color)',
     },
     textWrapper: {
       width: 'full',
@@ -30,6 +24,7 @@ export const energyLabelRecipe = defineSlotRecipe({
       justifyContent: 'end',
       alignItems: 'center',
       paddingRight: 'xs',
+      backgroundColor: 'var(--label-color)',
     },
     text: {
       color: 'white',
@@ -39,59 +34,38 @@ export const energyLabelRecipe = defineSlotRecipe({
   variants: {
     efficiency: {
       A: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-A)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-A)',
+        root: {
+          '--label-color': '#4CA651',
         },
       },
       B: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-B)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-B)',
+        root: {
+          '--label-color': '#54B646',
         },
       },
       C: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-C)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-C)',
+        root: {
+          '--label-color': '#CAD143',
         },
       },
       D: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-D)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-D)',
+        root: {
+          '--label-color': '#FEF050',
         },
       },
       E: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-E)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-E)',
+        root: {
+          '--label-color': '#F1AE3D',
         },
       },
       F: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-F)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-F)',
+        root: {
+          '--label-color': '#EE6E2D',
         },
       },
       G: {
-        triangle: {
-          borderRightColor: 'var(--labelColor-G)',
-        },
-        textWrapper: {
-          backgroundColor: 'var(--labelColor-G)',
+        root: {
+          '--label-color': '#D02F26',
         },
       },
     },
