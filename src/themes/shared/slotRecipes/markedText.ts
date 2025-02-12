@@ -54,4 +54,8 @@ export const markedTextRecipe = defineSlotRecipe({
       },
     },
   },
+
+  defaultVariants: {
+    variant: 'highlight',
+  },
 });
