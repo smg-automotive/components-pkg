@@ -21,5 +21,6 @@ export * from './simpleHeader';
 export * from './stack';
 export * from './table';
 export * from './text';
+export * from './text/marked';
 export * from './themeProvider';
 export * from './vehicleReference';
