@@ -20,7 +20,7 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 ```
 ### Show/Hide component on certain breakpoint
 
-With V3 usage of mediaQueries to hide a component is tied to using combination of 
+With V3 usage of mediaQueries to hide a component is tied to using combination of
 - Breakpoints token, defined in `src/themes/shared/breakpoints.ts`.
 
 - `hideFrom`, `hideBelow` props which are globally available on components.
@@ -44,6 +44,9 @@ Tokens that have been extended in comparison to ones we had in V2 are:
 
 #### Colors
   - `transparent`
+
+#### Opacities
+- 70 (0.7) opacity
 
 ### Animation and keyframe changes
 
@@ -85,6 +88,10 @@ Boolean props changes from `is<X>` to `<x>`:
 ### Renamed components
 
 - `Divider` component was renamed to `Separator`, the props stay the same.
+
+### Removed components
+- `Show` and `Hide` components were removed. Use `hideFrom` and `hideBelow` props available on all components to control visibility instead.
+- `UnorderedList` and `OrderedList` components were removed. Use `List` component with `as="ul"` and `as="ol"` properties instead.
 
 ### Namespace style components
 
