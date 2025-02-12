@@ -69,6 +69,12 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
   **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
 
+- `List` no longer accepts `icon-outside` and `icon-inside` `variant` props.
+
+  Use `listStylePosition` prop instead.
+
+  **Reasoning** we added those to cover for some extra styling added by chakra-ui. In version 3 the extra margins got removed and our workaround wasn't necessary anymore.
+
 - `SimpleGrid` no longer accepts `spacingX` and `spacingY` props.
 
   You can use `rowGap` instead of `spacingY`.
