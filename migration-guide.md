@@ -75,7 +75,7 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
   **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
 
-- `simpleGrid` no longer accepts `spacingX` and `spacingY` props.
+- `SimpleGrid` no longer accepts `spacingX` and `spacingY` props.
 
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
