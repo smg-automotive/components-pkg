@@ -52,3 +52,20 @@ export const Table = {
   Row,
   ScrollArea,
 };
+
+/**
+ * @deprecated please use the namespace style import instead
+ */
+export {
+  Body as TableBody,
+  Caption as TableCaption,
+  Cell as TableCell,
+  Column as TableColumn,
+  ColumnGroup as TableColumnGroup,
+  ColumnHeader as TableColumnHeader,
+  Footer as TableFooter,
+  Header as TableHeader,
+  Root as TableRoot,
+  Row as TableRow,
+  ScrollArea as TableScrollArea,
+};
