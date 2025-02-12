@@ -20,7 +20,7 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 ```
 ### Show/Hide component on certain breakpoint
 
-With V3 usage of mediaQueries to hide a component is tied to using combination of 
+With V3 usage of mediaQueries to hide a component is tied to using combination of
 - Breakpoints token, defined in `src/themes/shared/breakpoints.ts`.
 
 - `hideFrom`, `hideBelow` props which are globally available on components.
@@ -45,6 +45,9 @@ Tokens that have been extended in comparison to ones we had in V2 are:
 #### Colors
   - `transparent`
 
+#### Opacities
+- 70 (0.7) opacity
+
 ### Animation and keyframe changes
 
 Animations are now handled through the token system configured in `token/animations.ts` file.
@@ -56,12 +59,6 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
 ### Removed props
 
-- `Table.Cell` and `Table.ColumnHeader` no longer accept `isNumeric` prop.
-
-  You can use `textAlign="end"` instead.
-
-  **Reasoning** `isNumeric` was removed from chakra, we decided to not provide a custom implementation.
-
 - `Link` no longer accepts `leftIcon` and `rightIcon` props.
 
   Pass icons as children instead.
@@ -72,10 +69,22 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
   **Reasoning** this way we don't need to add artificial, arbitrary props to `Link` to match the `NextLink` interface.
 
-- `simpleGrid` no longer accepts `spacingX` and `spacingY` props.
+- `List` no longer accepts `icon-outside` and `icon-inside` `variant` props.
+
+  Use `listStylePosition` prop instead.
+
+  **Reasoning** we added those to cover for some extra styling added by chakra-ui. In version 3 the extra margins got removed and our workaround wasn't necessary anymore.
+
+- `SimpleGrid` no longer accepts `spacingX` and `spacingY` props.
 
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
+
+- `Table.Cell` and `Table.ColumnHeader` no longer accept `isNumeric` prop.
+
+  You can use `textAlign="end"` instead.
+
+  **Reasoning** `isNumeric` was removed from chakra, we decided to not provide a custom implementation.
 
 ### Changed props
 
@@ -86,13 +95,77 @@ Boolean props changes from `is<X>` to `<x>`:
 
 - `Divider` component was renamed to `Separator`, the props stay the same.
 
+### Removed components
+- `Show` and `Hide` components were removed. Use `hideFrom` and `hideBelow` props available on all components to control visibility instead.
+- `UnorderedList` and `OrderedList` components were removed. Use `List` component with `as="ul"` and `as="ol"` properties instead.
+
 ### Namespace style components
 
-The following components now use the `namespace` style imports:
+The following components now use the `namespace` style imports[^1]:
 
-- `Table`
+[^1]: We still expose individual parts as named exports (e.g. `TableRoot` and `TableCell`) to minimize the migration effort. However, those exports are deprecated and we intend to remove them in the future.
 
-#### Before
+#### `Card`
+
+##### Before
+
+```tsx
+import { Card, CardHeader, CardBody, CardFooter } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <Card>
+    <CardHeader>Header</CardHeader>
+    <CardBody>Body</CardBody>
+    <CardFooter>Footer</CardFooter>
+  </Card>
+)
+```
+
+##### After
+
+```tsx
+import { Card } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <Card.Root>
+    <Card.Header>Header</Card.Header>
+    <Card.Body>Body</Card.Body>
+    <Card.Footer>Footer</Card.Footer>
+  </Card.Root>
+)
+```
+
+#### `List`
+
+##### Before
+
+```tsx
+import { List, ListItem } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <List>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+  </List>
+)
+```
+
+##### After
+
+```tsx
+import { List } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <List.Root>
+    <List.Item>Item 1</List.Item>
+    <List.Item>Item 2</List.Item>
+  </List.Root>
+)
+```
+
+#### `Table`
+
+##### Before
 
 ```tsx
 import { Table, Tbody, Tr, Td } from '@smg-automotive/components'
@@ -109,7 +182,7 @@ const MyComponent = () => (
 )
 ```
 
-#### After
+##### After
 
 ```tsx
 import { Table } from '@smg-automotive/components'
