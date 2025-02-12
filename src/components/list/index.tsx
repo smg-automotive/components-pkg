@@ -11,3 +11,8 @@ export const List = {
   Root,
   Item,
 };
+
+/**
+ * @deprecated please use the namespace style import instead
+ */
+export { Root as ListRoot, Item as ListItem };
