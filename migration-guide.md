@@ -95,7 +95,9 @@ Boolean props changes from `is<X>` to `<x>`:
 
 ### Namespace style components
 
-The following components now use the `namespace` style imports:
+The following components now use the `namespace` style imports[^1]:
+
+[^1]: We still expose individual parts as named exports (e.g. `TableRoot` and `TableCell`) to minimize the migration effort. However, those exports are deprecated and we intend to remove them in the future.
 
 #### `List`
 
