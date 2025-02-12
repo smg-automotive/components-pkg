@@ -59,12 +59,6 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
 ### Removed props
 
-- `Table.Cell` and `Table.ColumnHeader` no longer accept `isNumeric` prop.
-
-  You can use `textAlign="end"` instead.
-
-  **Reasoning** `isNumeric` was removed from chakra, we decided to not provide a custom implementation.
-
 - `Link` no longer accepts `leftIcon` and `rightIcon` props.
 
   Pass icons as children instead.
@@ -79,6 +73,12 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
+
+- `Table.Cell` and `Table.ColumnHeader` no longer accept `isNumeric` prop.
+
+  You can use `textAlign="end"` instead.
+
+  **Reasoning** `isNumeric` was removed from chakra, we decided to not provide a custom implementation.
 
 ### Changed props
 
@@ -97,9 +97,37 @@ Boolean props changes from `is<X>` to `<x>`:
 
 The following components now use the `namespace` style imports:
 
-- `Table`
+#### `List`
 
-#### Before
+##### Before
+
+```tsx
+import { List, ListItem } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <List>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+  </List>
+)
+```
+
+##### After
+
+```tsx
+import { List } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <List.Root>
+    <List.Item>Item 1</List.Item>
+    <List.Item>Item 2</List.Item>
+  </List.Root>
+)
+```
+
+#### `Table`
+
+##### Before
 
 ```tsx
 import { Table, Tbody, Tr, Td } from '@smg-automotive/components'
@@ -116,7 +144,7 @@ const MyComponent = () => (
 )
 ```
 
-#### After
+##### After
 
 ```tsx
 import { Table } from '@smg-automotive/components'
@@ -130,34 +158,6 @@ const MyComponent = () => (
       </Table.Row>
     </Table.Body>
   </Table.Root>
-)
-```
-
-- `List`
-
-#### Before
-
-```tsx
-import { List, ListItem } from '@smg-automotive/components'
-
-const MyComponent = () => (
-  <List>
-    <ListItem>Item 1</ListItem>
-    <ListItem>Item 2</ListItem>
-  </List>
-)
-```
-
-#### After
-
-```tsx
-import { List } from '@smg-automotive/components'
-
-const MyComponent = () => (
-  <List.Root>
-    <List.Item>Item 1</List.Item>
-    <List.Item>Item 2</List.Item>
-  </List.Root>
 )
 ```
 
