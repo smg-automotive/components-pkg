@@ -18,12 +18,38 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 ```tsx
 <Box marginTop="sm" marginLeft="md">I am a box</Box>
 ```
+### Show/Hide component on certain breakpoint
+
+With V3 usage of mediaQueries to hide a component is tied to using combination of 
+- Breakpoints token, defined in `src/themes/shared/breakpoints.ts`.
+
+- `hideFrom`, `hideBelow` props which are globally available on components.
+
+Example:
+```tsx
+<Box hideFrom="md">I am a box</Box>
+```
+
+Chakra docs: (Hiding elements-at-breakpoint)[https://chakra-ui.com/docs/styling/responsive-design#hiding-elements-at-breakpoint].
+
+Additional notes: Hiding components using this Chakra feature object is hidden just with `display: none;`.
+
+Integration notes:
+- Due to this functionality being avaialable on all components `show` and `hide` is being removed from the repository and it is necessary to remove all usage on projects and replace it with provided functionality.
+
+### Extended design tokens
+With Chakra V3 we are trying to implement design tokens which are in alignment with the UI/UX Team.
+
+Tokens that have been extended in comparison to ones we had in V2 are:
+
+#### Colors
+  - `transparent`
 
 ### Animation and keyframe changes
 
 Animations are now handled through the token system configured in `token/animations.ts` file.
 
-Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the 
+Animation keyframes must be defined in the `token/keyframes.ts` file and only then they can be referenced in the
 animations token which can then further be used in recipes, slots or as component props.
 
 All animations and keyframes are automatically exported to `sharedConfig`.
@@ -50,6 +76,11 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
+
+### Changed props
+
+Boolean props changes from `is<X>` to `<x>`:
+- `isLoading` is now `loading`. Affects `Skeleton`.
 
 ### Renamed components
 
@@ -106,5 +137,5 @@ It allows the user see how the component functions without any styling.
 In comparison to V2 with V3 migration this is now automatically available.
 
 As discussed in the Enablement Team it is decided that feature is preserved in the migration.
-It is not intended for regular usage but rather for implementation of features with known exceptions such as 
+It is not intended for regular usage but rather for implementation of features with known exceptions such as
 components on `/sell/` page.
