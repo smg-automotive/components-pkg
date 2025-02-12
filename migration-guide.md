@@ -99,6 +99,36 @@ The following components now use the `namespace` style imports[^1]:
 
 [^1]: We still expose individual parts as named exports (e.g. `TableRoot` and `TableCell`) to minimize the migration effort. However, those exports are deprecated and we intend to remove them in the future.
 
+#### `Card`
+
+##### Before
+
+```tsx
+import { Card, CardHeader, CardBody, CardFooter } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <Card>
+    <CardHeader>Header</CardHeader>
+    <CardBody>Body</CardBody>
+    <CardFooter>Footer</CardFooter>
+  </Card>
+)
+```
+
+##### After
+
+```tsx
+import { Card } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <Card.Root>
+    <Card.Header>Header</Card.Header>
+    <Card.Body>Body</Card.Body>
+    <Card.Footer>Footer</Card.Footer>
+  </Card.Root>
+)
+```
+
 #### `List`
 
 ##### Before
