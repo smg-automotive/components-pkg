@@ -36,6 +36,9 @@ const Template = ({
   </List.Root>
 );
 
+/**
+ * Use combination of `showContainer` and `longText` to see the difference between `listStylePosition` `inside` and `outside`.
+ * */
 const meta: Meta<typeof Template> = {
   title: 'Components/Data display/List',
   render: Template.bind({}),
@@ -84,7 +87,40 @@ const meta: Meta<typeof Template> = {
 };
 export default meta;
 
-/**
- * Use combination of `showContainer` and `longText` to see the difference between `listStylePosition` `inside` and `outside`.
- * */
 export const Overview: StoryObj<typeof Template> = {};
+
+/** Use `as=ul` and appropriate `listStyleType` for unordered list */
+export const UnorderedList: StoryObj<typeof Template> = {
+  args: {
+    as: 'ul',
+    listStyleType: 'initial',
+  },
+};
+
+/** Use `as=ol` and appropriate `listStyleType` for ordered list */
+export const OrderedList: StoryObj<typeof Template> = {
+  args: {
+    as: 'ol',
+    listStyleType: 'decimal',
+  },
+};
+
+export const WithIconInside: StoryObj<typeof Template> = {
+  args: {
+    as: 'ol',
+    listStyleType: 'decimal',
+    listStylePosition: 'inside',
+    longText: true,
+    showContainer: true,
+  },
+};
+
+export const WithIconOutside: StoryObj<typeof Template> = {
+  args: {
+    as: 'ol',
+    listStyleType: 'decimal',
+    listStylePosition: 'outside',
+    longText: true,
+    showContainer: true,
+  },
+};
