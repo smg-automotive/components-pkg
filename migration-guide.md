@@ -133,6 +133,34 @@ const MyComponent = () => (
 )
 ```
 
+- `List`
+
+#### Before
+
+```tsx
+import { List, ListItem } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <List>
+    <ListItem>Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+  </List>
+)
+```
+
+#### After
+
+```tsx
+import { List } from '@smg-automotive/components'
+
+const MyComponent = () => (
+  <List.Root>
+    <List.Item>Item 1</List.Item>
+    <List.Item>Item 2</List.Item>
+  </List.Root>
+)
+```
+
 ### Parent library changes
 
 Refer to [chakra-ui v2 to v3 migration guide](https://chakra-ui.com/docs/features/chakra-ui-v3) for more changes.
