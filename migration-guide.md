@@ -77,6 +77,11 @@ All animations and keyframes are automatically exported to `sharedConfig`.
   You can use `rowGap` instead of `spacingY`.
   You can use `rowGap: 0` and `gap: {yourValue}` instead of `spacingX`.
 
+### Changed props
+
+Boolean props changes from `is<X>` to `<x>`:
+- `isLoading` is now `loading`. Affects `Skeleton`.
+
 ### Renamed components
 
 - `Divider` component was renamed to `Separator`, the props stay the same.
