@@ -44,7 +44,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
             gridGap={{ md: '3xl' }}
           >
-            <DrawerUserInfo user={user} />
+            {drawer?.current === 'user' ? <DrawerUserInfo user={user} /> : null}
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
