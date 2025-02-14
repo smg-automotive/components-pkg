@@ -132,7 +132,7 @@
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
     "embla-carousel-react": "8.5.2",
-    "framer-motion": "12.4.2",
+    "framer-motion": "12.4.3",
     "fs-extra": "11.3.0",
     "fuse.js": "7.1.0",
     "globals": "15.15.0",
