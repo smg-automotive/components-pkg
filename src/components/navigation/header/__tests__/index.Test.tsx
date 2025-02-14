@@ -74,7 +74,7 @@ describe('Header', () => {
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
   });
-  it('displays user info in the drawer', async () => {
+  it('displays user info in the user drawer', async () => {
     render(
       <Navigation
         environment="preprod"
@@ -103,7 +103,37 @@ describe('Header', () => {
     expect(within(drawerBody).getByText('john.doe@me.com')).toBeInTheDocument();
     expect(within(drawerBody).getByText('(John Doe)')).toBeInTheDocument();
   });
-  it("doesn't displays user name if it's same as email", async () => {
+  it('does not display user name in the search drawer', async () => {
+    render(
+      <Navigation
+        environment="preprod"
+        user={{
+          id: '1',
+          userName: 'john.doe@me.com',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: 'john.doe@me.com',
+          exp: 123,
+        }}
+        brand={Brand.AutoScout24}
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+      />,
+    );
+
+    const searchItem = screen.getByText('Search');
+    fireEvent.click(searchItem);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(
+      within(drawerBody).queryByText('john.doe@me.com', { exact: false }),
+    ).not.toBeInTheDocument();
+  });
+  it("doesn't display user name if it's same as email", async () => {
     render(
       <Navigation
         environment="preprod"
