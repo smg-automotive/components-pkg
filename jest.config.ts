@@ -15,5 +15,5 @@ export default {
     '<rootDir>/.jest/setup/resizeObserver.ts',
     '<rootDir>/.jest/setup/intersectionObserver.ts',
   ],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
 };

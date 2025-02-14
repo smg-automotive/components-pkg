@@ -1,12 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Box } from '@chakra-ui/react';
 
-import StackComponent from './index';
+import { Box } from 'src';
 
-const meta: Meta<typeof StackComponent> = {
+import { Stack, StackProps, StackSeparator } from './index';
+
+const meta: Meta<typeof Stack> = {
   title: 'Layout/Stack',
-  component: StackComponent,
+  component: Stack,
 
   parameters: {
     controls: {
@@ -16,40 +17,57 @@ const meta: Meta<typeof StackComponent> = {
 
   args: {
     align: 'center',
+    children: 'boxes',
     direction: 'row',
-    spacing: 'md',
+    justify: 'center',
+    gap: 'md',
     wrap: 'wrap',
-    children: [
-      <Box w="40px" h="40px" bg="blue.100" key="1">
-        1
-      </Box>,
-      <Box w="50px" h="50px" bg="green.100" key="2">
-        2
-      </Box>,
-      <Box w="60px" h="60px" bg="orange.100" key="3">
-        3
-      </Box>,
-    ],
+    margin: '0',
+    padding: '0',
+    width: '8xl',
+    separator: 'none' as unknown as StackProps['separator'],
   },
 
   argTypes: {
     align: {
-      options: ['start', 'center', 'end'],
+      control: { type: 'select' },
+      options: ['stretch', 'center', 'start', 'end'],
+    },
 
-      control: {
-        type: 'select',
+    children: {
+      table: {
+        disable: true,
+      },
+      mapping: {
+        boxes: [
+          <Box minW="md" minH="md" bg="blue.100" key="1">
+            1
+          </Box>,
+          <Box minW="lg" minH="lg" bg="green.100" key="2">
+            2
+          </Box>,
+          <Box minW="xl" minH="xl" bg="orange.100" key="3">
+            3
+          </Box>,
+        ],
+      },
+    },
+    separator: {
+      control: { type: 'select' },
+      options: ['none', '<StackSeparator />'],
+      mapping: {
+        none: undefined,
+        '<StackSeparator />': <StackSeparator />,
       },
     },
 
     direction: {
-      options: ['row', 'column'],
-
-      control: {
-        type: 'select',
-      },
+      control: { type: 'select' },
+      options: ['row', 'column', 'row-reverse', 'column-reverse'],
     },
 
     justify: {
+      control: { type: 'select' },
       options: [
         'start',
         'space-around',
@@ -58,30 +76,17 @@ const meta: Meta<typeof StackComponent> = {
         'center',
         'end',
       ],
-
-      control: {
-        type: 'select',
-      },
     },
 
-    spacing: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-
-      control: {
-        type: 'select',
-      },
-    },
-
-    children: {
-      table: {
-        disable: true,
-      },
+    wrap: {
+      control: { type: 'select' },
+      options: ['wrap', 'nowrap', 'wrap-reverse'],
     },
   },
 };
 export default meta;
 
-type StoryType = StoryObj<typeof StackComponent>;
+type StoryType = StoryObj<typeof Stack>;
 export const Overview: StoryType = {};
 
 /**
@@ -94,12 +99,10 @@ export const Responsive: StoryType = {
       sm: 'row',
     },
   },
+};
 
-  argTypes: {
-    direction: {
-      table: {
-        disable: true,
-      },
-    },
+export const WithASeparator: StoryType = {
+  args: {
+    separator: '<StackSeparator />' as unknown as StackProps['separator'],
   },
 };
