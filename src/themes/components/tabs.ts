@@ -81,7 +81,7 @@ const variants = {
   fullWidth: {
     tab: { ...baseStyleTab, flex: 1 },
     tablist: baseStyleTablist,
-    tabpanel: baseStyleTabpanel,
+    tabpanel: { ...baseStyleTabpanel, margin: '0' },
   },
 };
 
