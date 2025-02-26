@@ -9,7 +9,7 @@ import {
 
 import { FontWeights } from 'src/themes';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { ChevronDownSmallIcon, ChevronUpSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;
@@ -33,28 +33,34 @@ const Menu: FC<MenuProps> = ({
 }) => {
   return (
     <ChakraMenu {...(offset.length && { offset })}>
-      <MenuButton
-        as={Button}
-        padding={0}
-        rightIcon={<ChevronDownSmallIcon />}
-        fontWeight={fontWeightTitle}
-        {...(menuColor && { color: menuColor })}
-      >
-        {title}
-      </MenuButton>
-      <MenuList minWidth="4xl">
-        {items.map(({ onClick, text }, index) => {
-          return (
-            <ChakraMenuItem
-              key={`menuItem-${index}`}
-              onClick={onClick}
-              {...(menuColor && { color: menuColor })}
-            >
-              {text}
-            </ChakraMenuItem>
-          );
-        })}
-      </MenuList>
+      {({ isOpen }) => (
+        <>
+          <MenuButton
+            as={Button}
+            padding={0}
+            rightIcon={
+              isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
+            }
+            fontWeight={fontWeightTitle}
+            {...(menuColor && { color: menuColor })}
+          >
+            {title}
+          </MenuButton>
+          <MenuList minWidth="4xl">
+            {items.map(({ onClick, text }, index) => {
+              return (
+                <ChakraMenuItem
+                  key={`menuItem-${index}`}
+                  onClick={onClick}
+                  {...(menuColor && { color: menuColor })}
+                >
+                  {text}
+                </ChakraMenuItem>
+              );
+            })}
+          </MenuList>
+        </>
+      )}
     </ChakraMenu>
   );
 };
