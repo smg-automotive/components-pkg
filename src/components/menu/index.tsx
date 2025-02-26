@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
   Button,
   Menu as ChakraMenu,
@@ -22,6 +22,7 @@ export interface MenuProps {
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
   menuColor?: string;
+  icon?: ReactElement;
 }
 
 const Menu: FC<MenuProps> = ({
@@ -30,6 +31,7 @@ const Menu: FC<MenuProps> = ({
   fontWeightTitle = 'regular',
   offset = [],
   menuColor,
+  icon,
 }) => {
   return (
     <ChakraMenu {...(offset.length && { offset })}>
@@ -38,6 +40,7 @@ const Menu: FC<MenuProps> = ({
           <MenuButton
             as={Button}
             padding={0}
+            leftIcon={icon}
             rightIcon={
               isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
             }
