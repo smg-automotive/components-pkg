@@ -139,6 +139,7 @@ const Navigation: FC<NavigationProps> = ({
                 count={comparisonItemIds?.length ?? 0}
               />
             ) : null}
+            <NavigationLanguageMenu activeLanguage={language} />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
@@ -147,7 +148,6 @@ const Navigation: FC<NavigationProps> = ({
               hasNotification={hasNotification}
               onLogin={onLogin}
             />
-            <NavigationLanguageMenu activeLanguage={language} />
           </Stack>
         </Box>
       </Box>
