@@ -10,7 +10,7 @@ import {
 
 import { FontWeights } from 'src/themes';
 
-import { ChevronDownSmallIcon, ChevronUpSmallIcon } from '../icons';
+import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;
@@ -46,7 +46,10 @@ const Menu: FC<MenuProps> = ({
             iconSpacing={iconSpacing}
             leftIcon={icon}
             rightIcon={
-              isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
+              <ChevronDownSmallIcon
+                transition="0.2s"
+                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+              />
             }
             fontWeight={fontWeightTitle}
             {...(menuColor && { color: menuColor })}
