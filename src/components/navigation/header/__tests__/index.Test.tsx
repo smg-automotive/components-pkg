@@ -33,6 +33,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -63,6 +64,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -93,6 +95,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -102,6 +105,45 @@ describe('Header', () => {
     const drawerBody = screen.getByTestId('drawer-body');
     expect(within(drawerBody).getByText('john.doe@me.com')).toBeInTheDocument();
     expect(within(drawerBody).getByText('(John Doe)')).toBeInTheDocument();
+  });
+  it('displays selected tenant and location in the user drawer', async () => {
+    render(
+      <Navigation
+        environment="preprod"
+        user={{
+          id: '1',
+          userName: 'John Doe',
+          userType: MappedUserType.Private,
+          sellerId: '5',
+          sellerIds: ['5'],
+          isImpersonated: false,
+          email: 'john.doe@me.com',
+          exp: 123,
+        }}
+        brand={Brand.AutoScout24}
+        language="en"
+        hasNotification={false}
+        onLogin={jest.fn}
+        onLogout={jest.fn}
+        selectedTenant={{
+          id: 1,
+          billingName: 'Test Tenant',
+          billingCity: 'Zurich',
+          billingAddress: 'Bahnhofstrasse 1',
+          billingCountryCode: 'CH',
+          billingZipCode: '8001',
+          billingPostOfficeBox: null,
+        }}
+      />,
+    );
+
+    const searchItem = screen.getByText('john.doe@me.com');
+    fireEvent.click(searchItem);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(
+      within(drawerBody).getByText('Test Tenant, Zurich'),
+    ).toBeInTheDocument();
   });
   it('does not display user name in the search drawer', async () => {
     render(
@@ -122,6 +164,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -152,6 +195,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -173,6 +217,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -198,6 +243,7 @@ describe('Header', () => {
         hasNotification={false}
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -223,6 +269,7 @@ describe('Header', () => {
         hasNotification
         onLogin={jest.fn}
         onLogout={jest.fn}
+        selectedTenant={null}
       />,
     );
 
@@ -309,6 +356,7 @@ describe('Header', () => {
           hasNotification={false}
           onLogin={jest.fn}
           onLogout={jest.fn}
+          selectedTenant={null}
         />,
       );
 
@@ -356,6 +404,7 @@ describe('Header', () => {
           hasNotification={false}
           onLogin={jest.fn}
           onLogout={jest.fn}
+          selectedTenant={null}
         />,
       );
 
