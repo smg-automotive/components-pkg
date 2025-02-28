@@ -46,7 +46,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Text fontWeight="bold" noOfLines={1} maxW="3xl">
+          <Text fontWeight="bold" noOfLines={1} maxW="2xl">
             {user.email}
           </Text>
         </Hide>
