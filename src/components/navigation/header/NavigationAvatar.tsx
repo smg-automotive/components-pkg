@@ -39,19 +39,14 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         spacing="xs"
         cursor="pointer"
         _hover={{ color: 'blue.700' }}
-        color="gray.900"
+        color={isDrawerOpened ? 'blue.700' : 'gray.900'}
         onClick={createDrawerHandler({
           nodeName: DrawerNode.User,
         })}
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Text
-            fontWeight="bold"
-            {...(isDrawerOpened && { color: 'blue.700' })}
-            noOfLines={1}
-            maxW="3xl"
-          >
+          <Text fontWeight="bold" noOfLines={1} maxW="3xl">
             {user.email}
           </Text>
         </Hide>
