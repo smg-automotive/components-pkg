@@ -2,12 +2,13 @@ import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 import { chakra, Container } from '@chakra-ui/react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
-import Flex from '../flex';
-import Divider from '../divider';
+import { Separator } from '../separator';
 
-interface Props {
+import { Flex } from '../flex';
+
+export interface BaseLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
   skyScraperAd?: ReactNode;
@@ -15,7 +16,7 @@ interface Props {
   maxContentWidth: keyof typeof sizes.container;
 }
 
-const BaseLayout: FC<PropsWithChildren<Props>> = ({
+export const BaseLayout: FC<PropsWithChildren<BaseLayoutProps>> = ({
   header,
   footer,
   skyScraperAd,
@@ -28,7 +29,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
       {header ? (
         <>
           {header}
-          <Divider />
+          <Separator />
         </>
       ) : null}
       {heroAd ? heroAd : null}
@@ -37,7 +38,7 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           as="main"
           width="full"
           height="full"
-          maxWidth={sizes.container[maxContentWidth]}
+          maxWidth={`container.${maxContentWidth}`}
           marginX={{ '2xs': 'lg', lg: '2xl' }}
           paddingBottom={{ md: '5xl', base: '3xl' }}
           paddingTop={{ '2xs': 'md', md: '2xl' }}
@@ -47,8 +48,12 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
         {skyScraperAd ? (
           <chakra.aside
             display={{ '2xs': 'none', lg: 'block' }}
-            width={{ lg: '300px', xl: '500px' }}
-            minWidth={{ lg: '300px', xl: '500px' }}
+            css={{
+              lg: { '--width': '300px' },
+              xl: { '--width': '500px' },
+            }}
+            width="var(--width)"
+            minWidth="var(--width)"
             marginRight="2xl"
             position="relative"
             paddingBottom={{ md: '5xl', base: '3xl' }}
@@ -62,5 +67,3 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
     </>
   );
 };
-
-export default BaseLayout;
