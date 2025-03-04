@@ -69,11 +69,5 @@ const config: StorybookConfig = {
     ];
     return webpack;
   },
-  staticDirs: [
-    {
-      from: '../src/assets',
-      to: 'assets',
-    },
-  ],
 };
 export default config;
