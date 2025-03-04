@@ -64,7 +64,7 @@ const SelectMenu: FC<SelectMenuProps> = ({
           >
             {title}
           </MenuButton>
-          <MenuList minWidth="4xl">
+          <MenuList minWidth="100%, 100%, 4xl" maxWidth="320px, 360px">
             <MenuOptionGroup value={value} type="radio" onChange={onChange}>
               {options.map(
                 ({ value: itemValue, label, onClick = () => null }) => (
@@ -76,7 +76,14 @@ const SelectMenu: FC<SelectMenuProps> = ({
                       color: menuOptionColor,
                     })}
                   >
-                    {label}
+                    <div
+                      style={{
+                        wordWrap: 'break-word',
+                        maxWidth: '300px',
+                      }}
+                    >
+                      {label}
+                    </div>
                   </MenuItemOption>
                 ),
               )}
