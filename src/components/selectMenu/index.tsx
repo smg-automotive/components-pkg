@@ -64,7 +64,12 @@ const SelectMenu: FC<SelectMenuProps> = ({
           >
             {title}
           </MenuButton>
-          <MenuList minWidth="4xl">
+          <MenuList
+            sx={{
+              minWidth: '100%',
+              maxWidth: '360px',
+            }}
+          >
             <MenuOptionGroup value={value} type="radio" onChange={onChange}>
               {options.map(
                 ({ value: itemValue, label, onClick = () => null }) => (
@@ -72,11 +77,17 @@ const SelectMenu: FC<SelectMenuProps> = ({
                     key={itemValue}
                     value={itemValue}
                     onClick={onClick}
-                    {...(menuOptionColor && {
-                      color: menuOptionColor,
-                    })}
+                    {...(menuOptionColor && { color: menuOptionColor })}
                   >
-                    {label}
+                    <div
+                      style={{
+                        whiteSpace: 'normal',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word',
+                      }}
+                    >
+                      {label}
+                    </div>
                   </MenuItemOption>
                 ),
               )}
