@@ -468,10 +468,6 @@ export const drawerNodeItems = ({
               motoscout24: true,
             },
           },
-          entitlementConfig: {
-            hideIfRequiredEntitlementIsMissing: true,
-            singleRequiredEntitlement: [Entitlement.CockpitFrontend],
-          },
           projectIdentifier: 'seller-web',
         },
         {
