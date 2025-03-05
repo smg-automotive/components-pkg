@@ -1,4 +1,4 @@
-import { EnrichedSessionUser, MappedUserType } from '@smg-automotive/auth';
+import { Auth0UserType, EnrichedSessionUser } from '@smg-automotive/auth';
 
 export const enrichedSessionUser: EnrichedSessionUser = {
   email: 'foo@bar.com',
@@ -11,7 +11,7 @@ export const enrichedSessionUser: EnrichedSessionUser = {
   isImpersonated: false,
   isMultiTenantUser: true,
   userId: '123',
-  userType: MappedUserType.Professional,
+  userType: Auth0UserType.Professional,
   entitlements: null,
   managedSellers: [
     {
