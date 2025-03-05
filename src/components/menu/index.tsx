@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
   Button,
+  ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
   MenuButton,
@@ -9,7 +10,7 @@ import {
 
 import { FontWeights } from 'src/themes';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { ChevronDownSmallIcon, ChevronUpSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;
@@ -22,6 +23,8 @@ export interface MenuProps {
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
   menuColor?: string;
+  icon?: ReactElement;
+  iconSpacing?: ButtonProps['iconSpacing'];
 }
 
 const Menu: FC<MenuProps> = ({
@@ -30,31 +33,41 @@ const Menu: FC<MenuProps> = ({
   fontWeightTitle = 'regular',
   offset = [],
   menuColor,
+  icon,
+  iconSpacing,
 }) => {
   return (
     <ChakraMenu {...(offset.length && { offset })}>
-      <MenuButton
-        as={Button}
-        padding={0}
-        rightIcon={<ChevronDownSmallIcon />}
-        fontWeight={fontWeightTitle}
-        {...(menuColor && { color: menuColor })}
-      >
-        {title}
-      </MenuButton>
-      <MenuList minWidth="4xl">
-        {items.map(({ onClick, text }, index) => {
-          return (
-            <ChakraMenuItem
-              key={`menuItem-${index}`}
-              onClick={onClick}
-              {...(menuColor && { color: menuColor })}
-            >
-              {text}
-            </ChakraMenuItem>
-          );
-        })}
-      </MenuList>
+      {({ isOpen }) => (
+        <>
+          <MenuButton
+            as={Button}
+            padding={0}
+            iconSpacing={iconSpacing}
+            leftIcon={icon}
+            rightIcon={
+              isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
+            }
+            fontWeight={fontWeightTitle}
+            {...(menuColor && { color: menuColor })}
+          >
+            {title}
+          </MenuButton>
+          <MenuList minWidth="4xl">
+            {items.map(({ onClick, text }, index) => {
+              return (
+                <ChakraMenuItem
+                  key={`menuItem-${index}`}
+                  onClick={onClick}
+                  {...(menuColor && { color: menuColor })}
+                >
+                  {text}
+                </ChakraMenuItem>
+              );
+            })}
+          </MenuList>
+        </>
+      )}
     </ChakraMenu>
   );
 };
