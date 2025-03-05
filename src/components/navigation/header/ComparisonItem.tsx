@@ -35,6 +35,7 @@ const ComparisonItem: FC<Props> = ({ link, count }) => {
       href={link.link?.[language]}
       onClick={link.onClick}
       aria-label={t(link.translationKey ?? '', link.translationParameters)}
+      mr="15px"
     >
       <CompareIcon color="gray.900" />
       <Box position="absolute" top={-10} right={-15}>

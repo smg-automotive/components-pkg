@@ -10,6 +10,7 @@ import { Brand } from 'src/types/brand';
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 
+import Divider from 'src/components/divider';
 import Box from 'src/components/box';
 
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
@@ -140,6 +141,9 @@ const Navigation: FC<NavigationProps> = ({
                 link={config.iconItems.comparison}
                 count={comparisonItemIds?.length ?? 0}
               />
+            ) : null}
+            {Object.keys(config.iconItems).length > 0 ? (
+              <Divider orientation="vertical" height="sm" />
             ) : null}
             <NavigationLanguageMenu activeLanguage={language} />
             <NavigationAvatar
