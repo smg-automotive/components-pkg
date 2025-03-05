@@ -142,7 +142,7 @@ const Navigation: FC<NavigationProps> = ({
                 count={comparisonItemIds?.length ?? 0}
               />
             ) : null}
-            {Object.keys(config.iconItems).length > 0 ? (
+            {Object.values(config.iconItems).some((link) => !!link) ? (
               <Divider orientation="vertical" height="sm" />
             ) : null}
             <NavigationLanguageMenu activeLanguage={language} />
