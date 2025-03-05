@@ -127,7 +127,7 @@
     "@chakra-ui/theme-tools": "2.2.6",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
-    "@smg-automotive/auth": "5.2.0-tenant-related-types-4cc7e6b042cf6b2377953506b48c6ab483c485db.1",
+    "@smg-automotive/auth": " 5.2.0-tenant-related-types-bf12e3803f528c5429c18428a8d724224ed13c21.1",
     "@smg-automotive/i18n-pkg": "1.6.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
