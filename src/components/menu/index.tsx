@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import {
   Button,
+  ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
   MenuButton,
@@ -23,6 +24,7 @@ export interface MenuProps {
   offset?: [number, number];
   menuColor?: string;
   icon?: ReactElement;
+  iconSpacing?: ButtonProps['iconSpacing'];
 }
 
 const Menu: FC<MenuProps> = ({
@@ -32,6 +34,7 @@ const Menu: FC<MenuProps> = ({
   offset = [],
   menuColor,
   icon,
+  iconSpacing,
 }) => {
   return (
     <ChakraMenu {...(offset.length && { offset })}>
@@ -40,6 +43,7 @@ const Menu: FC<MenuProps> = ({
           <MenuButton
             as={Button}
             padding={0}
+            iconSpacing={iconSpacing}
             leftIcon={icon}
             rightIcon={
               isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
