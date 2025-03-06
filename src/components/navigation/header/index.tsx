@@ -25,7 +25,7 @@ import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
 
-interface NavigationProps {
+export interface NavigationProps {
   brand: Brand;
   comparisonItemIds?: number[] | null;
   entitlements?: string[];

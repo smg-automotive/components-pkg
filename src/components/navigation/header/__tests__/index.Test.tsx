@@ -11,31 +11,52 @@ import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
-import Navigation from '..';
+import Navigation, { NavigationProps } from '..';
+
+const renderNavigation = ({
+  environment = 'preprod',
+  user = {
+    id: '1',
+    userName: 'John Doe',
+    userType: MappedUserType.Private,
+    sellerId: '5',
+    sellerIds: ['5'],
+    isImpersonated: false,
+    email: 'john.doe@me.com',
+    exp: 123,
+  },
+  brand = Brand.AutoScout24,
+  language = 'en',
+  hasNotification = false,
+  onLogin = jest.fn,
+  onLogout = jest.fn,
+  selectedTenant = null,
+  availableTenants = null,
+  selectTenant = jest.fn,
+  useAbsoluteUrls,
+  project,
+}: Partial<NavigationProps>) => {
+  render(
+    <Navigation
+      environment={environment}
+      user={user}
+      brand={brand}
+      language={language}
+      hasNotification={hasNotification}
+      onLogin={onLogin}
+      onLogout={onLogout}
+      selectedTenant={selectedTenant}
+      availableTenants={availableTenants}
+      selectTenant={selectTenant}
+      useAbsoluteUrls={useAbsoluteUrls}
+      project={project}
+    />,
+  );
+};
 
 describe('Header', () => {
   it('should open search drawer', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: '',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({});
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
@@ -45,28 +66,9 @@ describe('Header', () => {
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
   });
+
   it('should open user drawer', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({});
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
@@ -76,28 +78,9 @@ describe('Header', () => {
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
   });
+
   it('displays user info in the user drawer', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({});
 
     const searchItem = screen.getByText('john.doe@me.com');
     fireEvent.click(searchItem);
@@ -106,36 +89,19 @@ describe('Header', () => {
     expect(within(drawerBody).getByText('john.doe@me.com')).toBeInTheDocument();
     expect(within(drawerBody).getByText('(John Doe)')).toBeInTheDocument();
   });
+
   it('displays selected tenant and location in the user drawer', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={{
-          id: 1,
-          billingName: 'Test Tenant',
-          billingCity: 'Zurich',
-          billingAddress: 'Bahnhofstrasse 1',
-          billingCountryCode: 'CH',
-          billingZipCode: '8001',
-          billingPostOfficeBox: null,
-        }}
-      />,
-    );
+    renderNavigation({
+      selectedTenant: {
+        id: 1,
+        billingName: 'Test Tenant',
+        billingCity: 'Zurich',
+        billingAddress: 'Bahnhofstrasse 1',
+        billingCountryCode: 'CH',
+        billingZipCode: '8001',
+        billingPostOfficeBox: null,
+      },
+    });
 
     const searchItem = screen.getByText('john.doe@me.com');
     fireEvent.click(searchItem);
@@ -145,28 +111,9 @@ describe('Header', () => {
       within(drawerBody).getByText('Test Tenant, Zurich'),
     ).toBeInTheDocument();
   });
+
   it('does not display user name in the search drawer', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'john.doe@me.com',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({});
 
     const searchItem = screen.getByText('Search');
     fireEvent.click(searchItem);
@@ -176,28 +123,20 @@ describe('Header', () => {
       within(drawerBody).queryByText('john.doe@me.com', { exact: false }),
     ).not.toBeInTheDocument();
   });
+
   it("doesn't display user name if it's same as email", async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'john.doe@me.com',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({
+      user: {
+        id: '1',
+        userName: 'john.doe@me.com',
+        userType: MappedUserType.Private,
+        sellerId: '5',
+        sellerIds: ['5'],
+        isImpersonated: false,
+        email: 'john.doe@me.com',
+        exp: 123,
+      },
+    });
 
     const searchItem = screen.getByText('john.doe@me.com');
     fireEvent.click(searchItem);
@@ -207,54 +146,40 @@ describe('Header', () => {
       within(drawerBody).getAllByText('john.doe@me.com', { exact: false }),
     ).toHaveLength(1);
   });
+
   it('should display login button if there is no user', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={null}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({ user: null });
 
     const login = screen.getByText('Login');
     expect(login).toBeInTheDocument();
   });
+
   it('should display user email if there is a user', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: 'john.doe@me.com',
-          exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification={false}
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
+    renderNavigation({});
 
     const user = screen.getByText('john.doe@me.com');
     expect(user).toBeInTheDocument();
   });
+
   it('should display notification icon if there is a notification', async () => {
-    render(
-      <Navigation
-        environment="preprod"
-        user={{
+    renderNavigation({ hasNotification: true });
+
+    const notification = screen.getByTestId('notification-icon');
+    expect(notification).toBeInTheDocument();
+  });
+
+  describe('getMappedConfig', () => {
+    it('returns a mapped instance', () => {
+      const headerConfigInstance = new HeaderNavigationConfig({
+        brand: Brand.AutoScout24,
+        environment: 'preprod',
+        useAbsoluteUrls: false,
+        config: {
+          headerItems: headerLinks({ trackEvent: jest.fn() }),
+          drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
+          iconItems: iconItems({ trackEvent: jest.fn() }),
+        },
+        user: {
           id: '1',
           userName: 'John Doe',
           userType: MappedUserType.Private,
@@ -263,48 +188,17 @@ describe('Header', () => {
           isImpersonated: false,
           email: '',
           exp: 123,
-        }}
-        brand={Brand.AutoScout24}
-        language="en"
-        hasNotification
-        onLogin={jest.fn}
-        onLogout={jest.fn}
-        selectedTenant={null}
-      />,
-    );
-
-    const notification = screen.getByTestId('notification-icon');
-    expect(notification).toBeInTheDocument();
-  });
-  it('returns a mapped instance', () => {
-    const headerConfigInstance = new HeaderNavigationConfig({
-      brand: Brand.AutoScout24,
-      environment: 'preprod',
-      useAbsoluteUrls: false,
-      config: {
-        headerItems: headerLinks({ trackEvent: jest.fn() }),
-        drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
-        iconItems: iconItems({ trackEvent: jest.fn() }),
-      },
-      user: {
-        id: '1',
-        userName: 'John Doe',
-        userType: MappedUserType.Private,
-        sellerId: '5',
-        sellerIds: ['5'],
-        isImpersonated: false,
-        email: '',
-        exp: 123,
-      },
-    });
-    const config = headerConfigInstance.getMappedConfig();
-    expect(config).toEqual({
-      drawerItems: expect.any(Object),
-      headerItems: expect.any(Object),
-      iconItems: { comparison: null },
-      homeUrl: expect.any(String),
-      menuHeight: expect.any(String),
-      user: expect.any(Object),
+        },
+      });
+      const config = headerConfigInstance.getMappedConfig();
+      expect(config).toEqual({
+        drawerItems: expect.any(Object),
+        headerItems: expect.any(Object),
+        iconItems: { comparison: null },
+        homeUrl: expect.any(String),
+        menuHeight: expect.any(String),
+        user: expect.any(Object),
+      });
     });
   });
 
@@ -345,20 +239,13 @@ describe('Header', () => {
     };
 
     it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {
-      render(
-        <Navigation
-          environment="production"
-          user={user}
-          useAbsoluteUrls={true}
-          brand={Brand.AutoScout24}
-          project="listings-web"
-          language="de"
-          hasNotification={false}
-          onLogin={jest.fn}
-          onLogout={jest.fn}
-          selectedTenant={null}
-        />,
-      );
+      renderNavigation({
+        environment: 'production',
+        user: user,
+        useAbsoluteUrls: true,
+        project: 'listings-web',
+        language: 'de',
+      });
 
       await userEvent.click(screen.getByText(user.email));
 
@@ -393,20 +280,13 @@ describe('Header', () => {
     });
 
     it('should use relative URLs for pages inside seller-web and keep the others absolute', async () => {
-      render(
-        <Navigation
-          environment="production"
-          user={user}
-          useAbsoluteUrls={true}
-          brand={Brand.AutoScout24}
-          project="seller-web"
-          language="de"
-          hasNotification={false}
-          onLogin={jest.fn}
-          onLogout={jest.fn}
-          selectedTenant={null}
-        />,
-      );
+      renderNavigation({
+        user,
+        project: 'seller-web',
+        useAbsoluteUrls: true,
+        environment: 'production',
+        language: 'de',
+      });
 
       await userEvent.click(screen.getByText(user.email));
 
