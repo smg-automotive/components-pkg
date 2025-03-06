@@ -30,11 +30,8 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         menuColor="gray.900"
         offset={[0, 18]}
         icon={<GlobeIcon />}
-<<<<<<< HEAD
         iconSpacing="xs"
-=======
         placement="bottom-end"
->>>>>>> f66b95ae (feat: allow setting placement on the menu)
         items={[
           { text: 'Deutsch', onClick: () => replaceLanguage('de') },
           { text: 'Français', onClick: () => replaceLanguage('fr') },
