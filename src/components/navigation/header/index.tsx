@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { MergedUser } from '@smg-automotive/auth';
+import { ManagedSeller, MergedUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
 import { Project } from 'src/types/project';
@@ -9,6 +9,8 @@ import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
+
+import Divider from 'src/components/divider';
 import Box from 'src/components/box';
 
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
@@ -37,6 +39,7 @@ export interface NavigationProps {
   useAbsoluteUrls?: boolean;
   project?: Project;
   user: MergedUser | null;
+  selectedTenant: ManagedSeller | null;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -53,6 +56,7 @@ const Navigation: FC<NavigationProps> = ({
   useAbsoluteUrls = false,
   project,
   user,
+  selectedTenant,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -142,6 +146,10 @@ const Navigation: FC<NavigationProps> = ({
                 count={comparisonItemIds?.length ?? 0}
               />
             ) : null}
+            {Object.values(config.iconItems).some((link) => !!link) ? (
+              <Divider orientation="vertical" height="sm" />
+            ) : null}
+            <NavigationLanguageMenu activeLanguage={language} />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
@@ -160,6 +168,7 @@ const Navigation: FC<NavigationProps> = ({
       </Box>
       <NavigationDrawer
         user={user}
+        selectedTenant={selectedTenant}
         drawer={drawer}
         isOpen={isOpen}
         onClose={onClose}

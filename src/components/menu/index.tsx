@@ -11,7 +11,7 @@ import {
 
 import { FontWeights } from 'src/themes';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { ChevronDownSmallIcon, ChevronUpSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;

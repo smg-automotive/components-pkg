@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { MergedUser } from '@smg-automotive/auth';
+import { ManagedSeller, MergedUser } from '@smg-automotive/auth';
 import { DrawerBody } from '@chakra-ui/react';
 
 import Grid from 'src/components/grid';
@@ -16,6 +16,7 @@ import DrawerLoginToggle from './DrawerLoginToggle';
 
 interface NavigationDrawerProps {
   user: MergedUser | null;
+  selectedTenant: ManagedSeller | null;
   drawer: useNavigationDrawerType;
   isOpen: boolean;
   onClose: () => void;
@@ -32,6 +33,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   user,
   onLogin,
   onLogout,
+  selectedTenant,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -62,7 +64,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             {[DrawerNode.User, DrawerNode.Combined].includes(
               drawer?.current as DrawerNode,
             ) ? (
-              <DrawerUserInfo user={user} />
+              <DrawerUserInfo user={user} selectedTenant={selectedTenant} />
             ) : null}
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />

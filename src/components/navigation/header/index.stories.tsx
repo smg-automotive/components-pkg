@@ -2,6 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { MappedUserType } from '@smg-automotive/auth';
+
 import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
 
@@ -38,6 +40,7 @@ const meta: Meta<typeof Navigation> = {
     entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
+    selectedTenant: null,
   },
 
   argTypes: {
@@ -80,6 +83,41 @@ export const Unauthenticated: StoryType = {
 export const Professional: StoryType = {
   args: {
     user: professionalSeller(),
+    entitlements: [
+      'business-image',
+      'optimizer',
+      'optimizer-pro',
+      'auto-radar',
+      'auto-radar-fast',
+      'listing-visibility-standard',
+      'listing-visibility-premium',
+    ],
+  },
+};
+
+export const ProfessionalWithMultiTenancy: StoryType = {
+  args: {
+    user: {
+      id: '123',
+      userName: '65431-amir',
+      userType: MappedUserType.Professional,
+      exp: 1630000000,
+      email: 'amir@professional.com',
+      sellerId: '6001',
+      sellerIds: ['6001'],
+      isImpersonated: false,
+    },
+
+    selectedTenant: {
+      id: 2485932,
+      billingAddress: 'Bahnofstrasse 1',
+      billingCity: 'Zurich',
+      billingCountryCode: 'de',
+      billingName: 'AS24 Test 1',
+      billingPostOfficeBox: null,
+      billingZipCode: '8080',
+    },
+
     entitlements: [
       'business-image',
       'optimizer',

@@ -19,9 +19,10 @@ const renderNavigation = ({
   language = 'en',
   hasNotification = false,
   onLogin = jest.fn(),
-  onLogout = jest.fn,
+  onLogout = jest.fn(),
   useAbsoluteUrls,
   project,
+  selectedTenant = null,
 }: Partial<NavigationProps>) =>
   render(
     <Navigation
@@ -34,6 +35,7 @@ const renderNavigation = ({
       onLogout={onLogout}
       useAbsoluteUrls={useAbsoluteUrls}
       project={project}
+      selectedTenant={selectedTenant}
     />,
   );
 
@@ -84,6 +86,32 @@ describe('Header', () => {
 
     const drawerBody = screen.getByTestId('drawer-body');
     expect(within(drawerBody).getByText(`(${userName})`)).toBeInTheDocument();
+  });
+
+  it('displays selected tenant and location in the user drawer', async () => {
+    const email = 'john.doe@me.com';
+    const selectedTenant = {
+      id: 1,
+      billingName: 'Test Tenant',
+      billingCity: 'Zurich',
+      billingAddress: 'Bahnhofstrasse 1',
+      billingCountryCode: 'CH',
+      billingZipCode: '8001',
+      billingPostOfficeBox: null,
+    };
+
+    renderNavigation({
+      user: professionalSeller({ email }),
+      selectedTenant,
+    });
+
+    const searchItem = screen.getByText('john.doe@me.com');
+    fireEvent.click(searchItem);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(
+      within(drawerBody).getByText('Test Tenant, Zurich'),
+    ).toBeInTheDocument();
   });
 
   it('does not display user name in the search drawer', async () => {
