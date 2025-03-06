@@ -33,8 +33,8 @@ const NavigationTenantMenu: FC<Props> = ({
   availableTenants,
   selectTenant,
 }) => {
-  const popoverContentRef = useRef<HTMLElement | null>(null);
-  const { onClose } = useDisclosure();
+  const initialFocusRef = useRef<HTMLInputElement>(null);
+  const { onClose, isOpen, onToggle } = useDisclosure();
   const { t } = useI18n();
   const onClick = useCallback(
     (event: MouseEvent<ButtonWithValue>) => {
@@ -59,57 +59,59 @@ const NavigationTenantMenu: FC<Props> = ({
   if (!selectedTenant || !availableTenants) return null;
 
   return (
-    <Popover placement="bottom-end" returnFocusOnClose={true}>
-      {({ isOpen }) => (
-        <>
-          <PopoverTrigger>
-            <Button
-              p="0"
-              color={isOpen ? 'blue.700' : 'gray.900'}
-              _hover={{ color: 'blue.700' }}
-              leftIcon={<GarageIcon />}
-              rightIcon={
-                <ChevronDownSmallIcon
-                  transition="0.2s"
-                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                />
-              }
-              iconSpacing="xs"
-            >
-              <Text as="span" fontWeight="bold" noOfLines={1} maxW="2xl">
-                {selectedTenant.billingName || selectedTenant.id}
-                {selectedTenant.billingCity ? ', ' : null}
-                {selectedTenant.billingCity}
-              </Text>
-            </Button>
-          </PopoverTrigger>
-          <Portal>
-            <Box zIndex="popover" w="full" h="full" position="relative">
-              <PopoverContent
-                bg="white"
-                boxShadow="sm"
-                color="inherit"
-                minW="auth0-width"
-                maxH="auth0-height"
-                p="2xl"
-                borderRadius="sm"
-                borderWidth="1px"
-                borderColor="gray.200"
-                marginTop="10px"
-                alignItems="center"
-                flexDirection="column"
-                gridGap="2xl"
-                ref={popoverContentRef}
-              >
-                <H1 textStyle="heading3">
-                  {t('auth.tenantSelection.selectionTitle')}
-                </H1>
-                <SearchableList listItems={listItems} />
-              </PopoverContent>
-            </Box>
-          </Portal>
-        </>
-      )}
+    <Popover
+      placement="bottom-end"
+      returnFocusOnClose={true}
+      onClose={onClose}
+      isOpen={isOpen}
+      initialFocusRef={initialFocusRef}
+    >
+      <PopoverTrigger>
+        <Button
+          p="0"
+          color={isOpen ? 'blue.700' : 'gray.900'}
+          _hover={{ color: 'blue.700' }}
+          leftIcon={<GarageIcon />}
+          rightIcon={
+            <ChevronDownSmallIcon
+              transition="0.2s"
+              transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+            />
+          }
+          iconSpacing="xs"
+          onClick={onToggle}
+        >
+          <Text as="span" fontWeight="bold" noOfLines={1} maxW="2xl">
+            {selectedTenant.billingName || selectedTenant.id}
+            {selectedTenant.billingCity ? ', ' : null}
+            {selectedTenant.billingCity}
+          </Text>
+        </Button>
+      </PopoverTrigger>
+      <Portal>
+        <Box zIndex="popover" w="full" h="full" position="relative">
+          <PopoverContent
+            bg="white"
+            boxShadow="sm"
+            color="inherit"
+            minW="auth0-width"
+            maxH="auth0-height"
+            p="2xl"
+            borderRadius="sm"
+            borderWidth="1px"
+            borderColor="gray.200"
+            marginTop="10px"
+            alignItems="center"
+            flexDirection="column"
+            gridGap="2xl"
+          >
+            <H1 textStyle="heading3">
+              {t('auth.tenantSelection.selectionTitle')}
+            </H1>
+            <SearchableList listItems={listItems} ref={initialFocusRef} />
+          </PopoverContent>
+        </Box>
+      </Portal>
     </Popover>
   );
 };
