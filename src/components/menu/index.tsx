@@ -4,6 +4,7 @@ import {
   ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
+  MenuProps as ChakraMenuProps,
   MenuButton,
   MenuList,
 } from '@chakra-ui/react';
@@ -25,6 +26,7 @@ export interface MenuProps {
   menuColor?: string;
   icon?: ReactElement;
   iconSpacing?: ButtonProps['iconSpacing'];
+  placement?: ChakraMenuProps['placement'];
 }
 
 const Menu: FC<MenuProps> = ({
@@ -35,9 +37,10 @@ const Menu: FC<MenuProps> = ({
   menuColor,
   icon,
   iconSpacing,
+  placement,
 }) => {
   return (
-    <ChakraMenu {...(offset.length && { offset })}>
+    <ChakraMenu {...(offset.length && { offset })} placement={placement}>
       {({ isOpen }) => (
         <>
           <MenuButton
