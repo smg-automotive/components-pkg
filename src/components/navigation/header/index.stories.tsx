@@ -39,6 +39,8 @@ const meta: Meta<typeof Navigation> = {
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
     selectedTenant: null,
+    availableTenants: null,
+    selectTenant: action('select tenant'),
   },
 
   argTypes: {
@@ -125,6 +127,36 @@ export const ProfessionalWithMultiTenancy: StoryType = {
       billingPostOfficeBox: null,
       billingZipCode: '8080',
     },
+
+    availableTenants: [
+      {
+        id: 2485932,
+        billingAddress: 'Bahnofstrasse 1',
+        billingCity: 'Zurich',
+        billingCountryCode: 'de',
+        billingName: 'AS24 Test 1',
+        billingPostOfficeBox: null,
+        billingZipCode: '8080',
+      },
+      {
+        id: 991,
+        billingAddress: null,
+        billingCity: null,
+        billingCountryCode: null,
+        billingName: 'Seller 1',
+        billingPostOfficeBox: null,
+        billingZipCode: null,
+      },
+      {
+        id: 992,
+        billingAddress: null,
+        billingCity: null,
+        billingCountryCode: null,
+        billingName: 'Seller 2',
+        billingPostOfficeBox: null,
+        billingZipCode: null,
+      },
+    ],
 
     entitlements: [
       'business-image',

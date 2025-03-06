@@ -13,6 +13,7 @@ import Stack from 'src/components/stack';
 import Divider from 'src/components/divider';
 import Box from 'src/components/box';
 
+import NavigationTenantMenu from './NavigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
@@ -39,6 +40,8 @@ interface NavigationProps {
   project?: Project;
   user: MergedUser | null;
   selectedTenant: ManagedSeller | null;
+  availableTenants: ManagedSeller[] | null;
+  selectTenant: (sellerId: number | string) => void;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -56,6 +59,8 @@ const Navigation: FC<NavigationProps> = ({
   project,
   user,
   selectedTenant,
+  availableTenants,
+  selectTenant,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -109,7 +114,10 @@ const Navigation: FC<NavigationProps> = ({
   }, [user?.id, onClose]);
 
   return (
-    <TranslationProvider language={language} scopes={['header']}>
+    <TranslationProvider
+      language={language}
+      scopes={['header', 'auth.tenantSelection']}
+    >
       <Box
         width="full"
         borderBottomColor="gray.200"
@@ -146,6 +154,11 @@ const Navigation: FC<NavigationProps> = ({
               <Divider orientation="vertical" height="sm" />
             ) : null}
             <NavigationLanguageMenu activeLanguage={language} />
+            <NavigationTenantMenu
+              selectedTenant={selectedTenant}
+              availableTenants={availableTenants}
+              selectTenant={selectTenant}
+            />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
