@@ -13,7 +13,7 @@ import Stack from 'src/components/stack';
 import Divider from 'src/components/divider';
 import Box from 'src/components/box';
 
-import NavigationTenantMenu from './NavigationTenantMenu';
+import NavigationTenantMenu from './navigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';

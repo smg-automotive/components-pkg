@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  MouseEvent,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { FC, useCallback, useMemo, useRef, useState } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import { EnrichedSessionUser } from '@smg-automotive/auth';
 import {
@@ -18,31 +11,24 @@ import {
 } from '@chakra-ui/react';
 
 import Text from 'src/components/text';
-import { createTenantLabel } from 'src/components/tenantSelection/createTenantLabel';
-import Spinner from 'src/components/spinner';
-import {
-  ListItemWithChildren,
-  SearchableList,
-} from 'src/components/list/SearchableList';
+import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
 import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
-import { H1 } from 'src/components/heading';
 import Box from 'src/components/box';
+
+import { NavigationTenantMenuLoading } from './Loading';
 
 type Props = {
   user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => Promise<void>;
 };
 
-type ButtonWithValue = HTMLButtonElement & { value: string };
-
 const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   const initialFocusRef = useRef<HTMLInputElement>(null);
   const { onClose, isOpen, onToggle } = useDisclosure();
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useI18n();
-  const onClick = useCallback(
-    async (event: MouseEvent<ButtonWithValue>) => {
-      const selectedTenantId = parseInt(event.currentTarget.value, 10);
+  const onTenantSelect = useCallback(
+    async (selectedTenantId: number) => {
       setIsLoading(true);
       await selectTenant(selectedTenantId);
       onClose();
@@ -56,17 +42,6 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
       (seller) => seller.id === Number(user.sellerId),
     );
   }, [user?.managedSellers, user?.sellerId]);
-
-  const listItems: Array<ListItemWithChildren> = useMemo(() => {
-    return (user?.managedSellers || []).map((managedSeller) => {
-      return {
-        value: managedSeller.id.toString(),
-        label: createTenantLabel(managedSeller),
-        onClick,
-        isSelected: managedSeller.id === selectedTenant?.id,
-      };
-    });
-  }, [user?.managedSellers, selectedTenant, onClick]);
 
   if (!user || !user.isMultiTenantUser || !selectedTenant) return null;
 
@@ -123,34 +98,14 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             flexDirection="column"
             gridGap="2xl"
           >
-            <H1 textStyle="heading3">
-              {t('auth.tenantSelection.selectionTitle')}
-            </H1>
-            <SearchableList
-              listItems={listItems}
-              ref={initialFocusRef}
-              searchFieldOptions={{ autocomplete: 'off' }}
+            <TenantSelectionSelectList
+              managedSellers={user.managedSellers}
+              selectedTenantId={selectedTenant.id}
+              onTenantSelect={onTenantSelect}
+              title={t('auth.tenantSelection.selectionTitle')}
+              searchFieldOptions={{ autoComplete: 'off' }}
             />
-            {isLoading ? (
-              <>
-                <Box
-                  position="absolute"
-                  w="full"
-                  h="full"
-                  top="0"
-                  bg="gray.900"
-                  opacity="0.7"
-                />
-                <Box
-                  position="absolute"
-                  top="50%"
-                  left="50%"
-                  transform="translate(-50%, -50%)"
-                >
-                  <Spinner />
-                </Box>
-              </>
-            ) : null}
+            {isLoading ? <NavigationTenantMenuLoading /> : null}
           </PopoverContent>
         </Box>
       </Portal>
