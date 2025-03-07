@@ -11,6 +11,7 @@ export type SearchFieldOptions = {
   onFocus?: () => void;
   onBlur?: () => void;
   autofocusOnDesktop?: boolean;
+  autocomplete?: 'on' | 'off';
 };
 
 export type SearchFieldProps = {
@@ -31,6 +32,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
       onFocus = () => null,
       onBlur = () => null,
       autofocusOnDesktop = true,
+      autocomplete,
     },
     ref,
   ) => {
@@ -67,6 +69,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
         onFocus={onFocus}
         onBlur={onBlur}
         aria-controls={ariaControls}
+        autocomplete={autocomplete}
       />
     );
   },

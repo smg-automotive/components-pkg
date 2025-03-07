@@ -109,7 +109,11 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             <H1 textStyle="heading3">
               {t('auth.tenantSelection.selectionTitle')}
             </H1>
-            <SearchableList listItems={listItems} ref={initialFocusRef} />
+            <SearchableList
+              listItems={listItems}
+              ref={initialFocusRef}
+              searchFieldOptions={{ autocomplete: 'off' }}
+            />
           </PopoverContent>
         </Box>
       </Portal>
