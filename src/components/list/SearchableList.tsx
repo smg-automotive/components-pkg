@@ -118,7 +118,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
     const {
       placeholder = '',
       autofocusOnDesktop = true,
-      autocomplete,
+      autoComplete,
     } = searchFieldOptions;
     const { columns = 1, childrenSpacing = 'md' } = listOptions;
     const areaId = 'searchableList';
@@ -181,7 +181,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
           ariaControls={areaId}
           placeholder={placeholder}
           autofocusOnDesktop={autofocusOnDesktop}
-          autocomplete={autocomplete}
+          autoComplete={autoComplete}
           ref={ref}
         />
         {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}

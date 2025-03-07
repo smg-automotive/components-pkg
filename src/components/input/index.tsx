@@ -36,7 +36,7 @@ type SharedProps = {
   isClearable?: boolean;
   rightAddonElement?: ReactElement;
   leftAddonElement?: ReactElement;
-  autocomplete?: 'on' | 'off';
+  autoComplete?: 'on' | 'off';
 };
 
 type ControlledInputProps = {
