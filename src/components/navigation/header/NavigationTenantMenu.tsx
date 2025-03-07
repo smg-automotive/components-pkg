@@ -1,4 +1,11 @@
-import React, { FC, MouseEvent, useCallback, useMemo, useRef } from 'react';
+import React, {
+  FC,
+  MouseEvent,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import { EnrichedSessionUser } from '@smg-automotive/auth';
 import {
@@ -12,6 +19,7 @@ import {
 
 import Text from 'src/components/text';
 import { createTenantLabel } from 'src/components/tenantSelection/createTenantLabel';
+import Spinner from 'src/components/spinner';
 import {
   ListItemWithChildren,
   SearchableList,
@@ -30,12 +38,15 @@ type ButtonWithValue = HTMLButtonElement & { value: string };
 const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   const initialFocusRef = useRef<HTMLInputElement>(null);
   const { onClose, isOpen, onToggle } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useI18n();
   const onClick = useCallback(
     async (event: MouseEvent<ButtonWithValue>) => {
       const selectedTenantId = parseInt(event.currentTarget.value, 10);
+      setIsLoading(true);
       await selectTenant(selectedTenantId);
       onClose();
+      setIsLoading(false);
     },
     [selectTenant, onClose],
   );
@@ -82,7 +93,13 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
           iconSpacing="xs"
           onClick={onToggle}
         >
-          <Text as="span" fontWeight="bold" noOfLines={1} maxW="2xl">
+          <Text
+            as="span"
+            fontWeight="bold"
+            noOfLines={1}
+            maxW="2xl"
+            textAlign="left"
+          >
             {selectedTenant.billingName || selectedTenant.id}
             {selectedTenant.billingCity ? ', ' : null}
             {selectedTenant.billingCity}
@@ -114,6 +131,26 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
               ref={initialFocusRef}
               searchFieldOptions={{ autocomplete: 'off' }}
             />
+            {isLoading ? (
+              <>
+                <Box
+                  position="absolute"
+                  w="full"
+                  h="full"
+                  top="0"
+                  bg="gray.900"
+                  opacity="0.7"
+                />
+                <Box
+                  position="absolute"
+                  top="50%"
+                  left="50%"
+                  transform="translate(-50%, -50%)"
+                >
+                  <Spinner />
+                </Box>
+              </>
+            ) : null}
           </PopoverContent>
         </Box>
       </Portal>
