@@ -1,10 +1,9 @@
 /* eslint-disable unicorn/filename-case */
 import React from 'react';
-
 import userEvent from '@testing-library/user-event';
-import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
+import { multiTenantSeller, privateSeller } from 'fixtures/enrichedSessionUser';
 import { fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
@@ -15,23 +14,12 @@ import Navigation, { NavigationProps } from '..';
 
 const renderNavigation = ({
   environment = 'preprod',
-  user = {
-    id: '1',
-    userName: 'John Doe',
-    userType: MappedUserType.Private,
-    sellerId: '5',
-    sellerIds: ['5'],
-    isImpersonated: false,
-    email: 'john.doe@me.com',
-    exp: 123,
-  },
+  user = privateSeller(),
   brand = Brand.AutoScout24,
   language = 'en',
   hasNotification = false,
   onLogin = jest.fn,
   onLogout = jest.fn,
-  selectedTenant = null,
-  availableTenants = null,
   selectTenant = jest.fn,
   useAbsoluteUrls,
   project,
@@ -45,8 +33,6 @@ const renderNavigation = ({
       hasNotification={hasNotification}
       onLogin={onLogin}
       onLogout={onLogout}
-      selectedTenant={selectedTenant}
-      availableTenants={availableTenants}
       selectTenant={selectTenant}
       useAbsoluteUrls={useAbsoluteUrls}
       project={project}
@@ -68,47 +54,39 @@ describe('Header', () => {
   });
 
   it('should open user drawer', async () => {
-    renderNavigation({});
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: privateSeller({ email }) });
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
-    const searchItem = screen.getByText('john.doe@me.com');
+    const drawerToggle = screen.getByText(email);
 
-    fireEvent.click(searchItem);
+    fireEvent.click(drawerToggle);
     drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeInTheDocument();
   });
 
   it('displays user info in the user drawer', async () => {
-    renderNavigation({});
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: privateSeller({ email }) });
+    const drawerToggle = screen.getByText(email);
 
-    const searchItem = screen.getByText('john.doe@me.com');
-    fireEvent.click(searchItem);
+    fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
     expect(within(drawerBody).getByText('john.doe@me.com')).toBeInTheDocument();
-    expect(within(drawerBody).getByText('(John Doe)')).toBeInTheDocument();
   });
 
   it('displays selected tenant and location in the user drawer', async () => {
-    renderNavigation({
-      selectedTenant: {
-        id: 1,
-        billingName: 'Test Tenant',
-        billingCity: 'Zurich',
-        billingAddress: 'Bahnhofstrasse 1',
-        billingCountryCode: 'CH',
-        billingZipCode: '8001',
-        billingPostOfficeBox: null,
-      },
-    });
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: multiTenantSeller({ email }) });
+    const drawerToggle = screen.getByText(email);
 
-    const searchItem = screen.getByText('john.doe@me.com');
-    fireEvent.click(searchItem);
+    fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
     expect(
-      within(drawerBody).getByText('Test Tenant, Zurich'),
+      within(drawerBody).getByText('Garage Amir, Zurich'),
     ).toBeInTheDocument();
   });
 
@@ -124,29 +102,6 @@ describe('Header', () => {
     ).not.toBeInTheDocument();
   });
 
-  it("doesn't display user name if it's same as email", async () => {
-    renderNavigation({
-      user: {
-        id: '1',
-        userName: 'john.doe@me.com',
-        userType: MappedUserType.Private,
-        sellerId: '5',
-        sellerIds: ['5'],
-        isImpersonated: false,
-        email: 'john.doe@me.com',
-        exp: 123,
-      },
-    });
-
-    const searchItem = screen.getByText('john.doe@me.com');
-    fireEvent.click(searchItem);
-
-    const drawerBody = screen.getByTestId('drawer-body');
-    expect(
-      within(drawerBody).getAllByText('john.doe@me.com', { exact: false }),
-    ).toHaveLength(1);
-  });
-
   it('should display login button if there is no user', async () => {
     renderNavigation({ user: null });
 
@@ -155,9 +110,10 @@ describe('Header', () => {
   });
 
   it('should display user email if there is a user', async () => {
-    renderNavigation({});
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: multiTenantSeller({ email }) });
 
-    const user = screen.getByText('john.doe@me.com');
+    const user = screen.getByText(email);
     expect(user).toBeInTheDocument();
   });
 
@@ -179,16 +135,7 @@ describe('Header', () => {
           drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
           iconItems: iconItems({ trackEvent: jest.fn() }),
         },
-        user: {
-          id: '1',
-          userName: 'John Doe',
-          userType: MappedUserType.Private,
-          sellerId: '5',
-          sellerIds: ['5'],
-          isImpersonated: false,
-          email: '',
-          exp: 123,
-        },
+        user: privateSeller(),
       });
       const config = headerConfigInstance.getMappedConfig();
       expect(config).toEqual({
@@ -215,16 +162,8 @@ describe('Header', () => {
       return `https://www.autoscout24.ch${pathname}`;
     };
 
-    const user = {
-      id: '1',
-      userName: 'John Doe',
-      userType: MappedUserType.Private,
-      sellerId: '5',
-      sellerIds: ['5'],
-      isImpersonated: false,
-      email: 'john@doe.ch',
-      exp: 123,
-    };
+    const user = privateSeller();
+
     const listingsWebLink = {
       name: 'Merkliste',
       pathname: '/de/me/favorites',

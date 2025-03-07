@@ -1,17 +1,20 @@
 import React, { FC } from 'react';
-import { ManagedSeller, MergedUser } from '@smg-automotive/auth';
+import { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Box, Divider, GridItem, Stack } from '@chakra-ui/react';
 
 import { GarageIcon } from 'src/components/icons';
 import Avatar from 'src/components/avatar';
 
 type Props = {
-  user: MergedUser | null;
-  selectedTenant: ManagedSeller | null;
+  user: EnrichedSessionUser | null;
 };
 
-const DrawerUserInfo: FC<Props> = ({ user, selectedTenant }) => {
+const DrawerUserInfo: FC<Props> = ({ user }) => {
   if (!user) return null;
+
+  const selectedTenant = user.managedSellers?.find(
+    (seller) => seller.id === Number(user.sellerId),
+  );
 
   return (
     <GridItem colSpan={{ base: 1, md: 5 }}>
@@ -39,9 +42,6 @@ const DrawerUserInfo: FC<Props> = ({ user, selectedTenant }) => {
             <Box as="span" fontWeight="bold">
               {user.email}
             </Box>
-            {user.userName && user.email !== user.userName ? (
-              <Box as="span">({user.userName})</Box>
-            ) : null}
           </Stack>
         </Stack>
         {selectedTenant ? (

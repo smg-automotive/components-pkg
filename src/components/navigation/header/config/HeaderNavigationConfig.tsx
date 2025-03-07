@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-
-import { MappedUserType, MergedUser } from '@smg-automotive/auth';
+import { Auth0UserType, EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { replaceParameters } from 'src/utilities/replacePathParameters';
 import { Project } from 'src/types/project';
@@ -55,7 +54,7 @@ interface HeaderNavigationConfigInterface {
 interface HeaderNavigationConfigInstance {
   homeUrl: string;
   menuHeight: string;
-  user: MergedUser | null;
+  user: EnrichedSessionUser | null;
   headerItems: HeaderNavigationLink[];
   drawerItems: DrawerNodeItems;
   iconItems: IconItemsLinks;
@@ -65,8 +64,8 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
   config: HeaderNavigationConfigInterface;
   homeUrl: string;
   menuHeight: string;
-  user: MergedUser | null;
-  userType: UserTypeExternal.Guest | MappedUserType;
+  user: EnrichedSessionUser | null;
+  userType: UserTypeExternal.Guest | Auth0UserType;
   mappedConfig?: HeaderNavigationConfigInstance;
   urlPathParams?: Record<string, string | number>;
 
@@ -78,17 +77,16 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     config,
     user,
     urlPathParams,
-    entitlements = [],
   }: {
     brand: Brand;
     environment?: Environment;
     project?: Project;
     useAbsoluteUrls?: boolean;
     config: HeaderNavigationConfigInterface;
-    user: MergedUser | null;
+    user: EnrichedSessionUser | null;
     urlPathParams?: Record<string, string | number>;
-    entitlements?: string[];
   }) {
+    const entitlements = Object.keys(user?.entitlements || {});
     super({ brand, environment, useAbsoluteUrls, project, entitlements });
     this.config = config;
     this.homeUrl = '/';

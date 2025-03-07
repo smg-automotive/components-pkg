@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { ManagedSeller, MergedUser } from '@smg-automotive/auth';
+import { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
 import { Project } from 'src/types/project';
@@ -38,16 +38,13 @@ export interface NavigationProps {
   trackEvent?: (event: CustomEvent) => void;
   useAbsoluteUrls?: boolean;
   project?: Project;
-  user: MergedUser | null;
-  selectedTenant: ManagedSeller | null;
-  availableTenants: ManagedSeller[] | null;
+  user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => void;
 }
 
 const Navigation: FC<NavigationProps> = ({
   brand,
   comparisonItemIds,
-  entitlements = [],
   environment,
   experiments = {},
   hasNotification,
@@ -58,8 +55,6 @@ const Navigation: FC<NavigationProps> = ({
   useAbsoluteUrls = false,
   project,
   user,
-  selectedTenant,
-  availableTenants,
   selectTenant,
 }) => {
   const config = useMemo(() => {
@@ -83,7 +78,6 @@ const Navigation: FC<NavigationProps> = ({
       },
       user,
       urlPathParams,
-      entitlements,
     });
     return headerNavigationConfigInstance.getMappedConfig();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -94,9 +88,8 @@ const Navigation: FC<NavigationProps> = ({
     project,
     headerLinks,
     drawerNodeItems,
-    user?.id,
+    user?.userId,
     user?.userType,
-    entitlements,
   ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
@@ -108,10 +101,10 @@ const Navigation: FC<NavigationProps> = ({
   // which returns `onClose` callback
   // that's why we need to call onClose like this
   useEffect(() => {
-    if (!user?.id) {
+    if (!user?.userId) {
       onClose();
     }
-  }, [user?.id, onClose]);
+  }, [user?.userId, onClose]);
 
   return (
     <TranslationProvider
@@ -154,11 +147,7 @@ const Navigation: FC<NavigationProps> = ({
               <Divider orientation="vertical" height="sm" />
             ) : null}
             <NavigationLanguageMenu activeLanguage={language} />
-            <NavigationTenantMenu
-              selectedTenant={selectedTenant}
-              availableTenants={availableTenants}
-              selectTenant={selectTenant}
-            />
+            <NavigationTenantMenu user={user} selectTenant={selectTenant} />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
@@ -172,7 +161,6 @@ const Navigation: FC<NavigationProps> = ({
       </Box>
       <NavigationDrawer
         user={user}
-        selectedTenant={selectedTenant}
         drawer={drawer}
         isOpen={isOpen}
         onClose={onClose}

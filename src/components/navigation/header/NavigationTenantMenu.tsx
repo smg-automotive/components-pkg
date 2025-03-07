@@ -1,6 +1,6 @@
 import React, { FC, MouseEvent, useCallback, useMemo, useRef } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { ManagedSeller } from '@smg-automotive/auth';
+import { EnrichedSessionUser } from '@smg-automotive/auth';
 import {
   Button,
   Popover,
@@ -21,18 +21,13 @@ import { H1 } from 'src/components/heading';
 import Box from 'src/components/box';
 
 type Props = {
-  selectedTenant: ManagedSeller | null;
-  availableTenants: ManagedSeller[] | null;
+  user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => void;
 };
 
 type ButtonWithValue = HTMLButtonElement & { value: string };
 
-const NavigationTenantMenu: FC<Props> = ({
-  selectedTenant,
-  availableTenants,
-  selectTenant,
-}) => {
+const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   const initialFocusRef = useRef<HTMLInputElement>(null);
   const { onClose, isOpen, onToggle } = useDisclosure();
   const { t } = useI18n();
@@ -45,8 +40,14 @@ const NavigationTenantMenu: FC<Props> = ({
     [selectTenant, onClose],
   );
 
+  const selectedTenant = useMemo(() => {
+    return user?.managedSellers?.find(
+      (seller) => seller.id === Number(user.sellerId),
+    );
+  }, [user?.managedSellers, user?.sellerId]);
+
   const listItems: Array<ListItemWithChildren> = useMemo(() => {
-    return (availableTenants || []).map((managedSeller) => {
+    return (user?.managedSellers || []).map((managedSeller) => {
       return {
         value: managedSeller.id.toString(),
         label: createTenantLabel(managedSeller),
@@ -54,9 +55,9 @@ const NavigationTenantMenu: FC<Props> = ({
         isSelected: managedSeller.id === selectedTenant?.id,
       };
     });
-  }, [availableTenants, onClick, selectedTenant]);
+  }, [user?.managedSellers, selectedTenant, onClick]);
 
-  if (!selectedTenant || !availableTenants) return null;
+  if (!user || !user.isMultiTenantUser || !selectedTenant) return null;
 
   return (
     <Popover
