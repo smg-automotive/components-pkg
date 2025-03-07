@@ -20,7 +20,7 @@ const renderNavigation = ({
   hasNotification = false,
   onLogin = jest.fn,
   onLogout = jest.fn,
-  selectTenant = jest.fn,
+  selectTenant = jest.fn(() => Promise.resolve()),
   useAbsoluteUrls,
   project,
 }: Partial<NavigationProps>) => {

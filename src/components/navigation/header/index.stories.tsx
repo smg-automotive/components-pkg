@@ -42,7 +42,7 @@ const meta: Meta<typeof Navigation> = {
     entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
-    selectTenant: action('select tenant'),
+    selectTenant: async (id) => action('select tenant')(id),
   },
 
   argTypes: {

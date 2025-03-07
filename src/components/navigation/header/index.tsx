@@ -39,7 +39,7 @@ export interface NavigationProps {
   useAbsoluteUrls?: boolean;
   project?: Project;
   user: EnrichedSessionUser | null;
-  selectTenant: (sellerId: number | string) => void;
+  selectTenant: (sellerId: number | string) => Promise<void>;
 }
 
 const Navigation: FC<NavigationProps> = ({

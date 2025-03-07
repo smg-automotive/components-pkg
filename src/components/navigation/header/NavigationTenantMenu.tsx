@@ -22,7 +22,7 @@ import Box from 'src/components/box';
 
 type Props = {
   user: EnrichedSessionUser | null;
-  selectTenant: (sellerId: number | string) => void;
+  selectTenant: (sellerId: number | string) => Promise<void>;
 };
 
 type ButtonWithValue = HTMLButtonElement & { value: string };
@@ -32,9 +32,9 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   const { onClose, isOpen, onToggle } = useDisclosure();
   const { t } = useI18n();
   const onClick = useCallback(
-    (event: MouseEvent<ButtonWithValue>) => {
+    async (event: MouseEvent<ButtonWithValue>) => {
       const selectedTenantId = parseInt(event.currentTarget.value, 10);
-      selectTenant(selectedTenantId);
+      await selectTenant(selectedTenantId);
       onClose();
     },
     [selectTenant, onClose],
