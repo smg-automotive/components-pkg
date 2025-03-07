@@ -1,5 +1,90 @@
 import { Auth0UserType, EnrichedSessionUser } from '@smg-automotive/auth';
 
+import {
+  privateSellerEntitlements,
+  professionalSellerEntitlements,
+} from './entitlements';
+
+const shared = {
+  email_verified: true,
+  sub: 'qwerty',
+  sid: 'asdfg',
+  forceTenantSelection: false,
+  isImpersonated: false,
+  userId: '123',
+};
+
+export const privateSeller = (
+  props: Partial<
+    Exclude<EnrichedSessionUser, 'userType' | 'isMultiTenantUser'>
+  > = {},
+): EnrichedSessionUser => ({
+  ...shared,
+  email: 'amir@private.com',
+  sellerId: '6001',
+  sellerIds: ['6001'],
+  entitlements: privateSellerEntitlements,
+  managedSellers: [],
+  isMultiTenantUser: false,
+  userType: Auth0UserType.Private,
+  ...props,
+});
+
+export const professionalSeller = (
+  props: Partial<Exclude<EnrichedSessionUser, 'userType'>> = {},
+) => ({
+  ...shared,
+  email: 'amir@professional.com',
+  sellerId: '6001',
+  sellerIds: ['6001'],
+  entitlements: professionalSellerEntitlements,
+  isMultiTenantUser: false,
+  managedSellers: [],
+  userType: Auth0UserType.Professional,
+  ...props,
+});
+
+export const multiTenantSeller = (
+  props: Partial<
+    Exclude<EnrichedSessionUser, 'userType' | 'isMultiTenantUser'>
+  > = {},
+) =>
+  professionalSeller({
+    isMultiTenantUser: true,
+    sellerId: '6001',
+    sellerIds: ['6001', '6002', '6003'],
+    managedSellers: [
+      {
+        id: 6001,
+        billingAddress: null,
+        billingCity: 'Zurich',
+        billingCountryCode: null,
+        billingName: 'Garage Amir',
+        billingPostOfficeBox: null,
+        billingZipCode: null,
+      },
+      {
+        id: 6002,
+        billingAddress: null,
+        billingCity: 'Basel',
+        billingCountryCode: null,
+        billingName: 'Garage Amir',
+        billingPostOfficeBox: null,
+        billingZipCode: null,
+      },
+      {
+        id: 6004,
+        billingAddress: null,
+        billingCity: 'Bern',
+        billingCountryCode: null,
+        billingName: 'Garage Amir',
+        billingPostOfficeBox: null,
+        billingZipCode: null,
+      },
+    ],
+    ...props,
+  });
+
 export const enrichedSessionUser: EnrichedSessionUser = {
   email: 'foo@bar.com',
   email_verified: true,
