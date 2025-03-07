@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { ManagedSeller } from '@smg-automotive/auth';
 
 import {
