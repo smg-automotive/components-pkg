@@ -73,7 +73,7 @@ export const multiTenantSeller = (
         billingZipCode: null,
       },
       {
-        id: 6004,
+        id: 6003,
         billingAddress: null,
         billingCity: 'Bern',
         billingCountryCode: null,

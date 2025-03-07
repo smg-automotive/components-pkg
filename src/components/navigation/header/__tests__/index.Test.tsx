@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { Brand } from 'src/types/brand';
 import { multiTenantSeller, privateSeller } from 'fixtures/enrichedSessionUser';
-import { fireEvent, render, screen, within } from '.jest/utils';
+import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
@@ -23,7 +23,7 @@ const renderNavigation = ({
   selectTenant = jest.fn(() => Promise.resolve()),
   useAbsoluteUrls,
   project,
-}: Partial<NavigationProps>) => {
+}: Partial<NavigationProps>) =>
   render(
     <Navigation
       environment={environment}
@@ -38,7 +38,6 @@ const renderNavigation = ({
       project={project}
     />,
   );
-};
 
 describe('Header', () => {
   it('should open search drawer', async () => {
@@ -88,6 +87,24 @@ describe('Header', () => {
     expect(
       within(drawerBody).getByText('Garage Amir, Zurich'),
     ).toBeInTheDocument();
+  });
+
+  it('allows switching tenants from the header menu', async () => {
+    const selectTenant = jest.fn(() => Promise.resolve());
+    renderNavigation({
+      user: multiTenantSeller(),
+      selectTenant,
+    });
+    const tenantSelectionMenu = screen.getByText('Garage Amir, Zurich');
+    fireEvent.click(tenantSelectionMenu);
+
+    const popover = screen.getByRole('dialog', { hidden: true });
+    const newTenant = within(popover).getByText('Garage Amir - 6002');
+    act(() => {
+      fireEvent.click(newTenant);
+    });
+
+    expect(selectTenant).toHaveBeenCalledWith(6002);
   });
 
   it('does not display user name in the search drawer', async () => {
