@@ -12,7 +12,7 @@ export default [
       '!.prettierrc.mjs',
       'coverage/',
       'src-v2/',
-      'theme',
+      'theme/',
     ],
   },
   {
