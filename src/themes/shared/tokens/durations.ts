@@ -4,4 +4,7 @@ export const durations = defineTokens.durations({
   fast: {
     value: '150ms',
   },
+  normal: {
+    value: '200ms',
+  },
 });
