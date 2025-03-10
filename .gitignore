@@ -7,3 +7,4 @@ storybook-static/
 .npm
 .eslintcache
 .DS_Store
+theme
