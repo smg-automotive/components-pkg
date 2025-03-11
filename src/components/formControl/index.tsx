@@ -10,7 +10,7 @@ import {
 import Tooltip from '../tooltip';
 import Stack from '../stack';
 import { TooltipIcon } from '../icons';
-import FormLabel from '../formLabel';
+import FormLabel from '../../../src-v2/components/formLabel';
 
 export type Props = {
   isDisabled?: boolean;
