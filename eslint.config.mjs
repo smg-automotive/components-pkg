@@ -13,6 +13,7 @@ export default [
       'coverage/',
       'src-v2/',
       'theme',
+      'src/components/ui/**/*',
     ],
   },
   {
