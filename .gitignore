@@ -7,3 +7,7 @@ storybook-static/
 .npm
 .eslintcache
 .DS_Store
+
+# Chakra exports and snippets
+theme
+src/components/ui/
