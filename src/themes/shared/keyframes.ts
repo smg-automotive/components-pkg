@@ -5,6 +5,14 @@ export const keyframes = defineKeyframes({
     from: { opacity: 0 },
     to: { opacity: 1 },
   },
+  'fade-out': {
+    from: {
+      opacity: 1,
+    },
+    to: {
+      opacity: 0,
+    },
+  },
   skeletonPulse: {
     '0%': { backgroundColor: 'var(--start-color)' },
     '50%': { backgroundColor: 'var(--end-color)' },
@@ -13,5 +21,21 @@ export const keyframes = defineKeyframes({
   spin: {
     '0%': { transform: 'rotate(0deg)' },
     '100%': { transform: 'rotate(360deg)' },
+  },
+  'scale-in': {
+    from: {
+      scale: '0.95',
+    },
+    to: {
+      scale: '1',
+    },
+  },
+  'scale-out': {
+    from: {
+      scale: '1',
+    },
+    to: {
+      scale: '0.95',
+    },
   },
 });

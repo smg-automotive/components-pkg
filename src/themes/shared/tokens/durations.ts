@@ -1,0 +1,7 @@
+import { defineTokens } from '@chakra-ui/react';
+
+export const durations = defineTokens.durations({
+  fast: {
+    value: '150ms',
+  },
+});

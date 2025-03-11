@@ -12,6 +12,7 @@ const meta: Meta<typeof TooltipComponent> = {
   args: {
     label: 'I am a tooltip text',
     placement: 'auto',
+    maxWidth: '7xl',
     children: <TooltipIcon />,
   },
 
@@ -30,9 +31,9 @@ const meta: Meta<typeof TooltipComponent> = {
         'bottom-start',
         'bottom-end',
       ],
-
       control: 'select',
     },
+    maxWidth: '7xl',
     children: {
       table: {
         disable: true,
