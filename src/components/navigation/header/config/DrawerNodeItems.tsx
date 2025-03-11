@@ -471,25 +471,6 @@ export const drawerNodeItems = ({
           projectIdentifier: 'seller-web',
         },
         {
-          translationKey: 'header.userMenu.statistics',
-          link: {
-            de: '/de/member/statistics',
-            en: '/de/member/statistics',
-            fr: '/fr/member/statistics',
-            it: '/it/member/statistics',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.printableList',
           link: {
             de: '/de/member/printvehiclelist',
@@ -899,82 +880,6 @@ export const drawerNodeItems = ({
           trackEvent,
           eventLabel: 'drawer-user',
         }),
-        {
-          translationKey: 'header.userMenu.b2bPlattform',
-          link: {
-            de: '/de/member/b2bplatform',
-            en: '/de/member/b2bplatform',
-            fr: '/fr/member/b2bplatform',
-            it: '/it/member/b2bplatform',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.amagServiceLifePool',
-          link: {
-            de: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
-            en: '/de/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
-            fr: '/fr/member/parkingpool/amag?cond=49&group=100&parkingtimedays=9&vehtyp=10',
-            it: '/it/member/parkingpool/amag?parkingtimedays=9&group=100&cond=49&vehtyp=10',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: false,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.efagServiceLifePool',
-          link: {
-            de: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
-            en: '/de/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
-            fr: '/fr/member/parkingpool/efag?cond=49&group=1&vehtyp=10',
-            it: '/it/member/parkingpool/efag?group=1&cond=49&vehtyp=10',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: false,
-            },
-            brand: {
-              autoscout24: false,
-              motoscout24: false,
-            },
-          },
-        },
-        {
-          translationKey: 'header.userMenu.demandCalculator',
-          link: {
-            de: '/de/member/demandcalculator',
-            en: '/de/member/demandcalculator',
-            fr: '/fr/member/demandcalculator',
-            it: '/it/member/demandcalculator',
-          },
-          visibilitySettings: {
-            userType: {
-              private: false,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
         {
           translationKey: 'header.userMenu.autoRadar',
           link: {
