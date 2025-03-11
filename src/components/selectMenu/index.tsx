@@ -64,7 +64,7 @@ const SelectMenu: FC<SelectMenuProps> = ({
           >
             {title}
           </MenuButton>
-          <MenuList maxWidth={'min(360px, 100vw)'}>
+          <MenuList maxWidth="clamp(320px, 100v, 360px)">
             <MenuOptionGroup value={value} type="radio" onChange={onChange}>
               {options.map(
                 ({ value: itemValue, label, onClick = () => null }) => (
