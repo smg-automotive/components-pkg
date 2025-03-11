@@ -12,6 +12,7 @@ import {
 
 import Text from 'src/components/text';
 import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
+import { createTenantLabel } from 'src/components/tenantSelection/createTenantLabel';
 import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
 import Box from 'src/components/box';
 
@@ -75,9 +76,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             maxW="2xl"
             textAlign="left"
           >
-            {selectedTenant.billingName || selectedTenant.id}
-            {selectedTenant.billingCity ? ', ' : null}
-            {selectedTenant.billingCity}
+            {createTenantLabel(selectedTenant)}
           </Text>
         </Button>
       </PopoverTrigger>
