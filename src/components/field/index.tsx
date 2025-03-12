@@ -15,8 +15,8 @@ import { TooltipIcon } from '../icons';
 
 export type FieldProps = {
   id: string;
-  isDisabled?: boolean;
-  isRequired?: boolean;
+  disabled?: boolean;
+  required?: boolean;
   errorMessage?: string;
   label?: string;
   hint?: string;
@@ -28,8 +28,8 @@ export type FieldProps = {
 
 export const Field: FC<PropsWithChildren<FieldProps>> = ({
   children,
-  isDisabled,
-  isRequired,
+  disabled,
+  required,
   errorMessage,
   id,
   label,
@@ -58,9 +58,9 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
   return (
     <ChakraField.Root
       size={size}
-      disabled={isDisabled}
+      disabled={disabled}
       invalid={invalid}
-      required={isRequired}
+      required={required}
       id={id}
     >
       <Box css={styles.labelRoot}>
