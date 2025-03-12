@@ -30,6 +30,8 @@ export const getSharedConfig = () => ({
     textStyles,
     keyframes,
     animationStyles,
+    recipes,
+    slotRecipes,
     tokens: {
       zIndex,
       spacing,
@@ -48,8 +50,6 @@ export const getSharedConfig = () => ({
       animations,
       durations,
     },
-    recipes,
-    slotRecipes,
   },
 });
 
