@@ -5,7 +5,7 @@ import { sizes } from 'src/themes/shared/tokens/sizes';
 
 import { TooltipIcon } from '../icons';
 
-import TooltipComponent from './index';
+import { Tooltip as TooltipComponent } from './index';
 
 const meta: Meta<typeof TooltipComponent> = {
   title: 'Components/Overlay/Tooltip',
