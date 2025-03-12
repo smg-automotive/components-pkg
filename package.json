@@ -33,7 +33,7 @@
     "components": "dist/bin/cli"
   },
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "dev": "storybook dev -p 6006 --no-open",
     "start": "http-server ./storybook-static -p 8008",
     "version": "npm run build",
     "build": "rimraf dist && rollup -c",
