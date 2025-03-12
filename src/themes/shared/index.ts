@@ -5,10 +5,10 @@ import { shadows } from './tokens/shadows';
 import { radii } from './tokens/radii';
 import { opacity } from './tokens/opacity';
 import { lineHeights } from './tokens/lineHeights';
-import { keyframes } from './tokens/keyframes';
 import { fontWeights } from './tokens/fontWeights';
 import { fontSizes } from './tokens/fontSizes';
 import { fonts } from './tokens/fonts';
+import { durations } from './tokens/durations';
 import { cursor } from './tokens/cursor';
 import { colors } from './tokens/colors';
 import { borders } from './tokens/borders';
@@ -17,8 +17,10 @@ import { animations } from './tokens/animations';
 import { textStyles } from './textStyles';
 import { slotRecipes } from './slotRecipes';
 import { recipes } from './recipes';
+import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
+import { animationStyles } from './animationStyles';
 
 export const getSharedConfig = () => ({
   strictTokens: true,
@@ -26,7 +28,10 @@ export const getSharedConfig = () => ({
   theme: {
     breakpoints: emBreakpoints,
     textStyles,
-    keyframes: keyframes,
+    keyframes,
+    animationStyles,
+    recipes,
+    slotRecipes,
     tokens: {
       zIndex,
       spacing,
@@ -43,9 +48,8 @@ export const getSharedConfig = () => ({
       borders,
       aspectRatios,
       animations,
+      durations,
     },
-    recipes,
-    slotRecipes,
   },
 });
 
