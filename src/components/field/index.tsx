@@ -4,16 +4,21 @@ import {
   Button,
   Field as ChakraField,
   Link,
+  RecipeVariantProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
+
+import { fieldSlotRecipe } from 'src/themes/shared/slotRecipes/field';
 
 import { Tooltip } from '../tooltip';
 import { TooltipIcon } from '../icons';
 
+type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
+
 // TODO:
 // import FormLabel from '../../../src-v2/components/formLabel';
 
-export type FieldProps = {
+export type FieldProps = FieldVariantProps & {
   id: string;
   disabled?: boolean;
   required?: boolean;
@@ -21,7 +26,6 @@ export type FieldProps = {
   label?: string;
   hint?: string;
   tooltip?: string;
-  size?: 'sm' | 'lg';
   labelButtonText?: string;
   labelButtonOnClick?: () => void;
 };
@@ -37,7 +41,7 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
   tooltip,
   labelButtonText,
   labelButtonOnClick,
-  size = 'lg',
+  size,
 }) => {
   const recipe = useSlotRecipe({ key: 'field' });
   const [recipeProps] = recipe.splitVariantProps({ size });
@@ -46,7 +50,7 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
   const invalid = !!errorMessage;
   const tooltipSnippet = tooltip ? (
     <Tooltip label={tooltip}>
-      <TooltipIcon pos="relative" bottom="xxs" />
+      <TooltipIcon css={styles.tooltipIcon} pos="relative" bottom="xxs" />
     </Tooltip>
   ) : null;
   const buttonSnippet = labelButtonText ? (

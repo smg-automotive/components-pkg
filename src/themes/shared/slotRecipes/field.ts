@@ -6,13 +6,11 @@ export const fieldSlotRecipe = defineSlotRecipe({
     'root',
     'errorText',
     'helperText',
-    'input',
     'label',
     'labelRoot',
-    'select',
-    'textarea',
     'requiredIndicator',
     'tooltipWrapper',
+    'tooltipIcon',
     'button',
   ],
   base: {
@@ -26,14 +24,16 @@ export const fieldSlotRecipe = defineSlotRecipe({
       alignItems: 'flex-start',
       width: 'full',
       position: 'relative',
-      gap: 'sm',
+      gap: 'xs',
     },
     label: {
       display: 'flex',
+      color: 'gray.900',
       alignItems: 'center',
       textAlign: 'start',
       textStyle: 'label',
       fontWeight: 'bold',
+      marginBottom: 'xs',
       gap: 'xs',
       userSelect: 'none',
       _disabled: {
@@ -64,6 +64,10 @@ export const fieldSlotRecipe = defineSlotRecipe({
       flexDirection: 'row',
       alignItems: 'center',
       gap: 'sm',
+    },
+    tooltipIcon: {
+      position: 'relative',
+      bottom: 'xxs',
     },
     button: {
       color: 'blue.700',

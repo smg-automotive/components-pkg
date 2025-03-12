@@ -7,7 +7,8 @@ import { Field } from './index';
 
 /**
  * Field is the wrapper that provides context and functionality for all children.
- * Here we take the input as children for visualization. In case you need to explore the children properties,
+ * Here we take the input as children for visualisation. In case you need to explore the children properties,
+```?
  * search for the corresponding component.
  **/
 
@@ -32,9 +33,7 @@ const meta: Meta<typeof Field> = {
     errorMessage: '',
     size: 'lg',
     id: 'test-input',
-    children: (
-      <Textarea name="test-input" placeholder="placeholder" width="full" />
-    ),
+    children: ['textarea'],
   },
 
   argTypes: {
@@ -45,6 +44,16 @@ const meta: Meta<typeof Field> = {
     children: {
       table: {
         disable: true,
+      },
+      mapping: {
+        textarea: (
+          <Textarea
+            key="example-textarea"
+            name="test-input"
+            placeholder="placeholder"
+            width="full"
+          />
+        ),
       },
     },
   },
