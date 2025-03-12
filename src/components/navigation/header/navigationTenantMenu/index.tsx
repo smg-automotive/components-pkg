@@ -103,6 +103,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
               onTenantSelect={onTenantSelect}
               title={t('auth.tenantSelection.selectionTitle')}
               searchFieldOptions={{ autoComplete: 'off' }}
+ref={initialFocusRef}
             />
             {isLoading ? <NavigationTenantMenuLoading /> : null}
           </PopoverContent>
