@@ -1,6 +1,7 @@
 # Migration guide
 
 <!-- TODO: add accurate version numbers here -->
+
 ## From chakra-ui v2 to chakra-ui v3
 
 ### Global changes in spacing props
@@ -16,16 +17,21 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 #### After
 
 ```tsx
-<Box marginTop="sm" marginLeft="md">I am a box</Box>
+<Box marginTop="sm" marginLeft="md">
+  I am a box
+</Box>
 ```
+
 ### Show/Hide component on certain breakpoint
 
 With V3 usage of mediaQueries to hide a component is tied to using combination of
+
 - Breakpoints token, defined in `src/themes/shared/breakpoints.ts`.
 
 - `hideFrom`, `hideBelow` props which are globally available on components.
 
 Example:
+
 ```tsx
 <Box hideFrom="md">I am a box</Box>
 ```
@@ -35,17 +41,21 @@ Chakra docs: (Hiding elements-at-breakpoint)[https://chakra-ui.com/docs/styling/
 Additional notes: Hiding components using this Chakra feature object is hidden just with `display: none;`.
 
 Integration notes:
+
 - Due to this functionality being avaialable on all components `show` and `hide` is being removed from the repository and it is necessary to remove all usage on projects and replace it with provided functionality.
 
 ### Extended design tokens
+
 With Chakra V3 we are trying to implement design tokens which are in alignment with the UI/UX Team.
 
 Tokens that have been extended in comparison to ones we had in V2 are:
 
 #### Colors
-  - `transparent`
+
+- `transparent`
 
 #### Opacities
+
 - 70 (0.7) opacity
 
 ### Animation and keyframe changes
@@ -89,13 +99,16 @@ All animations and keyframes are automatically exported to `sharedConfig`.
 ### Changed props
 
 Boolean props changes from `is<X>` to `<x>`:
+
 - `isLoading` is now `loading`. Affects `Skeleton`.
 
 ### Renamed components
 
 - `Divider` component was renamed to `Separator`, the props stay the same.
+- `FormControl` component was renamed to `Field`, the props stay the same.
 
 ### Removed components
+
 - `Show` and `Hide` components were removed. Use `hideFrom` and `hideBelow` props available on all components to control visibility instead.
 - `UnorderedList` and `OrderedList` components were removed. Use `List` component with `as="ul"` and `as="ol"` properties instead.
 
@@ -110,7 +123,12 @@ The following components now use the `namespace` style imports[^1]:
 ##### Before
 
 ```tsx
-import { Card, CardHeader, CardBody, CardFooter } from '@smg-automotive/components'
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+} from '@smg-automotive/components';
 
 const MyComponent = () => (
   <Card>
@@ -118,13 +136,13 @@ const MyComponent = () => (
     <CardBody>Body</CardBody>
     <CardFooter>Footer</CardFooter>
   </Card>
-)
+);
 ```
 
 ##### After
 
 ```tsx
-import { Card } from '@smg-automotive/components'
+import { Card } from '@smg-automotive/components';
 
 const MyComponent = () => (
   <Card.Root>
@@ -132,7 +150,7 @@ const MyComponent = () => (
     <Card.Body>Body</Card.Body>
     <Card.Footer>Footer</Card.Footer>
   </Card.Root>
-)
+);
 ```
 
 #### `List`
@@ -140,27 +158,27 @@ const MyComponent = () => (
 ##### Before
 
 ```tsx
-import { List, ListItem } from '@smg-automotive/components'
+import { List, ListItem } from '@smg-automotive/components';
 
 const MyComponent = () => (
   <List>
     <ListItem>Item 1</ListItem>
     <ListItem>Item 2</ListItem>
   </List>
-)
+);
 ```
 
 ##### After
 
 ```tsx
-import { List } from '@smg-automotive/components'
+import { List } from '@smg-automotive/components';
 
 const MyComponent = () => (
   <List.Root>
     <List.Item>Item 1</List.Item>
     <List.Item>Item 2</List.Item>
   </List.Root>
-)
+);
 ```
 
 #### `Table`
@@ -168,7 +186,7 @@ const MyComponent = () => (
 ##### Before
 
 ```tsx
-import { Table, Tbody, Tr, Td } from '@smg-automotive/components'
+import { Table, Tbody, Tr, Td } from '@smg-automotive/components';
 
 const MyComponent = () => (
   <Table>
@@ -179,13 +197,13 @@ const MyComponent = () => (
       </Tr>
     </Tbody>
   </Table>
-)
+);
 ```
 
 ##### After
 
 ```tsx
-import { Table } from '@smg-automotive/components'
+import { Table } from '@smg-automotive/components';
 
 const MyComponent = () => (
   <Table.Root>
@@ -196,7 +214,7 @@ const MyComponent = () => (
       </Table.Row>
     </Table.Body>
   </Table.Root>
-)
+);
 ```
 
 ### Parent library changes
