@@ -6,7 +6,7 @@ import React, {
 
 import { Textarea as ChakraTextarea } from '@chakra-ui/react';
 
-export interface Props {
+export interface TextareaProps {
   name: string;
   value?: string;
   placeholder?: string;
@@ -20,9 +20,9 @@ export interface Props {
   textStyle?: 'body' | 'body-small';
 }
 
-const Textarea = forwardRef<HTMLTextAreaElement, Props>(({ ...props }, ref) => {
-  return <ChakraTextarea {...props} ref={ref} />;
-});
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ ...props }, ref) => {
+    return <ChakraTextarea {...props} ref={ref} />;
+  },
+);
 Textarea.displayName = 'Textarea';
-
-export default Textarea;

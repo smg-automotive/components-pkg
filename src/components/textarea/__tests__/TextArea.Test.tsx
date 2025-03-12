@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen } from '.jest/utils';
 
-import Textarea from '../index';
+import { Textarea } from '../index';
 
 const renderWrapper = ({
   name = 'Textarea',

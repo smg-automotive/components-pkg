@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Box, Input } from '@chakra-ui/react';
+import { Box, Textarea } from '@chakra-ui/react';
 
-// TODO: replace after input is migrated
-// import { Input } from 'src/index';
 import { Field } from './index';
 
 /**
@@ -35,7 +33,7 @@ const meta: Meta<typeof Field> = {
     size: 'lg',
     id: 'test-input',
     children: (
-      <Input name="test-input" placeholder="placeholder" width="full" />
+      <Textarea name="test-input" placeholder="placeholder" width="full" />
     ),
   },
 
