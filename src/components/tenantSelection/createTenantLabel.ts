@@ -4,11 +4,11 @@ export const createTenantLabel = (managedSeller?: ManagedSeller) => {
   if (!managedSeller) return '';
 
   const nameWithCity =
-    `${managedSeller.billingName} ${managedSeller.billingCity}`.trim();
+    `${managedSeller.billingName || ''} ${managedSeller.billingCity || ''}`.trim();
 
   if (nameWithCity) {
     return `${nameWithCity} - ${managedSeller.id}`;
   }
 
-  return `${managedSeller.id}`;
+  return managedSeller.id.toString();
 };

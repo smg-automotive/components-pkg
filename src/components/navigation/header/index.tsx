@@ -79,16 +79,16 @@ const Navigation: FC<NavigationProps> = ({
       urlPathParams,
     });
     return headerNavigationConfigInstance.getMappedConfig();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    user,
     brand,
     environment,
     useAbsoluteUrls,
     project,
-    headerLinks,
-    drawerNodeItems,
-    user?.userId,
-    user?.userType,
+    trackEvent,
+    experiments,
+    onLogout,
+    comparisonItemIds,
   ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
