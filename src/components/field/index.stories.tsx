@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Box } from '@chakra-ui/react';
+import { Box, Input } from '@chakra-ui/react';
 
-import { Input } from 'src/index';
-
-import FormControl from './index';
+// TODO: replace after input is migrated
+// import { Input } from 'src/index';
+import { Field } from './index';
 
 /**
  * Form Control is the wrapper that provides context and functionality for all children.
@@ -13,13 +13,13 @@ import FormControl from './index';
  * search for the corresponding component.
  **/
 
-const meta: Meta<typeof FormControl> = {
+const meta: Meta<typeof Field> = {
   title: 'Components/Forms/Form Control',
-  component: FormControl,
+  component: Field,
 
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="250px">
+      <Box width="full" maxW="6xl">
         <Story />
       </Box>
     ),
@@ -34,13 +34,20 @@ const meta: Meta<typeof FormControl> = {
     errorMessage: '',
     size: 'lg',
     id: 'test-input',
-    children: <Input name="test-input" placeholder="placeholder" />,
+    children: (
+      <Input name="test-input" placeholder="placeholder" width="full" />
+    ),
   },
 
   argTypes: {
     size: {
       options: ['sm', 'lg'],
       control: 'select',
+    },
+    children: {
+      table: {
+        disable: true,
+      },
     },
   },
 
@@ -52,7 +59,7 @@ const meta: Meta<typeof FormControl> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof FormControl>;
+type StoryType = StoryObj<typeof Field>;
 export const Overview: StoryType = {};
 
 export const WithLabel: StoryType = {

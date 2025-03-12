@@ -1,18 +1,14 @@
 import React, { FC, PropsWithChildren } from 'react';
-import {
-  Button,
-  FormControl as ChakraFormControl,
-  FormErrorMessage,
-  FormHelperText,
-  Link,
-} from '@chakra-ui/react';
+import { Button, Field as ChakraField, Link } from '@chakra-ui/react';
 
 import Tooltip from '../tooltip';
-import Stack from '../stack';
+import { Stack } from '../stack';
 import { TooltipIcon } from '../icons';
-import FormLabel from '../../../src-v2/components/formLabel';
 
-export type Props = {
+// TODO:
+// import FormLabel from '../../../src-v2/components/formLabel';
+
+export type FieldProps = {
   isDisabled?: boolean;
   isRequired?: boolean;
   errorMessage?: string;
@@ -25,7 +21,7 @@ export type Props = {
   labelButtonOnClick?: () => void;
 };
 
-const FormControl: FC<PropsWithChildren<Props>> = ({
+export const Field: FC<PropsWithChildren<FieldProps>> = ({
   children,
   isDisabled,
   isRequired,
@@ -41,14 +37,14 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
   const isInvalid = !!errorMessage;
 
   const formLabel = (
-    <FormLabel htmlFor={id} size={size}>
+    <ChakraField.Label htmlFor={id}>
       {label}
-      {isRequired ? <>&nbsp;</> : null}
-    </FormLabel>
+      <ChakraField.RequiredIndicator />
+    </ChakraField.Label>
   );
 
   const formLabelWithTooltip = (
-    <Stack direction="row" spacing="sm" align="center">
+    <Stack direction="row" gap="sm" align="center">
       {formLabel}
       <Tooltip label={tooltip}>
         <TooltipIcon pos="relative" bottom="xxs" />
@@ -57,7 +53,7 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
   );
 
   const formLabelWithButton = (
-    <Stack direction="row" justify="space-between">
+    <Stack direction="row" justify="space-between" width="full">
       {formLabel}
       <Link
         as={Button}
@@ -72,7 +68,7 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
   );
 
   const formLabelWithTooltipAndButton = (
-    <Stack direction="row" justify="space-between">
+    <Stack direction="row" justify="space-between" width="full">
       {formLabelWithTooltip}
       <Link
         as={Button}
@@ -101,19 +97,17 @@ const FormControl: FC<PropsWithChildren<Props>> = ({
   }
 
   return (
-    <ChakraFormControl
-      isDisabled={isDisabled}
-      isInvalid={isInvalid}
-      isRequired={isRequired}
+    <ChakraField.Root
+      size={size}
+      disabled={isDisabled}
+      invalid={isInvalid}
+      required={isRequired}
       id={id}
     >
       {labelComponent}
       {children}
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-      {hint ? <FormHelperText>{hint}</FormHelperText> : null}
-    </ChakraFormControl>
+      <ChakraField.ErrorText>{errorMessage}</ChakraField.ErrorText>
+      {hint ? <ChakraField.HelperText>{hint}</ChakraField.HelperText> : null}
+    </ChakraField.Root>
   );
 };
-
-export default FormControl;
-export { Props as FormControlProps };

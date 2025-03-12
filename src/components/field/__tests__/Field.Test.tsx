@@ -1,10 +1,11 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import Input from 'src/components/input';
+import { Input } from '@chakra-ui/react';
+
 import { render, screen, waitFor } from '.jest/utils';
 
-import FormControl, { FormControlProps } from '..';
+import { Field, FieldProps } from '..';
 
 const renderWrapper = ({
   id = 'test',
@@ -14,9 +15,9 @@ const renderWrapper = ({
   hint = undefined,
   label = undefined,
   placeholder = 'placeholder',
-}: Partial<FormControlProps> & { placeholder?: string } = {}) => {
+}: Partial<FieldProps> & { placeholder?: string } = {}) => {
   render(
-    <FormControl
+    <Field
       id={id}
       isDisabled={isDisabled}
       isRequired={isRequired}
@@ -25,7 +26,7 @@ const renderWrapper = ({
       label={label}
     >
       <Input name={id} placeholder={placeholder} />
-    </FormControl>,
+    </Field>,
   );
 };
 
