@@ -34,6 +34,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       textStyle: 'label',
       fontWeight: 'bold',
       marginBottom: 'xs',
+      gap: 'xs',
       userSelect: 'none',
       _disabled: {
         color: 'gray.300',
