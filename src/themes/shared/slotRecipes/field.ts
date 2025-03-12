@@ -28,6 +28,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     label: {
       display: 'flex',
+      color: 'gray.900',
       alignItems: 'center',
       textAlign: 'start',
       textStyle: 'label',
