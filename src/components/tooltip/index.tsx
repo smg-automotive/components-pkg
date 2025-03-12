@@ -22,7 +22,7 @@ export type TooltipProps = Pick<TooltipRootProps, 'children'> &
     label: Content;
   };
 
-const Tooltip: FC<TooltipProps> = ({
+export const Tooltip: FC<TooltipProps> = ({
   children,
   placement = 'bottom',
   maxWidth = '6xl',
@@ -55,5 +55,3 @@ const Tooltip: FC<TooltipProps> = ({
     </TooltipRoot>
   );
 };
-
-export default Tooltip;
