@@ -24,7 +24,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       alignItems: 'flex-start',
       width: 'full',
       position: 'relative',
-      gap: 'sm',
+      gap: 'xs',
     },
     label: {
       display: 'flex',
@@ -32,7 +32,7 @@ export const fieldSlotRecipe = defineSlotRecipe({
       textAlign: 'start',
       textStyle: 'label',
       fontWeight: 'bold',
-      gap: 'xs',
+      marginBottom: 'xs',
       userSelect: 'none',
       _disabled: {
         color: 'gray.300',
