@@ -10,7 +10,6 @@ import { Brand } from 'src/types/brand';
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 
-import Divider from 'src/components/divider';
 import Box from 'src/components/box';
 
 import NavigationTenantMenu from './navigationTenantMenu';
@@ -143,11 +142,6 @@ const Navigation: FC<NavigationProps> = ({
                 count={comparisonItemIds?.length ?? 0}
               />
             ) : null}
-            {Object.values(config.iconItems).some((link) => !!link) ? (
-              <Divider orientation="vertical" height="sm" />
-            ) : null}
-            <NavigationLanguageMenu activeLanguage={language} />
-            <NavigationTenantMenu user={user} selectTenant={selectTenant} />
             <NavigationAvatar
               user={user}
               createDrawerHandler={createDrawerHandler}
@@ -156,6 +150,8 @@ const Navigation: FC<NavigationProps> = ({
               hasNotification={hasNotification}
               onLogin={onLogin}
             />
+            <NavigationTenantMenu user={user} selectTenant={selectTenant} />
+            <NavigationLanguageMenu activeLanguage={language} />
           </Stack>
         </Box>
       </Box>

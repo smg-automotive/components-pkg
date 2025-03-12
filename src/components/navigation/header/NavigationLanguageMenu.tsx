@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
 import Menu from 'src/components/menu';
-import { GlobeIcon } from 'src/components/icons';
 import Hide from 'src/components/hide';
 
 interface NavigationLanguageMenuProps {
@@ -29,7 +28,6 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         fontWeightTitle="bold"
         menuColor="gray.900"
         offset={[0, 18]}
-        icon={<GlobeIcon />}
         iconSpacing="xs"
         placement="bottom-end"
         items={[

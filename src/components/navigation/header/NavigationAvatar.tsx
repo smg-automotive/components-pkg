@@ -63,10 +63,10 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       position="relative"
       top="1px"
     >
+      <Box as={Avatar} marginLeft="2px" />
       <Hide below="sm" marginRight="xs">
         {t('header.login')}
       </Hide>
-      <Box as={Avatar} marginLeft="2px" />
     </HStack>
   );
 };
