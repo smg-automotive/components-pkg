@@ -4,7 +4,9 @@
 
 ## From chakra-ui v2 to chakra-ui v3
 
-### Global changes in spacing props
+## Global changes
+
+### Spacing props
 
 Passing objects with side keys as `padding` and `margin` props is no longer supported. For the components where we whitelisted those props - all respective sides are now whitelisted. Use the one prop per side instead.
 
@@ -21,6 +23,29 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
   I am a box
 </Box>
 ```
+
+### State props
+
+The `is` prefix has been removed from form control props.  
+State props like `isDisabled` and `isInvalid` have been renamed to `disabled` and `invalid`.
+
+#### Before
+
+```tsx
+<Field isDisabled={true}>
+  <Input />
+</Field>
+```
+
+#### After
+
+```tsx
+<Field disabled={true}>
+  <Input />
+</Field>
+```
+
+## Component changes
 
 ### Show/Hide component on certain breakpoint
 
@@ -44,7 +69,7 @@ Integration notes:
 
 - Due to this functionality being avaialable on all components `show` and `hide` is being removed from the repository and it is necessary to remove all usage on projects and replace it with provided functionality.
 
-### Extended design tokens
+## Extended design tokens
 
 With Chakra V3 we are trying to implement design tokens which are in alignment with the UI/UX Team.
 
@@ -95,12 +120,6 @@ All animations and keyframes are automatically exported to `sharedConfig`.
   You can use `textAlign="end"` instead.
 
   **Reasoning** `isNumeric` was removed from chakra, we decided to not provide a custom implementation.
-
-### Changed props
-
-Boolean props changes from `is<X>` to `<x>`:
-
-- `isLoading` is now `loading`. Affects `Skeleton`.
 
 ### Renamed components
 
