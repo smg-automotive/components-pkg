@@ -55,8 +55,3 @@ export const Tooltip: FC<TooltipProps> = ({
     </TooltipRoot>
   );
 };
-<<<<<<< HEAD
-
-export default Tooltip;
-=======
->>>>>>> chakra-v3/root

@@ -7,7 +7,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import Tooltip from '../tooltip';
+import { Tooltip } from '../tooltip';
 import { TooltipIcon } from '../icons';
 
 // TODO:
