@@ -8,9 +8,12 @@ export const fieldSlotRecipe = defineSlotRecipe({
     'helperText',
     'input',
     'label',
+    'labelRoot',
     'select',
     'textarea',
     'requiredIndicator',
+    'tooltipWrapper',
+    'button',
   ],
   base: {
     requiredIndicator: {
@@ -38,6 +41,12 @@ export const fieldSlotRecipe = defineSlotRecipe({
         cursor: 'notAllowed',
       },
     },
+    labelRoot: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: 'full',
+    },
     errorText: {
       display: 'inline-flex',
       alignItems: 'center',
@@ -48,6 +57,17 @@ export const fieldSlotRecipe = defineSlotRecipe({
     },
     helperText: {
       color: 'gray.400',
+      textStyle: 'body-small',
+    },
+    tooltipWrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 'sm',
+    },
+    button: {
+      color: 'blue.700',
+      padding: '0',
       textStyle: 'body-small',
     },
   },

@@ -1,18 +1,23 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Button, Field as ChakraField, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Field as ChakraField,
+  Link,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
 import Tooltip from '../tooltip';
-import { Stack } from '../stack';
 import { TooltipIcon } from '../icons';
 
 // TODO:
 // import FormLabel from '../../../src-v2/components/formLabel';
 
 export type FieldProps = {
+  id: string;
   isDisabled?: boolean;
   isRequired?: boolean;
   errorMessage?: string;
-  id: string;
   label?: string;
   hint?: string;
   tooltip?: string;
@@ -34,77 +39,40 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
   labelButtonOnClick,
   size = 'lg',
 }) => {
-  const isInvalid = !!errorMessage;
+  const recipe = useSlotRecipe({ key: 'field' });
+  const [recipeProps] = recipe.splitVariantProps({ size });
+  const styles = recipe(recipeProps);
 
-  const formLabel = (
-    <ChakraField.Label htmlFor={id}>
-      {label}
-      <ChakraField.RequiredIndicator />
-    </ChakraField.Label>
-  );
-
-  const formLabelWithTooltip = (
-    <Stack direction="row" gap="sm" align="center">
-      {formLabel}
-      <Tooltip label={tooltip}>
-        <TooltipIcon pos="relative" bottom="xxs" />
-      </Tooltip>
-    </Stack>
-  );
-
-  const formLabelWithButton = (
-    <Stack direction="row" justify="space-between" width="full">
-      {formLabel}
-      <Link
-        as={Button}
-        onClick={labelButtonOnClick}
-        textStyle="body-small"
-        color="blue.700"
-        padding="0"
-      >
-        {labelButtonText}
-      </Link>
-    </Stack>
-  );
-
-  const formLabelWithTooltipAndButton = (
-    <Stack direction="row" justify="space-between" width="full">
-      {formLabelWithTooltip}
-      <Link
-        as={Button}
-        onClick={labelButtonOnClick}
-        textStyle="body-small"
-        color="blue.700"
-        padding="0"
-      >
-        {labelButtonText}
-      </Link>
-    </Stack>
-  );
-
-  let labelComponent = null;
-
-  if (label) {
-    if (tooltip && labelButtonText) {
-      labelComponent = formLabelWithTooltipAndButton;
-    } else if (tooltip) {
-      labelComponent = formLabelWithTooltip;
-    } else if (labelButtonText) {
-      labelComponent = formLabelWithButton;
-    } else {
-      labelComponent = formLabel;
-    }
-  }
+  const invalid = !!errorMessage;
+  const tooltipSnippet = tooltip ? (
+    <Tooltip label={tooltip}>
+      <TooltipIcon pos="relative" bottom="xxs" />
+    </Tooltip>
+  ) : null;
+  const buttonSnippet = labelButtonText ? (
+    <Link as={Button} onClick={labelButtonOnClick} css={styles.button}>
+      {labelButtonText}
+    </Link>
+  ) : null;
 
   return (
     <ChakraField.Root
       size={size}
       disabled={isDisabled}
-      invalid={isInvalid}
+      invalid={invalid}
       required={isRequired}
       id={id}
     >
-      {labelComponent}
+      <Box css={styles.labelRoot}>
+        <Box css={styles.tooltipWrapper}>
+          <ChakraField.Label htmlFor={id}>
+            {label}
+            <ChakraField.RequiredIndicator />
+          </ChakraField.Label>
+          {tooltipSnippet}
+        </Box>
+        {buttonSnippet}
+      </Box>
       {children}
       <ChakraField.ErrorText>{errorMessage}</ChakraField.ErrorText>
       {hint ? <ChakraField.HelperText>{hint}</ChakraField.HelperText> : null}
