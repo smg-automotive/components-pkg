@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import { Auth0UserType, EnrichedSessionUser } from '@smg-automotive/auth';
 import { Box, Divider, GridItem, Stack } from '@chakra-ui/react';
 
 import { GarageIcon } from 'src/components/icons';
@@ -42,16 +42,31 @@ const DrawerUserInfo: FC<Props> = ({ user }) => {
             <Box as="span" fontWeight="bold">
               {user.email}
             </Box>
+            {user.userType === Auth0UserType.Professional ? (
+              <Box as="span">({user.sellerId})</Box>
+            ) : null}
           </Stack>
         </Stack>
         {selectedTenant ? (
           <Stack direction="row">
             <GarageIcon />
-            <Box as="span">
-              {selectedTenant.billingName || selectedTenant.id}
-              {selectedTenant.billingCity ? ', ' : null}
-              {selectedTenant.billingCity}
-            </Box>
+            <Stack
+              direction={{
+                base: 'column',
+                md: 'row',
+              }}
+              spacing={{
+                base: 0,
+                md: 'sm',
+              }}
+            >
+              <Box as="span" fontWeight="bold">
+                {selectedTenant.billingName || selectedTenant.id}
+              </Box>
+              <Box as="span">
+                {selectedTenant.billingZipCode} {selectedTenant.billingCity}
+              </Box>
+            </Stack>
           </Stack>
         ) : null}
       </Stack>

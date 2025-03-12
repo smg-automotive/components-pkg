@@ -39,7 +39,7 @@ export const TenantSelectionSelectList = forwardRef<
           label: createTenantLabel(managedSeller),
           onClick: (event) =>
             onTenantSelect(parseInt(event.currentTarget.value, 10)),
-          showChevron: false,
+          showChevron: true,
           isSelected: managedSeller.id === selectedTenantId,
         };
       });

@@ -3,8 +3,11 @@ import { ManagedSeller } from '@smg-automotive/auth';
 export const createTenantLabel = (managedSeller?: ManagedSeller) => {
   if (!managedSeller) return '';
 
-  if (managedSeller.billingName) {
-    return `${managedSeller.billingName} - ${managedSeller.id}`;
+  const nameWithCity =
+    `${managedSeller.billingName} ${managedSeller.billingCity}`.trim();
+
+  if (nameWithCity) {
+    return `${nameWithCity} - ${managedSeller.id}`;
   }
 
   return `${managedSeller.id}`;

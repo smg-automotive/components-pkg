@@ -52,7 +52,7 @@ export const multiTenantSeller = (
   professionalSeller({
     isMultiTenantUser: true,
     sellerId: '6001',
-    sellerIds: ['6001', '6002', '6003'],
+    sellerIds: ['6001', '6002', '6003', '6004'],
     managedSellers: [
       {
         id: 6001,
@@ -61,7 +61,7 @@ export const multiTenantSeller = (
         billingCountryCode: null,
         billingName: 'Garage Amir',
         billingPostOfficeBox: null,
-        billingZipCode: null,
+        billingZipCode: '8000',
       },
       {
         id: 6002,
@@ -70,7 +70,7 @@ export const multiTenantSeller = (
         billingCountryCode: null,
         billingName: 'Garage Amir',
         billingPostOfficeBox: null,
-        billingZipCode: null,
+        billingZipCode: '4001',
       },
       {
         id: 6003,
@@ -79,7 +79,17 @@ export const multiTenantSeller = (
         billingCountryCode: null,
         billingName: 'Garage Amir',
         billingPostOfficeBox: null,
-        billingZipCode: null,
+        billingZipCode: '3001',
+      },
+      {
+        id: 6004,
+        billingAddress: null,
+        billingCity: 'Geneva',
+        billingCountryCode: null,
+        billingName:
+          'I am a garage with a very long name to see how line breaks work',
+        billingPostOfficeBox: null,
+        billingZipCode: '1201',
       },
     ],
     ...props,

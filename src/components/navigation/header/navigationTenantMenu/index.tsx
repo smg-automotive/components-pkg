@@ -12,7 +12,6 @@ import {
 
 import Text from 'src/components/text';
 import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
-import { createTenantLabel } from 'src/components/tenantSelection/createTenantLabel';
 import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
 import Box from 'src/components/box';
 
@@ -76,7 +75,8 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             maxW="2xl"
             textAlign="left"
           >
-            {createTenantLabel(selectedTenant)}
+            {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
+              selectedTenant.id}
           </Text>
         </Button>
       </PopoverTrigger>
@@ -86,7 +86,10 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             bg="white"
             boxShadow="sm"
             color="inherit"
-            minW="auth0-width"
+            width={{
+              base: 'full',
+              md: '6xl',
+            }}
             maxH="auth0-height"
             p="2xl"
             borderRadius="sm"
@@ -103,7 +106,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
               onTenantSelect={onTenantSelect}
               title={t('auth.tenantSelection.selectionTitle')}
               searchFieldOptions={{ autoComplete: 'off' }}
-ref={initialFocusRef}
+              ref={initialFocusRef}
             />
             {isLoading ? <NavigationTenantMenuLoading /> : null}
           </PopoverContent>

@@ -3,7 +3,11 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import { Brand } from 'src/types/brand';
-import { multiTenantSeller, privateSeller } from 'fixtures/enrichedSessionUser';
+import {
+  multiTenantSeller,
+  privateSeller,
+  professionalSeller,
+} from 'fixtures/enrichedSessionUser';
 import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
@@ -73,7 +77,19 @@ describe('Header', () => {
     fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
-    expect(within(drawerBody).getByText('john.doe@me.com')).toBeInTheDocument();
+    expect(within(drawerBody).getByText(email)).toBeInTheDocument();
+  });
+
+  it('displays the seller id in the user drawer for the professional seller', async () => {
+    const email = 'john.doe@me.com';
+    const sellerId = '6002';
+    renderNavigation({ user: professionalSeller({ email, sellerId }) });
+    const drawerToggle = screen.getByText(email);
+
+    fireEvent.click(drawerToggle);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(within(drawerBody).getByText(`(${sellerId})`)).toBeInTheDocument();
   });
 
   it('displays selected tenant and location in the user drawer', async () => {
@@ -84,9 +100,8 @@ describe('Header', () => {
     fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
-    expect(
-      within(drawerBody).getByText('Garage Amir, Zurich'),
-    ).toBeInTheDocument();
+    expect(within(drawerBody).getByText('Garage Amir')).toBeInTheDocument();
+    expect(within(drawerBody).getByText('8000 Zurich')).toBeInTheDocument();
   });
 
   it('allows switching tenants from the header menu', async () => {
@@ -95,11 +110,11 @@ describe('Header', () => {
       user: multiTenantSeller(),
       selectTenant,
     });
-    const tenantSelectionMenu = screen.getByText('Garage Amir, Zurich');
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
     fireEvent.click(tenantSelectionMenu);
 
     const popover = screen.getByRole('dialog', { hidden: true });
-    const newTenant = within(popover).getByText('Garage Amir - 6002');
+    const newTenant = within(popover).getByText('Garage Amir Basel - 6002');
     act(() => {
       fireEvent.click(newTenant);
     });
