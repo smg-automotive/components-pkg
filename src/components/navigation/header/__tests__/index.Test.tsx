@@ -3,8 +3,12 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import { Brand } from 'src/types/brand';
-import { privateSeller, professionalSeller } from 'fixtures/user';
-import { fireEvent, render, screen, within } from '.jest/utils';
+import {
+  multiTenantSeller,
+  privateSeller,
+  professionalSeller,
+} from 'fixtures/user';
+import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
@@ -20,9 +24,9 @@ const renderNavigation = ({
   hasNotification = false,
   onLogin = jest.fn(),
   onLogout = jest.fn(),
+  selectTenant = jest.fn(() => Promise.resolve()),
   useAbsoluteUrls,
   project,
-  selectedTenant = null,
 }: Partial<NavigationProps>) =>
   render(
     <Navigation
@@ -33,9 +37,9 @@ const renderNavigation = ({
       hasNotification={hasNotification}
       onLogin={onLogin}
       onLogout={onLogout}
+      selectTenant={selectTenant}
       useAbsoluteUrls={useAbsoluteUrls}
       project={project}
-      selectedTenant={selectedTenant}
     />,
   );
 
@@ -76,42 +80,46 @@ describe('Header', () => {
     expect(within(drawerBody).getByText(email)).toBeInTheDocument();
   });
 
-  it('displays the user name in the user drawer', async () => {
+  it('displays the seller id in the user drawer for the professional seller', async () => {
     const email = 'john.doe@me.com';
-    const userName = 'John Doe';
-    renderNavigation({ user: professionalSeller({ email, userName }) });
+    const sellerId = '6002';
+    renderNavigation({ user: professionalSeller({ email, sellerId }) });
     const drawerToggle = screen.getByText(email);
 
     fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
-    expect(within(drawerBody).getByText(`(${userName})`)).toBeInTheDocument();
+    expect(within(drawerBody).getByText(`(${sellerId})`)).toBeInTheDocument();
   });
 
   it('displays selected tenant and location in the user drawer', async () => {
     const email = 'john.doe@me.com';
-    const selectedTenant = {
-      id: 1,
-      billingName: 'Test Tenant',
-      billingCity: 'Zurich',
-      billingAddress: 'Bahnhofstrasse 1',
-      billingCountryCode: 'CH',
-      billingZipCode: '8001',
-      billingPostOfficeBox: null,
-    };
+    renderNavigation({ user: multiTenantSeller({ email }) });
+    const drawerToggle = screen.getByText(email);
 
-    renderNavigation({
-      user: professionalSeller({ email }),
-      selectedTenant,
-    });
-
-    const searchItem = screen.getByText('john.doe@me.com');
-    fireEvent.click(searchItem);
+    fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
-    expect(
-      within(drawerBody).getByText('Test Tenant, Zurich'),
-    ).toBeInTheDocument();
+    expect(within(drawerBody).getByText('Garage Amir')).toBeInTheDocument();
+    expect(within(drawerBody).getByText('8000 Zurich')).toBeInTheDocument();
+  });
+
+  it('allows switching tenants from the header menu', async () => {
+    const selectTenant = jest.fn(() => Promise.resolve());
+    renderNavigation({
+      user: multiTenantSeller(),
+      selectTenant,
+    });
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
+    fireEvent.click(tenantSelectionMenu);
+
+    const popover = screen.getByRole('dialog', { hidden: true });
+    const newTenant = within(popover).getByText('Garage Amir Basel - 6002');
+    act(() => {
+      fireEvent.click(newTenant);
+    });
+
+    expect(selectTenant).toHaveBeenCalledWith(6002);
   });
 
   it('does not display user name in the search drawer', async () => {
@@ -125,19 +133,6 @@ describe('Header', () => {
     expect(
       within(drawerBody).queryByText(email, { exact: false }),
     ).not.toBeInTheDocument();
-  });
-
-  it("doesn't display user name if it's same as email", async () => {
-    const email = 'john.doe@me.com';
-    renderNavigation({ user: privateSeller({ email, userName: email }) });
-
-    const searchItem = screen.getByText(email);
-    fireEvent.click(searchItem);
-
-    const drawerBody = screen.getByTestId('drawer-body');
-    expect(
-      within(drawerBody).getAllByText(email, { exact: false }),
-    ).toHaveLength(1);
   });
 
   it('should display login button if there is no user', async () => {

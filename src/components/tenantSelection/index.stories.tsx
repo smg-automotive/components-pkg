@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { enrichedSessionUser } from 'fixtures/enrichedSessionUser';
+import { multiTenantSeller } from 'fixtures/user';
 
 import TenantSelection from './index';
 
@@ -11,16 +11,16 @@ const meta: Meta<typeof TenantSelection> = {
 
   args: {
     language: 'de',
-    user: 'enrichedSessionUser' as unknown as typeof enrichedSessionUser,
+    user: 'user' as unknown as ReturnType<typeof multiTenantSeller>,
     selectTenant: action('selectTenant'),
     isLoading: false,
   },
 
   argTypes: {
     user: {
-      options: ['enrichedSessionUser', 'none'],
+      options: ['user', 'none'],
       mapping: {
-        enrichedSessionUser,
+        user: multiTenantSeller({ forceTenantSelection: true }),
         none: null,
       },
 
