@@ -35,9 +35,7 @@ const meta: Meta<typeof Field> = {
     errorMessage: '',
     size: 'lg',
     id: 'test-input',
-    children: (
-      <Input name="test-input" placeholder="placeholder" width="full" />
-    ),
+    children: ['input'],
   },
 
   argTypes: {
@@ -48,6 +46,16 @@ const meta: Meta<typeof Field> = {
     children: {
       table: {
         disable: true,
+      },
+      mapping: {
+        input: (
+          <Input
+            key="dummyInput"
+            name="test-input"
+            placeholder="placeholder"
+            width="full"
+          />
+        ),
       },
     },
   },
