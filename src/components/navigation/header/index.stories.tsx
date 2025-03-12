@@ -1,11 +1,15 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { action } from '@storybook/addon-actions';
-import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
+
+import {
+  multiTenantSeller,
+  privateSeller,
+  professionalSeller,
+} from 'fixtures/enrichedSessionUser';
 
 import Navigation from './index';
 
@@ -38,7 +42,7 @@ const meta: Meta<typeof Navigation> = {
     entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
-    selectedTenant: null,
+    selectTenant: async (id) => action('select tenant')(id),
   },
 
   argTypes: {
@@ -80,75 +84,18 @@ export const Unauthenticated: StoryType = {
 
 export const Professional: StoryType = {
   args: {
-    user: {
-      id: '123',
-      userName: '65431-amir',
-      userType: MappedUserType.Professional,
-      exp: 1630000000,
-      email: 'amir@professional.com',
-      sellerId: '6001',
-      sellerIds: ['6001'],
-      isImpersonated: false,
-    },
-
-    entitlements: [
-      'business-image',
-      'optimizer',
-      'optimizer-pro',
-      'auto-radar',
-      'auto-radar-fast',
-      'listing-visibility-standard',
-      'listing-visibility-premium',
-    ],
+    user: professionalSeller(),
   },
 };
 
 export const ProfessionalWithMultiTenancy: StoryType = {
   args: {
-    user: {
-      id: '123',
-      userName: '65431-amir',
-      userType: MappedUserType.Professional,
-      exp: 1630000000,
-      email: 'amir@professional.com',
-      sellerId: '6001',
-      sellerIds: ['6001'],
-      isImpersonated: false,
-    },
-
-    selectedTenant: {
-      id: 2485932,
-      billingAddress: 'Bahnofstrasse 1',
-      billingCity: 'Zurich',
-      billingCountryCode: 'de',
-      billingName: 'AS24 Test 1',
-      billingPostOfficeBox: null,
-      billingZipCode: '8080',
-    },
-
-    entitlements: [
-      'business-image',
-      'optimizer',
-      'optimizer-pro',
-      'auto-radar',
-      'auto-radar-fast',
-      'listing-visibility-standard',
-      'listing-visibility-premium',
-    ],
+    user: multiTenantSeller(),
   },
 };
 
 export const Private: StoryType = {
   args: {
-    user: {
-      id: '123',
-      userName: 'John Doe Private',
-      userType: MappedUserType.Private,
-      exp: 1630000000,
-      email: 'john.doe@private.com',
-      sellerId: '6001',
-      sellerIds: ['6001'],
-      isImpersonated: true,
-    },
+    user: privateSeller(),
   },
 };

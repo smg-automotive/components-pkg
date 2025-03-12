@@ -4,13 +4,14 @@ import {
   ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
+  MenuProps as ChakraMenuProps,
   MenuButton,
   MenuList,
 } from '@chakra-ui/react';
 
 import { FontWeights } from 'src/themes';
 
-import { ChevronDownSmallIcon, ChevronUpSmallIcon } from '../icons';
+import { ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;
@@ -25,6 +26,7 @@ export interface MenuProps {
   menuColor?: string;
   icon?: ReactElement;
   iconSpacing?: ButtonProps['iconSpacing'];
+  placement?: ChakraMenuProps['placement'];
 }
 
 const Menu: FC<MenuProps> = ({
@@ -35,9 +37,10 @@ const Menu: FC<MenuProps> = ({
   menuColor,
   icon,
   iconSpacing,
+  placement,
 }) => {
   return (
-    <ChakraMenu {...(offset.length && { offset })}>
+    <ChakraMenu {...(offset.length && { offset })} placement={placement}>
       {({ isOpen }) => (
         <>
           <MenuButton
@@ -46,10 +49,13 @@ const Menu: FC<MenuProps> = ({
             iconSpacing={iconSpacing}
             leftIcon={icon}
             rightIcon={
-              isOpen ? <ChevronUpSmallIcon /> : <ChevronDownSmallIcon />
+              <ChevronDownSmallIcon
+                transition="0.2s"
+                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+              />
             }
             fontWeight={fontWeightTitle}
-            {...(menuColor && { color: menuColor })}
+            color={isOpen ? 'blue.700' : menuColor}
           >
             {title}
           </MenuButton>

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { MergedUser } from '@smg-automotive/auth';
+import { EnrichedSessionUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Text from 'src/components/text';
@@ -13,7 +13,7 @@ import { DrawerIndicator } from './drawer/DrawerIndicator';
 import { DrawerNode } from './config/DrawerNodeItems';
 
 interface NavigationAvatarProps {
-  user: MergedUser | null;
+  user: EnrichedSessionUser | null;
   isOpen: boolean;
   drawer: Drawer;
   hasNotification: boolean;
@@ -39,19 +39,14 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         spacing="xs"
         cursor="pointer"
         _hover={{ color: 'blue.700' }}
-        color="gray.900"
+        color={isDrawerOpened ? 'blue.700' : 'gray.900'}
         onClick={createDrawerHandler({
           nodeName: DrawerNode.User,
         })}
       >
         <Avatar withNotification={hasNotification} />
         <Hide below="sm">
-          <Text
-            fontWeight="bold"
-            {...(isDrawerOpened && { color: 'blue.700' })}
-            noOfLines={1}
-            maxW="3xl"
-          >
+          <Text fontWeight="bold" noOfLines={1} maxW="2xl">
             {user.email}
           </Text>
         </Hide>
@@ -68,10 +63,10 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
       position="relative"
       top="1px"
     >
+      <Box as={Avatar} marginLeft="2px" />
       <Hide below="sm" marginRight="xs">
         {t('header.login')}
       </Hide>
-      <Box as={Avatar} marginLeft="2px" />
     </HStack>
   );
 };
