@@ -29,8 +29,8 @@ const meta: Meta<typeof Field> = {
     label: 'Label',
     hint: 'I am a hint text',
     tooltip: '',
-    isDisabled: false,
-    isRequired: false,
+    disabled: false,
+    required: false,
     errorMessage: '',
     size: 'lg',
     id: 'test-input',
@@ -75,7 +75,7 @@ export const Required: StoryType = {
   args: {
     label: 'Label',
     hint: '',
-    isRequired: true,
+    required: true,
   },
 };
 

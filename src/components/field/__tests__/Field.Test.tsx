@@ -9,8 +9,8 @@ import { Field, FieldProps } from '..';
 
 const renderWrapper = ({
   id = 'test',
-  isDisabled = false,
-  isRequired = false,
+  disabled = false,
+  required = false,
   errorMessage = undefined,
   hint = undefined,
   label = undefined,
@@ -19,8 +19,8 @@ const renderWrapper = ({
   render(
     <Field
       id={id}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
+      disabled={disabled}
+      required={required}
       errorMessage={errorMessage}
       hint={hint}
       label={label}
@@ -51,32 +51,32 @@ describe('<FormControl>', () => {
     });
   });
 
-  describe('isDisabled', () => {
+  describe('disabled', () => {
     it('sets input to disabled', () => {
-      renderWrapper({ isDisabled: true, placeholder: 'placeholder' });
+      renderWrapper({ disabled: true, placeholder: 'placeholder' });
       const input = screen.getByPlaceholderText('placeholder');
 
       expect(input).toBeDisabled();
     });
   });
 
-  describe('isRequired', () => {
+  describe('required', () => {
     it('sets input to required', () => {
-      renderWrapper({ isRequired: true, placeholder: 'placeholder' });
+      renderWrapper({ required: true, placeholder: 'placeholder' });
       const input = screen.getByPlaceholderText('placeholder');
 
       expect(input).toBeRequired();
     });
 
     it('adds required indicator if there is a label', () => {
-      renderWrapper({ label: 'Label', isRequired: true });
+      renderWrapper({ label: 'Label', required: true });
       const label = screen.getByText('*', { exact: false });
 
       expect(label).toBeInTheDocument();
     });
 
     it("doesn't add require indicator if there is no label", () => {
-      renderWrapper({ label: 'Label', isRequired: true });
+      renderWrapper({ label: 'Label', required: true });
       const label = screen.getByText('*', { exact: false });
 
       expect(label).toHaveAttribute('aria-hidden', 'true');
