@@ -6,13 +6,11 @@ export const fieldSlotRecipe = defineSlotRecipe({
     'root',
     'errorText',
     'helperText',
-    'input',
     'label',
     'labelRoot',
-    'select',
-    'textarea',
     'requiredIndicator',
     'tooltipWrapper',
+    'tooltipIcon',
     'button',
   ],
   base: {
@@ -64,6 +62,10 @@ export const fieldSlotRecipe = defineSlotRecipe({
       flexDirection: 'row',
       alignItems: 'center',
       gap: 'sm',
+    },
+    tooltipIcon: {
+      position: 'relative',
+      bottom: 'xxs',
     },
     button: {
       color: 'blue.700',

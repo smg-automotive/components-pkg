@@ -50,7 +50,7 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
   const invalid = !!errorMessage;
   const tooltipSnippet = tooltip ? (
     <Tooltip label={tooltip}>
-      <TooltipIcon pos="relative" bottom="xxs" />
+      <TooltipIcon css={styles.tooltipIcon} pos="relative" bottom="xxs" />
     </Tooltip>
   ) : null;
   const buttonSnippet = labelButtonText ? (
