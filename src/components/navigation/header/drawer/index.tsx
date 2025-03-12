@@ -30,7 +30,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent marginTop={menuHeight}>
+      <DrawerContent marginTop={menuHeight} overflow="scroll" maxH="100%">
         <DrawerBody
           data-testid="drawer-body"
           py="lg"
