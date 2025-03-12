@@ -15,7 +15,7 @@ export const estimateLinkConfig = ({
       fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
       it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
     },
-    showUnderMoreLinkBelow: 'md',
+    showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
         private: true,

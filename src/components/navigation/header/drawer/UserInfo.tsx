@@ -23,20 +23,20 @@ const DrawerUserInfo: FC<Props> = ({ user }) => {
         mb="lg"
         direction={{
           base: 'column',
-          md: 'row',
+          sm: 'row',
         }}
-        spacing={{ base: 'sm', md: '2xl' }}
+        spacing={{ base: 'sm', sm: '2xl' }}
       >
         <Stack direction="row">
           <Avatar />
           <Stack
             direction={{
               base: 'column',
-              md: 'row',
+              sm: 'row',
             }}
             spacing={{
               base: 0,
-              md: 'sm',
+              sm: 'sm',
             }}
           >
             <Box as="span" fontWeight="bold">
@@ -53,11 +53,11 @@ const DrawerUserInfo: FC<Props> = ({ user }) => {
             <Stack
               direction={{
                 base: 'column',
-                md: 'row',
+                sm: 'row',
               }}
               spacing={{
                 base: 0,
-                md: 'sm',
+                sm: 'sm',
               }}
             >
               <Box as="span" fontWeight="bold">

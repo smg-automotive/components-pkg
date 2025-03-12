@@ -72,7 +72,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             as="span"
             fontWeight="bold"
             noOfLines={1}
-            maxW="2xl"
+            maxW={{ base: 'xl', md: '2xl' }}
             textAlign="left"
           >
             {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
@@ -86,10 +86,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             bg="white"
             boxShadow="sm"
             color="inherit"
-            width={{
-              base: 'full',
-              md: '6xl',
-            }}
+            width="6xl"
             maxH="auth0-height"
             p="2xl"
             borderRadius="sm"
