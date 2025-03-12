@@ -26,7 +26,7 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 
 ### State props
 
-The `is` prefix has been removed from form control props.  
+The `is` prefix has been removed from all boolean props.  
 State props like `isDisabled` and `isInvalid` have been renamed to `disabled` and `invalid`.
 
 #### Before
