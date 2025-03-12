@@ -13,6 +13,7 @@ import {
 import Text from 'src/components/text';
 import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
 import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
+import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 
 import { NavigationTenantMenuLoading } from './Loading';
@@ -46,70 +47,72 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   if (!user || !user.isMultiTenantUser || !selectedTenant) return null;
 
   return (
-    <Popover
-      placement="bottom-end"
-      returnFocusOnClose={true}
-      onClose={onClose}
-      isOpen={isOpen}
-      initialFocusRef={initialFocusRef}
-    >
-      <PopoverTrigger>
-        <Button
-          p="0"
-          color={isOpen ? 'blue.700' : 'gray.900'}
-          _hover={{ color: 'blue.700' }}
-          leftIcon={<GarageIcon />}
-          rightIcon={
-            <ChevronDownSmallIcon
-              transition="0.2s"
-              transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-            />
-          }
-          iconSpacing="xs"
-          onClick={onToggle}
-        >
-          <Text
-            as="span"
-            fontWeight="bold"
-            noOfLines={1}
-            maxW={{ base: 'xl', md: '2xl' }}
-            textAlign="left"
+    <Hide below="xs">
+      <Popover
+        placement="bottom-end"
+        returnFocusOnClose={true}
+        onClose={onClose}
+        isOpen={isOpen}
+        initialFocusRef={initialFocusRef}
+      >
+        <PopoverTrigger>
+          <Button
+            p="0"
+            color={isOpen ? 'blue.700' : 'gray.900'}
+            _hover={{ color: 'blue.700' }}
+            leftIcon={<GarageIcon />}
+            rightIcon={
+              <ChevronDownSmallIcon
+                transition="0.2s"
+                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+              />
+            }
+            iconSpacing="xs"
+            onClick={onToggle}
           >
-            {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
-              selectedTenant.id}
-          </Text>
-        </Button>
-      </PopoverTrigger>
-      <Portal>
-        <Box zIndex="popover" w="full" h="full" position="relative">
-          <PopoverContent
-            bg="white"
-            boxShadow="sm"
-            color="inherit"
-            width="6xl"
-            maxH="auth0-height"
-            p="2xl"
-            borderRadius="sm"
-            borderWidth="1px"
-            borderColor="gray.200"
-            marginTop="10px"
-            alignItems="center"
-            flexDirection="column"
-            gridGap="2xl"
-          >
-            <TenantSelectionSelectList
-              managedSellers={user.managedSellers}
-              selectedTenantId={selectedTenant.id}
-              onTenantSelect={onTenantSelect}
-              title={t('auth.tenantSelection.selectionTitle')}
-              searchFieldOptions={{ autoComplete: 'off' }}
-              ref={initialFocusRef}
-            />
-            {isLoading ? <NavigationTenantMenuLoading /> : null}
-          </PopoverContent>
-        </Box>
-      </Portal>
-    </Popover>
+            <Text
+              as="span"
+              fontWeight="bold"
+              noOfLines={1}
+              maxW={{ base: 'xl', md: '2xl' }}
+              textAlign="left"
+            >
+              {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
+                selectedTenant.id}
+            </Text>
+          </Button>
+        </PopoverTrigger>
+        <Portal>
+          <Box zIndex="popover" w="full" h="full" position="relative">
+            <PopoverContent
+              bg="white"
+              boxShadow="sm"
+              color="inherit"
+              width="6xl"
+              maxH="auth0-height"
+              p="2xl"
+              borderRadius="sm"
+              borderWidth="1px"
+              borderColor="gray.200"
+              marginTop="10px"
+              alignItems="center"
+              flexDirection="column"
+              gridGap="2xl"
+            >
+              <TenantSelectionSelectList
+                managedSellers={user.managedSellers}
+                selectedTenantId={selectedTenant.id}
+                onTenantSelect={onTenantSelect}
+                title={t('auth.tenantSelection.selectionTitle')}
+                searchFieldOptions={{ autoComplete: 'off' }}
+                ref={initialFocusRef}
+              />
+              {isLoading ? <NavigationTenantMenuLoading /> : null}
+            </PopoverContent>
+          </Box>
+        </Portal>
+      </Popover>
+    </Hide>
   );
 };
 
