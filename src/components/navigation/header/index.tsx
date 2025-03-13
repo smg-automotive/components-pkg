@@ -10,6 +10,8 @@ import { Brand } from 'src/types/brand';
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
 
+import Show from 'src/components/show';
+import { CloseIcon, HamburgerMenuIcon } from 'src/components/icons';
 import Box from 'src/components/box';
 
 import NavigationTenantMenu from './navigationTenantMenu';
@@ -21,7 +23,7 @@ import { NavigationDrawer } from './drawer';
 import { iconItems } from './config/iconItems';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
-import { drawerNodeItems } from './config/DrawerNodeItems';
+import { DrawerNode, drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
 
 export interface NavigationProps {
@@ -105,6 +107,10 @@ const Navigation: FC<NavigationProps> = ({
     }
   }, [user?.userId, onClose]);
 
+  const mobileDrawerHandler = createDrawerHandler({
+    nodeName: DrawerNode.Combined,
+  });
+
   return (
     <TranslationProvider
       language={language}
@@ -152,6 +158,14 @@ const Navigation: FC<NavigationProps> = ({
             />
             <NavigationTenantMenu user={user} selectTenant={selectTenant} />
             <NavigationLanguageMenu activeLanguage={language} />
+            <Show below="xs">
+              <Box
+                onClick={mobileDrawerHandler}
+                color={isOpen ? 'blue.700' : 'gray.900'}
+              >
+                {isOpen ? <CloseIcon /> : <HamburgerMenuIcon />}
+              </Box>
+            </Show>
           </Stack>
         </Box>
       </Box>

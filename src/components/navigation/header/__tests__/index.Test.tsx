@@ -100,8 +100,12 @@ describe('Header', () => {
     fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
-    expect(within(drawerBody).getByText('Garage Amir')).toBeInTheDocument();
-    expect(within(drawerBody).getByText('8000 Zurich')).toBeInTheDocument();
+    expect(
+      within(drawerBody).getAllByText('Garage Amir').length,
+    ).toBeGreaterThan(1);
+    expect(
+      within(drawerBody).getAllByText('8000 Zurich').length,
+    ).toBeGreaterThan(1);
   });
 
   it('allows switching tenants from the header menu', async () => {

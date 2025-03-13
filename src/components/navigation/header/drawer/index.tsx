@@ -9,7 +9,8 @@ import DrawerContent from 'src/components/drawer/DrawerContent';
 import Drawer from 'src/components/drawer';
 
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
-import DrawerUserInfo from './UserInfo';
+import { DrawerNode } from '../config/DrawerNodeItems';
+import DrawerUserInfo from './userInfo';
 import { DrawerMenu } from './DrawerMenu';
 
 interface NavigationDrawerProps {
@@ -18,6 +19,7 @@ interface NavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   menuHeight: string;
+  selectTenant: (sellerId: number | string) => Promise<void>;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -26,6 +28,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   onClose,
   menuHeight,
   user,
+  selectTenant,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -44,8 +47,12 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
             gridGap={{ md: '3xl' }}
           >
-            {drawer?.current === 'user' ? <DrawerUserInfo user={user} /> : null}
-            {drawer?.nodes.map((node, index) => (
+            {[DrawerNode.User, DrawerNode.Combined].includes(
+              drawer?.current as DrawerNode,
+            ) ? (
+              <DrawerUserInfo user={user} selectTenant={selectTenant} />
+            ) : null}
+            {drawer?.nodes?.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
           </Grid>
