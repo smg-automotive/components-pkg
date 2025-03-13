@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Box, Input } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
-// TODO: replace after input is migrated
-// import { Input } from 'src/index';
+import { Textarea } from '../textarea';
+
 import { Field } from './index';
 
 /**
@@ -34,7 +34,7 @@ const meta: Meta<typeof Field> = {
     errorMessage: '',
     size: 'lg',
     id: 'test-input',
-    children: ['input'],
+    children: ['textarea'],
   },
 
   argTypes: {
@@ -47,12 +47,12 @@ const meta: Meta<typeof Field> = {
         disable: true,
       },
       mapping: {
-        input: (
-          <Input
-            key="dummyInput"
+        textarea: (
+          <Textarea
+            key="example-textarea"
             name="test-input"
             placeholder="placeholder"
-            width="full"
+            cols={29}
           />
         ),
       },

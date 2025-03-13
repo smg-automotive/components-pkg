@@ -137,6 +137,7 @@ export const colors = defineTokens.colors({
     900: { value: '#402859' },
   },
   none: { value: 'none' },
+  inherit: { value: 'inherit' },
   currentColor: { value: 'currentColor' },
   transparent: { value: 'transparent' },
 });
