@@ -5,7 +5,10 @@ import Accordion from '../accordion';
 
 export type Props = {
   variant?: 'light' | 'dark';
-} & Pick<AccordionProps, 'allowMultiple' | 'allowToggle'>;
+} & Pick<
+  AccordionProps,
+  'allowMultiple' | 'allowToggle' | 'index' | 'onChange'
+>;
 
 const MobileOnlyAccordion: FC<PropsWithChildren<Props>> = (props) => {
   const { children, ...restProps } = props;
