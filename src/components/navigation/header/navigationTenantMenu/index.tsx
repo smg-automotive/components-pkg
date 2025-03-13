@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useRef, useState } from 'react';
+import React, { FC, useMemo, useRef } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 import { EnrichedSessionUser } from '@smg-automotive/auth';
 import {
@@ -11,12 +11,11 @@ import {
 } from '@chakra-ui/react';
 
 import Text from 'src/components/text';
-import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
 import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';
 
-import { NavigationTenantMenuLoading } from './Loading';
+import NavigationTenantMenuContent from './Content';
 
 type Props = {
   user: EnrichedSessionUser | null;
@@ -26,18 +25,7 @@ type Props = {
 const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   const initialFocusRef = useRef<HTMLInputElement>(null);
   const { onClose, isOpen, onToggle } = useDisclosure();
-  const [isLoading, setIsLoading] = useState(false);
   const { t } = useI18n();
-  const onTenantSelect = useCallback(
-    async (selectedTenantId: number) => {
-      setIsLoading(true);
-      await selectTenant(selectedTenantId);
-      onClose();
-      setIsLoading(false);
-    },
-    [selectTenant, onClose],
-  );
-
   const selectedTenant = useMemo(() => {
     return user?.managedSellers?.find(
       (seller) => seller.id === Number(user.sellerId),
@@ -99,15 +87,14 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
               flexDirection="column"
               gridGap="2xl"
             >
-              <TenantSelectionSelectList
-                managedSellers={user.managedSellers}
+              <NavigationTenantMenuContent
+                user={user}
+                selectTenant={selectTenant}
+                onClose={onClose}
                 selectedTenantId={selectedTenant.id}
-                onTenantSelect={onTenantSelect}
                 title={t('auth.tenantSelection.selectionTitle')}
-                searchFieldOptions={{ autoComplete: 'off' }}
                 ref={initialFocusRef}
               />
-              {isLoading ? <NavigationTenantMenuLoading /> : null}
             </PopoverContent>
           </Box>
         </Portal>
