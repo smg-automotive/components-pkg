@@ -52,7 +52,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             ) ? (
               <DrawerUserInfo user={user} selectTenant={selectTenant} />
             ) : null}
-            {drawer?.nodes?.map((node, index) => (
+            {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
           </Grid>
