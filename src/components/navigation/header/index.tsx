@@ -161,6 +161,7 @@ const Navigation: FC<NavigationProps> = ({
         isOpen={isOpen}
         onClose={onClose}
         menuHeight={config.menuHeight}
+        selectTenant={selectTenant}
       />
     </TranslationProvider>
   );
