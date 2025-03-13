@@ -52,7 +52,7 @@ const meta: Meta<typeof Field> = {
             key="example-textarea"
             name="test-input"
             placeholder="placeholder"
-            width="full"
+            cols={29}
           />
         ),
       },
