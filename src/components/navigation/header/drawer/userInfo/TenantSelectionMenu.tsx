@@ -31,10 +31,14 @@ const TenantSelectionMenu: FC<Props> = ({
       onChange={setIndex}
     >
       <MobileOnlyAccordionItem border="none">
-        <MobileOnlyAccordionButton>
+        <MobileOnlyAccordionButton data-testid="tenant-selection-accordion-toggle">
           <SelectedTenantInfo selectedTenant={selectedTenant} />
         </MobileOnlyAccordionButton>
-        <Box as={MobileOnlyAccordionPanel} position="relative">
+        <Box
+          as={MobileOnlyAccordionPanel}
+          position="relative"
+          data-testid="tenant-selection-accordion-panel"
+        >
           <NavigationTenantMenuContent
             user={user}
             onClose={() => setIndex([])}

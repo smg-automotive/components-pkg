@@ -122,6 +122,32 @@ describe('Header', () => {
     expect(selectTenant).toHaveBeenCalledWith(6002);
   });
 
+  it('allows switching tenants from the combined menu on mobile', async () => {
+    const selectTenant = jest.fn(() => Promise.resolve());
+    renderNavigation({
+      user: multiTenantSeller(),
+      selectTenant,
+    });
+
+    const menuToggle = screen.getByTitle('Hamburger menu icon');
+    fireEvent.click(menuToggle);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    const tenantSelectionToggle = within(drawerBody).getAllByTestId(
+      'tenant-selection-accordion-toggle',
+    )[0];
+    fireEvent.click(tenantSelectionToggle);
+
+    const newTenant = within(
+      screen.getAllByTestId('tenant-selection-accordion-panel')[0],
+    ).getByText('Garage Amir Basel - 6002');
+    act(() => {
+      fireEvent.click(newTenant);
+    });
+
+    expect(selectTenant).toHaveBeenCalledWith(6002);
+  });
+
   it('does not display user name in the search drawer', async () => {
     const email = 'john.doe@me.com';
     renderNavigation({ user: professionalSeller({ email }) });
