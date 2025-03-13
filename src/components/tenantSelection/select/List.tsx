@@ -14,7 +14,7 @@ type TenantSelectionSelectListProps = {
   managedSellers: ManagedSeller[];
   selectedTenantId: number | null;
   onTenantSelect: (selectedTenantId: number) => void;
-  title: string;
+  title?: string;
   searchFieldOptions?: SearchFieldOptions;
 };
 
@@ -47,7 +47,7 @@ export const TenantSelectionSelectList = forwardRef<
 
     return (
       <>
-        <H1 textStyle="heading3">{title}</H1>
+        {title ? <H1 textStyle="heading3">{title}</H1> : null}
         <SearchableList
           listItems={listItems}
           ref={ref}
