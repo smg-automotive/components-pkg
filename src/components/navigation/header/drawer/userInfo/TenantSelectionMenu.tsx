@@ -30,7 +30,7 @@ const TenantSelectionMenu: FC<Props> = ({
       allowMultiple={true}
       onChange={setIndex}
     >
-      <MobileOnlyAccordionItem borderBottom="none">
+      <MobileOnlyAccordionItem border="none">
         <MobileOnlyAccordionButton>
           <SelectedTenantInfo selectedTenant={selectedTenant} />
         </MobileOnlyAccordionButton>
