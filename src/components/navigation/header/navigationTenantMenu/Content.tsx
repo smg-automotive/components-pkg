@@ -15,7 +15,7 @@ type Props = {
 
 const NavigationTenantMenuContent = forwardRef<HTMLInputElement, Props>(
   ({ user, selectTenant, onClose, title, selectedTenantId }, ref) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const onTenantSelect = useCallback(
       async (newTenantId: number) => {
