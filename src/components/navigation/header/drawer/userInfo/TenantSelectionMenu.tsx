@@ -1,0 +1,50 @@
+import React, { FC, useState } from 'react';
+import { EnrichedSessionUser, ManagedSeller } from '@smg-automotive/auth';
+
+import NavigationTenantMenuContent from 'src/components/navigation/header/navigationTenantMenu/Content';
+import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
+import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
+import Box from 'src/components/box';
+
+import SelectedTenantInfo from './SelectedTenantInfo';
+
+type Props = {
+  user: EnrichedSessionUser;
+  selectedTenant: ManagedSeller;
+  selectTenant: (sellerId: number | string) => Promise<void>;
+};
+
+const TenantSelectionMenu: FC<Props> = ({
+  user,
+  selectedTenant,
+  selectTenant,
+}) => {
+  const [index, setIndex] = useState<number[] | number>([]);
+
+  return (
+    <Box
+      as={MobileOnlyAccordion}
+      index={index}
+      allowMultiple={true}
+      onChange={setIndex}
+    >
+      <MobileOnlyAccordionItem borderBottom="none">
+        <MobileOnlyAccordionButton>
+          <SelectedTenantInfo selectedTenant={selectedTenant} />
+        </MobileOnlyAccordionButton>
+        <Box as={MobileOnlyAccordionPanel} position="relative">
+          <NavigationTenantMenuContent
+            user={user}
+            onClose={() => setIndex([])}
+            selectedTenantId={selectedTenant.id}
+            selectTenant={selectTenant}
+          />
+        </Box>
+      </MobileOnlyAccordionItem>
+    </Box>
+  );
+};
+
+export default TenantSelectionMenu;

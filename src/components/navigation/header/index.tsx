@@ -169,6 +169,7 @@ const Navigation: FC<NavigationProps> = ({
         menuHeight={config.menuHeight}
         onLogin={onLogin}
         onLogout={onLogout}
+        selectTenant={selectTenant}
       />
     </TranslationProvider>
   );
