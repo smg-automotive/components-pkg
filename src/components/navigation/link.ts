@@ -32,6 +32,7 @@ export interface EntitlementConfig {
 }
 
 export interface LinkConfig {
+  title?: string;
   translationKey?: string;
   translationParameters?: Record<string, string | number>;
   link?: LocalizedLinks;
@@ -46,6 +47,7 @@ export interface LinkConfig {
 }
 
 export interface LinkInstance {
+  title?: string;
   translationKey?: string;
   link?: LocalizedLinks;
   target?: LinkTargets;
@@ -65,6 +67,7 @@ export type Domains =
 
 // !!CMP Link
 export class Link {
+  title?: string;
   translationKey?: string;
   translationParameters?: Record<string, string | number>;
   link?: LocalizedLinks;
@@ -148,6 +151,7 @@ export class Link {
       ? config.entitlementConfig?.missingEntitlementLinkIcon
       : rightIcon;
 
+    this.title = config.title;
     this.translationKey = Link.shouldDisplayMissingEntitlementTranslation(
       hasEntitlement,
       config.entitlementConfig,
