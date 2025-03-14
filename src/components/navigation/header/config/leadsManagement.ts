@@ -1,6 +1,5 @@
 import { NavigationLinkConfigProps } from './headerLinks';
 
-
 export const leadsManagementLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.contactRequests',
   link: {

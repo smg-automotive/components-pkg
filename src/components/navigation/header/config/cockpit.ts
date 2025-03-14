@@ -1,6 +1,5 @@
 import { NavigationLinkConfigProps } from './headerLinks';
 
-
 export const cockpitLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.cockpit',
   link: {
