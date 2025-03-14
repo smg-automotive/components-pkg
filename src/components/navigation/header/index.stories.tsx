@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { action } from '@storybook/addon-actions';
-import { MappedUserType } from '@smg-automotive/auth';
 
 import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
+
+import { privateSeller, professionalSeller } from 'fixtures/user';
 
 import Navigation from './index';
 
@@ -79,40 +79,35 @@ export const Unauthenticated: StoryType = {
 
 export const Professional: StoryType = {
   args: {
-    user: {
-      id: '123',
-      userName: '65431-amir',
-      userType: MappedUserType.Professional,
-      exp: 1630000000,
-      email: 'amir@professional.com',
-      sellerId: '6001',
-      sellerIds: ['6001'],
-      isImpersonated: false,
-    },
-
+    user: professionalSeller(),
     entitlements: [
-      'business-image',
+      'list',
       'optimizer',
       'optimizer-pro',
-      'auto-radar',
-      'auto-radar-fast',
-      'listing-visibility-standard',
+      'list-image',
+      'test-drive',
+      'business-image',
+      'business-video',
+      'previous-price',
+      'seller-website',
+      'tutti-export-premium',
+      'anibis-export-premium',
       'listing-visibility-premium',
+      'seller-alternative-listings',
+      'auto-radar',
     ],
   },
 };
 
 export const Private: StoryType = {
   args: {
-    user: {
-      id: '123',
-      userName: 'John Doe Private',
-      userType: MappedUserType.Private,
-      exp: 1630000000,
-      email: 'john.doe@private.com',
-      sellerId: '6001',
-      sellerIds: ['6001'],
-      isImpersonated: true,
-    },
+    user: privateSeller(),
+    entitlements: [
+      'list',
+      'top-list',
+      'list-image',
+      'safe-number',
+      'previous-price',
+    ],
   },
 };
