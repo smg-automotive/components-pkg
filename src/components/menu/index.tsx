@@ -1,8 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
   Button,
+ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
+MenuProps as ChakraMenuProps,
   MenuButton,
   MenuList,
 } from '@chakra-ui/react';
@@ -22,6 +24,9 @@ export interface MenuProps {
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
   menuColor?: string;
+icon?: ReactElement;
+  iconSpacing?: ButtonProps['iconSpacing'];
+  placement?: ChakraMenuProps['placement'];
 }
 
 const Menu: FC<MenuProps> = ({
