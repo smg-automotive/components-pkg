@@ -1,10 +1,10 @@
 import React, { FC, ReactElement } from 'react';
 import {
   Button,
-ButtonProps,
+  ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
-MenuProps as ChakraMenuProps,
+  MenuProps as ChakraMenuProps,
   MenuButton,
   MenuList,
 } from '@chakra-ui/react';
@@ -24,7 +24,7 @@ export interface MenuProps {
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
   menuColor?: string;
-icon?: ReactElement;
+  icon?: ReactElement;
   iconSpacing?: ButtonProps['iconSpacing'];
   placement?: ChakraMenuProps['placement'];
 }
@@ -43,9 +43,9 @@ const Menu: FC<MenuProps> = ({
     <ChakraMenu {...(offset.length && { offset })} placement={placement}>
       {({ isOpen }) => (
         <>
-      <MenuButton
-        as={Button}
-        padding={0}
+          <MenuButton
+            as={Button}
+            padding={0}
             iconSpacing={iconSpacing}
             leftIcon={icon}
             rightIcon={
@@ -54,24 +54,24 @@ const Menu: FC<MenuProps> = ({
                 transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
               />
             }
-        fontWeight={fontWeightTitle}
+            fontWeight={fontWeightTitle}
             color={isOpen ? 'blue.700' : menuColor}
-      >
-        {title}
-      </MenuButton>
-      <MenuList minWidth="4xl">
-        {items.map(({ onClick, text }, index) => {
-          return (
-            <ChakraMenuItem
-              key={`menuItem-${index}`}
-              onClick={onClick}
-              {...(menuColor && { color: menuColor })}
-            >
-              {text}
-            </ChakraMenuItem>
-          );
-        })}
-      </MenuList>
+          >
+            {title}
+          </MenuButton>
+          <MenuList minWidth="4xl">
+            {items.map(({ onClick, text }, index) => {
+              return (
+                <ChakraMenuItem
+                  key={`menuItem-${index}`}
+                  onClick={onClick}
+                  {...(menuColor && { color: menuColor })}
+                >
+                  {text}
+                </ChakraMenuItem>
+              );
+            })}
+          </MenuList>
         </>
       )}
     </ChakraMenu>
