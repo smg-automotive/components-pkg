@@ -78,16 +78,16 @@ const Navigation: FC<NavigationProps> = ({
       entitlements,
     });
     return headerNavigationConfigInstance.getMappedConfig();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    user,
     brand,
     environment,
     useAbsoluteUrls,
     project,
-    headerLinks,
-    drawerNodeItems,
-    user?.id,
-    user?.userType,
+    trackEvent,
+    experiments,
+    onLogout,
+    comparisonItemIds,
     entitlements,
   ]);
 
