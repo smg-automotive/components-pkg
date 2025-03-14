@@ -70,6 +70,7 @@ const Navigation: FC<NavigationProps> = ({
           onLogout,
           comparisonItemIds,
           sellerId: user?.sellerId,
+          currentLanguage: language,
         }),
         iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
@@ -89,6 +90,7 @@ const Navigation: FC<NavigationProps> = ({
     onLogout,
     comparisonItemIds,
     entitlements,
+    language,
   ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({

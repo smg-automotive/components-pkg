@@ -142,7 +142,10 @@ describe('Header', () => {
         useAbsoluteUrls: false,
         config: {
           headerItems: headerLinks({ trackEvent: jest.fn() }),
-          drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
+          drawerItems: drawerNodeItems({
+            onLogout: jest.fn(),
+            currentLanguage: 'de',
+          }),
           iconItems: iconItems({ trackEvent: jest.fn() }),
         },
         user: privateSeller(),

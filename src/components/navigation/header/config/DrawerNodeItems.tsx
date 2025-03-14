@@ -1,3 +1,5 @@
+import { Language } from '@smg-automotive/i18n-pkg';
+
 import { CustomEvent } from 'src/types/tracking';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
@@ -65,6 +67,11 @@ import { magazineLinkConfig } from './magazine';
 import { leasingDashboardLinkConfig, leasingLinkConfig } from './leasing';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
+  switchToFrenchLinkConfig,
+  switchToGermanLinkConfig,
+  switchToItalianLinkConfig,
+} from './language';
+import {
   getAutoScoutInsuranceComparisonLinkConfig,
   getMotoScoutInsuranceComparisonLinkConfig,
   getProfessionalAutoScoutInsuranceComparisonLinkConfig,
@@ -89,6 +96,7 @@ import {
 
 export interface NavigationLinkNode {
   translationKey?: string;
+  title?: string;
   items: NavigationLinkProps[];
 }
 
@@ -219,7 +227,10 @@ export const drawerNodeItems = ({
   sellerId,
   trackEvent,
   onLogout,
-}: GetNodeItemsArgs): DrawerNodeItemsConfig => ({
+  currentLanguage,
+}: GetNodeItemsArgs & {
+  currentLanguage: Language;
+}): DrawerNodeItemsConfig => ({
   search: [
     {
       translationKey: 'header.searchMenu.vehicles',
@@ -344,5 +355,13 @@ export const drawerNodeItems = ({
       ],
     },
     ...getUserNodeItems({ sellerId, onLogout, trackEvent, comparisonItemIds }),
+    {
+      title: currentLanguage.toUpperCase(),
+      items: [
+        switchToGermanLinkConfig({ currentLanguage }),
+        switchToFrenchLinkConfig({ currentLanguage }),
+        switchToItalianLinkConfig({ currentLanguage }),
+      ],
+    },
   ],
 });
