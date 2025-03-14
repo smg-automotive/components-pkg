@@ -228,8 +228,10 @@ export const drawerNodeItems = ({
   trackEvent,
   onLogout,
   currentLanguage,
+  isLoggedIn,
 }: GetNodeItemsArgs & {
   currentLanguage: Language;
+  isLoggedIn: boolean;
 }): DrawerNodeItemsConfig => ({
   search: [
     {
@@ -354,7 +356,9 @@ export const drawerNodeItems = ({
         magazineLinkConfig({ trackEvent }),
       ],
     },
-    ...getUserNodeItems({ sellerId, onLogout, trackEvent, comparisonItemIds }),
+    ...(isLoggedIn
+      ? getUserNodeItems({ sellerId, onLogout, trackEvent, comparisonItemIds })
+      : []),
     {
       title: currentLanguage.toUpperCase(),
       items: [

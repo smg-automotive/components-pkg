@@ -145,6 +145,7 @@ describe('Header', () => {
           drawerItems: drawerNodeItems({
             onLogout: jest.fn(),
             currentLanguage: 'de',
+            isLoggedIn: true,
           }),
           iconItems: iconItems({ trackEvent: jest.fn() }),
         },

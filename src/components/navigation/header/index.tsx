@@ -71,6 +71,7 @@ const Navigation: FC<NavigationProps> = ({
           comparisonItemIds,
           sellerId: user?.sellerId,
           currentLanguage: language,
+          isLoggedIn: !!user,
         }),
         iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
