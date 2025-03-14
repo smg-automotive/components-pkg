@@ -9,6 +9,7 @@ import DrawerContent from 'src/components/drawer/DrawerContent';
 import Drawer from 'src/components/drawer';
 
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
+import { DrawerNode } from '../config/DrawerNodeItems';
 import DrawerUserInfo from './UserInfo';
 import { DrawerMenu } from './DrawerMenu';
 
@@ -44,7 +45,11 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
             gridGap={{ md: '3xl' }}
           >
-            {drawer?.current === 'user' ? <DrawerUserInfo user={user} /> : null}
+            {[DrawerNode.User, DrawerNode.Combined].includes(
+              drawer?.current as DrawerNode,
+            ) ? (
+              <DrawerUserInfo user={user} />
+            ) : null}
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
