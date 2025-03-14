@@ -36,12 +36,19 @@ const Menu: FC<MenuProps> = ({
 }) => {
   return (
     <ChakraMenu {...(offset.length && { offset })} placement={placement}>
+      {({ isOpen }) => (
+        <>
       <MenuButton
         as={Button}
         padding={0}
             iconSpacing={iconSpacing}
             leftIcon={icon}
-        rightIcon={<ChevronDownSmallIcon />}
+            rightIcon={
+              <ChevronDownSmallIcon
+                transition="0.2s"
+                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+              />
+            }
         fontWeight={fontWeightTitle}
         {...(menuColor && { color: menuColor })}
       >
@@ -60,6 +67,8 @@ const Menu: FC<MenuProps> = ({
           );
         })}
       </MenuList>
+        </>
+      )}
     </ChakraMenu>
   );
 };
