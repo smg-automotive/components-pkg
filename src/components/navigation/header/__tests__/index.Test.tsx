@@ -18,7 +18,7 @@ const renderNavigation = ({
   brand = Brand.AutoScout24,
   language = 'en',
   hasNotification = false,
-  onLogin = jest.fn,
+  onLogin = jest.fn(),
   onLogout = jest.fn,
   useAbsoluteUrls,
   project,
