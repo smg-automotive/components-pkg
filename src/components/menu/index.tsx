@@ -50,7 +50,7 @@ const Menu: FC<MenuProps> = ({
               />
             }
         fontWeight={fontWeightTitle}
-        {...(menuColor && { color: menuColor })}
+            color={isOpen ? 'blue.700' : menuColor}
       >
         {title}
       </MenuButton>
