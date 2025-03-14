@@ -12,6 +12,7 @@ import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer'
 import { DrawerNode } from '../config/DrawerNodeItems';
 import DrawerUserInfo from './UserInfo';
 import { DrawerMenu } from './DrawerMenu';
+import DrawerLoginToggle from './DrawerLoginToggle';
 
 interface NavigationDrawerProps {
   user: MergedUser | null;
@@ -19,6 +20,8 @@ interface NavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   menuHeight: string;
+  onLogin: () => void;
+  onLogout: () => void;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -27,6 +30,8 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   onClose,
   menuHeight,
   user,
+  onLogin,
+  onLogout,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -53,6 +58,13 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
             ))}
+            {drawer?.current === DrawerNode.Combined ? (
+              <DrawerLoginToggle
+                user={user}
+                onLogin={onLogin}
+                onLogout={onLogout}
+              />
+            ) : null}
           </Grid>
         </DrawerBody>
       </DrawerContent>

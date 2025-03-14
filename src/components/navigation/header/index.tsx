@@ -163,6 +163,8 @@ const Navigation: FC<NavigationProps> = ({
         isOpen={isOpen}
         onClose={onClose}
         menuHeight={config.menuHeight}
+        onLogin={onLogin}
+        onLogout={onLogout}
       />
     </TranslationProvider>
   );
