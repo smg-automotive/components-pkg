@@ -1,6 +1,8 @@
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { LinkConfig } from 'src/components/navigation/link';
 
-import { getComparisonUrl } from '../ComparisonItem';
+import { getComparisonUrl, shouldShowComparisonLink } from '../ComparisonItem';
+import { NavigationLinkConfigProps } from './headerLinks';
 
 export const comparisonLinkConfig = ({
   comparisonItemIds,
@@ -31,4 +33,29 @@ export const comparisonLinkConfig = ({
     },
     projectIdentifier: 'listings-web',
   } satisfies LinkConfig;
+};
+
+export const getComparisonNodeItem = ({
+  comparisonItemIds,
+  trackEvent,
+  eventLabel,
+}: {
+  comparisonItemIds?: number[] | null;
+  trackEvent?: (event: CustomEvent) => void;
+  eventLabel: string;
+}): NavigationLinkConfigProps[] => {
+  return shouldShowComparisonLink(comparisonItemIds)
+    ? [
+        {
+          ...comparisonLinkConfig({ comparisonItemIds }),
+          isNew: true,
+          onClick: () =>
+            trackEvent?.({
+              eventCategory: navigationEventCategory,
+              eventAction: 'open_comparison_tool',
+              eventLabel,
+            }),
+        },
+      ]
+    : [];
 };

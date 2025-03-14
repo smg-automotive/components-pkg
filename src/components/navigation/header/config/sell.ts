@@ -107,3 +107,23 @@ export const privateMotoScoutSellLinkConfig = ({
     },
   } satisfies NavigationLinkConfigProps;
 };
+
+export const insertionLinkConfig: NavigationLinkConfigProps = {
+  translationKey: 'header.userMenu.createAd',
+  link: {
+    de: '/de/member/insertion/type',
+    en: '/de/member/insertion/type',
+    fr: '/fr/member/insertion/type',
+    it: '/it/member/insertion/type',
+  },
+  visibilitySettings: {
+    userType: {
+      private: true,
+      professional: true,
+    },
+    brand: {
+      autoscout24: true,
+      motoscout24: true,
+    },
+  },
+};
