@@ -30,12 +30,17 @@ const Menu: FC<MenuProps> = ({
   fontWeightTitle = 'regular',
   offset = [],
   menuColor,
+  icon,
+  iconSpacing,
+  placement,
 }) => {
   return (
-    <ChakraMenu {...(offset.length && { offset })}>
+    <ChakraMenu {...(offset.length && { offset })} placement={placement}>
       <MenuButton
         as={Button}
         padding={0}
+            iconSpacing={iconSpacing}
+            leftIcon={icon}
         rightIcon={<ChevronDownSmallIcon />}
         fontWeight={fontWeightTitle}
         {...(menuColor && { color: menuColor })}
