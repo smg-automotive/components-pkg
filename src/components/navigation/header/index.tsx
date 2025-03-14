@@ -9,12 +9,12 @@ import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
-
 import Box from 'src/components/box';
 
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
+import MobileHeaderMenuToggle from './MobileMenuToggle';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
 import { iconItems } from './config/iconItems';
@@ -23,7 +23,7 @@ import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
 
-interface NavigationProps {
+export interface NavigationProps {
   brand: Brand;
   comparisonItemIds?: number[] | null;
   entitlements?: string[];
@@ -148,6 +148,10 @@ const Navigation: FC<NavigationProps> = ({
               onLogin={onLogin}
             />
             <NavigationLanguageMenu activeLanguage={language} />
+            <MobileHeaderMenuToggle
+              isOpen={isOpen}
+              createDrawerHandler={createDrawerHandler}
+            />
           </Stack>
         </Box>
       </Box>
