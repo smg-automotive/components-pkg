@@ -20,8 +20,7 @@ export const NavigationItem: FC<{
       onClick={drawerHandler}
       __css={linkStyles.link}
       fontWeight="bold"
-      color="gray.900"
-      {...(isOpen ? { color: 'blue.700' } : null)}
+      color={isOpen ? 'blue.700' : 'gray.900'}
       position="relative"
       top="1px"
     >

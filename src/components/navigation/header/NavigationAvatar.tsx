@@ -35,43 +35,42 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
 
   if (user) {
     return (
-      <HStack
-        spacing="xs"
-        cursor="pointer"
-        _hover={{ color: 'blue.700' }}
-        color="gray.900"
-        onClick={createDrawerHandler({
-          nodeName: DrawerNode.User,
-        })}
-      >
-        <Avatar withNotification={hasNotification} />
-        <Hide below="sm">
-          <Text
-            fontWeight="bold"
-            {...(isDrawerOpened && { color: 'blue.700' })}
-            noOfLines={1}
-            maxW="3xl"
-          >
-            {user.email}
-          </Text>
-        </Hide>
-        <DrawerIndicator isOpen={isDrawerOpened} />
-      </HStack>
+      <Hide below="sm">
+        <HStack
+          spacing="xs"
+          cursor="pointer"
+          _hover={{ color: 'blue.700' }}
+          color={isDrawerOpened ? 'blue.700' : 'gray.900'}
+          onClick={createDrawerHandler({
+            nodeName: DrawerNode.User,
+          })}
+        >
+          <Avatar withNotification={hasNotification} />
+          <Hide below="md">
+            <Text fontWeight="bold" noOfLines={1} maxW="3xl">
+              {user.email}
+            </Text>
+          </Hide>
+          <DrawerIndicator isOpen={isDrawerOpened} />
+        </HStack>
+      </Hide>
     );
   }
 
   return (
-    <HStack
-      onClick={onLogin}
-      __css={linkStyles.link}
-      fontWeight="bold"
-      position="relative"
-      top="1px"
-    >
-      <Hide below="sm" marginRight="xs">
-        {t('header.login')}
-      </Hide>
-      <Box as={Avatar} marginLeft="2px" />
-    </HStack>
+    <Hide below="sm">
+      <HStack
+        onClick={onLogin}
+        __css={linkStyles.link}
+        fontWeight="bold"
+        position="relative"
+        top="1px"
+      >
+        <Box as={Avatar} marginLeft="2px" />
+        <Hide below="md" marginRight="xs">
+          {t('header.login')}
+        </Hide>
+      </HStack>
+    </Hide>
   );
 };
