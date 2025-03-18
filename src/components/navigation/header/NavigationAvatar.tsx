@@ -35,7 +35,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
 
   if (user) {
     return (
-      <Hide below="xs">
+      <Hide below="sm">
         <HStack
           spacing="xs"
           cursor="pointer"
@@ -46,7 +46,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
           })}
         >
           <Avatar withNotification={hasNotification} />
-          <Hide below="sm">
+          <Hide below="md">
             <Text fontWeight="bold" noOfLines={1} maxW="3xl">
               {user.email}
             </Text>
@@ -58,7 +58,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   }
 
   return (
-    <Hide below="xs">
+    <Hide below="sm">
       <HStack
         onClick={onLogin}
         __css={linkStyles.link}
@@ -67,7 +67,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         top="1px"
       >
         <Box as={Avatar} marginLeft="2px" />
-        <Hide below="sm" marginRight="xs">
+        <Hide below="md" marginRight="xs">
           {t('header.login')}
         </Hide>
       </HStack>

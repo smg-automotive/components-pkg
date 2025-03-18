@@ -14,7 +14,7 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
   return (
-    <Hide below="xs">
+    <Hide below="sm">
       <Menu
         title={activeLanguage.toUpperCase()}
         fontWeightTitle="bold"

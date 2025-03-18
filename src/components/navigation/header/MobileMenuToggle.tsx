@@ -17,7 +17,7 @@ const MobileHeaderMenuToggle: FC<Props> = ({ isOpen, createDrawerHandler }) => {
   });
 
   return (
-    <Show below="xs">
+    <Show below="sm">
       <Box
         as="button"
         onClick={mobileDrawerHandler}
