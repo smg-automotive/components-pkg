@@ -34,6 +34,10 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
 
   if (!user || !user.isMultiTenantUser || !selectedTenant) return null;
 
+  const selectedTenantInfo =
+    `${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
+    selectedTenant.id.toString();
+
   return (
     <Hide below="sm">
       <Popover
@@ -65,9 +69,9 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
                 noOfLines={1}
                 maxW={{ base: 'xl', md: '2xl' }}
                 textAlign="left"
+                title={selectedTenantInfo}
               >
-                {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
-                  selectedTenant.id}
+                {selectedTenantInfo}
               </Text>
             </Hide>
           </Button>
