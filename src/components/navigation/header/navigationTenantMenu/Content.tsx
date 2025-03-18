@@ -20,9 +20,12 @@ const NavigationTenantMenuContent = forwardRef<HTMLInputElement, Props>(
     const onTenantSelect = useCallback(
       async (newTenantId: number) => {
         setIsLoading(true);
-        await selectTenant(newTenantId);
-        onClose();
-        setIsLoading(false);
+        try {
+          await selectTenant(newTenantId);
+        } finally {
+          onClose();
+          setIsLoading(false);
+        }
       },
       [selectTenant, onClose],
     );
