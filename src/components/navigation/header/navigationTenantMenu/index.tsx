@@ -62,16 +62,18 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             iconSpacing="xs"
             onClick={onToggle}
           >
-            <Text
-              as="span"
-              fontWeight="bold"
-              noOfLines={1}
-              maxW={{ base: 'xl', md: '2xl' }}
-              textAlign="left"
-              title={selectedTenantInfo}
-            >
-              {selectedTenantInfo}
-            </Text>
+            <Hide below="md">
+              <Text
+                as="span"
+                fontWeight="bold"
+                noOfLines={1}
+                maxW={{ base: 'xl', md: '2xl' }}
+                textAlign="left"
+                title={selectedTenantInfo}
+              >
+                {selectedTenantInfo}
+              </Text>
+            </Hide>
           </Button>
         </PopoverTrigger>
         <Portal>

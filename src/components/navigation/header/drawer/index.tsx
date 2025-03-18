@@ -10,7 +10,7 @@ import Drawer from 'src/components/drawer';
 
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
 import { DrawerNode } from '../config/DrawerNodeItems';
-import DrawerUserInfo from './UserInfo';
+import DrawerUserInfo from './userInfo';
 import { DrawerMenu } from './DrawerMenu';
 import DrawerLoginToggle from './DrawerLoginToggle';
 
@@ -22,6 +22,7 @@ interface NavigationDrawerProps {
   menuHeight: string;
   onLogin: () => void;
   onLogout: () => void;
+  selectTenant: (sellerId: number | string) => Promise<void>;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -32,6 +33,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   user,
   onLogin,
   onLogout,
+  selectTenant,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -62,7 +64,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             {[DrawerNode.User, DrawerNode.Combined].includes(
               drawer?.current as DrawerNode,
             ) ? (
-              <DrawerUserInfo user={user} />
+              <DrawerUserInfo user={user} selectTenant={selectTenant} />
             ) : null}
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />

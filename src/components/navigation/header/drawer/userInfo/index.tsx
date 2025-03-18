@@ -58,10 +58,10 @@ const DrawerUserInfo: FC<Props> = ({ user, selectTenant }) => {
         </Stack>
         {selectedTenant ? (
           <>
-            <Show above="sm">
+            <Show above="md">
               <SelectedTenantInfo selectedTenant={selectedTenant} />
             </Show>
-            <Show below="xs" marginX="-lg" marginBottom="-lg">
+            <Show below="sm" marginX="-lg" marginBottom="-lg">
               <TenantSelectionMenu
                 user={user}
                 selectedTenant={selectedTenant}
