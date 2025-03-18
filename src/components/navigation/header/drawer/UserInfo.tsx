@@ -21,7 +21,11 @@ const DrawerUserInfo: FC<Props> = ({ user }) => {
             md: 'row',
           }}
         >
-          <Box as="span" fontWeight="bold">
+          <Box
+            as="span"
+            fontWeight="bold"
+            maxW="calc(100vw - 2 * var(--chakra-space-lg) - var(--chakra-space-sm) - var(--chakra-sizes-sm))"
+          >
             {user.email}
           </Box>
           {user.email !== user.userName ? (
