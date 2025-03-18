@@ -36,18 +36,27 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent marginTop={menuHeight} overflow="scroll" maxH="100%">
+      <DrawerContent
+        marginTop={menuHeight}
+        overflowY="scroll"
+        maxH={`calc(100vh - ${menuHeight})`}
+        maxW="100vw"
+      >
         <DrawerBody
           data-testid="drawer-body"
           py="lg"
           px={{ md: 'xs' }}
           maxWidth="container.2xl"
           width="full"
-          margin={'auto'}
+          margin="auto"
         >
           <Grid
             height="full"
-            templateColumns={{ '2xs': '1fr', md: 'repeat(5, 1fr)' }}
+            width="full"
+            templateColumns={{
+              '2xs': 'minmax(0, 1fr)',
+              md: 'repeat(5, 1fr)',
+            }}
             gridGap={{ md: '3xl' }}
           >
             {[DrawerNode.User, DrawerNode.Combined].includes(
