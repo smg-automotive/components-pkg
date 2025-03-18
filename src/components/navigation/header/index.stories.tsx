@@ -116,9 +116,7 @@ export const Professional: StoryType = {
 
 export const ProfessionalWithMultiTenancy: StoryType = {
   args: {
-    user: multiTenantSeller({
-      email: 'krzysztof.sakwerda+prof@swissmarketplace.group',
-    }),
+    user: multiTenantSeller(),
   },
 };
 
