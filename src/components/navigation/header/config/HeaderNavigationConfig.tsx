@@ -144,6 +144,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
 
     return new HeaderNavigationLink({
       config: {
+        title: link.title,
         translationKey: link.translationKey,
         translationParameters: link.translationParameters,
         link: this.replacePathParams(link.link),

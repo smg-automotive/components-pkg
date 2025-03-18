@@ -9,13 +9,13 @@ import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
-
 import Box from 'src/components/box';
 
 import NavigationTenantMenu from './navigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
+import MobileHeaderMenuToggle from './MobileMenuToggle';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
 import { NavigationDrawer } from './drawer';
 import { iconItems } from './config/iconItems';
@@ -27,7 +27,6 @@ import ComparisonItem from './ComparisonItem';
 export interface NavigationProps {
   brand: Brand;
   comparisonItemIds?: number[] | null;
-  entitlements?: string[];
   environment: Environment;
   experiments?: Record<string, string>;
   hasNotification: boolean;
@@ -72,6 +71,8 @@ const Navigation: FC<NavigationProps> = ({
           onLogout,
           comparisonItemIds,
           sellerId: user?.sellerId,
+          currentLanguage: language,
+          isLoggedIn: !!user,
         }),
         iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
@@ -89,6 +90,7 @@ const Navigation: FC<NavigationProps> = ({
     experiments,
     onLogout,
     comparisonItemIds,
+    language,
   ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
@@ -152,6 +154,10 @@ const Navigation: FC<NavigationProps> = ({
             />
             <NavigationTenantMenu user={user} selectTenant={selectTenant} />
             <NavigationLanguageMenu activeLanguage={language} />
+            <MobileHeaderMenuToggle
+              isOpen={isOpen}
+              createDrawerHandler={createDrawerHandler}
+            />
           </Stack>
         </Box>
       </Box>
@@ -161,6 +167,8 @@ const Navigation: FC<NavigationProps> = ({
         isOpen={isOpen}
         onClose={onClose}
         menuHeight={config.menuHeight}
+        onLogin={onLogin}
+        onLogout={onLogout}
       />
     </TranslationProvider>
   );

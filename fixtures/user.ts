@@ -12,6 +12,8 @@ const shared = {
   forceTenantSelection: false,
   isImpersonated: false,
   userId: '123',
+  managedSellers: [],
+  isMultiTenantUser: false,
 };
 
 export const privateSeller = (
@@ -24,22 +26,18 @@ export const privateSeller = (
   sellerId: '6001',
   sellerIds: ['6001'],
   entitlements: privateSellerEntitlements,
-  managedSellers: [],
-  isMultiTenantUser: false,
   userType: Auth0UserType.Private,
   ...props,
 });
 
 export const professionalSeller = (
   props: Partial<Exclude<EnrichedSessionUser, 'userType'>> = {},
-) => ({
+): EnrichedSessionUser => ({
   ...shared,
   email: 'amir@professional.com',
   sellerId: '6001',
   sellerIds: ['6001'],
   entitlements: professionalSellerEntitlements,
-  isMultiTenantUser: false,
-  managedSellers: [],
   userType: Auth0UserType.Professional,
   ...props,
 });
@@ -94,38 +92,3 @@ export const multiTenantSeller = (
     ],
     ...props,
   });
-
-export const enrichedSessionUser: EnrichedSessionUser = {
-  email: 'foo@bar.com',
-  email_verified: true,
-  sub: '123',
-  sid: '123',
-  forceTenantSelection: true,
-  sellerId: '123',
-  sellerIds: ['123', '456'],
-  isImpersonated: false,
-  isMultiTenantUser: true,
-  userId: '123',
-  userType: Auth0UserType.Professional,
-  entitlements: null,
-  managedSellers: [
-    {
-      id: 991,
-      billingAddress: null,
-      billingCity: null,
-      billingCountryCode: null,
-      billingName: 'Seller 1',
-      billingPostOfficeBox: null,
-      billingZipCode: null,
-    },
-    {
-      id: 992,
-      billingAddress: null,
-      billingCity: null,
-      billingCountryCode: null,
-      billingName: 'Seller 2',
-      billingPostOfficeBox: null,
-      billingZipCode: null,
-    },
-  ],
-};

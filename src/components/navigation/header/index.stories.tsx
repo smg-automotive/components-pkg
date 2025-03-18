@@ -9,7 +9,7 @@ import {
   multiTenantSeller,
   privateSeller,
   professionalSeller,
-} from 'fixtures/enrichedSessionUser';
+} from 'fixtures/user';
 
 import Navigation from './index';
 
@@ -39,7 +39,6 @@ const meta: Meta<typeof Navigation> = {
     environment: 'preprod',
     useAbsoluteUrls: false,
     project: undefined,
-    entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
     selectTenant: async (id) => action('select tenant')(id),

@@ -1,26 +1,18 @@
 import React, { FC } from 'react';
-
 import { Language } from '@smg-automotive/i18n-pkg';
 
 import Menu from 'src/components/menu';
 import Hide from 'src/components/hide';
 
+import { replaceLanguage } from './replaceLanguage';
+
 interface NavigationLanguageMenuProps {
-  activeLanguage: string;
+  activeLanguage: Language;
 }
 
 export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
-  const replaceLanguage = (language: Language) => {
-    const updatedUrl = window.location.href.replace(
-      `/${activeLanguage}`,
-      `/${language}`,
-    );
-
-    window.location.replace(updatedUrl);
-  };
-
   return (
     <Hide below="sm">
       <Menu
@@ -31,9 +23,21 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         iconSpacing="xs"
         placement="bottom-end"
         items={[
-          { text: 'Deutsch', onClick: () => replaceLanguage('de') },
-          { text: 'Français', onClick: () => replaceLanguage('fr') },
-          { text: 'Italiano', onClick: () => replaceLanguage('it') },
+          {
+            text: 'Deutsch',
+            onClick: () =>
+              replaceLanguage({ activeLanguage, newLanguage: 'de' }),
+          },
+          {
+            text: 'Français',
+            onClick: () =>
+              replaceLanguage({ activeLanguage, newLanguage: 'fr' }),
+          },
+          {
+            text: 'Italiano',
+            onClick: () =>
+              replaceLanguage({ activeLanguage, newLanguage: 'it' }),
+          },
         ]}
       />
     </Hide>

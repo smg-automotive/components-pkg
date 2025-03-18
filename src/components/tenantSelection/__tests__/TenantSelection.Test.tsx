@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { enrichedSessionUser } from 'fixtures/enrichedSessionUser';
+import { multiTenantSeller } from 'fixtures/user';
 import { render, screen, waitFor } from '.jest/utils';
 
 import TenantSelection, { TenantSelectionProps } from '..';
@@ -19,7 +19,7 @@ const renderWrapper = ({
 
 describe('TenantSelection', () => {
   it('renders the TenantSelection component', () => {
-    renderWrapper({ user: enrichedSessionUser });
+    renderWrapper({ user: multiTenantSeller({ forceTenantSelection: true }) });
 
     expect(
       screen.getByText('Wählen Sie eine Ihrer Garagen'),
@@ -39,22 +39,22 @@ describe('TenantSelection', () => {
     const user = userEvent.setup();
     const mockSelectTenant = jest.fn();
     renderWrapper({
-      user: enrichedSessionUser,
+      user: multiTenantSeller({ forceTenantSelection: true }),
       selectTenant: mockSelectTenant,
     });
 
     expect(screen.getByText('Anmelden')).toBeDisabled();
 
     user.click(screen.getByText('Garage auswählen'));
-    await screen.findByText('Seller 1 - 991');
-    user.click(screen.getByText('Seller 1 - 991'));
+    await screen.findByText('Garage Amir Basel - 6002');
+    user.click(screen.getByText('Garage Amir Basel - 6002'));
 
     const loginButton = await screen.findByText('Anmelden');
     expect(loginButton).toBeEnabled();
 
     user.click(loginButton);
     return waitFor(() => {
-      expect(mockSelectTenant).toHaveBeenCalledWith(991);
+      expect(mockSelectTenant).toHaveBeenCalledWith(6002);
     });
   });
 });

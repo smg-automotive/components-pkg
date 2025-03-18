@@ -7,7 +7,7 @@ import {
   multiTenantSeller,
   privateSeller,
   professionalSeller,
-} from 'fixtures/enrichedSessionUser';
+} from 'fixtures/user';
 import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
@@ -22,8 +22,8 @@ const renderNavigation = ({
   brand = Brand.AutoScout24,
   language = 'en',
   hasNotification = false,
-  onLogin = jest.fn,
-  onLogout = jest.fn,
+  onLogin = jest.fn(),
+  onLogout = jest.fn(),
   selectTenant = jest.fn(() => Promise.resolve()),
   useAbsoluteUrls,
   project,
@@ -69,7 +69,7 @@ describe('Header', () => {
     expect(drawerBody).toBeInTheDocument();
   });
 
-  it('displays user info in the user drawer', async () => {
+  it('displays user email in the user drawer', async () => {
     const email = 'john.doe@me.com';
     renderNavigation({ user: privateSeller({ email }) });
     const drawerToggle = screen.getByText(email);
@@ -123,14 +123,15 @@ describe('Header', () => {
   });
 
   it('does not display user name in the search drawer', async () => {
-    renderNavigation({});
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: professionalSeller({ email }) });
 
     const searchItem = screen.getByText('Search');
     fireEvent.click(searchItem);
 
     const drawerBody = screen.getByTestId('drawer-body');
     expect(
-      within(drawerBody).queryByText('john.doe@me.com', { exact: false }),
+      within(drawerBody).queryByText(email, { exact: false }),
     ).not.toBeInTheDocument();
   });
 
@@ -143,7 +144,7 @@ describe('Header', () => {
 
   it('should display user email if there is a user', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: multiTenantSeller({ email }) });
+    renderNavigation({ user: professionalSeller({ email }) });
 
     const user = screen.getByText(email);
     expect(user).toBeInTheDocument();
@@ -164,7 +165,11 @@ describe('Header', () => {
         useAbsoluteUrls: false,
         config: {
           headerItems: headerLinks({ trackEvent: jest.fn() }),
-          drawerItems: drawerNodeItems({ onLogout: jest.fn() }),
+          drawerItems: drawerNodeItems({
+            onLogout: jest.fn(),
+            currentLanguage: 'de',
+            isLoggedIn: true,
+          }),
           iconItems: iconItems({ trackEvent: jest.fn() }),
         },
         user: privateSeller(),
