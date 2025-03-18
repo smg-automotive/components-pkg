@@ -9,7 +9,7 @@ const sellLinkConfig = ({
 }) => {
   return {
     translationKey: 'header.sell',
-    showUnderMoreLinkBelow: 'sm',
+    showUnderMoreLinkBelow: 'md',
     onClick: () =>
       trackEvent?.({
         eventCategory: navigationEventCategory,
