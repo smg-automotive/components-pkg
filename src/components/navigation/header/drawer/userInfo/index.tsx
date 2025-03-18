@@ -44,7 +44,11 @@ const DrawerUserInfo: FC<Props> = ({ user, selectTenant }) => {
               md: 'sm',
             }}
           >
-            <Box as="span" fontWeight="bold">
+            <Box
+              as="span"
+              fontWeight="bold"
+              maxW="calc(100vw - 2 * var(--chakra-space-lg) - var(--chakra-space-sm) - var(--chakra-sizes-sm))"
+            >
               {user.email}
             </Box>
             {user.userType === Auth0UserType.Professional ? (
