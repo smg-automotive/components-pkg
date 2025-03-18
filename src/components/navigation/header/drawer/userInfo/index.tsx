@@ -74,7 +74,7 @@ const DrawerUserInfo: FC<Props> = ({ user, selectTenant }) => {
       <Divider
         borderBottomWidth={{
           base: selectedTenant ? 0 : '1px',
-          sm: '1px',
+          md: '1px',
         }}
       />
     </GridItem>
