@@ -58,16 +58,18 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             iconSpacing="xs"
             onClick={onToggle}
           >
-            <Text
-              as="span"
-              fontWeight="bold"
-              noOfLines={1}
-              maxW={{ base: 'xl', md: '2xl' }}
-              textAlign="left"
-            >
-              {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
-                selectedTenant.id}
-            </Text>
+            <Hide below="md">
+              <Text
+                as="span"
+                fontWeight="bold"
+                noOfLines={1}
+                maxW={{ base: 'xl', md: '2xl' }}
+                textAlign="left"
+              >
+                {`${selectedTenant.billingName || ''} ${selectedTenant.billingCity || ''}`.trim() ||
+                  selectedTenant.id}
+              </Text>
+            </Hide>
           </Button>
         </PopoverTrigger>
         <Portal>
