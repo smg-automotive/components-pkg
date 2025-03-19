@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-// import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { Section } from './index';
 
 const meta: Meta<typeof Section> = {
@@ -15,7 +13,6 @@ const meta: Meta<typeof Section> = {
     variant: 'hero',
   },
   argTypes: {
-    // ...getRecipeControls('section'),
     variant: {
       options: ['hero', 'regular'],
       control: 'select',
@@ -32,8 +29,6 @@ const meta: Meta<typeof Section> = {
 export default meta;
 
 type StoryType = StoryObj<typeof Section>;
-
-export const Overview: StoryType = {};
 
 export const Hero: StoryType = {
   args: {
