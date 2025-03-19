@@ -11,7 +11,6 @@ import Slider from './slider';
 import Skeleton from './skeleton';
 import SimpleHeader from './simpleHeader';
 import Select from './select';
-import Section from './section';
 import Radio from './radio';
 import Popover from './popover';
 import Pagination from './pagination';
@@ -65,7 +64,6 @@ export const components: Record<string, ComponentStyleConfig> = {
   NumberInput,
   Pagination,
   Radio,
-  Section,
   Select,
   Skeleton,
   SimpleHeader,
