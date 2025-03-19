@@ -1,25 +1,33 @@
 import React, { FC, ReactNode } from 'react';
-import { Box, BoxProps, chakra } from '@chakra-ui/react';
+import {
+  Box,
+  BoxProps,
+  chakra,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
+
+import { sectionRecipe } from 'src/themes/shared/slotRecipes/section';
 
 import { Stack } from '../stack';
 
-export type SectionProps = {
-  // variant?: 'hero' | 'regular';
+type SectionVariantProps = RecipeVariantProps<typeof sectionRecipe>;
+
+export type SectionProps = SectionVariantProps & {
+  variant?: 'hero' | 'regular';
   title: string;
   text?: string;
   image?: ReactNode;
   maxImgW?: BoxProps['maxWidth'];
 };
 
-export const Section: FC<SectionProps> = ({
-  // variant,
-  title,
-  text,
-  image,
-  maxImgW = '2xl',
-  // ...props
-}) => {
-  // const styles = useMultiStyleConfig(`Section`, { variant });
+export const Section: FC<SectionProps> = ({ maxImgW = '2xl', ...props }) => {
+  // const recipe = useSlotRecipe({ key: 'section' });
+  const recipe = useSlotRecipe({ recipe: sectionRecipe });
+  const [recipeProps, componentProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  const { title, text, image } = componentProps;
 
   return (
     <Stack direction={{ '2xs': 'column', md: 'row' }} gap="xl">
@@ -29,10 +37,8 @@ export const Section: FC<SectionProps> = ({
         </Box>
       ) : null}
       <Stack gap="md">
-        {/* <chakra.span css={styles.title}>{title}</chakra.span>
-        {text ? <chakra.span css={styles.text}>{text}</chakra.span> : null} */}
-        <chakra.span>{title}</chakra.span>
-        {text ? <chakra.span>{text}</chakra.span> : null}
+        <chakra.span css={styles.title}>{title}</chakra.span>
+        {text ? <chakra.span css={styles.text}>{text}</chakra.span> : null}
       </Stack>
     </Stack>
   );
