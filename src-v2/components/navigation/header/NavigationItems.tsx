@@ -7,6 +7,7 @@ import { breakpoints } from 'src/themes';
 import Stack from 'src/components/stack';
 import Show from 'src/components/show';
 import Link from 'src/components/link';
+import Hide from 'src/components/hide';
 import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
 import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
 
@@ -53,11 +54,13 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
           alt="Platform logo"
         />
       </Link>
-      <NavigationItem
-        translationKey="header.search"
-        drawerHandler={searchDrawerHandler}
-        isOpen={isOpen && drawer?.current === DrawerNode.Search}
-      />
+      <Hide below="sm">
+        <NavigationItem
+          translationKey="header.search"
+          drawerHandler={searchDrawerHandler}
+          isOpen={isOpen && drawer?.current === DrawerNode.Search}
+        />
+      </Hide>
       {headerLinks.map((link, index) => (
         <HeaderLink key={`link-${index}`} link={link} />
       ))}

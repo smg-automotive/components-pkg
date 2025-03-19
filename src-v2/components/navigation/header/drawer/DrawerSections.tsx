@@ -32,7 +32,7 @@ export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
 }) => {
   const { t } = useI18n();
 
-  if (!node.translationKey) {
+  if (!node.translationKey && !node.title) {
     return null;
   }
 
@@ -47,7 +47,7 @@ export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
             fontSize="base"
             paddingTop={{ base: 'md', md: 0 }}
           >
-            {t(node.translationKey)}
+            {node.translationKey ? t(node.translationKey) : node.title}
           </Box>
           <Box
             as={MobileOnlyAccordionPanel}
