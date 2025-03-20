@@ -22,8 +22,7 @@ export type SectionProps = SectionVariantProps & {
 };
 
 export const Section: FC<SectionProps> = ({ maxImgW = '2xl', ...props }) => {
-  // const recipe = useSlotRecipe({ key: 'section' });
-  const recipe = useSlotRecipe({ recipe: sectionRecipe });
+  const recipe = useSlotRecipe({ key: 'section' });
   const [recipeProps, componentProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
 
