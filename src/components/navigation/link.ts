@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { MappedUserType } from '@smg-automotive/auth';
+import { Auth0UserType } from '@smg-automotive/auth';
 
 import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
@@ -97,7 +97,7 @@ export class Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | Auth0UserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     project?: Project;
@@ -212,7 +212,7 @@ export class Link {
     isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
-    userType?: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | Auth0UserType;
   }) {
     const forceBrandDomain = () => {
       if (forceAutoscoutLink) {
@@ -236,7 +236,7 @@ export class Link {
               Record<'professional' | 'private', Record<Environment, string>>
             >
           )['internal'][
-            userType as MappedUserType.Private | MappedUserType.Professional
+            userType as Auth0UserType.Private | Auth0UserType.Professional
           ][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
@@ -278,7 +278,7 @@ export class Link {
     hasEntitlement: boolean;
     visibilitySettings: VisibilitySettings;
     brand: Brand;
-    userType?: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | Auth0UserType;
     userEntitlements: string[];
     entitlementConfig?: EntitlementConfig;
   }) {
