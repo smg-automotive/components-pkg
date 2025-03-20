@@ -24,12 +24,7 @@ const TenantSelectionMenu: FC<Props> = ({
   const [index, setIndex] = useState<number[] | number>([]);
 
   return (
-    <Box
-      as={MobileOnlyAccordion}
-      index={index}
-      allowMultiple={true}
-      onChange={setIndex}
-    >
+    <MobileOnlyAccordion index={index} allowMultiple={true} onChange={setIndex}>
       <MobileOnlyAccordionItem border="none">
         <MobileOnlyAccordionButton data-testid="tenant-selection-accordion-toggle">
           <SelectedTenantInfo selectedTenant={selectedTenant} />
@@ -47,7 +42,7 @@ const TenantSelectionMenu: FC<Props> = ({
           />
         </Box>
       </MobileOnlyAccordionItem>
-    </Box>
+    </MobileOnlyAccordion>
   );
 };
 
