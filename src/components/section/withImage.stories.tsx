@@ -5,22 +5,29 @@ import withoutImageMeta from './withoutImage.stories';
 
 import { Section, SectionProps } from './index';
 
-const Template = ({ ...args }: SectionProps) => {
-  return (
-    <Section
-      {...args}
-      image={<img src="https://picsum.photos/320/320" alt="" />}
-    />
-  );
-};
+const Template = ({
+  nativeImageSize = '320x320',
+  ...args
+}: SectionProps & { nativeImageSize?: string }) => (
+  <Section
+    {...args}
+    image={
+      <img
+        src={`https://picsum.photos/${nativeImageSize.replace('x', '/')}`}
+        alt={nativeImageSize}
+      />
+    }
+  />
+);
 
-const meta: Meta<typeof Section> = {
+const meta: Meta<typeof Template> = {
   ...withoutImageMeta,
   title: 'Patterns/Sections/WithImage',
   component: Template,
 
   args: {
     ...withoutImageMeta.args,
+    nativeImageSize: '320x320',
     maxImgW: '2xl',
   },
   argTypes: {
