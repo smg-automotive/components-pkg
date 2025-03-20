@@ -14,7 +14,6 @@ import { Stack } from '../stack';
 type SectionVariantProps = RecipeVariantProps<typeof sectionRecipe>;
 
 export type SectionProps = SectionVariantProps & {
-  variant?: 'hero' | 'regular';
   title: string;
   text?: string;
   image?: ReactNode;
