@@ -13,6 +13,32 @@ import {
 
 import Navigation from './index';
 
+const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
+  const [selectedTenant, setSelectedTenant] = React.useState<string | null>(
+    user?.sellerId || null,
+  );
+  return (
+    <Navigation
+      user={
+        user && selectedTenant
+          ? {
+              ...user,
+              sellerId: selectedTenant,
+            }
+          : null
+      }
+      selectTenant={(newTenantId) =>
+        new Promise((resolve) => {
+          setSelectedTenant(newTenantId.toString());
+          selectTenant(newTenantId);
+          setTimeout(resolve, 300);
+        })
+      }
+      {...props}
+    />
+  );
+};
+
 /**
  * Header dropdown navigation uses drawers to display the content.
  * They will pop up from the top of the screen.
@@ -20,7 +46,7 @@ import Navigation from './index';
  **/
 const meta: Meta<typeof Navigation> = {
   title: 'Patterns/Navigation/Header',
-  component: Navigation,
+  component: Wrapper,
   decorators: [
     (Story) => (
       <Box fontFamily="Make It Sans" position="relative" height="250px">
