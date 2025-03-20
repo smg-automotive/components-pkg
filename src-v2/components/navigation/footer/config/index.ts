@@ -358,10 +358,10 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
-            en: '/de/c/d/information/sicherheitshinweise-fuer-kaeufer-und-verkaeufer-so-tappen-sie-nicht-in-die-betrugsfalle?a=13444',
-            fr: '/fr/c/d/information/conseils-de-securite-d-autoscout24?a=28058',
-            it: '/it/c/d/informazione/avvertenze-sulla-sicurezza-di-autoscout24?a=28059',
+            de: 'https://guide.autoscout24.ch/de/sicherheitshinweise/',
+            en: 'https://guide.autoscout24.ch/de/sicherheitshinweise/',
+            fr: 'https://guide.autoscout24.ch/fr/conseils-de-securite/',
+            it: 'https://guide.autoscout24.ch/it/consigli-per-la-sicurezza/',
           },
         },
         {

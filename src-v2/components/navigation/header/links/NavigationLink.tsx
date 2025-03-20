@@ -10,6 +10,7 @@ import Badge from 'src/components/badge';
 
 export interface NavigationLinkProps {
   link?: Record<Language, string>;
+  title?: string;
   translationKey?: string;
   translationParameters?: Record<string, string | number>;
   isNew?: boolean;
@@ -27,6 +28,7 @@ export interface NavigationLinkProps {
 
 const NavigationLink: FC<NavigationLinkProps> = ({
   link,
+  title,
   translationKey,
   translationParameters = {},
   isNew,
@@ -50,9 +52,9 @@ const NavigationLink: FC<NavigationLinkProps> = ({
       rightIcon={rightIcon}
       onClick={onClick}
     >
-      {translationKey && (
+      {(translationKey || title) && (
         <Hide below={hideTextBelow}>
-          {t(translationKey, translationParameters)}
+          {translationKey ? t(translationKey, translationParameters) : title}
           {isNew ? (
             <Badge variant="navigationLinkBadge" text="New"></Badge>
           ) : null}
