@@ -29,18 +29,16 @@ export const Section: FC<SectionProps> = ({ maxImgW = '2xl', ...props }) => {
   const { title, text, image } = componentProps;
 
   return (
-    <Stack direction={{ '2xs': 'column', md: 'row' }} gap="xl">
+    <Stack css={styles.root}>
       {image ? (
-        <Box maxW={maxImgW} flexShrink={0}>
+        <Box css={styles.imageContainer} maxW={maxImgW}>
           {image}
         </Box>
       ) : null}
-      <Stack gap="md">
+      <Stack css={styles.textContainer}>
         <chakra.span css={styles.title}>{title}</chakra.span>
         {text ? <chakra.span css={styles.text}>{text}</chakra.span> : null}
       </Stack>
     </Stack>
   );
 };
-
-Section.displayName = 'Section';
