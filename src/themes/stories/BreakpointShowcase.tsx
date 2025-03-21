@@ -1,39 +1,35 @@
 import React, { FC } from 'react';
-import {
-  Table,
-  TableContainer,
-  Td,
-  Th,
-  Thead,
-  Tr,
-  useTheme,
-} from '@chakra-ui/react';
+import { Table, useChakraContext } from '@chakra-ui/react';
 
-import { convertRemEmToPx } from 'src/';
+import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
 
 const BreakpointShowCase: FC = () => {
-  const theme = useTheme();
+  const context = useChakraContext();
+  const breakpoints = context._config.theme?.breakpoints || {};
+
   return (
-    <TableContainer>
-      <Table>
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Value</Th>
-            <Th>Pixels</Th>
-          </Tr>
-        </Thead>
-        {Object.entries(theme.breakpoints).map(([name, breakpoint]) => {
-          return (
-            <Tr key={name}>
-              <Td>{name}</Td>
-              <Td>{breakpoint as string}</Td>
-              <Td>{`${convertRemEmToPx(breakpoint as string)}px`}</Td>
-            </Tr>
-          );
-        })}
-      </Table>
-    </TableContainer>
+    <Table.ScrollArea>
+      <Table.Root>
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeader>Name</Table.ColumnHeader>
+            <Table.ColumnHeader>Value</Table.ColumnHeader>
+            <Table.ColumnHeader>Pixels</Table.ColumnHeader>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {Object.entries(breakpoints).map(([name, breakpoint]) => {
+            return (
+              <Table.Row key={name}>
+                <Table.Cell>{name}</Table.Cell>
+                <Table.Cell>{breakpoint}</Table.Cell>
+                <Table.Cell>{convertRemEmToPx(breakpoint)}px</Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table.Root>
+    </Table.ScrollArea>
   );
 };
 export default BreakpointShowCase;
