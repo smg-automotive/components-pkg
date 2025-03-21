@@ -5,6 +5,7 @@ import { separatorRecipe as separator } from './separator';
 import { linkRecipe as link } from './link';
 import { badgeRecipe as badge } from './badge';
 import { avatarRecipe as avatar } from './avatar';
+import { countRecipe as count } from './count';
 
 export const recipes = {
   avatar,
@@ -14,4 +15,5 @@ export const recipes = {
   skeleton,
   spinner,
   textarea,
+  count,
 };
