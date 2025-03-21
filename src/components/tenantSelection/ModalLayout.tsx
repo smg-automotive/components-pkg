@@ -7,7 +7,12 @@ export const TenantSelectionModalLayout: FunctionComponent<
   PropsWithChildren
 > = ({ children }) => {
   return (
-    <Box height={{ base: 'full', sm: 'auth0-height' }} overflow="hidden">
+    <Box
+      height={{ base: 'full', sm: 'auth0-height' }}
+      maxH="100vh"
+      overflowX="hidden"
+      overflowY="scroll"
+    >
       <Box height="full" overflowY="auto">
         <Flex
           direction="column"
