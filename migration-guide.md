@@ -26,7 +26,7 @@ Passing objects with side keys as `padding` and `margin` props is no longer supp
 
 ### State props
 
-The `is` prefix has been removed from all boolean props.  
+The `is` prefix has been removed from all boolean props.
 State props like `isDisabled` and `isInvalid` have been renamed to `disabled` and `invalid`.
 
 #### Before
@@ -68,6 +68,11 @@ Additional notes: Hiding components using this Chakra feature object is hidden j
 Integration notes:
 
 - Due to this functionality being avaialable on all components `show` and `hide` is being removed from the repository and it is necessary to remove all usage on projects and replace it with provided functionality.
+
+### FormError and FormLabel are removed
+
+With the `Field` component taking care of the label and error message, `FormError` and `FormLabel` components are removed.
+If you need to add a label or error message to your input wrap it in the `Field` component.
 
 ## Extended design tokens
 

@@ -15,9 +15,6 @@ import { TooltipIcon } from '../icons';
 
 type FieldVariantProps = RecipeVariantProps<typeof fieldSlotRecipe>;
 
-// TODO:
-// import FormLabel from '../../../src-v2/components/formLabel';
-
 export type FieldProps = FieldVariantProps & {
   id: string;
   disabled?: boolean;
