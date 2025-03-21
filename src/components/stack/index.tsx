@@ -10,7 +10,6 @@ export type StackProps = Pick<
   ChakraStackProps,
   | 'align'
   | 'children'
-  | 'css'
   | 'direction'
   | 'justify'
   | 'gap'

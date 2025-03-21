@@ -18,9 +18,6 @@ const meta: Meta<typeof Stack> = {
   args: {
     align: 'center',
     children: 'boxes',
-    css: {
-      backgroundColor: 'red.100',
-    },
     direction: 'row',
     justify: 'center',
     gap: 'md',

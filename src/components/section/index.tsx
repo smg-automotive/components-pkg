@@ -4,12 +4,11 @@ import {
   BoxProps,
   chakra,
   RecipeVariantProps,
+  Stack,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { sectionRecipe } from 'src/themes/shared/slotRecipes/section';
-
-import { Stack } from '../stack';
 
 type SectionVariantProps = RecipeVariantProps<typeof sectionRecipe>;
 
