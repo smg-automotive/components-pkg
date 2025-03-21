@@ -95,6 +95,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
               alignItems="center"
               flexDirection="column"
               gridGap="2xl"
+              overflow="scroll"
             >
               <NavigationTenantMenuContent
                 user={user}
