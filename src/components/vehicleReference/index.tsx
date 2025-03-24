@@ -1,14 +1,22 @@
 import React, { ComponentProps, FC, ReactNode } from 'react';
+import {
+  chakra,
+  type RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import { vehicleReferenceRecipe } from 'src/themes/shared/slotRecipes/vehicleReference';
 
-import Stack from '../stack';
+import { Stack } from '../stack';
+import { MissingImage } from '../missingImage';
+import { Grid } from '../grid';
+import { Box } from '../box';
+import { AspectRatio } from '../aspectRatio';
 
-import MissingImage from '../missingImage';
-import Grid from '../grid';
-import AspectRatio from '../aspectRatio';
-
-interface Props {
+type VehicleReferenceVariantProps = RecipeVariantProps<
+  typeof vehicleReferenceRecipe
+>;
+export type VehicleReferenceProps = VehicleReferenceVariantProps & {
   image?: ReactNode;
   vehicleTitle: string;
   price?: string | null;
@@ -16,18 +24,24 @@ interface Props {
   sellerAddress?: string | null;
   callToAction?: ReactNode;
   templateColumns?: ComponentProps<typeof Grid>['templateColumns'];
-}
+};
 
-const VehicleReference: FC<Props> = ({
-  image,
-  vehicleTitle,
-  price,
-  sellerName,
-  sellerAddress,
-  callToAction,
+export const VehicleReference: FC<VehicleReferenceProps> = ({
   templateColumns = { base: 'auto 1fr', md: '1fr' },
+  ...props
 }) => {
-  const styles = useMultiStyleConfig(`VehicleReference`);
+  const recipe = useSlotRecipe({ key: 'vehicleReference' });
+  const [recipeProps, componentProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  const {
+    image,
+    vehicleTitle,
+    price,
+    sellerName,
+    sellerAddress,
+    callToAction,
+  } = componentProps;
 
   return (
     <Box as="article">
@@ -41,14 +55,14 @@ const VehicleReference: FC<Props> = ({
           {image ? image : <MissingImage />}
         </AspectRatio>
         <Stack
-          spacing={{ base: 'xs', md: 'md' }}
+          gap={{ base: 'xs', md: 'md' }}
           justify={{ base: 'center', md: 'space-between' }}
         >
-          <chakra.p __css={styles.carTitle}>{vehicleTitle}</chakra.p>
-          <chakra.span __css={styles.price}>{price}</chakra.span>
+          <chakra.p css={styles.carTitle}>{vehicleTitle}</chakra.p>
+          <chakra.span css={styles.price}>{price}</chakra.span>
           <Box>
-            <chakra.p __css={styles.dealerName}>{sellerName}</chakra.p>
-            <chakra.p __css={styles.dealerAddress}>{sellerAddress}</chakra.p>
+            <chakra.p css={styles.dealerName}>{sellerName}</chakra.p>
+            <chakra.p css={styles.dealerAddress}>{sellerAddress}</chakra.p>
           </Box>
         </Stack>
       </Grid>
@@ -58,6 +72,3 @@ const VehicleReference: FC<Props> = ({
     </Box>
   );
 };
-
-export default VehicleReference;
-export { Props as VehicleReferenceProps };

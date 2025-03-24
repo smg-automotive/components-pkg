@@ -3,13 +3,13 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import withoutImageMeta from './withoutImage.stories';
 
-import SectionComponent, { Props } from './index';
+import { Section, SectionProps } from './index';
 
 const Template = ({
   nativeImageSize = '320x320',
   ...args
-}: Props & { nativeImageSize?: string }) => (
-  <SectionComponent
+}: SectionProps & { nativeImageSize?: string }) => (
+  <Section
     {...args}
     image={
       <img
@@ -23,27 +23,26 @@ const Template = ({
 const meta: Meta<typeof Template> = {
   ...withoutImageMeta,
   title: 'Patterns/Sections/WithImage',
-  component: SectionComponent,
-  render: Template.bind({}),
+  component: Template,
 
   args: {
     ...withoutImageMeta.args,
     nativeImageSize: '320x320',
     maxImgW: '2xl',
   },
-
   argTypes: {
     ...withoutImageMeta.argTypes,
-
     maxImgW: {
       options: ['xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'],
       control: 'select',
     },
   },
 };
+
 export default meta;
 
-type StoryType = StoryObj<typeof Template>;
+type StoryType = StoryObj<typeof Section>;
+
 export const Hero: StoryType = {
   args: {
     variant: 'hero',
