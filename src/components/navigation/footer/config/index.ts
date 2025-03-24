@@ -228,6 +228,18 @@ export const footerConfig = ({
             it: '/it/products-and-prices',
           },
         },
+        {
+          translationKey: 'footer.sections.list.professionalPackages',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+          },
+          link: {
+            de: 'https://b2b.autoscout24.ch/abos/',
+            en: 'https://b2b.autoscout24.ch/abos/',
+            fr: 'https://b2b.autoscout24.ch/fr/abos/',
+            it: 'https://b2b.autoscout24.ch/it/abos/',
+          },
+        },
       ],
     },
     {
