@@ -13,17 +13,15 @@ export const TenantSelectionModalLayout: FunctionComponent<
       overflowX="hidden"
       overflowY="scroll"
     >
-      <Box height="full" overflowY="auto">
-        <Flex
-          direction="column"
-          alignItems="center"
-          gridGap="md"
-          minHeight="full"
-          padding="2xl"
-        >
-          {children}
-        </Flex>
-      </Box>
+      <Flex
+        direction="column"
+        alignItems="center"
+        gridGap="md"
+        minHeight="full"
+        padding="2xl"
+      >
+        {children}
+      </Flex>
     </Box>
   );
 };
