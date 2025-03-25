@@ -12,13 +12,14 @@ export const TenantSelectionModalLayout: FunctionComponent<
       maxH="100vh"
       overflowX="hidden"
       overflowY="scroll"
+      paddingX="2xl"
+      paddingY={{ base: '3xl', sm: '2xl' }}
     >
       <Flex
         direction="column"
         alignItems="center"
         gridGap="md"
         minHeight="full"
-        padding="2xl"
       >
         {children}
       </Flex>
