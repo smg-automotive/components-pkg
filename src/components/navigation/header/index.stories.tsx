@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Brand } from 'src/types/brand';
+import { PageLayout } from 'src/components/layout';
 import Box from 'src/components/box';
 
 import {
@@ -49,9 +50,17 @@ const meta: Meta<typeof Navigation> = {
   component: Wrapper,
   decorators: [
     (Story) => (
-      <Box fontFamily="Make It Sans" position="relative" height="250px">
-        <Story />
-      </Box>
+      <PageLayout header={<Story />} maxContentWidth="2xl">
+        <Box
+          height="400px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          bg="blue.100"
+        >
+          This is page content
+        </Box>
+      </PageLayout>
     ),
   ],
 
@@ -116,7 +125,18 @@ export const Professional: StoryType = {
 
 export const ProfessionalWithMultiTenancy: StoryType = {
   args: {
-    user: multiTenantSeller(),
+    user: multiTenantSeller({
+      sellerIds: new Array(100).fill(null).map((_, index) => `600${index}`),
+      managedSellers: new Array(100).fill(null).map((_, index) => ({
+        id: 6000 + index,
+        billingAddress: null,
+        billingCity: 'Zurich',
+        billingCountryCode: null,
+        billingName: `Garage Amir ${index}`,
+        billingPostOfficeBox: null,
+        billingZipCode: (8000 + index).toString(),
+      })),
+    }),
   },
 };
 

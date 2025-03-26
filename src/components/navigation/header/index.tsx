@@ -119,8 +119,8 @@ const Navigation: FC<NavigationProps> = ({
         borderBottomColor="gray.200"
         borderBottomWidth="1px"
         zIndex="header"
-        position="relative"
         backgroundColor="white"
+        {...(isOpen ? { position: 'fixed', top: 0 } : { position: 'relative' })}
       >
         <Box
           maxWidth="container.2xl"

@@ -39,10 +39,13 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
       <DrawerOverlay />
       <DrawerContent
-        marginTop={menuHeight}
         overflowY="scroll"
         maxH={`calc(100vh - ${menuHeight})`}
         maxW="100vw"
+        // This is due to safari scrolling the page up when an input is focused
+        // Using margin results in a gap between the header and the drawer after the scroll
+        // Chakra overrides the `top` position with the inline style, hence the !important
+        top={`${menuHeight} !important`}
       >
         <DrawerBody
           data-testid="drawer-body"

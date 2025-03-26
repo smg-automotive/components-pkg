@@ -20,7 +20,19 @@ const meta: Meta<typeof TenantSelection> = {
     user: {
       options: ['user', 'none'],
       mapping: {
-        user: multiTenantSeller({ forceTenantSelection: true }),
+        user: multiTenantSeller({
+          sellerIds: new Array(100).fill(null).map((_, index) => `600${index}`),
+          managedSellers: new Array(100).fill(null).map((_, index) => ({
+            id: 6000 + index,
+            billingAddress: null,
+            billingCity: 'Zurich',
+            billingCountryCode: null,
+            billingName: `Garage Amir ${index}`,
+            billingPostOfficeBox: null,
+            billingZipCode: (8000 + index).toString(),
+          })),
+          forceTenantSelection: true,
+        }),
         none: null,
       },
 
