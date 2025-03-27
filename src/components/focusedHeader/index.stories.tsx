@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Brand } from 'src/types/brand';
 
-import { FocusedHeader } from './index';
+import FocusedHeader from './index';
 
 const meta: Meta<typeof FocusedHeader> = {
   title: 'Patterns/Navigation/Focused Header',
