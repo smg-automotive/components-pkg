@@ -10,6 +10,6 @@ const AppLayoutHeader: ComponentWithAs<'div', GridItemProps> = forwardRef<
   return <GridItem area="header" ref={ref} {...(props as GridItemProps)} />;
 });
 
-AppLayoutHeader.displayName = 'AppLayoutFooter';
+AppLayoutHeader.displayName = 'AppLayoutHeader';
 
 export default AppLayoutHeader;
