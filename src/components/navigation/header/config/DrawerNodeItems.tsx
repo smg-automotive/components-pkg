@@ -18,7 +18,6 @@ import {
   accountSettingsLinkConfig,
   changeEmailLinkConfig,
   changeLanguageLinkConfig,
-  changePasswordLinkConfig,
   editUsersLinkConfig,
   favoritesLinkConfig,
   getLogoutLinkConfig,
@@ -84,7 +83,6 @@ import { hciLinkConfig } from './hci';
 import { estimateLinkConfig } from './estimate';
 import { electromobilityLinkConfig } from './electroMobility';
 import { dmsLogLinkConfig } from './dmsLog';
-import { dealerInfoSystemLinkConfig } from './dealerInfoSystem';
 import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
 import { autoRadarLinkConfig, manageAutoRadarLinkConfig } from './AutoRadar';
@@ -186,7 +184,6 @@ const getUserNodeItems = ({
         eventLabel: 'drawer-user',
       }),
       autoRadarLinkConfig,
-      dealerInfoSystemLinkConfig,
       autoScoutMarketPriceCheckLinkConfig,
       motoScoutMarketPriceCheckLinkConfig,
     ],
@@ -196,7 +193,6 @@ const getUserNodeItems = ({
     items: [
       changeEmailLinkConfig,
       editUsersLinkConfig,
-      changePasswordLinkConfig,
       accountSettingsLinkConfig,
       changeLanguageLinkConfig,
       getLogoutLinkConfig({ onLogout }),
