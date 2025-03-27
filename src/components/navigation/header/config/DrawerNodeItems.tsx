@@ -1112,25 +1112,6 @@ export const drawerNodeItems = ({
           },
         },
         {
-          translationKey: 'header.userMenu.changePassword',
-          link: {
-            de: '/de/member/masterdata/changepassword',
-            en: '/de/member/masterdata/changepassword',
-            fr: '/fr/member/masterdata/changepassword',
-            it: '/it/member/masterdata/changepassword',
-          },
-          visibilitySettings: {
-            userType: {
-              private: true,
-              professional: true,
-            },
-            brand: {
-              autoscout24: true,
-              motoscout24: true,
-            },
-          },
-        },
-        {
           translationKey: 'header.userMenu.accountSettings',
           link: {
             de: '/de/member/masterdata/additionalusersettings',
