@@ -4,7 +4,7 @@ import { NavigationLinkNode } from '../config/DrawerNodeItems';
 import { CollapsibleSection, NonCollapsibleSection } from './DrawerSections';
 
 export const DrawerMenu: FC<{ node: NavigationLinkNode }> = ({ node }) => {
-  if (!node.translationKey) {
+  if (!node.translationKey && !node.title) {
     return <NonCollapsibleSection node={node} />;
   }
 

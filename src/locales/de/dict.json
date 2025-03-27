@@ -109,6 +109,7 @@
       "list": {
         "direct": "AutoScout24 Direct",
         "productsAndPrices": "Produkte und Preise",
+        "professionalPackages": "Abos für Händler",
         "title": "Inserieren",
         "vehicles": "Fahrzeuge"
       },
@@ -147,9 +148,7 @@
     "userMenu": {
       "accountSettings": "Kontoeinstellungen",
       "advertisePartsAccessories": "Teile, Zubehör inserieren",
-      "amagServiceLifePool": "AMAG StandzeitenPool",
       "autoRadar": "AutoRadar",
-      "b2bPlattform": "B2B-Plattform",
       "bookmarks": "Merkliste",
       "businessImage": "BusinessImage",
       "carPark": "Zum Fahrzeugpark",
@@ -157,12 +156,9 @@
       "contactDetails": "Kontaktangaben",
       "contactRequests": "Kontaktanfragen",
       "createAd": "Inserat erstellen",
-      "dealerDashboard": "DealerDashboard",
-      "demandCalculator": "Nachfragekalkulator",
       "dmsLog": "DmsLog",
       "editPhotobar": "Photobar bearbeiten",
       "editUser": "Benutzer bearbeiten",
-      "efagServiceLifePool": "EFAG StandzeitenPool",
       "emailAddress": "E-Mail-Adresse",
       "hci": "HCI",
       "importInfo": "ImportInfo",
@@ -191,7 +187,6 @@
       "requisitions": "Suchaufträge",
       "reviews": "Bewertungen",
       "settings": "Einstellungen",
-      "statistics": "Statistiken",
       "toolsForPurchasing": "Tools für den Einkauf",
       "toolsForSelling": "Tools für den Verkauf",
       "topCars": "TopCars",

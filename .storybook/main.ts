@@ -31,5 +31,11 @@ const config: StorybookConfig = {
     webpack.resolve.plugins.push(new TsconfigPathsPlugin({}));
     return webpack;
   },
+  staticDirs: [
+    {
+      from: '../src/assets',
+      to: 'assets',
+    },
+  ],
 };
 export default config;

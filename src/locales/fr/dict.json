@@ -109,6 +109,7 @@
       "list": {
         "direct": "AutoScout24 Direct",
         "productsAndPrices": "Produits et prix",
+        "professionalPackages": "Packs pour garagistes",
         "title": "Insérer",
         "vehicles": "Véhicules"
       },
@@ -147,9 +148,7 @@
     "userMenu": {
       "accountSettings": "Paramétrage du compte",
       "advertisePartsAccessories": "Insérer des pièces détachées",
-      "amagServiceLifePool": "AMAG Pool",
       "autoRadar": "AutoRadar",
-      "b2bPlattform": "Plate-forme B2B",
       "bookmarks": "Favoris",
       "businessImage": "BusinessImage",
       "carPark": "Parc de véhicules",
@@ -157,12 +156,9 @@
       "contactDetails": "Informations de contact",
       "contactRequests": "Demandes de contact",
       "createAd": "Créer une annonce",
-      "dealerDashboard": "DealerDashboard",
-      "demandCalculator": "Calculateur de la demande",
       "dmsLog": "DmsLog",
       "editPhotobar": "Modifier la Photobar",
       "editUser": "Modifier utilisateur",
-      "efagServiceLifePool": "EFAG Pool",
       "emailAddress": "Adresse e-mail",
       "hci": "HCI",
       "importInfo": "ImportInfo",
@@ -191,7 +187,6 @@
       "requisitions": "Profil de recherche",
       "reviews": "Évaluations",
       "settings": "Préférences",
-      "statistics": "Statistiques",
       "toolsForPurchasing": "Outils pour l'achat",
       "toolsForSelling": "Outils pour la vente",
       "topCars": "TopCars",

@@ -146,3 +146,8 @@ export { DoubleLineIcon } from './DoubleLineIcon';
 export { NotAvailableSquareIcon } from './NotAvailableSquareIcon';
 export { WarrantyIcon } from './WarrantyIcon';
 export { DownloadIcon } from './DownloadIcon';
+export { TriangleIcon } from './TriangleIcon';
+export { SwissFlagIcon } from './SwissFlagIcon';
+export { GlobeIcon } from './GlobeIcon';
+export { HamburgerMenuIcon } from './HamburgerMenuIcon';
+export { LogoutIcon } from './LogoutIcon';
