@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "You can switch to a different garage later in your dealer portal.",
+      "loginButton": "Log in",
+      "selectButton": "Select garage",
+      "selectionTitle": "Select garage",
+      "title": "Select one of your garages"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Show more",
     "expanded": "Show less"

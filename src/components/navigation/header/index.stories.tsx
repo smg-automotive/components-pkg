@@ -5,9 +5,39 @@ import { action } from '@storybook/addon-actions';
 import { Brand } from 'src/types/brand';
 import Box from 'src/components/box';
 
-import { privateSeller, professionalSeller } from 'fixtures/user';
+import {
+  multiTenantSeller,
+  privateSeller,
+  professionalSeller,
+} from 'fixtures/user';
 
 import Navigation from './index';
+
+const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
+  const [selectedTenant, setSelectedTenant] = React.useState<string | null>(
+    user?.sellerId || null,
+  );
+  return (
+    <Navigation
+      user={
+        user && selectedTenant
+          ? {
+              ...user,
+              sellerId: selectedTenant,
+            }
+          : null
+      }
+      selectTenant={(newTenantId) =>
+        new Promise((resolve) => {
+          setSelectedTenant(newTenantId.toString());
+          selectTenant(newTenantId);
+          setTimeout(resolve, 300);
+        })
+      }
+      {...props}
+    />
+  );
+};
 
 /**
  * Header dropdown navigation uses drawers to display the content.
@@ -16,7 +46,7 @@ import Navigation from './index';
  **/
 const meta: Meta<typeof Navigation> = {
   title: 'Patterns/Navigation/Header',
-  component: Navigation,
+  component: Wrapper,
   decorators: [
     (Story) => (
       <Box fontFamily="Make It Sans" position="relative" height="250px">
@@ -38,6 +68,7 @@ const meta: Meta<typeof Navigation> = {
     entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
+    selectTenant: async (id) => action('select tenant')(id),
   },
 
   argTypes: {
@@ -80,27 +111,17 @@ export const Unauthenticated: StoryType = {
 export const Professional: StoryType = {
   args: {
     user: professionalSeller(),
-    entitlements: [
-      'business-image',
-      'optimizer',
-      'optimizer-pro',
-      'auto-radar',
-      'auto-radar-fast',
-      'listing-visibility-standard',
-      'listing-visibility-premium',
-    ],
+  },
+};
+
+export const ProfessionalWithMultiTenancy: StoryType = {
+  args: {
+    user: multiTenantSeller(),
   },
 };
 
 export const Private: StoryType = {
   args: {
     user: privateSeller(),
-    entitlements: [
-      'list',
-      'top-list',
-      'list-image',
-      'safe-number',
-      'previous-price',
-    ],
   },
 };
