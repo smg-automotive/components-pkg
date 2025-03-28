@@ -3,7 +3,6 @@ import { tooltipSlotRecipe as tooltip } from './tooltip';
 import { tableRecipe as table } from './table';
 import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { sectionRecipe as section } from './section';
-import { ratingGroupRecipe as ratingGroup } from './ratingGroup';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
 import { fieldSlotRecipe as field } from './field';
@@ -23,5 +22,4 @@ export const slotRecipes = {
   tooltip,
   field,
   section,
-  ratingGroup,
 };
