@@ -15,6 +15,7 @@ const baseStyleList = defineStyle({
   boxShadow: 'sm',
   color: 'inherit',
   minW: '3xs',
+  maxW: '100vw',
   py: '2',
   zIndex: 'dropdown',
   borderRadius: 'sm',
