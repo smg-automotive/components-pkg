@@ -16,7 +16,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   isDisabled?: boolean;
   isChecked?: boolean;
   isInvalid?: boolean;
-  isIndeterminate: boolean;
+  isIndeterminate?: boolean;
   readOnly?: boolean;
   label?: ReactNode | string;
   onChange?: (details: SwitchCheckedChangeDetails) => void;
