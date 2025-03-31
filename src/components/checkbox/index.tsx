@@ -1,10 +1,11 @@
-import React, { ReactNode, forwardRef } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import {
   Checkbox as ChakraCheckbox,
   RecipeVariantProps,
   SwitchCheckedChangeDetails,
   useSlotRecipe,
 } from '@chakra-ui/react';
+
 import { checkboxRecipe } from 'src/themes/shared/slotRecipes/checkbox';
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;

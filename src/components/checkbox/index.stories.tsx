@@ -2,9 +2,10 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
-import { Checkbox } from './index';
 
-const Wrapper = (args: any) => {
+import { Checkbox, CheckboxProps } from './index';
+
+const Wrapper = (args: CheckboxProps) => {
   const [{ isChecked }, updateArgs] = useArgs();
 
   return (
