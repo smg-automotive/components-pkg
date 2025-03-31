@@ -9,6 +9,7 @@ import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
 import { cardRecipe as card } from './card';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
+import { checkboxRecipe as checkbox } from './checkbox';
 
 export const slotRecipes = {
   articleTeaser,
@@ -22,4 +23,5 @@ export const slotRecipes = {
   tooltip,
   field,
   section,
+  checkbox,
 };
