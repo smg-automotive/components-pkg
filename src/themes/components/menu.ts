@@ -10,11 +10,14 @@ import { opacity } from '../shared/opacity';
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);
 
+const maximumScrollbarWidth = 20;
+
 const baseStyleList = defineStyle({
   bg: 'white',
   boxShadow: 'sm',
   color: 'inherit',
   minW: '3xs',
+  maxW: `calc(100vw - ${maximumScrollbarWidth}px)`,
   py: '2',
   zIndex: 'dropdown',
   borderRadius: 'sm',
