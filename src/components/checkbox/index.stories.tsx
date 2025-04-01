@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { Checkbox, CheckboxProps } from './index';
 
 const Wrapper = (args: CheckboxProps) => {
@@ -26,13 +28,18 @@ const meta: Meta<typeof Checkbox> = {
   args: {
     name: 'test-checkbox',
     value: '1',
-    isChecked: false,
     isDisabled: false,
+    isChecked: false,
     isInvalid: false,
+    isIndeterminate: false,
+    readOnly: false,
     label: 'Test Checkbox',
+    paddingY: '0',
+    fontWeight: 'regular',
+    variant: 'alignCenter',
   },
   argTypes: {
-    label: { control: 'text' },
+    ...getRecipeControls('checkbox'),
   },
 };
 

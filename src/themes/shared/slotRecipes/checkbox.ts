@@ -7,7 +7,6 @@ export const checkboxRecipe = defineSlotRecipe({
     root: {
       display: 'inline-flex',
       gap: 'sm',
-      alignItems: 'center',
       verticalAlign: 'top',
       position: 'relative',
     },
@@ -81,5 +80,33 @@ export const checkboxRecipe = defineSlotRecipe({
         cursor: 'notAllowed',
       },
     },
+  },
+  variants: {
+    variant: {
+      alignCenter: {
+        root: {
+          alignItems: 'center',
+        },
+      },
+      alignTop: {
+        root: {
+          alignItems: 'flex-start',
+        },
+        control: {
+          marginTop: 'xs',
+        },
+      },
+      alignTopForSmallSize: {
+        root: {
+          alignItems: 'flex-start',
+        },
+        control: {
+          marginTop: 'xxs',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'alignCenter',
   },
 });

@@ -19,6 +19,9 @@ export type CheckboxProps = CheckboxVariantProps & {
   isIndeterminate?: boolean;
   readOnly?: boolean;
   label?: ReactNode | string;
+  paddingY?: string;
+  fontWeight?: 'regular' | 'bold';
+  variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
   onChange?: (details: SwitchCheckedChangeDetails) => void;
 };
 
@@ -33,14 +36,23 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       isIndeterminate = false,
       readOnly = false,
       label,
+      paddingY,
+      fontWeight = 'regular',
+      variant = 'alignCenter',
       onChange,
       ...props
     },
     ref,
   ) => {
     const recipe = useSlotRecipe({ key: 'checkbox' });
-    const [recipeProps] = recipe.splitVariantProps(props);
+    const combinedProps = { ...props, variant, paddingY };
+    const [recipeProps] = recipe.splitVariantProps(combinedProps);
     const styles = recipe(recipeProps);
+
+    const rootStyles = {
+      ...styles.root,
+      ...(paddingY && { paddingTop: paddingY, paddingBottom: paddingY }),
+    };
 
     return (
       <ChakraCheckbox.Root
@@ -51,12 +63,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         invalid={isInvalid}
         readOnly={readOnly}
         onCheckedChange={onChange}
-        css={styles.root}
+        css={rootStyles}
       >
         <ChakraCheckbox.HiddenInput ref={ref} />
         <ChakraCheckbox.Control css={styles.control} />
         {label && (
-          <ChakraCheckbox.Label css={styles.label}>
+          <ChakraCheckbox.Label css={{ ...styles.label, fontWeight }}>
             {label}
           </ChakraCheckbox.Label>
         )}
