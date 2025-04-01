@@ -42,14 +42,11 @@ export const checkboxRecipe = defineSlotRecipe({
         bg: 'gray.900',
       },
       _invalid: {
-        color: 'red.500',
         borderColor: 'red.500',
 
         '&:hover': {
           outlineStyle: 'none',
           outlineWidth: '0',
-          borderColor: 'red.500',
-          bg: 'inherit',
         },
       },
       _disabled: {
