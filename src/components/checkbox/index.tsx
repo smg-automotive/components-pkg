@@ -56,6 +56,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <ChakraCheckbox.Root
+        {...props}
         name={name}
         value={value}
         disabled={isDisabled}
