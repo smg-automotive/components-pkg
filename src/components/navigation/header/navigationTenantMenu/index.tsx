@@ -46,6 +46,8 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
         onClose={onClose}
         isOpen={isOpen}
         initialFocusRef={initialFocusRef}
+        isLazy={true}
+        lazyBehavior="unmount"
       >
         <PopoverTrigger>
           <Button
@@ -95,6 +97,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
               alignItems="center"
               flexDirection="column"
               gridGap="2xl"
+              overflow="auto"
             >
               <NavigationTenantMenuContent
                 user={user}
