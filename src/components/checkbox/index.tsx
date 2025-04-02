@@ -19,6 +19,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   invalid?: boolean;
   indeterminate?: boolean;
   readOnly?: boolean;
+  fullWidth?: boolean;
   label?: ReactNode | string;
   paddingY?: BoxProps['paddingY'];
   fontWeight?: 'regular' | 'bold';
@@ -36,6 +37,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       invalid,
       indeterminate = false,
       readOnly = false,
+      fullWidth = false,
       label,
       paddingY,
       fontWeight = 'regular',
@@ -59,6 +61,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         checked={indeterminate ? 'indeterminate' : checked}
         invalid={invalid}
         readOnly={readOnly}
+        width={fullWidth ? 'full' : undefined}
         onCheckedChange={onChange}
         paddingY={paddingY}
         css={styles.root}

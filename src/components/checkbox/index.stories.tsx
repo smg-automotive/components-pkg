@@ -33,6 +33,7 @@ const meta: Meta<typeof Checkbox> = {
     invalid: false,
     indeterminate: false,
     readOnly: false,
+    fullWidth: false,
     label: 'Test Checkbox',
     paddingY: '0',
     fontWeight: 'regular',
