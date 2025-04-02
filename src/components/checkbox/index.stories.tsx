@@ -8,14 +8,14 @@ import { getRecipeControls } from '.storybook/preview/controls/recipe';
 import { Checkbox, CheckboxProps } from './index';
 
 const Wrapper = (args: CheckboxProps) => {
-  const [{ isChecked }, updateArgs] = useArgs();
+  const [{ checked }, updateArgs] = useArgs();
 
   return (
     <Checkbox
       {...args}
-      isChecked={isChecked}
+      checked={checked}
       onChange={(details) => {
-        updateArgs({ isChecked: !isChecked });
+        updateArgs({ checked: !checked });
         action('onChange')(details);
       }}
     />
@@ -28,10 +28,10 @@ const meta: Meta<typeof Checkbox> = {
   args: {
     name: 'test-checkbox',
     value: '1',
-    isDisabled: false,
-    isChecked: false,
-    isInvalid: false,
-    isIndeterminate: false,
+    disabled: false,
+    checked: false,
+    invalid: false,
+    indeterminate: false,
     readOnly: false,
     label: 'Test Checkbox',
     paddingY: '0',
@@ -56,7 +56,7 @@ export const StateChecked: StoryType = {
   name: 'State > Checked',
   render: Wrapper,
   args: {
-    isChecked: true,
+    checked: true,
     label: 'Checked',
   },
 };
@@ -65,7 +65,7 @@ export const StateInvalid: StoryType = {
   name: 'State > Invalid',
   render: Wrapper,
   args: {
-    isInvalid: true,
+    invalid: true,
     label: 'Invalid',
   },
 };
@@ -75,7 +75,7 @@ export const StateIndeterminate: StoryType = {
   name: 'State > Indeterminate',
   render: Wrapper,
   args: {
-    isIndeterminate: true,
+    indeterminate: true,
     label: 'Indeterminate',
   },
 };
@@ -84,7 +84,7 @@ export const StateDisabled: StoryType = {
   name: 'State > Disabled',
   render: Wrapper,
   args: {
-    isDisabled: true,
+    disabled: true,
     label: 'Disabled',
   },
 };
@@ -93,8 +93,8 @@ export const StateDisabledChecked: StoryType = {
   name: 'State > Disabled & Checked',
   render: Wrapper,
   args: {
-    isDisabled: true,
-    isChecked: true,
+    disabled: true,
+    checked: true,
     label: 'Disabled & Checked',
   },
 };

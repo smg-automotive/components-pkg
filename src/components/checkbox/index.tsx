@@ -13,10 +13,10 @@ type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
 export type CheckboxProps = CheckboxVariantProps & {
   name: string;
   value?: string;
-  isDisabled?: boolean;
-  isChecked?: boolean;
-  isInvalid?: boolean;
-  isIndeterminate?: boolean;
+  disabled?: boolean;
+  checked?: boolean;
+  invalid?: boolean;
+  indeterminate?: boolean;
   readOnly?: boolean;
   label?: ReactNode | string;
   paddingY?: string;
@@ -30,10 +30,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     {
       name,
       value,
-      isDisabled = false,
-      isChecked = false,
-      isInvalid,
-      isIndeterminate = false,
+      disabled = false,
+      checked = false,
+      invalid,
+      indeterminate = false,
       readOnly = false,
       label,
       paddingY,
@@ -59,9 +59,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {...props}
         name={name}
         value={value}
-        disabled={isDisabled}
-        checked={isIndeterminate ? 'indeterminate' : isChecked}
-        invalid={isInvalid}
+        disabled={disabled}
+        checked={indeterminate ? 'indeterminate' : checked}
+        invalid={invalid}
         readOnly={readOnly}
         onCheckedChange={onChange}
         css={rootStyles}
