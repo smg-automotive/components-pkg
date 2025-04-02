@@ -82,26 +82,6 @@ export const editUsersLinkConfig: NavigationLinkConfigProps = {
   },
 };
 
-export const changePasswordLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.changePassword',
-  link: {
-    de: '/de/member/masterdata/changepassword',
-    en: '/de/member/masterdata/changepassword',
-    fr: '/fr/member/masterdata/changepassword',
-    it: '/it/member/masterdata/changepassword',
-  },
-  visibilitySettings: {
-    userType: {
-      private: true,
-      professional: true,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: true,
-    },
-  },
-};
-
 export const accountSettingsLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.accountSettings',
   link: {
