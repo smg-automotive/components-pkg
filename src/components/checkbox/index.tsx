@@ -1,5 +1,6 @@
 import React, { forwardRef, ReactNode } from 'react';
 import {
+  BoxProps,
   Checkbox as ChakraCheckbox,
   RecipeVariantProps,
   SwitchCheckedChangeDetails,
@@ -19,7 +20,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   indeterminate?: boolean;
   readOnly?: boolean;
   label?: ReactNode | string;
-  paddingY?: string;
+  paddingY?: BoxProps['paddingY'];
   fontWeight?: 'regular' | 'bold';
   variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
   onChange?: (details: SwitchCheckedChangeDetails) => void;
@@ -49,11 +50,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const [recipeProps] = recipe.splitVariantProps(combinedProps);
     const styles = recipe(recipeProps);
 
-    const rootStyles = {
-      ...styles.root,
-      ...(paddingY && { paddingTop: paddingY, paddingBottom: paddingY }),
-    };
-
     return (
       <ChakraCheckbox.Root
         {...props}
@@ -64,7 +60,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         invalid={invalid}
         readOnly={readOnly}
         onCheckedChange={onChange}
-        css={rootStyles}
+        paddingY={paddingY}
+        css={styles.root}
       >
         <ChakraCheckbox.HiddenInput ref={ref} />
         <ChakraCheckbox.Control css={styles.control} />
