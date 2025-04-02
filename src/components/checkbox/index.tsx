@@ -46,7 +46,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref,
   ) => {
     const recipe = useSlotRecipe({ key: 'checkbox' });
-    const combinedProps = { ...props, variant, paddingY };
+    const combinedProps = { ...props, variant };
     const [recipeProps] = recipe.splitVariantProps(combinedProps);
     const styles = recipe(recipeProps);
 
