@@ -55,7 +55,6 @@ export { default as RangeFilterInput } from './rangeFilterInput';
 export { default as RangeSlider } from './rangeSlider';
 export { default as DiscreteSlider } from './discreteSlider';
 export { default as RangeFilterInputWithSlider } from './rangeFilterInputWithSlider';
-export { default as Rating } from './rating';
 export { default as Section } from './section';
 export { default as Select, type Option } from './select';
 export { default as Show } from './show';
