@@ -34,16 +34,12 @@ export type CheckboxProps = CheckboxVariantProps & {
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
-      name,
-      value,
       disabled = false,
       checked = false,
-      invalid,
       indeterminate = false,
       readOnly = false,
       fullWidth = false,
       label,
-      paddingY,
       fontWeight = 'regular',
       variant = 'alignCenter',
       onChange,
@@ -59,15 +55,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <ChakraCheckbox.Root
         {...props}
-        name={name}
-        value={value}
         disabled={disabled}
         checked={indeterminate ? 'indeterminate' : checked}
-        invalid={invalid}
         readOnly={readOnly}
         width={fullWidth ? 'full' : undefined}
         onCheckedChange={onChange}
-        paddingY={paddingY}
         css={styles.root}
       >
         <ChakraCheckbox.HiddenInput ref={ref} />
