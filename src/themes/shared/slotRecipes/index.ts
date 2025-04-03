@@ -7,6 +7,7 @@ import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
+import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
 
@@ -22,4 +23,5 @@ export const slotRecipes = {
   tooltip,
   field,
   section,
+  checkbox,
 };

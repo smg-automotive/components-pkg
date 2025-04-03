@@ -5,6 +5,7 @@ export * from './badge';
 export * from './box';
 export * from './card';
 export * from './center';
+export * from './checkbox';
 export * from './count';
 export * from './energyLabel';
 export * from './flex';
