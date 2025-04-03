@@ -11,6 +11,10 @@ import { checkboxRecipe } from 'src/themes/shared/slotRecipes/checkbox';
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
 
+type CheckboxVariant = keyof NonNullable<
+  typeof checkboxRecipe.variants
+>['variant'];
+
 export type CheckboxProps = CheckboxVariantProps & {
   name: string;
   value?: string;
@@ -23,7 +27,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   label?: ReactNode | string;
   paddingY?: BoxProps['paddingY'];
   fontWeight?: 'regular' | 'bold';
-  variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
+  variant?: CheckboxVariant;
   onChange?: (details: SwitchCheckedChangeDetails) => void;
 };
 
