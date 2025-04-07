@@ -40,12 +40,10 @@ export type NavigationLinkConfigProps = Omit<
 
 export const headerLinks = ({
   trackEvent,
-  experiments = {},
 }: {
   trackEvent?: (event: CustomEvent) => void;
-  experiments?: Record<string, string>;
 }): NavigationLinkConfigProps[] => [
-  privateAutoScoutSellLinkConfig({ trackEvent, experiments }),
+  privateAutoScoutSellLinkConfig({ trackEvent }),
   privateMotoScoutSellLinkConfig({ trackEvent }),
   professionalSellLinkConfig({ trackEvent }),
   estimateLinkConfig({ trackEvent }),

@@ -64,7 +64,7 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       project,
       config: {
-        headerItems: headerLinks({ trackEvent, experiments }),
+        headerItems: headerLinks({ trackEvent }),
         drawerItems: drawerNodeItems({
           trackEvent,
           onLogout,
