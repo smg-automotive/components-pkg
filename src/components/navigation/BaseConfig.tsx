@@ -18,7 +18,7 @@ export abstract class BaseConfig<T> {
     environment = 'production',
     useAbsoluteUrls = false,
     project,
-    entitlements = [],
+    entitlements,
   }: {
     brand: Brand;
     environment?: Environment;
@@ -32,36 +32,12 @@ export abstract class BaseConfig<T> {
     this.project = project;
     this.domains = {
       autoscout24: {
-        main: {
-          production: 'www.autoscout24.ch',
-          preprod: 'int.autoscout24.ch',
-        },
-        internal: {
-          professional: {
-            production: 'dealer.autoscout24.ch',
-            preprod: 'int-dealer.autoscout24.ch',
-          },
-          private: {
-            production: 'my.autoscout24.ch',
-            preprod: 'int-my.autoscout24.ch',
-          },
-        },
+        production: 'www.autoscout24.ch',
+        preprod: 'int.autoscout24.ch',
       },
       motoscout24: {
-        main: {
-          production: 'www.motoscout24.ch',
-          preprod: 'int.motoscout24.ch',
-        },
-        internal: {
-          professional: {
-            production: 'dealer.motoscout24.ch',
-            preprod: 'int-dealer.motoscout24.ch',
-          },
-          private: {
-            production: 'my.motoscout24.ch',
-            preprod: 'int-my.motoscout24.ch',
-          },
-        },
+        production: 'www.motoscout24.ch',
+        preprod: 'int.motoscout24.ch',
       },
     };
     this.linkProtocol = 'https';

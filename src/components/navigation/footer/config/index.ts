@@ -210,10 +210,10 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/motorrad-inserieren',
-            en: '/de/motorrad-inserieren',
-            fr: '/fr/member/insertion/type',
-            it: '/it/member/insertion/type',
+            de: '/de/insertion/identify',
+            en: '/en/insertion/identify',
+            fr: '/fr/insertion/identify',
+            it: '/it/insertion/identify',
           },
         },
         {
