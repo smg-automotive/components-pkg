@@ -57,7 +57,6 @@ import {
   motoScoutMarketPriceCheckLinkConfig,
 } from './MarketPriceCheck';
 import { magazineLinkConfig } from './magazine';
-import { leasingDashboardLinkConfig, leasingLinkConfig } from './leasing';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
   switchToFrenchLinkConfig,
@@ -146,8 +145,6 @@ const getUserNodeItems = ({
       leadsManagementLinkConfig,
       printCenterLinkConfig,
       getPartnerHubLinkConfig({ sellerId }),
-      leasingLinkConfig,
-      leasingDashboardLinkConfig,
       topListingProLinkConfig,
       autoScoutTopVehiclesLinkConfig,
       motoScoutTopVehiclesLinkConfig,
