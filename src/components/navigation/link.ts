@@ -205,7 +205,6 @@ export class Link {
       }
     };
     const forceBrand = forceBrandDomain();
-
     const domain = domains[forceBrand][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
