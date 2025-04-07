@@ -52,7 +52,6 @@ export const professionalSellLinkConfig = ({
 }) => {
   return {
     ...sellLinkConfig({ trackEvent }),
-    isInternal: true,
     projectIdentifier: 'seller-web',
     link: {
       de: '/de/insertion/identify',
@@ -80,7 +79,6 @@ export const privateMotoScoutSellLinkConfig = ({
   trackEvent?: (event: CustomEvent) => void;
 }) => {
   return {
-    isInternal: true,
     projectIdentifier: 'seller-web',
     ...sellLinkConfig({ trackEvent }),
     link: {
@@ -104,7 +102,6 @@ export const privateMotoScoutSellLinkConfig = ({
 
 export const insertionLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.createAd',
-  isInternal: true,
   projectIdentifier: 'seller-web',
   link: {
     de: '/de/insertion/identify',

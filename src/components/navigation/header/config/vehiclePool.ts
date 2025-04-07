@@ -2,7 +2,6 @@ import { NavigationLinkConfigProps } from './headerLinks';
 
 export const autoScoutVehiclesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.myVehicles',
-  isInternal: true,
   projectIdentifier: 'seller-web',
   link: {
     de: '/de/vehicle-management',
@@ -24,7 +23,6 @@ export const autoScoutVehiclesLinkConfig: NavigationLinkConfigProps = {
 
 export const motoScoutVehiclesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.myMotorcycles',
-  isInternal: true,
   projectIdentifier: 'seller-web',
   link: {
     de: '/de/vehicle-management',
