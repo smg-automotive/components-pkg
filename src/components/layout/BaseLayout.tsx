@@ -38,9 +38,9 @@ const BaseLayout: FC<PropsWithChildren<Props>> = ({
           width="full"
           height="full"
           maxWidth={sizes.container[maxContentWidth]}
-          marginX={{ '2xs': 'lg', md: '2xl' }}
-          paddingBottom={{ md: '5xl', base: '3xl' }}
-          paddingTop={{ '2xs': 'md', md: '2xl' }}
+          marginX={{ base: 'lg', sm: '2xl' }}
+          paddingBottom={{ base: '5xl', sm: '6xl' }}
+          paddingTop="2xl"
         >
           {children}
         </Container>
