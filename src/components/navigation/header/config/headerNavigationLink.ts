@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { MappedUserType } from '@smg-automotive/auth';
+import { Auth0UserType } from '@smg-automotive/auth';
 
 import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
@@ -43,7 +43,7 @@ export class HeaderNavigationLink extends Link {
   }: {
     config: LinkConfig;
     brand: Brand;
-    userType?: UserTypeExternal.Guest | MappedUserType;
+    userType?: UserTypeExternal.Guest | Auth0UserType;
     environment: Environment;
     useAbsoluteUrls: boolean;
     project?: Project;

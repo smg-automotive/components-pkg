@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "Puoi passare a un altro garage più tardi nel tuo portale rivenditori.",
+      "loginButton": "Accedi",
+      "selectButton": "Seleziona garage",
+      "selectionTitle": "Seleziona garage",
+      "title": "Seleziona uno dei tuoi garage"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Mostra dettagli",
     "expanded": "Nascondi dettagli"
