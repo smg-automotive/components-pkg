@@ -4,16 +4,10 @@ import { CustomEvent } from 'src/types/tracking';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
 import {
-  privateAutoScoutVehiclesLinkConfig,
-  privateMotoScoutVehiclesLinkConfig,
-  professionalAutoScoutVehiclesLinkConfig,
-  professionalMotoScoutVehiclesLinkConfig,
+  autoScoutVehiclesLinkConfig,
+  motoScoutVehiclesLinkConfig,
 } from './vehiclePool';
-import {
-  privateCarParkLinkConfig,
-  privateMotorcycleParkLinkConfig,
-  professionalMotorcycleParkLinkConfig,
-} from './vehiclePool';
+import { carParkLinkConfig, motorcycleParkLinkConfig } from './vehiclePool';
 import {
   accountSettingsLinkConfig,
   changeEmailLinkConfig,
@@ -136,17 +130,14 @@ const getUserNodeItems = ({
     translationKey: 'header.userMenu.manageVehicles',
     items: [
       insertionLinkConfig,
-      privateAutoScoutVehiclesLinkConfig,
-      professionalAutoScoutVehiclesLinkConfig,
-      privateMotoScoutVehiclesLinkConfig,
-      professionalMotoScoutVehiclesLinkConfig,
+      autoScoutVehiclesLinkConfig,
+      motoScoutVehiclesLinkConfig,
       optimizerLinkConfig,
       optimizerProLinkConfig,
       cockpitLinkConfig,
       printableVehiclesListLinkConfig,
-      privateMotorcycleParkLinkConfig,
-      professionalMotorcycleParkLinkConfig,
-      privateCarParkLinkConfig,
+      carParkLinkConfig,
+      motorcycleParkLinkConfig,
     ],
   },
   {
