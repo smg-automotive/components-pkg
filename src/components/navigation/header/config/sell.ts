@@ -63,10 +63,10 @@ export const professionalSellLinkConfig = ({
   return {
     ...sellLinkConfig({ trackEvent }),
     link: {
-      de: '/de/member/insertion/type',
-      en: '/de/member/insertion/type',
-      fr: '/fr/member/insertion/type',
-      it: '/it/member/insertion/type',
+      de: '/de/insertion/identify',
+      en: '/en/insertion/identify',
+      fr: '/fr/insertion/identify',
+      it: '/it/insertion/identify',
     },
     visibilitySettings: {
       userType: {
@@ -111,10 +111,10 @@ export const privateMotoScoutSellLinkConfig = ({
 export const insertionLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.createAd',
   link: {
-    de: '/de/member/insertion/type',
-    en: '/de/member/insertion/type',
-    fr: '/fr/member/insertion/type',
-    it: '/it/member/insertion/type',
+    de: '/de/insertion/identify',
+    en: '/en/insertion/identify',
+    fr: '/fr/insertion/identify',
+    it: '/it/insertion/identify',
   },
   visibilitySettings: {
     userType: {
