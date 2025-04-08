@@ -14,12 +14,12 @@ export const ratingRecipe = defineRecipe({
   },
   variants: {
     size: {
-      small: { fontSize: 'sm' },
-      large: { fontSize: 'md' },
+      sm: { fontSize: 'sm' },
+      lg: { fontSize: 'md' },
     },
   },
   defaultVariants: {
-    size: 'large',
+    size: 'lg',
   },
 });
 

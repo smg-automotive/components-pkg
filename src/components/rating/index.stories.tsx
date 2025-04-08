@@ -16,7 +16,7 @@ const meta: Meta<typeof Rating> = {
       },
     },
     size: {
-      options: ['small', 'large'],
+      options: ['sm', 'lg'],
       control: {
         type: 'select',
       },
@@ -31,13 +31,13 @@ type StoryType = StoryObj<typeof Rating>;
 export const Large: StoryType = {
   args: {
     rating: 3.5,
-    size: 'large',
+    size: 'lg',
   },
 };
 
 export const Small: StoryType = {
   args: {
     rating: 3.5,
-    size: 'small',
+    size: 'sm',
   },
 };
