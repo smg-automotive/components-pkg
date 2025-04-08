@@ -1,17 +1,21 @@
 import React, { FC } from 'react';
 
-import { Box, useRecipe } from '@chakra-ui/react';
+import { Box, RecipeVariantProps, useRecipe } from '@chakra-ui/react';
 
-export type RatingProps = {
+import { ratingRecipe } from 'src/themes/shared/recipes/rating';
+
+type RatingVariantProps = RecipeVariantProps<typeof ratingRecipe>;
+
+export type RatingProps = RatingVariantProps & {
   rating: number;
-  size: 'large' | 'small';
 };
 
-export const Rating: FC<RatingProps> = ({ rating, size }) => {
+export const Rating: FC<RatingProps> = ({ rating, ...props }) => {
   const percent = `calc((${rating.toString()} - 0.16) / 5 * 100%)`;
 
   const recipe = useRecipe({ key: 'rating' });
-  const styles = recipe({ size });
+  const [recipeProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
 
   return (
     <Box

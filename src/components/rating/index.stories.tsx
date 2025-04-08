@@ -15,6 +15,12 @@ const meta: Meta<typeof Rating> = {
         step: 0.1,
       },
     },
+    size: {
+      options: ['small', 'large'],
+      control: {
+        type: 'select',
+      },
+    },
   },
 };
 
