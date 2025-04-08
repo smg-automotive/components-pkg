@@ -44,7 +44,6 @@ const Navigation: FC<NavigationProps> = ({
   comparisonItemIds,
   entitlements = [],
   environment,
-  experiments = {},
   hasNotification,
   language,
   onLogin,
@@ -64,7 +63,7 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       project,
       config: {
-        headerItems: headerLinks({ trackEvent, experiments }),
+        headerItems: headerLinks({ trackEvent }),
         drawerItems: drawerNodeItems({
           trackEvent,
           onLogout,
@@ -87,7 +86,6 @@ const Navigation: FC<NavigationProps> = ({
     useAbsoluteUrls,
     project,
     trackEvent,
-    experiments,
     onLogout,
     comparisonItemIds,
     entitlements,
