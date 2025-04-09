@@ -18,4 +18,5 @@ export const hciLinkConfig: NavigationLinkConfigProps = {
       motoscout24: true,
     },
   },
+  projectIdentifier: 'seller-web',
 };
