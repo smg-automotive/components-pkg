@@ -3,10 +3,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const hciLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.hci',
   link: {
-    de: '/de/member/hci',
-    en: '/de/member/hci',
-    fr: '/fr/member/hci',
-    it: '/it/member/hci',
+    de: '/de/hci-management',
+    en: '/en/hci-management',
+    fr: '/fr/hci-management',
+    it: '/it/hci-management',
   },
   visibilitySettings: {
     userType: {
