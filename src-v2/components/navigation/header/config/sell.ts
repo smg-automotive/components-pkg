@@ -20,28 +20,18 @@ const sellLinkConfig = ({
 
 export const privateAutoScoutSellLinkConfig = ({
   trackEvent,
-  experiments,
 }: {
   trackEvent?: (event: CustomEvent) => void;
-  experiments?: Record<string, string>;
 }) => {
   return {
     ...sellLinkConfig({ trackEvent }),
-    link:
-      experiments?.c2b === 'on'
-        ? {
-            de: '/de/sell',
-            en: '/en/sell',
-            fr: '/fr/sell',
-            it: '/it/sell',
-          }
-        : {
-            de: '/de/auto-verkaufen',
-            en: '/de/auto-verkaufen',
-            fr: '/fr/vendre-voiture',
-            it: '/it/vendere-auto',
-          },
-    projectIdentifier: experiments?.c2b === 'on' ? 'seller-web' : undefined,
+    projectIdentifier: 'seller-web',
+    link: {
+      de: '/de/sell',
+      en: '/en/sell',
+      fr: '/fr/sell',
+      it: '/it/sell',
+    },
     visibilitySettings: {
       userType: {
         private: true,
@@ -62,11 +52,12 @@ export const professionalSellLinkConfig = ({
 }) => {
   return {
     ...sellLinkConfig({ trackEvent }),
+    projectIdentifier: 'seller-web',
     link: {
-      de: '/de/member/insertion/type',
-      en: '/de/member/insertion/type',
-      fr: '/fr/member/insertion/type',
-      it: '/it/member/insertion/type',
+      de: '/de/insertion/identify',
+      en: '/en/insertion/identify',
+      fr: '/fr/insertion/identify',
+      it: '/it/insertion/identify',
     },
     visibilitySettings: {
       userType: {
@@ -88,12 +79,13 @@ export const privateMotoScoutSellLinkConfig = ({
   trackEvent?: (event: CustomEvent) => void;
 }) => {
   return {
+    projectIdentifier: 'seller-web',
     ...sellLinkConfig({ trackEvent }),
     link: {
-      de: '/de/motorrad-inserieren',
-      en: '/de/motorrad-inserieren',
-      fr: '/fr/publier-annonce-moto',
-      it: '/it/pubblicare-annuncio-moto',
+      de: '/de/insertion/identify',
+      en: '/en/insertion/identify',
+      fr: '/fr/insertion/identify',
+      it: '/it/insertion/identify',
     },
     visibilitySettings: {
       userType: {
@@ -110,11 +102,12 @@ export const privateMotoScoutSellLinkConfig = ({
 
 export const insertionLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.createAd',
+  projectIdentifier: 'seller-web',
   link: {
-    de: '/de/member/insertion/type',
-    en: '/de/member/insertion/type',
-    fr: '/fr/member/insertion/type',
-    it: '/it/member/insertion/type',
+    de: '/de/insertion/identify',
+    en: '/en/insertion/identify',
+    fr: '/fr/insertion/identify',
+    it: '/it/insertion/identify',
   },
   visibilitySettings: {
     userType: {

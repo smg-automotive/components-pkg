@@ -210,10 +210,10 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/motorrad-inserieren',
-            en: '/de/motorrad-inserieren',
-            fr: '/fr/member/insertion/type',
-            it: '/it/member/insertion/type',
+            de: '/de/insertion/identify',
+            en: '/en/insertion/identify',
+            fr: '/fr/insertion/identify',
+            it: '/it/insertion/identify',
           },
         },
         {
@@ -226,6 +226,18 @@ export const footerConfig = ({
             en: '/de/products-and-prices',
             fr: '/fr/products-and-prices',
             it: '/it/products-and-prices',
+          },
+        },
+        {
+          translationKey: 'footer.sections.list.professionalPackages',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+          },
+          link: {
+            de: 'https://b2b.autoscout24.ch/abos/',
+            en: 'https://b2b.autoscout24.ch/abos/',
+            fr: 'https://b2b.autoscout24.ch/fr/abos/',
+            it: 'https://b2b.autoscout24.ch/it/abos/',
           },
         },
       ],
