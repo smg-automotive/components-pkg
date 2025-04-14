@@ -151,3 +151,6 @@ export { SwissFlagIcon } from './SwissFlagIcon';
 export { GlobeIcon } from './GlobeIcon';
 export { HamburgerMenuIcon } from './HamburgerMenuIcon';
 export { LogoutIcon } from './LogoutIcon';
+export { AndroidIcon } from './AndroidIcon';
+export { AppleIcon } from './AppleIcon';
+export { WindowsIcon } from './WindowsIcon';
