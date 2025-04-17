@@ -154,3 +154,4 @@ export { LogoutIcon } from './LogoutIcon';
 export { AndroidIcon } from './AndroidIcon';
 export { AppleIcon } from './AppleIcon';
 export { WindowsIcon } from './WindowsIcon';
+export { SpeakerIcon } from './SpeakerIcon';
