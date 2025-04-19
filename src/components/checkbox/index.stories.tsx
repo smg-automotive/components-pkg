@@ -1,22 +1,22 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import Checkbox, { CheckboxProps } from './index';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-const Wrapper = (props: CheckboxProps) => {
-  const [args, updateArgs] = useArgs();
+import { Checkbox, CheckboxProps } from './index';
+
+const Wrapper = (args: CheckboxProps) => {
+  const [{ checked }, updateArgs] = useArgs();
 
   return (
     <Checkbox
-      {...{
-        ...args,
-        ...props,
-      }}
-      onChange={(e) => {
-        updateArgs({ isChecked: e.target.checked });
-        args.onChange?.(e);
+      {...args}
+      checked={checked}
+      onChange={(details) => {
+        updateArgs({ checked: !checked });
+        action('onChange')(details);
       }}
     />
   );
@@ -25,70 +25,77 @@ const Wrapper = (props: CheckboxProps) => {
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Forms/Checkbox',
   component: Checkbox,
-  render: Wrapper,
-
   args: {
     name: 'test-checkbox',
     value: '1',
-    isChecked: false,
-    isDisabled: false,
-    isInvalid: false,
+    disabled: false,
+    checked: false,
+    invalid: false,
+    indeterminate: false,
+    readOnly: false,
+    fullWidth: false,
     label: 'Test Checkbox',
-    onChange: action('onChange'),
+    paddingY: '0',
+    fontWeight: 'regular',
+    variant: 'alignCenter',
   },
-
   argTypes: {
-    label: {
-      control: 'text',
-    },
+    ...getRecipeControls('checkbox'),
   },
 };
+
 export default meta;
 
 type StoryType = StoryObj<typeof Checkbox>;
+
 export const StateDefault: StoryType = {
   name: 'State > Default',
+  render: Wrapper,
 };
 
 export const StateChecked: StoryType = {
   name: 'State > Checked',
+  render: Wrapper,
   args: {
-    isChecked: true,
+    checked: true,
     label: 'Checked',
   },
 };
 
 export const StateInvalid: StoryType = {
   name: 'State > Invalid',
+  render: Wrapper,
   args: {
-    isInvalid: true,
+    invalid: true,
     label: 'Invalid',
   },
 };
 
-/**
- * Indeterminate state is used when some of the children checkoxes are checked
- **/
+/*** Indeterminate state is used when some of the children checkboxes are checked */
 export const StateIndeterminate: StoryType = {
   name: 'State > Indeterminate',
+  render: Wrapper,
   args: {
-    isIndeterminate: true,
+    indeterminate: true,
+    label: 'Indeterminate',
   },
 };
 
-export const Disabled: StoryType = {
+export const StateDisabled: StoryType = {
   name: 'State > Disabled',
+  render: Wrapper,
   args: {
-    isDisabled: true,
+    disabled: true,
     label: 'Disabled',
   },
 };
 
-export const DisabledChecked: StoryType = {
+export const StateDisabledChecked: StoryType = {
   name: 'State > Disabled & Checked',
+  render: Wrapper,
   args: {
-    isDisabled: true,
-    isChecked: true,
+    disabled: true,
+    checked: true,
     label: 'Disabled & Checked',
   },
 };
