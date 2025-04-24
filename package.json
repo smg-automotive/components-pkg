@@ -117,7 +117,8 @@
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.8.3",
     "unist-util-visit": "5.0.0",
-    "webpack": "5.99.6"
+    "webpack": "5.99.6",
+    "whatwg-fetch": "3.6.20"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.3.4",
