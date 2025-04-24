@@ -25,6 +25,8 @@ import {
   NavigationLinkConfigNode,
 } from './DrawerNodeItems';
 
+export const menuHeightConfig = '60px';
+
 export interface HeaderNavigationLinkInstance extends LinkInstance {
   isNew: boolean;
   iconRight?: ReactNode;
@@ -90,7 +92,7 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
     super({ brand, environment, useAbsoluteUrls, project, entitlements });
     this.config = config;
     this.homeUrl = '/';
-    this.menuHeight = '60px';
+    this.menuHeight = menuHeightConfig;
     this.user = user;
     this.userType = user ? user.userType : UserTypeExternal.Guest;
     this.urlPathParams = urlPathParams;
@@ -155,7 +157,6 @@ export class HeaderNavigationConfig extends BaseConfig<HeaderNavigationConfigIns
           entitlementConfig && this.mapEntitlementConfig(entitlementConfig),
         projectIdentifier: link.projectIdentifier,
       },
-      isInternal: link.isInternal ? link.isInternal : false,
       forceMotoscoutLink: link.forceMotoscoutLink,
       forceAutoscoutLink: link.forceAutoscoutLink,
       brand: this.brand,

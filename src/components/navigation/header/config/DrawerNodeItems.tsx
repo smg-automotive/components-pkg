@@ -4,21 +4,14 @@ import { CustomEvent } from 'src/types/tracking';
 
 import { NavigationLinkProps } from '../links/NavigationLink';
 import {
-  privateAutoScoutVehiclesLinkConfig,
-  privateMotoScoutVehiclesLinkConfig,
-  professionalAutoScoutVehiclesLinkConfig,
-  professionalMotoScoutVehiclesLinkConfig,
+  autoScoutVehiclesLinkConfig,
+  motoScoutVehiclesLinkConfig,
 } from './vehiclePool';
-import {
-  privateCarParkLinkConfig,
-  privateMotorcycleParkLinkConfig,
-  professionalMotorcycleParkLinkConfig,
-} from './vehiclePool';
+import { carParkLinkConfig, motorcycleParkLinkConfig } from './vehiclePool';
 import {
   accountSettingsLinkConfig,
   changeEmailLinkConfig,
   changeLanguageLinkConfig,
-  changePasswordLinkConfig,
   editUsersLinkConfig,
   favoritesLinkConfig,
   getLogoutLinkConfig,
@@ -64,7 +57,6 @@ import {
   motoScoutMarketPriceCheckLinkConfig,
 } from './MarketPriceCheck';
 import { magazineLinkConfig } from './magazine';
-import { leasingDashboardLinkConfig, leasingLinkConfig } from './leasing';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
   switchToFrenchLinkConfig,
@@ -84,7 +76,6 @@ import { hciLinkConfig } from './hci';
 import { estimateLinkConfig } from './estimate';
 import { electromobilityLinkConfig } from './electroMobility';
 import { dmsLogLinkConfig } from './dmsLog';
-import { dealerInfoSystemLinkConfig } from './dealerInfoSystem';
 import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
 import { autoRadarLinkConfig, manageAutoRadarLinkConfig } from './AutoRadar';
@@ -138,17 +129,14 @@ const getUserNodeItems = ({
     translationKey: 'header.userMenu.manageVehicles',
     items: [
       insertionLinkConfig,
-      privateAutoScoutVehiclesLinkConfig,
-      professionalAutoScoutVehiclesLinkConfig,
-      privateMotoScoutVehiclesLinkConfig,
-      professionalMotoScoutVehiclesLinkConfig,
+      autoScoutVehiclesLinkConfig,
+      motoScoutVehiclesLinkConfig,
       optimizerLinkConfig,
       optimizerProLinkConfig,
       cockpitLinkConfig,
       printableVehiclesListLinkConfig,
-      privateMotorcycleParkLinkConfig,
-      professionalMotorcycleParkLinkConfig,
-      privateCarParkLinkConfig,
+      carParkLinkConfig,
+      motorcycleParkLinkConfig,
     ],
   },
   {
@@ -157,8 +145,6 @@ const getUserNodeItems = ({
       leadsManagementLinkConfig,
       printCenterLinkConfig,
       getPartnerHubLinkConfig({ sellerId }),
-      leasingLinkConfig,
-      leasingDashboardLinkConfig,
       topListingProLinkConfig,
       autoScoutTopVehiclesLinkConfig,
       motoScoutTopVehiclesLinkConfig,
@@ -186,7 +172,6 @@ const getUserNodeItems = ({
         eventLabel: 'drawer-user',
       }),
       autoRadarLinkConfig,
-      dealerInfoSystemLinkConfig,
       autoScoutMarketPriceCheckLinkConfig,
       motoScoutMarketPriceCheckLinkConfig,
     ],
@@ -196,7 +181,6 @@ const getUserNodeItems = ({
     items: [
       changeEmailLinkConfig,
       editUsersLinkConfig,
-      changePasswordLinkConfig,
       accountSettingsLinkConfig,
       changeLanguageLinkConfig,
       getLogoutLinkConfig({ onLogout }),

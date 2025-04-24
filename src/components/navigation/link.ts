@@ -18,7 +18,6 @@ export interface VisibilitySettings {
     professional: boolean;
     guest?: boolean;
   };
-  isInternal?: boolean;
 }
 export type LocalizedLinks = Record<Language, string>;
 
@@ -39,7 +38,6 @@ export interface LinkConfig {
   onClick?: () => void;
   target?: LinkTargets;
   visibilitySettings: VisibilitySettings;
-  isInternal?: boolean;
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   entitlementConfig?: EntitlementConfig;
@@ -55,17 +53,7 @@ export interface LinkInstance {
   onClick?: () => void;
 }
 
-export type Domains =
-  | Record<Brand, Record<'main', Record<Environment, string>>>
-  | Record<
-      Brand,
-      Record<
-        'internal',
-        Record<'professional' | 'private', Record<Environment, string>>
-      >
-    >;
-
-// !!CMP Link
+export type Domains = Record<Brand, Record<Environment, string>>;
 export class Link {
   title?: string;
   translationKey?: string;
@@ -75,7 +63,6 @@ export class Link {
   onClick?: () => void;
   isVisible: boolean;
   rightIcon?: ReactNode;
-  isInternal?: boolean;
   forceMotoscoutLink?: boolean;
   forceAutoscoutLink?: boolean;
   projectIdentifier?: Project;
@@ -89,7 +76,6 @@ export class Link {
     project,
     linkProtocol,
     domains,
-    isInternal,
     forceMotoscoutLink,
     forceAutoscoutLink,
     userEntitlements = [],
@@ -103,7 +89,6 @@ export class Link {
     project?: Project;
     linkProtocol: string;
     domains: Domains;
-    isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
@@ -138,7 +123,6 @@ export class Link {
       project,
       linkProtocol,
       domains,
-      isInternal,
       forceMotoscoutLink,
       forceAutoscoutLink,
       userType,
@@ -196,10 +180,8 @@ export class Link {
     useAbsoluteUrls,
     project,
     linkProtocol,
-    isInternal = false,
     forceMotoscoutLink = false,
     forceAutoscoutLink = false,
-    userType,
     domains,
   }: {
     link?: LocalizedLinks;
@@ -209,7 +191,6 @@ export class Link {
     project?: Project;
     linkProtocol: string;
     domains: Domains;
-    isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
     userType?: UserTypeExternal.Guest | Auth0UserType;
@@ -224,23 +205,10 @@ export class Link {
       }
     };
     const forceBrand = forceBrandDomain();
-
-    const domain =
-      !isInternal || !userType || userType === UserTypeExternal.Guest
-        ? (domains[forceBrand] as Record<'main', Record<Environment, string>>)[
-            'main'
-          ][environment]
-        : (
-            domains[forceBrand] as Record<
-              'internal',
-              Record<'professional' | 'private', Record<Environment, string>>
-            >
-          )['internal'][
-            userType as Auth0UserType.Private | Auth0UserType.Professional
-          ][environment];
+    const domain = domains[forceBrand][environment];
     const baseUrl = `${linkProtocol}://${domain}`;
     const isAlreadyAbsolute = link?.de.substring(0, 4) === 'http';
-    if (link && (isInternal || forceAutoscoutLink || forceMotoscoutLink)) {
+    if (link && (forceAutoscoutLink || forceMotoscoutLink)) {
       return {
         de: `${baseUrl}${link.de}`,
         fr: `${baseUrl}${link.fr}`,

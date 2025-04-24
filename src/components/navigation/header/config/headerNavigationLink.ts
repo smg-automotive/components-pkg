@@ -36,7 +36,6 @@ export class HeaderNavigationLink extends Link {
     variant,
     color,
     userAvatar,
-    isInternal = false,
     forceMotoscoutLink = false,
     forceAutoscoutLink = false,
     userEntitlements = [],
@@ -56,7 +55,6 @@ export class HeaderNavigationLink extends Link {
     variant?: 'navigationLink' | 'subNavigationLink';
     color?: string;
     userAvatar?: ReactNode;
-    isInternal?: boolean;
     forceMotoscoutLink?: boolean;
     forceAutoscoutLink?: boolean;
     userEntitlements?: string[];
@@ -70,7 +68,6 @@ export class HeaderNavigationLink extends Link {
       project,
       linkProtocol,
       domains,
-      isInternal,
       forceMotoscoutLink,
       forceAutoscoutLink,
       userEntitlements,
@@ -81,7 +78,6 @@ export class HeaderNavigationLink extends Link {
     this.fontWeight = fontWeight;
     this.variant = variant;
     this.color = color;
-    this.isInternal = isInternal;
     this.forceAutoscoutLink = forceAutoscoutLink;
     this.forceMotoscoutLink = forceMotoscoutLink;
     this.userAvatar = userAvatar;

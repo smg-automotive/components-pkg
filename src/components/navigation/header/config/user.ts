@@ -65,34 +65,14 @@ export const changeEmailLinkConfig: NavigationLinkConfigProps = {
 export const editUsersLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.editUser',
   link: {
-    de: '/de/member/users/list',
-    en: '/de/member/users/list',
-    fr: '/fr/member/users/list',
-    it: '/it/member/users/list',
+    de: '/de/account/user-list',
+    en: '/en/account/user-list',
+    fr: '/fr/account/user-list',
+    it: '/it/account/user-list',
   },
   visibilitySettings: {
     userType: {
       private: false,
-      professional: true,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: true,
-    },
-  },
-};
-
-export const changePasswordLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.changePassword',
-  link: {
-    de: '/de/member/masterdata/changepassword',
-    en: '/de/member/masterdata/changepassword',
-    fr: '/fr/member/masterdata/changepassword',
-    it: '/it/member/masterdata/changepassword',
-  },
-  visibilitySettings: {
-    userType: {
-      private: true,
       professional: true,
     },
     brand: {
@@ -125,10 +105,10 @@ export const accountSettingsLinkConfig: NavigationLinkConfigProps = {
 export const changeLanguageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.userLanguage',
   link: {
-    de: '/de/member/masterdata/userlanguage',
-    en: '/de/member/masterdata/userlanguage',
-    fr: '/fr/member/masterdata/userlanguage',
-    it: '/it/member/masterdata/userlanguage',
+    de: '/de/account/change-language',
+    en: '/en/account/change-language',
+    fr: '/fr/account/change-language',
+    it: '/it/account/change-language',
   },
   visibilitySettings: {
     userType: {
