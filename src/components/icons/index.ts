@@ -155,4 +155,4 @@ export { AndroidIcon } from './AndroidIcon';
 export { AppleIcon } from './AppleIcon';
 export { WindowsIcon } from './WindowsIcon';
 export { SpeakerIcon } from './SpeakerIcon';
-export { MorePhotosIcon } from './MorePhotosIcon';
+export { AddPhotoIcon } from './AddPhotoIcon';
