@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Auth0UserType, EnrichedSessionUser } from '@smg-automotive/auth';
+import { Auth0UserType, type EnrichedSessionUser } from '@smg-automotive/auth';
 import { Box, Divider, GridItem, Stack } from '@chakra-ui/react';
 
 import Show from 'src/components/show';

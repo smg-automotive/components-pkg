@@ -1,4 +1,4 @@
-import { ManagedSeller } from '@smg-automotive/auth';
+import type { ManagedSeller } from '@smg-automotive/auth';
 
 export const createTenantLabel = (managedSeller?: ManagedSeller) => {
   if (!managedSeller) return '';

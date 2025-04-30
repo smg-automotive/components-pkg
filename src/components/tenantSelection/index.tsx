@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { TenantSelectionSelect } from './select';
 import { TenantSelectionOverview } from './Overview';

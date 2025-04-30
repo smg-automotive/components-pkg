@@ -1,5 +1,5 @@
 import React, { forwardRef, useCallback, useState } from 'react';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
 

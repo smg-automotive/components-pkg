@@ -1,4 +1,4 @@
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 export const privateSellerEntitlements: EnrichedSessionUser['entitlements'] = {
   list: {

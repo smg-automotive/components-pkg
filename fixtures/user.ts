@@ -1,4 +1,4 @@
-import { Auth0UserType, EnrichedSessionUser } from '@smg-automotive/auth';
+import { Auth0UserType, type EnrichedSessionUser } from '@smg-automotive/auth';
 
 import {
   privateSellerEntitlements,

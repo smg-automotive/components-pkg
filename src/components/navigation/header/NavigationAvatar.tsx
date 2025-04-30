@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
 import Text from 'src/components/text';

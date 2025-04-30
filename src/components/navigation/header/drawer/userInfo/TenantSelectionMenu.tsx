@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { EnrichedSessionUser, ManagedSeller } from '@smg-automotive/auth';
+import type { EnrichedSessionUser, ManagedSeller } from '@smg-automotive/auth';
 
 import NavigationTenantMenuContent from 'src/components/navigation/header/navigationTenantMenu/Content';
 import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';

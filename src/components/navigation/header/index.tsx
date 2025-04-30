@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
 import { Project } from 'src/types/project';

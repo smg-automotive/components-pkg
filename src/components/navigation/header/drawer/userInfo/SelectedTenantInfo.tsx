@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ManagedSeller } from '@smg-automotive/auth';
+import type { ManagedSeller } from '@smg-automotive/auth';
 
 import Stack from 'src/components/stack';
 import { GarageIcon } from 'src/components/icons';

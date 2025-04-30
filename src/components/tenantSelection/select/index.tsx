@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { TenantSelectionModalLayout } from '../ModalLayout';
 

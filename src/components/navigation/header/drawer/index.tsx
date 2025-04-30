@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { EnrichedSessionUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { DrawerBody } from '@chakra-ui/react';
 
 import Grid from 'src/components/grid';

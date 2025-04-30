@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import { ManagedSeller } from '@smg-automotive/auth';
+import type { ManagedSeller } from '@smg-automotive/auth';
 
 import {
   ListItemWithChildren,
