@@ -1,7 +1,7 @@
 import {
   LinkBox,
-  LinkOverlay,
   LinkBoxProps,
+  LinkOverlay,
   LinkOverlayProps,
 } from '@chakra-ui/react';
 

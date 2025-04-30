@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { LinkOverlay, LinkBox, LinkOverlayProps } from './index';
-import { H2 } from '../heading';
 import Link from '../link';
+import { H2 } from '../heading';
+
+import { LinkBox, LinkOverlay, LinkOverlayProps } from './index';
 
 const meta: Meta<typeof LinkOverlay> = {
   title: 'Components/Utils/LinkOverlay',
