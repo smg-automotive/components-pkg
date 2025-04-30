@@ -132,7 +132,7 @@
     "@chakra-ui/theme-tools": "2.2.6",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
-    "@smg-automotive/auth": "5.2.0-extract-auth0-94a2cb8e6e34abc7ff658628e3c2e1b06f18abe9.1",
+    "@smg-automotive/auth": "5.2.0-extract-auth0-bundle-03af06a4db7f0d52716b22e85ae4f9d06aeee86a.1",
     "@smg-automotive/i18n-pkg": "1.6.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
