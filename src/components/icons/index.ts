@@ -156,3 +156,4 @@ export { AndroidIcon } from './AndroidIcon';
 export { AppleIcon } from './AppleIcon';
 export { WindowsIcon } from './WindowsIcon';
 export { SpeakerIcon } from './SpeakerIcon';
+export { AddPhotoIcon } from './AddPhotoIcon';

@@ -66,7 +66,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-typescript": "12.1.2",
-    "@smg-automotive/eslint-config": "5.0.25",
+    "@smg-automotive/eslint-config": "5.0.26",
     "@storybook/addon-actions": "8.6.12",
     "@storybook/addon-docs": "8.6.12",
     "@storybook/addon-essentials": "8.6.12",
@@ -105,7 +105,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rimraf": "6.0.1",
-    "rollup": "4.40.0",
+    "rollup": "4.40.1",
     "rollup-plugin-add-shebang": "0.3.1",
     "rollup-plugin-copy": "3.5.0",
     "rollup-plugin-dts": "6.2.1",
@@ -121,7 +121,7 @@
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.8.3",
     "unist-util-visit": "5.0.0",
-    "webpack": "5.99.6",
+    "webpack": "5.99.7",
     "whatwg-fetch": "3.6.20"
   },
   "dependencies": {

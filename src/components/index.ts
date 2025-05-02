@@ -38,6 +38,12 @@ export { default as GridItem } from './grid/GridItem';
 export { default as Hide } from './hide';
 export { default as Input } from './input';
 export { default as Link } from './link';
+export {
+  LinkBox,
+  LinkOverlay,
+  LinkBoxProps,
+  LinkOverlayProps,
+} from './linkOverlay';
 export { default as List } from './list';
 export { default as OrderedList } from './list/OrderedList';
 export { default as UnorderedList } from './list/UnorderedList';
