@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
-import { MergedUser } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { CustomEvent } from 'src/types/tracking';
 import { Project } from 'src/types/project';
@@ -9,8 +9,10 @@ import { Brand } from 'src/types/brand';
 
 import TranslationProvider from 'src/components/translationProvider';
 import Stack from 'src/components/stack';
+
 import Box from 'src/components/box';
 
+import NavigationTenantMenu from './navigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
@@ -36,13 +38,13 @@ export interface NavigationProps {
   trackEvent?: (event: CustomEvent) => void;
   useAbsoluteUrls?: boolean;
   project?: Project;
-  user: MergedUser | null;
+  user: EnrichedSessionUser | null;
+  selectTenant: (sellerId: number | string) => Promise<void>;
 }
 
 const Navigation: FC<NavigationProps> = ({
   brand,
   comparisonItemIds,
-  entitlements = [],
   environment,
   hasNotification,
   language,
@@ -52,6 +54,7 @@ const Navigation: FC<NavigationProps> = ({
   useAbsoluteUrls = false,
   project,
   user,
+  selectTenant,
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -76,7 +79,6 @@ const Navigation: FC<NavigationProps> = ({
       },
       user,
       urlPathParams,
-      entitlements,
     });
     return headerNavigationConfigInstance.getMappedConfig();
   }, [
@@ -88,7 +90,6 @@ const Navigation: FC<NavigationProps> = ({
     trackEvent,
     onLogout,
     comparisonItemIds,
-    entitlements,
     language,
   ]);
 
@@ -101,20 +102,23 @@ const Navigation: FC<NavigationProps> = ({
   // which returns `onClose` callback
   // that's why we need to call onClose like this
   useEffect(() => {
-    if (!user?.id) {
+    if (!user?.userId) {
       onClose();
     }
-  }, [user?.id, onClose]);
+  }, [user?.userId, onClose]);
 
   return (
-    <TranslationProvider language={language} scopes={['header']}>
+    <TranslationProvider
+      language={language}
+      scopes={['header', 'auth.tenantSelection']}
+    >
       <Box
         width="full"
         borderBottomColor="gray.200"
         borderBottomWidth="1px"
         zIndex="header"
-        position="relative"
         backgroundColor="white"
+        {...(isOpen ? { position: 'fixed', top: 0 } : { position: 'relative' })}
       >
         <Box
           maxWidth="container.2xl"
@@ -148,6 +152,7 @@ const Navigation: FC<NavigationProps> = ({
               hasNotification={hasNotification}
               onLogin={onLogin}
             />
+            <NavigationTenantMenu user={user} selectTenant={selectTenant} />
             <NavigationLanguageMenu activeLanguage={language} />
             <MobileHeaderMenuToggle
               isOpen={isOpen}
@@ -164,6 +169,7 @@ const Navigation: FC<NavigationProps> = ({
         menuHeight={config.menuHeight}
         onLogin={onLogin}
         onLogout={onLogout}
+        selectTenant={selectTenant}
       />
     </TranslationProvider>
   );
