@@ -55,7 +55,8 @@
   "homepage": "https://github.com/smg-automotive/components-pkg#readme",
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "@smg-automotive/auth": ">=6.0"
   },
   "devDependencies": {
     "@babel/preset-env": "7.26.9",
@@ -66,6 +67,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-typescript": "12.1.2",
+    "@smg-automotive/auth": "6.0.0-next.1",
     "@smg-automotive/eslint-config": "5.0.26",
     "@storybook/addon-actions": "8.6.12",
     "@storybook/addon-docs": "8.6.12",
@@ -132,7 +134,6 @@
     "@chakra-ui/theme-tools": "2.2.6",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
-    "@smg-automotive/auth": "5.2.0-extract-auth0-bundle-03af06a4db7f0d52716b22e85ae4f9d06aeee86a.1",
     "@smg-automotive/i18n-pkg": "1.6.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
