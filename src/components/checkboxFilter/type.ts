@@ -3,7 +3,7 @@ import { Language } from '@smg-automotive/i18n-pkg';
 
 export type Item<ItemKey, FilterName> = {
   childCheckboxes?: Item<ItemKey, FilterName>[];
-  facet: number;
+  facet?: number | null;
   filterName?: FilterName;
   highlightIndices?: ReadonlyArray<[number, number]>;
   image?: ReactNode;
