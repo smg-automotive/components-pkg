@@ -8,10 +8,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const infoPageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.infoPage',
   link: {
-    de: '/en/info-management',
-    en: '/de/info-management',
-    fr: '/fr/info-management',
-    it: '/it/info-management',
+    de: '/en/info-management/hero-image',
+    en: '/de/info-management/hero-image',
+    fr: '/fr/info-management/hero-image',
+    it: '/it/info-management/hero-image',
   },
   visibilitySettings: {
     userType: {
