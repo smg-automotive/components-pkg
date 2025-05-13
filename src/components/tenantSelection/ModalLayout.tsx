@@ -11,7 +11,7 @@ export const TenantSelectionModalLayout: FunctionComponent<
       height={{ base: 'full', sm: 'auth0-height' }}
       maxH="100vh"
       overflowX="hidden"
-      overflowY="scroll"
+      overflowY="auto"
       paddingX="2xl"
       paddingY={{ base: '3xl', sm: '2xl' }}
     >
