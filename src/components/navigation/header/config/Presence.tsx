@@ -7,6 +7,7 @@ import { NavigationLinkConfigProps } from './headerLinks';
 
 export const infoPageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.infoPage',
+  projectIdentifier: 'seller-web',
   link: {
     de: '/de/info-management/hero-image',
     en: '/en/info-management/hero-image',
