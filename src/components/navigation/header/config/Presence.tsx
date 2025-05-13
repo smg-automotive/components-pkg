@@ -8,10 +8,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const infoPageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.infoPage',
   link: {
-    de: '/de/member/dealerpageadmin',
-    en: '/de/member/dealerpageadmin',
-    fr: '/fr/member/dealerpageadmin',
-    it: '/it/member/dealerpageadmin',
+    de: '/en/info-management',
+    en: '/de/info-management',
+    fr: '/fr/info-management',
+    it: '/it/info-management',
   },
   visibilitySettings: {
     userType: {
