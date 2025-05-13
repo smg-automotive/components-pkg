@@ -14,6 +14,7 @@ export const TenantSelectionModalLayout: FunctionComponent<
       overflowY="auto"
       paddingX="2xl"
       paddingY={{ base: '3xl', sm: '2xl' }}
+      color="gray.900"
     >
       <Flex
         direction="column"

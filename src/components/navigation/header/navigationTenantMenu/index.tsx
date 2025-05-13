@@ -83,7 +83,7 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             <PopoverContent
               bg="white"
               boxShadow="sm"
-              color="inherit"
+              color="gray.900"
               width={{
                 base: 'full',
                 md: '6xl',
