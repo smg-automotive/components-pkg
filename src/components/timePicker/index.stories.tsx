@@ -6,7 +6,7 @@ import { Box } from '@chakra-ui/react';
 
 import TimePickerComponent, { TimePickerProps } from './index';
 
-function timeToDateString(timeStr: string): string {
+const timeToDateString = (timeStr: string): string => {
   const [hours, minutes] = timeStr.split(':').map(Number);
 
   const date = new Date();
@@ -16,7 +16,7 @@ function timeToDateString(timeStr: string): string {
   return date.toString();
 }
 
-function dateToTimeString(dateStr: string): string {
+const dateToTimeString = (dateStr: string): string => {
   const date = new Date(Date.parse(dateStr));
 
   return date.toLocaleTimeString('default', {
