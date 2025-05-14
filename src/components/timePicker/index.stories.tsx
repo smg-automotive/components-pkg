@@ -14,7 +14,7 @@ const timeToDateString = (timeStr: string): string => {
   date.setMinutes(minutes);
 
   return date.toString();
-}
+};
 
 const dateToTimeString = (dateStr: string): string => {
   const date = new Date(Date.parse(dateStr));
@@ -23,7 +23,7 @@ const dateToTimeString = (dateStr: string): string => {
     hour: '2-digit',
     minute: '2-digit',
   });
-}
+};
 
 const Template = (props: TimePickerProps) => {
   const [args, updateArgs] = useArgs<TimePickerProps>();
