@@ -1,16 +1,15 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
-import { Brand } from 'src/types/brand';
-import { PageLayout } from 'src/components/layout';
-import Box from 'src/components/box';
-
 import {
   multiTenantSeller,
   privateSeller,
   professionalSeller,
-} from 'fixtures/user';
+} from '@smg-automotive/auth/fixtures';
+
+import { Brand } from 'src/types/brand';
+import { PageLayout } from 'src/components/layout';
+import Box from 'src/components/box';
 
 import Navigation from './index';
 

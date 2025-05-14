@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import { multiTenantSeller } from '@smg-automotive/auth/fixtures';
 
-import { multiTenantSeller } from 'fixtures/user';
 import { render, screen, waitFor } from '.jest/utils';
 
 import TenantSelection, { TenantSelectionProps } from '..';

@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
-import { multiTenantSeller } from 'fixtures/user';
+import { multiTenantSeller } from '@smg-automotive/auth/fixtures';
 
 import TenantSelection from './index';
 
