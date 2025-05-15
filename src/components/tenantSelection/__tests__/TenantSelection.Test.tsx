@@ -18,11 +18,11 @@ const renderWrapper = ({
   );
 
 describe('TenantSelection', () => {
-  it('renders the TenantSelection component', () => {
+  it('renders the TenantSelection component', async () => {
     renderWrapper({ user: multiTenantSeller({ forceTenantSelection: true }) });
 
     expect(
-      screen.getByText('Wählen Sie eine Ihrer Garagen'),
+      await screen.findByText('Wählen Sie eine Ihrer Garagen'),
     ).toBeInTheDocument();
   });
 
@@ -43,7 +43,7 @@ describe('TenantSelection', () => {
       selectTenant: mockSelectTenant,
     });
 
-    expect(screen.getByText('Anmelden')).toBeDisabled();
+    expect(await screen.findByText('Anmelden')).toBeDisabled();
 
     user.click(screen.getByText('Garage auswählen'));
     await screen.findByText('Garage Amir Basel - 6002');

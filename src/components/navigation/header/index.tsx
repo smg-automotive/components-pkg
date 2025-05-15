@@ -1,4 +1,11 @@
-import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
+import React, {
+  FC,
+  PropsWithChildren,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
@@ -12,7 +19,6 @@ import Stack from 'src/components/stack';
 
 import Box from 'src/components/box';
 
-import NavigationTenantMenu from './navigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
@@ -97,6 +103,23 @@ const Navigation: FC<NavigationProps> = ({
     drawerNodeItems: config.drawerItems,
   });
 
+  // eslint-disable-next-line sonarjs/hook-use-state
+  const [navigationTenantMenu, setNavigationTenantMenu] =
+    useState<ReactNode | null>(null);
+
+  useEffect(() => {
+    const importComponent = async () => {
+      if (user && user.isMultiTenantUser) {
+        const NavigationTenantMenu = (await import('./navigationTenantMenu'))
+          .default;
+        setNavigationTenantMenu(
+          <NavigationTenantMenu user={user} selectTenant={selectTenant} />,
+        );
+      }
+    };
+    importComponent();
+  }, [user, selectTenant]);
+
   // We can't pass `onClose` to logout callback when instancing the config
   // because config is needed to call `useNavigationDrawer` hook
   // which returns `onClose` callback
@@ -152,7 +175,7 @@ const Navigation: FC<NavigationProps> = ({
               hasNotification={hasNotification}
               onLogin={onLogin}
             />
-            <NavigationTenantMenu user={user} selectTenant={selectTenant} />
+            {navigationTenantMenu}
             <NavigationLanguageMenu activeLanguage={language} />
             <MobileHeaderMenuToggle
               isOpen={isOpen}
