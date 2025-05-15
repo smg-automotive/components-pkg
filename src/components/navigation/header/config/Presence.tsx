@@ -7,11 +7,12 @@ import { NavigationLinkConfigProps } from './headerLinks';
 
 export const infoPageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.infoPage',
+  projectIdentifier: 'seller-web',
   link: {
-    de: '/de/member/dealerpageadmin',
-    en: '/de/member/dealerpageadmin',
-    fr: '/fr/member/dealerpageadmin',
-    it: '/it/member/dealerpageadmin',
+    de: '/de/info-management/hero-image',
+    en: '/en/info-management/hero-image',
+    fr: '/fr/info-management/hero-image',
+    it: '/it/info-management/hero-image',
   },
   visibilitySettings: {
     userType: {
