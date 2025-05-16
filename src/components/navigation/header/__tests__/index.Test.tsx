@@ -110,7 +110,7 @@ describe('Header', () => {
       user: multiTenantSeller(),
       selectTenant,
     });
-    const tenantSelectionMenu = await screen.findByText('Garage Amir Zurich');
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
     fireEvent.click(tenantSelectionMenu);
 
     const popover = screen.getByRole('dialog', { hidden: true });

@@ -1,7 +1,10 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
+import { TenantSelectionSelect } from './select';
+import { TenantSelectionOverview } from './Overview';
+import { TenantSelectionLoadingState } from './Loading';
 import { TenantSelectionContainer } from './Container';
 
 export type TenantSelectionState = {
@@ -29,53 +32,36 @@ const TenantSelection: FC<TenantSelectionProps> = ({
     persistSelection: true,
   });
 
-  const [content, setContent] = useState<ReactNode | null>(null);
-
-  useEffect(() => {
-    const importContent = async () => {
-      if (user && user.forceTenantSelection) {
-        if (isLoading) {
-          const TenantSelectionLoadingState = (await import('./Loading'))
-            .TenantSelectionLoadingState;
-          setContent(<TenantSelectionLoadingState />);
-        } else if (tenantSelection.showSelection) {
-          const TenantSelectionSelect = (await import('./select'))
-            .TenantSelectionSelect;
-          setContent(
-            <TenantSelectionSelect
-              user={user}
-              tenantSelection={tenantSelection}
-              setTenantSelection={setTenantSelection}
-            />,
-          );
-        } else {
-          const TenantSelectionOverview = (await import('./Overview'))
-            .TenantSelectionOverview;
-          setContent(
-            <TenantSelectionOverview
-              user={user}
-              tenantSelection={tenantSelection}
-              setTenantSelection={setTenantSelection}
-              selectTenant={selectTenant}
-            />,
-          );
-        }
-      }
-    };
-    importContent();
-  }, [
-    isLoading,
-    tenantSelection.showSelection,
-    user,
-    selectTenant,
-    tenantSelection,
-  ]);
-
   if (!user || !user.forceTenantSelection) return null;
+
+  if (isLoading) {
+    return (
+      <TenantSelectionContainer language={language}>
+        <TenantSelectionLoadingState />
+      </TenantSelectionContainer>
+    );
+  }
+
+  if (tenantSelection.showSelection) {
+    return (
+      <TenantSelectionContainer language={language}>
+        <TenantSelectionSelect
+          user={user}
+          tenantSelection={tenantSelection}
+          setTenantSelection={setTenantSelection}
+        />
+      </TenantSelectionContainer>
+    );
+  }
 
   return (
     <TenantSelectionContainer language={language}>
-      {content}
+      <TenantSelectionOverview
+        user={user}
+        tenantSelection={tenantSelection}
+        setTenantSelection={setTenantSelection}
+        selectTenant={selectTenant}
+      />
     </TenantSelectionContainer>
   );
 };

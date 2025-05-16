@@ -17,15 +17,12 @@ import Box from 'src/components/box';
 
 import NavigationTenantMenuContent from './Content';
 
-export type NavigationTenantMenuProps = {
+type Props = {
   user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => Promise<void>;
 };
 
-const NavigationTenantMenu: FC<NavigationTenantMenuProps> = ({
-  user,
-  selectTenant,
-}) => {
+const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
   const initialFocusRef = useRef<HTMLInputElement>(null);
   const { onClose, isOpen, onToggle } = useDisclosure();
   const { t } = useI18n();
