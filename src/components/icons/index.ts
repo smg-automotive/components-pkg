@@ -149,6 +149,7 @@ export { DownloadIcon } from './DownloadIcon';
 export { TriangleIcon } from './TriangleIcon';
 export { SwissFlagIcon } from './SwissFlagIcon';
 export { GlobeIcon } from './GlobeIcon';
+export { GarageIcon } from './GarageIcon';
 export { HamburgerMenuIcon } from './HamburgerMenuIcon';
 export { LogoutIcon } from './LogoutIcon';
 export { AndroidIcon } from './AndroidIcon';
