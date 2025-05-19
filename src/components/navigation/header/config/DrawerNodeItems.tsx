@@ -52,10 +52,7 @@ import {
 } from './Presence';
 import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig, optimizerProLinkConfig } from './Optimizer';
-import {
-  autoScoutMarketPriceCheckLinkConfig,
-  motoScoutMarketPriceCheckLinkConfig,
-} from './MarketPriceCheck';
+
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
@@ -172,8 +169,6 @@ const getUserNodeItems = ({
         eventLabel: 'drawer-user',
       }),
       autoRadarLinkConfig,
-      autoScoutMarketPriceCheckLinkConfig,
-      motoScoutMarketPriceCheckLinkConfig,
     ],
   },
   {
