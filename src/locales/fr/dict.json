@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "Vous pourrez changer de garage plus tard dans votre portail concessionnaire.",
+      "loginButton": "Se connecter",
+      "selectButton": "Sélectionner le garage",
+      "selectionTitle": "Sélectionner le garage",
+      "title": "Sélectionnez un de vos garages"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Afficher plus",
     "expanded": "Afficher moins"

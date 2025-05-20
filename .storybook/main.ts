@@ -27,8 +27,18 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (webpack) => {
     webpack.resolve = webpack.resolve || {};
+
     webpack.resolve.plugins = webpack.resolve.plugins || [];
     webpack.resolve.plugins.push(new TsconfigPathsPlugin({}));
+
+    webpack.resolve.fallback = {
+      ...(webpack.resolve.fallback || {}),
+      http: require.resolve('stream-http'),
+      querystring: require.resolve('querystring-es3'),
+      https: require.resolve('https-browserify'),
+      buffer: require.resolve('buffer/'),
+    };
+
     return webpack;
   },
   staticDirs: [
