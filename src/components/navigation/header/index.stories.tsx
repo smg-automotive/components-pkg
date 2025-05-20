@@ -3,8 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
   multiTenantSeller,
-  privateSeller,
-  professionalSeller,
+  privateUser,
+  professionalUser,
 } from '@smg-automotive/auth/fixtures';
 
 import { Brand } from 'src/types/brand';
@@ -118,7 +118,7 @@ export const Unauthenticated: StoryType = {
 
 export const Professional: StoryType = {
   args: {
-    user: professionalSeller(),
+    user: professionalUser(),
   },
 };
 
@@ -141,6 +141,6 @@ export const ProfessionalWithMultiTenancy: StoryType = {
 
 export const Private: StoryType = {
   args: {
-    user: privateSeller(),
+    user: privateUser(),
   },
 };

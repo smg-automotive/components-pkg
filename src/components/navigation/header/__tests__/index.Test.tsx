@@ -3,8 +3,8 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import {
   multiTenantSeller,
-  privateSeller,
-  professionalSeller,
+  privateUser,
+  professionalUser,
 } from '@smg-automotive/auth/fixtures';
 
 import { Brand } from 'src/types/brand';
@@ -18,7 +18,7 @@ import Navigation, { NavigationProps } from '..';
 
 const renderNavigation = ({
   environment = 'preprod',
-  user = privateSeller(),
+  user = privateUser(),
   brand = Brand.AutoScout24,
   language = 'en',
   hasNotification = false,
@@ -58,7 +58,7 @@ describe('Header', () => {
 
   it('should open user drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: privateSeller({ email }) });
+    renderNavigation({ user: privateUser({ email }) });
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
@@ -71,7 +71,7 @@ describe('Header', () => {
 
   it('displays user email in the user drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: privateSeller({ email }) });
+    renderNavigation({ user: privateUser({ email }) });
     const drawerToggle = screen.getByText(email);
 
     fireEvent.click(drawerToggle);
@@ -83,7 +83,7 @@ describe('Header', () => {
   it('displays the seller id in the user drawer for the professional seller', async () => {
     const email = 'john.doe@me.com';
     const sellerId = '6002';
-    renderNavigation({ user: professionalSeller({ email, sellerId }) });
+    renderNavigation({ user: professionalUser({ email, sellerId }) });
     const drawerToggle = screen.getByText(email);
 
     fireEvent.click(drawerToggle);
@@ -150,7 +150,7 @@ describe('Header', () => {
 
   it('does not display user name in the search drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: professionalSeller({ email }) });
+    renderNavigation({ user: professionalUser({ email }) });
 
     const searchItem = screen.getByText('Search');
     fireEvent.click(searchItem);
@@ -170,7 +170,7 @@ describe('Header', () => {
 
   it('should display user email if there is a user', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: professionalSeller({ email }) });
+    renderNavigation({ user: professionalUser({ email }) });
 
     const user = screen.getByText(email);
     expect(user).toBeInTheDocument();
@@ -198,7 +198,7 @@ describe('Header', () => {
           }),
           iconItems: iconItems({ trackEvent: jest.fn() }),
         },
-        user: privateSeller(),
+        user: privateUser(),
       });
       const config = headerConfigInstance.getMappedConfig();
       expect(config).toEqual({
@@ -225,7 +225,7 @@ describe('Header', () => {
       return `https://www.autoscout24.ch${pathname}`;
     };
 
-    const user = privateSeller();
+    const user = privateUser();
 
     const listingsWebLink = {
       name: 'Merkliste',
