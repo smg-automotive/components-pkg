@@ -8,10 +8,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const optimizerLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.optimizer',
   link: {
-    de: '/de/member/optimizer',
-    en: '/de/member/optimizer',
-    fr: '/fr/member/optimizer',
-    it: '/it/member/optimizer',
+    de: '/de/vehicle-management?origin=legacy-optimizer',
+    en: '/de/vehicle-management?origin=legacy-optimizer',
+    fr: '/fr/vehicle-management?origin=legacy-optimizer',
+    it: '/it/vehicle-management?origin=legacy-optimizer',
   },
   visibilitySettings: {
     userType: {
@@ -39,10 +39,10 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
 export const optimizerProLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.optimizerPro',
   link: {
-    de: '/de/member/optimizerpro',
-    en: '/de/member/optimizerpro',
-    fr: '/fr/member/optimizerpro',
-    it: '/it/member/optimizerpro',
+    de: '/de/vehicle-management?origin=legacy-optimizer',
+    en: '/de/vehicle-management?origin=legacy-optimizer',
+    fr: '/fr/vehicle-management?origin=legacy-optimizer',
+    it: '/it/vehicle-management?origin=legacy-optimizer',
   },
   visibilitySettings: {
     userType: {
