@@ -5,7 +5,8 @@
     "node_modules",
     "src/**/*.Test.ts*",
     "src/**/*.TypeTest.ts*",
-    "src/**/*.stories.ts*"
+    "src/**/*.stories.ts*",
+    "src/__mocks__/**"
   ],
   "include": ["src"]
 }

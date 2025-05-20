@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "Sie können später in Ihrer Händler-Portal zu einer anderen Garage wechseln",
+      "loginButton": "Anmelden",
+      "selectButton": "Garage auswählen",
+      "selectionTitle": "Garage auswählen",
+      "title": "Wählen Sie eine Ihrer Garagen"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Mehr anzeigen",
     "expanded": "Weniger anzeigen"
