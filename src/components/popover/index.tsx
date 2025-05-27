@@ -21,6 +21,7 @@ export type PopoverProps = PropsWithChildren<
     contentPadding?: ContentPadding;
     maxWidth?: MaxWidth;
     contentPosition?: 'relative';
+    zIndex?: string;
   } & Pick<
     ChakraPopoverProps,
     | 'placement'
@@ -49,6 +50,7 @@ const Popover: FC<PopoverProps> = ({
   contentPadding = '2xl',
   maxWidth = '6xl',
   contentPosition,
+  zIndex = '0',
 }) => {
   return (
     <ChakraPopover
@@ -71,7 +73,7 @@ const Popover: FC<PopoverProps> = ({
             boxShadow="md"
             maxW={maxWidth}
             // required for arrow to popup above shadow
-            zIndex="0"
+            zIndex={zIndex}
             backgroundColor="white"
             padding={contentPadding}
           >
