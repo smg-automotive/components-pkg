@@ -26,7 +26,8 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   isIndeterminate = false,
   indentFacet = false,
 }: Props<ItemKey, FilterName>) {
-  const renderFacet = (facet: number) => {
+  const renderFacet = (facet?: number | null) => {
+    if (typeof facet !== 'number') return null;
     return (
       <chakra.span ml="sm" color="gray.400" minW="7ch" textAlign="right">
         {addThousandSeparatorToNumber(facet)}
