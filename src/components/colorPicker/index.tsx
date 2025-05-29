@@ -6,8 +6,8 @@ const ColorPicker = forwardRef<HTMLInputElement, InputProps>(
     return (
       <Input
         {...props}
-        ref={ref}
         type="color"
+        ref={ref}
         width={width}
         padding={padding}
         cursor="pointer"
