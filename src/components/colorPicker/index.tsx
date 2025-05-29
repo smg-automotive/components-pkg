@@ -1,32 +1,20 @@
 import React, { forwardRef } from 'react';
 import { Input, InputProps } from '@chakra-ui/react';
 
-const ColorPicker = forwardRef<
-  HTMLInputElement,
-  Pick<
-    InputProps,
-    | 'onFocus'
-    | 'onBlur'
-    | 'onChange'
-    | 'name'
-    | 'value'
-    | 'isInvalid'
-    | 'isDisabled'
-    | 'border'
-    | 'borderRadius'
-  >
->((props, ref) => {
-  return (
-    <Input
-      {...props}
-      ref={ref}
-      type="color"
-      width="36px"
-      padding="0"
-      cursor="pointer"
-    />
-  );
-});
+const ColorPicker = forwardRef<HTMLInputElement, InputProps>(
+  ({ width = '36px', padding = '0', ...props }, ref) => {
+    return (
+      <Input
+        {...props}
+        ref={ref}
+        type="color"
+        width={width}
+        padding={padding}
+        cursor="pointer"
+      />
+    );
+  },
+);
 
 ColorPicker.displayName = 'ColorPicker';
 

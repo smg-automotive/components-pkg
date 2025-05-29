@@ -43,6 +43,8 @@ const meta: Meta<typeof ColorPickerComponent> = {
     isDisabled: false,
     border: '1px solid #CBD5E0',
     borderRadius: '4px',
+    width: '36px',
+    padding: '0',
   },
 
   argTypes: {
@@ -59,6 +61,12 @@ const meta: Meta<typeof ColorPickerComponent> = {
       control: 'text',
     },
     borderRadius: {
+      control: 'text',
+    },
+    width: {
+      control: 'text',
+    },
+    padding: {
       control: 'text',
     },
   },
