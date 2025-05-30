@@ -1,30 +1,37 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '../index';
+import { Box } from '../box';
 
-import SkeletonComponent from './index';
+import { Skeleton } from './index';
 
-const meta: Meta<typeof SkeletonComponent> = {
+const meta: Meta<typeof Skeleton> = {
   title: 'Components/Feedback/Skeleton',
-  component: SkeletonComponent,
+  component: Skeleton,
 
   args: {
-    children: (
-      <Box height="80px" width="500px">
-        Dummy content
-      </Box>
-    ),
+    children: 'box',
+    loading: true,
   },
 
   argTypes: {
     children: {
+      mapping: {
+        box: (
+          <Box height="2xl" width="container.sm">
+            Dummy content
+          </Box>
+        ),
+      },
       table: {
         disable: true,
       },
+    },
+    loading: {
+      control: 'boolean',
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof SkeletonComponent> = {};
+export const Overview: StoryObj<typeof Skeleton> = {};
