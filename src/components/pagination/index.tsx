@@ -31,7 +31,7 @@ const Pagination: FC<PropsWithChildren<Props>> = (props) => {
   const paginationRange = useMemo(() => {
     // Default number of page buttons: firstPage + lastPage + currentPage + left side dots + right side dots
     const pageButtonsCount = 5;
-    const totalPageButtonsCount = siblingCount + pageButtonsCount;
+    const totalPageButtonsCount = siblingCount * 2 + pageButtonsCount;
 
     if (totalPageButtonsCount >= totalPages) {
       return range(0, totalPages - 1);
