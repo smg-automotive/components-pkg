@@ -44,7 +44,9 @@ describe('<Pagination />', () => {
         );
         const leftDots = screen.queryByLabelText('left side dots');
         const rightDots = screen.queryByLabelText('right side dots');
-        const pageButtons = screen.getAllByRole('button', { name: /go to page/i });
+        const pageButtons = screen.getAllByRole('button', {
+          name: /go to page/i,
+        });
 
         expect(leftDots).not.toBeInTheDocument();
         expect(rightDots).not.toBeInTheDocument();
