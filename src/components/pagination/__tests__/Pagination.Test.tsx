@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from '.jest/utils';
+import { cleanup, render, screen } from '.jest/utils';
 
 import Pagination from '../index';
 
@@ -23,21 +23,40 @@ describe('<Pagination />', () => {
   });
 
   describe('render', () => {
-    it('should render pagination without dots', () => {
+    it('should not render pagination when totalPages is 1', () => {
       render(
-        <Pagination totalPages={5} currentPage={1} onChange={mockOnChange} />,
+        <Pagination totalPages={1} currentPage={1} onChange={mockOnChange} />,
       );
 
-      const leftDots = screen.queryByLabelText('left side dots');
-      const rightDots = screen.queryByLabelText('right side dots');
+      const pageButton = screen.queryByRole('button', { name: /go to page/i });
 
-      expect(leftDots).not.toBeInTheDocument();
-      expect(rightDots).not.toBeInTheDocument();
+      expect(pageButton).not.toBeInTheDocument();
+    });
+
+    it('should render pagination without dots when totalPages is between 2 and 7', () => {
+      for (let totalPages = 2; totalPages <= 7; totalPages++) {
+        render(
+          <Pagination
+            totalPages={totalPages}
+            currentPage={1}
+            onChange={mockOnChange}
+          />,
+        );
+        const leftDots = screen.queryByLabelText('left side dots');
+        const rightDots = screen.queryByLabelText('right side dots');
+        const pageButtons = screen.getAllByRole('button', { name: /go to page/i });
+
+        expect(leftDots).not.toBeInTheDocument();
+        expect(rightDots).not.toBeInTheDocument();
+        expect(pageButtons).toHaveLength(totalPages);
+
+        cleanup();
+      }
     });
 
     it('should render pagination with dots on right side', () => {
       render(
-        <Pagination totalPages={10} currentPage={1} onChange={mockOnChange} />,
+        <Pagination totalPages={8} currentPage={1} onChange={mockOnChange} />,
       );
 
       const leftDots = screen.queryByLabelText('left side dots');
@@ -49,7 +68,7 @@ describe('<Pagination />', () => {
 
     it('should render pagination with dots on left side', () => {
       render(
-        <Pagination totalPages={10} currentPage={10} onChange={mockOnChange} />,
+        <Pagination totalPages={8} currentPage={8} onChange={mockOnChange} />,
       );
 
       const leftDots = screen.queryByLabelText('left side dots');
