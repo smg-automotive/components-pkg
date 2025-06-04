@@ -4,20 +4,15 @@ import {
   SimpleGridProps,
 } from '@chakra-ui/react';
 
-type Props = Pick<
+export type Props = Pick<
   SimpleGridProps,
   | 'minChildWidth'
   | 'columns'
-  | 'spacing'
-  | 'spacingX'
-  | 'spacingY'
   | 'children'
   | 'alignItems'
   | 'width'
   | 'rowGap'
+  | 'gap'
 >;
 
-const SimpleGrid: FC<Props> = (props) => <ChakraSimpleGrid {...props} />;
-
-export default SimpleGrid;
-export { type Props as GridProps };
+export const SimpleGrid: FC<Props> = (props) => <ChakraSimpleGrid {...props} />;
