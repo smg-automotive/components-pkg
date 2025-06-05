@@ -33,28 +33,28 @@ describe('<Pagination />', () => {
       expect(pageButton).not.toBeInTheDocument();
     });
 
-    it('should render pagination without dots when totalPages is between 2 and 7', () => {
-      for (let totalPages = 2; totalPages <= 7; totalPages++) {
-        render(
-          <Pagination
-            totalPages={totalPages}
-            currentPage={1}
-            onChange={mockOnChange}
-          />,
-        );
-        const leftDots = screen.queryByLabelText('left side dots');
-        const rightDots = screen.queryByLabelText('right side dots');
-        const pageButtons = screen.getAllByRole('button', {
-          name: /go to page/i,
+    Array(6)
+      .fill(null)
+      .map((_, i) => i + 2)
+      .forEach((totalPages) => {
+        it(`should render pagination without dots when totalPages is: ${totalPages}`, () => {
+          render(
+            <Pagination
+              totalPages={totalPages}
+              currentPage={1}
+              onChange={mockOnChange}
+            />,
+          );
+          const leftDots = screen.queryByLabelText('left side dots');
+          const rightDots = screen.queryByLabelText('right side dots');
+          const pageButtons = screen.getAllByRole('button', {
+            name: /go to page/i,
+          });
+          expect(leftDots).not.toBeInTheDocument();
+          expect(rightDots).not.toBeInTheDocument();
+          expect(pageButtons).toHaveLength(totalPages);
         });
-
-        expect(leftDots).not.toBeInTheDocument();
-        expect(rightDots).not.toBeInTheDocument();
-        expect(pageButtons).toHaveLength(totalPages);
-
-        cleanup();
-      }
-    });
+      });
 
     it('should render pagination with dots on right side', () => {
       render(
