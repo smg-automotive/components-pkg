@@ -19,23 +19,3 @@ export const onlineAdvertisingLinkConfig: NavigationLinkConfigProps = {
     },
   },
 };
-
-export const advertisePartsAccessoriesLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.advertisePartsAccessories',
-  link: {
-    de: '/de/ersatzteile-zubehoer/insertion',
-    en: '/de/ersatzteile-zubehoer/insertion',
-    fr: '/fr/pieces-accessoires/insertion',
-    it: '/it/ricambi-accessori/insertion',
-  },
-  visibilitySettings: {
-    userType: {
-      private: false,
-      professional: true,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: true,
-    },
-  },
-};
