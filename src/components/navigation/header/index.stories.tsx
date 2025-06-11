@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
-  multiTenantSeller,
+  multiTenantUser,
   privateUser,
   professionalUser,
 } from '@smg-automotive/auth/fixtures';
@@ -124,8 +124,7 @@ export const Professional: StoryType = {
 
 export const ProfessionalWithMultiTenancy: StoryType = {
   args: {
-    user: multiTenantSeller({
-      sellerIds: new Array(100).fill(null).map((_, index) => `600${index}`),
+    user: multiTenantUser({
       managedSellers: new Array(100).fill(null).map((_, index) => ({
         id: 6000 + index,
         billingAddress: null,

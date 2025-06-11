@@ -39,6 +39,7 @@ export { default as GridItem } from './grid/GridItem';
 export { default as Hide } from './hide';
 export { default as Input } from './input';
 export { default as Link } from './link';
+export { default as ColorPicker } from './colorPicker';
 export {
   LinkBox,
   LinkOverlay,

@@ -2,7 +2,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import {
-  multiTenantSeller,
+  multiTenantUser,
   privateUser,
   professionalUser,
 } from '@smg-automotive/auth/fixtures';
@@ -94,7 +94,7 @@ describe('Header', () => {
 
   it('displays selected tenant and location in the user drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: multiTenantSeller({ email }) });
+    renderNavigation({ user: multiTenantUser({ email }) });
     const drawerToggle = screen.getByText(email);
 
     fireEvent.click(drawerToggle);
@@ -107,7 +107,7 @@ describe('Header', () => {
   it('allows switching tenants from the header menu', async () => {
     const selectTenant = jest.fn(() => Promise.resolve());
     renderNavigation({
-      user: multiTenantSeller(),
+      user: multiTenantUser(),
       selectTenant,
     });
     const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
@@ -125,7 +125,7 @@ describe('Header', () => {
   it('allows switching tenants from the combined menu on mobile', async () => {
     const selectTenant = jest.fn(() => Promise.resolve());
     renderNavigation({
-      user: multiTenantSeller(),
+      user: multiTenantUser(),
       selectTenant,
     });
 
