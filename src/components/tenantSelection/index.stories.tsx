@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { multiTenantSeller } from '@smg-automotive/auth/fixtures';
+import { multiTenantUser } from '@smg-automotive/auth/fixtures';
 
 import TenantSelection from './index';
 
@@ -10,7 +10,7 @@ const meta: Meta<typeof TenantSelection> = {
 
   args: {
     language: 'de',
-    user: 'user' as unknown as ReturnType<typeof multiTenantSeller>,
+    user: 'user' as unknown as ReturnType<typeof multiTenantUser>,
     selectTenant: action('selectTenant'),
     isLoading: false,
   },
@@ -19,8 +19,7 @@ const meta: Meta<typeof TenantSelection> = {
     user: {
       options: ['user', 'none'],
       mapping: {
-        user: multiTenantSeller({
-          sellerIds: new Array(100).fill(null).map((_, index) => `600${index}`),
+        user: multiTenantUser({
           managedSellers: new Array(100).fill(null).map((_, index) => ({
             id: 6000 + index,
             billingAddress: null,

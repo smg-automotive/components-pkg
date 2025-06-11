@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { multiTenantSeller } from '@smg-automotive/auth/fixtures';
+import { multiTenantUser } from '@smg-automotive/auth/fixtures';
 
 import { render, screen, waitFor } from '.jest/utils';
 
@@ -19,7 +19,7 @@ const renderWrapper = ({
 
 describe('TenantSelection', () => {
   it('renders the TenantSelection component', () => {
-    renderWrapper({ user: multiTenantSeller({ forceTenantSelection: true }) });
+    renderWrapper({ user: multiTenantUser({ forceTenantSelection: true }) });
 
     expect(
       screen.getByText('Wählen Sie eine Ihrer Garagen'),
@@ -39,7 +39,7 @@ describe('TenantSelection', () => {
     const user = userEvent.setup();
     const mockSelectTenant = jest.fn();
     renderWrapper({
-      user: multiTenantSeller({ forceTenantSelection: true }),
+      user: multiTenantUser({ forceTenantSelection: true }),
       selectTenant: mockSelectTenant,
     });
 
