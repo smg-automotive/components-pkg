@@ -77,10 +77,7 @@ import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
 import { autoRadarLinkConfig, manageAutoRadarLinkConfig } from './AutoRadar';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
-import {
-  advertisePartsAccessoriesLinkConfig,
-  onlineAdvertisingLinkConfig,
-} from './advertise';
+import { onlineAdvertisingLinkConfig } from './advertise';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -146,7 +143,6 @@ const getUserNodeItems = ({
       autoScoutTopVehiclesLinkConfig,
       motoScoutTopVehiclesLinkConfig,
       onlineAdvertisingLinkConfig,
-      advertisePartsAccessoriesLinkConfig,
       getProfessionalAutoScoutInsuranceComparisonLinkConfig({ sellerId }),
       getAutoScoutInsuranceComparisonLinkConfig({
         private: true,
