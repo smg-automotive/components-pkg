@@ -187,8 +187,8 @@ describe('Header', () => {
       pathname: '/de/vehicle-management',
     };
     const legacyWebLink = {
-      name: 'Versichern',
-      pathname: '/de/autoversicherung',
+      name: 'Kontaktanfragen',
+      pathname: '/de/member/messagemanager',
     };
 
     it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {
