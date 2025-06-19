@@ -186,6 +186,10 @@ describe('Header', () => {
       name: 'Meine Fahrzeuge',
       pathname: '/de/vehicle-management',
     };
+    const legacyWebLink = {
+      name: 'Kontaktanfragen',
+      pathname: '/de/member/messagemanager',
+    };
 
     it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {
       renderNavigation({
@@ -215,6 +219,16 @@ describe('Header', () => {
       expect(isAbsoluteUrl(sellerLink!)).toBe(true);
       expect(sellerLink!).toEqual(
         transformToAbsoluteUrl(sellerWebLink.pathname),
+      );
+      const legacyLink = screen
+        .getAllByRole('link', {
+          name: legacyWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(legacyLink!)).toBe(true);
+      expect(legacyLink!).toEqual(
+        transformToAbsoluteUrl(legacyWebLink.pathname),
       );
     });
 
@@ -247,6 +261,16 @@ describe('Header', () => {
         .getAttribute('href');
       expect(isAbsoluteUrl(sellerLink!)).toBe(false);
       expect(sellerLink!).toEqual(sellerWebLink.pathname);
+      const legacyLink = screen
+        .getAllByRole('link', {
+          name: legacyWebLink.name,
+          hidden: true,
+        })[0]
+        .getAttribute('href');
+      expect(isAbsoluteUrl(legacyLink!)).toBe(true);
+      expect(legacyLink!).toEqual(
+        transformToAbsoluteUrl(legacyWebLink.pathname),
+      );
     });
   });
 });
