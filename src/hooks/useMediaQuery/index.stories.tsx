@@ -23,9 +23,7 @@ const queryToString = (query: QueryProps): string => {
 };
 
 const MediaQueryDemo = ({ query }: { query: QueryProps }) => {
-  const normalizedQuery = { ...query };
-
-  const isMatch = useMediaQuery(normalizedQuery);
+  const isMatch = useMediaQuery(query);
 
   return (
     <Box>
