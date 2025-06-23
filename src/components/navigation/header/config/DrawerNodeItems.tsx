@@ -54,6 +54,7 @@ import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig, optimizerProLinkConfig } from './Optimizer';
 
 import { magazineLinkConfig } from './magazine';
+import { leasingLinkConfig } from './leasing';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
   switchToFrenchLinkConfig,
@@ -267,6 +268,10 @@ export const drawerNodeItems = ({
           showUnderMoreLinkBelow: 'sm',
         },
         {
+          ...leasingLinkConfig({ trackEvent }),
+          showUnderMoreLinkBelow: 'sm',
+        },
+        {
           ...electromobilityLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: 'sm',
         },
@@ -287,6 +292,7 @@ export const drawerNodeItems = ({
         estimateLinkConfig({ trackEvent }),
         autoScoutAssureLinkConfig({ trackEvent }),
         motoScoutAssureLinkConfig({ trackEvent }),
+        leasingLinkConfig({ trackEvent }),
         electromobilityLinkConfig({ trackEvent }),
         magazineLinkConfig({ trackEvent }),
       ],
@@ -331,6 +337,7 @@ export const drawerNodeItems = ({
         }),
         autoScoutAssureLinkConfig({ trackEvent }),
         motoScoutAssureLinkConfig({ trackEvent }),
+        leasingLinkConfig({ trackEvent }),
         electromobilityLinkConfig({ trackEvent }),
         magazineLinkConfig({ trackEvent }),
       ],
