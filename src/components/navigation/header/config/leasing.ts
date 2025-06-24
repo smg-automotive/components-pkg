@@ -29,6 +29,7 @@ export const leasingLinkConfig = ({
     onClick: () =>
       trackEvent?.({
         eventCategory: navigationEventCategory,
+        eventLabel: 'header',
         eventAction: 'open_leasing',
       }),
   } satisfies NavigationLinkConfigProps;
