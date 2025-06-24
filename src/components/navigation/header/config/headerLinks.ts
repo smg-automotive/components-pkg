@@ -12,7 +12,6 @@ import {
 import { magazineLinkConfig } from './magazine';
 import { leasingLinkConfig } from './leasing';
 import { estimateLinkConfig } from './estimate';
-import { electromobilityLinkConfig } from './electroMobility';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
 
 export type NavigationLinkConfigProps = Omit<
