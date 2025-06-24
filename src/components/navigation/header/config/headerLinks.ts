@@ -50,6 +50,5 @@ export const headerLinks = ({
   autoScoutAssureLinkConfig({ trackEvent }),
   motoScoutAssureLinkConfig({ trackEvent }),
   leasingLinkConfig({ trackEvent }),
-  electromobilityLinkConfig({ trackEvent }),
   magazineLinkConfig({ trackEvent }),
 ];
