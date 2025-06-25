@@ -38,6 +38,9 @@ const meta: Meta<typeof Navigation> = {
     entitlements: [],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
+    experiments: {
+      leasing: 'on',
+    },
   },
 
   argTypes: {
@@ -74,6 +77,9 @@ type StoryType = StoryObj<typeof Navigation>;
 export const Unauthenticated: StoryType = {
   args: {
     user: null,
+    experiments: {
+      leasing: 'on',
+    },
   },
 };
 
@@ -89,6 +95,9 @@ export const Professional: StoryType = {
       'listing-visibility-standard',
       'listing-visibility-premium',
     ],
+    experiments: {
+      leasing: 'on',
+    },
   },
 };
 
@@ -102,5 +111,8 @@ export const Private: StoryType = {
       'safe-number',
       'previous-price',
     ],
+    experiments: {
+      leasing: 'on',
+    },
   },
 };

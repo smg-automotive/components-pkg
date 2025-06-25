@@ -52,6 +52,7 @@ const Navigation: FC<NavigationProps> = ({
   useAbsoluteUrls = false,
   project,
   user,
+  experiments = {},
 }) => {
   const config = useMemo(() => {
     const urlPathParams = user?.sellerId
@@ -63,7 +64,7 @@ const Navigation: FC<NavigationProps> = ({
       useAbsoluteUrls,
       project,
       config: {
-        headerItems: headerLinks({ trackEvent }),
+        headerItems: headerLinks({ trackEvent, experiments }),
         drawerItems: drawerNodeItems({
           trackEvent,
           onLogout,
@@ -71,6 +72,7 @@ const Navigation: FC<NavigationProps> = ({
           sellerId: user?.sellerId,
           currentLanguage: language,
           isLoggedIn: !!user,
+          experiments,
         }),
         iconItems: iconItems({ trackEvent, comparisonItemIds }),
       },
@@ -90,6 +92,7 @@ const Navigation: FC<NavigationProps> = ({
     comparisonItemIds,
     entitlements,
     language,
+    experiments,
   ]);
 
   const { drawer, isOpen, onClose, createDrawerHandler } = useNavigationDrawer({
