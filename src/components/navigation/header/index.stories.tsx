@@ -77,6 +77,9 @@ const meta: Meta<typeof Navigation> = {
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
     selectTenant: async (id) => action('select tenant')(id),
+    experiments: {
+      leasing: 'on',
+    },
   },
 
   argTypes: {
@@ -113,12 +116,18 @@ type StoryType = StoryObj<typeof Navigation>;
 export const Unauthenticated: StoryType = {
   args: {
     user: null,
+    experiments: {
+      leasing: 'on',
+    },
   },
 };
 
 export const Professional: StoryType = {
   args: {
     user: professionalUser(),
+    experiments: {
+      leasing: 'on',
+    },
   },
 };
 
@@ -135,11 +144,17 @@ export const ProfessionalWithMultiTenancy: StoryType = {
         billingZipCode: (8000 + index).toString(),
       })),
     }),
+    experiments: {
+      leasing: 'on',
+    },
   },
 };
 
 export const Private: StoryType = {
   args: {
     user: privateUser(),
+    experiments: {
+      leasing: 'on',
+    },
   },
 };
