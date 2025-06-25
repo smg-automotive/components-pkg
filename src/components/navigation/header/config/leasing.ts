@@ -23,7 +23,7 @@ export const leasingLinkConfig = ({
       },
       brand: {
         autoscout24: true,
-        motoscout24: true,
+        motoscout24: false,
       },
     },
     onClick: () =>

@@ -269,8 +269,8 @@ export const drawerNodeItems = ({
           ? [
               {
                 ...leasingLinkConfig({ trackEvent }),
-                showUnderMoreLinkBelow: 'sm',
-              } satisfies NavigationLinkConfigProps,
+                showUnderMoreLinkBelow: 'sm' as const,
+              },
             ]
           : []),
         {
