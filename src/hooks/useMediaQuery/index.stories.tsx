@@ -64,3 +64,9 @@ export const AboveMd: StoryObj<typeof MediaQueryDemo> = {
     query: { above: 'md' },
   },
 };
+
+export const AboveSmBelowMd: StoryObj<typeof MediaQueryDemo> = {
+  args: {
+    query: { above: 'sm', below: 'md' },
+  },
+};
