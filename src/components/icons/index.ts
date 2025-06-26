@@ -116,6 +116,7 @@ export { SedanIcon } from './SedanIcon';
 export { WagonIcon } from './WagonIcon';
 export { PickUpIcon } from './PickUpIcon';
 export { InformationBubbleIcon } from './InformationBubbleIcon';
+export { OverflowVerticalIcon } from './OverflowVerticalIcon';
 export { PartialClockIcon } from './PartialClockIcon';
 export { LockIcon } from './LockIcon';
 export { TiltedRectangleIcon } from './TiltedRectangleIcon';
