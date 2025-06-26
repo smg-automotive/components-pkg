@@ -20,7 +20,7 @@ export type PopoverProps = PropsWithChildren<
     showArrow?: boolean;
     contentPadding?: ContentPadding;
     maxWidth?: MaxWidth;
-    contentPosition?: 'relative';
+    contentPosition?: 'relative' | 'absolute';
   } & Pick<
     ChakraPopoverProps,
     | 'placement'
