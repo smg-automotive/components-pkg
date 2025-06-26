@@ -130,6 +130,7 @@ export { BankNotesIcon } from './BankNotesIcon';
 export { ChatBubbleIcon } from './ChatBubbleIcon';
 export { DigitalContractIcon } from './DigitalContractIcon';
 export { OptimizerIcon } from './OptimizerIcon';
+export { OverflowVerticalIcon } from './OverflowVerticalIcon';
 export { CheckmarkCircleColorIcon } from './CheckmarkCircleColorIcon';
 export { ArrowDownCircleIcon } from './ArrowDownCircleIcon';
 export { ArrowUpCircleIcon } from './ArrowUpCircleIcon';
