@@ -24,7 +24,12 @@ export interface MenuProps {
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
   menuColor?: string;
+  menuButtonColor?: string;
+  menuItemColor?: string;
+  /** @deprecated Use leftIcon instead. Will be removed in future versions. */
   icon?: ReactElement;
+  leftIcon?: ReactElement;
+  rightIcon?: ReactElement | null;
   iconSpacing?: ButtonProps['iconSpacing'];
   placement?: ChakraMenuProps['placement'];
 }
@@ -35,10 +40,20 @@ const Menu: FC<MenuProps> = ({
   fontWeightTitle = 'regular',
   offset = [],
   menuColor,
+  menuButtonColor,
+  menuItemColor,
   icon,
+  leftIcon,
+  rightIcon,
   iconSpacing,
   placement,
 }) => {
+  const resolvedLeftIcon = leftIcon || icon;
+  const shouldHideRightIcon = rightIcon === null;
+
+  const resolvedMenuButtonColor = menuButtonColor || menuColor;
+  const resolvedMenuItemColor = menuItemColor || menuColor;
+
   return (
     <ChakraMenu {...(offset.length && { offset })} placement={placement}>
       {({ isOpen }) => (
@@ -47,15 +62,19 @@ const Menu: FC<MenuProps> = ({
             as={Button}
             padding={0}
             iconSpacing={iconSpacing}
-            leftIcon={icon}
+            leftIcon={resolvedLeftIcon}
             rightIcon={
-              <ChevronDownSmallIcon
-                transition="0.2s"
-                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-              />
+              shouldHideRightIcon
+                ? undefined
+                : rightIcon || (
+                    <ChevronDownSmallIcon
+                      transition="0.2s"
+                      transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                    />
+                  )
             }
             fontWeight={fontWeightTitle}
-            color={isOpen ? 'blue.700' : menuColor}
+            color={isOpen ? 'blue.700' : resolvedMenuButtonColor}
           >
             {title}
           </MenuButton>
@@ -65,7 +84,9 @@ const Menu: FC<MenuProps> = ({
                 <ChakraMenuItem
                   key={`menuItem-${index}`}
                   onClick={onClick}
-                  {...(menuColor && { color: menuColor })}
+                  {...(resolvedMenuItemColor && {
+                    color: resolvedMenuItemColor,
+                  })}
                 >
                   {text}
                 </ChakraMenuItem>
