@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { GlobeIcon, PlusIcon, StarIcon } from '../icons';
 import Box from '../box';
 
 import MenuComponent from './index';
@@ -31,3 +32,29 @@ const meta: Meta<typeof MenuComponent> = {
 export default meta;
 
 export const Overview: StoryObj<typeof MenuComponent> = {};
+
+export const WithLeftIcon: StoryObj<typeof MenuComponent> = {
+  args: {
+    leftIcon: <GlobeIcon />,
+  },
+};
+
+export const WithCustomRightIcon: StoryObj<typeof MenuComponent> = {
+  args: {
+    leftIcon: <StarIcon />,
+    rightIcon: <PlusIcon />,
+  },
+};
+
+export const WithNoRightIcon: StoryObj<typeof MenuComponent> = {
+  args: {
+    leftIcon: <GlobeIcon />,
+    rightIcon: null,
+  },
+};
+
+export const BackwardCompatibility: StoryObj<typeof MenuComponent> = {
+  args: {
+    icon: <GlobeIcon />,
+  },
+};
