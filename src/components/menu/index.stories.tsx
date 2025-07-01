@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { GlobeIcon, PlusIcon, StarIcon } from '../icons';
 import Box from '../box';
-import { GlobeIcon, StarIcon, PlusIcon } from '../icons';
 
 import MenuComponent from './index';
 
