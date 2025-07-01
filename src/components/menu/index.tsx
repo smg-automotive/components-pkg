@@ -4,6 +4,7 @@ import {
   ButtonProps,
   Menu as ChakraMenu,
   MenuItem as ChakraMenuItem,
+  MenuListProps as ChakraMenuListProps,
   MenuProps as ChakraMenuProps,
   MenuButton,
   MenuList,
@@ -26,6 +27,7 @@ export interface MenuProps {
   menuColor?: string;
   menuButtonColor?: string;
   menuItemColor?: string;
+  menuListWidth?: ChakraMenuListProps['width'];
   /** @deprecated Use leftIcon instead. Will be removed in future versions. */
   icon?: ReactElement;
   leftIcon?: ReactElement;
@@ -42,6 +44,7 @@ const Menu: FC<MenuProps> = ({
   menuColor,
   menuButtonColor,
   menuItemColor,
+  menuListWidth,
   icon,
   leftIcon,
   rightIcon,
@@ -78,7 +81,10 @@ const Menu: FC<MenuProps> = ({
           >
             {title}
           </MenuButton>
-          <MenuList minWidth="4xl">
+          <MenuList
+            {...(menuListWidth && { width: menuListWidth })}
+            minWidth="4xl"
+          >
             {items.map(({ onClick, text }, index) => {
               return (
                 <ChakraMenuItem
