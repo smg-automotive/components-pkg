@@ -1,5 +1,7 @@
-import Button from 'src/components/button';
 import React, { FC } from 'react';
+
+// TODO: will swap with button v3 when available
+import Button from 'src-v2/components/button';
 
 import { ActionButtonInterface } from './interface';
 
