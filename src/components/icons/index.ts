@@ -159,3 +159,5 @@ export { SpeakerIcon } from './SpeakerIcon';
 export { AddPhotoIcon } from './AddPhotoIcon';
 export { ScreenIcon } from './ScreenIcon';
 export { QualitySealIcon } from './QualitySealIcon';
+export { ExpandIcon } from './ExpandIcon';
+export { CollapseIcon } from './CollapseIcon';
