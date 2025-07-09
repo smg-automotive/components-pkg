@@ -2,7 +2,6 @@ import React, { ElementType, forwardRef, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
   ButtonProps as ChakraButtonProps,
-  ResponsiveValue,
 } from '@chakra-ui/react';
 
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
@@ -24,7 +23,7 @@ type ButtonSize = 'md' | 'lg';
 type SharedProps = {
   as?: 'button';
   variant?: 'primary' | 'secondary' | 'success' | 'transparent';
-  size?: ButtonSize | ResponsiveValue<ButtonSize>;
+  size?: ButtonSize
   children: ReactNode;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
@@ -76,11 +75,10 @@ type IconButtonProps =
 export type Props = ButtonProps | IconButtonProps | LinkProps;
 
 const Button = forwardRef<HTMLLinkElement | HTMLButtonElement, Props>(
-  (props, ref) => {
+  (props) => {
     const {
       variant = 'primary',
       size = 'lg',
-      isDisabled = false,
       as = 'button',
       isExternal,
       ariaLabel,
@@ -90,14 +88,9 @@ const Button = forwardRef<HTMLLinkElement | HTMLButtonElement, Props>(
 
     return (
       <ChakraButton
-        ref={ref}
         leftIcon={props.children ? props.leftIcon : icon}
         rightIcon={props.children ? props.rightIcon : undefined}
-        iconSpacing={props.children ? 'xs' : 0}
         as={as}
-        variant={variant}
-        size={size}
-        isDisabled={isDisabled}
         aria-label={props.children ? undefined : ariaLabel}
         {...rest}
         {...(props.as === 'a'
