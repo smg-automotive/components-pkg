@@ -1,4 +1,4 @@
-import { MappedUserType } from '@smg-automotive/auth';
+import { Auth0UserType } from '@smg-automotive/auth';
 
 import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
@@ -22,7 +22,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [],
       });
 
@@ -41,7 +41,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.AutoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [],
       });
 
@@ -61,7 +61,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [],
       });
 
@@ -80,7 +80,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.AutoScout24,
-        userType: MappedUserType.Professional,
+        userType: Auth0UserType.Professional,
         userEntitlements: [],
       });
 
@@ -101,7 +101,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [restrictedEntitlement],
         entitlementConfig: {
           hideIfEntitlementIsPresent: restrictedEntitlement,
@@ -126,7 +126,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [],
         entitlementConfig: {
           hideIfRequiredEntitlementIsMissing:
@@ -152,7 +152,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [],
       });
 
@@ -173,7 +173,7 @@ describe('Link', () => {
           },
         },
         brand: Brand.MotoScout24,
-        userType: MappedUserType.Private,
+        userType: Auth0UserType.Private,
         userEntitlements: [],
       });
 
