@@ -58,7 +58,7 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.27.2",
+    "@babel/preset-env": "7.28.0",
     "@babel/preset-react": "7.27.1",
     "@babel/preset-typescript": "7.27.1",
     "@rollup/plugin-commonjs": "28.0.6",
@@ -66,7 +66,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-typescript": "12.1.4",
-    "@smg-automotive/eslint-config": "5.0.36",
+    "@smg-automotive/eslint-config": "5.0.37",
     "@storybook/addon-actions": "8.6.14",
     "@storybook/addon-docs": "8.6.14",
     "@storybook/addon-essentials": "8.6.14",
@@ -95,14 +95,14 @@
     "hast-util-is-element": "3.0.0",
     "http-server": "14.1.1",
     "is-absolute-url": "4.0.1",
-    "jest": "30.0.3",
-    "jest-environment-jsdom": "30.0.2",
+    "jest": "30.0.4",
+    "jest-environment-jsdom": "30.0.4",
     "postcss-flexbugs-fixes": "5.0.2",
     "prop-types": "15.8.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rimraf": "6.0.1",
-    "rollup": "4.44.1",
+    "rollup": "4.44.2",
     "rollup-plugin-add-shebang": "0.3.1",
     "rollup-plugin-copy": "3.5.0",
     "rollup-plugin-dts": "6.2.1",
@@ -117,7 +117,7 @@
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.8.3",
     "unist-util-visit": "5.0.0",
-    "webpack": "5.99.9"
+    "webpack": "5.100.0"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.3.4",
