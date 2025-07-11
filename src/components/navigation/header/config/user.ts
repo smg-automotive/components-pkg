@@ -42,26 +42,6 @@ export const favoritesLinkConfig: NavigationLinkConfigProps = {
   projectIdentifier: 'listings-web',
 };
 
-export const changeEmailLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.emailAddress',
-  link: {
-    de: '/de/account/change-email',
-    en: '/en/account/change-email',
-    fr: '/fr/account/change-email',
-    it: '/it/account/change-email',
-  },
-  visibilitySettings: {
-    userType: {
-      private: true,
-      professional: true,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: true,
-    },
-  },
-};
-
 export const editUsersLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.editUser',
   link: {
