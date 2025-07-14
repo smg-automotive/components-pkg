@@ -10,6 +10,7 @@ import { energyLabelRecipe as energyLabel } from './energyLabel';
 import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
+import { switchComponentRecipe as switchComponent } from './switchComponent';
 
 export const slotRecipes = {
   articleTeaser,
@@ -24,4 +25,5 @@ export const slotRecipes = {
   field,
   section,
   checkbox,
+  switchComponent,
 };

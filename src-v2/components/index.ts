@@ -63,7 +63,6 @@ export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
 export { default as Slide } from './slide';
 export { default as Spinner } from './spinner';
-export { default as Switch } from './switchComponent';
 export { default as Text } from './text';
 export { default as HighlightedText } from './text/HighlightedText';
 export { default as MarkedText } from './text/marked';
