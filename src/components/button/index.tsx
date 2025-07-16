@@ -93,6 +93,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const asLinkProps = {
     target: props.isExternal ? '_blank' : undefined,
     rel: props.rel || (props.isExternal ? 'noopener noreferrer' : undefined),
+    ...(props.isDisabled ? { 'aria-disabled': true } : {}),
   };
 
   return (
@@ -103,7 +104,6 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
       disabled={isDisabled}
       aria-label={props.children ? undefined : props.ariaLabel}
       {...rest}
-      {...(isDisabled ? { 'data-disabled': '' } : {})}
       {...(props.as === 'a' ? asLinkProps : {})}
       onClick={(e) => {
         if (props.as === 'a' && props.href && isDisabled) {
@@ -119,7 +119,5 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
     </ChakraButton>
   );
 });
-
-Button.displayName = 'Button';
 
 export default Button;
