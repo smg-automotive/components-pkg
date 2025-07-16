@@ -4,7 +4,6 @@ import { useArgs } from '@storybook/preview-api';
 
 import { Brand } from 'src/types/brand';
 
-import ThemeProvider from '../themeProvider';
 import { FullHeight } from '../index';
 
 import DevOverlayComponent, { type DevOverlayProps } from './index';
@@ -40,14 +39,10 @@ const meta: Meta<typeof DevOverlayComponent> = {
 
   decorators: [
     (Story) => {
-      const [{ activeTheme }] = useArgs();
-
       return (
-        <ThemeProvider theme={activeTheme}>
-          <FullHeight>
-            <Story />
-          </FullHeight>
-        </ThemeProvider>
+        <FullHeight>
+          <Story />
+        </FullHeight>
       );
     },
   ],
