@@ -4,45 +4,16 @@ import React, { ElementType, forwardRef, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
   RecipeVariantProps,
-  useBreakpointValue,
   useRecipe,
 } from '@chakra-ui/react';
 
 import { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
 
+import { ResponsiveValue } from 'src/types/responsiveValue';
 import { buttonRecipe } from 'src/themes/shared/recipes/button';
-import { breakpoints } from 'src/themes';
 
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
 type Never<Source> = { [P in keyof Source]?: never };
-
-type BreakpointKeys = keyof typeof breakpoints;
-
-// TODO document why we need to do this
-//Let's make it more flexible by allowing generic responsive sizes
-type ResponsiveButtonProps<T> = Partial<Record<BreakpointKeys, T>>;
-
-const getBreakpointValues = <S,>(
-  size: S | ResponsiveButtonProps<S> | undefined,
-) => {
-  // move this to utility
-  // Normalize size prop for useBreakpointValue
-  let responsiveSize: Partial<Record<BreakpointKeys, S>> | undefined;
-  if (typeof size === 'string') {
-    // If size is a string, apply it to all breakpoints
-    responsiveSize = Object.keys(breakpoints).reduce(
-      (acc, key) => {
-        acc[key as BreakpointKeys] = size as S;
-        return acc;
-      },
-      {} as Partial<Record<BreakpointKeys, S>>,
-    );
-  } else if (size && typeof size === 'object') {
-    responsiveSize = size as Partial<Record<BreakpointKeys, S>>;
-  }
-
-  return responsiveSize;
-};
 
 type LinkButton = {
   href?: string;
@@ -60,7 +31,7 @@ type ButtonSize = 'md' | 'lg';
 type SharedProps = {
   as?: 'button';
   variant?: RecipeVariantProps<typeof buttonRecipe>['variant'];
-  size?: ButtonSize | ResponsiveButtonProps<ButtonSize>;
+  size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
@@ -114,19 +85,16 @@ export type Props = ButtonProps | IconButtonProps | LinkProps;
 
 const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const recipe = useRecipe({ recipe: buttonRecipe });
-  const sizeVariant = useBreakpointValue(getBreakpointValues(props.size) || {});
-  const { size, ...withoutSizeProps } = props;
-  const [recipeProps, restProps] = recipe.splitVariantProps({
-    ...withoutSizeProps,
-    size: sizeVariant,
-  });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
 
   const { as = 'button', isDisabled, ...rest } = restProps;
 
-  // handle https://chakra-ui.com/docs/components/button#as-link
+  const asLinkProps = {
+    target: props.isExternal ? '_blank' : undefined,
+    rel: props.rel || (props.isExternal ? 'noopener noreferrer' : undefined),
+  };
 
-  // hanlde https://chakra-ui.com/docs/components/button#disabled-link
   return (
     <ChakraButton
       ref={ref}
@@ -135,14 +103,15 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
       disabled={isDisabled}
       aria-label={props.children ? undefined : props.ariaLabel}
       {...rest}
-      {...(props.as === 'a'
-        ? {
-            target: props.isExternal ? '_blank' : undefined,
-            rel:
-              props.rel ||
-              (props.isExternal ? 'noopener noreferrer' : undefined),
-          }
-        : {})}
+      {...(isDisabled ? { 'data-disabled': '' } : {})}
+      {...(props.as === 'a' ? asLinkProps : {})}
+      onClick={(e) => {
+        if (props.as === 'a' && props.href && isDisabled) {
+          e.preventDefault();
+        } else {
+          props.onClick?.(e);
+        }
+      }}
     >
       {props.children ? props.leftIcon : props.icon}
       {props.children}
