@@ -1,0 +1,83 @@
+import React, { FC, useMemo } from 'react';
+import { Container } from '@chakra-ui/react';
+
+import { Project } from 'src/types/project';
+import { Language } from 'src/types/language';
+import { Environment } from 'src/types/environment';
+import { Brand } from 'src/types/brand';
+import { TranslationProvider } from 'src/components/translationProvider';
+import { Separator } from 'src/components/separator';
+import { Center } from 'src/components/center';
+import { Box } from 'src/components/box';
+
+import SocialMedia from './SocialMedia';
+import FooterSectionGrid from './SectionGrid';
+import FooterLanguageNavigation from './LanguageNavigation';
+import FooterCopyright from './Copyright';
+import { FooterConfig } from './config/factory';
+import { footerConfig } from './config';
+import FooterCompanies from './Companies';
+
+interface FooterProps {
+  brand: Brand;
+  language: Language;
+  environment?: Environment;
+  useAbsoluteUrls?: boolean;
+  project?: Project;
+  experiments?: Record<string, string>;
+}
+
+const Footer: FC<FooterProps> = ({
+  brand,
+  language,
+  environment,
+  useAbsoluteUrls,
+  project,
+  experiments = {},
+}) => {
+  const config = useMemo(() => {
+    const footerConfigInstance = new FooterConfig({
+      config: footerConfig({ experiments }),
+      brand,
+      environment,
+      useAbsoluteUrls,
+      project,
+    });
+    return footerConfigInstance.getMappedConfig();
+  }, [brand, environment, useAbsoluteUrls, project, experiments]);
+
+  return (
+    <TranslationProvider language={language} scopes={['footer']}>
+      <footer>
+        <Box
+          width="full"
+          background="gray.900"
+          color="white"
+          paddingTop={{ md: 'md' }}
+          paddingBottom={{ base: 'lg', md: '2xl' }}
+        >
+          <Center>
+            <Container
+              width="full"
+              maxWidth="container.2xl"
+              paddingX={{ md: 'xs' }}
+            >
+              <FooterSectionGrid config={config} />
+              <FooterLanguageNavigation />
+              <SocialMedia config={config} />
+            </Container>
+          </Center>
+          <Separator borderColor="gray.700" />
+          <Center>
+            <Container width="full" maxWidth="container.xl" paddingX="lg">
+              <FooterCompanies config={config} />
+              <FooterCopyright />
+            </Container>
+          </Center>
+        </Box>
+      </footer>
+    </TranslationProvider>
+  );
+};
+
+export default Footer;
