@@ -21,7 +21,7 @@ export const switchComponentRecipe = defineSlotRecipe({
   base: {
     root: {
       display: 'inline-flex',
-      gap: 'xl',
+      gap: 'sm',
       alignItems: 'center',
       position: 'relative',
       verticalAlign: 'middle',
@@ -34,17 +34,12 @@ export const switchComponentRecipe = defineSlotRecipe({
       },
     },
     control: {
-      display: 'inline-flex',
-      gap: 'xxs',
       bg: 'gray.200',
-      flexShrink: 0,
-      justifyContent: 'flex-start',
       cursor: 'pointer',
       borderRadius: 'full',
       position: 'relative',
       width: 'var(--switch-width)',
       height: 'var(--switch-height)',
-      transition: 'backgrounds',
       _hover: {
         bg: 'gray.300',
       },
@@ -67,8 +62,6 @@ export const switchComponentRecipe = defineSlotRecipe({
       position: 'absolute',
       top: 'xxs',
       left: 'xxs',
-      transitionProperty: 'common',
-      transitionDuration: 'normal',
       _checked: {
         transform: 'translateX(var(--switch-x))',
         _after: {

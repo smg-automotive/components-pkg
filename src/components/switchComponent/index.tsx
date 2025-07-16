@@ -1,48 +1,47 @@
 import React, { FC, ReactNode } from 'react';
 import {
   Switch as ChakraSwitch,
-  RecipeVariantProps,
+  SwitchCheckedChangeDetails,
+  SystemStyleObject,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { switchComponentRecipe } from 'src/themes/shared/slotRecipes/switchComponent';
+export type SwitchComponentProps = {
+  onChange: (details: SwitchCheckedChangeDetails) => void;
+  isDisabled: boolean;
+  isChecked: boolean;
+  id: string;
+  label?: ReactNode;
+};
 
-type SwitchComponentVariantProps = RecipeVariantProps<
-  typeof switchComponentRecipe
->;
-
-export type SwitchComponentProps = SwitchComponentVariantProps &
-  Pick<ChakraSwitch.RootProps, 'onCheckedChange' | 'checked' | 'disabled'> & {
-    id: string;
-    label?: ReactNode;
-  };
+type SwitchComponentSlots = 'root' | 'control' | 'thumb' | 'label';
 
 const SwitchComponent: FC<SwitchComponentProps> = ({
   id,
-  onCheckedChange,
-  checked,
-  disabled,
+  isDisabled,
+  onChange,
+  isChecked,
   label,
   ...props
 }) => {
   const recipe = useSlotRecipe({ key: 'switchComponent' });
   const [recipeProps] = recipe.splitVariantProps(props);
-  const styles = recipe(recipeProps);
+  const styles: Partial<Record<SwitchComponentSlots, SystemStyleObject>> =
+    recipe(recipeProps);
 
   return (
     <ChakraSwitch.Root
-      onCheckedChange={onCheckedChange}
-      checked={checked}
-      disabled={disabled}
+      onCheckedChange={onChange}
+      checked={isChecked}
+      disabled={isDisabled}
       css={styles.root}
-      {...props}
     >
       <ChakraSwitch.HiddenInput />
       <ChakraSwitch.Control css={styles.control}>
         <ChakraSwitch.Thumb css={styles.thumb} />
       </ChakraSwitch.Control>
       {label ? (
-        <ChakraSwitch.Label css={styles.label}>Label</ChakraSwitch.Label>
+        <ChakraSwitch.Label css={styles.label}>{label}</ChakraSwitch.Label>
       ) : null}
     </ChakraSwitch.Root>
   );

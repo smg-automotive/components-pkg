@@ -11,9 +11,9 @@ const Wrapper = (props: SwitchComponentProps) => {
     <SwitchComponent
       {...props}
       {...args}
-      onCheckedChange={(e) => {
-        updateArgs({ checked: e.checked });
-        args.onCheckedChange?.(e);
+      onChange={(e) => {
+        updateArgs({ isChecked: e.checked });
+        args.onChange?.(e);
       }}
     />
   );
@@ -25,10 +25,10 @@ const meta: Meta<typeof SwitchComponent> = {
   render: Wrapper,
 
   args: {
-    checked: false,
-    onCheckedChange: action('onChange'),
+    isChecked: false,
+    onChange: action('onChange'),
     label: 'Label',
-    disabled: false,
+    isDisabled: false,
     id: '1',
   },
 };
