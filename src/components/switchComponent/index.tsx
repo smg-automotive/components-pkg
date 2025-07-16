@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react';
 import {
-  Field as ChakraField,
   Switch as ChakraSwitch,
   RecipeVariantProps,
   useSlotRecipe,
@@ -31,25 +30,21 @@ const SwitchComponent: FC<SwitchComponentProps> = ({
   const styles = recipe(recipeProps);
 
   return (
-    <ChakraField.Root display="flex" alignItems="center" disabled={disabled}>
-      <ChakraSwitch.Root
-        onCheckedChange={onCheckedChange}
-        checked={checked}
-        disabled={disabled}
-        css={styles.root}
-        {...props}
-      >
-        <ChakraSwitch.HiddenInput />
-        <ChakraSwitch.Control css={styles.control}>
-          <ChakraSwitch.Thumb css={styles.thumb} />
-        </ChakraSwitch.Control>
-      </ChakraSwitch.Root>
+    <ChakraSwitch.Root
+      onCheckedChange={onCheckedChange}
+      checked={checked}
+      disabled={disabled}
+      css={styles.root}
+      {...props}
+    >
+      <ChakraSwitch.HiddenInput />
+      <ChakraSwitch.Control css={styles.control}>
+        <ChakraSwitch.Thumb css={styles.thumb} />
+      </ChakraSwitch.Control>
       {label ? (
-        <ChakraField.Label fontWeight="regular" htmlFor={id} mb={0}>
-          {label}
-        </ChakraField.Label>
+        <ChakraSwitch.Label css={styles.label}>Label</ChakraSwitch.Label>
       ) : null}
-    </ChakraField.Root>
+    </ChakraSwitch.Root>
   );
 };
 export default SwitchComponent;

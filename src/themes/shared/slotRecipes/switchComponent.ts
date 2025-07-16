@@ -5,16 +5,18 @@ const checkmark = {
   display: 'block',
   width: '25%',
   height: '45%',
-  border: 'solid',
+  borderStyle: 'solid',
   borderWidth: '0 2px 2px 0',
   position: 'absolute',
-  top: '45%',
+  top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%) rotate(45deg)',
-};
+  borderColor: 'gray.900',
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+} as any;
 
 export const switchComponentRecipe = defineSlotRecipe({
-  slots: ['root', 'control', 'thumb', 'label', 'indicator'],
+  slots: ['root', 'control', 'thumb', 'label'],
   className: 'chakra-switch',
   base: {
     root: {
@@ -73,6 +75,13 @@ export const switchComponentRecipe = defineSlotRecipe({
           ...checkmark,
           borderColor: 'gray.900',
         },
+      },
+    },
+    label: {
+      userSelect: 'none',
+      fontSize: 'sm',
+      _disabled: {
+        opacity: '60',
       },
     },
   },
