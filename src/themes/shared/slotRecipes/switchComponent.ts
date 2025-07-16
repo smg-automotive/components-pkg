@@ -1,35 +1,78 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
+const checkmark = {
+  content: '""',
+  display: 'block',
+  width: '25%',
+  height: '45%',
+  border: 'solid',
+  borderWidth: '0 2px 2px 0',
+  position: 'absolute',
+  top: '45%',
+  left: '50%',
+  transform: 'translate(-50%, -50%) rotate(45deg)',
+};
+
 export const switchComponentRecipe = defineSlotRecipe({
-  slots: ['root', 'control', 'thumb'],
+  slots: ['root', 'control', 'thumb', 'label', 'indicator'],
+  className: 'chakra-switch',
   base: {
     root: {
       display: 'inline-flex',
+      gap: 'xl',
       alignItems: 'center',
-      gap: 'sm',
+      position: 'relative',
+      verticalAlign: 'middle',
+      '--switch-diff': 'calc(var(--switch-width) - var(--switch-height))',
+      '--switch-width': '2.5rem',
+      '--switch-height': '1.25rem',
+      '--switch-x': {
+        base: 'var(--switch-diff)',
+        _rtl: 'calc(var(--switch-diff) * -1)',
+      },
     },
     control: {
-      width: 'md',
-      height: 'sm',
-      bg: 'gray.300',
-      borderRadius: 'xl',
+      display: 'inline-flex',
+      gap: 'xxs',
+      bg: 'gray.200',
+      flexShrink: 0,
+      justifyContent: 'flex-start',
+      cursor: 'pointer',
+      borderRadius: 'full',
       position: 'relative',
-      transition: 'common',
+      width: 'var(--switch-width)',
+      height: 'var(--switch-height)',
+      transition: 'backgrounds',
+      _hover: {
+        bg: 'gray.300',
+      },
+      _disabled: {
+        opacity: '60',
+        cursor: 'notAllowed',
+      },
       _checked: {
-        bg: 'green.400',
+        bg: 'gray.900',
+        _hover: {
+          bg: 'gray.700',
+        },
       },
     },
     thumb: {
-      width: 'sm',
-      height: 'sm',
+      width: 'xs',
+      height: 'xs',
       bg: 'white',
-      borderRadius: 'xl',
+      borderRadius: 'full',
       position: 'absolute',
-      top: '1px',
-      left: '1px',
-      transition: 'transform 0.2s',
+      top: 'xxs',
+      left: 'xxs',
+      transitionProperty: 'common',
+      transitionDuration: 'normal',
       _checked: {
-        transform: 'translateX(20px)',
+        transform: 'translateX(var(--switch-x))',
+        _after: {
+          ...checkmark,
+          borderColor: 'gray.900',
+        },
       },
     },
   },

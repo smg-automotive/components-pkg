@@ -30,7 +30,6 @@ const SwitchComponent: FC<SwitchComponentProps> = ({
   const [recipeProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
 
-  console.log('SwitchComponent styles:', styles);
   return (
     <ChakraField.Root display="flex" alignItems="center" disabled={disabled}>
       <ChakraSwitch.Root

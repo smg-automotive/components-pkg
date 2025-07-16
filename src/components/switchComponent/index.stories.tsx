@@ -1,11 +1,28 @@
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import SwitchComponent from '.';
+import SwitchComponent, { SwitchComponentProps } from '.';
+
+const Wrapper = (props: SwitchComponentProps) => {
+  const [args, updateArgs] = useArgs<SwitchComponentProps>();
+  return (
+    <SwitchComponent
+      {...props}
+      {...args}
+      onCheckedChange={(e) => {
+        updateArgs({ checked: e.checked });
+        args.onCheckedChange?.(e);
+      }}
+    />
+  );
+};
 
 const meta: Meta<typeof SwitchComponent> = {
   title: 'Components/Forms/Switch',
   component: SwitchComponent,
+  render: Wrapper,
 
   args: {
     checked: false,
