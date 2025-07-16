@@ -1,13 +1,20 @@
 import React, { FC } from 'react';
-
 import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
 import { ErrorStatusCode } from 'src/types/errorStatusCode';
-
+import { TranslationProvider } from 'src/components/translationProvider';
+import { Text } from 'src/components/text';
+import { Stack } from 'src/components/stack';
+import { SimpleGrid } from 'src/components/simpleGrid';
+import { Separator } from 'src/components/separator';
+import { PageLayout } from 'src/components/layout/Page';
+import { AutoScout24AppLogo, MotoScout24AppLogo } from 'src/components/icons';
+import { H1 } from 'src/components/heading';
+import { Flex } from 'src/components/flex';
+import { AspectRatio } from 'src/components/aspectRatio';
 import errorIllustrationVerifyEmail from 'src/assets/images/errorIllustrationVerifyEmail.png';
 import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustrationSomethingWentWrong.png';
-
 import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
 
 import EmailChangeVerificationErrorContent from './content/EmailChangeVerification';
@@ -17,16 +24,6 @@ import Reload from './actions/primary/Reload';
 import BackToLogin from './actions/primary/BackToLogin';
 import BackToHomepagePrimary from './actions/primary/BackToHomepage';
 import { ActionButtonInterface } from './actions/interface';
-import { TranslationProvider } from '../translationProvider';
-import { Text } from '../text';
-import { Stack } from '../stack';
-import { SimpleGrid } from '../simpleGrid';
-import { Separator } from '../separator';
-import { PageLayout } from '../layout/Page';
-import { AutoScout24AppLogo, MotoScout24AppLogo } from '../icons';
-import { H1 } from '../heading';
-import { Flex } from '../flex';
-import { AspectRatio } from '../aspectRatio';
 
 const Nonce: FC<ActionButtonInterface> = () => {
   return null;
