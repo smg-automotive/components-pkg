@@ -1,11 +1,14 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { buttonRecipe } from 'src/themes/shared/recipes/button';
 import { iconControl } from 'src/storybook/ControlTypes';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import { ShareIcon, VideoIcon } from '../icons';
 
-import Button from '.';
+import { Button } from '.';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -16,15 +19,7 @@ const meta: Meta<typeof Button> = {
     size: { base: 'md', lg: 'lg' },
   },
   argTypes: {
-    variant: {
-      options: ['primary', 'secondary', 'success', 'transparent'],
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
+    ...getRecipeControls(buttonRecipe),
 
     children: {
       control: 'text',
