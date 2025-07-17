@@ -65,7 +65,7 @@ type LinkProps = Overwrite<
   SharedProps,
   LinkButton & {
     as: ElementType;
-    isDisabled?: false;
+    disabled?: false;
   }
 >;
 
