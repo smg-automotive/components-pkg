@@ -51,7 +51,7 @@ export const openingHoursLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.openingHours',
   link: {
     de: '/de/info-management/opening-hours',
-    en: '/de/info-management/opening-hours',
+    en: '/en/info-management/opening-hours',
     fr: '/fr/info-management/opening-hours',
     it: '/it/info-management/opening-hours',
   },
@@ -71,7 +71,7 @@ export const businessImageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.businessImage',
   link: {
     de: '/de/info-management/business-image',
-    en: '/de/info-management/business-image',
+    en: '/en/info-management/business-image',
     fr: '/fr/info-management/business-image',
     it: '/it/info-management/business-image',
   },
@@ -89,7 +89,7 @@ export const businessImageLinkConfig: NavigationLinkConfigProps = {
     singleRequiredEntitlement: [Entitlement.BusinessImage],
     missingEntitlementFallbackLink: {
       de: '/de/info-management/business-image',
-      en: '/de/info-management/business-image',
+      en: '/en/info-management/business-image',
       fr: '/fr/info-management/business-image',
       it: '/it/info-management/business-image',
     },
@@ -101,7 +101,7 @@ export const photoBarLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.editPhotobar',
   link: {
     de: '/de/info-management/photo-bar',
-    en: '/de/info-management/photo-bar',
+    en: '/en/info-management/photo-bar',
     fr: '/fr/info-management/photo-bar',
     it: '/it/info-management/photo-bar',
   },
@@ -121,7 +121,7 @@ export const qualilogoLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.qualityLogo',
   link: {
     de: '/de/info-management/quali-logo',
-    en: '/de/info-management/quali-logo',
+    en: '/en/info-management/quali-logo',
     fr: '/fr/info-management/quali-logo',
     it: '/it/info-management/quali-logo',
   },
