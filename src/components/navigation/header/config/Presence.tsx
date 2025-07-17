@@ -1,3 +1,8 @@
+import React from 'react';
+
+import { Entitlement } from 'src/types/entitlements';
+import { CartIcon } from 'src/components/icons';
+
 import { NavigationLinkConfigProps } from './headerLinks';
 
 export const infoPageLinkConfig: NavigationLinkConfigProps = {
@@ -79,6 +84,16 @@ export const businessImageLinkConfig: NavigationLinkConfigProps = {
       autoscout24: true,
       motoscout24: true,
     },
+  },
+  entitlementConfig: {
+    singleRequiredEntitlement: [Entitlement.BusinessImage],
+    missingEntitlementFallbackLink: {
+      de: '/de/info-management/business-image',
+      en: '/de/info-management/business-image',
+      fr: '/fr/info-management/business-image',
+      it: '/it/info-management/business-image',
+    },
+    missingEntitlementLinkIcon: <CartIcon />,
   },
 };
 
