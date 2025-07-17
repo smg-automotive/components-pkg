@@ -31,7 +31,7 @@ type SharedProps = RecipeVariantProps<typeof buttonRecipe> & {
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   onClick?: ChakraButtonProps['onClick'];
-  isDisabled?: boolean;
+  disabled?: boolean;
 } & Omit<
     ChakraButtonProps,
     | 'backgroundColor'
@@ -84,12 +84,12 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
-    const { as = 'button', isDisabled, ...rest } = restProps;
+    const { as = 'button', disabled, ...rest } = restProps;
 
     const asLinkProps = {
       target: props.isExternal ? '_blank' : undefined,
       rel: props.rel || (props.isExternal ? 'noopener noreferrer' : undefined),
-      ...(props.isDisabled ? { 'aria-disabled': true } : {}),
+      ...(props.disabled ? { 'aria-disabled': true } : {}),
     };
 
     return (
@@ -97,12 +97,12 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
         ref={ref}
         css={styles}
         as={as}
-        disabled={isDisabled}
+        disabled={disabled}
         aria-label={props.children ? undefined : props.ariaLabel}
         {...rest}
         {...(props.as === 'a' ? asLinkProps : {})}
         onClick={(e) => {
-          if (props.as === 'a' && props.href && isDisabled) {
+          if (props.as === 'a' && props.href && disabled) {
             e.preventDefault();
           } else {
             props.onClick?.(e);

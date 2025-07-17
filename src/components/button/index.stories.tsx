@@ -88,7 +88,7 @@ export const SizesLarge: StoryObj<typeof Button> = {
 export const StateDisabled: StoryObj<typeof Button> = {
   name: 'Sate > Disabled',
   args: {
-    isDisabled: true,
+    disabled: true,
   },
 };
 
