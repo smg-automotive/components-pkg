@@ -131,7 +131,10 @@ export const ErrorPage: FC<ErrorPageProps> = ({
                   </SimpleGrid>
                   <Separator orientation="horizontal" />
                   <Stack align="center" gap="2xl">
-                    <AspectRatio ratio={4 / 3} maxWidth="7xl" width="full">
+                    <AspectRatio
+                      ratio={4 / 3}
+                      css={{ maxWidth: '400px', width: 'full' }}
+                    >
                       <chakra.img
                         src={config[statusCode].illustration}
                         alt={`a ${statusCode} error occurred.`}
