@@ -97,13 +97,17 @@ const config: Record<
   },
 };
 
-export interface Props {
+export interface ErrorPageProps {
   statusCode: ErrorStatusCode;
   language: Language;
   onButtonClick?: () => void;
 }
 
-const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
+export const ErrorPage: FC<ErrorPageProps> = ({
+  statusCode,
+  language,
+  onButtonClick,
+}) => {
   const PrimaryAction = config[statusCode].primaryAction;
   const SecondaryAction = config[statusCode].secondaryAction;
   const Content = config[statusCode].content;
@@ -122,12 +126,12 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
               <Flex justifyContent="center" pt={{ base: '3xl', md: 'xl' }}>
                 <Stack align="center" gap="4xl">
                   <SimpleGrid columns={2} gap="4xl">
-                    <AutoScout24AppLogo />
-                    <MotoScout24AppLogo />
+                    <AutoScout24AppLogo width="2xl" height="xl" />
+                    <MotoScout24AppLogo width="2xl" height="xl" />
                   </SimpleGrid>
-                  <Separator />
+                  <Separator orientation="horizontal" />
                   <Stack align="center" gap="2xl">
-                    <AspectRatio ratio={4 / 3} width="full">
+                    <AspectRatio ratio={4 / 3} maxWidth="7xl" width="full">
                       <chakra.img
                         src={config[statusCode].illustration}
                         alt={`a ${statusCode} error occurred.`}
@@ -166,5 +170,3 @@ const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
     </TranslationProvider>
   );
 };
-
-export default ErrorPage;
