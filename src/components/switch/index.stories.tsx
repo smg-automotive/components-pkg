@@ -3,12 +3,12 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { SwitchComponent, SwitchComponentProps } from '.';
+import { Switch, SwitchProps } from '.';
 
-const Wrapper = (props: SwitchComponentProps) => {
-  const [args, updateArgs] = useArgs<SwitchComponentProps>();
+const Wrapper = (props: SwitchProps) => {
+  const [args, updateArgs] = useArgs<SwitchProps>();
   return (
-    <SwitchComponent
+    <Switch
       {...props}
       {...args}
       onCheckedChange={(e) => {
@@ -19,9 +19,9 @@ const Wrapper = (props: SwitchComponentProps) => {
   );
 };
 
-const meta: Meta<typeof SwitchComponent> = {
+const meta: Meta<typeof Switch> = {
   title: 'Components/Forms/Switch',
-  component: SwitchComponent,
+  component: Switch,
   render: Wrapper,
 
   args: {
@@ -34,5 +34,5 @@ const meta: Meta<typeof SwitchComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof SwitchComponent>;
+type StoryType = StoryObj<typeof Switch>;
 export const Overview: StoryType = {};

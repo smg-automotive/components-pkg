@@ -5,7 +5,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-export type SwitchComponentProps = Pick<
+export type SwitchProps = Pick<
   ChakraSwitch.RootProps,
   'onCheckedChange' | 'checked' | 'disabled'
 > & {
@@ -13,9 +13,9 @@ export type SwitchComponentProps = Pick<
   label?: ReactNode;
 };
 
-type SwitchComponentSlots = 'root' | 'control' | 'thumb' | 'label';
+type SwitchSlots = 'root' | 'control' | 'thumb' | 'label';
 
-export const SwitchComponent: FC<SwitchComponentProps> = ({
+export const Switch: FC<SwitchProps> = ({
   id,
   disabled,
   onCheckedChange,
@@ -23,9 +23,9 @@ export const SwitchComponent: FC<SwitchComponentProps> = ({
   label,
   ...props
 }) => {
-  const recipe = useSlotRecipe({ key: 'switchComponent' });
+  const recipe = useSlotRecipe({ key: 'switch' });
   const [recipeProps] = recipe.splitVariantProps(props);
-  const styles: Partial<Record<SwitchComponentSlots, SystemStyleObject>> =
+  const styles: Partial<Record<SwitchSlots, SystemStyleObject>> =
     recipe(recipeProps);
 
   return (

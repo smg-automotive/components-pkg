@@ -29,4 +29,4 @@ export * from './text/marked';
 export * from './text/HighlightedText';
 export * from './themeProvider';
 export * from './vehicleReference';
-export * from './switchComponent';
+export * from './switch';

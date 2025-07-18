@@ -15,7 +15,7 @@ const checkmark = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
-export const switchComponentRecipe = defineSlotRecipe({
+export const switchRecipe = defineSlotRecipe({
   slots: ['root', 'control', 'thumb', 'label'],
   className: 'chakra-switch',
   base: {
