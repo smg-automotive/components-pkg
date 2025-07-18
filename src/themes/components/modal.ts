@@ -23,8 +23,8 @@ const baseStyleDialogContainer = defineStyle({
   display: 'flex',
   zIndex: 'modal',
   justifyContent: 'center',
-  alignItems: 'center',
-  overflow: 'hidden',
+  alignItems: 'flex-start',
+  overflow: 'auto',
   overscrollBehaviorY: 'none',
 });
 
@@ -81,8 +81,8 @@ const variants = {
     dialogContainer: {
       ...baseStyle.dialogContainer,
       alignItems: 'flex-start',
-      overflow: 'auto',
       marginTop: '5xl',
+      maxH: 'calc(100vh - var(--chakra-sizes-xl))',
     },
   },
   fullScreen: {
@@ -101,6 +101,7 @@ const variants = {
     body: {
       p: '0',
       flex: '1',
+      overflow: 'auto',
     },
     footer: baseStyleFooter,
     dialog: {
