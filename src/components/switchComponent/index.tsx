@@ -1,15 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 import {
   Switch as ChakraSwitch,
-  SwitchCheckedChangeDetails,
   SystemStyleObject,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-export type SwitchComponentProps = {
-  onChange: (details: SwitchCheckedChangeDetails) => void;
-  isDisabled: boolean;
-  isChecked: boolean;
+export type SwitchComponentProps = Pick<
+  ChakraSwitch.RootProps,
+  'onCheckedChange' | 'checked' | 'disabled'
+> & {
   id: string;
   label?: ReactNode;
 };
@@ -18,9 +17,9 @@ type SwitchComponentSlots = 'root' | 'control' | 'thumb' | 'label';
 
 const SwitchComponent: FC<SwitchComponentProps> = ({
   id,
-  isDisabled,
-  onChange,
-  isChecked,
+  disabled,
+  onCheckedChange,
+  checked,
   label,
   ...props
 }) => {
@@ -31,9 +30,9 @@ const SwitchComponent: FC<SwitchComponentProps> = ({
 
   return (
     <ChakraSwitch.Root
-      onCheckedChange={onChange}
-      checked={isChecked}
-      disabled={isDisabled}
+      onCheckedChange={onCheckedChange}
+      checked={checked}
+      disabled={disabled}
       css={styles.root}
     >
       <ChakraSwitch.HiddenInput />
