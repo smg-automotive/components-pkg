@@ -9,7 +9,6 @@ import {
 } from './vehiclePool';
 import { carParkLinkConfig, motorcycleParkLinkConfig } from './vehiclePool';
 import {
-  accountSettingsLinkConfig,
   changeLanguageLinkConfig,
   editUsersLinkConfig,
   favoritesLinkConfig,
@@ -171,7 +170,6 @@ const getUserNodeItems = ({
     translationKey: 'header.userMenu.accountSettings',
     items: [
       editUsersLinkConfig,
-      accountSettingsLinkConfig,
       changeLanguageLinkConfig,
       getLogoutLinkConfig({ onLogout }),
     ],

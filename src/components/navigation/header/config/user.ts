@@ -62,26 +62,6 @@ export const editUsersLinkConfig: NavigationLinkConfigProps = {
   },
 };
 
-export const accountSettingsLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.accountSettings',
-  link: {
-    de: '/de/member/masterdata/additionalusersettings',
-    en: '/de/member/masterdata/additionalusersettings',
-    fr: '/fr/member/masterdata/additionalusersettings',
-    it: '/it/member/masterdata/additionalusersettings',
-  },
-  visibilitySettings: {
-    userType: {
-      private: true,
-      professional: false,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: true,
-    },
-  },
-};
-
 export const changeLanguageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.userLanguage',
   link: {
@@ -92,7 +72,7 @@ export const changeLanguageLinkConfig: NavigationLinkConfigProps = {
   },
   visibilitySettings: {
     userType: {
-      private: false,
+      private: true,
       professional: true,
     },
     brand: {
