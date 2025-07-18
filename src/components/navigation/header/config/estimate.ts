@@ -10,10 +10,10 @@ export const estimateLinkConfig = ({
   return {
     translationKey: 'header.estimate',
     link: {
-      de: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-      en: 'https://my.autoscout24.ch/de/fahrzeugbewertung',
-      fr: 'https://my.autoscout24.ch/fr/evaluation-vehicules',
-      it: 'https://my.autoscout24.ch/it/valuazione-vehicoli',
+      de: '/de/price-estimate',
+      en: '/de/price-estimate',
+      fr: '/fr/price-estimate',
+      it: '/it/price-estimate',
     },
     showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
