@@ -15,7 +15,7 @@ export type SwitchComponentProps = Pick<
 
 type SwitchComponentSlots = 'root' | 'control' | 'thumb' | 'label';
 
-const SwitchComponent: FC<SwitchComponentProps> = ({
+export const SwitchComponent: FC<SwitchComponentProps> = ({
   id,
   disabled,
   onCheckedChange,
@@ -45,4 +45,3 @@ const SwitchComponent: FC<SwitchComponentProps> = ({
     </ChakraSwitch.Root>
   );
 };
-export default SwitchComponent;
