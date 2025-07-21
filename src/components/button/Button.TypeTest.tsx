@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ShareIcon } from '../icons';
 
-import Button from './index';
+import { Button } from './index';
 
 const _Button = () => {
   return (
