@@ -1,3 +1,4 @@
+export * from './accordion';
 export * from './articleTeaser';
 export * from './aspectRatio';
 export * from './avatar';
@@ -25,7 +26,7 @@ export * from './simpleHeader';
 export * from './stack';
 export * from './table';
 export * from './text';
-export * from './text/marked';
 export * from './text/HighlightedText';
+export * from './text/marked';
 export * from './themeProvider';
 export * from './vehicleReference';
