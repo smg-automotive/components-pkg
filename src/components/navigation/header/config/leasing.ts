@@ -2,24 +2,24 @@ import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 
 import { NavigationLinkConfigProps } from './headerLinks';
 
-export const estimateLinkConfig = ({
+export const leasingLinkConfig = ({
   trackEvent,
 }: {
   trackEvent?: (event: CustomEvent) => void;
 }) => {
   return {
-    translationKey: 'header.estimate',
+    translationKey: 'header.leasing',
     link: {
-      de: '/de/price-estimate',
-      en: '/de/price-estimate',
-      fr: '/fr/price-estimate',
-      it: '/it/price-estimate',
+      de: 'https://content.autoscout24.ch/de/leasing-test/',
+      en: 'https://content.autoscout24.ch/de/leasing-test/',
+      fr: 'https://content.autoscout24.ch/fr/test-de-leasing/',
+      it: 'https://content.autoscout24.ch/it/test-di-leasing/',
     },
-    showUnderMoreLinkBelow: 'sm',
+    showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {
       userType: {
         private: true,
-        professional: false,
+        professional: true,
       },
       brand: {
         autoscout24: true,
@@ -29,7 +29,8 @@ export const estimateLinkConfig = ({
     onClick: () =>
       trackEvent?.({
         eventCategory: navigationEventCategory,
-        eventAction: 'estimate',
+        eventLabel: 'header',
+        eventAction: 'open_leasing',
       }),
   } satisfies NavigationLinkConfigProps;
 };

@@ -3,10 +3,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const autoScoutTopVehiclesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.topCars',
   link: {
-    de: '/de/member/topvehicles',
-    en: '/de/member/topvehicles',
-    fr: '/fr/member/topvehicles',
-    it: '/it/member/topvehicles',
+    de: '/de/features/top-vehicle/manage',
+    en: '/de/features/top-vehicle/manage',
+    fr: '/fr/features/top-vehicle/manage',
+    it: '/it/features/top-vehicle/manage',
   },
   visibilitySettings: {
     userType: {
@@ -23,10 +23,10 @@ export const autoScoutTopVehiclesLinkConfig: NavigationLinkConfigProps = {
 export const motoScoutTopVehiclesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.topMotos',
   link: {
-    de: '/de/member/topvehicles',
-    en: '/de/member/topvehicles',
-    fr: '/fr/member/topvehicles',
-    it: '/it/member/topvehicles',
+    de: '/de/features/top-vehicle/manage',
+    en: '/de/features/top-vehicle/manage',
+    fr: '/fr/features/top-vehicle/manage',
+    it: '/it/features/top-vehicle/manage',
   },
   visibilitySettings: {
     userType: {

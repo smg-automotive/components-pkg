@@ -10,10 +10,10 @@ export const autoScoutAssureLinkConfig = ({
   return {
     translationKey: 'header.assure',
     link: {
-      de: '/de/autoversicherung',
-      en: '/de/autoversicherung',
-      fr: '/fr/assurance-auto',
-      it: '/it/assicurazione-auto',
+      de: 'https://www.financescout24.ch/de/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=insurance_hub_car_',
+      en: 'https://www.financescout24.ch/de/autoversicherung-finden?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=insurance_hub_car_',
+      fr: 'https://www.financescout24.ch/fr/trouver-assurance-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=insurance_hub_car_',
+      it: 'https://www.financescout24.ch/it/trova-assicurazione-auto?utm_source=autoscout24.ch&utm_medium=web&utm_campaign=insurance_hub_car_',
     },
     showUnderMoreLinkBelow: 'lg',
     visibilitySettings: {

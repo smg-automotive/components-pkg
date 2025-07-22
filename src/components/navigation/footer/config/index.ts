@@ -30,11 +30,7 @@ export interface FooterConfigInterface {
   companies: LinkConfig[];
 }
 
-export const footerConfig = ({
-  experiments = {},
-}: {
-  experiments?: Record<string, string>;
-} = {}): FooterConfigInterface => ({
+export const footerConfig = (): FooterConfigInterface => ({
   sections: [
     {
       title: [
@@ -152,58 +148,19 @@ export const footerConfig = ({
         },
       ],
       items: [
-        ...(experiments?.c2b === 'on'
-          ? [
-              {
-                translationKey: 'footer.sections.list.vehicles',
-                visibilitySettings: {
-                  brand: {
-                    [Brand.AutoScout24]: true,
-                    [Brand.MotoScout24]: false,
-                  },
-                },
-                link: {
-                  de: '/de/sell',
-                  en: '/en/sell',
-                  fr: '/fr/sell',
-                  it: '/it/sell',
-                },
-                projectIdentifier: 'seller-web' as const,
-              },
-              {
-                translationKey: 'footer.sections.list.direct',
-                visibilitySettings: {
-                  brand: {
-                    [Brand.AutoScout24]: true,
-                    [Brand.MotoScout24]: false,
-                  },
-                },
-                link: {
-                  de: '/de/direct',
-                  en: '/en/direct',
-                  fr: '/fr/direct',
-                  it: '/it/direct',
-                },
-                projectIdentifier: 'seller-web' as const,
-              },
-            ]
-          : [
-              {
-                translationKey: 'footer.sections.list.vehicles',
-                visibilitySettings: {
-                  brand: {
-                    [Brand.AutoScout24]: true,
-                    [Brand.MotoScout24]: false,
-                  },
-                },
-                link: {
-                  de: '/de/auto-verkaufen',
-                  en: '/de/auto-verkaufen',
-                  fr: '/fr/vendre-voiture',
-                  it: '/it/vendere-auto',
-                },
-              },
-            ]),
+        {
+          translationKey: 'footer.sections.list.vehicles',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+          },
+          link: {
+            de: '/de/sell',
+            en: '/en/sell',
+            fr: '/fr/sell',
+            it: '/it/sell',
+          },
+          projectIdentifier: 'seller-web' as const,
+        },
         {
           translationKey: 'footer.sections.list.vehicles',
           visibilitySettings: {
@@ -215,6 +172,19 @@ export const footerConfig = ({
             fr: '/fr/insertion/identify',
             it: '/it/insertion/identify',
           },
+        },
+        {
+          translationKey: 'footer.sections.list.direct',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+          },
+          link: {
+            de: '/de/direct',
+            en: '/en/direct',
+            fr: '/fr/direct',
+            it: '/it/direct',
+          },
+          projectIdentifier: 'seller-web' as const,
         },
         {
           translationKey: 'footer.sections.list.productsAndPrices',
@@ -406,10 +376,10 @@ export const footerConfig = ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
-            de: 'https://guide.autoscout24.ch/de/datenschutzerklaerung/',
-            en: 'https://guide.autoscout24.ch/de/datenschutzerklaerung/',
-            fr: 'https://guide.autoscout24.ch/fr/declaration-de-protection-des-donnees/',
-            it: 'https://guide.autoscout24.ch/it/dichiarazione-sulla-protezione-dei-dati/',
+            de: 'https://privacy.swissmarketplace.group/de/',
+            en: 'https://privacy.swissmarketplace.group/',
+            fr: 'https://privacy.swissmarketplace.group/fr/',
+            it: 'https://privacy.swissmarketplace.group/it/',
           },
           target: '_blank',
         },
