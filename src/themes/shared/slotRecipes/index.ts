@@ -1,6 +1,7 @@
 import { vehicleReferenceRecipe as vehicleReference } from './vehicleReference';
 import { tooltipSlotRecipe as tooltip } from './tooltip';
 import { tableRecipe as table } from './table';
+import { switchRecipe } from './switch';
 import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { sectionRecipe as section } from './section';
 import { markedTextRecipe as markedText } from './markedText';
@@ -24,4 +25,5 @@ export const slotRecipes = {
   field,
   section,
   checkbox,
+  switch: switchRecipe,
 };

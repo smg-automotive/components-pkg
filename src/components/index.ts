@@ -31,3 +31,4 @@ export * from './text/HighlightedText';
 export * from './text/marked';
 export * from './themeProvider';
 export * from './vehicleReference';
+export * from './switch';

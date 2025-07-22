@@ -3,34 +3,36 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import SwitchComponent, { SwitchProps } from './index';
+import { Switch, SwitchProps } from '.';
 
 const Wrapper = (props: SwitchProps) => {
   const [args, updateArgs] = useArgs<SwitchProps>();
   return (
-    <SwitchComponent
+    <Switch
       {...props}
       {...args}
-      onChange={(e) => {
-        updateArgs({ isChecked: e.target.checked });
-        args.onChange?.(e);
+      onCheckedChange={(e) => {
+        updateArgs({ checked: e.checked });
+        args.onCheckedChange?.(e);
       }}
     />
   );
 };
 
-const meta: Meta<typeof SwitchComponent> = {
+const meta: Meta<typeof Switch> = {
   title: 'Components/Forms/Switch',
-  component: SwitchComponent,
+  component: Switch,
   render: Wrapper,
 
   args: {
-    isChecked: false,
-    onChange: action('onChange'),
+    checked: false,
+    onCheckedChange: action('onChange'),
     label: 'Label',
-    isDisabled: false,
+    disabled: false,
+    id: '1',
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof SwitchComponent> = {};
+type StoryType = StoryObj<typeof Switch>;
+export const Overview: StoryType = {};
