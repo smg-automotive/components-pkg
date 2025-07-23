@@ -1,12 +1,9 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const accordionRecipe = defineSlotRecipe({
-  slots: ['root', 'item', 'button', 'icon', 'body'],
+  slots: ['item', 'button', 'body'],
   className: 'chakra-accordion',
   base: {
-    root: {
-      bg: 'transparent',
-    },
     item: {
       borderTop: '1px',
       _last: {
@@ -38,6 +35,7 @@ export const accordionRecipe = defineSlotRecipe({
           color: 'gray.900',
           borderColor: 'gray.200',
           _last: {
+            borderBottom: '1px',
             borderColor: 'gray.200',
           },
         },

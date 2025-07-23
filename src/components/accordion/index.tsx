@@ -18,12 +18,11 @@ interface AccordionProps extends ChakraAccordionRootProps {
 export const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
   const recipe = useSlotRecipe({ recipe: accordionRecipe });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
-  const styles = recipe({ ...recipeProps });
 
   const { children, multiple, ...rest } = restProps;
 
   return (
-    <ChakraAccordion.Root multiple={multiple} {...rest} css={styles.root}>
+    <ChakraAccordion.Root multiple={multiple} {...rest}>
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(child as React.ReactElement, {
