@@ -3,18 +3,17 @@ import { Box, Flex, Heading, Spacer, Table } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
-import Switch, { SwitchComponentProps } from '../switchComponent';
-// import { CloseIcon } from '../icons';
-// import Button, { ButtonProps } from '../button';
+import { Switch, SwitchProps } from '../switch';
+import { CloseIcon } from '../icons';
+import { Button, SharedProps } from '../button';
 
 export type DevOverlayVariables = Record<string, string | number>[];
 
-export type DevOverlayProps =
-  // Omit<ButtonProps, 'onClick' | 'children'> {
-  // hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
-  {
-    toggleTheme: Exclude<SwitchComponentProps['onChange'], undefined>;
-    toggleTranslation: Exclude<SwitchComponentProps['onChange'], undefined>;
+export type DevOverlayProps = Omit<SharedProps, 'onClick' | 'children'> &
+  Omit<SwitchProps, 'onChange' | 'label' | 'id'> & {
+    hideDevOverlay: Exclude<SharedProps['onClick'], undefined>;
+    toggleTheme: Exclude<SwitchProps['onCheckedChange'], undefined>;
+    toggleTranslation: Exclude<SwitchProps['onCheckedChange'], undefined>;
     variables: DevOverlayVariables;
     activeTheme: Brand;
     displayTranslationKeys: boolean;
@@ -22,7 +21,7 @@ export type DevOverlayProps =
 
 const DevOverlay: FC<DevOverlayProps> = ({
   variables,
-  // hideDevOverlay,
+  hideDevOverlay,
   toggleTheme,
   toggleTranslation,
   activeTheme,
@@ -48,9 +47,9 @@ const DevOverlay: FC<DevOverlayProps> = ({
           Dev Overlay&nbsp;
         </Heading>
         <Spacer />
-        {/*<Button onClick={hideDevOverlay} data-testid="close-dev-overlay">
+        <Button onClick={hideDevOverlay} data-testid="close-dev-overlay">
           <CloseIcon />
-        </Button>*/}
+        </Button>
       </Flex>
       <Heading as="h4" textStyle="heading4">
         Variables
@@ -81,20 +80,20 @@ const DevOverlay: FC<DevOverlayProps> = ({
       </Heading>
       <Switch
         id="theme-toggle"
-        onChange={toggleTheme}
-        isChecked={isThemeSwitcherChecked}
+        onCheckedChange={toggleTheme}
+        checked={isThemeSwitcherChecked}
         label={isThemeSwitcherChecked ? <span>🏍️</span> : <span>🚗</span>}
-        isDisabled={false}
+        disabled={false}
       />
       <Heading as="h4" textStyle="heading4">
         Switch Translation
       </Heading>
       <Switch
         id="translation-toggle"
-        onChange={toggleTranslation}
-        isChecked={displayTranslationKeys}
+        onCheckedChange={toggleTranslation}
+        checked={displayTranslationKeys}
         label={displayTranslationKeys ? <span>🔑</span> : <span>🌐</span>}
-        isDisabled={false}
+        disabled={false}
       />
     </Box>
   );

@@ -10,7 +10,7 @@ describe('The DevOverlay Component', () => {
     render(
       <DevOverlay
         variables={[]}
-        // hideDevOverlay={jest.fn()}
+        hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
         toggleTranslation={jest.fn()}
         activeTheme={Brand.AutoScout24}
@@ -30,7 +30,7 @@ describe('The DevOverlay Component', () => {
             value: 'Find me',
           },
         ]}
-        // hideDevOverlay={jest.fn()}
+        hideDevOverlay={jest.fn()}
         toggleTheme={jest.fn()}
         activeTheme={Brand.AutoScout24}
         toggleTranslation={jest.fn()}

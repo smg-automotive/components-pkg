@@ -1,21 +1,6 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
-const checkmark = {
-  content: '""',
-  display: 'block',
-  width: '25%',
-  height: '45%',
-  borderStyle: 'solid',
-  borderWidth: '0 2px 2px 0',
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%) rotate(45deg)',
-  borderColor: 'gray.900',
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-} as any;
-
-export const switchComponentRecipe = defineSlotRecipe({
+export const switchRecipe = defineSlotRecipe({
   slots: ['root', 'control', 'thumb', 'label'],
   className: 'chakra-switch',
   base: {
@@ -25,6 +10,12 @@ export const switchComponentRecipe = defineSlotRecipe({
       alignItems: 'center',
       position: 'relative',
       verticalAlign: 'middle',
+      '--checkmark-width': '25%',
+      '--checkmark-height': '45%',
+      '--checkmark-top': '50%',
+      '--checkmark-left': '50%',
+      '--checkmark-border-style': 'solid',
+      '--checkmark-border-width': '0 2px 2px 0',
       '--switch-diff': 'calc(var(--switch-width) - var(--switch-height))',
       '--switch-width': '2.5rem',
       '--switch-height': '1.25rem',
@@ -65,7 +56,16 @@ export const switchComponentRecipe = defineSlotRecipe({
       _checked: {
         transform: 'translateX(var(--switch-x))',
         _after: {
-          ...checkmark,
+          content: '""',
+          display: 'block',
+          width: 'var(--checkmark-width)',
+          height: 'var(--checkmark-height)',
+          borderStyle: 'var(--checkmark-border-style)',
+          borderWidth: 'var(--checkmark-border-width)',
+          position: 'absolute',
+          top: 'var(--checkmark-top)',
+          left: 'var(--checkmark-left)',
+          transform: 'translate(-50%, -50%) rotate(45deg)',
           borderColor: 'gray.900',
         },
       },

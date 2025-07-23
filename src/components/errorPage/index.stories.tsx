@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import ErrorPage from './index';
+import { ErrorPage } from './index';
 
 const meta: Meta<typeof ErrorPage> = {
   title: 'Patterns/Content/Error',
