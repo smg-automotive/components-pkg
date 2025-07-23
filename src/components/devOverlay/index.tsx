@@ -5,19 +5,18 @@ import { Brand } from 'src/types/brand';
 
 import { Switch, SwitchProps } from '../switch';
 import { CloseIcon } from '../icons';
-import { Button, SharedProps } from '../button';
+import { Button, ButtonSharedProps } from '../button';
 
-export type DevOverlayVariables = Record<string, string | number>[];
+export type DevOverlayVariables = { name: string; value: string }[];
 
-export type DevOverlayProps = Omit<SharedProps, 'onClick' | 'children'> &
-  Omit<SwitchProps, 'onChange' | 'label' | 'id'> & {
-    hideDevOverlay: Exclude<SharedProps['onClick'], undefined>;
-    toggleTheme: Exclude<SwitchProps['onCheckedChange'], undefined>;
-    toggleTranslation: Exclude<SwitchProps['onCheckedChange'], undefined>;
-    variables: DevOverlayVariables;
-    activeTheme: Brand;
-    displayTranslationKeys: boolean;
-  };
+export type DevOverlayProps = {
+  hideDevOverlay: Exclude<ButtonSharedProps['onClick'], undefined>;
+  toggleTheme: Exclude<SwitchProps['onCheckedChange'], undefined>;
+  toggleTranslation: Exclude<SwitchProps['onCheckedChange'], undefined>;
+  variables: DevOverlayVariables;
+  activeTheme: Brand;
+  displayTranslationKeys: boolean;
+};
 
 const DevOverlay: FC<DevOverlayProps> = ({
   variables,

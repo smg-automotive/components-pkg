@@ -25,7 +25,7 @@ type IconButton = {
   icon: ReactElement;
 };
 
-export type SharedProps = RecipeVariantProps<typeof buttonRecipe> & {
+export type ButtonSharedProps = RecipeVariantProps<typeof buttonRecipe> & {
   as?: 'button';
   children: ReactNode;
   leftIcon?: ReactElement;
@@ -45,14 +45,14 @@ export type SharedProps = RecipeVariantProps<typeof buttonRecipe> & {
   Never<IconButton>;
 
 type SubmitType = Overwrite<
-  SharedProps,
+  ButtonSharedProps,
   {
     type: 'submit';
   }
 >;
 
 type ButtonType = Overwrite<
-  SharedProps,
+  ButtonSharedProps,
   {
     type?: 'button';
     onClick: Exclude<ChakraButtonProps['onClick'], undefined>;
@@ -62,7 +62,7 @@ type ButtonType = Overwrite<
 export type BaseButtonProps = SubmitType | ButtonType;
 
 type LinkProps = Overwrite<
-  SharedProps,
+  ButtonSharedProps,
   LinkButton & {
     as: ElementType;
     disabled?: false;
@@ -70,7 +70,7 @@ type LinkProps = Overwrite<
 >;
 
 type IconProps = IconButton &
-  Never<Pick<SharedProps, 'leftIcon' | 'rightIcon' | 'children'>>;
+  Never<Pick<ButtonSharedProps, 'leftIcon' | 'rightIcon' | 'children'>>;
 type IconButtonProps =
   | Overwrite<ButtonType, IconProps>
   | Overwrite<SubmitType, IconProps>
