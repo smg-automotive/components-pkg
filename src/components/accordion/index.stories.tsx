@@ -16,20 +16,20 @@ const meta: Meta<typeof Accordion> = {
   component: Accordion,
   args: {
     multiple: true,
-    // variant: 'outline',
+    variant: 'light',
   },
   argTypes: {
+    ...getRecipeControls(accordionRecipe),
+
     multiple: {
       control: { type: 'boolean' },
     },
-    // variant: {
-    //   options: ['light', 'dark', 'minimal'],
-    //   control: { type: 'select' },
-    // },
     children: {
       table: { disable: true },
     },
-    ...getRecipeControls(accordionRecipe),
+    unstyled: {
+      table: { disable: true },
+    },
   },
 };
 export default meta;

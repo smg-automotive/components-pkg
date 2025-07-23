@@ -1,35 +1,103 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineSlotRecipe } from '@chakra-ui/react';
 
-export const accordionRecipe = defineRecipe({
+export const accordionRecipe = defineSlotRecipe({
+  slots: ['root', 'item', 'button', 'icon', 'body'],
   className: 'chakra-accordion',
   base: {
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    backgroundColor: 'red.900',
+    root: {
+      bg: 'transparent',
+    },
+    item: {
+      borderTop: '1px',
+      _last: {
+        borderBottom: '1px',
+      },
+    },
+    button: {
+      display: 'flex',
+      alignItems: 'center',
+      width: 'full',
+      textStyle: 'heading4',
+      paddingX: 'lg',
+      paddingY: 'md',
+      _hover: {
+        cursor: 'pointer',
+      },
+    },
+    body: {
+      pb: 'md',
+      paddingX: 'lg',
+      fontSize: 'base',
+      fontWeight: 'regular',
+    },
   },
   variants: {
-    multiple: {
-      true: {},
-      false: {},
-    },
     variant: {
       light: {
-        backgroundColor: 'white',
-        color: 'gray.800',
+        item: {
+          color: 'gray.900',
+          borderColor: 'gray.200',
+          _last: {
+            borderColor: 'gray.200',
+          },
+        },
+        button: {
+          _hover: {
+            bg: 'gray.50',
+          },
+        },
+        body: {
+          textStyle: 'body',
+        },
       },
       dark: {
-        backgroundColor: 'gray.800',
-        color: 'white',
+        item: {
+          borderColor: 'gray.700',
+          bg: 'gray.900',
+          color: 'white',
+          _last: {
+            borderColor: 'gray.700',
+          },
+        },
+        button: {
+          textStyle: 'heading5',
+          _hover: {
+            bg: 'gray.700',
+          },
+        },
+        body: {
+          textStyle: 'body-small',
+        },
       },
       minimal: {
-        backgroundColor: 'transparent',
-        color: 'gray.600',
+        item: {
+          borderTop: 'none',
+          _last: {
+            borderBottom: 'none',
+          },
+        },
+        button: {
+          width: 'auto',
+          textStyle: 'body',
+          paddingX: '0',
+          maxWidth: 'auto',
+          _hover: {
+            bg: 'transparent',
+          },
+
+          '& > svg': {
+            marginLeft: 'sm',
+          },
+        },
+        body: {
+          pb: 'md',
+          paddingX: '3xl',
+          textStyle: 'body',
+        },
       },
     },
   },
   defaultVariants: {
-    multiple: false,
     variant: 'light',
   },
 });

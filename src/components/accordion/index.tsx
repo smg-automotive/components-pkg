@@ -4,25 +4,33 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   Accordion as ChakraAccordion,
   AccordionRootProps as ChakraAccordionRootProps,
-  useRecipe,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { accordionRecipe } from 'src/themes/shared/recipes/accordion';
 
 export type { ChakraAccordionRootProps };
 
-export const Accordion: FC<PropsWithChildren<ChakraAccordionRootProps>> = (
-  props,
-) => {
-  const { children, multiple, ...accordionProps } = props;
+interface AccordionProps extends ChakraAccordionRootProps {
+  variant?: 'light' | 'dark' | 'minimal';
+}
 
-  const recipe = useRecipe({ recipe: accordionRecipe });
-  const [recipeProps] = recipe.splitVariantProps(props);
-  const styles = recipe(recipeProps);
+export const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
+  const recipe = useSlotRecipe({ recipe: accordionRecipe });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe({ ...recipeProps });
+
+  const { children, multiple, ...rest } = restProps;
 
   return (
-    <ChakraAccordion.Root multiple={multiple} {...accordionProps} css={styles}>
-      {children}
+    <ChakraAccordion.Root multiple={multiple} {...rest} css={styles.root}>
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(child as React.ReactElement, {
+              variant: recipeProps.variant,
+            })
+          : child,
+      )}
     </ChakraAccordion.Root>
   );
 };

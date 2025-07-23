@@ -58,10 +58,10 @@ describe('<Accordion />', () => {
     });
   });
 
-  describe('allowToggle', () => {
+  describe('collapsible', () => {
     it('is toggle accordion panel', async () => {
       renderWrapper({
-        allowToggle: true,
+        collapsible: true,
       });
 
       const firstAccordionButton = screen.getByTestId(
@@ -80,9 +80,9 @@ describe('<Accordion />', () => {
     });
   });
 
-  describe('allowMultiple', () => {
+  describe('multiple', () => {
     it('opens multiple accordion panels', async () => {
-      renderWrapper({ allowMultiple: true, defaultIndex: [] });
+      renderWrapper({ multiple: true });
 
       const firstAccordionButton = screen.getByTestId(
         'test-accordion-button-1',
