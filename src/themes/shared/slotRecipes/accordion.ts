@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const accordionRecipe = defineSlotRecipe({
-  slots: ['item', 'button', 'indicator', 'body'],
+  slots: ['item', 'button', 'indicator', 'content', 'body'],
   className: 'chakra-accordion',
   base: {
     item: {
@@ -26,6 +26,18 @@ export const accordionRecipe = defineSlotRecipe({
       height: 'sm',
       _open: {
         rotate: '180deg',
+      },
+    },
+    content: {
+      width: 'full',
+      overflow: 'hidden',
+      _open: {
+        animationName: 'expand-height',
+        animationDuration: 'moderate',
+      },
+      _closed: {
+        animationName: 'collapse-height',
+        animationDuration: 'moderate',
       },
     },
     body: {

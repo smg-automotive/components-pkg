@@ -5,7 +5,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { accordionRecipe } from 'src/themes/shared/recipes/accordion';
+import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
 import { Box } from '../box';
 

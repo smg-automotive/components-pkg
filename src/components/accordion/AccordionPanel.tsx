@@ -6,7 +6,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { accordionRecipe } from 'src/themes/shared/recipes/accordion';
+import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
 interface AccordionPanelProps extends ChakraAccordionItemBodyProps {
   variant?: 'light' | 'dark' | 'minimal';
@@ -22,7 +22,7 @@ export const AccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
   const { children, ...rest } = restProps;
 
   return (
-    <ChakraAccordion.ItemContent>
+    <ChakraAccordion.ItemContent css={styles.content}>
       <ChakraAccordion.ItemBody {...rest} css={styles.body}>
         {children}
       </ChakraAccordion.ItemBody>

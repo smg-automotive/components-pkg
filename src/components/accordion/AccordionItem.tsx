@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { accordionRecipe } from 'src/themes/shared/recipes/accordion';
+import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
 interface AccordionItemProps extends ChakraAccordionItemProps {
   variant?: 'light' | 'dark' | 'minimal';
