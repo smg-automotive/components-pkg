@@ -8,7 +8,6 @@ import {
 import { accordionRecipe } from 'src/themes/shared/recipes/accordion';
 
 import { Box } from '../box';
-import { AccordionIcon } from './AccordionIcon';
 
 interface AccordionButtonProps extends ChakraAccordionItemTriggerProps {
   leftIcon?: React.ReactNode;
@@ -30,7 +29,7 @@ export const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
       <Box as="span" flex="1" textAlign="left">
         {children}
       </Box>
-      <AccordionIcon isOpen={false} />
+      <ChakraAccordion.ItemIndicator css={styles.indicator} />
     </ChakraAccordion.ItemTrigger>
   );
 };
