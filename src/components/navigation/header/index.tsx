@@ -40,6 +40,7 @@ export interface NavigationProps {
   project?: Project;
   user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => Promise<void>;
+  showTenantSelection?: boolean;
 }
 
 const Navigation: FC<NavigationProps> = ({
@@ -55,6 +56,7 @@ const Navigation: FC<NavigationProps> = ({
   project,
   user,
   selectTenant,
+  showTenantSelection = true,
   experiments = {},
 }) => {
   const config = useMemo(() => {
@@ -155,7 +157,9 @@ const Navigation: FC<NavigationProps> = ({
               hasNotification={hasNotification}
               onLogin={onLogin}
             />
-            <NavigationTenantMenu user={user} selectTenant={selectTenant} />
+            {showTenantSelection ? (
+              <NavigationTenantMenu user={user} selectTenant={selectTenant} />
+            ) : null}
             <NavigationLanguageMenu activeLanguage={language} />
             <MobileHeaderMenuToggle
               isOpen={isOpen}

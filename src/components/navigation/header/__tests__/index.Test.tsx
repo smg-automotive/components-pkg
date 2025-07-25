@@ -27,6 +27,7 @@ const renderNavigation = ({
   selectTenant = jest.fn(() => Promise.resolve()),
   useAbsoluteUrls,
   project,
+  showTenantSelection,
 }: Partial<NavigationProps>) =>
   render(
     <Navigation
@@ -40,6 +41,7 @@ const renderNavigation = ({
       selectTenant={selectTenant}
       useAbsoluteUrls={useAbsoluteUrls}
       project={project}
+      showTenantSelection={showTenantSelection}
     />,
   );
 
@@ -146,6 +148,35 @@ describe('Header', () => {
     });
 
     expect(selectTenant).toHaveBeenCalledWith(6002);
+  });
+
+  it('should show tenant selection menu when showTenantSelection is true', () => {
+    renderNavigation({
+      user: multiTenantUser(),
+      showTenantSelection: true,
+    });
+
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
+    expect(tenantSelectionMenu).toBeInTheDocument();
+  });
+
+  it('should hide tenant selection menu when showTenantSelection is false', () => {
+    renderNavigation({
+      user: multiTenantUser(),
+      showTenantSelection: false,
+    });
+
+    const tenantSelectionMenu = screen.queryByText('Garage Amir Zurich');
+    expect(tenantSelectionMenu).not.toBeInTheDocument();
+  });
+
+  it('should show tenant selection menu by default when showTenantSelection is not provided', () => {
+    renderNavigation({
+      user: multiTenantUser(),
+    });
+
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
+    expect(tenantSelectionMenu).toBeInTheDocument();
   });
 
   it('does not display user name in the search drawer', async () => {
