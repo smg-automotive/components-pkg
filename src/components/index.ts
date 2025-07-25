@@ -1,3 +1,4 @@
+export * from './accordion';
 export * from './articleTeaser';
 export * from './aspectRatio';
 export * from './avatar';
