@@ -50,10 +50,10 @@ export const contactDetailsLinkConfig: NavigationLinkConfigProps = {
 export const openingHoursLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.openingHours',
   link: {
-    de: '/de/member/businesshours',
-    en: '/de/member/businesshours',
-    fr: '/fr/member/businesshours',
-    it: '/it/member/businesshours',
+    de: '/de/info-management/opening-hours',
+    en: '/en/info-management/opening-hours',
+    fr: '/fr/info-management/opening-hours',
+    it: '/it/info-management/opening-hours',
   },
   visibilitySettings: {
     userType: {
@@ -70,10 +70,10 @@ export const openingHoursLinkConfig: NavigationLinkConfigProps = {
 export const businessImageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.businessImage',
   link: {
-    de: '/de/member/businessimage',
-    en: '/de/member/businessimage',
-    fr: '/de/member/businessimage',
-    it: '/it/member/businessimage',
+    de: '/de/info-management/business-image',
+    en: '/en/info-management/business-image',
+    fr: '/fr/info-management/business-image',
+    it: '/it/info-management/business-image',
   },
   visibilitySettings: {
     userType: {
@@ -88,10 +88,10 @@ export const businessImageLinkConfig: NavigationLinkConfigProps = {
   entitlementConfig: {
     singleRequiredEntitlement: [Entitlement.BusinessImage],
     missingEntitlementFallbackLink: {
-      de: '/de/productdescription/as24_businessimage',
-      en: '/de/productdescription/as24_businessimage',
-      fr: '/fr/productdescription/as24_businessimage',
-      it: '/it/productdescription/as24_businessimage',
+      de: '/de/info-management/business-image',
+      en: '/en/info-management/business-image',
+      fr: '/fr/info-management/business-image',
+      it: '/it/info-management/business-image',
     },
     missingEntitlementLinkIcon: <CartIcon />,
   },
@@ -100,10 +100,10 @@ export const businessImageLinkConfig: NavigationLinkConfigProps = {
 export const photoBarLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.editPhotobar',
   link: {
-    de: '/de/member/templates/photobar',
-    en: '/de/member/templates/photobar',
-    fr: '/it/member/templates/photobar',
-    it: '/it/member/templates/photobar',
+    de: '/de/info-management/photo-bar',
+    en: '/en/info-management/photo-bar',
+    fr: '/fr/info-management/photo-bar',
+    it: '/it/info-management/photo-bar',
   },
   visibilitySettings: {
     userType: {
@@ -120,10 +120,10 @@ export const photoBarLinkConfig: NavigationLinkConfigProps = {
 export const qualilogoLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.qualityLogo',
   link: {
-    de: '/de/member/qualilogo',
-    en: '/de/member/qualilogo',
-    fr: '/fr/member/qualilogo',
-    it: '/it/member/qualilogo',
+    de: '/de/info-management/quali-logo',
+    en: '/en/info-management/quali-logo',
+    fr: '/fr/info-management/quali-logo',
+    it: '/it/info-management/quali-logo',
   },
   visibilitySettings: {
     userType: {
