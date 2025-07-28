@@ -12,9 +12,14 @@ import SelectedTenantInfo from './SelectedTenantInfo';
 type Props = {
   user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => Promise<void>;
+  showTenantSelection?: boolean;
 };
 
-const DrawerUserInfo: FC<Props> = ({ user, selectTenant }) => {
+const DrawerUserInfo: FC<Props> = ({
+  user,
+  selectTenant,
+  showTenantSelection,
+}) => {
   if (!user) return null;
 
   const selectedTenant = user.managedSellers?.find(
@@ -56,7 +61,7 @@ const DrawerUserInfo: FC<Props> = ({ user, selectTenant }) => {
             ) : null}
           </Stack>
         </Stack>
-        {selectedTenant ? (
+        {selectedTenant && showTenantSelection ? (
           <>
             <Show above="md">
               <SelectedTenantInfo selectedTenant={selectedTenant} />
