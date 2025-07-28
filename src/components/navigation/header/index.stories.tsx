@@ -77,6 +77,7 @@ const meta: Meta<typeof Navigation> = {
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
     selectTenant: async (id) => action('select tenant')(id),
+    showTenantSelection: true,
     experiments: {
       leasing: 'on',
     },
@@ -153,6 +154,26 @@ export const ProfessionalWithMultiTenancy: StoryType = {
 export const Private: StoryType = {
   args: {
     user: privateUser(),
+    experiments: {
+      leasing: 'on',
+    },
+  },
+};
+
+export const ProfessionalWithTenantSelectionHidden: StoryType = {
+  args: {
+    user: multiTenantUser({
+      managedSellers: new Array(100).fill(null).map((_, index) => ({
+        id: 6000 + index,
+        billingAddress: null,
+        billingCity: 'Zurich',
+        billingCountryCode: null,
+        billingName: `Garage Amir ${index}`,
+        billingPostOfficeBox: null,
+        billingZipCode: (8000 + index).toString(),
+      })),
+    }),
+    showTenantSelection: false,
     experiments: {
       leasing: 'on',
     },
