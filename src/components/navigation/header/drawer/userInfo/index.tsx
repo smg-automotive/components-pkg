@@ -12,7 +12,7 @@ import SelectedTenantInfo from './SelectedTenantInfo';
 type Props = {
   user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => Promise<void>;
-  showTenantSelection?: boolean;
+  showTenantSelection: boolean;
 };
 
 const DrawerUserInfo: FC<Props> = ({
