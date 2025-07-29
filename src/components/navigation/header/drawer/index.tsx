@@ -23,7 +23,7 @@ interface NavigationDrawerProps {
   onLogin: () => void;
   onLogout: () => void;
   selectTenant: (sellerId: number | string) => Promise<void>;
-  showTenantSelection?: boolean;
+  showTenantSelection: boolean;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
