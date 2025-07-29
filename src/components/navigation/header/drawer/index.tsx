@@ -23,6 +23,7 @@ interface NavigationDrawerProps {
   onLogin: () => void;
   onLogout: () => void;
   selectTenant: (sellerId: number | string) => Promise<void>;
+  showTenantSelection: boolean;
 }
 
 export const NavigationDrawer: FC<NavigationDrawerProps> = ({
@@ -34,6 +35,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   onLogin,
   onLogout,
   selectTenant,
+  showTenantSelection,
 }) => {
   return (
     <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
@@ -67,7 +69,11 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             {[DrawerNode.User, DrawerNode.Combined].includes(
               drawer?.current as DrawerNode,
             ) ? (
-              <DrawerUserInfo user={user} selectTenant={selectTenant} />
+              <DrawerUserInfo
+                user={user}
+                selectTenant={selectTenant}
+                showTenantSelection={showTenantSelection}
+              />
             ) : null}
             {drawer?.nodes.map((node, index) => (
               <DrawerMenu key={`node-${index}`} node={node} />
