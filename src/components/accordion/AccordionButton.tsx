@@ -2,6 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   Accordion as ChakraAccordion,
   AccordionItemTriggerProps as ChakraAccordionItemTriggerProps,
+  RecipeVariantProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
@@ -9,10 +10,10 @@ import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
 import { Box } from '../box';
 
-interface AccordionButtonProps extends ChakraAccordionItemTriggerProps {
-  leftIcon?: React.ReactNode;
-  variant?: 'light' | 'dark' | 'minimal';
-}
+export type AccordionButtonProps = ChakraAccordionItemTriggerProps &
+  RecipeVariantProps<typeof accordionRecipe> & {
+    leftIcon?: React.ReactNode;
+  };
 
 export const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
   props,
