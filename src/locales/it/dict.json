@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "Puoi passare a un altro garage più tardi nel tuo portale rivenditori.",
+      "loginButton": "Accedi",
+      "selectButton": "Seleziona garage",
+      "selectionTitle": "Seleziona garage",
+      "title": "Seleziona uno dei tuoi garage"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Mostra dettagli",
     "expanded": "Nascondi dettagli"
@@ -127,6 +136,7 @@
     "carSubscription": "Auto-Abo",
     "electromobility": "Elettromobilità",
     "estimate": "Stimare",
+    "leasing": "Offerte di leasing",
     "login": "Accedere",
     "magazine": "Rivista",
     "more": "Plus",
@@ -159,7 +169,6 @@
       "dmsLog": "DmsLog",
       "editPhotobar": "Modificare la Photobar",
       "editUser": "Lista dei membri",
-      "emailAddress": "Indirizzo e-mail",
       "hci": "HCI",
       "importInfo": "ImportInfo",
       "infoPage": "InfoPage",

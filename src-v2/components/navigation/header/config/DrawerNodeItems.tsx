@@ -9,8 +9,6 @@ import {
 } from './vehiclePool';
 import { carParkLinkConfig, motorcycleParkLinkConfig } from './vehiclePool';
 import {
-  accountSettingsLinkConfig,
-  changeEmailLinkConfig,
   changeLanguageLinkConfig,
   editUsersLinkConfig,
   favoritesLinkConfig,
@@ -54,6 +52,7 @@ import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig, optimizerProLinkConfig } from './Optimizer';
 
 import { magazineLinkConfig } from './magazine';
+import { leasingLinkConfig } from './leasing';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
   switchToFrenchLinkConfig,
@@ -77,10 +76,7 @@ import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
 import { autoRadarLinkConfig, manageAutoRadarLinkConfig } from './AutoRadar';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
-import {
-  advertisePartsAccessoriesLinkConfig,
-  onlineAdvertisingLinkConfig,
-} from './advertise';
+import { onlineAdvertisingLinkConfig } from './advertise';
 
 export interface NavigationLinkNode {
   translationKey?: string;
@@ -146,7 +142,6 @@ const getUserNodeItems = ({
       autoScoutTopVehiclesLinkConfig,
       motoScoutTopVehiclesLinkConfig,
       onlineAdvertisingLinkConfig,
-      advertisePartsAccessoriesLinkConfig,
       getProfessionalAutoScoutInsuranceComparisonLinkConfig({ sellerId }),
       getAutoScoutInsuranceComparisonLinkConfig({
         private: true,
@@ -174,9 +169,7 @@ const getUserNodeItems = ({
   {
     translationKey: 'header.userMenu.accountSettings',
     items: [
-      changeEmailLinkConfig,
       editUsersLinkConfig,
-      accountSettingsLinkConfig,
       changeLanguageLinkConfig,
       getLogoutLinkConfig({ onLogout }),
     ],
@@ -208,9 +201,11 @@ export const drawerNodeItems = ({
   onLogout,
   currentLanguage,
   isLoggedIn,
+  experiments = {},
 }: GetNodeItemsArgs & {
   currentLanguage: Language;
   isLoggedIn: boolean;
+  experiments?: Record<string, string>;
 }): DrawerNodeItemsConfig => ({
   search: [
     {
@@ -266,6 +261,14 @@ export const drawerNodeItems = ({
           ...motoScoutAssureLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: 'sm',
         },
+        ...(experiments?.leasing === 'on'
+          ? [
+              {
+                ...leasingLinkConfig({ trackEvent }),
+                showUnderMoreLinkBelow: 'sm' as const,
+              },
+            ]
+          : []),
         {
           ...electromobilityLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: 'sm',
@@ -287,6 +290,9 @@ export const drawerNodeItems = ({
         estimateLinkConfig({ trackEvent }),
         autoScoutAssureLinkConfig({ trackEvent }),
         motoScoutAssureLinkConfig({ trackEvent }),
+        ...(experiments?.leasing === 'on'
+          ? [leasingLinkConfig({ trackEvent })]
+          : []),
         electromobilityLinkConfig({ trackEvent }),
         magazineLinkConfig({ trackEvent }),
       ],
@@ -331,6 +337,9 @@ export const drawerNodeItems = ({
         }),
         autoScoutAssureLinkConfig({ trackEvent }),
         motoScoutAssureLinkConfig({ trackEvent }),
+        ...(experiments?.leasing === 'on'
+          ? [leasingLinkConfig({ trackEvent })]
+          : []),
         electromobilityLinkConfig({ trackEvent }),
         magazineLinkConfig({ trackEvent }),
       ],

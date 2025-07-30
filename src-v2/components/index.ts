@@ -100,3 +100,8 @@ export * from './icons';
 export * from './layout';
 export * from './table';
 export * from './carousel';
+
+export {
+  default as TenantSelection,
+  TenantSelectionProps,
+} from './tenantSelection';

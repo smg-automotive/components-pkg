@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "You can switch to a different garage later in your dealer portal.",
+      "loginButton": "Log in",
+      "selectButton": "Select garage",
+      "selectionTitle": "Select garage",
+      "title": "Select one of your garages"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Show more",
     "expanded": "Show less"
@@ -127,6 +136,7 @@
     "carSubscription": "Car subscription",
     "electromobility": "Electromobility",
     "estimate": "Estimate",
+    "leasing": "Leasing",
     "login": "Login",
     "magazine": "Magazine",
     "more": "More",
@@ -159,7 +169,6 @@
       "dmsLog": "DmsLog",
       "editPhotobar": "Edit photobar",
       "editUser": "Member list",
-      "emailAddress": "Email address",
       "hci": "HCI",
       "importInfo": "ImportInfo",
       "infoPage": "InfoPage",
