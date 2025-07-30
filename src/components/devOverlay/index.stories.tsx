@@ -4,7 +4,7 @@ import { useArgs } from '@storybook/preview-api';
 
 import { Brand } from 'src/types/brand';
 
-import ThemeProvider from '../themeProvider';
+import { ThemeProvider } from '../themeProvider';
 import { FullHeight } from '../index';
 
 import DevOverlayComponent, { type DevOverlayProps } from './index';
@@ -26,11 +26,13 @@ const Template = (args: DevOverlayProps) => {
   };
 
   return (
-    <DevOverlayComponent
-      {...args}
-      toggleTheme={toggleTheme}
-      toggleTranslation={toggleTranslation}
-    />
+    <ThemeProvider theme={activeTheme}>
+      <DevOverlayComponent
+        {...args}
+        toggleTheme={toggleTheme}
+        toggleTranslation={toggleTranslation}
+      />
+    </ThemeProvider>
   );
 };
 
@@ -40,14 +42,10 @@ const meta: Meta<typeof DevOverlayComponent> = {
 
   decorators: [
     (Story) => {
-      const [{ activeTheme }] = useArgs();
-
       return (
-        <ThemeProvider theme={activeTheme}>
-          <FullHeight>
-            <Story />
-          </FullHeight>
-        </ThemeProvider>
+        <FullHeight>
+          <Story />
+        </FullHeight>
       );
     },
   ],

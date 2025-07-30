@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '.jest/utils';
 
-import Section from '..';
+import { Section } from '..';
 
 const renderWrapper = ({
   title = 'title',

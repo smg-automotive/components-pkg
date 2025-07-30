@@ -19,5 +19,5 @@ export default {
     '<rootDir>/.jest/setup/textEncoder.ts',
     '<rootDir>/.jest/setup/fetch.ts',
   ],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
 };
