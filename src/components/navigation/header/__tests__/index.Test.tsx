@@ -1,10 +1,14 @@
 /* eslint-disable unicorn/filename-case */
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import {
+  multiTenantUser,
+  privateUser,
+  professionalUser,
+} from '@smg-automotive/auth/fixtures';
 
 import { Brand } from 'src/types/brand';
-import { privateSeller, professionalSeller } from 'fixtures/user';
-import { fireEvent, render, screen, within } from '.jest/utils';
+import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
@@ -14,14 +18,16 @@ import Navigation, { NavigationProps } from '..';
 
 const renderNavigation = ({
   environment = 'preprod',
-  user = privateSeller(),
+  user = privateUser(),
   brand = Brand.AutoScout24,
   language = 'en',
   hasNotification = false,
   onLogin = jest.fn(),
-  onLogout = jest.fn,
+  onLogout = jest.fn(),
+  selectTenant = jest.fn(() => Promise.resolve()),
   useAbsoluteUrls,
   project,
+  showTenantSelection,
 }: Partial<NavigationProps>) =>
   render(
     <Navigation
@@ -32,8 +38,10 @@ const renderNavigation = ({
       hasNotification={hasNotification}
       onLogin={onLogin}
       onLogout={onLogout}
+      selectTenant={selectTenant}
       useAbsoluteUrls={useAbsoluteUrls}
       project={project}
+      showTenantSelection={showTenantSelection}
     />,
   );
 
@@ -52,7 +60,7 @@ describe('Header', () => {
 
   it('should open user drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: privateSeller({ email }) });
+    renderNavigation({ user: privateUser({ email }) });
 
     let drawerBody = screen.queryByTestId('drawer-body');
     expect(drawerBody).toBeNull();
@@ -65,7 +73,7 @@ describe('Header', () => {
 
   it('displays user email in the user drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: privateSeller({ email }) });
+    renderNavigation({ user: privateUser({ email }) });
     const drawerToggle = screen.getByText(email);
 
     fireEvent.click(drawerToggle);
@@ -74,21 +82,106 @@ describe('Header', () => {
     expect(within(drawerBody).getByText(email)).toBeInTheDocument();
   });
 
-  it('displays the user name in the user drawer', async () => {
+  it('displays the seller id in the user drawer for the professional seller', async () => {
     const email = 'john.doe@me.com';
-    const userName = 'John Doe';
-    renderNavigation({ user: professionalSeller({ email, userName }) });
+    const sellerId = '6002';
+    renderNavigation({ user: professionalUser({ email, sellerId }) });
     const drawerToggle = screen.getByText(email);
 
     fireEvent.click(drawerToggle);
 
     const drawerBody = screen.getByTestId('drawer-body');
-    expect(within(drawerBody).getByText(`(${userName})`)).toBeInTheDocument();
+    expect(within(drawerBody).getByText(`(${sellerId})`)).toBeInTheDocument();
+  });
+
+  it('displays selected tenant and location in the user drawer', async () => {
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: multiTenantUser({ email }) });
+    const drawerToggle = screen.getByText(email);
+
+    fireEvent.click(drawerToggle);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    expect(within(drawerBody).getAllByText('Garage Amir').length).toEqual(3);
+    expect(within(drawerBody).getAllByText('8000 Zurich').length).toEqual(3);
+  });
+
+  it('allows switching tenants from the header menu', async () => {
+    const selectTenant = jest.fn(() => Promise.resolve());
+    renderNavigation({
+      user: multiTenantUser(),
+      selectTenant,
+    });
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
+    fireEvent.click(tenantSelectionMenu);
+
+    const popover = screen.getByRole('dialog', { hidden: true });
+    const newTenant = within(popover).getByText('Garage Amir Basel - 6002');
+    act(() => {
+      fireEvent.click(newTenant);
+    });
+
+    expect(selectTenant).toHaveBeenCalledWith(6002);
+  });
+
+  it('allows switching tenants from the combined menu on mobile', async () => {
+    const selectTenant = jest.fn(() => Promise.resolve());
+    renderNavigation({
+      user: multiTenantUser(),
+      selectTenant,
+    });
+
+    const menuToggle = screen.getByTitle('Hamburger menu icon');
+    fireEvent.click(menuToggle);
+
+    const drawerBody = screen.getByTestId('drawer-body');
+    const tenantSelectionToggle = within(drawerBody).getAllByTestId(
+      'tenant-selection-accordion-toggle',
+    )[0];
+    fireEvent.click(tenantSelectionToggle);
+
+    const newTenant = within(
+      screen.getAllByTestId('tenant-selection-accordion-panel')[0],
+    ).getByText('Garage Amir Basel - 6002');
+    act(() => {
+      fireEvent.click(newTenant);
+    });
+
+    expect(selectTenant).toHaveBeenCalledWith(6002);
+  });
+
+  it('should show tenant selection menu when showTenantSelection is true', () => {
+    renderNavigation({
+      user: multiTenantUser(),
+      showTenantSelection: true,
+    });
+
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
+    expect(tenantSelectionMenu).toBeInTheDocument();
+  });
+
+  it('should hide tenant selection menu when showTenantSelection is false', () => {
+    renderNavigation({
+      user: multiTenantUser(),
+      showTenantSelection: false,
+    });
+
+    const tenantSelectionMenu = screen.queryByText('Garage Amir Zurich');
+    expect(tenantSelectionMenu).not.toBeInTheDocument();
+  });
+
+  it('should show tenant selection menu by default when showTenantSelection is not provided', () => {
+    renderNavigation({
+      user: multiTenantUser(),
+    });
+
+    const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
+    expect(tenantSelectionMenu).toBeInTheDocument();
   });
 
   it('does not display user name in the search drawer', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: professionalSeller({ email }) });
+    renderNavigation({ user: professionalUser({ email }) });
 
     const searchItem = screen.getByText('Search');
     fireEvent.click(searchItem);
@@ -97,19 +190,6 @@ describe('Header', () => {
     expect(
       within(drawerBody).queryByText(email, { exact: false }),
     ).not.toBeInTheDocument();
-  });
-
-  it("doesn't display user name if it's same as email", async () => {
-    const email = 'john.doe@me.com';
-    renderNavigation({ user: privateSeller({ email, userName: email }) });
-
-    const searchItem = screen.getByText(email);
-    fireEvent.click(searchItem);
-
-    const drawerBody = screen.getByTestId('drawer-body');
-    expect(
-      within(drawerBody).getAllByText(email, { exact: false }),
-    ).toHaveLength(1);
   });
 
   it('should display login button if there is no user', async () => {
@@ -121,7 +201,7 @@ describe('Header', () => {
 
   it('should display user email if there is a user', async () => {
     const email = 'john.doe@me.com';
-    renderNavigation({ user: professionalSeller({ email }) });
+    renderNavigation({ user: professionalUser({ email }) });
 
     const user = screen.getByText(email);
     expect(user).toBeInTheDocument();
@@ -149,7 +229,7 @@ describe('Header', () => {
           }),
           iconItems: iconItems({ trackEvent: jest.fn() }),
         },
-        user: privateSeller(),
+        user: privateUser(),
       });
       const config = headerConfigInstance.getMappedConfig();
       expect(config).toEqual({
@@ -176,7 +256,7 @@ describe('Header', () => {
       return `https://www.autoscout24.ch${pathname}`;
     };
 
-    const user = privateSeller();
+    const user = privateUser();
 
     const listingsWebLink = {
       name: 'Merkliste',
