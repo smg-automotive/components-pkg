@@ -19,11 +19,12 @@ interface MenuItem {
 }
 
 export interface MenuProps {
-  title: string;
+  title: string | ReactElement;
   items: MenuItem[];
   fontWeightTitle?: FontWeights;
   offset?: [number, number];
   menuColor?: string;
+  showChevron?: boolean;
   icon?: ReactElement;
   iconSpacing?: ButtonProps['iconSpacing'];
   placement?: ChakraMenuProps['placement'];
@@ -35,6 +36,7 @@ const Menu: FC<MenuProps> = ({
   fontWeightTitle = 'regular',
   offset = [],
   menuColor,
+  showChevron = true,
   icon,
   iconSpacing,
   placement,
@@ -49,10 +51,12 @@ const Menu: FC<MenuProps> = ({
             iconSpacing={iconSpacing}
             leftIcon={icon}
             rightIcon={
-              <ChevronDownSmallIcon
-                transition="0.2s"
-                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-              />
+              showChevron ? (
+                <ChevronDownSmallIcon
+                  transition="0.2s"
+                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                />
+              ) : undefined
             }
             fontWeight={fontWeightTitle}
             color={isOpen ? 'blue.700' : menuColor}
