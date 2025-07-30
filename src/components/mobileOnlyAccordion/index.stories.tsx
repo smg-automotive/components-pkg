@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import ListItem from '../list/ListItem';
-import List from '../list';
+import { ListItem } from '../list';
+import { ListRoot } from '../list';
 import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
@@ -16,14 +16,14 @@ const Template = ({
 }: Props & { sections: number; sectionItems: number }) => (
   <MobileOnlyAccordionComponent {...props}>
     {Array.from({ length: sections }).map((_section, i) => (
-      <MobileOnlyAccordionItem key={`section-${i}`}>
+      <MobileOnlyAccordionItem key={`section-${i}`} value={`item-${i}`}>
         <MobileOnlyAccordionButton>Section {i + 1}</MobileOnlyAccordionButton>
         <MobileOnlyAccordionPanel>
-          <List>
+          <ListRoot>
             {Array.from({ length: sectionItems }).map((_item, j) => (
               <ListItem key={`item-${j}`}>Item {j + 1}</ListItem>
             ))}
-          </List>
+          </ListRoot>
         </MobileOnlyAccordionPanel>
       </MobileOnlyAccordionItem>
     ))}
@@ -37,8 +37,8 @@ const meta: Meta<typeof Template> = {
 
   args: {
     variant: 'light',
-    allowMultiple: false,
-    allowToggle: true,
+    multiple: false,
+    collapsible: true,
 
     sections: 3,
     sectionItems: 3,
