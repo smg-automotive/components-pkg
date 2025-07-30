@@ -10,7 +10,7 @@ import MobileOnlyAccordion from '../index';
 const renderWrapper = () =>
   render(
     <MobileOnlyAccordion>
-      <MobileOnlyAccordionItem>
+      <MobileOnlyAccordionItem value="">
         <MobileOnlyAccordionButton>Section 1</MobileOnlyAccordionButton>
         <MobileOnlyAccordionPanel>
           <ul>
