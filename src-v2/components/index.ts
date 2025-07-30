@@ -1,7 +1,3 @@
-export { default as Accordion } from './accordion';
-export { default as AccordionButton } from './accordion/AccordionButton';
-export { default as AccordionPanel } from './accordion/AccordionPanel';
-export { default as AccordionItem } from './accordion/AccordionItem';
 export { default as ArticleTeaser } from './articleTeaser';
 export { default as AspectRatio } from './aspectRatio';
 export { default as Alert } from './alert';
@@ -25,7 +21,6 @@ export { default as DrawerContent } from './drawer/DrawerContent';
 export { default as DrawerOverlay } from './drawer/DrawerOverlay';
 export { default as Divider } from './divider';
 export { default as EnergyLabel } from './energyLabel';
-export { default as ErrorPage } from './errorPage';
 export { default as Flex } from './flex';
 export { default as FormControl } from './formControl';
 export { default as FormLabel } from './formLabel';
