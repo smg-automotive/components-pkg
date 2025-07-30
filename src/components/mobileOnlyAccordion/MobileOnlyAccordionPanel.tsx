@@ -1,12 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { AccordionItemBodyProps as ChakraAccordionItemBodyProps } from '@chakra-ui/react';
-
 import { Box } from '../box';
-import { AccordionPanel } from '../accordion/AccordionPanel';
-interface AccordionPanelProps extends ChakraAccordionItemBodyProps {
-  variant?: 'light' | 'dark' | 'minimal';
-}
+import {
+  AccordionPanel,
+  AccordionPanelProps,
+} from '../accordion/AccordionPanel';
 
 const MobileOnlyAccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
   props,

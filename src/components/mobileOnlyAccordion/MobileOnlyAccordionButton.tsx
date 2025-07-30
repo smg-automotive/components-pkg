@@ -1,13 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { AccordionItemTriggerProps as ChakraAccordionItemTriggerProps } from '@chakra-ui/react';
-
 import { Box } from '../box';
-import { AccordionButton } from '../accordion/AccordionButton';
-interface AccordionButtonProps extends ChakraAccordionItemTriggerProps {
-  leftIcon?: React.ReactNode;
-  variant?: 'light' | 'dark' | 'minimal';
-}
+import {
+  AccordionButton,
+  AccordionButtonProps,
+} from '../accordion/AccordionButton';
 
 const MobileOnlyAccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
   props,
