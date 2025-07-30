@@ -33,11 +33,11 @@ export const accordionRecipe = defineSlotRecipe({
       overflow: 'hidden',
       _open: {
         animationName: 'expand-height',
-        animationDuration: 'moderate',
+        animationDuration: 'normal',
       },
       _closed: {
         animationName: 'collapse-height',
-        animationDuration: 'moderate',
+        animationDuration: 'normal',
       },
     },
     body: {
