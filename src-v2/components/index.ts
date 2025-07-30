@@ -15,7 +15,6 @@ export { default as CheckboxFilter } from './checkboxFilter';
 export { type Item as CheckboxFilterItem } from './checkboxFilter/type';
 export { default as CheckboxGroup } from './checkboxGroup';
 export { default as DatePicker } from './datePicker';
-export { default as DevOverlay } from './devOverlay';
 export { default as Drawer } from './drawer';
 export { default as DrawerBody } from './drawer/DrawerBody';
 export { default as DrawerContent } from './drawer/DrawerContent';
@@ -58,7 +57,6 @@ export { default as SimpleHeader } from './simpleHeader';
 export { default as Stack } from './stack';
 export { default as Slide } from './slide';
 export { default as Spinner } from './spinner';
-export { default as Switch } from './switchComponent';
 export { default as Text } from './text';
 export { default as HighlightedText } from './text/HighlightedText';
 export { default as MarkedText } from './text/marked';
@@ -97,3 +95,8 @@ export * from './icons';
 export * from './layout';
 export * from './table';
 export * from './carousel';
+
+export {
+  default as TenantSelection,
+  TenantSelectionProps,
+} from './tenantSelection';

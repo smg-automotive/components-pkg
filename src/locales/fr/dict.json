@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "Vous pourrez changer de garage plus tard dans votre portail concessionnaire.",
+      "loginButton": "Se connecter",
+      "selectButton": "Sélectionner le garage",
+      "selectionTitle": "Sélectionner le garage",
+      "title": "Sélectionnez un de vos garages"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Afficher plus",
     "expanded": "Afficher moins"
@@ -127,6 +136,7 @@
     "carSubscription": "Auto-Abo",
     "electromobility": "Électromobilité",
     "estimate": "Estimer",
+    "leasing": "Offres de leasing",
     "login": "Se connecter",
     "magazine": "Magazin",
     "more": "Plus",
@@ -159,7 +169,6 @@
       "dmsLog": "DmsLog",
       "editPhotobar": "Modifier la Photobar",
       "editUser": "Liste des membres",
-      "emailAddress": "Adresse e-mail",
       "hci": "HCI",
       "importInfo": "ImportInfo",
       "infoPage": "InfoPage",

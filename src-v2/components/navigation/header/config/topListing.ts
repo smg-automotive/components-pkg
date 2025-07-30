@@ -5,10 +5,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const topListingProLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.topListingPro',
   link: {
-    de: '/de/member/toplisting',
-    en: '/de/member/toplisting',
-    fr: '/fr/member/toplisting',
-    it: '/it/member/toplisting',
+    de: '/de/features/top-list/manage',
+    en: '/de/features/top-list/manage',
+    fr: '/fr/features/top-list/manage',
+    it: '/it/features/top-list/manage',
   },
   visibilitySettings: {
     userType: {

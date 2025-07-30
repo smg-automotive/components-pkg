@@ -4,16 +4,14 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   Accordion as ChakraAccordion,
   AccordionRootProps as ChakraAccordionRootProps,
+  RecipeVariantProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
-export type { ChakraAccordionRootProps };
-
-interface AccordionProps extends ChakraAccordionRootProps {
-  variant?: 'light' | 'dark' | 'minimal';
-}
+export type AccordionProps = ChakraAccordionRootProps &
+  RecipeVariantProps<typeof accordionRecipe>;
 
 export const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
   const recipe = useSlotRecipe({ recipe: accordionRecipe });
