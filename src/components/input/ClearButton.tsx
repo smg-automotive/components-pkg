@@ -1,5 +1,7 @@
 import React, { FC, MutableRefObject } from 'react';
 
+import { CloseButton } from '@chakra-ui/react';
+
 import { CloseIcon } from '../icons';
 
 type Props = {
@@ -24,9 +26,10 @@ const triggerNativeEventFor = (
   elm.dispatchEvent(new Event(event, { bubbles: true }));
 };
 
-const ClearButton: FC<Props> = ({ inputRef }) => (
-  <button
+export const ClearButton: FC<Props> = ({ inputRef }) => (
+  <CloseButton
     role="button"
+    cursor="pointer"
     onClick={() => {
       if (!inputRef.current) return;
 
@@ -38,7 +41,5 @@ const ClearButton: FC<Props> = ({ inputRef }) => (
     }}
   >
     <CloseIcon w="xs" h="xs" />
-  </button>
+  </CloseButton>
 );
-
-export default ClearButton;
