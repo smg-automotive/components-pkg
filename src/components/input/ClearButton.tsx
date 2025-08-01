@@ -1,8 +1,6 @@
 import React, { FC, MutableRefObject } from 'react';
 
-import { CloseButton, useRecipe } from '@chakra-ui/react';
-
-import { clearButtonRecipe } from 'src/themes/shared/recipes/clearButton';
+import { CloseButton } from '@chakra-ui/react';
 
 import { CloseIcon } from '../icons';
 
@@ -29,12 +27,9 @@ const triggerNativeEventFor = (
 };
 
 export const ClearButton: FC<Props> = ({ inputRef }) => {
-  const recipe = useRecipe({ recipe: clearButtonRecipe });
-  const styles = recipe();
-
   return (
     <CloseButton
-      css={styles}
+      cursor="pointer"
       role="button"
       onClick={() => {
         if (!inputRef.current) return;
