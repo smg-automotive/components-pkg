@@ -2,17 +2,20 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
-import { Box } from '@chakra-ui/react';
+import { Box, Field } from '@chakra-ui/react';
 
-import { Button, Select } from '../index';
+import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { Button } from '../index';
 import { MagnifierIcon } from '../icons';
 
-import InputComponent, { InputProps } from './index';
+import { Input, InputProps } from './index';
 
 const Wrapper = ({ value: argValue, onChange, ...props }: InputProps) => {
   const [{ value }, updateArgs] = useArgs();
   return (
-    <InputComponent
+    <Input
       {...({
         ...props,
         ...(argValue || argValue === '' || argValue === 0
@@ -29,15 +32,13 @@ const Wrapper = ({ value: argValue, onChange, ...props }: InputProps) => {
   );
 };
 
-const meta: Meta<typeof InputComponent> = {
+const meta: Meta<typeof Input> = {
   title: 'Components/Forms/Input',
-  component: InputComponent,
+  component: Input,
 
   args: {
     placeholder: 'Placeholder',
-    isDisabled: false,
-    isInvalid: false,
-    size: 'lg',
+    disabled: false,
     onChange: action('onChange'),
     onFocus: action('onFocus'),
     onBlur: action('onBlur'),
@@ -48,10 +49,11 @@ const meta: Meta<typeof InputComponent> = {
     name: 'test-input',
     debounce: false,
     icon: undefined,
+    size: 'lg',
   },
 
   argTypes: {
-    size: { control: 'select' },
+    ...getRecipeControls(inputSlotRecipe),
 
     value: {
       control: { type: 'text' },
@@ -81,7 +83,7 @@ const meta: Meta<typeof InputComponent> = {
   },
 
   decorators: (Story) => (
-    <Box w="100%" maxW="550px">
+    <Box w="full" maxWidth="7xl">
       <Story />
     </Box>
   ),
@@ -98,7 +100,7 @@ const meta: Meta<typeof InputComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof InputComponent>;
+type StoryType = StoryObj<typeof Input>;
 export const Overview: StoryType = {};
 
 export const StateFocused: StoryType = {
@@ -106,8 +108,8 @@ export const StateFocused: StoryType = {
   args: {
     size: 'lg',
     placeholder: 'I am focused',
-    isDisabled: false,
-    isInvalid: false,
+    disabled: false,
+    // isInvalid: false,
     autoFocus: true,
   },
 };
@@ -117,8 +119,7 @@ export const StateDisabled: StoryType = {
   args: {
     size: 'lg',
     placeholder: 'I am disabled',
-    isDisabled: true,
-    isInvalid: false,
+    disabled: true,
     autoFocus: false,
   },
 };
@@ -128,9 +129,13 @@ export const StateInvalid: StoryType = {
   args: {
     size: 'lg',
     placeholder: 'I am invalid',
-    isDisabled: false,
-    isInvalid: true,
-    autoFocus: false,
+  },
+  render: (args) => {
+    return (
+      <Field.Root invalid>
+        <Input placeholder="Enter your email" {...args} />
+      </Field.Root>
+    );
   },
 };
 
@@ -173,8 +178,7 @@ export const Debounced: StoryType = {
   args: {
     size: 'lg',
     placeholder: 'Placeholder',
-    isDisabled: false,
-    isInvalid: false,
+    disabled: false,
     autoFocus: false,
     debounce: true,
     setInputValue: action('setInputValue'),
@@ -204,22 +208,22 @@ export const WithRightAddonElementButton: StoryType = {
   },
 };
 
-export const WithRightAddonElementSelect: StoryType = {
-  args: {
-    ...WithIcon.args,
-    rightAddonElement: (
-      <Select
-        name="Test select"
-        options={[{ label: '+10 km', value: '10' }]}
-        borderLeftRadius="0"
-      />
-    ),
-  },
-};
+// TODO: Add Select component after migration
+// export const WithRightAddonElementSelect: StoryType = {
+//   args: {
+//     ...WithIcon.args,
+//     rightAddonElement: (
+//       <Select
+//         name="Test select"
+//         options={[{ label: '+10 km', value: '10' }]}
+//         borderLeftRadius="0"
+//       />
+//     ),
+//   },
+// };
 
 export const WithLeftAddonElementButton: StoryType = {
   args: {
-    ...WithIcon.args,
     leftAddonElement: (
       <Button
         borderColor="gray.400"
@@ -233,18 +237,19 @@ export const WithLeftAddonElementButton: StoryType = {
   },
 };
 
-export const WithLeftAddonElementSelect: StoryType = {
-  args: {
-    type: 'number',
-    placeholder: 'i.e. 791234567',
-    leftAddonElement: (
-      <Box width={96}>
-        <Select
-          name="Test select"
-          options={[{ label: '+41', value: 'CH' }]}
-          borderRightRadius="0"
-        />
-      </Box>
-    ),
-  },
-};
+// TODO: Add Select component after migration
+// export const WithLeftAddonElementSelect: StoryType = {
+//   args: {
+//     type: 'number',
+//     placeholder: 'i.e. 791234567',
+//     leftAddonElement: (
+//       <Box width={96}>
+//         <Select
+//           name="Test select"
+//           options={[{ label: '+41', value: 'CH' }]}
+//           borderRightRadius="0"
+//         />
+//       </Box>
+//     ),
+//   },
+// };

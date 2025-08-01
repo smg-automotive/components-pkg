@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from '.jest/utils';
 
-import Input, { Props } from '..';
+import { Input, Props } from '..';
 
 const renderWrapper = ({
   name = 'test-input',
