@@ -39,7 +39,7 @@ export const inputSlotRecipe = defineSlotRecipe({
       height: 'var(--input-height)',
       px: 'var(--input-padding-x)',
       py: 'var(--input-padding-y)',
-      // minWidth: '0',
+      minWidth: '0',
       outline: 0,
       position: 'relative',
       appearance: 'none',
