@@ -7,13 +7,15 @@ import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
 
-import MobileOnlyAccordionComponent, { Props } from './index';
+import MobileOnlyAccordionComponent, {
+  MobileOnlyAccordionProps,
+} from './index';
 
 const Template = ({
   sections,
   sectionItems,
   ...props
-}: Props & { sections: number; sectionItems: number }) => (
+}: MobileOnlyAccordionProps & { sections: number; sectionItems: number }) => (
   <MobileOnlyAccordionComponent {...props}>
     {Array.from({ length: sections }).map((_section, i) => (
       <MobileOnlyAccordionItem key={`section-${i}`} value={`item-${i}`}>

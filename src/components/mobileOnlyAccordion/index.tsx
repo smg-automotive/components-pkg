@@ -8,17 +8,17 @@ import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
 import { Accordion } from '../accordion';
 
-export type Props = RecipeVariantProps<typeof accordionRecipe> &
+export type MobileOnlyAccordionProps = RecipeVariantProps<
+  typeof accordionRecipe
+> &
   Pick<ChakraAccordion.RootProps, 'multiple' | 'collapsible'>;
 
-const MobileOnlyAccordion: FC<PropsWithChildren<Props>> = (props) => {
+const MobileOnlyAccordion: FC<PropsWithChildren<MobileOnlyAccordionProps>> = (
+  props,
+) => {
   const { children, ...restProps } = props;
 
-  return (
-    <Accordion multiple {...restProps}>
-      {children}
-    </Accordion>
-  );
+  return <Accordion {...restProps}>{children}</Accordion>;
 };
 
 export default MobileOnlyAccordion;
