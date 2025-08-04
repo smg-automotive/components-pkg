@@ -109,7 +109,6 @@ export const StateFocused: StoryType = {
     size: 'lg',
     placeholder: 'I am focused',
     disabled: false,
-    // isInvalid: false,
     autoFocus: true,
   },
 };
