@@ -1,22 +1,19 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ListItem } from '../list';
-import { ListRoot } from '../list';
+import { ListItem, ListRoot } from '../list';
 import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
 
-import MobileOnlyAccordionComponent, {
-  MobileOnlyAccordionProps,
-} from './index';
+import { MobileOnlyAccordion, MobileOnlyAccordionProps } from './index';
 
 const Template = ({
   sections,
   sectionItems,
   ...props
 }: MobileOnlyAccordionProps & { sections: number; sectionItems: number }) => (
-  <MobileOnlyAccordionComponent {...props}>
+  <MobileOnlyAccordion {...props}>
     {Array.from({ length: sections }).map((_section, i) => (
       <MobileOnlyAccordionItem key={`section-${i}`} value={`item-${i}`}>
         <MobileOnlyAccordionButton>Section {i + 1}</MobileOnlyAccordionButton>
@@ -29,12 +26,12 @@ const Template = ({
         </MobileOnlyAccordionPanel>
       </MobileOnlyAccordionItem>
     ))}
-  </MobileOnlyAccordionComponent>
+  </MobileOnlyAccordion>
 );
 
 const meta: Meta<typeof Template> = {
   title: 'Patterns/Navigation/MobileOnlyAccordion',
-  component: MobileOnlyAccordionComponent,
+  component: MobileOnlyAccordion,
   render: Template.bind({}),
 
   args: {
@@ -65,4 +62,4 @@ export default meta;
 /**
  * Make sure you're viewing this on a mobile viewport to see the accordion.
  */
-export const Overview: StoryObj<typeof MobileOnlyAccordionComponent> = {};
+export const Overview: StoryObj<typeof MobileOnlyAccordion> = {};

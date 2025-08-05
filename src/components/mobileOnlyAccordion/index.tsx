@@ -13,12 +13,10 @@ export type MobileOnlyAccordionProps = RecipeVariantProps<
 > &
   Pick<ChakraAccordion.RootProps, 'multiple' | 'collapsible'>;
 
-const MobileOnlyAccordion: FC<PropsWithChildren<MobileOnlyAccordionProps>> = (
-  props,
-) => {
+export const MobileOnlyAccordion: FC<
+  PropsWithChildren<MobileOnlyAccordionProps>
+> = (props) => {
   const { children, ...restProps } = props;
 
   return <Accordion {...restProps}>{children}</Accordion>;
 };
-
-export default MobileOnlyAccordion;
