@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   clearMocks: true,
   collectCoverage: false,
   errorOnDeprecated: true,
