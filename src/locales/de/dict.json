@@ -1,4 +1,13 @@
 {
+  "auth": {
+    "tenantSelection": {
+      "description": "Sie können später in Ihrer Händler-Portal zu einer anderen Garage wechseln",
+      "loginButton": "Anmelden",
+      "selectButton": "Garage auswählen",
+      "selectionTitle": "Garage auswählen",
+      "title": "Wählen Sie eine Ihrer Garagen"
+    }
+  },
   "checkboxFilter": {
     "collapsed": "Mehr anzeigen",
     "expanded": "Weniger anzeigen"
@@ -127,6 +136,7 @@
     "carSubscription": "Auto-Abo",
     "electromobility": "Elektromobilität",
     "estimate": "Schätzen",
+    "leasing": "Leasingangebote",
     "login": "Anmelden",
     "magazine": "Magazin",
     "more": "Mehr",
@@ -159,7 +169,6 @@
       "dmsLog": "DmsLog",
       "editPhotobar": "Photobar bearbeiten",
       "editUser": "Mitgliederliste",
-      "emailAddress": "E-Mail-Adresse",
       "hci": "HCI",
       "importInfo": "ImportInfo",
       "infoPage": "InfoPage",

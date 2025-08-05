@@ -41,7 +41,7 @@ slack_notify: &SLACK_NOTIFY
     branch_pattern: main
 
 orbs:
-  slack: circleci/slack@5.1.1
+  slack: circleci/slack@5.2.0
 
 jobs:
   install:
