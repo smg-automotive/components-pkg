@@ -11,6 +11,7 @@ export type SearchFieldOptions = {
   onFocus?: () => void;
   onBlur?: () => void;
   autofocusOnDesktop?: boolean;
+  autoComplete?: 'on' | 'off';
 };
 
 export type SearchFieldProps = {
@@ -29,6 +30,7 @@ export const SearchField: FC<SearchFieldProps> = ({
   onFocus = () => null,
   onBlur = () => null,
   autofocusOnDesktop = true,
+  autoComplete,
 }) => {
   const isDesktopOnly = useMediaQuery({ above: 'md' });
   const inputRef = useRef<HTMLInputElement>(null);
@@ -53,6 +55,7 @@ export const SearchField: FC<SearchFieldProps> = ({
       onFocus={onFocus}
       onBlur={onBlur}
       aria-controls={ariaControls}
+      autoComplete={autoComplete}
     />
   );
 };

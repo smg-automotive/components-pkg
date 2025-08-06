@@ -36,6 +36,7 @@ type SharedProps = InputVariantProps & {
   isClearable?: boolean;
   rightAddonElement?: ReactElement;
   leftAddonElement?: ReactElement;
+  autoComplete?: 'on' | 'off';
 };
 
 type ControlledInputProps = {
@@ -45,7 +46,7 @@ type ControlledInputProps = {
   setInputValue?: never;
 } & SharedProps;
 
-type InputPros = {
+type BaseInputPros = {
   debounce?: false;
   value?: never;
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -59,7 +60,10 @@ type DebouncedInputPros = {
   setInputValue: (value: string) => void;
 } & SharedProps;
 
-export type Props = ControlledInputProps | InputPros | DebouncedInputPros;
+export type InputProps =
+  | ControlledInputProps
+  | BaseInputPros
+  | DebouncedInputPros;
 
 const bindRefBeforeForwarding =
   <T extends Element>({
@@ -78,7 +82,7 @@ const bindRefBeforeForwarding =
     }
   };
 
-export const Input = forwardRef<HTMLInputElement, Props>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       onChange,
@@ -176,5 +180,3 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 );
 
 Input.displayName = 'Input';
-
-export { Props as InputProps };
