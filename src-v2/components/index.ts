@@ -63,7 +63,6 @@ export { default as MarkedText } from './text/marked';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
 export { default as Skeleton } from './skeleton';
-export { default as Footer } from './navigation/footer';
 export { default as TopListingBadge } from './topListingBadge';
 export { default as AppLayout } from './layout/app/AppLayout';
 export { default as AppLayoutHeader } from './layout/app/Header';

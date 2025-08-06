@@ -27,7 +27,7 @@ interface FooterProps {
   experiments?: Record<string, string>;
 }
 
-const Footer: FC<FooterProps> = ({
+export const Footer: FC<FooterProps> = ({
   brand,
   language,
   environment,
@@ -67,7 +67,7 @@ const Footer: FC<FooterProps> = ({
               <SocialMedia config={config} />
             </Container>
           </Center>
-          <Separator borderColor="gray.700" />
+          <Separator orientation="horizontal" borderColor="gray.700" />
           <Center>
             <Container width="full" maxWidth="container.xl" paddingX="lg">
               <FooterCompanies config={config} />
@@ -79,5 +79,3 @@ const Footer: FC<FooterProps> = ({
     </TranslationProvider>
   );
 };
-
-export default Footer;

@@ -27,25 +27,25 @@ const FooterApps: FC<Props> = ({ config }) => {
         gap="md"
       >
         <Text textStyle="heading5">{t('footer.apps.title')}</Text>
-        <ListRoot gap="md">
+        <ListRoot>
           <ListItem display="flex" alignItems="center">
             <FooterLink linkInstance={config.apps.android[0]}>
               <Image
                 src={googleplay}
                 alt={'Googleplay Icon'}
                 width="3xl"
-                height="md"
+                height="auto"
                 loading="lazy"
               />
             </FooterLink>
           </ListItem>
-          <ListItem display="flex" alignItems="center">
+          <ListItem display="flex" alignItems="center" mt="md">
             <FooterLink linkInstance={config.apps.apple[0]}>
               <Image
                 src={appstore}
                 alt={'Appsore Icon'}
                 width="3xl"
-                height="md"
+                height="auto"
                 loading="lazy"
               />
             </FooterLink>

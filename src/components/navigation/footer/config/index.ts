@@ -1,6 +1,5 @@
-import { LinkConfig } from 'src/components/navigation/link';
-
 import { Brand } from 'src/types/brand';
+import { LinkConfig } from 'src/components/navigation/link';
 
 declare global {
   interface Window {
