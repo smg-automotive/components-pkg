@@ -2,9 +2,9 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ListItem, ListRoot } from '../list';
-import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';
+import { MobileOnlyAccordionPanel } from './MobileOnlyAccordionPanel';
+import { MobileOnlyAccordionItem } from './MobileOnlyAccordionItem';
+import { MobileOnlyAccordionButton } from './MobileOnlyAccordionButton';
 
 import { MobileOnlyAccordion, MobileOnlyAccordionProps } from './index';
 

@@ -4,7 +4,7 @@ import useMediaQuery from 'src/hooks/useMediaQuery';
 
 import { AccordionItem, AccordionItemProps } from '../accordion/AccordionItem';
 
-const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
+export const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
   props,
 ) => {
   const { children, ...rest } = props;
@@ -25,5 +25,3 @@ const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
     </AccordionItem>
   );
 };
-
-export default MobileOnlyAccordionItem;

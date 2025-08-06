@@ -6,7 +6,7 @@ import {
   AccordionPanelProps,
 } from '../accordion/AccordionPanel';
 
-const MobileOnlyAccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
+export const MobileOnlyAccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
   props,
 ) => {
   const { children, ...rest } = props;
@@ -28,5 +28,3 @@ const MobileOnlyAccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
     </>
   );
 };
-
-export default MobileOnlyAccordionPanel;

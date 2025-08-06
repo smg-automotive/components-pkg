@@ -21,6 +21,7 @@ export * from './layout';
 export * from './link';
 export * from './list';
 export * from './missingImage';
+export * from './mobileOnlyAccordion';
 export * from './navigation/footer';
 export * from './rating';
 export * from './section';
