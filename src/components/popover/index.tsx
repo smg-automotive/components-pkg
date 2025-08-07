@@ -31,6 +31,7 @@ export type PopoverProps = PropsWithChildren<
     | 'onClose'
     | 'onOpen'
     | 'isOpen'
+    | 'usePortal'
   >
 >;
 
