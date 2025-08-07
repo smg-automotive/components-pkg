@@ -2,7 +2,7 @@ import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
-import { type Domains, LinkConfig, LinkInstance } from './link';
+import { Domains, LinkConfig, LinkInstance } from './link';
 
 export abstract class BaseConfig<T> {
   brand: Brand;
