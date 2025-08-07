@@ -18,7 +18,7 @@ export type AccordionButtonProps = ChakraAccordionItemTriggerProps &
 export const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
   props,
 ) => {
-  const recipe = useSlotRecipe({ recipe: accordionRecipe });
+  const recipe = useSlotRecipe({ key: 'accordion' });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
   const styles = recipe({ ...recipeProps });
 

@@ -11,9 +11,11 @@ import { energyLabelRecipe as energyLabel } from './energyLabel';
 import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
+import { accordionRecipe as accordion } from './accordion';
 
 export const slotRecipes = {
   articleTeaser,
+  accordion,
   card,
   energyLabel,
   list,

@@ -4,9 +4,9 @@ import useMediaQuery from 'src/hooks/useMediaQuery';
 
 import { AccordionItem, AccordionItemProps } from '../accordion/AccordionItem';
 
-const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
-  props,
-) => {
+export const MobileOnlyAccordionItem: FC<
+  PropsWithChildren<AccordionItemProps>
+> = (props) => {
   const { children, ...rest } = props;
   const isAboveMd = useMediaQuery({ above: 'md' });
 
@@ -25,5 +25,3 @@ const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
     </AccordionItem>
   );
 };
-
-export default MobileOnlyAccordionItem;

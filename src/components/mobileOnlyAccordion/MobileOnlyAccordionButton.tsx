@@ -6,9 +6,9 @@ import {
   AccordionButtonProps,
 } from '../accordion/AccordionButton';
 
-const MobileOnlyAccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
-  props,
-) => {
+export const MobileOnlyAccordionButton: FC<
+  PropsWithChildren<AccordionButtonProps>
+> = (props) => {
   const { children, ...rest } = props;
 
   return (
@@ -22,5 +22,3 @@ const MobileOnlyAccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
     </>
   );
 };
-
-export default MobileOnlyAccordionButton;

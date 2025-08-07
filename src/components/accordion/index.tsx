@@ -14,13 +14,13 @@ export type AccordionProps = ChakraAccordionRootProps &
   RecipeVariantProps<typeof accordionRecipe>;
 
 export const Accordion: FC<PropsWithChildren<AccordionProps>> = (props) => {
-  const recipe = useSlotRecipe({ recipe: accordionRecipe });
+  const recipe = useSlotRecipe({ key: 'accordion' });
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
 
-  const { children, multiple, ...rest } = restProps;
+  const { children, ...rest } = restProps;
 
   return (
-    <ChakraAccordion.Root multiple={multiple} {...rest}>
+    <ChakraAccordion.Root {...rest}>
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(child as React.ReactElement, {
