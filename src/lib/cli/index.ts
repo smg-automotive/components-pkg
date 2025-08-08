@@ -1,13 +1,14 @@
+import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs';
+
 import setupNextFonts from './setupNextFonts';
 import setup from './setup';
 import copyFonts from './copyFonts';
 
-const yargs = require('yargs');
-
-yargs
+yargs(hideBin(process.argv))
   .command({
     command: 'setup',
-    desc: 'Setup copy-fonts script and gitignore copied files',
+    describe: 'Setup copy-fonts script and gitignore copied files',
     builder: (args: typeof yargs) =>
       args.option('path', {
         alias: 'p',
@@ -20,7 +21,7 @@ yargs
   })
   .command({
     command: 'copy-fonts',
-    desc: 'Copy fonts from the package to required destination',
+    describe: 'Copy fonts from the package to required destination',
     builder: (args: typeof yargs) =>
       args.option('path', {
         alias: 'p',
@@ -32,7 +33,7 @@ yargs
   })
   .command({
     command: 'setup-next-fonts',
-    desc: 'Generate a component to load fonts with @next/fonts',
+    describe: 'Generate a component to load fonts with @next/fonts',
     builder: (args: typeof yargs) =>
       args
         .option('component-path', {
