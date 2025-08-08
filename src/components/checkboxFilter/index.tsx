@@ -37,8 +37,6 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   );
   const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
 
-  console.log('groupedItems', groupedItems);
-
   return (
     <TranslationProvider language={language} scopes={['checkboxFilter']}>
       <Grid
@@ -53,9 +51,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
             {groupedItems.length - 1 !== columnIndex && (
               <Separator
                 position="absolute"
-                top={0}
-                right="-1.5rem"
-                width="1px"
+                style={{ top: 0, right: '-1.5rem', width: '1px' }}
                 height="full"
                 bg="gray.100"
               />

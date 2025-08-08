@@ -19,7 +19,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   name: string;
   value?: string;
   disabled?: boolean;
-  checked?: boolean;
+  checked?: boolean | 'indeterminate';
   invalid?: boolean;
   indeterminate?: boolean;
   readOnly?: boolean;
@@ -28,7 +28,9 @@ export type CheckboxProps = CheckboxVariantProps & {
   paddingY?: BoxProps['paddingY'];
   fontWeight?: 'regular' | 'bold';
   variant?: CheckboxVariant;
-  onChange?: (details: SwitchCheckedChangeDetails) => void;
+  onChange?: (
+    details: SwitchCheckedChangeDetails & { checked: boolean },
+  ) => void;
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

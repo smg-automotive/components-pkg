@@ -45,8 +45,6 @@ const Template = ({ query, ...props }: Args) => {
 
   const getAllChildrenByParentKey = (key?: Values): Values[] => {
     if (!key) return [];
-    console.log('jhkjh', checkboxes);
-    console.log('key', key);
     const childCheckboxesKeys = checkboxes
       .find((box) => box.key === key)
       ?.childCheckboxes?.map((child) => child.key);
@@ -86,7 +84,6 @@ const Template = ({ query, ...props }: Args) => {
   const updateParentFilter = (updatedItem: Item<Values, FilterType>) => {
     const parentFilter = args.query[parentFilterName];
     const childFilter = args.query[childFilterName];
-    console.log('updateParentFilter', updatedItem);
 
     updateArgs({
       query: updatedItem.isChecked
@@ -208,7 +205,6 @@ const Template = ({ query, ...props }: Args) => {
   const onApply = (updatedItem: Item<Values, FilterType>) => {
     args.onApply?.(updatedItem);
     if (updatedItem.filterName === parentFilterName) {
-      console.log('hey', updatedItem);
       updateParentFilter(updatedItem);
     } else {
       updateChildFilter(updatedItem);
@@ -264,7 +260,13 @@ const meta: Meta<typeof Template> = {
       const [{ query }] = useArgs<Args>();
 
       return (
-        <Box display="flex" maxW="8xl" w="100%" gap="md" flexDirection="column">
+        <Box
+          display="flex"
+          maxW="8xl"
+          style={{ width: '100%' }}
+          gap="md"
+          flexDirection="column"
+        >
           <Text>Current query:</Text>
           <Source code={JSON.stringify(query, null, 2)} language="json" dark />
           <Story />
