@@ -4,8 +4,8 @@ import { useArgs } from '@storybook/preview-api';
 import { Source } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 
-import Text from '../text';
-import Box from '../box';
+import { Text } from '../text';
+import { Box } from '../box';
 import { Item } from './type';
 
 import CheckboxFilterComponent, { Props } from './index';
@@ -260,7 +260,13 @@ const meta: Meta<typeof Template> = {
       const [{ query }] = useArgs<Args>();
 
       return (
-        <Box display="flex" maxW="8xl" w="100%" gap="md" flexDirection="column">
+        <Box
+          display="flex"
+          maxW="8xl"
+          style={{ width: '100%' }}
+          gap="md"
+          flexDirection="column"
+        >
           <Text>Current query:</Text>
           <Source code={JSON.stringify(query, null, 2)} language="json" dark />
           <Story />
