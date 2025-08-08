@@ -31,7 +31,7 @@ const meta: Meta<typeof SearchField> = {
   },
 
   decorators: (Story) => (
-    <Box w="100%" maxW="550px">
+    <Box w="full" maxW="7xl">
       <Story />
     </Box>
   ),

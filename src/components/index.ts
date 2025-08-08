@@ -17,6 +17,7 @@ export * from './fullHeight';
 export * from './grid';
 export * from './heading';
 export * from './icons';
+export * from './input';
 export * from './layout';
 export * from './link';
 export * from './list';
