@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import Grid from 'src/components/grid';
+import { Grid } from 'src/components/grid';
 
 import FooterSections from './Sections';
 import { FooterConfigInstance } from './config/factory';

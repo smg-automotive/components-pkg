@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 
-import { StackDivider } from '@chakra-ui/react';
+import { Text } from 'src/components/text';
+import { StackSeparator } from 'src/components/stack';
 
-import Text from 'src/components/text';
-import Stack from 'src/components/stack';
-import Link from 'src/components/link';
-import Center from 'src/components/center';
+import { Stack } from 'src/components/stack';
+import { Link } from 'src/components/link';
+import { Center } from 'src/components/center';
 
 const FooterLanguageNavigation: FC = () => {
   return (
     <Center>
       <Stack
         marginTop="md"
-        spacing="2xl"
+        gap="2xl"
         direction="row"
-        divider={<StackDivider borderColor="gray.700" />}
+        separator={<StackSeparator borderColor="gray.700" />}
       >
         <Link href="/de" color="white">
           <Text textStyle="body-small">Deutsch</Text>

@@ -1,29 +1,33 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';
-import AccordionPanel from './AccordionPanel';
-import AccordionItem from './AccordionItem';
-import AccordionButton from './AccordionButton';
+import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import Accordion from './index';
+import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';
+import { AccordionPanel } from './AccordionPanel';
+import { AccordionItem } from './AccordionItem';
+import { AccordionButton } from './AccordionButton';
+
+import { Accordion } from './index';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Patterns/Navigation/Accordion',
   component: Accordion,
   args: {
-    allowMultiple: true,
+    multiple: true,
     variant: 'light',
   },
   argTypes: {
-    allowMultiple: {
+    ...getRecipeControls(accordionRecipe),
+
+    multiple: {
       control: { type: 'boolean' },
     },
-    variant: {
-      options: ['light', 'dark', 'minimal'],
-      control: { type: 'select' },
-    },
     children: {
+      table: { disable: true },
+    },
+    unstyled: {
       table: { disable: true },
     },
   },
@@ -32,9 +36,10 @@ export default meta;
 
 type StoryType = StoryObj<typeof Accordion>;
 export const Overview: StoryType = {
+  name: 'Overview',
   args: {
     children: Array.from({ length: 3 }).map((_, i) => (
-      <AccordionItem key={`item-${i}`}>
+      <AccordionItem key={`item-${i}`} value={`item-${i}`}>
         <AccordionButton>Section {i + 1}</AccordionButton>
         <AccordionPanel>Section {i + 1} content.</AccordionPanel>
       </AccordionItem>
@@ -52,7 +57,7 @@ export const WithIcons: StoryType = {
 
   args: {
     children: icons.map((icon, i) => (
-      <AccordionItem key={`item-${i}`}>
+      <AccordionItem key={`item-${i}`} value={`item-${i}`}>
         <AccordionButton leftIcon={icon}>Section {i + 1}</AccordionButton>
         <AccordionPanel>Section {i + 1} content.</AccordionPanel>
       </AccordionItem>
