@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 
-import { chakra } from '@chakra-ui/react';
+import { chakra, SwitchCheckedChangeDetails } from '@chakra-ui/react';
 
-import HighlightedText from '../text/HighlightedText';
-import GridItem from '../grid/GridItem';
-import Grid from '../grid';
-import Checkbox from '../checkbox';
+import { HighlightedText } from '../text/HighlightedText';
+import { GridItem } from '../grid';
+import { Grid } from '../grid';
+import { Checkbox } from '../checkbox';
 import { Props as CheckboxFilterProps, Item } from './type';
 
 const addThousandSeparatorToNumber = (value: number) => {
@@ -82,8 +82,9 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
             </chakra.span>
           )
         }
-        onChange={(event) => {
-          const isChecked = event.target.checked;
+        onChange={(event: SwitchCheckedChangeDetails) => {
+          const isChecked = event.checked;
+          console.log('isChecked:', isChecked);
           onApply({ ...item, isChecked });
         }}
       />

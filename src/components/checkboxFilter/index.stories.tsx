@@ -4,8 +4,8 @@ import { useArgs } from '@storybook/preview-api';
 import { Source } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 
-import Text from '../text';
-import Box from '../box';
+import { Text } from '../text';
+import { Box } from '../box';
 import { Item } from './type';
 
 import CheckboxFilterComponent, { Props } from './index';
@@ -45,6 +45,8 @@ const Template = ({ query, ...props }: Args) => {
 
   const getAllChildrenByParentKey = (key?: Values): Values[] => {
     if (!key) return [];
+    console.log('jhkjh', checkboxes);
+    console.log('key', key);
     const childCheckboxesKeys = checkboxes
       .find((box) => box.key === key)
       ?.childCheckboxes?.map((child) => child.key);
@@ -84,6 +86,7 @@ const Template = ({ query, ...props }: Args) => {
   const updateParentFilter = (updatedItem: Item<Values, FilterType>) => {
     const parentFilter = args.query[parentFilterName];
     const childFilter = args.query[childFilterName];
+    console.log('updateParentFilter', updatedItem);
 
     updateArgs({
       query: updatedItem.isChecked
@@ -205,6 +208,7 @@ const Template = ({ query, ...props }: Args) => {
   const onApply = (updatedItem: Item<Values, FilterType>) => {
     args.onApply?.(updatedItem);
     if (updatedItem.filterName === parentFilterName) {
+      console.log('hey', updatedItem);
       updateParentFilter(updatedItem);
     } else {
       updateChildFilter(updatedItem);

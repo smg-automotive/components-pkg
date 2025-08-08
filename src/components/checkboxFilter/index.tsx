@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
 
-import TranslationProvider from '../translationProvider';
+import { TranslationProvider } from '../translationProvider';
 
-import GridItem from '../grid/GridItem';
-import Grid from '../grid';
-import Divider from '../divider';
+import { Separator } from '../separator';
+import { Grid, GridItem } from '../grid';
 import { type Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
@@ -38,6 +37,8 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
   );
   const groupedItems = groupItems(items, numberOfColumnsOnDesktop);
 
+  console.log('groupedItems', groupedItems);
+
   return (
     <TranslationProvider language={language} scopes={['checkboxFilter']}>
       <Grid
@@ -50,7 +51,7 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         {groupedItems.map((columnItems, columnIndex) => (
           <GridItem key={columnIndex} data-testid="column" position="relative">
             {groupedItems.length - 1 !== columnIndex && (
-              <Divider
+              <Separator
                 position="absolute"
                 top={0}
                 right="-1.5rem"
