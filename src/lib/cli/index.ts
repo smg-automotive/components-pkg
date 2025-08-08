@@ -1,10 +1,9 @@
 import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs';
 
 import setupNextFonts from './setupNextFonts';
 import setup from './setup';
 import copyFonts from './copyFonts';
-
-const yargs = require('yargs');
 
 yargs(hideBin(process.argv))
   .command({
