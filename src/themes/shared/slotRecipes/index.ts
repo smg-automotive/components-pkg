@@ -3,6 +3,7 @@ import { tooltipSlotRecipe as tooltip } from './tooltip';
 import { tableRecipe as table } from './table';
 import { switchRecipe } from './switch';
 import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
+import { selectSlotRecipe as select } from './select';
 import { sectionRecipe as section } from './section';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
@@ -30,4 +31,5 @@ export const slotRecipes = {
   checkbox,
   switch: switchRecipe,
   input,
+  select,
 };
