@@ -24,8 +24,8 @@ const RangeSlider: FC<RangeSliderProps> = ({
     <RangeSliderTrack bg="gray.200">
       <RangeSliderFilledTrack />
     </RangeSliderTrack>
-    <RangeSliderThumb index={0} />
-    <RangeSliderThumb index={1} />
+    <RangeSliderThumb boxSize={{ base: 32, md: 24 }} index={0} />
+    <RangeSliderThumb boxSize={{ base: 32, md: 24 }} index={1} />
   </ChakraRangeSlider>
 );
 
