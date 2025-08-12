@@ -87,18 +87,6 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
         },
         {
-          translationKey: 'footer.sections.brand.makes',
-          visibilitySettings: {
-            brand: { [Brand.AutoScout24]: false, [Brand.MotoScout24]: true },
-          },
-          link: {
-            de: '/de/motorrad-marken',
-            en: '/de/motorrad-marken',
-            fr: '/fr/marques-motos',
-            it: '/it/marche-moto',
-          },
-        },
-        {
           translationKey: 'footer.sections.brand.models',
           visibilitySettings: {
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
