@@ -54,7 +54,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
         fullWidth
         label={
           item?.image ? (
-            <chakra.span display="flex" alignItems="center">
+            <chakra.span display="flex" alignItems="center" width="full">
               {item.image}
               <chakra.span
                 w="full"
@@ -79,7 +79,6 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
               <HighlightedText
                 text={item.label}
                 highlightIndices={item.highlightIndices}
-                w="full"
                 wordBreak="break-word"
               />
               {renderFacet(item.facet)}
@@ -92,7 +91,7 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
         }}
       />
 
-      {contentRight ? <GridItem>{contentRight}</GridItem> : null}
+      {contentRight ? <GridItem ml="sm">{contentRight}</GridItem> : null}
     </Grid>
   );
 }

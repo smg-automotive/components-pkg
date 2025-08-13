@@ -67,8 +67,8 @@ function CheckboxGroupCollapsibleWithChildren<
                   justifyContent="flex-end"
                 >
                   <ChevronDownSmallIcon
-                    transitionDuration="normal"
                     color="gray.900"
+                    transitionDuration="normal"
                     transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
                     cursor="pointer"
                   />

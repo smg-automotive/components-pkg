@@ -2,8 +2,8 @@ import { defineKeyframes } from '@chakra-ui/react';
 
 export const keyframes = defineKeyframes({
   'expand-height': {
-    from: { height: '0' },
-    to: { height: 'var(--height)' },
+    from: { height: '0', opacity: 0 },
+    to: { height: 'var(--height)', opacity: 1 },
   },
   'collapse-height': {
     from: { height: 'var(--height)' },
