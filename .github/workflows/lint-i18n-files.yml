@@ -10,7 +10,7 @@ jobs:
     if: github.event.pull_request.head.ref == 'phrase-translations'
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: 'refs/heads/phrase-translations'
 
