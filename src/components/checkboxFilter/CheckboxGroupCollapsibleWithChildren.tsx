@@ -2,7 +2,15 @@ import React from 'react';
 
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
-import { Box, Collapsible, IconButton, useDisclosure } from '@chakra-ui/react';
+import {
+  Box,
+  Collapsible,
+  IconButton,
+  useDisclosure,
+  useSlotRecipe,
+} from '@chakra-ui/react';
+
+import { checkboxRecipe } from 'src/themes/shared/slotRecipes/checkbox';
 
 import { ChevronDownSmallIcon } from '../icons';
 import { Item, Props } from './type';
@@ -26,7 +34,11 @@ function CheckboxGroupCollapsibleWithChildren<
   item,
   onApply,
   onToggleCheckboxGroup,
+  ...props
 }: CheckboxCollapsibleProps<ItemKey, FilterName>) {
+  const recipe = useSlotRecipe({ recipe: checkboxRecipe });
+  const [recipeProps] = recipe.splitVariantProps(props);
+  const styles = recipe({ ...recipeProps });
   const { open, onToggle } = useDisclosure({ defaultOpen: alwaysExpanded });
   const { t } = useI18n();
   const checkboxes = item.childCheckboxes ?? [];
@@ -36,7 +48,7 @@ function CheckboxGroupCollapsibleWithChildren<
   const groupDomId = `checkbox-group-${item.key}-${item.filterName ?? ''}`;
 
   return (
-    <Collapsible.Root in={alwaysExpanded || open}>
+    <Collapsible.Root open={alwaysExpanded || open}>
       <Box width="full" display="flex" alignItems="center">
         <CheckboxWithFacet
           item={item}
@@ -78,7 +90,7 @@ function CheckboxGroupCollapsibleWithChildren<
           }
         />
       </Box>
-      <Collapsible.Content>
+      <Collapsible.Content css={styles.content}>
         <Box id={groupDomId} ml={checkboxes.length > 0 ? '2xl' : '0'}>
           {checkboxes?.map((checkbox) => (
             <CheckboxWithFacet
