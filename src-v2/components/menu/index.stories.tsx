@@ -26,6 +26,7 @@ const meta: Meta<typeof MenuComponent> = {
       { text: 'Italiano', onClick: action('Italiano') },
     ],
     title: 'Language',
+    showChevron: true,
   },
 };
 export default meta;
