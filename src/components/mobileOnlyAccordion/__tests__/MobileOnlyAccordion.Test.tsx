@@ -2,15 +2,15 @@ import React from 'react';
 
 import { render, screen } from '.jest/utils';
 
-import MobileOnlyAccordionPanel from '../MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from '../MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from '../MobileOnlyAccordionButton';
-import MobileOnlyAccordion from '../index';
+import { MobileOnlyAccordionPanel } from '../MobileOnlyAccordionPanel';
+import { MobileOnlyAccordionItem } from '../MobileOnlyAccordionItem';
+import { MobileOnlyAccordionButton } from '../MobileOnlyAccordionButton';
+import { MobileOnlyAccordion } from '../index';
 
 const renderWrapper = () =>
   render(
     <MobileOnlyAccordion>
-      <MobileOnlyAccordionItem>
+      <MobileOnlyAccordionItem value="">
         <MobileOnlyAccordionButton>Section 1</MobileOnlyAccordionButton>
         <MobileOnlyAccordionPanel>
           <ul>

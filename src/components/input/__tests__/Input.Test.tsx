@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from '.jest/utils';
 
-import Input, { Props } from '..';
+import { Input, InputProps } from '..';
 
 const renderWrapper = ({
   name = 'test-input',
@@ -17,7 +17,7 @@ const renderWrapper = ({
   autoFocus = false,
   icon,
   isClearable,
-}: Partial<Props> = {}) =>
+}: Partial<InputProps> = {}) =>
   render(
     <Input
       name={name}

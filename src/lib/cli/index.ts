@@ -6,10 +6,10 @@ import setup from './setup';
 import copyFonts from './copyFonts';
 
 yargs(hideBin(process.argv))
-  .command({
+  .command<Parameters<typeof setup>[0]>({
     command: 'setup',
     describe: 'Setup copy-fonts script and gitignore copied files',
-    builder: (args: typeof yargs) =>
+    builder: (args) =>
       args.option('path', {
         alias: 'p',
         description:
@@ -19,10 +19,10 @@ yargs(hideBin(process.argv))
       }),
     handler: setup,
   })
-  .command({
+  .command<Parameters<typeof copyFonts>[0]>({
     command: 'copy-fonts',
     describe: 'Copy fonts from the package to required destination',
-    builder: (args: typeof yargs) =>
+    builder: (args) =>
       args.option('path', {
         alias: 'p',
         description: 'Path to copy fonts to',
@@ -31,10 +31,10 @@ yargs(hideBin(process.argv))
       }),
     handler: copyFonts,
   })
-  .command({
+  .command<Parameters<typeof setupNextFonts>[0]>({
     command: 'setup-next-fonts',
     describe: 'Generate a component to load fonts with @next/fonts',
-    builder: (args: typeof yargs) =>
+    builder: (args) =>
       args
         .option('component-path', {
           alias: 'cp',
