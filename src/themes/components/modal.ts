@@ -82,7 +82,7 @@ const variants = {
       ...baseStyle.dialogContainer,
       alignItems: 'flex-start',
       overflow: 'auto',
-      marginTop: '5xl',
+      paddingTop: '5xl',
     },
   },
   fullScreen: {
