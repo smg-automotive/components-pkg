@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, JSX, ReactElement } from 'react';
 import {
   Button,
   ButtonProps,
