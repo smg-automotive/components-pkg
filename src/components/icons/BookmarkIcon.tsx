@@ -4,7 +4,7 @@ import { createIcon, IconProps } from '@chakra-ui/react';
 
 export const BookmarkIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'Bookmark',
-  viewBox: '0 0 24 24',
+  viewBox: '0 0 12 20',
   path: (
     <>
       <title>Bookmark icon</title>
