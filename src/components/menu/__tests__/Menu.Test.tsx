@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { OverflowVerticalIcon } from 'src/components/icons';
-import { render, screen } from '.jest/utils';
 
 import Menu from '../index';
+
+import { render, screen } from '.jest/utils';
 
 describe('Menu', () => {
   it('should render MenuButton with chevron and title', () => {

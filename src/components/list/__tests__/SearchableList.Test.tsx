@@ -1,10 +1,10 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from '.jest/utils';
-
 import { SearchableList } from '../SearchableList';
 import List from '../index';
+
+import { render, screen, waitFor } from '.jest/utils';
 
 const optionOneMock = jest.fn();
 const optionTwoMock = jest.fn();

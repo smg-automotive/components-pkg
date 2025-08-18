@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import { render, screen } from '.jest/utils';
-
 import Link, { LinkProps } from '../index';
+
+import { render, screen } from '.jest/utils';
 
 const renderWrapper = ({ children, ...props }: LinkProps) =>
   render(<Link {...props}>{children}</Link>);

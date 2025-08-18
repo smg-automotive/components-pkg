@@ -3,9 +3,10 @@ import { useTheme } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 import { autoScout24Theme, motoScout24Theme } from 'src/themes';
-import { screen, testingLibraryRender } from '.jest';
 
 import ThemeProvider, { Props } from '..';
+
+import { screen, testingLibraryRender } from '.jest';
 
 const TestComponent: FC = () => {
   const theme = useTheme();

@@ -8,13 +8,14 @@ import {
 } from '@smg-automotive/auth/fixtures';
 
 import { Brand } from 'src/types/brand';
-import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
 import Navigation, { NavigationProps } from '..';
+
+import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 const renderNavigation = ({
   environment = 'preprod',

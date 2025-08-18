@@ -1,9 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from '.jest/utils';
-
 import Textarea from '../index';
+
+import { render, screen } from '.jest/utils';
 
 const renderWrapper = ({
   name = 'Textarea',

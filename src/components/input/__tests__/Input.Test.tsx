@@ -1,9 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from '.jest/utils';
-
 import Input, { Props } from '..';
+
+import { render, screen, waitFor } from '.jest/utils';
 
 const renderWrapper = ({
   name = 'test-input',
