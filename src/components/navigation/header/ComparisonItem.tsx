@@ -5,7 +5,6 @@ import { chakra } from '@chakra-ui/react';
 import { CompareIcon } from 'src/components/icons';
 import Count from 'src/components/count';
 import Box from 'src/components/box';
-import Badge from 'src/components/badge';
 
 import { Link } from '../link';
 
@@ -39,11 +38,7 @@ const ComparisonItem: FC<Props> = ({ link, count }) => {
     >
       <CompareIcon color="gray.900" />
       <Box position="absolute" top={-10} right={-15}>
-        {count > 0 ? (
-          <Count count={count} />
-        ) : (
-          <Badge variant="navigationLinkBadge" text="New" />
-        )}
+        {count > 0 ? <Count count={count} /> : null}
       </Box>
     </chakra.a>
   );
