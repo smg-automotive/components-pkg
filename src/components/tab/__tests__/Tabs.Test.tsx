@@ -1,13 +1,13 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
+import { render, screen } from 'jest-utils';
+
 import TabPanels from '../TabPanels';
 import TabPanel from '../TabPanel';
 import TabList from '../TabList';
 import Tab from '../Tab';
 import Tabs from '../index';
-
-import { render, screen } from 'jest-utils';
 
 const renderWrapper = ({
   isDisabled = false,

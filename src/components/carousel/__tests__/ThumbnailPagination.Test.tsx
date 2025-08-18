@@ -2,9 +2,9 @@ import React, { createRef } from 'react';
 import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 
-import ThumbnailPagination from '../ThumbnailPagination';
-
 import { render, screen, waitFor } from 'jest-utils';
+
+import ThumbnailPagination from '../ThumbnailPagination';
 
 const thumbnails = [
   <div key="thumbnail-1">thumbnail 1</div>,

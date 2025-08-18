@@ -2,9 +2,9 @@ import React from 'react';
 
 import userEvent from '@testing-library/user-event';
 
-import Alert from '../index';
-
 import { act, render, screen } from 'jest-utils';
+
+import Alert from '../index';
 
 const MockIcon = () => <svg data-testid="test-icon" />;
 

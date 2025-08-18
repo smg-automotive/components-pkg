@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Section from '..';
-
 import { render, screen } from 'jest-utils';
+
+import Section from '..';
 
 const renderWrapper = ({
   title = 'title',

@@ -1,9 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import Checkbox from '../index';
-
 import { render, screen, waitFor } from 'jest-utils';
+
+import Checkbox from '../index';
 
 const renderWrapper = ({
   name = 'Control',

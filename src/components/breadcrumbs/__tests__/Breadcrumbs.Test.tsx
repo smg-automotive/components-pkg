@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { render, screen } from 'jest-utils';
+
 import BreadcrumbLink from '../Link';
 import BreadcrumbItem from '../Item';
 import Breadcrumbs from '..';
-
-import { render, screen } from 'jest-utils';
 
 const renderWrapper = ({
   crumbs = [{ title: 'title', url: 'https://link.com' }],

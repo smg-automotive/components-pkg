@@ -1,8 +1,8 @@
 import React from 'react';
 
-import SimpleHeader from '..';
-
 import { render, screen } from 'jest-utils';
+
+import SimpleHeader from '..';
 
 const renderWrapper = ({
   title = 'title',

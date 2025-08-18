@@ -1,9 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import Pagination from '../index';
-
 import { render, screen } from 'jest-utils';
+
+import Pagination from '../index';
 
 const mockOnChange = jest.fn();
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import RangeFilterInputWithSlider from '../';
-
 import { render, screen, waitFor } from 'jest-utils';
+
+import RangeFilterInputWithSlider from '../';
 
 jest.mock('use-debounce', () => {
   return {
