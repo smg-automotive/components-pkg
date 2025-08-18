@@ -7,7 +7,7 @@ import TabList from '../TabList';
 import Tab from '../Tab';
 import Tabs from '../index';
 
-import { render, screen } from '.jest/utils';
+import { render, screen } from 'jest-utils';
 
 const renderWrapper = ({
   isDisabled = false,

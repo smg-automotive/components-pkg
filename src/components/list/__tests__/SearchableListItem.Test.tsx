@@ -3,7 +3,7 @@ import React from 'react';
 import { SearchableListItem } from '../SearchableListItem';
 import List from '../index';
 
-import { render, screen } from '.jest/utils';
+import { render, screen } from 'jest-utils';
 
 describe('<SearchableListItem />', () => {
   it('renders the highlight text', () => {

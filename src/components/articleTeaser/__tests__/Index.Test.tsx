@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ArticleTeaser from '..';
+import { render, screen } from 'jest-utils';
 
-import { render, screen } from '.jest/utils';
+import ArticleTeaser from '..';
 
 const renderWrapper = ({
   title = 'title',

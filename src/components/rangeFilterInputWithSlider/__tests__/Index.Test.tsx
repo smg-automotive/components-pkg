@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import RangeFilterInputWithSlider from '../';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 jest.mock('use-debounce', () => {
   return {

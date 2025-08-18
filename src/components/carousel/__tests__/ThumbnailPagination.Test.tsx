@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import ThumbnailPagination from '../ThumbnailPagination';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const thumbnails = [
   <div key="thumbnail-1">thumbnail 1</div>,

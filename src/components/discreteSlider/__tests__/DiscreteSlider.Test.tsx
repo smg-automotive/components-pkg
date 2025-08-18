@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import DiscreteSlider from '../index';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const dummyMarks = [
   { label: '14 days', value: 1 },

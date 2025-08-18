@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import NumbersPagination from '../NumbersPagination';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {

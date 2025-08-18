@@ -2,7 +2,7 @@ import React from 'react';
 
 import ColorPicker from '..';
 
-import { fireEvent, render, screen } from '.jest/utils';
+import { fireEvent, render, screen } from 'jest-utils';
 
 const renderWrapper = ({
   onBlur = jest.fn(),

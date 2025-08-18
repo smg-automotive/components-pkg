@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { ModalFilterProps } from '../props';
 import { ModalFilter } from '../index';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const validProps: ModalFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },

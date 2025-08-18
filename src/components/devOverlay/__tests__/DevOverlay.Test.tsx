@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Brand } from 'src/types/brand';
 
-import DevOverlay from '../index';
+import { render, screen } from 'jest-utils';
 
-import { render, screen } from '.jest/utils';
+import DevOverlay from '../index';
 
 describe('The DevOverlay Component', () => {
   it('renders the dev overlay', () => {

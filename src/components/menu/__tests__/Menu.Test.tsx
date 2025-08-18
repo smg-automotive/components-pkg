@@ -4,7 +4,7 @@ import { OverflowVerticalIcon } from 'src/components/icons';
 
 import Menu from '../index';
 
-import { render, screen } from '.jest/utils';
+import { render, screen } from 'jest-utils';
 
 describe('Menu', () => {
   it('should render MenuButton with chevron and title', () => {

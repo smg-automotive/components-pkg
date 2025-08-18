@@ -6,7 +6,7 @@ import AccordionItem from '../AccordionItem';
 import AccordionButton from '../AccordionButton';
 import Accordion from '..';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const renderWrapper = ({ ...props }) =>
   render(

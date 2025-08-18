@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import Tooltip from '..';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const tooltipLabel = 'This is tooltip label';
 

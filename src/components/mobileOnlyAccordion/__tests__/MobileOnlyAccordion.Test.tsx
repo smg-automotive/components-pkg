@@ -5,7 +5,7 @@ import MobileOnlyAccordionItem from '../MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from '../MobileOnlyAccordionButton';
 import MobileOnlyAccordion from '../index';
 
-import { render, screen } from '.jest/utils';
+import { render, screen } from 'jest-utils';
 
 const renderWrapper = () =>
   render(

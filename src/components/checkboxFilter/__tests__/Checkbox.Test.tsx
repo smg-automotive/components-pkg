@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { Item } from '../type';
 import CheckboxFilter from '../index';
 
-import { render, screen, waitFor, within } from '.jest/utils';
+import { render, screen, waitFor, within } from 'jest-utils';
 
 const renderWrapper = ({
   numberOfColumnsOnDesktop = 2,

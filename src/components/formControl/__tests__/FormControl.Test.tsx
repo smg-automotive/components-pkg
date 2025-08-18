@@ -5,7 +5,7 @@ import Input from 'src/components/input';
 
 import FormControl, { FormControlProps } from '..';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 const renderWrapper = ({
   id = 'test',
