@@ -52,7 +52,6 @@ import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig, optimizerProLinkConfig } from './Optimizer';
 
 import { magazineLinkConfig } from './magazine';
-import { leasingLinkConfig } from './leasing';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
   switchToFrenchLinkConfig,
@@ -201,11 +200,9 @@ export const drawerNodeItems = ({
   onLogout,
   currentLanguage,
   isLoggedIn,
-  experiments = {},
 }: GetNodeItemsArgs & {
   currentLanguage: Language;
   isLoggedIn: boolean;
-  experiments?: Record<string, string>;
 }): DrawerNodeItemsConfig => ({
   search: [
     {
@@ -261,14 +258,6 @@ export const drawerNodeItems = ({
           ...motoScoutAssureLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: 'sm',
         },
-        ...(experiments?.leasing === 'on'
-          ? [
-              {
-                ...leasingLinkConfig({ trackEvent }),
-                showUnderMoreLinkBelow: 'sm' as const,
-              },
-            ]
-          : []),
         {
           ...electromobilityLinkConfig({ trackEvent }),
           showUnderMoreLinkBelow: 'sm',
@@ -290,9 +279,6 @@ export const drawerNodeItems = ({
         estimateLinkConfig({ trackEvent }),
         autoScoutAssureLinkConfig({ trackEvent }),
         motoScoutAssureLinkConfig({ trackEvent }),
-        ...(experiments?.leasing === 'on'
-          ? [leasingLinkConfig({ trackEvent })]
-          : []),
         electromobilityLinkConfig({ trackEvent }),
         magazineLinkConfig({ trackEvent }),
       ],
@@ -337,9 +323,6 @@ export const drawerNodeItems = ({
         }),
         autoScoutAssureLinkConfig({ trackEvent }),
         motoScoutAssureLinkConfig({ trackEvent }),
-        ...(experiments?.leasing === 'on'
-          ? [leasingLinkConfig({ trackEvent })]
-          : []),
         electromobilityLinkConfig({ trackEvent }),
         magazineLinkConfig({ trackEvent }),
       ],
