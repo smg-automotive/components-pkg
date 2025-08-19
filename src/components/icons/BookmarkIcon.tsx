@@ -4,15 +4,15 @@ import { createIcon, IconProps } from '@chakra-ui/react';
 
 export const BookmarkIcon: ComponentWithAs<'svg', IconProps> = createIcon({
   displayName: 'Bookmark',
-  viewBox: '0 0 12 20',
+  viewBox: '0 0 24 24',
   path: (
     <>
       <title>Bookmark icon</title>
       <path
         fill="currentColor"
-        d="m10 14.99-4-4-4 4v-13h10v-2H0v20l6-6 6 6v-17l-2 1z"
+        d="m16 17-4-4-4 4V4h10V2H6v20l6-6 6 6V5l-2 1z"
       />
-      <path d="M12-.01H0v20l6-6 6 6z" />
+      <path d="M18 1.99H6v20l6-6 6 6z" />
     </>
   ),
   defaultProps: {
