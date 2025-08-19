@@ -59,7 +59,7 @@
     "@smg-automotive/auth": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.28.0",
+    "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.27.1",
     "@babel/preset-typescript": "7.27.1",
     "@rollup/plugin-commonjs": "28.0.6",
@@ -84,7 +84,7 @@
     "@storybook/react-webpack5": "8.6.14",
     "@storybook/test": "8.6.14",
     "@storybook/theming": "8.6.14",
-    "@testing-library/jest-dom": "6.6.4",
+    "@testing-library/jest-dom": "6.7.0",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
     "@types/estree": "1.0.8",
@@ -107,10 +107,10 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rimraf": "6.0.1",
-    "rollup": "4.46.2",
+    "rollup": "4.46.3",
     "rollup-plugin-add-shebang": "0.3.1",
     "rollup-plugin-copy": "3.5.0",
-    "rollup-plugin-dts": "6.2.1",
+    "rollup-plugin-dts": "6.2.3",
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "semantic-release": "24.2.7",
@@ -123,7 +123,7 @@
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.9.2",
     "unist-util-visit": "5.0.0",
-    "webpack": "5.101.1",
+    "webpack": "5.101.3",
     "whatwg-fetch": "3.6.20"
   },
   "dependencies": {
