@@ -4,7 +4,7 @@ module.exports = {
   errorOnDeprecated: true,
   moduleDirectories: ['node_modules', '<rootDir>'],
   moduleNameMapper: {
-    '\\.(jpg|ico|jpeg|png|svg)$': '<rootDir>/.jest/mocks/fileMock.ts',
+    '\\.(jpg|ico|jpeg|png|svg)$': '<rootDir>/jest-utils/mocks/fileMock.ts',
     '^jose': require.resolve('jose'),
     '^@panva/hkdf': require.resolve('@panva/hkdf'),
   },
@@ -12,12 +12,12 @@ module.exports = {
   restoreMocks: false,
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: [
-    '<rootDir>/.jest/setup/jestDomExpects.ts',
-    '<rootDir>/.jest/setup/mockMatchMedia.ts',
-    '<rootDir>/.jest/setup/resizeObserver.ts',
-    '<rootDir>/.jest/setup/intersectionObserver.ts',
-    '<rootDir>/.jest/setup/textEncoder.ts',
-    '<rootDir>/.jest/setup/fetch.ts',
+    '<rootDir>/jest-utils/setup/jestDomExpects.ts',
+    '<rootDir>/jest-utils/setup/mockMatchMedia.ts',
+    '<rootDir>/jest-utils/setup/resizeObserver.ts',
+    '<rootDir>/jest-utils/setup/intersectionObserver.ts',
+    '<rootDir>/jest-utils/setup/textEncoder.ts',
+    '<rootDir>/jest-utils/setup/fetch.ts',
   ],
   testEnvironment: 'jsdom',
 };

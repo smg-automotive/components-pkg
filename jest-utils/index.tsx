@@ -1,5 +1,4 @@
 import React, { FC, Fragment, PropsWithChildren, ReactElement } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   Queries,
   RenderHookOptions,
@@ -33,7 +32,6 @@ const WrapperFactory = ({
   return ThemeRenderer;
 };
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 export * from '@testing-library/react';
 
 export const render = (
