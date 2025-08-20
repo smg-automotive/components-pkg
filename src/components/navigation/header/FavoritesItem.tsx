@@ -19,7 +19,6 @@ const FavoritesItem: FC<Props> = ({ link }) => {
       href={link.link?.[language]}
       onClick={link.onClick}
       aria-label={t(link.translationKey ?? '')}
-      mr="15px"
     >
       <HeartIcon color="gray.900" />
     </chakra.a>
