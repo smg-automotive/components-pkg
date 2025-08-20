@@ -71,8 +71,9 @@ export const checkboxRecipe = defineSlotRecipe({
       },
     },
     content: {
+      overflow: 'hidden',
       _open: {
-        animationName: 'expand-height',
+        animationName: 'fade-in',
         animationDuration: 'normal',
       },
       _closed: {
