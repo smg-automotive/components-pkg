@@ -3,6 +3,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
 import { HeartIcon } from 'src/components/icons';
+
 import { Link } from '../link';
 
 type Props = {

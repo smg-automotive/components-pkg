@@ -3,8 +3,8 @@ import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 import { Link, LinkConfig } from 'src/components/navigation/link';
 
 import { shouldShowComparisonLink } from '../ComparisonItem';
-import { comparisonLinkConfig } from './comparison';
 import { favoritesLinkConfig } from './user';
+import { comparisonLinkConfig } from './comparison';
 
 export type IconItems = 'comparison' | 'favorites';
 export type IconItemsConfig = Record<IconItems, LinkConfig | null>;

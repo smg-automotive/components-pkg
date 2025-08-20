@@ -18,13 +18,13 @@ import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
 import MobileHeaderMenuToggle from './MobileMenuToggle';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
+import FavoritesItem from './FavoritesItem';
 import { NavigationDrawer } from './drawer';
 import { iconItems } from './config/iconItems';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
-import FavoritesItem from './FavoritesItem';
 
 export interface NavigationProps {
   brand: Brand;
