@@ -24,6 +24,7 @@ import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
 import ComparisonItem from './ComparisonItem';
+import FavoritesItem from './FavoritesItem';
 
 export interface NavigationProps {
   brand: Brand;
@@ -77,7 +78,11 @@ const Navigation: FC<NavigationProps> = ({
           currentLanguage: language,
           isLoggedIn: !!user,
         }),
-        iconItems: iconItems({ trackEvent, comparisonItemIds }),
+        iconItems: iconItems({
+          trackEvent,
+          isLoggedIn: !!user,
+          comparisonItemIds,
+        }),
       },
       user,
       urlPathParams,
@@ -140,6 +145,9 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
+            {config.iconItems.favorites ? (
+              <FavoritesItem link={config.iconItems.favorites} />
+            ) : null}
             {config.iconItems.comparison ? (
               <ComparisonItem
                 link={config.iconItems.comparison}

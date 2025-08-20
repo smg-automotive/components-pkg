@@ -4,16 +4,19 @@ import { Link, LinkConfig } from 'src/components/navigation/link';
 
 import { shouldShowComparisonLink } from '../ComparisonItem';
 import { comparisonLinkConfig } from './comparison';
+import { favoritesLinkConfig } from './user';
 
-export type IconItems = 'comparison';
+export type IconItems = 'comparison' | 'favorites';
 export type IconItemsConfig = Record<IconItems, LinkConfig | null>;
 export type IconItemsLinks = Record<IconItems, Link | null>;
 
 export const iconItems = ({
   comparisonItemIds,
+  isLoggedIn,
   trackEvent,
 }: {
   comparisonItemIds?: number[] | null;
+  isLoggedIn?: boolean;
   trackEvent?: (event: CustomEvent) => void;
 }): IconItemsConfig => ({
   comparison: shouldShowComparisonLink(comparisonItemIds)
@@ -23,6 +26,17 @@ export const iconItems = ({
           trackEvent?.({
             eventCategory: navigationEventCategory,
             eventAction: 'open_comparison_tool',
+            eventLabel: 'icon',
+          }),
+      }
+    : null,
+  favorites: isLoggedIn
+    ? {
+        ...favoritesLinkConfig,
+        onClick: () =>
+          trackEvent?.({
+            eventCategory: navigationEventCategory,
+            eventAction: 'open_favorites',
             eventLabel: 'icon',
           }),
       }
