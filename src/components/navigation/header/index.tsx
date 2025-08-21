@@ -80,7 +80,6 @@ const Navigation: FC<NavigationProps> = ({
         }),
         iconItems: iconItems({
           trackEvent,
-          isLoggedIn: !!user,
           comparisonItemIds,
         }),
       },
