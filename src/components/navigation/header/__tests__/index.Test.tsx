@@ -11,6 +11,7 @@ import { Brand } from 'src/types/brand';
 import { act, fireEvent, render, screen, within } from '.jest/utils';
 
 import { iconItems } from '../config/iconItems';
+import { HeaderNavigationLink } from '../config/headerNavigationLink';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
@@ -250,7 +251,10 @@ describe('Header', () => {
       expect(config).toEqual({
         drawerItems: expect.any(Object),
         headerItems: expect.any(Object),
-        iconItems: { comparison: null, favorites: null },
+        iconItems: {
+          comparison: null,
+          favorites: expect.any(HeaderNavigationLink),
+        },
         homeUrl: expect.any(String),
         menuHeight: expect.any(String),
         user: expect.any(Object),

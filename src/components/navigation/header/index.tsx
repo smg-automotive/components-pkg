@@ -144,7 +144,7 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
-            {config.iconItems.favorites ? (
+            {config.iconItems.favorites?.isVisible ? (
               <FavoritesItem link={config.iconItems.favorites} />
             ) : null}
             {config.iconItems.comparison ? (
