@@ -10,8 +10,6 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { checkboxRecipe } from 'src/themes/shared/slotRecipes/checkbox';
-
 import { ChevronDownSmallIcon } from '../icons';
 import { Item, Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
@@ -36,7 +34,7 @@ function CheckboxGroupCollapsibleWithChildren<
   onToggleCheckboxGroup,
   ...props
 }: CheckboxCollapsibleProps<ItemKey, FilterName>) {
-  const recipe = useSlotRecipe({ recipe: checkboxRecipe });
+  const recipe = useSlotRecipe({ key: 'checkbox' });
   const [recipeProps] = recipe.splitVariantProps(props);
   const styles = recipe({ ...recipeProps });
   const { open, onToggle } = useDisclosure({ defaultOpen: alwaysExpanded });
@@ -60,7 +58,7 @@ function CheckboxGroupCollapsibleWithChildren<
           }
           contentRight={
             alwaysExpanded ? null : (
-              <Collapsible.Trigger>
+              <Collapsible.Trigger asChild>
                 <IconButton
                   aria-controls={groupDomId}
                   aria-expanded={open}
