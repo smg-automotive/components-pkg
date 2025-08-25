@@ -5,8 +5,8 @@ import { TranslationProvider } from '../translationProvider';
 import { Separator } from '../separator';
 import { Grid, GridItem } from '../grid';
 import { type Props } from './type';
-import CheckboxWithFacet from './CheckboxWithFacet';
-import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
+import { CheckboxWithFacet } from './CheckboxWithFacet';
+import { CheckboxGroupCollapsibleWithChildren } from './CheckboxGroupCollapsibleWithChildren';
 
 const groupItems = <ItemKey extends string, FilterName extends string>(
   items: Props<ItemKey, FilterName>['items'],
@@ -24,7 +24,10 @@ const groupItems = <ItemKey extends string, FilterName extends string>(
   return groupedItems;
 };
 
-function CheckboxFilter<ItemKey extends string, FilterName extends string>({
+export function CheckboxFilter<
+  ItemKey extends string,
+  FilterName extends string,
+>({
   alwaysExpanded = false,
   items,
   onApply,
@@ -80,5 +83,4 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
     </TranslationProvider>
   );
 }
-export default CheckboxFilter;
 export { type Props };

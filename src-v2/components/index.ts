@@ -11,7 +11,6 @@ export * from './card';
 
 export { default as Carousel } from './carousel';
 export { default as Center } from './center';
-export { default as CheckboxFilter } from './checkboxFilter';
 export { type Item as CheckboxFilterItem } from './checkboxFilter/type';
 export { default as CheckboxGroup } from './checkboxGroup';
 export { default as DatePicker } from './datePicker';

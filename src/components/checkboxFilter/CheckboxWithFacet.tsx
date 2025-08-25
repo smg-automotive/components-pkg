@@ -19,7 +19,10 @@ type Props<ItemKey extends string, FilterName extends string> = {
   contentRight?: ReactNode;
 } & Pick<CheckboxFilterProps<ItemKey, FilterName>, 'onApply'>;
 
-function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
+export function CheckboxWithFacet<
+  ItemKey extends string,
+  FilterName extends string,
+>({
   item,
   onApply,
   contentRight,
@@ -95,4 +98,3 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
     </Grid>
   );
 }
-export default CheckboxWithFacet;

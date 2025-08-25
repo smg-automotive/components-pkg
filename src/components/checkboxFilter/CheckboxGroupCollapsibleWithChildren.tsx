@@ -12,7 +12,7 @@ import {
 
 import { ChevronDownSmallIcon } from '../icons';
 import { Item, Props } from './type';
-import CheckboxWithFacet from './CheckboxWithFacet';
+import { CheckboxWithFacet } from './CheckboxWithFacet';
 
 type CheckboxCollapsibleProps<
   ItemKey extends string,
@@ -24,7 +24,7 @@ type CheckboxCollapsibleProps<
   'onApply' | 'onToggleCheckboxGroup' | 'alwaysExpanded'
 >;
 
-function CheckboxGroupCollapsibleWithChildren<
+export function CheckboxGroupCollapsibleWithChildren<
   ItemKey extends string,
   FilterName extends string,
 >({
@@ -110,5 +110,3 @@ function CheckboxGroupCollapsibleWithChildren<
 }
 CheckboxGroupCollapsibleWithChildren.displayName =
   'CheckboxGroupCollapsibleWithChildren';
-
-export default CheckboxGroupCollapsibleWithChildren;
