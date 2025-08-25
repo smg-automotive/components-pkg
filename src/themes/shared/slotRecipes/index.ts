@@ -6,6 +6,7 @@ import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { sectionRecipe as section } from './section';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
+import { inputSlotRecipe as input } from './input';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
 import { checkboxRecipe as checkbox } from './checkbox';
@@ -28,4 +29,5 @@ export const slotRecipes = {
   section,
   checkbox,
   switch: switchRecipe,
+  input,
 };

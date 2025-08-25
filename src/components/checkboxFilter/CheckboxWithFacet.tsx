@@ -89,7 +89,7 @@ export function CheckboxWithFacet<
           )
         }
         onChange={(details) => {
-          const isChecked = details.checked;
+          const isChecked = details.checked === true;
           onApply({ ...item, isChecked });
         }}
       />

@@ -2,8 +2,8 @@ import React, { forwardRef, ReactNode } from 'react';
 import {
   BoxProps,
   Checkbox as ChakraCheckbox,
+  CheckboxCheckedChangeDetails,
   RecipeVariantProps,
-  SwitchCheckedChangeDetails,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
@@ -28,9 +28,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   paddingY?: BoxProps['paddingY'];
   fontWeight?: 'regular' | 'bold';
   variant?: CheckboxVariant;
-  onChange?: (
-    details: SwitchCheckedChangeDetails & { checked: boolean },
-  ) => void;
+  onChange?: (details: CheckboxCheckedChangeDetails) => void;
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

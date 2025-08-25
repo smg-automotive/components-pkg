@@ -8,7 +8,7 @@ import { Text } from '../text';
 import { Box } from '../box';
 import { Item } from './type';
 
-import CheckboxFilterComponent, { Props } from './index';
+import { CheckboxFilter, Props } from './index';
 
 type Values =
   | 'new'
@@ -212,7 +212,7 @@ const Template = ({ query, ...props }: Args) => {
   };
 
   return (
-    <CheckboxFilterComponent<Values, FilterType>
+    <CheckboxFilter<Values, FilterType>
       {...{
         ...props,
         ...args,
@@ -252,7 +252,7 @@ const items: Item<Values, FilterType>[] = [
 
 const meta: Meta<typeof Template> = {
   title: 'Components/Filter/Checkbox',
-  component: CheckboxFilterComponent<Values, FilterType>,
+  component: CheckboxFilter<Values, FilterType>,
   render: Template.bind({}),
 
   decorators: [

@@ -162,3 +162,4 @@ export { ScreenIcon } from './ScreenIcon';
 export { QualitySealIcon } from './QualitySealIcon';
 export { ExpandIcon } from './ExpandIcon';
 export { CollapseIcon } from './CollapseIcon';
+export { ForwardIcon } from './ForwardIcon';
