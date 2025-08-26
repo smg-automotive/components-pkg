@@ -18,6 +18,7 @@ import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
 import MobileHeaderMenuToggle from './MobileMenuToggle';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
+import FavoritesItem from './FavoritesItem';
 import { NavigationDrawer } from './drawer';
 import { iconItems } from './config/iconItems';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
@@ -77,7 +78,10 @@ const Navigation: FC<NavigationProps> = ({
           currentLanguage: language,
           isLoggedIn: !!user,
         }),
-        iconItems: iconItems({ trackEvent, comparisonItemIds }),
+        iconItems: iconItems({
+          trackEvent,
+          comparisonItemIds,
+        }),
       },
       user,
       urlPathParams,
@@ -140,6 +144,9 @@ const Navigation: FC<NavigationProps> = ({
             language={language}
           />
           <Stack direction="row" spacing="2xl" align="center">
+            {config.iconItems.favorites?.isVisible ? (
+              <FavoritesItem link={config.iconItems.favorites} />
+            ) : null}
             {config.iconItems.comparison ? (
               <ComparisonItem
                 link={config.iconItems.comparison}
