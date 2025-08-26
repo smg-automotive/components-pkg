@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import CollapseComponent, { CollapseProps } from './index';
+import Text from './index';
 
 const meta: Meta<typeof CollapseComponent> = {
   title: 'Components/Utils/Collapse',
@@ -15,6 +16,8 @@ export default meta;
 
 export const Overview: StoryObj<typeof CollapseComponent> = {
   render: ({ in: inProp, ...args }: CollapseProps) => (
-    <CollapseComponent {...args} in={inProp} />
+    <CollapseComponent {...args} in={inProp}>
+      <Text>Hello World!</Text>
+    </CollapseComponent>
   ),
 };
