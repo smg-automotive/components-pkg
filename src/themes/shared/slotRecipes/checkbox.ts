@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const checkboxRecipe = defineSlotRecipe({
   className: 'chakra-checkbox',
-  slots: ['root', 'control', 'label'],
+  slots: ['root', 'control', 'label', 'content'],
   base: {
     root: {
       display: 'inline-flex',
@@ -70,7 +70,20 @@ export const checkboxRecipe = defineSlotRecipe({
         },
       },
     },
+    content: {
+      overflow: 'hidden',
+      _open: {
+        animationName: 'fade-in',
+        animationDuration: 'normal',
+      },
+      _closed: {
+        animationName: 'collapse-height',
+        animationDuration: 'normal',
+      },
+    },
     label: {
+      flex: '1 1 0%',
+      display: 'flex',
       fontWeight: 'regular',
       color: 'gray.900',
       userSelect: 'none',

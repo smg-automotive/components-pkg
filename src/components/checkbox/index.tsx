@@ -19,7 +19,7 @@ export type CheckboxProps = CheckboxVariantProps & {
   name: string;
   value?: string;
   disabled?: boolean;
-  checked?: boolean;
+  checked?: boolean | 'indeterminate';
   invalid?: boolean;
   indeterminate?: boolean;
   readOnly?: boolean;
