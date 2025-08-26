@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import Text from '../text';
+
 import CollapseComponent, { CollapseProps } from './index';
-import Text from './index';
 
 const meta: Meta<typeof CollapseComponent> = {
   title: 'Components/Utils/Collapse',
