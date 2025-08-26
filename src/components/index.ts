@@ -19,6 +19,7 @@ export { default as Checkbox } from './checkbox';
 export { default as CheckboxFilter } from './checkboxFilter';
 export { type Item as CheckboxFilterItem } from './checkboxFilter/type';
 export { default as CheckboxGroup } from './checkboxGroup';
+export { default as Collapse } from './collapse';
 export { default as Count, type CountVariant } from './count';
 export { default as DatePicker } from './datePicker';
 export { default as TimePicker } from './timePicker';
