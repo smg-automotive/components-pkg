@@ -84,7 +84,7 @@ const variants = {
       overflow: 'auto',
       paddingTop: defineStyle({
         base: '',
-        md: '5xl',
+        sm: '5xl',
       }),
     },
   },
