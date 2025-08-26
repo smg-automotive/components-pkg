@@ -1,3 +1,5 @@
+import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
+
 import { NavigationLinkConfigProps } from './headerLinks';
 
 export const savedSearchesLinkConfig: NavigationLinkConfigProps = {
@@ -7,27 +9,6 @@ export const savedSearchesLinkConfig: NavigationLinkConfigProps = {
     en: '/de/me/saved-searches',
     fr: '/fr/me/saved-searches',
     it: '/it/me/saved-searches',
-  },
-  visibilitySettings: {
-    userType: {
-      private: true,
-      professional: true,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: true,
-    },
-  },
-  projectIdentifier: 'listings-web',
-};
-
-export const favoritesLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.bookmarks',
-  link: {
-    de: '/de/me/favorites',
-    en: '/de/me/favorites',
-    fr: '/fr/me/favorites',
-    it: '/it/me/favorites',
   },
   visibilitySettings: {
     userType: {
@@ -81,6 +62,40 @@ export const changeLanguageLinkConfig: NavigationLinkConfigProps = {
     },
   },
 };
+
+export const getFavoritesLinkConfig = ({
+  trackEvent,
+  eventLabel,
+}: {
+  trackEvent?: (event: CustomEvent) => void;
+  eventLabel?: string;
+}): NavigationLinkConfigProps => ({
+  translationKey: 'header.userMenu.bookmarks',
+  link: {
+    de: '/de/me/favorites',
+    en: '/de/me/favorites',
+    fr: '/fr/me/favorites',
+    it: '/it/me/favorites',
+  },
+  visibilitySettings: {
+    userType: {
+      private: true,
+      professional: true,
+      guest: false,
+    },
+    brand: {
+      autoscout24: true,
+      motoscout24: true,
+    },
+  },
+  projectIdentifier: 'listings-web',
+  onClick: () =>
+    trackEvent?.({
+      eventCategory: navigationEventCategory,
+      eventAction: 'open_favorites',
+      eventLabel,
+    }),
+});
 
 export const getLogoutLinkConfig = ({
   onLogout,

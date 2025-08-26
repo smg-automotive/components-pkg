@@ -11,7 +11,7 @@ import { carParkLinkConfig, motorcycleParkLinkConfig } from './vehiclePool';
 import {
   changeLanguageLinkConfig,
   editUsersLinkConfig,
-  favoritesLinkConfig,
+  getFavoritesLinkConfig,
   getLogoutLinkConfig,
   savedSearchesLinkConfig,
 } from './user';
@@ -156,7 +156,10 @@ const getUserNodeItems = ({
     translationKey: 'header.userMenu.toolsForPurchasing',
     items: [
       savedSearchesLinkConfig,
-      favoritesLinkConfig,
+      getFavoritesLinkConfig({
+        trackEvent,
+        eventLabel: 'drawer-user',
+      }),
       ...getComparisonNodeItem({
         comparisonItemIds,
         trackEvent,
