@@ -36,16 +36,7 @@ const meta: Meta<typeof SelectComponent> = {
   render: Template.bind({}),
 
   args: {
-    placeholder: 'Select an option',
-    disabled: false,
-    invalid: false,
-    size: 'lg',
-    onChange: action('onChange'),
-    onFocus: action('onFocus'),
-    onBlur: action('onBlur'),
-    autoFocus: false,
     name: 'test-select',
-
     options: [
       {
         value: 1,
@@ -72,7 +63,14 @@ const meta: Meta<typeof SelectComponent> = {
         label: 'Option 6',
       },
     ],
-
+    autoFocus: false,
+    disabled: false,
+    invalid: false,
+    onBlur: action('onBlur'),
+    onChange: action('onChange'),
+    onFocus: action('onFocus'),
+    placeholder: 'Select an option',
+    size: 'lg',
     value: undefined,
   },
 

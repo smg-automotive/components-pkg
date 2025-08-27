@@ -2,17 +2,25 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const selectSlotRecipe = defineSlotRecipe({
   className: 'chakra-select',
-  slots: ['root', 'field', 'indicator', 'icon'],
+  slots: ['root', 'field', 'indicator'],
   base: {
     root: {
-      justifyContent: 'left',
+      position: 'relative',
     },
-    // icon should be styled properly
-    icon: {
+    field: {
+      paddingRight: '3xl',
+    },
+    indicator: {
+      position: 'absolute',
+      top: 'half',
       right: 'sm',
-      _disabled: {
-        color: 'gray.200',
-      },
+      transform: 'translateY(-50%)',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 'xs',
+      height: 'xs',
+      pointerEvents: 'none',
     },
   },
   variants: {

@@ -32,9 +32,9 @@ const variantOutline = defineStyle({
 
 export const inputSlotRecipe = defineSlotRecipe({
   className: 'chakra-input',
-  slots: ['root', 'icon', 'clearButton'],
+  slots: ['field', 'icon', 'clearButton'],
   base: {
-    root: {
+    field: {
       width: 'full',
       height: 'var(--input-height)',
       px: 'var(--input-padding-x)',
@@ -57,12 +57,12 @@ export const inputSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       outline: {
-        root: variantOutline,
+        field: variantOutline,
       },
     },
     size: {
       lg: {
-        root: {
+        field: {
           textStyle: 'body',
           '--input-padding-x': 'spacing.md',
           '--input-padding-y': 'spacing.xs',
@@ -76,7 +76,7 @@ export const inputSlotRecipe = defineSlotRecipe({
         },
       },
       md: {
-        root: {
+        field: {
           textStyle: 'body',
           '--input-padding-x': 'spacing.md',
           '--input-padding-y': 'spacing.xs',
