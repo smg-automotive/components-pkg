@@ -89,7 +89,7 @@
     "@testing-library/user-event": "14.6.1",
     "@types/estree": "1.0.8",
     "@types/jest": "30.0.0",
-    "@types/react": "18.3.24",
+    "@types/react": "19.1.12",
     "@types/react-textarea-autosize": "8.0.0",
     "autoprefixer": "10.4.21",
     "babel-loader": "10.0.0",
