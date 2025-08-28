@@ -34,19 +34,15 @@ const Select = forwardRef<HTMLSelectElement, Props>(
       selectRecipe.splitVariantProps(props);
     const selectStyles = selectRecipe(selectRecipeProps);
 
-    const inputRecipe = useSlotRecipe({ key: 'input' });
-    const [inputRecipeProps] = inputRecipe.splitVariantProps(props);
-    const inputStyles = inputRecipe(inputRecipeProps);
-
-    const { invalid, ...rest } = restProps;
+    const { disabled, invalid, ...rest } = restProps;
 
     return (
-      <NativeSelect.Root css={selectStyles.root} invalid={invalid}>
-        <NativeSelect.Field
-          ref={ref}
-          css={[inputStyles.field, selectStyles.field]}
-          {...rest}
-        >
+      <NativeSelect.Root
+        disabled={disabled}
+        invalid={invalid}
+        css={selectStyles.root}
+      >
+        <NativeSelect.Field ref={ref} css={selectStyles.field} {...rest}>
           {options.map((option) => (
             <option value={option.value} key={option.value}>
               {option.label}
@@ -54,7 +50,10 @@ const Select = forwardRef<HTMLSelectElement, Props>(
           ))}
         </NativeSelect.Field>
         <NativeSelect.Indicator
-          css={[selectStyles.indicator, rest.disabled && { color: 'gray.200' }]}
+          css={[
+            selectStyles.indicator,
+            disabled && selectStyles.indicator._disabled,
+          ]}
         />
       </NativeSelect.Root>
     );
