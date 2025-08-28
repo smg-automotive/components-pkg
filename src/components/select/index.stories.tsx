@@ -5,16 +5,16 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '../index';
 
-import SelectComponent, { Props } from './index';
+import { Select as SelectComponent, SelectProps } from './index';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+const Template = (props: SelectProps) => {
+  const [args, updateArgs] = useArgs<SelectProps>();
   return (
     <SelectComponent
       {...({
         ...props,
         ...args,
-      } as Props)}
+      } as SelectProps)}
       onChange={(e) => {
         updateArgs({ value: e.target.value });
         args.onChange?.(e);
@@ -75,14 +75,28 @@ const meta: Meta<typeof SelectComponent> = {
   },
 
   argTypes: {
+    options: {
+      table: {
+        type: { summary: 'Option<string>[] | Option<number>[]' },
+        required: true,
+      },
+    },
+
     value: {
       description: 'use value prop when you want controlled select',
       control: 'text',
+      table: {
+        type: { summary: 'string | number' },
+      },
     },
 
     size: {
       options: ['md', 'lg'],
       control: 'select',
+      table: {
+        type: { summary: 'md | lg' },
+        defaultValue: { summary: 'lg' },
+      },
     },
   },
 

@@ -26,6 +26,7 @@ export * from './mobileOnlyAccordion';
 export * from './navigation/footer';
 export * from './rating';
 export * from './section';
+export * from './select';
 export * from './separator';
 export * from './simpleGrid';
 export * from './simpleHeader';

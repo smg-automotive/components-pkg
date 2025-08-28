@@ -21,13 +21,13 @@ type OptionsAndValue<T extends string | number> = {
 
 type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 
-export type Props = SelectVariantProps &
+export type SelectProps = SelectVariantProps &
   Pick<NativeSelectRootProps, 'disabled' | 'invalid'> &
   NativeSelectFieldProps & {
     name: string;
   } & (OptionsAndValue<string> | OptionsAndValue<number>);
 
-const Select = forwardRef<HTMLSelectElement, Props>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ options, ...props }, ref) => {
     const selectRecipe = useSlotRecipe({ key: 'select' });
     const [selectRecipeProps, restProps] =
@@ -42,7 +42,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
         invalid={invalid}
         css={selectStyles.root}
       >
-        <NativeSelect.Field ref={ref} css={selectStyles.field} {...rest}>
+        <NativeSelect.Field ref={ref} {...rest} css={selectStyles.field}>
           {options.map((option) => (
             <option value={option.value} key={option.value}>
               {option.label}
@@ -59,6 +59,5 @@ const Select = forwardRef<HTMLSelectElement, Props>(
     );
   },
 );
-Select.displayName = 'Select';
 
-export default Select;
+Select.displayName = 'Select';
