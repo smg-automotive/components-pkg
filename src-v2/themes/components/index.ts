@@ -10,7 +10,6 @@ import Spinner from './spinner';
 import Slider from './slider';
 import Skeleton from './skeleton';
 import SimpleHeader from './simpleHeader';
-import Select from './select';
 import Radio from './radio';
 import Popover from './popover';
 import Pagination from './pagination';

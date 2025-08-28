@@ -50,7 +50,6 @@ export { default as RangeSlider } from './rangeSlider';
 export { default as DiscreteSlider } from './discreteSlider';
 export { default as RangeFilterInputWithSlider } from './rangeFilterInputWithSlider';
 export { default as Section } from './section';
-export { default as Select, type Option } from './select';
 export { default as Show } from './show';
 export { default as SimpleGrid } from './simpleGrid';
 export { default as SimpleHeader } from './simpleHeader';
