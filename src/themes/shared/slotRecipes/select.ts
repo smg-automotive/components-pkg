@@ -1,9 +1,9 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
 
 import {
+  fieldBase,
   fieldSizeLarge,
   fieldSizeMedium,
-  inputSlotRecipe,
   variantOutline,
 } from './input';
 
@@ -15,7 +15,7 @@ export const selectSlotRecipe = defineSlotRecipe({
       position: 'relative',
     },
     field: {
-      ...inputSlotRecipe.base?.field,
+      ...fieldBase,
       paddingRight: '3xl',
     },
     indicator: {

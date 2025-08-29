@@ -30,6 +30,23 @@ export const variantOutline = defineStyle({
   },
 });
 
+export const fieldBase = defineStyle({
+  width: 'full',
+  height: 'var(--input-height)',
+  px: 'var(--input-padding-x)',
+  py: 'var(--input-padding-y)',
+  minWidth: '0',
+  outline: 0,
+  position: 'relative',
+  appearance: 'none',
+  transitionProperty: 'common',
+  transitionDuration: 'normal',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: 'xs',
+});
+
 export const fieldSizeLarge = defineStyle({
   textStyle: 'body',
   '--input-padding-x': 'spacing.md',
@@ -48,22 +65,7 @@ export const inputSlotRecipe = defineSlotRecipe({
   className: 'chakra-input',
   slots: ['field', 'icon', 'clearButton'],
   base: {
-    field: {
-      width: 'full',
-      height: 'var(--input-height)',
-      px: 'var(--input-padding-x)',
-      py: 'var(--input-padding-y)',
-      minWidth: '0',
-      outline: 0,
-      position: 'relative',
-      appearance: 'none',
-      transitionProperty: 'common',
-      transitionDuration: 'normal',
-      display: 'inline-flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: 'xs',
-    },
+    field: fieldBase,
     clearButton: {
       display: 'flex',
     },
