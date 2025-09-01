@@ -359,6 +359,19 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
         },
         {
+          translationKey: 'footer.sections.legal.agbDirect',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+          },
+          link: {
+            de: 'https://b2b.autoscout24.ch/allgemeine-geschaeftsbedingungen-autoscout24-direct/',
+            en: 'https://b2b.autoscout24.ch/allgemeine-geschaeftsbedingungen-autoscout24-direct/',
+            fr: 'https://b2b.autoscout24.ch/conditions-generales-autoscout24-direct/',
+            it: 'https://b2b.autoscout24.ch/condizioni-generali-autoscout24-direct/',
+          },
+          target: '_blank',
+        },
+        {
           translationKey: 'footer.sections.legal.dataProtection',
           visibilitySettings: {
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },

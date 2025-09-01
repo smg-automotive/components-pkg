@@ -108,6 +108,7 @@
       },
       "legal": {
         "agb": "AGB",
+        "agbDirect": "AGB AutoScout24 Direct",
         "cookieSettings": "Privatsphäre-Einstellungen",
         "dataProtection": "Datenschutz",
         "imprint": "Impressum",
