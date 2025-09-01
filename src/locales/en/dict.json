@@ -108,6 +108,7 @@
       },
       "legal": {
         "agb": "GTC",
+        "agbDirect": "GTC AutoScout24 Direct",
         "cookieSettings": "Privacy Settings",
         "dataProtection": "Data Protection",
         "imprint": "imprint",
