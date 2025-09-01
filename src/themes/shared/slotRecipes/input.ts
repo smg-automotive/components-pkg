@@ -1,6 +1,6 @@
 import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
-const variantOutline = defineStyle({
+export const variantOutline = defineStyle({
   border: '1px',
   borderStyle: 'var(--chakra-border-style, solid)',
   borderColor: 'gray.400',
@@ -30,26 +30,42 @@ const variantOutline = defineStyle({
   },
 });
 
+export const fieldBase = defineStyle({
+  width: 'full',
+  height: 'var(--input-height)',
+  px: 'var(--input-padding-x)',
+  py: 'var(--input-padding-y)',
+  minWidth: '0',
+  outline: 0,
+  position: 'relative',
+  appearance: 'none',
+  transitionProperty: 'common',
+  transitionDuration: 'normal',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: 'xs',
+});
+
+export const fieldSizeLarge = defineStyle({
+  textStyle: 'body',
+  '--input-padding-x': 'spacing.md',
+  '--input-padding-y': 'spacing.xs',
+  '--input-height': 'sizes.lg',
+});
+
+export const fieldSizeMedium = defineStyle({
+  textStyle: 'body',
+  '--input-padding-x': 'spacing.md',
+  '--input-padding-y': 'spacing.xs',
+  '--input-height': 'sizes.md',
+});
+
 export const inputSlotRecipe = defineSlotRecipe({
   className: 'chakra-input',
-  slots: ['root', 'icon', 'clearButton'],
+  slots: ['field', 'icon', 'clearButton'],
   base: {
-    root: {
-      width: 'full',
-      height: 'var(--input-height)',
-      px: 'var(--input-padding-x)',
-      py: 'var(--input-padding-y)',
-      minWidth: '0',
-      outline: 0,
-      position: 'relative',
-      appearance: 'none',
-      transitionProperty: 'common',
-      transitionDuration: 'normal',
-      display: 'inline-flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: 'xs',
-    },
+    field: fieldBase,
     clearButton: {
       display: 'flex',
     },
@@ -57,17 +73,12 @@ export const inputSlotRecipe = defineSlotRecipe({
   variants: {
     variant: {
       outline: {
-        root: variantOutline,
+        field: variantOutline,
       },
     },
     size: {
       lg: {
-        root: {
-          textStyle: 'body',
-          '--input-padding-x': 'spacing.md',
-          '--input-padding-y': 'spacing.xs',
-          '--input-height': 'sizes.lg',
-        },
+        field: fieldSizeLarge,
         icon: {
           paddingLeft: 'md',
         },
@@ -76,12 +87,7 @@ export const inputSlotRecipe = defineSlotRecipe({
         },
       },
       md: {
-        root: {
-          textStyle: 'body',
-          '--input-padding-x': 'spacing.md',
-          '--input-padding-y': 'spacing.xs',
-          '--input-height': 'sizes.md',
-        },
+        field: fieldSizeMedium,
         icon: {
           paddingLeft: 'sm',
         },

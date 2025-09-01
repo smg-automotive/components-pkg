@@ -5,16 +5,16 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '../index';
 
-import SelectComponent, { Props } from './index';
+import { Select as SelectComponent, SelectProps } from './index';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+const Template = (props: SelectProps) => {
+  const [args, updateArgs] = useArgs<SelectProps>();
   return (
     <SelectComponent
       {...({
         ...props,
         ...args,
-      } as Props)}
+      } as SelectProps)}
       onChange={(e) => {
         updateArgs({ value: e.target.value });
         args.onChange?.(e);
@@ -28,7 +28,7 @@ const meta: Meta<typeof SelectComponent> = {
   component: SelectComponent,
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="250px">
+      <Box w="full" maxW="5xl">
         <Story />
       </Box>
     ),
@@ -36,16 +36,7 @@ const meta: Meta<typeof SelectComponent> = {
   render: Template.bind({}),
 
   args: {
-    placeholder: 'Select an option',
-    isDisabled: false,
-    isInvalid: false,
-    size: 'lg',
-    onChange: action('onChange'),
-    onFocus: action('onFocus'),
-    onBlur: action('onBlur'),
-    autoFocus: false,
     name: 'test-select',
-
     options: [
       {
         value: 1,
@@ -72,19 +63,40 @@ const meta: Meta<typeof SelectComponent> = {
         label: 'Option 6',
       },
     ],
-
+    autoFocus: false,
+    disabled: false,
+    invalid: false,
+    onBlur: action('onBlur'),
+    onChange: action('onChange'),
+    onFocus: action('onFocus'),
+    placeholder: 'Select an option',
+    size: 'lg',
     value: undefined,
   },
 
   argTypes: {
+    options: {
+      table: {
+        type: { summary: 'Option<string>[] | Option<number>[]' },
+        required: true,
+      },
+    },
+
     value: {
       description: 'use value prop when you want controlled select',
       control: 'text',
+      table: {
+        type: { summary: 'string | number' },
+      },
     },
 
     size: {
       options: ['md', 'lg'],
       control: 'select',
+      table: {
+        type: { summary: 'md | lg' },
+        defaultValue: { summary: 'lg' },
+      },
     },
   },
 
@@ -111,7 +123,7 @@ export const StateFocused: StoryType = {
 export const StateInvalid: StoryType = {
   name: 'State > Invalid',
   args: {
-    isInvalid: true,
+    invalid: true,
   },
 };
 
@@ -119,7 +131,7 @@ export const StateDisabled: StoryType = {
   name: 'State > Disabled',
 
   args: {
-    isDisabled: true,
+    disabled: true,
   },
 };
 

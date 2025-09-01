@@ -16,4 +16,5 @@ export const spacing = defineTokens.spacing({
   '6xl': { value: '6rem' },
   '7xl': { value: '8rem' },
   'auth0-spacing': { value: '2.5rem' },
+  half: { value: '50%' },
 });

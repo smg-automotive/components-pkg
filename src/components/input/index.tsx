@@ -163,7 +163,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       >
         <ChakraInput
           {...componentProps}
-          css={styles.root}
+          css={styles.field}
           type={type}
           value={inputValue}
           onChange={onChangeHandler}
