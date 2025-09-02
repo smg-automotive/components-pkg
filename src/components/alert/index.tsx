@@ -13,7 +13,9 @@ import {
 import AlertLink from './Link';
 import { BareAlertProps } from './Bare';
 
-type SharedProps = Omit<BareAlertProps, 'onClose'>;
+type SharedProps = Omit<BareAlertProps, 'onClose' | 'description'> & {
+  description: React.ReactNode | string;
+};
 
 export type DismissibleProps = SharedProps & {
   onDismiss?: () => void;
