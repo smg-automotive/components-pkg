@@ -2,7 +2,8 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import Input from 'src/components/input';
-import { render, screen, waitFor } from '.jest/utils';
+
+import { render, screen, waitFor } from 'jest-utils';
 
 import FormControl, { FormControlProps } from '..';
 

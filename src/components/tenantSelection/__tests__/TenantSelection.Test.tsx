@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { multiTenantUser } from '@smg-automotive/auth/fixtures';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 import TenantSelection, { TenantSelectionProps } from '..';
 
