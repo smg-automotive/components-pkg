@@ -148,7 +148,6 @@ export const modalRecipe = defineSlotRecipe({
     },
 
     variant: {
-      base: {},
       fullScreen: {
         backdrop: {
           bg: 'black',

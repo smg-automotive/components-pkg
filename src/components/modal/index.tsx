@@ -26,7 +26,7 @@ type ActionButton = {
   label: string;
 };
 
-export interface Props extends DialogRootProps {
+export interface ModalProps extends DialogRootProps {
   title?: string;
   open?: UseDialogProps['open'];
   onOpenChange?: UseDialogProps['onOpenChange'];
@@ -39,7 +39,7 @@ export interface Props extends DialogRootProps {
   overlayColor?: 'gray';
 }
 
-const Modal: FC<PropsWithChildren<Props>> = ({
+const Modal: FC<PropsWithChildren<ModalProps>> = ({
   title,
   open,
   onOpenChange,

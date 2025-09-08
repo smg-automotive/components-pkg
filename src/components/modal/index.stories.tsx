@@ -5,14 +5,14 @@ import { Text, useDisclosure } from '@chakra-ui/react';
 
 import { Button } from '../button';
 
-import ModalComponent, { Props } from './index';
+import ModalComponent, { ModalProps } from './index';
 
 const Template = ({
   contentParagraphs,
   primaryActionLabel,
   secondaryActionLabel,
   ...args
-}: Props & {
+}: ModalProps & {
   contentParagraphs?: number;
   primaryActionLabel?: string;
   secondaryActionLabel?: string;
@@ -41,7 +41,7 @@ const Template = ({
         onOpenChange={(e) => (e.open ? onOpen() : onClose())}
       >
         {Array.from({ length: contentParagraphs || 1 }).map((_, index) => (
-          <Text p="4" key={`paragraph-${index}`}>
+          <Text p="sm" key={`paragraph-${index}`}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             elementum ultricies vestibulum. Sed odio diam, tristique id velit
             sit amet, sodales aliquet magna. Fusce vitae orci vel nulla vehicula
@@ -67,10 +67,8 @@ const meta: Meta<typeof Template> = {
     contentParagraphs: 1,
     title: 'Modal Header',
     size: 'md',
-    variant: 'base',
     disableBodyPadding: false,
     motionPreset: 'scale',
-    overlayColor: 'default',
   },
 
   argTypes: {
