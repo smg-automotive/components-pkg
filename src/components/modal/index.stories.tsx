@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Text, useDisclosure } from '@chakra-ui/react';
 
-import Button from '../button';
+import { Button } from '../button';
 
 import ModalComponent, { Props } from './index';
 
@@ -17,7 +17,7 @@ const Template = ({
   primaryActionLabel?: string;
   secondaryActionLabel?: string;
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Button onClick={onOpen}>Open</Button>
@@ -37,8 +37,8 @@ const Template = ({
               }
             : undefined,
         }}
-        isOpen={isOpen}
-        onClose={onClose}
+        open={open}
+        onOpenChange={(e) => (e.open ? onOpen() : onClose())}
       >
         {Array.from({ length: contentParagraphs || 1 }).map((_, index) => (
           <Text p="4" key={`paragraph-${index}`}>

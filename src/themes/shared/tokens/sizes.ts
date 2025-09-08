@@ -17,6 +17,7 @@ export const sizes = defineTokens.sizes({
   '7xl': { value: '30rem' },
   '8xl': { value: '45rem' },
   full: { value: '100%' },
+  fit: { value: 'fit-content' },
   container: {
     sm: { value: '640px' },
     md: { value: '768px' },
@@ -28,3 +29,5 @@ export const sizes = defineTokens.sizes({
   'auth0-height': { value: '33.75rem' },
   'screen-height': { value: '100vh' },
 });
+
+export type SizeToken = Extract<keyof typeof sizes, string>;
