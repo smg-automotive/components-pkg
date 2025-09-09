@@ -30,4 +30,11 @@ export const sizes = defineTokens.sizes({
   'screen-height': { value: '100vh' },
 });
 
-export type SizeToken = Extract<keyof typeof sizes, string>;
+export type SizeToken =
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | '7xl'
+  | '8xl'
+  | `container.${'sm' | 'md' | 'lg' | 'xl' | '2xl'}`
+  | 'auth0-width';

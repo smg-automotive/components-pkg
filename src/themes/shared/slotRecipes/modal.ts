@@ -75,7 +75,7 @@ const baseStyleFooter = defineStyle({
 const baseStyleCloseButton = defineStyle({
   width: 'sm',
   height: 'sm',
-  _hover: { bg: 'black' },
+  _hover: { bg: 'gray.100' },
 });
 
 const sizeContent = (w: SizeToken) =>
@@ -140,8 +140,14 @@ export const modalRecipe = defineSlotRecipe({
     motionPreset: {
       scale: {
         content: {
-          _open: { animationName: 'scale-in, fade-in' },
-          _closed: { animationName: 'scale-out, fade-out' },
+          _open: {
+            animationStyle: 'scale-fade-in',
+            animationDuration: 'normal',
+          },
+          _closed: {
+            animationStyle: 'scale-fade-out',
+            animationDuration: 'normal',
+          },
         },
       },
       none: {},
@@ -160,7 +166,7 @@ export const modalRecipe = defineSlotRecipe({
           zIndex: 'fullScreenModal',
         },
         header: baseStyleHeader,
-        closeTrigger: baseStyleCloseButton,
+        closeTrigger: { _hover: { bg: 'none' } },
         body: {
           p: '0',
           flex: '1',
@@ -171,7 +177,6 @@ export const modalRecipe = defineSlotRecipe({
           minH: 'full',
           bg: 'black',
           my: '0',
-          borderRadius: '0',
         },
       },
       topScroll: {
