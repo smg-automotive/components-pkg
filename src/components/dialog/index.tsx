@@ -13,7 +13,7 @@ import { dialogRecipe } from 'src/themes/shared/slotRecipes/dialog';
 
 import { H3 } from '../heading';
 import { Button } from '../button';
-import DialogCloseButton from './DialogCloseButton';
+import { DialogCloseButton } from './DialogCloseButton';
 import { Box } from '../box';
 
 type MotionPreset = 'none' | 'scale';
@@ -58,7 +58,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
     'md' | 'lg' | 'full' | 'auth0' | undefined
   > = size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
   const bothActionButtons = primaryActionButton && secondaryActionButton;
-  const recipe = useSlotRecipe({ recipe: dialogRecipe });
+  const recipe = useSlotRecipe({ key: 'dialog' });
   const [recipeProps] = recipe.splitVariantProps({
     size: dialogSize,
     motionPreset,

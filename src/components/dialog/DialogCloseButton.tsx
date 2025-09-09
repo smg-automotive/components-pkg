@@ -4,8 +4,9 @@ import {
   CloseButtonProps,
 } from '@chakra-ui/react';
 
-const DialogCloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
-  (props, ref) => <ChakraCloseButton ref={ref} cursor={'pointer'} {...props} />,
-);
-
-export default DialogCloseButton;
+export const DialogCloseButton = forwardRef<
+  HTMLButtonElement,
+  CloseButtonProps
+>((props, ref) => (
+  <ChakraCloseButton ref={ref} cursor={'pointer'} {...props} />
+));

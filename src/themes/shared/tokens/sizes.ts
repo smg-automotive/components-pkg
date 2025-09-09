@@ -36,5 +36,6 @@ export type SizeToken =
   | 'lg'
   | '7xl'
   | '8xl'
+  | 'full'
   | `container.${'sm' | 'md' | 'lg' | 'xl' | '2xl'}`
   | 'auth0-width';

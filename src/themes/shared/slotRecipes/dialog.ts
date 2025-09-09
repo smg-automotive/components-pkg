@@ -79,12 +79,19 @@ const baseStyleCloseButton = defineStyle({
 });
 
 const sizeContent = (w: SizeToken) =>
-  defineStyle({
-    maxW: { base: 'full', sm: w },
-    minH: { base: 'full', sm: 'auto' },
-    my: { base: '0', sm: 'lg' },
-    borderRadius: { base: 'none', sm: 'sm' },
-  });
+  w === 'full'
+    ? defineStyle({
+        maxW: { base: 'full', sm: 'full' },
+        minH: { base: 'full', sm: 'full' },
+        my: '0',
+        borderRadius: 'none',
+      })
+    : defineStyle({
+        maxW: { base: 'full', sm: w },
+        minH: { base: 'full', sm: 'auto' },
+        my: { base: '0', sm: 'lg' },
+        borderRadius: { base: 'none', sm: 'sm' },
+      });
 
 const slots = [
   'header',
@@ -127,14 +134,7 @@ export const dialogRecipe = defineSlotRecipe({
       md: { content: sizeContent('7xl') },
       lg: { content: sizeContent('8xl') },
       auth0: { content: sizeContent('auth0-width') },
-      full: {
-        content: defineStyle({
-          maxW: { base: 'full', sm: 'full' },
-          minH: { base: 'full', sm: 'full' },
-          my: '0',
-          borderRadius: 'none',
-        }),
-      },
+      full: { content: sizeContent('full') },
     },
 
     motionPreset: {
