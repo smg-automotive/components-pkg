@@ -1,23 +1,24 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import {
-  Dialog,
+  Dialog as ChakraDialog,
+  ConditionalValue,
   Portal,
   RecipeVariantProps,
   UseDialogProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { modalRecipe } from 'src/themes/shared/slotRecipes/modal';
+import { dialogRecipe } from 'src/themes/shared/slotRecipes/dialog';
 
 import { H3 } from '../heading';
 import { Button } from '../button';
-import ModalCloseButton from './ModalCloseButton';
+import DialogCloseButton from './DialogCloseButton';
 import { Box } from '../box';
 
 type MotionPreset = 'none' | 'scale';
 
-type DialogRootProps = RecipeVariantProps<typeof modalRecipe>;
+type DialogRootProps = RecipeVariantProps<typeof dialogRecipe>;
 
 type Sizes = 'md' | 'lg' | 'full' | 'auth0';
 
@@ -26,7 +27,7 @@ type ActionButton = {
   label: string;
 };
 
-export interface ModalProps extends DialogRootProps {
+export interface DialogProps extends DialogRootProps {
   title?: string;
   open?: UseDialogProps['open'];
   onOpenChange?: UseDialogProps['onOpenChange'];
@@ -39,7 +40,7 @@ export interface ModalProps extends DialogRootProps {
   overlayColor?: 'gray';
 }
 
-const Modal: FC<PropsWithChildren<ModalProps>> = ({
+export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   title,
   open,
   onOpenChange,
@@ -53,18 +54,13 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   overlayColor,
   ...props
 }) => {
-  const modalSize:
-    | {
-        xs: Sizes | undefined;
-        sm: Sizes | undefined;
-      }
-    | Sizes
-    | undefined =
-    size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
+  const dialogSize: ConditionalValue<
+    'md' | 'lg' | 'full' | 'auth0' | undefined
+  > = size || variant !== 'fullScreen' ? { xs: 'full', sm: size } : 'full';
   const bothActionButtons = primaryActionButton && secondaryActionButton;
-  const recipe = useSlotRecipe({ key: 'modal' });
+  const recipe = useSlotRecipe({ recipe: dialogRecipe });
   const [recipeProps] = recipe.splitVariantProps({
-    size: modalSize,
+    size: dialogSize,
     motionPreset,
     variant,
     overlayColor,
@@ -72,31 +68,31 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
   const styles = recipe(recipeProps);
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange} {...props}>
+    <ChakraDialog.Root open={open} onOpenChange={onOpenChange} {...props}>
       <Portal>
-        <Dialog.Backdrop css={styles.backdrop} />
-        <Dialog.Positioner css={styles.positioner}>
-          <Dialog.Content css={styles.content}>
+        <ChakraDialog.Backdrop css={styles.backdrop} />
+        <ChakraDialog.Positioner css={styles.positioner}>
+          <ChakraDialog.Content css={styles.content}>
             {title && (
               <Box borderBottom="1px" borderColor="gray.100">
-                <Dialog.Header css={styles.header}>
+                <ChakraDialog.Header css={styles.header}>
                   <H3>{title}</H3>
-                  <Dialog.CloseTrigger asChild css={styles.closeTrigger}>
-                    <ModalCloseButton fontSize="base" />
-                  </Dialog.CloseTrigger>
-                </Dialog.Header>
+                  <ChakraDialog.CloseTrigger asChild css={styles.closeTrigger}>
+                    <DialogCloseButton fontSize="base" />
+                  </ChakraDialog.CloseTrigger>
+                </ChakraDialog.Header>
               </Box>
             )}
-            <Dialog.Body
+            <ChakraDialog.Body
               css={styles.body}
               p={disableBodyPadding ? '0' : undefined}
             >
               {children}
-            </Dialog.Body>
+            </ChakraDialog.Body>
 
             {(primaryActionButton || secondaryActionButton) && (
               <Box borderTop="1px" borderColor="gray.100">
-                <Dialog.Footer
+                <ChakraDialog.Footer
                   display="flex"
                   justifyContent={
                     bothActionButtons ? 'space-between' : 'flex-start'
@@ -122,14 +118,12 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
                       {primaryActionButton.label}
                     </Button>
                   ) : null}
-                </Dialog.Footer>
+                </ChakraDialog.Footer>
               </Box>
             )}
-          </Dialog.Content>
-        </Dialog.Positioner>
+          </ChakraDialog.Content>
+        </ChakraDialog.Positioner>
       </Portal>
-    </Dialog.Root>
+    </ChakraDialog.Root>
   );
 };
-
-export default Modal;

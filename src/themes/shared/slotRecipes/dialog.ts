@@ -96,7 +96,7 @@ const slots = [
   'closeTrigger',
 ] as const;
 
-export const modalRecipe = defineSlotRecipe({
+export const dialogRecipe = defineSlotRecipe({
   slots,
   className: 'chakra-dialog',
   base: {

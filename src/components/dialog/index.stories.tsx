@@ -5,14 +5,14 @@ import { Text, useDisclosure } from '@chakra-ui/react';
 
 import { Button } from '../button';
 
-import ModalComponent, { ModalProps } from './index';
+import { Dialog, DialogProps } from './index';
 
 const Template = ({
   contentParagraphs,
   primaryActionLabel,
   secondaryActionLabel,
   ...args
-}: ModalProps & {
+}: DialogProps & {
   contentParagraphs?: number;
   primaryActionLabel?: string;
   secondaryActionLabel?: string;
@@ -21,7 +21,7 @@ const Template = ({
   return (
     <>
       <Button onClick={onOpen}>Open</Button>
-      <ModalComponent
+      <Dialog
         {...{
           ...args,
           primaryActionButton: primaryActionLabel
@@ -53,19 +53,19 @@ const Template = ({
             venenatis.
           </Text>
         ))}
-      </ModalComponent>
+      </Dialog>
     </>
   );
 };
 
 const meta: Meta<typeof Template> = {
-  title: 'Components/Data display/Modal',
-  component: ModalComponent,
+  title: 'Components/Data display/Dialog',
+  component: Dialog,
   render: Template.bind({}),
 
   args: {
     contentParagraphs: 1,
-    title: 'Modal Header',
+    title: 'Dialog Header',
     size: 'md',
     disableBodyPadding: false,
     motionPreset: 'scale',
@@ -129,55 +129,55 @@ export default meta;
 type StoryType = StoryObj<typeof Template>;
 export const Overview: StoryType = {};
 
-export const ModalWithoutHeader: StoryType = {
+export const DialogWithoutHeader: StoryType = {
   args: {
     title: undefined,
   },
 };
 
-export const ModalWithPrimaryAction: StoryType = {
+export const DialogWithPrimaryAction: StoryType = {
   args: {
     primaryActionLabel: 'Submit',
   },
 };
 
-export const ModalWithSecondaryAction: StoryType = {
+export const DialogWithSecondaryAction: StoryType = {
   args: {
     secondaryActionLabel: 'Fire',
   },
 };
 
-export const ModalWithTwoActionButtons: StoryType = {
+export const DialogWithTwoActionButtons: StoryType = {
   args: {
     primaryActionLabel: 'Submit',
     secondaryActionLabel: 'Fire',
   },
 };
 
-export const FullScreenModal: StoryType = {
+export const FullScreenDialog: StoryType = {
   args: {
-    title: 'Full screen modal',
+    title: 'Full screen dialog',
     variant: 'fullScreen',
     size: undefined,
   },
 };
 
-export const LargeScrollableModal: StoryType = {
+export const LargeScrollableDialog: StoryType = {
   args: {
-    title: 'Modal Header',
+    title: 'Dialog Header',
     size: 'md',
     variant: 'topScroll',
     contentParagraphs: 3,
   },
 };
 
-export const ModalWithoutModalBodyPadding: StoryType = {
+export const DialogWithoutDialogBodyPadding: StoryType = {
   args: {
     disableBodyPadding: true,
   },
 };
 
-export const ModalWithGrayOverlay: StoryType = {
+export const DialogWithGrayOverlay: StoryType = {
   args: {
     overlayColor: 'gray',
     contentParagraphs: 1,
