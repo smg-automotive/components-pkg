@@ -30,6 +30,17 @@ export interface TwoColumnsLayoutProps {
   maxContentWidth?: keyof typeof sizes.container;
 }
 
+const isRenderable = (value: ReactNode) => {
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean' ||
+    value === null ||
+    value === undefined ||
+    React.isValidElement(value)
+  );
+};
+
 export const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
   const {
     header,
@@ -71,7 +82,7 @@ export const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
                 {props.backLink.text}
               </Link>
             ) : (
-              props.backLink
+              isRenderable(props.backLink) && props.backLink
             )}
           </GridItem>
         ) : null}
