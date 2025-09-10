@@ -20,25 +20,20 @@ type MotionPreset = 'none' | 'scale';
 
 type DialogRootProps = RecipeVariantProps<typeof dialogRecipe>;
 
-type Sizes = 'md' | 'lg' | 'full' | 'auth0';
-
 type ActionButton = {
   action: () => void;
   label: string;
 };
 
-export interface DialogProps extends DialogRootProps {
+export type DialogProps = DialogRootProps & {
   title?: string;
   open?: UseDialogProps['open'];
   onOpenChange?: UseDialogProps['onOpenChange'];
   motionPreset?: MotionPreset;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
-  variant?: 'fullScreen' | 'topScroll';
-  size?: Sizes;
   disableBodyPadding?: boolean;
-  overlayColor?: 'gray';
-}
+};
 
 export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   title,
@@ -50,8 +45,8 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   size,
   motionPreset = 'scale',
   variant,
-  disableBodyPadding = false,
   overlayColor,
+  disableBodyPadding = false,
   ...props
 }) => {
   const dialogSize: ConditionalValue<

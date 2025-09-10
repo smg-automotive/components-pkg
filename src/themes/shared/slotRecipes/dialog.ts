@@ -1,6 +1,8 @@
 import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
-import { SizeToken } from '../tokens/sizes';
+import { sizes } from '../tokens/sizes';
+
+type ContainerSize = Exclude<keyof typeof sizes, 0 | 'container'>;
 
 const baseStyleOverlay = defineStyle({
   bg: 'black',
@@ -78,7 +80,7 @@ const baseStyleCloseButton = defineStyle({
   _hover: { bg: 'gray.100' },
 });
 
-const sizeContent = (w: SizeToken) =>
+const sizeContent = (w: ContainerSize) =>
   w === 'full'
     ? defineStyle({
         maxW: { base: 'full', sm: 'full' },

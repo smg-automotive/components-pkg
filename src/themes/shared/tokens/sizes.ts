@@ -29,13 +29,3 @@ export const sizes = defineTokens.sizes({
   'auth0-height': { value: '33.75rem' },
   'screen-height': { value: '100vh' },
 });
-
-export type SizeToken =
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | '7xl'
-  | '8xl'
-  | 'full'
-  | `container.${'sm' | 'md' | 'lg' | 'xl' | '2xl'}`
-  | 'auth0-width';
