@@ -19,6 +19,7 @@ export * from './heading';
 export * from './icons';
 export * from './input';
 export * from './layout';
+export * from './layout/TwoColumnsLayout';
 export * from './link';
 export * from './list';
 export * from './missingImage';
