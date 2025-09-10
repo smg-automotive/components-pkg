@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/filename-case */
 import React, { FC, Fragment, PropsWithChildren, ReactElement } from 'react';
 import {
   Queries,

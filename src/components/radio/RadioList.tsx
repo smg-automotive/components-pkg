@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, JSX } from 'react';
 import { useRadioGroup, UseRadioGroupProps, VStack } from '@chakra-ui/react';
 
 import Divider from '../divider';

@@ -3,10 +3,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const teaserTemplatesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.manageAdditionalTitles',
   link: {
-    de: '/de/member/templates/teaser',
-    en: '/de/member/templates/teaser',
-    fr: '/fr/member/templates/teaser',
-    it: '/it/member/templates/teaser',
+    de: '/de/info-management/additional-titles',
+    en: '/en/info-management/additional-titles',
+    fr: '/fr/info-management/additional-titles',
+    it: '/it/info-management/additional-titles',
   },
   visibilitySettings: {
     userType: {
@@ -23,10 +23,10 @@ export const teaserTemplatesLinkConfig: NavigationLinkConfigProps = {
 export const commentTemplatesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.manageNotes',
   link: {
-    de: '/de/member/templates/comment',
-    en: '/de/member/templates/comment',
-    fr: '/fr/member/templates/comment',
-    it: '/it/member/templates/comment',
+    de: '/de/info-management/comment',
+    en: '/en/info-management/comment',
+    fr: '/fr/info-management/comment',
+    it: '/it/info-management/comment',
   },
   visibilitySettings: {
     userType: {

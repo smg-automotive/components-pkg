@@ -37,7 +37,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
     ref,
   ) => {
     const isDesktopOnly = useMediaQuery({ above: 'md' });
-    const inputRef = useRef<HTMLInputElement>();
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
       if (autofocusOnDesktop && isDesktopOnly) {

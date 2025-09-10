@@ -6,7 +6,7 @@ import reactConfig from '@smg-automotive/eslint-config/react';
 export default [
   ...reactConfig,
   {
-    ignores: ['!/.storybook', '!/.jest', '!.prettierrc.mjs', '/coverage'],
+    ignores: ['!/.storybook', '!/jest-utils', '!.prettierrc.mjs', '/coverage'],
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -34,7 +34,7 @@ export default [
             './**/*.Test.@(ts|tsx)',
             'rollup.config.mjs',
             'postcss.config.js',
-            './.jest/**/*',
+            './jest-utils/**/*',
             './.storybook/**/*',
             './**/StorybookShared.tsx',
           ],
@@ -60,13 +60,13 @@ export default [
             {
               name: '@testing-library/react',
               message:
-                'Do not import helpers from @testing-library/react directly. Use .jest/utils instead.',
+                'Do not import helpers from @testing-library/react directly. Use jest-utils/utils instead.',
             },
             {
               name: 'src/components/themeProvider',
               importNames: ['default'],
               message:
-                'ThemeProvider is already provided by shared provider defined in .jest/utils.',
+                'ThemeProvider is already provided by shared provider defined in jest-utils/utils.',
             },
           ],
         },
