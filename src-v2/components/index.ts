@@ -71,7 +71,6 @@ export { default as Tab } from './tab/Tab';
 export { default as TabList } from './tab/TabList';
 export { default as TabPanel } from './tab/TabPanel';
 export { default as TabPanels } from './tab/TabPanels';
-export { default as Modal } from './modal';
 export { default as ModalCloseButton } from './modal/ModalCloseButton';
 export { default as HeaderNavigation } from './navigation/header';
 export { type UserTypeExternal } from './navigation/header/types';

@@ -10,6 +10,7 @@ import { listRecipe as list } from './list';
 import { inputSlotRecipe as input } from './input';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
+import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
@@ -22,6 +23,7 @@ export const slotRecipes = {
   energyLabel,
   list,
   markedText,
+  dialog,
   simpleHeader,
   table,
   vehicleReference,
