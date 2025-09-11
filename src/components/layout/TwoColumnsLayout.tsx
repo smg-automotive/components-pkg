@@ -1,13 +1,12 @@
 import React, { FC, ReactNode } from 'react';
-
 import { GridItem, Heading } from '@chakra-ui/react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from 'src/themes/shared/tokens/sizes';
 
-import Link from '../link';
+import { Link } from '../link';
 import { ArrowLeftIcon } from '../icons';
-import BaseLayout from './BaseLayout';
-import BaseGridLayout, { repeatArea } from './BaseGrid';
+import { BaseLayout } from './BaseLayout';
+import { BaseGridLayout, repeatArea } from './BaseGrid';
 
 export type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
@@ -31,7 +30,18 @@ export interface TwoColumnsLayoutProps {
   maxContentWidth?: keyof typeof sizes.container;
 }
 
-const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
+const isRenderable = (value: ReactNode) => {
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean' ||
+    value === null ||
+    value === undefined ||
+    React.isValidElement(value)
+  );
+};
+
+export const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
   const {
     header,
     title,
@@ -67,11 +77,12 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
         {props.backLink ? (
           <GridItem area="backlink">
             {typeof props.backLink === 'object' && 'url' in props.backLink ? (
-              <Link href={props.backLink.url} leftIcon={<ArrowLeftIcon />}>
+              <Link href={props.backLink.url}>
+                <ArrowLeftIcon />
                 {props.backLink.text}
               </Link>
             ) : (
-              props.backLink
+              isRenderable(props.backLink) && props.backLink
             )}
           </GridItem>
         ) : null}
@@ -96,5 +107,3 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = (props) => {
     </BaseLayout>
   );
 };
-
-export default TwoColumnsLayout;
