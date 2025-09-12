@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
 
-import Button from '../button';
+import { Button } from '../button';
 import { FilterPatternProps } from './props';
 
 export type ActionButtonProps = {

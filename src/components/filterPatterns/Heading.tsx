@@ -2,14 +2,14 @@ import React, { FC, RefObject } from 'react';
 import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
-import TranslationProvider from 'src/components/translationProvider';
-import Text from 'src/components/text';
-import Link from 'src/components/link';
+import { TranslationProvider } from 'src/components/translationProvider';
+import { Text } from 'src/components/text';
+import { Link } from 'src/components/link';
 import { CloseIcon } from 'src/components/icons';
 
-import Flex from 'src/components/flex';
+import { Flex } from 'src/components/flex';
 
-import Count from '../count';
+import { Count } from '../count';
 import { FilterPatternProps } from './props';
 
 export type Props = {
@@ -54,9 +54,11 @@ export const FilterHeading: FC<Props> = ({
               {onClose ? (
                 <IconButton
                   aria-label={t('filterSelectButton.close')}
-                  icon={<CloseIcon color="gray.800" />}
                   onClick={onClose}
-                />
+                  cursor="pointer"
+                >
+                  <CloseIcon color="gray.800" />
+                </IconButton>
               ) : null}
             </Flex>
             <Link

@@ -1,34 +1,34 @@
 import React, { FC } from 'react';
-import {
-  ButtonProps,
-  chakra,
-  Button as ChakraButton,
-  ResponsiveValue,
-} from '@chakra-ui/react';
+import { chakra, Button as ChakraButton } from '@chakra-ui/react';
 
+import { spacing } from 'src/themes/shared/tokens/spacing';
+import { Colors } from 'src/themes/shared/tokens/colors';
+import { Size } from 'src/themes/shared/slotRecipes/dialog';
 import { ChevronRightSmallIcon } from 'src/components/icons';
 
-import { FilterPatternProps } from '../props';
+import { ModalFilterProps } from './props';
+
+export type Space = keyof typeof spacing;
 
 export type PaddingX = '0' | 'md';
 type Variant = 'sm' | 'md';
 type Props = Pick<
-  FilterPatternProps,
+  ModalFilterProps,
   'label' | 'displayValue' | 'Icon' | 'isApplied'
-> &
-  Pick<ButtonProps, 'backgroundColor'> & {
-    onClick: () => void;
-    variant?: Variant;
-    isDisabled?: boolean;
-    paddingX?: PaddingX;
-  };
+> & {
+  onClick: () => void;
+  variant?: Variant;
+  isDisabled?: boolean;
+  paddingX?: PaddingX;
+  backgroundColor?: Colors;
+};
 
-const paddingY: Record<Variant, ResponsiveValue<string>> = {
+const paddingY: Record<Variant, Space> = {
   sm: 'sm',
   md: 'md',
 };
 
-const height: Record<Variant, ResponsiveValue<string>> = {
+const height: Record<Variant, Size> = {
   sm: 'md',
   md: 'lg',
 };
@@ -41,23 +41,20 @@ export const OpenFilterButton: FC<Props> = ({
   onClick,
   variant = 'md',
   isDisabled = false,
-  paddingX = 0,
-  backgroundColor = 'unset',
+  paddingX = '0',
+  backgroundColor = 'none',
 }) => {
   return (
     <ChakraButton
       onClick={onClick}
-      rightIcon={
-        <ChevronRightSmallIcon color={isDisabled ? 'gray.300' : 'gray.500'} />
-      }
       display="flex"
       justifyContent="space-between"
       w="full"
       h={height[variant]}
       paddingX={paddingX}
       paddingY={paddingY[variant]}
-      isDisabled={isDisabled}
-      cursor={isDisabled ? 'not-allowed' : 'pointer'}
+      disabled={isDisabled}
+      cursor={isDisabled ? 'notAllowed' : 'pointer'}
       color={isDisabled ? 'gray.300' : 'gray.900'}
       backgroundColor={backgroundColor}
     >
@@ -84,6 +81,7 @@ export const OpenFilterButton: FC<Props> = ({
         >
           {displayValue && isApplied ? displayValue : null}
         </chakra.span>
+        <ChevronRightSmallIcon color={isDisabled ? 'gray.300' : 'gray.500'} />
       </chakra.span>
     </ChakraButton>
   );

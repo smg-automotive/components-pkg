@@ -1,9 +1,8 @@
-import { ButtonProps } from '@chakra-ui/react';
-
-import { FilterPatternProps } from '../props';
-import { ActionButtonProps } from '../ActionButton';
+import { Colors } from 'src/themes/shared/tokens/colors';
 
 import { PaddingX } from './OpenFilterButton';
+import { FilterPatternProps } from '../props';
+import { ActionButtonProps } from '../ActionButton';
 
 export type ModalFilterProps = FilterPatternProps &
   Omit<ActionButtonProps, 'onClose'> & {
@@ -12,4 +11,5 @@ export type ModalFilterProps = FilterPatternProps &
     initialModalState?: 'open' | 'closed';
     isDisabled?: boolean;
     paddingX?: PaddingX;
-  } & Pick<ButtonProps, 'backgroundColor'>;
+    backgroundColor?: Colors;
+  };
