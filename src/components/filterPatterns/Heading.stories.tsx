@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from 'src/index';
 
-import { FilterHeading } from './Heading';
+import { FilterHeading } from '../filterPatterns/Heading';
 
 const meta: Meta<typeof FilterHeading> = {
   title: 'Patterns/Filter/Heading',
@@ -12,7 +12,7 @@ const meta: Meta<typeof FilterHeading> = {
   decorators: [
     (Story) => (
       <Box
-        width="300px"
+        width="[300px]"
         p="sm"
         border="1px"
         borderColor="gray.300"

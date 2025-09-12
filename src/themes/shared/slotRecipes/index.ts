@@ -10,6 +10,7 @@ import { listRecipe as list } from './list';
 import { inputSlotRecipe as input } from './input';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
+import { dialogFilterRecipe as dialogFilter } from './dialogFilter';
 import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
@@ -34,4 +35,5 @@ export const slotRecipes = {
   switch: switchRecipe,
   input,
   select,
+  dialogFilter,
 };
