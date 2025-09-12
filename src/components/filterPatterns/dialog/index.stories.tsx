@@ -32,7 +32,7 @@ const meta: Meta<typeof DialogFilter> = {
   component: DialogFilter,
   decorators: [
     (Story) => (
-      <Box w="[300px]">
+      <Box w="5xl">
         <Story />
       </Box>
     ),

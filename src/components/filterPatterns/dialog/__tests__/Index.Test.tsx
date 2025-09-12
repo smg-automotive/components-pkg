@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '.jest/utils';
 
 import { ModalFilterProps } from '../props';
-import { ModalFilter } from '../index';
+import { DialogFilter } from '../index';
 
 const validProps: ModalFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },
@@ -18,9 +18,9 @@ const validProps: ModalFilterProps = {
 describe('<ModalFilter />', () => {
   it('should open the modal if you click on the button', async () => {
     render(
-      <ModalFilter {...validProps}>
+      <DialogFilter {...validProps}>
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
 
     expect(screen.queryByText('Modal content')).toBeNull();
@@ -31,9 +31,13 @@ describe('<ModalFilter />', () => {
   it('should be possible to reset the filter on the modal', async () => {
     const mockOnReset = jest.fn();
     render(
-      <ModalFilter {...validProps} isApplied={true} onResetFilter={mockOnReset}>
+      <DialogFilter
+        {...validProps}
+        isApplied={true}
+        onResetFilter={mockOnReset}
+      >
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
 
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
@@ -45,9 +49,9 @@ describe('<ModalFilter />', () => {
 
   it('should show a close button if no filter is applied', async () => {
     render(
-      <ModalFilter {...validProps} isApplied={false}>
+      <DialogFilter {...validProps} isApplied={false}>
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the bottom and on the top right
@@ -58,13 +62,13 @@ describe('<ModalFilter />', () => {
 
   it('should show no action button', async () => {
     render(
-      <ModalFilter
+      <DialogFilter
         {...validProps}
         isApplied={false}
         showCallToActionButton={false}
       >
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button on the top right
@@ -76,13 +80,13 @@ describe('<ModalFilter />', () => {
   it('should show the primary action button if a filter is applied', async () => {
     const mockSearchButton = jest.fn();
     render(
-      <ModalFilter
+      <DialogFilter
         {...validProps}
         isApplied={true}
         actionButton={{ label: 'Search', onClick: mockSearchButton }}
       >
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     // close button at the top right
@@ -95,9 +99,9 @@ describe('<ModalFilter />', () => {
 
   it('should show a custom header', async () => {
     render(
-      <ModalFilter {...validProps} header={<div>custom header</div>}>
+      <DialogFilter {...validProps} header={<div>custom header</div>}>
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     expect(await screen.findByText('custom header')).toBeInTheDocument();
@@ -106,9 +110,9 @@ describe('<ModalFilter />', () => {
   it('should call the callback if the modal opens', async () => {
     const mockOnOpen = jest.fn();
     render(
-      <ModalFilter {...validProps} onModalOpen={mockOnOpen}>
+      <DialogFilter {...validProps} onModalOpen={mockOnOpen}>
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
     await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
@@ -117,9 +121,9 @@ describe('<ModalFilter />', () => {
   it('should call the callback if the modal closes', async () => {
     const mockOnClose = jest.fn();
     render(
-      <ModalFilter {...validProps} onModalClose={mockOnClose} isApplied={true}>
+      <DialogFilter {...validProps} onModalClose={mockOnClose} isApplied={true}>
         <div>Modal content</div>
-      </ModalFilter>,
+      </DialogFilter>,
     );
     await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
 

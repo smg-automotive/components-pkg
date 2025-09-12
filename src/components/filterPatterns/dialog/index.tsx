@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import {
   Dialog as ChakraDialog,
+  Portal,
   useDisclosure,
   useSlotRecipe,
 } from '@chakra-ui/react';
@@ -59,56 +60,58 @@ export const DialogFilter: FC<ModalFilterProps> = ({
           open={open}
           onOpenChange={(e) => (e.open ? onOpen() : onClose())}
         >
-          <ChakraDialog.Positioner>
-            <ChakraDialog.Content
-              h="full"
-              w="full"
-              paddingY="2xl"
-              paddingX="0"
-              borderRadius="none"
-              css={styles.content}
-            >
-              <ChakraDialog.Header
-                display="flex"
-                flexDirection="column"
-                alignItems="flex-start"
-                paddingY="0"
-                paddingX="2xl"
+          <Portal>
+            <ChakraDialog.Positioner>
+              <ChakraDialog.Content
+                h="full"
+                w="full"
+                paddingY="2xl"
+                paddingX="0"
+                borderRadius="none"
+                css={styles.content}
               >
-                {header ? (
-                  header
-                ) : (
-                  <FilterHeading
-                    language={language}
-                    Icon={Icon}
-                    isApplied={isApplied}
-                    label={label}
-                    numberOfAppliedFilters={numberOfAppliedFilters}
-                    onClose={onClose}
-                    onResetFilter={() => onResetFilter('filter')}
-                  />
-                )}
-              </ChakraDialog.Header>
-              <ChakraDialog.Body
-                overflowY="auto"
-                marginTop="2xl"
-                marginBottom={showCallToActionButton ? '2xl' : '0'}
-                paddingY="0"
-                paddingX="2xl"
-              >
-                {children}
-              </ChakraDialog.Body>
-              {showCallToActionButton ? (
-                <ChakraDialog.Footer paddingY="0" paddingX="2xl">
-                  <FilterActionButton
-                    actionButton={actionButton}
-                    isApplied={isApplied}
-                    onClose={onClose}
-                  />
-                </ChakraDialog.Footer>
-              ) : null}
-            </ChakraDialog.Content>
-          </ChakraDialog.Positioner>
+                <ChakraDialog.Header
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="flex-start"
+                  paddingY="0"
+                  paddingX="2xl"
+                >
+                  {header ? (
+                    header
+                  ) : (
+                    <FilterHeading
+                      language={language}
+                      Icon={Icon}
+                      isApplied={isApplied}
+                      label={label}
+                      numberOfAppliedFilters={numberOfAppliedFilters}
+                      onClose={onClose}
+                      onResetFilter={() => onResetFilter('filter')}
+                    />
+                  )}
+                </ChakraDialog.Header>
+                <ChakraDialog.Body
+                  overflowY="auto"
+                  marginTop="2xl"
+                  marginBottom={showCallToActionButton ? '2xl' : '0'}
+                  paddingY="0"
+                  paddingX="2xl"
+                >
+                  {children}
+                </ChakraDialog.Body>
+                {showCallToActionButton ? (
+                  <ChakraDialog.Footer paddingY="0" paddingX="2xl">
+                    <FilterActionButton
+                      actionButton={actionButton}
+                      isApplied={isApplied}
+                      onClose={onClose}
+                    />
+                  </ChakraDialog.Footer>
+                ) : null}
+              </ChakraDialog.Content>
+            </ChakraDialog.Positioner>
+          </Portal>
         </ChakraDialog.Root>
       </>
     </TranslationProvider>
