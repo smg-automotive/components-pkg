@@ -4,7 +4,7 @@ export const onlineAdvertisingLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.onlineAdvertising',
   link: {
     de: '/de/contact',
-    en: '/de/contact',
+    en: '/en/contact',
     fr: '/fr/contact',
     it: '/it/contact',
   },
