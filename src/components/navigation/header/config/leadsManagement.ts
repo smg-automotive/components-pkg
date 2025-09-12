@@ -3,10 +3,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const leadsManagementLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.contactRequests',
   link: {
-    de: '/de/member/messagemanager',
-    en: '/de/member/messagemanager',
-    fr: '/fr/member/messagemanager',
-    it: '/it/member/messagemanager',
+    de: '/de/message-manager',
+    en: '/de/message-manager',
+    fr: '/fr/message-manager',
+    it: '/it/message-manager',
   },
   visibilitySettings: {
     userType: {
