@@ -288,7 +288,7 @@ describe('Header', () => {
     };
     const legacyWebLink = {
       name: 'Kontaktanfragen',
-      pathname: '/de/member/messagemanager',
+      pathname: '/de/message-manager',
     };
 
     it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {
