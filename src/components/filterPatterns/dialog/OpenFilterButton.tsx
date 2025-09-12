@@ -6,14 +6,14 @@ import { Colors } from 'src/themes/shared/tokens/colors';
 import { Size } from 'src/themes/shared/slotRecipes/dialog';
 import { ChevronRightSmallIcon } from 'src/components/icons';
 
-import { ModalFilterProps } from './props';
+import { DialogFilterProps } from './props';
 
 export type Space = keyof typeof spacing;
 
 export type PaddingX = '0' | 'md';
 type Variant = 'sm' | 'md';
 type Props = Pick<
-  ModalFilterProps,
+  DialogFilterProps,
   'label' | 'displayValue' | 'Icon' | 'isApplied'
 > & {
   onClick: () => void;

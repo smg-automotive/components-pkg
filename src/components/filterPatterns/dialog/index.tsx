@@ -11,20 +11,20 @@ import { TranslationProvider } from 'src/components/translationProvider';
 import { FilterHeading } from '../Heading';
 import FilterActionButton from '../ActionButton';
 
-import { ModalFilterProps } from './props';
+import { DialogFilterProps } from './props';
 import { OpenFilterButton } from './OpenFilterButton';
 
-export const DialogFilter: FC<ModalFilterProps> = ({
+export const DialogFilter: FC<DialogFilterProps> = ({
   actionButton,
   displayValue,
-  initialModalState = 'closed',
+  initialDialogState = 'closed',
   Icon,
   isApplied,
   label,
   language,
   numberOfAppliedFilters,
-  onModalClose,
-  onModalOpen,
+  onDialogClose,
+  onDialogOpen,
   onResetFilter,
   showCallToActionButton = true,
   header,
@@ -34,9 +34,9 @@ export const DialogFilter: FC<ModalFilterProps> = ({
   backgroundColor,
 }) => {
   const { onOpen, onClose, open } = useDisclosure({
-    defaultOpen: initialModalState === 'open',
-    onOpen: onModalOpen,
-    onClose: onModalClose,
+    defaultOpen: initialDialogState === 'open',
+    onOpen: onDialogOpen,
+    onClose: onDialogClose,
   });
 
   const recipe = useSlotRecipe({ key: 'dialogFilter' });

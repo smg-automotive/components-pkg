@@ -4,11 +4,11 @@ import { PaddingX } from './OpenFilterButton';
 import { FilterPatternProps } from '../props';
 import { ActionButtonProps } from '../ActionButton';
 
-export type ModalFilterProps = FilterPatternProps &
+export type DialogFilterProps = FilterPatternProps &
   Omit<ActionButtonProps, 'onClose'> & {
-    onModalOpen?: () => void;
-    onModalClose?: () => void;
-    initialModalState?: 'open' | 'closed';
+    onDialogOpen?: () => void;
+    onDialogClose?: () => void;
+    initialDialogState?: 'open' | 'closed';
     isDisabled?: boolean;
     paddingX?: PaddingX;
     backgroundColor?: Colors;

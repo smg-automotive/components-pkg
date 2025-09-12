@@ -28,7 +28,7 @@ const CustomHeader = () => (
 );
 
 const meta: Meta<typeof DialogFilter> = {
-  title: 'Patterns/Filter/Modal',
+  title: 'Patterns/Filter/Dialog',
   component: DialogFilter,
   decorators: [
     (Story) => (
@@ -52,8 +52,8 @@ const meta: Meta<typeof DialogFilter> = {
     showCallToActionButton: true,
     isApplied: false,
     isDisabled: false,
-    onModalOpen: action('onModalOpen'),
-    onModalClose: action('onModalClose'),
+    onDialogOpen: action('onDialogOpen'),
+    onDialogClose: action('onDialogClose'),
     onResetFilter: action('onResetFilter'),
     children: (
       <CheckboxFilter
@@ -98,7 +98,7 @@ const meta: Meta<typeof DialogFilter> = {
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
-    initialModalState: {
+    initialDialogState: {
       control: 'select',
     },
     paddingX: {
