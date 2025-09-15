@@ -14,15 +14,13 @@ const useToken = (
   const category = context.tokens.getCategoryValues(scale);
 
   const value = token.map((t, i) => {
-    if (category) {
-      return (
-        category[t] || (fallback && fallback[i] !== undefined ? fallback[i] : t)
-      );
-    } else if (fallback) {
-      return fallback[i] !== undefined ? fallback[i] : t;
-    } else {
-      return t;
+    if (category?.[t] !== undefined) {
+      return category[t];
     }
+    if (fallback?.[i] !== undefined) {
+      return fallback[i];
+    }
+    return t;
   });
 
   return value;
