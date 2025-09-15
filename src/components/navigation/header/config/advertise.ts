@@ -3,10 +3,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const onlineAdvertisingLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.onlineAdvertising',
   link: {
-    de: '/de/member/displayads',
-    en: '/de/member/displayads',
-    fr: '/fr/member/displayads',
-    it: '/it/member/displayads',
+    de: '/de/contact',
+    en: '/en/contact',
+    fr: '/fr/contact',
+    it: '/it/contact',
   },
   visibilitySettings: {
     userType: {
