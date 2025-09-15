@@ -18,9 +18,7 @@ const TokenDemo = ({
   return (
     <Box>
       <Heading as="h4">Returned values: </Heading>
-      {values.map((value, i) => (
-        <Text key={i}>{value}</Text>
-      ))}
+      <Text>[{values.map((value) => `"${value}"`).join(', ')}]</Text>
     </Box>
   );
 };
