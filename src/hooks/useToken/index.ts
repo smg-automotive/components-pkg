@@ -15,9 +15,11 @@ const useToken = (
 
   const value = token.map((t, i) => {
     if (category) {
-      return category[t] || (fallback ? fallback[i] : t);
+      return (
+        category[t] || (fallback && fallback[i] !== undefined ? fallback[i] : t)
+      );
     } else if (fallback) {
-      return fallback[i];
+      return fallback[i] !== undefined ? fallback[i] : t;
     } else {
       return t;
     }
