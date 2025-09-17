@@ -12,7 +12,7 @@ const meta: Meta<typeof FilterHeading> = {
   decorators: [
     (Story) => (
       <Box
-        width="[300px]"
+        width="6xl"
         p="sm"
         border="1px"
         borderColor="gray.300"

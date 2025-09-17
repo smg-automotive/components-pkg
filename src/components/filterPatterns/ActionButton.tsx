@@ -17,7 +17,7 @@ export type ActionButtonProps = {
   onClose: () => void;
 } & Pick<FilterPatternProps, 'isApplied'>;
 
-const FilterActionButton: FC<ActionButtonProps> = ({
+export const FilterActionButton: FC<ActionButtonProps> = ({
   isApplied,
   actionButton,
   onClose,
@@ -41,5 +41,3 @@ const FilterActionButton: FC<ActionButtonProps> = ({
     </Button>
   );
 };
-
-export default FilterActionButton;

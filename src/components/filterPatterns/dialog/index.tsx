@@ -9,7 +9,7 @@ import {
 import { TranslationProvider } from 'src/components/translationProvider';
 
 import { FilterHeading } from '../Heading';
-import FilterActionButton from '../ActionButton';
+import { FilterActionButton } from '../ActionButton';
 
 import { DialogFilterProps } from './props';
 import { OpenFilterButton } from './OpenFilterButton';
@@ -40,8 +40,7 @@ export const DialogFilter: FC<DialogFilterProps> = ({
   });
 
   const recipe = useSlotRecipe({ key: 'dialogFilter' });
-  const [recipeProps] = recipe.splitVariantProps({});
-  const styles = recipe(recipeProps);
+  const styles = recipe(recipe);
 
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
