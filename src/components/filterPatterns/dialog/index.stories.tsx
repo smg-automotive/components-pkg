@@ -2,13 +2,13 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Text from 'src/components/text';
+import { Text } from 'src/components/text';
 import { ChevronLeftSmallIcon, FlashIcon } from 'src/components/icons';
-import Flex from 'src/components/flex';
-import CheckboxFilter from 'src/components/checkboxFilter';
-import Box from 'src/components/box';
+import { Flex } from 'src/components/flex';
+import { CheckboxFilter } from 'src/components/checkboxFilter';
+import { Box } from 'src/components/box';
 
-import { ModalFilter } from './index';
+import { DialogFilter } from './index';
 
 const CustomHeader = () => (
   <Flex justifyContent="center" alignItems="center" width="full">
@@ -27,12 +27,12 @@ const CustomHeader = () => (
   </Flex>
 );
 
-const meta: Meta<typeof ModalFilter> = {
-  title: 'Patterns/Filter/Modal',
-  component: ModalFilter,
+const meta: Meta<typeof DialogFilter> = {
+  title: 'Patterns/Filter/Dialog',
+  component: DialogFilter,
   decorators: [
     (Story) => (
-      <Box w="300px">
+      <Box w="5xl">
         <Story />
       </Box>
     ),
@@ -52,8 +52,8 @@ const meta: Meta<typeof ModalFilter> = {
     showCallToActionButton: true,
     isApplied: false,
     isDisabled: false,
-    onModalOpen: action('onModalOpen'),
-    onModalClose: action('onModalClose'),
+    onDialogOpen: action('onDialogOpen'),
+    onDialogClose: action('onDialogClose'),
     onResetFilter: action('onResetFilter'),
     children: (
       <CheckboxFilter
@@ -98,7 +98,7 @@ const meta: Meta<typeof ModalFilter> = {
       options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
-    initialModalState: {
+    initialDialogState: {
       control: 'select',
     },
     paddingX: {
@@ -112,7 +112,7 @@ const meta: Meta<typeof ModalFilter> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof ModalFilter>;
+type StoryType = StoryObj<typeof DialogFilter>;
 export const DefaultEmpty: StoryType = {
   name: 'Default empty',
 
