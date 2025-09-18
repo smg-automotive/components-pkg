@@ -133,8 +133,8 @@ export const ProfessionalWithoutOptimizer: StoryType = {
     user: {
       email: 'engineering@smg.ch',
       email_verified: true,
-      sub: 'auth0|648ac71d25762ac63edd338d',
-      sid: 'W8AtOcv69YRkot9aoO1KZppp83mNWbjV',
+      sub: 'auth0|648ac71d25762',
+      sid: 'W8AtOcvp83mNWbjV',
       isImpersonated: false,
       userId: '1001',
       forceTenantSelection: false,
@@ -152,8 +152,8 @@ export const ProfessionalWithOptimizerPro: StoryType = {
     user: {
       email: 'engineering@smg.ch',
       email_verified: true,
-      sub: 'auth0|648ac71d25762ac63edd338d',
-      sid: 'W8AtOcv69YRkot9aoO1KZppp83mNWbjV',
+      sub: 'auth0|648ac71d257338d',
+      sid: 'W8AtOpp83mNWbjV',
       isImpersonated: false,
       userId: '1001',
       forceTenantSelection: false,
@@ -179,8 +179,8 @@ export const ProfessionalWithOptimizerBasic: StoryType = {
     user: {
       email: 'engineering@smg.ch',
       email_verified: true,
-      sub: 'auth0|648ac71d25762ac63edd338d',
-      sid: 'W8AtOcv69YRkot9aoO1KZppp83mNWbjV',
+      sub: 'auth0|648a338d',
+      sid: 'W8AtOcv69YRmNWbjV',
       isImpersonated: false,
       userId: '1001',
       forceTenantSelection: false,
