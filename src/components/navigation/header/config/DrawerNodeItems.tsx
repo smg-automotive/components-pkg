@@ -49,7 +49,7 @@ import {
   qualilogoLinkConfig,
 } from './Presence';
 import { getPartnerHubLinkConfig } from './partnerHub';
-import { optimizerLinkConfig, optimizerProLinkConfig } from './Optimizer';
+import { optimizerLinkConfig } from './Optimizer';
 
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
@@ -124,7 +124,6 @@ const getUserNodeItems = ({
       autoScoutVehiclesLinkConfig,
       motoScoutVehiclesLinkConfig,
       optimizerLinkConfig,
-      optimizerProLinkConfig,
       cockpitLinkConfig,
       printableVehiclesListLinkConfig,
       carParkLinkConfig,
