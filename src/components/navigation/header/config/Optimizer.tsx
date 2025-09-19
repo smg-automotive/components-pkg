@@ -3,7 +3,7 @@ import { Entitlement } from 'src/types/entitlements';
 import { NavigationLinkConfigProps } from './headerLinks';
 
 export const optimizerLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.optimizer',
+  translationKey: 'header.userMenu.optimizerPro',
   link: {
     de: 'https://b2b.autoscout24.ch/aboss/optimizer-2',
     en: 'https://b2b.autoscout24.ch/aboss/optimizer-2',
