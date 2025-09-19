@@ -5,6 +5,7 @@ import { separatorRecipe as separator } from './separator';
 import { ratingRecipe as rating } from './rating';
 import { linkRecipe as link } from './link';
 import { countRecipe as count } from './count';
+import { closeButtonRecipe as closeButton } from './closeButton';
 import { badgeRecipe as badge } from './badge';
 import { avatarRecipe as avatar } from './avatar';
 
@@ -18,4 +19,5 @@ export const recipes = {
   spinner,
   textarea,
   count,
+  closeButton,
 };
