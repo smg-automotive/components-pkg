@@ -12,7 +12,6 @@ export * from './card';
 export { default as Carousel } from './carousel';
 export { default as Center } from './center';
 export { type Item as CheckboxFilterItem } from './checkboxFilter/type';
-export { default as CheckboxGroup } from './checkboxGroup';
 export { default as DatePicker } from './datePicker';
 export { default as Drawer } from './drawer';
 export { default as DrawerBody } from './drawer/DrawerBody';
