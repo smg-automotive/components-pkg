@@ -44,7 +44,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
 
       {checkboxes?.map((item, index) => (
         <Fragment key={item.name}>
-          <Box ps="md">
+          <Box ps="md" asChild>
             <Checkbox
               name={item.name}
               label={item.label}
