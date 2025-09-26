@@ -23,10 +23,10 @@ export const printableVehiclesListLinkConfig: NavigationLinkConfigProps = {
 export const printCenterLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.printingCenter',
   link: {
-    de: '/de/member/printcenter?status=30',
-    en: '/de/member/printcenter?status=30',
-    fr: '/fr/member/printcenter?status=30',
-    it: '/it/member/printcenter?status=30',
+    de: '/de/vehicle-management',
+    en: '/en/vehicle-management',
+    fr: '/fr/vehicle-management',
+    it: '/it/vehicle-management',
   },
   visibilitySettings: {
     userType: {
