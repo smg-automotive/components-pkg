@@ -15,6 +15,7 @@ import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
+import { alertRecipe as alert } from './alert';
 import { accordionRecipe as accordion } from './accordion';
 
 export const slotRecipes = {
@@ -36,4 +37,5 @@ export const slotRecipes = {
   input,
   select,
   dialogFilter,
+  alert,
 };
