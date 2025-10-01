@@ -45,7 +45,7 @@ export const Alert: FC<AlertProps> = (props) => {
 
   return open || !dismissible ? (
     <ChakraAlert.Root css={styles.root} status={type}>
-      <ChakraAlert.Indicator css={styles.alertIndicator}>
+      <ChakraAlert.Indicator css={styles.indicator}>
         {icon}
       </ChakraAlert.Indicator>
       <ChakraAlert.Content>
