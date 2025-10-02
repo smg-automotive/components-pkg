@@ -18,6 +18,7 @@ const meta: Meta<typeof useToast> = {
     title: 'Your browser is outdated!',
     description: 'Your experience may be degraded.',
     icon: <ErrorIcon />,
+    duration: 5000,
   },
 
   argTypes: {
@@ -40,6 +41,17 @@ const meta: Meta<typeof useToast> = {
 
     icon: {
       control: 'none',
+    },
+
+    duration: {
+      options: [2000, 5000, 10000, 'infinite'],
+      control: { type: 'select' },
+      mapping: {
+        infinite: null,
+        2000: 2000,
+        5000: 5000,
+        10000: 10000,
+      },
     },
   },
 };

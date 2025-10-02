@@ -3,7 +3,6 @@ import React, { useRef } from 'react';
 import {
   useToast as chakraUseToast,
   ToastId,
-  ToastPosition,
   UseToastOptions,
 } from '@chakra-ui/react';
 
