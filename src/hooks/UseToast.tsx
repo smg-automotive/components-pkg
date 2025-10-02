@@ -4,13 +4,13 @@ import {
   useToast as chakraUseToast,
   ToastId,
   ToastPosition,
+  UseToastOptions,
 } from '@chakra-ui/react';
 
 import BareAlert, { BareAlertProps } from '../components/alert/Bare';
 
-export interface ToastOptions extends BareAlertProps {
-  position?: ToastPosition;
-}
+export type ToastOptions = BareAlertProps &
+  Pick<UseToastOptions, 'duration' | 'position'>;
 
 const useToast = () => {
   const toast = chakraUseToast();
@@ -24,9 +24,18 @@ const useToast = () => {
   };
 
   return (options: ToastOptions) => {
-    const { position = 'top', icon, title, description, link, type } = options;
+    const {
+      position = 'top',
+      icon,
+      title,
+      description,
+      link,
+      type,
+      duration,
+    } = options;
 
     const toastId = toast({
+      duration,
       position: position,
       render: () => (
         <BareAlert
