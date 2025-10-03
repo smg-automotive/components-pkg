@@ -2,14 +2,17 @@ import React, { FC } from 'react';
 import {
   Box,
   Alert as ChakraAlert,
+  RecipeVariantProps,
   useDisclosure,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
+import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
+
 import { CloseButton } from '../closeButton';
 import { AlertLink } from './Link';
 
-export interface SharedProps extends ChakraAlert.RootProps {
+export interface SharedProps extends RecipeVariantProps<typeof alertRecipe> {
   description: string;
   title?: string;
   link?: {
@@ -37,8 +40,9 @@ export type AlertProps = DismissibleProps | NonDismissibleProps;
 
 export const Alert: FC<AlertProps> = (props) => {
   const recipe = useSlotRecipe({ key: 'alert' });
+
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
-  const { title, description, link, type, icon, dismissible, ...rest } =
+  const { description, title, link, icon, type, dismissible, onDismiss } =
     restProps;
   const styles = recipe({ ...recipeProps });
   const { open, onClose } = useDisclosure({ defaultOpen: true });
@@ -62,7 +66,7 @@ export const Alert: FC<AlertProps> = (props) => {
           <CloseButton
             onClick={() => {
               onClose();
-              rest.onDismiss?.();
+              onDismiss?.();
             }}
           />
         </Box>
