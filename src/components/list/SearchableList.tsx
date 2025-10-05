@@ -1,4 +1,11 @@
-import React, { FC, forwardRef, useCallback, useEffect, useState } from 'react';
+import React, {
+  FC,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import Fuse, { FuseResult } from 'fuse.js';
 
@@ -19,6 +26,7 @@ export type Props = {
   listAriaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
+  scrollToFirstSelectedItem?: boolean;
 };
 
 type FuseSearch = Fuse<ListItemWithChildren> & {
@@ -101,6 +109,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
       listAriaLabel = 'searchable list',
       searchFieldOptions = {},
       listOptions = { columns: 1, childrenSpacing: 'md' },
+      scrollToFirstSelectedItem = false,
     },
     ref,
   ) => {
@@ -123,6 +132,8 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
     const { columns = 1, childrenSpacing = 'md' } = listOptions;
     const areaId = 'searchableList';
     const { query } = searchState;
+    const listContainerRef = useRef<HTMLUListElement>(null);
+    const hasScrolledToFirstSelected = useRef(false);
 
     useEffect(() => {
       setSearchState((currentState) => {
@@ -146,6 +157,60 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         };
       });
     }, [listItems]);
+
+    useEffect(() => {
+      hasScrolledToFirstSelected.current = false;
+    }, [listItems]);
+
+    useEffect(() => {
+      if (
+        !scrollToFirstSelectedItem ||
+        !listContainerRef.current ||
+        hasScrolledToFirstSelected.current ||
+        searchState.query !== ''
+      ) {
+        return;
+      }
+
+      const findFirstSelectedItem = (
+        items: ListItemWithChildren[],
+      ): ListItemWithChildren | null => {
+        for (const item of items) {
+          if (item.isCheckbox && item.isSelected) {
+            return item;
+          }
+          if (item.children) {
+            for (const child of item.children) {
+              if (child.isCheckbox && child.isSelected) {
+                return child;
+              }
+            }
+          }
+        }
+        return null;
+      };
+
+      const firstSelectedItem = findFirstSelectedItem(searchState.listItems);
+
+      if (firstSelectedItem) {
+        hasScrolledToFirstSelected.current = true;
+        setTimeout(() => {
+          const listContainer = listContainerRef.current;
+          if (!listContainer) return;
+
+          const checkboxElement = listContainer.querySelector(
+            `input[name="searchable-list-item-${firstSelectedItem.value}"]`,
+          );
+
+          if (checkboxElement) {
+            checkboxElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+          }
+        }, 100);
+      }
+    }, [scrollToFirstSelectedItem, searchState.listItems, searchState.query]);
 
     const setSearchQuery = useCallback((newQuery: string) => {
       setSearchState((currentState) => {
@@ -187,6 +252,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
         {searchState.listItems.length > 0 ? (
           <List
+            ref={listContainerRef}
             width="full"
             height="full"
             id={areaId}
