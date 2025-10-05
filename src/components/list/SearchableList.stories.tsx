@@ -111,13 +111,11 @@ const meta: Meta<typeof SearchableList> = {
     listItems,
     searchFieldOptions,
     listOptions = { columns: 1 },
-    scrollToFirstSelectedItem,
   }: Props) => (
     <SearchableList
       listItems={listItems}
       searchFieldOptions={searchFieldOptions}
       listOptions={listOptions}
-      scrollToFirstSelectedItem={scrollToFirstSelectedItem}
     />
   ),
 };
@@ -274,4 +272,3 @@ export const VariantColumns: StoryType = {
     listOptions: { columns: 2, childrenSpacing: '2xl' },
   },
 };
-
