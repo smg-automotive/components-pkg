@@ -172,44 +172,105 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         return;
       }
 
-      const findFirstSelectedItem = (
-        items: ListItemWithChildren[],
-      ): ListItemWithChildren | null => {
+      const findFirstSelected = (items: ListItemWithChildren[]) => {
         for (const item of items) {
-          if (item.isCheckbox && item.isSelected) {
-            return item;
-          }
+          if (item.isCheckbox && item.isSelected) return item;
           if (item.children) {
             for (const child of item.children) {
-              if (child.isCheckbox && child.isSelected) {
-                return child;
-              }
+              if (child.isCheckbox && child.isSelected) return child;
             }
           }
         }
         return null;
       };
 
-      const firstSelectedItem = findFirstSelectedItem(searchState.listItems);
+      const firstSelected = findFirstSelected(searchState.listItems);
+      if (!firstSelected) return;
 
-      if (firstSelectedItem) {
-        hasScrolledToFirstSelected.current = true;
-        setTimeout(() => {
-          const listContainer = listContainerRef.current;
-          if (!listContainer) return;
+      hasScrolledToFirstSelected.current = true;
 
-          const checkboxElement = listContainer.querySelector(
-            `input[name="searchable-list-item-${firstSelectedItem.value}"]`,
-          );
+      const scroll = () => {
+        const container = listContainerRef.current;
+        if (!container) return false;
 
-          if (checkboxElement) {
-            checkboxElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
+        const element = container.querySelector(
+          `input[name="searchable-list-item-${firstSelected.value}"]`,
+        );
+
+        if (!element) return false;
+
+        const rect = element.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return false;
+
+        element.scrollIntoView({ behavior: 'auto', block: 'center' });
+
+        let parent = element.parentElement;
+        while (parent) {
+          const style = window.getComputedStyle(parent);
+          const scrollable =
+            style.overflow === 'auto' ||
+            style.overflow === 'scroll' ||
+            style.overflowY === 'auto' ||
+            style.overflowY === 'scroll';
+
+          if (scrollable && parent.scrollHeight > parent.clientHeight) {
+            const parentRect = parent.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            const targetTop =
+              parent.scrollTop +
+              (elementRect.top - parentRect.top) -
+              parentRect.height / 2;
+
+            parent.scrollTo({ top: targetTop, behavior: 'auto' });
+            requestAnimationFrame(() => {
+              if (parent && Math.abs(parent.scrollTop - targetTop) > 10) {
+                parent.scrollTop = targetTop;
+              }
             });
+            break;
           }
-        }, 100);
-      }
+          parent = parent.parentElement;
+        }
+        return true;
+      };
+
+      if (scroll()) return;
+
+      const container = listContainerRef.current;
+      if (!container) return;
+
+      let attempts = 0;
+      let active = true;
+
+      const observer = new MutationObserver(() => {
+        if (active && scroll()) {
+          observer.disconnect();
+          active = false;
+        }
+      });
+
+      observer.observe(container, { childList: true, subtree: true });
+
+      const attempt = () => {
+        if (!active || ++attempts > 30) {
+          observer.disconnect();
+          active = false;
+          return;
+        }
+        if (!scroll()) requestAnimationFrame(attempt);
+      };
+
+      let frames = 0;
+      const delay = () => {
+        if (++frames > 60) attempt();
+        else requestAnimationFrame(delay);
+      };
+      requestAnimationFrame(delay);
+
+      setTimeout(() => {
+        observer.disconnect();
+        active = false;
+      }, 5000);
     }, [scrollToFirstSelectedItem, searchState.listItems, searchState.query]);
 
     const setSearchQuery = useCallback((newQuery: string) => {
