@@ -3,9 +3,15 @@ import { List as ChakraList, ListProps } from '@chakra-ui/react';
 
 export type Props = PropsWithChildren<Omit<ListProps, 'variant'>>;
 
-const List = forwardRef<HTMLUListElement, Props>(({ children, ...props }, ref) => {
-  return <ChakraList ref={ref} {...props}>{children}</ChakraList>;
-});
+const List = forwardRef<HTMLUListElement, Props>(
+  ({ children, ...props }, ref) => {
+    return (
+      <ChakraList ref={ref} {...props}>
+        {children}
+      </ChakraList>
+    );
+  },
+);
 
 List.displayName = 'List';
 

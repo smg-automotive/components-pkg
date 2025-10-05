@@ -280,7 +280,8 @@ export const ScrollToFirstSelected: StoryType = {
   parameters: {
     docs: {
       description: {
-        story: 'Automatically scrolls to the first selected checkbox item on initial mount.',
+        story:
+          'Automatically scrolls to the first selected checkbox item on initial mount.',
       },
     },
   },
