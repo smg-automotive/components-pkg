@@ -174,10 +174,10 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
 
       const findFirstSelected = (items: ListItemWithChildren[]) => {
         for (const item of items) {
-          if (item.isCheckbox && item.isSelected) return item;
+          if (item.isSelected) return item;
           if (item.children) {
             for (const child of item.children) {
-              if (child.isCheckbox && child.isSelected) return child;
+              if (child.isSelected) return child;
             }
           }
         }
@@ -194,7 +194,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         if (!container) return false;
 
         const element = container.querySelector(
-          `input[name="searchable-list-item-${firstSelected.value}"]`,
+          `input[name="searchable-list-item-${firstSelected.value}"], button[name="searchable-list-item-${firstSelected.value}"]`,
         );
 
         if (!element) return false;
