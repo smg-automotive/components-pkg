@@ -19,7 +19,7 @@ export type Props = {
   listAriaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
-  listRef?: (element: HTMLUListElement | null) => void;
+  listRef?: React.RefObject<HTMLUListElement | null>;
 };
 
 type FuseSearch = Fuse<ListItemWithChildren> & {
