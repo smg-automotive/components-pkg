@@ -202,8 +202,6 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         const rect = element.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) return false;
 
-        element.scrollIntoView({ behavior: 'auto', block: 'center' });
-
         let parent = element.parentElement;
         while (parent) {
           const style = window.getComputedStyle(parent);
@@ -222,11 +220,6 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
               parentRect.height / 2;
 
             parent.scrollTo({ top: targetTop, behavior: 'auto' });
-            requestAnimationFrame(() => {
-              if (parent && Math.abs(parent.scrollTop - targetTop) > 10) {
-                parent.scrollTop = targetTop;
-              }
-            });
             break;
           }
           parent = parent.parentElement;
