@@ -8,7 +8,8 @@ import {
 } from '@smg-automotive/auth/fixtures';
 
 import { Brand } from 'src/types/brand';
-import { act, fireEvent, render, screen, within } from '.jest/utils';
+
+import { act, fireEvent, render, screen, within } from 'jest-utils';
 
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationLink } from '../config/headerNavigationLink';
@@ -287,7 +288,7 @@ describe('Header', () => {
     };
     const legacyWebLink = {
       name: 'Kontaktanfragen',
-      pathname: '/de/member/messagemanager',
+      pathname: '/de/message-manager',
     };
 
     it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {
