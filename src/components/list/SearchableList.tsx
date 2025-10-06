@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { FC, forwardRef, useCallback, useEffect, useState } from 'react';
 
 import Fuse, { FuseResult } from 'fuse.js';
 
@@ -26,7 +19,7 @@ export type Props = {
   listAriaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
-  scrollToFirstSelectedItem?: boolean;
+  listRef?: (element: HTMLUListElement | null) => void;
 };
 
 type FuseSearch = Fuse<ListItemWithChildren> & {
@@ -109,7 +102,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
       listAriaLabel = 'searchable list',
       searchFieldOptions = {},
       listOptions = { columns: 1, childrenSpacing: 'md' },
-      scrollToFirstSelectedItem = false,
+      listRef,
     },
     ref,
   ) => {
@@ -132,8 +125,6 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
     const { columns = 1, childrenSpacing = 'md' } = listOptions;
     const areaId = 'searchableList';
     const { query } = searchState;
-    const listContainerRef = useRef<HTMLUListElement>(null);
-    const hasScrolledToFirstSelected = useRef(false);
 
     useEffect(() => {
       setSearchState((currentState) => {
@@ -157,114 +148,6 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         };
       });
     }, [listItems]);
-
-    useEffect(() => {
-      hasScrolledToFirstSelected.current = false;
-    }, [listItems]);
-
-    useEffect(() => {
-      if (
-        !scrollToFirstSelectedItem ||
-        !listContainerRef.current ||
-        hasScrolledToFirstSelected.current ||
-        searchState.query !== ''
-      ) {
-        return;
-      }
-
-      const findFirstSelected = (items: ListItemWithChildren[]) => {
-        for (const item of items) {
-          if (item.isSelected) return item;
-          if (item.children) {
-            for (const child of item.children) {
-              if (child.isSelected) return child;
-            }
-          }
-        }
-        return null;
-      };
-
-      const firstSelected = findFirstSelected(searchState.listItems);
-      if (!firstSelected) return;
-
-      hasScrolledToFirstSelected.current = true;
-
-      const scroll = () => {
-        const container = listContainerRef.current;
-        if (!container) return false;
-
-        const element = container.querySelector(
-          `input[name="searchable-list-item-${firstSelected.value}"], button[name="searchable-list-item-${firstSelected.value}"]`,
-        );
-
-        if (!element) return false;
-
-        const rect = element.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) return false;
-
-        let parent = element.parentElement;
-        while (parent) {
-          const style = window.getComputedStyle(parent);
-          const scrollable =
-            style.overflow === 'auto' ||
-            style.overflow === 'scroll' ||
-            style.overflowY === 'auto' ||
-            style.overflowY === 'scroll';
-
-          if (scrollable && parent.scrollHeight > parent.clientHeight) {
-            const parentRect = parent.getBoundingClientRect();
-            const elementRect = element.getBoundingClientRect();
-            const targetTop =
-              parent.scrollTop +
-              (elementRect.top - parentRect.top) -
-              parentRect.height / 2;
-
-            parent.scrollTo({ top: targetTop, behavior: 'auto' });
-            break;
-          }
-          parent = parent.parentElement;
-        }
-        return true;
-      };
-
-      if (scroll()) return;
-
-      const container = listContainerRef.current;
-      if (!container) return;
-
-      let attempts = 0;
-      let active = true;
-
-      const observer = new MutationObserver(() => {
-        if (active && scroll()) {
-          observer.disconnect();
-          active = false;
-        }
-      });
-
-      observer.observe(container, { childList: true, subtree: true });
-
-      const attempt = () => {
-        if (!active || ++attempts > 30) {
-          observer.disconnect();
-          active = false;
-          return;
-        }
-        if (!scroll()) requestAnimationFrame(attempt);
-      };
-
-      let frames = 0;
-      const delay = () => {
-        if (++frames > 60) attempt();
-        else requestAnimationFrame(delay);
-      };
-      requestAnimationFrame(delay);
-
-      setTimeout(() => {
-        observer.disconnect();
-        active = false;
-      }, 5000);
-    }, [scrollToFirstSelectedItem, searchState.listItems, searchState.query]);
 
     const setSearchQuery = useCallback((newQuery: string) => {
       setSearchState((currentState) => {
@@ -306,7 +189,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
         {searchState.listItems.length > 0 ? (
           <List
-            ref={listContainerRef}
+            ref={listRef}
             width="full"
             height="full"
             id={areaId}
