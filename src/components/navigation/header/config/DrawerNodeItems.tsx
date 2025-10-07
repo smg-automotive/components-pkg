@@ -186,6 +186,7 @@ const getUserNodeItems = ({
       teaserTemplatesLinkConfig,
       commentTemplatesLinkConfig,
       qualilogoLinkConfig,
+      autoRadarLinkConfig,
       hciLinkConfig,
       importInfoLinkConfig,
       dmsLogLinkConfig,
