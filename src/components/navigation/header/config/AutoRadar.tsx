@@ -8,10 +8,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const autoRadarLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.autoRadar',
   link: {
-    de: '/de/member/autoradarlauncher/all',
-    en: '/de/member/autoradarlauncher/all',
-    fr: '/fr/member/autoradarlauncher/all',
-    it: '/it/member/autoradarlauncher/all',
+    de: '/de/autoradar/saved-searches/all',
+    en: '/de/autoradar/saved-searches/all',
+    fr: '/fr/autoradar/saved-searches/all',
+    it: '/it/autoradar/saved-searches/all',
   },
   visibilitySettings: {
     userType: {
@@ -29,44 +29,12 @@ export const autoRadarLinkConfig: NavigationLinkConfigProps = {
       Entitlement.AutoRadarFast,
     ],
     missingEntitlementFallbackLink: {
-      de: '/de/productdescription/as24_autoradar',
-      en: '/de/productdescription/as24_autoradar',
-      fr: '/fr/productdescription/as24_autoradar',
-      it: '/it/productdescription/as24_autoradar',
+      de: '/de/autoradar',
+      en: '/de/autoradar',
+      fr: '/fr/autoradar',
+      it: '/it/autoradar',
     },
     missingEntitlementLinkIcon: <CartIcon />,
   },
-};
-
-export const manageAutoRadarLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.manageAutoRadar',
-  link: {
-    de: '/de/member/autoradar',
-    en: '/de/member/autoradar',
-    fr: '/fr/member/autoradar',
-    it: '/it/member/autoradar',
-  },
-  visibilitySettings: {
-    userType: {
-      private: false,
-      professional: true,
-    },
-    brand: {
-      autoscout24: true,
-      motoscout24: false,
-    },
-  },
-  entitlementConfig: {
-    singleRequiredEntitlement: [
-      Entitlement.AutoRadar,
-      Entitlement.AutoRadarFast,
-    ],
-    missingEntitlementFallbackLink: {
-      de: '/de/productdescription/as24_autoradar ',
-      en: '/de/productdescription/as24_autoradar ',
-      fr: '/fr/productdescription/as24_autoradar ',
-      it: '/it/productdescription/as24_autoradar ',
-    },
-    missingEntitlementLinkIcon: <CartIcon />,
-  },
+  projectIdentifier: 'listings-web',
 };
