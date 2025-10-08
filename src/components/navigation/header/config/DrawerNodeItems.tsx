@@ -73,7 +73,7 @@ import { electromobilityLinkConfig } from './electroMobility';
 import { dmsLogLinkConfig } from './dmsLog';
 import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
-import { autoRadarLinkConfig, manageAutoRadarLinkConfig } from './AutoRadar';
+import { autoRadarLinkConfig } from './AutoRadar';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
 import { onlineAdvertisingLinkConfig } from './advertise';
 
@@ -186,7 +186,7 @@ const getUserNodeItems = ({
       teaserTemplatesLinkConfig,
       commentTemplatesLinkConfig,
       qualilogoLinkConfig,
-      manageAutoRadarLinkConfig,
+      autoRadarLinkConfig,
       hciLinkConfig,
       importInfoLinkConfig,
       dmsLogLinkConfig,
