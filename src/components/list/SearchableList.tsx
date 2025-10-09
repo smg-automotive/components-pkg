@@ -19,6 +19,7 @@ export type Props = {
   listAriaLabel?: string;
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
+  listRef?: React.RefObject<HTMLUListElement | null>;
 };
 
 type FuseSearch = Fuse<ListItemWithChildren> & {
@@ -101,6 +102,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
       listAriaLabel = 'searchable list',
       searchFieldOptions = {},
       listOptions = { columns: 1, childrenSpacing: 'md' },
+      listRef,
     },
     ref,
   ) => {
@@ -187,6 +189,7 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
         {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
         {searchState.listItems.length > 0 ? (
           <List
+            ref={listRef}
             width="full"
             height="full"
             id={areaId}

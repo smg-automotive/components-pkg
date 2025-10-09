@@ -12,4 +12,5 @@ export type ModalFilterProps = FilterPatternProps &
     initialModalState?: 'open' | 'closed';
     isDisabled?: boolean;
     paddingX?: PaddingX;
+    trapFocus?: boolean;
   } & Pick<ButtonProps, 'backgroundColor'>;

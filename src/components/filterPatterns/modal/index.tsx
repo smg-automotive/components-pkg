@@ -34,6 +34,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   children,
   paddingX,
   backgroundColor,
+  trapFocus = true,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialModalState === 'open',
@@ -59,6 +60,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           onClose={onClose}
           size="full"
           motionPreset="slideInBottom"
+          trapFocus={trapFocus}
         >
           <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
             <ModalHeader
