@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const breadcrumbsRecipe = defineSlotRecipe({
   className: 'chakra-breadcrumbs',
-  slots: ['container', 'list', 'item', 'link', 'separator'],
+  slots: ['container', 'list', 'link', 'separator'],
   base: {
     container: {
       color: 'gray.900',

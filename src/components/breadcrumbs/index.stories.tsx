@@ -16,19 +16,17 @@ export default meta;
 export const Breadcrumbs: StoryObj<typeof BreadcrumbsComponent> = {
   args: {
     children: [
-      <>
-        <BreadcrumbItem key="vw">
-          <BreadcrumbLink href="#vw">VW</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem key="golf">
-          <BreadcrumbLink href="#golf">Golf</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem key="model">
-          <BreadcrumbLink>2.0 TSI GTI DSG Performance</BreadcrumbLink>
-        </BreadcrumbItem>
-      </>,
+      <BreadcrumbItem key="vw">
+        <BreadcrumbLink href="#vw">VW</BreadcrumbLink>
+      </BreadcrumbItem>,
+      <BreadcrumbSeparator key="sep1" />,
+      <BreadcrumbItem key="golf">
+        <BreadcrumbLink href="#golf">Golf</BreadcrumbLink>
+      </BreadcrumbItem>,
+      <BreadcrumbSeparator key="sep2" />,
+      <BreadcrumbItem key="model">
+        <BreadcrumbLink>2.0 TSI GTI DSG Performance</BreadcrumbLink>
+      </BreadcrumbItem>,
     ],
   },
 };
