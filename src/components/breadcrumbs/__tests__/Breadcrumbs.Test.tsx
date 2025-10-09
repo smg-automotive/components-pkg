@@ -3,20 +3,20 @@ import React from 'react';
 import { render, screen } from '.jest/utils';
 
 import { BreadcrumbLink } from '../Link';
-import { BreadcrumbItem } from '../Item';
-import { BreadcrumbsComponent } from '..';
+import { BreadcrumbsItem } from '../Item';
+import { Breadcrumbs } from '..';
 
 const renderWrapper = ({
   crumbs = [{ title: 'title', url: 'https://link.com' }],
 }) =>
   render(
-    <BreadcrumbsComponent data-testid="breadcrumbs-container">
+    <Breadcrumbs data-testid="breadcrumbs-container">
       {crumbs.map((crumb, i) => (
-        <BreadcrumbItem key={i}>
+        <BreadcrumbsItem key={i}>
           <BreadcrumbLink href={crumb?.url}>{crumb.title}</BreadcrumbLink>
-        </BreadcrumbItem>
+        </BreadcrumbsItem>
       ))}
-    </BreadcrumbsComponent>,
+    </Breadcrumbs>,
   );
 
 describe('<Breadcrumbs>', () => {

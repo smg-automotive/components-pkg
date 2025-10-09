@@ -6,17 +6,34 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-export const BreadcrumbsComponent: FC<PropsWithChildren<BreadcrumbProps>> = ({
+import { BreadcrumbSeparator } from './Separator';
+
+export interface BreadcrumbsPropsExtended extends BreadcrumbProps {
+  separator?: React.ReactNode;
+}
+
+export const Breadcrumbs: FC<PropsWithChildren<BreadcrumbsPropsExtended>> = ({
   children,
   ...props
 }) => {
+  const { separator, ...rest } = props;
+
   const recipe = useSlotRecipe({ key: 'breadcrumbs' });
   const styles = recipe();
 
   return (
-    <ChakraBreadcrumb.Root {...props}>
+    <ChakraBreadcrumb.Root {...rest}>
       <ChakraBreadcrumb.List css={styles.list}>
-        {children}
+        {React.Children.map(children, (child, index) => {
+          if (!React.isValidElement(child)) return child;
+          return (
+            <>
+              {React.cloneElement(child as React.ReactElement)}
+              {index < React.Children.count(children) - 1 &&
+                (separator ? separator : <BreadcrumbSeparator />)}
+            </>
+          );
+        })}
       </ChakraBreadcrumb.List>
     </ChakraBreadcrumb.Root>
   );

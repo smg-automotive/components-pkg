@@ -10,9 +10,10 @@ export const BreadcrumbLink: FC<ChakraBreadcrumbLinkProps> = ({
   children,
   ...props
 }) => {
+  const { href } = props;
+
   const recipe = useSlotRecipe({ key: 'breadcrumbs' });
   const { link } = recipe();
-  const { href } = props;
 
   return href ? (
     <ChakraBreadcrumb.Link css={link} href={href} {...props}>
