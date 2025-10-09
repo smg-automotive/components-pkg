@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 
 import { Grid } from 'src/components/grid';
 
-import FooterSections from './Sections';
+import { FooterSections } from './Sections';
 import { FooterConfigInstance } from './config/factory';
-import FooterApps from './Apps';
+import { FooterApps } from './Apps';
 
 interface FooterSectionGridProps {
   config: FooterConfigInstance;
 }
 
-const FooterSectionGrid: FC<FooterSectionGridProps> = ({ config }) => {
+export const FooterSectionGrid: FC<FooterSectionGridProps> = ({ config }) => {
   return (
     <Grid
       templateColumns={{
@@ -23,5 +23,3 @@ const FooterSectionGrid: FC<FooterSectionGridProps> = ({ config }) => {
     </Grid>
   );
 };
-
-export default FooterSectionGrid;

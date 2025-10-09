@@ -10,13 +10,13 @@ import { Separator } from 'src/components/separator';
 import { Center } from 'src/components/center';
 import { Box } from 'src/components/box';
 
-import SocialMedia from './SocialMedia';
-import FooterSectionGrid from './SectionGrid';
-import FooterLanguageNavigation from './LanguageNavigation';
-import FooterCopyright from './Copyright';
+import { SocialMedia } from './SocialMedia';
+import { FooterSectionGrid } from './SectionGrid';
+import { FooterLanguageNavigation } from './LanguageNavigation';
+import { FooterCopyright } from './Copyright';
 import { FooterConfig } from './config/factory';
 import { footerConfig } from './config';
-import FooterCompanies from './Companies';
+import { FooterCompanies } from './Companies';
 
 interface FooterProps {
   brand: Brand;

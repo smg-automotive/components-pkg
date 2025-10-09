@@ -3,7 +3,7 @@ import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
 import { MarkProps } from '.';
 
-const Underline: FC<MarkProps> = (props) => {
+export const Underline: FC<MarkProps> = (props) => {
   const recipe = useSlotRecipe({ key: 'markedText' });
   const [recipeProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
@@ -23,5 +23,3 @@ const Underline: FC<MarkProps> = (props) => {
     </chakra.svg>
   );
 };
-
-export default Underline;

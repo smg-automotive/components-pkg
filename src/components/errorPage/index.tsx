@@ -17,12 +17,12 @@ import errorIllustrationVerifyEmail from 'src/assets/images/errorIllustrationVer
 import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustrationSomethingWentWrong.png';
 import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
 
-import EmailChangeVerificationErrorContent from './content/EmailChangeVerification';
-import ContactSupport from './actions/secondary/ContactSupport';
-import BackToHomepageSecondary from './actions/secondary/BackToHomepage';
-import Reload from './actions/primary/Reload';
-import BackToLogin from './actions/primary/BackToLogin';
-import BackToHomepagePrimary from './actions/primary/BackToHomepage';
+import { EmailChangeVerificationErrorContent } from './content/EmailChangeVerification';
+import { ContactSupport } from './actions/secondary/ContactSupport';
+import { BackToHomepageSecondary } from './actions/secondary/BackToHomepage';
+import { Reload } from './actions/primary/Reload';
+import { BackToLogin } from './actions/primary/BackToLogin';
+import { BackToHomepagePrimary } from './actions/primary/BackToHomepage';
 import { ActionButtonInterface } from './actions/interface';
 
 const Nonce: FC<ActionButtonInterface> = () => {

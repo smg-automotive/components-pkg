@@ -7,7 +7,7 @@ import { Brand } from 'src/types/brand';
 import { ThemeProvider } from '../themeProvider';
 import { FullHeight } from '../index';
 
-import DevOverlayComponent, { type DevOverlayProps } from './index';
+import { DevOverlay, type DevOverlayProps } from './index';
 
 const Template = (args: DevOverlayProps) => {
   const [{ activeTheme, displayTranslationKeys }, updateArgs] = useArgs();
@@ -27,7 +27,7 @@ const Template = (args: DevOverlayProps) => {
 
   return (
     <ThemeProvider theme={activeTheme}>
-      <DevOverlayComponent
+      <DevOverlay
         {...args}
         toggleTheme={toggleTheme}
         toggleTranslation={toggleTranslation}
@@ -36,9 +36,9 @@ const Template = (args: DevOverlayProps) => {
   );
 };
 
-const meta: Meta<typeof DevOverlayComponent> = {
+const meta: Meta<typeof DevOverlay> = {
   title: 'Theme/DevOverlay',
-  component: DevOverlayComponent,
+  component: DevOverlay,
 
   decorators: [
     (Story) => {
@@ -63,7 +63,7 @@ const meta: Meta<typeof DevOverlayComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof DevOverlayComponent> = {
+export const Overview: StoryObj<typeof DevOverlay> = {
   render: Template.bind({}),
 
   args: {

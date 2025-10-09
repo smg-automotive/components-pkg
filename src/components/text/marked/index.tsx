@@ -5,7 +5,7 @@ import { markedTextRecipe } from 'src/themes/shared/slotRecipes/markedText';
 
 import { Box, type BoxProps } from 'src/components/box';
 
-import Mark from './mark';
+import { MarkedTextMark } from './mark';
 
 type SharedProps = Exclude<
   BoxProps,
@@ -25,7 +25,7 @@ type UnderlineProps = SharedProps & {
 
 export type MarkedTextProps = HighlightProps | UnderlineProps;
 
-const MarkedText: FC<MarkedTextProps> = ({ children, ...props }) => {
+export const MarkedText: FC<MarkedTextProps> = ({ children, ...props }) => {
   const recipe = useSlotRecipe({ key: 'markedText' });
   const [recipeProps, boxProps] = recipe.splitVariantProps(props);
   const styles = recipe(recipeProps);
@@ -34,10 +34,8 @@ const MarkedText: FC<MarkedTextProps> = ({ children, ...props }) => {
 
   return (
     <Box css={styles.container} {...boxProps}>
-      <Mark variant={variant} highlightColor={highlightColor} />
+      <MarkedTextMark variant={variant} highlightColor={highlightColor} />
       <Box css={styles.text}>{children}</Box>
     </Box>
   );
 };
-
-export default MarkedText;
