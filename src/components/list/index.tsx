@@ -1,10 +1,18 @@
-import React, { FC, PropsWithChildren } from 'react';
-import { List as ChakraList, ListProps } from '@chakra-ui/react';
+import { List as ChakraList } from '@chakra-ui/react';
 
-export type Props = PropsWithChildren<Omit<ListProps, 'variant'>>;
+export type { ListItemProps, ListRootProps } from '@chakra-ui/react';
 
-const List: FC<Props> = ({ children, ...props }) => {
-  return <ChakraList {...props}>{children}</ChakraList>;
+const { Root, Item } = ChakraList;
+
+Root.displayName = 'List.Root';
+Item.displayName = 'List.Item';
+
+export const List = {
+  Root,
+  Item,
 };
 
-export default List;
+/**
+ * @deprecated please use the namespace style import instead
+ */
+export { Root as ListRoot, Item as ListItem };

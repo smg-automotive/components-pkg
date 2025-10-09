@@ -1,31 +1,27 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { AccordionItemProps, useQuery } from '@chakra-ui/react';
+import useMediaQuery from 'src/hooks/useMediaQuery';
 
-import AccordionItem from '../accordion/AccordionItem';
+import { AccordionItem, AccordionItemProps } from '../accordion/AccordionItem';
 
-const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
-  props,
-) => {
+export const MobileOnlyAccordionItem: FC<
+  PropsWithChildren<AccordionItemProps>
+> = (props) => {
   const { children, ...rest } = props;
-  const query = useQuery({ above: 'md' });
-  const media = `@media ${query}`;
+  const isAboveMd = useMediaQuery({ above: 'md' });
 
   return (
     <AccordionItem
-      sx={{
-        [media]: {
-          border: 'none',
-          _last: {
-            border: 'none',
-          },
-        },
-      }}
+      style={
+        isAboveMd
+          ? {
+              border: 'none',
+            }
+          : undefined
+      }
       {...rest}
     >
       {children}
     </AccordionItem>
   );
 };
-
-export default MobileOnlyAccordionItem;

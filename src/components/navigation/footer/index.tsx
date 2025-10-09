@@ -3,15 +3,12 @@ import { Container } from '@chakra-ui/react';
 
 import { Project } from 'src/types/project';
 import { Language } from 'src/types/language';
-
 import { Environment } from 'src/types/environment';
-
 import { Brand } from 'src/types/brand';
-
-import TranslationProvider from 'src/components/translationProvider';
-import Divider from 'src/components/divider';
-import Center from 'src/components/center';
-import Box from 'src/components/box';
+import { TranslationProvider } from 'src/components/translationProvider';
+import { Separator } from 'src/components/separator';
+import { Center } from 'src/components/center';
+import { Box } from 'src/components/box';
 
 import SocialMedia from './SocialMedia';
 import FooterSectionGrid from './SectionGrid';
@@ -29,7 +26,7 @@ interface FooterProps {
   project?: Project;
 }
 
-const Footer: FC<FooterProps> = ({
+export const Footer: FC<FooterProps> = ({
   brand,
   language,
   environment,
@@ -54,21 +51,21 @@ const Footer: FC<FooterProps> = ({
           width="full"
           background="gray.900"
           color="white"
-          paddingTop={{ base: 0, md: 'md' }}
+          paddingTop={{ md: 'md' }}
           paddingBottom={{ base: 'lg', md: '2xl' }}
         >
           <Center>
             <Container
               width="full"
               maxWidth="container.2xl"
-              paddingX={{ base: 0, md: 'xs' }}
+              paddingX={{ md: 'xs' }}
             >
               <FooterSectionGrid config={config} />
               <FooterLanguageNavigation />
               <SocialMedia config={config} />
             </Container>
           </Center>
-          <Divider borderColor="gray.700" />
+          <Separator orientation="horizontal" borderColor="gray.700" />
           <Center>
             <Container width="full" maxWidth="container.xl" paddingX="lg">
               <FooterCompanies config={config} />
@@ -80,5 +77,3 @@ const Footer: FC<FooterProps> = ({
     </TranslationProvider>
   );
 };
-
-export default Footer;

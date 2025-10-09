@@ -6,7 +6,15 @@ import reactConfig from '@smg-automotive/eslint-config/react';
 export default [
   ...reactConfig,
   {
-    ignores: ['!/.storybook', '!/jest-utils', '!.prettierrc.mjs', '/coverage'],
+    ignores: [
+      '!/.storybook',
+      '!/jest-utils',
+      '!.prettierrc.mjs',
+      '/coverage',
+      'src-v2/',
+      'src/components/ui/**/*',
+      'theme/',
+    ],
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],

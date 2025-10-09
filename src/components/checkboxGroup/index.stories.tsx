@@ -12,27 +12,28 @@ const Template = (props: CheckboxGroupProps) => {
     updateArgs({
       checkboxes: args.checkboxes?.map((checkbox) => ({
         ...checkbox,
-        isChecked: false,
+        checked: false,
       })),
     });
   const checkAll = () =>
     updateArgs({
       checkboxes: args.checkboxes?.map((checkbox) => ({
         ...checkbox,
-        isChecked: true,
+        checked: true,
       })),
     });
-  const allChecked = args.checkboxes?.every((checkbox) => checkbox.isChecked);
+  const allChecked = args.checkboxes?.every((checkbox) => checkbox.checked);
+
   const isIndeterminate =
-    args.checkboxes?.some((checkbox) => checkbox.isChecked) && !allChecked;
+    args.checkboxes?.some((checkbox) => checkbox.checked) && !allChecked;
   return (
     <CheckboxGroup
       {...{
         ...props,
         ...args,
       }}
-      isChecked={allChecked}
-      isIndeterminate={isIndeterminate}
+      checked={allChecked}
+      indeterminate={isIndeterminate}
       onChange={(e) => {
         args.onChange?.(e);
         if (allChecked) {
@@ -51,7 +52,7 @@ const Template = (props: CheckboxGroupProps) => {
               ...args.checkboxes!.slice(0, index),
               {
                 ...checkbox,
-                isChecked: e.target.checked,
+                checked: e.checked,
               },
               ...args.checkboxes!.slice(index + 1),
             ],
@@ -72,45 +73,45 @@ const meta: Meta<typeof CheckboxGroup> = {
   args: {
     name: 'Control',
     value: '1',
-    isDisabled: false,
-    isInvalid: false,
+    disabled: false,
+    invalid: false,
     label: 'Parent item',
     addDividerAfterIndex: [2],
     checkboxes: [
       {
         label: 'First child',
         name: 'First child',
-        isChecked: false,
+        checked: false,
         onChange: action('onChange, first child'),
       },
       {
         label: 'Second child',
         name: 'Second child',
-        isChecked: false,
+        checked: false,
         onChange: action('onChange, second child'),
       },
       {
         label: 'Third child',
         name: 'Third child',
-        isChecked: false,
+        checked: false,
         onChange: action('onChange, third child'),
       },
       {
         label: 'Fourth child',
         name: 'Fourth child',
-        isChecked: false,
+        checked: false,
         onChange: action('onChange, fourth child'),
       },
     ],
     onChange: action('onChange, parent'),
   },
   argTypes: {
-    isChecked: {
+    checked: {
       control: { disable: true },
       description:
         'Should be computed by the component controlling the state, based on the state of child checkboxes (true if all are checked)',
     },
-    isIndeterminate: {
+    indeterminate: {
       control: { disable: true },
       description:
         'Should be computed by the component controlling the state, based on the state of child checkobxes (true if some are checked)',
