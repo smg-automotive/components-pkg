@@ -6,7 +6,9 @@ import {
   privateUser,
   professionalUser,
 } from '@smg-automotive/auth/fixtures';
+import { Auth0UserType } from '@smg-automotive/auth';
 
+import { Entitlement } from 'src/types/entitlements';
 import { Brand } from 'src/types/brand';
 import { PageLayout } from 'src/components/layout';
 import Box from 'src/components/box';
@@ -73,7 +75,7 @@ const meta: Meta<typeof Navigation> = {
     environment: 'preprod',
     useAbsoluteUrls: false,
     project: undefined,
-    entitlements: [],
+    entitlements: [Entitlement.Optimizer],
     trackEvent: action('track navigation item click'),
     comparisonItemIds: [1, 2, 3],
     selectTenant: async (id) => action('select tenant')(id),
@@ -117,17 +119,84 @@ type StoryType = StoryObj<typeof Navigation>;
 export const Unauthenticated: StoryType = {
   args: {
     user: null,
-    experiments: {
-      leasing: 'on',
-    },
   },
 };
 
 export const Professional: StoryType = {
   args: {
     user: professionalUser(),
-    experiments: {
-      leasing: 'on',
+  },
+};
+
+export const ProfessionalWithoutOptimizer: StoryType = {
+  args: {
+    user: {
+      email: 'engineering@smg.ch',
+      email_verified: true,
+      sub: 'auth0|648ac71d25762',
+      sid: 'W8AtOcvp83mNWbjV',
+      isImpersonated: false,
+      userId: '1001',
+      forceTenantSelection: false,
+      isMultiTenantUser: false,
+      userType: Auth0UserType.Professional,
+      sellerId: '60601',
+      managedSellers: [],
+      entitlements: {},
+    },
+  },
+};
+
+export const ProfessionalWithOptimizerPro: StoryType = {
+  args: {
+    user: {
+      email: 'engineering@smg.ch',
+      email_verified: true,
+      sub: 'auth0|648ac71d257338d',
+      sid: 'W8AtOpp83mNWbjV',
+      isImpersonated: false,
+      userId: '1001',
+      forceTenantSelection: false,
+      isMultiTenantUser: false,
+      userType: Auth0UserType.Professional,
+      sellerId: '60601',
+      managedSellers: [],
+      entitlements: {
+        'optimizer-pro': {
+          global: {
+            maxItems: 1,
+            remainingItems: 0,
+          },
+          listings: {},
+        },
+      },
+    },
+  },
+};
+
+export const ProfessionalWithOptimizerBasic: StoryType = {
+  args: {
+    user: {
+      email: 'engineering@smg.ch',
+      email_verified: true,
+      sub: 'auth0|648a338d',
+      sid: 'W8AtOcv69YRmNWbjV',
+      isImpersonated: false,
+      userId: '1001',
+      forceTenantSelection: false,
+      isMultiTenantUser: false,
+      userType: Auth0UserType.Professional,
+      sellerId: '60601',
+      managedSellers: [],
+      entitlements: {
+        optimizer: {
+          global: {
+            maxItems: 1,
+            remainingItems: 0,
+          },
+          listings: {},
+        },
+      },
     },
   },
 };
@@ -145,18 +214,12 @@ export const ProfessionalWithMultiTenancy: StoryType = {
         billingZipCode: (8000 + index).toString(),
       })),
     }),
-    experiments: {
-      leasing: 'on',
-    },
   },
 };
 
 export const Private: StoryType = {
   args: {
     user: privateUser(),
-    experiments: {
-      leasing: 'on',
-    },
   },
 };
 
@@ -174,8 +237,5 @@ export const ProfessionalWithTenantSelectionHidden: StoryType = {
       })),
     }),
     showTenantSelection: false,
-    experiments: {
-      leasing: 'on',
-    },
   },
 };

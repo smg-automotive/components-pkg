@@ -10,7 +10,7 @@ const baseStyleOverlay = defineStyle({
   opacity: '40',
   w: 'full',
   h: 'full',
-  pos: 'fixed',
+  position: 'fixed',
   left: '0',
   top: '0',
 });
@@ -184,7 +184,7 @@ export const dialogRecipe = defineSlotRecipe({
       topScroll: {
         positioner: {
           ...baseStyleDialogContainer,
-          ...defineStyle({ paddingTop: { base: '0', sm: '5xl' } }),
+          marginTop: '5xl',
           alignItems: 'flex-start',
           overflow: 'auto',
         },

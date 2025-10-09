@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, screen } from '.jest/utils';
+import { render, screen } from 'jest-utils';
 
 import { ArticleTeaser } from '..';
 

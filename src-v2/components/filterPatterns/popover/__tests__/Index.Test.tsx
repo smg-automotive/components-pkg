@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 import { PopoverFilterProps } from '../props';
 import { PopoverFilter } from '../index';

@@ -108,6 +108,7 @@
       },
       "legal": {
         "agb": "Condizioni generali",
+        "agbDirect": "CG AutoScout24 Direct",
         "cookieSettings": "Impostazioni sulla privacy",
         "dataProtection": "Protezione dei dati",
         "imprint": "Colofone",
@@ -136,7 +137,6 @@
     "carSubscription": "Auto-Abo",
     "electromobility": "Elettromobilità",
     "estimate": "Stimare",
-    "leasing": "Offerte di leasing",
     "login": "Accedere",
     "magazine": "Rivista",
     "more": "Plus",
@@ -176,7 +176,6 @@
       "insuranceComparison": "Confronto di assicurazioni",
       "logout": "Logout",
       "manageAdditionalTitles": "Gestire titolo addizionale",
-      "manageAutoRadar": "Gestire AutoRadar",
       "manageNotes": "Gestire osservazioni",
       "manageVehicles": "Gestione dei miei veicoli",
       "motorcyclePark": "Parco moto",

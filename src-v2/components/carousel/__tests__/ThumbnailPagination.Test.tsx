@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import { UseEmblaCarouselType } from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from '.jest/utils';
+import { render, screen, waitFor } from 'jest-utils';
 
 import ThumbnailPagination from '../ThumbnailPagination';
 

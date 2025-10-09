@@ -340,10 +340,10 @@ export const footerConfig = (): FooterConfigInterface => ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/content/insertionsregeln',
-            en: '/de/content/insertionsregeln',
-            fr: '/fr/content/regles-d-insertion',
-            it: '/it/content/regole-d-inserzione',
+            de: '/de/legal/insertion-rules',
+            en: '/en/legal/insertion-rules',
+            fr: '/fr/legal/insertion-rules',
+            it: '/it/legal/insertion-rules',
           },
         },
         {
@@ -352,11 +352,24 @@ export const footerConfig = (): FooterConfigInterface => ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/content/agb',
-            en: '/de/content/agb',
-            fr: '/fr/content/conditions-generales',
-            it: '/it/content/condizioni-generali',
+            de: '/de/legal/gtc',
+            en: '/en/legal/gtc',
+            fr: '/fr/legal/gtc',
+            it: '/it/legal/gtc',
           },
+        },
+        {
+          translationKey: 'footer.sections.legal.agbDirect',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: false },
+          },
+          link: {
+            de: 'https://b2b.autoscout24.ch/allgemeine-geschaeftsbedingungen-autoscout24-direct/',
+            en: 'https://b2b.autoscout24.ch/allgemeine-geschaeftsbedingungen-autoscout24-direct/',
+            fr: 'https://b2b.autoscout24.ch/conditions-generales-autoscout24-direct/',
+            it: 'https://b2b.autoscout24.ch/condizioni-generali-autoscout24-direct/',
+          },
+          target: '_blank',
         },
         {
           translationKey: 'footer.sections.legal.dataProtection',
@@ -387,10 +400,10 @@ export const footerConfig = (): FooterConfigInterface => ({
             brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
           },
           link: {
-            de: '/de/content/impressum',
-            en: '/de/content/impressum',
-            fr: '/fr/content/mentionslegales',
-            it: '/it/content/colofone',
+            de: '/de/legal/imprint',
+            en: '/en/legal/imprint',
+            fr: '/fr/legal/imprint',
+            it: '/it/legal/imprint',
           },
         },
       ],

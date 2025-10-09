@@ -8,9 +8,11 @@ import {
 } from '@smg-automotive/auth/fixtures';
 
 import { Brand } from 'src/types/brand';
-import { act, fireEvent, render, screen, within } from '.jest/utils';
+
+import { act, fireEvent, render, screen, within } from 'jest-utils';
 
 import { iconItems } from '../config/iconItems';
+import { HeaderNavigationLink } from '../config/headerNavigationLink';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
@@ -214,6 +216,21 @@ describe('Header', () => {
     expect(notification).toBeInTheDocument();
   });
 
+  it('should not display favorites icon if there is no user', async () => {
+    renderNavigation({ user: null });
+
+    const favorites = screen.queryByText('Heart icon');
+    expect(favorites).not.toBeInTheDocument();
+  });
+
+  it('should display favorites icon if there is a user', async () => {
+    const email = 'john.doe@me.com';
+    renderNavigation({ user: privateUser({ email }) });
+
+    const favorites = screen.getByText('Heart icon');
+    expect(favorites).toBeInTheDocument();
+  });
+
   describe('getMappedConfig', () => {
     it('returns a mapped instance', () => {
       const headerConfigInstance = new HeaderNavigationConfig({
@@ -235,7 +252,10 @@ describe('Header', () => {
       expect(config).toEqual({
         drawerItems: expect.any(Object),
         headerItems: expect.any(Object),
-        iconItems: { comparison: null },
+        iconItems: {
+          comparison: null,
+          favorites: expect.any(HeaderNavigationLink),
+        },
         homeUrl: expect.any(String),
         menuHeight: expect.any(String),
         user: expect.any(Object),
@@ -268,7 +288,7 @@ describe('Header', () => {
     };
     const legacyWebLink = {
       name: 'Kontaktanfragen',
-      pathname: '/de/member/messagemanager',
+      pathname: '/de/message-manager',
     };
 
     it('should use relative URLs for pages inside listings-web and keep the others absolute', async () => {

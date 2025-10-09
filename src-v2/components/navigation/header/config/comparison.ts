@@ -48,7 +48,6 @@ export const getComparisonNodeItem = ({
     ? [
         {
           ...comparisonLinkConfig({ comparisonItemIds }),
-          isNew: true,
           onClick: () =>
             trackEvent?.({
               eventCategory: navigationEventCategory,

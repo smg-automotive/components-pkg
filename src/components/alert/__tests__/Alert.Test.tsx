@@ -2,7 +2,7 @@ import React from 'react';
 
 import userEvent from '@testing-library/user-event';
 
-import { act, render, screen } from '.jest/utils';
+import { act, render, screen } from 'jest-utils';
 
 import { Alert } from '../index';
 
