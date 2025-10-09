@@ -9,14 +9,14 @@ import { GridItem } from 'src/components/grid';
 import googleplay from 'src/assets/images/googleplay.png';
 import appstore from 'src/assets/images/appstore.png';
 
-import FooterLink from './Link';
+import { FooterLink } from './Link';
 import { FooterConfigInstance } from './config/factory';
 
 interface Props {
   config: FooterConfigInstance;
 }
 
-const FooterApps: FC<Props> = ({ config }) => {
+export const FooterApps: FC<Props> = ({ config }) => {
   const { t } = useI18n();
 
   return (
@@ -55,5 +55,3 @@ const FooterApps: FC<Props> = ({ config }) => {
     </GridItem>
   );
 };
-
-export default FooterApps;

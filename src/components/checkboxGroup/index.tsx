@@ -14,7 +14,7 @@ export interface CheckboxGroupProps extends CheckboxProps {
   addDividerAfterIndex?: number[];
 }
 
-const CheckboxGroup: FC<CheckboxGroupProps> = ({
+export const CheckboxGroup: FC<CheckboxGroupProps> = ({
   name,
   label,
   value,
@@ -64,5 +64,3 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
   );
 };
 CheckboxGroup.displayName = 'CheckboxGroup';
-
-export default CheckboxGroup;

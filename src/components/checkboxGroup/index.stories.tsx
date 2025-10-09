@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import CheckboxGroup, { type CheckboxGroupProps } from './index';
+import { CheckboxGroup, type CheckboxGroupProps } from './index';
 
 const Template = (props: CheckboxGroupProps) => {
   const [args, updateArgs] = useArgs<CheckboxGroupProps>();
