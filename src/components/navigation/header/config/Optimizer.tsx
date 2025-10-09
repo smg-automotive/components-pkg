@@ -5,10 +5,10 @@ import { NavigationLinkConfigProps } from './headerLinks';
 export const optimizerLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.optimizerPro',
   link: {
-    de: 'https://b2b.autoscout24.ch/aboss/optimizer-2',
-    en: 'https://b2b.autoscout24.ch/aboss/optimizer-2',
-    fr: 'https://b2b.autoscout24.ch/fr/aboss/optimizer-2',
-    it: 'https://b2b.autoscout24.ch/it/aboss/optimizer-2',
+    de: 'https://b2b.autoscout24.ch/aboss/optimizer-2/',
+    en: 'https://b2b.autoscout24.ch/aboss/optimizer-2/',
+    fr: 'https://b2b.autoscout24.ch/fr/aboss/optimizer-2/',
+    it: 'https://b2b.autoscout24.ch/it/aboss/optimizer-2/',
   },
   visibilitySettings: {
     userType: {
@@ -24,10 +24,11 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
     hideIfEntitlementIsPresent: Entitlement.OptimizerPro,
     singleRequiredEntitlement: [Entitlement.Optimizer],
     missingEntitlementFallbackLink: {
-      de: 'https://b2b.autoscout24.ch/aboss/optimizer-2',
-      en: 'https://b2b.autoscout24.ch/aboss/optimizer-2',
-      fr: 'https://b2b.autoscout24.ch/fr/aboss/optimizer-2',
-      it: 'https://b2b.autoscout24.ch/it/aboss/optimizer-2',
+      de: 'https://b2b.autoscout24.ch/aboss/optimizer-2/',
+      en: 'https://b2b.autoscout24.ch/aboss/optimizer-2/',
+      fr: 'https://b2b.autoscout24.ch/fr/aboss/optimizer-2/',
+      it: 'https://b2b.autoscout24.ch/it/aboss/optimizer-2/',
     },
+    missingEntitlementTranslationKey: 'header.userMenu.optimizer',
   },
 };
