@@ -15,7 +15,7 @@ import { FilterPatternProps } from './props';
 export type Props = {
   onClose?: () => void;
   language: Language;
-  contentRef?: RefObject<HTMLElement>;
+  contentRef?: RefObject<HTMLElement | null>;
 } & Pick<
   FilterPatternProps,
   'Icon' | 'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'

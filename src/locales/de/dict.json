@@ -108,6 +108,7 @@
       },
       "legal": {
         "agb": "AGB",
+        "agbDirect": "AGB AutoScout24 Direct",
         "cookieSettings": "Privatsphäre-Einstellungen",
         "dataProtection": "Datenschutz",
         "imprint": "Impressum",
@@ -136,7 +137,6 @@
     "carSubscription": "Auto-Abo",
     "electromobility": "Elektromobilität",
     "estimate": "Schätzen",
-    "leasing": "Leasingangebote",
     "login": "Anmelden",
     "magazine": "Magazin",
     "more": "Mehr",
@@ -176,7 +176,6 @@
       "insuranceComparison": "Versicherungsvergleich",
       "logout": "Abmelden",
       "manageAdditionalTitles": "Zusatztitel verwalten",
-      "manageAutoRadar": "AutoRadar verwalten",
       "manageNotes": "Bemerkungen verwalten",
       "manageVehicles": "Meine Fahrzeuge verwalten",
       "motorcyclePark": "Zum Motorradpark",

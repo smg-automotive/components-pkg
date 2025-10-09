@@ -27,9 +27,14 @@ export const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
     <ChakraAccordion.Item {...rest} css={styles.item}>
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement, {
-              variant: recipeProps.variant,
-            })
+          ? React.cloneElement(
+              child as React.ReactElement<{
+                variant: typeof recipeProps.variant;
+              }>,
+              {
+                variant: recipeProps.variant,
+              },
+            )
           : child,
       )}
     </ChakraAccordion.Item>

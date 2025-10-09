@@ -12,7 +12,7 @@ import Link from '../link';
 
 export interface BareAlertProps {
   title?: string;
-  description: string;
+  description: ReactNode;
   link?: {
     as?: 'link' | 'button' | ElementType;
     text: string;

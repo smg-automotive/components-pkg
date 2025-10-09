@@ -3,7 +3,7 @@ import { useChakraContext } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 import { autoScout24System, motoScout24System } from 'src/themes';
-import { screen, testingLibraryRender } from '.jest';
+import { screen, testingLibraryRender } from 'jest-utils';
 
 import { ThemeProvider, ThemeProviderProps } from '..';
 

@@ -108,6 +108,7 @@
       },
       "legal": {
         "agb": "GTC",
+        "agbDirect": "GTC AutoScout24 Direct",
         "cookieSettings": "Privacy Settings",
         "dataProtection": "Data Protection",
         "imprint": "imprint",
@@ -136,7 +137,6 @@
     "carSubscription": "Car subscription",
     "electromobility": "Electromobility",
     "estimate": "Estimate",
-    "leasing": "Leasing",
     "login": "Login",
     "magazine": "Magazine",
     "more": "More",
@@ -176,7 +176,6 @@
       "insuranceComparison": "Insurance comparison",
       "logout": "Logout",
       "manageAdditionalTitles": "Manage additional titles",
-      "manageAutoRadar": "Manage AutoRadar",
       "manageNotes": "Manage Notes",
       "manageVehicles": "Manage vehicle",
       "motorcyclePark": "Motorcycle park",

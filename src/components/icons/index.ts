@@ -9,6 +9,7 @@ export { AutoScout24AppLogo } from './AutoScout24AppLogo';
 export { AvatarIcon } from './AvatarIcon';
 export { AvatarWithNotificationIcon } from './AvatarWithNotificationIcon';
 export { BatteryIcon } from './BatteryIcon';
+export { BookmarkIcon } from './BookmarkIcon';
 export { CalculatorIcon } from './CalculatorIcon';
 export { CalendarIcon } from './CalendarIcon';
 export { CallIcon } from './CallIcon';

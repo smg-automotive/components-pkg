@@ -10,7 +10,6 @@ import {
   professionalSellLinkConfig,
 } from './sell';
 import { magazineLinkConfig } from './magazine';
-import { leasingLinkConfig } from './leasing';
 import { estimateLinkConfig } from './estimate';
 import { electromobilityLinkConfig } from './electroMobility';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
@@ -40,10 +39,8 @@ export type NavigationLinkConfigProps = Omit<
 
 export const headerLinks = ({
   trackEvent,
-  experiments = {},
 }: {
   trackEvent?: (event: CustomEvent) => void;
-  experiments?: Record<string, string>;
 }): NavigationLinkConfigProps[] => [
   privateAutoScoutSellLinkConfig({ trackEvent }),
   privateMotoScoutSellLinkConfig({ trackEvent }),
@@ -51,8 +48,6 @@ export const headerLinks = ({
   estimateLinkConfig({ trackEvent }),
   autoScoutAssureLinkConfig({ trackEvent }),
   motoScoutAssureLinkConfig({ trackEvent }),
-  ...(experiments?.leasing === 'on'
-    ? [leasingLinkConfig({ trackEvent })]
-    : [electromobilityLinkConfig({ trackEvent })]),
+  electromobilityLinkConfig({ trackEvent }),
   magazineLinkConfig({ trackEvent }),
 ];
