@@ -44,10 +44,11 @@
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "typegen": "npx chakra typegen src/themes/autoScout24.ts --clean",
+    "typegen:release": "npx chakra typegen dist/esm/themes/autoScout24.js --clean",
     "typegen:watch": "npm run typegen -- --watch",
     "test": "jest",
     "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
-    "postinstall": "npm run typegen"
+    "postinstall": "[[ -d src ]] && npm run typegen || npm run typegen:release"
   },
   "author": "SMG Automotive",
   "license": "MIT",
@@ -65,7 +66,6 @@
     "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.27.1",
     "@babel/preset-typescript": "7.27.1",
-    "@chakra-ui/cli": "3.1.2",
     "@rollup/plugin-commonjs": "28.0.6",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
@@ -132,6 +132,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "3.27.1",
+    "@chakra-ui/cli": "3.27.1",
     "@emotion/react": "11.14.0",
     "@smg-automotive/i18n-pkg": "2.0.0",
     "@smg-automotive/phrase-pkg": "1.0.2",
