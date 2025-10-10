@@ -26,11 +26,17 @@ export const Breadcrumbs: FC<PropsWithChildren<BreadcrumbsPropsExtended>> = ({
       <ChakraBreadcrumb.List css={styles.list}>
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) return child;
+
+          const isLast = index === React.Children.count(children) - 1;
+
+          if (isLast) {
+            return React.cloneElement(child as React.ReactElement);
+          }
+
           return (
             <>
               {React.cloneElement(child as React.ReactElement)}
-              {index < React.Children.count(children) - 1 &&
-                (separator ? separator : <BreadcrumbSeparator />)}
+              {separator ? separator : <BreadcrumbSeparator />}
             </>
           );
         })}
