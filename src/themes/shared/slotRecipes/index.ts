@@ -14,6 +14,7 @@ import { dialogFilterRecipe as dialogFilter } from './dialogFilter';
 import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
 import { cardRecipe as card } from './card';
+import { breadcrumbsRecipe as breadcrumbs } from './breadcrumbs';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
 import { alertRecipe as alert } from './alert';
 import { accordionRecipe as accordion } from './accordion';
@@ -21,6 +22,7 @@ import { accordionRecipe as accordion } from './accordion';
 export const slotRecipes = {
   articleTeaser,
   accordion,
+  breadcrumbs,
   card,
   energyLabel,
   list,
