@@ -1,34 +1,33 @@
-import React, { FC } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import React, { FC, PropsWithChildren } from 'react';
+import { Box, Flex, FlexProps, Text } from '@chakra-ui/react';
 
 import { CheckmarkIcon } from 'src';
 
-type ChipSize = 'md';
-
-type ChipVariant = 'suggestion' | 'filter';
-
 export type ChipProps = {
-  children: React.ReactNode;
-  variant?: ChipVariant;
-  size?: ChipSize;
   isDisabled?: boolean;
   onClick?: () => void;
   isActive?: boolean;
+  href?: string;
   'aria-label'?: string;
-} & Omit<React.ComponentProps<typeof Box>, 'onClick' | 'children' | 'size'>;
+} & Pick<FlexProps, 'as'>;
 
-const sizeStyles = {
-  md: {
-    px: 'md',
-    py: 'sm',
-    fontSize: 'sm',
-    minH: 8,
-    iconMargin: 'sm',
-  },
-};
+const getChipStyles = (isActive?: boolean) => {
+  if (isActive) {
+    return {
+      bg: 'blue.100',
+      color: 'gray.900',
+      border: '1px solid transparent',
+      _hover: { bg: 'blue.50' },
+      _active: { bg: 'blue.200' },
+      _focusVisible: {
+        outline: '2px solid',
+        outlineColor: 'blue.300',
+        outlineOffset: 0,
+      },
+    };
+  }
 
-const getVariantStyles = (variant: ChipVariant, isActiveParam?: boolean) => {
-  const suggestionStyles = {
+  return {
     bg: 'white',
     color: 'gray.900',
     border: '1px solid',
@@ -42,47 +41,23 @@ const getVariantStyles = (variant: ChipVariant, isActiveParam?: boolean) => {
       borderColor: 'gray.200',
     },
     _focusVisible: {
-      bg: isActiveParam ? 'gray.100' : 'white',
-      borderColor: 'black',
       outline: '2px solid',
       outlineColor: 'blue.300',
+      outlineOffset: 0,
     },
   };
-
-  const activeFilterStyles = {
-    bg: 'blue.100',
-    color: 'gray.900',
-    border: '1px solid transparent',
-    _hover: { bg: 'blue.50' },
-    _active: { bg: 'blue.200' },
-    _focusVisible: {
-      bg: 'blue.200',
-      outline: '2px solid',
-      outlineColor: 'blue.300',
-    },
-  };
-
-  if (variant === 'filter') {
-    return isActiveParam ? activeFilterStyles : suggestionStyles;
-  }
-
-  return suggestionStyles;
 };
 
-const Chip: FC<ChipProps> = ({
+const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
-  variant = 'suggestion',
-  size = 'md',
   isDisabled = false,
   onClick,
   isActive,
+  href,
   'aria-label': ariaLabel,
   ...rest
 }) => {
-  const sizeStyle =
-    sizeStyles[size as keyof typeof sizeStyles] || sizeStyles['md'];
-
-  const baseVariantStyles = getVariantStyles(variant, isActive);
+  const chipStyles = getChipStyles(isActive);
 
   const handleClick = () => {
     if (!isDisabled && onClick) {
@@ -90,38 +65,45 @@ const Chip: FC<ChipProps> = ({
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (!isDisabled && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       onClick?.();
     }
   };
 
+  const commonProps = {
+    display: 'flex',
+    alignItems: 'center',
+    borderRadius: 'full',
+    transition: 'all 0.2s',
+    outline: 'none',
+    cursor: isDisabled ? 'not-allowed' : 'pointer',
+    opacity: isDisabled ? 0.4 : 1,
+    px: 'md',
+    py: 'sm',
+    minH: 8,
+    width: 'max-content',
+    flexShrink: 0,
+    'aria-label': ariaLabel,
+    ...chipStyles,
+    ...rest,
+  };
+
+  const isLink = Boolean(href);
+  const asType = isLink ? 'a' : 'button';
+
   return (
-    <Box
-      as="button"
-      type="button"
-      display="flex"
-      alignItems="center"
-      borderRadius="full"
-      fontWeight="medium"
-      transition="all 0.2s"
-      outline="none"
-      cursor={isDisabled ? 'not-allowed' : 'pointer'}
-      opacity={isDisabled ? 0.4 : 1}
-      px={sizeStyle.px}
-      py={sizeStyle.py}
-      fontSize={sizeStyle.fontSize}
-      minH={sizeStyle.minH}
-      width="max-content"
-      flexShrink={0}
+    <Flex
+      as={asType}
+      href={isLink && !isDisabled ? href : undefined}
+      type={!isLink ? 'button' : undefined}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      aria-label={ariaLabel}
-      {...baseVariantStyles}
-      {...rest}
+      tabIndex={isDisabled ? -1 : 0}
+      {...commonProps}
     >
-      {isActive && variant === 'filter' ? (
+      {isActive ? (
         <Box
           mr="xs"
           color="currentColor"
@@ -129,15 +111,13 @@ const Chip: FC<ChipProps> = ({
           alignItems="center"
           justifyContent="center"
         >
-          <CheckmarkIcon height={16} width={16} />
+          <CheckmarkIcon height="xs" width="xs" />
         </Box>
       ) : null}
       <Box as="span" whiteSpace="nowrap">
-        <Text textStyle="body-small" fontSize={sizeStyle.fontSize}>
-          {children}
-        </Text>
+        <Text textStyle="body-small">{children}</Text>
       </Box>
-    </Box>
+    </Flex>
   );
 };
 

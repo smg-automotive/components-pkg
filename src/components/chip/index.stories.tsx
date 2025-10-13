@@ -10,24 +10,12 @@ const meta: Meta<typeof Chip> = {
 
   args: {
     children: 'Chip',
-    variant: 'suggestion',
-    size: 'md',
     isDisabled: false,
     isActive: false,
     onClick: action('onClick'),
   },
 
   argTypes: {
-    variant: {
-      options: ['suggestion', 'filter'],
-      control: 'select',
-    },
-
-    size: {
-      options: ['md'],
-      control: 'select',
-    },
-
     children: {
       control: 'text',
     },
@@ -39,24 +27,27 @@ const meta: Meta<typeof Chip> = {
     isActive: {
       control: 'boolean',
     },
+
+    href: {
+      control: 'text',
+    },
   },
 };
 export default meta;
 type StoryType = StoryObj<typeof Chip>;
 
-export const VariantSuggestion: StoryType = {
-  name: 'Variant > Suggestion',
+export const Default: StoryType = {
+  name: 'Default',
   args: {
-    children: 'Suggestion Chip',
-    variant: 'suggestion',
+    children: 'Default Chip',
+    isActive: false,
   },
 };
 
-export const VariantFilter: StoryType = {
-  name: 'Variant > Filter',
+export const Active: StoryType = {
+  name: 'Active',
   args: {
-    children: 'Filter Chip',
-    variant: 'filter',
+    children: 'Active Chip',
     isActive: true,
   },
 };
@@ -66,6 +57,22 @@ export const StateDisabled: StoryType = {
   args: {
     isDisabled: true,
     children: 'Disabled Chip',
+  },
+};
+
+export const AsLink: StoryType = {
+  name: 'As Link',
+  args: {
+    children: 'Link Chip',
+    href: 'https://example.com',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Chip can be used as a link by providing an href prop. It will render as an anchor tag.',
+      },
+    },
   },
 };
 
@@ -84,17 +91,10 @@ export const InteractiveExample: StoryType = {
 
     return (
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+        <Chip onClick={() => toggleChip('option1')}>Suggestion chip</Chip>
         <Chip
-          variant="suggestion"
-          isActive={activeChips.includes('option1')}
-          onClick={() => toggleChip('option1')}
-        >
-          Suggestion chip
-        </Chip>
-        <Chip
-          variant="filter"
-          isActive={activeChips.includes('filter1')}
-          onClick={() => toggleChip('filter1')}
+          isActive={activeChips.includes('option2')}
+          onClick={() => toggleChip('option2')}
         >
           Filter chip
         </Chip>
@@ -105,7 +105,7 @@ export const InteractiveExample: StoryType = {
     docs: {
       description: {
         story:
-          'Click the chips to see them toggle between active and inactive states.',
+          'Click the chips to see them toggle between active and inactive states. The last two chips are links.',
       },
     },
   },
