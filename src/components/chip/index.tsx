@@ -1,29 +1,23 @@
 import React, { FC } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 
-type ChipSize = 'sm' | 'md';
+import { CheckmarkIcon } from 'src';
 
-type ChipVariant = 'choice' | 'filter';
+type ChipSize = 'md';
+
+type ChipVariant = 'suggestion' | 'filter';
 
 export type ChipProps = {
   children: React.ReactNode;
   variant?: ChipVariant;
   size?: ChipSize;
   isDisabled?: boolean;
-  leftIcon?: React.ReactNode;
   onClick?: () => void;
   isActive?: boolean;
   'aria-label'?: string;
 } & Omit<React.ComponentProps<typeof Box>, 'onClick' | 'children' | 'size'>;
 
 const sizeStyles = {
-  sm: {
-    px: 'sm',
-    py: 'xs',
-    fontSize: 'xs',
-    minH: 2,
-    iconMargin: 'xs',
-  },
   md: {
     px: 'md',
     py: 'sm',
@@ -34,23 +28,8 @@ const sizeStyles = {
 };
 
 const getVariantStyles = (variant: ChipVariant, isActiveParam?: boolean) => {
-  if (variant === 'filter') {
-    return {
-      bg: isActiveParam ? 'blue.200' : 'blue.100',
-      color: 'gray.900',
-      border: '1px solid transparent',
-      _hover: { bg: 'blue.50' },
-      _active: { bg: 'blue.200' },
-      _focusVisible: {
-        bg: isActiveParam ? 'blue.200' : 'blue.100',
-        outline: '2px solid',
-        outlineColor: 'blue.300',
-      },
-    };
-  }
-
-  return {
-    bg: isActiveParam ? 'gray.100' : 'white',
+  const suggestionStyles = {
+    bg: 'white',
     color: 'gray.900',
     border: '1px solid',
     borderColor: 'gray.200',
@@ -69,14 +48,32 @@ const getVariantStyles = (variant: ChipVariant, isActiveParam?: boolean) => {
       outlineColor: 'blue.300',
     },
   };
+
+  const activeFilterStyles = {
+    bg: 'blue.200',
+    color: 'gray.900',
+    border: '1px solid transparent',
+    _hover: { bg: 'blue.50' },
+    _active: { bg: 'blue.200' },
+    _focusVisible: {
+      bg: 'blue.200',
+      outline: '2px solid',
+      outlineColor: 'blue.300',
+    },
+  };
+
+  if (variant === 'filter') {
+    return isActiveParam ? activeFilterStyles : suggestionStyles;
+  }
+
+  return suggestionStyles;
 };
 
 const Chip: FC<ChipProps> = ({
   children,
-  variant = 'choice',
+  variant = 'suggestion',
   size = 'md',
   isDisabled = false,
-  leftIcon,
   onClick,
   isActive,
   'aria-label': ariaLabel,
@@ -124,7 +121,7 @@ const Chip: FC<ChipProps> = ({
       {...baseVariantStyles}
       {...rest}
     >
-      {leftIcon && size !== 'sm' ? (
+      {isActive && variant === 'filter' ? (
         <Box
           mr="xs"
           color="currentColor"
@@ -132,7 +129,7 @@ const Chip: FC<ChipProps> = ({
           alignItems="center"
           justifyContent="center"
         >
-          {leftIcon}
+          <CheckmarkIcon height={16} width={16} />
         </Box>
       ) : null}
       <Box as="span" whiteSpace="nowrap">

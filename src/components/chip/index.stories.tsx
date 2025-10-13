@@ -2,9 +2,6 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { iconControl } from 'src/storybook/ControlTypes';
-import { CheckmarkIcon, MagnifierIcon, StarIcon } from 'src';
-
 import Chip from './index';
 
 const meta: Meta<typeof Chip> = {
@@ -13,7 +10,7 @@ const meta: Meta<typeof Chip> = {
 
   args: {
     children: 'Chip',
-    variant: 'choice',
+    variant: 'suggestion',
     size: 'md',
     isDisabled: false,
     isActive: false,
@@ -22,12 +19,12 @@ const meta: Meta<typeof Chip> = {
 
   argTypes: {
     variant: {
-      options: ['choice', 'filter'],
+      options: ['suggestion', 'filter'],
       control: 'select',
     },
 
     size: {
-      options: ['sm', 'md'],
+      options: ['md'],
       control: 'select',
     },
 
@@ -42,20 +39,16 @@ const meta: Meta<typeof Chip> = {
     isActive: {
       control: 'boolean',
     },
-
-    leftIcon: iconControl,
   },
 };
 export default meta;
 type StoryType = StoryObj<typeof Chip>;
 
-export const Overview: StoryType = {};
-
-export const VariantChoice: StoryType = {
-  name: 'Variant > Choice',
+export const VariantSuggestion: StoryType = {
+  name: 'Variant > Suggestion',
   args: {
-    children: 'Choice Chip',
-    variant: 'choice',
+    children: 'Suggestion Chip',
+    variant: 'suggestion',
   },
 };
 
@@ -64,39 +57,7 @@ export const VariantFilter: StoryType = {
   args: {
     children: 'Filter Chip',
     variant: 'filter',
-  },
-};
-
-export const SizeSmall: StoryType = {
-  name: 'Size > Small',
-  args: {
-    size: 'sm',
-    children: 'Small Chip',
-  },
-};
-
-export const SizeMedium: StoryType = {
-  name: 'Size > Medium',
-  args: {
-    size: 'md',
-    children: 'Medium Chip',
-  },
-};
-
-export const StateActive: StoryType = {
-  name: 'State > Active',
-  args: {
     isActive: true,
-    children: 'Active Chip',
-  },
-};
-
-export const StateActiveTypeFilter: StoryType = {
-  name: 'State > Active Type Filter',
-  args: {
-    isActive: true,
-    children: 'Active Chip',
-    variant: 'filter',
   },
 };
 
@@ -105,48 +66,6 @@ export const StateDisabled: StoryType = {
   args: {
     isDisabled: true,
     children: 'Disabled Chip',
-  },
-};
-
-export const WithLeftIcon: StoryType = {
-  name: 'With Left Icon',
-  args: {
-    leftIcon: <CheckmarkIcon height={16} width={16} />,
-    children: 'With Icon',
-  },
-};
-
-export const FilterWithIcon: StoryType = {
-  name: 'Filter with Icon',
-  args: {
-    variant: 'filter',
-    leftIcon: <MagnifierIcon height={16} width={16} />,
-    children: 'Filter Options',
-  },
-};
-
-export const ActiveWithIcon: StoryType = {
-  name: 'Active with Icon',
-  args: {
-    isActive: true,
-    leftIcon: <StarIcon height={16} width={16} />,
-    children: 'Favorite',
-  },
-};
-
-export const SmallChipNoIcon: StoryType = {
-  name: 'Small Chip (No Icon)',
-  args: {
-    size: 'sm',
-    leftIcon: <CheckmarkIcon height={16} width={16} />,
-    children: 'Small chip ignores icons',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Small chips do not display the leftIcon, even when provided.',
-      },
-    },
   },
 };
 
@@ -166,34 +85,18 @@ export const InteractiveExample: StoryType = {
     return (
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Chip
-          variant="choice"
+          variant="suggestion"
           isActive={activeChips.includes('option1')}
           onClick={() => toggleChip('option1')}
         >
-          Option 1
-        </Chip>
-        <Chip
-          variant="choice"
-          isActive={activeChips.includes('option2')}
-          onClick={() => toggleChip('option2')}
-        >
-          Option 2
+          Suggestion chip
         </Chip>
         <Chip
           variant="filter"
-          leftIcon={<MagnifierIcon height={16} width={16} />}
           isActive={activeChips.includes('filter1')}
           onClick={() => toggleChip('filter1')}
         >
-          Filter
-        </Chip>
-        <Chip
-          variant="filter"
-          leftIcon={<StarIcon height={16} width={16} />}
-          isActive={activeChips.includes('favorites')}
-          onClick={() => toggleChip('favorites')}
-        >
-          Favorites
+          Filter chip
         </Chip>
       </div>
     );
