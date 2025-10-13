@@ -50,7 +50,7 @@ const getVariantStyles = (variant: ChipVariant, isActiveParam?: boolean) => {
   };
 
   const activeFilterStyles = {
-    bg: 'blue.200',
+    bg: 'blue.100',
     color: 'gray.900',
     border: '1px solid transparent',
     _hover: { bg: 'blue.50' },
