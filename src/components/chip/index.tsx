@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Box, Flex, FlexProps, Text } from '@chakra-ui/react';
 
-import { CheckmarkIcon } from 'src';
+import { CheckmarkIcon } from '../icons/index';
 
 export type ChipProps = {
   isDisabled?: boolean;
