@@ -7,7 +7,7 @@ import { Stack } from 'src/components/stack';
 import { Link } from 'src/components/link';
 import { Center } from 'src/components/center';
 
-const FooterLanguageNavigation: FC = () => {
+export const FooterLanguageNavigation: FC = () => {
   return (
     <Center>
       <Stack
@@ -29,5 +29,3 @@ const FooterLanguageNavigation: FC = () => {
     </Center>
   );
 };
-
-export default FooterLanguageNavigation;

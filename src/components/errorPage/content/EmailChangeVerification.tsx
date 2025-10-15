@@ -3,7 +3,7 @@ import { Trans } from '@smg-automotive/i18n-pkg';
 
 import { Box } from 'src/components/box';
 
-const EmailChangeVerificationErrorContent = () => {
+export const EmailChangeVerificationErrorContent = () => {
   return (
     <Box width="full">
       <p>
@@ -24,5 +24,3 @@ const EmailChangeVerificationErrorContent = () => {
     </Box>
   );
 };
-
-export default EmailChangeVerificationErrorContent;

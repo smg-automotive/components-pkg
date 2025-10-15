@@ -4,7 +4,10 @@ import { Button } from 'src/components/button';
 
 import { ActionButtonInterface } from '../interface';
 
-const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
+export const BackToLogin: FC<ActionButtonInterface> = ({
+  t,
+  language = 'de',
+}) => {
   const languageToUse = language === 'en' ? 'de' : language;
   const logoutLink = `/seller-web/api/auth/logout`;
   const vehicleManagementLink = `/${languageToUse}/vehicle-management`;
@@ -18,5 +21,3 @@ const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
     </Button>
   );
 };
-
-export default BackToLogin;

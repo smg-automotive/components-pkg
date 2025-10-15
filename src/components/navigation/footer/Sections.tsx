@@ -10,14 +10,14 @@ import { ListItem } from 'src/components/list';
 import { ListRoot } from 'src/components/list';
 import { GridItem } from 'src/components/grid';
 
-import FooterLink from './Link';
+import { FooterLink } from './Link';
 import { FooterConfigInstance } from './config/factory';
 
 interface FooterSectionsProps {
   config: FooterConfigInstance;
 }
 
-const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
+export const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
   const { t } = useI18n();
   const sectionChunks = chunkArray({
     array: config.sections,
@@ -66,5 +66,3 @@ const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
     </>
   );
 };
-
-export default FooterSections;

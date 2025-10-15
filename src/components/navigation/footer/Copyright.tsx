@@ -3,7 +3,7 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 
 import { Box } from 'src/components/box';
 
-const FooterCopyright: FC = () => {
+export const FooterCopyright: FC = () => {
   const { t } = useI18n();
 
   return (
@@ -12,5 +12,3 @@ const FooterCopyright: FC = () => {
     </Box>
   );
 };
-
-export default FooterCopyright;
