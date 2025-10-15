@@ -42,7 +42,7 @@ export const fieldBase = defineStyle({
   transitionProperty: 'common',
   transitionDuration: 'normal',
   display: 'inline-flex',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   alignItems: 'center',
   gap: 'xs',
 });
