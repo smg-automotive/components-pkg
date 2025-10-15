@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Box, Flex, Text, FlexProps, useRecipe } from '@chakra-ui/react';
+import { Box, Flex, FlexProps, Text, useRecipe } from '@chakra-ui/react';
 
-import { CheckmarkIcon } from 'src';
-import { chipRecipe } from '../../themes/shared/recipes/chip';
+import { chipRecipe } from 'src/themes/shared/recipes/chip';
+import { CheckmarkIcon } from 'src/components/icons/CheckmarkIcon';
 
 export type ChipProps = {
   isDisabled?: boolean;
@@ -11,7 +11,6 @@ export type ChipProps = {
   href?: string;
   'aria-label'?: string;
 };
-
 
 const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
