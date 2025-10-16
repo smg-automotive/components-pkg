@@ -10,8 +10,8 @@ const meta: Meta<typeof Chip> = {
 
   args: {
     children: 'Chip',
-    isDisabled: false,
-    isActive: false,
+    disabled: false,
+    active: false,
     onClick: action('onClick'),
   },
 
@@ -20,11 +20,11 @@ const meta: Meta<typeof Chip> = {
       control: 'text',
     },
 
-    isDisabled: {
+    disabled: {
       control: 'boolean',
     },
 
-    isActive: {
+    active: {
       control: 'boolean',
     },
 
@@ -40,7 +40,6 @@ export const Default: StoryType = {
   name: 'Default',
   args: {
     children: 'Default Chip',
-    isActive: false,
   },
 };
 
@@ -48,14 +47,14 @@ export const Active: StoryType = {
   name: 'Active',
   args: {
     children: 'Active Chip',
-    isActive: true,
+    active: true,
   },
 };
 
 export const StateDisabled: StoryType = {
   name: 'State > Disabled',
   args: {
-    isDisabled: true,
+    disabled: true,
     children: 'Disabled Chip',
   },
 };
@@ -91,9 +90,9 @@ export const InteractiveExample: StoryType = {
 
     return (
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <Chip onClick={() => toggleChip('option1')}>Suggestion chip</Chip>
+        <Chip>Suggestion chip</Chip>
         <Chip
-          isActive={activeChips.includes('option2')}
+          active={activeChips.includes('option2')}
           onClick={() => toggleChip('option2')}
         >
           Filter chip
@@ -105,7 +104,7 @@ export const InteractiveExample: StoryType = {
     docs: {
       description: {
         story:
-          'Click the chips to see them toggle between active and inactive states. The last two chips are links.',
+          'Click the chips to see them toggle between active and inactive states.',
       },
     },
   },
