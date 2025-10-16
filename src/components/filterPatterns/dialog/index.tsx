@@ -32,6 +32,7 @@ export const DialogFilter: FC<DialogFilterProps> = ({
   children,
   paddingX,
   backgroundColor,
+  trapFocus = true,
 }) => {
   const { onOpen, onClose, open } = useDisclosure({
     defaultOpen: initialDialogState === 'open',
@@ -58,6 +59,7 @@ export const DialogFilter: FC<DialogFilterProps> = ({
         <ChakraDialog.Root
           open={open}
           onOpenChange={(e) => (e.open ? onOpen() : onClose())}
+          trapFocus={trapFocus}
         >
           <Portal>
             <ChakraDialog.Positioner>
