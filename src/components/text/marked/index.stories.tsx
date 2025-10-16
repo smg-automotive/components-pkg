@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { fontSizes } from 'src/themes/shared/fontSizes';
-
 import { Box } from 'src';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import MarkedTextComponent from '.';
 
@@ -34,15 +34,9 @@ const meta: Meta<typeof MarkedTextComponent> = {
   },
 
   argTypes: {
+    ...getRecipeControls('markedText'),
     children: {
       control: { type: 'text' },
-    },
-    fontSize: {
-      options: Object.keys(fontSizes),
-      control: { type: 'select' },
-    },
-    variant: {
-      options: ['underline', 'highlight'],
     },
     highlightColor: {
       options: ['white', 'gray.100', brandHighlight],

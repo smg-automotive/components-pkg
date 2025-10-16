@@ -1,28 +1,46 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import {
-  BreadcrumbProps,
+  BreadcrumbRootProps as BreadcrumbProps,
   Breadcrumb as ChakraBreadcrumb,
-  useMultiStyleConfig,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { ChevronRightTinyIcon } from '../icons';
+import { BreadcrumbSeparator } from './Separator';
 
-const Breadcrumbs: FC<PropsWithChildren<BreadcrumbProps>> = ({
+export interface BreadcrumbsPropsExtended extends BreadcrumbProps {
+  separator?: React.ReactNode;
+}
+
+export const Breadcrumbs: FC<PropsWithChildren<BreadcrumbsPropsExtended>> = ({
   children,
   ...props
 }) => {
-  const { container, separator } = useMultiStyleConfig('Breadcrumbs');
+  const { separator, ...rest } = props;
+
+  const recipe = useSlotRecipe({ key: 'breadcrumbs' });
+  const styles = recipe();
 
   return (
-    <ChakraBreadcrumb
-      __css={container}
-      separator={props.separator || <ChevronRightTinyIcon __css={separator} />}
-      {...props}
-    >
-      {children}
-    </ChakraBreadcrumb>
+    <ChakraBreadcrumb.Root {...rest}>
+      <ChakraBreadcrumb.List css={styles.list}>
+        {React.Children.map(children, (child, index) => {
+          if (!React.isValidElement(child)) return child;
+
+          const isLast = index === React.Children.count(children) - 1;
+
+          if (isLast) {
+            return React.cloneElement(child as React.ReactElement);
+          }
+
+          return (
+            <>
+              {React.cloneElement(child as React.ReactElement)}
+              {separator ? separator : <BreadcrumbSeparator />}
+            </>
+          );
+        })}
+      </ChakraBreadcrumb.List>
+    </ChakraBreadcrumb.Root>
   );
 };
-
-export default Breadcrumbs;

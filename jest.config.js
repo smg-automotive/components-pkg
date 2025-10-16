@@ -19,5 +19,5 @@ module.exports = {
     '<rootDir>/jest-utils/setup/textEncoder.ts',
     '<rootDir>/jest-utils/setup/fetch.ts',
   ],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
 };

@@ -1,34 +1,25 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
+import { buttonRecipe } from 'src/themes/shared/recipes/button';
 import { iconControl } from 'src/storybook/ControlTypes';
-import { ShareIcon, VideoIcon } from 'src';
 
-import Button from './index';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { ShareIcon, VideoIcon } from '../icons';
+
+import { Button } from '.';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-
   args: {
-    isDisabled: false,
-    variant: 'primary',
-    size: 'lg',
     children: 'Button',
-    onClick: action('onClick'),
+    variant: 'primary',
+    size: { base: 'md', lg: 'lg' },
   },
-
   argTypes: {
-    variant: {
-      options: ['primary', 'secondary', 'success', 'transparent'],
-      control: 'select',
-    },
-
-    size: {
-      options: ['md', 'lg'],
-      control: 'select',
-    },
+    ...getRecipeControls(buttonRecipe),
 
     children: {
       control: 'text',
@@ -39,19 +30,19 @@ const meta: Meta<typeof Button> = {
     icon: iconControl,
   },
 };
+
 export default meta;
-type StoryType = StoryObj<typeof Button>;
 
-export const Overview: StoryType = {};
+export const Overview: StoryObj<typeof Button> = {};
 
-export const VariantPrimary: StoryType = {
+export const VariantPrimary: StoryObj<typeof Button> = {
   name: 'Variant > Primary',
   args: {
     children: 'Primary Button',
   },
 };
 
-export const VariantSecondary: StoryType = {
+export const VariantSecondary: StoryObj<typeof Button> = {
   name: 'Variant > Secondary',
   args: {
     children: 'Secondary Button',
@@ -59,7 +50,7 @@ export const VariantSecondary: StoryType = {
   },
 };
 
-export const VariantSuccess: StoryType = {
+export const VariantSuccess: StoryObj<typeof Button> = {
   name: 'Variant > Success',
   args: {
     children: 'Success Button',
@@ -67,7 +58,7 @@ export const VariantSuccess: StoryType = {
   },
 };
 
-export const VariantTransparent: StoryType = {
+export const VariantTransparent: StoryObj<typeof Button> = {
   name: 'Variant > Transparent',
   args: {
     variant: 'transparent',
@@ -75,47 +66,48 @@ export const VariantTransparent: StoryType = {
   },
 };
 
-export const SizesMedium: StoryType = {
+export const SizesMedium: StoryObj<typeof Button> = {
   name: 'Sizes > Medium',
   args: {
     size: 'md',
   },
 };
 
-export const SizesLarge: StoryType = {
+export const SizesLarge: StoryObj<typeof Button> = {
   name: 'Sizes > Large',
   args: {
     size: 'lg',
   },
 };
 
-export const StateDisabled: StoryType = {
+export const StateDisabled: StoryObj<typeof Button> = {
   name: 'Sate > Disabled',
   args: {
-    isDisabled: true,
+    disabled: true,
   },
 };
 
-export const AsLink: StoryType = {
+export const AsLink: StoryObj<typeof Button> = {
   args: {
     as: 'a',
     href: '#href',
+    isExternal: true,
   },
 };
 
-export const WithLeftIcon: StoryType = {
+export const WithLeftIcon: StoryObj<typeof Button> = {
   args: {
     leftIcon: <VideoIcon />,
   },
 };
 
-export const WithRightIcon: StoryType = {
+export const WithRightIcon: StoryObj<typeof Button> = {
   args: {
     rightIcon: <VideoIcon />,
   },
 };
 
-export const IconButton: StoryType = {
+export const IconButton: StoryObj<typeof Button> = {
   name: 'Icon button',
 
   args: {
