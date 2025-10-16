@@ -23,7 +23,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
 }) => {
   const recipe = useRecipe({ recipe: chipRecipe });
   const [recipeProps] = recipe.splitVariantProps({
-    variant: active ? 'active' : 'default',
+    variant: active ? 'selected' : 'default',
     disabled,
   });
   const styles = recipe(recipeProps);

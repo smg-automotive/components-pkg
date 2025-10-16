@@ -31,7 +31,7 @@ export const chipRecipe = defineRecipe({
           outlineOffset: 0,
         },
       },
-      active: {
+      selected: {
         bg: 'blue.100',
         border: '1px',
         borderColor: 'transparent',
@@ -47,10 +47,32 @@ export const chipRecipe = defineRecipe({
       true: {
         cursor: 'notAllowed',
         opacity: '40',
+        _hover: {
+          bg: 'white',
+          borderColor: 'gray.200',
+          _active: {
+            borderColor: 'gray.200',
+            bg: 'inherit',
+          },
+        },
       },
     },
   },
   defaultVariants: {
     variant: 'default',
   },
+  compoundVariants: [
+    {
+      variant: 'selected',
+      disabled: true,
+      css: {
+        bg: 'white',
+        borderColor: 'gray.200',
+        _active: {
+          borderColor: 'gray.200',
+          bg: 'blue.100',
+        },
+      },
+    },
+  ],
 });
