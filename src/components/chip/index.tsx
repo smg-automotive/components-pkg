@@ -76,11 +76,11 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: 'full',
-    transition: 'all 0.2s',
+    transition: 'background-color 0.2s',
     outline: 'none',
     cursor: isDisabled ? 'not-allowed' : 'pointer',
     opacity: isDisabled ? 0.4 : 1,
-    px: 'md',
+    px: isActive ? 'md' : '2xl',
     py: 'sm',
     minH: 8,
     width: 'max-content',
@@ -105,7 +105,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
     >
       {isActive ? (
         <Box
-          mr="xs"
+          mx="xs"
           color="currentColor"
           display="flex"
           alignItems="center"
