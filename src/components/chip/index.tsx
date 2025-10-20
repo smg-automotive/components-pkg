@@ -5,37 +5,36 @@ import { chipRecipe } from 'src/themes/shared/recipes/chip';
 import { CheckmarkIcon } from 'src/components/icons/CheckmarkIcon';
 
 export type ChipProps = {
-  disabled?: boolean;
+  variant?: 'default' | 'selected' | 'disabled';
   onClick?: () => void;
-  active?: boolean;
   href?: string;
   'aria-label'?: string;
 };
 
 const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
-  disabled = false,
+  variant = 'default',
   onClick,
-  active,
   href,
   'aria-label': ariaLabel,
   ...rest
 }) => {
   const recipe = useRecipe({ recipe: chipRecipe });
   const [recipeProps] = recipe.splitVariantProps({
-    variant: active ? 'selected' : 'default',
-    disabled,
+    variant,
   });
   const styles = recipe(recipeProps);
 
+  const isDisabled = variant === 'disabled';
+
   const handleClick = () => {
-    if (!disabled && onClick) {
+    if (!isDisabled && onClick) {
       onClick();
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
+    if (!isDisabled && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       onClick?.();
     }
@@ -53,14 +52,14 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
   return (
     <Flex
       as={asType}
-      {...(isLink && !disabled ? { href } : {})}
+      {...(isLink && !isDisabled ? { href } : {})}
       {...(!isLink ? { type: 'button' } : {})}
-      onClick={!disabled ? handleClick : undefined}
+      onClick={!isDisabled ? handleClick : undefined}
       onKeyDown={handleKeyDown}
-      tabIndex={disabled ? -1 : 0}
+      tabIndex={isDisabled ? -1 : 0}
       {...commonProps}
     >
-      {active ? (
+      {variant === 'selected' ? (
         <Box
           mr="xs"
           color="currentColor"

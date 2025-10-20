@@ -10,8 +10,7 @@ const meta: Meta<typeof Chip> = {
 
   args: {
     children: 'Chip',
-    disabled: false,
-    active: false,
+    variant: 'default',
     onClick: action('onClick'),
   },
 
@@ -20,12 +19,9 @@ const meta: Meta<typeof Chip> = {
       control: 'text',
     },
 
-    disabled: {
-      control: 'boolean',
-    },
-
-    active: {
-      control: 'boolean',
+    variant: {
+      control: 'select',
+      options: ['default', 'selected', 'disabled'],
     },
 
     href: {
@@ -43,18 +39,18 @@ export const Default: StoryType = {
   },
 };
 
-export const Active: StoryType = {
-  name: 'Active',
+export const Selected: StoryType = {
+  name: 'Selected',
   args: {
-    children: 'Active Chip',
-    active: true,
+    children: 'Selected Chip',
+    variant: 'selected',
   },
 };
 
 export const StateDisabled: StoryType = {
   name: 'State > Disabled',
   args: {
-    disabled: true,
+    variant: 'disabled',
     children: 'Disabled Chip',
   },
 };
@@ -78,10 +74,10 @@ export const AsLink: StoryType = {
 export const InteractiveExample: StoryType = {
   name: 'Interactive Example',
   render: function InteractiveChipsExample() {
-    const [activeChips, setActiveChips] = React.useState<string[]>([]);
+    const [selectedChips, setSelectedChips] = React.useState<string[]>([]);
 
     const toggleChip = (chipId: string) => {
-      setActiveChips((prev) =>
+      setSelectedChips((prev) =>
         prev.includes(chipId)
           ? prev.filter((id) => id !== chipId)
           : [...prev, chipId],
@@ -92,7 +88,7 @@ export const InteractiveExample: StoryType = {
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Chip>Suggestion chip</Chip>
         <Chip
-          active={activeChips.includes('option2')}
+          variant={selectedChips.includes('option2') ? 'selected' : 'default'}
           onClick={() => toggleChip('option2')}
         >
           Filter chip
@@ -104,7 +100,7 @@ export const InteractiveExample: StoryType = {
     docs: {
       description: {
         story:
-          'Click the chips to see them toggle between active and inactive states.',
+          'Click the chips to see them toggle between selected and default states.',
       },
     },
   },
