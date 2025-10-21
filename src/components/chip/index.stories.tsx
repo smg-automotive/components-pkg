@@ -21,7 +21,7 @@ const meta: Meta<typeof Chip> = {
 
     variant: {
       control: 'select',
-      options: ['default', 'selected', 'disabled'],
+      options: ['default', 'selected'],
     },
 
     href: {
@@ -44,14 +44,6 @@ export const Selected: StoryType = {
   args: {
     children: 'Selected Chip',
     variant: 'selected',
-  },
-};
-
-export const StateDisabled: StoryType = {
-  name: 'State > Disabled',
-  args: {
-    variant: 'disabled',
-    children: 'Disabled Chip',
   },
 };
 

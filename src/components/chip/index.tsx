@@ -1,11 +1,18 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Box, Flex, FlexProps, Text, useRecipe } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  FlexProps,
+  RecipeVariantProps,
+  Text,
+  useRecipe,
+} from '@chakra-ui/react';
 
 import { chipRecipe } from 'src/themes/shared/recipes/chip';
 import { CheckmarkIcon } from 'src/components/icons/CheckmarkIcon';
 
 export type ChipProps = {
-  variant?: 'default' | 'selected' | 'disabled';
+  variant?: RecipeVariantProps<typeof chipRecipe>['variant'];
   onClick?: () => void;
   href?: string;
   'aria-label'?: string;
@@ -25,16 +32,12 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
   });
   const styles = recipe(recipeProps);
 
-  const isDisabled = variant === 'disabled';
-
   const handleClick = () => {
-    if (!isDisabled && onClick) {
-      onClick();
-    }
+    onClick?.();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!isDisabled && (event.key === 'Enter' || event.key === ' ')) {
+    if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       onClick?.();
     }
@@ -52,11 +55,10 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
   return (
     <Flex
       as={asType}
-      {...(isLink && !isDisabled ? { href } : {})}
+      {...(isLink && onClick ? { href } : {})}
       {...(!isLink ? { type: 'button' } : {})}
-      onClick={!isDisabled ? handleClick : undefined}
+      onClick={onClick ? handleClick : undefined}
       onKeyDown={handleKeyDown}
-      tabIndex={isDisabled ? -1 : 0}
       {...commonProps}
     >
       {variant === 'selected' ? (
