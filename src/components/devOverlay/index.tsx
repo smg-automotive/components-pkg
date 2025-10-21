@@ -18,7 +18,7 @@ export type DevOverlayProps = {
   displayTranslationKeys: boolean;
 };
 
-const DevOverlay: FC<DevOverlayProps> = ({
+export const DevOverlay: FC<DevOverlayProps> = ({
   variables,
   hideDevOverlay,
   toggleTheme,
@@ -97,4 +97,3 @@ const DevOverlay: FC<DevOverlayProps> = ({
     </Box>
   );
 };
-export default DevOverlay;
