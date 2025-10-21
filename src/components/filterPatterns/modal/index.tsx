@@ -56,6 +56,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           backgroundColor={backgroundColor}
         />
         <ChakraModal
+          key={`modal-filter-${label}-${isOpen ? 'open' : 'closed'}`}
           isOpen={isOpen}
           onClose={onClose}
           size="full"
