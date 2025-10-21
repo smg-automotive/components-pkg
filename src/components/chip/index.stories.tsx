@@ -10,7 +10,7 @@ const meta: Meta<typeof Chip> = {
 
   args: {
     children: 'Chip',
-    variant: 'default',
+    selected: false,
     onClick: action('onClick'),
   },
 
@@ -19,12 +19,11 @@ const meta: Meta<typeof Chip> = {
       control: 'text',
     },
 
-    variant: {
-      control: 'select',
-      options: ['default', 'selected'],
+    selected: {
+      control: 'boolean',
       table: {
-        type: { summary: 'default | selected' },
-        defaultValue: { summary: 'default' },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
 
@@ -47,7 +46,7 @@ export const Selected: StoryType = {
   name: 'Selected',
   args: {
     children: 'Selected Chip',
-    variant: 'selected',
+    selected: true,
   },
 };
 
@@ -70,23 +69,12 @@ export const AsLink: StoryType = {
 export const InteractiveExample: StoryType = {
   name: 'Interactive Example',
   render: function InteractiveChipsExample() {
-    const [selectedChips, setSelectedChips] = React.useState<string[]>([]);
-
-    const toggleChip = (chipId: string) => {
-      setSelectedChips((prev) =>
-        prev.includes(chipId)
-          ? prev.filter((id) => id !== chipId)
-          : [...prev, chipId],
-      );
-    };
+    const [selected, setSelected] = React.useState(false);
 
     return (
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         <Chip>Suggestion chip</Chip>
-        <Chip
-          variant={selectedChips.includes('option2') ? 'selected' : 'default'}
-          onClick={() => toggleChip('option2')}
-        >
+        <Chip selected={selected} onClick={() => setSelected((prev) => !prev)}>
           Filter chip
         </Chip>
       </div>

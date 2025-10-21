@@ -12,40 +12,34 @@ export const chipRecipe = defineRecipe({
     minH: 'sm',
     w: 'fit',
     flexShrink: 0,
+    border: '1px',
+    _focusVisible: {
+      outline: '2px solid',
+      outlineColor: 'blue.300',
+      outlineOffset: 0,
+    },
+    bg: 'white',
+    px: '2xl',
+    borderColor: 'gray.200',
   },
   variants: {
-    variant: {
-      default: {
-        bg: 'white',
-        px: '2xl',
-        border: '1px',
-        borderColor: 'gray.200',
+    selected: {
+      false: {
         _hover: {
           bg: 'white',
           borderColor: 'black',
           _active: { bg: 'gray.100', borderColor: 'gray.200' },
         },
-        _focusVisible: {
-          outline: '2px solid',
-          outlineColor: 'blue.300',
-          outlineOffset: 0,
-        },
       },
-      selected: {
+      true: {
         bg: 'blue.100',
         px: 'md',
-        border: '1px',
         borderColor: 'transparent',
         _hover: { bg: 'blue.50', _active: { bg: 'blue.200' } },
-        _focusVisible: {
-          outline: '2px solid',
-          outlineColor: 'blue.300',
-          outlineOffset: 0,
-        },
       },
     },
   },
   defaultVariants: {
-    variant: 'default',
+    selected: false,
   },
 });

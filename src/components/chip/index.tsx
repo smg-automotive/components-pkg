@@ -12,15 +12,14 @@ import { chipRecipe } from 'src/themes/shared/recipes/chip';
 import { CheckmarkIcon } from 'src/components/icons/CheckmarkIcon';
 
 export type ChipProps = {
-  variant?: RecipeVariantProps<typeof chipRecipe>['variant'];
   onClick?: () => void;
   href?: string;
   'aria-label'?: string;
-};
+} & RecipeVariantProps<typeof chipRecipe>;
 
 const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
-  variant = 'default',
+  selected = false,
   onClick,
   href,
   'aria-label': ariaLabel,
@@ -28,7 +27,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
 }) => {
   const recipe = useRecipe({ recipe: chipRecipe });
   const [recipeProps] = recipe.splitVariantProps({
-    variant,
+    selected,
   });
   const styles = recipe(recipeProps);
 
@@ -61,7 +60,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
       onKeyDown={handleKeyDown}
       {...commonProps}
     >
-      {variant === 'selected' ? (
+      {selected ? (
         <Box
           mx="xs"
           color="currentColor"
