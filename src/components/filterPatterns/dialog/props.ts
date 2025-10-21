@@ -12,4 +12,5 @@ export type DialogFilterProps = FilterPatternProps &
     isDisabled?: boolean;
     paddingX?: PaddingX;
     backgroundColor?: Colors;
+    trapFocus?: boolean;
   };

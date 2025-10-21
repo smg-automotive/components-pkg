@@ -4,6 +4,7 @@ export * from './aspectRatio';
 export * from './avatar';
 export * from './badge';
 export * from './box';
+export * from './breadcrumbs';
 export * from './button';
 export * from './card';
 export * from './center';
