@@ -22,6 +22,10 @@ const meta: Meta<typeof Chip> = {
     variant: {
       control: 'select',
       options: ['default', 'selected'],
+      table: {
+        type: { summary: 'default | selected' },
+        defaultValue: { summary: 'default' },
+      },
     },
 
     href: {
