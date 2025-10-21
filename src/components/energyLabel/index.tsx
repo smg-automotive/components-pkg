@@ -1,50 +1,28 @@
 import React, { FC } from 'react';
+import { type RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
 
-import Text from '../text';
-import Flex from '../flex';
-import Box from '../box';
+import { energyLabelRecipe } from 'src/themes/shared/slotRecipes/energyLabel';
 
-type Efficiency = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
+import { Text } from '../text';
+import { Flex } from '../flex';
+import { Box } from '../box';
 
-export interface Props {
-  efficiency: Efficiency;
-}
+type RecipeProps = RecipeVariantProps<typeof energyLabelRecipe>;
+export type EnergyLabelProps = Required<Pick<RecipeProps, 'efficiency'>> &
+  RecipeProps;
 
-const colors: Record<Efficiency, string> = {
-  A: '#4CA651',
-  B: '#54B646',
-  C: '#CAD143',
-  D: '#FEF050',
-  E: '#F1AE3D',
-  F: '#EE6E2D',
-  G: '#D02F26',
-};
+export const EnergyLabel: FC<EnergyLabelProps> = (props) => {
+  const { efficiency } = props;
+  const recipe = useSlotRecipe({ key: 'energyLabel' });
+  const [recipeProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
 
-const EnergyLabel: FC<Props> = ({ efficiency }) => {
   return (
-    <Flex height="20px" width="md">
-      <Box
-        borderTopWidth="10px"
-        borderTopColor="transparent"
-        borderRightWidth="10px"
-        borderRightColor={colors[efficiency]}
-        borderBottomWidth="10px"
-        borderBottomColor="transparent"
-      />
-      <Flex
-        backgroundColor={colors[efficiency]}
-        width="full"
-        height="full"
-        justifyContent="end"
-        alignItems="center"
-        paddingRight="xs"
-      >
-        <Text color="white" textStyle="heading4">
-          {efficiency}
-        </Text>
+    <Flex css={styles.root}>
+      <Box css={styles.triangle} />
+      <Flex css={styles.textWrapper}>
+        <Text css={styles.text}>{efficiency.toString()}</Text>
       </Flex>
     </Flex>
   );
 };
-
-export default EnergyLabel;
