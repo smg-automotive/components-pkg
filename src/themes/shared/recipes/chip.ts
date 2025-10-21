@@ -8,7 +8,6 @@ export const chipRecipe = defineRecipe({
     borderRadius: 'full',
     outline: 'none',
     cursor: 'pointer',
-    px: 'md',
     py: 'sm',
     minH: 'sm',
     w: 'fit',
@@ -18,6 +17,7 @@ export const chipRecipe = defineRecipe({
     variant: {
       default: {
         bg: 'white',
+        px: '2xl',
         border: '1px',
         borderColor: 'gray.200',
         _hover: {
@@ -33,6 +33,7 @@ export const chipRecipe = defineRecipe({
       },
       selected: {
         bg: 'blue.100',
+        px: 'md',
         border: '1px',
         borderColor: 'transparent',
         _hover: { bg: 'blue.50', _active: { bg: 'blue.200' } },

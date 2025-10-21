@@ -63,7 +63,7 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
     >
       {variant === 'selected' ? (
         <Box
-          mr="xs"
+          mx="xs"
           color="currentColor"
           display="flex"
           alignItems="center"
