@@ -9,7 +9,7 @@ interface FooterLinkProps {
   linkInstance: LinkInstance;
   bold?: boolean;
 }
-const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
+export const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
   linkInstance,
   children,
   bold = false,
@@ -64,5 +64,3 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
     </Link>
   );
 };
-
-export default FooterLink;

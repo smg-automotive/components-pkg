@@ -9,14 +9,14 @@ import {
 } from 'src/components/icons';
 import { Center } from 'src/components/center';
 
-import FooterLink from './Link';
+import { FooterLink } from './Link';
 import { FooterConfigInstance } from './config/factory';
 
 interface SocialMediaProps {
   config: FooterConfigInstance;
 }
 
-const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
+export const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
   return (
     <Center>
       <Stack marginY="2xl" gap="2xl" direction="row">
@@ -36,5 +36,3 @@ const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
     </Center>
   );
 };
-
-export default SocialMedia;
