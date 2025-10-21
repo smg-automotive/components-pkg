@@ -56,57 +56,55 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           paddingX={paddingX}
           backgroundColor={backgroundColor}
         />
-        {isOpen ? (
-          <ChakraModal
-            isOpen={isOpen}
-            onClose={onClose}
-            size="full"
-            motionPreset="slideInBottom"
-            trapFocus={trapFocus}
-          >
-            <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
-              <ModalHeader
-                display="flex"
-                flexDirection="column"
-                alignItems="flex-start"
-                paddingY="0"
-                paddingX="2xl"
-              >
-                {header ? (
-                  header
-                ) : (
-                  <FilterHeading
-                    language={language}
-                    Icon={Icon}
-                    isApplied={isApplied}
-                    label={label}
-                    numberOfAppliedFilters={numberOfAppliedFilters}
-                    onClose={onClose}
-                    onResetFilter={() => onResetFilter('filter')}
-                  />
-                )}
-              </ModalHeader>
-              <ModalBody
-                overflowY="auto"
-                marginTop="2xl"
-                marginBottom={showCallToActionButton ? '2xl' : '0'}
-                paddingY="0"
-                paddingX="2xl"
-              >
-                {children}
-              </ModalBody>
-              {showCallToActionButton ? (
-                <ModalFooter paddingY="0" paddingX="2xl">
-                  <FilterActionButton
-                    actionButton={actionButton}
-                    isApplied={isApplied}
-                    onClose={onClose}
-                  />
-                </ModalFooter>
-              ) : null}
-            </ModalContent>
-          </ChakraModal>
-        ) : null}
+        <ChakraModal
+          isOpen={isOpen}
+          onClose={onClose}
+          size="full"
+          motionPreset="slideInBottom"
+          trapFocus={trapFocus}
+        >
+          <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
+            <ModalHeader
+              display="flex"
+              flexDirection="column"
+              alignItems="flex-start"
+              paddingY="0"
+              paddingX="2xl"
+            >
+              {header ? (
+                header
+              ) : (
+                <FilterHeading
+                  language={language}
+                  Icon={Icon}
+                  isApplied={isApplied}
+                  label={label}
+                  numberOfAppliedFilters={numberOfAppliedFilters}
+                  onClose={onClose}
+                  onResetFilter={() => onResetFilter('filter')}
+                />
+              )}
+            </ModalHeader>
+            <ModalBody
+              overflowY="auto"
+              marginTop="2xl"
+              marginBottom={showCallToActionButton ? '2xl' : '0'}
+              paddingY="0"
+              paddingX="2xl"
+            >
+              {children}
+            </ModalBody>
+            {showCallToActionButton ? (
+              <ModalFooter paddingY="0" paddingX="2xl">
+                <FilterActionButton
+                  actionButton={actionButton}
+                  isApplied={isApplied}
+                  onClose={onClose}
+                />
+              </ModalFooter>
+            ) : null}
+          </ModalContent>
+        </ChakraModal>
       </>
     </TranslationProvider>
   );
