@@ -19,16 +19,13 @@ export type ChipProps = {
 
 export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
-  selected = false,
   onClick,
   href,
   'aria-label': ariaLabel,
   ...rest
 }) => {
   const recipe = useRecipe({ recipe: chipRecipe });
-  const [recipeProps] = recipe.splitVariantProps({
-    selected,
-  });
+  const [recipeProps] = recipe.splitVariantProps(rest);
   const styles = recipe(recipeProps);
 
   const handleClick = () => {
@@ -56,11 +53,11 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
       as={asType}
       {...(isLink && onClick ? { href } : {})}
       {...(!isLink ? { type: 'button' } : {})}
-      onClick={onClick ? handleClick : undefined}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
       {...commonProps}
     >
-      {selected ? (
+      {recipeProps.selected ? (
         <Box
           mx="xs"
           color="currentColor"
