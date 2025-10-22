@@ -21,7 +21,10 @@ type ActionButton = {
 };
 
 export interface Props
-  extends Pick<ModalProps, 'isOpen' | 'onClose' | 'motionPreset'> {
+  extends Pick<
+    ModalProps,
+    'isOpen' | 'onClose' | 'motionPreset' | 'onOverlayClick'
+  > {
   title?: string;
   primaryActionButton?: ActionButton;
   secondaryActionButton?: ActionButton;
