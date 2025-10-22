@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Chip from './index';
+import { Chip } from './index';
 
 const meta: Meta<typeof Chip> = {
   title: 'Components/Data display/Chip',

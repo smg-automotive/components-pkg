@@ -17,7 +17,7 @@ export type ChipProps = {
   'aria-label'?: string;
 } & RecipeVariantProps<typeof chipRecipe>;
 
-const Chip: FC<PropsWithChildren<ChipProps>> = ({
+export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
   selected = false,
   onClick,
@@ -79,5 +79,3 @@ const Chip: FC<PropsWithChildren<ChipProps>> = ({
 };
 
 Chip.displayName = 'Chip';
-
-export default Chip;
