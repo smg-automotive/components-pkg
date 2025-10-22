@@ -52,6 +52,13 @@ const meta: Meta<typeof DatePicker> = {
       description:
         "Disregard the time input in the control - storybook doesn't support a lone date input",
     },
+    size: {
+      options: ['md', 'lg'],
+
+      control: {
+        type: 'select',
+      },
+    },
     value: {
       control: 'date',
       description:

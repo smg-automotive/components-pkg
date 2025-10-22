@@ -1,13 +1,25 @@
 import React, { forwardRef } from 'react';
-import { Field, Input, InputProps, useSlotRecipe } from '@chakra-ui/react';
+import {
+  Field,
+  Input,
+  InputProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-export interface DatePickerProps
-  extends Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'> {
-  size?: 'md' | 'lg';
-  min?: Date;
-  value?: string;
-  invalid?: boolean;
-}
+import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+
+type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
+
+export type DatePickerProps = Pick<
+  InputProps,
+  'onFocus' | 'onBlur' | 'onChange'
+> &
+  InputVariantProps & {
+    min?: Date;
+    value?: string;
+    invalid?: boolean;
+  };
 
 export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
   ({ min, ...props }, ref) => {
