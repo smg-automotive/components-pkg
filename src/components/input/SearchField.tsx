@@ -41,10 +41,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
     const isDesktopOnly = useMediaQuery({ above: 'md' });
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    useFocusWhenVisible(
-      inputRef as React.RefObject<HTMLElement>,
-      autofocusOnDesktop && isDesktopOnly,
-    );
+    useFocusWhenVisible(inputRef, autofocusOnDesktop && isDesktopOnly);
 
     return (
       <Input

@@ -1,15 +1,14 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
 export const useFocusWhenVisible = (
-  ref: React.RefObject<HTMLElement> | null,
+  ref: RefObject<HTMLElement | null>,
   enabled: boolean = true,
   maxWaitTime: number = 1000,
 ) => {
   useEffect(() => {
-    if (!enabled || !ref) return;
-
     const el = ref.current;
-    if (!el) return;
+
+    if (!enabled || !el) return;
 
     let rafId: number | null = null;
     let timeoutId: NodeJS.Timeout | null = null;
