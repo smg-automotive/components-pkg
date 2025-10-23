@@ -1,6 +1,8 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 
 import useMediaQuery from 'src/hooks/useMediaQuery';
+
+import { useFocusWhenVisible } from 'src/hooks/useFocusWhenVisible';
 
 import { MagnifierIcon } from '../icons/index';
 
@@ -39,11 +41,10 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
     const isDesktopOnly = useMediaQuery({ above: 'md' });
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    useEffect(() => {
-      if (autofocusOnDesktop && isDesktopOnly) {
-        inputRef.current?.focus();
-      }
-    }, [isDesktopOnly, autofocusOnDesktop]);
+    useFocusWhenVisible(
+      inputRef as React.RefObject<HTMLElement>,
+      autofocusOnDesktop && isDesktopOnly,
+    );
 
     return (
       <Input
