@@ -2,7 +2,7 @@ import React, { forwardRef, useRef } from 'react';
 
 import useMediaQuery from 'src/hooks/useMediaQuery';
 
-import { useFocusWhenVisible } from 'src/hooks/useFocusWhenVisible';
+import useFocusWhenVisible from 'src/hooks/useFocusWhenVisible';
 
 import { MagnifierIcon } from '../icons/index';
 

@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from 'react';
 
-export const useFocusWhenVisible = (
+const useFocusWhenVisible = (
   ref: RefObject<HTMLElement | null>,
   enabled: boolean = true,
   maxWaitTime: number = 1000,
@@ -59,3 +59,5 @@ export const useFocusWhenVisible = (
     return cleanup;
   }, [ref, enabled, maxWaitTime]);
 };
+
+export default useFocusWhenVisible;
