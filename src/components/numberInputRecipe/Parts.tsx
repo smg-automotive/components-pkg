@@ -1,7 +1,7 @@
 import React from 'react';
 import { NumberInput, useSlotRecipe } from '@chakra-ui/react';
 
-type Size = 'lg' | 'md' | 'sm' | undefined;
+type Size = 'lg' | undefined;
 type Variant = 'outline' | 'inputLeft' | 'inputRight' | undefined;
 
 type RecipeProps = {
