@@ -13,7 +13,6 @@ import SimpleHeader from './simpleHeader';
 import Radio from './radio';
 import Popover from './popover';
 import Pagination from './pagination';
-import NumberInput from './numberInput';
 import Menu from './menu';
 import MarkedText from './markedText';
 import List from './list';
