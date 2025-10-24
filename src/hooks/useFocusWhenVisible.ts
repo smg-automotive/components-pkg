@@ -12,11 +12,15 @@ export const useFocusWhenVisible = (
 
     let rafId: number | null = null;
     let timeoutId: NodeJS.Timeout | null = null;
-    let hasSucceeded = false;
+    let shouldStop = false;
 
     const isVisible = (): boolean => {
-      const visibility = getComputedStyle(el).visibility;
-      return visibility === 'visible';
+      if (el.offsetParent === null) {
+        const style = getComputedStyle(el);
+        return style.position === 'fixed' && style.visibility === 'visible';
+      }
+
+      return getComputedStyle(el).visibility === 'visible';
     };
 
     const cleanup = () => {
@@ -31,20 +35,24 @@ export const useFocusWhenVisible = (
     };
 
     const checkWithPolling = () => {
-      if (hasSucceeded) return;
+      if (shouldStop) return;
 
       if (isVisible()) {
-        hasSucceeded = true;
         el.focus();
-        cleanup();
-      } else {
-        rafId = requestAnimationFrame(checkWithPolling);
+
+        if (document.activeElement === el) {
+          shouldStop = true;
+          cleanup();
+          return;
+        }
       }
+
+      rafId = requestAnimationFrame(checkWithPolling);
     };
 
     rafId = requestAnimationFrame(checkWithPolling);
-
     timeoutId = setTimeout(() => {
+      shouldStop = true;
       cleanup();
     }, maxWaitTime);
 
