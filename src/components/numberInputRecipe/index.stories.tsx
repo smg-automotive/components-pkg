@@ -6,7 +6,7 @@ import { NumberInputInput, NumberInputRoot } from './Parts';
 
 type SingleDemoProps = {
   variant?: 'outline' | 'inputLeft' | 'inputRight';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'lg';
   defaultValue?: number | string;
   placeholder?: string;
   ariaLabel?: string;
@@ -33,7 +33,7 @@ const SingleDemo: React.FC<SingleDemoProps> = ({
 );
 
 type RangeDemoProps = {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'lg';
   fromDefault?: number | string;
   toDefault?: number | string;
 };
