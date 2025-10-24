@@ -8,6 +8,7 @@ import {
   Popover as ChakraPopover,
   IconButton,
   useDisclosure,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { TranslationProvider } from 'src/components/translationProvider';
@@ -44,6 +45,9 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
     onClose: onPopoverClose,
   });
 
+  const recipe = useSlotRecipe({ key: 'popoverFilter' });
+  const styles = recipe();
+
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
       <I18nContext.Consumer>
@@ -62,20 +66,14 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             >
               <ChakraPopover.Trigger
                 disabled={isDisabled}
-                display="flex"
-                justifyContent="space-between"
-                width="full"
+                css={styles.trigger}
                 height={triggerHeight}
-                paddingX="md"
-                border="1px"
-                borderRadius="sm"
                 borderRightColor={displayValue ? 'white' : undefined}
                 backgroundColor={isApplied ? 'gray.900' : 'gray.100'}
                 color={isApplied || open ? 'white' : 'gray.900'}
                 _hover={{
                   backgroundColor: isApplied || open ? 'black' : 'gray.200',
                 }}
-                cursor="pointer"
               >
                 <chakra.span
                   display="flex"
@@ -100,7 +98,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                     overflow="hidden"
                     whiteSpace="nowrap"
                   >
-                    {' '}
                     <ChevronDownSmallIcon
                       width="xs"
                       height="xs"
@@ -112,19 +109,11 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               </ChakraPopover.Trigger>
               {displayValue ? (
                 <IconButton
-                  disabled={open}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  minWidth="md"
-                  height={triggerHeight}
-                  border="1px"
-                  borderRadius="sm"
-                  backgroundColor={isApplied ? 'gray.900' : 'gray.100'}
-                  color="white"
-                  _hover={{ backgroundColor: 'black' }}
                   aria-label={t('filterSelectButton.reset')}
-                  cursor="pointer"
+                  disabled={open}
+                  css={styles.close}
+                  height={triggerHeight}
+                  backgroundColor={isApplied ? 'gray.900' : 'gray.100'}
                   onClick={() => onResetFilter('filterButton')}
                 >
                   <CloseIcon width="xs" height="xs" />

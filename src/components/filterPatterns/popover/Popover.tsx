@@ -2,7 +2,11 @@
 
 import React, { FC, useRef } from 'react';
 import { useI18n } from '@smg-automotive/i18n-pkg';
-import { Popover as ChakraPopover, Portal } from '@chakra-ui/react';
+import {
+  Popover as ChakraPopover,
+  Portal,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
 import { Stack } from 'src/components/stack';
 import { Box } from 'src/components/box';
@@ -44,16 +48,15 @@ export const Popover: FC<Props> = ({
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLDivElement>(null);
+  const recipe = useSlotRecipe({ key: 'popoverFilter' });
+  const styles = recipe();
 
   return (
     <Portal>
       <Box zIndex="popover" w="full" h="full" position="relative">
         <ChakraPopover.Positioner>
           <ChakraPopover.Content
-            backgroundColor="white"
-            borderRadius="sm"
-            shadow="md"
-            w="6xl"
+            css={styles.content}
             minHeight={enforceHeight ? '7xl' : undefined}
             height={enforceHeight ? '7xl' : undefined}
             ref={popoverContentRef}
@@ -74,12 +77,9 @@ export const Popover: FC<Props> = ({
                 )}
               </ChakraPopover.Header>
               <ChakraPopover.Body
-                marginTop="2xl"
+                css={styles.body}
                 marginBottom={showCallToActionButton ? '2xl' : '0'}
                 height={enforceHeight ? '7xl' : '0'}
-                maxHeight="7xl"
-                overflowY="auto"
-                paddingX="2xl"
               >
                 {children}
               </ChakraPopover.Body>
