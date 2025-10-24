@@ -1,10 +1,14 @@
 import { RefObject, useEffect } from 'react';
 
-const useFocusWhenVisible = (
-  ref: RefObject<HTMLElement | null>,
-  enabled: boolean = true,
-  maxWaitTime: number = 1000,
-) => {
+const useFocusWhenVisible = ({
+  ref,
+  enabled = true,
+  maxWaitTime = 1000,
+}: {
+  ref: RefObject<HTMLElement | null>;
+  enabled?: boolean;
+  maxWaitTime?: number;
+}) => {
   useEffect(() => {
     const el = ref.current;
 
