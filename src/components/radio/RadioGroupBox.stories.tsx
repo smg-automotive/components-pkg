@@ -3,20 +3,24 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
+import { Textarea } from 'src/index';
+
 import RadioGroupBoxComponent, { Props } from './RadioGroupBox';
 
 const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+  const [args, updateArgs] = useArgs<{ values: Record<string, string> }>();
+
+  const handleChange = (newValues: Record<string, string>) => {
+    updateArgs({ values: newValues });
+    action('onChange')(newValues);
+  };
 
   return (
     <RadioGroupBoxComponent
       {...props}
       {...args}
-      value={args.value}
-      onChange={(value: string) => {
-        updateArgs({ value });
-        action('onChange')(value);
-      }}
+      values={args.values}
+      onChange={handleChange}
     />
   );
 };
@@ -27,9 +31,9 @@ const meta: Meta<typeof RadioGroupBoxComponent> = {
   render: Template.bind({}),
 
   args: {
-    id: 'test-radio-group-box',
-    value: 'Incomplete',
-    name: 'test-radio-group-box',
+    id: 'main-radio-group-box',
+    values: {},
+    name: 'main-radio-group-box',
     groupLabel: 'Service booklet Available?',
     options: [
       { label: 'Available', value: 'available' },
@@ -39,6 +43,7 @@ const meta: Meta<typeof RadioGroupBoxComponent> = {
     tooltip: '',
     hint: '',
     errorMessage: '',
+    followUps: {},
   },
 };
 export default meta;
@@ -47,30 +52,85 @@ type StoryType = StoryObj<typeof RadioGroupBoxComponent>;
 
 export const Overview: StoryType = {};
 
-export const StateDefault: StoryType = {
+export const Default: StoryType = {
   name: 'Default',
+
+  args: {
+    options: [
+      { label: 'Available', value: 'available' },
+      { label: 'Incomplete', value: 'incomplete' },
+      { label: 'Missing', value: 'missing' },
+    ],
+  },
 };
 
-export const StateWithTooltip: StoryType = {
+export const WithTooltip: StoryType = {
   name: 'With Tooltip',
 
   args: {
+    options: [
+      { label: 'Available', value: 'available' },
+      { label: 'Incomplete', value: 'incomplete' },
+      { label: 'Missing', value: 'missing' },
+    ],
     tooltip: 'Hello I am a tooltip text',
   },
 };
 
-export const StateWithHint: StoryType = {
+export const WithHint: StoryType = {
   name: 'With Hint',
 
   args: {
+    options: [
+      { label: 'Available', value: 'available' },
+      { label: 'Incomplete', value: 'incomplete' },
+      { label: 'Missing', value: 'missing' },
+    ],
     hint: 'Hello, I am hint text',
   },
 };
 
-export const StateInvalid: StoryType = {
+export const Invalid: StoryType = {
   name: 'Invalid',
 
   args: {
+    options: [
+      { label: 'Available', value: 'available' },
+      { label: 'Incomplete', value: 'incomplete' },
+      { label: 'Missing', value: 'missing' },
+    ],
     errorMessage: 'Error message',
+  },
+};
+
+export const WithFollowUp: StoryType = {
+  name: 'With Follow-up question',
+
+  args: {
+    groupLabel: 'Is the Vehicle imported?',
+    options: [
+      { label: 'Yes', value: 'yes' },
+      { label: 'No', value: 'no' },
+    ],
+    followUps: {
+      yes: {
+        id: 'follow-up-radio-group',
+        name: 'follow-up-radio-group',
+        groupLabel: 'Is there a certificate of conformity?',
+        options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ],
+      },
+    },
+  },
+};
+
+export const WithChildren: StoryType = {
+  name: 'With children',
+
+  args: {
+    options: [{ value: 'textarea' }],
+    children: <Textarea name="textarea" placeholder="placeholder" />,
   },
 };

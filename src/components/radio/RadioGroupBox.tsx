@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, PropsWithChildren } from 'react';
 import { RadioGroup as ChakraRadioGroupBox } from '@chakra-ui/react';
 
 import Tooltip from '../tooltip';
@@ -6,27 +6,38 @@ import Text from '../text';
 import { InformationIcon } from '../icons';
 import FormControl from '../formControl';
 import Flex from '../flex';
+import Divider from '../divider';
 import Box from '../box';
 
 import Radio from './index';
 
+export interface FollowUpProps {
+  id: string;
+  name: string;
+  options: { label: string; value: string }[];
+  groupLabel: string;
+  tooltip?: string;
+  hint?: string;
+}
+
 export interface Props {
   id: string;
-  name?: string;
-  value: string;
-  onChange?: (nextValue: string) => void;
-  options: { label: string; value: string }[];
+  name: string;
+  values: Record<string, string>;
+  onChange: (values: Record<string, string>) => void;
+  options: { label?: string; value: string }[];
   groupLabel: string;
   tooltip?: string;
   errorMessage?: string;
   hint?: string;
+  followUps?: Record<string, FollowUpProps>;
 }
 
-const RadioGroupBox = forwardRef<HTMLInputElement, Props>(
+const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
   (
     {
       name,
-      value,
+      values,
       onChange,
       options,
       groupLabel,
@@ -34,18 +45,46 @@ const RadioGroupBox = forwardRef<HTMLInputElement, Props>(
       id,
       errorMessage,
       hint,
+      followUps,
+      children,
     },
     ref,
   ) => {
+    const currentValue = values[id];
+
+    const handleChange = (groupId: string, value: string) => {
+      let newValues: Record<string, string> = {
+        ...values,
+        [groupId]: value,
+      };
+
+      if (followUps) {
+        Object.keys(followUps).forEach((key) => {
+          if (key !== value) {
+            const hiddenFollowUp = followUps[key];
+            newValues = { ...newValues };
+            if (hiddenFollowUp?.id) {
+              delete newValues[hiddenFollowUp.id];
+            }
+          }
+        });
+      }
+
+      onChange(newValues);
+    };
+
     return (
       <FormControl id={id} errorMessage={errorMessage}>
         <Box
-          border="1px"
+          border={followUps ? '1px' : 0}
           borderColor={errorMessage ? 'red.500' : 'gray.400'}
           borderRadius="sm"
-          padding="2xl"
+          padding={followUps ? '2xl' : 0}
         >
-          <ChakraRadioGroupBox onChange={onChange}>
+          <ChakraRadioGroupBox
+            value={currentValue || ''}
+            onChange={(value) => handleChange(id, value)}
+          >
             <Flex flexDirection="column">
               <Box mb="lg">
                 <Flex>
@@ -64,19 +103,31 @@ const RadioGroupBox = forwardRef<HTMLInputElement, Props>(
                   </Text>
                 ) : null}
               </Box>
-              {options.map(({ label, value: optionValue }) => (
-                <Radio
-                  key={optionValue}
-                  name={name}
-                  value={optionValue}
-                  size="base"
-                  isChecked={optionValue === value}
-                  ref={ref}
-                  variant="fontRegular"
-                  label={label}
-                  isInvalid={false}
-                />
-              ))}
+              {options.map(({ label, value }) =>
+                children ? (
+                  children
+                ) : (
+                  <Radio
+                    key={value}
+                    name={name}
+                    value={value}
+                    isChecked={value === currentValue}
+                    ref={ref}
+                    label={label}
+                    isInvalid={false}
+                  />
+                ),
+              )}
+              {currentValue && followUps && followUps[currentValue] && (
+                <>
+                  <Divider marginY="xl" />
+                  <RadioGroupBox
+                    {...followUps[currentValue]}
+                    values={values}
+                    onChange={onChange}
+                  />
+                </>
+              )}
             </Flex>
           </ChakraRadioGroupBox>
         </Box>
