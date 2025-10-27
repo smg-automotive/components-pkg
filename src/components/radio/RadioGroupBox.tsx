@@ -25,7 +25,7 @@ export interface Props {
   name: string;
   values: Record<string, string>;
   onChange: (values: Record<string, string>) => void;
-  options: { label?: string; value: string }[];
+  options: { label: string; value: string }[];
   groupLabel: string;
   tooltip?: string;
   errorMessage?: string;
