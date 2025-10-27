@@ -1,40 +1,45 @@
+'use client';
+
 import React from 'react';
-import { NumberInput, useSlotRecipe } from '@chakra-ui/react';
+import {
+  NumberInput,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-type Size = 'lg' | undefined;
-type Variant = 'outline' | 'inputLeft' | 'inputRight' | undefined;
+import { numberInputRecipe } from 'src/themes/shared/slotRecipes/numberInput';
 
-type RecipeProps = {
-  size?: Size;
-  variant?: Variant;
-};
+type NumberInputVariants = RecipeVariantProps<typeof numberInputRecipe>;
+
+type WithRecipe = { recipe?: unknown };
 
 const toStr = (v: number | string | undefined) => {
   if (v === undefined) return undefined;
   return typeof v === 'number' ? String(v) : v;
 };
 
-type RootBaseProps = React.ComponentProps<typeof NumberInput.Root>;
-type RootProps = Omit<RootBaseProps, 'defaultValue' | 'value'> & {
-  defaultValue?: number | string;
+type RootBase = React.ComponentProps<typeof NumberInput.Root>;
+type RootProps = Omit<RootBase, 'value' | 'defaultValue'> & {
   value?: number | string;
+  defaultValue?: number | string;
 };
 
 export const NumberInputRoot = React.forwardRef<
   HTMLDivElement,
-  RootProps & RecipeProps
+  RootProps & NumberInputVariants & WithRecipe
 >((props, ref) => {
-  const { size, variant, defaultValue, value, ...rest } = props;
-
   const recipe = useSlotRecipe({ key: 'numberInput' });
-  const styles = recipe({ size, variant });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  const { value, defaultValue, ...rest } = restProps;
 
   return (
     <NumberInput.Root
       ref={ref}
       css={styles.root}
-      defaultValue={toStr(defaultValue)}
       value={toStr(value)}
+      defaultValue={toStr(defaultValue)}
       {...rest}
     />
   );
@@ -43,38 +48,47 @@ NumberInputRoot.displayName = 'NumberInputRoot';
 
 export const NumberInputInput = React.forwardRef<
   HTMLInputElement,
-  React.ComponentProps<typeof NumberInput.Input> & RecipeProps
+  React.ComponentProps<typeof NumberInput.Input> &
+    NumberInputVariants &
+    WithRecipe
 >((props, ref) => {
-  const { size, variant, ...rest } = props;
   const recipe = useSlotRecipe({ key: 'numberInput' });
-  const styles = recipe({ size, variant });
-  return <NumberInput.Input ref={ref} css={styles.input} {...rest} />;
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  return <NumberInput.Input ref={ref} css={styles.input} {...restProps} />;
 });
 NumberInputInput.displayName = 'NumberInputInput';
 
 export const NumberInputControl = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof NumberInput.Control> & RecipeProps
+  React.ComponentProps<typeof NumberInput.Control> &
+    NumberInputVariants &
+    WithRecipe
 >((props, ref) => {
-  const { size, variant, ...rest } = props;
   const recipe = useSlotRecipe({ key: 'numberInput' });
-  const styles = recipe({ size, variant });
-  return <NumberInput.Control ref={ref} css={styles.control} {...rest} />;
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  return <NumberInput.Control ref={ref} css={styles.control} {...restProps} />;
 });
 NumberInputControl.displayName = 'NumberInputControl';
 
 export const NumberInputInc = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof NumberInput.IncrementTrigger> & RecipeProps
+  React.ComponentProps<typeof NumberInput.IncrementTrigger> &
+    NumberInputVariants &
+    WithRecipe
 >((props, ref) => {
-  const { size, variant, ...rest } = props;
   const recipe = useSlotRecipe({ key: 'numberInput' });
-  const styles = recipe({ size, variant });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
   return (
     <NumberInput.IncrementTrigger
       ref={ref}
       css={styles.incrementTrigger}
-      {...rest}
+      {...restProps}
     />
   );
 });
@@ -82,16 +96,19 @@ NumberInputInc.displayName = 'NumberInputInc';
 
 export const NumberInputDec = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof NumberInput.DecrementTrigger> & RecipeProps
+  React.ComponentProps<typeof NumberInput.DecrementTrigger> &
+    NumberInputVariants &
+    WithRecipe
 >((props, ref) => {
-  const { size, variant, ...rest } = props;
   const recipe = useSlotRecipe({ key: 'numberInput' });
-  const styles = recipe({ size, variant });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
   return (
     <NumberInput.DecrementTrigger
       ref={ref}
       css={styles.decrementTrigger}
-      {...rest}
+      {...restProps}
     />
   );
 });
