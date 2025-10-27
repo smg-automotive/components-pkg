@@ -1,8 +1,8 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
-import { RadioGroup as ChakraRadioGroupBox } from '@chakra-ui/react';
 
 import Tooltip from '../tooltip';
 import Text from '../text';
+import { RadioGroup as ChakraRadioGroupBox } from '../radio';
 import { InformationIcon } from '../icons';
 import FormControl from '../formControl';
 import Flex from '../flex';
@@ -46,28 +46,20 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
       errorMessage,
       hint,
       followUps,
-      children,
     },
     ref,
   ) => {
     const currentValue = values[id];
 
     const handleChange = (groupId: string, value: string) => {
-      let newValues: Record<string, string> = {
-        ...values,
-        [groupId]: value,
-      };
+      const newValues = { ...values, [groupId]: value };
 
       if (followUps) {
-        Object.keys(followUps).forEach((key) => {
-          if (key !== value) {
-            const hiddenFollowUp = followUps[key];
-            newValues = { ...newValues };
-            if (hiddenFollowUp?.id) {
-              delete newValues[hiddenFollowUp.id];
-            }
+        for (const [key, followUp] of Object.entries(followUps)) {
+          if (key !== value && followUp.id in newValues) {
+            delete newValues[followUp.id];
           }
-        });
+        }
       }
 
       onChange(newValues);
@@ -103,22 +95,18 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
                   </Text>
                 ) : null}
               </Box>
-              {options.map(({ label, value }) =>
-                children ? (
-                  children
-                ) : (
-                  <Radio
-                    key={value}
-                    name={name}
-                    value={value}
-                    isChecked={value === currentValue}
-                    ref={ref}
-                    label={label}
-                    isInvalid={false}
-                  />
-                ),
-              )}
-              {currentValue && followUps && followUps[currentValue] && (
+              {options.map(({ label, value }) => (
+                <Radio
+                  key={value}
+                  name={name}
+                  value={value}
+                  isChecked={value === currentValue}
+                  ref={ref}
+                  label={label}
+                  isInvalid={false}
+                />
+              ))}
+              {followUps && followUps[currentValue] && (
                 <>
                   <Divider marginY="xl" />
                   <RadioGroupBox

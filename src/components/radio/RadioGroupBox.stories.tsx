@@ -3,8 +3,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { Textarea } from 'src/index';
-
 import RadioGroupBoxComponent, { Props } from './RadioGroupBox';
 
 const Template = (props: Props) => {
@@ -117,20 +115,13 @@ export const WithFollowUp: StoryType = {
         id: 'follow-up-radio-group',
         name: 'follow-up-radio-group',
         groupLabel: 'Is there a certificate of conformity?',
+        tooltip: '',
+        hint: '',
         options: [
           { label: 'Yes', value: 'yes' },
           { label: 'No', value: 'no' },
         ],
       },
     },
-  },
-};
-
-export const WithChildren: StoryType = {
-  name: 'With children',
-
-  args: {
-    options: [{ value: 'textarea' }],
-    children: <Textarea name="textarea" placeholder="placeholder" />,
   },
 };
