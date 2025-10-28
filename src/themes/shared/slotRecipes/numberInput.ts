@@ -93,7 +93,7 @@ export const numberInputRecipe = defineSlotRecipe({
     },
 
     size: {
-      lg: { input: { textStyle: 'body', h: 'lg' } },
+      lg: { input: { textStyle: 'body-small', h: 'lg' } },
     },
   },
 
