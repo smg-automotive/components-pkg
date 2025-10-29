@@ -11,6 +11,7 @@ export * from './center';
 export * from './checkbox';
 export * from './checkboxGroup';
 export * from './count';
+export * from './datePicker';
 export * from './devOverlay';
 export * from './dialog';
 export * from './energyLabel';
