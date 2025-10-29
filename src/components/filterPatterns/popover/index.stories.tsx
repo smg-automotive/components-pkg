@@ -2,11 +2,11 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Text from 'src/components/text';
+import { Text } from 'src/components/text';
 import { ChevronLeftSmallIcon, FlashIcon } from 'src/components/icons';
-import Flex from 'src/components/flex';
-import CheckboxFilter from 'src/components/checkboxFilter';
-import Box from 'src/components/box';
+import { Flex } from 'src/components/flex';
+import { CheckboxFilter } from 'src/components/checkboxFilter';
+import { Box } from 'src/components/box';
 
 import { PopoverFilter } from './index';
 
@@ -33,7 +33,7 @@ const meta: Meta<typeof PopoverFilter> = {
 
   decorators: [
     (Story) => (
-      <Box w={{ base: 'full', sm: '250px' }} h="400px">
+      <Box width={{ base: 'full', sm: '5xl' }} height="6xl">
         <Story />
       </Box>
     ),
@@ -47,7 +47,7 @@ const meta: Meta<typeof PopoverFilter> = {
     displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
     numberOfAppliedFilters: 5,
     isApplied: false,
-
+    zIndex: 'popover',
     actionButton: {
       label: '12324 Fahrzeuge',
       onClick: action('actionButton - onClick'),
