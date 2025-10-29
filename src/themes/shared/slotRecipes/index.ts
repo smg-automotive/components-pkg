@@ -6,6 +6,7 @@ import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { selectSlotRecipe as select } from './select';
 import { sectionRecipe as section } from './section';
 import { popoverFilterRecipe as popoverFilter } from './popoverFilter';
+import { numberInputRecipe as numberInput } from './numberInput';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
 import { inputSlotRecipe as input } from './input';
@@ -42,4 +43,5 @@ export const slotRecipes = {
   dialogFilter,
   alert,
   popoverFilter,
+  numberInput,
 };
