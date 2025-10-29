@@ -39,7 +39,6 @@ import {
   simpleSearchLinkConfig,
 } from './search';
 import { printCenterLinkConfig } from './print';
-import { printableVehiclesListLinkConfig } from './print';
 import {
   businessImageLinkConfig,
   contactDetailsLinkConfig,
@@ -64,13 +63,11 @@ import {
   getProfessionalAutoScoutInsuranceComparisonLinkConfig,
 } from './insuranceComparison';
 import { infoPortalLinkConfig } from './infoPortal';
-import { importInfoLinkConfig } from './importInfo';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import { hciLinkConfig } from './hci';
 import { estimateLinkConfig } from './estimate';
 import { electromobilityLinkConfig } from './electroMobility';
-import { dmsLogLinkConfig } from './dmsLog';
 import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
 import { autoRadarLinkConfig } from './AutoRadar';
@@ -125,7 +122,6 @@ const getUserNodeItems = ({
       motoScoutVehiclesLinkConfig,
       optimizerLinkConfig,
       cockpitLinkConfig,
-      printableVehiclesListLinkConfig,
       carParkLinkConfig,
       motorcycleParkLinkConfig,
     ],
@@ -188,8 +184,6 @@ const getUserNodeItems = ({
       qualilogoLinkConfig,
       autoRadarLinkConfig,
       hciLinkConfig,
-      importInfoLinkConfig,
-      dmsLogLinkConfig,
       infoPortalLinkConfig,
     ],
   },
