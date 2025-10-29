@@ -3,37 +3,47 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import RadioComponent, { Props } from './index';
+import {Radio, Props} from './index';
+import { Box } from '..';
 
 const Template = (props: Props) => {
   const [args, updateArgs] = useArgs<Props>();
 
   return (
-    <RadioComponent
+    <Radio
       {...props}
       {...args}
-      isChecked={args.isChecked}
+      checked={args.checked}
       onChange={(e) => {
-        updateArgs({ isChecked: e.target.checked });
+        updateArgs({ checked: e.target.checked });
         action('onChange')(e);
       }}
     />
   );
 };
 
-const meta: Meta<typeof RadioComponent> = {
+const meta: Meta<typeof Radio> = {
   title: 'Components/Forms/Radio',
-  component: RadioComponent,
+  component: Radio,
   render: Template.bind({}),
+  // decorators: [
+  //   (Story) => (
+  //     <Box w="full" maxW="5xl">
+  //       <Story />
+  //     </Box>
+  //   ),
+  // ],
 
   args: {
-    isDisabled: false,
-    isInvalid: false,
+    checked: false,
+    disabled: false,
+    invalid: false,
     size: 'md',
     label: 'Radio',
     value: 'option',
     name: 'test-radio',
     variant: 'fontRegular',
+    onChange: action('onChange'),
   },
 
   argTypes: {
@@ -47,10 +57,14 @@ const meta: Meta<typeof RadioComponent> = {
       control: 'select',
     },
   },
-};
+} satisfies Meta<typeof Radio>;
 export default meta;
 
-type StoryType = StoryObj<typeof RadioComponent>;
+type StoryType = StoryObj<typeof Radio>;
+
+export const Default: StoryType = {
+  name: 'Radio Input',
+};
 
 export const Overview: StoryType = {};
 
@@ -92,18 +106,18 @@ export const StateDefault: StoryType = {
   name: 'States > Default',
 
   args: {
-    isDisabled: false,
-    isInvalid: false,
+    disabled: false,
+    invalid: false,
   },
 
   argTypes: {
-    isDisabled: {
+    disabled: {
       table: {
         disable: true,
       },
     },
 
-    isInvalid: {
+    invalid: {
       table: {
         disable: true,
       },
@@ -115,19 +129,19 @@ export const StateDisabled: StoryType = {
   name: 'States > Disabled',
 
   args: {
-    isDisabled: true,
-    isInvalid: false,
+    disabled: true,
+    invalid: false,
     name: 'test-radio-disabled',
   },
 
   argTypes: {
-    isDisabled: {
+    disabled: {
       table: {
         disable: true,
       },
     },
 
-    isInvalid: {
+    invalid: {
       table: {
         disable: true,
       },
@@ -139,19 +153,19 @@ export const StateInvalid: StoryType = {
   name: 'States > Invalid',
 
   args: {
-    isDisabled: false,
-    isInvalid: true,
+    disabled: false,
+    invalid: true,
     name: 'test-radio-invalid',
   },
 
   argTypes: {
-    isDisabled: {
+    disabled: {
       table: {
         disable: true,
       },
     },
 
-    isInvalid: {
+    invalid: {
       table: {
         disable: true,
       },
