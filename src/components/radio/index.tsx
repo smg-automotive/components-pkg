@@ -40,7 +40,7 @@ export const Radio = forwardRef<HTMLInputElement, Props>(
   
     return (
       <RadioGroup.Root
-        onChange={onChange}
+        onValueChange={() => onChange}
         value={value}
         fontVariant={variant}
         name={name}
@@ -54,6 +54,7 @@ export const Radio = forwardRef<HTMLInputElement, Props>(
           invalid={invalid}
           css={styles.item}
         >
+          <RadioGroup.ItemControl css={styles.control} />
           <RadioGroup.ItemHiddenInput ref={ref} checked={checked} />
           <RadioGroup.ItemIndicator css={styles.indicator} />
           <RadioGroup.ItemText css={styles.text}>{label}</RadioGroup.ItemText>
