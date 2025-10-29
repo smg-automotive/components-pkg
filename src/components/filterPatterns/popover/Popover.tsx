@@ -52,6 +52,8 @@ export const Popover: FC<Props> = ({
   const recipe = useSlotRecipe({ key: 'popoverFilter' });
   const styles = recipe();
 
+  const maxHeight = showCallToActionButton ? '6xl' : '7xl';
+
   return (
     <Portal>
       <Box zIndex={zIndex} w="full" h="full" position="relative">
@@ -64,7 +66,9 @@ export const Popover: FC<Props> = ({
           >
             <Box as={Stack} h="full" paddingY="2xl">
               <ChakraPopover.Header paddingX="2xl">
-                {header ?? (
+                {header && React.isValidElement(header) ? (
+                  header
+                ) : (
                   <FilterHeading
                     Icon={Icon}
                     isApplied={isApplied}
@@ -79,9 +83,9 @@ export const Popover: FC<Props> = ({
               </ChakraPopover.Header>
               <ChakraPopover.Body
                 css={styles.body}
-                maxHeight={showCallToActionButton ? '6xl' : '7xl'}
+                maxHeight={maxHeight}
                 marginBottom={showCallToActionButton ? '2xl' : '0'}
-                height={enforceHeight ? '7xl' : 'auto'}
+                height={enforceHeight ? maxHeight : 'auto'}
               >
                 {children}
               </ChakraPopover.Body>

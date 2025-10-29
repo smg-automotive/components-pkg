@@ -47,7 +47,7 @@ const meta: Meta<typeof PopoverFilter> = {
     displayValue: 'Benzin, Diesel, Elektro, Hybrid, Plug-In',
     numberOfAppliedFilters: 5,
     isApplied: false,
-
+    zIndex: 'popover',
     actionButton: {
       label: '12324 Fahrzeuge',
       onClick: action('actionButton - onClick'),
