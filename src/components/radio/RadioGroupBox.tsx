@@ -11,16 +11,18 @@ import Box from '../box';
 
 import Radio from './index';
 
-export interface FollowUpProps {
+export type FollowUpProps = {
   id: string;
   name: string;
   options: { label: string; value: string }[];
   groupLabel: string;
   tooltip?: string;
   hint?: string;
-}
+};
 
-export interface Props {
+export type Option = { label: string; value: string };
+
+export type Props<TOptions extends readonly Option[] = Option[]> = {
   id: string;
   name: string;
   values: Record<string, string>;
@@ -30,8 +32,8 @@ export interface Props {
   tooltip?: string;
   errorMessage?: string;
   hint?: string;
-  followUps?: Record<string, FollowUpProps>;
-}
+  followUps?: Partial<Record<TOptions[number]['value'], FollowUpProps>>;
+};
 
 const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
   (
@@ -56,6 +58,7 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
 
       if (followUps) {
         for (const [key, followUp] of Object.entries(followUps)) {
+          if (!followUp) continue;
           if (key !== value && followUp.id in newValues) {
             delete newValues[followUp.id];
           }
@@ -106,7 +109,7 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
                   isInvalid={false}
                 />
               ))}
-              {followUps && followUps[currentValue] && (
+              {followUps?.[currentValue] ? (
                 <>
                   <Divider marginY="xl" />
                   <RadioGroupBox
@@ -115,7 +118,7 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
                     onChange={onChange}
                   />
                 </>
-              )}
+              ) : null}
             </Flex>
           </ChakraRadioGroupBox>
         </Box>

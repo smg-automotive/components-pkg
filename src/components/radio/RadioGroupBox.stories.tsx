@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs, useStoryContext } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
 import RadioGroupBoxComponent, { Props } from './RadioGroupBox';
 
 const Template = (props: Props) => {
   const [args, updateArgs] = useArgs<{ values: Record<string, string> }>();
+  const storyContext = useStoryContext();
+  const isInDocs = storyContext.viewMode === 'docs';
+
+  const [localValues, setLocalValues] = useState<Record<string, string>>(
+    args.values,
+  );
 
   const handleChange = (newValues: Record<string, string>) => {
-    updateArgs({ values: newValues });
+    if (isInDocs) {
+      setLocalValues(newValues);
+    } else {
+      updateArgs({ values: newValues });
+    }
+    props.onChange?.(newValues);
     action('onChange')(newValues);
   };
 
@@ -17,7 +28,7 @@ const Template = (props: Props) => {
     <RadioGroupBoxComponent
       {...props}
       {...args}
-      values={args.values}
+      values={isInDocs ? localValues : args.values}
       onChange={handleChange}
     />
   );
@@ -30,8 +41,8 @@ const meta: Meta<typeof RadioGroupBoxComponent> = {
 
   args: {
     id: 'main-radio-group-box',
-    values: {},
     name: 'main-radio-group-box',
+    values: {},
     groupLabel: 'Service booklet Available?',
     options: [
       { label: 'Available', value: 'available' },
@@ -42,6 +53,13 @@ const meta: Meta<typeof RadioGroupBoxComponent> = {
     hint: '',
     errorMessage: '',
     followUps: {},
+    onChange: action('onChange'),
+  },
+
+  argTypes: {
+    options: {
+      control: { disable: true },
+    },
   },
 };
 export default meta;
@@ -54,6 +72,7 @@ export const Default: StoryType = {
   name: 'Default',
 
   args: {
+    name: 'main-radio-group-box-default',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -66,6 +85,7 @@ export const WithTooltip: StoryType = {
   name: 'With Tooltip',
 
   args: {
+    name: 'main-radio-group-box-tooltip',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -79,6 +99,7 @@ export const WithHint: StoryType = {
   name: 'With Hint',
 
   args: {
+    name: 'main-radio-group-box-hint',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -92,6 +113,7 @@ export const Invalid: StoryType = {
   name: 'Invalid',
 
   args: {
+    name: 'main-radio-group-box-invalid',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -105,6 +127,7 @@ export const WithFollowUp: StoryType = {
   name: 'With Follow-up question',
 
   args: {
+    name: 'main-radio-group-box-follow-up',
     groupLabel: 'Is the Vehicle imported?',
     options: [
       { label: 'Yes', value: 'yes' },
