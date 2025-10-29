@@ -1,6 +1,7 @@
+import { ZIndex } from 'src/themes/shared/tokens/zIndex';
+
 import { FilterPatternProps } from '../props';
 import { ActionButtonProps } from '../ActionButton';
-
 export type PopoverFilterProps = FilterPatternProps &
   Omit<ActionButtonProps, 'onClose'> & {
     initialPopoverState?: 'open' | 'closed';
@@ -11,5 +12,5 @@ export type PopoverFilterProps = FilterPatternProps &
     triggerHeight?: 'md' | 'lg';
     isDisabled?: boolean;
     hasFlip?: boolean;
-    zIndex?: string;
+    zIndex?: ZIndex;
   };

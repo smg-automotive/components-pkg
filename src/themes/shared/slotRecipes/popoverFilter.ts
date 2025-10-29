@@ -6,6 +6,7 @@ const baseTriggerStyle = defineStyle({
   width: 'full',
   paddingX: 'md',
   border: '1px',
+  borderColor: 'gray.100',
   borderRadius: 'sm',
   cursor: 'pointer',
 });
@@ -17,6 +18,7 @@ const baseCloseStyle = defineStyle({
   minWidth: 'md',
   border: '1px',
   borderRadius: 'sm',
+  backgroundColor: 'gray.900',
   color: 'white',
   cursor: 'pointer',
   _hover: { backgroundColor: 'black' },
@@ -27,10 +29,17 @@ const baseContentStyle = defineStyle({
   borderRadius: 'sm',
   backgroundColor: 'white',
   shadow: 'md',
+  _open: {
+    animationName: 'fade-in',
+    animationDuration: 'normal',
+  },
+  _closed: {
+    animationName: 'fade-out',
+    animationDuration: 'normal',
+  },
 });
 
 const baseBodyStyle = defineStyle({
-  maxHeight: '7xl',
   paddingX: '2xl',
   marginTop: '2xl',
   overflowY: 'auto',

@@ -8,6 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
+import { ZIndex } from 'src/themes/shared/tokens/zIndex';
 import { Stack } from 'src/components/stack';
 import { Box } from 'src/components/box';
 
@@ -17,7 +18,7 @@ import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
-  zIndex?: string;
+  zIndex?: ZIndex;
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
@@ -44,7 +45,7 @@ export const Popover: FC<Props> = ({
   showCallToActionButton,
   header,
   children,
-  // zIndex = 'popover',
+  zIndex = 'popover',
 }) => {
   const { language } = useI18n();
   const popoverContentRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export const Popover: FC<Props> = ({
 
   return (
     <Portal>
-      <Box zIndex="popover" w="full" h="full" position="relative">
+      <Box zIndex={zIndex} w="full" h="full" position="relative">
         <ChakraPopover.Positioner>
           <ChakraPopover.Content
             css={styles.content}
@@ -78,8 +79,9 @@ export const Popover: FC<Props> = ({
               </ChakraPopover.Header>
               <ChakraPopover.Body
                 css={styles.body}
+                maxHeight={showCallToActionButton ? '6xl' : '7xl'}
                 marginBottom={showCallToActionButton ? '2xl' : '0'}
-                height={enforceHeight ? '7xl' : '0'}
+                height={enforceHeight ? '7xl' : 'auto'}
               >
                 {children}
               </ChakraPopover.Body>

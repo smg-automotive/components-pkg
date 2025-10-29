@@ -69,7 +69,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                 css={styles.trigger}
                 height={triggerHeight}
                 borderRightColor={displayValue ? 'white' : undefined}
-                backgroundColor={isApplied ? 'gray.900' : 'gray.100'}
+                backgroundColor={isApplied || open ? 'gray.900' : 'gray.100'}
                 color={isApplied || open ? 'white' : 'gray.900'}
                 _hover={{
                   backgroundColor: isApplied || open ? 'black' : 'gray.200',
@@ -113,7 +113,6 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
                   disabled={open}
                   css={styles.close}
                   height={triggerHeight}
-                  backgroundColor={isApplied ? 'gray.900' : 'gray.100'}
                   onClick={() => onResetFilter('filterButton')}
                 >
                   <CloseIcon width="xs" height="xs" />
