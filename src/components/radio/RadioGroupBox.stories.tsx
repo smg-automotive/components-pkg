@@ -55,12 +55,6 @@ const meta: Meta<typeof RadioGroupBoxComponent> = {
     followUps: {},
     onChange: action('onChange'),
   },
-
-  argTypes: {
-    options: {
-      control: { disable: true },
-    },
-  },
 };
 export default meta;
 
@@ -72,7 +66,6 @@ export const Default: StoryType = {
   name: 'Default',
 
   args: {
-    name: 'main-radio-group-box-default',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -85,7 +78,6 @@ export const WithTooltip: StoryType = {
   name: 'With Tooltip',
 
   args: {
-    name: 'main-radio-group-box-tooltip',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -99,7 +91,6 @@ export const WithHint: StoryType = {
   name: 'With Hint',
 
   args: {
-    name: 'main-radio-group-box-hint',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -113,7 +104,6 @@ export const Invalid: StoryType = {
   name: 'Invalid',
 
   args: {
-    name: 'main-radio-group-box-invalid',
     options: [
       { label: 'Available', value: 'available' },
       { label: 'Incomplete', value: 'incomplete' },
@@ -124,8 +114,6 @@ export const Invalid: StoryType = {
 };
 
 export const WithFollowUp: StoryType = {
-  name: 'With Follow-up question',
-
   args: {
     name: 'main-radio-group-box-follow-up',
     groupLabel: 'Is the Vehicle imported?',
