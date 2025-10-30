@@ -1,10 +1,17 @@
 import { defineSlotRecipe } from '@chakra-ui/react';
-
 export const radioRecipe = defineSlotRecipe({
   className: 'chakra-radio',
-  slots: ['root', 'item', 'control', 'indicator', 'text'] as const,
+  slots: ['root', 'item', 'control', 'indicator', 'label'],
   base: {
-    root: { position: 'relative' },
+    root: {
+      position: 'relative',
+      display: 'inline-flex',
+      alignItems: 'center',
+      '--radio-control-size': '20px',
+      '--radio-indicator-size': '20px',
+      '--radio-border-style': 'solid',
+      '--radio-border-width': '1px',
+    },
     item: {
       display: 'flex',
       alignItems: 'center',
@@ -12,38 +19,90 @@ export const radioRecipe = defineSlotRecipe({
       cursor: 'pointer',
       px: 'sm',
       py: 'sm',
-      rounded: 'lg',
+      listStyle: 'none',
     },
     control: {
-      boxSize: '5',
+      boxSize: 'xs',
       rounded: 'full',
-      border: '1px',
+      borderStyle: 'var(--radio-border-style)',
+      borderWidth: 'var(--radio-border-width)',
       borderColor: 'gray.400',
+      bg: 'white',
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
-      _disabled: { opacity: '40', cursor: 'notAllowed' },
-      _invalid: { borderColor: 'red.500' },
+      _checked: {
+        bg: 'gray.900',
+        borderColor: 'gray.900',
+      },
+
       _focusVisible: { outline: '2px solid', outlineColor: 'blue.400' },
+      _invalid: { borderColor: 'red.500' },
+
+      _disabled: {
+        cursor: 'notAllowed',
+        borderColor: 'gray.400',
+
+        _checked: {
+          bg: 'gray.400',
+          borderColor: 'gray.400',
+        },
+      },
     },
+
     indicator: {
-      boxSize: '2.5',
       rounded: 'full',
-      bg: 'blue.500',
-      _disabled: { bg: 'gray.200' },
+      width: 'xxs',
+      height: 'xxs',
+      display: 'none',
+      _checked: {
+        display: 'block',
+        bg: 'white',
+        _disabled: {
+          bg: 'white',
+        },
+      },
     },
-    text: { userSelect: 'none', fontWeight: 'regular' },
+    label: {
+      userSelect: 'none',
+      fontWeight: 'regular',
+      color: 'gray.900',
+      _disabled: { color: 'gray.400' },
+    },
   },
   variants: {
     variant: {
-      fontRegular: { text: { fontWeight: 'regular' } },
-      fontBold: { text: { fontWeight: 'bold' } },
+      fontRegular: {
+        root: {},
+        item: {},
+        control: {},
+        indicator: {},
+        label: { fontWeight: 'regular' },
+      },
+      fontBold: {
+        root: {},
+        item: {},
+        control: {},
+        indicator: {},
+        label: { fontWeight: 'bold' },
+      },
     },
     size: {
-      sm: { control: { boxSize: '4' }, indicator: { boxSize: '2' }, text: { fontSize: 'sm' } },
-      md: { control: { boxSize: '5' }, indicator: { boxSize: '2.5' }, text: { fontSize: 'md' } },
-      lg: { control: { boxSize: '6' }, indicator: { boxSize: '3' }, text: { fontSize: 'lg' } },
+      base: {
+        root: {},
+        item: {},
+        control: {},
+        indicator: {},
+        label: { fontSize: 'base' },
+      },
+      md: {
+        root: {},
+        item: {},
+        control: {},
+        indicator: {},
+        label: { fontSize: 'md' },
+      },
     },
   },
   defaultVariants: { variant: 'fontRegular', size: 'md' },

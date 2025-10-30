@@ -1,65 +1,68 @@
+'use client';
+
 import React, { ChangeEvent, forwardRef } from 'react';
-import { Box, RadioGroup, useSlotRecipe } from '@chakra-ui/react';
+import { RadioGroup, useSlotRecipe } from '@chakra-ui/react';
 
 export interface Props {
-  name?: string;
   value: string;
   label?: string;
-  size?: 'md' | 'base';
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  checked?: boolean;
-  invalid?: boolean;
-  disabled?: boolean;
+  name?: string;
+  size?: 'base' | 'md';
   variant?: 'fontRegular' | 'fontBold';
+  checked?: boolean;
+  disabled?: boolean;
+  invalid?: boolean;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Radio = forwardRef<HTMLInputElement, Props>(
-  (
-    {
-      name,
-      value,
-      label,
-      size = 'base',
-      onChange,
-      checked = false,
-      invalid,
-      disabled = false,
-      variant = 'fontRegular',
-      ...rest
-    },
-    ref,
-  ) => {
+export const Radio = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const recipe = useSlotRecipe({ key: 'radio' as const });
 
-  const recipe = useSlotRecipe({ key: 'radio' });
-
-  const [recipeProps, restProps] = recipe.splitVariantProps({
-    ...rest,
-  });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
 
   const styles = recipe(recipeProps);
-  
-    return (
-      <RadioGroup.Root
-        onValueChange={() => onChange}
+
+  const {
+    value,
+    label = 'Radio',
+    name,
+    checked = false,
+    disabled = false,
+    invalid = false,
+    onChange,
+    ...rootDomProps
+  } = restProps;
+
+  const isChecked = !!checked;
+
+  return (
+    <RadioGroup.Root
+      name={name}
+      value={isChecked ? value : undefined}
+      onValueChange={() => {
+        if (!onChange) return;
+        const target = {
+          value,
+          checked: !isChecked,
+          name,
+        } as unknown as EventTarget & HTMLInputElement;
+        onChange({ target } as ChangeEvent<HTMLInputElement>);
+      }}
+      css={styles.root}
+      {...rootDomProps}
+    >
+      <RadioGroup.Item
         value={value}
-        fontVariant={variant}
-        name={name}
-        css={styles.root}
-        width="full"
-        {...restProps}
+        disabled={disabled}
+        invalid={invalid}
+        css={styles.item}
       >
-        <RadioGroup.Item
-          value={value}
-          disabled={disabled}
-          invalid={invalid}
-          css={styles.item}
-        >
-          <RadioGroup.ItemControl css={styles.control} />
-          <RadioGroup.ItemHiddenInput ref={ref} checked={checked} />
+        <RadioGroup.ItemControl css={styles.control}>
           <RadioGroup.ItemIndicator css={styles.indicator} />
-          <RadioGroup.ItemText css={styles.text}>{label}</RadioGroup.ItemText>
-        </RadioGroup.Item>
-      </RadioGroup.Root>
-    );
-  },
-);
+        </RadioGroup.ItemControl>
+        <RadioGroup.ItemText css={styles.label}>{label}</RadioGroup.ItemText>
+        <RadioGroup.ItemHiddenInput ref={ref} checked={isChecked} />
+      </RadioGroup.Item>
+    </RadioGroup.Root>
+  );
+});
