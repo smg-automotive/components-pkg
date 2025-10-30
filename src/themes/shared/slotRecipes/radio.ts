@@ -48,6 +48,7 @@ export const radioRecipe = defineSlotRecipe({
           bg: 'gray.400',
           borderColor: 'gray.400',
         },
+        _invalid: { borderColor: 'red.500' },
       },
     },
 
