@@ -3,6 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { RangeFilterInput } from './index';
 
 const meta = {
@@ -29,9 +31,8 @@ const meta = {
     onBlur: action('onBlur'),
   },
   argTypes: {
-    disabled: {
-      control: 'boolean',
-    },
+    ...getRecipeControls('numberInput'),
+    disabled: { control: 'boolean' },
   },
 } satisfies Meta<typeof RangeFilterInput>;
 

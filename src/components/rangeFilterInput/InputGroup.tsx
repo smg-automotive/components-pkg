@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { NumberInput, useSlotRecipe } from '@chakra-ui/react';
+import {
+  NumberInput,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
+
+import { numberInputRecipe } from 'src/themes/shared/slotRecipes/numberInput';
 
 import { InputLeftElement } from './InputLeftElement';
 
@@ -9,13 +15,13 @@ import {
   RangeFilterInputField,
 } from './index';
 
-type InputGroupProps<Name extends string> = {
+type NumberInputVariantProps = RecipeVariantProps<typeof numberInputRecipe>;
+
+type InputGroupProps<Name extends string> = NumberInputVariantProps & {
   handleChange: (event: ChangeCallback<Name>) => void;
   inputProps: RangeFilterInputField<Name>;
   onBlur?: (event: ChangeCallback<Name>) => void;
   unit?: string;
-  size?: 'lg';
-  variant: 'inputLeft' | 'inputRight' | 'outline';
 } & PickedNumberInputProps;
 
 export const InputGroup = <Name extends string>({
@@ -23,8 +29,6 @@ export const InputGroup = <Name extends string>({
   inputProps,
   onBlur,
   unit,
-  variant,
-  size = 'lg',
   ...rest
 }: InputGroupProps<Name>) => {
   const [refocus, setRefocus] = useState(false);
@@ -32,8 +36,8 @@ export const InputGroup = <Name extends string>({
   const recipe = useSlotRecipe({ key: 'numberInput' });
 
   const [recipeProps, restProps] = recipe.splitVariantProps({
-    variant,
-    size,
+    variant: 'outline',
+    size: 'lg',
     ...rest,
   });
 
