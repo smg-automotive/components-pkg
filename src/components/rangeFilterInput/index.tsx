@@ -1,11 +1,11 @@
+'use client';
+
 import { useDebouncedCallback } from 'use-debounce';
 import React from 'react';
-import {
-  InputGroup as ChakraInputGroup,
-  NumberInputProps,
-} from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
+import { NumberInput } from '@chakra-ui/react';
 
-import InputGroup from './InputGroup';
+import { InputGroup } from './InputGroup';
 
 export type RangeFilterInputField<Name> = {
   name: Name;
@@ -18,13 +18,12 @@ export type ChangeCallback<Name> = {
   value?: number | null;
   name: Name;
 };
-
 export type PickedNumberInputProps = Pick<
-  NumberInputProps,
-  'min' | 'max' | 'isDisabled' | 'onFocus'
+  React.ComponentProps<typeof NumberInput.Root>,
+  'min' | 'max' | 'disabled' | 'onFocus'
 >;
 
-type RangeFilterInputProps<NameFrom, NameTo> = {
+type RangeFilterInputProps<NameFrom extends string, NameTo extends string> = {
   from: RangeFilterInputField<NameFrom>;
   handleChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
   onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
@@ -32,18 +31,21 @@ type RangeFilterInputProps<NameFrom, NameTo> = {
   unit?: string;
 } & PickedNumberInputProps;
 
-function RangeFilterInput<NameFrom extends string, NameTo extends string>({
+export const RangeFilterInput = <
+  NameFrom extends string,
+  NameTo extends string,
+>({
   from,
   to,
   handleChange,
   unit,
   onBlur,
   ...rest
-}: RangeFilterInputProps<NameFrom, NameTo>) {
+}: RangeFilterInputProps<NameFrom, NameTo>) => {
   const handleChangeDebounced = useDebouncedCallback(handleChange, 1000);
 
   return (
-    <ChakraInputGroup display="flex">
+    <Flex display="flex">
       <InputGroup
         inputProps={from}
         variant="inputLeft"
@@ -61,8 +63,6 @@ function RangeFilterInput<NameFrom extends string, NameTo extends string>({
         unit={unit}
         {...rest}
       />
-    </ChakraInputGroup>
+    </Flex>
   );
-}
-
-export default RangeFilterInput;
+};
