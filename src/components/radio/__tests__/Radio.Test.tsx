@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from 'jest-utils';
 
-import Radio from '../index';
+import { Radio } from '..';
 
 const renderWrapper = ({
   name = 'Radio',
@@ -19,8 +19,8 @@ const renderWrapper = ({
       value={value}
       onChange={onChange}
       label={label}
-      isDisabled={isDisabled}
-      isChecked={isChecked}
+      disabled={isDisabled}
+      checked={isChecked}
     />,
   );
 
