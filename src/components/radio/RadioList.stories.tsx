@@ -57,7 +57,7 @@ export const WithDefaultValue: StoryType = {
   name: 'With default value',
 
   args: {
-    name: 'radio-list-wit-value',
+    name: 'radio-list-with-value',
     defaultValue: 'two',
   },
 };
