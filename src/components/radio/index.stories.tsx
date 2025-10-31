@@ -3,6 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
+import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { Props, Radio } from './index';
 
 const Template = (props: Props) => {
@@ -36,9 +39,7 @@ const meta: Meta<typeof Radio> = {
     variant: 'fontRegular',
   },
   argTypes: {
-    size: { options: ['base', 'md'], control: 'select' },
-    variant: { options: ['fontRegular', 'fontBold'], control: 'select' },
-    onChange: { table: { disable: true } },
+    ...getRecipeControls(radioRecipe),
   },
 };
 

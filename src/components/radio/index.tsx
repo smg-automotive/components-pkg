@@ -1,19 +1,23 @@
 'use client';
 
 import React, { ChangeEvent, forwardRef } from 'react';
-import { RadioGroup, useSlotRecipe } from '@chakra-ui/react';
+import {
+  RadioGroup,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-export interface Props {
+import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
+
+export type Props = RecipeVariantProps<typeof radioRecipe> & {
   value: string;
   label?: string;
   name?: string;
-  size?: 'base' | 'md';
-  variant?: 'fontRegular' | 'fontBold';
   checked?: boolean;
   disabled?: boolean;
   invalid?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
 export const Radio = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const recipe = useSlotRecipe({ key: 'radio' as const });
