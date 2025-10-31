@@ -2,7 +2,7 @@ import React, { forwardRef, PropsWithChildren } from 'react';
 
 import Tooltip from '../tooltip';
 import Text from '../text';
-import { RadioGroup as ChakraRadioGroupBox } from '../radio';
+
 import { InformationIcon } from '../icons';
 import FormControl from '../formControl';
 import Flex from '../flex';
@@ -10,6 +10,7 @@ import Divider from '../divider';
 import Box from '../box';
 
 import Radio from './index';
+import { RadioGroup as ChakraRadioGroupBox } from '.';
 
 export type FollowUpProps = {
   id: string;
@@ -27,7 +28,7 @@ export type Props<TOptions extends readonly Option[] = Option[]> = {
   name: string;
   values: Record<string, string>;
   onChange: (values: Record<string, string>) => void;
-  options: { label: string; value: string }[];
+  options: TOptions;
   groupLabel: string;
   tooltip?: string;
   errorMessage?: string;
@@ -35,7 +36,10 @@ export type Props<TOptions extends readonly Option[] = Option[]> = {
   followUps?: Partial<Record<TOptions[number]['value'], FollowUpProps>>;
 };
 
-const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
+const QuestionWithFollowUp = forwardRef<
+  HTMLInputElement,
+  PropsWithChildren<Props>
+>(
   (
     {
       name,
@@ -112,7 +116,7 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
               {followUps?.[currentValue] ? (
                 <>
                   <Divider marginY="xl" />
-                  <RadioGroupBox
+                  <QuestionWithFollowUp
                     {...followUps[currentValue]}
                     values={values}
                     onChange={onChange}
@@ -126,6 +130,6 @@ const RadioGroupBox = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
     );
   },
 );
-Radio.displayName = 'RadioGroupBox';
+Radio.displayName = 'QuestionWithFollowUp';
 
-export default RadioGroupBox;
+export default QuestionWithFollowUp;

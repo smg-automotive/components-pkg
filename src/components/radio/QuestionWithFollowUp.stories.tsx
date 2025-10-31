@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs, useStoryContext } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import RadioGroupBoxComponent, { Props } from './RadioGroupBox';
+import QuestionWithFollowUpComponent, { Props } from './QuestionWithFollowUp';
 
 const Template = (props: Props) => {
   const [args, updateArgs] = useArgs<{ values: Record<string, string> }>();
@@ -25,7 +25,7 @@ const Template = (props: Props) => {
   };
 
   return (
-    <RadioGroupBoxComponent
+    <QuestionWithFollowUpComponent
       {...props}
       {...args}
       values={isInDocs ? localValues : args.values}
@@ -34,14 +34,14 @@ const Template = (props: Props) => {
   );
 };
 
-const meta: Meta<typeof RadioGroupBoxComponent> = {
-  title: 'Components/Forms/Radio Group Box',
-  component: RadioGroupBoxComponent,
+const meta: Meta<typeof QuestionWithFollowUpComponent> = {
+  title: 'Components/Forms/Question With FollowUp',
+  component: QuestionWithFollowUpComponent,
   render: Template.bind({}),
 
   args: {
-    id: 'main-radio-group-box',
-    name: 'main-radio-group-box',
+    id: 'main-question',
+    name: 'main-question',
     values: {},
     groupLabel: 'Service booklet Available?',
     options: [
@@ -58,7 +58,7 @@ const meta: Meta<typeof RadioGroupBoxComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof RadioGroupBoxComponent>;
+type StoryType = StoryObj<typeof QuestionWithFollowUpComponent>;
 
 export const Overview: StoryType = {};
 
@@ -115,7 +115,7 @@ export const Invalid: StoryType = {
 
 export const WithFollowUp: StoryType = {
   args: {
-    name: 'main-radio-group-box-follow-up',
+    name: 'main-question-with-follow-up',
     groupLabel: 'Is the Vehicle imported?',
     options: [
       { label: 'Yes', value: 'yes' },
@@ -123,8 +123,8 @@ export const WithFollowUp: StoryType = {
     ],
     followUps: {
       yes: {
-        id: 'follow-up-radio-group',
-        name: 'follow-up-radio-group',
+        id: 'follow-up-group',
+        name: 'follow-up-group',
         groupLabel: 'Is there a certificate of conformity?',
         tooltip: '',
         hint: '',
