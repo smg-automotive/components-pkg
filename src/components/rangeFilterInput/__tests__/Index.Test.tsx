@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { act, render, screen } from 'jest-utils';
+import { render, screen } from 'jest-utils';
 
 import { RangeFilterInput } from '..';
 
@@ -34,12 +34,14 @@ describe('<RangeFilterInput/>', () => {
   };
 
   it('triggers onChange with the touched FROM field', async () => {
+    const user = userEvent.setup();
     const mockOnChange = jest.fn();
 
     renderInputField(mockOnChange);
     const inputFrom = screen.getByPlaceholderText('From');
 
-    await act(() => userEvent.type(inputFrom, '500'));
+    await user.type(inputFrom, '500');
+
     expect(mockOnChange).toHaveBeenCalledWith({
       value: 500,
       name: 'priceFrom',
@@ -47,12 +49,13 @@ describe('<RangeFilterInput/>', () => {
   });
 
   it('triggers onChange with the touched TO field', async () => {
+    const user = userEvent.setup();
     const mockOnChange = jest.fn();
 
     renderInputField(mockOnChange);
     const inputTo = screen.getByPlaceholderText('To');
 
-    await act(() => userEvent.type(inputTo, '300'));
+    await user.type(inputTo, '300');
     expect(mockOnChange).toHaveBeenCalledWith({
       value: 300,
       name: 'priceTo',
@@ -65,12 +68,13 @@ describe('<RangeFilterInput/>', () => {
   });
 
   it('should allow to reset the field', async () => {
+    const user = userEvent.setup();
     const mockOnChange = jest.fn();
 
     renderInputField(mockOnChange);
     const inputFrom = screen.getByPlaceholderText('From');
-    await act(() => userEvent.type(inputFrom, '5'));
-    await act(() => userEvent.clear(inputFrom));
+    await user.type(inputFrom, '5');
+    await user.clear(inputFrom);
     expect(mockOnChange).toHaveBeenCalledWith({
       value: undefined,
       name: 'priceFrom',

@@ -35,11 +35,7 @@ export const InputGroup = <Name extends string>({
 
   const recipe = useSlotRecipe({ key: 'numberInput' });
 
-  const [recipeProps, restProps] = recipe.splitVariantProps({
-    variant: 'outline',
-    size: 'lg',
-    ...rest,
-  });
+  const [recipeProps, restProps] = recipe.splitVariantProps(rest);
 
   const styles = recipe(recipeProps);
 
