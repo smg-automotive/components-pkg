@@ -31,7 +31,7 @@ const meta: Meta<typeof Radio> = {
   args: {
     value: 'option',
     label: 'Radio',
-    name: 'test-radio',
+    name: '',
     checked: false,
     disabled: false,
     invalid: false,
