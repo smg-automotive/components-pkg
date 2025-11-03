@@ -3,12 +3,14 @@ import {
   ButtonProps,
   chakra,
   Button as ChakraButton,
+  IconButton,
   ResponsiveValue,
 } from '@chakra-ui/react';
 
-import { ChevronRightSmallIcon } from 'src/components/icons';
+import { ChevronRightSmallIcon, DeleteIcon } from 'src/components/icons';
 
 import { FilterPatternProps } from '../props';
+import Box from 'src/components/box';
 
 export type PaddingX = '0' | 'md';
 type Variant = 'sm' | 'md';
@@ -21,7 +23,9 @@ type Props = Pick<
     variant?: Variant;
     isDisabled?: boolean;
     paddingX?: PaddingX;
-    showChevron?: boolean;
+    showResetButton?: boolean;
+    resetButtonAriaLabel?: string;
+    onResetFilter?: FilterPatternProps['onResetFilter'];
   };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
@@ -44,51 +48,65 @@ export const OpenFilterButton: FC<Props> = ({
   isDisabled = false,
   paddingX = 0,
   backgroundColor = 'unset',
-  showChevron = true,
+  showResetButton = false,
+  resetButtonAriaLabel = 'Reset filter',
+  onResetFilter,
 }) => {
   return (
-    <ChakraButton
-      onClick={onClick}
-      rightIcon={
-        showChevron ? (
-          <ChevronRightSmallIcon color={isDisabled ? 'gray.300' : 'gray.500'} />
-        ) : undefined
-      }
-      display="flex"
-      justifyContent="space-between"
-      w="full"
-      h={height[variant]}
-      paddingX={paddingX}
-      paddingY={paddingY[variant]}
-      isDisabled={isDisabled}
-      cursor={isDisabled ? 'not-allowed' : 'pointer'}
-      color={isDisabled ? 'gray.300' : 'gray.900'}
-      backgroundColor={backgroundColor}
-    >
-      <chakra.span
+    <Box display="flex" alignItems="center">
+      <ChakraButton
+        onClick={onClick}
+        rightIcon={
+          showResetButton ? undefined : (
+            <ChevronRightSmallIcon
+              color={isDisabled ? 'gray.300' : 'gray.500'}
+            />
+          )
+        }
         display="flex"
         justifyContent="space-between"
         w="full"
-        minW="0"
+        h={height[variant]}
+        paddingX={paddingX}
+        paddingY={paddingY[variant]}
+        isDisabled={isDisabled}
+        cursor={isDisabled ? 'not-allowed' : 'pointer'}
+        color={isDisabled ? 'gray.300' : 'gray.900'}
+        backgroundColor={backgroundColor}
       >
         <chakra.span
-          mr="2xl"
-          whiteSpace="nowrap"
           display="flex"
-          alignItems="center"
+          justifyContent="space-between"
+          w="full"
+          minW="0"
         >
-          {label}
-          {Icon ? <Icon h="xs" w="xs" ml="xs" /> : null}
+          <chakra.span
+            mr="2xl"
+            whiteSpace="nowrap"
+            display="flex"
+            alignItems="center"
+          >
+            {label}
+            {Icon ? <Icon h="xs" w="xs" ml="xs" /> : null}
+          </chakra.span>
+          <chakra.span
+            fontWeight="bold"
+            overflow="hidden"
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+          >
+            {displayValue && isApplied ? displayValue : null}
+          </chakra.span>
         </chakra.span>
-        <chakra.span
-          fontWeight="bold"
-          overflow="hidden"
-          textOverflow="ellipsis"
-          whiteSpace="nowrap"
-        >
-          {displayValue && isApplied ? displayValue : null}
-        </chakra.span>
-      </chakra.span>
-    </ChakraButton>
+      </ChakraButton>
+      {showResetButton ? (
+        <IconButton
+          aria-label={resetButtonAriaLabel}
+          ml="sm"
+          icon={<DeleteIcon color="gray.500" width="sm" height="sm" />}
+          onClick={() => onResetFilter?.('filterButton')}
+        />
+      ) : null}
+    </Box>
   );
 };
