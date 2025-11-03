@@ -21,6 +21,7 @@ type Props = Pick<
     variant?: Variant;
     isDisabled?: boolean;
     paddingX?: PaddingX;
+    showChevron?: boolean;
   };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
@@ -43,12 +44,15 @@ export const OpenFilterButton: FC<Props> = ({
   isDisabled = false,
   paddingX = 0,
   backgroundColor = 'unset',
+  showChevron = true,
 }) => {
   return (
     <ChakraButton
       onClick={onClick}
       rightIcon={
-        <ChevronRightSmallIcon color={isDisabled ? 'gray.300' : 'gray.500'} />
+        showChevron ? (
+          <ChevronRightSmallIcon color={isDisabled ? 'gray.300' : 'gray.500'} />
+        ) : undefined
       }
       display="flex"
       justifyContent="space-between"
