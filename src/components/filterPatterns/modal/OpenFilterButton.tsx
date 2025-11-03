@@ -9,8 +9,9 @@ import {
 
 import { ChevronRightSmallIcon, DeleteIcon } from 'src/components/icons';
 
-import { FilterPatternProps } from '../props';
 import Box from 'src/components/box';
+
+import { FilterPatternProps } from '../props';
 
 export type PaddingX = '0' | 'md';
 type Variant = 'sm' | 'md';
