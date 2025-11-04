@@ -35,7 +35,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
   header,
   children,
   triggerHeight = 'md',
-  isDisabled,
+  disabled,
   hasFlip = true,
   zIndex = 'popover',
 }) => {
@@ -65,7 +65,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
               maxW="full"
             >
               <ChakraPopover.Trigger
-                disabled={isDisabled}
+                disabled={disabled}
                 css={styles.trigger}
                 height={triggerHeight}
                 borderRightColor={displayValue ? 'white' : undefined}
