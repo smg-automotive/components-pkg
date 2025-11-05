@@ -45,7 +45,7 @@ export const RangeFilterInput = <
   const handleChangeDebounced = useDebouncedCallback(handleChange, 1000);
 
   return (
-    <Flex display="flex">
+    <Flex>
       <InputGroup
         inputProps={from}
         variant="inputLeft"
