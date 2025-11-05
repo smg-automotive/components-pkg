@@ -141,6 +141,7 @@ export const colors = defineTokens.colors({
   currentColor: { value: 'currentColor' },
   transparent: { value: 'transparent' },
 });
+
 export type Colors = {
   [K in keyof typeof colors]: 'value' extends keyof (typeof colors)[K]
     ? K
