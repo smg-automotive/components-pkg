@@ -29,6 +29,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onModalOpen,
   onResetFilter,
   showCallToActionButton = true,
+  showResetButton = true,
   header,
   isDisabled = false,
   children,
@@ -54,6 +55,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           isDisabled={isDisabled}
           paddingX={paddingX}
           backgroundColor={backgroundColor}
+          showResetButton={showResetButton}
+          onResetFilter={() => onResetFilter('filterButton')}
         />
         <ChakraModal
           key={`modal-filter-${label}-${isOpen ? 'open' : 'closed'}`}

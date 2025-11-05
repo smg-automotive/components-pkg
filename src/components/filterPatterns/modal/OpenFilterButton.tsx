@@ -26,7 +26,7 @@ type Props = Pick<
     paddingX?: PaddingX;
     showResetButton?: boolean;
     resetButtonAriaLabel?: string;
-    onResetFilter?: FilterPatternProps['onResetFilter'];
+    onResetFilter?: () => void;
   };
 
 const paddingY: Record<Variant, ResponsiveValue<string>> = {
@@ -49,31 +49,35 @@ export const OpenFilterButton: FC<Props> = ({
   isDisabled = false,
   paddingX = 0,
   backgroundColor = 'unset',
-  showResetButton = false,
+  showResetButton = true,
   resetButtonAriaLabel = 'Reset filter',
   onResetFilter,
 }) => {
+  const shouldDisplayResetButton =
+    showResetButton && isApplied && onResetFilter;
   return (
-    <Box display="flex" alignItems="center">
+    <Box
+      display="flex"
+      alignItems="center"
+      h={height[variant]}
+      paddingX={paddingX}
+      paddingY={paddingY[variant]}
+      backgroundColor={backgroundColor}
+    >
       <ChakraButton
-        onClick={onClick}
+        w="full"
+        paddingX={0}
+        isDisabled={isDisabled}
+        cursor={isDisabled ? 'not-allowed' : 'pointer'}
+        color={isDisabled ? 'gray.300' : 'gray.900'}
         rightIcon={
-          showResetButton ? undefined : (
+          shouldDisplayResetButton ? undefined : (
             <ChevronRightSmallIcon
               color={isDisabled ? 'gray.300' : 'gray.500'}
             />
           )
         }
-        display="flex"
-        justifyContent="space-between"
-        w="full"
-        h={height[variant]}
-        paddingX={paddingX}
-        paddingY={paddingY[variant]}
-        isDisabled={isDisabled}
-        cursor={isDisabled ? 'not-allowed' : 'pointer'}
-        color={isDisabled ? 'gray.300' : 'gray.900'}
-        backgroundColor={backgroundColor}
+        onClick={onClick}
       >
         <chakra.span
           display="flex"
@@ -100,12 +104,13 @@ export const OpenFilterButton: FC<Props> = ({
           </chakra.span>
         </chakra.span>
       </ChakraButton>
-      {showResetButton ? (
+      {shouldDisplayResetButton ? (
         <IconButton
           aria-label={resetButtonAriaLabel}
           ml="sm"
-          icon={<DeleteIcon color="gray.500" width="sm" height="sm" />}
-          onClick={() => onResetFilter?.('filterButton')}
+          icon={<DeleteIcon color={isDisabled ? 'gray.300' : 'gray.500'} />}
+          cursor={isDisabled ? 'not-allowed' : 'pointer'}
+          onClick={onResetFilter}
         />
       ) : null}
     </Box>
