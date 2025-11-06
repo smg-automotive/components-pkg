@@ -35,14 +35,16 @@ const FormControlSection: FC<PropsWithChildren<Props>> = ({
         border="1px solid"
         borderRadius="sm"
         borderColor={isInvalid ? 'red.500' : 'gray.400'}
-        padding="xl"
+        padding="2xl"
       >
         <Flex flexDirection="column">
           <Box mb="lg">
-            <Flex>
-              <Text color="gray.900" textStyle="heading4">
-                {label}
-              </Text>
+            <Flex alignItems="center">
+              {label ? (
+                <Text color="gray.900" textStyle="heading4">
+                  {label}
+                </Text>
+              ) : null}
               {tooltip ? (
                 <Tooltip label={tooltip}>
                   <InformationIcon ml="md" />
