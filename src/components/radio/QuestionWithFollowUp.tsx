@@ -1,16 +1,13 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
 
-import Tooltip from '../tooltip';
-import Text from '../text';
-
-import { InformationIcon } from '../icons';
-import FormControl from '../formControl';
+import FormControlSection from '../formControlSection';
 import Flex from '../flex';
 import Divider from '../divider';
-import Box from '../box';
 
 import Radio from './index';
-import { RadioGroup as ChakraRadioGroupBox } from '.';
+import { RadioGroup as ChakraRadioGroup } from '.';
+
+export type Option = { label: string; value: string };
 
 export type FollowUpProps = {
   id: string;
@@ -19,9 +16,8 @@ export type FollowUpProps = {
   groupLabel: string;
   tooltip?: string;
   hint?: string;
+  followUps?: Partial<Record<string, FollowUpProps>>;
 };
-
-export type Option = { label: string; value: string };
 
 export type Props<TOptions extends readonly Option[] = Option[]> = {
   id: string;
@@ -36,100 +32,116 @@ export type Props<TOptions extends readonly Option[] = Option[]> = {
   followUps?: Partial<Record<TOptions[number]['value'], FollowUpProps>>;
 };
 
+type RadioGroupWithFollowUpProps = {
+  id: string;
+  name: string;
+  values: Record<string, string>;
+  onChange: (values: Record<string, string>) => void;
+  options: Option[];
+  followUps?: Partial<Record<string, FollowUpProps>>;
+  inputRef?: React.Ref<HTMLInputElement>;
+};
+
+const RadioGroupWithFollowUp: React.FC<RadioGroupWithFollowUpProps> = ({
+  id,
+  name,
+  values,
+  onChange,
+  options,
+  followUps,
+  inputRef,
+}) => {
+  const currentValue = values[id];
+
+  const handleChange = (groupId: string, value: string) => {
+    const newValues = { ...values, [groupId]: value };
+
+    if (followUps) {
+      for (const [key, followUp] of Object.entries(followUps)) {
+        if (!followUp) continue;
+        if (key !== value && followUp.id in newValues) {
+          delete newValues[followUp.id];
+        }
+      }
+    }
+
+    onChange(newValues);
+  };
+
+  return (
+    <ChakraRadioGroup
+      value={currentValue || ''}
+      onChange={(value) => handleChange(id, value)}
+    >
+      <Flex flexDirection="column">
+        {options.map(({ label, value }) => (
+          <Radio
+            key={value}
+            name={name}
+            value={value}
+            isChecked={value === currentValue}
+            ref={inputRef}
+            label={label}
+            isInvalid={false}
+          />
+        ))}
+
+        {followUps?.[currentValue] ? (
+          <>
+            <Divider marginY="xl" />
+            <RadioGroupWithFollowUp
+              {...followUps[currentValue]}
+              values={values}
+              onChange={onChange}
+            />
+          </>
+        ) : null}
+      </Flex>
+    </ChakraRadioGroup>
+  );
+};
+
 const QuestionWithFollowUp = forwardRef<
   HTMLInputElement,
   PropsWithChildren<Props>
 >(
   (
     {
+      id,
       name,
       values,
       onChange,
       options,
       groupLabel,
       tooltip,
-      id,
       errorMessage,
       hint,
       followUps,
     },
     ref,
   ) => {
-    const currentValue = values[id];
-
-    const handleChange = (groupId: string, value: string) => {
-      const newValues = { ...values, [groupId]: value };
-
-      if (followUps) {
-        for (const [key, followUp] of Object.entries(followUps)) {
-          if (!followUp) continue;
-          if (key !== value && followUp.id in newValues) {
-            delete newValues[followUp.id];
-          }
-        }
-      }
-
-      onChange(newValues);
-    };
-
     return (
-      <FormControl id={id} errorMessage={errorMessage}>
-        <Box
-          border={followUps ? '1px' : 0}
-          borderColor={errorMessage ? 'red.500' : 'gray.400'}
-          borderRadius="sm"
-          padding={followUps ? '2xl' : 0}
-        >
-          <ChakraRadioGroupBox
-            value={currentValue || ''}
-            onChange={(value) => handleChange(id, value)}
-          >
-            <Flex flexDirection="column">
-              <Box mb="lg">
-                <Flex>
-                  <Text color="gray.900" textStyle="heading4">
-                    {groupLabel}
-                  </Text>
-                  {tooltip ? (
-                    <Tooltip label={tooltip}>
-                      <InformationIcon ml="md" />
-                    </Tooltip>
-                  ) : null}
-                </Flex>
-                {hint ? (
-                  <Text color="gray.900" textStyle="body">
-                    {hint}
-                  </Text>
-                ) : null}
-              </Box>
-              {options.map(({ label, value }) => (
-                <Radio
-                  key={value}
-                  name={name}
-                  value={value}
-                  isChecked={value === currentValue}
-                  ref={ref}
-                  label={label}
-                  isInvalid={false}
-                />
-              ))}
-              {followUps?.[currentValue] ? (
-                <>
-                  <Divider marginY="xl" />
-                  <QuestionWithFollowUp
-                    {...followUps[currentValue]}
-                    values={values}
-                    onChange={onChange}
-                  />
-                </>
-              ) : null}
-            </Flex>
-          </ChakraRadioGroupBox>
-        </Box>
-      </FormControl>
+      <FormControlSection
+        id={id}
+        errorMessage={errorMessage}
+        label={groupLabel}
+        hint={hint}
+        tooltip={tooltip}
+      >
+        <RadioGroupWithFollowUp
+          id={id}
+          name={name}
+          values={values}
+          onChange={onChange}
+          options={options}
+          followUps={followUps}
+          inputRef={ref}
+        />
+      </FormControlSection>
     );
   },
 );
-Radio.displayName = 'QuestionWithFollowUp';
+
+QuestionWithFollowUp.displayName = 'QuestionWithFollowUp';
 
 export default QuestionWithFollowUp;

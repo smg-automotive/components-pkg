@@ -34,6 +34,11 @@ const Template = (props: Props) => {
   );
 };
 
+/**
+ * Question With FollowUp is the radio buttons group wrapped into a FormControlSection with
+ * the ability to show a follow-up question based on the selected option.
+ **/
+
 const meta: Meta<typeof QuestionWithFollowUpComponent> = {
   title: 'Components/Forms/Question With FollowUp',
   component: QuestionWithFollowUpComponent,
@@ -60,62 +65,9 @@ export default meta;
 
 type StoryType = StoryObj<typeof QuestionWithFollowUpComponent>;
 
-export const Overview: StoryType = {};
-
 export const Default: StoryType = {
-  name: 'Default',
-
   args: {
-    options: [
-      { label: 'Available', value: 'available' },
-      { label: 'Incomplete', value: 'incomplete' },
-      { label: 'Missing', value: 'missing' },
-    ],
-  },
-};
-
-export const WithTooltip: StoryType = {
-  name: 'With Tooltip',
-
-  args: {
-    options: [
-      { label: 'Available', value: 'available' },
-      { label: 'Incomplete', value: 'incomplete' },
-      { label: 'Missing', value: 'missing' },
-    ],
-    tooltip: 'Hello I am a tooltip text',
-  },
-};
-
-export const WithHint: StoryType = {
-  name: 'With Hint',
-
-  args: {
-    options: [
-      { label: 'Available', value: 'available' },
-      { label: 'Incomplete', value: 'incomplete' },
-      { label: 'Missing', value: 'missing' },
-    ],
-    hint: 'Hello, I am hint text',
-  },
-};
-
-export const Invalid: StoryType = {
-  name: 'Invalid',
-
-  args: {
-    options: [
-      { label: 'Available', value: 'available' },
-      { label: 'Incomplete', value: 'incomplete' },
-      { label: 'Missing', value: 'missing' },
-    ],
-    errorMessage: 'Error message',
-  },
-};
-
-export const WithFollowUp: StoryType = {
-  args: {
-    name: 'main-question-with-follow-up',
+    name: 'Default',
     groupLabel: 'Is the Vehicle imported?',
     options: [
       { label: 'Yes', value: 'yes' },
