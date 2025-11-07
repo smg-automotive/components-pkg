@@ -50,21 +50,29 @@ const Wrapper = ({
 };
 
 describe('<QuestionWithFollowUpComponent />', () => {
-  it('displays follow-up when clicking option with follow-up', async () => {
+  it('displays follow-up options when clicking option with follow-up', async () => {
     render(<Wrapper />);
 
     expect(await screen.findByText('Main Group')).toBeInTheDocument();
+
     await userEvent.click(screen.getByLabelText('Option A'));
-    expect(await screen.findByText('Follow-up A')).toBeInTheDocument();
+
+    expect(await screen.findByLabelText('FA1')).toBeInTheDocument();
+    expect(await screen.findByLabelText('FA2')).toBeInTheDocument();
   });
 
-  it('removes follow-up when switching to an option without follow-up', async () => {
+  it('removes follow-up options when switching to an option without follow-up', async () => {
     render(<Wrapper initialValues={{ main: 'a', followupA: 'fa1' }} />);
 
     expect(await screen.findByText('Main Group')).toBeInTheDocument();
-    expect(await screen.findByText('Follow-up A')).toBeInTheDocument();
+
+    expect(await screen.findByLabelText('FA1')).toBeInTheDocument();
+    expect(await screen.findByLabelText('FA2')).toBeInTheDocument();
+
     await userEvent.click(screen.getByLabelText('Option B'));
-    expect(await screen.queryByText('Follow-up A')).not.toBeInTheDocument();
+
+    expect(screen.queryByLabelText('FA1')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('FA2')).not.toBeInTheDocument();
   });
 
   it('keeps correct data when selecting a main option', async () => {
@@ -72,7 +80,9 @@ describe('<QuestionWithFollowUpComponent />', () => {
     render(<Wrapper onValuesChange={onChange} />);
 
     expect(await screen.findByText('Main Group')).toBeInTheDocument();
+
     await userEvent.click(screen.getByLabelText('Option A'));
+
     expect(onChange).toHaveBeenCalledWith({ main: 'a', followupA: '' });
   });
 
@@ -81,28 +91,32 @@ describe('<QuestionWithFollowUpComponent />', () => {
     render(<Wrapper onValuesChange={onChange} />);
 
     expect(await screen.findByText('Main Group')).toBeInTheDocument();
+
     await userEvent.click(screen.getByLabelText('Option A'));
     expect(onChange).toHaveBeenCalledWith({ main: 'a', followupA: '' });
 
-    expect(await screen.getByText('Follow-up A')).toBeInTheDocument();
+    expect(await screen.findByLabelText('FA2')).toBeInTheDocument();
     await userEvent.click(screen.getByLabelText('FA2'));
     expect(onChange).toHaveBeenCalledWith({ main: 'a', followupA: 'fa2' });
   });
 
-  it('keeps correct data when selecting a main option and its follow-up and switch to main option without follow-up', async () => {
+  it('keeps correct data when selecting a main option and its follow-up and switching to a main option without follow-up', async () => {
     const onChange = jest.fn();
     render(<Wrapper onValuesChange={onChange} />);
 
     expect(await screen.findByText('Main Group')).toBeInTheDocument();
+
     await userEvent.click(screen.getByLabelText('Option A'));
     expect(onChange).toHaveBeenCalledWith({ main: 'a', followupA: '' });
 
-    expect(await screen.getByText('Follow-up A')).toBeInTheDocument();
+    expect(await screen.findByLabelText('FA2')).toBeInTheDocument();
     await userEvent.click(screen.getByLabelText('FA2'));
     expect(onChange).toHaveBeenCalledWith({ main: 'a', followupA: 'fa2' });
 
     await userEvent.click(screen.getByLabelText('Option B'));
-    expect(await screen.queryByText('Follow-up A')).not.toBeInTheDocument();
+
+    expect(screen.queryByLabelText('FA1')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('FA2')).not.toBeInTheDocument();
     expect(onChange).toHaveBeenCalledWith({ main: 'b' });
   });
 });
