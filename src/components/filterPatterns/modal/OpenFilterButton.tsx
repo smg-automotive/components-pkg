@@ -29,11 +29,6 @@ type Props = Pick<
     onResetFilter?: () => void;
   };
 
-const paddingY: Record<Variant, ResponsiveValue<string>> = {
-  sm: 'sm',
-  md: 'md',
-};
-
 const height: Record<Variant, ResponsiveValue<string>> = {
   sm: 'md',
   md: 'lg',
@@ -61,11 +56,12 @@ export const OpenFilterButton: FC<Props> = ({
       alignItems="center"
       h={height[variant]}
       paddingX={paddingX}
-      paddingY={paddingY[variant]}
       backgroundColor={backgroundColor}
     >
       <ChakraButton
-        w="full"
+        flex="1"
+        minW="0"
+        h="full"
         paddingX={0}
         isDisabled={isDisabled}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
@@ -90,6 +86,7 @@ export const OpenFilterButton: FC<Props> = ({
             whiteSpace="nowrap"
             display="flex"
             alignItems="center"
+            flexShrink={0}
           >
             {label}
             {Icon ? <Icon h="xs" w="xs" ml="xs" /> : null}
@@ -99,6 +96,8 @@ export const OpenFilterButton: FC<Props> = ({
             overflow="hidden"
             textOverflow="ellipsis"
             whiteSpace="nowrap"
+            minW="0"
+            flex="1"
           >
             {displayValue && isApplied ? displayValue : null}
           </chakra.span>
@@ -107,6 +106,7 @@ export const OpenFilterButton: FC<Props> = ({
       {shouldDisplayResetButton ? (
         <IconButton
           aria-label={resetButtonAriaLabel}
+          h="full"
           ml="sm"
           icon={<DeleteIcon color={isDisabled ? 'gray.300' : 'gray.500'} />}
           cursor={isDisabled ? 'not-allowed' : 'pointer'}
