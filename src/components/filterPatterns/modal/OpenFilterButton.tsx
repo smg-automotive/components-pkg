@@ -98,6 +98,7 @@ export const OpenFilterButton: FC<Props> = ({
             whiteSpace="nowrap"
             minW="0"
             flex="1"
+            textAlign="right"
           >
             {displayValue && isApplied ? displayValue : null}
           </chakra.span>
