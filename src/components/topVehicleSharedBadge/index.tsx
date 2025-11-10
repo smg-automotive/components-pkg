@@ -3,7 +3,7 @@ import { Box, useTheme } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
-import AspectRatio from '../aspectRatio';
+import {AspectRatio} from '../aspectRatio';
 
 type Props = {
   aspectRatio?: number;
@@ -14,7 +14,7 @@ const badgeText = {
   [Brand.MotoScout24]: 'TopMoto',
 };
 
-const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
+export const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
   children,
   aspectRatio,
 }) => {
@@ -27,7 +27,7 @@ const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
         textAlign="center"
         textStyle="heading4"
         p="xs"
-        textColor="gray.900"
+        color="gray.900"
       >
         {badgeText[brand as Brand]}
       </Box>
@@ -39,5 +39,3 @@ const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
     </Box>
   );
 };
-
-export default TopVehicleSharedBadge;
