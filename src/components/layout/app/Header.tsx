@@ -4,14 +4,7 @@ import { GridItem, GridItemProps } from 'src/components/grid';
 
 export const AppLayoutHeader = forwardRef<HTMLDivElement, GridItemProps>(
   (props, ref) => {
-    return (
-      <GridItem
-        as="div"
-        area="header"
-        ref={ref}
-        {...(props as GridItemProps)}
-      />
-    );
+    return <GridItem as="div" area="header" ref={ref} {...props} />;
   },
 );
 

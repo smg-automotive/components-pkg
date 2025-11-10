@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 
-import { GridItem, type GridItemProps } from 'src/components/grid';
+import { GridItem, GridItemProps } from 'src/components/grid';
 
 export const AppLayoutFooter = forwardRef<HTMLDivElement, GridItemProps>(
   (props, ref) => {
-    return <GridItem area="footer" ref={ref} {...(props as GridItemProps)} />;
+    return <GridItem as="div" area="footer" ref={ref} {...props} />;
   },
 );
 

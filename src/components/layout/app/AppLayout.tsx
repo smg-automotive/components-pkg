@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 
-import { Grid, type GridProps } from 'src/components/grid';
+import { Grid, GridProps } from 'src/components/grid';
 
-const pageGirdArea = `
+const pageGridArea = `
   "header"
   "content"
   "footer"
@@ -11,12 +11,13 @@ const pageGirdArea = `
 export const AppLayout = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
   return (
     <Grid
+      as="div"
       templateRows="min-content auto min-content"
-      templateAreas={pageGirdArea}
+      templateAreas={pageGridArea}
       minHeight="screen-height"
       ref={ref}
       textStyle="body"
-      {...(props as GridProps)}
+      {...props}
     />
   );
 });
