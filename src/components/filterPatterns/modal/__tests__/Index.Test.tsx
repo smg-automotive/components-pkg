@@ -143,7 +143,9 @@ describe('<ModalFilter />', () => {
     );
 
     const deleteIcon = screen.getByTitle('Delete icon');
-    const resetButton = deleteIcon.closest('button');
+    const resetButton = screen
+      .getAllByRole('button')
+      .find((button) => button.contains(deleteIcon));
     expect(resetButton).toBeInTheDocument();
   });
 
@@ -156,7 +158,9 @@ describe('<ModalFilter />', () => {
     );
 
     const deleteIcon = screen.getByTitle('Delete icon');
-    const resetButton = deleteIcon.closest('button');
+    const resetButton = screen
+      .getAllByRole('button')
+      .find((button) => button.contains(deleteIcon));
     expect(resetButton).toBeInTheDocument();
 
     await userEvent.click(resetButton!);
