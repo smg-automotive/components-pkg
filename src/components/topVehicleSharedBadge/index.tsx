@@ -39,3 +39,4 @@ export const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
     </Box>
   );
 };
+
