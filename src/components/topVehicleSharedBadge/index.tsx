@@ -1,12 +1,13 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Box, useTheme } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
-import {AspectRatio} from '../aspectRatio';
+import { AspectRatio } from '../aspectRatio';
 
 type Props = {
   aspectRatio?: number;
+  brand: Brand;
 };
 
 const badgeText = {
@@ -17,9 +18,8 @@ const badgeText = {
 export const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
   children,
   aspectRatio,
+  brand,
 }) => {
-  const { brand } = useTheme();
-
   return (
     <Box>
       <Box
@@ -39,4 +39,3 @@ export const TopVehicleSharedBadge: FC<PropsWithChildren<Props>> = ({
     </Box>
   );
 };
-
