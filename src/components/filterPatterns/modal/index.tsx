@@ -55,7 +55,14 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           isDisabled={isDisabled}
           paddingX={paddingX}
           backgroundColor={backgroundColor}
-          variant={triggerHeight}
+          variant={
+            triggerHeight
+              ? {
+                  md: 'sm' as const,
+                  lg: 'md' as const,
+                }[triggerHeight]
+              : undefined
+          }
         />
         <ChakraModal
           key={`modal-filter-${label}-${isOpen ? 'open' : 'closed'}`}
