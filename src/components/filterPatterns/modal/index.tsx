@@ -35,7 +35,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   paddingX,
   backgroundColor,
   trapFocus = true,
-  triggerSize,
+  triggerHeight,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialModalState === 'open',
@@ -55,7 +55,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           isDisabled={isDisabled}
           paddingX={paddingX}
           backgroundColor={backgroundColor}
-          variant={triggerSize}
+          variant={triggerHeight}
         />
         <ChakraModal
           key={`modal-filter-${label}-${isOpen ? 'open' : 'closed'}`}
