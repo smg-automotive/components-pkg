@@ -13,4 +13,5 @@ export type ModalFilterProps = FilterPatternProps &
     isDisabled?: boolean;
     paddingX?: PaddingX;
     trapFocus?: boolean;
+    triggerSize?: 'sm' | 'md';
   } & Pick<ButtonProps, 'backgroundColor'>;
