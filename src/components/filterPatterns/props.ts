@@ -27,11 +27,6 @@ export type FilterPatternProps = {
    */
   numberOfAppliedFilters?: number;
   /**
-   * To show the reset filter button in the open filter button.
-   * @default true
-   */
-  showResetButton?: boolean;
-  /**
    * Callback that is called if the reset filter button is pressed.
    */
   onResetFilter: (placement: 'filterButton' | 'filter') => void;
