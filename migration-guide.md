@@ -74,6 +74,10 @@ Integration notes:
 With the `Field` component taking care of the label and error message, `FormError` and `FormLabel` components are removed.
 If you need to add a label or error message to your input wrap it in the `Field` component.
 
+### TopVehicleSharedBadge requires additional `brand` prop
+
+In V2 we fetched the brand directly from the `useTheme` hook. Since this hook is not supported anymore, we now pass the brand as prop. 
+
 ## Extended design tokens
 
 With Chakra V3 we are trying to implement design tokens which are in alignment with the UI/UX Team.
