@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const alertRecipe = defineSlotRecipe({
   className: 'chakra-alert',
-  slots: ['root', 'indicator', 'content', 'title', 'description'],
+  slots: ['root', 'indicator', 'content', 'title', 'description', 'toast'],
 
   base: {
     root: {
@@ -25,6 +25,18 @@ export const alertRecipe = defineSlotRecipe({
       marginEnd: 'lg',
       w: 'sm',
       h: 'sm',
+    },
+    toast: {
+      translate: 'var(--x) var(--y)',
+      scale: 'var(--scale)',
+      width: 'full',
+      position: 'relative',
+      zIndex: 'var(--z-index)',
+      height: 'var(--height)',
+      opacity: 'var(--opacity)',
+      willChange: 'translate, opacity, scale',
+      transitionProperty: 'common',
+      transitionDuration: 'normal',
     },
   },
   variants: {

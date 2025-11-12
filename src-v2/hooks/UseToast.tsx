@@ -25,7 +25,7 @@ const useToast = () => {
 
   return (options: ToastOptions) => {
     const { position = 'top', icon, title, description, link, type } = options;
-
+   
     const toastId = toast({
       position: position,
       render: () => (
