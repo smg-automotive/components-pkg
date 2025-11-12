@@ -31,11 +31,13 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   showResetButton = true,
+  resetButtonVariant,
   header,
   isDisabled = false,
   children,
   paddingX,
   backgroundColor,
+  color,
   trapFocus = true,
   triggerHeight,
 }) => {
@@ -60,6 +62,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 isDisabled={isDisabled}
                 paddingX={paddingX}
                 backgroundColor={backgroundColor}
+                color={color}
                 variant={
                   triggerHeight
                     ? {
@@ -69,6 +72,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                     : undefined
                 }
                 showResetButton={showResetButton}
+                resetButtonVariant={resetButtonVariant}
                 resetButtonAriaLabel={t(
                   'filterSelectButton.reset.resetButtonAriaLabel',
                   { label },

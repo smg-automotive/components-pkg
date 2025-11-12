@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import {
+  ButtonGroup,
   ButtonProps,
   chakra,
   Button as ChakraButton,
@@ -7,29 +8,34 @@ import {
   ResponsiveValue,
 } from '@chakra-ui/react';
 
-import { ChevronRightSmallIcon, DeleteIcon } from 'src/components/icons';
-
-import Box from 'src/components/box';
+import {
+  ChevronRightSmallIcon,
+  CloseIcon,
+  DeleteIcon,
+} from 'src/components/icons';
 
 import { FilterPatternProps } from '../props';
 
 export type PaddingX = '0' | 'md';
+export type ResetButtonVariant = 'circle' | 'square';
 type Variant = 'sm' | 'md';
 type Props = Pick<
   FilterPatternProps,
   'label' | 'displayValue' | 'Icon' | 'isApplied'
 > &
-  Pick<ButtonProps, 'backgroundColor'> & {
+  Pick<ButtonProps, 'backgroundColor' | 'color'> & {
     onClick: () => void;
     variant?: Variant;
     isDisabled?: boolean;
+    height?: ResponsiveValue<string>;
     paddingX?: PaddingX;
     showResetButton?: boolean;
+    resetButtonVariant?: ResetButtonVariant;
     resetButtonAriaLabel?: string;
     onResetFilter?: () => void;
   };
 
-const height: Record<Variant, ResponsiveValue<string>> = {
+const heightFromVariant: Record<Variant, ResponsiveValue<string>> = {
   sm: 'md',
   md: 'lg',
 };
@@ -42,35 +48,40 @@ export const OpenFilterButton: FC<Props> = ({
   onClick,
   variant = 'md',
   isDisabled = false,
-  paddingX = 0,
+  height,
+  paddingX = '0',
   backgroundColor = 'unset',
+  color,
   showResetButton = true,
+  resetButtonVariant = 'circle',
   resetButtonAriaLabel = 'Reset filter',
   onResetFilter,
 }) => {
   const shouldDisplayResetButton =
-    showResetButton && isApplied && onResetFilter;
+    showResetButton && isApplied && !!onResetFilter;
+
+  const iconColor = isDisabled ? 'gray.300' : color || 'gray.500';
+
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      h={height[variant]}
-      paddingX={paddingX}
+    <ButtonGroup
+      h={height ?? heightFromVariant[variant]}
+      isAttached
+      w="full"
+      maxW="full"
       backgroundColor={backgroundColor}
     >
       <ChakraButton
         flex="1"
         minW="0"
         h="full"
-        paddingX={0}
+        paddingLeft={paddingX}
+        paddingRight={shouldDisplayResetButton ? 'md' : paddingX}
         isDisabled={isDisabled}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
-        color={isDisabled ? 'gray.300' : 'gray.900'}
+        color={color || (isDisabled ? 'gray.300' : 'gray.900')}
         rightIcon={
           shouldDisplayResetButton ? undefined : (
-            <ChevronRightSmallIcon
-              color={isDisabled ? 'gray.300' : 'gray.500'}
-            />
+            <ChevronRightSmallIcon color={iconColor} />
           )
         }
         onClick={onClick}
@@ -108,12 +119,22 @@ export const OpenFilterButton: FC<Props> = ({
         <IconButton
           aria-label={resetButtonAriaLabel}
           h="full"
-          ml="sm"
-          icon={<DeleteIcon color={isDisabled ? 'gray.300' : 'gray.500'} />}
+          paddingLeft="md"
+          paddingRight={paddingX}
+          isDisabled={isDisabled}
           cursor={isDisabled ? 'not-allowed' : 'pointer'}
           onClick={onResetFilter}
+          {...(resetButtonVariant === 'circle'
+            ? {
+                icon: <DeleteIcon color={iconColor} />,
+              }
+            : {
+                icon: <CloseIcon color={iconColor} />,
+                borderLeftColor: 'white',
+                borderLeftWidth: '1px',
+              })}
         />
       ) : null}
-    </Box>
+    </ButtonGroup>
   );
 };
