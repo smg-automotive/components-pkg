@@ -72,7 +72,6 @@ export { default as HeaderNavigation } from './navigation/header';
 export { type UserTypeExternal } from './navigation/header/types';
 export { default as GalleryHeader } from './galleryHeader';
 export { default as SelectMenu } from './selectMenu';
-export { default as TopVehicleSharedBadge } from './topVehicleSharedBadge';
 export { SearchField, SearchFieldOptions } from './input/SearchField';
 
 export {
