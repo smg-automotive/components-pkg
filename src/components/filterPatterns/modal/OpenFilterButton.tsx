@@ -62,6 +62,17 @@ export const OpenFilterButton: FC<Props> = ({
 
   const iconColor = isDisabled ? 'gray.300' : color || 'gray.500';
 
+  const resetButtonConfig = {
+    circle: {
+      icon: <DeleteIcon color={iconColor} />,
+    },
+    square: {
+      icon: <CloseIcon color={iconColor} />,
+      borderLeftColor: 'white',
+      borderLeftWidth: '1px',
+    },
+  }[resetButtonVariant];
+
   return (
     <ButtonGroup
       h={height ?? heightFromVariant[variant]}
@@ -124,15 +135,7 @@ export const OpenFilterButton: FC<Props> = ({
           isDisabled={isDisabled}
           cursor={isDisabled ? 'not-allowed' : 'pointer'}
           onClick={onResetFilter}
-          {...(resetButtonVariant === 'circle'
-            ? {
-                icon: <DeleteIcon color={iconColor} />,
-              }
-            : {
-                icon: <CloseIcon color={iconColor} />,
-                borderLeftColor: 'white',
-                borderLeftWidth: '1px',
-              })}
+          {...resetButtonConfig}
         />
       ) : null}
     </ButtonGroup>
