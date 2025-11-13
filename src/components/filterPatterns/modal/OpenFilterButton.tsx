@@ -62,18 +62,24 @@ export const OpenFilterButton: FC<Props> = ({
 
   const iconColor = isDisabled ? 'gray.300' : color || 'gray.500';
 
-  const mainButtonRightPadding = resetButtonVariant === 'circle' ? '0' : 'md';
+  const mainButtonRightPadding = resetButtonVariant === 'circle' ? 'sm' : 'md';
+
+  const chevronIconSize =
+    resetButtonVariant === 'circle'
+      ? { w: 'sm', h: 'sm' }
+      : { w: 'xs', h: 'xs' };
 
   const resetButtonConfig = {
     circle: {
       icon: <DeleteIcon color={iconColor} />,
-      paddingLeft: 'sm',
+      paddingRight: paddingX,
     },
     square: {
-      icon: <CloseIcon color={iconColor} />,
+      icon: <CloseIcon color={iconColor} w="xs" h="xs" />,
+      w: 'md',
+      minW: 'md',
       borderLeftColor: 'white',
       borderLeftWidth: '1px',
-      paddingLeft: 'md',
     },
   }[resetButtonVariant];
 
@@ -99,7 +105,7 @@ export const OpenFilterButton: FC<Props> = ({
         isDisabled={isDisabled}
         rightIcon={
           shouldDisplayResetButton ? undefined : (
-            <ChevronRightSmallIcon color={iconColor} />
+            <ChevronRightSmallIcon color={iconColor} {...chevronIconSize} />
           )
         }
         onClick={onClick}
@@ -137,7 +143,6 @@ export const OpenFilterButton: FC<Props> = ({
         <IconButton
           aria-label={resetButtonAriaLabel}
           h="full"
-          paddingRight={paddingX}
           isDisabled={isDisabled}
           cursor={isDisabled ? 'not-allowed' : 'pointer'}
           onClick={onResetFilter}
