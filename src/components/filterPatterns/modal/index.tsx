@@ -63,14 +63,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 paddingX={paddingX}
                 backgroundColor={backgroundColor}
                 color={color}
-                variant={
-                  triggerHeight
-                    ? {
-                        md: 'sm' as const,
-                        lg: 'md' as const,
-                      }[triggerHeight]
-                    : undefined
-                }
+                height={triggerHeight}
                 showResetButton={showResetButton}
                 resetButtonVariant={resetButtonVariant}
                 resetButtonAriaLabel={t(

@@ -62,14 +62,18 @@ export const OpenFilterButton: FC<Props> = ({
 
   const iconColor = isDisabled ? 'gray.300' : color || 'gray.500';
 
+  const mainButtonRightPadding = resetButtonVariant === 'circle' ? '0' : 'md';
+
   const resetButtonConfig = {
     circle: {
       icon: <DeleteIcon color={iconColor} />,
+      paddingLeft: 'sm',
     },
     square: {
       icon: <CloseIcon color={iconColor} />,
       borderLeftColor: 'white',
       borderLeftWidth: '1px',
+      paddingLeft: 'md',
     },
   }[resetButtonVariant];
 
@@ -86,7 +90,9 @@ export const OpenFilterButton: FC<Props> = ({
         minW="0"
         h="full"
         paddingLeft={paddingX}
-        paddingRight={shouldDisplayResetButton ? 'md' : paddingX}
+        paddingRight={
+          shouldDisplayResetButton ? mainButtonRightPadding : paddingX
+        }
         isDisabled={isDisabled}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
         color={color || (isDisabled ? 'gray.300' : 'gray.900')}
@@ -130,7 +136,6 @@ export const OpenFilterButton: FC<Props> = ({
         <IconButton
           aria-label={resetButtonAriaLabel}
           h="full"
-          paddingLeft="md"
           paddingRight={paddingX}
           isDisabled={isDisabled}
           cursor={isDisabled ? 'not-allowed' : 'pointer'}
