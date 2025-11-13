@@ -84,6 +84,7 @@ export const OpenFilterButton: FC<Props> = ({
       w="full"
       maxW="full"
       backgroundColor={backgroundColor}
+      borderRadius="sm"
     >
       <ChakraButton
         flex="1"
@@ -93,9 +94,9 @@ export const OpenFilterButton: FC<Props> = ({
         paddingRight={
           shouldDisplayResetButton ? mainButtonRightPadding : paddingX
         }
-        isDisabled={isDisabled}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
         color={color || (isDisabled ? 'gray.300' : 'gray.900')}
+        isDisabled={isDisabled}
         rightIcon={
           shouldDisplayResetButton ? undefined : (
             <ChevronRightSmallIcon color={iconColor} />
