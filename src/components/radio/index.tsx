@@ -65,7 +65,7 @@ export const Radio = forwardRef<HTMLInputElement, Props>((props, ref) => {
           <RadioGroup.ItemIndicator css={styles.indicator} />
         </RadioGroup.ItemControl>
         <RadioGroup.ItemText css={styles.label}>{label}</RadioGroup.ItemText>
-        <RadioGroup.ItemHiddenInput ref={ref} checked={isChecked} />
+        <RadioGroup.ItemHiddenInput ref={ref} />
       </RadioGroup.Item>
     </RadioGroup.Root>
   );
