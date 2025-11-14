@@ -18,9 +18,9 @@ export const toastConfig = {
   max: 5,
 };
 
-export interface ToastProps extends RecipeVariantProps<typeof alertRecipe> {
+export type ToastProps = RecipeVariantProps<typeof alertRecipe> & {
   toaster: ReturnType<typeof createToaster>;
-}
+};
 
 export const Toast: FC<ToastProps> = (props) => {
   const recipe = useSlotRecipe({ key: 'alert' });

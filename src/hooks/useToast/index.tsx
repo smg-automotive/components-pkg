@@ -1,24 +1,15 @@
 import React from 'react';
 
-import { topToaster } from 'src/hooks/useToast/TopToaster';
+import { SharedProps } from 'src/components/alert';
+
+import { topToaster } from './TopToaster';
 
 import { topRightToaster } from './TopRightToast';
 
-export interface ToastOptions {
+export type ToastOptions = {
   position?: 'top' | 'top-right';
-  description: string;
-  title?: string;
-  link?: {
-    as?: 'link' | 'button' | React.ElementType;
-    text: string;
-    url?: string;
-    isExternal?: boolean;
-    onClick?: () => void;
-  };
-  icon?: React.ReactNode;
-  type?: 'error' | 'warning' | 'info' | 'success';
   onClose?: () => void;
-}
+} & SharedProps;
 
 const toasterMap = {
   top: topToaster,

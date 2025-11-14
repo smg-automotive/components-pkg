@@ -12,7 +12,7 @@ import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
 import { CloseButton } from '../closeButton';
 import { AlertLink } from './Link';
 
-export interface SharedProps extends RecipeVariantProps<typeof alertRecipe> {
+export type SharedProps = RecipeVariantProps<typeof alertRecipe> & {
   description: string;
   title?: string;
   link?: {
@@ -24,7 +24,7 @@ export interface SharedProps extends RecipeVariantProps<typeof alertRecipe> {
   };
   icon?: React.ReactNode;
   type?: 'error' | 'warning' | 'info' | 'success';
-}
+};
 
 export type DismissibleProps = SharedProps & {
   onDismiss?: () => void;
