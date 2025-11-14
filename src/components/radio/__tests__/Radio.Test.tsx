@@ -1,6 +1,6 @@
 import React from 'react';
 
-import userEventLib from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from 'jest-utils';
 
@@ -51,7 +51,7 @@ describe('<Radio>', () => {
   });
 
   it('triggers onChange event when clicking on radio', async () => {
-    const user = userEventLib.setup();
+    const user = userEvent.setup();
     const onChange = jest.fn();
 
     renderWrapper({ onChange });
@@ -62,7 +62,7 @@ describe('<Radio>', () => {
   });
 
   it('is not possible to check the radio when disabled', async () => {
-    const user = userEventLib.setup();
+    const user = userEvent.setup();
     const onChange = jest.fn();
 
     renderWrapper({ onChange, isDisabled: true });

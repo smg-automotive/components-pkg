@@ -1,5 +1,5 @@
 import React from 'react';
-import userEventLib from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from 'jest-utils';
 
@@ -17,7 +17,7 @@ describe('<RadioList>', () => {
   it('renders all options', async () => {
     render(<RadioList name="list" options={buildOptions()} />);
 
-    // async, da sačekamo da Chakra/Ark završi inicijalni render
+    // async to allow Chakra to finish the initial render
     expect(await screen.findByText('One')).toBeInTheDocument();
     expect(await screen.findByText('Two')).toBeInTheDocument();
     expect(await screen.findByText('Three')).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('<RadioList>', () => {
   });
 
   it('triggers onChange when clicking an option', async () => {
-    const user = userEventLib.setup();
+    const user = userEvent.setup();
     const onChange = jest.fn();
 
     render(
