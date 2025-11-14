@@ -1,5 +1,6 @@
 import React from 'react';
 import userEventLib from '@testing-library/user-event';
+
 import { render, screen, waitFor } from 'jest-utils';
 
 import { RadioList } from '../RadioList';
@@ -24,11 +25,7 @@ describe('<RadioList>', () => {
 
   it('selects default value', async () => {
     render(
-      <RadioList
-        name="list"
-        defaultValue="two"
-        options={buildOptions()}
-      />,
+      <RadioList name="list" defaultValue="two" options={buildOptions()} />,
     );
 
     const radio = await screen.findByRole('radio', { name: 'Two' });
