@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { I18nContext } from '@smg-automotive/i18n-pkg';
 import {
   Modal as ChakraModal,
   ModalBody,
@@ -29,12 +30,16 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onModalOpen,
   onResetFilter,
   showCallToActionButton = true,
+  showResetButton = true,
+  resetButtonVariant,
   header,
   isDisabled = false,
   children,
   paddingX,
   backgroundColor,
+  color,
   trapFocus = true,
+  triggerHeight,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialModalState === 'open',
@@ -44,68 +49,83 @@ export const ModalFilter: FC<ModalFilterProps> = ({
 
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
-      <>
-        <OpenFilterButton
-          displayValue={displayValue}
-          Icon={Icon}
-          isApplied={isApplied}
-          label={label}
-          onClick={onOpen}
-          isDisabled={isDisabled}
-          paddingX={paddingX}
-          backgroundColor={backgroundColor}
-        />
-        <ChakraModal
-          key={`modal-filter-${label}-${isOpen ? 'open' : 'closed'}`}
-          isOpen={isOpen}
-          onClose={onClose}
-          size="full"
-          motionPreset="slideInBottom"
-          trapFocus={trapFocus}
-        >
-          <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
-            <ModalHeader
-              display="flex"
-              flexDirection="column"
-              alignItems="flex-start"
-              paddingY="0"
-              paddingX="2xl"
-            >
-              {header ? (
-                header
-              ) : (
-                <FilterHeading
-                  language={language}
-                  Icon={Icon}
-                  isApplied={isApplied}
-                  label={label}
-                  numberOfAppliedFilters={numberOfAppliedFilters}
-                  onClose={onClose}
-                  onResetFilter={() => onResetFilter('filter')}
-                />
-              )}
-            </ModalHeader>
-            <ModalBody
-              overflowY="auto"
-              marginTop="2xl"
-              marginBottom={showCallToActionButton ? '2xl' : '0'}
-              paddingY="0"
-              paddingX="2xl"
-            >
-              {children}
-            </ModalBody>
-            {showCallToActionButton ? (
-              <ModalFooter paddingY="0" paddingX="2xl">
-                <FilterActionButton
-                  actionButton={actionButton}
-                  isApplied={isApplied}
-                  onClose={onClose}
-                />
-              </ModalFooter>
-            ) : null}
-          </ModalContent>
-        </ChakraModal>
-      </>
+      <I18nContext.Consumer>
+        {({ t }) => {
+          return (
+            <>
+              <OpenFilterButton
+                displayValue={displayValue}
+                Icon={Icon}
+                isApplied={isApplied}
+                label={label}
+                onClick={onOpen}
+                isDisabled={isDisabled}
+                paddingX={paddingX}
+                backgroundColor={backgroundColor}
+                color={color}
+                height={triggerHeight}
+                showResetButton={showResetButton}
+                resetButtonVariant={resetButtonVariant}
+                resetButtonAriaLabel={t(
+                  'filterSelectButton.reset.resetButtonAriaLabel',
+                  { label },
+                )}
+                onResetFilter={() => onResetFilter('filterButton')}
+              />
+              <ChakraModal
+                key={`modal-filter-${label}-${isOpen ? 'open' : 'closed'}`}
+                isOpen={isOpen}
+                onClose={onClose}
+                size="full"
+                motionPreset="slideInBottom"
+                trapFocus={trapFocus}
+              >
+                <ModalContent h="full" w="full" paddingY="2xl" paddingX="0">
+                  <ModalHeader
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="flex-start"
+                    paddingY="0"
+                    paddingX="2xl"
+                  >
+                    {header ? (
+                      header
+                    ) : (
+                      <FilterHeading
+                        language={language}
+                        Icon={Icon}
+                        isApplied={isApplied}
+                        label={label}
+                        numberOfAppliedFilters={numberOfAppliedFilters}
+                        onClose={onClose}
+                        onResetFilter={() => onResetFilter('filter')}
+                      />
+                    )}
+                  </ModalHeader>
+                  <ModalBody
+                    overflowY="auto"
+                    marginTop="2xl"
+                    marginBottom={showCallToActionButton ? '2xl' : '0'}
+                    paddingY="0"
+                    paddingX="2xl"
+                  >
+                    {children}
+                  </ModalBody>
+                  {showCallToActionButton ? (
+                    <ModalFooter paddingY="0" paddingX="2xl">
+                      <FilterActionButton
+                        actionButton={actionButton}
+                        isApplied={isApplied}
+                        onClose={onClose}
+                      />
+                    </ModalFooter>
+                  ) : null}
+                </ModalContent>
+              </ChakraModal>
+            </>
+          );
+        }}
+      </I18nContext.Consumer>
     </TranslationProvider>
   );
 };
