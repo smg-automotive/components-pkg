@@ -1,19 +1,10 @@
 import React, { ReactNode } from 'react';
-import {
-  Slider as ChakraSlider,
-  SliderMark as ChakraSliderMark,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-} from '@chakra-ui/react';
-
-import Box from '../box';
+import { Slider } from '@chakra-ui/react';
 
 const emptyItemOffset = 0;
 const firstItemOffset = 1;
 
 export type DiscreteSliderMark<T> = {
-  stepValue?: number;
   label: ReactNode;
   value: T;
 };
@@ -47,10 +38,10 @@ const getSliderMarks = <T,>(
 ) =>
   marks.map((mark, index) => ({
     ...mark,
-    stepValue: index + getItemOffset(applyIndentation),
+    value: index + getItemOffset(applyIndentation),
   }));
 
-const DiscreteSlider = <T,>({
+export const DiscreteSlider = <T,>({
   marks,
   applyIndentation = true,
   onValueChanged,
@@ -64,37 +55,26 @@ const DiscreteSlider = <T,>({
     if (applyIndentation && newStepValue < firstItemOffset) return;
 
     const newSliderMark = sliderMarks.find(
-      (mark) => mark.stepValue === newStepValue,
+      (mark) => mark.value === newStepValue,
     )?.value;
 
     onValueChanged(newSliderMark as NonNullable<T>);
   };
 
   return (
-    <ChakraSlider
+    <Slider.Root
       step={1}
       max={sliderMarks.length - 1 + getItemOffset(applyIndentation)}
-      value={sliderStepValue}
-      onChange={handleOnChange}
-      focusThumbOnChange={false}
+      value={[sliderStepValue]}
+      // onChange={handleOnChange}
+      // focusThumbOnChange={false}
     >
-      {sliderMarks?.map(({ stepValue, label }, index) => {
-        return (
-          <ChakraSliderMark
-            key={index}
-            value={stepValue as number}
-            fontWeight={sliderStepValue === stepValue ? 'bold' : 'normal'}
-          >
-            <Box style={{ pointerEvents: 'all' }}>{label}</Box>
-          </ChakraSliderMark>
-        );
-      })}
-      <SliderTrack>
-        <SliderFilledTrack />
-      </SliderTrack>
-      <SliderThumb />
-    </ChakraSlider>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Marks marks={sliderMarks} />
+        </Slider.Track>
+        <Slider.Thumb index={0} />
+      </Slider.Control>
+    </Slider.Root>
   );
 };
-
-export default DiscreteSlider;
