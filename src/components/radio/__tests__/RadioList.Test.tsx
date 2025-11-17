@@ -17,7 +17,6 @@ describe('<RadioList>', () => {
   it('renders all options', async () => {
     render(<RadioList name="list" options={buildOptions()} />);
 
-    // async to allow Chakra to finish the initial render
     expect(await screen.findByText('One')).toBeInTheDocument();
     expect(await screen.findByText('Two')).toBeInTheDocument();
     expect(await screen.findByText('Three')).toBeInTheDocument();
