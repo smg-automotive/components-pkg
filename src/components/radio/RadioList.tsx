@@ -41,7 +41,7 @@ export const RadioList: FC<RadioListProps> = ({
           const value = option.key != null ? String(option.key) : String(idx);
 
           return (
-            <RadioListItem key={option.key ?? idx} value={value}>
+            <RadioListItem key={value} value={value}>
               {option}
             </RadioListItem>
           );

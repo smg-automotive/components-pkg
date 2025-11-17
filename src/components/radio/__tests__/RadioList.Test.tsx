@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from 'jest-utils';
+import { render, screen } from 'jest-utils';
 
 import { RadioList } from '../RadioList';
 
@@ -28,7 +28,7 @@ describe('<RadioList>', () => {
     );
 
     const radio = await screen.findByRole('radio', { name: 'Two' });
-    await waitFor(() => expect(radio).toBeChecked());
+    expect(radio).toBeChecked();
   });
 
   it('triggers onChange when clicking an option', async () => {
@@ -43,8 +43,6 @@ describe('<RadioList>', () => {
 
     await user.click(radio);
 
-    await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith('three');
-    });
+    expect(onChange).toHaveBeenCalledWith('three');
   });
 });
