@@ -31,7 +31,6 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   showResetButton = true,
-  openFilterButtonType,
   header,
   isDisabled = false,
   children,
@@ -40,6 +39,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   color,
   trapFocus = true,
   triggerHeight,
+  triggerDisplayType,
+  triggerAppliedLabel,
 }) => {
   const { onOpen, onClose, isOpen } = useDisclosure({
     defaultIsOpen: initialModalState === 'open',
@@ -65,7 +66,8 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 color={color}
                 height={triggerHeight}
                 showResetButton={showResetButton}
-                displayType={openFilterButtonType}
+                displayType={triggerDisplayType}
+                appliedLabel={triggerAppliedLabel}
                 resetButtonAriaLabel={t(
                   'filterSelectButton.reset.resetButtonAriaLabel',
                   { label },

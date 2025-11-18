@@ -24,6 +24,7 @@ type Props = Pick<
   'label' | 'displayValue' | 'Icon' | 'isApplied'
 > &
   Pick<ButtonProps, 'backgroundColor' | 'color'> & {
+    appliedLabel?: string;
     onClick: () => void;
     variant?: Variant;
     isDisabled?: boolean;
@@ -101,6 +102,7 @@ const getRightIcon = (
 
 const renderInlineContent = (
   label: string,
+  appliedLabel?: string,
   displayValue?: string,
   isApplied?: boolean,
   Icon?: React.ComponentType<{
@@ -120,7 +122,9 @@ const renderInlineContent = (
   >
     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
     <chakra.span overflow="hidden" textOverflow="ellipsis">
-      {[label, isApplied ? displayValue : undefined].filter(Boolean).join(': ')}
+      {[appliedLabel ?? label, isApplied ? displayValue : undefined]
+        .filter(Boolean)
+        .join(': ')}
     </chakra.span>
   </chakra.span>
 );
@@ -182,6 +186,7 @@ const renderResetButton = (
 };
 
 export const OpenFilterButton: FC<Props> = ({
+  appliedLabel,
   displayValue,
   Icon,
   isApplied,
@@ -223,7 +228,7 @@ export const OpenFilterButton: FC<Props> = ({
 
   const buttonContent =
     displayType === 'inline'
-      ? renderInlineContent(label, displayValue, isApplied, Icon)
+      ? renderInlineContent(label, appliedLabel, displayValue, isApplied, Icon)
       : renderDefaultContent(label, displayValue, isApplied, Icon);
 
   return (
