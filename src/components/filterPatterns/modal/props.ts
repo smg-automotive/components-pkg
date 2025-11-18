@@ -3,7 +3,10 @@ import { ButtonProps } from '@chakra-ui/react';
 import { FilterPatternProps } from '../props';
 import { ActionButtonProps } from '../ActionButton';
 
-import { PaddingX } from './OpenFilterButton';
+import {
+  OpenFilterButtonDisplayType,
+  OpenFilterButtonPaddingX,
+} from './OpenFilterButton';
 
 export type ModalFilterProps = FilterPatternProps &
   Omit<ActionButtonProps, 'onClose'> & {
@@ -11,6 +14,10 @@ export type ModalFilterProps = FilterPatternProps &
     onModalClose?: () => void;
     initialModalState?: 'open' | 'closed';
     isDisabled?: boolean;
-    paddingX?: PaddingX;
+    paddingX?: OpenFilterButtonPaddingX;
     trapFocus?: boolean;
-  } & Pick<ButtonProps, 'backgroundColor'>;
+    triggerHeight?: 'lg' | 'md';
+    showResetButton?: boolean;
+    triggerDisplayType?: OpenFilterButtonDisplayType;
+    appliedLabel?: string;
+  } & Pick<ButtonProps, 'backgroundColor' | 'color'>;
