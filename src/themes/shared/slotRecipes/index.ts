@@ -5,6 +5,7 @@ import { switchRecipe } from './switch';
 import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { selectSlotRecipe as select } from './select';
 import { sectionRecipe as section } from './section';
+import { radioListItemRecipe as radioListItem } from './radioListItem';
 import { radioRecipe as radio } from './radio';
 import { popoverFilterRecipe as popoverFilter } from './popoverFilter';
 import { numberInputRecipe as numberInput } from './numberInput';
@@ -46,4 +47,5 @@ export const slotRecipes = {
   popoverFilter,
   numberInput,
   radio,
+  radioListItem,
 };
