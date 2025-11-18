@@ -122,7 +122,10 @@ const renderInlineContent = (
   >
     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
     <chakra.span overflow="hidden" textOverflow="ellipsis">
-      {[appliedLabel ?? label, isApplied ? displayValue : undefined]
+      {[
+        isApplied ? (appliedLabel ?? label) : label,
+        isApplied ? displayValue : undefined,
+      ]
         .filter(Boolean)
         .join(': ')}
     </chakra.span>
