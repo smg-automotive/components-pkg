@@ -19,5 +19,5 @@ export type ModalFilterProps = FilterPatternProps &
     triggerHeight?: 'lg' | 'md';
     showResetButton?: boolean;
     triggerDisplayType?: OpenFilterButtonDisplayType;
-    triggerAppliedLabel?: string;
+    appliedLabel?: string;
   } & Pick<ButtonProps, 'backgroundColor' | 'color'>;
