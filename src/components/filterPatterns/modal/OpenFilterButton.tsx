@@ -4,6 +4,7 @@ import {
   ButtonProps,
   chakra,
   Button as ChakraButton,
+  ChakraProps,
   IconButton,
   ResponsiveValue,
 } from '@chakra-ui/react';
@@ -41,29 +42,22 @@ const heightFromVariant: Record<Variant, ResponsiveValue<string>> = {
   md: 'lg',
 };
 
-const getIconColor = (
-  isDisabled: boolean,
-  color?: ResponsiveValue<string>,
-): string => {
-  if (isDisabled) return 'gray.300';
-  const colorValue = typeof color === 'string' ? color : undefined;
-  return colorValue || 'gray.500';
-};
+const disabledColor = 'gray.300';
 
-const getButtonColor = (
+const getColor = (
   isDisabled: boolean,
-  color?: ResponsiveValue<string>,
-): ResponsiveValue<string> => {
-  if (color) return color;
-  return isDisabled ? 'gray.300' : 'gray.900';
+  color: ChakraProps['color'],
+): ChakraProps['color'] => {
+  if (isDisabled) return disabledColor;
+  return color;
 };
 
 const getResetButtonConfig = (
-  isInline: boolean,
-  iconColor: string,
+  displayType: OpenFilterButtonDisplayType,
+  iconColor: ChakraProps['color'],
   paddingX: OpenFilterButtonPaddingX,
 ) => {
-  if (isInline) {
+  if (displayType === 'inline') {
     return {
       icon: <CloseIcon color={iconColor} w="xs" h="xs" />,
       w: 'md',
@@ -80,20 +74,20 @@ const getResetButtonConfig = (
 
 const getMainButtonRightPadding = (
   shouldDisplayResetButton: boolean,
-  isInline: boolean,
+  displayType: OpenFilterButtonDisplayType,
   paddingX: OpenFilterButtonPaddingX,
 ): OpenFilterButtonPaddingX | 'md' | 'sm' => {
   if (!shouldDisplayResetButton) return paddingX;
-  return isInline ? 'md' : 'sm';
+  return displayType === 'inline' ? 'md' : 'sm';
 };
 
-const getChevronIconSize = (isInline: boolean) => {
-  return isInline ? { w: 'xs', h: 'xs' } : { w: 'sm', h: 'sm' };
+const getChevronIconSize = (displayType: OpenFilterButtonDisplayType) => {
+  return displayType === 'inline' ? { w: 'xs', h: 'xs' } : { w: 'sm', h: 'sm' };
 };
 
 const getRightIcon = (
   shouldDisplayResetButton: boolean,
-  iconColor: string,
+  iconColor: ChakraProps['color'],
   chevronIconSize: { w: string; h: string },
 ) => {
   if (shouldDisplayResetButton) return undefined;
@@ -209,19 +203,21 @@ export const OpenFilterButton: FC<Props> = ({
   const shouldDisplayResetButton =
     showResetButton && isApplied && !!onResetFilter;
 
-  const isInline = displayType === 'inline';
-
-  const iconColor = getIconColor(isDisabled, color);
-  const buttonColor = getButtonColor(isDisabled, color);
+  const iconColor = getColor(isDisabled, color || 'gray.500');
+  const buttonColor = getColor(isDisabled, color || 'gray.900');
 
   const mainButtonRightPadding = getMainButtonRightPadding(
     shouldDisplayResetButton,
-    isInline,
+    displayType,
     paddingX,
   );
-  const chevronIconSize = getChevronIconSize(isInline);
+  const chevronIconSize = getChevronIconSize(displayType);
 
-  const resetButtonConfig = getResetButtonConfig(isInline, iconColor, paddingX);
+  const resetButtonConfig = getResetButtonConfig(
+    displayType,
+    iconColor,
+    paddingX,
+  );
 
   const rightIcon = getRightIcon(
     shouldDisplayResetButton,
