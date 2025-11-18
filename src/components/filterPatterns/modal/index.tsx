@@ -69,7 +69,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 displayType={triggerDisplayType}
                 appliedLabel={appliedLabel}
                 resetButtonAriaLabel={t(
-                  'filterSelectButton.reset.resetButtonAriaLabel',
+                  'filterSelectButton.resetButtonAriaLabel',
                   { label },
                 )}
                 onResetFilter={() => onResetFilter('filterButton')}
