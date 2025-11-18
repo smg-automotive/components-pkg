@@ -38,7 +38,8 @@ export const RadioList: FC<RadioListProps> = ({
         {options.map((option, idx) => {
           // Chakra v3 RadioGroup expects item values to be strings.
           // Since React `option.key` may be a number, we explicitly convert it to `String(key)`.
-          const value = option.key != null ? String(option.key) : String(idx);
+          const value =
+            option.key != null ? option.key.toString() : idx.toString();
 
           return (
             <RadioListItem key={value} value={value}>
