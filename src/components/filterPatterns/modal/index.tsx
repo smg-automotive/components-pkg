@@ -31,7 +31,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
   onResetFilter,
   showCallToActionButton = true,
   showResetButton = true,
-  resetButtonVariant,
+  openFilterButtonType,
   header,
   isDisabled = false,
   children,
@@ -65,7 +65,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
                 color={color}
                 height={triggerHeight}
                 showResetButton={showResetButton}
-                resetButtonVariant={resetButtonVariant}
+                displayType={openFilterButtonType}
                 resetButtonAriaLabel={t(
                   'filterSelectButton.reset.resetButtonAriaLabel',
                   { label },
