@@ -1,0 +1,83 @@
+import React from 'react';
+import userEvent from '@testing-library/user-event';
+
+import { render, screen } from 'jest-utils';
+
+import { RangeFilterInput } from '..';
+
+jest.mock('use-debounce', () => {
+  return {
+    useDebouncedCallback: jest.fn().mockImplementation((func) => {
+      return func;
+    }),
+  };
+});
+
+describe('<RangeFilterInput/>', () => {
+  const renderInputField = (onChange = jest.fn()) => {
+    return render(
+      <RangeFilterInput
+        handleChange={onChange}
+        from={{
+          name: 'priceFrom',
+          value: undefined,
+          placeholder: 'From',
+        }}
+        to={{
+          name: 'priceTo',
+          value: undefined,
+          placeholder: 'To',
+        }}
+        unit="CHF"
+      />,
+    );
+  };
+
+  it('triggers onChange with the touched FROM field', async () => {
+    const user = userEvent.setup();
+    const mockOnChange = jest.fn();
+
+    renderInputField(mockOnChange);
+    const inputFrom = screen.getByPlaceholderText('From');
+
+    await user.type(inputFrom, '500');
+
+    expect(mockOnChange).toHaveBeenCalledWith({
+      value: 500,
+      name: 'priceFrom',
+    });
+  });
+
+  it('triggers onChange with the touched TO field', async () => {
+    const user = userEvent.setup();
+    const mockOnChange = jest.fn();
+
+    renderInputField(mockOnChange);
+    const inputTo = screen.getByPlaceholderText('To');
+
+    await user.type(inputTo, '300');
+    expect(mockOnChange).toHaveBeenCalledWith({
+      value: 300,
+      name: 'priceTo',
+    });
+  });
+
+  it('shows the unit', () => {
+    renderInputField();
+    expect(screen.getAllByText('CHF')).toHaveLength(2);
+  });
+
+  it('should allow to reset the field', async () => {
+    const user = userEvent.setup();
+    const mockOnChange = jest.fn();
+
+    renderInputField(mockOnChange);
+    const inputFrom = screen.getByPlaceholderText('From');
+    await user.type(inputFrom, '5');
+    await user.clear(inputFrom);
+    expect(mockOnChange).toHaveBeenCalledWith({
+      value: undefined,
+      name: 'priceFrom',
+    });
+  });
+});

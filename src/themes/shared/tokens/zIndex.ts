@@ -17,3 +17,5 @@ export const zIndex = defineTokens.zIndex({
   fullScreenModal: { value: 2000 },
   tooltip: { value: 2100 },
 });
+
+export type ZIndex = keyof typeof zIndex;

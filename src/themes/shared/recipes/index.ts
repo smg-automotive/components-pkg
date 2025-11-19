@@ -3,6 +3,7 @@ import { spinnerRecipe as spinner } from './spinner';
 import { skeletonRecipe as skeleton } from './skeleton';
 import { separatorRecipe as separator } from './separator';
 import { ratingRecipe as rating } from './rating';
+import { radioListItemRecipe as radioListItem } from './radioListItem';
 import { linkRecipe as link } from './link';
 import { countRecipe as count } from './count';
 import { closeButtonRecipe as closeButton } from './closeButton';
@@ -22,4 +23,5 @@ export const recipes = {
   textarea,
   count,
   closeButton,
+  radioListItem,
 };
