@@ -6,15 +6,12 @@ import {
   BoxProps,
   Pagination as ChakraPagination,
   IconButton,
-  RecipeVariantProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { paginationRecipe } from 'src/themes/shared/slotRecipes/pagination';
-
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 
-export type PaginationProps = RecipeVariantProps<typeof paginationRecipe> & {
+export type PaginationProps = {
   totalPages: number;
   /**
    * index of the current page, zero-based
