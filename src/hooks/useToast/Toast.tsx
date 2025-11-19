@@ -34,10 +34,7 @@ export const Toast: FC<ToastProps> = (props) => {
         {(toast) => {
           return (
             <ChakraToast.Root>
-              <ChakraAlert.Root
-                css={{ ...styles.root, ...styles.toast }}
-                status={toast.meta?.type}
-              >
+              <ChakraAlert.Root css={styles.root} status={toast.meta?.type}>
                 <ChakraAlert.Indicator css={styles.indicator}>
                   {toast.meta?.icon}
                 </ChakraAlert.Indicator>
