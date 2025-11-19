@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import type { ManagedSeller } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import {
   ListItemWithChildren,
@@ -11,7 +11,7 @@ import { H1 } from 'src/components/heading';
 import { createTenantLabel } from '../createTenantLabel';
 
 type TenantSelectionSelectListProps = {
-  managedSellers: ManagedSeller[];
+  managedSellers: EnrichedSessionUser['managedSellers'];
   selectedTenantId: number | null;
   onTenantSelect: (selectedTenantId: number) => void;
   title?: string;

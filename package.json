@@ -56,7 +56,7 @@
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@smg-automotive/auth": "^7.0.0 || ^8.0.0"
+    "@smg-automotive/auth": "^8.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "7.28.5",
@@ -67,7 +67,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "@smg-automotive/auth": "7.0.0",
+    "@smg-automotive/auth": "8.2.5",
     "@smg-automotive/eslint-config": "5.2.4",
     "@storybook/addon-actions": "8.6.14",
     "@storybook/addon-docs": "8.6.14",
@@ -123,8 +123,7 @@
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.9.3",
     "unist-util-visit": "5.0.0",
-    "webpack": "5.102.1",
-    "whatwg-fetch": "3.6.20"
+    "webpack": "5.102.1"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "2.3.4",
