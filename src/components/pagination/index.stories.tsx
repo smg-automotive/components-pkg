@@ -4,10 +4,10 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import { Pagination, Props } from './index';
+import { Pagination, PaginationProps } from './index';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+const Template = (props: PaginationProps) => {
+  const [args, updateArgs] = useArgs<PaginationProps>();
   return (
     <Pagination
       {...props}

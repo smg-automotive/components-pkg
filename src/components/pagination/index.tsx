@@ -14,7 +14,7 @@ import { paginationRecipe } from 'src/themes/shared/slotRecipes/pagination';
 
 import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
 
-type Props = RecipeVariantProps<typeof paginationRecipe> & {
+export type PaginationProps = RecipeVariantProps<typeof paginationRecipe> & {
   totalPages: number;
   /**
    * index of the current page, zero-based
@@ -26,7 +26,7 @@ type Props = RecipeVariantProps<typeof paginationRecipe> & {
   onChange: (page: number) => void;
 } & Pick<BoxProps, 'marginTop' | 'marginBottom'>;
 
-export const Pagination: FC<Props> = ({
+export const Pagination: FC<PaginationProps> = ({
   totalPages,
   currentPage = 0,
   onChange,
