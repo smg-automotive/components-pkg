@@ -4,7 +4,7 @@ export const paginationRecipe = defineSlotRecipe({
   slots: ['paginationContainer', 'paginationButton', 'dots'],
   base: {
     paginationContainer: {
-      display: 'flex!important',
+      display: 'flex',
       flexWrap: 'wrap',
       flexDirection: 'row',
       alignItems: 'center',
@@ -37,10 +37,10 @@ export const paginationRecipe = defineSlotRecipe({
         },
       },
       _selected: {
-        backgroundColor: 'gray.900!important',
+        backgroundColor: 'gray.900',
         color: 'white',
         _hover: {
-          backgroundColor: 'inherit',
+          backgroundColor: 'gray.900',
         },
       },
     },
