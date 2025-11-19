@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { Badge } from './index';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Data Display/Badge',

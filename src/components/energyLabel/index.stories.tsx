@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { EnergyLabel } from './index';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof EnergyLabel> = {
   title: 'Components/Data display/Energy Label',

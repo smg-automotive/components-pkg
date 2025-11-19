@@ -3,9 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Box } from 'src';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { MarkedText } from '.';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const brandHighlight = 'brand.primary';
 

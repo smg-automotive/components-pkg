@@ -28,6 +28,12 @@ export default [
     },
     rules: {
       ...storybookConfig.configs.recommended.rules,
+      'import/no-unresolved': [
+        'error',
+        {
+          ignore: ['\\.storybook/.*'],
+        },
+      ],
       'sonarjs/no-array-index-key': 'off',
       'testing-library/no-await-sync-events': [
         'error',

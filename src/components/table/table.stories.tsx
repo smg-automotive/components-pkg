@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { Table } from './index';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Table.Root> = {
   title: 'Components/Data Display/Table',

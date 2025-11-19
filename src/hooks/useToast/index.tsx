@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { SharedProps } from 'src/components/alert';
 
 import { topToaster } from './TopToaster';

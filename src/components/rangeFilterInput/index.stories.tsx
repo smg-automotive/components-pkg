@@ -3,9 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { RangeFilterInput } from './index';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta = {
   title: 'Components/Filter/Range Input',

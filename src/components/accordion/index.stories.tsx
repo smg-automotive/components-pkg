@@ -2,7 +2,6 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';
 import { AccordionPanel } from './AccordionPanel';
@@ -10,6 +9,8 @@ import { AccordionItem } from './AccordionItem';
 import { AccordionButton } from './AccordionButton';
 
 import { Accordion } from './index';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Patterns/Navigation/Accordion',

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { ArrowLeftIcon, ErrorIcon } from '../index';
 
 import { Link } from './index';
+
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Link> = {
   title: 'Components/Navigation/Link',
