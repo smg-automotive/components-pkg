@@ -1,4 +1,6 @@
-import type { ManagedSeller } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
+
+type ManagedSeller = EnrichedSessionUser['managedSellers'][number];
 
 export const createTenantLabel = (managedSeller?: ManagedSeller) => {
   if (!managedSeller) return '';

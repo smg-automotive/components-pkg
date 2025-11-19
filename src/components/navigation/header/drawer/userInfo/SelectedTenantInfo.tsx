@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
-import type { ManagedSeller } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import Stack from 'src/components/stack';
 import { GarageIcon } from 'src/components/icons';
 import Box from 'src/components/box';
+
+type ManagedSeller = EnrichedSessionUser['managedSellers'][number];
 
 type Props = {
   selectedTenant: ManagedSeller;
