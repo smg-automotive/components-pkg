@@ -42,7 +42,7 @@ export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as RangeFilterInput } from './rangeFilterInput';
 export { default as RangeSlider } from './rangeSlider';
-export { default as DiscreteSlider } from './discreteSlider';
+export { default as DiscreteSlider } from '../../src/components/discreteSlider';
 export { default as RangeFilterInputWithSlider } from './rangeFilterInputWithSlider';
 export { default as Section } from './section';
 export { default as Show } from './show';

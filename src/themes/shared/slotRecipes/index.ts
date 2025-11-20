@@ -2,6 +2,7 @@ import { vehicleReferenceRecipe as vehicleReference } from './vehicleReference';
 import { tooltipSlotRecipe as tooltip } from './tooltip';
 import { tableRecipe as table } from './table';
 import { switchRecipe } from './switch';
+import { sliderSlotRecipe as slider } from './slider';
 import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { selectSlotRecipe as select } from './select';
 import { sectionRecipe as section } from './section';
@@ -46,4 +47,5 @@ export const slotRecipes = {
   popoverFilter,
   numberInput,
   radio,
+  slider,
 };

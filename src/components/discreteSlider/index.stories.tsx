@@ -34,7 +34,7 @@ const meta: Meta<typeof DiscreteSlider<number>> = {
   decorators: [
     (Story) => (
       <Center>
-        <Box w="100%" maxW={392}>
+        <Box w="full" maxW="7xl">
           <Story />
         </Box>
       </Center>
