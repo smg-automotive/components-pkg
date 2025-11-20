@@ -55,6 +55,7 @@ export const ModalFilter: FC<ModalFilterProps> = ({
           return (
             <>
               <OpenFilterButton
+                ariaLabel={t('filterSelectButton.open', { label })}
                 displayValue={displayValue}
                 Icon={Icon}
                 isApplied={isApplied}

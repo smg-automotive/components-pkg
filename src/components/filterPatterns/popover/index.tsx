@@ -99,6 +99,7 @@ export const PopoverFilter: FC<PopoverFilterProps> = ({
             <ButtonGroup isAttached={true} w="full" maxW="full">
               <PopoverTrigger>
                 <ChakraButton
+                  aria-label={t('filterSelectButton.open', { label })}
                   borderRadius="sm"
                   borderRightColor={displayValue ? 'white' : undefined}
                   borderRightWidth={displayValue ? '1px' : undefined}

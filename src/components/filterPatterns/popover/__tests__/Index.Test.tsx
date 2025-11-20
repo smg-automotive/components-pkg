@@ -24,7 +24,9 @@ describe('<PopoverFilter />', () => {
     );
 
     expect(screen.queryByText('Popover content')).toBeNull();
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     expect(await screen.findByText('Popover content')).toBeInTheDocument();
   });
 
@@ -77,7 +79,7 @@ describe('<PopoverFilter />', () => {
     );
 
     await userEvent.click(
-      screen.getByRole('button', { name: 'Treibstoff: Manual' }),
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
     );
 
     return waitFor(() =>
@@ -93,7 +95,9 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     // close button at the bottom and on the top right
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),
@@ -110,7 +114,9 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     // close button on the top right
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),
@@ -128,7 +134,9 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     // close button at the top right
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),
@@ -143,7 +151,9 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     expect(await screen.findByText('custom header')).toBeInTheDocument();
   });
 
@@ -154,7 +164,9 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
   });
 
@@ -169,7 +181,9 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
 
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),

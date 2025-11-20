@@ -26,6 +26,7 @@ type Props = Pick<
 > &
   Pick<ButtonProps, 'backgroundColor' | 'color'> & {
     appliedLabel?: string;
+    ariaLabel?: string;
     onClick: () => void;
     variant?: Variant;
     isDisabled?: boolean;
@@ -184,6 +185,7 @@ const renderResetButton = (
 
 export const OpenFilterButton: FC<Props> = ({
   appliedLabel,
+  ariaLabel,
   displayValue,
   Icon,
   isApplied,
@@ -240,6 +242,7 @@ export const OpenFilterButton: FC<Props> = ({
       borderRadius="sm"
     >
       <ChakraButton
+        aria-label={ariaLabel}
         flex="1"
         minW="0"
         h="full"

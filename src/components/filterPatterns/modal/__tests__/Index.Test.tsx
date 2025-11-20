@@ -24,7 +24,9 @@ describe('<ModalFilter />', () => {
     );
 
     expect(screen.queryByText('Modal content')).toBeNull();
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     expect(await screen.findByText('Modal content')).toBeInTheDocument();
   });
 
@@ -36,7 +38,9 @@ describe('<ModalFilter />', () => {
       </ModalFilter>,
     );
 
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     await userEvent.click(
       await screen.findByRole('button', { name: 'Zurücksetzen' }),
     );
@@ -49,7 +53,9 @@ describe('<ModalFilter />', () => {
         <div>Modal content</div>
       </ModalFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     // close button at the bottom and on the top right
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),
@@ -66,7 +72,9 @@ describe('<ModalFilter />', () => {
         <div>Modal content</div>
       </ModalFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     // close button on the top right
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),
@@ -84,7 +92,9 @@ describe('<ModalFilter />', () => {
         <div>Modal content</div>
       </ModalFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     // close button at the top right
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),
@@ -99,7 +109,9 @@ describe('<ModalFilter />', () => {
         <div>Modal content</div>
       </ModalFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     expect(await screen.findByText('custom header')).toBeInTheDocument();
   });
 
@@ -110,7 +122,9 @@ describe('<ModalFilter />', () => {
         <div>Modal content</div>
       </ModalFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
     await waitFor(() => expect(mockOnOpen).toHaveBeenCalledTimes(1));
   });
 
@@ -121,7 +135,9 @@ describe('<ModalFilter />', () => {
         <div>Modal content</div>
       </ModalFilter>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Treibstoff' }));
+    await userEvent.click(
+      screen.getByRole('button', { name: 'Treibstoff Filter öffnen' }),
+    );
 
     expect(
       await screen.findAllByRole('button', { name: 'Schliessen' }),

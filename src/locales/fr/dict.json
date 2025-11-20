@@ -57,6 +57,7 @@
   },
   "filterSelectButton": {
     "close": "Fermer",
+    "open": "Ouvrir le filtre {{label}}",
     "reset": "Réinitialiser",
     "resetButtonAriaLabel": "Réinitialiser le filtre {{label}}"
   },
