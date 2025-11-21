@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { CloseButton as ChakraCloseButton, useRecipe } from '@chakra-ui/react';
 
-interface CloseButtonProps {
+type CloseButtonProps = {
   disabled?: boolean;
   onClick?: () => void;
-}
+};
 
 export const CloseButton: FC<CloseButtonProps> = ({
   disabled = false,
