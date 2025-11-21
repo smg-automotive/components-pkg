@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { Checkbox, CheckboxProps } from './index';
-
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { Checkbox, CheckboxProps } from './index';
 
 const Wrapper = (args: CheckboxProps) => {
   const [{ checked }, updateArgs] = useArgs();

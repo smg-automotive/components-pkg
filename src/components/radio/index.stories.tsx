@@ -5,9 +5,9 @@ import { action } from '@storybook/addon-actions';
 
 import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
 
-import { Props, Radio } from './index';
-
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { Props, Radio } from './index';
 
 const Template = (props: Props) => {
   const [args, updateArgs] = useArgs<Props>();

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { Box } from '../box';
 
 import { List, ListRootProps } from './index';
-
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const Template = ({
   items,

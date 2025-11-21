@@ -4,11 +4,11 @@ import { action } from '@storybook/addon-actions';
 
 import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
 
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
 import { ErrorIcon } from '../index';
 
 import { Alert } from './index';
-
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components/Feedback/Alert',

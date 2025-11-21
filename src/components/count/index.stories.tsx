@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Count } from './index';
-
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { Count } from './index';
 
 const meta: Meta<typeof Count> = {
   title: 'Components/Data display/Count',
