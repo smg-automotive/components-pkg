@@ -18,6 +18,7 @@ export * from './energyLabel';
 export * from './errorPage';
 export * from './flex';
 export * from './fullHeight';
+export * from './galleryHeader';
 export * from './grid';
 export * from './heading';
 export * from './icons';

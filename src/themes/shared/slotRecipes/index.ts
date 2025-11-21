@@ -12,6 +12,7 @@ import { numberInputRecipe as numberInput } from './numberInput';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
 import { inputSlotRecipe as input } from './input';
+import { galleryHeaderRecipe as galleryHeader } from './galleryHeader';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
 import { dialogFilterRecipe as dialogFilter } from './dialogFilter';
@@ -29,6 +30,7 @@ export const slotRecipes = {
   breadcrumbs,
   card,
   energyLabel,
+  galleryHeader,
   list,
   markedText,
   dialog,
