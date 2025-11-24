@@ -163,7 +163,7 @@ export const WithIcon: StoryType = {
   },
 };
 
-export const WithDifferentBackgroundColor: StoryType = {
+export const WithDifferentBackgroundColo: StoryType = {
   name: 'With different background color',
   args: {
     backgroundColor: 'gray.100',

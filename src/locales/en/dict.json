@@ -57,7 +57,8 @@
   },
   "filterSelectButton": {
     "close": "Close",
-    "reset": "Reset"
+    "reset": "Reset",
+    "resetButtonAriaLabel": "Reset {{label}} filter"
   },
   "footer": {
     "apps": {
@@ -166,11 +167,9 @@
       "contactDetails": "Contact details",
       "contactRequests": "Contact requests",
       "createAd": "Create Ad",
-      "dmsLog": "DmsLog",
       "editPhotobar": "Edit photobar",
       "editUser": "Member list",
       "hci": "HCI",
-      "importInfo": "ImportInfo",
       "infoPage": "InfoPage",
       "infoPortal": "InfoPortal",
       "insuranceComparison": "Insurance comparison",
@@ -186,7 +185,6 @@
       "optimizer": "OptimizerBasic",
       "optimizerPro": "OptimizerPro",
       "partnerHub": "PartnerHub",
-      "printableList": "Printable list",
       "printingCenter": "Printing center",
       "qualityLogo": "Quality logo",
       "requisitions": "Requisitions",
