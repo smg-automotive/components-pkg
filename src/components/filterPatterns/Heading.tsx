@@ -1,7 +1,8 @@
 import React, { FC, RefObject } from 'react';
-import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
+import { Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import TranslationProvider from 'src/components/translationProvider';
 import Text from 'src/components/text';
 import Link from 'src/components/link';
@@ -21,9 +22,8 @@ export type Props = {
   'Icon' | 'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
 
-export const FilterHeading: FC<Props> = ({
+const FilterHeadingContent: FC<Props> = ({
   onClose,
-  language,
   Icon,
   isApplied,
   label,
@@ -31,47 +31,49 @@ export const FilterHeading: FC<Props> = ({
   onResetFilter,
   contentRef,
 }) => {
+  const { t } = useI18n();
+  return (
+    <>
+      <Flex alignItems="start" justifyContent="space-between" w="full">
+        <Flex
+          alignItems="start"
+          as={Text}
+          color="gray.900"
+          textStyle="heading3"
+        >
+          <chakra.span wordBreak="break-all" mr="sm">
+            {label}
+          </chakra.span>
+          {Icon ? <Icon h="sm" w="sm" mr="sm" /> : null}
+          {numberOfAppliedFilters ? (
+            <Count count={numberOfAppliedFilters} />
+          ) : null}
+        </Flex>
+        {onClose ? (
+          <IconButton
+            aria-label={t('filterSelectButton.close')}
+            icon={<CloseIcon color="gray.800" />}
+            onClick={onClose}
+          />
+        ) : null}
+      </Flex>
+      <Link
+        as="button"
+        disabled={!isApplied}
+        onClick={() => {
+          onResetFilter('filter');
+          contentRef?.current?.focus();
+        }}
+      >
+        {t('filterSelectButton.reset')}
+      </Link>
+    </>
+  );
+};
+export const FilterHeading: FC<Props> = ({ language, ...rest }) => {
   return (
     <TranslationProvider language={language} scopes={['filterSelectButton']}>
-      <I18nContext.Consumer>
-        {({ t }) => (
-          <>
-            <Flex alignItems="start" justifyContent="space-between" w="full">
-              <Flex
-                alignItems="start"
-                as={Text}
-                color="gray.900"
-                textStyle="heading3"
-              >
-                <chakra.span wordBreak="break-all" mr="sm">
-                  {label}
-                </chakra.span>
-                {Icon ? <Icon h="sm" w="sm" mr="sm" /> : null}
-                {numberOfAppliedFilters ? (
-                  <Count count={numberOfAppliedFilters} />
-                ) : null}
-              </Flex>
-              {onClose ? (
-                <IconButton
-                  aria-label={t('filterSelectButton.close')}
-                  icon={<CloseIcon color="gray.800" />}
-                  onClick={onClose}
-                />
-              ) : null}
-            </Flex>
-            <Link
-              as="button"
-              disabled={!isApplied}
-              onClick={() => {
-                onResetFilter('filter');
-                contentRef?.current?.focus();
-              }}
-            >
-              {t('filterSelectButton.reset')}
-            </Link>
-          </>
-        )}
-      </I18nContext.Consumer>
+      <FilterHeadingContent language={language} {...rest} />
     </TranslationProvider>
   );
 };

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
-import { I18nContext, Language } from '@smg-automotive/i18n-pkg';
+import { Language } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { ErrorStatusCode } from 'src/types/errorStatusCode';
 
 import errorIllustrationVerifyEmail from 'src/assets/images/errorIllustrationVerifyEmail.png';
@@ -106,68 +107,69 @@ export interface Props {
   onButtonClick?: () => void;
 }
 
-const ErrorPage: FC<Props> = ({ statusCode, language, onButtonClick }) => {
+const ErrorPageContent = ({ language, statusCode, onButtonClick }: Props) => {
   const PrimaryAction = config[statusCode].primaryAction;
   const SecondaryAction = config[statusCode].secondaryAction;
   const Content = config[statusCode].content;
+  const { t } = useI18n();
+
+  const actionButtonProps: ActionButtonInterface = {
+    t,
+    language,
+  };
 
   return (
-    <TranslationProvider language={language} scopes={['errorPage']}>
-      <I18nContext.Consumer>
-        {({ t }) => {
-          const actionButtonProps: ActionButtonInterface = {
-            t,
-            language,
-          };
-
-          return (
-            <PageLayout maxContentWidth="md" header={null}>
-              <Flex justifyContent="center" pt={{ base: '3xl', md: 'xl' }}>
-                <Stack align="center" spacing="4xl">
-                  <SimpleGrid columns={2} spacingX="4xl">
-                    <AutoScout24AppLogo width="80px" height="51px" />
-                    <MotoScout24AppLogo width="80px" height="51px" />
-                  </SimpleGrid>
-                  <Divider />
-                  <Stack align="center" spacing="2xl">
-                    <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
-                      <chakra.img
-                        src={config[statusCode].illustration}
-                        alt={`a ${statusCode} error occurred.`}
-                      />
-                    </AspectRatio>
-                    <Stack align="center" spacing="md">
-                      <H1 textAlign="center">
-                        {t(`errorPage.${statusCode}.title`)}
-                      </H1>
-                      <Text textAlign="center">
-                        {t(`errorPage.${statusCode}.description`)}
-                      </Text>
-                      <Content {...actionButtonProps} />
-                    </Stack>
-                    <SimpleGrid
-                      columns={{
-                        base: 1,
-                        sm: config[statusCode].buttonColumns,
-                      }}
-                      alignItems="center"
-                      spacing="md"
-                    >
-                      <PrimaryAction {...actionButtonProps} />
-                      <SecondaryAction
-                        {...actionButtonProps}
-                        onButtonClick={onButtonClick}
-                      />
-                    </SimpleGrid>
-                  </Stack>
-                </Stack>
-              </Flex>
-            </PageLayout>
-          );
-        }}
-      </I18nContext.Consumer>
-    </TranslationProvider>
+    <PageLayout maxContentWidth="md" header={null}>
+      <Flex justifyContent="center" pt={{ base: '3xl', md: 'xl' }}>
+        <Stack align="center" spacing="4xl">
+          <SimpleGrid columns={2} spacingX="4xl">
+            <AutoScout24AppLogo width="80px" height="51px" />
+            <MotoScout24AppLogo width="80px" height="51px" />
+          </SimpleGrid>
+          <Divider />
+          <Stack align="center" spacing="2xl">
+            <AspectRatio ratio={4 / 3} maxWidth="400px" width="full">
+              <chakra.img
+                src={config[statusCode].illustration}
+                alt={`a ${statusCode} error occurred.`}
+              />
+            </AspectRatio>
+            <Stack align="center" spacing="md">
+              <H1 textAlign="center">{t(`errorPage.${statusCode}.title`)}</H1>
+              <Text textAlign="center">
+                {t(`errorPage.${statusCode}.description`)}
+              </Text>
+              <Content {...actionButtonProps} />
+            </Stack>
+            <SimpleGrid
+              columns={{
+                base: 1,
+                sm: config[statusCode].buttonColumns,
+              }}
+              alignItems="center"
+              spacing="md"
+            >
+              <PrimaryAction {...actionButtonProps} />
+              <SecondaryAction
+                {...actionButtonProps}
+                onButtonClick={onButtonClick}
+              />
+            </SimpleGrid>
+          </Stack>
+        </Stack>
+      </Flex>
+    </PageLayout>
   );
 };
+
+const ErrorPage = ({ language, statusCode, onButtonClick }: Props) => (
+  <TranslationProvider language={language} scopes={['errorPage']}>
+    <ErrorPageContent
+      language={language}
+      statusCode={statusCode}
+      onButtonClick={onButtonClick}
+    />
+  </TranslationProvider>
+);
 
 export default ErrorPage;

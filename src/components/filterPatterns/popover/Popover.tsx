@@ -1,5 +1,4 @@
 import React, { FC, useRef } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
   PopoverBody,
   PopoverContent,
@@ -8,6 +7,7 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import Stack from 'src/components/stack';
 import Box from 'src/components/box';
 
