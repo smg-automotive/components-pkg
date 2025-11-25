@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { NumberInput, NumberInputField } from '@chakra-ui/react';
+import {
+  NumberInput,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-import InputLeftElement from './InputLeftElement';
+import { numberInputRecipe } from 'src/themes/shared/slotRecipes/numberInput';
+
+import { InputLeftElement } from './InputLeftElement';
 
 import {
   ChangeCallback,
@@ -9,53 +15,63 @@ import {
   RangeFilterInputField,
 } from './index';
 
-type InputGroupProps<Name> = {
+type NumberInputVariantProps = RecipeVariantProps<typeof numberInputRecipe>;
+
+type InputGroupProps<Name extends string> = NumberInputVariantProps & {
   handleChange: (event: ChangeCallback<Name>) => void;
   inputProps: RangeFilterInputField<Name>;
   onBlur?: (event: ChangeCallback<Name>) => void;
   unit?: string;
-  variant: 'inputLeft' | 'inputRight';
 } & PickedNumberInputProps;
 
-function InputGroup<Name extends string>({
+export const InputGroup = <Name extends string>({
   handleChange,
   inputProps,
   onBlur,
   unit,
-  variant,
   ...rest
-}: InputGroupProps<Name>) {
+}: InputGroupProps<Name>) => {
   const [refocus, setRefocus] = useState(false);
 
+  const recipe = useSlotRecipe({ key: 'numberInput' });
+
+  const [recipeProps, restProps] = recipe.splitVariantProps(rest);
+
+  const styles = recipe(recipeProps);
+
   return (
-    <NumberInput
+    <NumberInput.Root
       key={`${inputProps.name}-${inputProps.value}`}
+      css={styles.root}
       width="full"
-      variant={variant}
-      defaultValue={inputProps.value as number | string | undefined}
-      name={inputProps.name}
-      onChange={(_, value) =>
-        handleChange({ value: value || undefined, name: inputProps.name })
+      defaultValue={
+        inputProps.value != null ? String(inputProps.value) : undefined
+      }
+      onValueChange={({ valueAsNumber }) =>
+        handleChange({
+          value: valueAsNumber || undefined,
+          name: inputProps.name,
+        })
       }
       onBlur={(event) => {
         onBlur?.({
-          value: Number(event.target.value) || undefined,
+          value: Number((event.target as HTMLInputElement).value) || undefined,
           name: inputProps.name,
         });
         setRefocus(false);
       }}
       onFocus={() => setRefocus(true)}
-      {...rest}
+      {...restProps}
     >
       {unit ? <InputLeftElement unit={unit} /> : null}
-      <NumberInputField
-        placeholder={inputProps.placeholder ? inputProps.placeholder : ''}
-        fontSize="base"
+
+      <NumberInput.Input
+        css={styles.input}
+        placeholder={inputProps.placeholder ?? ''}
         autoFocus={refocus}
         aria-label={inputProps.ariaLabel}
+        fontSize="base"
       />
-    </NumberInput>
+    </NumberInput.Root>
   );
-}
-
-export default InputGroup;
+};

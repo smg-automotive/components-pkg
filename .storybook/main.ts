@@ -1,5 +1,7 @@
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
+
+import { autoScout24System } from 'src/themes';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -24,22 +26,34 @@ const config: StorybookConfig = {
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
-  },
-  webpackFinal: async (webpack) => {
-    webpack.resolve = webpack.resolve || {};
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        esModuleInterop: false,
+        allowSyntheticDefaultImports: false,
+      },
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) => {
+        const isWhitelistedProp = ['variant', 'size'].includes(prop.name);
 
-    webpack.resolve.plugins = webpack.resolve.plugins || [];
-    webpack.resolve.plugins.push(new TsconfigPathsPlugin({}));
+        // Excludes styling props defined by chakra
+        const isExcludedProp = ['as', 'asChild', 'recipe'].includes(prop.name);
+        const isStyledSystemProp = autoScout24System.isValidProperty(prop.name);
 
-    webpack.resolve.fallback = {
-      ...(webpack.resolve.fallback || {}),
-      http: require.resolve('stream-http'),
-      querystring: require.resolve('querystring-es3'),
-      https: require.resolve('https-browserify'),
-      buffer: require.resolve('buffer/'),
-    };
+        // Excludes HTML attributes and DOM properties coming (mostly) from react
+        const isHTMLProp = prop.parent?.name?.match(/^(html|dom)/i) ?? false;
+        const isReactProp =
+          prop.parent?.fileName?.includes('node_modules/@types/react') ?? false;
 
-    return webpack;
+        return (
+          isWhitelistedProp ||
+          (!isExcludedProp &&
+            !isStyledSystemProp &&
+            !isHTMLProp &&
+            !isReactProp)
+        );
+      },
+    },
   },
   staticDirs: [
     {
@@ -47,5 +61,13 @@ const config: StorybookConfig = {
       to: 'assets',
     },
   ],
+  webpackFinal: async (webpack) => {
+    webpack.resolve = webpack.resolve || {};
+    webpack.resolve.modules = [
+      ...(webpack.resolve.modules || []),
+      path.resolve(__dirname, '..'),
+    ];
+    return webpack;
+  },
 };
 export default config;

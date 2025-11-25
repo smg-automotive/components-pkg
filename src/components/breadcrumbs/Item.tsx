@@ -1,3 +1,6 @@
-import { BreadcrumbItem } from '@chakra-ui/react';
+import React, { FC, PropsWithChildren } from 'react';
+import { Breadcrumb as ChakraBreadcrumb } from '@chakra-ui/react';
 
-export default BreadcrumbItem;
+export const BreadcrumbsItem: FC<PropsWithChildren> = ({ children }) => {
+  return <ChakraBreadcrumb.Item>{children}</ChakraBreadcrumb.Item>;
+};

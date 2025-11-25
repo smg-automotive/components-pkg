@@ -1,25 +1,25 @@
 import React, { FC } from 'react';
 
-import Stack from 'src/components/stack';
+import { Stack } from 'src/components/stack';
 import {
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
   YoutubeIcon,
 } from 'src/components/icons';
-import Center from 'src/components/center';
+import { Center } from 'src/components/center';
 
-import FooterLink from './Link';
+import { FooterLink } from './Link';
 import { FooterConfigInstance } from './config/factory';
 
 interface SocialMediaProps {
   config: FooterConfigInstance;
 }
 
-const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
+export const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
   return (
     <Center>
-      <Stack marginY="2xl" spacing="2xl" direction="row">
+      <Stack marginY="2xl" gap="2xl" direction="row">
         <FooterLink linkInstance={config.socialMedia.facebook[0]}>
           <FacebookIcon />
         </FooterLink>
@@ -36,5 +36,3 @@ const SocialMedia: FC<SocialMediaProps> = ({ config }) => {
     </Center>
   );
 };
-
-export default SocialMedia;

@@ -182,16 +182,18 @@ describe('<PopoverFilter />', () => {
     await waitFor(() => expect(mockOnClose).toHaveBeenCalledTimes(1));
   });
 
-  it('should set the initial open state', () => {
+  it('should set the initial open state', async () => {
     render(
       <PopoverFilter {...validProps} initialPopoverState="open">
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    expect(screen.getByText('Popover content')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByText('Popover content')).toBeInTheDocument(),
+    );
   });
 
-  it('should show the number of applied filters', () => {
+  it('should show the number of applied filters', async () => {
     render(
       <PopoverFilter
         {...validProps}
@@ -201,10 +203,10 @@ describe('<PopoverFilter />', () => {
         <div>Popover content</div>
       </PopoverFilter>,
     );
-    expect(screen.getByText('5')).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText('5')).toBeInTheDocument());
   });
 
-  it('should show the label and the value if the filter is applied', () => {
+  it('should show the label and the value if the filter is applied', async () => {
     render(
       <PopoverFilter
         {...validProps}
@@ -219,7 +221,7 @@ describe('<PopoverFilter />', () => {
     ).toBeInTheDocument();
   });
 
-  it('should only show the label when there is no display value', () => {
+  it('should only show the label when there is no display value', async () => {
     render(
       <PopoverFilter {...validProps} isApplied={true} displayValue="">
         <div>Popover content</div>

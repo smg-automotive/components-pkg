@@ -10,7 +10,7 @@ type Props = {
   link: Link;
 };
 
-const FavoritesItem: FC<Props> = ({ link }) => {
+export const FavoritesItem: FC<Props> = ({ link }) => {
   const { t, language } = useI18n();
 
   return (
@@ -24,5 +24,3 @@ const FavoritesItem: FC<Props> = ({ link }) => {
     </chakra.a>
   );
 };
-
-export default FavoritesItem;
