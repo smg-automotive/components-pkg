@@ -77,15 +77,14 @@ export const DiscreteSlider = <T,>({
         </Slider.Track>
         <Slider.Thumbs />
         <Slider.MarkerGroup>
-          {sliderMarks?.map(({ stepValue, label }, index) => (
+          {sliderMarks.map(({ stepValue, label }, index) => (
             <Slider.Marker
               key={index}
               value={stepValue as number}
-              style={
-                sliderStepValue === stepValue
-                  ? { pointerEvents: 'all', fontWeight: 'bold' }
-                  : { pointerEvents: 'all', fontWeight: 'normal' }
-              }
+              style={{
+                pointerEvents: 'all',
+                fontWeight: sliderStepValue === stepValue ? 'bold' : 'normal',
+              }}
             >
               {label}
             </Slider.Marker>
