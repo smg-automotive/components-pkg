@@ -65,7 +65,6 @@
     "@babel/preset-env": "7.28.5",
     "@babel/preset-react": "7.28.5",
     "@babel/preset-typescript": "7.28.5",
-    "@isaacs/brace-expansion": "^5.0.0",
     "@rollup/plugin-commonjs": "29.0.0",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
