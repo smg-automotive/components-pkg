@@ -133,7 +133,7 @@
     "@chakra-ui/theme-tools": "2.2.6",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@smg-automotive/i18n-pkg": "2.0.1-DM-4743-scoped-f31155d17382733acd802d19471a633feb63de0d.1",
+    "@smg-automotive/i18n-pkg": "2.0.1-DM-4743-scoped-803873e202ebdbfb5f603a356913cd04b888a96f.1",
     "@smg-automotive/phrase-pkg": "1.0.2",
     "@types/fs-extra": "11.0.4",
     "embla-carousel-react": "8.6.0",
