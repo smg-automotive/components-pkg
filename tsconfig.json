@@ -25,10 +25,5 @@
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
   "exclude": ["dist", "node_modules"],
-  "include": [
-    "src/**/*",
-    ".storybook/**/*",
-    "src-v2/components/radio/QuestionWithFollowUp.stories.tsx",
-    "src-v2/components/radio/QuestionWithFollowUp.tsx"
-  ]
+  "include": ["src/**/*", ".storybook/**/*"]
 }
