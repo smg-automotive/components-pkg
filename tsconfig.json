@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      ".storybook/*": [".storybook/*"]
+    },
     "strict": true,
     "jsx": "react",
     "module": "esnext",

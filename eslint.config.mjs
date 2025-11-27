@@ -26,6 +26,18 @@ export default [
         ...globals.es2021,
       },
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          moduleDirectory: ['node_modules', '.'],
+        },
+      },
+    },
     rules: {
       ...storybookConfig.configs.recommended.rules,
       'sonarjs/no-array-index-key': 'off',
