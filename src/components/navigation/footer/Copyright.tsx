@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { opacity } from 'src/themes/shared/opacity';
 
 import Box from 'src/components/box';
