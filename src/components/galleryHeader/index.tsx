@@ -1,16 +1,14 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { useSlotRecipe } from '@chakra-ui/react';
-
 import { I18nContext } from '@smg-automotive/i18n-pkg';
+import { useSlotRecipe } from '@chakra-ui/react';
 
 import { Language } from 'src/types/language';
 import { TranslationProvider } from 'src/components/translationProvider';
 import { CloseIcon } from 'src/components/icons';
 
-import { Box } from '../box';
-import { Link } from '../link';
 import { SimpleGrid } from '../simpleGrid';
-import { Text } from '../text';
+import { Link } from '../link';
+import { Box } from '../box';
 
 export interface GalleryHeaderProps {
   currentSlide: number;

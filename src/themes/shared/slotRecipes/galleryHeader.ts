@@ -36,7 +36,13 @@ const baseStyleCloseContainer = defineStyle({
   justifyContent: 'flex-end',
 });
 
-const slots = ['container', 'grid', 'childrenContainer', 'countContainer', 'closeContainer'] as const;
+const slots = [
+  'container',
+  'grid',
+  'childrenContainer',
+  'countContainer',
+  'closeContainer',
+] as const;
 
 export const galleryHeaderRecipe = defineSlotRecipe({
   slots,
