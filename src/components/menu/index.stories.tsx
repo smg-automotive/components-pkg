@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Box from '../box';
+import { Box } from '../box';
 
 import MenuComponent from './index';
 
@@ -12,7 +12,7 @@ const meta: Meta<typeof MenuComponent> = {
 
   decorators: [
     (Story) => (
-      <Box h="200px">
+      <Box h="lg">
         <Story />
       </Box>
     ),
@@ -20,10 +20,10 @@ const meta: Meta<typeof MenuComponent> = {
 
   args: {
     items: [
-      { text: 'Detusch', onClick: action('Detusch') },
-      { text: 'English', onClick: action('English') },
-      { text: 'Français', onClick: action('Français') },
-      { text: 'Italiano', onClick: action('Italiano') },
+      { text: 'Detusch', onClick: action('Detusch'), value: 'de' },
+      { text: 'English', onClick: action('English'), value: 'en' },
+      { text: 'Français', onClick: action('Français'), value: 'fr' },
+      { text: 'Italiano', onClick: action('Italiano'), value: 'it' },
     ],
     title: 'Language',
     showChevron: true,
