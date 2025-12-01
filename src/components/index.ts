@@ -26,6 +26,7 @@ export * from './layout';
 export * from './link';
 export * from './list';
 export * from './chip';
+export * from './menu';
 export * from './missingImage';
 export * from './mobileOnlyAccordion';
 export * from './navigation/footer';
