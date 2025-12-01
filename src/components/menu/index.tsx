@@ -6,6 +6,7 @@ import {
   MenuRootProps,
   MenuTriggerProps,
   Portal,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { ChevronDownSmallIcon } from '../icons';
@@ -39,6 +40,9 @@ const Menu: FC<MenuProps> = ({
   iconSpacing,
   placement,
 }) => {
+  const recipe = useSlotRecipe({ key: 'menu' });
+  const styles = recipe();
+
   return (
     <ChakraMenu.Root
       {...(offset.length && { offset })}
@@ -69,13 +73,14 @@ const Menu: FC<MenuProps> = ({
       </ChakraMenu.Context>
       <Portal>
         <ChakraMenu.Positioner>
-          <ChakraMenu.Content minWidth="4xl">
+          <ChakraMenu.Content css={styles.content} minWidth="4xl">
             {items.map(({ onClick, text, value }, index) => {
               return (
                 <ChakraMenu.Item
                   key={`menuItem-${index}`}
                   value={value}
                   onSelect={onClick}
+                  css={styles.item}
                   {...(menuColor && { color: menuColor })}
                 >
                   {text}

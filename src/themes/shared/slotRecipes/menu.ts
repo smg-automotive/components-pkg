@@ -1,22 +1,14 @@
-import {
-  ComponentStyleConfig,
-  createMultiStyleConfigHelpers,
-  defineStyle,
-} from '@chakra-ui/react';
-import { menuAnatomy as parts } from '@chakra-ui/anatomy';
+import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
-import { opacity } from '../shared/opacity';
-
-const { defineMultiStyleConfig, definePartsStyle } =
-  createMultiStyleConfigHelpers(parts.keys);
+import { opacity } from '../tokens/opacity';
 
 const maximumScrollbarWidth = 20;
 
-const baseStyleList = defineStyle({
+const baseStyleContent = defineStyle({
   bg: 'white',
   boxShadow: 'sm',
   color: 'inherit',
-  minW: '3xs',
+  minW: 'xxs',
   maxW: `calc(100vw - ${maximumScrollbarWidth}px)`,
   py: '2',
   zIndex: 'dropdown',
@@ -46,11 +38,11 @@ const baseStyleItem = defineStyle({
   },
 });
 
-const baseStyle = definePartsStyle({
-  list: baseStyleList,
-  item: baseStyleItem,
+export const menuRecipe = defineSlotRecipe({
+  slots: ['content', 'item'],
+  className: 'chakra-menu',
+  base: {
+    content: baseStyleContent,
+    item: baseStyleItem,
+  },
 });
-
-export default defineMultiStyleConfig({
-  baseStyle,
-}) as ComponentStyleConfig;
