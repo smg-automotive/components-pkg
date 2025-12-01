@@ -10,9 +10,9 @@ const meta: Meta<typeof TopListingBadgeComponent> = {
   component: TopListingBadgeComponent,
   decorators: [
     (Story) => (
-        <Box w="full" maxW="6xl">
-          <Story />
-        </Box>
+      <Box w="full" maxW="7xl">
+        <Story />
+      </Box>
     ),
   ],
 
