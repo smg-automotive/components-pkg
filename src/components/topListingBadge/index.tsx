@@ -7,7 +7,7 @@ type Props = {
   aspectRatio?: number;
 };
 
-const TopListingBadge: FC<PropsWithChildren<Props>> = ({
+export const TopListingBadge: FC<PropsWithChildren<Props>> = ({
   children,
   aspectRatio,
 }) => {
@@ -40,5 +40,3 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
     </Grid>
   );
 };
-
-export default TopListingBadge;
