@@ -10,10 +10,10 @@ const baseStyleContent = defineStyle({
   color: 'inherit',
   minW: 'xxs',
   maxW: `calc(100vw - ${maximumScrollbarWidth}px)`,
-  py: '2',
+  py: 'xxs',
   zIndex: 'dropdown',
   borderRadius: 'sm',
-  borderWidth: '1px',
+  border: '1px',
   borderColor: 'gray.200',
 });
 
@@ -21,7 +21,7 @@ const baseStyleItem = defineStyle({
   paddingY: 'md',
   paddingX: 'lg',
   transitionProperty: 'background',
-  transitionDuration: 'ultra-fast',
+  transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in',
   _focus: {
     bg: 'gray.100',
@@ -33,8 +33,8 @@ const baseStyleItem = defineStyle({
     bg: 'gray.100',
   },
   _disabled: {
-    opacity: opacity[40],
-    cursor: 'not-allowed',
+    opacity: '40',
+    cursor: 'notAllowed',
   },
 });
 

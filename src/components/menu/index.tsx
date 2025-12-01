@@ -52,21 +52,23 @@ const Menu: FC<MenuProps> = ({
         {({ open }) => (
           <>
             <ChakraMenu.Trigger
-              as={Button}
+              asChild
               padding="0"
               display="inline-flex"
               gap={iconSpacing}
               fontWeight={fontWeightTitle}
               color={open ? 'blue.700' : menuColor}
             >
-              {icon}
-              {title}
-              {showChevron ? (
-                <ChevronDownSmallIcon
-                  transition="transform"
-                  transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
-                />
-              ) : null}
+              <Button>
+                {icon}
+                {title}
+                {showChevron ? (
+                  <ChevronDownSmallIcon
+                    transition="transform"
+                    transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
+                  />
+                ) : null}
+              </Button>
             </ChakraMenu.Trigger>
           </>
         )}
