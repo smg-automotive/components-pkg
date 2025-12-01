@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import type { EnrichedSessionUser, ManagedSeller } from '@smg-automotive/auth';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import NavigationTenantMenuContent from 'src/components/navigation/header/navigationTenantMenu/Content';
 import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
@@ -9,6 +9,8 @@ import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
 import Box from 'src/components/box';
 
 import SelectedTenantInfo from './SelectedTenantInfo';
+
+type ManagedSeller = EnrichedSessionUser['managedSellers'][number];
 
 type Props = {
   user: EnrichedSessionUser;
