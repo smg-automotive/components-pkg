@@ -18,10 +18,6 @@ const baseStyleGrid = defineStyle({
   alignItems: 'center',
 });
 
-const baseStyleChildrenContainer = defineStyle({
-  // This will be shown only above md breakpoint
-});
-
 const baseStyleCountContainer = defineStyle({
   textAlign: {
     base: 'left',
@@ -39,7 +35,6 @@ const baseStyleCloseContainer = defineStyle({
 const slots = [
   'container',
   'grid',
-  'childrenContainer',
   'countContainer',
   'closeContainer',
 ] as const;
@@ -50,7 +45,6 @@ export const galleryHeaderRecipe = defineSlotRecipe({
   base: {
     container: baseStyleContainer,
     grid: baseStyleGrid,
-    childrenContainer: baseStyleChildrenContainer,
     countContainer: baseStyleCountContainer,
     closeContainer: baseStyleCloseContainer,
   },

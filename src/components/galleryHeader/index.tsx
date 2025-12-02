@@ -40,9 +40,7 @@ export const GalleryHeader: FC<PropsWithChildren<GalleryHeaderProps>> = ({
                 }}
                 alignItems="center"
               >
-                <Box hideBelow="md" css={styles.childrenContainer}>
-                  {children}
-                </Box>
+                <Box hideBelow="md">{children}</Box>
                 <Box css={styles.countContainer}>
                   <Box>
                     {t('galleryHeader.imageCount', {
