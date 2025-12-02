@@ -28,7 +28,7 @@ export const TopListingBadge: FC<PropsWithChildren<Props>> = ({
       >
         <Badge
           transform="rotate(-45deg) translate(-50%) translateY(9px)"
-            position="absolute"
+          position="absolute"
           transformOrigin="top left"
           width="4xl"
           textAlign="center"
