@@ -27,7 +27,8 @@ export const TopListingBadge: FC<PropsWithChildren<Props>> = ({
         css={{ touchAction: 'none' }}
       >
         <Badge
-          transform="rotate(-45deg) translateX(-50%) translateY(9px)"
+          transform="rotate(-45deg) translate(-50%) translateY(9px)"
+            position="absolute"
           transformOrigin="top left"
           width="4xl"
           textAlign="center"
