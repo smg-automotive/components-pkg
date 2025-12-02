@@ -27,16 +27,19 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
             text: 'Deutsch',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'de' }),
+            value: 'de',
           },
           {
             text: 'Français',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'fr' }),
+            value: 'fr',
           },
           {
             text: 'Italiano',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'it' }),
+            value: 'it',
           },
         ]}
       />
