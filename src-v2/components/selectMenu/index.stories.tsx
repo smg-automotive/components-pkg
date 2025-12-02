@@ -74,11 +74,3 @@ export const TitleWithIcon = {
     withIndicator: false,
   },
 };
-
-export const WithCustomMenuAndMenuOptionColors = {
-  args: {
-    title: 'Language',
-    menuColor: 'blue.700',
-    menuOptionColor: 'red.700',
-  },
-};

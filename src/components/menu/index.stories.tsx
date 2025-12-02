@@ -107,3 +107,25 @@ export const WithCustomItem: StoryObj<typeof Menu> = {
     },
   },
 };
+
+export const WithCustomMenuAndMenuOptionColors: StoryObj<typeof Menu> = {
+  args: {
+    title: 'Language',
+    menuColor: 'blue.700',
+    menuOptionColor: 'red.700',
+  },
+};
+
+export const SelectMenu: StoryObj<typeof Menu> = {
+  args: {
+    title: 'Language',
+    value: 'en',
+    onChange: action('on radio change'),
+    items: [
+      { label: 'Deutsch', onClick: action('Deutsch'), value: 'de' },
+      { label: 'English', onClick: action('English'), value: 'en' },
+      { label: 'Français', onClick: action('Français'), value: 'fr' },
+      { label: 'Italiano', onClick: action('Italiano'), value: 'it' },
+    ],
+  },
+};

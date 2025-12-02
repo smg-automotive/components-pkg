@@ -7,40 +7,77 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { CheckmarkIcon, ChevronDownSmallIcon } from '../icons';
 
-interface MenuItem {
-  text: JSX.Element | string;
+interface MenuBaseItem {
   value: string;
+}
+interface MenuItem extends MenuBaseItem {
+  text: JSX.Element | string;
   onClick: () => void;
 }
 
-export interface MenuProps {
+interface MenuSelectItem extends MenuBaseItem {
+  label: JSX.Element | string;
+  onClick?: () => void;
+}
+
+export interface BaseMenuProps {
   title: string | ReactElement;
-  items: MenuItem[];
   fontWeightTitle?: MenuTriggerProps['fontWeight'];
   offset?: [number, number];
   menuColor?: MenuTriggerProps['color'];
+  menuOptionColor?: MenuTriggerProps['color'];
   showChevron?: boolean;
   icon?: ReactElement;
   iconSpacing?: MenuTriggerProps['gap'];
   placement?: Exclude<MenuRootProps['positioning'], undefined>['placement'];
 }
 
-export const Menu: FC<MenuProps> = ({
+export interface MenuProps extends BaseMenuProps {
+  items: MenuItem[];
+}
+
+export interface SelectMenuProps extends BaseMenuProps {
+  value: string;
+  items: MenuSelectItem[];
+  onChange?: (val: string | string[]) => void;
+}
+
+export const Menu: FC<MenuProps | SelectMenuProps> = ({
   title,
-  items,
   fontWeightTitle = 'regular',
   offset = [8, 0],
   menuColor,
+  menuOptionColor,
   showChevron = true,
   icon,
   iconSpacing = 'sm',
   placement,
+  ...restProps
 }) => {
   const recipe = useSlotRecipe({ key: 'menu' });
   const styles = recipe();
   const [mainAxis = 0, crossAxis = 0] = offset;
+  const optionColor = menuOptionColor || menuColor;
+  const menuItems = restProps.items.map((item) => {
+    const props = {
+      key: `menuItem-${item.value}`,
+      value: item.value,
+      css: styles.item,
+      ...(optionColor && { color: optionColor }),
+    };
+    return 'value' in restProps ? (
+      <ChakraMenu.RadioItem {...props} onClick={item.onClick}>
+        {item.value === restProps.value ? <CheckmarkIcon /> : null}
+        {(item as MenuSelectItem).label}
+      </ChakraMenu.RadioItem>
+    ) : (
+      <ChakraMenu.Item {...props} onSelect={item.onClick}>
+        {(item as MenuItem).text}
+      </ChakraMenu.Item>
+    );
+  });
   return (
     <ChakraMenu.Root
       positioning={{ placement, offset: { mainAxis, crossAxis } }}
@@ -67,19 +104,18 @@ export const Menu: FC<MenuProps> = ({
       <Portal>
         <ChakraMenu.Positioner>
           <ChakraMenu.Content css={styles.content}>
-            {items.map(({ onClick, text, value }) => {
-              return (
-                <ChakraMenu.Item
-                  key={`menuItem-${value}`}
-                  value={value}
-                  onSelect={onClick}
-                  css={styles.item}
-                  {...(menuColor && { color: menuColor })}
-                >
-                  {text}
-                </ChakraMenu.Item>
-              );
-            })}
+            {'value' in restProps ? (
+              <ChakraMenu.RadioItemGroup
+                value={restProps.value}
+                onValueChange={({ value: changedValue }) =>
+                  restProps.onChange?.(changedValue)
+                }
+              >
+                {menuItems}
+              </ChakraMenu.RadioItemGroup>
+            ) : (
+              menuItems
+            )}
           </ChakraMenu.Content>
         </ChakraMenu.Positioner>
       </Portal>
