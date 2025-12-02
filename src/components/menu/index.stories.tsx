@@ -2,7 +2,9 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { VideoIcon } from '../icons';
+import { Text } from '../text';
+import { CheckmarkIcon, VideoIcon } from '../icons';
+import { Flex } from '../flex';
 import { Center } from '../center';
 import { Box } from '../box';
 
@@ -74,6 +76,33 @@ export const WithLeftIcon: StoryObj<typeof Menu> = {
   },
   argTypes: {
     icon: {
+      table: { disable: true },
+    },
+  },
+};
+
+export const WithCustomItem: StoryObj<typeof Menu> = {
+  args: {
+    items: [
+      {
+        text: (
+          <Flex>
+            <CheckmarkIcon mr="sm" />
+            <Text>Deutsch</Text>
+          </Flex>
+        ),
+        onClick: action('Deutsch'),
+        value: 'de',
+      },
+      {
+        text: 'English',
+        onClick: action('English'),
+        value: 'en',
+      },
+    ],
+  },
+  argTypes: {
+    items: {
       table: { disable: true },
     },
   },
