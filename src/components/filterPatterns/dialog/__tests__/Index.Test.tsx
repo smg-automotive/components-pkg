@@ -141,4 +141,73 @@ describe('<DialogFilter />', () => {
 
     await waitFor(() => expect(mockOnClose).toHaveBeenCalledTimes(1));
   });
+
+  it('should show reset button on OpenFilterButton when filter is applied', () => {
+    const mockOnReset = jest.fn();
+    render(
+      <DialogFilter
+        {...validProps}
+        isApplied={true}
+        onResetFilter={mockOnReset}
+      >
+        <div>Dialog content</div>
+      </DialogFilter>,
+    );
+
+    const deleteIcon = screen.getByTitle('Delete icon');
+    const resetButton = screen
+      .getAllByRole('button')
+      .find((button) => button.contains(deleteIcon));
+    expect(resetButton).toBeInTheDocument();
+  });
+
+  it('should call onResetFilter when reset button on OpenFilterButton is clicked', async () => {
+    const mockOnReset = jest.fn();
+    render(
+      <DialogFilter
+        {...validProps}
+        isApplied={true}
+        onResetFilter={mockOnReset}
+      >
+        <div>Dialog content</div>
+      </DialogFilter>,
+    );
+
+    const deleteIcon = screen.getByTitle('Delete icon');
+    const resetButton = screen
+      .getAllByRole('button')
+      .find((button) => button.contains(deleteIcon));
+    expect(resetButton).toBeInTheDocument();
+
+    await userEvent.click(resetButton!);
+
+    await waitFor(() => expect(mockOnReset).toHaveBeenCalledTimes(1));
+    expect(mockOnReset).toHaveBeenCalledWith('filterButton');
+  });
+
+  it('should not show reset button when filter is not applied', () => {
+    render(
+      <DialogFilter {...validProps} isApplied={false}>
+        <div>Dialog content</div>
+      </DialogFilter>,
+    );
+
+    expect(screen.queryByTitle('Delete icon')).not.toBeInTheDocument();
+  });
+
+  it('should not show reset button when showResetButton is false', () => {
+    const mockOnReset = jest.fn();
+    render(
+      <DialogFilter
+        {...validProps}
+        isApplied={true}
+        onResetFilter={mockOnReset}
+        showResetButton={false}
+      >
+        <div>Dialog content</div>
+      </DialogFilter>,
+    );
+
+    expect(screen.queryByTitle('Delete icon')).not.toBeInTheDocument();
+  });
 });

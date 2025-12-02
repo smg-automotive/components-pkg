@@ -10,6 +10,7 @@ import { radioRecipe as radio } from './radio';
 import { popoverFilterRecipe as popoverFilter } from './popoverFilter';
 import { paginationRecipe as pagination } from './pagination';
 import { numberInputRecipe as numberInput } from './numberInput';
+import { menuRecipe as menu } from './menu';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
 import { inputSlotRecipe as input } from './input';
@@ -50,4 +51,5 @@ export const slotRecipes = {
   radio,
   slider,
   pagination,
+  menu,
 };
