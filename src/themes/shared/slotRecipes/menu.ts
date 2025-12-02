@@ -1,35 +1,42 @@
 import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
-import { opacity } from '../tokens/opacity';
-
 const maximumScrollbarWidth = 20;
 
-const baseStyleContent = defineStyle({
+const content = defineStyle({
+  '--max-width': `calc(100vw - ${maximumScrollbarWidth}px)`,
   bg: 'white',
   boxShadow: 'sm',
   color: 'inherit',
-  minW: 'xxs',
-  maxW: `calc(100vw - ${maximumScrollbarWidth}px)`,
+  minW: '4xl',
+  maxW: 'var(--max-width)',
   py: 'xxs',
   zIndex: 'dropdown',
   borderRadius: 'sm',
   border: '1px',
   borderColor: 'gray.200',
+  cursor: 'pointer',
+  _focusVisible: {
+    outline: 'none',
+  },
 });
 
-const baseStyleItem = defineStyle({
+const item = defineStyle({
   paddingY: 'md',
   paddingX: 'lg',
-  transitionProperty: 'background',
-  transitionDuration: 'fast',
-  transitionTimingFunction: 'ease-in',
+  cursor: 'pointer',
   _focus: {
     bg: 'gray.100',
+  },
+  _focusVisible: {
+    outline: 'none',
   },
   _active: {
     bg: 'blue.100',
   },
   _expanded: {
+    bg: 'gray.100',
+  },
+  _hover: {
     bg: 'gray.100',
   },
   _disabled: {
@@ -38,11 +45,21 @@ const baseStyleItem = defineStyle({
   },
 });
 
+const trigger = defineStyle({
+  display: 'inline-flex',
+  padding: '0',
+  cursor: 'pointer',
+  _focusVisible: {
+    outline: 'none',
+  },
+});
+
 export const menuRecipe = defineSlotRecipe({
-  slots: ['content', 'item'],
+  slots: ['content', 'item', 'trigger'],
   className: 'chakra-menu',
   base: {
-    content: baseStyleContent,
-    item: baseStyleItem,
+    content,
+    item,
+    trigger,
   },
 });

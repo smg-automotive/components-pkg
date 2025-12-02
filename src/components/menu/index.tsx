@@ -1,7 +1,5 @@
 import React, { FC, JSX, ReactElement } from 'react';
 import {
-  Button,
-  ButtonProps,
   Menu as ChakraMenu,
   MenuRootProps,
   MenuTriggerProps,
@@ -33,53 +31,46 @@ const Menu: FC<MenuProps> = ({
   title,
   items,
   fontWeightTitle = 'regular',
-  offset = [],
+  offset = [8, 0],
   menuColor,
   showChevron = true,
   icon,
-  iconSpacing,
+  iconSpacing = 'sm',
   placement,
 }) => {
   const recipe = useSlotRecipe({ key: 'menu' });
   const styles = recipe();
-
+  const [mainAxis = 0, crossAxis = 0] = offset;
   return (
     <ChakraMenu.Root
-      {...(offset.length && { offset })}
-      positioning={{ placement }}
+      positioning={{ placement, offset: { mainAxis, crossAxis } }}
     >
       <ChakraMenu.Context>
         {({ open }) => (
-          <>
-            <ChakraMenu.Trigger
-              asChild
-              padding="0"
-              display="inline-flex"
-              gap={iconSpacing}
-              fontWeight={fontWeightTitle}
-              color={open ? 'blue.700' : menuColor}
-            >
-              <Button>
-                {icon}
-                {title}
-                {showChevron ? (
-                  <ChevronDownSmallIcon
-                    transition="transform"
-                    transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
-                  />
-                ) : null}
-              </Button>
-            </ChakraMenu.Trigger>
-          </>
+          <ChakraMenu.Trigger
+            css={styles.trigger}
+            gap={iconSpacing}
+            fontWeight={fontWeightTitle}
+            color={open ? 'blue.700' : menuColor}
+          >
+            {icon}
+            {title}
+            {showChevron ? (
+              <ChevronDownSmallIcon
+                transition="transform"
+                transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
+              />
+            ) : null}
+          </ChakraMenu.Trigger>
         )}
       </ChakraMenu.Context>
       <Portal>
         <ChakraMenu.Positioner>
-          <ChakraMenu.Content css={styles.content} minWidth="4xl">
-            {items.map(({ onClick, text, value }, index) => {
+          <ChakraMenu.Content css={styles.content}>
+            {items.map(({ onClick, text, value }) => {
               return (
                 <ChakraMenu.Item
-                  key={`menuItem-${index}`}
+                  key={`menuItem-${value}`}
                   value={value}
                   onSelect={onClick}
                   css={styles.item}
