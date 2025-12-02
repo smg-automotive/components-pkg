@@ -47,4 +47,5 @@ export * from './themeProvider';
 export * from './vehicleReference';
 export * from './rangeFilterInput';
 export * from './topVehicleSharedBadge';
+export * from './discreteSlider';
 export * from './formControlSection';
