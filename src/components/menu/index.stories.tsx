@@ -2,15 +2,15 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { VideoIcon } from '../icons';
+import { Center } from '../center';
 import { Box } from '../box';
 
-import MenuComponent from './index';
-import { Center } from '../center';
-import { VideoIcon } from '../icons';
+import { Menu } from './index';
 
-const meta: Meta<typeof MenuComponent> = {
+const meta: Meta<typeof Menu> = {
   title: 'Patterns/Data Display/Menu',
-  component: MenuComponent,
+  component: Menu,
 
   decorators: [
     (Story) => (
@@ -66,9 +66,9 @@ const meta: Meta<typeof MenuComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof MenuComponent> = {};
+export const Overview: StoryObj<typeof Menu> = {};
 
-export const WithLeftIcon: StoryObj<typeof MenuComponent> = {
+export const WithLeftIcon: StoryObj<typeof Menu> = {
   args: {
     icon: <VideoIcon />,
   },

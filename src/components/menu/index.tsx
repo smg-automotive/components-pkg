@@ -27,7 +27,7 @@ export interface MenuProps {
   placement?: Exclude<MenuRootProps['positioning'], undefined>['placement'];
 }
 
-const Menu: FC<MenuProps> = ({
+export const Menu: FC<MenuProps> = ({
   title,
   items,
   fontWeightTitle = 'regular',
@@ -86,5 +86,3 @@ const Menu: FC<MenuProps> = ({
     </ChakraMenu.Root>
   );
 };
-
-export default Menu;
