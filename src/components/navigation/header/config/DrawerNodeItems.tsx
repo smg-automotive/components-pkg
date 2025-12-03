@@ -49,6 +49,7 @@ import {
 } from './Presence';
 import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig } from './Optimizer';
+import { marketPriceCheckLinkConfig } from './MarketPriceCheck';
 
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
@@ -145,6 +146,7 @@ const getUserNodeItems = ({
         private: true,
         professional: false,
       }),
+      marketPriceCheckLinkConfig,
     ],
   },
   {
