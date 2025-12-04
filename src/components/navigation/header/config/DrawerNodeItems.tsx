@@ -49,8 +49,8 @@ import {
 } from './Presence';
 import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig } from './Optimizer';
-import { marketPriceCheckLinkConfig } from './marketPriceCheck';
 
+import { marketPriceCheckLinkConfig } from './marketPriceCheck';
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
