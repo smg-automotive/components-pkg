@@ -6,4 +6,5 @@ export enum Entitlement {
   AutoRadarFast = 'auto-radar-fast',
   ListingVisibilityStandard = 'listing-visibility-standard',
   ListingVisibilityPremium = 'listing-visibility-premium',
+  MarketPriceCheck = 'market-price-check',
 }

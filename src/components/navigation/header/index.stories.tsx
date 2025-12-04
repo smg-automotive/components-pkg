@@ -198,6 +198,32 @@ export const ProfessionalWithOptimizerBasic: StoryType = {
   },
 };
 
+export const ProfessionalWithMarketPriceEntitlement: StoryType = {
+  args: {
+    user: {
+      email: 'engineering@smg.ch',
+      email_verified: true,
+      sub: 'auth0|648a338d',
+      isImpersonated: false,
+      userId: '1001',
+      forceTenantSelection: false,
+      isMultiTenantUser: false,
+      userType: Auth0UserType.Professional,
+      sellerId: '60601',
+      managedSellers: [],
+      entitlements: {
+        'market-price-check': {
+          global: {
+            maxItems: 1,
+            remainingItems: 0,
+          },
+          listings: {},
+        },
+      },
+    },
+  },
+};
+
 export const ProfessionalWithMultiTenancy: StoryType = {
   args: {
     user: multiTenantUser({
