@@ -146,7 +146,6 @@ const getUserNodeItems = ({
         private: true,
         professional: false,
       }),
-      marketPriceCheckLinkConfig,
     ],
   },
   {
@@ -163,6 +162,7 @@ const getUserNodeItems = ({
         eventLabel: 'drawer-user',
       }),
       autoRadarLinkConfig,
+      marketPriceCheckLinkConfig,
     ],
   },
   {
