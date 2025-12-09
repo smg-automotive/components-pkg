@@ -50,3 +50,4 @@ export * from './rangeFilterInput';
 export * from './topVehicleSharedBadge';
 export * from './discreteSlider';
 export * from './formControlSection';
+export * from './rangeSlider';
