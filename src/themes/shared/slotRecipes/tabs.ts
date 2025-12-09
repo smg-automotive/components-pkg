@@ -14,6 +14,8 @@ const baseTriggerStyle = defineStyle({
   _selected: {
     fontWeight: 'bold',
     color: 'gray.900',
+    borderBottomWidth: 'var(--tabs-border-width)',
+    borderBottomStyle: 'var(--tabs-border-style, solid)',
     borderBottomColor: 'currentColor',
   },
   _disabled: {
@@ -24,6 +26,8 @@ const baseTriggerStyle = defineStyle({
 });
 
 const baseListStyle = defineStyle({
+  display: 'flex',
+  width: 'full',
   borderBottom: '1px',
   borderColor: 'gray.200',
   justifyContent: 'start',
@@ -44,15 +48,31 @@ export const tabsRecipe = defineSlotRecipe({
   },
   variants: {
     variant: {
-      line: {},
+      default: {
+        trigger: {
+          _selected: {
+            borderBottomColor: 'currentColor',
+          },
+        },
+      },
       spaceBetween: {
         list: {
           justifyContent: 'space-between',
+        },
+        trigger: {
+          _selected: {
+            borderBottomColor: 'currentColor',
+          },
         },
       },
       spaceAround: {
         list: {
           justifyContent: 'space-around',
+        },
+        trigger: {
+          _selected: {
+            borderBottomColor: 'currentColor',
+          },
         },
       },
       enclosed: {
@@ -84,6 +104,9 @@ export const tabsRecipe = defineSlotRecipe({
       fullWidth: {
         trigger: {
           flex: 1,
+          _selected: {
+            borderBottomColor: 'currentColor',
+          },
         },
         content: {
           m: '0',
@@ -92,6 +115,6 @@ export const tabsRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    variant: 'line',
+    variant: 'default',
   },
 });
