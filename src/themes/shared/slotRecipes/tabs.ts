@@ -10,6 +10,7 @@ const baseTriggerStyle = defineStyle({
   borderBottomColor: 'transparent',
   p: 'md',
   color: 'gray.600',
+  cursor: 'pointer',
   _selected: {
     fontWeight: 'bold',
     color: 'gray.900',
