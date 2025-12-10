@@ -106,11 +106,11 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'full',
           height: '2xl',
           _open: {
-            animationName: ['slide-in-from-top'],
+            animationName: 'slide-in-from-top',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-top'],
+            animationName: 'slide-out-to-top',
             animationDuration: 'fast',
           },
         },
@@ -124,11 +124,11 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'full',
           height: 'half',
           _open: {
-            animationName: ['slide-in-from-top'],
+            animationName: 'slide-in-from-top',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-top'],
+            animationName: 'slide-out-to-top',
             animationDuration: 'fast',
           },
         },
@@ -142,11 +142,11 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'full',
           height: 'full',
           _open: {
-            animationName: ['slide-in-from-top'],
+            animationName: 'slide-in-from-top',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-top'],
+            animationName: 'slide-out-to-top',
             animationDuration: 'fast',
           },
         },
@@ -157,11 +157,11 @@ export const drawerRecipe = defineSlotRecipe({
       css: {
         content: {
           _open: {
-            animationName: ['slide-in-from-right'],
+            animationName: 'slide-in-from-right',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-right'],
+            animationName: 'slide-out-to-right',
             animationDuration: 'fast',
           },
         },
@@ -175,11 +175,11 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'full',
           height: '2xl',
           _open: {
-            animationName: ['slide-in-from-bottom'],
+            animationName: 'slide-in-from-bottom',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-bottom'],
+            animationName: 'slide-out-to-bottom',
             animationDuration: 'fast',
           },
         },
@@ -193,11 +193,11 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'full',
           height: 'half',
           _open: {
-            animationName: ['slide-in-from-bottom'],
+            animationName: 'slide-in-from-bottom',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-bottom'],
+            animationName: 'slide-out-to-bottom',
             animationDuration: 'fast',
           },
         },
@@ -211,11 +211,11 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'full',
           height: 'full',
           _open: {
-            animationName: ['slide-in-from-bottom'],
+            animationName: 'slide-in-from-bottom',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-bottom'],
+            animationName: 'slide-out-to-bottom',
             animationDuration: 'fast',
           },
         },
@@ -226,11 +226,11 @@ export const drawerRecipe = defineSlotRecipe({
       css: {
         content: {
           _open: {
-            animationName: ['slide-in-from-left'],
+            animationName: 'slide-in-from-left',
             animationDuration: 'slow',
           },
           _closed: {
-            animationName: ['slide-out-to-left'],
+            animationName: 'slide-out-to-left',
             animationDuration: 'fast',
           },
         },

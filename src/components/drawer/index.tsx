@@ -18,7 +18,11 @@ export const Drawer: FC<PropsWithChildren<DrawerComponentProps>> = (props) => {
   const { children, isOpen, onClose, ...drawerProps } = props;
 
   return (
-    <ChakraDrawer.Root open={isOpen} onOpenChange={onClose} {...drawerProps}>
+    <ChakraDrawer.Root
+      open={isOpen}
+      onOpenChange={(e) => !e.open && onClose()}
+      {...drawerProps}
+    >
       <Portal>{children}</Portal>
     </ChakraDrawer.Root>
   );
