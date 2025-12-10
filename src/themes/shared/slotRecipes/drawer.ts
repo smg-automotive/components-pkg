@@ -6,7 +6,6 @@ export const drawerRecipe = defineSlotRecipe({
   base: {
     root: {},
     backdrop: {
-      background: 'blackAlpha.500',
       position: 'fixed',
       insetInlineStart: '0',
       top: '0',
@@ -14,12 +13,10 @@ export const drawerRecipe = defineSlotRecipe({
       height: 'full',
       zIndex: 'overlay',
       _open: {
-        animationName: 'fade-in',
-        animationDuration: 'normal',
+        animation: 'fade-in',
       },
       _closed: {
-        animationName: 'fade-out',
-        animationDuration: 'normal',
+        animation: 'fade-out',
       },
     },
     positioner: {
@@ -33,7 +30,7 @@ export const drawerRecipe = defineSlotRecipe({
     },
     content: {
       bg: 'white',
-      boxShadow: 'lg',
+      boxShadow: 'xs',
     },
     body: {
       flex: 1,
@@ -107,7 +104,7 @@ export const drawerRecipe = defineSlotRecipe({
       css: {
         content: {
           width: 'full',
-          height: '4xl',
+          height: '2xl',
           _open: {
             animationName: ['slide-in-from-top'],
             animationDuration: 'slow',
@@ -125,7 +122,7 @@ export const drawerRecipe = defineSlotRecipe({
       css: {
         content: {
           width: 'full',
-          height: '8xl',
+          height: 'half',
           _open: {
             animationName: ['slide-in-from-top'],
             animationDuration: 'slow',
@@ -176,7 +173,7 @@ export const drawerRecipe = defineSlotRecipe({
       css: {
         content: {
           width: 'full',
-          height: '4xl',
+          height: '2xl',
           _open: {
             animationName: ['slide-in-from-bottom'],
             animationDuration: 'slow',
@@ -194,7 +191,7 @@ export const drawerRecipe = defineSlotRecipe({
       css: {
         content: {
           width: 'full',
-          height: '8xl',
+          height: 'half',
           _open: {
             animationName: ['slide-in-from-bottom'],
             animationDuration: 'slow',
