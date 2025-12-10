@@ -17,6 +17,7 @@ import { inputSlotRecipe as input } from './input';
 import { galleryHeaderRecipe as galleryHeader } from './galleryHeader';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
+import { drawerRecipe as drawer } from './drawer';
 import { dialogFilterRecipe as dialogFilter } from './dialogFilter';
 import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
@@ -47,6 +48,7 @@ export const slotRecipes = {
   input,
   select,
   dialogFilter,
+  drawer,
   alert,
   popoverFilter,
   numberInput,

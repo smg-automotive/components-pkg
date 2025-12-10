@@ -14,6 +14,7 @@ export * from './count';
 export * from './datePicker';
 export * from './devOverlay';
 export * from './dialog';
+export * from './drawer';
 export * from './energyLabel';
 export * from './errorPage';
 export * from './flex';
