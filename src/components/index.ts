@@ -40,6 +40,7 @@ export * from './simpleGrid';
 export * from './simpleHeader';
 export * from './stack';
 export * from './switch';
+export * from './tab';
 export * from './table';
 export * from './text';
 export * from './text/HighlightedText';
