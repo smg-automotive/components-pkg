@@ -45,6 +45,7 @@ export * from './text';
 export * from './text/HighlightedText';
 export * from './text/marked';
 export * from './themeProvider';
+export * from './topListingBadge';
 export * from './vehicleReference';
 export * from './rangeFilterInput';
 export * from './topVehicleSharedBadge';
