@@ -8,16 +8,16 @@ import { DrawerOverlay } from './DrawerOverlay';
 import { DrawerContent } from './DrawerContent';
 import { DrawerBody } from './DrawerBody';
 
-import { Drawer as DrawerComponent, type DrawerProps } from './index';
+import { Drawer as DrawerComponent, type DrawerComponentProps } from './index';
 
 const Template = (
-  args: Omit<DrawerProps, 'open' | 'onOpenChange'> & {
+  args: Omit<DrawerComponentProps, 'isOpen' | 'onClose'> & {
     placement: 'top' | 'bottom' | 'left' | 'right';
     withCloseButton?: boolean;
     viewMode?: string;
   },
 ) => {
-  const { open, onToggle } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
 
   const headerHeight = 'xl';
 
@@ -30,8 +30,8 @@ const Template = (
       bg="gray.100"
       zIndex="popover"
     >
-      <Button onClick={onToggle}>Toggle drawer</Button>
-      <DrawerComponent open={open} onOpenChange={onToggle} {...args}>
+      <Button onClick={open ? onClose : onOpen}>Toggle drawer</Button>
+      <DrawerComponent isOpen={open} onClose={onClose} {...args}>
         <DrawerOverlay />
         <DrawerContent
           withCloseButton={args?.withCloseButton}

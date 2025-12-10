@@ -8,14 +8,20 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
-export const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
-  const { children, ...drawerProps } = props;
+interface DrawerComponentProps
+  extends Omit<DrawerProps, 'open' | 'onOpenChange'> {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const Drawer: FC<PropsWithChildren<DrawerComponentProps>> = (props) => {
+  const { children, isOpen, onClose, ...drawerProps } = props;
 
   return (
-    <ChakraDrawer.Root {...drawerProps}>
+    <ChakraDrawer.Root open={isOpen} onOpenChange={onClose} {...drawerProps}>
       <Portal>{children}</Portal>
     </ChakraDrawer.Root>
   );
 };
 
-export type { DrawerProps };
+export type { DrawerComponentProps };
