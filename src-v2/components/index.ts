@@ -57,7 +57,6 @@ export { default as MarkedText } from './text/marked';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
 export { default as Skeleton } from './skeleton';
-export { default as TopListingBadge } from './topListingBadge';
 export { default as Tabs } from './tab';
 export { default as Tab } from './tab/Tab';
 export { default as TabList } from './tab/TabList';
