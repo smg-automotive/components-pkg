@@ -51,7 +51,7 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-npm-{{ checksum "package-lock.json" }}
-      - run: npm ci
+      - run: npm ci --ignore-scripts=false
       - run: npm ls
       - save_cache:
           key: v1-npm-{{ checksum "package-lock.json" }}

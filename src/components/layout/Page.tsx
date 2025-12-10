@@ -5,7 +5,7 @@ import { sizes } from 'src/themes/shared/tokens/sizes';
 import { BaseLayout } from './BaseLayout';
 
 export interface Props {
-  header: ReactNode;
+  header?: ReactNode;
   maxContentWidth: keyof typeof sizes.container;
   skyScraperAd?: ReactNode;
   heroAd?: ReactNode;
