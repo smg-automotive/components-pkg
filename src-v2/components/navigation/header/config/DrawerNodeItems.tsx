@@ -50,6 +50,7 @@ import {
 import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig } from './Optimizer';
 
+import { marketPriceCheckLinkConfig } from './marketPriceCheckConfig';
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
@@ -161,6 +162,7 @@ const getUserNodeItems = ({
         eventLabel: 'drawer-user',
       }),
       autoRadarLinkConfig,
+      marketPriceCheckLinkConfig,
     ],
   },
   {
