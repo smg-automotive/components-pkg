@@ -4,10 +4,10 @@ import { useArgs } from '@storybook/preview-api';
 
 import { Brand } from 'src/types/brand';
 
-import ThemeProvider from '../themeProvider';
+import { ThemeProvider } from '../themeProvider';
 import { FullHeight } from '../index';
 
-import DevOverlayComponent, { type DevOverlayProps } from './index';
+import { DevOverlay, type DevOverlayProps } from './index';
 
 const Template = (args: DevOverlayProps) => {
   const [{ activeTheme, displayTranslationKeys }, updateArgs] = useArgs();
@@ -26,28 +26,26 @@ const Template = (args: DevOverlayProps) => {
   };
 
   return (
-    <DevOverlayComponent
-      {...args}
-      toggleTheme={toggleTheme}
-      toggleTranslation={toggleTranslation}
-    />
+    <ThemeProvider theme={activeTheme}>
+      <DevOverlay
+        {...args}
+        toggleTheme={toggleTheme}
+        toggleTranslation={toggleTranslation}
+      />
+    </ThemeProvider>
   );
 };
 
-const meta: Meta<typeof DevOverlayComponent> = {
+const meta: Meta<typeof DevOverlay> = {
   title: 'Theme/DevOverlay',
-  component: DevOverlayComponent,
+  component: DevOverlay,
 
   decorators: [
     (Story) => {
-      const [{ activeTheme }] = useArgs();
-
       return (
-        <ThemeProvider theme={activeTheme}>
-          <FullHeight>
-            <Story />
-          </FullHeight>
-        </ThemeProvider>
+        <FullHeight>
+          <Story />
+        </FullHeight>
       );
     },
   ],
@@ -65,7 +63,7 @@ const meta: Meta<typeof DevOverlayComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof DevOverlayComponent> = {
+export const Overview: StoryObj<typeof DevOverlay> = {
   render: Template.bind({}),
 
   args: {

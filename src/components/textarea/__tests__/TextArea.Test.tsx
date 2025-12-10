@@ -3,12 +3,12 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen } from 'jest-utils';
 
-import Textarea from '../index';
+import { Textarea } from '../index';
 
 const renderWrapper = ({
   name = 'Textarea',
   autoFocus = false,
-  isDisabled = false,
+  disabled = false,
   onChange = jest.fn(),
   onFocus = jest.fn(),
   onBlur = jest.fn(),
@@ -18,7 +18,7 @@ const renderWrapper = ({
     <Textarea
       name={name}
       autoFocus={autoFocus}
-      isDisabled={isDisabled}
+      disabled={disabled}
       onChange={onChange}
       placeholder={placeholder}
       onFocus={onFocus}
@@ -67,7 +67,7 @@ describe('<Textarea>', () => {
 
   it('is not possible to click on the textarea when is disabled', async () => {
     const onFocus = jest.fn();
-    renderWrapper({ onFocus, isDisabled: true });
+    renderWrapper({ onFocus, disabled: true });
     const textarea = screen.getByPlaceholderText('Placeholder');
     await userEvent.click(textarea);
 

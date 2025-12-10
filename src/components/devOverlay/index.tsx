@@ -1,37 +1,24 @@
 import React, { FC } from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  Spacer,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react';
+import { Box, Flex, Heading, Spacer, Table } from '@chakra-ui/react';
 
 import { Brand } from 'src/types/brand';
 
-import Switch, { SwitchProps } from '../switchComponent';
+import { Switch, SwitchProps } from '../switch';
 import { CloseIcon } from '../icons';
-import Button, { ButtonProps } from '../button';
+import { Button, ButtonSharedProps } from '../button';
 
-export type DevOverlayVariables = Record<string, string | number>[];
+export type DevOverlayVariables = { name: string; value: string }[];
 
-export type DevOverlayProps = Omit<ButtonProps, 'onClick' | 'children'> &
-  Omit<SwitchProps, 'onChange' | 'label' | 'id'> & {
-    hideDevOverlay: Exclude<ButtonProps['onClick'], undefined>;
-    toggleTheme: Exclude<SwitchProps['onChange'], undefined>;
-    toggleTranslation: Exclude<SwitchProps['onChange'], undefined>;
-    variables: DevOverlayVariables;
-    activeTheme: Brand;
-    displayTranslationKeys: boolean;
-  };
+export type DevOverlayProps = {
+  hideDevOverlay: Exclude<ButtonSharedProps['onClick'], undefined>;
+  toggleTheme: Exclude<SwitchProps['onCheckedChange'], undefined>;
+  toggleTranslation: Exclude<SwitchProps['onCheckedChange'], undefined>;
+  variables: DevOverlayVariables;
+  activeTheme: Brand;
+  displayTranslationKeys: boolean;
+};
 
-const DevOverlay: FC<DevOverlayProps> = ({
+export const DevOverlay: FC<DevOverlayProps> = ({
   variables,
   hideDevOverlay,
   toggleTheme,
@@ -52,7 +39,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
       display="inline-block"
       boxShadow="md"
       as="aside"
-      maxWidth="min(94%, 320px)"
+      css={{ maxWidth: 'min(94%, 320px)' }}
     >
       <Flex>
         <Heading as="h3" textStyle="heading3">
@@ -67,26 +54,24 @@ const DevOverlay: FC<DevOverlayProps> = ({
         Variables
       </Heading>
       {!variables || variables.length === 0 ? null : (
-        <TableContainer>
-          <Table variant="unstyled" size="sm">
-            <Thead>
-              <Tr>
-                <Th>Name</Th>
-                <Th>Value</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {variables.map(({ name, value }) => {
-                return (
-                  <Tr key={name} wordBreak="break-all">
-                    <Td>{name}</Td>
-                    <Td>{value}</Td>
-                  </Tr>
-                );
-              })}
-            </Tbody>
-          </Table>
-        </TableContainer>
+        <Table.Root>
+          <Table.Body>
+            <Table.Row>
+              <Table.ColumnHeader padding="0">Name</Table.ColumnHeader>
+              <Table.ColumnHeader>Value</Table.ColumnHeader>
+            </Table.Row>
+          </Table.Body>
+          <Table.Body>
+            {variables.map(({ name, value }) => {
+              return (
+                <Table.Row key={name} wordBreak="break-all">
+                  <Table.Cell padding="0">{name}</Table.Cell>
+                  <Table.Cell>{value}</Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table.Root>
       )}
       <br />
       <Heading as="h4" textStyle="heading4">
@@ -94,20 +79,21 @@ const DevOverlay: FC<DevOverlayProps> = ({
       </Heading>
       <Switch
         id="theme-toggle"
-        onChange={toggleTheme}
-        isChecked={isThemeSwitcherChecked}
+        onCheckedChange={toggleTheme}
+        checked={isThemeSwitcherChecked}
         label={isThemeSwitcherChecked ? <span>🏍️</span> : <span>🚗</span>}
+        disabled={false}
       />
       <Heading as="h4" textStyle="heading4">
         Switch Translation
       </Heading>
       <Switch
         id="translation-toggle"
-        onChange={toggleTranslation}
-        isChecked={displayTranslationKeys}
+        onCheckedChange={toggleTranslation}
+        checked={displayTranslationKeys}
         label={displayTranslationKeys ? <span>🔑</span> : <span>🌐</span>}
+        disabled={false}
       />
     </Box>
   );
 };
-export default DevOverlay;

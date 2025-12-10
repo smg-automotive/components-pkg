@@ -1,51 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Box, Stack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
-import { Checkbox } from 'src/index';
+import { Textarea } from '../textarea';
 
-import FormControlSection from './index';
-
-const ThreeCheckboxes: React.FC = () => {
-  const [values, setValues] = useState({
-    one: false,
-    two: false,
-    three: false,
-  });
-
-  return (
-    <Stack spacing="2">
-      <Checkbox
-        name="test-checkbox-1"
-        label="Checkbox 1"
-        isChecked={values.one}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValues((v) => ({ ...v, one: e.target.checked }))
-        }
-      />
-      <Checkbox
-        name="test-checkbox-2"
-        label="Checkbox 2"
-        isChecked={values.two}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValues((v) => ({ ...v, two: e.target.checked }))
-        }
-      />
-      <Checkbox
-        name="test-checkbox-3"
-        label="Checkbox 3"
-        isChecked={values.three}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValues((v) => ({ ...v, three: e.target.checked }))
-        }
-      />
-    </Stack>
-  );
-};
+import { FormControlSection } from './index';
 
 /**
  * Form Control Section is the wrapper that provides context and functionality for all children.
- * Here we take the checkbox as children for visualitation. In case you need to explore the children properties,
+ * Here we take the textarea as children for visualitation. In case you need to explore the children properties,
  * search for the corresponding component.
  **/
 
@@ -55,7 +18,7 @@ const meta: Meta<typeof FormControlSection> = {
 
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="250px">
+      <Box w="full">
         <Story />
       </Box>
     ),
@@ -67,7 +30,7 @@ const meta: Meta<typeof FormControlSection> = {
     tooltip: '',
     errorMessage: '',
     id: 'test-input',
-    children: <ThreeCheckboxes />,
+    children: <Textarea name="test-textarea" />,
   },
 };
 export default meta;

@@ -3,9 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { H1, H2 } from 'src/components/heading';
-import Box from 'src/components/box';
+import { Box } from 'src/components/box';
 
-import GalleryHeaderComponent from './index';
+import { GalleryHeader as GalleryHeaderComponent } from './index';
 
 const meta: Meta<typeof GalleryHeaderComponent> = {
   title: 'Components/Navigation/GalleryHeader',
@@ -20,10 +20,10 @@ const meta: Meta<typeof GalleryHeaderComponent> = {
   ],
 
   args: {
-    language: 'de',
     currentSlide: 1,
-    slidesCount: 10,
+    language: 'de',
     onClose: action('onClose'),
+    slidesCount: 10,
     children: (
       <>
         <H1 textStyle="body-large">Title</H1>
@@ -33,9 +33,18 @@ const meta: Meta<typeof GalleryHeaderComponent> = {
   },
 
   argTypes: {
+    currentSlide: {
+      control: { type: 'number', min: 1 },
+    },
     language: {
       control: { type: 'select' },
       options: ['de', 'en', 'fr', 'it'],
+    },
+    slidesCount: {
+      control: { type: 'number', min: 1 },
+    },
+    onClose: {
+      control: false,
     },
     children: {
       table: {
