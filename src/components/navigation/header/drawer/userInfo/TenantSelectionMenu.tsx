@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import { NavigationTenantMenuContent } from 'src/components/navigation/header/navigationTenantMenu/Content';
@@ -23,8 +23,15 @@ export const TenantSelectionMenu: FC<Props> = ({
   selectedTenant,
   selectTenant,
 }) => {
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+
   return (
-    <MobileOnlyAccordion multiple={true} collapsible={true}>
+    <MobileOnlyAccordion
+      multiple={true}
+      collapsible={true}
+      value={expandedItems}
+      onValueChange={(details) => setExpandedItems(details.value)}
+    >
       <MobileOnlyAccordionItem value="tenant-selection" border="none">
         <MobileOnlyAccordionButton data-testid="tenant-selection-accordion-toggle">
           <SelectedTenantInfo selectedTenant={selectedTenant} />
@@ -36,7 +43,7 @@ export const TenantSelectionMenu: FC<Props> = ({
         >
           <NavigationTenantMenuContent
             user={user}
-            onClose={() => {}}
+            onClose={() => setExpandedItems([])}
             selectedTenantId={selectedTenant.id}
             selectTenant={selectTenant}
           />

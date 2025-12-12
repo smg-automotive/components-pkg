@@ -68,12 +68,13 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         onClick={onLogin}
         css={{
           ...styles.root,
-          top: '1px',
         }}
         fontWeight="bold"
         position="relative"
         cursor="pointer"
         alignItems="center"
+        gap="sm"
+        color="gray.900"
       >
         <Box as={Avatar} css={{ marginLeft: '2px' }} />
         <Box hideBelow="md" marginRight="xs">

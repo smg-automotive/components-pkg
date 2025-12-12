@@ -30,7 +30,7 @@ export const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
     selectedTenant.id.toString();
 
   return (
-    <Box hideBelow="sm">
+    <Box hideBelow="sm" display="flex" alignItems="center">
       <Popover.Root
         positioning={{ placement: 'bottom-end' }}
         onOpenChange={(e) => {
@@ -46,15 +46,19 @@ export const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
             color={open ? 'blue.700' : 'gray.900'}
             _hover={{ color: 'blue.700' }}
             onClick={onToggle}
+            display="inline-flex"
+            flexDirection="row"
+            alignItems="center"
+            gap="xs"
+            cursor="pointer"
             css={{ background: 'transparent' }}
           >
             <GarageIcon />
             <Box hideBelow="md">
               <Text
-                as="span"
                 fontWeight="bold"
-                truncate={true}
-                maxW={{ base: 'xl', md: '2xl' }}
+                lineClamp={1}
+                maxW="2xl"
                 textAlign="left"
                 title={selectedTenantInfo}
               >
@@ -87,6 +91,7 @@ export const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
                 p="2xl"
                 borderRadius="sm"
                 borderColor="gray.200"
+                display="flex"
                 alignItems="center"
                 flexDirection="column"
                 gap="2xl"

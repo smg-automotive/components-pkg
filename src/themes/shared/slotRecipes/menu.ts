@@ -18,6 +18,14 @@ const content = defineStyle({
   _focusVisible: {
     outline: 'none',
   },
+  _open: {
+    animationStyle: 'scale-fade-in',
+    animationDuration: 'fast',
+  },
+  _closed: {
+    animationStyle: 'scale-fade-out',
+    animationDuration: 'fast',
+  },
 });
 
 const item = defineStyle({

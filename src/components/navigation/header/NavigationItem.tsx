@@ -21,7 +21,6 @@ export const NavigationItem: FC<{
       onClick={drawerHandler}
       css={{
         ...styles.root,
-        top: '1px',
       }}
       fontWeight="bold"
       color={isOpen ? 'blue.700' : 'gray.900'}

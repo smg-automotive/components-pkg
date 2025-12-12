@@ -31,10 +31,11 @@ export const ComparisonItem: FC<Props> = ({ link, count }) => {
   return (
     <chakra.a
       position="relative"
+      display="block"
       href={link.link?.[language]}
       onClick={link.onClick}
       aria-label={t(link.translationKey ?? '', link.translationParameters)}
-      mr="md"
+      mr="lg"
     >
       <CompareIcon color="gray.900" />
       <Box position="absolute" css={{ top: '-10px', right: '-15px' }}>

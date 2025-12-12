@@ -40,7 +40,7 @@ export const Menu: FC<MenuProps> = ({
 }) => {
   const recipe = useSlotRecipe({ key: 'menu' });
   const styles = recipe();
-  const [mainAxis = 0, crossAxis = 0] = offset;
+  const [crossAxis = 0, mainAxis = 0] = offset;
   return (
     <ChakraMenu.Root
       positioning={{ placement, offset: { mainAxis, crossAxis } }}
