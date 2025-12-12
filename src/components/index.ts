@@ -31,6 +31,7 @@ export * from './menu';
 export * from './missingImage';
 export * from './mobileOnlyAccordion';
 export * from './navigation/footer';
+export * from './navigation/header';
 export * from './pagination';
 export * from './rating';
 export * from './section';
