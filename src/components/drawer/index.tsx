@@ -4,17 +4,20 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import {
   Drawer as ChakraDrawer,
-  DrawerRootProps as DrawerProps,
+  DrawerRootProps,
   Portal,
 } from '@chakra-ui/react';
 
-interface DrawerComponentProps
-  extends Omit<DrawerProps, 'open' | 'onOpenChange'> {
+import { DrawerOverlay } from './DrawerOverlay';
+import { DrawerContent } from './DrawerContent';
+import { DrawerBody } from './DrawerBody';
+
+interface DrawerProps extends Omit<DrawerRootProps, 'open' | 'onOpenChange'> {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const Drawer: FC<PropsWithChildren<DrawerComponentProps>> = (props) => {
+export const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
   const { children, isOpen, onClose, ...drawerProps } = props;
 
   return (
@@ -28,4 +31,6 @@ export const Drawer: FC<PropsWithChildren<DrawerComponentProps>> = (props) => {
   );
 };
 
-export type { DrawerComponentProps };
+export type { DrawerProps };
+
+export { DrawerOverlay, DrawerContent, DrawerBody };

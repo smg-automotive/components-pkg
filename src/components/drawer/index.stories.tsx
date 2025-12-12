@@ -8,10 +8,10 @@ import { DrawerOverlay } from './DrawerOverlay';
 import { DrawerContent } from './DrawerContent';
 import { DrawerBody } from './DrawerBody';
 
-import { Drawer as DrawerComponent, type DrawerComponentProps } from './index';
+import { Drawer as DrawerComponent, type DrawerProps } from './index';
 
 const Template = (
-  args: Omit<DrawerComponentProps, 'isOpen' | 'onClose'> & {
+  args: Omit<DrawerProps, 'isOpen' | 'onClose'> & {
     placement: 'top' | 'bottom' | 'left' | 'right';
     withCloseButton?: boolean;
     viewMode?: string;
