@@ -1,10 +1,14 @@
+'use client';
+
 import React from 'react';
 import { Slider } from '@chakra-ui/react';
 
-export type RangeSliderProps = {
-  min?: number;
-  max?: number;
-  defaultValue?: [number, number];
+type SliderRootProps = Omit<
+  React.ComponentProps<typeof Slider.Root>,
+  'onChange'
+>;
+
+export type RangeSliderProps = SliderRootProps & {
   onChange?: (values: number[]) => void;
   onChangeEnd?: (values: number[]) => void;
 };
