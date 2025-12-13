@@ -39,14 +39,12 @@ export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
   return (
     <GridItem>
       <MobileOnlyAccordion multiple={true} collapsible={true}>
-        <MobileOnlyAccordionItem value="section">
+        <MobileOnlyAccordionItem
+          value="section"
+          style={{ borderTop: 'none', borderBottom: '1px solid #CFCFCF' }}
+        >
           <MobileOnlyAccordionButton>
-            <Box
-              flex="1"
-              textAlign="left"
-              fontSize="base"
-              paddingTop={{ base: 'md', md: '0' }}
-            >
+            <Box flex="1" textAlign="left" fontSize="base">
               {node.translationKey ? t(node.translationKey) : node.title}
             </Box>
           </MobileOnlyAccordionButton>

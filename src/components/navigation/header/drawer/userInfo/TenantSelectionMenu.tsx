@@ -32,7 +32,10 @@ export const TenantSelectionMenu: FC<Props> = ({
       value={expandedItems}
       onValueChange={(details) => setExpandedItems(details.value)}
     >
-      <MobileOnlyAccordionItem value="tenant-selection" border="none">
+      <MobileOnlyAccordionItem
+        value="tenant-selection"
+        style={{ border: 'none' }}
+      >
         <MobileOnlyAccordionButton data-testid="tenant-selection-accordion-toggle">
           <SelectedTenantInfo selectedTenant={selectedTenant} />
         </MobileOnlyAccordionButton>

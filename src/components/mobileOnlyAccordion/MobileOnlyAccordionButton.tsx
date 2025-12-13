@@ -13,7 +13,7 @@ export const MobileOnlyAccordionButton: FC<
 
   return (
     <>
-      <Box hideBelow="md" textStyle="heading5" paddingX="lg" paddingY="md">
+      <Box hideBelow="md" textStyle="heading5" paddingX="lg" paddingBottom="md">
         {children}
       </Box>
       <Box hideFrom="md">

@@ -56,6 +56,9 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           <Drawer.Content
             overflowY="scroll"
             bg="white"
+            boxShadow="xs"
+            borderBottom="1px"
+            borderBottomColor="gray.200"
             css={{
               maxHeight: `calc(100vh - ${menuHeight})`,
               maxWidth: '100vw',
