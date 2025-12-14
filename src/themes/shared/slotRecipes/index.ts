@@ -1,5 +1,6 @@
 import { vehicleReferenceRecipe as vehicleReference } from './vehicleReference';
 import { tooltipSlotRecipe as tooltip } from './tooltip';
+import { tabsRecipe as tabs } from './tabs';
 import { tableRecipe as table } from './table';
 import { switchRecipe } from './switch';
 import { sliderSlotRecipe as slider } from './slider';
@@ -38,6 +39,7 @@ export const slotRecipes = {
   dialog,
   simpleHeader,
   table,
+  tabs,
   vehicleReference,
   tooltip,
   field,
