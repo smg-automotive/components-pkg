@@ -42,6 +42,8 @@ export const NavigationLink: FC<NavigationLinkProps> = ({
 }) => {
   const { t, language } = useI18n();
   const linkColor = color || 'gray.900';
+  const hoverStyle =
+    variant === 'navigationLink' ? ({ color: 'blue.700' } as const) : undefined;
 
   return (
     <Link
@@ -49,6 +51,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({
       variant={variant}
       fontWeight={fontWeight}
       css={{ color: linkColor }}
+      _hover={hoverStyle}
       onClick={onClick}
       display="flex"
       alignItems="center"

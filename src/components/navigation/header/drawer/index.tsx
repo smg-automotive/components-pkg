@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
-import { Drawer, Portal } from '@chakra-ui/react';
+import { Portal } from '@chakra-ui/react';
 
 import { Grid } from 'src/components/grid';
+import { Box } from 'src/components/box';
 
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
 import { DrawerNode } from '../config/DrawerNodeItems';
@@ -34,46 +35,54 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
   showTenantSelection,
 }) => {
   return (
-    <Drawer.Root
-      open={isOpen}
-      onOpenChange={(e) => {
-        if (!e.open) onClose();
-      }}
-    >
-      <Portal>
-        <Drawer.Backdrop />
-        <Drawer.Positioner
+    <Portal>
+      {/* Transparent Backdrop */}
+      <Box
+        position="fixed"
+        inset="0"
+        zIndex="overlay"
+        onClick={onClose}
+        css={{
+          top: menuHeight,
+          opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? 'auto' : 'none',
+        }}
+      />
+      {/* Drawer Content */}
+      <Box
+        position="fixed"
+        left="0"
+        right="0"
+        zIndex="modal"
+        css={{
+          top: menuHeight,
+          transform: isOpen ? 'translateY(0)' : 'translateY(-100%)',
+          opacity: isOpen ? 1 : 0,
+          transition: 'transform 0.3s ease-in-out, opacity 0.2s ease-in-out',
+          pointerEvents: isOpen ? 'auto' : 'none',
+        }}
+      >
+        <Box
+          overflowY="scroll"
+          bg="white"
+          boxShadow="xs"
+          borderBottom="1px"
+          borderBottomColor="gray.200"
           css={{
-            position: 'fixed',
-            top: menuHeight,
-            left: 0,
-            right: 0,
-            bottom: 'auto',
+            maxHeight: `calc(100vh - ${menuHeight})`,
+            maxWidth: '100vw',
             width: '100%',
-            zIndex: 'modal',
           }}
         >
-          <Drawer.Content
-            overflowY="scroll"
-            bg="white"
-            boxShadow="xs"
-            borderBottom="1px"
-            borderBottomColor="gray.200"
-            css={{
-              maxHeight: `calc(100vh - ${menuHeight})`,
-              maxWidth: '100vw',
-              width: '100%',
-              borderRadius: 0,
-            }}
+          <Box
+            data-testid="drawer-body"
+            py="lg"
+            px={{ md: 'xs' }}
+            maxWidth="container.2xl"
+            width="full"
+            margin="auto"
           >
-            <Drawer.Body
-              data-testid="drawer-body"
-              py="lg"
-              px={{ md: 'xs' }}
-              maxWidth="container.2xl"
-              width="full"
-              margin="auto"
-            >
+            {isOpen ? (
               <Grid
                 height="full"
                 width="full"
@@ -103,10 +112,10 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
                   />
                 ) : null}
               </Grid>
-            </Drawer.Body>
-          </Drawer.Content>
-        </Drawer.Positioner>
-      </Portal>
-    </Drawer.Root>
+            ) : null}
+          </Box>
+        </Box>
+      </Box>
+    </Portal>
   );
 };

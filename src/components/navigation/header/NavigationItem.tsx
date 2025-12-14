@@ -24,6 +24,7 @@ export const NavigationItem: FC<{
       }}
       fontWeight="bold"
       color={isOpen ? 'blue.700' : 'gray.900'}
+      _hover={{ color: 'blue.700' }}
       position="relative"
       cursor="pointer"
       display="flex"

@@ -5,7 +5,7 @@ import { Project } from 'src/types/project';
 import { Language } from 'src/types/language';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
-import TranslationProvider from 'src/components/translationProvider';
+import { TranslationProvider } from 'src/components/translationProvider';
 import { Separator } from 'src/components/separator';
 import { Center } from 'src/components/center';
 import { Box } from 'src/components/box';

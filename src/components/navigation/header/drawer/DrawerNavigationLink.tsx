@@ -16,7 +16,7 @@ export const DrawerNavigationLink: FC<{
 
   return (
     <Box {...hideProps}>
-      <List.Item paddingBottom={{ base: 'lg', md: 'md' }}>
+      <List.Item paddingBottom={{ base: 'xs', md: 'md' }}>
         <NavigationLink
           {...item}
           variant="subNavigationLink"
