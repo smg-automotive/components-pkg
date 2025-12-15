@@ -21,7 +21,6 @@ import Input from './input';
 import FormLabel from './formLabel';
 import FormError from './formError';
 import Form from './form';
-import Drawer from './drawer';
 import Divider from './divider';
 import CloseButton from './closeButton';
 import Checkbox from './checkbox';
