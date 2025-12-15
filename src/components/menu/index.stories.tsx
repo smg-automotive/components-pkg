@@ -49,6 +49,12 @@ const meta: Meta<typeof Menu> = {
       control: 'select',
       options: ['sm', 'md', 'lg', 'xl'],
     },
+    menuColor: {
+      control: 'color',
+    },
+    menuOptionColor: {
+      control: 'color',
+    },
   },
   args: {
     items: [
@@ -62,7 +68,6 @@ const meta: Meta<typeof Menu> = {
     placement: 'bottom-start',
     offset: [8, 0],
     fontWeightTitle: 'regular',
-    menuColor: 'gray.900',
     iconSpacing: 'sm',
   },
 };

@@ -1,6 +1,7 @@
 import React, { FC, JSX, ReactElement } from 'react';
 import {
   Menu as ChakraMenu,
+  MenuContentProps,
   MenuRootProps,
   MenuTriggerProps,
   Portal,
@@ -21,6 +22,7 @@ export interface MenuProps {
   fontWeightTitle?: MenuTriggerProps['fontWeight'];
   offset?: [number, number];
   menuColor?: MenuTriggerProps['color'];
+  menuOptionColor?: MenuContentProps['color'];
   showChevron?: boolean;
   icon?: ReactElement;
   iconSpacing?: MenuTriggerProps['gap'];
@@ -33,6 +35,7 @@ export const Menu: FC<MenuProps> = ({
   fontWeightTitle = 'regular',
   offset = [8, 0],
   menuColor,
+  menuOptionColor,
   showChevron = true,
   icon,
   iconSpacing = 'sm',
@@ -46,23 +49,28 @@ export const Menu: FC<MenuProps> = ({
       positioning={{ placement, offset: { mainAxis, crossAxis } }}
     >
       <ChakraMenu.Context>
-        {({ open }) => (
-          <ChakraMenu.Trigger
-            css={styles.trigger}
-            gap={iconSpacing}
-            fontWeight={fontWeightTitle}
-            color={open ? 'blue.700' : menuColor}
-          >
-            {icon}
-            {title}
-            {showChevron ? (
-              <ChevronDownSmallIcon
-                transition="transform"
-                transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
-              />
-            ) : null}
-          </ChakraMenu.Trigger>
-        )}
+        {({ open }) => {
+          // menuColor takes precedence over the open state color
+          const color = menuColor || (open ? 'blue.700' : undefined);
+
+          return (
+            <ChakraMenu.Trigger
+              css={styles.trigger}
+              gap={iconSpacing}
+              fontWeight={fontWeightTitle}
+              color={color}
+            >
+              {icon}
+              {title}
+              {showChevron ? (
+                <ChevronDownSmallIcon
+                  transition="transform"
+                  transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
+                />
+              ) : null}
+            </ChakraMenu.Trigger>
+          );
+        }}
       </ChakraMenu.Context>
       <Portal>
         <ChakraMenu.Positioner>
@@ -74,7 +82,7 @@ export const Menu: FC<MenuProps> = ({
                   value={value}
                   onSelect={onClick}
                   css={styles.item}
-                  {...(menuColor && { color: menuColor })}
+                  {...(menuOptionColor && { color: menuOptionColor })}
                 >
                   {text}
                 </ChakraMenu.Item>
