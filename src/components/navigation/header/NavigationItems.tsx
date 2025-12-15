@@ -52,6 +52,8 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
           }}
           src={logo}
           alt="Platform logo"
+          htmlWidth={300}
+          htmlHeight={71}
         />
       </Link>
       <Box hideBelow="sm">

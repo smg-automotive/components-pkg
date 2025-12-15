@@ -55,7 +55,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({
       onClick={onClick}
       display="flex"
       alignItems="center"
-      gap="xs"
+      gap="md"
     >
       {leftIcon}
       {(translationKey || title) && (
