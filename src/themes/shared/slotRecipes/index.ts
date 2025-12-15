@@ -1,5 +1,6 @@
 import { vehicleReferenceRecipe as vehicleReference } from './vehicleReference';
 import { tooltipSlotRecipe as tooltip } from './tooltip';
+import { tabsRecipe as tabs } from './tabs';
 import { tableRecipe as table } from './table';
 import { switchRecipe } from './switch';
 import { sliderSlotRecipe as slider } from './slider';
@@ -17,6 +18,7 @@ import { inputSlotRecipe as input } from './input';
 import { galleryHeaderRecipe as galleryHeader } from './galleryHeader';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
+import { drawerRecipe as drawer } from './drawer';
 import { dialogFilterRecipe as dialogFilter } from './dialogFilter';
 import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
@@ -38,6 +40,7 @@ export const slotRecipes = {
   dialog,
   simpleHeader,
   table,
+  tabs,
   vehicleReference,
   tooltip,
   field,
@@ -47,6 +50,7 @@ export const slotRecipes = {
   input,
   select,
   dialogFilter,
+  drawer,
   alert,
   popoverFilter,
   numberInput,
