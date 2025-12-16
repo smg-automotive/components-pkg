@@ -1,5 +1,6 @@
 import React, { FC, JSX, ReactElement } from 'react';
 import {
+  Box,
   Menu as ChakraMenu,
   MenuContentProps,
   MenuRootProps,
@@ -8,7 +9,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { CheckmarkIcon, ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;
@@ -19,6 +20,7 @@ interface MenuItem {
 export interface MenuProps {
   title: string | ReactElement;
   items: MenuItem[];
+  value?: string;
   fontWeightTitle?: MenuTriggerProps['fontWeight'];
   offset?: [number, number];
   menuColor?: MenuTriggerProps['color'];
@@ -27,11 +29,13 @@ export interface MenuProps {
   icon?: ReactElement;
   iconSpacing?: MenuTriggerProps['gap'];
   placement?: Exclude<MenuRootProps['positioning'], undefined>['placement'];
+  showOptionsCheckmark?: boolean;
 }
 
 export const Menu: FC<MenuProps> = ({
   title,
   items,
+  value,
   fontWeightTitle = 'regular',
   offset = [8, 0],
   menuColor,
@@ -40,6 +44,7 @@ export const Menu: FC<MenuProps> = ({
   icon,
   iconSpacing = 'sm',
   placement,
+  showOptionsCheckmark = false,
 }) => {
   const recipe = useSlotRecipe({ key: 'menu' });
   const styles = recipe();
@@ -75,15 +80,22 @@ export const Menu: FC<MenuProps> = ({
       <Portal>
         <ChakraMenu.Positioner>
           <ChakraMenu.Content css={styles.content}>
-            {items.map(({ onClick, text, value }) => {
+            {items.map(({ onClick, text, value: itemValue }) => {
+              const optionColor = menuOptionColor || menuColor;
+
               return (
                 <ChakraMenu.Item
                   key={`menuItem-${value}`}
-                  value={value}
+                  value={itemValue}
                   onSelect={onClick}
                   css={styles.item}
-                  {...(menuOptionColor && { color: menuOptionColor })}
+                  {...(optionColor && { color: optionColor })}
                 >
+                  {showOptionsCheckmark ? (
+                    <Box w="16px" display="flex" justifyContent="center">
+                      {itemValue === value ? <CheckmarkIcon /> : null}
+                    </Box>
+                  ) : null}
                   {text}
                 </ChakraMenu.Item>
               );
