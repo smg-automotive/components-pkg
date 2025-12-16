@@ -1,5 +1,7 @@
 import React from 'react';
 
+import userEvent from '@testing-library/user-event';
+
 import { OverflowVerticalIcon } from 'src/components/icons';
 
 import { render, screen } from 'jest-utils';
@@ -46,7 +48,9 @@ describe('Menu', () => {
     expect(title).toBeInTheDocument();
   });
 
-  it('should render options checkmark', () => {
+  it('should render options checkmark', async () => {
+    const user = userEvent.setup();
+
     render(
       <Menu
         title="Test title"
@@ -56,7 +60,10 @@ describe('Menu', () => {
       />,
     );
 
-    const optionsCheckmark = screen.queryByTitle('Checkmark icon');
+    const menu = screen.getByRole('button', { name: 'Test title' });
+    await user.click(menu);
+
+    const optionsCheckmark = await screen.findByText('Checkmark icon');
     expect(optionsCheckmark).toBeInTheDocument();
   });
 });
