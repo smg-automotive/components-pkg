@@ -92,7 +92,7 @@ export const Menu: FC<MenuProps> = ({
                   {...(optionColor && { color: optionColor })}
                 >
                   {showOptionsCheckmark ? (
-                    <Box w="16px" display="flex" justifyContent="center">
+                    <Box w="xs" display="flex" justifyContent="center">
                       {itemValue === value ? <CheckmarkIcon /> : null}
                     </Box>
                   ) : null}
