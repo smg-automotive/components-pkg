@@ -31,7 +31,7 @@ export const Chart: React.FC<Props> = ({ facets, range }) => {
             index < range[0] || index > range[1] - 1 ? 'gray.200' : 'gray.500'
           }
           transitionProperty="common"
-          transitionDuration="normal"
+          transitionDuration="slow"
           transformOrigin="bottom"
           transform={`scaleY(${
             maxValue > 0 ? facets[index].value / maxValue : 0

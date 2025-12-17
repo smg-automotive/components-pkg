@@ -27,17 +27,14 @@ type ChangeRangeInputWithSliderCallback<Name> = {
   changeType?: 'inputfield' | 'slider';
 } & ChangeCallback<Name>;
 
-type RangeSliderProps =
-  | {
-      facets: Facet[];
-      chartHeight?: RangeSliderWithChartProps['chartHeight'];
-      rangeSliderScale?: undefined;
-    }
-  | {
-      rangeSliderScale: number[];
-      facets?: undefined;
-      chartHeight?: undefined;
-    };
+type RangeSliderProps = {
+  facets?: Facet[];
+  rangeSliderScale?: number[];
+  chartHeight?: RangeSliderWithChartProps['chartHeight'];
+} & (
+  | { facets: Facet[]; chartHeight?: string; rangeSliderScale?: never }
+  | { rangeSliderScale: number[]; facets?: never; chartHeight?: never }
+);
 
 export type Props<NameFrom, NameTo> = {
   from: RangeFilterInputField<NameFrom>;
