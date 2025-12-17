@@ -22,7 +22,6 @@ const content = defineStyle({
 
 const item = defineStyle({
   display: 'flex',
-  gap: 'sm',
   paddingY: 'md',
   paddingX: 'lg',
   cursor: 'pointer',
