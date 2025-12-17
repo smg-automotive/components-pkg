@@ -94,18 +94,15 @@ const getFuseInstance = (listItems: ListItemWithChildren[]) => {
 };
 
 export const SearchableList = forwardRef<HTMLInputElement, Props>(
-  (
-    {
-      listItems,
-      NoResults = empty,
-      EmptyQueryPlaceholder = empty,
-      listAriaLabel = 'searchable list',
-      searchFieldOptions = {},
-      listOptions = { columns: 1, childrenSpacing: 'md' },
-      listRef,
-    },
-    ref,
-  ) => {
+  ({
+    listItems,
+    NoResults = empty,
+    EmptyQueryPlaceholder = empty,
+    listAriaLabel = 'searchable list',
+    searchFieldOptions = {},
+    listOptions = { columns: 1, childrenSpacing: 'md' },
+    listRef,
+  }) => {
     const [searchState, setSearchState] = useState<{
       query: string;
       listItems: typeof listItems;
@@ -184,7 +181,6 @@ export const SearchableList = forwardRef<HTMLInputElement, Props>(
           placeholder={placeholder}
           autofocusOnDesktop={autofocusOnDesktop}
           autoComplete={autoComplete}
-          ref={ref}
         />
         {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
         {searchState.listItems.length > 0 ? (

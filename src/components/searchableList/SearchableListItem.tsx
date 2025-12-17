@@ -1,6 +1,11 @@
-import React, { ChangeEvent, FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
-import { Button, ButtonProps, List } from '@chakra-ui/react';
+import {
+  Button,
+  ButtonProps,
+  CheckboxCheckedChangeDetails,
+  List,
+} from '@chakra-ui/react';
 
 import { Checkbox, CheckboxProps } from '../checkbox';
 import { SearchableListItemLabel } from './SearchableListItemLabel';
@@ -24,7 +29,7 @@ type CommonProps = {
 };
 
 type CheckboxListItem = {
-  onClick: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClick: (details: CheckboxCheckedChangeDetails) => void;
   isCheckbox: true;
   isIndeterminate?: boolean;
 } & CommonListItem;
