@@ -8,6 +8,7 @@ export const durations = defineTokens.durations({
     value: '200ms',
   },
   slow: {
-    value: '1s',
+    value: '350ms',
   },
+  slower: { value: '1s' },
 });
