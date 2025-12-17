@@ -24,14 +24,12 @@ export const Chart: React.FC<Props> = ({ facets, range }) => {
       {facets.map(({ from }, index) => (
         <Box
           h="full"
-          style={{ marginInline: '1px' }}
+          style={{ marginInline: '1px', transition: 'transform 1s ease' }}
           flexGrow={1}
           key={from}
           bg={
             index < range[0] || index > range[1] - 1 ? 'gray.200' : 'gray.500'
           }
-          transitionProperty="common"
-          transitionDuration="slow"
           transformOrigin="bottom"
           transform={`scaleY(${
             maxValue > 0 ? facets[index].value / maxValue : 0
