@@ -34,7 +34,7 @@ export const TenantSelectionMenu: FC<Props> = ({
     >
       <MobileOnlyAccordionItem
         value="tenant-selection"
-        style={{ border: 'none' }}
+        style={{ borderTop: 'none', borderBottom: '1px solid #CFCFCF' }}
       >
         <MobileOnlyAccordionButton data-testid="tenant-selection-accordion-toggle">
           <SelectedTenantInfo selectedTenant={selectedTenant} />

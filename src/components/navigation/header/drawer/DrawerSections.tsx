@@ -48,8 +48,8 @@ export const CollapsibleSection: FC<{ node: NavigationLinkNode }> = ({
               {node.translationKey ? t(node.translationKey) : node.title}
             </Box>
           </MobileOnlyAccordionButton>
-          <MobileOnlyAccordionPanel>
-            <Box paddingTop={{ base: 'lg', md: '0' }} paddingBottom="0">
+          <MobileOnlyAccordionPanel pb="0">
+            <Box paddingTop={{ base: 'lg', md: '0' }}>
               <List.Root>
                 {node.items.map((item, index) => (
                   <DrawerNavigationLink item={item} key={index} />

@@ -76,7 +76,7 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
         gap="sm"
         color="gray.900"
       >
-        <Box as={Avatar} css={{ marginLeft: '2px' }} />
+        <Box as={Avatar} css={{ marginLeft: 'xxs' }} />
         <Box hideBelow="md" marginRight="xs">
           {t('header.login')}
         </Box>

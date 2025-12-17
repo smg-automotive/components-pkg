@@ -19,14 +19,13 @@ export const MobileHeaderMenuToggle: FC<Props> = ({
   });
 
   return (
-    <Box hideFrom="sm">
-      <Box
-        as="button"
-        onClick={mobileDrawerHandler}
-        color={isOpen ? 'blue.700' : 'gray.900'}
-      >
-        {isOpen ? <CloseIcon /> : <HamburgerMenuIcon />}
-      </Box>
+    <Box
+      hideFrom="sm"
+      as="button"
+      onClick={mobileDrawerHandler}
+      color={isOpen ? 'blue.700' : 'gray.900'}
+    >
+      {isOpen ? <CloseIcon /> : <HamburgerMenuIcon />}
     </Box>
   );
 };

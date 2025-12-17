@@ -13,7 +13,6 @@ export const animationStyles = defineAnimationStyles({
       animationName: ['scale-out', 'fade-out'],
     },
   },
-  // Remove unsupported 'slide-in-top' and 'slide-out-top', keeping valid 'fade-in'/'fade-out'.
   'slide-fade-in-top': {
     value: {
       animationName: ['fade-in'],
