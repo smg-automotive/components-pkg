@@ -63,7 +63,6 @@ export { FilterHeading } from './filterPatterns/Heading';
 export { OpenFilterButton } from './filterPatterns/modal/OpenFilterButton';
 export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
-export { default as QuestionWithFollowUp } from './radio/QuestionWithFollowUp';
 export { default as RangeFilterInput } from './rangeFilterInput';
 export { default as RangeSlider } from './rangeSlider';
 export { default as DiscreteSlider } from './discreteSlider';

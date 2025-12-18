@@ -17,7 +17,6 @@ export type Props = {
   label?: string;
   hint?: string;
   tooltip?: string;
-  recurring?: boolean;
 };
 
 const FormControlSection: FC<PropsWithChildren<Props>> = ({
@@ -27,17 +26,16 @@ const FormControlSection: FC<PropsWithChildren<Props>> = ({
   label,
   hint,
   tooltip,
-  recurring,
 }) => {
   const isInvalid = !!errorMessage;
 
   return (
     <ChakraFormControl id={id} isInvalid={isInvalid}>
       <Box
-        border={recurring ? 'none' : '1px solid'}
+        border="1px solid"
         borderRadius="sm"
         borderColor={isInvalid ? 'red.500' : 'gray.400'}
-        padding={recurring ? '0' : '2xl'}
+        padding="2xl"
       >
         <Flex flexDirection="column">
           <Box mb="lg">
