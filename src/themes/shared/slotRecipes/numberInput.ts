@@ -11,7 +11,9 @@ export const numberInputRecipe = defineSlotRecipe({
   ] as const,
 
   base: {
-    root: {},
+    root: {
+      position: 'relative',
+    },
     input: {
       w: 'full',
       minW: '0',

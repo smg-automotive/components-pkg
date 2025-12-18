@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+'use client';
 
-import RangeSlider from './';
+import React, { useRef } from 'react';
+
+import { RangeSlider } from '.';
 
 export type NumericMinMaxValue = {
   min: number | null | undefined;
@@ -47,15 +49,17 @@ interface RangeSliderWithScaleProps {
   renderChart?: (range: number[]) => React.ReactNode;
 }
 
-const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
+export const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
   scale,
   selection,
   onSliderChange,
   onSliderRelease,
   renderChart,
 }) => {
-  const [startRange, setStartRange] = useState<number[] | null>(null);
-  const sortedScale = scale.sort((a, b) => a - b);
+  // snapshot range at the start of interaction (first onChange)
+  const startRangeRef = useRef<number[] | null>(null);
+
+  const sortedScale = [...scale].sort((a, b) => a - b);
 
   const toIndex = (value: number) => {
     const closestValue = sortedScale.reduce((prev, curr) => {
@@ -66,13 +70,9 @@ const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
   };
 
   const toValue = (index: number) => {
-    if (index === sortedScale.length) {
-      return null;
-    }
-
+    if (index === sortedScale.length) return null;
     return sortedScale[index];
   };
-
   const toMinMax = (
     minIndex: number,
     maxIndex: number,
@@ -100,6 +100,7 @@ const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
   ): 'max' | 'min' | null => {
     const [initialMinIndex, initialMaxIndex] = initial;
     const [currentMinIndex, currentMaxIndex] = current;
+
     if (
       initialMinIndex === currentMinIndex &&
       initialMaxIndex === currentMaxIndex
@@ -110,16 +111,12 @@ const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
     return initialMinIndex !== currentMinIndex ? 'min' : 'max';
   };
 
-  const getChangeEvent = ([
-    newMinIndex,
-    newMaxIndex,
-  ]: number[]): ChangeCallback | null => {
-    const changedThumb = getChangedThumb(startRange || toRange(selection), [
-      newMinIndex,
-      newMaxIndex,
-    ]);
-
+  const getChangeEvent = (newValues: number[]): ChangeCallback | null => {
+    const baseline = startRangeRef.current ?? toRange(selection);
+    const changedThumb = getChangedThumb(baseline, newValues);
     if (!changedThumb) return null;
+
+    const [newMinIndex, newMaxIndex] = newValues;
 
     return {
       touched: changedThumb,
@@ -131,10 +128,33 @@ const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
     newValues: number[],
     callback: (event: ChangeCallback) => void,
   ) => {
+    // capture baseline once, at the first movement
+    if (!startRangeRef.current) {
+      startRangeRef.current = toRange(selection);
+    }
+
     const changeEvent = getChangeEvent(newValues);
     if (changeEvent) {
       callback(changeEvent);
     }
+  };
+
+  const handleChangeEnd = (
+    newValues: number[],
+    callback: (event: ChangeCallback) => void,
+  ) => {
+    // ensure baseline exists even if Chakra only fires changeEnd in some cases
+    if (!startRangeRef.current) {
+      startRangeRef.current = toRange(selection);
+    }
+
+    const changeEvent = getChangeEvent(newValues);
+    if (changeEvent) {
+      callback(changeEvent);
+    }
+
+    // reset baseline after interaction
+    startRangeRef.current = null;
   };
 
   return (
@@ -145,19 +165,16 @@ const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
         step={1}
         min={0}
         max={sortedScale.length}
-        onChange={(newValues) => handleChange(newValues, onSliderChange)}
-        onChangeEnd={(newValues) => {
-          const callback = (event: ChangeCallback) => {
-            onSliderRelease(event);
-            setStartRange(newValues);
-          };
-          handleChange(newValues, callback);
-        }}
-        onChangeStart={setStartRange}
         value={toRange(selection)}
+        onChange={(newValues: number[]) =>
+          handleChange(newValues, onSliderChange)
+        }
+        onChangeEnd={(newValues: number[]) =>
+          handleChangeEnd(newValues, (event) => {
+            onSliderRelease(event);
+          })
+        }
       />
     </>
   );
 };
-
-export default RangeSliderWithScale;
