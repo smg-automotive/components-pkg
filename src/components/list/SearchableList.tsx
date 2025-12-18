@@ -1,12 +1,12 @@
-import React, { FC, forwardRef, useCallback, useEffect, useState } from 'react';
-
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import Fuse, { FuseResult } from 'fuse.js';
-
-import { List } from '@chakra-ui/react';
 
 import { SearchField, SearchFieldOptions } from '../input/SearchField';
 import { Flex } from '../flex';
+
 import { ListItemType, SearchableListItem } from './SearchableListItem';
+
+import { List } from './index';
 
 export type ListItemWithChildren = ListItemType & {
   children?: ListItemType[];
@@ -93,138 +93,136 @@ const getFuseInstance = (listItems: ListItemWithChildren[]) => {
   return new Fuse(listItems, fuseOptions) as unknown as FuseSearch;
 };
 
-export const SearchableList = forwardRef<HTMLInputElement, Props>(
-  ({
+export const SearchableList: FC<Props> = ({
+  listItems,
+  NoResults = empty,
+  EmptyQueryPlaceholder = empty,
+  listAriaLabel = 'searchable list',
+  searchFieldOptions = {},
+  listOptions = { columns: 1, childrenSpacing: 'md' },
+  listRef,
+}) => {
+  const [searchState, setSearchState] = useState<{
+    query: string;
+    listItems: typeof listItems;
+    fullListItems: typeof listItems;
+    fuse: FuseSearch;
+  }>({
+    query: '',
     listItems,
-    NoResults = empty,
-    EmptyQueryPlaceholder = empty,
-    listAriaLabel = 'searchable list',
-    searchFieldOptions = {},
-    listOptions = { columns: 1, childrenSpacing: 'md' },
-    listRef,
-  }) => {
-    const [searchState, setSearchState] = useState<{
-      query: string;
-      listItems: typeof listItems;
-      fullListItems: typeof listItems;
-      fuse: FuseSearch;
-    }>({
-      query: '',
-      listItems,
-      fullListItems: [...listItems],
-      fuse: getFuseInstance(listItems),
-    });
-    const {
-      placeholder = '',
-      autofocusOnDesktop = true,
-      autoComplete,
-    } = searchFieldOptions;
-    const { columns = 1, childrenSpacing = 'md' } = listOptions;
-    const areaId = 'searchableList';
-    const { query } = searchState;
+    fullListItems: [...listItems],
+    fuse: getFuseInstance(listItems),
+  });
+  const {
+    placeholder = '',
+    autofocusOnDesktop = true,
+    autoComplete,
+  } = searchFieldOptions;
+  const { columns = 1, childrenSpacing = 'md' } = listOptions;
+  const areaId = 'searchableList';
+  const { query } = searchState;
 
-    useEffect(() => {
-      setSearchState((currentState) => {
-        const fuse = getFuseInstance(listItems);
-        if (currentState.query === '') {
-          return {
-            listItems,
-            fullListItems: [...listItems],
-            fuse,
-            query: currentState.query,
-          };
-        }
-
-        const searchResults = search({ fuse, query: currentState.query });
-        const filteredListItems = mapItemsFromSearchResult(searchResults);
+  useEffect(() => {
+    setSearchState((currentState) => {
+      const fuse = getFuseInstance(listItems);
+      if (currentState.query === '') {
         return {
-          listItems: filteredListItems,
+          listItems,
+          fullListItems: [...listItems],
           fuse,
           query: currentState.query,
-          fullListItems: [...listItems],
         };
-      });
-    }, [listItems]);
+      }
 
-    const setSearchQuery = useCallback((newQuery: string) => {
-      setSearchState((currentState) => {
-        const trimmedQuery = newQuery.trim();
+      const searchResults = search({ fuse, query: currentState.query });
+      const filteredListItems = mapItemsFromSearchResult(searchResults);
+      return {
+        listItems: filteredListItems,
+        fuse,
+        query: currentState.query,
+        fullListItems: [...listItems],
+      };
+    });
+  }, [listItems]);
 
-        if (!trimmedQuery) {
-          return {
-            ...currentState,
-            listItems: currentState.fullListItems,
-            query: trimmedQuery,
-          };
-        }
+  const setSearchQuery = useCallback((newQuery: string) => {
+    setSearchState((currentState) => {
+      const trimmedQuery = newQuery.trim();
 
-        const searchResults = search({
-          fuse: currentState.fuse,
-          query: trimmedQuery,
-        });
-        const filteredListItems = mapItemsFromSearchResult(searchResults);
+      if (!trimmedQuery) {
         return {
           ...currentState,
-          listItems: filteredListItems,
+          listItems: currentState.fullListItems,
           query: trimmedQuery,
         };
+      }
+
+      const searchResults = search({
+        fuse: currentState.fuse,
+        query: trimmedQuery,
       });
-    }, []);
+      const filteredListItems = mapItemsFromSearchResult(searchResults);
+      return {
+        ...currentState,
+        listItems: filteredListItems,
+        query: trimmedQuery,
+      };
+    });
+  }, []);
 
-    return (
-      <Flex gridGap="md" direction="column" width="full">
-        <SearchField
-          name="searchableListSearchFiled"
-          searchQuery={query}
-          setSearchQuery={setSearchQuery}
-          ariaControls={areaId}
-          placeholder={placeholder}
-          autofocusOnDesktop={autofocusOnDesktop}
-          autoComplete={autoComplete}
-        />
-        {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
-        {searchState.listItems.length > 0 ? (
-          <List.Root
-            ref={listRef}
-            width="full"
-            height="full"
-            id={areaId}
-            aria-live="polite"
-            css={{
-              columns: { base: 1, md: columns },
-              columnGap: '4xl',
-              columnRule: '1px solid #CFCFCF',
-            }}
-            aria-label={listAriaLabel}
-          >
-            {searchState.listItems.map((item, itemIndex) => {
-              const parentKey = `${itemIndex}-${item.value}`;
-              const children = item.children || [];
+  return (
+    <Flex gridGap="md" direction="column" width="full">
+      <SearchField
+        name="searchableListSearchFiled"
+        searchQuery={query}
+        setSearchQuery={setSearchQuery}
+        ariaControls={areaId}
+        placeholder={placeholder}
+        autofocusOnDesktop={autofocusOnDesktop}
+        autoComplete={autoComplete}
+      />
+      {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
+      {searchState.listItems.length > 0 ? (
+        <List.Root
+          ref={listRef}
+          width="full"
+          height="full"
+          id={areaId}
+          aria-live="polite"
+          css={{
+            columns: { base: 1, md: columns },
+            columnGap: '4xl',
+            columnRule: '1px solid #CFCFCF',
+          }}
+          aria-label={listAriaLabel}
+        >
+          {searchState.listItems.map((item, itemIndex) => {
+            const parentKey = `${itemIndex}-${item.value}`;
+            const children = item.children || [];
 
-              return (
-                <SearchableListItem {...item} key={parentKey}>
-                  {children.length > 0 ? (
-                    <List.Root width="full">
-                      {children.map((child, childIndex) => {
-                        const childKey = `${childIndex}-${child.value}`;
-                        return (
-                          <SearchableListItem
-                            {...child}
-                            key={childKey}
-                            paddingLeft={childrenSpacing}
-                          />
-                        );
-                      })}
-                    </List.Root>
-                  ) : null}
-                </SearchableListItem>
-              );
-            })}
-          </List.Root>
-        ) : (
-          <NoResults />
-        )}
-      </Flex>
-    );
-  },
-);
+            return (
+              <SearchableListItem {...item} key={parentKey}>
+                {children.length > 0 ? (
+                  <List.Root width="full">
+                    {children.map((child, childIndex) => {
+                      const childKey = `${childIndex}-${child.value}`;
+                      return (
+                        <SearchableListItem
+                          {...child}
+                          key={childKey}
+                          paddingLeft={childrenSpacing}
+                        />
+                      );
+                    })}
+                  </List.Root>
+                ) : null}
+              </SearchableListItem>
+            );
+          })}
+        </List.Root>
+      ) : (
+        <NoResults />
+      )}
+    </Flex>
+  );
+};
