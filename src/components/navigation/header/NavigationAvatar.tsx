@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import Text from 'src/components/text';
 import Hide from 'src/components/hide';
 import Box from 'src/components/box';

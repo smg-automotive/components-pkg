@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useI18n } from '@smg-automotive/i18n-pkg';
-
 import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
+
+import { useI18n } from 'src/utilities/i18nInit';
 
 import { ChevronDownSmallIcon } from '../icons';
 import { Item, Props } from './type';

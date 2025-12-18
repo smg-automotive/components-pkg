@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import { chakra } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { CompareIcon } from 'src/components/icons';
 import Count from 'src/components/count';
 import Box from 'src/components/box';
