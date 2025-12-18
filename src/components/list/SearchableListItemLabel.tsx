@@ -4,7 +4,6 @@ import { Text } from '../text/index';
 import { HighlightedText } from '../text/HighlightedText';
 import { CheckmarkIcon, ChevronRightSmallIcon } from '../icons/index';
 import { Flex } from '../flex/index';
-
 import { ListItemType } from './SearchableListItem';
 
 type LabelProps = Pick<
@@ -32,6 +31,7 @@ export const SearchableListItemLabel: FC<LabelProps> = ({
       whiteSpace="pre-wrap"
       fontWeight={isSelected && !isCheckbox ? 'bold' : undefined}
       color="gray.900"
+      cursor="pointer"
     >
       <Flex>
         {isSelected && !isCheckbox ? (
@@ -48,9 +48,9 @@ export const SearchableListItemLabel: FC<LabelProps> = ({
           <Text
             as="span"
             color="gray.400"
-            mr={showChevron ? 'lg' : undefined}
+            mr={showChevron ? 'lg' : 0}
             ml="sm"
-            css={{ minWidth: '6ch' }}
+            minW="6ch"
             textAlign="right"
             fontWeight="regular"
           >
