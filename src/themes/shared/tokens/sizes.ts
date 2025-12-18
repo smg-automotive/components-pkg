@@ -16,6 +16,7 @@ export const sizes = defineTokens.sizes({
   '6xl': { value: '20rem' },
   '7xl': { value: '30rem' },
   '8xl': { value: '45rem' },
+  half: { value: '50%' },
   full: { value: '100%' },
   fit: { value: 'fit-content' },
   container: {

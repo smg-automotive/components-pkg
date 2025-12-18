@@ -13,4 +13,14 @@ export const animationStyles = defineAnimationStyles({
       animationName: ['scale-out', 'fade-out'],
     },
   },
+  'slide-fade-in-top': {
+    value: {
+      animationName: ['fade-in'],
+    },
+  },
+  'slide-fade-out-top': {
+    value: {
+      animationName: ['fade-out'],
+    },
+  },
 });

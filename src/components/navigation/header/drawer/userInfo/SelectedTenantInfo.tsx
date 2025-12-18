@@ -1,0 +1,35 @@
+import React, { FC } from 'react';
+import type { EnrichedSessionUser } from '@smg-automotive/auth';
+
+import { Stack } from 'src/components/stack';
+import { GarageIcon } from 'src/components/icons';
+import { Box } from 'src/components/box';
+
+type ManagedSeller = EnrichedSessionUser['managedSellers'][number];
+
+type Props = {
+  selectedTenant: ManagedSeller;
+};
+
+export const SelectedTenantInfo: FC<Props> = ({ selectedTenant }) => (
+  <Stack direction="row">
+    <GarageIcon />
+    <Stack
+      direction={{
+        base: 'column',
+        sm: 'row',
+      }}
+      gap={{
+        base: '0',
+        sm: 'sm',
+      }}
+    >
+      <Box as="span" textStyle="body" fontWeight="bold">
+        {selectedTenant.billingName || selectedTenant.id}
+      </Box>
+      <Box as="span" textStyle="body">
+        {selectedTenant.billingZipCode} {selectedTenant.billingCity}
+      </Box>
+    </Stack>
+  </Stack>
+);
