@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useDebouncedCallback } from 'use-debounce';
+import React, { useEffect, useState } from 'react';
 import {
   NumberInput,
   RecipeVariantProps,
@@ -9,7 +12,7 @@ import { numberInputRecipe } from 'src/themes/shared/slotRecipes/numberInput';
 
 import { InputLeftElement } from './InputLeftElement';
 
-import {
+import type {
   ChangeCallback,
   PickedNumberInputProps,
   RangeFilterInputField,
@@ -24,6 +27,12 @@ type InputGroupProps<Name extends string> = NumberInputVariantProps & {
   unit?: string;
 } & PickedNumberInputProps;
 
+const parseToNumberOrUndef = (raw: string) => {
+  if (raw.trim() === '') return undefined;
+  const n = Number(raw);
+  return Number.isNaN(n) ? undefined : n;
+};
+
 export const InputGroup = <Name extends string>({
   handleChange,
   inputProps,
@@ -31,36 +40,66 @@ export const InputGroup = <Name extends string>({
   unit,
   ...rest
 }: InputGroupProps<Name>) => {
-  const [refocus, setRefocus] = useState(false);
-
   const recipe = useSlotRecipe({ key: 'numberInput' });
-
   const [recipeProps, restProps] = recipe.splitVariantProps(rest);
-
   const styles = recipe(recipeProps);
+
+  /**
+   * Local string state that represents exactly what the user typed.
+   *
+   * Why string:
+   * - Allows intermediate values ("1" → "10" → "100")
+   * - Prevents cursor jumps and unstable behavior
+   * - Most stable approach with Chakra v3 NumberInput
+   */
+  const [raw, setRaw] = useState(
+    inputProps.value != null ? String(inputProps.value) : '',
+  );
+
+  /**
+   * Sync external value changes (e.g. slider moved) back into the input.
+   * Without this, the input would display stale values.
+   */
+
+  useEffect(() => {
+    setRaw(inputProps.value != null ? String(inputProps.value) : '');
+  }, [inputProps.value]);
+
+  /**
+   * Debounced emit PER INPUT (important!)
+   *
+   * Why per-input debounce:
+   * - Shared debounce caused race conditions between FROM / TO inputs
+   * - Each input must control its own timing
+   *
+   */
+  const debouncedEmit = useDebouncedCallback((nextRaw: string) => {
+    handleChange({
+      name: inputProps.name,
+      value: parseToNumberOrUndef(nextRaw),
+    });
+  }, 1000);
 
   return (
     <NumberInput.Root
-      key={`${inputProps.name}-${inputProps.value}`}
       css={styles.root}
       width="full"
-      defaultValue={
-        inputProps.value != null ? String(inputProps.value) : undefined
-      }
-      onValueChange={({ valueAsNumber }) =>
-        handleChange({
-          value: valueAsNumber || undefined,
-          name: inputProps.name,
-        })
-      }
-      onBlur={(event) => {
-        onBlur?.({
-          value: Number((event.target as HTMLInputElement).value) || undefined,
-          name: inputProps.name,
-        });
-        setRefocus(false);
+      // Update local string immediately
+      value={raw}
+      onValueChange={({ value }) => {
+        setRaw(value);
+        debouncedEmit(value);
       }}
-      onFocus={() => setRefocus(true)}
+      /**
+       * On blur we emit immediately as a safety net,
+       * ensuring the final value is always propagated.
+       */
+      onBlur={() => {
+        onBlur?.({
+          name: inputProps.name,
+          value: parseToNumberOrUndef(raw),
+        });
+      }}
       {...restProps}
     >
       {unit ? <InputLeftElement unit={unit} /> : null}
@@ -68,7 +107,6 @@ export const InputGroup = <Name extends string>({
       <NumberInput.Input
         css={styles.input}
         placeholder={inputProps.placeholder ?? ''}
-        autoFocus={refocus}
         aria-label={inputProps.ariaLabel}
         fontSize="base"
       />

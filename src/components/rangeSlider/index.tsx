@@ -1,10 +1,14 @@
+'use client';
+
 import React from 'react';
 import { Slider } from '@chakra-ui/react';
 
-export type RangeSliderProps = {
-  min?: number;
-  max?: number;
-  defaultValue?: [number, number];
+type SliderRootProps = Omit<
+  React.ComponentProps<typeof Slider.Root>,
+  'onChange'
+>;
+
+export type RangeSliderProps = SliderRootProps & {
   onChange?: (values: number[]) => void;
   onChangeEnd?: (values: number[]) => void;
 };
@@ -29,8 +33,18 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb index={0} aria-label="Minimum value" />
-        <Slider.Thumb index={1} aria-label="Maximum value" />
+        <Slider.Thumb
+          index={0}
+          aria-label="Min"
+          width={{ base: 'md', sm: 'sm' }}
+          height={{ base: 'md', sm: 'sm' }}
+        />
+        <Slider.Thumb
+          index={1}
+          aria-label="Max"
+          width={{ base: 'md', sm: 'sm' }}
+          height={{ base: 'md', sm: 'sm' }}
+        />
       </Slider.Control>
     </Slider.Root>
   );

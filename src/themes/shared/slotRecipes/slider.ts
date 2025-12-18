@@ -39,7 +39,7 @@ export const sliderSlotRecipe = defineSlotRecipe({
       borderWidth: 'var(--slider-thumb-border)',
       borderColor: 'gray.400',
       backgroundColor: 'white',
-      translate: '0 -40%',
+      translate: '0 -50%',
       _hover: {
         cursor: 'pointer',
       },
