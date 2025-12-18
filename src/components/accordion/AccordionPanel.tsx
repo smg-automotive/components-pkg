@@ -19,11 +19,14 @@ export const AccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
   const styles = recipe({ ...recipeProps });
 
-  const { children, ...rest } = restProps;
+  const { children, pb, ...rest } = restProps;
 
   return (
     <ChakraAccordion.ItemContent css={styles.content}>
-      <ChakraAccordion.ItemBody {...rest} css={styles.body}>
+      <ChakraAccordion.ItemBody
+        {...rest}
+        css={{ ...styles.body, ...(pb !== undefined && { pb }) }}
+      >
         {children}
       </ChakraAccordion.ItemBody>
     </ChakraAccordion.ItemContent>

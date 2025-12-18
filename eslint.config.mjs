@@ -11,6 +11,8 @@ export default [
       '!/jest-utils',
       '!.prettierrc.mjs',
       '/coverage',
+      'dist/',
+      'storybook-static/',
       'src-v2/',
       'src/components/ui/**/*',
       'theme/',

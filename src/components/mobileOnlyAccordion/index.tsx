@@ -11,7 +11,10 @@ import { Accordion } from '../accordion';
 export type MobileOnlyAccordionProps = RecipeVariantProps<
   typeof accordionRecipe
 > &
-  Pick<ChakraAccordion.RootProps, 'multiple' | 'collapsible'>;
+  Pick<
+    ChakraAccordion.RootProps,
+    'multiple' | 'collapsible' | 'value' | 'onValueChange'
+  >;
 
 export const MobileOnlyAccordion: FC<
   PropsWithChildren<MobileOnlyAccordionProps>

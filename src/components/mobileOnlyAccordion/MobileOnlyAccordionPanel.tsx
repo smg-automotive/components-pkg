@@ -13,13 +13,7 @@ export const MobileOnlyAccordionPanel: FC<
 
   return (
     <>
-      <Box
-        hideBelow="md"
-        textStyle="body-small"
-        pb="md"
-        paddingX="lg"
-        {...rest}
-      >
+      <Box hideBelow="md" textStyle="body-small" paddingX="lg" {...rest}>
         {children}
       </Box>
       <Box hideFrom="md">
