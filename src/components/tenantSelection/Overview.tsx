@@ -3,9 +3,9 @@ import { useI18n } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Image } from '@chakra-ui/react';
 
-import Text from '../text';
+import { Text } from '../text';
 import { H1 } from '../heading';
-import Button from '../button';
+import { Button } from '../button';
 
 import tenantImage from './tenantSelectionIllustration.png';
 import { TenantSelectionModalLayout } from './ModalLayout';
@@ -46,8 +46,8 @@ export const TenantSelectionOverview: FunctionComponent<Props> = ({
       <Image
         src={tenantImage}
         alt="tenant selection illustration"
-        width="120px"
-        height="120px"
+        width="3xl"
+        height="3xl"
         loading="lazy"
       />
       <H1 textStyle="heading3">{t('auth.tenantSelection.title')}</H1>
@@ -64,7 +64,7 @@ export const TenantSelectionOverview: FunctionComponent<Props> = ({
         {getSelectButtonLabel()}
       </Button>
       <Button
-        isDisabled={!tenantSelection.selectedTenant}
+        disabled={!tenantSelection.selectedTenant}
         onClick={() => {
           if (!tenantSelection.selectedTenant) return;
           selectTenant(tenantSelection.selectedTenant);

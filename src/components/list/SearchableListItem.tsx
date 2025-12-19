@@ -1,9 +1,12 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
-import { Button, CheckboxCheckedChangeDetails } from '@chakra-ui/react';
+import {
+  Button,
+  CheckboxCheckedChangeDetails,
+  ConditionalValue,
+} from '@chakra-ui/react';
 
 import { Checkbox, CheckboxProps } from '../checkbox';
-
 import { SearchableListItemLabel } from './SearchableListItemLabel';
 
 import { List } from './index';
@@ -16,6 +19,7 @@ type CommonListItem = {
   showChevron?: boolean;
   highlightIndices?: readonly RangeTuple[];
   isCheckbox?: boolean;
+  paddingLeft?: ConditionalValue<'md' | '2xl'>;
 };
 
 type CommonProps = {
@@ -84,7 +88,7 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
   };
 
   return (
-    <List.Item css={{ breakInside: 'avoid' }}>
+    <List.Item css={{ breakInside: 'avoid' }} paddingLeft={props.paddingLeft}>
       {isCheckbox ? (
         <Checkbox {...checkboxProps} />
       ) : (
@@ -97,10 +101,6 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
           width="full"
           display="flex"
           paddingX="0"
-          css={{
-            background: 'transparent',
-            _hover: { background: 'gray.100' },
-          }}
         >
           <SearchableListItemLabel {...labelProps} />
         </Button>

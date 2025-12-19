@@ -22,11 +22,6 @@ export { default as GridItem } from './grid/GridItem';
 export { default as Hide } from './hide';
 export { default as Input } from './input';
 export { default as Link } from './link';
-export { default as List } from './list';
-export { default as OrderedList } from './list/OrderedList';
-export { default as UnorderedList } from './list/UnorderedList';
-export { default as ListItem } from './list/ListItem';
-export { SearchableList, ListItemWithChildren } from './list/SearchableList';
 export { default as MissingImage } from './missingImage';
 export { default as Pagination } from './pagination';
 export { default as Popover } from './popover';
@@ -72,8 +67,3 @@ export * from './icons';
 export * from './layout';
 export * from './table';
 export * from './carousel';
-
-export {
-  default as TenantSelection,
-  TenantSelectionProps,
-} from './tenantSelection';
