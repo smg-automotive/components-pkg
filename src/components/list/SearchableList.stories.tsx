@@ -11,8 +11,8 @@ const meta: Meta<typeof SearchableList> = {
 
   decorators: [
     (Story) => (
-      <Box maxW="7xl" height="6xl" overflow="hidden">
-        <Box maxW="7xl" height="full" overflow="auto" padding="lg">
+      <Box maxW="6xl" height="6xl" overflow="hidden">
+        <Box maxW="6xl" height="full" overflow="auto" padding="lg">
           <Story />
         </Box>
       </Box>

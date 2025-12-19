@@ -101,10 +101,6 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
           width="full"
           display="flex"
           paddingX="0"
-          css={{
-            background: 'transparent',
-            _hover: { background: 'gray.100' },
-          }}
         >
           <SearchableListItemLabel {...labelProps} />
         </Button>
