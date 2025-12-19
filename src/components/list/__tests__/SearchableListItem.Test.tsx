@@ -22,9 +22,7 @@ describe('<SearchableListItem />', () => {
 
     const highlight = screen.getByText('I am');
     expect(highlight).toHaveStyle('text-decoration: underline');
-    expect(highlight).toHaveStyle(
-      'font-weight: var(--chakra-fontWeights-bold)',
-    );
+    expect(highlight).toHaveStyle('var(--as24-font-weights-bold)');
     expect(screen.getByText('label')).not.toHaveStyle(
       'text-decoration: underline',
     );
