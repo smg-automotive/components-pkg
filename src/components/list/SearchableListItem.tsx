@@ -1,6 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
-import { Button, CheckboxCheckedChangeDetails } from '@chakra-ui/react';
+import {
+  Button,
+  CheckboxCheckedChangeDetails,
+  ConditionalValue,
+} from '@chakra-ui/react';
 
 import { Checkbox, CheckboxProps } from '../checkbox';
 import { SearchableListItemLabel } from './SearchableListItemLabel';
@@ -15,7 +19,7 @@ type CommonListItem = {
   showChevron?: boolean;
   highlightIndices?: readonly RangeTuple[];
   isCheckbox?: boolean;
-  paddingLeft?: string;
+  paddingLeft?: ConditionalValue<'md' | 'lg' | 'full'>;
 };
 
 type CommonProps = {

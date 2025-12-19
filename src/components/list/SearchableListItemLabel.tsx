@@ -48,9 +48,9 @@ export const SearchableListItemLabel: FC<LabelProps> = ({
           <Text
             as="span"
             color="gray.400"
-            mr={showChevron ? 'lg' : 0}
+            mr={showChevron ? 'lg' : undefined}
             ml="sm"
-            minW="6ch"
+            minW="lg"
             textAlign="right"
             fontWeight="regular"
           >

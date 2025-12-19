@@ -46,8 +46,8 @@ export const TenantSelectionOverview: FunctionComponent<Props> = ({
       <Image
         src={tenantImage}
         alt="tenant selection illustration"
-        width="120px"
-        height="120px"
+        width="3xl"
+        height="3xl"
         loading="lazy"
       />
       <H1 textStyle="heading3">{t('auth.tenantSelection.title')}</H1>
