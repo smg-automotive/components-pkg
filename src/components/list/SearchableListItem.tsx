@@ -19,7 +19,7 @@ type CommonListItem = {
   showChevron?: boolean;
   highlightIndices?: readonly RangeTuple[];
   isCheckbox?: boolean;
-  paddingLeft?: ConditionalValue<'md' | 'lg' | 'full'>;
+  paddingLeft?: ConditionalValue<'md' | '2xl'>;
 };
 
 type CommonProps = {
