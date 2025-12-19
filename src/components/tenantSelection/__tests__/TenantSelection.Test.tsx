@@ -4,7 +4,7 @@ import { multiTenantUser } from '@smg-automotive/auth/fixtures';
 
 import { render, screen, waitFor } from 'jest-utils';
 
-import TenantSelection, { TenantSelectionProps } from '..';
+import { TenantSelection, TenantSelectionProps } from '..';
 
 const renderWrapper = ({
   user,

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { multiTenantUser } from '@smg-automotive/auth/fixtures';
 
-import TenantSelection from './index';
+import { TenantSelection } from './index';
 
 const meta: Meta<typeof TenantSelection> = {
   title: 'Auth/TenantSelection',
