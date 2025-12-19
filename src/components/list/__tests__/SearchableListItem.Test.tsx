@@ -64,7 +64,7 @@ describe('<SearchableListItem />', () => {
       </List.Root>,
     );
     expect(
-      screen.getByRole('button', { name: /Checkmark icon I am label/ }),
+      screen.getByRole('button', { name: 'I am label 30' }),
     ).toBeInTheDocument();
   });
 });
