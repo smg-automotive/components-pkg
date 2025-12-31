@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
+
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';

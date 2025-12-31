@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { Box, Field } from '@chakra-ui/react';
 
 import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import { Button } from '../index';

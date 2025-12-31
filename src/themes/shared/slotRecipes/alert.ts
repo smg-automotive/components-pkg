@@ -66,5 +66,24 @@ export const alertRecipe = defineSlotRecipe({
         },
       },
     },
+    variant: {
+      toast: {
+        root: {
+          translate: 'var(--x) var(--y)',
+          scale: 'var(--scale)',
+          width: 'full',
+          position: 'relative',
+          zIndex: 'var(--z-index)',
+          height: 'var(--height)',
+          opacity: 'var(--opacity)',
+          willChange: 'translate, opacity, scale',
+          transitionProperty: 'common',
+          transitionDuration: 'normal',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'toast',
   },
 });

@@ -1,12 +1,22 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ErrorIcon } from '../index';
-import useToast, { ToastOptions } from './UseToast';
+import { TopToast } from 'src/hooks/useToast/TopToaster';
+import { TopRightToast } from 'src/hooks/useToast/TopRightToast';
+import { Button, ErrorIcon } from 'src/components';
+
+import { ToastOptions, useToast } from './index';
 
 const Template = (args: ToastOptions) => {
   const toast = useToast();
-  return <Button onClick={() => toast(args)}>Show Toast</Button>;
+
+  return (
+    <>
+      <Button onClick={() => toast(args)}>Show Toast</Button>
+      <TopRightToast />
+      <TopToast />
+    </>
+  );
 };
 
 const meta: Meta<typeof useToast> = {
@@ -27,14 +37,7 @@ const meta: Meta<typeof useToast> = {
     },
 
     position: {
-      options: [
-        'bottom',
-        'top',
-        'top-left',
-        'top-right',
-        'bottom-left',
-        'bottom-right',
-      ],
+      options: ['top', 'top-right'],
       control: 'select',
     },
 

@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
+
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
 import { ErrorIcon } from '../index';
