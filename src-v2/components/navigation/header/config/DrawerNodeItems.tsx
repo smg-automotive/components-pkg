@@ -39,7 +39,6 @@ import {
   simpleSearchLinkConfig,
 } from './search';
 import { printCenterLinkConfig } from './print';
-import { printableVehiclesListLinkConfig } from './print';
 import {
   businessImageLinkConfig,
   contactDetailsLinkConfig,
@@ -51,6 +50,7 @@ import {
 import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerLinkConfig } from './Optimizer';
 
+import { marketPriceCheckLinkConfig } from './marketPriceCheckConfig';
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
@@ -64,13 +64,11 @@ import {
   getProfessionalAutoScoutInsuranceComparisonLinkConfig,
 } from './insuranceComparison';
 import { infoPortalLinkConfig } from './infoPortal';
-import { importInfoLinkConfig } from './importInfo';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';
 import { hciLinkConfig } from './hci';
 import { estimateLinkConfig } from './estimate';
 import { electromobilityLinkConfig } from './electroMobility';
-import { dmsLogLinkConfig } from './dmsLog';
 import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
 import { autoRadarLinkConfig } from './AutoRadar';
@@ -125,7 +123,6 @@ const getUserNodeItems = ({
       motoScoutVehiclesLinkConfig,
       optimizerLinkConfig,
       cockpitLinkConfig,
-      printableVehiclesListLinkConfig,
       carParkLinkConfig,
       motorcycleParkLinkConfig,
     ],
@@ -165,6 +162,7 @@ const getUserNodeItems = ({
         eventLabel: 'drawer-user',
       }),
       autoRadarLinkConfig,
+      marketPriceCheckLinkConfig,
     ],
   },
   {
@@ -188,8 +186,6 @@ const getUserNodeItems = ({
       qualilogoLinkConfig,
       autoRadarLinkConfig,
       hciLinkConfig,
-      importInfoLinkConfig,
-      dmsLogLinkConfig,
       infoPortalLinkConfig,
     ],
   },

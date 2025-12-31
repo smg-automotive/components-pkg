@@ -57,7 +57,8 @@
   },
   "filterSelectButton": {
     "close": "Fermer",
-    "reset": "Réinitialiser"
+    "reset": "Réinitialiser",
+    "resetButtonAriaLabel": "Réinitialiser le filtre {{label}}"
   },
   "footer": {
     "apps": {
@@ -166,11 +167,9 @@
       "contactDetails": "Informations de contact",
       "contactRequests": "Demandes de contact",
       "createAd": "Créer une annonce",
-      "dmsLog": "DmsLog",
       "editPhotobar": "Modifier la Photobar",
       "editUser": "Liste des membres",
       "hci": "HCI",
-      "importInfo": "ImportInfo",
       "infoPage": "InfoPage",
       "infoPortal": "InfoPortal",
       "insuranceComparison": "Comparaison d’assurances",
@@ -178,6 +177,7 @@
       "manageAdditionalTitles": "Gérer titre complémentaire",
       "manageNotes": "Gérer les remarques",
       "manageVehicles": "Gestion de mes véhicules",
+      "marketPriceCheck": "MarketPriceCheck",
       "motorcyclePark": "Parc de motos",
       "myMotorcycles": "Mes motos",
       "myVehicles": "Mes véhicules",
@@ -186,7 +186,6 @@
       "optimizer": "OptimizerBasic",
       "optimizerPro": "OptimizerPro",
       "partnerHub": "PartnerHub",
-      "printableList": "Liste Imprimable",
       "printingCenter": "Centre d'impression",
       "qualityLogo": "Sigle de qualité",
       "requisitions": "Profil de recherche",

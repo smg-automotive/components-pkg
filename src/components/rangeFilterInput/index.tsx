@@ -1,6 +1,5 @@
 'use client';
 
-import { useDebouncedCallback } from 'use-debounce';
 import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import { NumberInput } from '@chakra-ui/react';
@@ -18,6 +17,7 @@ export type ChangeCallback<Name> = {
   value?: number | null;
   name: Name;
 };
+
 export type PickedNumberInputProps = Pick<
   React.ComponentProps<typeof NumberInput.Root>,
   'min' | 'max' | 'disabled' | 'onFocus'
@@ -42,14 +42,12 @@ export const RangeFilterInput = <
   onBlur,
   ...rest
 }: RangeFilterInputProps<NameFrom, NameTo>) => {
-  const handleChangeDebounced = useDebouncedCallback(handleChange, 1000);
-
   return (
     <Flex>
       <InputGroup
         inputProps={from}
         variant="inputLeft"
-        handleChange={handleChangeDebounced}
+        handleChange={handleChange}
         onBlur={onBlur}
         unit={unit}
         {...rest}
@@ -58,7 +56,7 @@ export const RangeFilterInput = <
       <InputGroup
         inputProps={to}
         variant="inputRight"
-        handleChange={handleChangeDebounced}
+        handleChange={handleChange}
         onBlur={onBlur}
         unit={unit}
         {...rest}

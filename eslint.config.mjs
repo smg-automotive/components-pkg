@@ -11,6 +11,8 @@ export default [
       '!/jest-utils',
       '!.prettierrc.mjs',
       '/coverage',
+      'dist/',
+      'storybook-static/',
       'src-v2/',
       'src/components/ui/**/*',
       'theme/',
@@ -24,6 +26,18 @@ export default [
         ...globals.browser,
         ...globals.jest,
         ...globals.es2021,
+      },
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          moduleDirectory: ['node_modules', '.'],
+        },
       },
     },
     rules: {

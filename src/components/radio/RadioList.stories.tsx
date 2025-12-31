@@ -52,7 +52,7 @@ export const Overview: StoryType = {
 export const WithDefaultValue: StoryType = {
   name: 'With default value',
   args: {
-    name: 'radio-list-wit-value',
+    name: 'radio-list-with-value',
     defaultValue: 'two',
   },
   render: (args) => <RadioList {...args} options={buildOptions()} />,

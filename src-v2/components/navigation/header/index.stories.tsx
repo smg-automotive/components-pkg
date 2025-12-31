@@ -134,7 +134,6 @@ export const ProfessionalWithoutOptimizer: StoryType = {
       email: 'engineering@smg.ch',
       email_verified: true,
       sub: 'auth0|648ac71d25762',
-      sid: 'W8AtOcvp83mNWbjV',
       isImpersonated: false,
       userId: '1001',
       forceTenantSelection: false,
@@ -153,7 +152,6 @@ export const ProfessionalWithOptimizerPro: StoryType = {
       email: 'engineering@smg.ch',
       email_verified: true,
       sub: 'auth0|648ac71d257338d',
-      sid: 'W8AtOpp83mNWbjV',
       isImpersonated: false,
       userId: '1001',
       forceTenantSelection: false,
@@ -180,7 +178,6 @@ export const ProfessionalWithOptimizerBasic: StoryType = {
       email: 'engineering@smg.ch',
       email_verified: true,
       sub: 'auth0|648a338d',
-      sid: 'W8AtOcv69YRmNWbjV',
       isImpersonated: false,
       userId: '1001',
       forceTenantSelection: false,
@@ -190,6 +187,32 @@ export const ProfessionalWithOptimizerBasic: StoryType = {
       managedSellers: [],
       entitlements: {
         optimizer: {
+          global: {
+            maxItems: 1,
+            remainingItems: 0,
+          },
+          listings: {},
+        },
+      },
+    },
+  },
+};
+
+export const ProfessionalWithMarketPriceEntitlement: StoryType = {
+  args: {
+    user: {
+      email: 'engineering@smg.ch',
+      email_verified: true,
+      sub: 'auth0|648a338d',
+      isImpersonated: false,
+      userId: '1001',
+      forceTenantSelection: false,
+      isMultiTenantUser: false,
+      userType: Auth0UserType.Professional,
+      sellerId: '60601',
+      managedSellers: [],
+      entitlements: {
+        'market-price-check': {
           global: {
             maxItems: 1,
             remainingItems: 0,
