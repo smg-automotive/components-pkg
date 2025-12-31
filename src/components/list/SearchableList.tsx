@@ -1,6 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import Fuse, { FuseResult } from 'fuse.js';
 
+import { useToken } from 'src/hooks';
+
 import { SearchField, SearchFieldOptions } from '../input/SearchField';
 import { Flex } from '../flex';
 
@@ -102,6 +104,7 @@ export const SearchableList: FC<Props> = ({
   listOptions = { columns: 1, childrenSpacing: 'md' },
   listRef,
 }) => {
+  const [gray200] = useToken('colors', ['gray.200']);
   const [searchState, setSearchState] = useState<{
     query: string;
     listItems: typeof listItems;
@@ -192,7 +195,7 @@ export const SearchableList: FC<Props> = ({
           css={{
             columns: { base: 1, md: columns },
             columnGap: '4xl',
-            columnRule: '1px solid #CFCFCF',
+            columnRule: `1px solid ${gray200}`,
           }}
           aria-label={listAriaLabel}
         >
