@@ -1,6 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import Fuse, { FuseResult } from 'fuse.js';
 
+import { useToken } from 'src/hooks';
+
 import { SearchField, SearchFieldOptions } from '../input/SearchField';
 import { Flex } from '../flex';
 
@@ -102,6 +104,7 @@ export const SearchableList: FC<Props> = ({
   listOptions = { columns: 1, childrenSpacing: 'md' },
   listRef,
 }) => {
+  const [gray200] = useToken('colors', ['gray.200']);
   const [searchState, setSearchState] = useState<{
     query: string;
     listItems: typeof listItems;
@@ -191,8 +194,8 @@ export const SearchableList: FC<Props> = ({
           aria-live="polite"
           css={{
             columns: { base: 1, md: columns },
-            columnGap: 'var(--chakra-space-4xl)',
-            columnRule: '1px solid var(--chakra-colors-gray-100)',
+            columnGap: '4xl',
+            columnRule: `1px solid ${gray200}`,
           }}
           aria-label={listAriaLabel}
         >
@@ -203,10 +206,16 @@ export const SearchableList: FC<Props> = ({
             return (
               <SearchableListItem {...item} key={parentKey}>
                 {children.length > 0 ? (
-                  <List.Root width="full" paddingLeft={childrenSpacing}>
+                  <List.Root width="full">
                     {children.map((child, childIndex) => {
                       const childKey = `${childIndex}-${child.value}`;
-                      return <SearchableListItem {...child} key={childKey} />;
+                      return (
+                        <SearchableListItem
+                          {...child}
+                          key={childKey}
+                          paddingLeft={childrenSpacing}
+                        />
+                      );
                     })}
                   </List.Root>
                 ) : null}
