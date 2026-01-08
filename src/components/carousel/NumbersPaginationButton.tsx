@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
 interface Props {
   onClick: () => void;
@@ -8,20 +8,18 @@ interface Props {
   totalNumbers: number;
 }
 
-const NumbersPaginationButton: FC<Props> = ({
+export const NumbersPaginationButton: FC<Props> = ({
   onClick,
   isCurrent,
   currentPageNumber,
   totalNumbers,
 }) => {
-  const { numbersPaginationButton, numbersPaginationButtonActive } =
-    useMultiStyleConfig('Carousel');
+  const recipe = useSlotRecipe({ key: 'carousel' });
+  const styles = recipe();
 
   return (
     <chakra.button
-      __css={
-        isCurrent ? numbersPaginationButtonActive : numbersPaginationButton
-      }
+      css={styles.numbersPaginationButton}
       onClick={onClick}
       aria-current={isCurrent}
       aria-label={`numbers pagination ${currentPageNumber} of ${totalNumbers}`}
@@ -30,5 +28,3 @@ const NumbersPaginationButton: FC<Props> = ({
     </chakra.button>
   );
 };
-
-export default NumbersPaginationButton;

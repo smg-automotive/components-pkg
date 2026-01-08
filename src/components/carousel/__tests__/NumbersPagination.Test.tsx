@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from 'jest-utils';
 
-import NumbersPagination from '../NumbersPagination';
+import { NumbersPagination } from '../NumbersPagination';
 
 const mockMainScrollTo = jest.fn();
 const mainCarousel = {
@@ -27,6 +27,8 @@ describe('<NumbersPagination />', () => {
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByText('2')).toBeInTheDocument();
     expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByText('4')).toBeInTheDocument();
+    expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   it('should change the main carousel slide when a numbers button is clicked', async () => {

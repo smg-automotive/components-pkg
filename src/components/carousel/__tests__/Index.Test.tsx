@@ -4,11 +4,10 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from 'jest-utils';
 
-import Carousel, { PaginationType } from '../index';
+import { Carousel, PaginationType } from '../index';
 
 jest.mock('embla-carousel-react', () => {
   const embla = jest.requireActual('embla-carousel-react');
-
   return {
     __esModule: true,
     default: jest.fn(embla),
@@ -96,6 +95,7 @@ describe('<Carousel />', () => {
   });
 
   it('should create the carousel in infinite mode', async () => {
+    const user = userEvent.setup();
     render(
       <Carousel onSlideClick={jest.fn} startIndex={2}>
         <div>slide 1</div>
@@ -107,15 +107,15 @@ describe('<Carousel />', () => {
       'aria-current',
       'true',
     );
-    await userEvent.hover(screen.getByLabelText('Carousel'));
-    await userEvent.click(screen.getByLabelText('next slide'));
+    await user.hover(screen.getByLabelText('Carousel'));
+    await user.click(screen.getByLabelText('next slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('1 of 3')).toHaveAttribute(
         'aria-current',
         'true',
       ),
     );
-    await userEvent.click(screen.getByLabelText('previous slide'));
+    await user.click(screen.getByLabelText('previous slide'));
     await waitFor(() =>
       expect(screen.getByLabelText('3 of 3')).toHaveAttribute(
         'aria-current',

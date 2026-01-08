@@ -8,12 +8,12 @@ import React, {
 } from 'react';
 
 import { UseEmblaCarouselType } from 'embla-carousel-react';
-import { useMultiStyleConfig } from '@chakra-ui/react';
+import { useSlotRecipe } from '@chakra-ui/react';
 
-import Flex from '../flex';
-import Box from '../box';
-import ThumbnailNavigationButton from './ThumbnailNavigationButton';
-import Thumbnail from './Thumbnail';
+import { Flex } from '../flex';
+import { Box } from '../box';
+import { ThumbnailNavigationButton } from './ThumbnailNavigationButton';
+import { Thumbnail } from './Thumbnail';
 
 interface Props {
   currentSlideIndex: number;
@@ -23,7 +23,7 @@ interface Props {
   paginationCarousel?: UseEmblaCarouselType[1];
 }
 
-const ThumbnailPagination: FC<Props> = ({
+export const ThumbnailPagination: FC<Props> = ({
   currentSlideIndex,
   thumbnails,
   mainCarousel,
@@ -34,9 +34,8 @@ const ThumbnailPagination: FC<Props> = ({
     previous: boolean;
     next: boolean;
   }>({ previous: false, next: true });
-  const { pagination } = useMultiStyleConfig('Carousel', {
-    variant: 'fullScreen',
-  });
+  const recipe = useSlotRecipe({ key: 'carousel' });
+  const styles = recipe({ variant: 'fullScreen' });
 
   const scrollPrev = useCallback(
     () => paginationCarousel && paginationCarousel.scrollPrev(true),
@@ -85,7 +84,11 @@ const ThumbnailPagination: FC<Props> = ({
   }, [paginationCarousel, evalPaginationButtonVisibility]);
 
   return (
-    <Box ref={paginationCarouselRef} __css={pagination} aria-label="Pagination">
+    <Box
+      ref={paginationCarouselRef}
+      css={styles.pagination}
+      aria-label="Pagination"
+    >
       <Flex alignItems="center" height="full" id="thumbnail-wrapper">
         {thumbnails.map((slide, index) => (
           <Thumbnail
@@ -112,5 +115,3 @@ const ThumbnailPagination: FC<Props> = ({
     </Box>
   );
 };
-
-export default ThumbnailPagination;

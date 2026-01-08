@@ -22,6 +22,7 @@ import { drawerRecipe as drawer } from './drawer';
 import { dialogFilterRecipe as dialogFilter } from './dialogFilter';
 import { dialogRecipe as dialog } from './dialog';
 import { checkboxRecipe as checkbox } from './checkbox';
+import { carouselRecipe as carousel } from './carousel';
 import { cardRecipe as card } from './card';
 import { breadcrumbsRecipe as breadcrumbs } from './breadcrumbs';
 import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
@@ -31,6 +32,7 @@ import { accordionRecipe as accordion } from './accordion';
 export const slotRecipes = {
   articleTeaser,
   accordion,
+  carousel,
   breadcrumbs,
   card,
   energyLabel,
