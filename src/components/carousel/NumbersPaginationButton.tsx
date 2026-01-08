@@ -19,11 +19,7 @@ export const NumbersPaginationButton: FC<Props> = ({
 
   return (
     <chakra.button
-      css={
-        isCurrent
-          ? styles.numbersPaginationButtonActive
-          : styles.numbersPaginationButton
-      }
+      css={styles.numbersPaginationButton}
       onClick={onClick}
       aria-current={isCurrent}
       aria-label={`numbers pagination ${currentPageNumber} of ${totalNumbers}`}

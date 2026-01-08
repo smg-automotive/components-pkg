@@ -13,9 +13,7 @@ const slots = [
   'paginationIconContainer',
   'dotsPaginationContainer',
   'dotsPaginationIndicator',
-  'dotsPaginationIndicatorActive',
   'numbersPaginationButton',
-  'numbersPaginationButtonActive',
 ] as const;
 
 const baseContainer = defineStyle({
@@ -94,14 +92,12 @@ const numbersPaginationButton = defineStyle({
   _hover: {
     backgroundColor: 'gray.100',
   },
-});
-
-const numbersPaginationButtonActive = defineStyle({
-  ...numbersPaginationButton,
-  color: 'white',
-  backgroundColor: 'gray.900',
-  _hover: {
+  '&[aria-current="true"]': {
+    color: 'white',
     backgroundColor: 'gray.900',
+    _hover: {
+      backgroundColor: 'gray.900',
+    },
   },
 });
 
@@ -132,28 +128,26 @@ const dotsPaginationIndicator = defineStyle({
     height: 'var(--carousel-dot-size)',
     content: '""',
   },
-});
-
-const dotsPaginationIndicatorActive = defineStyle({
-  ...dotsPaginationIndicator,
-  width: 'var(--carousel-dot-size-active)',
-  height: 'var(--carousel-dot-size-active)',
-  _last: {
+  '&[aria-current="true"]': {
     width: 'var(--carousel-dot-size-active)',
     height: 'var(--carousel-dot-size-active)',
+    _last: {
+      width: 'var(--carousel-dot-size-active)',
+      height: 'var(--carousel-dot-size-active)',
+      _after: {
+        width: 'full',
+        height: 'var(--carousel-dot-size-active)',
+        content: '""',
+      },
+    },
     _after: {
+      backgroundColor: 'white',
+      borderRadius: 'full',
+      opacity: '100',
       width: 'full',
       height: 'var(--carousel-dot-size-active)',
       content: '""',
     },
-  },
-  _after: {
-    backgroundColor: 'white',
-    borderRadius: 'full',
-    opacity: '100',
-    width: 'full',
-    height: 'var(--carousel-dot-size-active)',
-    content: '""',
   },
 });
 
@@ -229,7 +223,6 @@ export const carouselRecipe = defineSlotRecipe({
     button: baseButton,
     icon: baseIcon,
     numbersPaginationButton,
-    numbersPaginationButtonActive,
     dotsPaginationContainer: defineStyle({
       position: 'absolute',
       width: 'full',
@@ -239,7 +232,6 @@ export const carouselRecipe = defineSlotRecipe({
       alignItems: 'center',
     }),
     dotsPaginationIndicator,
-    dotsPaginationIndicatorActive,
   },
   variants: {
     variant: {

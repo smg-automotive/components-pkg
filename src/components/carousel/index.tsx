@@ -13,7 +13,7 @@ import { ThumbnailPagination } from './ThumbnailPagination';
 import { Slide } from './Slide';
 import { NumbersPagination } from './NumbersPagination';
 import { NavigationButton } from './NavigationButton';
-import { NumbersDotsPagination as DotsPagination } from './DotsPagination';
+import { DotsPagination } from './DotsPagination';
 
 type SharedProps = {
   startIndex?: number;

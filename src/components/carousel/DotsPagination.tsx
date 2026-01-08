@@ -11,7 +11,7 @@ interface Props {
   numberOfSlides: number;
 }
 
-export const NumbersDotsPagination: FC<Props> = ({
+export const DotsPagination: FC<Props> = ({
   currentSlideIndex,
   numberOfSlides,
 }) => {

@@ -11,11 +11,8 @@ export const DotsPaginationIndicator: FC<DotsButtonProps> = ({ isCurrent }) => {
 
   return (
     <chakra.span
-      css={
-        isCurrent
-          ? styles.dotsPaginationIndicatorActive
-          : styles.dotsPaginationIndicator
-      }
+      aria-current={isCurrent}
+      css={styles.dotsPaginationIndicator}
     />
   );
 };
