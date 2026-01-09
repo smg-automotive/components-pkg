@@ -37,7 +37,7 @@ export const Tabs: FC<PropsWithChildren<TabsProps>> = ({
   );
 };
 
-export { Tab, TabProps } from './Tab';
-export { TabList, TabListProps } from './TabList';
-export { TabPanel, TabPanelProps } from './TabPanel';
-export { TabPanels, TabPanelsProps } from './TabPanels';
+export { Tab, type TabProps } from './Tab';
+export { TabList, type TabListProps } from './TabList';
+export { TabPanel, type TabPanelProps } from './TabPanel';
+export { TabPanels, type TabPanelsProps } from './TabPanels';
