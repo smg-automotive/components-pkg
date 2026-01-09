@@ -31,6 +31,10 @@ export * from './input';
 export * from './layout';
 export * from './link';
 export * from './list';
+export {
+  SearchableList,
+  type ListItemWithChildren,
+} from './list/SearchableList';
 export * from './menu';
 export * from './missingImage';
 export * from './mobileOnlyAccordion';
