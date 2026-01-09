@@ -1,13 +1,13 @@
 'use client';
 
 import React, { FC, useRef } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import {
   Popover as ChakraPopover,
   Portal,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { ZIndex } from 'src/themes/shared/tokens/zIndex';
 import { Stack } from 'src/components/stack';
 import { Box } from 'src/components/box';

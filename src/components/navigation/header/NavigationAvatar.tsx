@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { useSlotRecipe } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { Text } from 'src/components/text';
 import { Box } from 'src/components/box';
 import { Avatar } from 'src/components/avatar';

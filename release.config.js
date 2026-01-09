@@ -4,7 +4,7 @@ module.exports = {
     '+([0-9])?(.{+([0-9]),x}).x',
     {
       name: '!(+([0-9])?(.{+([0-9]),x}).x|main)',
-      prerelease: true,
+      prerelease: `$\{ name }`,
     },
     {
       name: 'renovate/ui-dependencies',

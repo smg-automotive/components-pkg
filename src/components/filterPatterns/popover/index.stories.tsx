@@ -101,6 +101,7 @@ const meta: Meta<typeof PopoverFilter> = {
 
   argTypes: {
     language: {
+      options: ['de', 'fr', 'it', 'en'],
       control: 'select',
     },
 

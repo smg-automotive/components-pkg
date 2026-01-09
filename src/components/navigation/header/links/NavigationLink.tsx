@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 
-import { Language, useI18n } from '@smg-automotive/i18n-pkg';
+import { Language } from '@smg-automotive/i18n-pkg';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { Project } from 'src/types/project';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 import { Link } from 'src/components/link';

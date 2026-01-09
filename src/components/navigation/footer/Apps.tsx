@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { Text } from 'src/components/text';
 import { Stack } from 'src/components/stack';
 import { ListItem, ListRoot } from 'src/components/list';

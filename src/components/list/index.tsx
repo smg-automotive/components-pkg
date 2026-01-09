@@ -12,6 +12,8 @@ export const List = {
   Item,
 };
 
+export { SearchableList, ListItemWithChildren } from './SearchableList';
+
 /**
  * @deprecated please use the namespace style import instead
  */

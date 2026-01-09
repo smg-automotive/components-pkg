@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { AvatarIcon, LogoutIcon } from 'src/components/icons';
 import { Button } from 'src/components/button';
 
