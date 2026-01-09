@@ -1,14 +1,14 @@
 import React, { FC, useState } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
-import NavigationTenantMenuContent from 'src/components/navigation/header/navigationTenantMenu/Content';
-import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
-import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
-import Box from 'src/components/box';
+import { NavigationTenantMenuContent } from 'src/components/navigation/header/navigationTenantMenu/Content';
+import { MobileOnlyAccordionPanel } from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import { MobileOnlyAccordionItem } from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
+import { MobileOnlyAccordionButton } from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
+import { MobileOnlyAccordion } from 'src/components/mobileOnlyAccordion';
+import { Box } from 'src/components/box';
 
-import SelectedTenantInfo from './SelectedTenantInfo';
+import { SelectedTenantInfo } from './SelectedTenantInfo';
 
 type ManagedSeller = EnrichedSessionUser['managedSellers'][number];
 
@@ -18,16 +18,24 @@ type Props = {
   selectTenant: (sellerId: number | string) => Promise<void>;
 };
 
-const TenantSelectionMenu: FC<Props> = ({
+export const TenantSelectionMenu: FC<Props> = ({
   user,
   selectedTenant,
   selectTenant,
 }) => {
-  const [index, setIndex] = useState<number[] | number>([]);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   return (
-    <MobileOnlyAccordion index={index} allowMultiple={true} onChange={setIndex}>
-      <MobileOnlyAccordionItem border="none">
+    <MobileOnlyAccordion
+      multiple={true}
+      collapsible={true}
+      value={expandedItems}
+      onValueChange={(details) => setExpandedItems(details.value)}
+    >
+      <MobileOnlyAccordionItem
+        value="tenant-selection"
+        style={{ borderTop: 'none', borderBottom: '1px solid #CFCFCF' }}
+      >
         <MobileOnlyAccordionButton data-testid="tenant-selection-accordion-toggle">
           <SelectedTenantInfo selectedTenant={selectedTenant} />
         </MobileOnlyAccordionButton>
@@ -38,7 +46,7 @@ const TenantSelectionMenu: FC<Props> = ({
         >
           <NavigationTenantMenuContent
             user={user}
-            onClose={() => setIndex([])}
+            onClose={() => setExpandedItems([])}
             selectedTenantId={selectedTenant.id}
             selectTenant={selectTenant}
           />
@@ -47,5 +55,3 @@ const TenantSelectionMenu: FC<Props> = ({
     </MobileOnlyAccordion>
   );
 };
-
-export default TenantSelectionMenu;

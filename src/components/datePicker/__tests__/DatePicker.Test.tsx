@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render, screen } from 'jest-utils';
 
-import DatePicker, { DatePickerProps } from '..';
+import { DatePicker, DatePickerProps } from '..';
 
 const renderWrapper = ({
   onBlur = jest.fn(),

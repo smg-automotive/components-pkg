@@ -1,23 +1,25 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { AccordionProps } from '@chakra-ui/react';
+import {
+  Accordion as ChakraAccordion,
+  RecipeVariantProps,
+} from '@chakra-ui/react';
 
-import Accordion from '../accordion';
+import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
-export type Props = {
-  variant?: 'light' | 'dark';
-} & Pick<
-  AccordionProps,
-  'allowMultiple' | 'allowToggle' | 'index' | 'onChange'
->;
+import { Accordion } from '../accordion';
 
-const MobileOnlyAccordion: FC<PropsWithChildren<Props>> = (props) => {
+export type MobileOnlyAccordionProps = RecipeVariantProps<
+  typeof accordionRecipe
+> &
+  Pick<
+    ChakraAccordion.RootProps,
+    'multiple' | 'collapsible' | 'value' | 'onValueChange'
+  >;
+
+export const MobileOnlyAccordion: FC<
+  PropsWithChildren<MobileOnlyAccordionProps>
+> = (props) => {
   const { children, ...restProps } = props;
 
-  return (
-    <Accordion allowMultiple {...restProps}>
-      {children}
-    </Accordion>
-  );
+  return <Accordion {...restProps}>{children}</Accordion>;
 };
-
-export default MobileOnlyAccordion;

@@ -1,15 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Badge } from '@chakra-ui/react';
-
-import GridItem from '../grid/GridItem';
-import Grid from '../grid';
-import AspectRatio from '../aspectRatio';
+import { AspectRatio, Badge, Grid, GridItem } from '@chakra-ui/react';
 
 type Props = {
   aspectRatio?: number;
 };
 
-const TopListingBadge: FC<PropsWithChildren<Props>> = ({
+export const TopListingBadge: FC<PropsWithChildren<Props>> = ({
   children,
   aspectRatio,
 }) => {
@@ -29,12 +25,13 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
         overflow="hidden"
         position="relative"
         pointerEvents="none"
-        __css={{ touchAction: 'none' }}
+        css={{ touchAction: 'none' }}
       >
         <Badge
-          transform="rotate(-45deg) translateX(-50%) translateY(9px)"
+          transform="rotate(-45deg) translate(-50%) translateY(9px)"
+          position="absolute"
           transformOrigin="top left"
-          width="70px"
+          width="4xl"
           textAlign="center"
           paddingLeft="sm"
           color="gray.900"
@@ -45,5 +42,3 @@ const TopListingBadge: FC<PropsWithChildren<Props>> = ({
     </Grid>
   );
 };
-
-export default TopListingBadge;

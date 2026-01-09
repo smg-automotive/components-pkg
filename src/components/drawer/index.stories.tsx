@@ -2,39 +2,41 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useDisclosure } from '@chakra-ui/react';
 
-import Button from '../button';
-import Box from '../box';
-import DrawerOverlay from './DrawerOverlay';
-import DrawerContent from './DrawerContent';
-import DrawerBody from './DrawerBody';
+import { Button } from '../button';
+import { Box } from '../box';
+import { DrawerOverlay } from './DrawerOverlay';
+import { DrawerContent } from './DrawerContent';
+import { DrawerBody } from './DrawerBody';
 
-import DrawerComponent, { type DrawerProps } from './index';
+import { Drawer as DrawerComponent, type DrawerProps } from './index';
 
 const Template = (
   args: Omit<DrawerProps, 'isOpen' | 'onClose'> & {
+    placement: 'top' | 'bottom' | 'left' | 'right';
     withCloseButton?: boolean;
     viewMode?: string;
   },
 ) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
 
-  const headerHeight = '60px';
+  const headerHeight = 'xl';
+
   return (
     <Box
-      width="100%"
+      width="full"
       height={headerHeight}
       pt="xs"
       px="sm"
       bg="gray.100"
       zIndex="popover"
     >
-      <Button onClick={isOpen ? onClose : onOpen}>Toggle drawer</Button>
-      <DrawerComponent isOpen={isOpen} onClose={onClose} {...args}>
+      <Button onClick={open ? onClose : onOpen}>Toggle drawer</Button>
+      <DrawerComponent isOpen={open} onClose={onClose} {...args}>
         <DrawerOverlay />
         <DrawerContent
           withCloseButton={args?.withCloseButton}
-          marginTop={args.viewMode === 'docs' ? 0 : headerHeight}
-          p="md"
+          padding="md"
+          marginTop={args.viewMode === 'docs' ? '0' : headerHeight}
         >
           <DrawerBody p="lg">There is a drawer content</DrawerBody>
         </DrawerContent>
@@ -58,7 +60,7 @@ const meta: Meta<typeof Template> = {
   },
 
   args: {
-    placement: 'top',
+    placement: 'right',
     size: 'half',
     withCloseButton: false,
   },

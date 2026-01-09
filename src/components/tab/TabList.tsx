@@ -1,14 +1,42 @@
+'use client';
+
 import React, { FC, PropsWithChildren } from 'react';
-import { TabList as ChakraTabList, TabListProps } from '@chakra-ui/react';
+import {
+  Tabs as ChakraTabs,
+  TabsListProps as ChakraTabsListProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-import Box from '../box';
+import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
 
-const TabList: FC<PropsWithChildren<TabListProps>> = (props) => {
+import { Box } from '../box';
+
+type TabsVariant = RecipeVariantProps<typeof tabsRecipe>['variant'];
+
+export type TabListProps = Omit<ChakraTabsListProps, 'variant'> &
+  RecipeVariantProps<typeof tabsRecipe>;
+
+export const TabList: FC<PropsWithChildren<TabListProps>> = ({
+  variant,
+  children,
+  ...rest
+}) => {
+  const recipe = useSlotRecipe({ key: 'tabs' });
+  const styles = recipe({ variant });
+
   return (
     <Box overflowX="auto">
-      <ChakraTabList {...props}>{props.children}</ChakraTabList>
+      <ChakraTabs.List {...rest} css={styles.list}>
+        {React.Children.map(children, (child) =>
+          React.isValidElement(child)
+            ? React.cloneElement(
+                child as React.ReactElement<{ variant: TabsVariant }>,
+                { variant },
+              )
+            : child,
+        )}
+      </ChakraTabs.List>
     </Box>
   );
 };
-
-export default TabList;

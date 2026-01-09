@@ -1,85 +1,113 @@
 import React, { FC, JSX, ReactElement } from 'react';
 import {
-  Button,
-  ButtonProps,
+  Box,
   Menu as ChakraMenu,
-  MenuItem as ChakraMenuItem,
-  MenuProps as ChakraMenuProps,
-  MenuButton,
-  MenuList,
+  MenuContentProps,
+  MenuRootProps,
+  MenuTriggerProps,
+  Portal,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { FontWeights } from 'src/themes';
-
-import { ChevronDownSmallIcon } from '../icons';
+import { CheckmarkIcon, ChevronDownSmallIcon } from '../icons';
 
 interface MenuItem {
   text: JSX.Element | string;
+  value: string;
   onClick: () => void;
 }
 
 export interface MenuProps {
   title: string | ReactElement;
   items: MenuItem[];
-  fontWeightTitle?: FontWeights;
+  value?: string;
+  fontWeightTitle?: MenuTriggerProps['fontWeight'];
   offset?: [number, number];
-  menuColor?: string;
+  menuColor?: MenuTriggerProps['color'];
+  menuOptionColor?: MenuContentProps['color'];
   showChevron?: boolean;
   icon?: ReactElement;
-  iconSpacing?: ButtonProps['iconSpacing'];
-  placement?: ChakraMenuProps['placement'];
+  iconSpacing?: MenuTriggerProps['gap'];
+  placement?: Exclude<MenuRootProps['positioning'], undefined>['placement'];
+  showOptionsCheckmark?: boolean;
 }
 
-const Menu: FC<MenuProps> = ({
+export const Menu: FC<MenuProps> = ({
   title,
   items,
+  value,
   fontWeightTitle = 'regular',
-  offset = [],
+  offset = [8, 0],
   menuColor,
+  menuOptionColor,
   showChevron = true,
   icon,
-  iconSpacing,
+  iconSpacing = 'sm',
   placement,
+  showOptionsCheckmark = false,
 }) => {
+  const recipe = useSlotRecipe({ key: 'menu' });
+  const styles = recipe();
+  const [crossAxis = 0, mainAxis = 0] = offset;
   return (
-    <ChakraMenu {...(offset.length && { offset })} placement={placement}>
-      {({ isOpen }) => (
-        <>
-          <MenuButton
-            as={Button}
-            padding={0}
-            iconSpacing={iconSpacing}
-            leftIcon={icon}
-            rightIcon={
-              showChevron ? (
+    <ChakraMenu.Root
+      positioning={{ placement, offset: { mainAxis, crossAxis } }}
+    >
+      <ChakraMenu.Context>
+        {({ open }) => {
+          // menuColor takes precedence over the open state color
+          const color = menuColor || (open ? 'blue.700' : undefined);
+
+          return (
+            <ChakraMenu.Trigger
+              css={styles.trigger}
+              gap={iconSpacing}
+              fontWeight={fontWeightTitle}
+              color={color}
+            >
+              {icon}
+              {title}
+              {showChevron ? (
                 <ChevronDownSmallIcon
-                  transition="0.2s"
-                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
+                  transition="transform"
+                  transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
                 />
-              ) : undefined
-            }
-            fontWeight={fontWeightTitle}
-            color={isOpen ? 'blue.700' : menuColor}
-          >
-            {title}
-          </MenuButton>
-          <MenuList minWidth="4xl">
-            {items.map(({ onClick, text }, index) => {
+              ) : null}
+            </ChakraMenu.Trigger>
+          );
+        }}
+      </ChakraMenu.Context>
+      <Portal>
+        <ChakraMenu.Positioner>
+          <ChakraMenu.Content css={styles.content}>
+            {items.map(({ onClick, text, value: itemValue }) => {
+              const optionColor = menuOptionColor || menuColor;
+
               return (
-                <ChakraMenuItem
-                  key={`menuItem-${index}`}
-                  onClick={onClick}
-                  {...(menuColor && { color: menuColor })}
+                <ChakraMenu.Item
+                  key={`menuItem-${value}`}
+                  value={itemValue}
+                  onSelect={onClick}
+                  css={styles.item}
+                  {...(optionColor && { color: optionColor })}
                 >
+                  {showOptionsCheckmark ? (
+                    <Box
+                      w="xs"
+                      display="flex"
+                      justifyContent="center"
+                      marginRight="sm"
+                    >
+                      {itemValue === value ? <CheckmarkIcon /> : null}
+                    </Box>
+                  ) : null}
                   {text}
-                </ChakraMenuItem>
+                </ChakraMenu.Item>
               );
             })}
-          </MenuList>
-        </>
-      )}
-    </ChakraMenu>
+          </ChakraMenu.Content>
+        </ChakraMenu.Positioner>
+      </Portal>
+    </ChakraMenu.Root>
   );
 };
-
-export default Menu;

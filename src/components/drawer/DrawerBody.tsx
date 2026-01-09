@@ -1,14 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import {
-  DrawerBody as ChakraDrawerBody,
-  ModalBodyProps as ChakraModalBodyProps,
-} from '@chakra-ui/react';
+import { Drawer as ChakraDrawer, DrawerBodyProps } from '@chakra-ui/react';
 
-const DrawerBody: FC<PropsWithChildren<ChakraModalBodyProps>> = (props) => {
+export const DrawerBody: FC<PropsWithChildren<DrawerBodyProps>> = (props) => {
   const { children, ...drawerBodyProps } = props;
 
-  return <ChakraDrawerBody {...drawerBodyProps}>{children}</ChakraDrawerBody>;
+  return <ChakraDrawer.Body {...drawerBodyProps}>{children}</ChakraDrawer.Body>;
 };
-
-export default DrawerBody;

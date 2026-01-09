@@ -7,24 +7,24 @@ import { Project } from 'src/types/project';
 import { Environment } from 'src/types/environment';
 import { Brand } from 'src/types/brand';
 
-import TranslationProvider from 'src/components/translationProvider';
-import Stack from 'src/components/stack';
+import { TranslationProvider } from 'src/components/translationProvider';
+import { Stack } from 'src/components/stack';
 
-import Box from 'src/components/box';
+import { Box } from 'src/components/box';
 
-import NavigationTenantMenu from './navigationTenantMenu';
+import { NavigationTenantMenu } from './navigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';
 import { NavigationItems } from './NavigationItems';
 import { NavigationAvatar } from './NavigationAvatar';
-import MobileHeaderMenuToggle from './MobileMenuToggle';
+import { MobileHeaderMenuToggle } from './MobileMenuToggle';
 import { useNavigationDrawer } from './hooks/useNavigationDrawer';
-import FavoritesItem from './FavoritesItem';
+import { FavoritesItem } from './FavoritesItem';
 import { NavigationDrawer } from './drawer';
 import { iconItems } from './config/iconItems';
 import { HeaderNavigationConfig } from './config/HeaderNavigationConfig';
 import { headerLinks } from './config/headerLinks';
 import { drawerNodeItems } from './config/DrawerNodeItems';
-import ComparisonItem from './ComparisonItem';
+import { ComparisonItem } from './ComparisonItem';
 
 export interface NavigationProps {
   brand: Brand;
@@ -120,15 +120,17 @@ const Navigation: FC<NavigationProps> = ({
     >
       <Box
         width="full"
+        borderBottom="1px"
         borderBottomColor="gray.200"
-        borderBottomWidth="1px"
         zIndex="header"
         backgroundColor="white"
-        {...(isOpen ? { position: 'fixed', top: 0 } : { position: 'relative' })}
+        {...(isOpen
+          ? { position: 'fixed', top: '0' }
+          : { position: 'relative' })}
       >
         <Box
           maxWidth="container.2xl"
-          height={config.menuHeight}
+          css={{ height: config.menuHeight }}
           alignItems="center"
           margin="auto"
           display="flex"
@@ -143,7 +145,7 @@ const Navigation: FC<NavigationProps> = ({
             createDrawerHandler={createDrawerHandler}
             language={language}
           />
-          <Stack direction="row" spacing="2xl" align="center">
+          <Stack direction="row" gap="2xl" align="center">
             {config.iconItems.favorites?.isVisible ? (
               <FavoritesItem link={config.iconItems.favorites} />
             ) : null}
@@ -186,5 +188,6 @@ const Navigation: FC<NavigationProps> = ({
     </TranslationProvider>
   );
 };
-export default Navigation;
+
+export { Navigation };
 export { PropsWithChildren as FullHeightProps };

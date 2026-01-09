@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 
-import { Flex as ChakraFlex, FlexProps } from '@chakra-ui/react';
+import {
+  Flex as ChakraFlex,
+  FlexProps as ChakraFlexProps,
+} from '@chakra-ui/react';
 
-const Flex: FC<Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'>> = ({
-  children,
-  ...rest
-}) => <ChakraFlex {...rest}>{children}</ChakraFlex>;
+export type FlexProps = Omit<ChakraFlexProps, 'gap' | 'columnGap' | 'rowGap'>;
 
-export default Flex;
-export type { FlexProps };
+export const Flex: FC<FlexProps> = ({ children, ...rest }) => (
+  <ChakraFlex {...rest}>{children}</ChakraFlex>
+);

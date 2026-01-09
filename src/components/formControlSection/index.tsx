@@ -1,17 +1,13 @@
 import React, { FC, PropsWithChildren } from 'react';
-import {
-  Box,
-  FormControl as ChakraFormControl,
-  Flex,
-  FormErrorMessage,
-} from '@chakra-ui/react';
+import { Field as ChakraField } from '@chakra-ui/react';
 
-import Tooltip from '../tooltip';
-import Text from '../text';
-
+import { Tooltip } from '../tooltip';
+import { Text } from '../text';
 import { InformationIcon } from '../icons';
+import { Flex } from '../flex';
+import { Box } from '../box';
 
-export type Props = {
+export type BaseProps = {
   id: string;
   errorMessage?: string;
   label?: string;
@@ -19,7 +15,7 @@ export type Props = {
   tooltip?: string;
 };
 
-const FormControlSection: FC<PropsWithChildren<Props>> = ({
+export const FormControlSection: FC<PropsWithChildren<BaseProps>> = ({
   children,
   errorMessage,
   id,
@@ -30,9 +26,9 @@ const FormControlSection: FC<PropsWithChildren<Props>> = ({
   const isInvalid = !!errorMessage;
 
   return (
-    <ChakraFormControl id={id} isInvalid={isInvalid}>
+    <ChakraField.Root id={id} invalid={isInvalid}>
       <Box
-        border="1px solid"
+        border="1px"
         borderRadius="sm"
         borderColor={isInvalid ? 'red.500' : 'gray.400'}
         padding="2xl"
@@ -60,12 +56,9 @@ const FormControlSection: FC<PropsWithChildren<Props>> = ({
           {children}
         </Flex>
       </Box>
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
-    </ChakraFormControl>
+      <ChakraField.ErrorText>{errorMessage}</ChakraField.ErrorText>
+    </ChakraField.Root>
   );
 };
 
-FormControlSection.displayName = 'FormControlSection';
-
-export default FormControlSection;
-export { Props as FormControlSectionProps };
+export { BaseProps as FormControlSectionProps };

@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 
-import Show from 'src/components/show';
 import { ChevronDownSmallIcon } from 'src/components/icons';
+import { Box } from 'src/components/box';
 
 export const DrawerIndicator: FC<{ isOpen: boolean }> = ({ isOpen }) => {
   return (
-    <Show above="xs">
+    <Box hideBelow="xs" display="inline-flex">
       <ChevronDownSmallIcon
-        transition="0.2s"
-        {...(isOpen
-          ? { transform: 'rotate(180deg)', color: 'blue.700' }
-          : null)}
+        transition="transform"
+        transitionDuration="fast"
+        color={isOpen ? 'blue.700' : 'currentColor'}
+        transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
       />
-    </Show>
+    </Box>
   );
 };

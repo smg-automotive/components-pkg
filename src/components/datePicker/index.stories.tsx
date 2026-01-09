@@ -4,13 +4,13 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import DatePickerComponent, { DatePickerProps } from './index';
+import { DatePicker, DatePickerProps } from './index';
 
 const Template = (props: DatePickerProps) => {
   const [args, updateArgs] = useArgs<DatePickerProps>();
 
   return (
-    <DatePickerComponent
+    <DatePicker
       {...{
         ...props,
         ...args,
@@ -23,14 +23,14 @@ const Template = (props: DatePickerProps) => {
   );
 };
 
-const meta: Meta<typeof DatePickerComponent> = {
+const meta: Meta<typeof DatePicker> = {
   title: 'Components/Forms/Date Picker',
-  component: DatePickerComponent,
+  component: DatePicker,
   render: Template.bind({}),
 
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="250px">
+      <Box w="full" maxW="5xl">
         <Story />
       </Box>
     ),
@@ -43,7 +43,7 @@ const meta: Meta<typeof DatePickerComponent> = {
     size: 'lg',
     min: new Date(),
     value: '',
-    isInvalid: false,
+    invalid: false,
   },
 
   argTypes: {
@@ -51,6 +51,13 @@ const meta: Meta<typeof DatePickerComponent> = {
       control: 'date',
       description:
         "Disregard the time input in the control - storybook doesn't support a lone date input",
+    },
+    size: {
+      options: ['md', 'lg'],
+
+      control: {
+        type: 'select',
+      },
     },
     value: {
       control: 'date',
@@ -61,4 +68,4 @@ const meta: Meta<typeof DatePickerComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof DatePickerComponent> = {};
+export const Overview: StoryObj<typeof DatePicker> = {};

@@ -3,13 +3,13 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
 import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
-import Link from 'src/components/link';
+import { Text } from 'src/components/text';
+import { Link } from 'src/components/link';
 import { CloseIcon } from 'src/components/icons';
 
-import Flex from 'src/components/flex';
+import { Flex } from 'src/components/flex';
 
-import Count from '../count';
+import { Count } from '../count';
 import { FilterPatternProps } from './props';
 
 export type FilterHeadingContentProps = {
@@ -21,7 +21,7 @@ export type FilterHeadingContentProps = {
   'Icon' | 'isApplied' | 'label' | 'numberOfAppliedFilters' | 'onResetFilter'
 >;
 
-const FilterHeadingContent: FC<FilterHeadingContentProps> = ({
+export const FilterHeadingContent: FC<FilterHeadingContentProps> = ({
   onClose,
   Icon,
   isApplied,
@@ -51,9 +51,11 @@ const FilterHeadingContent: FC<FilterHeadingContentProps> = ({
         {onClose ? (
           <IconButton
             aria-label={t('filterSelectButton.close')}
-            icon={<CloseIcon color="gray.800" />}
             onClick={onClose}
-          />
+            cursor="pointer"
+          >
+            <CloseIcon color="gray.800" />
+          </IconButton>
         ) : null}
       </Flex>
       <Link
@@ -69,5 +71,3 @@ const FilterHeadingContent: FC<FilterHeadingContentProps> = ({
     </>
   );
 };
-
-export default FilterHeadingContent;

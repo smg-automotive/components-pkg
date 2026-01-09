@@ -5,9 +5,9 @@ import { Language } from '@smg-automotive/i18n-pkg';
 import { useI18n } from 'src/utilities/i18nInit';
 import { Project } from 'src/types/project';
 import { BreakpointName } from 'src/themes/shared/breakpoints';
-import Link from 'src/components/link';
-import Hide from 'src/components/hide';
-import Badge from 'src/components/badge';
+import { Link } from 'src/components/link';
+import { Box } from 'src/components/box';
+import { Badge } from 'src/components/badge';
 
 export interface NavigationLinkProps {
   link?: Record<Language, string>;
@@ -27,7 +27,7 @@ export interface NavigationLinkProps {
   projectIdentifier?: Project;
 }
 
-const NavigationLink: FC<NavigationLinkProps> = ({
+export const NavigationLink: FC<NavigationLinkProps> = ({
   link,
   title,
   translationKey,
@@ -35,34 +35,37 @@ const NavigationLink: FC<NavigationLinkProps> = ({
   isNew,
   fontWeight = 'regular',
   variant = 'navigationLink',
-  color = 'gray.900',
+  color,
   leftIcon,
   rightIcon,
   hideTextBelow,
   onClick,
 }) => {
   const { t, language } = useI18n();
+  const linkColor = color || 'gray.900';
+  const hoverStyle =
+    variant === 'navigationLink' ? ({ color: 'blue.700' } as const) : undefined;
 
   return (
     <Link
       href={link && link[language]}
       variant={variant}
       fontWeight={fontWeight}
-      color={color}
-      leftIcon={leftIcon}
-      rightIcon={rightIcon}
+      css={{ color: linkColor }}
+      _hover={hoverStyle}
       onClick={onClick}
+      display="flex"
+      alignItems="center"
+      gap="md"
     >
+      {leftIcon}
       {(translationKey || title) && (
-        <Hide below={hideTextBelow}>
+        <Box hideBelow={hideTextBelow}>
           {translationKey ? t(translationKey, translationParameters) : title}
-          {isNew ? (
-            <Badge variant="navigationLinkBadge" text="New"></Badge>
-          ) : null}
-        </Hide>
+          {isNew ? <Badge variant="navigationLinkBadge" text="New" /> : null}
+        </Box>
       )}
+      {rightIcon}
     </Link>
   );
 };
-
-export default NavigationLink;

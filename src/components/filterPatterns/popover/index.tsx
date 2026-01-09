@@ -1,10 +1,8 @@
 import { withTranslationProvider } from 'src/components/translationProvider/withTranslationProvider';
 
 import { PopoverFilterProps } from './props';
-import PopoverFilterContent from './Content';
+import { PopoverFilterContent } from './Content';
 
 export const PopoverFilter = withTranslationProvider<PopoverFilterProps>([
   'filterSelectButton',
 ])(PopoverFilterContent);
-
-export default PopoverFilter;

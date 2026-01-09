@@ -1,17 +1,17 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { fontSizes } from 'src/themes/shared/fontSizes';
-
 import { Box } from 'src';
 
-import MarkedTextComponent from '.';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { MarkedText } from '.';
 
 const brandHighlight = 'brand.primary';
 
-const meta: Meta<typeof MarkedTextComponent> = {
+const meta: Meta<typeof MarkedText> = {
   title: 'Components/Utils/MarkedText',
-  component: MarkedTextComponent,
+  component: MarkedText,
 
   decorators: [
     (Story, { args }) => (
@@ -34,15 +34,9 @@ const meta: Meta<typeof MarkedTextComponent> = {
   },
 
   argTypes: {
+    ...getRecipeControls('markedText'),
     children: {
       control: { type: 'text' },
-    },
-    fontSize: {
-      options: Object.keys(fontSizes),
-      control: { type: 'select' },
-    },
-    variant: {
-      options: ['underline', 'highlight'],
     },
     highlightColor: {
       options: ['white', 'gray.100', brandHighlight],
@@ -53,30 +47,30 @@ const meta: Meta<typeof MarkedTextComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof MarkedTextComponent> = {};
+export const Overview: StoryObj<typeof MarkedText> = {};
 
-export const BrandHighlight: StoryObj<typeof MarkedTextComponent> = {
+export const BrandHighlight: StoryObj<typeof MarkedText> = {
   args: {
     variant: 'highlight',
     highlightColor: brandHighlight,
   },
 };
 
-export const GrayHighlight: StoryObj<typeof MarkedTextComponent> = {
+export const GrayHighlight: StoryObj<typeof MarkedText> = {
   args: {
     variant: 'highlight',
     highlightColor: 'gray.100',
   },
 };
 
-export const WhiteHighlight: StoryObj<typeof MarkedTextComponent> = {
+export const WhiteHighlight: StoryObj<typeof MarkedText> = {
   args: {
     variant: 'highlight',
     highlightColor: 'white',
   },
 };
 
-export const Underline: StoryObj<typeof MarkedTextComponent> = {
+export const Underline: StoryObj<typeof MarkedText> = {
   args: {
     variant: 'underline',
   },

@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
-import { HStack, useMultiStyleConfig } from '@chakra-ui/react';
+import { useSlotRecipe } from '@chakra-ui/react';
 
 import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
-import Hide from 'src/components/hide';
-import Box from 'src/components/box';
-import Avatar from 'src/components/avatar';
+import { Text } from 'src/components/text';
+import { Box } from 'src/components/box';
+import { Avatar } from 'src/components/avatar';
 
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';
@@ -30,47 +29,58 @@ export const NavigationAvatar: FC<NavigationAvatarProps> = ({
   onLogin,
 }) => {
   const isDrawerOpened = isOpen && drawer?.current === DrawerNode.User;
-  const linkStyles = useMultiStyleConfig('Link', { variant: 'navigationLink' });
+  const recipe = useSlotRecipe({ key: 'link' });
+  const styles = recipe({ variant: 'navigationLink' });
   const { t } = useI18n();
 
   if (user) {
     return (
-      <Hide below="sm">
-        <HStack
-          spacing="xs"
+      <Box hideBelow="sm">
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="xs"
           cursor="pointer"
           _hover={{ color: 'blue.700' }}
           color={isDrawerOpened ? 'blue.700' : 'gray.900'}
           onClick={createDrawerHandler({
             nodeName: DrawerNode.User,
           })}
+          alignItems="center"
         >
           <Avatar withNotification={hasNotification} />
-          <Hide below="md">
-            <Text fontWeight="bold" noOfLines={1} maxW="2xl" title={user.email}>
+          <Box hideBelow="md">
+            <Text fontWeight="bold" lineClamp={1} maxW="2xl" title={user.email}>
               {user.email}
             </Text>
-          </Hide>
+          </Box>
           <DrawerIndicator isOpen={isDrawerOpened} />
-        </HStack>
-      </Hide>
+        </Box>
+      </Box>
     );
   }
 
   return (
-    <Hide below="sm">
-      <HStack
+    <Box hideBelow="sm">
+      <Box
+        display="flex"
+        flexDirection="row"
         onClick={onLogin}
-        __css={linkStyles.link}
+        css={{
+          ...styles.root,
+        }}
         fontWeight="bold"
         position="relative"
-        top="1px"
+        cursor="pointer"
+        alignItems="center"
+        gap="sm"
+        color="gray.900"
       >
-        <Box as={Avatar} marginLeft="2px" />
-        <Hide below="md" marginRight="xs">
+        <Box as={Avatar} css={{ marginLeft: 'xxs' }} />
+        <Box hideBelow="md" marginRight="xs">
           {t('header.login')}
-        </Hide>
-      </HStack>
-    </Hide>
+        </Box>
+      </Box>
+    </Box>
   );
 };

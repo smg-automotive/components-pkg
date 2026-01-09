@@ -2,7 +2,8 @@ import React, { FC, useState } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
-import { TenantSelectionSelect } from './select';
+import { TenantSelectionSelect } from 'src/components/tenantSelection/select';
+
 import { TenantSelectionOverview } from './Overview';
 import { TenantSelectionLoadingState } from './Loading';
 import { TenantSelectionContainer } from './Container';
@@ -20,7 +21,7 @@ export type TenantSelectionProps = {
   language: Language;
 };
 
-const TenantSelection: FC<TenantSelectionProps> = ({
+export const TenantSelection: FC<TenantSelectionProps> = ({
   user,
   isLoading = false,
   selectTenant,
@@ -65,5 +66,3 @@ const TenantSelection: FC<TenantSelectionProps> = ({
     </TenantSelectionContainer>
   );
 };
-
-export default TenantSelection;

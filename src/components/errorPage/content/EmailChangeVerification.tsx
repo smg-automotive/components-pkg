@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Trans } from 'src/utilities/i18nInit';
-import Box from 'src/components/box';
+import { Box } from 'src/components/box';
 
-const EmailChangeVerificationErrorContent = () => {
+export const EmailChangeVerificationErrorContent = () => {
   return (
     <Box width="full">
       <p>
@@ -24,5 +24,3 @@ const EmailChangeVerificationErrorContent = () => {
     </Box>
   );
 };
-
-export default EmailChangeVerificationErrorContent;

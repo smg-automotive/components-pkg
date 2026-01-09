@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
 import {
@@ -18,42 +18,33 @@ type TenantSelectionSelectListProps = {
   searchFieldOptions?: SearchFieldOptions;
 };
 
-export const TenantSelectionSelectList = forwardRef<
-  HTMLInputElement,
-  TenantSelectionSelectListProps
->(
-  (
-    {
-      managedSellers,
-      selectedTenantId,
-      onTenantSelect,
-      title,
-      searchFieldOptions,
-    },
-    ref,
-  ) => {
-    const listItems: Array<ListItemWithChildren> = useMemo(() => {
-      return managedSellers.map((managedSeller) => {
-        return {
-          value: managedSeller.id.toString(),
-          label: createTenantLabel(managedSeller),
-          onClick: (event) =>
-            onTenantSelect(parseInt(event.currentTarget.value, 10)),
-          showChevron: true,
-          isSelected: managedSeller.id === selectedTenantId,
-        };
-      });
-    }, [managedSellers, selectedTenantId, onTenantSelect]);
+export const TenantSelectionSelectList: FC<TenantSelectionSelectListProps> = ({
+  managedSellers,
+  selectedTenantId,
+  onTenantSelect,
+  title,
+  searchFieldOptions,
+}) => {
+  const listItems: Array<ListItemWithChildren> = useMemo(() => {
+    return managedSellers.map((managedSeller) => {
+      return {
+        value: managedSeller.id.toString(),
+        label: createTenantLabel(managedSeller),
+        onClick: (event: React.MouseEvent<HTMLButtonElement>) =>
+          onTenantSelect(parseInt(event.currentTarget.value, 10)),
+        showChevron: true,
+        isSelected: managedSeller.id === selectedTenantId,
+      };
+    });
+  }, [managedSellers, selectedTenantId, onTenantSelect]);
 
-    return (
-      <>
-        {title ? <H1 textStyle="heading3">{title}</H1> : null}
-        <SearchableList
-          listItems={listItems}
-          ref={ref}
-          searchFieldOptions={searchFieldOptions}
-        />
-      </>
-    );
-  },
-);
+  return (
+    <>
+      {title ? <H1 textStyle="heading3">{title}</H1> : null}
+      <SearchableList
+        listItems={listItems}
+        searchFieldOptions={searchFieldOptions}
+      />
+    </>
+  );
+};

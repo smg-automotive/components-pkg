@@ -4,12 +4,12 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import PaginationComponent, { Props } from './index';
+import { Pagination, PaginationProps } from './index';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+const Template = (props: PaginationProps) => {
+  const [args, updateArgs] = useArgs<PaginationProps>();
   return (
-    <PaginationComponent
+    <Pagination
       {...props}
       {...args}
       onChange={(page) => {
@@ -20,9 +20,9 @@ const Template = (props: Props) => {
   );
 };
 
-const meta: Meta<typeof PaginationComponent> = {
+const meta: Meta<typeof Pagination> = {
   title: 'Patterns/Navigation/Pagination',
-  component: PaginationComponent,
+  component: Pagination,
   render: Template.bind({}),
 
   decorators: [
@@ -56,4 +56,4 @@ const meta: Meta<typeof PaginationComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof PaginationComponent> = {};
+export const Overview: StoryObj<typeof Pagination> = {};

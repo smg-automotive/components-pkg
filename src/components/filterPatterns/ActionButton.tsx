@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { useI18n } from 'src/utilities/i18nInit';
 
-import Button from '../button';
+import { Button } from '../button';
 import { FilterPatternProps } from './props';
 
 export type ActionButtonProps = {
@@ -18,7 +18,7 @@ export type ActionButtonProps = {
   onClose: () => void;
 } & Pick<FilterPatternProps, 'isApplied'>;
 
-const FilterActionButton: FC<ActionButtonProps> = ({
+export const FilterActionButton: FC<ActionButtonProps> = ({
   isApplied,
   actionButton,
   onClose,
@@ -42,5 +42,3 @@ const FilterActionButton: FC<ActionButtonProps> = ({
     </Button>
   );
 };
-
-export default FilterActionButton;

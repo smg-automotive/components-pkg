@@ -1,12 +1,43 @@
+'use client';
+
 import React, { FC, PropsWithChildren } from 'react';
-import { Tabs as ChakraTabs, TabsProps } from '@chakra-ui/react';
+import {
+  Tabs as ChakraTabs,
+  TabsRootProps as ChakraTabsRootProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-export type Props = {
-  variant?: 'spaceBetween' | 'spaceAround' | 'enclosed' | 'fullWidth';
-} & Pick<TabsProps, 'defaultIndex' | 'isLazy' | 'onChange' | 'index'>;
+import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
 
-const Tabs: FC<PropsWithChildren<Props>> = (props) => {
-  return <ChakraTabs {...props}>{props.children}</ChakraTabs>;
+type TabsVariant = RecipeVariantProps<typeof tabsRecipe>['variant'];
+
+export type TabsProps = Omit<ChakraTabsRootProps, 'variant'> &
+  RecipeVariantProps<typeof tabsRecipe>;
+
+export const Tabs: FC<PropsWithChildren<TabsProps>> = ({
+  variant,
+  children,
+  ...rest
+}) => {
+  const recipe = useSlotRecipe({ key: 'tabs' });
+  const styles = recipe({ variant });
+
+  return (
+    <ChakraTabs.Root {...rest} css={styles.root}>
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(
+              child as React.ReactElement<{ variant: TabsVariant }>,
+              { variant },
+            )
+          : child,
+      )}
+    </ChakraTabs.Root>
+  );
 };
 
-export default Tabs;
+export { Tab, type TabProps } from './Tab';
+export { TabList, type TabListProps } from './TabList';
+export { TabPanel, type TabPanelProps } from './TabPanel';
+export { TabPanels, type TabPanelsProps } from './TabPanels';
