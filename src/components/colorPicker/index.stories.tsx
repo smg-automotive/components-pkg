@@ -4,7 +4,7 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import ColorPickerComponent from './index';
+import { ColorPicker as ColorPickerComponent } from './index';
 
 const Template = (props: React.ComponentProps<typeof ColorPickerComponent>) => {
   const [args, updateArgs] = useArgs<typeof props>();
@@ -28,7 +28,7 @@ const meta: Meta<typeof ColorPickerComponent> = {
 
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="250px">
+      <Box width="full" maxW="5xl">
         <Story />
       </Box>
     ),
@@ -41,9 +41,10 @@ const meta: Meta<typeof ColorPickerComponent> = {
     value: '#B3D3F3',
     isInvalid: false,
     isDisabled: false,
-    border: '1px solid #CBD5E0',
-    borderRadius: '4px',
-    width: '36px',
+    border: '1px',
+    borderColor: 'gray.200',
+    borderRadius: 'sm',
+    width: 'md',
     padding: '0',
   },
 
