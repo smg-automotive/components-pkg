@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { Field, Input, InputProps } from '@chakra-ui/react';
 
-interface ColorPickerProps extends InputProps {
+interface ColorPickerProps extends Omit<InputProps, 'disabled' | '_invalid'> {
   isInvalid?: boolean;
   isDisabled?: boolean;
 }
@@ -13,11 +13,12 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
       height = 'md',
       padding = '0',
       backgroundColor = 'whiteAlpha.100',
-      ...props
+      isInvalid,
+      isDisabled,
+      ...rest
     },
     ref,
   ) => {
-    const { isInvalid, isDisabled, ...rest } = props;
     return (
       <Field.Root invalid={isInvalid}>
         <Input
