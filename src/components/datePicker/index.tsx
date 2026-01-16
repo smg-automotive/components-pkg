@@ -1,8 +1,10 @@
 import React, { forwardRef } from 'react';
 import { Input, InputProps } from '@chakra-ui/react';
 
-export interface Props
-  extends Pick<InputProps, 'onFocus' | 'onBlur' | 'onChange'> {
+export interface Props extends Pick<
+  InputProps,
+  'onFocus' | 'onBlur' | 'onChange'
+> {
   size?: 'md' | 'lg';
   min?: Date;
   value?: string;
