@@ -15,6 +15,7 @@ import { menuRecipe as menu } from './menu';
 import { markedTextRecipe as markedText } from './markedText';
 import { listRecipe as list } from './list';
 import { inputSlotRecipe as input } from './input';
+import { hoverCardRecipe as hoverCard } from './hoverCard';
 import { galleryHeaderRecipe as galleryHeader } from './galleryHeader';
 import { fieldSlotRecipe as field } from './field';
 import { energyLabelRecipe as energyLabel } from './energyLabel';
@@ -58,4 +59,5 @@ export const slotRecipes = {
   slider,
   pagination,
   menu,
+  hoverCard,
 };

@@ -4,7 +4,7 @@ import { useDisclosure } from '@chakra-ui/react';
 
 import { TooltipIcon } from '../icons';
 
-import PopoverComponent, { PopoverProps } from './index';
+import { HoverCard, PopoverProps } from './index';
 
 const Template = ({
   hasCloseButton,
@@ -16,9 +16,9 @@ const Template = ({
   trigger,
   content,
 }: PopoverProps & { hasCloseButton: boolean }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   return (
-    <PopoverComponent
+    <HoverCard
       onClose={onClose}
       content={
         hasCloseButton ? (
@@ -34,20 +34,20 @@ const Template = ({
       gutter={gutter}
       trigger={trigger}
       onOpen={onOpen}
-      isOpen={isOpen}
+      isOpen={open}
     >
       <TooltipIcon />
-    </PopoverComponent>
+    </HoverCard>
   );
 };
 
 const meta: Meta<typeof Template> = {
-  title: 'Components/Overlay/Popover',
-  component: PopoverComponent,
+  title: 'Components/Overlay/HoverCard',
+  component: HoverCard,
   render: Template.bind({}),
 
   args: {
-    content: 'I am popover content',
+    content: 'I am HoverCard content',
     placement: 'auto',
     size: 'md',
     hasCloseButton: false,
@@ -94,7 +94,7 @@ const meta: Meta<typeof Template> = {
 export default meta;
 type StoryType = StoryObj<typeof Template>;
 
-export const Overview: StoryObj<typeof PopoverComponent> = {};
+export const Overview: StoryObj<typeof HoverCard> = {};
 
 export const NoArrow: StoryType = {
   name: 'No arrow',
