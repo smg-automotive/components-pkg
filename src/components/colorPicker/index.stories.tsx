@@ -39,8 +39,8 @@ const meta: Meta<typeof ColorPickerComponent> = {
     onChange: action('onChange'),
     onFocus: action('onFocus'),
     value: '#B3D3F3',
-    isInvalid: false,
-    isDisabled: false,
+    invalid: false,
+    disabled: false,
     border: '1px',
     borderColor: 'gray.200',
     borderRadius: 'sm',
@@ -52,10 +52,10 @@ const meta: Meta<typeof ColorPickerComponent> = {
     value: {
       control: 'color',
     },
-    isInvalid: {
+    invalid: {
       control: 'boolean',
     },
-    isDisabled: {
+    disabled: {
       control: 'boolean',
     },
     border: {
