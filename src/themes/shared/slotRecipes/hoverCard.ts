@@ -5,25 +5,13 @@ export const hoverCardRecipe = defineSlotRecipe({
   slots: hoverCardAnatomy.keys(),
   base: {
     content: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      textStyle: 'sm',
-      '--hovercard-bg': 'colors.bg.panel',
-      bg: 'var(--hovercard-bg)',
-      boxShadow: 'lg',
-      maxWidth: '80',
-      borderRadius: 'l3',
-      zIndex: 'popover',
-      transformOrigin: 'var(--transform-origin)',
-      outline: '0',
       _open: {
-        animationStyle: 'slide-fade-in',
-        animationDuration: 'fast',
+        animationStyle: 'scale-fade-in',
+        animationDuration: 'normal',
       },
       _closed: {
-        animationStyle: 'slide-fade-out',
-        animationDuration: 'faster',
+        animationStyle: 'scale-fade-out',
+        animationDuration: 'normal',
       },
     },
     arrow: {
@@ -37,7 +25,7 @@ export const hoverCardRecipe = defineSlotRecipe({
   },
   variants: {
     size: {
-      xl: {
+      lg: {
         content: {
           width: '6xl',
           p: 'md',

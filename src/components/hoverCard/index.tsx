@@ -11,18 +11,7 @@ export type PopoverProps = PropsWithChildren<{
   contentPadding?: ContentPadding;
   maxWidth?: MaxWidth;
   contentPosition?: 'relative' | 'absolute';
-  placement?:
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right'
-    | 'right-start';
+  placement?: 'top' | 'right' | 'bottom' | 'left';
   size?: 'md' | 'lg';
 }>;
 
@@ -31,12 +20,7 @@ export const HoverCard: FC<PopoverProps> = ({
   children,
   placement,
   showArrow = true,
-  closeOnBlur = false,
-  gutter = 12,
   size = 'md',
-  onClose,
-  onOpen,
-  isOpen,
   contentPadding = '2xl',
   maxWidth = '6xl',
   contentPosition,
@@ -44,12 +28,11 @@ export const HoverCard: FC<PopoverProps> = ({
   return (
     <ChakraHoverCard.Root
       size={size}
-      gutter={gutter}
-      open={isOpen}
-      isLazy={true}
+      openDelay={100}
+      closeDelay={100}
       positioning={{ placement: placement }}
     >
-      <ChakraHoverCard.Trigger>{children}</ChakraHoverCard.Trigger>
+      <ChakraHoverCard.Trigger asChild>{children}</ChakraHoverCard.Trigger>
       <Portal>
         <Box zIndex="popover" position={contentPosition} top="0" left="0">
           <ChakraHoverCard.Positioner>
@@ -59,11 +42,11 @@ export const HoverCard: FC<PopoverProps> = ({
               maxW={maxWidth}
               // required for arrow to popup above shadow
               zIndex="0"
-              backgroundColor="white"
+              bg="white"
               padding={contentPadding}
             >
               {showArrow ? (
-                <ChakraHoverCard.Arrow backgroundColor="white" />
+                <ChakraHoverCard.Arrow bg="white" zIndex="1" />
               ) : null}
               {content}
             </ChakraHoverCard.Content>
