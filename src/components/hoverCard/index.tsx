@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 import { Box, HoverCard as ChakraHoverCard, Portal } from '@chakra-ui/react';
 
-type ContentPadding = '2xl' | 0;
+type ContentPadding = '2xl' | '0';
 
 type MaxWidth = '6xl' | '8xl';
 
@@ -41,7 +41,7 @@ export const HoverCard: FC<HoverCardProps> = ({
               boxShadow="md"
               maxW={maxWidth}
               // required for arrow to popup above shadow
-              zIndex="0"
+              zIndex="base"
               bg="white"
               padding={contentPadding}
             >

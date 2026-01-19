@@ -21,8 +21,7 @@ export const hoverCardRecipe = defineSlotRecipe({
       '--arrow-background': 'var(--popover-bg)',
     },
     arrowTip: {
-      borderTopWidth: '1px',
-      borderLeftWidth: '1px',
+      border: '1px',
       borderColor: 'white',
     },
   },

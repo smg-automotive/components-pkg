@@ -7,7 +7,7 @@ import {
   UseDialogProps,
 } from '@chakra-ui/react';
 
-type ContentPadding = '2xl' | 0;
+type ContentPadding = '2xl' | '0';
 
 type MaxWidth = '6xl' | '8xl';
 
@@ -55,7 +55,7 @@ export const Popover: FC<PopoverProps> = ({
               boxShadow="md"
               maxW={maxWidth}
               // required for arrow to popup above shadow
-              zIndex="0"
+              zIndex="base"
               bg="white"
               padding={contentPadding}
             >
