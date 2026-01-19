@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { chunkArray } from 'src/utilities/chunkArray';
 import { MobileOnlyAccordionPanel } from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
 import { MobileOnlyAccordionItem } from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';

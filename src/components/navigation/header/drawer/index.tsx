@@ -75,7 +75,6 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           }}
         >
           <Box
-            data-testid="drawer-body"
             py="lg"
             px={{ md: 'xs' }}
             maxWidth="container.2xl"
@@ -84,6 +83,7 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
           >
             {isOpen ? (
               <Grid
+                data-testid="drawer-body"
                 height="full"
                 width="full"
                 templateColumns={{

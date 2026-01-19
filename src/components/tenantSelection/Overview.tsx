@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Image } from '@chakra-ui/react';
+
+import { useI18n } from 'src/utilities/i18nInit';
 
 import { Text } from '../text';
 import { H1 } from '../heading';

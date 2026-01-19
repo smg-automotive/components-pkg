@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { useI18n } from '@smg-automotive/i18n-pkg';
 
+import { useI18n } from 'src/utilities/i18nInit';
 import { Text } from 'src/components/text';
 import { LinkInstance } from 'src/components/navigation/link';
 import { Link } from 'src/components/link';

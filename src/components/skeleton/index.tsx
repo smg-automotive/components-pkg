@@ -4,4 +4,4 @@ const Skeleton = ChakraSkeleton;
 
 Skeleton.displayName = 'Skeleton';
 
-export { Skeleton, SkeletonProps };
+export { Skeleton, type SkeletonProps };
