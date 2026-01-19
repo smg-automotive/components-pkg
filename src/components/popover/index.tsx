@@ -1,42 +1,56 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
-import { Box, HoverCard as ChakraHoverCard, Portal } from '@chakra-ui/react';
+
+import {
+  Box,
+  Popover as ChakraPopover,
+  Portal,
+  UseDialogProps,
+} from '@chakra-ui/react';
 
 type ContentPadding = '2xl' | 0;
 
 type MaxWidth = '6xl' | '8xl';
 
-export type HoverCardProps = PropsWithChildren<{
+export type PopoverProps = PropsWithChildren<{
   content: ReactNode;
-  showArrow?: boolean;
   contentPadding?: ContentPadding;
   maxWidth?: MaxWidth;
   contentPosition?: 'relative' | 'absolute';
   placement?: 'top' | 'right' | 'bottom' | 'left';
   size?: 'md' | 'lg';
+  open: boolean | undefined;
+  onOpenChange?: UseDialogProps['onOpenChange'];
+  showArrow?: boolean;
+  closeOnInteractOutside?: boolean;
 }>;
 
-export const HoverCard: FC<HoverCardProps> = ({
+export const Popover: FC<PopoverProps> = ({
   content,
   children,
   placement,
-  showArrow = true,
   size = 'md',
   contentPadding = '2xl',
   maxWidth = '6xl',
   contentPosition,
+  onOpenChange,
+  open,
+  showArrow = true,
+  closeOnInteractOutside = false,
 }) => {
   return (
-    <ChakraHoverCard.Root
+    <ChakraPopover.Root
       size={size}
-      openDelay={100}
-      closeDelay={100}
       positioning={{ placement: placement }}
+      closeOnEscape={false}
+      closeOnInteractOutside={closeOnInteractOutside}
+      open={open}
+      onOpenChange={onOpenChange}
     >
-      <ChakraHoverCard.Trigger asChild>{children}</ChakraHoverCard.Trigger>
+      <ChakraPopover.Trigger asChild>{children}</ChakraPopover.Trigger>
       <Portal>
         <Box zIndex="popover" position={contentPosition} top="0" left="0">
-          <ChakraHoverCard.Positioner>
-            <ChakraHoverCard.Content
+          <ChakraPopover.Positioner>
+            <ChakraPopover.Content
               borderRadius="sm"
               boxShadow="md"
               maxW={maxWidth}
@@ -46,15 +60,16 @@ export const HoverCard: FC<HoverCardProps> = ({
               padding={contentPadding}
             >
               {showArrow ? (
-                <ChakraHoverCard.Arrow>
-                  <ChakraHoverCard.ArrowTip />
-                </ChakraHoverCard.Arrow>
+                <ChakraPopover.Arrow>
+                  <ChakraPopover.ArrowTip />
+                </ChakraPopover.Arrow>
               ) : null}
+
               {content}
-            </ChakraHoverCard.Content>
-          </ChakraHoverCard.Positioner>
+            </ChakraPopover.Content>
+          </ChakraPopover.Positioner>
         </Box>
       </Portal>
-    </ChakraHoverCard.Root>
+    </ChakraPopover.Root>
   );
 };

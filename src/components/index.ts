@@ -58,3 +58,4 @@ export * from './rangeSlider';
 export { SearchableList, ListItemWithChildren } from './list/SearchableList';
 export * from './tenantSelection';
 export * from './hoverCard';
+export * from './popover';

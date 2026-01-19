@@ -1,8 +1,8 @@
-import { hoverCardAnatomy } from '@chakra-ui/react/anatomy';
+import { popoverAnatomy } from '@chakra-ui/react/anatomy';
 import { defineSlotRecipe } from '@chakra-ui/react';
 
-export const hoverCardRecipe = defineSlotRecipe({
-  slots: hoverCardAnatomy.keys(),
+export const popoverRecipe = defineSlotRecipe({
+  slots: popoverAnatomy.keys(),
   base: {
     content: {
       bg: 'white',
@@ -41,5 +41,8 @@ export const hoverCardRecipe = defineSlotRecipe({
         },
       },
     },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 });

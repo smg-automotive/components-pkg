@@ -9,6 +9,7 @@ import { selectSlotRecipe as select } from './select';
 import { sectionRecipe as section } from './section';
 import { radioRecipe as radio } from './radio';
 import { popoverFilterRecipe as popoverFilter } from './popoverFilter';
+import { popoverRecipe as popover } from './popover';
 import { paginationRecipe as pagination } from './pagination';
 import { numberInputRecipe as numberInput } from './numberInput';
 import { menuRecipe as menu } from './menu';
@@ -60,4 +61,5 @@ export const slotRecipes = {
   pagination,
   menu,
   hoverCard,
+  popover,
 };

@@ -3,14 +3,14 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { TooltipIcon } from '../icons';
 
-import { HoverCard, PopoverProps } from './index';
+import { HoverCard, HoverCardProps } from './index';
 
 const Template = ({
   size,
   showArrow,
   placement,
   content,
-}: PopoverProps & { hasCloseButton: boolean }) => {
+}: HoverCardProps & { hasCloseButton: boolean }) => {
   return (
     <HoverCard
       content={content}
