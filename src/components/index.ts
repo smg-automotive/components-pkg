@@ -9,6 +9,7 @@ export * from './button';
 export * from './card';
 export * from './carousel';
 export * from './colorPicker';
+export * from './collapse';
 export * from './center';
 export * from './checkbox';
 export * from './checkboxGroup';
