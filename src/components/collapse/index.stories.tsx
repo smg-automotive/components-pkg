@@ -5,13 +5,14 @@ import { Text } from '../text';
 
 import { Flex } from '../flex';
 
-import CollapseComponent, { CollapseProps } from './index';
+import { Collapse as CollapseComponent, CollapseProps } from './index';
 
 const meta: Meta<typeof CollapseComponent> = {
   title: 'Components/Utils/Collapse',
   component: CollapseComponent,
   args: {
-    in: true,
+    in: false,
+    animateOpacity: true,
   },
 };
 export default meta;
