@@ -198,3 +198,24 @@ export const WithIcon: StoryType = {
     Icon: FlashIcon,
   },
 };
+
+export const WithStyledDisplayValue: StoryType = {
+  name: 'With styled display value',
+
+  args: {
+    isApplied: true,
+    displayValue: (
+      <>
+        <s>Benzin, Diesel</s> Elektro, Hybrid, Plug-In
+      </>
+    ),
+  },
+
+  argTypes: {
+    isApplied: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+};
