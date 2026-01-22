@@ -4,6 +4,7 @@ export { ArrowDiagonalIcon } from './ArrowDiagonalIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
+export { LinkIcon } from './LinkIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
 export { AutoScout24AppLogo } from './AutoScout24AppLogo';
 export { AvatarIcon } from './AvatarIcon';
