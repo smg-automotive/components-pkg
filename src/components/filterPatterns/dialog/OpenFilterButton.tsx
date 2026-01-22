@@ -115,6 +115,7 @@ const renderInlineContent = ({
   isApplied: boolean | undefined;
   Icon: React.ComponentType<IconProps> | undefined;
 }): React.ReactElement => {
+  const filterLabel = appliedLabel ?? label;
   return (
     <chakra.span
       overflow="hidden"
@@ -128,7 +129,8 @@ const renderInlineContent = ({
       <chakra.span overflow="hidden" textOverflow="ellipsis">
         {isApplied && displayValue ? (
           <>
-            {appliedLabel ?? label}: {displayValue}
+            {filterLabel ? `${filterLabel}: ` : ''}
+            {displayValue}
           </>
         ) : (
           label
