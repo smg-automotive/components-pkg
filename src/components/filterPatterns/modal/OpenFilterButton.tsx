@@ -97,7 +97,7 @@ const getRightIcon = (
 const renderInlineContent = (
   label: string,
   appliedLabel?: string,
-  displayValue?: string,
+  displayValue?: string | React.ReactNode,
   isApplied?: boolean,
   Icon?: React.ComponentType<{
     h?: string;
@@ -116,19 +116,20 @@ const renderInlineContent = (
   >
     {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
     <chakra.span overflow="hidden" textOverflow="ellipsis">
-      {[
-        isApplied ? (appliedLabel ?? label) : label,
-        isApplied ? displayValue : undefined,
-      ]
-        .filter(Boolean)
-        .join(': ')}
+      {isApplied && displayValue ? (
+        <>
+          {appliedLabel ?? label}: {displayValue}
+        </>
+      ) : (
+        label
+      )}
     </chakra.span>
   </chakra.span>
 );
 
 const renderDefaultContent = (
   label: string,
-  displayValue?: string,
+  displayValue?: string | React.ReactNode,
   isApplied?: boolean,
   Icon?: React.ComponentType<{
     h?: string;
