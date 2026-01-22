@@ -105,27 +105,32 @@ const renderInlineContent = (
     mr?: string;
     ml?: string;
   }>,
-) => (
-  <chakra.span
-    overflow="hidden"
-    whiteSpace="nowrap"
-    display="flex"
-    alignItems="center"
-    w="full"
-    minW="0"
-  >
-    {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
-    <chakra.span overflow="hidden" textOverflow="ellipsis">
-      {isApplied && displayValue ? (
-        <>
-          {appliedLabel ?? label}: {displayValue}
-        </>
-      ) : (
-        label
-      )}
+) => {
+  const filterLabel = appliedLabel ?? label;
+
+  return (
+    <chakra.span
+      overflow="hidden"
+      whiteSpace="nowrap"
+      display="flex"
+      alignItems="center"
+      w="full"
+      minW="0"
+    >
+      {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
+      <chakra.span overflow="hidden" textOverflow="ellipsis">
+        {isApplied && displayValue ? (
+          <>
+            {filterLabel ? `${filterLabel}: ` : ''}
+            {displayValue}
+          </>
+        ) : (
+          label
+        )}
+      </chakra.span>
     </chakra.span>
-  </chakra.span>
-);
+  );
+};
 
 const renderDefaultContent = (
   label: string,

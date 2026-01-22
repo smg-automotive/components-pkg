@@ -81,6 +81,9 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
       },
     },
   ];
+
+  const filterLabel = appliedLabel ?? label;
+
   return (
     <Popover
       returnFocusOnClose={true}
@@ -128,7 +131,8 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
               <chakra.span overflow="hidden" textOverflow="ellipsis">
                 {displayValue ? (
                   <>
-                    {appliedLabel ?? label}: {displayValue}
+                    {filterLabel ? `${filterLabel}: ` : ''}
+                    {displayValue}
                   </>
                 ) : (
                   label
