@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render, screen } from 'jest-utils';
 
-import TimePicker, { TimePickerProps } from '..';
+import { TimePicker, TimePickerProps } from '..';
 
 const renderWrapper = ({
   onBlur = jest.fn(),
