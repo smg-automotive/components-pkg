@@ -7,10 +7,10 @@ import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
 
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import { Props, Radio } from './index';
+import { Radio, RadioProps } from './index';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+const Template = (props: RadioProps) => {
+  const [args, updateArgs] = useArgs<RadioProps>();
 
   return (
     <Radio
