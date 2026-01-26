@@ -60,6 +60,7 @@ export * from './text';
 export * from './text/HighlightedText';
 export * from './text/marked';
 export * from './themeProvider';
+export * from './timePicker';
 export * from './topListingBadge';
 export * from './topVehicleSharedBadge';
 export * from './vehicleReference';
