@@ -81,6 +81,9 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
       },
     },
   ];
+
+  const filterLabel = appliedLabel ?? label;
+
   return (
     <Popover
       returnFocusOnClose={true}
@@ -126,9 +129,14 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
             >
               {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
               <chakra.span overflow="hidden" textOverflow="ellipsis">
-                {[displayValue ? (appliedLabel ?? label) : label, displayValue]
-                  .filter(Boolean)
-                  .join(': ')}
+                {displayValue ? (
+                  <>
+                    {filterLabel ? `${filterLabel}: ` : ''}
+                    {displayValue}
+                  </>
+                ) : (
+                  label
+                )}
               </chakra.span>
             </chakra.span>
           </ChakraButton>

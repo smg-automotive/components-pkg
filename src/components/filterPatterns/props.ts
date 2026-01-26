@@ -5,8 +5,9 @@ import { IconProps } from '@chakra-ui/react';
 export type FilterPatternProps = {
   /**
    * Shows the value of the filter in default and open state.
+   * Can be a string or ReactNode (e.g., JSX with strikethrough formatting).
    */
-  displayValue: string;
+  displayValue: string | ReactNode;
   /**
    * Showing an icon (e.g. EV indicator) on the filter button and heading
    */
