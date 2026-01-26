@@ -5,7 +5,7 @@ import { TopToast } from 'src/hooks/useToast/TopToaster';
 import { TopRightToast } from 'src/hooks/useToast/TopRightToast';
 import { Button, ErrorIcon } from 'src/components';
 
-import { ToastOptions, useToast } from './index';
+import useToast, { ToastOptions } from './index';
 
 const Template = (args: ToastOptions) => {
   const toast = useToast();
