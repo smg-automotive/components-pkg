@@ -111,14 +111,11 @@ const renderInlineContent = ({
 }: {
   label: string;
   appliedLabel: string | undefined;
-  displayValue: string | undefined;
+  displayValue: string | React.ReactNode | undefined;
   isApplied: boolean | undefined;
   Icon: React.ComponentType<IconProps> | undefined;
 }): React.ReactElement => {
-  const displayText = isApplied
-    ? [appliedLabel ?? label, displayValue].filter(Boolean).join(': ')
-    : label;
-
+  const filterLabel = appliedLabel ?? label;
   return (
     <chakra.span
       overflow="hidden"
@@ -130,7 +127,14 @@ const renderInlineContent = ({
     >
       {Icon && <Icon h="xs" w="xs" mr="xs" />}
       <chakra.span overflow="hidden" textOverflow="ellipsis">
-        {displayText}
+        {isApplied && displayValue ? (
+          <>
+            {filterLabel ? `${filterLabel}: ` : ''}
+            {displayValue}
+          </>
+        ) : (
+          label
+        )}
       </chakra.span>
     </chakra.span>
   );
@@ -143,7 +147,7 @@ const renderDefaultContent = ({
   Icon,
 }: {
   label: string;
-  displayValue: string | undefined;
+  displayValue: string | React.ReactNode | undefined;
   isApplied: boolean | undefined;
   Icon: React.ComponentType<IconProps> | undefined;
 }): React.ReactElement => (

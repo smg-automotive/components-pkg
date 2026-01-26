@@ -47,6 +47,8 @@ export const PopoverFilterContent: FC<PopoverFilterProps> = ({
   const recipe = useSlotRecipe({ key: 'popoverFilter' });
   const styles = recipe();
 
+  const filterLabel = appliedLabel ?? label;
+
   return (
     <ChakraPopover.Root
       positioning={{ placement: 'bottom-start', flip: hasFlip }}
@@ -79,9 +81,14 @@ export const PopoverFilterContent: FC<PopoverFilterProps> = ({
           >
             {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
             <chakra.span overflow="hidden" textOverflow="ellipsis">
-              {[displayValue ? (appliedLabel ?? label) : label, displayValue]
-                .filter(Boolean)
-                .join(': ')}
+              {displayValue ? (
+                <>
+                  {filterLabel ? `${filterLabel}: ` : ''}
+                  {displayValue}
+                </>
+              ) : (
+                label
+              )}
             </chakra.span>
           </chakra.span>
           {displayValue ? null : (
