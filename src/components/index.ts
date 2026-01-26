@@ -32,6 +32,7 @@ export * from './icons';
 export * from './input';
 export * from './layout';
 export * from './link';
+export * from './linkOverlay';
 export * from './list';
 export {
   SearchableList,
