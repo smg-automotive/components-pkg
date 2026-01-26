@@ -46,6 +46,7 @@ export * from './pagination';
 export * from './rangeFilterInput';
 export * from './rangeSlider';
 export * from './rating';
+export * from './radio';
 export * from './section';
 export * from './select';
 export * from './separator';
