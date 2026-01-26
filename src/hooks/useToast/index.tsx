@@ -14,7 +14,7 @@ const toasterMap = {
   'top-right': topRightToaster,
 };
 
-export const useToast = () => {
+const useToast = () => {
   return (options: ToastOptions) => {
     const {
       position = 'top',
@@ -48,3 +48,5 @@ export const useToast = () => {
     return { closeToast: () => toasterInstance.dismiss(toasterId) };
   };
 };
+
+export default useToast;
