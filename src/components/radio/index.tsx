@@ -9,7 +9,7 @@ import {
 
 import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
 
-export type Props = RecipeVariantProps<typeof radioRecipe> & {
+export type RadioProps = RecipeVariantProps<typeof radioRecipe> & {
   value: string;
   label?: string;
   name?: string;
@@ -19,8 +19,8 @@ export type Props = RecipeVariantProps<typeof radioRecipe> & {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Radio = forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const recipe = useSlotRecipe({ key: 'radio' as const });
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  const recipe = useSlotRecipe({ key: 'radio' });
 
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
 
