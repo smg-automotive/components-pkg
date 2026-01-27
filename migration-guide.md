@@ -74,6 +74,12 @@ Integration notes:
 With the `Field` component taking care of the label and error message, `FormError` and `FormLabel` components are removed.
 If you need to add a label or error message to your input wrap it in the `Field` component.
 
+### Popover component in V3 can only be triggered by click
+
+We now need 2 components to achieve the behavior of our previous `Popover`:
+- `Popover` component is triggered on click
+- `HoverCard`component is triggered on hover
+
 ### TopVehicleSharedBadge requires additional `brand` prop
 
 In V2 we fetched the brand directly from the `useTheme` hook. Since this hook is not supported anymore, we now pass the brand as prop. 
