@@ -39,10 +39,6 @@ export * from './layout';
 export * from './link';
 export * from './linkOverlay';
 export * from './list';
-export {
-  SearchableList,
-  type ListItemWithChildren,
-} from './list/SearchableList';
 export * from './menu';
 export * from './missingImage';
 export * from './mobileOnlyAccordion';
@@ -72,6 +68,13 @@ export * from './timePicker';
 export * from './tooltip';
 export * from './topListingBadge';
 export * from './topVehicleSharedBadge';
+export * from './discreteSlider';
+export * from './formControlSection';
+export * from './rangeSlider';
+export { SearchableList, ListItemWithChildren } from './list/SearchableList';
+export * from './tenantSelection';
+export * from './hoverCard';
+export * from './popover';
 export * from './vehicleReference';
 export * from './skeleton';
 export * from './spinner';
