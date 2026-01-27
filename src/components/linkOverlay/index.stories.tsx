@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import Link from '../link';
+import { Link } from '../link';
 import { H2 } from '../heading';
 
 import { LinkBox, LinkOverlay, LinkOverlayProps } from './index';
