@@ -5,13 +5,13 @@ export const progressSlotRecipe = defineSlotRecipe({
   slots: ['root', 'track', 'range', 'label', 'valueText'],
   base: {
     track: {
-      height: '0.5rem',
+      height: 'xxs',
       bg: 'gray.50',
       borderRadius: 'lg',
       overflow: 'hidden',
     },
     range: {
-      height: '100%',
+      height: 'full',
       bg: 'gray.900',
       borderRadius: 'lg',
     },
