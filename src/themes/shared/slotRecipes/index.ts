@@ -8,6 +8,7 @@ import { simpleHeaderRecipe as simpleHeader } from './simpleHeader';
 import { selectSlotRecipe as select } from './select';
 import { sectionRecipe as section } from './section';
 import { radioRecipe as radio } from './radio';
+import { progressSlotRecipe as progress } from './progress';
 import { popoverFilterRecipe as popoverFilter } from './popoverFilter';
 import { popoverRecipe as popover } from './popover';
 import { paginationRecipe as pagination } from './pagination';
@@ -42,6 +43,7 @@ export const slotRecipes = {
   list,
   markedText,
   dialog,
+  progress,
   simpleHeader,
   table,
   tabs,
