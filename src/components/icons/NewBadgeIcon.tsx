@@ -27,4 +27,3 @@ export const NewBadgeIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     boxSize: 'sm',
   },
 });
-
