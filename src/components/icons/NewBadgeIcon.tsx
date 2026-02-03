@@ -3,11 +3,11 @@ import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
 export const NewBadgeIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'New Badge',
+  displayName: 'NewBadge',
   viewBox: '0 0 34 19',
   path: (
     <>
-      <title>New Badge</title>
+      <title>New Badge icon</title>
       <path fill="#f5f200" d="M0 0h34v19H0z" />
       <path
         fill="currentColor"
