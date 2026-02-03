@@ -8,19 +8,19 @@ import { CheckmarkCircleIcon } from 'src/components/icons';
 export interface UploadProgressProps {
   current: number;
   max: number;
-  label: ReactNode;
+  label: (current: number, max: number) => ReactNode;
 }
 
 const UploadProgress: FC<UploadProgressProps> = ({ current, max, label }) => {
   const validMax = Math.max(max, 1);
   const validCurrent = Math.max(0, Math.min(current, validMax));
-  const percentage = (validCurrent / validMax) * 100;
-  const isComplete = validCurrent === validMax && validMax > 0;
+  const isComplete = validCurrent >= validMax;
 
   return (
     <>
       <Progress
-        value={percentage}
+        value={validCurrent}
+        max={validMax}
         h="0.5rem"
         borderRadius="lg"
         bg="gray.50"
@@ -32,7 +32,7 @@ const UploadProgress: FC<UploadProgressProps> = ({ current, max, label }) => {
       />
       <Stack direction="row" spacing="xs" align="center" marginTop="sm">
         {isComplete && <CheckmarkCircleIcon color="green.400" />}
-        <Text textStyle="body">{label}</Text>
+        <Text textStyle="body">{label(validCurrent, max)}</Text>
       </Stack>
     </>
   );

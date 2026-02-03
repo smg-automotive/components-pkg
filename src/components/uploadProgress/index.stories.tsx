@@ -24,6 +24,7 @@ const meta: Meta<typeof UploadProgressComponent> = {
   args: {
     current: 0,
     max: 13,
+    label: createLabel,
   },
 
   argTypes: {
@@ -37,13 +38,6 @@ const meta: Meta<typeof UploadProgressComponent> = {
       control: false,
     },
   },
-
-  render: (args) => (
-    <UploadProgressComponent
-      {...args}
-      label={createLabel(args.current, args.max)}
-    />
-  ),
 };
 
 export default meta;
@@ -64,6 +58,14 @@ export const PartialProgress: StoryType = {
   name: 'Partial Progress',
   args: {
     current: 5,
+    max: 13,
+  },
+};
+
+export const OvershootProgress: StoryType = {
+  name: 'Overshoot Progress',
+  args: {
+    current: 20,
     max: 13,
   },
 };
