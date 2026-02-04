@@ -123,4 +123,4 @@ export {
   TenantSelectionProps,
 } from './tenantSelection';
 
-export { default as UploadProgress } from './uploadProgress';
+export { default as Progress } from './progress';

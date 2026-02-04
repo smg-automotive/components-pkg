@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import Text from '../text';
 
-import UploadProgressComponent from './index';
+import ProgressComponent from './index';
 
 const createLabel = (current: number, max: number) => (
   <>
@@ -17,9 +17,9 @@ const createLabel = (current: number, max: number) => (
   </>
 );
 
-const meta: Meta<typeof UploadProgressComponent> = {
-  title: 'Components/Feedback/Upload Progress',
-  component: UploadProgressComponent,
+const meta: Meta<typeof ProgressComponent> = {
+  title: 'Components/Feedback/Progress',
+  component: ProgressComponent,
 
   args: {
     current: 0,
@@ -42,7 +42,7 @@ const meta: Meta<typeof UploadProgressComponent> = {
 
 export default meta;
 
-type StoryType = StoryObj<typeof UploadProgressComponent>;
+type StoryType = StoryObj<typeof ProgressComponent>;
 
 export const Overview: StoryType = {};
 

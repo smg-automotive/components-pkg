@@ -3,7 +3,7 @@ import React from 'react';
 import Text from 'src/components/text';
 import { render, screen } from 'jest-utils';
 
-import UploadProgress from '../index';
+import Progress from '../index';
 
 const createLabel = (current: number, max: number) => (
   <>
@@ -15,9 +15,9 @@ const createLabel = (current: number, max: number) => (
 );
 
 const renderWrapper = ({ current = 0, max = 10 } = {}) =>
-  render(<UploadProgress current={current} max={max} label={createLabel} />);
+  render(<Progress current={current} max={max} label={createLabel} />);
 
-describe('<UploadProgress>', () => {
+describe('<dProgress>', () => {
   it('renders progress bar', () => {
     renderWrapper();
 

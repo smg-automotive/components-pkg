@@ -1,34 +1,27 @@
 import React, { FC, ReactNode } from 'react';
-import { Progress } from '@chakra-ui/react';
+import { Progress as ChakraProgress } from '@chakra-ui/react';
 
 import Text from 'src/components/text';
 import Stack from 'src/components/stack';
 import { CheckmarkCircleIcon } from 'src/components/icons';
 
-export interface UploadProgressProps {
+export interface ProgressProps {
   current: number;
   max: number;
   label: (current: number, max: number) => ReactNode;
 }
 
-const UploadProgress: FC<UploadProgressProps> = ({ current, max, label }) => {
+const Progress: FC<ProgressProps> = ({ current, max, label }) => {
   const validMax = Math.max(max, 1);
   const validCurrent = Math.max(0, Math.min(current, validMax));
   const isComplete = validCurrent >= validMax;
 
   return (
     <>
-      <Progress
+      <ChakraProgress
         value={validCurrent}
         max={validMax}
-        h="0.5rem"
-        borderRadius="lg"
-        bg="gray.50"
-        sx={{
-          '& > div': {
-            backgroundColor: 'gray.900',
-          },
-        }}
+        aria-label={label(validCurrent, max) as string}
       />
       <Stack direction="row" spacing="xs" align="center" marginTop="sm">
         {isComplete && <CheckmarkCircleIcon color="green.400" />}
@@ -38,4 +31,4 @@ const UploadProgress: FC<UploadProgressProps> = ({ current, max, label }) => {
   );
 };
 
-export default UploadProgress;
+export default Progress;
