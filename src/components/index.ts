@@ -122,3 +122,5 @@ export {
   default as TenantSelection,
   TenantSelectionProps,
 } from './tenantSelection';
+
+export { default as Progress } from './progress';
