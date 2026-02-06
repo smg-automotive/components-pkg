@@ -16,11 +16,11 @@ type Placement = Exclude<
   undefined
 >;
 type Content = TooltipContentProps['content'];
-export type TooltipProps = Pick<TooltipRootProps, 'children'> &
-  Pick<TooltipContentProps, 'maxWidth'> & {
-    placement?: Placement;
-    label: Content;
-  };
+export type TooltipProps = Pick<TooltipRootProps, 'children'> & {
+  placement?: Placement;
+  label: Content;
+  maxWidth?: TooltipContentProps['maxWidth'];
+};
 
 export const Tooltip: FC<TooltipProps> = ({
   children,

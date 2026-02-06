@@ -1,5 +1,3 @@
-'use client';
-
 import React, { FC, PropsWithChildren } from 'react';
 import {
   Accordion as ChakraAccordion,

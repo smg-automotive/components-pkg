@@ -7,7 +7,7 @@ import {
   UseDialogProps,
 } from '@chakra-ui/react';
 
-type ContentPadding = '2xl' | '0';
+type ContentPadding = '2xl' | '0' | 0;
 
 type MaxWidth = '6xl' | '8xl';
 
@@ -18,7 +18,7 @@ export type PopoverProps = PropsWithChildren<{
   contentPosition?: 'relative' | 'absolute';
   placement?: 'top' | 'right' | 'bottom' | 'left';
   size?: 'md' | 'lg';
-  open: boolean | undefined;
+  open?: boolean;
   onOpenChange?: UseDialogProps['onOpenChange'];
   showArrow?: boolean;
   closeOnInteractOutside?: boolean;
