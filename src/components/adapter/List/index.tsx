@@ -1,10 +1,37 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { ListRoot } from 'src/components/list';
+import {
+  List as ListComponents,
+  ListRoot,
+  ListRootProps,
+} from 'src/components/list';
 
-const UnorderedList: FC<PropsWithChildren> = ({ children }) => {
+const ListItem = ListComponents.Item;
+
+const List: FC<PropsWithChildren<ListRootProps>> = ({ children, ...rest }) => {
   return (
-    <ListRoot as="ul" listStyleType="initial">
+    <ListComponents.Root {...rest} as="ul">
+      {children}
+    </ListComponents.Root>
+  );
+};
+
+const UnorderedList: FC<
+  PropsWithChildren<
+    {
+      variant?: 'icon-outside' | 'initial';
+    } & ListRootProps
+  >
+> = ({ children, variant, ...rest }) => {
+  const listStylePos = variant === 'icon-outside' ? 'outside' : 'inside';
+
+  return (
+    <ListRoot
+      {...rest}
+      as="ul"
+      listStyleType="initial"
+      {...(variant ? { listStylePosition: listStylePos } : {})}
+    >
       {children}
     </ListRoot>
   );
@@ -18,4 +45,4 @@ const OrderedList: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export { OrderedList, UnorderedList };
+export { OrderedList, UnorderedList, List, ListItem };

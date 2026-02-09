@@ -9,15 +9,16 @@ type Props = BoxProps & {
   below?: BreakpointName;
 };
 
-export const Show: FC<PropsWithChildren<Props>> = (props) => {
-  const { above, below, children, ...rest } = props;
+export const Show: FC<PropsWithChildren<Props>> = ({
+  above,
+  below,
+  ...rest
+}) => {
   return (
     <Box
       {...rest}
       {...(above ? { hideBelow: above } : {})}
       {...(below ? { hideFrom: below } : {})}
-    >
-      {children}
-    </Box>
+    />
   );
 };

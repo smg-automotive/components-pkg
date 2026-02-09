@@ -1,10 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Box } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
-type Props = {
+type Props = BoxProps & {
   above?: BreakpointName;
   below?: BreakpointName;
 };
@@ -12,14 +12,13 @@ type Props = {
 export const Hide: FC<PropsWithChildren<Props>> = ({
   above,
   below,
-  children,
+  ...rest
 }) => {
   return (
     <Box
+      {...rest}
       {...(above ? { hideFrom: above } : {})}
       {...(below ? { hideBelow: below } : {})}
-    >
-      {children}
-    </Box>
+    />
   );
 };
