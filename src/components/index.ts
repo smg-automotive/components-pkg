@@ -98,3 +98,4 @@ export * from './adapter/Box';
 export * from './adapter/Skeleton';
 export * from './adapter/Card';
 export * from './adapter/Switch';
+export * from './adapter/Tab';
