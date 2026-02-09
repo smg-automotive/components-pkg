@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Text } from '../text';
 
-import { UploadProgress } from './index';
+import Progress from './index';
 
 const createLabel = (current: number, max: number) => (
   <>
@@ -17,13 +17,14 @@ const createLabel = (current: number, max: number) => (
   </>
 );
 
-const meta: Meta<typeof UploadProgress> = {
-  title: 'Components/Feedback/Upload Progress',
-  component: UploadProgress,
+const meta: Meta<typeof Progress> = {
+  title: 'Components/Feedback/Progress',
+  component: Progress,
 
   args: {
     current: 0,
     max: 13,
+    label: createLabel,
   },
 
   argTypes: {
@@ -37,15 +38,11 @@ const meta: Meta<typeof UploadProgress> = {
       control: false,
     },
   },
-
-  render: (args) => (
-    <UploadProgress {...args} label={createLabel(args.current, args.max)} />
-  ),
 };
 
 export default meta;
 
-type StoryType = StoryObj<typeof UploadProgress>;
+type StoryType = StoryObj<typeof Progress>;
 
 export const Overview: StoryType = {};
 
@@ -61,6 +58,14 @@ export const PartialProgress: StoryType = {
   name: 'Partial Progress',
   args: {
     current: 5,
+    max: 13,
+  },
+};
+
+export const OvershootProgress: StoryType = {
+  name: 'Overshoot Progress',
+  args: {
+    current: 20,
     max: 13,
   },
 };
