@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Text } from '../text';
 
-import Progress from './index';
+import { Progress } from './index';
 
 const createLabel = (current: number, max: number) => (
   <>

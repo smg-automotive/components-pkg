@@ -11,7 +11,7 @@ export interface ProgressProps {
   label: (current: number, max: number) => ReactNode;
 }
 
-const Progress: FC<ProgressProps> = ({ current, max, label }) => {
+export const Progress: FC<ProgressProps> = ({ current, max, label }) => {
   const validMax = Math.max(max, 1);
   const validCurrent = Math.max(0, Math.min(current, validMax));
   const isComplete = validCurrent >= validMax;
@@ -34,5 +34,3 @@ const Progress: FC<ProgressProps> = ({ current, max, label }) => {
     </>
   );
 };
-
-export default Progress;
