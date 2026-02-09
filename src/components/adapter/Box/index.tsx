@@ -1,17 +1,33 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 
 import { Box as BoxComponents, BoxProps } from 'src/components/box';
 
-type As = React.ElementType;
+type ElementType = React.ElementType;
 
-type Props<E extends As = 'div'> = BoxProps & {
+type PropsOf<E extends ElementType> = React.ComponentPropsWithoutRef<E>;
+
+type PolymorphicProps<
+  E extends ElementType,
+  OwnProps extends object,
+> = OwnProps & { as?: E } & Omit<
+    PropsOf<E>,
+    keyof OwnProps | 'as' | 'children'
+  >;
+
+type Props = BoxProps & {
   textColor?: BoxProps['color'];
   ref?: React.Ref<unknown>;
   spacing?: BoxProps['gap'];
-  as?: E;
-} & Omit<React.ComponentPropsWithoutRef<E>, 'as' | 'children'>;
+};
 
-export const Box: React.FC<PropsWithChildren<Props>> = (props) => {
+export type BoxAdapterProps<E extends ElementType = 'div'> = PolymorphicProps<
+  E,
+  Props
+>;
+
+export const Box = React.forwardRef(function BoxAdapter<
+  E extends ElementType = 'div',
+>(props: BoxAdapterProps<E>, ref: React.ForwardedRef<unknown>) {
   const { as, textColor, spacing, color, children, ...rest } = props;
 
   if (!as) {
@@ -21,16 +37,18 @@ export const Box: React.FC<PropsWithChildren<Props>> = (props) => {
         {...(textColor ? { color: textColor } : {})}
         {...(spacing ? { gap: spacing } : {})}
         {...rest}
-        ref={props.ref} // TODO Forward ref
+        ref={ref}
       />
     );
   }
 
-  const AsComp = as as As; // TODO not always going to work, needs testing
+  const AsComp = as as ElementType; // TODO not always going to work, needs testing
 
   return (
-    <BoxComponents {...rest} asChild>
+    <BoxComponents {...rest} asChild ref={ref}>
       <AsComp>{children}</AsComp>
     </BoxComponents>
   );
-};
+}) as <E extends ElementType = 'div'>(
+  props: BoxAdapterProps<E> & { ref?: React.Ref<HTMLElement> },
+) => React.ReactElement | null;
