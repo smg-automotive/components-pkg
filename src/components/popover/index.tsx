@@ -7,7 +7,7 @@ import {
   UseDialogProps,
 } from '@chakra-ui/react';
 
-type ContentPadding = '2xl' | '0' | 0;
+type ContentPadding = '2xl' | '0';
 
 type MaxWidth = '6xl' | '8xl';
 
