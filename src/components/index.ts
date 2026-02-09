@@ -78,3 +78,4 @@ export * from './popover';
 export * from './vehicleReference';
 export * from './skeleton';
 export * from './spinner';
+export * from './progress';
