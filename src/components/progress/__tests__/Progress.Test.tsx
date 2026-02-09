@@ -3,7 +3,7 @@ import React from 'react';
 import { Text } from 'src/components/text';
 import { render, screen } from 'jest-utils';
 
-import { UploadProgress } from '../index';
+import { Progress } from '../index';
 
 const createLabel = (current: number, max: number) => (
   <>
@@ -15,15 +15,9 @@ const createLabel = (current: number, max: number) => (
 );
 
 const renderWrapper = ({ current = 0, max = 10 } = {}) =>
-  render(
-    <UploadProgress
-      current={current}
-      max={max}
-      label={createLabel(current, max)}
-    />,
-  );
+  render(<Progress current={current} max={max} label={createLabel} />);
 
-describe('<UploadProgress>', () => {
+describe('<Progress>', () => {
   it('renders progress bar', () => {
     renderWrapper();
 
@@ -41,7 +35,7 @@ describe('<UploadProgress>', () => {
     renderWrapper({ current: 5, max: 10 });
 
     const progressBar = screen.getByRole('progressbar');
-    expect(progressBar).toHaveAttribute('aria-valuenow', '50');
+    expect(progressBar).toHaveAttribute('aria-valuenow', '5');
   });
 
   it('shows checkmark icon when progress is complete', () => {
@@ -62,7 +56,7 @@ describe('<UploadProgress>', () => {
     renderWrapper({ current: 15, max: 10 });
 
     const progressBar = screen.getByRole('progressbar');
-    expect(progressBar).toHaveAttribute('aria-valuenow', '100');
+    expect(progressBar).toHaveAttribute('aria-valuenow', '10');
   });
 
   it('handles edge case when current is negative', () => {
