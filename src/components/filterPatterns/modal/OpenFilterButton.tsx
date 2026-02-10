@@ -122,7 +122,6 @@ const renderInlineContent = (
         <chakra.span data-role="filter-label">
           {isApplied && displayValue && filterLabel ? `${filterLabel}: ` : ''}
         </chakra.span>
-
         <chakra.span data-role="filter-value">
           {isApplied && displayValue ? displayValue : label}
         </chakra.span>
