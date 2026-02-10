@@ -53,6 +53,7 @@ const DevOverlay: FC<DevOverlayProps> = ({
       boxShadow="md"
       as="aside"
       maxWidth="min(94%, 320px)"
+      zIndex={1}
     >
       <Flex>
         <Heading as="h3" textStyle="heading3">
