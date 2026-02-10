@@ -1,6 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 
+import { DialogCloseButton } from 'src/components/dialog/DialogCloseButton';
 import { Dialog, DialogProps } from 'src/components/dialog';
+
+export const ModalCloseButton = DialogCloseButton;
 
 type Props = Omit<DialogProps, 'open'> & {
   isOpen?: boolean;
