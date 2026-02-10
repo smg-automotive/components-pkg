@@ -69,6 +69,7 @@ export { MissingImageIcon } from './MissingImageIcon';
 export { MotorcycleIcon } from './MotorcycleIcon';
 export { MotoScout24AppLogo } from './MotoScout24AppLogo';
 export { NewBadgeIcon } from './NewBadgeIcon';
+export { PdfIcon } from './PdfIcon';
 export { PenIcon } from './PenIcon';
 export { PlusIcon } from './PlusIcon';
 export { ChfCurrencyIcon } from './ChfCurrencyIcon';
