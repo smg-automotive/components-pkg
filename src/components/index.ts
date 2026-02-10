@@ -74,7 +74,7 @@ export * from './vehicleReference';
 // export * from './skeleton';
 export * from './spinner';
 export { Option } from './select';
-export * from './filterPatterns/popover';
+// export * from './filterPatterns/popover';
 
 export * from './adapter/Radio';
 export * from './adapter/Divider';
@@ -99,3 +99,4 @@ export * from './adapter/Skeleton';
 export * from './adapter/Card';
 export * from './adapter/Switch';
 export * from './adapter/Tab';
+export * from './adapter/PopoverFilter';
