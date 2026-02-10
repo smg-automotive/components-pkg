@@ -119,14 +119,13 @@ const renderInlineContent = (
     >
       {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
       <chakra.span overflow="hidden" textOverflow="ellipsis">
-        {isApplied && displayValue ? (
-          <>
-            {filterLabel ? `${filterLabel}: ` : ''}
-            {displayValue}
-          </>
-        ) : (
-          label
-        )}
+        <chakra.span data-role="filter-label">
+          {isApplied && displayValue && filterLabel ? `${filterLabel}: ` : ''}
+        </chakra.span>
+
+        <chakra.span data-role="filter-value">
+          {isApplied && displayValue ? displayValue : label}
+        </chakra.span>
       </chakra.span>
     </chakra.span>
   );
