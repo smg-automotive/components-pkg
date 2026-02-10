@@ -11,11 +11,12 @@ const useToken = (
     throw new Error('useToken must be used within a ChakraProvider');
   }
 
-  const category = context.tokens.getCategoryValues(scale);
+  const { tokenMap } = context.tokens;
 
   const value = token.map((t, i) => {
-    if (category?.[t] !== undefined) {
-      return category[t];
+    const tokenValue = tokenMap.get(`${scale}.${t}`);
+    if (tokenValue !== undefined) {
+      return tokenValue['originalValue'];
     }
     if (fallback?.[i] !== undefined) {
       return fallback[i];
