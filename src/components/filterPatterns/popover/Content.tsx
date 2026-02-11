@@ -129,12 +129,10 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
             >
               {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
               <chakra.span overflow="hidden" textOverflow="ellipsis">
-                <chakra.span data-role="label">
+                <chakra.span>
                   {displayValue && filterLabel ? `${filterLabel}: ` : ''}
                 </chakra.span>
-                <chakra.span data-role="value">
-                  {displayValue ?? label}
-                </chakra.span>
+                <chakra.span>{displayValue ? displayValue : label}</chakra.span>
               </chakra.span>
             </chakra.span>
           </ChakraButton>
