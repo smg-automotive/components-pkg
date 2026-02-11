@@ -2,10 +2,14 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Link as ComponentsLink, LinkProps } from 'src/components/link';
 
-type Props = LinkProps & {
+type Props = Omit<LinkProps, 'lineClamp' | 'href' | 'onClick' | 'truncate'> & {
   prefetch?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  noOfLines?: number;
+  href?: string | undefined | null;
+  isTruncated?: LinkProps['truncate'];
+  onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined | null;
 };
 
 export const Link: FC<PropsWithChildren<Props>> = ({
@@ -15,6 +19,9 @@ export const Link: FC<PropsWithChildren<Props>> = ({
   rightIcon,
   children,
   href,
+  noOfLines,
+  onClick,
+  isTruncated,
   ...rest
 }) => {
   const isComponentAs = Boolean(as) && typeof as !== 'string';
@@ -24,7 +31,13 @@ export const Link: FC<PropsWithChildren<Props>> = ({
     const AsComp = as as React.ElementType;
 
     return (
-      <ComponentsLink {...rest} asChild>
+      <ComponentsLink
+        {...rest}
+        asChild
+        lineClamp={noOfLines}
+        onClick={onClick ?? undefined}
+        truncate={isTruncated}
+      >
         <AsComp href={href} prefetch={prefetch}>
           {leftIcon ? leftIcon : null}
           {children}
@@ -35,7 +48,14 @@ export const Link: FC<PropsWithChildren<Props>> = ({
   }
 
   return (
-    <ComponentsLink {...rest} as={as} href={href}>
+    <ComponentsLink
+      {...rest}
+      as={as}
+      href={href ?? undefined}
+      lineClamp={noOfLines}
+      onClick={onClick ?? undefined}
+      truncate={isTruncated}
+    >
       {leftIcon ? leftIcon : null}
       {children}
       {rightIcon ? rightIcon : null}

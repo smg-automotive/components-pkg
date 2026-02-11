@@ -4,7 +4,8 @@ import { Box, BoxProps } from '@chakra-ui/react';
 
 import { BreakpointName } from 'src/themes/shared/breakpoints';
 
-type Props = BoxProps & {
+type Props = Omit<BoxProps, 'display'> & {
+  showDisplay?: BoxProps['display'];
   above?: BreakpointName;
   below?: BreakpointName;
 };
@@ -12,10 +13,12 @@ type Props = BoxProps & {
 export const Show: FC<PropsWithChildren<Props>> = ({
   above,
   below,
+  showDisplay,
   ...rest
 }) => {
   return (
     <Box
+      display={showDisplay}
       {...rest}
       {...(above ? { hideBelow: above } : {})}
       {...(below ? { hideFrom: below } : {})}
