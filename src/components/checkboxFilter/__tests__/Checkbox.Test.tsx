@@ -121,9 +121,10 @@ describe('<CheckBoxFilter />', () => {
         },
       ],
     });
+    const value = new Intl.NumberFormat('de-CH').format(1000000);
     expect(
       screen.getByRole('checkbox', {
-        name: 'Used 1’000’000',
+        name: `Used ${value}`,
       }),
     ).toBeInTheDocument();
   });
