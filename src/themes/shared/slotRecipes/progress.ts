@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const progressSlotRecipe = defineSlotRecipe({
   className: 'chakra-progress',
-  slots: ['root', 'track', 'range', 'label', 'valueText'],
+  slots: ['root', 'track', 'range'],
   base: {
     track: {
       height: 'xxs',
