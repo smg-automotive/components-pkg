@@ -1,13 +1,25 @@
 import useDisclosureComponents from '../useDisclosure';
 
-export const useDisclosure = () => {
+type UseDisclosureOptions = {
+  onOpen?: () => void;
+  onClose?: () => void;
+};
+
+export const useDisclosure = (options: UseDisclosureOptions = {}) => {
   const { open, onClose, onToggle, setOpen } = useDisclosureComponents();
+  const { onOpen: onOpenHandler, onClose: onCloseHandler } = options;
 
   return {
     isOpen: open,
-    onClose,
+    onClose: () => {
+      onClose();
+      onCloseHandler?.();
+    },
     onToggle,
     setOpen,
-    onOpen: () => setOpen(true),
+    onOpen: () => {
+      setOpen(true);
+      onOpenHandler?.();
+    },
   };
 };
