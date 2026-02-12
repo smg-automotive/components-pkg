@@ -1,5 +1,3 @@
-import 'src/types/adapter/augmentation';
-
 export { keyframes } from '@emotion/react';
 export { useChakraContext } from '@chakra-ui/react';
 export * from './themes';
