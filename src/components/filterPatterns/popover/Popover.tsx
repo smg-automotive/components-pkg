@@ -1,23 +1,24 @@
+'use client';
+
 import React, { FC, useRef } from 'react';
 import {
-  PopoverBody,
-  PopoverContent,
-  PopoverFooter,
-  PopoverHeader,
+  Popover as ChakraPopover,
   Portal,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { useI18n } from 'src/utilities/i18nInit';
-import Stack from 'src/components/stack';
-import Box from 'src/components/box';
+import { ZIndex } from 'src/themes/shared/tokens/zIndex';
+import { Stack } from 'src/components/stack';
+import { Box } from 'src/components/box';
 
 import { FilterHeading } from '../Heading';
-import FilterActionButton from '../ActionButton';
+import { FilterActionButton } from '../ActionButton';
 import { PopoverFilterProps } from './props';
 
 type Props = {
   onClose: () => void;
-  zIndex?: string;
+  zIndex?: ZIndex;
 } & Pick<
   PopoverFilterProps,
   | 'actionButton'
@@ -32,7 +33,7 @@ type Props = {
   | 'children'
 >;
 
-const Popover: FC<Props> = ({
+export const Popover: FC<Props> = ({
   actionButton,
   Icon,
   isApplied,
@@ -47,71 +48,60 @@ const Popover: FC<Props> = ({
   zIndex = 'popover',
 }) => {
   const { language } = useI18n();
-  const popoverContentRef = useRef<HTMLElement | null>(null);
-  const maxHeight = showCallToActionButton
-    ? '6xl'
-    : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))';
+  const popoverContentRef = useRef<HTMLDivElement>(null);
+  const recipe = useSlotRecipe({ key: 'popoverFilter' });
+  const styles = recipe();
+
+  const maxHeight = showCallToActionButton ? '6xl' : '7xl';
 
   return (
     <Portal>
       <Box zIndex={zIndex} w="full" h="full" position="relative">
-        <PopoverContent
-          backgroundColor="white"
-          borderRadius="sm"
-          shadow="md"
-          w="6xl"
-          minHeight={enforceHeight ? '7xl' : undefined}
-          height={enforceHeight ? '7xl' : undefined}
-          ref={popoverContentRef}
-        >
-          <Box as={Stack} h="full" paddingY="2xl">
-            <PopoverHeader paddingX="2xl">
-              {header ?? (
-                <FilterHeading
-                  Icon={Icon}
-                  isApplied={isApplied}
-                  label={label}
-                  numberOfAppliedFilters={numberOfAppliedFilters}
-                  onClose={onClose}
-                  language={language}
-                  onResetFilter={onResetFilter}
-                  contentRef={popoverContentRef}
-                />
-              )}
-            </PopoverHeader>
-            <PopoverBody
-              sx={{
-                '--call-to-action-height':
-                  'calc(var(--chakra-sizes-lg) + var(--chakra-space-2xl))',
-              }}
-              marginTop="2xl"
-              maxH={
-                showCallToActionButton
-                  ? '6xl'
-                  : 'calc(var(--chakra-sizes-6xl) + var(--call-to-action-height))'
-              }
-              marginBottom={showCallToActionButton ? '2xl' : '0'}
-              height={enforceHeight ? maxHeight : undefined}
-              maxHeight={maxHeight}
-              overflowY="auto"
-              paddingX="2xl"
-            >
-              {children}
-            </PopoverBody>
-            {showCallToActionButton ? (
-              <PopoverFooter paddingX="2xl">
-                <FilterActionButton
-                  actionButton={actionButton}
-                  isApplied={isApplied}
-                  onClose={onClose}
-                />
-              </PopoverFooter>
-            ) : null}
-          </Box>
-        </PopoverContent>
+        <ChakraPopover.Positioner>
+          <ChakraPopover.Content
+            css={styles.content}
+            minHeight={enforceHeight ? '7xl' : undefined}
+            height={enforceHeight ? '7xl' : undefined}
+            ref={popoverContentRef}
+          >
+            <Box as={Stack} h="full" paddingY="2xl">
+              <ChakraPopover.Header paddingX="2xl">
+                {header && React.isValidElement(header) ? (
+                  header
+                ) : (
+                  <FilterHeading
+                    Icon={Icon}
+                    isApplied={isApplied}
+                    label={label}
+                    numberOfAppliedFilters={numberOfAppliedFilters}
+                    onClose={onClose}
+                    language={language}
+                    onResetFilter={onResetFilter}
+                    contentRef={popoverContentRef}
+                  />
+                )}
+              </ChakraPopover.Header>
+              <ChakraPopover.Body
+                css={styles.body}
+                maxHeight={maxHeight}
+                marginBottom={showCallToActionButton ? '2xl' : '0'}
+                height={enforceHeight ? maxHeight : 'auto'}
+              >
+                {children}
+              </ChakraPopover.Body>
+              {showCallToActionButton ? (
+                <ChakraPopover.Footer paddingX="2xl">
+                  <FilterActionButton
+                    actionButton={actionButton}
+                    isApplied={isApplied}
+                    onClose={onClose}
+                  />
+                </ChakraPopover.Footer>
+              ) : null}
+            </Box>
+          </ChakraPopover.Content>
+        </ChakraPopover.Positioner>
       </Box>
     </Portal>
   );
 };
-
-export default Popover;

@@ -1,29 +1,46 @@
 import React, { forwardRef } from 'react';
-import { Input, InputProps } from '@chakra-ui/react';
+import {
+  Field,
+  Input,
+  InputProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-export interface Props extends Pick<
+import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+
+type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
+
+export type DatePickerProps = Pick<
   InputProps,
   'onFocus' | 'onBlur' | 'onChange'
-> {
-  size?: 'md' | 'lg';
-  min?: Date;
-  value?: string;
-  isInvalid?: boolean;
-}
+> &
+  InputVariantProps & {
+    min?: Date;
+    value?: string;
+    invalid?: boolean;
+  };
 
-const DatePicker = forwardRef<HTMLInputElement, Props>(
+export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
   ({ min, ...props }, ref) => {
+    const recipe = useSlotRecipe({ key: 'input' });
+    const [recipeProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
     return (
-      <Input
-        {...props}
-        type="date"
-        min={min ? min.toISOString().split('T')[0] : undefined}
-        ref={ref}
-      />
+      <Field.Root invalid={props.invalid}>
+        <Input
+          {...props}
+          css={{
+            ...styles.field,
+            display: 'block',
+            textAlign: 'start',
+          }}
+          type="date"
+          min={min ? min.toISOString().split('T')[0] : undefined}
+          ref={ref}
+        />
+      </Field.Root>
     );
   },
 );
 DatePicker.displayName = 'DatePicker';
-
-export default DatePicker;
-export { Props as DatePickerProps };

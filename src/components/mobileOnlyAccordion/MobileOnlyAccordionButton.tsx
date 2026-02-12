@@ -1,28 +1,24 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { useMultiStyleConfig } from '@chakra-ui/react';
+import { Box } from '../box';
+import {
+  AccordionButton,
+  AccordionButtonProps,
+} from '../accordion/AccordionButton';
 
-import Show from '../show';
-import Hide from '../hide';
-import Box from '../box';
-import AccordionButton from '../accordion/AccordionButton';
-
-const MobileOnlyAccordionButton: FC<PropsWithChildren> = (props) => {
+export const MobileOnlyAccordionButton: FC<
+  PropsWithChildren<AccordionButtonProps>
+> = (props) => {
   const { children, ...rest } = props;
-  const { titleOnDesktop } = useMultiStyleConfig('Accordion');
 
   return (
     <>
-      <Show above="md">
-        <Box __css={titleOnDesktop} {...rest}>
-          {children}
-        </Box>
-      </Show>
-      <Hide above="md">
+      <Box hideBelow="md" textStyle="heading5" paddingX="lg" paddingBottom="md">
+        {children}
+      </Box>
+      <Box hideFrom="md">
         <AccordionButton {...rest}>{children}</AccordionButton>
-      </Hide>
+      </Box>
     </>
   );
 };
-
-export default MobileOnlyAccordionButton;

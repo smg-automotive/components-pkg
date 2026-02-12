@@ -1,37 +1,30 @@
+'use client';
+
 import React, { forwardRef, PropsWithChildren } from 'react';
-import { useRadio, UseRadioProps } from '@chakra-ui/react';
+import { RadioGroup, useRecipe } from '@chakra-ui/react';
 
-import Box from '../box';
+import { Box } from '../box';
 
-export const RadioListItem = forwardRef<
-  HTMLInputElement,
-  PropsWithChildren<UseRadioProps>
->((props, ref) => {
-  const { getInputProps, getRadioProps } = useRadio(props);
+type Props = PropsWithChildren<
+  React.ComponentProps<typeof RadioGroup.Item> & {
+    value: string;
+  }
+>;
 
-  const input = getInputProps();
-  const radioProps = getRadioProps();
+export const RadioListItem = forwardRef<HTMLInputElement, Props>(
+  ({ children, value, ...rest }, ref) => {
+    const recipe = useRecipe({ key: 'radioListItem' });
+    const styles = recipe();
 
-  return (
-    <Box as="label" width="full">
-      <input {...input} ref={ref} />
-      <Box
-        {...radioProps}
-        cursor="pointer"
-        background="white"
-        borderRadius="md"
-        _hover={{
-          bg: 'gray.50',
-        }}
-        _checked={{
-          bg: 'blue.100',
-        }}
-        px="lg"
-        py="sm"
-      >
-        {props.children}
-      </Box>
-    </Box>
-  );
-});
+    return (
+      <RadioGroup.Item value={value} asChild {...rest}>
+        <Box as="label" css={styles}>
+          <RadioGroup.ItemHiddenInput ref={ref} />
+          {children}
+        </Box>
+      </RadioGroup.Item>
+    );
+  },
+);
+
 RadioListItem.displayName = 'RadioListItem';

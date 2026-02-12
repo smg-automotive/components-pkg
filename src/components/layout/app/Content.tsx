@@ -1,15 +1,11 @@
-import React from 'react';
-import { ComponentWithAs, forwardRef } from '@chakra-ui/react';
+import React, { forwardRef } from 'react';
 
-import GridItem, { type GridItemProps } from 'src/components/grid/GridItem';
+import { GridItem, GridItemProps } from 'src/components/grid';
 
-const AppLayoutContent: ComponentWithAs<'div', GridItemProps> = forwardRef<
-  GridItemProps,
-  'div'
->((props, ref) => {
-  return <GridItem area="content" ref={ref} {...(props as GridItemProps)} />;
-});
+export const AppLayoutContent = forwardRef<HTMLDivElement, GridItemProps>(
+  (props, ref) => {
+    return <GridItem as="div" area="content" ref={ref} {...props} />;
+  },
+);
 
 AppLayoutContent.displayName = 'AppLayoutContent';
-
-export default AppLayoutContent;

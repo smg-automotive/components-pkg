@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Spinner from '../spinner';
-import Box from '../box';
+import { Spinner } from '../spinner';
+import { Box } from '../box';
 
 import { TenantSelectionModalLayout } from './ModalLayout';
 

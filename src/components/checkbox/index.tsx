@@ -1,63 +1,75 @@
-import React, { ChangeEvent, forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import {
+  BoxProps,
   Checkbox as ChakraCheckbox,
-  CheckboxProps as ChakraCheckboxProps,
+  CheckboxCheckedChangeDetails,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-export interface CheckboxProps {
+import { checkboxRecipe } from 'src/themes/shared/slotRecipes/checkbox';
+
+type CheckboxVariantProps = RecipeVariantProps<typeof checkboxRecipe>;
+
+type CheckboxVariant = keyof NonNullable<
+  typeof checkboxRecipe.variants
+>['variant'];
+
+export type CheckboxProps = CheckboxVariantProps & {
   name: string;
   value?: string;
-  isDisabled?: boolean;
-  isChecked?: boolean;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  label?: ReactNode | string;
-  isInvalid?: boolean;
-  isIndeterminate?: boolean;
-  fontWeight?: 'regular' | 'bold';
-  variant?: 'alignCenter' | 'alignTop' | 'alignTopForSmallSize';
-  paddingY?: ChakraCheckboxProps['paddingY'];
+  disabled?: boolean;
+  checked?: boolean | 'indeterminate';
+  invalid?: boolean;
+  indeterminate?: boolean;
   readOnly?: boolean;
   fullWidth?: boolean;
-}
+  label?: ReactNode | string;
+  paddingY?: BoxProps['paddingY'];
+  fontWeight?: 'regular' | 'bold';
+  variant?: CheckboxVariant;
+  onChange?: (details: CheckboxCheckedChangeDetails) => void;
+};
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
-      name,
-      value,
-      isDisabled = false,
-      isChecked = false,
-      onChange,
-      label,
-      isInvalid,
-      isIndeterminate = false,
-      fontWeight = 'regular',
-      variant = 'alignCenter',
+      disabled = false,
+      checked = false,
+      indeterminate = false,
       readOnly = false,
       fullWidth = false,
+      label,
+      fontWeight = 'regular',
+      variant = 'alignCenter',
+      onChange,
       ...props
     },
     ref,
-  ) => (
-    <ChakraCheckbox
-      {...props}
-      ref={ref}
-      name={name}
-      value={value}
-      isDisabled={isDisabled}
-      isChecked={isChecked}
-      onChange={onChange}
-      isInvalid={isInvalid}
-      isIndeterminate={isIndeterminate}
-      fontWeight={fontWeight}
-      variant={variant}
-      readOnly={readOnly}
-      width={fullWidth ? 'full' : undefined}
-    >
-      {label}
-    </ChakraCheckbox>
-  ),
-);
-Checkbox.displayName = 'Checkbox';
+  ) => {
+    const recipe = useSlotRecipe({ key: 'checkbox' });
+    const combinedProps = { ...props, variant };
+    const [recipeProps] = recipe.splitVariantProps(combinedProps);
+    const styles = recipe(recipeProps);
 
-export default Checkbox;
+    return (
+      <ChakraCheckbox.Root
+        {...props}
+        disabled={disabled}
+        checked={indeterminate ? 'indeterminate' : checked}
+        readOnly={readOnly}
+        width={fullWidth ? 'full' : undefined}
+        onCheckedChange={onChange}
+        css={styles.root}
+      >
+        <ChakraCheckbox.HiddenInput ref={ref} />
+        <ChakraCheckbox.Control css={styles.control} />
+        {label && (
+          <ChakraCheckbox.Label css={{ ...styles.label, fontWeight }}>
+            {label}
+          </ChakraCheckbox.Label>
+        )}
+      </ChakraCheckbox.Root>
+    );
+  },
+);

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import Menu from 'src/components/menu';
-import Hide from 'src/components/hide';
+import { Menu } from 'src/components/menu';
+import { Box } from 'src/components/box';
 
 import { replaceLanguage } from './replaceLanguage';
 
@@ -14,7 +14,7 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
   return (
-    <Hide below="sm">
+    <Box hideBelow="sm">
       <Menu
         title={activeLanguage.toUpperCase()}
         fontWeightTitle="bold"
@@ -27,19 +27,22 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
             text: 'Deutsch',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'de' }),
+            value: 'de',
           },
           {
             text: 'Français',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'fr' }),
+            value: 'fr',
           },
           {
             text: 'Italiano',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'it' }),
+            value: 'it',
           },
         ]}
       />
-    </Hide>
+    </Box>
   );
 };

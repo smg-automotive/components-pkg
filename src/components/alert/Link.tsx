@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-import Link from 'src/components/link';
+import { Link } from '../link';
 
 import { AlertProps } from '.';
 
 type Props = NonNullable<AlertProps['link']>;
 
-const AlertLink: FC<Props> = ({ text, ...props }) => {
+export const AlertLink: FC<Props> = ({ text, ...props }) => {
   const linkProps =
     props?.as === 'button'
       ? {
@@ -20,10 +20,8 @@ const AlertLink: FC<Props> = ({ text, ...props }) => {
         };
 
   return (
-    <Link {...linkProps} display="inline-block" width="fit-content">
+    <Link {...linkProps} display="inline-block">
       {text}
     </Link>
   );
 };
-
-export default AlertLink;

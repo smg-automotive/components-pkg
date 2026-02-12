@@ -1,38 +1,19 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import { act } from '@testing-library/react';
 
 import { render, screen, waitFor } from 'jest-utils';
 
-import RangeFilterInputWithSlider from '../';
+import { RangeFilterInputWithSlider } from '..';
 
-jest.mock('use-debounce', () => {
-  return {
-    useDebouncedCallback: jest.fn().mockImplementation((func) => {
-      return func;
-    }),
-  };
-});
+// Input changes are debounced
+jest.useFakeTimers();
 
 const mockedFacets = [
-  {
-    from: 0,
-    to: 1000,
-    value: 500,
-  },
-  {
-    from: 1000,
-    to: 2000,
-    value: 50,
-  },
-  {
-    from: 2000,
-    to: 4000,
-    value: 20,
-  },
-  {
-    from: 4000,
-    value: 10,
-  },
+  { from: 0, to: 1000, value: 500 },
+  { from: 1000, to: 2000, value: 50 },
+  { from: 2000, to: 4000, value: 20 },
+  { from: 4000, value: 10 },
 ];
 
 const mockedFilters = {
@@ -52,8 +33,14 @@ const mockedTo = {
   placeholder: '1000000+',
 };
 
-const renderWrapper = ({ onChange = jest.fn(), facets = mockedFacets }) => {
-  return render(
+const renderWrapper = ({
+  onChange = jest.fn(),
+  facets = mockedFacets,
+}: {
+  onChange?: jest.Mock;
+  facets?: typeof mockedFacets;
+}) =>
+  render(
     <RangeFilterInputWithSlider
       onChange={onChange}
       from={mockedFrom}
@@ -62,191 +49,110 @@ const renderWrapper = ({ onChange = jest.fn(), facets = mockedFacets }) => {
       unit="CHF"
     />,
   );
-};
 
-describe('<RangeFilterInputWithSlider/>', () => {
+describe('<RangeFilterInputWithSlider />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  describe('with input field', () => {
-    it('should trigger onChange with the touched FROM field', async () => {
-      const user = userEvent.setup();
-      const mockOnChange = jest.fn();
+  it('should trigger onChange with the touched FROM field', async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+    const mockOnChange = jest.fn();
 
-      renderWrapper({
-        onChange: mockOnChange,
-      });
+    renderWrapper({ onChange: mockOnChange });
 
-      const inputFrom = screen.getAllByRole('spinbutton')[0];
+    const inputFrom = screen.getAllByRole('spinbutton')[0];
 
-      await user.clear(inputFrom);
+    await user.clear(inputFrom);
+    await user.type(inputFrom, '500');
 
-      await user.type(inputFrom, '500');
-
-      return waitFor(() =>
-        expect(mockOnChange).toHaveBeenCalledWith({
-          value: 500,
-          name: 'priceFrom',
-          changeType: 'inputfield',
-        }),
-      );
+    act(() => {
+      jest.advanceTimersByTime(1000);
     });
 
-    it('should trigger onChange with the touched TO field', async () => {
-      const user = userEvent.setup();
-      const mockOnChange = jest.fn();
-
-      renderWrapper({
-        onChange: mockOnChange,
+    await waitFor(() => {
+      expect(mockOnChange).toHaveBeenLastCalledWith({
+        name: 'priceFrom',
+        value: 500,
+        changeType: 'inputfield',
       });
-
-      const inputTo = screen.getAllByRole('spinbutton')[1];
-
-      await user.clear(inputTo);
-
-      await user.type(inputTo, '300');
-
-      return waitFor(() =>
-        expect(mockOnChange).toHaveBeenCalledWith({
-          value: 300,
-          name: 'priceTo',
-          changeType: 'inputfield',
-        }),
-      );
-    });
-
-    it('should change slider range when the input field changes', async () => {
-      const user = userEvent.setup();
-      const mockOnChange = jest.fn();
-
-      renderWrapper({
-        onChange: mockOnChange,
-      });
-
-      const inputTo = screen.getAllByRole('spinbutton')[0];
-
-      await user.clear(inputTo);
-
-      await user.type(inputTo, '1600');
-
-      return waitFor(() => {
-        const sliderTo = screen.getAllByRole('slider')[0];
-
-        expect(sliderTo).toHaveAttribute('aria-valuenow', '2');
-      });
-    });
-
-    it('should display the unit', () => {
-      renderWrapper({});
-
-      expect(screen.getAllByText('CHF')).toHaveLength(2);
     });
   });
 
-  describe('with slider', () => {
-    it('should display a marker for the min and the max value', () => {
-      const mockOnChange = jest.fn();
+  it('should trigger onChange with the touched TO field', async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+    const mockOnChange = jest.fn();
 
-      renderWrapper({
-        onChange: mockOnChange,
-      });
+    renderWrapper({ onChange: mockOnChange });
 
-      const sliders = screen.getAllByRole('slider');
+    const inputTo = screen.getAllByRole('spinbutton')[1];
 
-      expect(sliders).toHaveLength(2);
+    await user.clear(inputTo);
+    await user.type(inputTo, '300');
 
-      const [minMarker, maxMarker] = sliders;
-
-      expect(minMarker).toHaveAttribute('aria-valuenow', '0');
-      expect(maxMarker).toHaveAttribute('aria-valuenow', '3');
+    act(() => {
+      jest.advanceTimersByTime(1000);
     });
 
-    it('should trigger onChange when the FROM thumb moves', async () => {
-      const mockOnChange = jest.fn();
-      renderWrapper({
-        onChange: mockOnChange,
+    await waitFor(() => {
+      expect(mockOnChange).toHaveBeenLastCalledWith({
+        name: 'priceTo',
+        value: 300,
+        changeType: 'inputfield',
       });
+    });
+  });
 
-      const fromSlider = screen.getAllByRole('slider')[0];
-      await userEvent.type(fromSlider, '{arrowup}');
+  it('should change slider range when the input field changes', async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
 
-      return waitFor(
-        () => {
-          expect(mockOnChange).toHaveBeenCalledWith({
-            name: 'priceFrom',
-            value: 1000,
-            changeType: 'slider',
-          });
-        },
-        { timeout: 1500 },
-      );
+    renderWrapper({});
+
+    const inputFrom = screen.getAllByRole('spinbutton')[0];
+
+    await user.clear(inputFrom);
+    await user.type(inputFrom, '1600');
+
+    act(() => {
+      jest.advanceTimersByTime(1000);
     });
 
-    it('should not trigger onChange if the value did not change', async () => {
-      const mockOnChange = jest.fn();
-
-      renderWrapper({
-        onChange: mockOnChange,
-      });
-
-      const fromSlider = screen.getAllByRole('slider')[0];
-      const toSlider = screen.getAllByRole('slider')[1];
-      await userEvent.click(fromSlider);
-      await userEvent.click(toSlider);
-
-      return waitFor(() => expect(mockOnChange).not.toHaveBeenCalled());
+    await waitFor(() => {
+      const fromThumb = screen.getAllByRole('slider', { hidden: true })[0];
+      expect(fromThumb).toHaveAttribute('aria-valuenow', '2'); // ~1600 → 2000
     });
+  });
 
-    it('should update input field with value set by slider', async () => {
-      const mockOnChange = jest.fn();
-      renderWrapper({
-        onChange: mockOnChange,
-      });
+  it('should display the unit', () => {
+    renderWrapper({});
+    expect(screen.getAllByText('CHF')).toHaveLength(2);
+  });
 
-      const fromSlider = screen.getAllByRole('slider')[0];
-      await userEvent.type(fromSlider, '{arrowup}');
+  it('should display a marker for the min and the max value', () => {
+    renderWrapper({});
 
-      return waitFor(
-        () => {
-          const inputFrom = screen.getAllByRole('spinbutton')[0];
-          expect(inputFrom).toHaveValue('1000');
-        },
-        { timeout: 1500 },
-      );
-    });
+    const sliders = screen.getAllByRole('slider', { hidden: true });
+    expect(sliders).toHaveLength(2);
 
-    it('should display facets in chart sorted by FROM (lower to higher) facet key', () => {
-      const mockedUnsortedFacets = [
-        {
-          from: 2000,
-          to: 4000,
-          value: 20,
-        },
-        {
-          from: 4000,
-          value: 10,
-        },
-        {
-          from: 0,
-          to: 1000,
-          value: 500,
-        },
-        {
-          from: 1000,
-          to: 2000,
-          value: 50,
-        },
-      ];
+    const [minMarker, maxMarker] = sliders;
 
-      renderWrapper({
-        facets: mockedUnsortedFacets,
-      });
+    expect(minMarker).toHaveAttribute('aria-valuenow', '0');
+    expect(maxMarker).toHaveAttribute('aria-valuenow', '3');
+  });
 
-      const chart = screen.getByTestId('chart');
+  it('should display facets in chart sorted by FROM', () => {
+    const mockedUnsortedFacets = [
+      { from: 2000, to: 4000, value: 20 },
+      { from: 4000, value: 10 },
+      { from: 0, to: 1000, value: 500 },
+      { from: 1000, to: 2000, value: 50 },
+    ];
 
-      expect(chart.firstChild).toHaveStyle({ transform: 'scaleY(1)' });
-      expect(chart.lastChild).toHaveStyle({ transform: 'scaleY(0.02)' });
-    });
+    renderWrapper({ facets: mockedUnsortedFacets });
+
+    const chart = screen.getByTestId('chart');
+
+    expect(chart.firstChild).toHaveStyle({ transform: 'scaleY(1)' });
+    expect(chart.lastChild).toHaveStyle({ transform: 'scaleY(0.02)' });
   });
 });

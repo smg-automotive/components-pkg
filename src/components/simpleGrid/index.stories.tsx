@@ -1,15 +1,16 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Box } from '@chakra-ui/react';
 
-import SimpleGridComponent from './index';
+import { Box } from 'src';
 
-const meta: Meta<typeof SimpleGridComponent> = {
+import { SimpleGrid } from './index';
+
+const meta: Meta<typeof SimpleGrid> = {
   title: 'Layout/SimpleGrid',
-  component: SimpleGridComponent,
+  component: SimpleGrid,
   decorators: [
     (Story) => (
-      <Box maxW={600} m="auto">
+      <Box maxW="container.sm" m="auto">
         <Story />
       </Box>
     ),
@@ -23,54 +24,44 @@ const meta: Meta<typeof SimpleGridComponent> = {
 
   args: {
     columns: 3,
-    spacing: 'md',
+    gap: 'md',
     children: [
-      <Box h="50px" bg="blue.100" key="1">
+      <Box h="lg" bg="blue.100" key="1">
         1
       </Box>,
-      <Box h="50px" bg="green.100" key="2">
+      <Box h="lg" bg="green.100" key="2">
         2
       </Box>,
-      <Box h="50px" bg="orange.100" key="3">
+      <Box h="lg" bg="orange.100" key="3">
         3
       </Box>,
-      <Box h="50px" bg="blue.200" key="4">
+      <Box h="lg" bg="blue.200" key="4">
         4
       </Box>,
-      <Box h="50px" bg="green.200" key="5">
+      <Box h="lg" bg="green.200" key="5">
         5
       </Box>,
-      <Box h="50px" bg="orange.300" key="6">
+      <Box h="lg" bg="orange.300" key="6">
         6
       </Box>,
     ],
   },
 
   argTypes: {
-    spacing: {
+    gap: {
       options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
 
       control: {
         type: 'select',
       },
     },
-
-    spacingY: {
+    rowGap: {
       options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
 
       control: {
         type: 'select',
       },
     },
-
-    spacingX: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-
-      control: {
-        type: 'select',
-      },
-    },
-
     children: {
       table: {
         disable: true,
@@ -80,7 +71,7 @@ const meta: Meta<typeof SimpleGridComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof SimpleGridComponent>;
+type StoryType = StoryObj<typeof SimpleGrid>;
 export const Overview: StoryType = {};
 
 /**
@@ -103,6 +94,6 @@ export const AutoResponsive: StoryType = {
 
   args: {
     columns: undefined,
-    minChildWidth: '200px',
+    minChildWidth: '4xl',
   },
 };

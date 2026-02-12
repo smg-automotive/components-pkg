@@ -1,14 +1,29 @@
+'use client';
+
 import React, { FC, PropsWithChildren } from 'react';
-import { Tab as ChakraTab, TabProps } from '@chakra-ui/react';
+import {
+  Tabs as ChakraTabs,
+  TabsTriggerProps as ChakraTabsTriggerProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-import { Space } from 'src/themes';
+import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
 
-type Props = {
-  marginX?: Space;
-} & Pick<TabProps, 'isDisabled' | 'as'>;
+export type TabProps = Omit<ChakraTabsTriggerProps, 'variant'> &
+  RecipeVariantProps<typeof tabsRecipe>;
 
-const Tab: FC<PropsWithChildren<Props>> = (props) => {
-  return <ChakraTab {...props}>{props.children}</ChakraTab>;
+export const Tab: FC<PropsWithChildren<TabProps>> = ({
+  variant,
+  children,
+  ...rest
+}) => {
+  const recipe = useSlotRecipe({ key: 'tabs' });
+  const styles = recipe({ variant });
+
+  return (
+    <ChakraTabs.Trigger {...rest} css={styles.trigger}>
+      {children}
+    </ChakraTabs.Trigger>
+  );
 };
-
-export default Tab;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Text from 'src/components/text';
+import { Text } from 'src/components/text';
 import { render, screen } from 'jest-utils';
 
-import Progress from '../index';
+import { Progress } from '../index';
 
 const createLabel = (current: number, max: number) => (
   <>
@@ -17,7 +17,7 @@ const createLabel = (current: number, max: number) => (
 const renderWrapper = ({ current = 0, max = 10 } = {}) =>
   render(<Progress current={current} max={max} label={createLabel} />);
 
-describe('<dProgress>', () => {
+describe('<Progress>', () => {
   it('renders progress bar', () => {
     renderWrapper();
 

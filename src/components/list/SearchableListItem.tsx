@@ -1,10 +1,15 @@
-import React, { ChangeEvent, FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
-import { Button, ButtonProps } from '@chakra-ui/react';
+import {
+  Button,
+  CheckboxCheckedChangeDetails,
+  ConditionalValue,
+} from '@chakra-ui/react';
 
-import Checkbox, { CheckboxProps } from '../checkbox';
+import { Checkbox, CheckboxProps } from '../checkbox';
 import { SearchableListItemLabel } from './SearchableListItemLabel';
-import ListItem from './ListItem';
+
+import { List } from './index';
 
 type CommonListItem = {
   label: string;
@@ -14,23 +19,24 @@ type CommonListItem = {
   showChevron?: boolean;
   highlightIndices?: readonly RangeTuple[];
   isCheckbox?: boolean;
+  paddingLeft?: ConditionalValue<'md' | '2xl'>;
 };
 
 type CommonProps = {
   value: string;
-  paddingY: ButtonProps['paddingY'] | CheckboxProps['paddingY'];
+  paddingY: CheckboxProps['paddingY'];
   name: string;
   'aria-current': boolean;
 };
 
 type CheckboxListItem = {
-  onClick: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClick: (details: CheckboxCheckedChangeDetails) => void;
   isCheckbox: true;
   isIndeterminate?: boolean;
 } & CommonListItem;
 
 type RadioButtonListItem = {
-  onClick: ButtonProps['onClick'];
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
   isCheckbox?: false;
 } & CommonListItem;
 
@@ -74,31 +80,32 @@ export const SearchableListItem: FC<PropsWithChildren<ListItemType>> = (
   const checkboxProps: CheckboxProps = {
     ...commonProps,
     label: <SearchableListItemLabel {...labelProps} />,
-    isChecked: isSelected,
-    isIndeterminate: isCheckbox ? !!props.isIndeterminate : false,
+    checked: isSelected,
+    indeterminate: isCheckbox ? !!props.isIndeterminate : false,
     fullWidth: true,
     variant: 'alignTop',
     onChange: isCheckbox ? props.onClick : undefined,
   };
-  const radioButtonProps: ButtonProps = {
-    ...commonProps,
-    onClick: !isCheckbox ? props.onClick : undefined,
-    onChange: undefined,
-    width: 'full',
-    display: 'flex',
-    paddingX: 'none',
-  };
 
   return (
-    <ListItem css={{ breakInside: 'avoid' }}>
+    <List.Item css={{ breakInside: 'avoid' }} paddingLeft={props.paddingLeft}>
       {isCheckbox ? (
         <Checkbox {...checkboxProps} />
       ) : (
-        <Button {...radioButtonProps}>
+        <Button
+          value={value}
+          paddingY="sm"
+          name={`searchable-list-item-${value}`}
+          aria-current={isSelected}
+          onClick={!isCheckbox ? props.onClick : undefined}
+          width="full"
+          display="flex"
+          paddingX="0"
+        >
           <SearchableListItemLabel {...labelProps} />
         </Button>
       )}
       {children}
-    </ListItem>
+    </List.Item>
   );
 };

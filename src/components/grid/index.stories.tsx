@@ -1,14 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '../index';
-import GridItem from './GridItem';
+import { Box } from 'src';
 
-import GridComponent from './index';
+import { Grid, GridItem } from './index';
 
-const meta: Meta<typeof GridComponent> = {
+const meta: Meta<typeof Grid> = {
   title: 'Layout/Grid',
-  component: GridComponent,
+  component: Grid,
 
   args: {
     templateAreas: {
@@ -31,55 +30,56 @@ const meta: Meta<typeof GridComponent> = {
       base: 'repeat(2, 1fr)',
       md: 'repeat(4, 1fr)',
     },
-    children: [
-      <GridItem area="make" key="make">
-        <Box border="1px solid purple" padding="md">
-          make
-        </Box>
-      </GridItem>,
-      <GridItem area="model" key="model">
-        <Box border="1px solid purple" padding="md">
-          model
-        </Box>
-      </GridItem>,
-      <GridItem area="version" key="version">
-        <Box border="1px solid purple" padding="md">
-          version
-        </Box>
-      </GridItem>,
-      <GridItem area="doors" key="doors">
-        <Box border="1px solid purple" padding="md">
-          doors
-        </Box>
-      </GridItem>,
-      <GridItem area="horsePower" key="horsePower">
-        <Box border="1px solid purple" padding="md">
-          horsePower
-        </Box>
-      </GridItem>,
-      <GridItem area="fuelType" key="fuelType">
-        <Box border="1px solid purple" padding="md">
-          fuelType
-        </Box>
-      </GridItem>,
-      <GridItem area="driveType" key="driveType">
-        <Box border="1px solid purple" padding="md">
-          driveType
-        </Box>
-      </GridItem>,
-    ],
+    children: 'children',
   },
 
   argTypes: {
-    gap: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
-
-      control: {
-        type: 'select',
+    children: {
+      table: {
+        disable: true,
+      },
+      mapping: {
+        children: [
+          <GridItem area="make" key="make" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              make
+            </Box>
+          </GridItem>,
+          <GridItem area="model" key="model" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              model
+            </Box>
+          </GridItem>,
+          <GridItem area="version" key="version" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              version
+            </Box>
+          </GridItem>,
+          <GridItem area="doors" key="doors" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              doors
+            </Box>
+          </GridItem>,
+          <GridItem area="horsePower" key="horsePower" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              horsePower
+            </Box>
+          </GridItem>,
+          <GridItem area="fuelType" key="fuelType" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              fuelType
+            </Box>
+          </GridItem>,
+          <GridItem area="driveType" key="driveType" asChild>
+            <Box border="1px" borderColor="violet.500" padding="md">
+              driveType
+            </Box>
+          </GridItem>,
+        ],
       },
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof GridComponent> = {};
+export const Overview: StoryObj<typeof Grid> = {};

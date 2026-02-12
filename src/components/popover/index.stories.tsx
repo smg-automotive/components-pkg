@@ -4,22 +4,19 @@ import { useDisclosure } from '@chakra-ui/react';
 
 import { TooltipIcon } from '../icons';
 
-import PopoverComponent, { PopoverProps } from './index';
+import { Popover, PopoverProps } from './index';
 
 const Template = ({
-  hasCloseButton,
   size,
-  showArrow,
   placement,
-  closeOnBlur,
-  gutter,
-  trigger,
   content,
+  hasCloseButton,
+  showArrow,
+  closeOnInteractOutside,
 }: PopoverProps & { hasCloseButton: boolean }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   return (
-    <PopoverComponent
-      onClose={onClose}
+    <Popover
       content={
         hasCloseButton ? (
           <button onClick={() => onClose()}>Close</button>
@@ -28,65 +25,43 @@ const Template = ({
         )
       }
       size={size}
-      showArrow={showArrow}
       placement={placement}
-      closeOnBlur={closeOnBlur}
-      gutter={gutter}
-      trigger={trigger}
-      onOpen={onOpen}
-      isOpen={isOpen}
+      open={open}
+      onOpenChange={(e) => (e.open ? onOpen() : onClose())}
+      showArrow={showArrow}
+      closeOnInteractOutside={closeOnInteractOutside}
     >
       <TooltipIcon />
-    </PopoverComponent>
+    </Popover>
   );
 };
 
 const meta: Meta<typeof Template> = {
   title: 'Components/Overlay/Popover',
-  component: PopoverComponent,
+  component: Popover,
   render: Template.bind({}),
 
   args: {
-    content: 'I am popover content',
-    placement: 'auto',
+    content: 'I am Popover content',
+    placement: 'top',
     size: 'md',
     hasCloseButton: false,
   },
 
   argTypes: {
     placement: {
-      options: [
-        'auto',
-        'auto-start',
-        'auto-end',
-        'top',
-        'bottom',
-        'right',
-        'left',
-        'top-start',
-        'top-end',
-        'bottom-start',
-        'bottom-end',
-      ],
+      options: ['top', 'right', 'bottom', 'left'],
       control: 'select',
     },
     size: {
-      options: ['md', 'xl'],
+      options: ['md', 'lg'],
       control: 'select',
     },
     showArrow: {
       control: 'boolean',
     },
-    trigger: {
-      options: ['hover', 'click'],
-      control: 'select',
-      defaultValue: 'hover',
-    },
-    closeOnBlur: {
+    closeOnInteractOutside: {
       control: 'boolean',
-    },
-    gutter: {
-      control: 'number',
     },
   },
 };
@@ -94,26 +69,11 @@ const meta: Meta<typeof Template> = {
 export default meta;
 type StoryType = StoryObj<typeof Template>;
 
-export const Overview: StoryObj<typeof PopoverComponent> = {};
+export const Overview: StoryObj<typeof Popover> = {};
 
-export const NoArrow: StoryType = {
-  name: 'No arrow',
+export const HasCloseButton: StoryType = {
+  name: 'HasCloseButton',
   args: {
-    showArrow: false,
-  },
-};
-
-export const OpenOnClick: StoryType = {
-  name: 'Open on click',
-  args: {
-    trigger: 'click',
-  },
-};
-
-export const CloseOnClickOnButton: StoryType = {
-  name: 'Close on click on button',
-  args: {
-    trigger: 'click',
     hasCloseButton: true,
   },
 };

@@ -1,11 +1,22 @@
 import React, { FC } from 'react';
 
 import { MissingImageIcon } from '../icons';
-import Box from '../box';
+import { Box, BoxProps } from '../box';
 
-const MissingImage: FC = () => {
+export type MissingImageProps = Pick<
+  BoxProps,
+  'width' | 'height' | 'aspectRatio'
+>;
+
+export const MissingImage: FC<MissingImageProps> = (props) => {
   return (
-    <Box backgroundColor="gray.50">
+    <Box
+      backgroundColor="gray.50"
+      {...props}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
       <MissingImageIcon
         data-testid="missing-image"
         boxSize="lg"
@@ -14,5 +25,3 @@ const MissingImage: FC = () => {
     </Box>
   );
 };
-
-export default MissingImage;

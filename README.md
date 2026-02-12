@@ -10,6 +10,7 @@
    ```sh
    npm install @smg-automotive/components
    ```
+
 2. run the setup script
    ```sh
    npx components setup --path=<path to you public dir>
@@ -73,6 +74,10 @@
 
      We recommend adding fallback font families of `Arial, Helvetica, Sans-Serif`
 
+## Migrating to chakra-ui v3
+
+When migrating to chakra-ui v3, we introduced a set of breaking changes aligning with the parent library. You can get the overview of the changes in our components in the [migration guide](./migration-guide.md)
+
 ## Development
 
 ```
@@ -88,6 +93,22 @@ npm run build
 cd <project directory>
 npm link ../smg-automotive-components-pkg
 ```
+
+### Type generation
+
+Chakra UI provides type generation for tokens. This is incorporated into the `typegen` script.
+If you're adding new tokens you will need to re-generate the types:
+
+```bash
+$ npm run typegen
+```
+
+If you're heavily modifying the theme you can watch the changes with:
+```bash
+$ npm run typegen:watch
+```
+
+Since re-installing chakra ui will clean the generated types we're running the type generation as a post-install script.
 
 ## Theming
 

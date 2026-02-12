@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 
-import Flex from '../flex';
-import Box from '../box';
+import { Flex } from '../flex';
+import { Box } from '../box';
 
 export const TenantSelectionModalLayout: FunctionComponent<
   PropsWithChildren
@@ -9,7 +9,7 @@ export const TenantSelectionModalLayout: FunctionComponent<
   return (
     <Box
       height={{ base: 'full', sm: 'auth0-height' }}
-      maxH="100vh"
+      maxH="screen-height"
       overflowX="hidden"
       overflowY="auto"
       paddingX="2xl"

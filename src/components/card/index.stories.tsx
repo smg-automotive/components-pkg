@@ -1,35 +1,40 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import {
-  CardBody,
-  Card as CardComponent,
-  CardFooter,
-  CardHeader,
-} from './index';
+import { Card } from './index';
 
-const meta: Meta<typeof CardComponent> = {
+const meta: Meta<typeof Card.Root> = {
   title: 'Components/Data display/Card',
-  component: CardComponent,
+  component: Card.Root,
 
   args: {
-    maxWidth: 400,
-    children: [
-      <CardHeader key="header">Card Header</CardHeader>,
-      <CardBody key="body">Card Body</CardBody>,
-      <CardFooter key="footer">Card Footer</CardFooter>,
-    ],
+    css: {
+      '--max-width': '400px',
+    },
+    maxWidth: 'var(--max-width)',
+    children: ['header', 'body', 'footer'],
   },
 
   argTypes: {
     maxWidth: {
       control: {
         type: 'number',
+        value: 400,
         step: 50,
+      },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+      mapping: {
+        header: <Card.Header key="header">Card Header</Card.Header>,
+        body: <Card.Body key="body">Card Body</Card.Body>,
+        footer: <Card.Footer key="footer">Card Footer</Card.Footer>,
       },
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof CardComponent> = {};
+export const Overview: StoryObj<typeof Card> = {};

@@ -1,13 +1,5 @@
 import React, { ReactNode } from 'react';
-import {
-  Slider as ChakraSlider,
-  SliderMark as ChakraSliderMark,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-} from '@chakra-ui/react';
-
-import Box from '../box';
+import { Slider } from '@chakra-ui/react';
 
 const emptyItemOffset = 0;
 const firstItemOffset = 1;
@@ -50,7 +42,7 @@ const getSliderMarks = <T,>(
     stepValue: index + getItemOffset(applyIndentation),
   }));
 
-const DiscreteSlider = <T,>({
+export const DiscreteSlider = <T,>({
   marks,
   applyIndentation = true,
   onValueChanged,
@@ -71,30 +63,34 @@ const DiscreteSlider = <T,>({
   };
 
   return (
-    <ChakraSlider
+    <Slider.Root
       step={1}
       max={sliderMarks.length - 1 + getItemOffset(applyIndentation)}
-      value={sliderStepValue}
-      onChange={handleOnChange}
-      focusThumbOnChange={false}
+      value={[sliderStepValue]}
+      onValueChange={(details) =>
+        handleOnChange(details.value[0] ?? sliderStepValue)
+      }
     >
-      {sliderMarks?.map(({ stepValue, label }, index) => {
-        return (
-          <ChakraSliderMark
-            key={index}
-            value={stepValue as number}
-            fontWeight={sliderStepValue === stepValue ? 'bold' : 'normal'}
-          >
-            <Box style={{ pointerEvents: 'all' }}>{label}</Box>
-          </ChakraSliderMark>
-        );
-      })}
-      <SliderTrack>
-        <SliderFilledTrack />
-      </SliderTrack>
-      <SliderThumb />
-    </ChakraSlider>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumbs />
+        <Slider.MarkerGroup>
+          {sliderMarks.map(({ stepValue, label }, index) => (
+            <Slider.Marker
+              key={index}
+              value={stepValue as number}
+              style={{
+                pointerEvents: 'all',
+                fontWeight: sliderStepValue === stepValue ? 'bold' : 'normal',
+              }}
+            >
+              {label}
+            </Slider.Marker>
+          ))}
+        </Slider.MarkerGroup>
+      </Slider.Control>
+    </Slider.Root>
   );
 };
-
-export default DiscreteSlider;

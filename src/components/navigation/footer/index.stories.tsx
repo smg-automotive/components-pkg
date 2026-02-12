@@ -2,11 +2,11 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Brand } from 'src/types/brand';
 
-import FooterComponent from './index';
+import { Footer } from './index';
 
-const meta: Meta<typeof FooterComponent> = {
+const meta: Meta<typeof Footer> = {
   title: 'Patterns/Navigation/Footer',
-  component: FooterComponent,
+  component: Footer,
 
   parameters: {
     layout: 'fullscreen',
@@ -44,4 +44,4 @@ const meta: Meta<typeof FooterComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof FooterComponent> = {};
+export const Overview: StoryObj<typeof Footer> = {};

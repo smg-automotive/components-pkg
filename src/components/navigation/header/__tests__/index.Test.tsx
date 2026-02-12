@@ -11,12 +11,12 @@ import { Brand } from 'src/types/brand';
 
 import { act, fireEvent, render, screen, within } from 'jest-utils';
 
+import { Navigation, NavigationProps } from '../index';
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationLink } from '../config/headerNavigationLink';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
 import { headerLinks } from '../config/headerLinks';
 import { drawerNodeItems } from '../config/DrawerNodeItems';
-import Navigation, { NavigationProps } from '..';
 
 const renderNavigation = ({
   environment = 'preprod',
@@ -117,7 +117,7 @@ describe('Header', () => {
     const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
     fireEvent.click(tenantSelectionMenu);
 
-    const popover = screen.getByRole('dialog', { hidden: true });
+    const popover = await screen.findByRole('dialog');
     const newTenant = within(popover).getByText('Garage Amir Basel - 6002');
     act(() => {
       fireEvent.click(newTenant);

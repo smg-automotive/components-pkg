@@ -1,12 +1,17 @@
 import React, { FC } from 'react';
-import { Box, BoxProps, useMultiStyleConfig } from '@chakra-ui/react';
+import { type RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
 
-import Mark from './mark';
+import { markedTextRecipe } from 'src/themes/shared/slotRecipes/markedText';
+
+import { Box, type BoxProps } from 'src/components/box';
+
+import { MarkedTextMark } from './mark';
 
 type SharedProps = Exclude<
   BoxProps,
   'position' | 'width' | 'display' | 'alignItems'
->;
+> &
+  RecipeVariantProps<typeof markedTextRecipe>;
 
 type HighlightProps = SharedProps & {
   variant?: 'highlight';
@@ -20,23 +25,17 @@ type UnderlineProps = SharedProps & {
 
 export type MarkedTextProps = HighlightProps | UnderlineProps;
 
-const MarkedText: FC<MarkedTextProps> = ({
-  children,
-  variant = 'highlight',
-  highlightColor = 'brand.primary',
-  ...boxProps
-}) => {
-  const { container, text } = useMultiStyleConfig('MarkedText', {
-    variant,
-    highlightColor,
-  });
+export const MarkedText: FC<MarkedTextProps> = ({ children, ...props }) => {
+  const recipe = useSlotRecipe({ key: 'markedText' });
+  const [recipeProps, boxProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  const { variant, highlightColor } = props;
 
   return (
-    <Box __css={container} {...boxProps}>
-      <Mark variant={variant} highlightColor={highlightColor} />
-      <Box __css={text}>{children}</Box>
+    <Box css={styles.container} {...boxProps}>
+      <MarkedTextMark variant={variant} highlightColor={highlightColor} />
+      <Box css={styles.text}>{children}</Box>
     </Box>
   );
 };
-
-export default MarkedText;

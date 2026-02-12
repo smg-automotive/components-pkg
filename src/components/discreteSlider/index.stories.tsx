@@ -4,9 +4,9 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Center } from '@chakra-ui/react';
 
-import Box from '../box';
+import { Box } from '../box';
 
-import DiscreteSlider, { type DiscreteSliderProps } from './index';
+import { DiscreteSlider, type DiscreteSliderProps } from './index';
 
 const Template = (props: DiscreteSliderProps<number>) => {
   const [args, updateArgs] = useArgs<DiscreteSliderProps<number>>();
@@ -34,7 +34,7 @@ const meta: Meta<typeof DiscreteSlider<number>> = {
   decorators: [
     (Story) => (
       <Center>
-        <Box w="100%" maxW={392}>
+        <Box w="full" maxW="7xl">
           <Story />
         </Box>
       </Center>

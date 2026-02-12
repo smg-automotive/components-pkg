@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import Text from '../text';
+import { Text } from '../text';
 
-import ProgressComponent from './index';
+import { Progress } from './index';
 
 const createLabel = (current: number, max: number) => (
   <>
@@ -17,9 +17,9 @@ const createLabel = (current: number, max: number) => (
   </>
 );
 
-const meta: Meta<typeof ProgressComponent> = {
+const meta: Meta<typeof Progress> = {
   title: 'Components/Feedback/Progress',
-  component: ProgressComponent,
+  component: Progress,
 
   args: {
     current: 0,
@@ -42,7 +42,7 @@ const meta: Meta<typeof ProgressComponent> = {
 
 export default meta;
 
-type StoryType = StoryObj<typeof ProgressComponent>;
+type StoryType = StoryObj<typeof Progress>;
 
 export const Overview: StoryType = {};
 

@@ -2,14 +2,16 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import ArticleTeaser from './index';
+import { tokenControl } from '.storybook/preview/controls/token';
+
+import { ArticleTeaser } from './index';
 
 const meta: Meta<typeof ArticleTeaser> = {
   title: 'Patterns/Content/Article Teaser',
   component: ArticleTeaser,
   decorators: [
     (Story) => (
-      <Box maxW={{ '2xs': '100%', md: '600px' }}>
+      <Box maxWidth={{ '2xs': 'full', md: '7xl' }}>
         <Story />
       </Box>
     ),
@@ -22,12 +24,8 @@ const meta: Meta<typeof ArticleTeaser> = {
     imageUrl: 'https://picsum.photos/320/320',
     maxImgW: '4xl',
   },
-
   argTypes: {
-    maxImgW: {
-      options: ['xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'],
-      control: 'select',
-    },
+    ...tokenControl({ name: 'maxImgW', token: 'sizes' }),
   },
 };
 

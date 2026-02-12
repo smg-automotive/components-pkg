@@ -3,11 +3,11 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import FullHeight from '../fullHeight';
-import Flex from '../flex';
-import Box from '../box';
+import { FullHeight } from '../fullHeight';
+import { Flex } from '../flex';
+import { Box } from '../box';
 
-import CarouselComponent, { PaginationType } from './index';
+import { Carousel as CarouselComponent, PaginationType } from './index';
 
 const images = [
   'https://picsum.photos/800/600',
@@ -27,7 +27,8 @@ const Slide: FC<SlideProps> = ({ index, imageSrc, fullScreen }) => (
   <Flex
     justifyContent="center"
     alignItems="center"
-    height={fullScreen ? 'full' : '600px'}
+    height={fullScreen ? 'full' : 'var(--carousel-story-height)'}
+    css={{ '--carousel-story-height': '600px' }}
     position="relative"
   >
     <img
@@ -56,7 +57,12 @@ const meta: Meta<typeof CarouselComponent> = {
           <Story />
         </FullHeight>
       ) : (
-        <Box m="auto" maxW="900px" p="md">
+        <Box
+          m="auto"
+          maxW="var(--carousel-doc-max-w)"
+          p="md"
+          css={{ '--carousel-doc-max-w': '900px' }}
+        >
           <Story />
         </Box>
       );

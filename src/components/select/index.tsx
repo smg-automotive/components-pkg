@@ -1,10 +1,13 @@
 import React, { forwardRef } from 'react';
 import {
-  Select as ChakraSelect,
-  SelectProps as ChakraSelectProps,
+  NativeSelect,
+  NativeSelectFieldProps,
+  NativeSelectRootProps,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { ChevronDownLargeIcon } from '../icons';
+import { selectSlotRecipe } from 'src/themes/shared/slotRecipes/select';
 
 export type Option<T extends string | number> = {
   value: T;
@@ -16,35 +19,45 @@ type OptionsAndValue<T extends string | number> = {
   value?: T;
 };
 
-export type Props = Pick<
-  ChakraSelectProps,
-  | 'placeholder'
-  | 'isInvalid'
-  | 'isDisabled'
-  | 'onBlur'
-  | 'onFocus'
-  | 'onChange'
-  | 'autoFocus'
-  | 'borderLeftRadius'
-  | 'borderRightRadius'
-> & {
-  size?: 'md' | 'lg';
-  name: string;
-} & (OptionsAndValue<string> | OptionsAndValue<number>);
+type SelectVariantProps = RecipeVariantProps<typeof selectSlotRecipe>;
 
-const Select = forwardRef<HTMLSelectElement, Props>(
+export type SelectProps = SelectVariantProps &
+  Pick<NativeSelectRootProps, 'disabled' | 'invalid'> &
+  NativeSelectFieldProps & {
+    name: string;
+  } & (OptionsAndValue<string> | OptionsAndValue<number>);
+
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ options, ...props }, ref) => {
+    const selectRecipe = useSlotRecipe({ key: 'select' });
+    const [selectRecipeProps, restProps] =
+      selectRecipe.splitVariantProps(props);
+    const selectStyles = selectRecipe(selectRecipeProps);
+
+    const { disabled, invalid, ...rest } = restProps;
+
     return (
-      <ChakraSelect {...props} icon={<ChevronDownLargeIcon />} ref={ref}>
-        {options.map((option) => (
-          <option value={option.value} key={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </ChakraSelect>
+      <NativeSelect.Root
+        disabled={disabled}
+        invalid={invalid}
+        css={selectStyles.root}
+      >
+        <NativeSelect.Field ref={ref} {...rest} css={selectStyles.field}>
+          {options.map((option) => (
+            <option value={option.value} key={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </NativeSelect.Field>
+        <NativeSelect.Indicator
+          css={[
+            selectStyles.indicator,
+            disabled && selectStyles.indicator._disabled,
+          ]}
+        />
+      </NativeSelect.Root>
     );
   },
 );
-Select.displayName = 'Select';
 
-export default Select;
+Select.displayName = 'Select';

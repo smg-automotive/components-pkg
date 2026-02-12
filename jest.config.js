@@ -20,5 +20,5 @@ module.exports = transpileESMModulesForJest(() => ({
     '<rootDir>/jest-utils/setup/intersectionObserver.ts',
     '@smg-automotive/auth/test/environment-setup',
   ],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
 }));

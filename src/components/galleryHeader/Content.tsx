@@ -1,13 +1,15 @@
+'use client';
+
 import React, { FC, PropsWithChildren } from 'react';
+import { useSlotRecipe } from '@chakra-ui/react';
 
 import { useI18n } from 'src/utilities/i18nInit';
 import { Language } from 'src/types/language';
-import SimpleGrid from 'src/components/simpleGrid';
-import Show from 'src/components/show';
-import Link from 'src/components/link';
 import { CloseIcon } from 'src/components/icons';
 
-import Box from 'src/components/box';
+import { SimpleGrid } from '../simpleGrid';
+import { Link } from '../link';
+import { Box } from '../box';
 
 export interface GalleryHeaderProps {
   currentSlide: number;
@@ -16,55 +18,39 @@ export interface GalleryHeaderProps {
   language: Language;
 }
 
-const GalleryHeaderContent: FC<PropsWithChildren<GalleryHeaderProps>> = ({
-  currentSlide,
-  slidesCount,
-  onClose,
-  children,
-}) => {
+export const GalleryHeaderContent: FC<
+  PropsWithChildren<GalleryHeaderProps>
+> = ({ currentSlide, slidesCount, onClose, children }) => {
   const { t } = useI18n();
+  const recipe = useSlotRecipe({ key: 'galleryHeader' });
+  const styles = recipe();
 
   return (
-    <Box
-      color="white"
-      px="2xl"
-      py="lg"
-      position={{
-        base: 'fixed',
-        md: 'static',
-      }}
-      top={0}
-      left={0}
-      right={0}
-      zIndex={1}
-    >
-      <SimpleGrid
-        columns={{
-          base: 2,
-          md: 3,
-        }}
-        alignItems="center"
-      >
-        <Show above="md">{children}</Show>
-        <Box
-          textAlign={{
-            base: 'left',
-            md: 'center',
+    <Box css={styles.container}>
+      <Box css={styles.grid}>
+        <SimpleGrid
+          columns={{
+            base: 2,
+            md: 3,
           }}
+          alignItems="center"
         >
-          {t('galleryHeader.imageCount', {
-            x: currentSlide,
-            of: slidesCount,
-          })}
-        </Box>
-        <Box textAlign="right">
-          <Link aria-label="Close gallery" onClick={() => onClose()}>
-            <CloseIcon color="white" />
-          </Link>
-        </Box>
-      </SimpleGrid>
+          <Box hideBelow="md">{children}</Box>
+          <Box css={styles.countContainer}>
+            <Box>
+              {t('galleryHeader.imageCount', {
+                x: currentSlide,
+                of: slidesCount,
+              })}
+            </Box>
+          </Box>
+          <Box css={styles.closeContainer}>
+            <Link aria-label="Close gallery" onClick={() => onClose()}>
+              <CloseIcon color="white" />
+            </Link>
+          </Box>
+        </SimpleGrid>
+      </Box>
     </Box>
   );
 };
-
-export default GalleryHeaderContent;

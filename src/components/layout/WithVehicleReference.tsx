@@ -1,9 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
-import Box from '../box';
-import TwoColumnsLayout, {
+import { VehicleReference, VehicleReferenceProps } from '../vehicleReference';
+import { Box } from '../box';
+import {
   ColumnSize,
+  TwoColumnsLayout,
   TwoColumnsLayoutProps,
 } from './TwoColumnsLayout';
 export interface Props extends Omit<TwoColumnsLayoutProps, 'left' | 'right'> {
@@ -12,7 +13,7 @@ export interface Props extends Omit<TwoColumnsLayoutProps, 'left' | 'right'> {
   rightColumnSize?: ColumnSize;
 }
 
-const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
+export const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   title,
   backLink,
   vehicle,
@@ -28,9 +29,9 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
     <TwoColumnsLayout
       header={header}
       backLink={backLink}
-      title={title ? <Box marginRight={contentMargin}>{title}</Box> : null}
+      title={title ? <Box css={contentMargin}>{title}</Box> : null}
       left={{
-        content: <Box marginRight={contentMargin}>{children}</Box>,
+        content: <Box css={contentMargin}>{children}</Box>,
         columns: leftColumnSize,
       }}
       right={{
@@ -41,5 +42,3 @@ const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
     />
   );
 };
-
-export default LayoutWithVehicleReference;

@@ -1,26 +1,25 @@
+'use client';
+
 import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import {
-  ResponsiveObject,
-  useMediaQuery,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
+import { useMediaQuery, useSlotRecipe } from '@chakra-ui/react';
 
+import type { ResponsiveValue } from 'src/types/responsiveValue';
 import { breakpoints } from 'src/themes';
 
-import Flex from '../flex';
-import Box from '../box';
-import ThumbnailPagination from './ThumbnailPagination';
-import Slide from './Slide';
-import NumbersPagination from './NumbersPagination';
-import NavigationButton from './NavigationButton';
-import DotsPagination from './DotsPagination';
+import { Flex } from '../flex';
+import { Box } from '../box';
+import { ThumbnailPagination } from './ThumbnailPagination';
+import { Slide } from './Slide';
+import { NumbersPagination } from './NumbersPagination';
+import { NavigationButton } from './NavigationButton';
+import { DotsPagination } from './DotsPagination';
 
 type SharedProps = {
   startIndex?: number;
   onSlideClick?: (index: number) => void;
   onSlideSelect?: (index: number) => void;
-  slidesPerView?: ResponsiveObject<number> | 1;
+  slidesPerView?: ResponsiveValue<number> | 1;
   loop?: boolean;
   slidesToScroll?: 'auto' | number;
 };
@@ -43,7 +42,7 @@ type FullScreenProps = {
   children: FullScreenSlide[];
 } & SharedProps;
 
-export type Props = DefaultProps | FullScreenProps;
+export type CarouselProps = DefaultProps | FullScreenProps;
 
 export enum PaginationType {
   Thumbnail = 'thumbnail',
@@ -52,8 +51,11 @@ export enum PaginationType {
   Dot = 'dot',
 }
 
+const isFullScreenSlide = (value: unknown): value is FullScreenSlide =>
+  typeof value === 'object' && value !== null && 'slide' in (value as object);
+
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const Carousel: FC<Props> = (props) => {
+export const Carousel: FC<CarouselProps> = (props) => {
   const {
     startIndex = 0,
     onSlideClick,
@@ -69,16 +71,15 @@ const Carousel: FC<Props> = (props) => {
   const [canScrollNext, setCanScrollNext] = useState(loop);
   const [selectedIndex, setSelectedIndex] = useState(startIndex);
   const [isSmallLandscapeViewport] = useMediaQuery(
-    `(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`,
+    [`(max-height: ${breakpoints.sm.px}px) and (orientation: landscape)`],
     {
       ssr: true,
-      fallback: false,
+      fallback: [false],
     },
   );
-  const { container, carousel, slideContainer } = useMultiStyleConfig(
-    'Carousel',
-    fullScreen ? { variant: 'fullScreen' } : {},
-  );
+  const recipe = useSlotRecipe({ key: 'carousel' });
+  const styles = recipe(fullScreen ? { variant: 'fullScreen' } : {});
+
   const [mainCarouselRef, mainCarousel] = useEmblaCarousel({
     loop,
     startIndex: startIndex,
@@ -140,18 +141,15 @@ const Carousel: FC<Props> = (props) => {
       return;
     }
 
+    const fullScreenChildren = props.children as FullScreenSlide[];
     if (newIndex !== undefined) {
-      const currentSlide = props.children[newIndex];
-      if (currentSlide.onSlideEnter) {
-        currentSlide.onSlideEnter();
-      }
+      const currentSlide = fullScreenChildren[newIndex];
+      currentSlide?.onSlideEnter?.();
     }
 
     if (previousIndex !== undefined && previousIndex !== newIndex) {
-      const previousSlide = props.children[previousIndex];
-      if (previousSlide.onSlideLeave) {
-        previousSlide.onSlideLeave();
-      }
+      const previousSlide = fullScreenChildren[previousIndex];
+      previousSlide?.onSlideLeave?.();
     }
   }, [
     mainCarousel,
@@ -188,15 +186,22 @@ const Carousel: FC<Props> = (props) => {
 
   const prerenderFallbackSlide = startIndex !== 0 && !mainCarouselRef;
 
-  const carouselHeightByPaginationTypeMap = {
-    [PaginationType.None]: 'full',
-    [PaginationType.Thumbnail]: 'calc(100% - 7.5rem)',
-    [PaginationType.Number]: 'calc(100% - 5rem)',
-    [PaginationType.Dot]: 'full',
+  const carouselHeightByPaginationTypeMap: Record<PaginationType, string> = {
+    [PaginationType.None]: '100%',
+    [PaginationType.Dot]: '100%',
+    [PaginationType.Thumbnail]:
+      'calc(100% - var(--carousel-pagination-height))',
+    [PaginationType.Number]:
+      'calc(100% - var(--carousel-numbers-pagination-height))',
   };
+  const carouselHeightCssVarValue = hasThumbnailPagination
+    ? carouselHeightByPaginationTypeMap[PaginationType.Thumbnail]
+    : carouselHeightByPaginationTypeMap[paginationType];
+
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Box __css={container}>
+    <Box css={styles.container} data-group>
       {prerenderFallbackSlide ? (
         <Slide
           slideIndex={startIndex}
@@ -207,8 +212,8 @@ const Carousel: FC<Props> = (props) => {
           slidesPerView={slidesPerView}
         >
           {props.fullScreen
-            ? props.children[startIndex]?.slide
-            : props.children[startIndex]}
+            ? (props.children[startIndex] as FullScreenSlide)?.slide
+            : (props.children[startIndex] as ReactNode)}
         </Slide>
       ) : (
         <Box
@@ -216,16 +221,18 @@ const Carousel: FC<Props> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          height={
-            carouselHeightByPaginationTypeMap[
-              hasThumbnailPagination ? PaginationType.Thumbnail : paginationType
-            ]
-          }
-          __css={carousel}
+          data-group
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          height={'var(--carousel-height)'}
+          css={{
+            ...styles.carousel,
+            '--carousel-height': carouselHeightCssVarValue,
+          }}
         >
           <Flex
-            __css={slideContainer}
-            marginLeft={slidesPerView === 1 ? 0 : { base: '-md', md: '-2xl' }}
+            css={styles.slideContainer}
+            marginLeft={slidesPerView === 1 ? '0' : { base: '-md', md: '-2xl' }}
           >
             {props.children.map((slide, index) => (
               <Slide
@@ -237,9 +244,7 @@ const Carousel: FC<Props> = (props) => {
                 fullScreen={!!fullScreen}
                 slidesPerView={slidesPerView}
               >
-                {slide && typeof slide === 'object' && 'slide' in slide
-                  ? slide.slide
-                  : slide}
+                {isFullScreenSlide(slide) ? slide.slide : (slide as ReactNode)}
               </Slide>
             ))}
           </Flex>
@@ -248,6 +253,9 @@ const Carousel: FC<Props> = (props) => {
               onClick={scrollPrev}
               direction="previous"
               fullScreen={!!fullScreen}
+              isHovered={
+                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
+              }
             />
           ) : null}
           {canScrollNext ? (
@@ -255,6 +263,9 @@ const Carousel: FC<Props> = (props) => {
               onClick={scrollNext}
               direction="next"
               fullScreen={!!fullScreen}
+              isHovered={
+                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
+              }
             />
           ) : null}
           {paginationType === PaginationType.Dot ? (
@@ -269,7 +280,9 @@ const Carousel: FC<Props> = (props) => {
       {hasThumbnailPagination ? (
         <ThumbnailPagination
           currentSlideIndex={selectedIndex}
-          thumbnails={props.children.map((slide) => slide.thumbnail)}
+          thumbnails={(props.children as FullScreenSlide[]).map(
+            (slide) => slide.thumbnail,
+          )}
           mainCarousel={mainCarousel}
           paginationCarousel={paginationCarousel}
           paginationCarouselRef={paginationCarouselRef}
@@ -286,5 +299,3 @@ const Carousel: FC<Props> = (props) => {
     </Box>
   );
 };
-
-export default Carousel;

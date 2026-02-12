@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import { Badge as ChakraBadge } from '@chakra-ui/react';
+import {
+  Badge as ChakraBadge,
+  BadgeProps as ChakraBadgeProps,
+} from '@chakra-ui/react';
 
-export interface BadgeProps {
+export type BadgeProps = Exclude<ChakraBadgeProps, 'children'> & {
   text: string;
-  variant?: string;
-}
-const Badge: FC<BadgeProps> = ({ text, variant }) => {
-  return <ChakraBadge variant={variant}>{text}</ChakraBadge>;
 };
 
-export default Badge;
+export const Badge: FC<BadgeProps> = ({ text, ...props }) => (
+  <ChakraBadge {...props}>{text}</ChakraBadge>
+);

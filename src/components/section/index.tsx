@@ -1,46 +1,42 @@
 import React, { FC, ReactNode } from 'react';
-
 import {
   Box,
+  BoxProps,
   chakra,
-  ResponsiveValue,
-  useMultiStyleConfig,
+  RecipeVariantProps,
+  Stack,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { Sizes } from 'src/themes';
+import { sectionRecipe } from 'src/themes/shared/slotRecipes/section';
 
-import Stack from '../stack';
+type SectionVariantProps = RecipeVariantProps<typeof sectionRecipe>;
 
-export interface Props {
-  variant?: 'hero' | 'regular';
+export type SectionProps = SectionVariantProps & {
   title: string;
   text?: string;
   image?: ReactNode;
-  maxImgW?: ResponsiveValue<Sizes>;
-}
+  maxImgW?: BoxProps['maxWidth'];
+};
 
-const Section: FC<Props> = ({
-  title,
-  text,
-  image,
-  variant,
-  maxImgW = '2xl',
-}) => {
-  const styles = useMultiStyleConfig(`Section`, { variant });
+export const Section: FC<SectionProps> = ({ maxImgW = '2xl', ...props }) => {
+  const recipe = useSlotRecipe({ key: 'section' });
+  const [recipeProps, componentProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  const { title, text, image } = componentProps;
 
   return (
-    <Stack direction={{ '2xs': 'column', md: 'row' }} spacing="xl">
+    <Stack css={styles.root}>
       {image ? (
-        <Box maxW={maxImgW} flexShrink={0}>
+        <Box css={styles.imageContainer} maxW={maxImgW}>
           {image}
         </Box>
       ) : null}
-      <Stack spacing="md">
-        <chakra.span __css={styles.title}>{title}</chakra.span>
-        {text ? <chakra.span __css={styles.text}>{text}</chakra.span> : null}
+      <Stack css={styles.textContainer}>
+        <chakra.span css={styles.title}>{title}</chakra.span>
+        {text ? <chakra.span css={styles.text}>{text}</chakra.span> : null}
       </Stack>
     </Stack>
   );
 };
-
-export default Section;

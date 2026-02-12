@@ -1,27 +1,20 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
-import { default as ComponentsLink } from 'src/components/link';
-
-import { LinkInstance } from '../link';
+import { Text } from 'src/components/text';
+import { LinkInstance } from 'src/components/navigation/link';
+import { Link } from 'src/components/link';
 
 interface FooterLinkProps {
   linkInstance: LinkInstance;
   bold?: boolean;
 }
-const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
+export const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
   linkInstance,
   children,
   bold = false,
 }) => {
   const { t, language } = useI18n();
-
-  const boldStyles = bold
-    ? {
-        fontWeight: 'bold',
-      }
-    : {};
 
   if (!linkInstance) {
     return null;
@@ -29,7 +22,7 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
 
   if (!linkInstance.link?.[language] && !linkInstance.onClick) {
     return (
-      <Text {...boldStyles}>
+      <Text fontWeight={bold ? 'bold' : 'regular'}>
         {linkInstance.translationKey && t(linkInstance.translationKey)}
       </Text>
     );
@@ -37,16 +30,16 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
 
   if (linkInstance.onClick) {
     return (
-      <ComponentsLink
+      <Link
         type="button"
         as="button"
         variant="footerLink"
         textStyle="body-small"
+        fontWeight={bold ? 'bold' : 'regular'}
         onClick={linkInstance.onClick}
-        {...boldStyles}
       >
         {linkInstance.translationKey && t(linkInstance.translationKey)}
-      </ComponentsLink>
+      </Link>
     );
   }
 
@@ -58,18 +51,16 @@ const FooterLink: FC<PropsWithChildren<FooterLinkProps>> = ({
     : {};
 
   return (
-    <ComponentsLink
+    <Link
       href={linkInstance.link?.[language]}
       variant="footerLink"
       textStyle="body-small"
+      fontWeight={bold ? 'bold' : 'regular'}
       {...targetSettings}
-      {...boldStyles}
     >
       {children
         ? children
         : linkInstance.translationKey && t(linkInstance.translationKey)}
-    </ComponentsLink>
+    </Link>
   );
 };
-
-export default FooterLink;

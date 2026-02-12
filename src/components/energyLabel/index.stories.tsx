@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import EnergyLabel from './index';
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { EnergyLabel } from './index';
 
 const meta: Meta<typeof EnergyLabel> = {
   title: 'Components/Data display/Energy Label',
@@ -11,10 +13,7 @@ const meta: Meta<typeof EnergyLabel> = {
   },
 
   argTypes: {
-    efficiency: {
-      options: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-      control: 'select',
-    },
+    ...getRecipeControls('energyLabel'),
   },
 };
 export default meta;

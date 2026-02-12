@@ -3,158 +3,62 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import RadioComponent, { Props } from './index';
+import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+import { getRecipeControls } from '.storybook/preview/controls/recipe';
+
+import { Radio, RadioProps } from './index';
+
+const Template = (props: RadioProps) => {
+  const [args, updateArgs] = useArgs<RadioProps>();
 
   return (
-    <RadioComponent
+    <Radio
       {...props}
       {...args}
-      isChecked={args.isChecked}
       onChange={(e) => {
-        updateArgs({ isChecked: e.target.checked });
+        const next = !(args.checked ?? false); // toggle
+        updateArgs({ checked: next });
         action('onChange')(e);
       }}
     />
   );
 };
 
-const meta: Meta<typeof RadioComponent> = {
+const meta: Meta<typeof Radio> = {
   title: 'Components/Forms/Radio',
-  component: RadioComponent,
-  render: Template.bind({}),
-
+  component: Radio,
+  render: Template,
   args: {
-    isDisabled: false,
-    isInvalid: false,
-    size: 'md',
-    label: 'Radio',
     value: 'option',
-    name: 'test-radio',
+    label: 'Radio',
+    name: '',
+    checked: false,
+    disabled: false,
+    invalid: false,
+    size: 'md',
     variant: 'fontRegular',
   },
-
   argTypes: {
-    size: {
-      options: ['base', 'md'],
-      control: 'select',
-    },
-
-    variant: {
-      options: ['fontRegular', 'fontBold'],
-      control: 'select',
-    },
+    ...getRecipeControls(radioRecipe),
   },
 };
+
 export default meta;
+type Story = StoryObj<typeof Radio>;
 
-type StoryType = StoryObj<typeof RadioComponent>;
-
-export const Overview: StoryType = {};
-
-export const SizeBase: StoryType = {
-  name: 'Sizes > Base',
-
-  args: {
-    size: 'base',
-    name: 'test-radio-base',
-  },
-
-  argTypes: {
-    size: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+export const Default: Story = { name: 'Radio (single)' };
+export const SizeBase: Story = { name: 'Size › base', args: { size: 'base' } };
+export const SizeMd: Story = { name: 'Size › md', args: { size: 'md' } };
+export const StateDisabled: Story = {
+  name: 'State › disabled',
+  args: { disabled: true },
 };
-
-export const SizeMedium: StoryType = {
-  name: 'Sizes > Medium',
-
-  args: {
-    size: 'md',
-    name: 'test-radio-md',
-  },
-
-  argTypes: {
-    size: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+export const StateInvalid: Story = {
+  name: 'State › invalid',
+  args: { invalid: true },
 };
-
-export const StateDefault: StoryType = {
-  name: 'States > Default',
-
-  args: {
-    isDisabled: false,
-    isInvalid: false,
-  },
-
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export const StateDisabled: StoryType = {
-  name: 'States > Disabled',
-
-  args: {
-    isDisabled: true,
-    isInvalid: false,
-    name: 'test-radio-disabled',
-  },
-
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export const StateInvalid: StoryType = {
-  name: 'States > Invalid',
-
-  args: {
-    isDisabled: false,
-    isInvalid: true,
-    name: 'test-radio-invalid',
-  },
-
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+export const VariantBold: Story = {
+  name: 'Variant › fontBold',
+  args: { variant: 'fontBold' },
 };

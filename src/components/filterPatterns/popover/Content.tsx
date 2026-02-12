@@ -1,21 +1,22 @@
+'use client';
+
 import React, { FC } from 'react';
 import {
   ButtonGroup,
   chakra,
-  Button as ChakraButton,
+  Popover as ChakraPopover,
   IconButton,
-  Popover,
-  PopoverTrigger,
   useDisclosure,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
 import { useI18n } from 'src/utilities/i18nInit';
 import { ChevronDownSmallIcon, CloseIcon } from 'src/components/icons';
 
 import { PopoverFilterProps } from './props';
-import FilterPopover from './Popover';
+import { Popover as FilterPopover } from './Popover';
 
-const PopoverFilterContent: FC<PopoverFilterProps> = ({
+export const PopoverFilterContent: FC<PopoverFilterProps> = ({
   actionButton,
   displayValue,
   enforceHeight,
@@ -32,122 +33,86 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
   header,
   children,
   triggerHeight = 'md',
-  isDisabled,
+  disabled,
   hasFlip = true,
   zIndex = 'popover',
 }) => {
   const { t } = useI18n();
-  const { onOpen, onClose, isOpen } = useDisclosure({
-    defaultIsOpen: initialPopoverState === 'open',
+  const { onOpen, onClose, open } = useDisclosure({
+    defaultOpen: initialPopoverState === 'open',
     onOpen: onPopoverOpen,
     onClose: onPopoverClose,
   });
 
-  const appliedOrOpenColorScheme = {
-    backgroundColor: 'gray.900',
-    ...(isApplied
-      ? {
-          _hover: {
-            backgroundColor: 'black',
-          },
-        }
-      : {
-          _groupHover: {
-            backgroundColor: 'black',
-          },
-        }),
-    color: 'white',
-  };
-
-  const defaultColorSchema = {
-    backgroundColor: 'gray.100',
-    _groupHover: {
-      backgroundColor: 'gray.200',
-    },
-    color: 'gray.900',
-  };
-
-  const disableFlip = [
-    {
-      name: 'preventOverflow',
-      options: {
-        boundary: 'viewport',
-      },
-    },
-    {
-      name: 'flip',
-      options: {
-        fallbackPlacements: [],
-      },
-    },
-  ];
+  const recipe = useSlotRecipe({ key: 'popoverFilter' });
+  const styles = recipe();
 
   const filterLabel = appliedLabel ?? label;
 
   return (
-    <Popover
-      returnFocusOnClose={true}
-      placement="bottom-start"
-      isLazy={true}
-      isOpen={isOpen}
-      onOpen={onOpen}
-      onClose={onClose}
-      modifiers={!hasFlip ? disableFlip : []}
+    <ChakraPopover.Root
+      positioning={{ placement: 'bottom-start', flip: hasFlip }}
+      lazyMount={true}
+      open={open}
+      onOpenChange={(e) => (e.open ? onOpen() : onClose())}
     >
-      <ButtonGroup isAttached={true} w="full" maxW="full">
-        <PopoverTrigger>
-          <ChakraButton
-            borderRadius="sm"
-            borderRightColor={displayValue ? 'white' : undefined}
-            borderRightWidth={displayValue ? '1px' : undefined}
+      <ButtonGroup
+        attached={true}
+        display="inline-flex"
+        width="full"
+        maxW="full"
+      >
+        <ChakraPopover.Trigger
+          disabled={disabled}
+          css={styles.trigger}
+          height={triggerHeight}
+          borderRightColor={displayValue ? 'white' : undefined}
+          backgroundColor={isApplied || open ? 'gray.900' : 'gray.100'}
+          color={isApplied || open ? 'white' : 'gray.900'}
+          _hover={{
+            backgroundColor: isApplied || open ? 'black' : 'gray.200',
+          }}
+        >
+          <chakra.span
             display="flex"
-            flex="1"
-            height={triggerHeight}
-            justifyContent="space-between"
-            minW="0"
-            paddingX="md"
-            isDisabled={isDisabled}
-            rightIcon={
-              displayValue ? undefined : (
-                <ChevronDownSmallIcon
-                  w="xs"
-                  h="xs"
-                  transition="0.2s"
-                  transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-                />
-              )
-            }
-            {...(isApplied || isOpen
-              ? appliedOrOpenColorScheme
-              : defaultColorSchema)}
+            alignItems="center"
+            overflow="hidden"
+            whiteSpace="nowrap"
           >
+            {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
+            <chakra.span overflow="hidden" textOverflow="ellipsis">
+              {displayValue && filterLabel ? (
+                <chakra.span>{filterLabel}: </chakra.span>
+              ) : null}
+              <chakra.span>{displayValue ? displayValue : label}</chakra.span>
+            </chakra.span>
+          </chakra.span>
+          {displayValue ? null : (
             <chakra.span
-              overflow="hidden"
-              whiteSpace="nowrap"
               display="flex"
               alignItems="center"
+              overflow="hidden"
+              whiteSpace="nowrap"
             >
-              {Icon ? <Icon h="xs" w="xs" mr="xs" /> : null}
-              <chakra.span overflow="hidden" textOverflow="ellipsis">
-                {displayValue && filterLabel ? (
-                  <chakra.span>{filterLabel}: </chakra.span>
-                ) : null}
-                <chakra.span>{displayValue ? displayValue : label}</chakra.span>
-              </chakra.span>
+              <ChevronDownSmallIcon
+                width="xs"
+                height="xs"
+                transition="transform"
+                transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
+              />
             </chakra.span>
-          </ChakraButton>
-        </PopoverTrigger>
+          )}
+        </ChakraPopover.Trigger>
         {displayValue ? (
           <IconButton
-            isDisabled={isOpen}
             aria-label={t('filterSelectButton.reset')}
-            borderRadius="sm"
-            icon={<CloseIcon w="xs" h="xs" />}
-            minW="md"
+            disabled={open}
+            css={styles.close}
+            height={triggerHeight}
             onClick={() => onResetFilter('filterButton')}
-            w="md"
-            {...appliedOrOpenColorScheme}
-          />
+          >
+            <CloseIcon width="xs" height="xs" />
+          </IconButton>
         ) : null}
       </ButtonGroup>
       <FilterPopover
@@ -165,8 +130,6 @@ const PopoverFilterContent: FC<PopoverFilterProps> = ({
       >
         {children}
       </FilterPopover>
-    </Popover>
+    </ChakraPopover.Root>
   );
 };
-
-export default PopoverFilterContent;

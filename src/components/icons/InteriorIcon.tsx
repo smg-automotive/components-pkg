@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const InteriorIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const InteriorIcon = createIcon({
   displayName: 'Interior',
   viewBox: '0 0 48 48',
   path: (

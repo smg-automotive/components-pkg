@@ -1,51 +1,72 @@
-import React, { ChangeEvent, forwardRef } from 'react';
-import { Radio as ChakraRadio, RadioGroup } from '@chakra-ui/react';
+'use client';
 
-export interface Props {
-  name?: string;
+import React, { ChangeEvent, forwardRef } from 'react';
+import {
+  RadioGroup,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
+
+import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
+
+export type RadioProps = RecipeVariantProps<typeof radioRecipe> & {
   value: string;
   label?: string;
-  size?: 'md' | 'base';
+  name?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  invalid?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  isChecked?: boolean;
-  isInvalid?: boolean;
-  isDisabled?: boolean;
-  variant?: 'fontRegular' | 'fontBold';
-}
+};
 
-const Radio = forwardRef<HTMLInputElement, Props>(
-  (
-    {
-      name,
-      value,
-      label,
-      size = 'base',
-      onChange,
-      isChecked = false,
-      isInvalid,
-      isDisabled = false,
-      variant = 'fontRegular',
-    },
-    ref,
-  ) => {
-    return (
-      <ChakraRadio
-        name={name}
+export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+  const recipe = useSlotRecipe({ key: 'radio' });
+
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+
+  const styles = recipe(recipeProps);
+
+  const {
+    value,
+    label = 'Radio',
+    name,
+    checked = false,
+    disabled = false,
+    invalid = false,
+    onChange,
+    ...rootDomProps
+  } = restProps;
+
+  const isChecked = !!checked;
+
+  return (
+    <RadioGroup.Root
+      name={name}
+      value={isChecked ? value : undefined}
+      onValueChange={() => {
+        if (!onChange) return;
+        const target = {
+          value,
+          checked: !isChecked,
+          name,
+        } as unknown as EventTarget & HTMLInputElement;
+        onChange({ target } as ChangeEvent<HTMLInputElement>);
+      }}
+      css={styles.root}
+      {...rootDomProps}
+    >
+      <RadioGroup.Item
         value={value}
-        size={size}
-        onChange={onChange}
-        isChecked={isChecked}
-        isInvalid={isInvalid}
-        isDisabled={isDisabled}
-        ref={ref}
-        variant={variant}
+        disabled={disabled}
+        invalid={invalid}
+        css={styles.item}
       >
-        {label}
-      </ChakraRadio>
-    );
-  },
-);
-Radio.displayName = 'Radio';
-
-export default Radio;
-export { RadioGroup };
+        <RadioGroup.ItemControl css={styles.control}>
+          <RadioGroup.ItemIndicator css={styles.indicator} />
+        </RadioGroup.ItemControl>
+        <RadioGroup.ItemText css={styles.label}>{label}</RadioGroup.ItemText>
+        <RadioGroup.ItemHiddenInput ref={ref} />
+      </RadioGroup.Item>
+    </RadioGroup.Root>
+  );
+});

@@ -1,9 +1,15 @@
+'use client';
+
 import React, { ElementType, forwardRef, ReactElement, ReactNode } from 'react';
 import {
   Button as ChakraButton,
-  ButtonProps as ChakraButtonProps,
-  ResponsiveValue,
+  RecipeVariantProps,
+  useRecipe,
 } from '@chakra-ui/react';
+
+import { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
+
+import { buttonRecipe } from 'src/themes/shared/recipes/button';
 
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
 type Never<Source> = { [P in keyof Source]?: never };
@@ -19,100 +25,94 @@ type IconButton = {
   icon: ReactElement;
 };
 
-type ButtonSize = 'md' | 'lg';
-
-type SharedProps = {
+export type ButtonSharedProps = RecipeVariantProps<typeof buttonRecipe> & {
   as?: 'button';
-  variant?: 'primary' | 'secondary' | 'success' | 'transparent';
-  size?: ButtonSize | ResponsiveValue<ButtonSize>;
   children: ReactNode;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   onClick?: ChakraButtonProps['onClick'];
+  disabled?: boolean;
 } & Omit<
-  ChakraButtonProps,
-  | 'backgroundColor'
-  | 'background'
-  | 'color'
-  | 'textColor'
-  | 'border'
-  | 'textStyle'
-> &
+    ChakraButtonProps,
+    | 'backgroundColor'
+    | 'background'
+    | 'color'
+    | 'textColor'
+    | 'border'
+    | 'textStyle'
+  > &
   Never<LinkButton> &
   Never<IconButton>;
 
 type SubmitType = Overwrite<
-  SharedProps,
+  ButtonSharedProps,
   {
     type: 'submit';
   }
 >;
 
 type ButtonType = Overwrite<
-  SharedProps,
+  ButtonSharedProps,
   {
     type?: 'button';
     onClick: Exclude<ChakraButtonProps['onClick'], undefined>;
   }
 >;
 
-export type ButtonProps = SubmitType | ButtonType;
+export type BaseButtonProps = SubmitType | ButtonType;
 
 type LinkProps = Overwrite<
-  SharedProps,
+  ButtonSharedProps,
   LinkButton & {
     as: ElementType;
-    isDisabled?: false;
+    disabled?: false;
   }
 >;
 
 type IconProps = IconButton &
-  Never<Pick<SharedProps, 'leftIcon' | 'rightIcon' | 'children'>>;
+  Never<Pick<ButtonSharedProps, 'leftIcon' | 'rightIcon' | 'children'>>;
 type IconButtonProps =
   | Overwrite<ButtonType, IconProps>
   | Overwrite<SubmitType, IconProps>
   | Overwrite<LinkProps, IconProps>;
 
-export type Props = ButtonProps | IconButtonProps | LinkProps;
+export type UnifiedButtonProps = BaseButtonProps | IconButtonProps | LinkProps;
 
-const Button = forwardRef<HTMLLinkElement | HTMLButtonElement, Props>(
+export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
   (props, ref) => {
-    const {
-      variant = 'primary',
-      size = 'lg',
-      isDisabled = false,
-      as = 'button',
-      isExternal,
-      ariaLabel,
-      icon,
-      ...rest
-    } = props;
+    const recipe = useRecipe({ recipe: buttonRecipe });
+    const [recipeProps, restProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
+
+    const { as = 'button', disabled, ...rest } = restProps;
+
+    const asLinkProps = {
+      target: props.isExternal ? '_blank' : undefined,
+      rel: props.rel || (props.isExternal ? 'noopener noreferrer' : undefined),
+      ...(props.disabled ? { 'aria-disabled': true } : {}),
+    };
 
     return (
       <ChakraButton
         ref={ref}
-        leftIcon={props.children ? props.leftIcon : icon}
-        rightIcon={props.children ? props.rightIcon : undefined}
-        iconSpacing={props.children ? 'xs' : 0}
+        css={styles}
         as={as}
-        variant={variant}
-        size={size}
-        isDisabled={isDisabled}
-        aria-label={props.children ? undefined : ariaLabel}
+        disabled={disabled}
+        aria-label={props.children ? undefined : props.ariaLabel}
         {...rest}
-        {...(props.as === 'a'
-          ? {
-              target: isExternal ? '_blank' : undefined,
-              rel:
-                props.rel || (isExternal ? 'noopener noreferrer' : undefined),
-            }
-          : {})}
+        {...(props.as === 'a' ? asLinkProps : {})}
+        onClick={(e) => {
+          if (props.as === 'a' && props.href && disabled) {
+            e.preventDefault();
+          } else {
+            props.onClick?.(e);
+          }
+        }}
       >
+        {props.children ? props.leftIcon : props.icon}
         {props.children}
+        {props.children ? props.rightIcon : undefined}
       </ChakraButton>
     );
   },
 );
-Button.displayName = 'Button';
-
-export default Button;

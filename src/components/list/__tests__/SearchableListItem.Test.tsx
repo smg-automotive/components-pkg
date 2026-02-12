@@ -3,12 +3,12 @@ import React from 'react';
 import { render, screen } from 'jest-utils';
 
 import { SearchableListItem } from '../SearchableListItem';
-import List from '../index';
+import { List } from '../index';
 
 describe('<SearchableListItem />', () => {
   it('renders the highlight text', () => {
     render(
-      <List>
+      <List.Root>
         <SearchableListItem
           label="I am label"
           value="dummy"
@@ -17,14 +17,12 @@ describe('<SearchableListItem />', () => {
           isSelected={false}
           highlightIndices={[[0, 4]]}
         />
-      </List>,
+      </List.Root>,
     );
 
     const highlight = screen.getByText('I am');
     expect(highlight).toHaveStyle('text-decoration: underline');
-    expect(highlight).toHaveStyle(
-      'font-weight: var(--chakra-fontWeights-bold)',
-    );
+    expect(highlight).toHaveStyle('fontWeight: "bold"');
     expect(screen.getByText('label')).not.toHaveStyle(
       'text-decoration: underline',
     );
@@ -32,7 +30,7 @@ describe('<SearchableListItem />', () => {
 
   it('renders multiple highlights', () => {
     render(
-      <List>
+      <List.Root>
         <SearchableListItem
           label="I am label"
           facet="30"
@@ -44,7 +42,7 @@ describe('<SearchableListItem />', () => {
             [6, 7],
           ]}
         />
-      </List>,
+      </List.Root>,
     );
     const highlight1 = screen.getByText('am');
     expect(highlight1).toHaveStyle('text-decoration: underline');
@@ -54,7 +52,7 @@ describe('<SearchableListItem />', () => {
 
   it('shows a checkmark in front of the label if selected', () => {
     render(
-      <List>
+      <List.Root>
         <SearchableListItem
           label="I am label"
           value="dummy"
@@ -63,10 +61,10 @@ describe('<SearchableListItem />', () => {
           isSelected={true}
           highlightIndices={[]}
         />
-      </List>,
+      </List.Root>,
     );
     expect(
-      screen.getByRole('button', { name: /Checkmark icon I am label/ }),
+      screen.getByRole('button', { name: 'I am label 30' }),
     ).toBeInTheDocument();
   });
 });

@@ -1,31 +1,31 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { Box } from '@chakra-ui/react';
 
-import Box from '../box';
+import { RangeSlider } from './index';
 
-import RangeSliderComponent from './';
-
-const meta: Meta<typeof RangeSliderComponent> = {
+const meta = {
   title: 'Components/Filter/Range Slider',
-  component: RangeSliderComponent,
-
+  component: RangeSlider,
   decorators: [
     (Story) => (
-      <Box maxW={340}>
+      <Box style={{ maxWidth: 340 }}>
         <Story />
       </Box>
     ),
   ],
-
   args: {
-    onChange: action('onChange'),
-    onChangeEnd: action('onChangeEnd'),
+    defaultValue: [3, 5],
     min: 0,
     max: 10,
-    defaultValue: [3, 5],
+    onChange: action('onChange'),
+    onChangeEnd: action('onChangeEnd'),
   },
-};
+} satisfies Meta<typeof RangeSlider>;
+
 export default meta;
 
-export const Overview: StoryObj<typeof RangeSliderComponent> = {};
+type StoryType = StoryObj<typeof RangeSlider>;
+
+export const Overview: StoryType = {};

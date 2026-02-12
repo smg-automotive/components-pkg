@@ -1,30 +1,21 @@
-import React, { FC, useMemo, useRef } from 'react';
+import React, { FC, useMemo } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Portal,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Button, Popover, Portal, useDisclosure } from '@chakra-ui/react';
 
 import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
+import { Text } from 'src/components/text';
 import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
-import Hide from 'src/components/hide';
-import Box from 'src/components/box';
+import { Box } from 'src/components/box';
 
-import NavigationTenantMenuContent from './Content';
+import { NavigationTenantMenuContent } from './Content';
 
 type Props = {
   user: EnrichedSessionUser | null;
   selectTenant: (sellerId: number | string) => Promise<void>;
 };
 
-const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
-  const initialFocusRef = useRef<HTMLInputElement>(null);
-  const { onClose, isOpen, onToggle } = useDisclosure();
+export const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
+  const { onClose, open, onToggle } = useDisclosure();
   const { t } = useI18n();
   const selectedTenant = useMemo(() => {
     return user?.managedSellers?.find(
@@ -39,80 +30,85 @@ const NavigationTenantMenu: FC<Props> = ({ user, selectTenant }) => {
     selectedTenant.id.toString();
 
   return (
-    <Hide below="sm">
-      <Popover
-        placement="bottom-end"
-        returnFocusOnClose={true}
-        onClose={onClose}
-        isOpen={isOpen}
-        initialFocusRef={initialFocusRef}
-        isLazy={true}
-        lazyBehavior="unmount"
+    <Box hideBelow="sm" display="flex" alignItems="center">
+      <Popover.Root
+        positioning={{ placement: 'bottom-end' }}
+        onOpenChange={(e) => {
+          if (!e.open) onClose();
+        }}
+        open={open}
+        lazyMount={true}
+        unmountOnExit={true}
       >
-        <PopoverTrigger>
+        <Popover.Trigger asChild>
           <Button
             p="0"
-            color={isOpen ? 'blue.700' : 'gray.900'}
+            color={open ? 'blue.700' : 'gray.900'}
             _hover={{ color: 'blue.700' }}
-            leftIcon={<GarageIcon />}
-            rightIcon={
-              <ChevronDownSmallIcon
-                transition="0.2s"
-                transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
-              />
-            }
-            iconSpacing="xs"
             onClick={onToggle}
+            display="inline-flex"
+            flexDirection="row"
+            alignItems="center"
+            gap="xs"
+            cursor="pointer"
+            css={{ background: 'transparent' }}
           >
-            <Hide below="md">
+            <GarageIcon />
+            <Box hideBelow="md">
               <Text
-                as="span"
                 fontWeight="bold"
-                noOfLines={1}
-                maxW={{ base: 'xl', md: '2xl' }}
+                lineClamp={1}
+                maxW="2xl"
                 textAlign="left"
                 title={selectedTenantInfo}
               >
                 {selectedTenantInfo}
               </Text>
-            </Hide>
+            </Box>
+            <ChevronDownSmallIcon
+              transition="transform"
+              transitionDuration="fast"
+              transform={open ? 'rotate(180deg)' : 'rotate(0deg)'}
+            />
           </Button>
-        </PopoverTrigger>
+        </Popover.Trigger>
         <Portal>
           <Box zIndex="popover" w="full" h="full" position="relative">
-            <PopoverContent
-              bg="white"
-              boxShadow="sm"
-              color="gray.900"
-              width={{
-                base: 'full',
-                md: '6xl',
-              }}
-              maxH="auth0-height"
-              p="2xl"
-              borderRadius="sm"
-              borderWidth="1px"
-              borderColor="gray.200"
-              marginTop="10px"
-              alignItems="center"
-              flexDirection="column"
-              gridGap="2xl"
-              overflow="auto"
-            >
-              <NavigationTenantMenuContent
-                user={user}
-                selectTenant={selectTenant}
-                onClose={onClose}
-                selectedTenantId={selectedTenant.id}
-                title={t('auth.tenantSelection.selectionTitle')}
-                ref={initialFocusRef}
-              />
-            </PopoverContent>
+            <Popover.Positioner>
+              <Popover.Content
+                bg="white"
+                boxShadow="sm"
+                color="gray.900"
+                width={{
+                  base: 'full',
+                  md: '6xl',
+                }}
+                css={{
+                  maxHeight: 'auth0-height',
+                  borderWidth: '1px',
+                  marginTop: '10px',
+                }}
+                p="2xl"
+                borderRadius="sm"
+                borderColor="gray.200"
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+                gap="2xl"
+                overflow="auto"
+              >
+                <NavigationTenantMenuContent
+                  user={user}
+                  selectTenant={selectTenant}
+                  onClose={onClose}
+                  selectedTenantId={selectedTenant.id}
+                  title={t('auth.tenantSelection.selectionTitle')}
+                />
+              </Popover.Content>
+            </Popover.Positioner>
           </Box>
         </Portal>
-      </Popover>
-    </Hide>
+      </Popover.Root>
+    </Box>
   );
 };
-
-export default NavigationTenantMenu;

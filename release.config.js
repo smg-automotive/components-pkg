@@ -14,5 +14,9 @@ module.exports = {
       name: 'renovate/chakra-ui',
       prerelease: `chakra-ui`,
     },
+    {
+      name: 'chakra-v3/root',
+      prerelease: `chakra-v3`,
+    },
   ],
 };

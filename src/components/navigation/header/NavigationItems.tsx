@@ -3,11 +3,9 @@ import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
-import { breakpoints } from 'src/themes';
-import Stack from 'src/components/stack';
-import Show from 'src/components/show';
-import Link from 'src/components/link';
-import Hide from 'src/components/hide';
+import { Stack } from 'src/components/stack';
+import { Link } from 'src/components/link';
+import { Box } from 'src/components/box';
 import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
 import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
 
@@ -45,35 +43,38 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
   });
 
   return (
-    <Stack direction="row" spacing={{ base: 'lg', sm: '2xl' }} align="center">
+    <Stack direction="row" gap={{ base: 'lg', sm: '2xl' }} align="center">
       <Link href={`/${language === 'en' ? 'de' : language}`}>
         <Image
-          width={{ sm: '124px', base: '101px' }}
-          height={{ sm: '30px', base: 'sm' }}
+          css={{
+            width: { sm: '124px', base: '101px' },
+            height: { sm: '30px', base: 'var(--spacing-sm)' },
+          }}
           src={logo}
           alt="Platform logo"
+          htmlWidth={300}
+          htmlHeight={71}
         />
       </Link>
-      <Hide below="sm">
+      <Box hideBelow="sm">
         <NavigationItem
           translationKey="header.search"
           drawerHandler={searchDrawerHandler}
           isOpen={isOpen && drawer?.current === DrawerNode.Search}
         />
-      </Hide>
+      </Box>
       {headerLinks.map((link, index) => (
         <HeaderLink key={`link-${index}`} link={link} />
       ))}
       {/* on mobile, the items from the more drawer are inside the search drawer */}
-      <Show
-        breakpoint={`(min-width: ${breakpoints.sm.px + 1}px) and (max-width: ${breakpoints.lg.px}px)`}
-      >
+      {/* Show "More" only between sm and lg breakpoints */}
+      <Box display={{ base: 'none', sm: 'block', lg: 'none' }}>
         <NavigationItem
           translationKey="header.more"
           drawerHandler={moreDrawerHandler}
           isOpen={isOpen && drawer?.current === DrawerNode.More}
         />
-      </Show>
+      </Box>
     </Stack>
   );
 };

@@ -1,19 +1,45 @@
 import React, { forwardRef } from 'react';
-import { Input, InputProps } from '@chakra-ui/react';
+import {
+  Field,
+  Input,
+  InputProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-export interface Props extends Pick<
+import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+
+type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
+
+export type TimePickerProps = Pick<
   InputProps,
   'onFocus' | 'onBlur' | 'onChange'
-> {
-  size?: 'md' | 'lg';
-  value?: string;
-  isInvalid?: boolean;
-}
+> &
+  InputVariantProps & {
+    value?: string;
+    invalid?: boolean;
+  };
 
-const TimePicker = forwardRef<HTMLInputElement, Props>(({ ...props }, ref) => {
-  return <Input {...props} type="time" ref={ref} />;
-});
+export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
+  (props, ref) => {
+    const recipe = useSlotRecipe({ key: 'input' });
+    const [recipeProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
+
+    return (
+      <Field.Root invalid={props.invalid}>
+        <Input
+          {...props}
+          css={{
+            ...styles.field,
+            display: 'block',
+            textAlign: 'start',
+          }}
+          type="time"
+          ref={ref}
+        />
+      </Field.Root>
+    );
+  },
+);
 TimePicker.displayName = 'TimePicker';
-
-export default TimePicker;
-export { Props as TimePickerProps };

@@ -1,25 +1,25 @@
 import React, { FC } from 'react';
-import { useMultiStyleConfig } from '@chakra-ui/react';
+
+import { BoxProps, useRecipe } from '@chakra-ui/react';
 
 import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
 
-export type Props = {
+export type AvatarProps = {
   withNotification?: boolean;
-  color?: string;
+  color?: BoxProps['color'];
 };
 
-const Avatar: FC<Props> = ({ withNotification, color }) => {
-  const baseStyle = useMultiStyleConfig('Avatar');
+export const Avatar: FC<AvatarProps> = ({ withNotification, color }) => {
+  const recipe = useRecipe({ key: 'avatar' });
+  const styles = recipe();
+
   return withNotification ? (
     <AvatarWithNotificationIcon
-      __css={baseStyle}
+      css={styles}
       data-testid="notification-icon"
       {...(color && { color })}
     />
   ) : (
-    <AvatarIcon __css={baseStyle} {...(color && { color })} />
+    <AvatarIcon css={styles} {...(color && { color })} />
   );
 };
-Avatar.displayName = 'Avatar';
-
-export default Avatar;

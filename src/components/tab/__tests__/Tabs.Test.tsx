@@ -3,35 +3,37 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen } from 'jest-utils';
 
-import TabPanels from '../TabPanels';
-import TabPanel from '../TabPanel';
-import TabList from '../TabList';
-import Tab from '../Tab';
-import Tabs from '../index';
+import { TabPanels } from '../TabPanels';
+import { TabPanel } from '../TabPanel';
+import { TabList } from '../TabList';
+import { Tab } from '../Tab';
+import { Tabs } from '../index';
 
 const renderWrapper = ({
-  isDisabled = false,
-  defaultIndex,
+  disabled = false,
+  defaultValue,
 }: {
-  isDisabled?: boolean;
-  defaultIndex?: number;
+  disabled?: boolean;
+  defaultValue?: string;
 }) =>
   render(
-    <Tabs isLazy={true} defaultIndex={defaultIndex}>
+    <Tabs lazyMount={true} defaultValue={defaultValue}>
       <TabList>
-        <Tab>One</Tab>
-        <Tab isDisabled={isDisabled}>Two</Tab>
-        <Tab>Three</Tab>
+        <Tab value="one">One</Tab>
+        <Tab value="two" disabled={disabled}>
+          Two
+        </Tab>
+        <Tab value="three">Three</Tab>
       </TabList>
 
       <TabPanels>
-        <TabPanel>
+        <TabPanel value="one">
           <p>Eins</p>
         </TabPanel>
-        <TabPanel>
+        <TabPanel value="two">
           <p>Zwei</p>
         </TabPanel>
-        <TabPanel>
+        <TabPanel value="three">
           <p>Drei</p>
         </TabPanel>
       </TabPanels>
@@ -40,25 +42,28 @@ const renderWrapper = ({
 
 describe('<Tabs />', () => {
   it('displays the tabs with the first one opens by default', () => {
-    renderWrapper({});
+    renderWrapper({ defaultValue: 'one' });
     expect(screen.getByText('One')).toBeInTheDocument();
     expect(screen.getByText('Two')).toBeInTheDocument();
     expect(screen.getByText('Three')).toBeInTheDocument();
     expect(screen.getByText('Eins')).toBeInTheDocument();
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
   });
+
   it('changes tab on click', async () => {
-    renderWrapper({});
+    renderWrapper({ defaultValue: 'one' });
     await userEvent.click(screen.getByText('Two'));
     expect(await screen.findByText('Zwei')).toBeInTheDocument();
   });
+
   it('displays the tabs with the last tab opens by default', () => {
-    renderWrapper({ defaultIndex: 2 });
+    renderWrapper({ defaultValue: 'three' });
     expect(screen.getByText('Drei')).toBeInTheDocument();
     expect(screen.queryByText('Eins')).not.toBeInTheDocument();
   });
+
   it('displays the tabs with one tab disabled', async () => {
-    renderWrapper({ isDisabled: true });
+    renderWrapper({ disabled: true, defaultValue: 'one' });
     await userEvent.click(screen.getByText('Two'));
     expect(screen.queryByText('Zwei')).not.toBeInTheDocument();
     expect(screen.getByText('Eins')).toBeInTheDocument();

@@ -1,8 +1,29 @@
+'use client';
+
 import React, { FC, PropsWithChildren } from 'react';
-import { TabPanel as ChakraTabPanel } from '@chakra-ui/react';
+import {
+  Tabs as ChakraTabs,
+  TabsContentProps as ChakraTabsContentProps,
+  RecipeVariantProps,
+  useSlotRecipe,
+} from '@chakra-ui/react';
 
-const TabPanel: FC<PropsWithChildren> = (props) => {
-  return <ChakraTabPanel>{props.children}</ChakraTabPanel>;
+import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
+
+export type TabPanelProps = Omit<ChakraTabsContentProps, 'variant'> &
+  RecipeVariantProps<typeof tabsRecipe>;
+
+export const TabPanel: FC<PropsWithChildren<TabPanelProps>> = ({
+  variant,
+  children,
+  ...rest
+}) => {
+  const recipe = useSlotRecipe({ key: 'tabs' });
+  const styles = recipe({ variant });
+
+  return (
+    <ChakraTabs.Content {...rest} css={styles.content}>
+      {children}
+    </ChakraTabs.Content>
+  );
 };
-
-export default TabPanel;

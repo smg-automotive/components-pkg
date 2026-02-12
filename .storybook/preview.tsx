@@ -1,78 +1,47 @@
 /* eslint-disable unicorn/filename-case */
-import React, { FC, PropsWithChildren } from 'react';
-import {
-  ensure as ensureTheme,
-  ThemeProvider as StorybookThemeProvider,
-} from '@storybook/theming';
-import { Decorator, Preview } from '@storybook/react';
-import { ChakraProvider, ChakraProviderProps } from '@chakra-ui/react';
+import { Preview } from '@storybook/react';
 
-import { breakpoints } from '../src/themes/shared/breakpoints';
-import {
-  autoScout24Theme,
-  autoScoutChakraTheme,
-  motoScout24Theme,
-  motoScoutChakraTheme,
-} from '../src/themes';
-import Fonts from '../src/fonts/Hosted';
+import { breakpoints } from 'src/themes';
+
 import storybookTheme from './theme';
+import {
+  themeSwitcherOptions,
+  withThemeDecorator,
+} from './preview/ThemeDecorator';
+import { colorControls, tokenControls } from './preview/controls';
 
-const themes = {
-  [autoScout24Theme.name]: autoScout24Theme,
-  [motoScout24Theme.name]: motoScout24Theme,
-  [motoScoutChakraTheme.name]: motoScoutChakraTheme,
-  [autoScoutChakraTheme.name]: autoScoutChakraTheme,
-};
-
-const ThemeDecorator: FC<
-  PropsWithChildren<{ theme: ChakraProviderProps['theme'] }>
-> = ({ theme, children }) => {
-  return (
-    <StorybookThemeProvider theme={ensureTheme(storybookTheme)}>
-      <ChakraProvider theme={theme} resetCSS={true}>
-        <Fonts />
-        {children}
-      </ChakraProvider>
-    </StorybookThemeProvider>
-  );
-};
-
-const withTheme: Decorator = (Story, context) => {
-  const themeName = context.globals.theme || autoScout24Theme.name;
-  const theme = themes[themeName] || autoScout24Theme;
-
-  return <ThemeDecorator theme={theme}>{Story()}</ThemeDecorator>;
-};
-const viewports = Object.entries(breakpoints).reduce((acc, [key, value]) => {
-  acc[key] = {
-    name: key,
-    styles: {
-      width: `${value.em}em`,
-      height: '100%',
-    },
-  };
-  return acc;
-}, {});
+const viewports = Object.entries(breakpoints).reduce(
+  (acc, [key, value]) => {
+    acc[key] = {
+      name: key,
+      styles: {
+        width: `${value.em}em`,
+        height: '100%',
+      },
+    };
+    return acc;
+  },
+  {} as Record<
+    string,
+    { name: string; styles: { width: string; height: string } }
+  >,
+);
 
 const preview: Preview = {
-  decorators: [withTheme],
+  decorators: [withThemeDecorator],
   globalTypes: {
     theme: {
-      name: 'Theme',
       description: 'Theme for components',
-      defaultValue: autoScout24Theme.name,
+      defaultValue: 'autoScout24',
       toolbar: {
         icon: 'photo',
-        items: Object.keys(themes).map((themeName) => ({
-          title: themeName,
-          value: themeName,
-        })),
+        items: themeSwitcherOptions,
       },
     },
   },
   argTypes: {
     children: {
-      control: { type: null },
+      control: undefined,
       if: {
         arg: 'children',
         exists: true,
@@ -99,14 +68,12 @@ const preview: Preview = {
         exists: true,
       },
     },
+    ...tokenControls,
+    ...colorControls,
   },
   parameters: {
     docs: {
       theme: storybookTheme,
-      controls: {
-        expanded: true,
-        sort: 'requiredFirst',
-      },
     },
     viewport: {
       viewports,

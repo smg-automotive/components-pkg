@@ -2,14 +2,16 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box, Image } from '@chakra-ui/react';
 
-import TopVehicleBadgeComponent from './index';
+import { Brand } from 'src/types/brand';
 
-const meta: Meta<typeof TopVehicleBadgeComponent> = {
+import { TopVehicleSharedBadge } from './index';
+
+const meta: Meta<typeof TopVehicleSharedBadge> = {
   title: 'Components/Features/TopVehicleBadge',
-  component: TopVehicleBadgeComponent,
+  component: TopVehicleSharedBadge,
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="400px">
+      <Box w="full" maxW="7xl">
         <Story />
       </Box>
     ),
@@ -17,12 +19,17 @@ const meta: Meta<typeof TopVehicleBadgeComponent> = {
 
   args: {
     aspectRatio: 4 / 3,
+    brand: Brand.AutoScout24,
     children: <Image src="https://picsum.photos/800/800" objectFit="cover" />,
   },
 
   argTypes: {
     aspectRatio: {
       control: 'number',
+    },
+    brand: {
+      control: 'select',
+      options: [Brand.AutoScout24, Brand.MotoScout24],
     },
     children: {
       table: {
@@ -33,4 +40,4 @@ const meta: Meta<typeof TopVehicleBadgeComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof TopVehicleBadgeComponent> = {};
+export const Overview: StoryObj<typeof TopVehicleSharedBadge> = {};

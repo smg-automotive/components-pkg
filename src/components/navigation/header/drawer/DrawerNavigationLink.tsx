@@ -1,23 +1,28 @@
 import React, { FC } from 'react';
 
-import Show from 'src/components/show';
-import ListItem from 'src/components/list/ListItem';
-import Box from 'src/components/box';
+import { List } from 'src/components/list';
+import { Box } from 'src/components/box';
 
-import NavigationLink, { NavigationLinkProps } from '../links/NavigationLink';
+import { NavigationLink, NavigationLinkProps } from '../links/NavigationLink';
 
 export const DrawerNavigationLink: FC<{
   item: NavigationLinkProps;
 }> = ({ item }) => {
+  // Only apply hideFrom if the breakpoint is defined
+  // Items without showUnderMoreLinkBelow should always be visible
+  const hideProps = item.showUnderMoreLinkBelow
+    ? { hideFrom: item.showUnderMoreLinkBelow }
+    : {};
+
   return (
-    <Show below={item.showUnderMoreLinkBelow}>
-      <Box as={ListItem} paddingBottom={{ base: 'lg', md: 'md' }}>
+    <Box {...hideProps}>
+      <List.Item paddingBottom={{ base: 'lg', md: 'md' }}>
         <NavigationLink
           {...item}
           variant="subNavigationLink"
           color={item.color}
         />
-      </Box>
-    </Show>
+      </List.Item>
+    </Box>
   );
 };

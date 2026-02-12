@@ -1,37 +1,56 @@
-import { zIndices } from './zIndices';
-import { textStyles } from './typography';
-import { space } from './space';
-import { sizes } from './sizes';
-import { shadows } from './shadows';
-import { opacity } from './opacity';
-import { lineHeights } from './lineHeights';
-import { fontWeights } from './fontWeights';
-import { fontSizes } from './fontSizes';
-import { fonts } from './fonts';
-import { colors } from './colors';
+import { zIndex } from './tokens/zIndex';
+import { spacing } from './tokens/spacing';
+import { sizes } from './tokens/sizes';
+import { shadows } from './tokens/shadows';
+import { radii } from './tokens/radii';
+import { opacity } from './tokens/opacity';
+import { lineHeights } from './tokens/lineHeights';
+import { fontWeights } from './tokens/fontWeights';
+import { fontSizes } from './tokens/fontSizes';
+import { fonts } from './tokens/fonts';
+import { durations } from './tokens/durations';
+import { cursor } from './tokens/cursor';
+import { colors } from './tokens/colors';
+import { borders } from './tokens/borders';
+import { aspectRatios } from './tokens/aspectRatios';
+import { animations } from './tokens/animations';
+import { textStyles } from './textStyles';
+import { slotRecipes } from './slotRecipes';
+import { recipes } from './recipes';
+import { keyframes } from './keyframes';
+import { globalCss } from './globalCss';
 import { emBreakpoints } from './breakpoints';
-import { borders } from './borders';
-import { radii } from './borderRadius';
-import { basis } from './basis';
+import { animationStyles } from './animationStyles';
 
-export const shared = {
-  ...basis,
-  colors,
-  breakpoints: emBreakpoints,
-  textStyles,
-  space,
-  sizes,
-  shadows,
-  opacity,
-  borders,
-  radii,
-  lineHeights,
-  fontWeights,
-  fontSizes,
-  fonts,
-  zIndices,
-};
-export { type Sizes } from './sizes';
-export { type Space } from './space';
-export { type FontWeights } from './fontWeights';
+export const getSharedConfig = () => ({
+  strictTokens: true,
+  globalCss,
+  theme: {
+    breakpoints: emBreakpoints,
+    textStyles,
+    keyframes,
+    animationStyles,
+    recipes,
+    slotRecipes,
+    tokens: {
+      zIndex,
+      spacing,
+      sizes,
+      shadows,
+      radii,
+      opacity,
+      lineHeights,
+      fontWeights,
+      fontSizes,
+      fonts,
+      cursor,
+      colors,
+      borders,
+      aspectRatios,
+      animations,
+      durations,
+    },
+  },
+});
+
 export { breakpoints } from './breakpoints';

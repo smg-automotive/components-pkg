@@ -3,70 +3,55 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import Box from '../box';
+import { Box } from '@chakra-ui/react';
 
-import RangeFilterInputWithSlider, { Props } from './';
+import { RangeFilterInputWithSlider } from '../rangeFilterInputWithSlider';
 
-const Template = (props: Props<'priceFrom', 'priceTo'>) => {
-  const [args, updateArgs] = useArgs<Props<'priceFrom', 'priceTo'>>();
+type Comp = typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>;
+type CompProps = Parameters<Comp>[0];
+
+const Template = (props: CompProps) => {
+  const [args, updateArgs] = useArgs<CompProps>();
 
   return (
     <RangeFilterInputWithSlider
-      {...({
-        ...props,
-        ...args,
-      } as Props<'priceFrom', 'priceTo'>)}
+      {...({ ...props, ...args } as CompProps)}
       onChange={(event) => {
         if (event.name === 'priceFrom') {
           updateArgs({ from: { ...args.from, value: event.value } });
         }
-
         if (event.name === 'priceTo') {
           updateArgs({ to: { ...args.to, value: event.value } });
         }
-        args.onChange?.(event);
+        args.onChange?.(event as never);
       }}
     />
   );
 };
 
-const meta: Meta<typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>> = {
+const meta: Meta<Comp> = {
   title: 'Components/Filter/Range Filter Input With Slider',
-  component: RangeFilterInputWithSlider<'priceFrom', 'priceTo'>,
+  component: RangeFilterInputWithSlider,
   decorators: [
     (Story) => (
-      <Box maxW={380}>
+      <Box style={{ maxWidth: 380 }}>
         <Story />
       </Box>
     ),
   ],
   render: Template.bind({}),
-
   args: {
     unit: 'CHF',
-
-    from: {
-      name: 'priceFrom',
-      placeholder: '0',
-      value: 100,
-    },
-
-    to: {
-      name: 'priceTo',
-      placeholder: '1000000+',
-      value: 10000,
-    },
-
+    from: { name: 'priceFrom', placeholder: '0', value: 100 },
+    to: { name: 'priceTo', placeholder: '1000000+', value: 10000 },
     onChange: action('onChange'),
     onBlur: action('onBlur'),
   },
-
   argTypes: {
     facets: {
       description:
         'Array of objects with `from`, `to` and `value` keys. Use it to display the chart bars and control the scale of the slider',
     },
-
     chartHeight: {
       description: 'Use it to control the maximal height of the chart',
       control: 'text',
@@ -75,12 +60,10 @@ const meta: Meta<typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>> = {
 };
 export default meta;
 
-type StoryType = StoryObj<
-  typeof RangeFilterInputWithSlider<'priceFrom', 'priceTo'>
->;
+type StoryType = StoryObj<Comp>;
+
 export const WithHistograms: StoryType = {
   name: 'With histograms',
-
   args: {
     facets: [
       {
@@ -149,34 +132,21 @@ export const WithHistograms: StoryType = {
       },
     ],
   },
-
   argTypes: {
-    rangeSliderScale: {
-      table: { disable: true },
-    },
+    rangeSliderScale: { table: { disable: true } },
   },
 };
 
 export const WithCustomRangeSliderScale: StoryType = {
   name: 'With custom range slider scale',
-
   args: {
     rangeSliderScale: [
       0, 100, 200, 1000, 2000, 5000, 10000, 30000, 60000, 300000, 1000000,
       90000, 200000,
     ],
   },
-
   argTypes: {
-    facets: {
-      table: {
-        disable: true,
-      },
-    },
-    chartHeight: {
-      table: {
-        disable: true,
-      },
-    },
+    facets: { table: { disable: true } },
+    chartHeight: { table: { disable: true } },
   },
 };

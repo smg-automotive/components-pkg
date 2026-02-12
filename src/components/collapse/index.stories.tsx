@@ -1,24 +1,35 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
-import Text from '../text';
+import { Text } from '../text';
+import { Flex } from '../flex';
 
-import CollapseComponent, { CollapseProps } from './index';
+import { Collapse as CollapseComponent, CollapseProps } from './index';
+
+const CollapseTemplate = (props: CollapseProps) => {
+  const [{ in: open }, updateArgs] = useArgs<CollapseProps>();
+
+  return (
+    <Flex direction="column" alignItems="start">
+      <button onClick={() => updateArgs({ in: !open })}>Toggle me!</button>
+      <CollapseComponent {...props} in={open}>
+        <Text>Hello World!</Text>
+      </CollapseComponent>
+    </Flex>
+  );
+};
 
 const meta: Meta<typeof CollapseComponent> = {
   title: 'Components/Utils/Collapse',
   component: CollapseComponent,
-
+  render: CollapseTemplate,
   args: {
-    in: true,
+    in: false,
+    animateOpacity: true,
   },
 };
+
 export default meta;
 
-export const Overview: StoryObj<typeof CollapseComponent> = {
-  render: ({ in: inProp, ...args }: CollapseProps) => (
-    <CollapseComponent {...args} in={inProp}>
-      <Text>Hello World!</Text>
-    </CollapseComponent>
-  ),
-};
+export const Overview: StoryObj<typeof CollapseComponent> = {};

@@ -1,18 +1,34 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import {
-  AccordionPanel as ChakraAccordionPanel,
-  AccordionPanelProps as ChakraAccordionPanelProps,
+  Accordion as ChakraAccordion,
+  AccordionItemBodyProps as ChakraAccordionItemBodyProps,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-const AccordionPanel: FC<PropsWithChildren<ChakraAccordionPanelProps>> = (
+import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
+
+export type AccordionPanelProps = ChakraAccordionItemBodyProps &
+  RecipeVariantProps<typeof accordionRecipe>;
+
+export const AccordionPanel: FC<PropsWithChildren<AccordionPanelProps>> = (
   props,
 ) => {
-  const { children, ...panelProps } = props;
+  const recipe = useSlotRecipe({ key: 'accordion' });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe({ ...recipeProps });
+
+  const { children, pb, ...rest } = restProps;
 
   return (
-    <ChakraAccordionPanel {...panelProps}>{children}</ChakraAccordionPanel>
+    <ChakraAccordion.ItemContent css={styles.content}>
+      <ChakraAccordion.ItemBody
+        {...rest}
+        css={{ ...styles.body, ...(pb !== undefined && { pb }) }}
+      >
+        {children}
+      </ChakraAccordion.ItemBody>
+    </ChakraAccordion.ItemContent>
   );
 };
-
-export default AccordionPanel;
