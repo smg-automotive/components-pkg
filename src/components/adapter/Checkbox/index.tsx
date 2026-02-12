@@ -6,14 +6,18 @@ import {
   Checkbox as ComponentsCheckbox,
 } from 'src/components/checkbox';
 
-type Props = Omit<CheckboxProps, 'checked' | 'disabled' | 'onChange'> & {
+type Props = Omit<
+  CheckboxProps,
+  'checked' | 'disabled' | 'onChange' | 'invalid'
+> & {
   isChecked?: boolean;
   isDisabled?: boolean;
+  isInvalid?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Checkbox: FC<Props> = (props) => {
-  const { isChecked, isDisabled, onChange, ...rest } = props;
+  const { isChecked, isDisabled, isInvalid, onChange, ...rest } = props;
 
   const handleChange = (details: CheckboxCheckedChangeDetails) => {
     if (!onChange) return;
@@ -37,6 +41,7 @@ export const Checkbox: FC<Props> = (props) => {
       checked={isChecked}
       disabled={isDisabled}
       onChange={handleChange}
+      invalid={isInvalid}
     />
   );
 };

@@ -12,6 +12,8 @@ type Props = AccordionButtonProps & {
   _hover?: SystemStyleObject;
   _expanded?: SystemStyleObject;
   paddingX?: AccordionButtonProps['paddingX'];
+  paddingTop?: AccordionButtonProps['paddingTop'];
+  paddingBottom?: AccordionButtonProps['paddingBottom'];
   py?: AccordionButtonProps['py'];
   display?: AccordionButtonProps['display'];
   alignItems?: AccordionButtonProps['alignItems'];

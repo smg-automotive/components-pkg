@@ -10,6 +10,7 @@ type Props = Omit<LinkProps, 'lineClamp' | 'href' | 'onClick' | 'truncate'> & {
   href?: string | undefined | null;
   isTruncated?: LinkProps['truncate'];
   onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined | null;
+  textColor?: LinkProps['color'];
 };
 
 export const Link: FC<PropsWithChildren<Props>> = ({
@@ -22,6 +23,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({
   noOfLines,
   onClick,
   isTruncated,
+  textColor,
   ...rest
 }) => {
   const isComponentAs = Boolean(as) && typeof as !== 'string';
@@ -37,6 +39,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({
         lineClamp={noOfLines}
         onClick={onClick ?? undefined}
         truncate={isTruncated}
+        {...(textColor ? { color: textColor } : {})}
       >
         <AsComp href={href} prefetch={prefetch}>
           {leftIcon ? leftIcon : null}
@@ -55,6 +58,7 @@ export const Link: FC<PropsWithChildren<Props>> = ({
       lineClamp={noOfLines}
       onClick={onClick ?? undefined}
       truncate={isTruncated}
+      {...(textColor ? { color: textColor } : {})}
     >
       {leftIcon ? leftIcon : null}
       {children}

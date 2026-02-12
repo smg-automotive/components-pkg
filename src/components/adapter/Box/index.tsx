@@ -170,7 +170,7 @@ function transformSxToCss(sx?: JSONObject): JSONObject | undefined {
  * - do NOT expose `css` (compat layer is sx-only)
  * - keep textColor/spacing mappings
  */
-type Props = Omit<BoxProps, 'color' | 'gap' | 'css'> & {
+type Props = Omit<BoxProps, 'color' | 'css'> & {
   textColor?: BoxProps['color'];
   spacing?: BoxProps['gap'];
   sx?: JSONObject;
