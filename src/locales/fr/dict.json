@@ -103,7 +103,7 @@
       },
       "brand": {
         "advancedSearch": "Recherche avancée",
-        "dealerSearch": "Rechercher point de vente",
+        "dealerSearch": "Rechercher revendeur",
         "makes": "Aperçu marques",
         "models": "Vue d’ensemble des modèles"
       },
@@ -121,7 +121,7 @@
         "direct": "AutoScout24 Direct",
         "productsAndPrices": "Produits et prix",
         "professionalPackages": "Packs pour garagistes",
-        "title": "Insérer",
+        "title": "Publier une annonce",
         "vehicles": "Véhicules"
       },
       "media": {
@@ -146,10 +146,10 @@
       "additional": "Autres",
       "advancedSearch": "Recherche avancée",
       "comparison": "Outil de Comparaison ({{ numberOfItems }})",
-      "dealer": "Points de vente",
+      "dealer": "Revendeurs",
       "insuranceComparison": "Comparaison d’assurances",
       "searchCars": "Rechercher des véhicules",
-      "searchMerchant": "Rechercher point de vente",
+      "searchMerchant": "Rechercher un revendeur",
       "searchMotorcycles": "Rechercher des motos",
       "simpleSearch": "Recherche simple (page d'accueil)",
       "vehicles": "Véhicules",
@@ -158,7 +158,7 @@
     "sell": "Vendre",
     "userMenu": {
       "accountSettings": "Paramétrage du compte",
-      "advertisePartsAccessories": "Insérer des pièces détachées",
+      "advertisePartsAccessories": "Publier une annonce pour des pièces détachées et des accessoires",
       "autoRadar": "AutoRadar",
       "bookmarks": "Favoris",
       "businessImage": "BusinessImage",

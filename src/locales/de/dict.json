@@ -92,18 +92,18 @@
     "sections": {
       "aboutUs": {
         "contact": "Kontakt",
-        "factsAndFigures": "Facts & Figures",
-        "jobs": "Offene Stellen",
+        "factsAndFigures": "Facts and figures",
+        "jobs": "Careers",
         "newsletter": "Newsletter",
         "title": "Über uns"
       },
       "advertisement": {
-        "smg": "Auf SMG Swiss Marketplace Group Portalen",
+        "smg": "Advertise in the SMG network",
         "title": "Werbung"
       },
       "brand": {
         "advancedSearch": "Erweiterte Suche",
-        "dealerSearch": "Garagen und Händler suchen",
+        "dealerSearch": "Händler suchen",
         "makes": "Markenübersicht",
         "models": "Modellübersicht"
       },
