@@ -215,7 +215,9 @@ describe('<PopoverFilter />', () => {
       </PopoverFilter>,
     );
     expect(
-      screen.getByText('Treibstoff: Benzin, Wasserstoff'),
+      screen.getByRole('button', {
+        name: 'Treibstoff: Benzin, Wasserstoff',
+      }),
     ).toBeInTheDocument();
   });
 
@@ -241,7 +243,9 @@ describe('<PopoverFilter />', () => {
       </PopoverFilter>,
     );
     expect(
-      screen.getByText('T-Stoff: Benzin, Wasserstoff'),
+      screen.getByRole('button', {
+        name: 'T-Stoff: Benzin, Wasserstoff',
+      }),
     ).toBeInTheDocument();
   });
 });
