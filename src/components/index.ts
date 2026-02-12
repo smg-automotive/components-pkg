@@ -79,6 +79,7 @@ export * from './vehicleReference';
 export * from './filterPatterns/dialog/OpenFilterButton';
 // export * from './skeleton';
 export * from './spinner';
+export * from './progress';
 export { Option } from './select';
 export * from './radio/RadioList';
 // export * from './filterPatterns/popover';
