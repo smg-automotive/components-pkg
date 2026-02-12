@@ -40,6 +40,7 @@ export const DevOverlay: FC<DevOverlayProps> = ({
       boxShadow="md"
       as="aside"
       css={{ maxWidth: 'min(94%, 320px)' }}
+      zIndex="overlay"
     >
       <Flex>
         <Heading as="h3" textStyle="heading3">
