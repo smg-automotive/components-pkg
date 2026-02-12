@@ -10,6 +10,7 @@ import Spinner from './spinner';
 import Skeleton from './skeleton';
 import SimpleHeader from './simpleHeader';
 import Radio from './radio';
+import Progress from './progress';
 import Popover from './popover';
 import Pagination from './pagination';
 import Menu from './menu';
@@ -69,4 +70,5 @@ export const components: Record<string, ComponentStyleConfig> = {
   Tooltip,
   VehicleReference,
   Popover,
+  Progress,
 };
