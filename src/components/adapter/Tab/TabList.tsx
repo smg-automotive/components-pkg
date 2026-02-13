@@ -7,6 +7,7 @@ import {
 
 type TabListProps = TabListPropsComponents & {
   borderBottom?: TabListPropsComponents['borderBottom'];
+  px?: TabListPropsComponents['paddingX'];
 };
 export const TabList: FC<PropsWithChildren<TabListProps>> = ({
   borderBottom,

@@ -25,6 +25,7 @@ export type PopoverProps = PropsWithChildren<{
   onOpenChange?: UseDialogProps['onOpenChange'];
   showArrow?: boolean;
   closeOnInteractOutside?: boolean;
+  gutter?: number;
 }>;
 
 export const Popover: FC<PopoverProps> = ({
@@ -39,11 +40,12 @@ export const Popover: FC<PopoverProps> = ({
   open,
   showArrow = true,
   closeOnInteractOutside = false,
+  gutter,
 }) => {
   return (
     <ChakraPopover.Root
       size={size}
-      positioning={{ placement: placement }}
+      positioning={{ placement: placement, gutter: gutter }}
       closeOnEscape={false}
       closeOnInteractOutside={closeOnInteractOutside}
       open={open}

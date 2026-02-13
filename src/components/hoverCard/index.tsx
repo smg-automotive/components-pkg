@@ -1,5 +1,12 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
-import { Box, HoverCard as ChakraHoverCard, Portal } from '@chakra-ui/react';
+import {
+  Box,
+  HoverCard as ChakraHoverCard,
+  Portal,
+  UseHoverCardProps,
+} from '@chakra-ui/react';
+
+type Placement = NonNullable<UseHoverCardProps['positioning']>['placement'];
 
 type ContentPadding = '2xl' | '0';
 
@@ -11,8 +18,9 @@ export type HoverCardProps = PropsWithChildren<{
   contentPadding?: ContentPadding;
   maxWidth?: MaxWidth;
   contentPosition?: 'relative' | 'absolute';
-  placement?: 'top' | 'right' | 'bottom' | 'left';
-  size?: 'md' | 'lg';
+  placement?: Placement;
+  size?: 'md' | 'xl';
+  gutter?: number;
 }>;
 
 export const HoverCard: FC<HoverCardProps> = ({
@@ -24,13 +32,14 @@ export const HoverCard: FC<HoverCardProps> = ({
   contentPadding = '2xl',
   maxWidth = '6xl',
   contentPosition,
+  gutter,
 }) => {
   return (
     <ChakraHoverCard.Root
       size={size}
       openDelay={100}
       closeDelay={100}
-      positioning={{ placement: placement }}
+      positioning={{ placement, gutter }}
     >
       <ChakraHoverCard.Trigger asChild>{children}</ChakraHoverCard.Trigger>
       <Portal>
