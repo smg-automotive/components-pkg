@@ -7,7 +7,7 @@ import {
 import { getSharedConfig } from './shared';
 
 export const autoScout24Config = mergeConfigs(getSharedConfig(), {
-  cssVarsPrefix: 'as24',
+  cssVarsPrefix: 'chakra',
   theme: {
     semanticTokens: {
       colors: {
