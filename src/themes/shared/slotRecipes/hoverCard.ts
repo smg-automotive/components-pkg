@@ -27,7 +27,7 @@ export const hoverCardRecipe = defineSlotRecipe({
   },
   variants: {
     size: {
-      lg: {
+      xl: {
         content: {
           width: '6xl',
           p: 'md',

@@ -3,6 +3,7 @@ import {
   ButtonGroup,
   chakra,
   Button as ChakraButton,
+  ConditionalValue,
   HStack,
 } from '@chakra-ui/react';
 
@@ -39,7 +40,7 @@ type Props = Pick<
   onClick: () => void;
   variant?: Variant;
   isDisabled?: boolean;
-  height?: Size;
+  height?: ConditionalValue<Size>;
   paddingX?: OpenFilterButtonPaddingX;
   color?: Colors;
   backgroundColor?: Colors;

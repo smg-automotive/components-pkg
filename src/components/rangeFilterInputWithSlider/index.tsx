@@ -36,7 +36,7 @@ type RangeSliderProps = {
   | { rangeSliderScale: number[]; facets?: never; chartHeight?: never }
 );
 
-export type Props<NameFrom, NameTo> = {
+export type RangeFilterInputWithSliderProps<NameFrom, NameTo> = {
   from: RangeFilterInputField<NameFrom>;
   onChange: (
     event: ChangeRangeInputWithSliderCallback<NameFrom | NameTo>,
@@ -61,7 +61,7 @@ export function RangeFilterInputWithSlider<
   to,
   chartHeight,
   ...rest
-}: Props<NameFrom, NameTo>) {
+}: RangeFilterInputWithSliderProps<NameFrom, NameTo>) {
   const value: NumericMinMaxValue = {
     min: from.value,
     max: to.value,

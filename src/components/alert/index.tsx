@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import {
   Box,
   Alert as ChakraAlert,
@@ -13,7 +13,7 @@ import { CloseButton } from '../closeButton';
 import { AlertLink } from './Link';
 
 export type SharedProps = RecipeVariantProps<typeof alertRecipe> & {
-  description: string;
+  description: string | ReactNode;
   title?: string;
   link?: {
     as?: 'link' | 'button' | React.ElementType;
