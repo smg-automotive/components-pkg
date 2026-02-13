@@ -8,9 +8,19 @@ import {
 
 const ListItem = ListComponents.Item;
 
-const List: FC<PropsWithChildren<ListRootProps>> = ({ children, ...rest }) => {
+type ListProps = ListRootProps & {
+  size?: ListRootProps['size'];
+  spacing?: ListRootProps['gap'];
+};
+
+const List: FC<PropsWithChildren<ListProps>> = ({ children, ...rest }) => {
+  const { spacing, ...restWithoutSpacing } = rest;
   return (
-    <ListComponents.Root {...rest} as="ul">
+    <ListComponents.Root
+      {...restWithoutSpacing}
+      as="ul"
+      {...(spacing ? { gap: spacing } : {})}
+    >
       {children}
     </ListComponents.Root>
   );

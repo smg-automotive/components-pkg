@@ -1,4 +1,5 @@
 import { colors } from '../shared/tokens/colors';
+import { pxBreakpoints } from '../shared/breakpoints';
 
 type ColorKey = keyof typeof colors;
 
@@ -34,4 +35,7 @@ const oldStructureColors = Object.keys(colors).reduce((acc, colorKey) => {
   return acc;
 }, {} as OldStructureColors);
 
-export const autoScout24Theme = { colors: oldStructureColors };
+export const autoScout24Theme = {
+  colors: oldStructureColors,
+  breakpoints: pxBreakpoints,
+};
