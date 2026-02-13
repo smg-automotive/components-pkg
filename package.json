@@ -67,7 +67,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "@smg-automotive/auth": "8.6.3",
+    "@smg-automotive/auth": "8.7.0",
     "@smg-automotive/eslint-config": "5.2.7",
     "@storybook/addon-actions": "8.6.15",
     "@storybook/addon-docs": "8.6.15",
@@ -121,7 +121,7 @@
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.9.3",
-    "unist-util-visit": "5.0.0",
+    "unist-util-visit": "5.1.0",
     "webpack": "5.104.1"
   },
   "dependencies": {
