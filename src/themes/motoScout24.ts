@@ -7,7 +7,7 @@ import {
 import { getSharedConfig } from './shared';
 
 export const motoScout24Config = mergeConfigs(getSharedConfig(), {
-  cssVarsPrefix: 'ms24',
+  cssVarsPrefix: 'chakra',
   theme: {
     semanticTokens: {
       colors: {
