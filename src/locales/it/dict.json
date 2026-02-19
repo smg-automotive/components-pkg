@@ -190,6 +190,7 @@
       "qualityLogo": "Sigillo qualità",
       "requisitions": "Ordini di ricerca",
       "reviews": "Valutazioni",
+      "securitySettings": "Accesso e sicurezza",
       "settings": "Preferenze",
       "toolsForPurchasing": "Strumenti per l'acquisto",
       "toolsForSelling": "Gestire veicoli",
@@ -197,7 +198,6 @@
       "topListing": "TopListing",
       "topListingPro": "TopListing Pro",
       "topMotos": "TopMotos",
-      "securitySettings": "Accesso e sicurezza",
       "userLanguage": "Lingua utente"
     }
   }
