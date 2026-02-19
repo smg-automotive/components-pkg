@@ -142,6 +142,7 @@ export const ProfessionalWithoutOptimizer: StoryType = {
       sellerId: '60601',
       managedSellers: [],
       entitlements: {},
+      userData: null,
     },
   },
 };
@@ -168,6 +169,7 @@ export const ProfessionalWithOptimizerPro: StoryType = {
           listings: {},
         },
       },
+      userData: null,
     },
   },
 };
@@ -194,6 +196,7 @@ export const ProfessionalWithOptimizerBasic: StoryType = {
           listings: {},
         },
       },
+      userData: null,
     },
   },
 };
@@ -220,6 +223,7 @@ export const ProfessionalWithMarketPriceEntitlement: StoryType = {
           listings: {},
         },
       },
+      userData: null,
     },
   },
 };
