@@ -13,6 +13,7 @@ import SimpleHeader from './simpleHeader';
 import Select from './select';
 import Section from './section';
 import Radio from './radio';
+import Progress from './progress';
 import Popover from './popover';
 import Pagination from './pagination';
 import NumberInput from './numberInput';
@@ -78,4 +79,5 @@ export const components: Record<string, ComponentStyleConfig> = {
   VehicleReference,
   Slider,
   Popover,
+  Progress,
 };
