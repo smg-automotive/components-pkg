@@ -13,7 +13,6 @@ export const Stack: FC<Props> = (props) => {
       {...rest}
       {...(spacing ? { gap: spacing } : {})}
       gap={spacing}
-      paddingX={{ xs: 'lg', lg: 'sm' }}
     />
   );
 };
