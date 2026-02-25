@@ -66,10 +66,12 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
     >
       <Box css={styles.labelRoot}>
         <Box css={styles.tooltipWrapper}>
-          <ChakraField.Label htmlFor={id}>
-            {label}
-            <ChakraField.RequiredIndicator />
-          </ChakraField.Label>
+          {label ? (
+            <ChakraField.Label htmlFor={id}>
+              {label}
+              <ChakraField.RequiredIndicator />
+            </ChakraField.Label>
+          ) : null}
           {tooltipSnippet}
         </Box>
         {buttonSnippet}
