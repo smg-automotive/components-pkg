@@ -22,7 +22,7 @@ export interface TextareaProps {
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ ...props }, ref) => {
-    return <ChakraTextarea {...props} ref={ref} />;
+    return <ChakraTextarea {...props} width="full" ref={ref} />;
   },
 );
 Textarea.displayName = 'Textarea';
