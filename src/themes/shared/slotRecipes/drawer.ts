@@ -31,6 +31,7 @@ export const drawerRecipe = defineSlotRecipe({
     content: {
       bg: 'white',
       boxShadow: 'xs',
+      overflow: 'auto',
     },
     body: {
       flex: 1,
