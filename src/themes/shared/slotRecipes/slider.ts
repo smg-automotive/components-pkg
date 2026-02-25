@@ -14,7 +14,6 @@ export const sliderSlotRecipe = defineSlotRecipe({
       '--slider-thumb-border': '1px',
       '--slider-thumb-boxShadow': '0 0 0 8px #2988E14D',
       '--slider-thumb-size': 'var(--chakra-sizes-sm)',
-      '--slider-marker-track': '4px',
       overflow: 'visible',
     },
     control: {
@@ -24,6 +23,7 @@ export const sliderSlotRecipe = defineSlotRecipe({
       position: 'relative',
       overflow: 'visible',
       paddingY: 'sm',
+      height: 'sm',
     },
     track: {
       flex: '1',

@@ -119,7 +119,12 @@ export function RangeFilterInputWithSlider<
 
   return (
     <Flex direction="column">
-      <Box order={{ base: 1, sm: 0 }} px="md" py={{ base: 'md', sm: '0' }}>
+      <Box
+        order={{ base: 1, sm: 0 }}
+        mb="sm"
+        px="md"
+        py={{ base: 'md', sm: '0' }}
+      >
         {facets ? (
           <RangeSliderWithChart
             onSliderChange={handleSliderChange}
