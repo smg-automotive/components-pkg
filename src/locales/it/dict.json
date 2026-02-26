@@ -99,11 +99,11 @@
       },
       "advertisement": {
         "smg": "Sui portali di SMG Swiss Marketplace Group",
-        "title": "Publicità"
+        "title": "Pubblicità"
       },
       "brand": {
         "advancedSearch": "Ricerca avanzata",
-        "dealerSearch": "Ricerca commerciante",
+        "dealerSearch": "Ricerca rivenditore",
         "makes": "Marche e modelli",
         "models": "Panoramica dei modelli"
       },
@@ -121,7 +121,7 @@
         "direct": "AutoScout24 Direct",
         "productsAndPrices": "Prodotti e prezzi",
         "professionalPackages": "Pacchetti per garagisti",
-        "title": "Inserire",
+        "title": "Pubblicare un annuncio",
         "vehicles": "Veicoli"
       },
       "media": {
@@ -146,10 +146,10 @@
       "additional": "Altre",
       "advancedSearch": "Ricerca avanzata",
       "comparison": "Strumento di Confronto ({{ numberOfItems }})",
-      "dealer": "commercianti",
+      "dealer": "Rivenditori",
       "insuranceComparison": "Confronto di assicurazioni",
       "searchCars": "Ricerca veicolo",
-      "searchMerchant": "Ricerca commerciante",
+      "searchMerchant": "Cercare rivenditore",
       "searchMotorcycles": "Ricerca moto",
       "simpleSearch": "Ricerca semplice (pagina iniziale)",
       "vehicles": "Veicoli",
@@ -158,7 +158,7 @@
     "sell": "Vendere",
     "userMenu": {
       "accountSettings": "Impostazioni account",
-      "advertisePartsAccessories": "Pezzi, accessori",
+      "advertisePartsAccessories": "Pubblicare un annuncio per pezzi e accessori",
       "autoRadar": "AutoRadar",
       "bookmarks": "Preferiti",
       "businessImage": "BusinessImage",

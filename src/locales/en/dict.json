@@ -80,11 +80,11 @@
       "motoScout24": "MotoScout24",
       "smg": "SMG Swiss Marketplace Group"
     },
-    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. All rights reserved. Your partner for second-hand cars - Search & buy cars in the largest car market in Switzerland",
+    "copyright": "© Copyright  {{year}} by SMG Swiss Marketplace Group AG. All rights reserved. Your partner for pre-owned cars – Search and buy cars in the largest car market in Switzerland",
     "motoscout24": {
       "sections": {
         "brand": {
-          "insurance": "Motorbike insurance",
+          "insurance": "Insurance",
           "title": "MotoScout24"
         }
       }
@@ -92,41 +92,41 @@
     "sections": {
       "aboutUs": {
         "contact": "Contact",
-        "factsAndFigures": "Facts & Figures",
-        "jobs": "Vacancies",
+        "factsAndFigures": "Facts and figures",
+        "jobs": "Careers",
         "newsletter": "Newsletter",
         "title": "About Us"
       },
       "advertisement": {
-        "smg": "On SMG Swiss Marketplace Group Portals",
+        "smg": "Advertise in the SMG network",
         "title": "Advertising"
       },
       "brand": {
-        "advancedSearch": "Advanced Search",
-        "dealerSearch": "Search Garages & Dealers",
-        "makes": "Brand Overview",
-        "models": "Model Overview"
+        "advancedSearch": "Advanced search",
+        "dealerSearch": "Search dealers",
+        "makes": "All brands",
+        "models": "All models"
       },
       "legal": {
-        "agb": "GTC",
-        "agbDirect": "GTC AutoScout24 Direct",
-        "cookieSettings": "Privacy Settings",
-        "dataProtection": "Data Protection",
-        "imprint": "imprint",
-        "rules": "Insertion Rules",
-        "securityHint": "Security Advice",
-        "title": "Legal & Security"
+        "agb": "Terms and conditions",
+        "agbDirect": "TC AutoScout24 Direct",
+        "cookieSettings": "Privacy settings",
+        "dataProtection": "Privacy notice",
+        "imprint": "Legal notice",
+        "rules": "Listing guidelines",
+        "securityHint": "Online safety tips",
+        "title": "Legal and online safety"
       },
       "list": {
         "direct": "AutoScout24 Direct",
-        "productsAndPrices": "Products and Prices",
-        "professionalPackages": "Professional packages",
-        "title": "Advertise",
+        "productsAndPrices": "Products and prices",
+        "professionalPackages": "Packages for dealers",
+        "title": " List your vehicle",
         "vehicles": "Vehicles"
       },
       "media": {
-        "contact": "Media contact",
-        "title": "For Media"
+        "contact": "Press and media",
+        "title": "News"
       }
     }
   },
@@ -134,70 +134,70 @@
     "imageCount": "{{x}} of {{of}}"
   },
   "header": {
-    "assure": "Assure",
+    "assure": "Insurance",
     "carSubscription": "Car subscription",
-    "electromobility": "Electromobility",
-    "estimate": "Estimate",
+    "electromobility": "Electric cars",
+    "estimate": "Valuation",
     "login": "Login",
     "magazine": "Magazine",
     "more": "More",
     "search": "Search",
     "searchMenu": {
-      "additional": "Additional",
-      "advancedSearch": "Advanced Search",
+      "additional": "More",
+      "advancedSearch": "Advanced search",
       "comparison": "Comparison tool ({{ numberOfItems }})",
-      "dealer": "Dealer",
+      "dealer": "Dealers",
       "insuranceComparison": "Insurance comparison",
       "searchCars": "Rechercher des véhicules",
-      "searchMerchant": "Search a merchant",
+      "searchMerchant": "Find dealers",
       "searchMotorcycles": "Search motorcycles",
-      "simpleSearch": "Simple Search (Home)",
+      "simpleSearch": "Simple search (homepage)",
       "vehicles": "Vehicles",
       "viewedListings": "Viewed listings"
     },
     "sell": "Sell",
     "userMenu": {
-      "accountSettings": "Kontoeinstellungen",
-      "advertisePartsAccessories": "Advertise parts, accessories",
+      "accountSettings": "Account settings",
+      "advertisePartsAccessories": "Create a listing for parts and accessories",
       "autoRadar": "AutoRadar",
-      "bookmarks": "Bookmarks",
+      "bookmarks": "Favorites",
       "businessImage": "BusinessImage",
       "carPark": "Car park",
       "cockpit": "Cockpit",
-      "contactDetails": "Contact details",
+      "contactDetails": "Contact information",
       "contactRequests": "Contact requests",
-      "createAd": "Create Ad",
+      "createAd": "Create listing",
       "editPhotobar": "Edit photobar",
       "editUser": "Member list",
       "hci": "HCI",
       "infoPage": "InfoPage",
       "infoPortal": "InfoPortal",
       "insuranceComparison": "Insurance comparison",
-      "logout": "Logout",
+      "logout": "Log out",
       "manageAdditionalTitles": "Manage additional titles",
       "manageNotes": "Manage Notes",
-      "manageVehicles": "Manage vehicle",
+      "manageVehicles": "Manage vehicles",
       "marketPriceCheck": "MarketPriceCheck",
-      "motorcyclePark": "Motorcycle park",
+      "motorcyclePark": "Browse motorcycles",
       "myMotorcycles": "My Motorcycles",
-      "myVehicles": "My Vehicles",
-      "onlineAdvertising": "Online Advertising",
+      "myVehicles": "My vehicles",
+      "onlineAdvertising": "Online advertising",
       "openingHours": "Opening hours",
       "optimizer": "OptimizerBasic",
       "optimizerPro": "OptimizerPro",
       "partnerHub": "PartnerHub",
       "printingCenter": "Printing center",
       "qualityLogo": "Quality logo",
-      "requisitions": "Requisitions",
+      "requisitions": "Saved searches",
       "reviews": "Reviews",
-      "settings": "Ideas",
-      "toolsForPurchasing": "Tools for purchasing",
-      "toolsForSelling": "Tools for Selling",
+      "settings": "Settings",
+      "toolsForPurchasing": "Buying tools",
+      "toolsForSelling": "Selling tools",
       "topCars": "TopCars",
       "topListing": "TopListing",
       "topListingPro": "TopListing Pro",
       "topMotos": "TopMotos",
-      "userLanguage": "User language"
+      "userLanguage": "Language"
     }
   }
 }
