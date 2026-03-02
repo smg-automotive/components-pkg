@@ -68,6 +68,7 @@ export * from './spinner';
 export * from './progress';
 export { Option } from './select';
 export * from './radio/RadioList';
+export * from './toast';
 
 export * from './adapter/Radio';
 export * from './adapter/Divider';

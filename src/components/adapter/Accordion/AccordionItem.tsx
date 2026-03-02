@@ -15,6 +15,7 @@ type Props = AccordionItemProps & {
   border?: AccordionItemProps['border'];
   borderBottom?: AccordionItemProps['borderBottom'];
   _last?: SystemStyleObject;
+  value: string;
 };
 
 export const AccordionItem: FC<PropsWithChildren<Props>> = (props) => {
