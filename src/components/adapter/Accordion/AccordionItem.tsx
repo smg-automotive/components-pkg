@@ -6,8 +6,8 @@ import {
   AccordionItemProps,
 } from 'src/components/accordion/AccordionItem';
 
+// TODO try to figure out why we need to redeclare these props
 type Props = AccordionItemProps & {
-  // TODO try to figure out why we need to redeclare these props
   backgroundColor?: AccordionItemProps['backgroundColor'];
   borderColor?: AccordionItemProps['borderColor'];
   borderTop?: AccordionItemProps['borderTop'];
