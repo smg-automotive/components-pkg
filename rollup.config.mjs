@@ -103,18 +103,7 @@ const esm = {
 const types = {
   input: 'src/index.types.ts',
   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-  plugins: [
-    dts({ tsconfig: './tsconfig.build.json' }),
-    copy({
-      targets: [
-        {
-          src: 'src/types/**/*.d.ts',
-          dest: 'dist/types',
-        },
-      ],
-      flatten: false,
-    }),
-  ],
+  plugins: [dts({ tsconfig: './tsconfig.build.json' })],
 };
 
 const hostedFontsCjs = {

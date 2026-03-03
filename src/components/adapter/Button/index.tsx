@@ -5,9 +5,8 @@ import {
   UnifiedButtonProps,
 } from 'src/components/button';
 
-type Props = Omit<UnifiedButtonProps, 'disabled'> & {
+type Props = UnifiedButtonProps & {
   isDisabled?: boolean;
-  disabled?: boolean;
   isLoading?: boolean;
 };
 
