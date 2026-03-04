@@ -17,8 +17,7 @@ const Template = (props: RadioProps) => {
       {...props}
       {...args}
       onChange={(e) => {
-        const next = !(args.checked ?? false); // toggle
-        updateArgs({ checked: next });
+        updateArgs({ value: e.target.value });
         action('onChange')(e);
       }}
     />
@@ -30,14 +29,16 @@ const meta: Meta<typeof Radio> = {
   component: Radio,
   render: Template,
   args: {
-    value: 'option',
-    label: 'Radio',
+    value: undefined,
     name: '',
-    checked: false,
-    disabled: false,
-    invalid: false,
     size: 'md',
     variant: 'fontRegular',
+    items: [
+      {
+        value: 'option',
+        label: 'Radio 1',
+      },
+    ],
   },
   argTypes: {
     ...getRecipeControls(radioRecipe),
@@ -52,11 +53,27 @@ export const SizeBase: Story = { name: 'Size › base', args: { size: 'base' } }
 export const SizeMd: Story = { name: 'Size › md', args: { size: 'md' } };
 export const StateDisabled: Story = {
   name: 'State › disabled',
-  args: { disabled: true },
+  args: {
+    items: [
+      {
+        value: 'option',
+        label: 'Radio',
+        disabled: true,
+      },
+    ],
+  },
 };
 export const StateInvalid: Story = {
   name: 'State › invalid',
-  args: { invalid: true },
+  args: {
+    items: [
+      {
+        value: 'option',
+        label: 'Radio',
+        invalid: true,
+      },
+    ],
+  },
 };
 export const VariantBold: Story = {
   name: 'Variant › fontBold',
