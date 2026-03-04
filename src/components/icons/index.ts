@@ -170,3 +170,4 @@ export { CollapseIcon } from './CollapseIcon';
 export { ForwardIcon } from './ForwardIcon';
 export { BalanceIcon } from './BalanceIcon';
 export { ParagraphIcon } from './ParagraphIcon';
+export { UploadIcon } from './UploadIcon';
