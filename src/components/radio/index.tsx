@@ -18,7 +18,7 @@ export type RadioItemProps = {
 };
 
 export type RadioProps = RecipeVariantProps<typeof radioRecipe> & {
-  value: string;
+  value?: string;
   items: RadioItemProps[];
   orientation?: 'horizontal' | 'vertical';
   name?: string;
