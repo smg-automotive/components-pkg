@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/smg-automotive/components-pkg#readme",
   "peerDependencies": {
-    "@smg-automotive/auth": "^8.7.2",
+    "@smg-automotive/auth": "^8.8.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
