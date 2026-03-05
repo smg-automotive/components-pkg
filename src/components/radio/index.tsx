@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ChangeEvent, forwardRef } from 'react';
+import React, { ChangeEvent, forwardRef, ReactNode } from 'react';
 import {
   RadioGroup,
   RecipeVariantProps,
@@ -17,19 +17,20 @@ export type RadioItemProps = {
   disabled?: boolean;
 };
 
+export type RadioRenderFn = (renderedItems: ReactNode) => ReactNode;
+
 export type RadioProps = RecipeVariantProps<typeof radioRecipe> & {
   value?: string;
   items: RadioItemProps[];
   orientation?: 'horizontal' | 'vertical';
   name?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  children?: RadioRenderFn;
 };
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const recipe = useSlotRecipe({ key: 'radio' });
-
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
-
   const styles = recipe(recipeProps);
 
   const {
@@ -38,8 +39,36 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
     onChange,
     items,
     orientation = 'horizontal',
+    children,
     ...rootDomProps
   } = restProps;
+
+  const renderedItems = items.map((item) => (
+    <RadioGroup.Item
+      key={item.value}
+      value={item.value}
+      disabled={item.disabled}
+      invalid={item.invalid}
+      css={styles.item}
+    >
+      <RadioGroup.ItemControl css={styles.control}>
+        <RadioGroup.ItemIndicator css={styles.indicator} />
+      </RadioGroup.ItemControl>
+      <RadioGroup.ItemText css={styles.label}>{item.label}</RadioGroup.ItemText>
+      <RadioGroup.ItemHiddenInput ref={ref} />
+    </RadioGroup.Item>
+  ));
+
+  const defaultWrapped = (
+    <Stack
+      direction={orientation === 'horizontal' ? 'row' : 'column'}
+      gap="2xl"
+    >
+      {renderedItems}
+    </Stack>
+  );
+
+  const content = children ? children(renderedItems) : defaultWrapped;
 
   return (
     <RadioGroup.Root
@@ -57,28 +86,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
       css={styles.root}
       {...rootDomProps}
     >
-      <Stack
-        direction={orientation === 'horizontal' ? 'row' : 'column'}
-        gap="2xl"
-      >
-        {items.map((item) => (
-          <RadioGroup.Item
-            key={item.value}
-            value={item.value}
-            disabled={item.disabled}
-            invalid={item.invalid}
-            css={styles.item}
-          >
-            <RadioGroup.ItemControl css={styles.control}>
-              <RadioGroup.ItemIndicator css={styles.indicator} />
-            </RadioGroup.ItemControl>
-            <RadioGroup.ItemText css={styles.label}>
-              {item.label}
-            </RadioGroup.ItemText>
-            <RadioGroup.ItemHiddenInput ref={ref} />
-          </RadioGroup.Item>
-        ))}
-      </Stack>
+      {content}
     </RadioGroup.Root>
   );
 });
