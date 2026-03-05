@@ -36,8 +36,3 @@ export const Tabs: FC<PropsWithChildren<TabsProps>> = ({
     </ChakraTabs.Root>
   );
 };
-
-export { Tab, type TabProps } from './Tab';
-export { TabList, type TabListProps } from './TabList';
-export { TabPanel, type TabPanelProps } from './TabPanel';
-export { TabPanels, type TabPanelsProps } from './TabPanels';

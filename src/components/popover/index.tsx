@@ -5,23 +5,27 @@ import {
   Popover as ChakraPopover,
   Portal,
   UseDialogProps,
+  UsePopoverProps,
 } from '@chakra-ui/react';
 
 type ContentPadding = '2xl' | '0';
 
 type MaxWidth = '6xl' | '8xl';
 
+type Placement = NonNullable<UsePopoverProps['positioning']>['placement'];
+
 export type PopoverProps = PropsWithChildren<{
   content: ReactNode;
   contentPadding?: ContentPadding;
   maxWidth?: MaxWidth;
   contentPosition?: 'relative' | 'absolute';
-  placement?: 'top' | 'right' | 'bottom' | 'left';
-  size?: 'md' | 'lg';
-  open: boolean | undefined;
+  placement?: Placement;
+  size?: 'md' | 'xl';
+  open?: boolean;
   onOpenChange?: UseDialogProps['onOpenChange'];
   showArrow?: boolean;
   closeOnInteractOutside?: boolean;
+  gutter?: number;
 }>;
 
 export const Popover: FC<PopoverProps> = ({
@@ -36,11 +40,12 @@ export const Popover: FC<PopoverProps> = ({
   open,
   showArrow = true,
   closeOnInteractOutside = false,
+  gutter,
 }) => {
   return (
     <ChakraPopover.Root
       size={size}
-      positioning={{ placement: placement }}
+      positioning={{ placement: placement, gutter: gutter }}
       closeOnEscape={false}
       closeOnInteractOutside={closeOnInteractOutside}
       open={open}

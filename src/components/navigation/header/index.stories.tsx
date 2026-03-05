@@ -13,14 +13,14 @@ import { Brand } from 'src/types/brand';
 import { PageLayout } from 'src/components/layout';
 import { Box } from 'src/components/box';
 
-import { Navigation } from './index';
+import { HeaderNavigation } from './index';
 
-const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
+const Wrapper: typeof HeaderNavigation = ({ user, selectTenant, ...props }) => {
   const [selectedTenant, setSelectedTenant] = React.useState<string | null>(
     user?.sellerId || null,
   );
   return (
-    <Navigation
+    <HeaderNavigation
       user={
         user && selectedTenant
           ? {
@@ -46,7 +46,7 @@ const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
  * They will pop up from the top of the screen.
  * To experience "page-like" behaviour visit story directly
  **/
-const meta: Meta<typeof Navigation> = {
+const meta: Meta<typeof HeaderNavigation> = {
   title: 'Patterns/Navigation/Header',
   component: Wrapper,
   decorators: [
@@ -118,7 +118,7 @@ const meta: Meta<typeof Navigation> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof Navigation>;
+type StoryType = StoryObj<typeof HeaderNavigation>;
 
 export const Unauthenticated: StoryType = {
   args: {

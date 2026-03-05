@@ -189,5 +189,5 @@ const Navigation: FC<NavigationProps> = ({
   );
 };
 
-export { Navigation };
+export { Navigation as HeaderNavigation };
 export { PropsWithChildren as FullHeightProps };

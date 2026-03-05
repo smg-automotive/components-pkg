@@ -101,7 +101,7 @@ const esm = {
 };
 
 const types = {
-  input: 'src/index.ts',
+  input: 'src/index.types.ts',
   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
   plugins: [dts({ tsconfig: './tsconfig.build.json' })],
 };

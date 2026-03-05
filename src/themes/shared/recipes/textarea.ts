@@ -2,6 +2,7 @@ import { defineRecipe } from '@chakra-ui/react';
 
 export const textareaRecipe = defineRecipe({
   base: {
+    width: 'full',
     paddingX: 'lg',
     paddingTop: 'md',
     outline: 0,

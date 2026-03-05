@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import {
   useMediaQuery as useChakraMediaQuery,
   UseMediaQueryOptions,
@@ -5,33 +7,52 @@ import {
 
 import { emBreakpoints as breakpoints } from 'src/themes/shared/breakpoints';
 
-type AboveQueryProps = {
-  above: keyof typeof breakpoints;
-  below?: keyof typeof breakpoints;
-};
-type BelowQueryProps = {
-  above?: keyof typeof breakpoints;
-  below: keyof typeof breakpoints;
-};
-export type QueryProps = AboveQueryProps | BelowQueryProps;
+type BreakpointKey = keyof typeof breakpoints;
 
-const useQuery = (props: QueryProps): string => {
-  const toNumber = (em: string) => parseFloat(em);
+type AboveBelowQueryProps =
+  | { above: BreakpointKey; below?: BreakpointKey }
+  | { below: BreakpointKey; above?: BreakpointKey }
+  | { above: BreakpointKey; below: BreakpointKey }; // allow range explicitly
 
+type BreakpointQueryProps = {
+  breakpoint: string;
+};
+
+export type QueryProps = AboveBelowQueryProps | BreakpointQueryProps;
+
+const toNumber = (em: string): number => Number.parseFloat(em);
+
+function buildAboveBelowQuery(props: AboveBelowQueryProps): string {
   const min = props.above ? `(min-width: ${breakpoints[props.above]})` : '';
   const max = props.below
     ? `(max-width: ${toNumber(breakpoints[props.below]) - 0.01}em)`
     : '';
 
-  return `${min}${min && max ? ' and ' : ''}${max}`;
-};
-const useMediaQuery = (query: QueryProps, options?: UseMediaQueryOptions) => {
-  const mediaQuery = useQuery(query);
-  const defaultOptions = {
-    ssr: false,
+  if (min && max) return `${min} and ${max}`;
+  return min || max;
+}
+
+function buildMediaQuery(props: QueryProps): string {
+  if ('breakpoint' in props) {
+    return props.breakpoint;
+  }
+  return buildAboveBelowQuery(props);
+}
+
+const useMediaQuery = (
+  query: QueryProps,
+  options?: UseMediaQueryOptions,
+): boolean => {
+  const mediaQuery = useMemo(() => buildMediaQuery(query), [query]);
+
+  const mergedOptions: UseMediaQueryOptions = {
+    ssr: true,
+    fallback: [false],
     ...options,
   };
-  return useChakraMediaQuery([mediaQuery], defaultOptions)[0];
+
+  const [matches] = useChakraMediaQuery([mediaQuery], mergedOptions);
+  return matches;
 };
 
 export default useMediaQuery;
