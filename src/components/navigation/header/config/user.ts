@@ -6,7 +6,7 @@ export const savedSearchesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.requisitions',
   link: {
     de: '/de/me/saved-searches',
-    en: '/de/me/saved-searches',
+    en: '/en/me/saved-searches',
     fr: '/fr/me/saved-searches',
     it: '/it/me/saved-searches',
   },
@@ -93,7 +93,7 @@ export const getFavoritesLinkConfig = ({
   translationKey: 'header.userMenu.bookmarks',
   link: {
     de: '/de/me/favorites',
-    en: '/de/me/favorites',
+    en: '/en/me/favorites',
     fr: '/fr/me/favorites',
     it: '/it/me/favorites',
   },
