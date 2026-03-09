@@ -4,7 +4,7 @@ export const autoScoutTopVehiclesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.topCars',
   link: {
     de: '/de/features/top-vehicle/manage',
-    en: '/de/features/top-vehicle/manage',
+    en: '/en/features/top-vehicle/manage',
     fr: '/fr/features/top-vehicle/manage',
     it: '/it/features/top-vehicle/manage',
   },
@@ -24,7 +24,7 @@ export const motoScoutTopVehiclesLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.topMotos',
   link: {
     de: '/de/features/top-vehicle/manage',
-    en: '/de/features/top-vehicle/manage',
+    en: '/en/features/top-vehicle/manage',
     fr: '/fr/features/top-vehicle/manage',
     it: '/it/features/top-vehicle/manage',
   },

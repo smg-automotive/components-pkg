@@ -11,7 +11,7 @@ export const estimateLinkConfig = ({
     translationKey: 'header.estimate',
     link: {
       de: '/de/price-estimate',
-      en: '/de/price-estimate',
+      en: '/en/price-estimate',
       fr: '/fr/price-estimate',
       it: '/it/price-estimate',
     },
