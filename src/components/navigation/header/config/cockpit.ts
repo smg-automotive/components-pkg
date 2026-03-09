@@ -4,7 +4,7 @@ export const cockpitLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.cockpit',
   link: {
     de: '/de/cockpit',
-    en: '/de/cockpit',
+    en: '/en/cockpit',
     fr: '/fr/cockpit',
     it: '/it/cockpit',
   },
