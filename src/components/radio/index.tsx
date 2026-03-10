@@ -42,7 +42,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   return (
     <RadioGroup.Root
       name={name}
-      value={isChecked ? value : undefined}
+      value={isChecked ? value : null}
       onValueChange={() => {
         if (!onChange) return;
         const target = {

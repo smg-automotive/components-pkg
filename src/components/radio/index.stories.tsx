@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
+import { VStack } from '@chakra-ui/react';
 
 import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
 
@@ -22,6 +23,37 @@ const Template = (props: RadioProps) => {
         action('onChange')(e);
       }}
     />
+  );
+};
+
+const TwoRadiosTemplate = (props: Pick<RadioProps, 'size' | 'variant' | 'disabled'>) => {
+  const [selected, setSelected] = useState<string | null>('a');
+
+  return (
+    <VStack align="stretch" gap="md" width="fit-content">
+      <Radio
+        {...props}
+        name="two-radios"
+        value="a"
+        label="Option A"
+        checked={selected === 'a'}
+        onChange={(e) => {
+          setSelected(e.target.checked ? e.target.value : null);
+          action('onChange')(e);
+        }}
+      />
+      <Radio
+        {...props}
+        name="two-radios"
+        value="b"
+        label="Option B"
+        checked={selected === 'b'}
+        onChange={(e) => {
+          setSelected(e.target.checked ? e.target.value : null);
+          action('onChange')(e);
+        }}
+      />
+    </VStack>
   );
 };
 
@@ -48,6 +80,20 @@ export default meta;
 type Story = StoryObj<typeof Radio>;
 
 export const Default: Story = { name: 'Radio (single)' };
+
+export const TwoOptionsExclusive: Story = {
+  name: 'Two options (select one, unselect the other)',
+  render: (args) => <TwoRadiosTemplate {...args} />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Two radio buttons with shared state: selecting one unselects the other.',
+      },
+    },
+  },
+};
+
 export const SizeBase: Story = { name: 'Size › base', args: { size: 'base' } };
 export const SizeMd: Story = { name: 'Size › md', args: { size: 'md' } };
 export const StateDisabled: Story = {
