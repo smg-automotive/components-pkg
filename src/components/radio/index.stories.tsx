@@ -26,7 +26,9 @@ const Template = (props: RadioProps) => {
   );
 };
 
-const TwoRadiosTemplate = (props: Pick<RadioProps, 'size' | 'variant' | 'disabled'>) => {
+const TwoRadiosTemplate = (
+  props: Pick<RadioProps, 'size' | 'variant' | 'disabled'>,
+) => {
   const [selected, setSelected] = useState<string | null>('a');
 
   return (

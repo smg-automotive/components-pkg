@@ -137,11 +137,10 @@ export const WithHistograms: StoryType = {
   },
 };
 
-
 const customScale = [
   50, 100, 200, 1000, 2000, 5000, 10000, 30000, 60000, 90000, 200000, 300000,
-1000000,
-  ];
+  1000000,
+];
 
 export const WithCustomRangeSliderScale: StoryType = {
   name: 'With custom range slider scale',
@@ -157,7 +156,7 @@ export const WithCustomRangeSliderScale: StoryType = {
     to: {
       name: 'priceTo',
       placeholder: customScale[customScale.length - 1].toString(),
-      value: customScale[customScale.length -1],
+      value: customScale[customScale.length - 1],
     },
   },
   argTypes: {
@@ -165,4 +164,3 @@ export const WithCustomRangeSliderScale: StoryType = {
     chartHeight: { table: { disable: true } },
   },
 };
-
