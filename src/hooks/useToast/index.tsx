@@ -1,8 +1,5 @@
+import { topRightToaster, topToaster } from 'src/components/toast';
 import { SharedProps } from 'src/components/alert';
-
-import { topToaster } from './TopToaster';
-
-import { topRightToaster } from './TopRightToast';
 
 export type ToastOptions = {
   position?: 'top' | 'top-right';

@@ -11,7 +11,7 @@ import { Brand } from 'src/types/brand';
 
 import { act, fireEvent, render, screen, within } from 'jest-utils';
 
-import { Navigation, NavigationProps } from '../index';
+import { HeaderNavigation, NavigationProps } from '../index';
 import { iconItems } from '../config/iconItems';
 import { HeaderNavigationLink } from '../config/headerNavigationLink';
 import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
@@ -32,7 +32,7 @@ const renderNavigation = ({
   showTenantSelection,
 }: Partial<NavigationProps>) =>
   render(
-    <Navigation
+    <HeaderNavigation
       environment={environment}
       user={user}
       brand={brand}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { TopToast } from 'src/hooks/useToast/TopToaster';
-import { TopRightToast } from 'src/hooks/useToast/TopRightToast';
+import { TopRightToast, TopToast } from 'src/components/toast/';
+
 import { Button, ErrorIcon } from 'src/components';
 
 import useToast, { ToastOptions } from './index';

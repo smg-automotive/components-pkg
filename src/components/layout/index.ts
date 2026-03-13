@@ -3,3 +3,7 @@ export { PageLayout } from './Page';
 export { SingleColumnCenteredLayout } from './SingleColumnCentered';
 export { TwoColumnsLayout } from './TwoColumnsLayout';
 export { LayoutWithVehicleReference } from './WithVehicleReference';
+export { AppLayout } from './app/AppLayout';
+export { AppLayoutContent } from './app/Content';
+export { AppLayoutHeader } from './app/Header';
+export { AppLayoutFooter } from './app/Footer';

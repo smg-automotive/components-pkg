@@ -28,7 +28,7 @@ export const popoverRecipe = defineSlotRecipe({
   },
   variants: {
     size: {
-      lg: {
+      xl: {
         content: {
           width: '6xl',
           p: 'md',

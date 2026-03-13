@@ -3,7 +3,7 @@ import { Collapsible, CollapsibleRootProps } from '@chakra-ui/react';
 
 type CollapseProps = {
   in: boolean;
-  animateOpacity: boolean;
+  animateOpacity?: boolean;
 } & Omit<CollapsibleRootProps, 'open'>;
 
 const Collapse: FC<CollapseProps> = ({
