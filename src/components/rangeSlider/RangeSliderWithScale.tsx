@@ -70,38 +70,45 @@ export const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
   };
 
   const toValue = (index: number) => {
-    if (index === sortedScale.length) return sortedScale[sortedScale.length - 1];
+    if (index === sortedScale.length)
+      return sortedScale[sortedScale.length - 1];
     return sortedScale[index];
   };
+  // Index 0 means the leftmost boundary → no lower constraint → null
+  const toMin = (minIndex: number): number | null => {
+    if (minIndex === 0 || minIndex < 0 || minIndex >= sortedScale.length)
+      return null;
+    return toValue(minIndex);
+  };
+
+  // sortedScale.length means the rightmost boundary → no upper constraint → null
+  const toMax = (
+    maxIndex: number,
+    previousSelection: NumericMinMaxValue,
+  ): number | null => {
+    if (maxIndex === sortedScale.length) return null;
+    if (maxIndex >= 0 && maxIndex < sortedScale.length)
+      return toValue(maxIndex);
+    return previousSelection.max ?? null;
+  };
+
   const toMinMax = (
     minIndex: number,
     maxIndex: number,
     previousSelection: NumericMinMaxValue,
   ): NumericMinMaxValue => ({
-    // Index 0 means the leftmost boundary → no lower constraint → null
-    min:
-      minIndex === 0
-        ? null
-        : minIndex > 0 && minIndex < sortedScale.length
-          ? toValue(minIndex)
-          : null,
-    // sortedScale.length means the rightmost boundary → no upper constraint → null
-    max:
-      maxIndex === sortedScale.length
-        ? null
-        : maxIndex >= 0 && maxIndex < sortedScale.length
-          ? toValue(maxIndex)
-          : previousSelection.max,
+    min: toMin(minIndex),
+    max: toMax(maxIndex, previousSelection),
   });
 
   const toRange = ({ min, max }: NumericMinMaxValue) => {
     const lastScaleValue = sortedScale[sortedScale.length - 1];
-    const maxValue =
-      max === lastScaleValue
-        ? sortedScale.length
-        : max
-          ? toIndex(max)
-          : sortedScale.length;
+    let maxValue: number;
+    if (max === lastScaleValue || max == null) {
+      maxValue = sortedScale.length;
+    } else {
+      maxValue = toIndex(max);
+    }
     const minValue = min ? toIndex(min) : 0;
 
     const range: number[] = [minValue, maxValue];
