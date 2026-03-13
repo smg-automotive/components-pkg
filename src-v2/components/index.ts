@@ -28,7 +28,6 @@ export { default as Popover } from './popover';
 export { ModalFilter } from './filterPatterns/modal';
 export { FilterHeading } from './filterPatterns/Heading';
 export { OpenFilterButton } from './filterPatterns/modal/OpenFilterButton';
-export { default as Radio, RadioGroup } from './radio';
 export { default as RadioList } from './radio/RadioList';
 export { default as Section } from './section';
 export { default as Show } from './show';
