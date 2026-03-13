@@ -104,6 +104,8 @@ export const tabsRecipe = defineSlotRecipe({
       fullWidth: {
         trigger: {
           flex: 1,
+          justifyContent: 'center',
+          textAlign: 'center',
           _selected: {
             borderBottomColor: 'currentColor',
           },
