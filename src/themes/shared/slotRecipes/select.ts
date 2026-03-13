@@ -13,6 +13,7 @@ export const selectSlotRecipe = defineSlotRecipe({
   base: {
     root: {
       position: 'relative',
+      height: 'fit',
     },
     field: {
       ...fieldBase,
