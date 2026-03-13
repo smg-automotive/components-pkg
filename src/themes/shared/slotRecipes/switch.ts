@@ -72,7 +72,7 @@ export const switchRecipe = defineSlotRecipe({
     },
     label: {
       userSelect: 'none',
-      fontSize: 'sm',
+      fontSize: 'base',
       _disabled: {
         opacity: '60',
       },
