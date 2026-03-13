@@ -1,0 +1,20 @@
+# Defines the Code ownership within the repository
+
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Frontend Teams
+#
+# @smg-automotive/frontend
+#
+# @smg-automotive/frontend-enablement
+# @smg-automotive/frontend-tech-leads
+#
+# @smg-automotive/demand-frontend
+# @smg-automotive/private-sellers-frontend
+# @smg-automotive/professional-sellers-frontend
+# @smg-automotive/seller-success-frontend
+# @smg-automotive/professional-buyers-frontend
+
+# Default Owners
+
+* @smg-automotive/frontend-enablement @smg-automotive/frontend-tech-leads
