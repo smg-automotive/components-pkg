@@ -10,6 +10,7 @@ export const buttonRecipe = defineRecipe({
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
+    verticalAlign: 'middle',
     gap: 'xs',
   },
   variants: {
