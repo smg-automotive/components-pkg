@@ -38,7 +38,7 @@ export const Menu: FC<MenuProps> = ({
   value,
   fontWeightTitle = 'regular',
   offset = [8, 0],
-  menuColor,
+  menuColor = 'blue.700',
   menuOptionColor,
   showChevron = true,
   icon,
