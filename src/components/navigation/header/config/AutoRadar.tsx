@@ -9,7 +9,7 @@ export const autoRadarLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.autoRadar',
   link: {
     de: '/de/autoradar/saved-searches/all',
-    en: '/de/autoradar/saved-searches/all',
+    en: '/en/autoradar/saved-searches/all',
     fr: '/fr/autoradar/saved-searches/all',
     it: '/it/autoradar/saved-searches/all',
   },
@@ -30,7 +30,7 @@ export const autoRadarLinkConfig: NavigationLinkConfigProps = {
     ],
     missingEntitlementFallbackLink: {
       de: '/de/autoradar',
-      en: '/de/autoradar',
+      en: '/en/autoradar',
       fr: '/fr/autoradar',
       it: '/it/autoradar',
     },
