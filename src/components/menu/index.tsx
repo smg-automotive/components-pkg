@@ -56,7 +56,7 @@ export const Menu: FC<MenuProps> = ({
       <ChakraMenu.Context>
         {({ open }) => {
           // menuColor takes precedence over the open state color
-          const color = menuColor || (open ? 'blue.700' : undefined);
+          const color = menuColor;
 
           return (
             <ChakraMenu.Trigger
@@ -81,7 +81,7 @@ export const Menu: FC<MenuProps> = ({
         <ChakraMenu.Positioner>
           <ChakraMenu.Content css={styles.content}>
             {items.map(({ onClick, text, value: itemValue }) => {
-              const optionColor = menuOptionColor || menuColor;
+              const optionColor = menuOptionColor;
 
               return (
                 <ChakraMenu.Item

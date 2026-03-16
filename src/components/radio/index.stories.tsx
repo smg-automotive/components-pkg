@@ -105,9 +105,17 @@ export const CustomWrapperGrid: Story = {
         ].join('\n'),
       },
       source: {
-        code: `<Grid templateColumns={{ base: '1fr', sm: 'repeat(3, max-content)' }} gap={{ base: 'md', sm: 'xl' }} alignItems="center">
-    {renderedItems}
-</Grid>`,
+        code: `<Radio {...args}>{
+    (renderedItems) => (
+        <Grid
+          templateColumns={{ base: '1fr', sm: 'repeat(3, max-content)' }}
+          gap={{ base: 'md', sm: 'xl' }}
+          alignItems="center"
+        >
+          {renderedItems}
+        </Grid>
+      )}
+    </Radio>`,
         language: 'tsx',
       },
     },

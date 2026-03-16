@@ -49,7 +49,7 @@ export const Box = React.forwardRef(function BoxAdapter<
   const AsComp = as as ElementType; // relies on your existing approach
 
   return (
-    <BoxComponents {...rest} asChild ref={ref}>
+    <BoxComponents {...props} asChild ref={ref}>
       <AsComp>{children}</AsComp>
     </BoxComponents>
   );

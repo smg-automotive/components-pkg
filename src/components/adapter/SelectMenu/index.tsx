@@ -19,7 +19,7 @@ type SelectMenuProps = Omit<
 export const SelectMenu: FC<SelectMenuProps> = ({
   options,
   leftIcon,
-  withIndicator,
+  withIndicator = true,
   ...rest
 }) => {
   const items = options.map(({ value, label, onClick }) => ({
