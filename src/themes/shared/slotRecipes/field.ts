@@ -44,10 +44,10 @@ export const fieldSlotRecipe = defineSlotRecipe({
       width: 'full',
     },
     errorText: {
-      display: 'inline-flex',
-      alignItems: 'center',
+      display: 'block',
+      width: 'full',
       fontWeight: 'regular',
-      gap: 'sm',
+      marginTop: 'xs',
       color: 'red.500',
       textStyle: 'body-small',
     },
