@@ -2,6 +2,9 @@ import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
 const baseTriggerStyle = defineStyle({
   textStyle: 'body',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   transitionProperty: 'common',
   transitionDuration: 'normal',
   '--tabs-border-width': '3px',
@@ -50,7 +53,6 @@ export const tabsRecipe = defineSlotRecipe({
     variant: {
       default: {
         trigger: {
-          justifyContent: 'center',
           _selected: {
             borderBottomColor: 'currentColor',
           },
@@ -61,7 +63,6 @@ export const tabsRecipe = defineSlotRecipe({
           justifyContent: 'space-between',
         },
         trigger: {
-          justifyContent: 'center',
           _selected: {
             borderBottomColor: 'currentColor',
           },
@@ -72,7 +73,6 @@ export const tabsRecipe = defineSlotRecipe({
           justifyContent: 'space-around',
         },
         trigger: {
-          justifyContent: 'center',
           _selected: {
             borderBottomColor: 'currentColor',
           },
@@ -83,7 +83,6 @@ export const tabsRecipe = defineSlotRecipe({
           borderBottom: 'none',
         },
         trigger: {
-          justifyContent: 'center',
           color: 'gray.700',
           fontWeight: 'bold',
           flexBasis: 'full',
@@ -108,7 +107,6 @@ export const tabsRecipe = defineSlotRecipe({
       fullWidth: {
         trigger: {
           flex: 1,
-          justifyContent: 'center',
           _selected: {
             borderBottomColor: 'currentColor',
           },
