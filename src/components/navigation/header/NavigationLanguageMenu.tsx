@@ -38,6 +38,11 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'it' }),
           },
+          {
+            text: 'English',
+            onClick: () =>
+              replaceLanguage({ activeLanguage, newLanguage: 'en' }),
+          },
         ]}
       />
     </Hide>

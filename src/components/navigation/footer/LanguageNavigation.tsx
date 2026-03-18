@@ -25,6 +25,9 @@ const FooterLanguageNavigation: FC = () => {
         <Link href="/it" color="white">
           <Text textStyle="body-small">Italiano</Text>
         </Link>
+        <Link href="/en" color="white">
+          <Text textStyle="body-small">English</Text>
+        </Link>
       </Stack>
     </Center>
   );
