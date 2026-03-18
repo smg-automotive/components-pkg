@@ -4,7 +4,7 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box, IconButton } from '@chakra-ui/react';
 
-import { AdvancedSearchIcon, Button, Select } from '../index';
+import { AiSearchIcon, Button, Select } from '../index';
 import { MagnifierIcon } from '../icons';
 
 import InputComponent, { InputProps } from './index';
@@ -192,7 +192,11 @@ export const WithEndElement: StoryType = {
   args: {
     ...WithIcon.args,
     endElement: (
-      <IconButton aria-label="Search database" icon={<AdvancedSearchIcon />} />
+      <IconButton
+        marginRight="md"
+        aria-label="Search value"
+        icon={<AiSearchIcon />}
+      />
     ),
   },
 };
@@ -205,8 +209,8 @@ export const WithClearButtonAndEndElement: StoryType = {
     endElement: (
       <IconButton
         marginRight="md"
-        aria-label="Search database"
-        icon={<AdvancedSearchIcon />}
+        aria-label="Search value"
+        icon={<AiSearchIcon />}
       />
     ),
   },
