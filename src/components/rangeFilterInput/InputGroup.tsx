@@ -80,6 +80,19 @@ export const InputGroup = <Name extends string>({
     });
   }, 1000);
 
+  // When the field is empty (no filter applied), omit min/max entirely so
+  // Ark UI's NumberInput machine has no range to validate against, which
+  // prevents the red border from appearing on an unset input.
+  const {
+    min: minProp,
+    max: maxProp,
+    ...restWithoutMinMax
+  } = restProps as typeof restProps & {
+    min?: number;
+    max?: number;
+  };
+  const hasValue = raw.trim() !== '';
+
   return (
     <NumberInput.Root
       css={styles.root}
@@ -100,7 +113,9 @@ export const InputGroup = <Name extends string>({
           value: parseToNumberOrUndef(raw),
         });
       }}
-      {...restProps}
+      {...restWithoutMinMax}
+      min={hasValue ? minProp : undefined}
+      max={hasValue ? maxProp : undefined}
     >
       {unit ? <InputLeftElement unit={unit} /> : null}
 
