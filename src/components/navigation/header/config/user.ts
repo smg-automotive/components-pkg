@@ -61,6 +61,7 @@ export const securitySettingsLinkConfig: NavigationLinkConfigProps = {
       motoscout24: true,
     },
   },
+  projectIdentifier: 'seller-web',
 };
 
 export const changeLanguageLinkConfig: NavigationLinkConfigProps = {
