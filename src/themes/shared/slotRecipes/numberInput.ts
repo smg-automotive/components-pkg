@@ -43,7 +43,7 @@ export const numberInputRecipe = defineSlotRecipe({
           _placeholder: { color: 'gray.400' },
           _hover: { borderColor: 'gray.900' },
           _focus: { bg: 'blue.50' },
-          _invalid: { borderColor: 'red.500' },
+          _invalid: { borderColor: 'red.500', _hover: { borderColor: 'red.500' } },
           _disabled: {
             cursor: 'notAllowed',
             color: 'gray.300',
@@ -62,7 +62,7 @@ export const numberInputRecipe = defineSlotRecipe({
           _placeholder: { color: 'gray.400' },
           _hover: { borderColor: 'gray.900' },
           _focus: { bg: 'blue.50' },
-          _invalid: { borderColor: 'red.500' },
+          _invalid: { borderColor: 'red.500', _hover: { borderColor: 'red.500' } },
           _disabled: {
             cursor: 'notAllowed',
             color: 'gray.300',
@@ -82,7 +82,7 @@ export const numberInputRecipe = defineSlotRecipe({
           _placeholder: { color: 'gray.400' },
           _hover: { borderColor: 'gray.900' },
           _focus: { bg: 'blue.50' },
-          _invalid: { borderColor: 'red.500' },
+          _invalid: { borderColor: 'red.500', _hover: { borderColor: 'red.500' } },
           _disabled: {
             cursor: 'notAllowed',
             color: 'gray.300',
