@@ -14,7 +14,6 @@ import React, {
 } from 'react';
 import {
   Input as ChakraInput,
-  HStack,
   InputLeftAddon,
   InputLeftElement,
   InputRightAddon,
@@ -81,15 +80,23 @@ const renderEndElements = ({
   isClearable: boolean;
   inputRef: MutableRefObject<HTMLInputElement | null>;
   endElement?: ReactElement;
-}) =>
-  isClearable || endElement ? (
-    <InputRightElement width="auto" insetInlineEnd="lg">
-      <HStack spacing="sm">
-        {isClearable ? <ClearButton inputRef={inputRef} /> : null}
+}) => {
+  if (!isClearable && !endElement) return null;
+
+  return (
+    <InputRightElement justifyContent="flex-end">
+      <>
+        {isClearable ? (
+          <ClearButton
+            inputRef={inputRef}
+            marginRight={endElement ? '4px' : '16px'}
+          />
+        ) : null}
         {endElement}
-      </HStack>
+      </>
     </InputRightElement>
-  ) : null;
+  );
+};
 
 const renderLeftAddonElement = (LeftAddonElement?: ReactElement) =>
   LeftAddonElement ? <InputLeftAddon>{LeftAddonElement}</InputLeftAddon> : null;

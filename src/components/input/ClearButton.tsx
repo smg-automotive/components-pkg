@@ -4,6 +4,7 @@ import { CloseIcon } from '../icons';
 
 type Props = {
   inputRef: MutableRefObject<HTMLInputElement | null>;
+  marginRight?: '4px' | '16px';
 };
 
 const triggerNativeEventFor = (
@@ -24,9 +25,10 @@ const triggerNativeEventFor = (
   elm.dispatchEvent(new Event(event, { bubbles: true }));
 };
 
-const ClearButton: FC<Props> = ({ inputRef }) => (
+const ClearButton: FC<Props> = ({ inputRef, marginRight }) => (
   <button
     role="button"
+    style={{ marginRight }}
     onClick={() => {
       if (!inputRef.current) return;
 

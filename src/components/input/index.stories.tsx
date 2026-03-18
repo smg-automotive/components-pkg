@@ -192,14 +192,7 @@ export const WithEndElement: StoryType = {
   args: {
     ...WithIcon.args,
     endElement: (
-      <Button
-        borderColor="gray.400"
-        borderLeftRadius="0"
-        onClick={() => {}}
-        variant="secondary"
-      >
-        Test
-      </Button>
+      <IconButton aria-label="Search database" icon={<AdvancedSearchIcon />} />
     ),
   },
 };
@@ -210,7 +203,11 @@ export const WithClearButtonAndEndElement: StoryType = {
     isClearable: true,
     value: 'Search value',
     endElement: (
-      <IconButton aria-label="Search database" icon={<AdvancedSearchIcon />} />
+      <IconButton
+        marginRight="md"
+        aria-label="Search database"
+        icon={<AdvancedSearchIcon />}
+      />
     ),
   },
 };
