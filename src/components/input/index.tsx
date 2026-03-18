@@ -5,6 +5,7 @@ import React, {
   FocusEventHandler,
   ForwardedRef,
   forwardRef,
+  KeyboardEventHandler,
   MutableRefObject,
   ReactElement,
   useEffect,
@@ -13,6 +14,7 @@ import React, {
 } from 'react';
 import {
   Input as ChakraInput,
+  HStack,
   InputLeftAddon,
   InputLeftElement,
   InputRightAddon,
@@ -29,11 +31,13 @@ type SharedProps = {
   size?: 'md' | 'lg';
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   autoFocus?: boolean;
   name: string;
   type?: 'text' | 'number' | 'password';
   icon?: ComponentType;
   isClearable?: boolean;
+  endElement?: ReactElement;
   rightAddonElement?: ReactElement;
   leftAddonElement?: ReactElement;
   autoComplete?: 'on' | 'off';
@@ -69,16 +73,21 @@ const renderIcon = (Icon?: ComponentType) =>
     </InputLeftElement>
   ) : null;
 
-const renderClearButton = ({
+const renderEndElements = ({
   isClearable,
   inputRef,
+  endElement,
 }: {
   isClearable: boolean;
   inputRef: MutableRefObject<HTMLInputElement | null>;
+  endElement?: ReactElement;
 }) =>
-  isClearable ? (
-    <InputRightElement>
-      <ClearButton inputRef={inputRef} />
+  isClearable || endElement ? (
+    <InputRightElement width="auto" insetInlineEnd="lg">
+      <HStack spacing="sm">
+        {isClearable ? <ClearButton inputRef={inputRef} /> : null}
+        {endElement}
+      </HStack>
     </InputRightElement>
   ) : null;
 
@@ -117,6 +126,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
       type = 'text',
       icon: Icon,
       isClearable = false,
+      endElement,
       rightAddonElement: RightAddonElement,
       leftAddonElement: LeftAddonElement,
       ...props
@@ -165,7 +175,10 @@ const Input = forwardRef<HTMLInputElement, Props>(
         shouldWrap={Boolean(LeftAddonElement || RightAddonElement)}
       >
         {renderLeftAddonElement(LeftAddonElement)}
-        <InputWrapper size={props.size} shouldWrap={!!Icon || isClearable}>
+        <InputWrapper
+          size={props.size}
+          shouldWrap={!!Icon || isClearable || !!endElement}
+        >
           {renderIcon(Icon)}
           <ChakraInput
             {...props}
@@ -179,9 +192,10 @@ const Input = forwardRef<HTMLInputElement, Props>(
             borderRightRadius={RightAddonElement ? '0' : 'sm'}
             borderLeftRadius={LeftAddonElement ? '0' : 'sm'}
           />
-          {renderClearButton({
+          {renderEndElements({
             isClearable: isClearable && !!internalUIValue,
             inputRef,
+            endElement,
           })}
         </InputWrapper>
         {renderRightAddonElement(RightAddonElement)}

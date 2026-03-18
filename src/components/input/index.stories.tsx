@@ -2,9 +2,9 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
-import { Box } from '@chakra-ui/react';
+import { Box, IconButton } from '@chakra-ui/react';
 
-import { Button, Select } from '../index';
+import { AdvancedSearchIcon, Button, Select } from '../index';
 import { MagnifierIcon } from '../icons';
 
 import InputComponent, { InputProps } from './index';
@@ -185,6 +185,33 @@ export const WithIcon: StoryType = {
   args: {
     icon: MagnifierIcon,
     autoFocus: true,
+  },
+};
+
+export const WithEndElement: StoryType = {
+  args: {
+    ...WithIcon.args,
+    endElement: (
+      <Button
+        borderColor="gray.400"
+        borderLeftRadius="0"
+        onClick={() => {}}
+        variant="secondary"
+      >
+        Test
+      </Button>
+    ),
+  },
+};
+
+export const WithClearButtonAndEndElement: StoryType = {
+  args: {
+    ...WithIcon.args,
+    isClearable: true,
+    value: 'Search value',
+    endElement: (
+      <IconButton aria-label="Search database" icon={<AdvancedSearchIcon />} />
+    ),
   },
 };
 
