@@ -62,7 +62,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
   const defaultWrapped = (
     <Stack
       direction={orientation === 'horizontal' ? 'row' : 'column'}
-      gap="2xl"
+      gap={orientation === 'horizontal' ? '2xl' : 'xxs'}
     >
       {renderedItems}
     </Stack>
