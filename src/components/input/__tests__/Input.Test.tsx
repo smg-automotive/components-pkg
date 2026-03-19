@@ -17,6 +17,7 @@ const renderWrapper = ({
   autoFocus = false,
   icon,
   isClearable,
+  endElement,
 }: Partial<Props> = {}) =>
   render(
     <Input
@@ -27,6 +28,7 @@ const renderWrapper = ({
       autoFocus={autoFocus}
       icon={icon}
       isClearable={isClearable}
+      endElement={endElement}
       {...(value || value === '' ? { value } : {})}
       {...(debounce ? { debounce, setInputValue, value } : { onChange })}
     />,
@@ -124,7 +126,7 @@ describe('<Input>', () => {
       const clearButton = screen.getByRole('button');
       await userEvent.click(clearButton);
 
-      expect(input).toHaveValue('');
+      await waitFor(() => expect(input).toHaveValue(''));
     });
 
     it('focuses the input after clearing', async () => {
@@ -135,7 +137,7 @@ describe('<Input>', () => {
       const clearButton = screen.getByRole('button');
       await userEvent.click(clearButton);
 
-      expect(input).toHaveFocus();
+      await waitFor(() => expect(input).toHaveFocus());
     });
 
     it('triggers onChange event', async () => {
@@ -159,6 +161,49 @@ describe('<Input>', () => {
           }),
         }),
       );
+    });
+  });
+
+  describe('endElement', () => {
+    it('renders a custom end element', () => {
+      renderWrapper({
+        endElement: <div data-testid="custom-end-element">end</div>,
+      });
+
+      expect(screen.getByTestId('custom-end-element')).toBeInTheDocument();
+    });
+
+    it('renders the custom end element together with the clear button', async () => {
+      renderWrapper({
+        placeholder: 'placeholder',
+        isClearable: true,
+        endElement: <div data-testid="custom-end-element">end</div>,
+      });
+
+      const input = screen.getByPlaceholderText('placeholder');
+      await userEvent.type(input, 'test');
+
+      expect(screen.getByRole('button')).toBeInTheDocument();
+      expect(screen.getByTestId('custom-end-element')).toBeInTheDocument();
+    });
+
+    it('renders the custom end element to the right of the clear button', async () => {
+      renderWrapper({
+        placeholder: 'placeholder',
+        isClearable: true,
+        endElement: <div data-testid="custom-end-element">end</div>,
+      });
+
+      const input = screen.getByPlaceholderText('placeholder');
+      await userEvent.type(input, 'test');
+
+      const clearButton = screen.getByRole('button');
+      const endElement = screen.getByTestId('custom-end-element');
+
+      expect(
+        clearButton.compareDocumentPosition(endElement) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
     });
   });
 });
