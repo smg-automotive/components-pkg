@@ -2,6 +2,9 @@ import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
 
 const baseTriggerStyle = defineStyle({
   textStyle: 'body',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   transitionProperty: 'common',
   transitionDuration: 'normal',
   '--tabs-border-width': '3px',
