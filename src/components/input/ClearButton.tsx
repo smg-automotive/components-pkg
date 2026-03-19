@@ -28,7 +28,11 @@ const triggerNativeEventFor = (
 const ClearButton: FC<Props> = ({ inputRef, marginRight }) => (
   <button
     role="button"
-    style={{ marginRight }}
+    style={{
+      marginRight,
+      display: 'flex',
+      alignItems: 'center',
+    }}
     onClick={() => {
       if (!inputRef.current) return;
 
