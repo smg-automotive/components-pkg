@@ -78,6 +78,7 @@ export const switchToEnglishLinkConfig = ({
   currentLanguage: Language;
 }): NavigationLinkConfigProps => ({
   title: 'English',
+  isNew: true,
   onClick: () =>
     replaceLanguage({
       activeLanguage: currentLanguage,
