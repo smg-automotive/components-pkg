@@ -17,6 +17,7 @@ const baseStyleOverlay = defineStyle({
 
 const baseStyleDialogContainer = defineStyle({
   display: 'flex',
+  flexDirection: 'column',
   width: 'full',
   height: 'full',
   position: 'fixed',
@@ -64,6 +65,8 @@ const baseStyleHeader = defineStyle({
 const baseStyleBody = defineStyle({
   p: '2xl',
   flex: '1',
+  minHeight: '0',
+  overflowY: 'auto',
 });
 
 const baseStyleFooter = defineStyle({
@@ -90,7 +93,7 @@ const sizeContent = (w: Size) =>
       })
     : defineStyle({
         maxW: { base: 'full', sm: w },
-        minH: { base: 'full', sm: 'auto' },
+        minH: { base: 'full', sm: '0' },
         my: { base: '0', sm: 'lg' },
         borderRadius: { base: 'none', sm: 'sm' },
       });
@@ -172,6 +175,8 @@ export const dialogRecipe = defineSlotRecipe({
         body: {
           p: '0',
           flex: '1',
+          minHeight: '0',
+          overflowY: 'auto',
         },
         footer: baseStyleFooter,
         content: {
@@ -185,8 +190,11 @@ export const dialogRecipe = defineSlotRecipe({
         positioner: {
           ...baseStyleDialogContainer,
           marginTop: '5xl',
-          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
           overflow: 'auto',
+        },
+        content: {
+          flexShrink: '0',
         },
       },
     },
