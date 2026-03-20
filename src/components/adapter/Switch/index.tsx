@@ -34,8 +34,8 @@ export const Switch: React.FC<Props> = (props) => {
   return (
     <ComponentsSwitch
       {...rest}
-      {...(isChecked ? { checked: isChecked } : {})}
-      {...(isDisabled ? { disabled: isDisabled } : {})}
+      {...(isChecked !== undefined ? { checked: isChecked } : {})}
+      {...(isDisabled !== undefined ? { disabled: isDisabled } : {})}
       {...(onChange ? { onCheckedChange: handleOnChange } : {})}
     />
   );
