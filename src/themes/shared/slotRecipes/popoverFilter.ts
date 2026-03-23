@@ -4,7 +4,7 @@ const baseTriggerStyle = defineStyle({
   display: 'flex',
   justifyContent: 'space-between',
   flex: 1,
-  minWidth: 0,
+  minWidth: '0',
   paddingX: 'md',
   border: '1px',
   borderColor: 'gray.100',
