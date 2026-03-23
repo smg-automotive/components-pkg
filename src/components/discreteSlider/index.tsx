@@ -67,6 +67,7 @@ export const DiscreteSlider = <T,>({
       step={1}
       max={sliderMarks.length - 1 + getItemOffset(applyIndentation)}
       value={[sliderStepValue]}
+      thumbAlignment="center"
       onValueChange={(details) =>
         handleOnChange(details.value[0] ?? sliderStepValue)
       }
