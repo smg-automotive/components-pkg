@@ -80,7 +80,10 @@
       "motoScout24": "MotoScout24",
       "smg": "SMG Swiss Marketplace Group"
     },
-    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Dein Partner für Auto-Occasionen – suche und kaufe Autos im grössten Automarkt der Schweiz",
+    "copyright": {
+      "autoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Dein Partner für Auto-Occasionen – suche und kaufe Autos im grössten Automarkt der Schweiz",
+      "motoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Dein Partner für Motorrad-Occasionen – suche und kaufe Motorräder im grössten Motorradmarkt der Schweiz"
+    },
     "motoscout24": {
       "sections": {
         "brand": {
