@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { Collapsible, CollapsibleRootProps } from '@chakra-ui/react';
 
 type CollapseProps = {
@@ -6,9 +6,10 @@ type CollapseProps = {
   animateOpacity?: boolean;
 } & Omit<CollapsibleRootProps, 'open'>;
 
-const Collapse: FC<CollapseProps> = ({
+const Collapse: FC<PropsWithChildren<CollapseProps>> = ({
   in: isOpen,
   animateOpacity,
+  children,
   ...rest
 }) => {
   const animationProps = animateOpacity
@@ -16,7 +17,7 @@ const Collapse: FC<CollapseProps> = ({
     : {};
   return (
     <Collapsible.Root open={isOpen} {...rest} {...animationProps}>
-      <Collapsible.Content>Some content</Collapsible.Content>
+      <Collapsible.Content>{children}</Collapsible.Content>
     </Collapsible.Root>
   );
 };
