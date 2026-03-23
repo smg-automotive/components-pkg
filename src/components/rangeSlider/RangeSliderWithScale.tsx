@@ -69,21 +69,41 @@ export const RangeSliderWithScale: React.FC<RangeSliderWithScaleProps> = ({
     return sortedScale.indexOf(closestValue);
   };
 
+  // We want to always return the actual value instead of null
   const toValue = (index: number) => {
-    if (index === sortedScale.length) return null;
+    if (index === sortedScale.length)
+      return sortedScale[sortedScale.length - 1];
     return sortedScale[index];
   };
+
+  // sortedScale.length means the rightmost boundary → no upper constraint → null
+  const toMax = (
+    maxIndex: number,
+    previousSelection: NumericMinMaxValue,
+  ): number | null => {
+    if (maxIndex === sortedScale.length) return null;
+    if (maxIndex >= 0 && maxIndex < sortedScale.length)
+      return toValue(maxIndex);
+    return previousSelection.max ?? null;
+  };
+
   const toMinMax = (
     minIndex: number,
     maxIndex: number,
     previousSelection: NumericMinMaxValue,
   ): NumericMinMaxValue => ({
     min: minIndex ? toValue(minIndex) : null,
-    max: maxIndex ? toValue(maxIndex) : previousSelection.max,
+    max: toMax(maxIndex, previousSelection),
   });
 
   const toRange = ({ min, max }: NumericMinMaxValue) => {
-    const maxValue = max ? toIndex(max) : sortedScale.length;
+    const lastScaleValue = sortedScale[sortedScale.length - 1];
+    let maxValue: number;
+    if (max === lastScaleValue || max == null) {
+      maxValue = sortedScale.length;
+    } else {
+      maxValue = toIndex(max);
+    }
     const minValue = min ? toIndex(min) : 0;
 
     const range: number[] = [minValue, maxValue];

@@ -4,6 +4,7 @@ import React, {
   FocusEventHandler,
   ForwardedRef,
   forwardRef,
+  KeyboardEventHandler,
   MutableRefObject,
   ReactElement,
   useEffect,
@@ -39,6 +40,8 @@ type SharedProps = ChakraInputProps &
     rightAddonElement?: ReactElement;
     leftAddonElement?: ReactElement;
     autoComplete?: 'on' | 'off';
+    endElement?: ReactElement;
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
     readOnly?: boolean;
   };
 
@@ -107,6 +110,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       rightAddonElement: RightAddonElement,
       leftAddonElement: LeftAddonElement,
       readOnly = false,
+      endElement,
       ...props
     },
     ref,
@@ -164,12 +168,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ),
             }
           : {})}
-        {...(isClearable && internalUIValue
+        {...((isClearable && internalUIValue) || endElement
           ? {
               endElement: (
-                <Box css={styles.clearButton}>
-                  <ClearButton inputRef={inputRef} />
-                </Box>
+                <>
+                  {isClearable && internalUIValue ? (
+                    <Box css={styles.clearButton}>
+                      <ClearButton inputRef={inputRef} />
+                    </Box>
+                  ) : null}
+                  {endElement}
+                </>
               ),
             }
           : {})}

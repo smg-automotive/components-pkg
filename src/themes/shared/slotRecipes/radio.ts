@@ -18,7 +18,7 @@ export const radioRecipe = defineSlotRecipe({
       gap: 'sm',
       cursor: 'pointer',
       px: 'sm',
-      py: 'sm',
+      py: 'xxs',
       listStyle: 'none',
       padding: '0',
     },
