@@ -54,6 +54,7 @@ import { marketPriceCheckLinkConfig } from './marketPriceCheckConfig';
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
+  switchToEnglishLinkConfig,
   switchToFrenchLinkConfig,
   switchToGermanLinkConfig,
   switchToItalianLinkConfig,
@@ -334,6 +335,7 @@ export const drawerNodeItems = ({
         switchToGermanLinkConfig({ currentLanguage }),
         switchToFrenchLinkConfig({ currentLanguage }),
         switchToItalianLinkConfig({ currentLanguage }),
+        switchToEnglishLinkConfig({ currentLanguage }),
       ],
     },
   ],

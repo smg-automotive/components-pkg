@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import Text from 'src/components/text';
 import Menu from 'src/components/menu';
 import Hide from 'src/components/hide';
+
+import Flex from 'src/components/flex';
+import Badge from 'src/components/badge';
 
 import { replaceLanguage } from './replaceLanguage';
 
@@ -37,6 +41,16 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
             text: 'Italiano',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'it' }),
+          },
+          {
+            text: (
+              <Flex alignItems="center">
+                <Text>English</Text>
+                <Badge text="NEW" variant="navigationLinkBadge" />
+              </Flex>
+            ),
+            onClick: () =>
+              replaceLanguage({ activeLanguage, newLanguage: 'en' }),
           },
         ]}
       />
