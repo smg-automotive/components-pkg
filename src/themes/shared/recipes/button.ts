@@ -12,6 +12,9 @@ export const buttonRecipe = defineRecipe({
     alignItems: 'center',
     verticalAlign: 'middle',
     gap: 'xs',
+    _icon: {
+      flexShrink: 0,
+    },
   },
   variants: {
     variant: {

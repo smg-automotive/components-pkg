@@ -4,6 +4,7 @@ import React, {
   FocusEventHandler,
   ForwardedRef,
   forwardRef,
+  KeyboardEventHandler,
   MutableRefObject,
   ReactElement,
   useEffect,
@@ -37,6 +38,8 @@ type SharedProps = InputVariantProps & {
   rightAddonElement?: ReactElement;
   leftAddonElement?: ReactElement;
   autoComplete?: 'on' | 'off';
+  endElement?: ReactElement;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 };
 
 type ControlledInputProps = {
@@ -94,6 +97,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       isClearable = false,
       rightAddonElement: RightAddonElement,
       leftAddonElement: LeftAddonElement,
+      endElement,
       ...props
     },
     ref,
@@ -151,12 +155,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ),
             }
           : {})}
-        {...(isClearable && internalUIValue
+        {...((isClearable && internalUIValue) || endElement
           ? {
               endElement: (
-                <Box css={styles.clearButton}>
-                  <ClearButton inputRef={inputRef} />
-                </Box>
+                <>
+                  {isClearable && internalUIValue ? (
+                    <Box css={styles.clearButton}>
+                      <ClearButton inputRef={inputRef} />
+                    </Box>
+                  ) : null}
+                  {endElement}
+                </>
               ),
             }
           : {})}

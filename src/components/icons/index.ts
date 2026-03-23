@@ -1,3 +1,4 @@
+export { AiSearchIcon } from './AiSearchIcon';
 export { AdvancedSearchIcon } from './AdvancedSearchIcon';
 export { ArrowCircleIcon } from './ArrowCircleIcon';
 export { ArrowDiagonalIcon } from './ArrowDiagonalIcon';

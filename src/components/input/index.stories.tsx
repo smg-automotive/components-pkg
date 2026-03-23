@@ -8,7 +8,7 @@ import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
 
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import { Button } from '../index';
+import { AiSearchIcon, Button } from '../index';
 import { MagnifierIcon } from '../icons';
 
 import { Input, InputProps } from './index';
@@ -189,6 +189,44 @@ export const WithIcon: StoryType = {
   args: {
     icon: MagnifierIcon,
     autoFocus: true,
+  },
+};
+
+export const WithEndElement: StoryType = {
+  args: {
+    ...WithIcon.args,
+    endElement: (
+      <Button
+        as="button"
+        aria-label="Search value"
+        variant="primary"
+        width="md"
+        height="md"
+        marginRight="sm"
+      >
+        <AiSearchIcon />
+      </Button>
+    ),
+  },
+};
+
+export const WithClearButtonAndEndElement: StoryType = {
+  args: {
+    ...WithIcon.args,
+    isClearable: true,
+    value: 'Search value',
+    endElement: (
+      <Button
+        as="button"
+        aria-label="Search value"
+        variant="primary"
+        width="md"
+        height="md"
+        marginRight="sm"
+      >
+        <AiSearchIcon />
+      </Button>
+    ),
   },
 };
 
