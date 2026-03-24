@@ -51,36 +51,34 @@ describe('Header', () => {
   it('should open search drawer', async () => {
     renderNavigation({});
 
-    let drawerBody = screen.queryByTestId('drawer-body');
-    expect(drawerBody).toBeNull();
-    const searchItem = screen.getByText('Search');
+    expect(screen.queryByTestId('drawer-body')).toBeNull();
 
+    const searchItem = screen.getByText('Search');
     fireEvent.click(searchItem);
-    drawerBody = screen.queryByTestId('drawer-body');
-    expect(drawerBody).toBeInTheDocument();
+
+    expect(await screen.findByTestId('drawer-body')).toBeInTheDocument();
   });
 
   it('should open user drawer', async () => {
     const email = 'john.doe@me.com';
     renderNavigation({ user: privateUser({ email }) });
 
-    let drawerBody = screen.queryByTestId('drawer-body');
-    expect(drawerBody).toBeNull();
-    const drawerToggle = screen.getByText(email);
+    expect(screen.queryByTestId('drawer-body')).toBeNull();
 
+    const drawerToggle = screen.getByText(email);
     fireEvent.click(drawerToggle);
-    drawerBody = screen.queryByTestId('drawer-body');
-    expect(drawerBody).toBeInTheDocument();
+
+    expect(await screen.findByTestId('drawer-body')).toBeInTheDocument();
   });
 
   it('displays user email in the user drawer', async () => {
     const email = 'john.doe@me.com';
     renderNavigation({ user: privateUser({ email }) });
-    const drawerToggle = screen.getByText(email);
 
+    const drawerToggle = screen.getByText(email);
     fireEvent.click(drawerToggle);
 
-    const drawerBody = screen.getByTestId('drawer-body');
+    const drawerBody = await screen.findByTestId('drawer-body');
     expect(within(drawerBody).getByText(email)).toBeInTheDocument();
   });
 
@@ -88,24 +86,24 @@ describe('Header', () => {
     const email = 'john.doe@me.com';
     const sellerId = '6002';
     renderNavigation({ user: professionalUser({ email, sellerId }) });
-    const drawerToggle = screen.getByText(email);
 
+    const drawerToggle = screen.getByText(email);
     fireEvent.click(drawerToggle);
 
-    const drawerBody = screen.getByTestId('drawer-body');
+    const drawerBody = await screen.findByTestId('drawer-body');
     expect(within(drawerBody).getByText(`(${sellerId})`)).toBeInTheDocument();
   });
 
   it('displays selected tenant and location in the user drawer', async () => {
     const email = 'john.doe@me.com';
     renderNavigation({ user: multiTenantUser({ email }) });
-    const drawerToggle = screen.getByText(email);
 
+    const drawerToggle = screen.getByText(email);
     fireEvent.click(drawerToggle);
 
-    const drawerBody = screen.getByTestId('drawer-body');
-    expect(within(drawerBody).getAllByText('Garage Amir').length).toEqual(3);
-    expect(within(drawerBody).getAllByText('8000 Zurich').length).toEqual(3);
+    const drawerBody = await screen.findByTestId('drawer-body');
+    expect(within(drawerBody).getAllByText('Garage Amir')).toHaveLength(3);
+    expect(within(drawerBody).getAllByText('8000 Zurich')).toHaveLength(3);
   });
 
   it('allows switching tenants from the header menu', async () => {
@@ -136,7 +134,7 @@ describe('Header', () => {
     const menuToggle = screen.getByTitle('Hamburger menu icon');
     fireEvent.click(menuToggle);
 
-    const drawerBody = screen.getByTestId('drawer-body');
+    const drawerBody = await screen.findByTestId('drawer-body');
     const tenantSelectionToggle = within(drawerBody).getAllByTestId(
       'tenant-selection-accordion-toggle',
     )[0];
@@ -188,7 +186,7 @@ describe('Header', () => {
     const searchItem = screen.getByText('Search');
     fireEvent.click(searchItem);
 
-    const drawerBody = screen.getByTestId('drawer-body');
+    const drawerBody = await screen.findByTestId('drawer-body');
     expect(
       within(drawerBody).queryByText(email, { exact: false }),
     ).not.toBeInTheDocument();
