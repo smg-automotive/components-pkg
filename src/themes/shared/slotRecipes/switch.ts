@@ -31,6 +31,7 @@ export const switchRecipe = defineSlotRecipe({
       position: 'relative',
       width: 'var(--switch-width)',
       height: 'var(--switch-height)',
+      flexShrink: 0,
       _hover: {
         bg: 'gray.300',
       },
