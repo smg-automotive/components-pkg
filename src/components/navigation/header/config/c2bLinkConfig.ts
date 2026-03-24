@@ -17,12 +17,12 @@ export const c2bLinkConfig = ({
     },
     visibilitySettings: {
       userType: {
-        private: true,
+        private: false,
         professional: true,
       },
       brand: {
         autoscout24: true,
-        motoscout24: true,
+        motoscout24: false,
       },
     },
     onClick: () =>
