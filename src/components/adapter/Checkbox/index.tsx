@@ -17,14 +17,19 @@ type Props = Omit<
 };
 
 export const Checkbox: FC<Props> = (props) => {
-  const { isChecked, isDisabled, isInvalid, onChange, ...rest } = props;
+  const { isChecked, isDisabled, isInvalid, onChange, name, value, ...rest } =
+    props;
 
   const handleChange = (details: CheckboxCheckedChangeDetails) => {
     if (!onChange) return;
 
-    const input = details.checked;
+    const checked = details.checked === true;
+
     const target = {
-      checked: input,
+      type: 'checkbox',
+      name,
+      value: value ?? 'on',
+      checked,
     } as HTMLInputElement;
 
     const syntheticEvent = {
@@ -38,6 +43,7 @@ export const Checkbox: FC<Props> = (props) => {
   return (
     <ComponentsCheckbox
       {...rest}
+      name={name}
       checked={isChecked}
       disabled={isDisabled}
       onChange={handleChange}

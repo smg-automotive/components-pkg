@@ -29,19 +29,12 @@ const List: FC<PropsWithChildren<ListProps>> = ({ children, ...rest }) => {
 const UnorderedList: FC<
   PropsWithChildren<
     {
-      variant?: 'icon-outside' | 'initial';
+      variant?: 'icon-outside' | 'icon-inside';
     } & ListRootProps
   >
 > = ({ children, variant, ...rest }) => {
-  const listStylePos = variant === 'icon-outside' ? 'outside' : 'inside';
-
   return (
-    <ListRoot
-      {...rest}
-      as="ul"
-      listStyleType="initial"
-      {...(variant ? { listStylePosition: listStylePos } : {})}
-    >
+    <ListRoot as="ul" variant={variant} listStyleType="initial" {...rest}>
       {children}
     </ListRoot>
   );
