@@ -57,10 +57,13 @@ export const radioRecipe = defineSlotRecipe({
       rounded: 'full',
       width: 'xxs',
       height: 'xxs',
-      display: 'none',
+      bg: 'white',
+      opacity: 0,
+      transform: 'scale(0.6)',
+      transition: 'opacity 0.15s ease, transform 0.15s ease',
       _checked: {
-        display: 'block',
-        bg: 'white',
+        opacity: 1,
+        transform: 'scale(1)',
         _disabled: {
           bg: 'white',
         },
