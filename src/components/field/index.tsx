@@ -63,11 +63,12 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
       invalid={invalid}
       required={required}
       id={id}
+      css={styles.root}
     >
       <Box css={styles.labelRoot}>
         <Box css={styles.tooltipWrapper}>
           {label ? (
-            <ChakraField.Label htmlFor={id}>
+            <ChakraField.Label htmlFor={id} css={styles.label}>
               {label}
               <ChakraField.RequiredIndicator />
             </ChakraField.Label>
@@ -77,8 +78,14 @@ export const Field: FC<PropsWithChildren<FieldProps>> = ({
         {buttonSnippet}
       </Box>
       {children}
-      <ChakraField.ErrorText>{errorMessage}</ChakraField.ErrorText>
-      {hint ? <ChakraField.HelperText>{hint}</ChakraField.HelperText> : null}
+      <ChakraField.ErrorText css={styles.errorText}>
+        {errorMessage}
+      </ChakraField.ErrorText>
+      {hint ? (
+        <ChakraField.HelperText css={styles.helperText}>
+          {hint}
+        </ChakraField.HelperText>
+      ) : null}
     </ChakraField.Root>
   );
 };

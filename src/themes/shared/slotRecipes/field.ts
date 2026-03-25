@@ -83,6 +83,6 @@ export const fieldSlotRecipe = defineSlotRecipe({
   },
 
   defaultVariants: {
-    size: 'sm',
+    size: 'lg',
   },
 });
