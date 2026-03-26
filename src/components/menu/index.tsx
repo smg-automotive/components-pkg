@@ -85,7 +85,7 @@ export const Menu: FC<MenuProps> = ({
 
               return (
                 <ChakraMenu.Item
-                  key={`menuItem-${value}`}
+                  key={`menuItem-${itemValue}`}
                   value={itemValue}
                   onSelect={onClick}
                   css={styles.item}
