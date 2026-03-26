@@ -16,6 +16,10 @@
       "groupName": "chakra-ui",
       "matchUpdateTypes": ["patch", "minor"],
       "matchPackageNames": ["/@chakra-ui/*/"]
+    },
+    {
+      "matchDepTypes": ["peerDependencies"],
+      "rangeStrategy": "bump"
     }
   ]
 }

@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/smg-automotive/components-pkg#readme",
   "peerDependencies": {
-    "@smg-automotive/auth": "^8.12.5-bind-log-to-stdout.1",
+    "@smg-automotive/auth": "^8.12.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -67,7 +67,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "@smg-automotive/auth": "8.12.5-bind-log-to-stdout.1",
+    "@smg-automotive/auth": "8.12.5",
     "@smg-automotive/eslint-config": "5.3.5",
     "@storybook/addon-actions": "8.6.18",
     "@storybook/addon-docs": "8.6.18",
