@@ -81,30 +81,30 @@ export const Menu: FC<MenuProps> = ({
           {items.map(({ onClick, text, value: itemValue }) => {
             const optionColor = menuOptionColor;
 
-          return (
-            <ChakraMenu.Item
-              key={`menuItem-${itemValue}`}
-              value={itemValue}
-              onSelect={onClick}
-              css={styles.item}
-              {...(optionColor && { color: optionColor })}
-            >
-              {showOptionsCheckmark ? (
-                <Box
-                  w="xs"
-                  display="flex"
-                  justifyContent="center"
-                  marginRight="sm"
-                >
-                  {itemValue === value ? <CheckmarkIcon /> : null}
-                </Box>
-              ) : null}
-              {text}
-            </ChakraMenu.Item>
-          );
-        })}
-      </ChakraMenu.Content>
-    </ChakraMenu.Positioner>
+            return (
+              <ChakraMenu.Item
+                key={`menuItem-${itemValue}`}
+                value={itemValue}
+                onSelect={onClick}
+                css={styles.item}
+                {...(optionColor && { color: optionColor })}
+              >
+                {showOptionsCheckmark ? (
+                  <Box
+                    w="xs"
+                    display="flex"
+                    justifyContent="center"
+                    marginRight="sm"
+                  >
+                    {itemValue === value ? <CheckmarkIcon /> : null}
+                  </Box>
+                ) : null}
+                {text}
+              </ChakraMenu.Item>
+            );
+          })}
+        </ChakraMenu.Content>
+      </ChakraMenu.Positioner>
     </ChakraMenu.Root>
   );
 };
