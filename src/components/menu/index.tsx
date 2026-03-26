@@ -5,7 +5,6 @@ import {
   MenuContentProps,
   MenuRootProps,
   MenuTriggerProps,
-  Portal,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
@@ -77,37 +76,35 @@ export const Menu: FC<MenuProps> = ({
           );
         }}
       </ChakraMenu.Context>
-      <Portal>
-        <ChakraMenu.Positioner>
-          <ChakraMenu.Content css={styles.content}>
-            {items.map(({ onClick, text, value: itemValue }) => {
-              const optionColor = menuOptionColor;
+      <ChakraMenu.Positioner>
+        <ChakraMenu.Content css={styles.content}>
+          {items.map(({ onClick, text, value: itemValue }) => {
+            const optionColor = menuOptionColor;
 
-              return (
-                <ChakraMenu.Item
-                  key={`menuItem-${value}`}
-                  value={itemValue}
-                  onSelect={onClick}
-                  css={styles.item}
-                  {...(optionColor && { color: optionColor })}
+          return (
+            <ChakraMenu.Item
+              key={`menuItem-${itemValue}`}
+              value={itemValue}
+              onSelect={onClick}
+              css={styles.item}
+              {...(optionColor && { color: optionColor })}
+            >
+              {showOptionsCheckmark ? (
+                <Box
+                  w="xs"
+                  display="flex"
+                  justifyContent="center"
+                  marginRight="sm"
                 >
-                  {showOptionsCheckmark ? (
-                    <Box
-                      w="xs"
-                      display="flex"
-                      justifyContent="center"
-                      marginRight="sm"
-                    >
-                      {itemValue === value ? <CheckmarkIcon /> : null}
-                    </Box>
-                  ) : null}
-                  {text}
-                </ChakraMenu.Item>
-              );
-            })}
-          </ChakraMenu.Content>
-        </ChakraMenu.Positioner>
-      </Portal>
+                  {itemValue === value ? <CheckmarkIcon /> : null}
+                </Box>
+              ) : null}
+              {text}
+            </ChakraMenu.Item>
+          );
+        })}
+      </ChakraMenu.Content>
+    </ChakraMenu.Positioner>
     </ChakraMenu.Root>
   );
 };
