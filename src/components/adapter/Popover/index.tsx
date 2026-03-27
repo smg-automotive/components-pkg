@@ -12,10 +12,11 @@ type Props = PopoverProps & {
   onOpen?: () => void;
   onClose?: () => void;
   isOpen?: boolean;
+  closeOnBlur?: boolean;
 };
 
 export const Popover: React.FC<Props> = ({ trigger = 'click', ...props }) => {
-  const { onOpen, onClose, isOpen, ...rest } = props;
+  const { onOpen, onClose, isOpen, closeOnBlur, ...rest } = props;
   if (trigger === 'hover') {
     return <HoverCard {...rest} />;
   }
@@ -24,6 +25,7 @@ export const Popover: React.FC<Props> = ({ trigger = 'click', ...props }) => {
     <PopoverComponents
       {...rest}
       open={isOpen}
+      closeOnInteractOutside={closeOnBlur}
       onOpenChange={({ open }) => {
         if (open) {
           onOpen?.();
