@@ -64,7 +64,10 @@ const meta: Meta<typeof Menu> = {
     title: 'Language',
     showChevron: true,
     placement: 'bottom-start',
-    offset: [8, 0],
+    offset: {
+      mainAxis: 8,
+      crossAxis: 0,
+    },
     fontWeightTitle: 'regular',
     iconSpacing: 'sm',
     value: 'de', // initial selection

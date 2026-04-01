@@ -19,7 +19,10 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
         title={activeLanguage.toUpperCase()}
         fontWeightTitle="bold"
         menuColor="gray.900"
-        offset={[0, 18]}
+        offset={{
+          mainAxis: 8,
+          crossAxis: 0,
+        }}
         iconSpacing="xs"
         placement="bottom-end"
         items={[

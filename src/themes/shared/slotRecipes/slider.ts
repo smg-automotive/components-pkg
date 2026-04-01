@@ -9,7 +9,6 @@ export const sliderSlotRecipe = defineSlotRecipe({
       flexDirection: 'column',
       width: 'full',
       fontSize: 'base',
-      '--slider-marker-inset': '4px',
       '--slider-marker-track': '4px',
       '--slider-thumb-border': '1px',
       '--slider-thumb-boxShadow': '0 0 0 8px #2988E14D',
@@ -40,7 +39,6 @@ export const sliderSlotRecipe = defineSlotRecipe({
     markerGroup: {
       position: 'absolute!',
       top: '2xl',
-      insetInline: 'var(--slider-marker-inset)',
     },
     thumb: {
       width: 'sm',
@@ -49,10 +47,6 @@ export const sliderSlotRecipe = defineSlotRecipe({
       borderWidth: 'var(--slider-thumb-border)',
       borderColor: 'gray.400',
       backgroundColor: 'white',
-      translate: '-50% 0',
-      '&[data-index="1"]': {
-        translate: '50% 0',
-      },
       _hover: { cursor: 'pointer' },
       _active: { boxShadow: 'var(--slider-thumb-boxShadow)' },
     },

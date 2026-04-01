@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 import { CheckboxCheckedChangeDetails } from '@chakra-ui/react';
 
 import {
@@ -14,11 +14,11 @@ type Props = Omit<
   isDisabled?: boolean;
   isInvalid?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
 };
 
-export const Checkbox: FC<Props> = (props) => {
-  const { isChecked, isDisabled, isInvalid, onChange, name, value, ...rest } =
-    props;
+export const Checkbox = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const { isChecked, isDisabled, isInvalid, onChange, name, ...rest } = props;
 
   const handleChange = (details: CheckboxCheckedChangeDetails) => {
     if (!onChange) return;
@@ -28,8 +28,8 @@ export const Checkbox: FC<Props> = (props) => {
     const target = {
       type: 'checkbox',
       name,
-      value: value ?? true,
       checked,
+      value: '',
     } as HTMLInputElement;
 
     const syntheticEvent = {
@@ -43,11 +43,15 @@ export const Checkbox: FC<Props> = (props) => {
   return (
     <ComponentsCheckbox
       {...rest}
+      ref={ref}
       name={name}
-      checked={isChecked}
+      value=""
+      checked={!!isChecked}
       disabled={isDisabled}
-      onChange={handleChange}
       invalid={isInvalid}
+      onChange={handleChange}
     />
   );
-};
+});
+
+Checkbox.displayName = 'Checkbox';
