@@ -82,8 +82,6 @@ export const checkboxRecipe = defineSlotRecipe({
       },
     },
     label: {
-      flex: '1 1 0%',
-      display: 'flex',
       fontWeight: 'regular',
       color: 'gray.900',
       userSelect: 'none',
