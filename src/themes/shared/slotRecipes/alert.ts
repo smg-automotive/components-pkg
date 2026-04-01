@@ -6,84 +6,71 @@ export const alertRecipe = defineSlotRecipe({
 
   base: {
     root: {
-      '--border-start-thickness': '4px',
+      '--alert-fg': 'var(--chakra-colors-blue-700)',
+      '--alert-bg': 'var(--chakra-colors-blue-100)',
+      '--alert-border-start-width': '4px',
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       padding: 'lg',
-      borderStartWidth: 'var(--border-start-thickness)',
+      bg: 'var(--alert-bg)',
+      borderStartWidth: 'var(--alert-border-start-width)',
+      borderStartColor: 'var(--alert-fg)',
     },
-    title: {
-      textStyle: 'heading4',
-    },
-    description: {
-      textStyle: 'body',
-    },
+
     indicator: {
-      display: 'inline-block',
+      color: 'var(--alert-fg)',
       flexShrink: 0,
       alignSelf: 'start',
       marginEnd: 'lg',
       w: 'sm',
       h: 'sm',
+      display: 'inline-flex',
+    },
+
+    content: {
+      flex: '1',
+      minW: '0',
+    },
+
+    title: {
+      textStyle: 'heading4',
+    },
+
+    description: {
+      textStyle: 'body',
     },
   },
+
   variants: {
     status: {
-      error: {
-        root: {
-          borderStartColor: 'red.500',
-          bg: 'red.100',
-        },
-        indicator: {
-          color: 'red.500',
-        },
-      },
-      warning: {
-        root: {
-          borderStartColor: 'orange.500',
-          bg: 'orange.100',
-        },
-        indicator: {
-          color: 'orange.500',
-        },
-      },
       info: {
         root: {
-          borderStartColor: 'blue.700',
-          bg: 'blue.100',
-        },
-        indicator: {
-          color: 'blue.700',
+          '--alert-fg': 'var(--chakra-colors-blue-700)',
+          '--alert-bg': 'var(--chakra-colors-blue-100)',
         },
       },
       success: {
         root: {
-          borderStartColor: 'green.500',
-          bg: 'green.100',
-        },
-        indicator: {
-          color: 'green.500',
+          '--alert-fg': 'var(--chakra-colors-green-500)',
+          '--alert-bg': 'var(--chakra-colors-green-100)',
         },
       },
-    },
-    variant: {
-      toast: {
+      warning: {
         root: {
-          translate: 'var(--x) var(--y)',
-          scale: 'var(--scale)',
-          width: 'full',
-          position: 'relative',
-          zIndex: 'var(--z-index)',
-          height: 'var(--height)',
-          opacity: 'var(--opacity)',
-          willChange: 'translate, opacity, scale',
-          transitionProperty: 'common',
-          transitionDuration: 'normal',
+          '--alert-fg': 'var(--chakra-colors-orange-500)',
+          '--alert-bg': 'var(--chakra-colors-orange-100)',
+        },
+      },
+      error: {
+        root: {
+          '--alert-fg': 'var(--chakra-colors-red-500)',
+          '--alert-bg': 'var(--chakra-colors-red-100)',
         },
       },
     },
   },
+
   defaultVariants: {
-    variant: 'toast',
+    status: 'info',
   },
 });

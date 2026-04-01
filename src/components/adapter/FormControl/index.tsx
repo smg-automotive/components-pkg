@@ -15,6 +15,7 @@ export const FormControl: FC<PropsWithChildren<Props>> = ({
   isDisabled,
   size,
   children,
+  tooltip,
 }) => {
   return (
     <Field
@@ -24,6 +25,7 @@ export const FormControl: FC<PropsWithChildren<Props>> = ({
       errorMessage={errorMessage}
       disabled={isDisabled}
       size={size}
+      tooltip={tooltip}
     >
       {children}
     </Field>
