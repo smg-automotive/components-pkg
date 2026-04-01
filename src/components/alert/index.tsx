@@ -39,7 +39,7 @@ export type NonDismissibleProps = SharedProps & {
 export type AlertProps = DismissibleProps | NonDismissibleProps;
 
 export const Alert: FC<AlertProps> = (props) => {
-  const recipe = useSlotRecipe({ key: 'alert' });
+  const recipe = useSlotRecipe({ recipe: alertRecipe });
 
   const [recipeProps, restProps] = recipe.splitVariantProps(props);
   const { description, title, link, icon, type, dismissible, onDismiss } =
@@ -62,7 +62,7 @@ export const Alert: FC<AlertProps> = (props) => {
         {link ? <AlertLink {...link} /> : null}
       </ChakraAlert.Content>
       {dismissible ? (
-        <Box ml="auto" position="relative">
+        <Box flexShrink={0} alignSelf="flex-start">
           <CloseButton
             onClick={() => {
               onClose();
