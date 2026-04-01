@@ -28,7 +28,7 @@ export const Checkbox: FC<Props> = (props) => {
     const target = {
       type: 'checkbox',
       name,
-      value: value ?? 'on',
+      value: value ?? true,
       checked,
     } as HTMLInputElement;
 
