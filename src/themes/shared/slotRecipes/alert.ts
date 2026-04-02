@@ -2,15 +2,29 @@ import { defineSlotRecipe } from '@chakra-ui/react';
 
 export const alertRecipe = defineSlotRecipe({
   className: 'chakra-alert',
-  slots: ['root', 'indicator', 'content', 'title', 'description'],
+  slots: ['root', 'indicator', 'content', 'title', 'description', 'toastClose'],
 
   base: {
     root: {
       '--border-start-thickness': '4px',
+      '--alert-max-width': '560px',
+      '--alert-min-width': '300px',
       display: 'flex',
-      alignItems: 'center',
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      gap: 'lg',
       padding: 'lg',
       borderStartWidth: 'var(--border-start-thickness)',
+      maxWidth: 'var(--alert-max-width)',
+      minWidth: 'var(--alert-min-width)',
+    },
+    content: {
+      flex: '1 1 0%',
+      minWidth: '0',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'xs',
+      alignSelf: 'stretch',
     },
     title: {
       textStyle: 'heading4',
@@ -19,10 +33,10 @@ export const alertRecipe = defineSlotRecipe({
       textStyle: 'body',
     },
     indicator: {
-      display: 'inline-block',
+      display: 'flex',
       flexShrink: 0,
-      alignSelf: 'start',
-      marginEnd: 'lg',
+      alignItems: 'center',
+      justifyContent: 'center',
       w: 'sm',
       h: 'sm',
     },
@@ -72,13 +86,21 @@ export const alertRecipe = defineSlotRecipe({
           translate: 'var(--x) var(--y)',
           scale: 'var(--scale)',
           width: 'full',
-          position: 'relative',
           zIndex: 'var(--z-index)',
           height: 'var(--height)',
           opacity: 'var(--opacity)',
           willChange: 'translate, opacity, scale',
           transitionProperty: 'common',
           transitionDuration: 'normal',
+        },
+        content: {
+          pos: 'relative',
+          pe: '3xl',
+        },
+        toastClose: {
+          pos: 'absolute',
+          top: '0',
+          insetEnd: '0',
         },
       },
     },

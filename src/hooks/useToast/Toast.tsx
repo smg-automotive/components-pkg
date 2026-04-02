@@ -23,7 +23,7 @@ export type ToastProps = RecipeVariantProps<typeof alertRecipe> & {
 };
 
 export const Toast: FC<ToastProps> = (props) => {
-  const recipe = useSlotRecipe({ key: 'alert' });
+  const recipe = useSlotRecipe({ recipe: alertRecipe });
 
   const [recipeProps] = recipe.splitVariantProps(props);
   const styles = recipe({ ...recipeProps });
@@ -38,7 +38,7 @@ export const Toast: FC<ToastProps> = (props) => {
                 <ChakraAlert.Indicator css={styles.indicator}>
                   {toast.meta?.icon}
                 </ChakraAlert.Indicator>
-                <ChakraAlert.Content>
+                <ChakraAlert.Content css={styles.content}>
                   {toast.title ? (
                     <ChakraAlert.Title css={styles.title}>
                       {toast.title}
@@ -50,18 +50,14 @@ export const Toast: FC<ToastProps> = (props) => {
                   {toast.meta?.link ? (
                     <AlertLink {...toast.meta?.link} />
                   ) : null}
+                  <ChakraToast.CloseTrigger css={styles.toastClose}>
+                    <CloseButton
+                      onClick={() => {
+                        toast.meta?.onClose?.();
+                      }}
+                    />
+                  </ChakraToast.CloseTrigger>
                 </ChakraAlert.Content>
-                <ChakraToast.CloseTrigger
-                  ml="auto"
-                  position="relative"
-                  alignSelf="flex-start"
-                >
-                  <CloseButton
-                    onClick={() => {
-                      toast.meta?.onClose?.();
-                    }}
-                  />
-                </ChakraToast.CloseTrigger>
               </ChakraAlert.Root>
             </ChakraToast.Root>
           );
