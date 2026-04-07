@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import {
-  Box,
   Alert as ChakraAlert,
   Toast as ChakraToast,
   createToaster,
@@ -46,6 +45,8 @@ export const Toast: FC<ToastProps> = ({ toaster, ...props }) => {
           return (
             <ChakraToast.Root
               css={{
+                maxWidth: '560px',
+                minWidth: '300px',
                 translate: 'var(--x) var(--y)',
                 scale: 'var(--scale)',
                 opacity: 'var(--opacity)',
@@ -60,7 +61,6 @@ export const Toast: FC<ToastProps> = ({ toaster, ...props }) => {
                 <ChakraAlert.Indicator css={styles.indicator}>
                   {toast.meta?.icon}
                 </ChakraAlert.Indicator>
-
                 <ChakraAlert.Content css={styles.content}>
                   {toast.title ? (
                     <ChakraAlert.Title css={styles.title}>
@@ -74,20 +74,13 @@ export const Toast: FC<ToastProps> = ({ toaster, ...props }) => {
 
                   {toast.meta?.link ? <AlertLink {...toast.meta.link} /> : null}
                 </ChakraAlert.Content>
-
-                <Box
-                  ml="auto"
-                  position="relative"
-                  alignSelf="flex-start"
-                  flexShrink={0}
-                >
+                <ChakraToast.CloseTrigger css={styles.toastClose}>
                   <CloseButton
                     onClick={() => {
                       toast.meta?.onClose?.();
-                      toaster.dismiss(toast.id);
                     }}
                   />
-                </Box>
+                </ChakraToast.CloseTrigger>
               </ChakraAlert.Root>
             </ChakraToast.Root>
           );
