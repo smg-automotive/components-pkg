@@ -80,7 +80,10 @@
       "motoScout24": "MotoScout24",
       "smg": "SMG Swiss Marketplace Group"
     },
-    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Ton partenaire pour les véhicules d’occasion. Trouve et achète ton véhicule sur le plus grand marché auto de Suisse",
+    "copyright": {
+      "autoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Ton partenaire pour les véhicules d’occasion. Trouve et achète ton véhicule sur le plus grand marché auto de Suisse",
+      "motoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Ton partenaire pour les véhicules d’occasion. Trouve et achète ton véhicule sur le plus grand marché auto de Suisse"
+    },
     "motoscout24": {
       "sections": {
         "brand": {
@@ -143,12 +146,12 @@
     "more": "Plus",
     "search": "Rechercher",
     "searchMenu": {
-      "additional": "Autres",
+      "additional": "Autres options",
       "advancedSearch": "Recherche avancée",
       "comparison": "Outil de Comparaison ({{ numberOfItems }})",
       "dealer": "Revendeurs",
       "insuranceComparison": "Comparaison d’assurances",
-      "searchCars": "Rechercher des véhicules",
+      "searchCars": "Voitures et autres véhicules",
       "searchMerchant": "Rechercher un revendeur",
       "searchMotorcycles": "Rechercher des motos",
       "simpleSearch": "Recherche simple (page d'accueil)",
@@ -162,6 +165,7 @@
       "autoRadar": "AutoRadar",
       "bookmarks": "Favoris",
       "businessImage": "BusinessImage",
+      "c2b": "AutoScout24 Direct",
       "carPark": "Parc de véhicules",
       "cockpit": "Cockpit",
       "contactDetails": "Informations de contact",

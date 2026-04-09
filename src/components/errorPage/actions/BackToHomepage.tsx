@@ -7,8 +7,7 @@ import { ActionButtonInterface } from './interface';
 const BackToHomepage: FC<
   ActionButtonInterface & { variant: 'primary' | 'secondary' }
 > = ({ t, language = 'de', onButtonClick, variant }) => {
-  const languageToUse = language === 'en' ? 'de' : language;
-  const homePageLink = `/${languageToUse}`;
+  const homePageLink = `/${language}`;
 
   return (
     <Button
