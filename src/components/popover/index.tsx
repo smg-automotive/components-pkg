@@ -22,6 +22,7 @@ export type PopoverProps = PropsWithChildren<{
   onOpenChange?: UseDialogProps['onOpenChange'];
   showArrow?: boolean;
   closeOnInteractOutside?: boolean;
+  autoFocus?: boolean;
 }>;
 
 export const Popover: FC<PopoverProps> = ({
@@ -36,6 +37,7 @@ export const Popover: FC<PopoverProps> = ({
   open,
   showArrow = true,
   closeOnInteractOutside = false,
+  autoFocus,
 }) => {
   return (
     <ChakraPopover.Root
@@ -45,6 +47,7 @@ export const Popover: FC<PopoverProps> = ({
       closeOnInteractOutside={closeOnInteractOutside}
       open={open}
       onOpenChange={onOpenChange}
+      autoFocus={autoFocus}
     >
       <ChakraPopover.Trigger asChild>{children}</ChakraPopover.Trigger>
       <Portal>
