@@ -12,7 +12,7 @@ type FocusedHeaderProps = {
   brand: Brand;
 };
 
-const FocusedHeader: FC<FocusedHeaderProps> = ({ brand }) => {
+export const FocusedHeader: FC<FocusedHeaderProps> = ({ brand }) => {
   const logo = brand === Brand.AutoScout24 ? logoAutoScout24 : logoMotoScout24;
 
   return (
@@ -43,5 +43,3 @@ const FocusedHeader: FC<FocusedHeaderProps> = ({ brand }) => {
     </Box>
   );
 };
-
-export default FocusedHeader;
