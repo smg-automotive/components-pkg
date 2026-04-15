@@ -16,7 +16,7 @@ import Box from 'src/components/box';
 import Navigation from './index';
 
 const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
-  const [selectedTenant, setSelectedTenant] = React.useState<string | null>(
+  const [selectedTenant, setSelectedTenant] = React.useState<number | null>(
     user?.sellerId || null,
   );
   return (
@@ -31,7 +31,7 @@ const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
       }
       selectTenant={(newTenantId) =>
         new Promise((resolve) => {
-          setSelectedTenant(newTenantId.toString());
+          setSelectedTenant(Number(newTenantId));
           selectTenant(newTenantId);
           setTimeout(resolve, 300);
         })
@@ -139,7 +139,8 @@ export const ProfessionalWithoutOptimizer: StoryType = {
       forceTenantSelection: false,
       isMultiTenantUser: false,
       userType: Auth0UserType.Professional,
-      sellerId: '60601',
+      sellerId: 60601,
+      sellerIds: [60601],
       managedSellers: [],
       entitlements: {},
       userData: null,
@@ -158,7 +159,8 @@ export const ProfessionalWithOptimizerPro: StoryType = {
       forceTenantSelection: false,
       isMultiTenantUser: false,
       userType: Auth0UserType.Professional,
-      sellerId: '60601',
+      sellerId: 60601,
+      sellerIds: [60601],
       managedSellers: [],
       entitlements: {
         'optimizer-pro': {
@@ -185,7 +187,8 @@ export const ProfessionalWithOptimizerBasic: StoryType = {
       forceTenantSelection: false,
       isMultiTenantUser: false,
       userType: Auth0UserType.Professional,
-      sellerId: '60601',
+      sellerId: 60601,
+      sellerIds: [60601],
       managedSellers: [],
       entitlements: {
         optimizer: {
@@ -212,7 +215,8 @@ export const ProfessionalWithMarketPriceEntitlement: StoryType = {
       forceTenantSelection: false,
       isMultiTenantUser: false,
       userType: Auth0UserType.Professional,
-      sellerId: '60601',
+      sellerId: 60601,
+      sellerIds: [60601],
       managedSellers: [],
       entitlements: {
         'market-price-check': {
