@@ -26,23 +26,24 @@ import { ClearButton } from './ClearButton';
 
 type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 
-type SharedProps = ChakraInputProps & InputVariantProps & {
-  placeholder?: string;
-  disabled?: boolean;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onFocus?: FocusEventHandler<HTMLInputElement>;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
-  autoFocus?: boolean;
-  name: string;
-  type?: 'text' | 'number' | 'password';
-  icon?: React.ComponentType;
-  isClearable?: boolean;
-  endElement?: ReactElement;
-  rightAddonElement?: ReactElement;
-  leftAddonElement?: ReactElement;
-  autoComplete?: 'on' | 'off';
+type SharedProps = ChakraInputProps &
+  InputVariantProps & {
+    placeholder?: string;
+    disabled?: boolean;
+    onBlur?: FocusEventHandler<HTMLInputElement>;
+    onFocus?: FocusEventHandler<HTMLInputElement>;
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+    autoFocus?: boolean;
+    name: string;
+    type?: 'text' | 'number' | 'password';
+    icon?: React.ComponentType;
+    isClearable?: boolean;
+    endElement?: ReactElement;
+    rightAddonElement?: ReactElement;
+    leftAddonElement?: ReactElement;
+    autoComplete?: 'on' | 'off';
     readOnly?: boolean;
-};
+  };
 
 type ControlledInputProps = {
   debounce?: false;

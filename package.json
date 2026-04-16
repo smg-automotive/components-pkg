@@ -145,6 +145,6 @@
     "yargs": "18.0.0"
   },
   "overrides": {
-    "eslint": "latest"
+    "eslint": "9.39.4"
   }
 }
