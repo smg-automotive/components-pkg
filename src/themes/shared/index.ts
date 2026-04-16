@@ -23,7 +23,7 @@ import { emBreakpoints } from './breakpoints';
 import { animationStyles } from './animationStyles';
 
 export const getSharedConfig = () => ({
-  strictTokens: true,
+  strictTokens: false,
   globalCss,
   theme: {
     breakpoints: emBreakpoints,
