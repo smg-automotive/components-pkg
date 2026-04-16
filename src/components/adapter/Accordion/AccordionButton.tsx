@@ -6,7 +6,7 @@ import {
   AccordionButtonProps,
 } from 'src/components/accordion/AccordionButton';
 
-// TODO try to figure out why we need to redeclare these props
+// TODO try  to figure out why we need to redeclare these props
 type Props = AccordionButtonProps & {
   w?: AccordionButtonProps['w'];
   _hover?: SystemStyleObject;
