@@ -71,3 +71,27 @@ export const switchToItalianLinkConfig = ({
     },
   },
 });
+
+export const switchToEnglishLinkConfig = ({
+  currentLanguage,
+}: {
+  currentLanguage: Language;
+}): NavigationLinkConfigProps => ({
+  title: 'English',
+  isNew: true,
+  onClick: () =>
+    replaceLanguage({
+      activeLanguage: currentLanguage,
+      newLanguage: 'en',
+    }),
+  visibilitySettings: {
+    userType: {
+      private: true,
+      professional: true,
+    },
+    brand: {
+      autoscout24: true,
+      motoscout24: true,
+    },
+  },
+});

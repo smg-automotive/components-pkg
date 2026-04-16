@@ -6,7 +6,7 @@ export const topListingProLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.topListingPro',
   link: {
     de: '/de/features/top-list/manage',
-    en: '/de/features/top-list/manage',
+    en: '/en/features/top-list/manage',
     fr: '/fr/features/top-list/manage',
     it: '/it/features/top-list/manage',
   },

@@ -54,6 +54,7 @@ import { marketPriceCheckLinkConfig } from './marketPriceCheckConfig';
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';
 import {
+  switchToEnglishLinkConfig,
   switchToFrenchLinkConfig,
   switchToGermanLinkConfig,
   switchToItalianLinkConfig,
@@ -71,6 +72,7 @@ import { estimateLinkConfig } from './estimate';
 import { electromobilityLinkConfig } from './electroMobility';
 import { getComparisonNodeItem } from './comparison';
 import { cockpitLinkConfig } from './cockpit';
+import { c2bLinkConfig } from './c2bLinkConfig';
 import { autoRadarLinkConfig } from './AutoRadar';
 import { autoScoutAssureLinkConfig, motoScoutAssureLinkConfig } from './assure';
 import { onlineAdvertisingLinkConfig } from './advertise';
@@ -163,6 +165,7 @@ const getUserNodeItems = ({
       }),
       autoRadarLinkConfig,
       marketPriceCheckLinkConfig,
+      c2bLinkConfig({ trackEvent }),
     ],
   },
   {
@@ -334,6 +337,7 @@ export const drawerNodeItems = ({
         switchToGermanLinkConfig({ currentLanguage }),
         switchToFrenchLinkConfig({ currentLanguage }),
         switchToItalianLinkConfig({ currentLanguage }),
+        switchToEnglishLinkConfig({ currentLanguage }),
       ],
     },
   ],

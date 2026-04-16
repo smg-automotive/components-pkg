@@ -126,7 +126,7 @@ describe('<Input>', () => {
       const clearButton = screen.getByRole('button');
       await userEvent.click(clearButton);
 
-      expect(input).toHaveValue('');
+      await waitFor(() => expect(input).toHaveValue(''));
     });
 
     it('focuses the input after clearing', async () => {
@@ -137,7 +137,7 @@ describe('<Input>', () => {
       const clearButton = screen.getByRole('button');
       await userEvent.click(clearButton);
 
-      expect(input).toHaveFocus();
+      await waitFor(() => expect(input).toHaveFocus());
     });
 
     it('triggers onChange event', async () => {

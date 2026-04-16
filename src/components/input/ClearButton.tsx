@@ -6,6 +6,7 @@ import { CloseIcon } from '../icons';
 
 type Props = {
   inputRef: MutableRefObject<HTMLInputElement | null>;
+  marginRight?: '4px' | '16px';
 };
 
 const triggerNativeEventFor = (
@@ -26,11 +27,16 @@ const triggerNativeEventFor = (
   elm.dispatchEvent(new Event(event, { bubbles: true }));
 };
 
-export const ClearButton: FC<Props> = ({ inputRef }) => {
+export const ClearButton: FC<Props> = ({ inputRef, marginRight }) => {
   return (
     <CloseButton
       cursor="pointer"
       role="button"
+      style={{
+        marginRight,
+        display: 'flex',
+        alignItems: 'center',
+      }}
       onClick={() => {
         if (!inputRef.current) return;
 

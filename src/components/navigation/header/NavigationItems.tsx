@@ -44,7 +44,7 @@ export const NavigationItems: FC<NavigationItemsProps> = ({
 
   return (
     <Stack direction="row" gap={{ base: 'lg', sm: '2xl' }} align="center">
-      <Link href={`/${language === 'en' ? 'de' : language}`}>
+      <Link href={`/${language}`}>
         <Image
           css={{
             width: { sm: '124px', base: '101px' },

@@ -67,6 +67,7 @@ export * from './vehicleReference';
 export * from './filterPatterns/dialog/OpenFilterButton';
 export * from './spinner';
 export * from './progress';
+export * from './focusedHeader';
 export { Option } from './select';
 export * from './radio/RadioList';
 export * from './toast';

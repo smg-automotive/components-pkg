@@ -55,7 +55,7 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
           link: {
             de: '/de/s/advanced',
-            en: '/de/s/advanced',
+            en: '/en/s/advanced',
             fr: '/fr/s/advanced',
             it: '/it/s/advanced',
           },
@@ -68,7 +68,7 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
           link: {
             de: '/de/sellers/search',
-            en: '/de/sellers/search',
+            en: '/en/sellers/search',
             fr: '/fr/sellers/search',
             it: '/it/sellers/search',
           },
@@ -181,7 +181,7 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
           link: {
             de: '/de/products-and-prices',
-            en: '/de/products-and-prices',
+            en: '/en/products-and-prices',
             fr: '/fr/products-and-prices',
             it: '/it/products-and-prices',
           },
@@ -217,7 +217,7 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
           link: {
             de: '/de/contact/',
-            en: '/de/contact/',
+            en: '/en/contact/',
             fr: '/fr/contact/',
             it: '/it/contact/',
           },
@@ -604,7 +604,7 @@ export const footerConfig = (): FooterConfigInterface => ({
       },
       link: {
         de: 'https://www.autoscout24.ch/de/',
-        en: 'https://www.autoscout24.ch/de/',
+        en: 'https://www.autoscout24.ch/en/',
         fr: 'https://www.autoscout24.ch/fr/',
         it: 'https://www.autoscout24.ch/it/',
       },
@@ -643,7 +643,7 @@ export const footerConfig = (): FooterConfigInterface => ({
       },
       link: {
         de: 'https://www.motoscout24.ch/de/',
-        en: 'https://www.motoscout24.ch/de/',
+        en: 'https://www.motoscout24.ch/en/',
         fr: 'https://www.motoscout24.ch/fr/',
         it: 'https://www.motoscout24.ch/it/',
       },
