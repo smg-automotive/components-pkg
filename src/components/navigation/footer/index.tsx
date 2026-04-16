@@ -69,7 +69,7 @@ export const Footer: FC<FooterProps> = ({
           <Center>
             <Container width="full" maxWidth="container.xl" paddingX="lg">
               <FooterCompanies config={config} />
-              <FooterCopyright />
+              <FooterCopyright brand={brand} />
             </Container>
           </Center>
         </Box>

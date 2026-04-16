@@ -4,7 +4,7 @@ export const leadsManagementLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.contactRequests',
   link: {
     de: '/de/message-manager',
-    en: '/de/message-manager',
+    en: '/en/message-manager',
     fr: '/fr/message-manager',
     it: '/it/message-manager',
   },

@@ -86,7 +86,7 @@ describe('Header', () => {
 
   it('displays the seller id in the user drawer for the professional seller', async () => {
     const email = 'john.doe@me.com';
-    const sellerId = '6002';
+    const sellerId = 6002;
     renderNavigation({ user: professionalUser({ email, sellerId }) });
     const drawerToggle = screen.getByText(email);
 

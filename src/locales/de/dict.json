@@ -80,7 +80,10 @@
       "motoScout24": "MotoScout24",
       "smg": "SMG Swiss Marketplace Group"
     },
-    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Ihr Partner für Auto Occasionen - Suchen & kaufen Sie Autos im grössten Automarkt der Schweiz",
+    "copyright": {
+      "autoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Dein Partner für Auto-Occasionen – suche und kaufe Autos im grössten Automarkt der Schweiz",
+      "motoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group AG. Alle Rechte vorbehalten. Dein Partner für Motorrad-Occasionen – suche und kaufe Motorräder im grössten Motorradmarkt der Schweiz"
+    },
     "motoscout24": {
       "sections": {
         "brand": {
@@ -92,7 +95,7 @@
     "sections": {
       "aboutUs": {
         "contact": "Kontakt",
-        "factsAndFigures": "Facts & Figures",
+        "factsAndFigures": "Portfolio",
         "jobs": "Offene Stellen",
         "newsletter": "Newsletter",
         "title": "Über uns"
@@ -103,7 +106,7 @@
       },
       "brand": {
         "advancedSearch": "Erweiterte Suche",
-        "dealerSearch": "Garagen und Händler suchen",
+        "dealerSearch": "Händler suchen",
         "makes": "Markenübersicht",
         "models": "Modellübersicht"
       },
@@ -143,12 +146,12 @@
     "more": "Mehr",
     "search": "Suchen",
     "searchMenu": {
-      "additional": "Weiteres",
+      "additional": "Weitere Optionen",
       "advancedSearch": "Erweiterte Suche",
       "comparison": "Vergleichstool ({{ numberOfItems }})",
       "dealer": "Händler",
       "insuranceComparison": "Versicherungsvergleich",
-      "searchCars": "Autos suchen",
+      "searchCars": "Autos und andere Fahrzeuge",
       "searchMerchant": "Händler suchen",
       "searchMotorcycles": "Motorräder suchen",
       "simpleSearch": "Einfache Suche (Startseite)",
@@ -162,6 +165,7 @@
       "autoRadar": "AutoRadar",
       "bookmarks": "Merkliste",
       "businessImage": "BusinessImage",
+      "c2b": "AutoScout24 Direct",
       "carPark": "Zum Fahrzeugpark",
       "cockpit": "Cockpit",
       "contactDetails": "Kontaktangaben",

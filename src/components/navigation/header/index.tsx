@@ -74,7 +74,7 @@ const Navigation: FC<NavigationProps> = ({
           trackEvent,
           onLogout,
           comparisonItemIds,
-          sellerId: user?.sellerId,
+          sellerId: user?.sellerId?.toString() ?? undefined,
           currentLanguage: language,
           isLoggedIn: !!user,
         }),

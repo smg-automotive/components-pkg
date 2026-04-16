@@ -80,7 +80,10 @@
       "motoScout24": "MotoScout24",
       "smg": "SMG Swiss Marketplace Group"
     },
-    "copyright": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Votre partenaire pour voitures d'occasion - recherche & achat de véhicules sur le plus grand marché automobile de Suisse",
+    "copyright": {
+      "autoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Ton partenaire pour les véhicules d’occasion. Trouve et achète ton véhicule sur le plus grand marché auto de Suisse",
+      "motoscout24": "© Copyright {{year}} by SMG Swiss Marketplace Group SA. Tous droits réservés. Ton partenaire pour les véhicules d’occasion. Trouve et achète ton véhicule sur le plus grand marché auto de Suisse"
+    },
     "motoscout24": {
       "sections": {
         "brand": {
@@ -92,7 +95,7 @@
     "sections": {
       "aboutUs": {
         "contact": "Contact",
-        "factsAndFigures": "Facts & Figures",
+        "factsAndFigures": "Portefeuille",
         "jobs": "Postes vacants",
         "newsletter": "Newsletter",
         "title": "A propos de nous"
@@ -103,7 +106,7 @@
       },
       "brand": {
         "advancedSearch": "Recherche avancée",
-        "dealerSearch": "Rechercher point de vente",
+        "dealerSearch": "Rechercher revendeur",
         "makes": "Aperçu marques",
         "models": "Vue d’ensemble des modèles"
       },
@@ -121,7 +124,7 @@
         "direct": "AutoScout24 Direct",
         "productsAndPrices": "Produits et prix",
         "professionalPackages": "Packs pour garagistes",
-        "title": "Insérer",
+        "title": "Publier une annonce",
         "vehicles": "Véhicules"
       },
       "media": {
@@ -143,13 +146,13 @@
     "more": "Plus",
     "search": "Rechercher",
     "searchMenu": {
-      "additional": "Autres",
+      "additional": "Autres options",
       "advancedSearch": "Recherche avancée",
       "comparison": "Outil de Comparaison ({{ numberOfItems }})",
-      "dealer": "Points de vente",
+      "dealer": "Revendeurs",
       "insuranceComparison": "Comparaison d’assurances",
-      "searchCars": "Rechercher des véhicules",
-      "searchMerchant": "Rechercher point de vente",
+      "searchCars": "Voitures et autres véhicules",
+      "searchMerchant": "Rechercher un revendeur",
       "searchMotorcycles": "Rechercher des motos",
       "simpleSearch": "Recherche simple (page d'accueil)",
       "vehicles": "Véhicules",
@@ -158,10 +161,11 @@
     "sell": "Vendre",
     "userMenu": {
       "accountSettings": "Paramétrage du compte",
-      "advertisePartsAccessories": "Insérer des pièces détachées",
+      "advertisePartsAccessories": "Publier une annonce pour des pièces détachées et des accessoires",
       "autoRadar": "AutoRadar",
       "bookmarks": "Favoris",
       "businessImage": "BusinessImage",
+      "c2b": "AutoScout24 Direct",
       "carPark": "Parc de véhicules",
       "cockpit": "Cockpit",
       "contactDetails": "Informations de contact",

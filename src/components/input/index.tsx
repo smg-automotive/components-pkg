@@ -30,16 +30,16 @@ type SharedProps = InputVariantProps & {
   disabled?: boolean;
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   autoFocus?: boolean;
   name: string;
   type?: 'text' | 'number' | 'password';
   icon?: React.ComponentType;
   isClearable?: boolean;
+  endElement?: ReactElement;
   rightAddonElement?: ReactElement;
   leftAddonElement?: ReactElement;
   autoComplete?: 'on' | 'off';
-  endElement?: ReactElement;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 };
 
 type ControlledInputProps = {
@@ -95,9 +95,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       type = 'text',
       icon: Icon,
       isClearable = false,
+      endElement,
       rightAddonElement: RightAddonElement,
       leftAddonElement: LeftAddonElement,
-      endElement,
       ...props
     },
     ref,

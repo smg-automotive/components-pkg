@@ -2,24 +2,23 @@ import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
 
 import { NavigationLinkConfigProps } from './headerLinks';
 
-export const estimateLinkConfig = ({
+export const c2bLinkConfig = ({
   trackEvent,
 }: {
   trackEvent?: (event: CustomEvent) => void;
 }) => {
   return {
-    translationKey: 'header.estimate',
+    translationKey: 'header.userMenu.c2b',
     link: {
-      de: '/de/price-estimate',
-      en: '/en/price-estimate',
-      fr: '/fr/price-estimate',
-      it: '/it/price-estimate',
+      de: 'https://b2b.autoscout24.ch/direct/',
+      en: 'https://b2b.autoscout24.ch/direct/',
+      fr: 'https://b2b.autoscout24.ch/fr/direct/',
+      it: 'https://b2b.autoscout24.ch/it/direct/',
     },
-    showUnderMoreLinkBelow: 'sm',
     visibilitySettings: {
       userType: {
-        private: true,
-        professional: false,
+        private: false,
+        professional: true,
       },
       brand: {
         autoscout24: true,
@@ -29,7 +28,7 @@ export const estimateLinkConfig = ({
     onClick: () =>
       trackEvent?.({
         eventCategory: navigationEventCategory,
-        eventAction: 'estimate',
+        eventAction: 'open_as24_direct_b2b',
       }),
   } satisfies NavigationLinkConfigProps;
 };
