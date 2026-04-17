@@ -1,5 +1,6 @@
 export { AiSearchIcon } from './AiSearchIcon';
 export { AdvancedSearchIcon } from './AdvancedSearchIcon';
+export { SparkIcon } from './SparkIcon';
 export { ArrowCircleIcon } from './ArrowCircleIcon';
 export { ArrowDiagonalIcon } from './ArrowDiagonalIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
