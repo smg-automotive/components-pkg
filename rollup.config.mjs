@@ -1,6 +1,6 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import executable from 'rollup-plugin-executable';
-import dts from 'rollup-plugin-dts';
+// import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
 import { dirname, join } from 'path';
@@ -103,11 +103,11 @@ const esm = {
   onwarn,
 };
 
-const types = {
-  input: 'src/index.types.ts',
-  output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-  plugins: [dts({ tsconfig: './tsconfig.build.json' })],
-};
+// const types = {
+//   input: 'src/index.ts',
+//   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+//   plugins: [dts({ tsconfig: './tsconfig.build.json' })],
+// };
 
 const hostedFontsCjs = {
   input: 'src/fonts/Hosted.tsx',
@@ -191,10 +191,14 @@ const cli = {
           src: 'src/lib/cli/setupNextFonts/template.tsx',
           dest: 'dist/bin',
         },
+        {
+          src: 'src/lib/cli/chakraTypegenTheme.cjs',
+          dest: 'dist/bin',
+        },
       ],
     }),
   ],
   onwarn,
 };
 
-export default [cjs, esm, types, hostedFontsCjs, hostedFontsEsm, cli];
+export default [cjs, esm, hostedFontsCjs, hostedFontsEsm, cli];
