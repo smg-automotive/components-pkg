@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'url';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
@@ -9,6 +10,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+// eslint-disable-next-line import/no-unresolved
+import alias from '@rollup/plugin-alias';
 
 import packageJson from './package.json' with { type: 'json' };
 
@@ -33,8 +36,11 @@ const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
 );
 
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
+const rootDir = dirname(fileURLToPath(import.meta.url));
+const aliasEntries = [{ find: '@', replacement: rootDir }];
 const jsPlugins = [
   peerDepsExternal(),
+  alias({ entries: aliasEntries }),
   resolve(resolveOptions),
   commonjs(),
   image(),
@@ -165,6 +171,7 @@ const cli = {
     },
   ],
   plugins: [
+    alias({ entries: aliasEntries }),
     resolve({
       ...resolveOptions,
       preferBuiltins: true,
