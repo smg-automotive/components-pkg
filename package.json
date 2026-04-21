@@ -6,12 +6,24 @@
   "module": "dist/esm/index.js",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
     },
     "./fonts/hosted": {
-      "require": "./dist/fonts/cjs/Hosted.js",
-      "import": "./dist/fonts/esm/Hosted.js"
+      "import": {
+        "types": "./dist/fonts/esm/types/Hosted.d.mts",
+        "default": "./dist/fonts/esm/Hosted.js"
+      },
+      "require": {
+        "types": "./dist/fonts/esm/types/Hosted.d.ts",
+        "default": "./dist/fonts/cjs/Hosted.js"
+      }
     }
   },
   "types": "dist/index.d.ts",
@@ -123,7 +135,6 @@
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "6.0.2",
-    "typescript-transform-paths": "3.5.6",
     "unist-util-visit": "5.1.0",
     "webpack": "5.106.2"
   },
