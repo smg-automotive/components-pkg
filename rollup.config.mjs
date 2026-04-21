@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'url';
+import transformPathsModule from 'typescript-transform-paths';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
@@ -38,6 +39,21 @@ const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
 const rootDir = dirname(fileURLToPath(import.meta.url));
 const aliasEntries = [{ find: '@', replacement: rootDir }];
+const transformPaths = transformPathsModule.default;
+const pathTransformers = {
+  before: [
+    {
+      type: 'program',
+      factory: (program) => transformPaths(program),
+    },
+  ],
+  afterDeclarations: [
+    {
+      type: 'program',
+      factory: (program) => transformPaths(program),
+    },
+  ],
+};
 const jsPlugins = [
   peerDepsExternal(),
   alias({ entries: aliasEntries }),
@@ -61,6 +77,7 @@ const cjs = {
     ...jsPlugins,
     typescript({
       tsconfig: './tsconfig.build.json',
+      transformers: pathTransformers,
       compilerOptions: {
         outDir: dirname(packageJson.main),
       },
@@ -85,6 +102,7 @@ const esm = {
     ...jsPlugins,
     typescript({
       tsconfig: './tsconfig.build.json',
+      transformers: pathTransformers,
       compilerOptions: {
         outDir: dirname(packageJson.module),
         declaration: true,
@@ -124,6 +142,7 @@ const hostedFontsCjs = {
     ...jsPlugins,
     typescript({
       tsconfig: './tsconfig.build_fonts.json',
+      transformers: pathTransformers,
       compilerOptions: {
         outDir: dirname(fontsHostedRequire),
         declaration: true,
@@ -150,6 +169,7 @@ const hostedFontsEsm = {
     ...jsPlugins,
     typescript({
       tsconfig: './tsconfig.build_fonts.json',
+      transformers: pathTransformers,
       compilerOptions: {
         outDir: dirname(fontsHostedImport),
         declaration: true,
@@ -179,6 +199,7 @@ const cli = {
     commonjs(),
     typescript({
       tsconfig: './tsconfig.build_cli.json',
+      transformers: pathTransformers,
       compilerOptions: {
         outDir: dirname(packageJson.bin.components),
       },
