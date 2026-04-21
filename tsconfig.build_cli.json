@@ -1,5 +1,8 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src/lib/cli"
+  },
   "exclude": ["dist", "node_modules", "src/**/*.Test.ts*"],
   "include": ["src/lib/cli"]
 }
