@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from '@/src/themes/shared/sizes';
 
-import { Box, Divider, Flex, Text } from '../index';
+import { Box, Divider, Flex, Text } from '@/src/components/index';
+
 import PageLayout from './Page';
 
 const meta: Meta<typeof PageLayout> = {

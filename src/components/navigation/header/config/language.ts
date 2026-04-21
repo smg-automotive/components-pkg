@@ -1,7 +1,8 @@
 import { Language } from '@smg-automotive/i18n-pkg';
 
+import { replaceLanguage } from '@/src/components/navigation/header/replaceLanguage';
+
 import { NavigationLinkConfigProps } from './headerLinks';
-import { replaceLanguage } from '../replaceLanguage';
 
 export const switchToGermanLinkConfig = ({
   currentLanguage,

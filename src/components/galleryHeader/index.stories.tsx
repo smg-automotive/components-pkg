@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { H1, H2 } from 'src/components/heading';
-import Box from 'src/components/box';
+import { H1, H2 } from '@/src/components/heading';
+import Box from '@/src/components/box';
 
 import GalleryHeaderComponent from './index';
 

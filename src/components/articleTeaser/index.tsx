@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { chakra, ResponsiveValue, useMultiStyleConfig } from '@chakra-ui/react';
 
-import { Sizes } from 'src/themes';
+import { Sizes } from '@/src/themes';
 
-import Stack from '../stack';
+import Stack from '@/src/components/stack';
 
 export type Props = {
   title: string;

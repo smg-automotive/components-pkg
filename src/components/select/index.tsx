@@ -4,7 +4,7 @@ import {
   SelectProps as ChakraSelectProps,
 } from '@chakra-ui/react';
 
-import { ChevronDownLargeIcon } from '../icons';
+import { ChevronDownLargeIcon } from '@/src/components/icons';
 
 export type Option<T extends string | number> = {
   value: T;

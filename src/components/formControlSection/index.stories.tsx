@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box, Stack } from '@chakra-ui/react';
 
-import { Checkbox } from 'src/index';
+import { Checkbox } from '@/src/index';
 
 import FormControlSection from './index';
 

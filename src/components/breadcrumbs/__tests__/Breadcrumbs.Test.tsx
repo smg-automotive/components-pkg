@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { render, screen } from 'jest-utils';
+import BreadcrumbLink from '@/src/components/breadcrumbs/Link';
+import BreadcrumbItem from '@/src/components/breadcrumbs/Item';
+import { render, screen } from '@/jest-utils';
 
-import BreadcrumbLink from '../Link';
-import BreadcrumbItem from '../Item';
 import Breadcrumbs from '..';
 
 const renderWrapper = ({

@@ -3,30 +3,29 @@ import { Language } from '@smg-automotive/i18n-pkg';
 
 import { chakra } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { ErrorStatusCode } from 'src/types/errorStatusCode';
-import Text from 'src/components/text';
-import Stack from 'src/components/stack';
-import SimpleGrid from 'src/components/simpleGrid';
-import PageLayout from 'src/components/layout/Page';
-import { AutoScout24AppLogo, MotoScout24AppLogo } from 'src/components/icons';
-import { H1 } from 'src/components/heading';
-import Flex from 'src/components/flex';
-import Divider from 'src/components/divider';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { ErrorStatusCode } from '@/src/types/errorStatusCode';
+import Text from '@/src/components/text';
+import Stack from '@/src/components/stack';
+import SimpleGrid from '@/src/components/simpleGrid';
+import PageLayout from '@/src/components/layout/Page';
+import { AutoScout24AppLogo, MotoScout24AppLogo } from '@/src/components/icons';
+import { H1 } from '@/src/components/heading';
+import Flex from '@/src/components/flex';
 
-import AspectRatio from 'src/components/aspectRatio';
-import errorIllustrationVerifyEmail from 'src/assets/images/errorIllustrationVerifyEmail.png';
-import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustrationSomethingWentWrong.png';
+import ContactSupport from '@/src/components/errorPage/actions/secondary/ContactSupport';
 
-import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
+import BackToHomepageSecondary from '@/src/components/errorPage/actions/secondary/BackToHomepage';
+import Reload from '@/src/components/errorPage/actions/primary/Reload';
+import BackToLogin from '@/src/components/errorPage/actions/primary/BackToLogin';
+import BackToHomepagePrimary from '@/src/components/errorPage/actions/primary/BackToHomepage';
+import { ActionButtonInterface } from '@/src/components/errorPage/actions/interface';
+import Divider from '@/src/components/divider';
+import AspectRatio from '@/src/components/aspectRatio';
+import errorIllustrationVerifyEmail from '@/src/assets/images/errorIllustrationVerifyEmail.png';
+import errorIllustrationSomethingWentWrong from '@/src/assets/images/errorIllustrationSomethingWentWrong.png';
+import errorIllustrationNotFound from '@/src/assets/images/errorIllustrationNotFound.png';
 
-import ContactSupport from '../actions/secondary/ContactSupport';
-
-import BackToHomepageSecondary from '../actions/secondary/BackToHomepage';
-import Reload from '../actions/primary/Reload';
-import BackToLogin from '../actions/primary/BackToLogin';
-import BackToHomepagePrimary from '../actions/primary/BackToHomepage';
-import { ActionButtonInterface } from '../actions/interface';
 import EmailChangeVerificationErrorContent from './EmailChangeVerification';
 
 const Nonce: FC<ActionButtonInterface> = () => {

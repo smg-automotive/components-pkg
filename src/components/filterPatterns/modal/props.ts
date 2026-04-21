@@ -1,7 +1,7 @@
 import { ButtonProps } from '@chakra-ui/react';
 
-import { FilterPatternProps } from '../props';
-import { ActionButtonProps } from '../ActionButton';
+import { FilterPatternProps } from '@/src/components/filterPatterns/props';
+import { ActionButtonProps } from '@/src/components/filterPatterns/ActionButton';
 
 import {
   OpenFilterButtonDisplayType,

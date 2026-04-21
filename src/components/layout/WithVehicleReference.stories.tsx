@@ -1,12 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from '@/src/themes/shared/sizes';
 
-import SimpleHeader from '../simpleHeader';
-import Input from '../input';
-import FormControl from '../formControl';
-import Button from '../button';
+import SimpleHeader from '@/src/components/simpleHeader';
+import Input from '@/src/components/input';
+import FormControl from '@/src/components/formControl';
+import Button from '@/src/components/button';
+
 import LayoutWithVehicleReference from './WithVehicleReference';
 
 const meta: Meta<typeof LayoutWithVehicleReference> = {

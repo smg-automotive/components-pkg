@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { Auth0UserType } from '@smg-automotive/auth';
 
-import { Project } from 'src/types/project';
-import { Environment } from 'src/types/environment';
-import { Entitlement } from 'src/types/entitlements';
-import { Brand } from 'src/types/brand';
+import { Project } from '@/src/types/project';
+import { Environment } from '@/src/types/environment';
+import { Entitlement } from '@/src/types/entitlements';
+import { Brand } from '@/src/types/brand';
 
 import { UserTypeExternal } from './header/types';
 

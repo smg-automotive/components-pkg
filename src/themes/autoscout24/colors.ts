@@ -1,4 +1,4 @@
-import { shared } from '../shared';
+import { shared } from '@/src/themes/shared';
 
 const brandPrimary = '#F5F200';
 const brand300 = '#C1B900';

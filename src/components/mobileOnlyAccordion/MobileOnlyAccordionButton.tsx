@@ -2,10 +2,10 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import Show from '../show';
-import Hide from '../hide';
-import Box from '../box';
-import AccordionButton from '../accordion/AccordionButton';
+import Show from '@/src/components/show';
+import Hide from '@/src/components/hide';
+import Box from '@/src/components/box';
+import AccordionButton from '@/src/components/accordion/AccordionButton';
 
 const MobileOnlyAccordionButton: FC<PropsWithChildren> = (props) => {
   const { children, ...rest } = props;

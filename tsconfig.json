@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "strict": true,
     "jsx": "react",
     "module": "esnext",
+    "target": "es2017",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,

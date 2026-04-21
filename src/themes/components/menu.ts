@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 import { menuAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { opacity } from '../shared/opacity';
+import { opacity } from '@/src/themes/shared/opacity';
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);

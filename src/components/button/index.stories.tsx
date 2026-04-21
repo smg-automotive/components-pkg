@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { iconControl } from 'src/storybook/ControlTypes';
-import { ShareIcon, VideoIcon } from 'src';
+import { iconControl } from '@/src/storybook/ControlTypes';
+import { ShareIcon, VideoIcon } from '@/src';
 
 import Button from './index';
 

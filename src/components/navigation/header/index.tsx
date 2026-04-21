@@ -2,15 +2,15 @@ import React, { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
-import { CustomEvent } from 'src/types/tracking';
-import { Project } from 'src/types/project';
-import { Environment } from 'src/types/environment';
-import { Brand } from 'src/types/brand';
+import { CustomEvent } from '@/src/types/tracking';
+import { Project } from '@/src/types/project';
+import { Environment } from '@/src/types/environment';
+import { Brand } from '@/src/types/brand';
 
-import TranslationProvider from 'src/components/translationProvider';
-import Stack from 'src/components/stack';
+import TranslationProvider from '@/src/components/translationProvider';
+import Stack from '@/src/components/stack';
 
-import Box from 'src/components/box';
+import Box from '@/src/components/box';
 
 import NavigationTenantMenu from './navigationTenantMenu';
 import { NavigationLanguageMenu } from './NavigationLanguageMenu';

@@ -4,8 +4,8 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box, IconButton } from '@chakra-ui/react';
 
-import { AiSearchIcon, Button, Select } from '../index';
-import { MagnifierIcon } from '../icons';
+import { AiSearchIcon, Button, Select } from '@/src/components/index';
+import { MagnifierIcon } from '@/src/components/icons';
 
 import InputComponent, { InputProps } from './index';
 

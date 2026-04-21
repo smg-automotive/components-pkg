@@ -7,15 +7,15 @@ import {
   professionalUser,
 } from '@smg-automotive/auth/fixtures';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { act, fireEvent, render, screen, within } from 'jest-utils';
+import { iconItems } from '@/src/components/navigation/header/config/iconItems';
+import { HeaderNavigationLink } from '@/src/components/navigation/header/config/headerNavigationLink';
+import { HeaderNavigationConfig } from '@/src/components/navigation/header/config/HeaderNavigationConfig';
+import { headerLinks } from '@/src/components/navigation/header/config/headerLinks';
+import { drawerNodeItems } from '@/src/components/navigation/header/config/DrawerNodeItems';
+import { act, fireEvent, render, screen, within } from '@/jest-utils';
 
-import { iconItems } from '../config/iconItems';
-import { HeaderNavigationLink } from '../config/headerNavigationLink';
-import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
-import { headerLinks } from '../config/headerLinks';
-import { drawerNodeItems } from '../config/DrawerNodeItems';
 import Navigation, { NavigationProps } from '..';
 
 const renderNavigation = ({

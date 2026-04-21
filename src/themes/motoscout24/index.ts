@@ -1,7 +1,8 @@
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { shared } from '../shared';
-import { components } from '../components';
+import { shared } from '@/src/themes/shared';
+import { components } from '@/src/themes/components';
+
 import { colors } from './colors';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,21 +1,21 @@
 import { ReactNode } from 'react';
 import { Auth0UserType, type EnrichedSessionUser } from '@smg-automotive/auth';
 
-import { replaceParameters } from 'src/utilities/replacePathParameters';
-import { Project } from 'src/types/project';
-import { Environment } from 'src/types/environment';
-import { Brand } from 'src/types/brand';
+import { replaceParameters } from '@/src/utilities/replacePathParameters';
+import { Project } from '@/src/types/project';
+import { Environment } from '@/src/types/environment';
+import { Brand } from '@/src/types/brand';
 
-import { BreakpointName } from 'src/themes/shared/breakpoints';
+import { BreakpointName } from '@/src/themes/shared/breakpoints';
 import {
   EntitlementConfig,
   LinkConfig,
   LinkInstance,
   LocalizedLinks,
-} from 'src/components/navigation/link';
-import { BaseConfig } from 'src/components/navigation/BaseConfig';
+} from '@/src/components/navigation/link';
+import { UserTypeExternal } from '@/src/components/navigation/header/types';
+import { BaseConfig } from '@/src/components/navigation/BaseConfig';
 
-import { UserTypeExternal } from '../types';
 import { IconItems, IconItemsConfig, IconItemsLinks } from './iconItems';
 import { HeaderNavigationLink } from './headerNavigationLink';
 import { NavigationLinkConfigProps } from './headerLinks';

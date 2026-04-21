@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import Hide from 'src/components/hide';
+import { HeaderNavigationLink } from '@/src/components/navigation/header/config/headerNavigationLink';
+import Hide from '@/src/components/hide';
 
-import { HeaderNavigationLink } from '../config/headerNavigationLink';
 import NavigationLink from './NavigationLink';
 
 export const HeaderLink: FC<{

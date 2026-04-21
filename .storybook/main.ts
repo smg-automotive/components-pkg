@@ -24,6 +24,9 @@ const config: StorybookConfig = {
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: './tsconfig.storybook.json',
+    },
   },
   webpackFinal: async (webpack) => {
     webpack.resolve = webpack.resolve || {};

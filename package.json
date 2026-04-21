@@ -6,12 +6,24 @@
   "module": "dist/esm/index.js",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
     },
     "./fonts/hosted": {
-      "require": "./dist/fonts/cjs/Hosted.js",
-      "import": "./dist/fonts/esm/Hosted.js"
+      "import": {
+        "types": "./dist/fonts/esm/types/Hosted.d.mts",
+        "default": "./dist/fonts/esm/Hosted.js"
+      },
+      "require": {
+        "types": "./dist/fonts/esm/types/Hosted.d.ts",
+        "default": "./dist/fonts/cjs/Hosted.js"
+      }
     }
   },
   "types": "dist/index.d.ts",
@@ -37,7 +49,7 @@
     "start": "http-server ./storybook-static -p 8008",
     "version": "npm run build",
     "build": "rimraf dist && rollup -c",
-    "build:storybook": "storybook build",
+    "build:storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
     "lint:i18n": "npx sort-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
     "lint": "npm run lint:i18n && eslint .",
     "format:i18n": "npm run lint:i18n -- --fix",
@@ -62,6 +74,7 @@
     "@babel/preset-env": "7.29.2",
     "@babel/preset-react": "7.28.5",
     "@babel/preset-typescript": "7.28.5",
+    "@rollup/plugin-alias": "6.0.0",
     "@rollup/plugin-commonjs": "29.0.2",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
@@ -94,6 +107,7 @@
     "autoprefixer": "10.5.0",
     "babel-loader": "10.1.1",
     "buffer": "6.0.3",
+    "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-storybook": "0.12.0",
     "hast-util-is-element": "3.0.0",
     "http-server": "14.1.1",
@@ -120,7 +134,7 @@
     "ts-jest": "29.4.9",
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.2.0",
-    "typescript": "5.9.3",
+    "typescript": "6.0.2",
     "unist-util-visit": "5.1.0",
     "webpack": "5.106.2"
   },

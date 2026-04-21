@@ -1,6 +1,7 @@
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { FooterConfig } from '../factory';
+import { FooterConfig } from '@/src/components/navigation/footer/config/factory';
+
 import { footerConfig } from '..';
 
 describe('The footer configuration', () => {

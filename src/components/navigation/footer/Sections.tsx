@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { chunkArray } from 'src/utilities/chunkArray';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { chunkArray } from '@/src/utilities/chunkArray';
 
-import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
-import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
-import ListItem from 'src/components/list/ListItem';
-import List from 'src/components/list';
+import MobileOnlyAccordionPanel from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
+import MobileOnlyAccordion from '@/src/components/mobileOnlyAccordion';
+import ListItem from '@/src/components/list/ListItem';
+import List from '@/src/components/list';
 
-import GridItem from 'src/components/grid/GridItem';
+import GridItem from '@/src/components/grid/GridItem';
 
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';

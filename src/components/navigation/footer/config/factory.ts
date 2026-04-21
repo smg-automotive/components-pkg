@@ -1,9 +1,13 @@
-import { Project } from 'src/types/project';
-import { Environment } from 'src/types/environment';
-import { Brand } from 'src/types/brand';
+import { Project } from '@/src/types/project';
+import { Environment } from '@/src/types/environment';
+import { Brand } from '@/src/types/brand';
 
-import { Link, LinkConfig, LinkInstance } from 'src/components/navigation/link';
-import { BaseConfig } from 'src/components/navigation/BaseConfig';
+import {
+  Link,
+  LinkConfig,
+  LinkInstance,
+} from '@/src/components/navigation/link';
+import { BaseConfig } from '@/src/components/navigation/BaseConfig';
 
 import { FooterConfigInterface } from '.';
 

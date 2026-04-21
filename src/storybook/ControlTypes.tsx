@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as Icons from '../components/icons';
+import * as Icons from '@/src/components/icons';
 
 export const iconControl = {
   control: {

@@ -8,9 +8,9 @@ import {
   MenuOptionGroup,
 } from '@chakra-ui/react';
 
-import { FontWeights } from 'src/themes';
+import { FontWeights } from '@/src/themes';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { ChevronDownSmallIcon } from '@/src/components/icons';
 
 interface MenuOption {
   value: string;

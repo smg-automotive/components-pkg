@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { render, screen } from 'jest-utils';
-
-import MobileOnlyAccordionPanel from '../MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from '../MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from '../MobileOnlyAccordionButton';
-import MobileOnlyAccordion from '../index';
+import MobileOnlyAccordionPanel from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
+import MobileOnlyAccordion from '@/src/components/mobileOnlyAccordion/index';
+import { render, screen } from '@/jest-utils';
 
 const renderWrapper = () =>
   render(

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { colors } from 'src/themes/autoscout24/colors';
+import { colors } from '@/src/themes/autoscout24/colors';
 
 import {
   TableCaption,

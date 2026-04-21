@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
-import { ChevronLeftLargeIcon, ChevronRightLargeIcon } from '../icons';
-import Flex from '../flex';
+import {
+  ChevronLeftLargeIcon,
+  ChevronRightLargeIcon,
+} from '@/src/components/icons';
+import Flex from '@/src/components/flex';
 
 export type Direction = 'previous' | 'next';
 interface Props {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { MissingImageIcon } from '../icons';
-import Box from '../box';
+import { MissingImageIcon } from '@/src/components/icons';
+import Box from '@/src/components/box';
 
 const MissingImage: FC = () => {
   return (

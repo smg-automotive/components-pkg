@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { useMultiStyleConfig } from '@chakra-ui/system';
 
-import Box from 'src/components/box';
+import Box from '@/src/components/box';
 
 import { MarkProps } from '.';
 

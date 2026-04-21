@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from 'src/components/box';
+import Box from '@/src/components/box';
 
 import UnorderedListComponent, { Props, styleTypes } from './UnorderedList';
 import ListItem from './ListItem';

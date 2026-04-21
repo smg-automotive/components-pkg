@@ -8,13 +8,13 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
+import { useI18n } from '@/src/utilities/i18nInit';
 
-import FilterActionButton from '../ActionButton';
+import { FilterHeading } from '@/src/components/filterPatterns/Heading';
+import FilterActionButton from '@/src/components/filterPatterns/ActionButton';
 
 import { ModalFilterProps } from './props';
 import { OpenFilterButton } from './OpenFilterButton';
-import { FilterHeading } from '../Heading';
 
 const ModalFilterContent: FC<ModalFilterProps> = ({
   language,

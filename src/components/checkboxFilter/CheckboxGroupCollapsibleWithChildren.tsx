@@ -2,9 +2,10 @@ import React from 'react';
 
 import { Box, Collapse, IconButton, useDisclosure } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
+import { useI18n } from '@/src/utilities/i18nInit';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { ChevronDownSmallIcon } from '@/src/components/icons';
+
 import { Item, Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 

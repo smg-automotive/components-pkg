@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 
-import Show from 'src/components/show';
-import ListItem from 'src/components/list/ListItem';
-import Box from 'src/components/box';
-
-import NavigationLink, { NavigationLinkProps } from '../links/NavigationLink';
+import Show from '@/src/components/show';
+import NavigationLink, {
+  NavigationLinkProps,
+} from '@/src/components/navigation/header/links/NavigationLink';
+import ListItem from '@/src/components/list/ListItem';
+import Box from '@/src/components/box';
 
 export const DrawerNavigationLink: FC<{
   item: NavigationLinkProps;

@@ -7,7 +7,7 @@ import {
   SliderTrack,
 } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 const emptyItemOffset = 0;
 const firstItemOffset = 1;

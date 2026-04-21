@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Image } from '@chakra-ui/react';
 
-import { Brand } from 'src/types/brand';
-import { menuHeightConfig } from 'src/components/navigation/header/config/HeaderNavigationConfig';
-import Box from 'src/components/box';
-import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
-import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
+import { Brand } from '@/src/types/brand';
+import { menuHeightConfig } from '@/src/components/navigation/header/config/HeaderNavigationConfig';
+import Box from '@/src/components/box';
+import logoMotoScout24 from '@/src/assets/images/logo_ms24.svg';
+import logoAutoScout24 from '@/src/assets/images/logo_as24.svg';
 
 type FocusedHeaderProps = {
   brand: Brand;
