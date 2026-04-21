@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import TranslationProvider from '../translationProvider';
-import Modal from '../modal';
+import TranslationProvider from '@/src/components/translationProvider';
+import Modal from '@/src/components/modal';
 
 export const TenantSelectionContainer: FC<
   PropsWithChildren<{ language: Language }>

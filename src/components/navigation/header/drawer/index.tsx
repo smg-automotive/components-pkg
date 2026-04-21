@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { DrawerBody } from '@chakra-ui/react';
 
-import Grid from 'src/components/grid';
+import { Drawer as useNavigationDrawerType } from '@/src/components/navigation/header/hooks/useNavigationDrawer';
+import { DrawerNode } from '@/src/components/navigation/header/config/DrawerNodeItems';
+import Grid from '@/src/components/grid';
 
-import DrawerOverlay from 'src/components/drawer/DrawerOverlay';
-import DrawerContent from 'src/components/drawer/DrawerContent';
-import Drawer from 'src/components/drawer';
+import DrawerOverlay from '@/src/components/drawer/DrawerOverlay';
+import DrawerContent from '@/src/components/drawer/DrawerContent';
+import Drawer from '@/src/components/drawer';
 
-import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
-import { DrawerNode } from '../config/DrawerNodeItems';
 import DrawerUserInfo from './userInfo';
 import { DrawerMenu } from './DrawerMenu';
 import DrawerLoginToggle from './DrawerLoginToggle';

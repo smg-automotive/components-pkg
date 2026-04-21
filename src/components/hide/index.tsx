@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { BoxProps, HideProps, useQuery } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 export type Props = Omit<HideProps, 'ssr'> & Omit<BoxProps, 'sx'>;
 

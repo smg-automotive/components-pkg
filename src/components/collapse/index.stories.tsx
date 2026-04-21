@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import Text from '../text';
+import Text from '@/src/components/text';
 
 import CollapseComponent, { CollapseProps } from './index';
 

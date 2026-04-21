@@ -1,4 +1,4 @@
-import { createTenantLabel } from '../createTenantLabel';
+import { createTenantLabel } from '@/src/components/tenantSelection/createTenantLabel';
 
 describe('createTenantLabel', () => {
   it("should return the managedSeller's billingName, city and id", () => {

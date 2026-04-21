@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import Show from 'src/components/show';
-import { CloseIcon, HamburgerMenuIcon } from 'src/components/icons';
-import Box from 'src/components/box';
+import Show from '@/src/components/show';
+import { CloseIcon, HamburgerMenuIcon } from '@/src/components/icons';
+import Box from '@/src/components/box';
 
 import { DrawerNode } from './config/DrawerNodeItems';
 

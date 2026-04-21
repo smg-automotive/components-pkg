@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import ListItem from '../list/ListItem';
-import List from '../list';
+import ListItem from '@/src/components/list/ListItem';
+import List from '@/src/components/list';
+
 import MobileOnlyAccordionPanel from './MobileOnlyAccordionPanel';
 import MobileOnlyAccordionItem from './MobileOnlyAccordionItem';
 import MobileOnlyAccordionButton from './MobileOnlyAccordionButton';

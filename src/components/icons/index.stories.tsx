@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { Box, Center, Text } from '@chakra-ui/react';
 
-import SimpleGrid from '../simpleGrid';
+import SimpleGrid from '@/src/components/simpleGrid';
 
 import * as AllIcons from './index';
 

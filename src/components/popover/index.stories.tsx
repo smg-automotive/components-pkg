@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useDisclosure } from '@chakra-ui/react';
 
-import { TooltipIcon } from '../icons';
+import { TooltipIcon } from '@/src/components/icons';
 
 import PopoverComponent, { PopoverProps } from './index';
 

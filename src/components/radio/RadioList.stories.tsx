@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Spacer } from '@chakra-ui/react';
 
-import { Flex } from '../index';
+import { Flex } from '@/src/components/index';
+
 import RadioListComponent from './RadioList';
 
 const DummyOption = () => {

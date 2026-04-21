@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { AvatarIcon, LogoutIcon } from 'src/components/icons';
-import Button from 'src/components/button';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { AvatarIcon, LogoutIcon } from '@/src/components/icons';
+import Button from '@/src/components/button';
 
 type Props = {
   user: EnrichedSessionUser | null;

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 import RangeFilterInputWithSlider, { Props } from './';
 

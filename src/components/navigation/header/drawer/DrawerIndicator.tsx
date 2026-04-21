@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import Show from 'src/components/show';
-import { ChevronDownSmallIcon } from 'src/components/icons';
+import Show from '@/src/components/show';
+import { ChevronDownSmallIcon } from '@/src/components/icons';
 
 export const DrawerIndicator: FC<{ isOpen: boolean }> = ({ isOpen }) => {
   return (

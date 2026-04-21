@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { AccordionItemProps, useQuery } from '@chakra-ui/react';
 
-import AccordionItem from '../accordion/AccordionItem';
+import AccordionItem from '@/src/components/accordion/AccordionItem';
 
 const MobileOnlyAccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (
   props,

@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Image } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
+import { useI18n } from '@/src/utilities/i18nInit';
 
-import Text from '../text';
-import { H1 } from '../heading';
-import Button from '../button';
+import Text from '@/src/components/text';
+import { H1 } from '@/src/components/heading';
+import Button from '@/src/components/button';
 
 import tenantImage from './tenantSelectionIllustration.png';
 import { TenantSelectionModalLayout } from './ModalLayout';

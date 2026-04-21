@@ -1,7 +1,8 @@
 import React from 'react';
 import { BoxProps } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
+
 import RangeSliderWithScale, {
   ChangeCallback,
   NumericMinMaxValue,

@@ -6,7 +6,7 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-import { ChevronRightTinyIcon } from '../icons';
+import { ChevronRightTinyIcon } from '@/src/components/icons';
 
 const Breadcrumbs: FC<PropsWithChildren<BreadcrumbProps>> = ({
   children,

@@ -2,10 +2,10 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import Show from '../show';
-import Hide from '../hide';
-import Box from '../box';
-import AccordionPanel from '../accordion/AccordionPanel';
+import Show from '@/src/components/show';
+import Hide from '@/src/components/hide';
+import Box from '@/src/components/box';
+import AccordionPanel from '@/src/components/accordion/AccordionPanel';
 
 const MobileOnlyAccordionPanel: FC<PropsWithChildren> = (props) => {
   const { children, ...rest } = props;

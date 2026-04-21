@@ -4,8 +4,9 @@ import { useArgs } from '@storybook/preview-api';
 import { Source } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 
-import Text from '../text';
-import Box from '../box';
+import Text from '@/src/components/text';
+import Box from '@/src/components/box';
+
 import { Item } from './type';
 
 import CheckboxFilterComponent, { Props } from './index';

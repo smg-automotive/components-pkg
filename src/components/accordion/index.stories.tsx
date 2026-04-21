@@ -1,7 +1,12 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';
+import {
+  CheckmarkIcon,
+  InformationIcon,
+  TimeIcon,
+} from '@/src/components/icons';
+
 import AccordionPanel from './AccordionPanel';
 import AccordionItem from './AccordionItem';
 import AccordionButton from './AccordionButton';

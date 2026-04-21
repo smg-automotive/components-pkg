@@ -6,10 +6,10 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 
-import Tooltip from '../tooltip';
-import Text from '../text';
+import Tooltip from '@/src/components/tooltip';
+import Text from '@/src/components/text';
 
-import { InformationIcon } from '../icons';
+import { InformationIcon } from '@/src/components/icons';
 
 export type Props = {
   id: string;

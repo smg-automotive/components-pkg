@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 
-import TranslationProvider from '../translationProvider';
+import TranslationProvider from '@/src/components/translationProvider';
 
-import GridItem from '../grid/GridItem';
-import Grid from '../grid';
-import Divider from '../divider';
+import GridItem from '@/src/components/grid/GridItem';
+import Grid from '@/src/components/grid';
+import Divider from '@/src/components/divider';
+
 import { type Props } from './type';
 import CheckboxWithFacet from './CheckboxWithFacet';
 import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';

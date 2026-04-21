@@ -7,7 +7,7 @@ import type {
 } from '@chakra-ui/react';
 import { switchAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { opacity } from '../shared/opacity';
+import { opacity } from '@/src/themes/shared/opacity';
 
 const $width = cssVar('switch-track-width');
 const $height = cssVar('switch-track-height');

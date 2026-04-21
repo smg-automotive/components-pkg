@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { shared } from 'src/themes';
+import { shared } from '@/src/themes';
 
 import TextComponent from './index';
 

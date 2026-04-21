@@ -1,7 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import VehicleReference, { VehicleReferenceProps } from '../vehicleReference';
-import Box from '../box';
+import VehicleReference, {
+  VehicleReferenceProps,
+} from '@/src/components/vehicleReference';
+import Box from '@/src/components/box';
+
 import TwoColumnsLayout, {
   ColumnSize,
   TwoColumnsLayoutProps,

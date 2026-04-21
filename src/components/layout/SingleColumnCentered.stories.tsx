@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box, Center } from '@chakra-ui/react';
 
-import { sizes } from 'src/themes/shared/sizes';
+import { sizes } from '@/src/themes/shared/sizes';
 
-import { FullHeight } from '../index';
+import { FullHeight } from '@/src/components/index';
+
 import SingleColumnCenteredLayout from './SingleColumnCentered';
 
 const meta: Meta<typeof SingleColumnCenteredLayout> = {

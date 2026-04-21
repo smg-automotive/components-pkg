@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
 import { GridItem } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import MobileOnlyAccordionPanel from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
-import MobileOnlyAccordionItem from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
-import MobileOnlyAccordionButton from 'src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
-import MobileOnlyAccordion from 'src/components/mobileOnlyAccordion';
-import List from 'src/components/list';
-import Box from 'src/components/box';
-
-import { NavigationLinkNode } from '../config/DrawerNodeItems';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { NavigationLinkNode } from '@/src/components/navigation/header/config/DrawerNodeItems';
+import MobileOnlyAccordionPanel from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
+import MobileOnlyAccordionItem from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
+import MobileOnlyAccordionButton from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
+import MobileOnlyAccordion from '@/src/components/mobileOnlyAccordion';
+import List from '@/src/components/list';
+import Box from '@/src/components/box';
 
 import { DrawerNavigationLink } from './DrawerNavigationLink';
 

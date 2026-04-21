@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Text from 'src/components/text';
-import { render, screen } from 'jest-utils';
-
-import Progress from '../index';
+import Text from '@/src/components/text';
+import Progress from '@/src/components/progress/index';
+import { render, screen } from '@/jest-utils';
 
 const createLabel = (current: number, max: number) => (
   <>

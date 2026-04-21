@@ -2,9 +2,10 @@ import React, { FC } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Text from '../text';
-import SimpleHeader from '../simpleHeader';
-import Section from '../section';
+import Text from '@/src/components/text';
+import SimpleHeader from '@/src/components/simpleHeader';
+import Section from '@/src/components/section';
+
 import TwoColumnsLayout, { TwoColumnsLayoutProps } from './TwoColumnsLayout';
 
 type TemplateProps = Omit<TwoColumnsLayoutProps, 'left' | 'right'> & {

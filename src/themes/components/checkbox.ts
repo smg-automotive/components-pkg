@@ -1,7 +1,7 @@
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { fontWeights } from '../shared/fontWeights';
+import { fontWeights } from '@/src/themes/shared/fontWeights';
 
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(parts.keys);

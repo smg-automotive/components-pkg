@@ -1,10 +1,10 @@
 import { Auth0UserType } from '@smg-automotive/auth';
 
-import { Entitlement } from 'src/types/entitlements';
-import { Brand } from 'src/types/brand';
+import { Entitlement } from '@/src/types/entitlements';
+import { Brand } from '@/src/types/brand';
 
-import { Link } from '../link';
-import { UserTypeExternal } from '../header/types';
+import { Link } from '@/src/components/navigation/link';
+import { UserTypeExternal } from '@/src/components/navigation/header/types';
 
 describe('Link', () => {
   describe('determineVisiblity', () => {

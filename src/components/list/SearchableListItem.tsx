@@ -2,7 +2,8 @@ import React, { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { RangeTuple } from 'fuse.js';
 import { Button, ButtonProps } from '@chakra-ui/react';
 
-import Checkbox, { CheckboxProps } from '../checkbox';
+import Checkbox, { CheckboxProps } from '@/src/components/checkbox';
+
 import { SearchableListItemLabel } from './SearchableListItemLabel';
 import ListItem from './ListItem';
 

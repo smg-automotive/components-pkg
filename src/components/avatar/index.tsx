@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
+import { AvatarIcon, AvatarWithNotificationIcon } from '@/src/components/icons';
 
 export type Props = {
   withNotification?: boolean;

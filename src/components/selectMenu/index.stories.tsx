@@ -3,8 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { SortIcon } from '../icons';
-import Box from '../box';
+import { SortIcon } from '@/src/components/icons';
+import Box from '@/src/components/box';
 
 import SelectMenuComponent, { SelectMenuProps } from './index';
 

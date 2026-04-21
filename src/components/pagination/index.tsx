@@ -1,8 +1,12 @@
 import React, { FC, MouseEvent, PropsWithChildren, useMemo } from 'react';
 import { BoxProps, Show, useMultiStyleConfig } from '@chakra-ui/react';
 
-import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
-import Box from '../box';
+import {
+  ChevronLeftSmallIcon,
+  ChevronRightSmallIcon,
+} from '@/src/components/icons';
+import Box from '@/src/components/box';
+
 import PaginationButton from './PaginationButton';
 
 const Dots = '...';

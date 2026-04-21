@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
-import Button from 'src/components/button';
-
-import { ActionButtonInterface } from '../interface';
+import { ActionButtonInterface } from '@/src/components/errorPage/actions/interface';
+import Button from '@/src/components/button';
 
 const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
   const logoutLink = `/seller-web/api/auth/logout`;

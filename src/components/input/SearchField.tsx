@@ -1,10 +1,10 @@
 import React, { forwardRef, useRef } from 'react';
 
-import useMediaQuery from 'src/hooks/useMediaQuery';
+import useMediaQuery from '@/src/hooks/useMediaQuery';
 
-import useFocusWhenVisible from 'src/hooks/useFocusWhenVisible';
+import useFocusWhenVisible from '@/src/hooks/useFocusWhenVisible';
 
-import { MagnifierIcon } from '../icons/index';
+import { MagnifierIcon } from '@/src/components/icons/index';
 
 import Input from './index';
 

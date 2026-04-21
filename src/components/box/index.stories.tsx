@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { space } from 'src/themes/shared/space';
+import { space } from '@/src/themes/shared/space';
 
 import BoxComponent from './index';
 

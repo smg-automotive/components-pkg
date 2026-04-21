@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Text, useDisclosure } from '@chakra-ui/react';
 
-import Button from '../button';
+import Button from '@/src/components/button';
 
 import ModalComponent, { Props } from './index';
 
