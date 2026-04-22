@@ -48,7 +48,8 @@
     "typegen": "THEME_PATH=$( [ -f src/themes/typegenSystem.ts ] && echo src/themes/typegenSystem.ts || echo dist/bin/chakraTypegenTheme.cjs ); npx chakra typegen \"$THEME_PATH\" --clean",
     "typegen:watch": "npm run typegen -- --watch",
     "test": "jest",
-    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand"
+    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
+    "postinstall": "npm run typegen"
   },
   "author": "SMG Automotive",
   "license": "MIT",
