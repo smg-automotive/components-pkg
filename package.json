@@ -6,10 +6,12 @@
   "module": "dist/esm/index.js",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js"
     },
     "./fonts/hosted": {
+      "types": "./dist/fonts/esm/types/Hosted.d.ts",
       "require": "./dist/fonts/cjs/Hosted.js",
       "import": "./dist/fonts/esm/Hosted.js"
     }
@@ -36,19 +38,17 @@
     "dev": "storybook dev -p 6006 --no-open",
     "start": "http-server ./storybook-static -p 8008",
     "version": "npm run build",
-    "build": "rimraf dist && rollup -c && npm run build:types",
-    "build:types": "tsc -p tsconfig.build_types.json && tsc-alias -p tsconfig.build_types.json",
+    "build": "rimraf dist && npm run typegen && rollup -c",
     "build:storybook": "storybook build",
     "lint:i18n": "npx sort-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
     "lint": "npm run lint:i18n && eslint .",
     "format:i18n": "npm run lint:i18n -- --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "typegen": "THEME_PATH=`[ -d src ] && echo src/themes/autoScout24.ts || echo dist/esm/themes/autoScout24.js` && npx chakra typegen $THEME_PATH --clean",
+    "typegen": "THEME_PATH=$( [ -f src/themes/typegenSystem.ts ] && echo src/themes/typegenSystem.ts || echo dist/bin/chakraTypegenTheme.cjs ); npx chakra typegen \"$THEME_PATH\" --clean",
     "typegen:watch": "npm run typegen -- --watch",
     "test": "jest",
-    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
-    "postinstall": "npm run typegen"
+    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand"
   },
   "author": "SMG Automotive",
   "license": "MIT",
@@ -122,7 +122,6 @@
     "storybook": "8.6.18",
     "stream-http": "3.2.0",
     "ts-jest": "29.4.9",
-    "tsc-alias": "^1.8.16",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "unist-util-visit": "5.1.0",
