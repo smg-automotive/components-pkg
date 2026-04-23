@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
 import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
-import { ChevronLeftSmallIcon, ChevronRightSmallIcon } from '../icons';
-import { Flex } from '../flex';
+import {
+  ChevronLeftSmallIcon,
+  ChevronRightSmallIcon,
+} from '@/src/components/icons';
+import { Flex } from '@/src/components/flex';
+
 import { Direction } from './NavigationButton';
 
 interface Props {

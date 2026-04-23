@@ -9,7 +9,7 @@ import {
 } from '@storybook/blocks';
 import { Box } from '@chakra-ui/react';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
 import { ThemeProvider } from './index';
 

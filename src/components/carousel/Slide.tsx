@@ -1,10 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { useSlotRecipe } from '@chakra-ui/react';
 
-import type { ResponsiveValue } from 'src/types/responsiveValue';
-import type { BreakpointName } from 'src/themes/shared/breakpoints';
+import type { ResponsiveValue } from '@/src/types/responsiveValue';
+import type { BreakpointName } from '@/src/themes/shared/breakpoints';
 
-import { Box } from '../box';
+import { Box } from '@/src/components/box';
 
 interface Props {
   onClick: () => void;

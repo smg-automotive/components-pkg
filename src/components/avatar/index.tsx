@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { BoxProps, useRecipe } from '@chakra-ui/react';
 
-import { AvatarIcon, AvatarWithNotificationIcon } from '../icons';
+import { AvatarIcon, AvatarWithNotificationIcon } from '@/src/components/icons';
 
 export type AvatarProps = {
   withNotification?: boolean;

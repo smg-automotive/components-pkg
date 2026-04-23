@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
-import { sizes } from 'src/themes/shared/tokens/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
 import { BaseLayout } from './BaseLayout';
 

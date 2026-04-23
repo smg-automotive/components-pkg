@@ -11,8 +11,8 @@ import {
   SystemContext,
 } from '@chakra-ui/react';
 
-import { autoScout24System, motoScout24System } from 'src/themes';
-import Fonts from 'src/fonts/Hosted';
+import { autoScout24System, motoScout24System } from '@/src/themes';
+import Fonts from '@/src/fonts/Hosted';
 
 import storybookTheme from '../theme';
 

@@ -3,22 +3,22 @@ import { Language } from '@smg-automotive/i18n-pkg';
 
 import { chakra } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { ErrorStatusCode } from 'src/types/errorStatusCode';
-import { Text } from 'src/components/text';
-import { Stack } from 'src/components/stack';
-import { SimpleGrid } from 'src/components/simpleGrid';
-import { Separator } from 'src/components/separator';
-import { PageLayout } from 'src/components/layout/Page';
-import { AutoScout24AppLogo, MotoScout24AppLogo } from 'src/components/icons';
-import { H1 } from 'src/components/heading';
-import { Flex } from 'src/components/flex';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { ErrorStatusCode } from '@/src/types/errorStatusCode';
+import { Text } from '@/src/components/text';
+import { Stack } from '@/src/components/stack';
+import { SimpleGrid } from '@/src/components/simpleGrid';
+import { Separator } from '@/src/components/separator';
+import { PageLayout } from '@/src/components/layout/Page';
+import { AutoScout24AppLogo, MotoScout24AppLogo } from '@/src/components/icons';
+import { H1 } from '@/src/components/heading';
+import { Flex } from '@/src/components/flex';
 
-import { AspectRatio } from 'src/components/aspectRatio';
-import errorIllustrationVerifyEmail from 'src/assets/images/errorIllustrationVerifyEmail.png';
-import errorIllustrationSomethingWentWrong from 'src/assets/images/errorIllustrationSomethingWentWrong.png';
+import { AspectRatio } from '@/src/components/aspectRatio';
+import errorIllustrationVerifyEmail from '@/src/assets/images/errorIllustrationVerifyEmail.png';
+import errorIllustrationSomethingWentWrong from '@/src/assets/images/errorIllustrationSomethingWentWrong.png';
 
-import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
+import errorIllustrationNotFound from '@/src/assets/images/errorIllustrationNotFound.png';
 
 import { ContactSupport } from '../actions/secondary/ContactSupport';
 

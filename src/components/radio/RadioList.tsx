@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { RadioGroup, VStack } from '@chakra-ui/react';
 
-import { StackSeparator } from 'src/components/stack';
+import { StackSeparator } from '@/src/components/stack';
 
 import { RadioListItem } from './RadioListItem';
 

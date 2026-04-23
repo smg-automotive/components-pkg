@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Entitlement } from 'src/types/entitlements';
-import { CartIcon } from 'src/components/icons';
+import { Entitlement } from '@/src/types/entitlements';
+import { CartIcon } from '@/src/components/icons';
 
 import { NavigationLinkConfigProps } from './headerLinks';
 

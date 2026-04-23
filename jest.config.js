@@ -9,6 +9,7 @@ module.exports = transpileESMModulesForJest(() => ({
   moduleDirectories: ['node_modules', '<rootDir>'],
   moduleNameMapper: {
     '\\.(jpg|ico|jpeg|png|svg)$': '<rootDir>/jest-utils/mocks/fileMock.ts',
+    '^@/(.*)$': '<rootDir>/$1',
   },
   preset: 'ts-jest/presets/js-with-ts',
   restoreMocks: false,

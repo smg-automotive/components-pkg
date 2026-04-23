@@ -6,7 +6,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
+import { useI18n } from '@/src/utilities/i18nInit';
 
 import { FilterHeading } from '../Heading';
 import { FilterActionButton } from '../ActionButton';

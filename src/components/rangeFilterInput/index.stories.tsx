@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { RangeFilterInput } from './index';
 

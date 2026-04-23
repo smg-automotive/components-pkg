@@ -1,7 +1,7 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
 
-import { TopRightToast, TopToast } from 'src/components/toast';
-import { Grid, GridProps } from 'src/components/grid';
+import { TopRightToast, TopToast } from '@/src/components/toast';
+import { Grid, GridProps } from '@/src/components/grid';
 
 const pageGridArea = `
   "header"

@@ -2,10 +2,11 @@ import React, { ReactNode } from 'react';
 
 import { chakra } from '@chakra-ui/react';
 
-import { HighlightedText } from '../text/HighlightedText';
-import { GridItem } from '../grid';
-import { Grid } from '../grid';
-import { Checkbox } from '../checkbox';
+import { HighlightedText } from '@/src/components/text/HighlightedText';
+import { GridItem } from '@/src/components/grid';
+import { Grid } from '@/src/components/grid';
+import { Checkbox } from '@/src/components/checkbox';
+
 import { Props as CheckboxFilterProps, Item } from './type';
 
 const addThousandSeparatorToNumber = (value: number) => {

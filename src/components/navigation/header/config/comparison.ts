@@ -1,7 +1,11 @@
-import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
-import { LinkConfig } from 'src/components/navigation/link';
+import { CustomEvent, navigationEventCategory } from '@/src/types/tracking';
+import { LinkConfig } from '@/src/components/navigation/link';
 
-import { getComparisonUrl, shouldShowComparisonLink } from '../ComparisonItem';
+import {
+  getComparisonUrl,
+  shouldShowComparisonLink,
+} from '@/src/components/navigation/header/ComparisonItem';
+
 import { NavigationLinkConfigProps } from './headerLinks';
 
 export const comparisonLinkConfig = ({

@@ -7,14 +7,14 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-import { spacing } from 'src/themes/shared/tokens/spacing';
-import { sizes } from 'src/themes/shared/tokens/sizes';
-import { Colors } from 'src/themes/shared/tokens/colors';
+import { spacing } from '@/src/themes/shared/tokens/spacing';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
+import { Colors } from '@/src/themes/shared/tokens/colors';
 import {
   ChevronRightSmallIcon,
   CloseIcon,
   DeleteIcon,
-} from 'src/components/icons';
+} from '@/src/components/icons';
 
 import { DialogFilterProps } from './props';
 

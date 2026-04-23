@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
 
-import { Text } from '../text/index';
-import { HighlightedText } from '../text/HighlightedText';
-import { CheckmarkIcon, ChevronRightSmallIcon } from '../icons/index';
-import { Flex } from '../flex/index';
+import { Text } from '@/src/components/text/index';
+import { HighlightedText } from '@/src/components/text/HighlightedText';
+import {
+  CheckmarkIcon,
+  ChevronRightSmallIcon,
+} from '@/src/components/icons/index';
+import { Flex } from '@/src/components/flex/index';
+
 import { ListItemType } from './SearchableListItem';
 
 type LabelProps = Pick<

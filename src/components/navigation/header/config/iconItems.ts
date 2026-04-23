@@ -1,8 +1,9 @@
-import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
+import { CustomEvent, navigationEventCategory } from '@/src/types/tracking';
 
-import { Link, LinkConfig } from 'src/components/navigation/link';
+import { Link, LinkConfig } from '@/src/components/navigation/link';
 
-import { shouldShowComparisonLink } from '../ComparisonItem';
+import { shouldShowComparisonLink } from '@/src/components/navigation/header/ComparisonItem';
+
 import { getFavoritesLinkConfig } from './user';
 import { comparisonLinkConfig } from './comparison';
 

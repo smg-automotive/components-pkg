@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { numberInputRecipe } from 'src/themes/shared/slotRecipes/numberInput';
+import { numberInputRecipe } from '@/src/themes/shared/slotRecipes/numberInput';
 
 import { InputLeftElement } from './InputLeftElement';
 

@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
-import { TenantSelectionSelectList } from 'src/components/tenantSelection/select/List';
+import { TenantSelectionSelectList } from '@/src/components/tenantSelection/select/List';
 
 import { NavigationTenantMenuLoading } from './Loading';
 

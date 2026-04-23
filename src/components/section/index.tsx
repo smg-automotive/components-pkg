@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { sectionRecipe } from 'src/themes/shared/slotRecipes/section';
+import { sectionRecipe } from '@/src/themes/shared/slotRecipes/section';
 
 type SectionVariantProps = RecipeVariantProps<typeof sectionRecipe>;
 

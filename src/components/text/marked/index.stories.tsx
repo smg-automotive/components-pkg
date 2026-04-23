@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from 'src';
+import { Box } from '@/src/components/box';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { MarkedText } from '.';
 

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Count } from './index';
 

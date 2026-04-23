@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
+import { tabsRecipe } from '@/src/themes/shared/slotRecipes/tabs';
 
 type TabsVariant = RecipeVariantProps<typeof tabsRecipe>['variant'];
 

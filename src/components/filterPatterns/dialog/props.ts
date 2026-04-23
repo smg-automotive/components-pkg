@@ -1,4 +1,4 @@
-import { Colors } from 'src/themes/shared/tokens/colors';
+import { Colors } from '@/src/themes/shared/tokens/colors';
 
 import {
   OpenFilterButtonDisplayType,

@@ -7,9 +7,9 @@ import {
   professionalUser,
 } from '@smg-automotive/auth/fixtures';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { act, fireEvent, render, screen, within } from 'jest-utils';
+import { act, fireEvent, render, screen, within } from '@/jest-utils';
 
 import { HeaderNavigation, NavigationProps } from '../index';
 import { iconItems } from '../config/iconItems';

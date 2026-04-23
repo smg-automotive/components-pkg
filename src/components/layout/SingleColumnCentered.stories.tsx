@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getSharedConfig } from 'src/themes/shared';
+import { getSharedConfig } from '@/src/themes/shared';
 
 import { FullHeight } from '../fullHeight';
 

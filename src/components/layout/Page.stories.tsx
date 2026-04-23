@@ -1,11 +1,14 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sizes } from 'src/themes/shared/tokens/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
-import { Box, Flex, Text } from '../index';
+import { Text } from '@/src/components/text';
+import { Separator } from '@/src/components/separator';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+
 import { PageLayout } from './Page';
-import { Separator } from '../separator';
 
 const meta: Meta<typeof PageLayout> = {
   title: 'Layout/Pages/Page',

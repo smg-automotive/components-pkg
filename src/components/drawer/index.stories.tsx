@@ -2,8 +2,9 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useDisclosure } from '@chakra-ui/react';
 
-import { Button } from '../button';
-import { Box } from '../box';
+import { Button } from '@/src/components/button';
+import { Box } from '@/src/components/box';
+
 import { DrawerOverlay } from './DrawerOverlay';
 import { DrawerContent } from './DrawerContent';
 import { DrawerBody } from './DrawerBody';

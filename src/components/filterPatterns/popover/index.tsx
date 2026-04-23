@@ -1,4 +1,4 @@
-import { withTranslationProvider } from 'src/components/translationProvider/withTranslationProvider';
+import { withTranslationProvider } from '@/src/components/translationProvider/withTranslationProvider';
 
 import { PopoverFilterProps } from './props';
 import { PopoverFilterContent } from './Content';

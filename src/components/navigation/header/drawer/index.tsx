@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Drawer, Portal } from '@chakra-ui/react';
 
-import { Grid } from 'src/components/grid';
+import { Grid } from '@/src/components/grid';
 
 import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
 import { DrawerNode } from '../config/DrawerNodeItems';

@@ -2,9 +2,9 @@ import React from 'react';
 
 import userEvent from '@testing-library/user-event';
 
-import { OverflowVerticalIcon } from 'src/components/icons';
+import { OverflowVerticalIcon } from '@/src/components/icons';
 
-import { render, screen } from 'jest-utils';
+import { render, screen } from '@/jest-utils';
 
 import { Menu } from '../index';
 

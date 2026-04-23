@@ -9,9 +9,9 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
-import { CloseButton } from 'src/components/closeButton';
-import { AlertLink } from 'src/components/alert/Link';
+import { alertRecipe } from '@/src/themes/shared/slotRecipes/alert';
+import { CloseButton } from '@/src/components/closeButton';
+import { AlertLink } from '@/src/components/alert/Link';
 
 export const toastConfig = {
   pauseOnPageIdle: true,

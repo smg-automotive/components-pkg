@@ -2,14 +2,15 @@ import React, { FC, RefObject } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { chakra, IconButton } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { Text } from 'src/components/text';
-import { Link } from 'src/components/link';
-import { CloseIcon } from 'src/components/icons';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Text } from '@/src/components/text';
+import { Link } from '@/src/components/link';
+import { CloseIcon } from '@/src/components/icons';
 
-import { Flex } from 'src/components/flex';
+import { Flex } from '@/src/components/flex';
 
-import { Count } from '../count';
+import { Count } from '@/src/components/count';
+
 import { FilterPatternProps } from './props';
 
 export type FilterHeadingContentProps = {

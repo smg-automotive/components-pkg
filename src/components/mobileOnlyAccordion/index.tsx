@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
 } from '@chakra-ui/react';
 
-import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
+import { accordionRecipe } from '@/src/themes/shared/slotRecipes/accordion';
 
 import { Accordion } from '../accordion';
 

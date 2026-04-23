@@ -2,8 +2,9 @@
 
 import React from 'react';
 
-import { Flex } from '../flex';
-import { Box } from '../box';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+
 import { Facet } from './RangeSliderWithChart';
 
 interface Props {

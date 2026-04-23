@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { autoScout24System, motoScout24System } from 'src/themes';
+import { autoScout24System, motoScout24System } from '@/src/themes';
 
 export type ThemeProviderProps = {
   /**

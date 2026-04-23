@@ -3,20 +3,22 @@ import React, { useEffect, useState } from 'react';
 import {
   NumericMinMaxValue,
   RangeSliderWithScale,
-} from '../rangeSlider/RangeSliderWithScale';
+} from '@/src/components/rangeSlider/RangeSliderWithScale';
 import {
   Facet,
   RangeSliderWithChart,
   RangeSliderWithChartProps,
-} from '../rangeSlider/RangeSliderWithChart';
-import { RangeFilterInput } from '../rangeFilterInput';
+} from '@/src/components/rangeSlider/RangeSliderWithChart';
+
 import type {
   ChangeCallback,
   PickedNumberInputProps,
   RangeFilterInputField,
-} from '../rangeFilterInput';
-import { Flex } from '../flex';
-import { Box } from '../box';
+} from '@/src/components/rangeFilterInput';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+
+import { RangeFilterInput } from '../rangeFilterInput';
 
 export type ChangeSliderCallback = {
   touched: 'min' | 'max';

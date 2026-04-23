@@ -3,9 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import { RangeSlider } from './index';
+import { RangeSlider } from '@/src/components/rangeSlider';
 
-const meta = {
+const meta: Meta<typeof RangeSlider> = {
   title: 'Components/Filter/Range Slider',
   component: RangeSlider,
   decorators: [
@@ -22,7 +22,7 @@ const meta = {
     onChange: action('onChange'),
     onChangeEnd: action('onChangeEnd'),
   },
-} satisfies Meta<typeof RangeSlider>;
+};
 
 export default meta;
 

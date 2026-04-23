@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-import { Text } from 'src/components/text';
-import { StackSeparator } from 'src/components/stack';
+import { Text } from '@/src/components/text';
+import { StackSeparator } from '@/src/components/stack';
 
-import { Stack } from 'src/components/stack';
-import { Link } from 'src/components/link';
-import { Center } from 'src/components/center';
+import { Stack } from '@/src/components/stack';
+import { Link } from '@/src/components/link';
+import { Center } from '@/src/components/center';
 
 export const FooterLanguageNavigation: FC = () => {
   return (

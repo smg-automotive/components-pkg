@@ -2,9 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import { tokenControl } from '.storybook/preview/controls/token';
-
-import { ArticleTeaser } from './index';
+import { ArticleTeaser } from '@/src/components/articleTeaser';
+import { tokenControl } from '@/.storybook/preview/controls/token';
 
 const meta: Meta<typeof ArticleTeaser> = {
   title: 'Patterns/Content/Article Teaser',

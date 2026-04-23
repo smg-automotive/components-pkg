@@ -1,14 +1,13 @@
 import React, { FC, useMemo } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
+import { createTenantLabel } from '@/src/components/tenantSelection/createTenantLabel';
 import {
   ListItemWithChildren,
   SearchableList,
-} from 'src/components/list/SearchableList';
-import { SearchFieldOptions } from 'src/components/input/SearchField';
-import { H1 } from 'src/components/heading';
-
-import { createTenantLabel } from '../createTenantLabel';
+} from '@/src/components/list/SearchableList';
+import { SearchFieldOptions } from '@/src/components/input/SearchField';
+import { H1 } from '@/src/components/heading';
 
 type TenantSelectionSelectListProps = {
   managedSellers: EnrichedSessionUser['managedSellers'];

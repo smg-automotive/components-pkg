@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { CloseIcon, HamburgerMenuIcon } from 'src/components/icons';
-import { Box } from 'src/components/box';
+import { CloseIcon, HamburgerMenuIcon } from '@/src/components/icons';
+import { Box } from '@/src/components/box';
 
 import { DrawerNode } from './config/DrawerNodeItems';
 

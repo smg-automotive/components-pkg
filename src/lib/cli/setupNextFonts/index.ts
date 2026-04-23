@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import path from 'path';
 
-import { destination } from '../paths';
+import { destination } from '@/src/lib/cli/paths';
 
 const fs = require('fs-extra');
 

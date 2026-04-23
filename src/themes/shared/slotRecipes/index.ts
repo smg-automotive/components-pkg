@@ -1,3 +1,5 @@
+import { SlotRecipeDefinition } from '@chakra-ui/react';
+
 import { vehicleReferenceRecipe as vehicleReference } from './vehicleReference';
 import { tooltipSlotRecipe as tooltip } from './tooltip';
 import { tabsRecipe as tabs } from './tabs';
@@ -32,7 +34,7 @@ import { articleTeaserRecipe as articleTeaser } from './articleTeaser';
 import { alertRecipe as alert } from './alert';
 import { accordionRecipe as accordion } from './accordion';
 
-export const slotRecipes = {
+export const slotRecipes: Record<string, SlotRecipeDefinition> = {
   articleTeaser,
   accordion,
   carousel,

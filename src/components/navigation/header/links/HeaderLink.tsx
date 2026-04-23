@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import { Box } from 'src/components/box';
+import { HeaderNavigationLink } from '@/src/components/navigation/header/config/headerNavigationLink';
+import { Box } from '@/src/components/box';
 
-import { HeaderNavigationLink } from '../config/headerNavigationLink';
 import { NavigationLink } from './NavigationLink';
 
 export const HeaderLink: FC<{

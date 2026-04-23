@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { Box, RecipeVariantProps, useRecipe } from '@chakra-ui/react';
 
-import { ratingRecipe } from 'src/themes/shared/recipes/rating';
+import { ratingRecipe } from '@/src/themes/shared/recipes/rating';
 
 type RatingVariantProps = RecipeVariantProps<typeof ratingRecipe>;
 

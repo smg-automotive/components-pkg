@@ -6,9 +6,9 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { articleTeaserRecipe } from 'src/themes/shared/slotRecipes/articleTeaser';
+import { articleTeaserRecipe } from '@/src/themes/shared/slotRecipes/articleTeaser';
 
-import { Stack } from '../stack';
+import { Stack } from '@/src/components/stack';
 
 type ArticleTeaserVariantProps = RecipeVariantProps<typeof articleTeaserRecipe>;
 

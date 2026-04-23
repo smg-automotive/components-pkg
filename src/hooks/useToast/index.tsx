@@ -1,5 +1,5 @@
-import { topRightToaster, topToaster } from 'src/components/toast';
-import { SharedProps } from 'src/components/alert';
+import { topRightToaster, topToaster } from '@/src/components/toast';
+import { SharedProps } from '@/src/components/alert';
 
 type ToastPosition = 'top' | 'top-right';
 

@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 
-import { TenantSelectionSelect } from 'src/components/tenantSelection/select';
+import { TenantSelectionSelect } from '@/src/components/tenantSelection/select';
 
 import { TenantSelectionOverview } from './Overview';
 import { TenantSelectionLoadingState } from './Loading';

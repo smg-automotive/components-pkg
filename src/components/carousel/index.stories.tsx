@@ -3,9 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { FullHeight } from '../fullHeight';
-import { Flex } from '../flex';
-import { Box } from '../box';
+import { FullHeight } from '@/src/components/fullHeight';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
 
 import { Carousel as CarouselComponent, PaginationType } from './index';
 

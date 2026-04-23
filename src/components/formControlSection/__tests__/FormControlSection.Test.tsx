@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Input } from 'src/components/input';
+import { Input } from '@/src/components/input';
 
-import { render, screen } from 'jest-utils';
+import { render, screen } from '@/jest-utils';
 
 import { FormControlSection, FormControlSectionProps } from '..';
 

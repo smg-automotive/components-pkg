@@ -2,7 +2,7 @@ import React from 'react';
 import { ColorPalette } from '@storybook/blocks';
 import { Box, chakra } from '@chakra-ui/react';
 
-import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
+import { convertRemEmToPx } from '@/src/utilities/convertRemEmToPx';
 
 import TokenShowcase from './TokenShowcase';
 import meta, { StoryType } from './theme.stories';

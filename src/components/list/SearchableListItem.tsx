@@ -6,7 +6,8 @@ import {
   ConditionalValue,
 } from '@chakra-ui/react';
 
-import { Checkbox, CheckboxProps } from '../checkbox';
+import { Checkbox, CheckboxProps } from '@/src/components/checkbox';
+
 import { SearchableListItemLabel } from './SearchableListItemLabel';
 
 import { List } from './index';

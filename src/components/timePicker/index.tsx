@@ -7,7 +7,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+import { inputSlotRecipe } from '@/src/themes/shared/slotRecipes/input';
 
 type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 

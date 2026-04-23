@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 
 import { useSlotRecipe } from '@chakra-ui/react';
 
-import { Flex } from '../flex';
-import { Box } from '../box';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+
 import { DotsPaginationIndicator } from './DotsPaginationIndicator';
 
 interface Props {

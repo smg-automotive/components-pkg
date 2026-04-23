@@ -1,9 +1,10 @@
-import { CustomEvent } from 'src/types/tracking';
+import { CustomEvent } from '@/src/types/tracking';
 
-import { BreakpointName } from 'src/themes/shared/breakpoints';
-import { EntitlementConfig } from 'src/components/navigation/link';
+import { BreakpointName } from '@/src/themes/shared/breakpoints';
+import { EntitlementConfig } from '@/src/components/navigation/link';
 
-import { NavigationLinkProps } from '../links/NavigationLink';
+import { NavigationLinkProps } from '@/src/components/navigation/header/links/NavigationLink';
+
 import {
   privateAutoScoutSellLinkConfig,
   privateMotoScoutSellLinkConfig,

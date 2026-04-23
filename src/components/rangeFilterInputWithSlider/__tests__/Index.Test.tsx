@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 
-import { render, screen, waitFor } from 'jest-utils';
+import { render, screen, waitFor } from '@/jest-utils';
 
 import { RangeFilterInputWithSlider } from '..';
 

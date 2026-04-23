@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import { Text } from 'src/components/text';
-import { Menu } from 'src/components/menu';
+import { Text } from '@/src/components/text';
+import { Menu } from '@/src/components/menu';
 
-import { Flex } from 'src/components/flex';
-import { Box } from 'src/components/box';
-import { Badge } from 'src/components/badge';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+import { Badge } from '@/src/components/badge';
 
 import { replaceLanguage } from './replaceLanguage';
 

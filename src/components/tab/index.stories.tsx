@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { tabsRecipe } from '@/src/themes/shared/slotRecipes/tabs';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Box } from '../box';
 import { TabPanels } from './TabPanels';

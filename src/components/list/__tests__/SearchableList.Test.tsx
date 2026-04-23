@@ -1,8 +1,8 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { SearchableList } from 'src/components/list/SearchableList';
-import { render, screen, waitFor } from 'jest-utils';
+import { SearchableList } from '@/src/components/list/SearchableList';
+import { render, screen, waitFor } from '@/jest-utils';
 
 import { List } from '../index';
 

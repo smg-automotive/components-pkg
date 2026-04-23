@@ -5,7 +5,7 @@ import {
   UseMediaQueryOptions,
 } from '@chakra-ui/react';
 
-import { emBreakpoints as breakpoints } from 'src/themes/shared/breakpoints';
+import { emBreakpoints as breakpoints } from '@/src/themes/shared/breakpoints';
 
 type BreakpointKey = keyof typeof breakpoints;
 

@@ -20,7 +20,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
+import { inputSlotRecipe } from '@/src/themes/shared/slotRecipes/input';
 
 import { ClearButton } from './ClearButton';
 
