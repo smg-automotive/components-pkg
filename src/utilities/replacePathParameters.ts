@@ -14,6 +14,7 @@ export const replaceParameters = ({
   }
 
   let replacedPath = path;
+
   parameters.forEach((paramPattern) => {
     const name = paramName(paramPattern);
     const value = params?.[name];
