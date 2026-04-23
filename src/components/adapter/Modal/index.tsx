@@ -1,8 +1,8 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Dialog as ChakraDialog } from '@chakra-ui/react';
 
-import { DialogCloseButton } from 'src/components/dialog/DialogCloseButton';
-import { Dialog, DialogProps } from 'src/components/dialog';
+import { DialogCloseButton } from '@/src/components/dialog/DialogCloseButton';
+import { Dialog, DialogProps } from '@/src/components/dialog';
 
 type ModalCloseButtonProps = React.ComponentProps<typeof DialogCloseButton>;
 

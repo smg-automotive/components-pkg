@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import {
   Button as ButtonComponents,
   UnifiedButtonProps,
-} from 'src/components/button';
+} from '@/src/components/button';
 
 type Props = Omit<UnifiedButtonProps, 'disabled'> & {
   isDisabled?: boolean;

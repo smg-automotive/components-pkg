@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Link as ComponentsLink, LinkProps } from 'src/components/link';
+import { Link as ComponentsLink, LinkProps } from '@/src/components/link';
 
 type Props = Omit<LinkProps, 'lineClamp' | 'href' | 'onClick' | 'truncate'> & {
   prefetch?: boolean;

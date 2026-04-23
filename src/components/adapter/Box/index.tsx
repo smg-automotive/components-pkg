@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box as BoxComponents, BoxProps } from 'src/components/box';
+import { Box as BoxComponents, BoxProps } from '@/src/components/box';
 
 type ElementType = React.ElementType;
 type PropsOf<E extends ElementType> = React.ComponentPropsWithoutRef<E>;

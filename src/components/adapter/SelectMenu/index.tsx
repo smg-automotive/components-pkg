@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 
-import { Menu as MenuComponents, MenuProps } from 'src/components/menu';
+import { Menu as MenuComponents, MenuProps } from '@/src/components/menu';
 
 type MenuOption = {
   value: string;

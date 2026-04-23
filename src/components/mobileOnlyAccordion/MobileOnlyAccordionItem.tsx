@@ -1,7 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import useMediaQuery from '@/src/hooks/useMediaQuery';
-
 import {
   AccordionItem,
   AccordionItemProps,

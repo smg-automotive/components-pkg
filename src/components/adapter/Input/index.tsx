@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { Input as InputComponents, InputProps } from 'src/components/input';
+import { Input as InputComponents, InputProps } from '@/src/components/input';
 
 type AdapterType<T> = T extends unknown
   ? Omit<T, 'disabled' | 'readOnly' | 'invalid'> & {

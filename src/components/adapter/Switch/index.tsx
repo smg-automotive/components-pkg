@@ -4,7 +4,7 @@ import {
   Switch as ComponentsSwitch,
   SwitchCheckedChangeDetails,
   SwitchProps,
-} from 'src/components/switch';
+} from '@/src/components/switch';
 
 type Props = Omit<SwitchProps, 'disabled' | 'checked' | 'onCheckedChange'> & {
   isChecked?: boolean;

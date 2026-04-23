@@ -1,6 +1,9 @@
 import React, { forwardRef } from 'react';
 
-import { Select as SelectComponents, SelectProps } from 'src/components/select';
+import {
+  Select as SelectComponents,
+  SelectProps,
+} from '@/src/components/select';
 
 type Props = Omit<SelectProps, 'disabled'> & {
   isDisabled?: boolean;

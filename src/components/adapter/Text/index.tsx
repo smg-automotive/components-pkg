@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { ConditionalValue } from '@chakra-ui/react';
 
-import { Text as TextComponents, TextProps } from 'src/components/text';
+import { Text as TextComponents, TextProps } from '@/src/components/text';
 
 type Props = Omit<TextProps, 'truncated' | 'lineClamp'> & {
   noOfLines?: ConditionalValue<number>;

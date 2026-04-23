@@ -3,7 +3,7 @@ import React, { FC, PropsWithChildren } from 'react';
 import {
   TabList as TabListComponents,
   TabListProps as TabListPropsComponents,
-} from 'src/components/tab/TabList';
+} from '@/src/components/tab/TabList';
 
 type TabListProps = TabListPropsComponents & {
   borderBottom?: TabListPropsComponents['borderBottom'];

@@ -4,7 +4,7 @@ import { CheckboxCheckedChangeDetails } from '@chakra-ui/react';
 import {
   CheckboxProps,
   Checkbox as ComponentsCheckbox,
-} from 'src/components/checkbox';
+} from '@/src/components/checkbox';
 
 type Props = Omit<
   CheckboxProps,

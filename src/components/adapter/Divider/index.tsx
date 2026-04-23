@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Separator, SeparatorProps } from 'src/components/separator';
+import { Separator, SeparatorProps } from '@/src/components/separator';
 
 type Props = SeparatorProps;
 

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { SimpleGridProps } from '@chakra-ui/react';
 
-import { SimpleGrid as ComponentsSimpleGrid } from 'src/components/simpleGrid';
+import { SimpleGrid as ComponentsSimpleGrid } from '@/src/components/simpleGrid';
 
 type Props = SimpleGridProps & {
   columns?: SimpleGridProps['columns'];

@@ -244,7 +244,7 @@ const chakraTypegenThemeBridge = {
     },
   ],
   plugins: [
-    resolve({
+    nodeResolve({
       ...resolveOptions,
       preferBuiltins: true,
     }),
@@ -263,6 +263,7 @@ export default [
   cjs,
   esm,
   types,
+  hostedFontsTypes,
   hostedFontsCjs,
   hostedFontsEsm,
   cli,

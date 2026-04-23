@@ -4,7 +4,7 @@ import {
   List as ListComponents,
   ListRoot,
   ListRootProps,
-} from 'src/components/list';
+} from '@/src/components/list';
 
 const ListItem = ListComponents.Item;
 

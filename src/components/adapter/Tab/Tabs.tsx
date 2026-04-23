@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tabs as TabsComponents, TabsProps } from 'src/components/tab';
+import { Tabs as TabsComponents, TabsProps } from '@/src/components/tab';
 
 type Props = Omit<TabsProps, 'onValueChange' | 'onChange'> & {
   onChange?: (value: string) => void;

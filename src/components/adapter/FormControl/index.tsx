@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Field, FieldProps } from 'src/components/field';
+import { Field, FieldProps } from '@/src/components/field';
 
 type Props = Omit<FieldProps, 'required' | 'disabled'> & {
   isRequired?: boolean;

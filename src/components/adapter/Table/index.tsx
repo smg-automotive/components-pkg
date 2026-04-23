@@ -4,7 +4,7 @@ import {
   Table as ComponentsTable,
   TableCellProps,
   TableColumnHeaderProps,
-} from 'src/components/table';
+} from '@/src/components/table';
 
 const Table = ComponentsTable.Root;
 const Thead = ComponentsTable.Header;

@@ -3,7 +3,7 @@ import React, { FocusEventHandler } from 'react';
 import {
   RangeFilterInputWithSlider as RangeFilterInputWithSliderComponents,
   RangeFilterInputWithSliderProps,
-} from 'src/components/rangeFilterInputWithSlider';
+} from '@/src/components/rangeFilterInputWithSlider';
 
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
   ? Omit<T, K>

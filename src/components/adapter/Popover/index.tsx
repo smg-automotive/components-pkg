@@ -3,9 +3,9 @@ import React from 'react';
 import {
   Popover as PopoverComponents,
   PopoverProps,
-} from 'src/components/popover';
+} from '@/src/components/popover';
 
-import { HoverCard } from 'src/components/hoverCard';
+import { HoverCard } from '@/src/components/hoverCard';
 
 type Props = PopoverProps & {
   trigger?: 'hover' | 'click';

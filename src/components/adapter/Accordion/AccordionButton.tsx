@@ -4,7 +4,7 @@ import { SystemStyleObject } from '@chakra-ui/react';
 import {
   AccordionButton as AccordionButtonComponents,
   AccordionButtonProps,
-} from 'src/components/accordion/AccordionButton';
+} from '@/src/components/accordion/AccordionButton';
 
 // TODO try  to figure out why we need to redeclare these props
 type Props = AccordionButtonProps & {

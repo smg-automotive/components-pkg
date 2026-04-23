@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { Tab as TabComponents, TabProps } from 'src/components/tab/Tab';
+import { Tab as TabComponents, TabProps } from '@/src/components/tab/Tab';
 
 type Props = TabProps & {
   isDisabled?: boolean;

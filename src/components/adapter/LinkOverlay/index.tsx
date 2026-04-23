@@ -5,7 +5,7 @@ import {
   LinkBoxProps,
   LinkOverlay as LinkOverlayComponents,
   LinkOverlayProps as LinkOverlayPropsComponents,
-} from 'src/components/linkOverlay';
+} from '@/src/components/linkOverlay';
 
 type LinkOverlayProps = LinkOverlayPropsComponents & {
   prefetch?: boolean;

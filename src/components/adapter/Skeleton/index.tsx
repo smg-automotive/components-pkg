@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from 'react';
 import {
   Skeleton as SkeletonComponents,
   SkeletonProps,
-} from 'src/components/skeleton';
+} from '@/src/components/skeleton';
 
 type Props = Omit<SkeletonProps, 'loading'> & {
   isLoaded?: boolean;

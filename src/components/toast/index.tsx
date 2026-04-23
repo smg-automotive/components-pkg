@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { createToaster } from '@chakra-ui/react';
 
-import { Toast, toastConfig } from 'src/hooks/useToast/Toast';
+import { Toast, toastConfig } from '@/src/hooks/useToast/Toast';
 
 export const topToaster = createToaster({
   placement: 'top',

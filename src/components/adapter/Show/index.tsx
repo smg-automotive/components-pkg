@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Box, BoxProps } from '@chakra-ui/react';
 
-import { BreakpointName } from 'src/themes/shared/breakpoints';
+import { BreakpointName } from '@/src/themes/shared/breakpoints';
 
 type Props = BoxProps & {
   showDisplay?: BoxProps['display'];

@@ -1,4 +1,4 @@
-import * as CardComponents from 'src/components/card';
+import * as CardComponents from '@/src/components/card';
 
 export const Card = CardComponents.Card.Root;
 export const CardHeader = CardComponents.Card.Header;
