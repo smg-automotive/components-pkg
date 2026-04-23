@@ -4,7 +4,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { buttonRecipe } from '@/src/themes/shared/recipes/button';
 import { iconControl } from '@/src/storybook/ControlTypes';
 
-import { ShareIcon, VideoIcon } from '@/src';
+import { VideoIcon } from '@/src/components/icons/VideoIcon';
+import { ShareIcon } from '@/src/components/icons/ShareIcon';
 import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Button } from '.';

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import { RangeSlider } from '@/src';
+import { RangeSlider } from '@/src/components/rangeSlider';
 
 const meta: Meta<typeof RangeSlider> = {
   title: 'Components/Filter/Range Slider',

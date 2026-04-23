@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '@/src';
+import { Box } from '@/src/components/box';
 
 import { SimpleGrid } from './index';
 

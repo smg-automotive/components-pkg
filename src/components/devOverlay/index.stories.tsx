@@ -5,7 +5,7 @@ import { useArgs } from '@storybook/preview-api';
 import { Brand } from '@/src/types/brand';
 
 import { ThemeProvider } from '@/src/components/themeProvider';
-import { FullHeight } from '@/src/components/index';
+import { FullHeight } from '@/src/components/fullHeight';
 
 import { DevOverlay, type DevOverlayProps } from './index';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import { ArticleTeaser } from '@/src';
+import { ArticleTeaser } from '@/src/components/articleTeaser';
 import { tokenControl } from '@/.storybook/preview/controls/token';
 
 const meta: Meta<typeof ArticleTeaser> = {

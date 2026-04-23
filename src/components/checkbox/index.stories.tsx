@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { Checkbox, CheckboxProps } from '@/src';
+import { Checkbox, CheckboxProps } from '@/src/components/checkbox';
 import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 const Wrapper = (args: CheckboxProps) => {

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 
-import { Box } from '@/src/components/index';
+import { Box } from '@/src/components/box';
 
 import { Select as SelectComponent, SelectProps } from './index';
 

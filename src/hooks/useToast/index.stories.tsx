@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { TopToast } from '@/src/hooks/useToast/TopToaster';
 import { TopRightToast } from '@/src/hooks/useToast/TopRightToast';
-import { Button, ErrorIcon } from '@/src/components';
+import { ErrorIcon } from '@/src/components/icons/ErrorIcon';
+import { Button } from '@/src/components/button';
 
 import useToast, { ToastOptions } from './index';
 

@@ -4,8 +4,8 @@ import { action } from '@storybook/addon-actions';
 
 import { alertRecipe } from '@/src/themes/shared/slotRecipes/alert';
 
-import { ErrorIcon } from '@/src';
-import { Alert } from '@/src';
+import { ErrorIcon } from '@/src/components/icons/ErrorIcon';
+import { Alert } from '@/src/components/alert';
 import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Alert> = {

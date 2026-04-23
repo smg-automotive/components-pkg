@@ -8,8 +8,8 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { H3 } from '@/src';
-import { Button } from '@/src';
+import { H3 } from '@/src/components/heading';
+import { Button } from '@/src/components/button';
 
 import { DialogCloseButton } from './DialogCloseButton';
 import { Box } from '../box';

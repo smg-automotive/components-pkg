@@ -6,8 +6,9 @@ import { Box, Field } from '@chakra-ui/react';
 
 import { inputSlotRecipe } from '@/src/themes/shared/slotRecipes/input';
 
-import { AiSearchIcon, Button } from '@/src/components/index';
+import { AiSearchIcon } from '@/src/components/icons/AiSearchIcon';
 import { MagnifierIcon } from '@/src/components/icons';
+import { Button } from '@/src/components/button';
 import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Input, InputProps } from './index';

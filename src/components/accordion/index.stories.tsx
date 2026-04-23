@@ -9,11 +9,10 @@ import {
   TimeIcon,
 } from '@/src/components/icons';
 
-import { AccordionPanel } from '@/src';
-import { AccordionItem } from '@/src';
-import { AccordionButton } from '@/src';
-
-import { Accordion } from '@/src';
+import { AccordionPanel } from '@/src/components/accordion/AccordionPanel';
+import { AccordionItem } from '@/src/components/accordion/AccordionItem';
+import { AccordionButton } from '@/src/components/accordion/AccordionButton';
+import { Accordion } from '@/src/components/accordion';
 import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Accordion> = {
