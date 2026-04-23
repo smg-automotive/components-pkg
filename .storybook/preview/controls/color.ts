@@ -1,5 +1,5 @@
-import { getSharedConfig } from 'src/themes/shared';
-import { autoScout24System, motoScout24System } from 'src/themes';
+import { getSharedConfig } from '@/src/themes/shared';
+import { autoScout24System, motoScout24System } from '@/src/themes';
 
 const sharedConfig = getSharedConfig();
 const presetColors = [

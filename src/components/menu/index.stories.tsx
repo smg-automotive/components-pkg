@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { Box } from '@/src/components/box';
+
 import { VideoIcon } from '../icons';
 import { Center } from '../center';
-import { Box } from '@/src/components/box';
 
 import { Menu } from './index';
 

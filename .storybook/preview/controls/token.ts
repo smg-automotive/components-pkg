@@ -1,6 +1,6 @@
 import { SystemConfig } from '@chakra-ui/react';
 
-import { autoScout24System } from 'src/themes';
+import { autoScout24System } from '@/src/themes';
 
 type Token = keyof NonNullable<NonNullable<SystemConfig['theme']>['tokens']>;
 

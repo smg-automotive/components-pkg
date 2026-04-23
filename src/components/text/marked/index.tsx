@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { type RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
 
-import { markedTextRecipe } from 'src/themes/shared/slotRecipes/markedText';
+import { markedTextRecipe } from '@/src/themes/shared/slotRecipes/markedText';
 
-import { Box, type BoxProps } from 'src/components/box';
+import { Box, type BoxProps } from '@/src/components/box';
 
 import { MarkedTextMark } from './mark';
 

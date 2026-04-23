@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
+import { radioRecipe } from '@/src/themes/shared/slotRecipes/radio';
 
 export type RadioItemProps = {
   value: string;

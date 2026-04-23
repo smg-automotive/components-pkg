@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Portal } from '@chakra-ui/react';
 
+import { Drawer } from '@/src/components/navigation/header/hooks/useNavigationDrawer';
+import { DrawerNode } from '@/src/components/navigation/header/config/DrawerNodeItems';
 import { Grid } from '@/src/components/grid';
 import { Box } from '@/src/components/box';
 
@@ -11,7 +13,7 @@ import { DrawerLoginToggle } from './DrawerLoginToggle';
 
 interface NavigationDrawerProps {
   user: EnrichedSessionUser | null;
-  drawer: useNavigationDrawerType;
+  drawer: Drawer;
   isOpen: boolean;
   onClose: () => void;
   menuHeight: string;

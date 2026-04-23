@@ -6,6 +6,7 @@ import { HighlightedText } from '@/src/components/text/HighlightedText';
 import { GridItem } from '@/src/components/grid';
 import { Grid } from '@/src/components/grid';
 import { Checkbox } from '@/src/components/checkbox';
+
 import { Props as CheckboxFilterProps, Item } from './type';
 
 const addThousandSeparatorToNumber = (value: number) => {

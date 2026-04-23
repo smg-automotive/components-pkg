@@ -1,7 +1,7 @@
 import { InputType } from '@storybook/core/types';
 import type { RecipeDefinition, SlotRecipeDefinition } from '@chakra-ui/react';
 
-import { autoScout24System } from 'src';
+import { autoScout24System } from '@/src';
 
 const getControlsFromRecipe = (
   recipe: RecipeDefinition | SlotRecipeDefinition,

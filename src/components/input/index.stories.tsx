@@ -4,12 +4,11 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box, Field } from '@chakra-ui/react';
 
-import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
-
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { inputSlotRecipe } from '@/src/themes/shared/slotRecipes/input';
 
 import { AiSearchIcon, Button } from '@/src/components/index';
 import { MagnifierIcon } from '@/src/components/icons';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Input, InputProps } from './index';
 

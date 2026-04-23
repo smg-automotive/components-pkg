@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box, Image } from '@chakra-ui/react';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
 import { TopVehicleSharedBadge } from './index';
 

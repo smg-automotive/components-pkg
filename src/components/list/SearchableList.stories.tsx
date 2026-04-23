@@ -3,6 +3,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Box } from '@/src/components/box';
+
 import { Props, SearchableList } from './SearchableList';
 
 const meta: Meta<typeof SearchableList> = {

@@ -5,9 +5,10 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { vehicleReferenceRecipe } from 'src/themes/shared/slotRecipes/vehicleReference';
+import { vehicleReferenceRecipe } from '@/src/themes/shared/slotRecipes/vehicleReference';
 
 import { Stack } from '@/src/components/stack';
+
 import { MissingImage } from '../missingImage';
 import { Grid } from '../grid';
 import { Box } from '../box';

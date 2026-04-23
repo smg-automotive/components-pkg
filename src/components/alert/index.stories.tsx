@@ -2,13 +2,11 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
+import { alertRecipe } from '@/src/themes/shared/slotRecipes/alert';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
-import { ErrorIcon } from '@/src/components/index';
-
-import { Alert } from './index';
+import { ErrorIcon } from '@/src';
+import { Alert } from '@/src';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components/Feedback/Alert',

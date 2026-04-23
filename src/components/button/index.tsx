@@ -9,7 +9,7 @@ import {
 
 import { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
 
-import { buttonRecipe } from 'src/themes/shared/recipes/button';
+import { buttonRecipe } from '@/src/themes/shared/recipes/button';
 
 type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
 type Never<Source> = { [P in keyof Source]?: never };

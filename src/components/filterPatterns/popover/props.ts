@@ -1,4 +1,4 @@
-import { ZIndex } from 'src/themes/shared/tokens/zIndex';
+import { ZIndex } from '@/src/themes/shared/tokens/zIndex';
 
 import { FilterPatternProps } from '@/src/components/filterPatterns/props';
 import { ActionButtonProps } from '@/src/components/filterPatterns/ActionButton';

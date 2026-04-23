@@ -1,8 +1,8 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { DialogFilterProps } from '@/src/components/filterPatterns/modal/props';
-import { DialogFilter } from '@/src/components/filterPatterns/modal/index';
+import { DialogFilterProps } from '@/src/components/filterPatterns/dialog/props';
+import { DialogFilter } from '@/src/components/filterPatterns/dialog/index';
 import { render, screen, waitFor } from '@/jest-utils';
 
 const validProps: DialogFilterProps = {

@@ -1,7 +1,7 @@
 import path from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
-import { autoScout24System } from 'src/themes';
+import { autoScout24System } from '@/src/themes';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -31,9 +31,9 @@ const config: StorybookConfig = {
         esModuleInterop: false,
         allowSyntheticDefaultImports: false,
       },
-        tsconfigPath: './tsconfig.storybook.json',
+      tsconfigPath: './tsconfig.storybook.json',
 
-        shouldExtractLiteralValuesFromEnum: true,
+      shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop) => {
         const isWhitelistedProp = ['variant', 'size'].includes(prop.name);

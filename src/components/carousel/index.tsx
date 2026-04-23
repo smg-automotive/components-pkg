@@ -4,7 +4,7 @@ import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useMediaQuery, useSlotRecipe } from '@chakra-ui/react';
 
-import type { ResponsiveValue } from 'src/types/responsiveValue';
+import type { ResponsiveValue } from '@/src/types/responsiveValue';
 import { breakpoints } from '@/src/themes';
 
 import { Flex } from '@/src/components/flex';

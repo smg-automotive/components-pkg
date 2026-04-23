@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import { Button } from '@/src/components/index';
 

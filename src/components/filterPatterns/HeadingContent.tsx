@@ -10,6 +10,7 @@ import { CloseIcon } from '@/src/components/icons';
 import { Flex } from '@/src/components/flex';
 
 import { Count } from '@/src/components/count';
+
 import { FilterPatternProps } from './props';
 
 export type FilterHeadingContentProps = {

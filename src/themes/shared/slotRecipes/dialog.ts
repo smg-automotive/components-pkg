@@ -1,4 +1,8 @@
-import { defineSlotRecipe, defineStyle } from '@chakra-ui/react';
+import {
+  defineSlotRecipe,
+  defineStyle,
+  type SlotRecipeDefinition,
+} from '@chakra-ui/react';
 
 import { sizes } from '../tokens/sizes';
 
@@ -108,7 +112,7 @@ const slots = [
   'closeTrigger',
 ] as const;
 
-export const dialogRecipe = defineSlotRecipe({
+export const dialogRecipe: SlotRecipeDefinition = defineSlotRecipe({
   slots,
   className: 'chakra-dialog',
   base: {

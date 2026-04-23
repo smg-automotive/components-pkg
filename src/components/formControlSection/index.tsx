@@ -4,6 +4,7 @@ import { Field as ChakraField } from '@chakra-ui/react';
 import { Tooltip } from '@/src/components/tooltip';
 import { Text } from '@/src/components/text';
 import { InformationIcon } from '@/src/components/icons';
+
 import { Flex } from '../flex';
 import { Box } from '../box';
 

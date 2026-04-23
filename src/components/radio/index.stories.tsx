@@ -4,8 +4,8 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Grid } from '@chakra-ui/react';
 
-import { radioRecipe } from 'src/themes/shared/slotRecipes/radio';
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { radioRecipe } from '@/src/themes/shared/slotRecipes/radio';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Radio, RadioProps } from './index';
 

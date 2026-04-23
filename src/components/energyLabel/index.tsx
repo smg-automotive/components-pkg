@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { type RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
 
-import { energyLabelRecipe } from 'src/themes/shared/slotRecipes/energyLabel';
+import { energyLabelRecipe } from '@/src/themes/shared/slotRecipes/energyLabel';
 
 import { Text } from '../text';
 import { Flex } from '../flex';

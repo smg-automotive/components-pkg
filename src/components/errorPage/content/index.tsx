@@ -18,7 +18,7 @@ import { AspectRatio } from '@/src/components/aspectRatio';
 import errorIllustrationVerifyEmail from '@/src/assets/images/errorIllustrationVerifyEmail.png';
 import errorIllustrationSomethingWentWrong from '@/src/assets/images/errorIllustrationSomethingWentWrong.png';
 
-import errorIllustrationNotFound from 'src/assets/images/errorIllustrationNotFound.png';
+import errorIllustrationNotFound from '@/src/assets/images/errorIllustrationNotFound.png';
 
 import { ContactSupport } from '../actions/secondary/ContactSupport';
 

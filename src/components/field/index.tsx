@@ -8,7 +8,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { fieldSlotRecipe } from 'src/themes/shared/slotRecipes/field';
+import { fieldSlotRecipe } from '@/src/themes/shared/slotRecipes/field';
 
 import { Tooltip } from '../tooltip';
 import { TooltipIcon } from '../icons';

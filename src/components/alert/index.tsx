@@ -7,7 +7,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
+import { alertRecipe } from '@/src/themes/shared/slotRecipes/alert';
 
 import { CloseButton } from '../closeButton';
 import { AlertLink } from './Link';

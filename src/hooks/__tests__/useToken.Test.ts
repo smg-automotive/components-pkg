@@ -1,4 +1,4 @@
-import { renderHook } from 'jest-utils';
+import { renderHook } from '@/jest-utils';
 
 import useToken from '../useToken';
 

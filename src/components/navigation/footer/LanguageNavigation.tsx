@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { Text } from 'src/components/text';
-import { StackSeparator } from 'src/components/stack';
+import { Text } from '@/src/components/text';
+import { StackSeparator } from '@/src/components/stack';
 
 import { Stack } from '@/src/components/stack';
 import { Link } from '@/src/components/link';

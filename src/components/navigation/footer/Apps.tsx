@@ -4,7 +4,7 @@ import { Image } from '@chakra-ui/react';
 import { useI18n } from '@/src/utilities/i18nInit';
 import { Text } from '@/src/components/text';
 import { Stack } from '@/src/components/stack';
-import { ListItem, ListRoot } from 'src/components/list';
+import { ListItem, ListRoot } from '@/src/components/list';
 import { GridItem } from '@/src/components/grid';
 import googleplay from '@/src/assets/images/googleplay.png';
 import appstore from '@/src/assets/images/appstore.png';

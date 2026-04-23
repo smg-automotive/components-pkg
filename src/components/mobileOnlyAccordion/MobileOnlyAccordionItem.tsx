@@ -1,8 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import useMediaQuery from 'src/hooks/useMediaQuery';
+import useMediaQuery from '@/src/hooks/useMediaQuery';
 
-import { AccordionItem, AccordionItemProps } from '@/src/components/accordion/AccordionItem';
+import {
+  AccordionItem,
+  AccordionItemProps,
+} from '@/src/components/accordion/AccordionItem';
 
 export const MobileOnlyAccordionItem: FC<
   PropsWithChildren<AccordionItemProps>

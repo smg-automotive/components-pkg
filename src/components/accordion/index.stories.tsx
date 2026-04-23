@@ -1,9 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
-
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
+import { accordionRecipe } from '@/src/themes/shared/slotRecipes/accordion';
 
 import {
   CheckmarkIcon,
@@ -11,11 +9,12 @@ import {
   TimeIcon,
 } from '@/src/components/icons';
 
-import { AccordionPanel } from './AccordionPanel';
-import { AccordionItem } from './AccordionItem';
-import { AccordionButton } from './AccordionButton';
+import { AccordionPanel } from '@/src';
+import { AccordionItem } from '@/src';
+import { AccordionButton } from '@/src';
 
-import { Accordion } from './index';
+import { Accordion } from '@/src';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Patterns/Navigation/Accordion',

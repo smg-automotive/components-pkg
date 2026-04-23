@@ -6,6 +6,7 @@ import {
   ChevronRightSmallIcon,
 } from '@/src/components/icons';
 import { Flex } from '@/src/components/flex';
+
 import { Direction } from './NavigationButton';
 
 interface Props {

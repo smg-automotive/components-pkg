@@ -10,11 +10,11 @@ import {
 import { useI18n } from '@/src/utilities/i18nInit';
 import { ZIndex } from '@/src/themes/shared/tokens/zIndex';
 import { Stack } from '@/src/components/stack';
-import { Box } from '@/src/components/box';
 
 import { FilterHeading } from '@/src/components/filterPatterns/Heading';
 import { FilterActionButton } from '@/src/components/filterPatterns/ActionButton';
-import Box from '@/src/components/box';
+import { Box } from '@/src/components/box';
+
 import { PopoverFilterProps } from './props';
 
 type Props = {

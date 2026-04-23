@@ -6,6 +6,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Text } from '@/src/components/text';
 import { Box } from '@/src/components/box';
+
 import { Item } from './type';
 
 import { CheckboxFilter, Props } from './index';

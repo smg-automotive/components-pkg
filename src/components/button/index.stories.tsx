@@ -1,12 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { buttonRecipe } from 'src/themes/shared/recipes/button';
-import { iconControl } from 'src/storybook/ControlTypes';
+import { buttonRecipe } from '@/src/themes/shared/recipes/button';
+import { iconControl } from '@/src/storybook/ControlTypes';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
-import { ShareIcon, VideoIcon } from '../icons';
+import { ShareIcon, VideoIcon } from '@/src';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Button } from '.';
 

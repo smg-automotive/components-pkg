@@ -1,9 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRecipeControls } from '.storybook/preview/controls/recipe';
-
 import { ArrowLeftIcon, ErrorIcon } from '@/src/components/index';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 import { Link } from './index';
 

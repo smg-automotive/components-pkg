@@ -9,7 +9,7 @@ import {
   RangeSliderWithChart,
   RangeSliderWithChartProps,
 } from '@/src/components/rangeSlider/RangeSliderWithChart';
-import { RangeFilterInput } from '../rangeFilterInput';
+
 import type {
   ChangeCallback,
   PickedNumberInputProps,
@@ -17,6 +17,8 @@ import type {
 } from '@/src/components/rangeFilterInput';
 import { Flex } from '@/src/components/flex';
 import { Box } from '@/src/components/box';
+
+import { RangeFilterInput } from '../rangeFilterInput';
 
 export type ChangeSliderCallback = {
   touched: 'min' | 'max';

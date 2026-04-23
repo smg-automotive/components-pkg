@@ -5,7 +5,7 @@ import {
   RecipeVariantProps,
 } from '@chakra-ui/react';
 
-import { linkRecipe } from 'src/themes/shared/recipes/link';
+import { linkRecipe } from '@/src/themes/shared/recipes/link';
 
 export type LinkProps = ChakraLinkProps & {
   isExternal?: boolean;

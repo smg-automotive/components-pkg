@@ -3,7 +3,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { RecipeVariantProps, useSlotRecipe } from '@chakra-ui/react';
 
-import { tabsRecipe } from 'src/themes/shared/slotRecipes/tabs';
+import { tabsRecipe } from '@/src/themes/shared/slotRecipes/tabs';
 
 import { Box } from '../box';
 

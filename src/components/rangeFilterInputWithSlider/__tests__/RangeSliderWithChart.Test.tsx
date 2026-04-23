@@ -1,8 +1,8 @@
 import React from 'react';
 
-import type { RangeSliderWithChartProps } from 'src/components/rangeSlider/RangeSliderWithChart';
+import type { RangeSliderWithChartProps } from '@/src/components/rangeSlider/RangeSliderWithChart';
 
-import { render, screen, waitFor } from 'jest-utils';
+import { render, screen, waitFor } from '@/jest-utils';
 
 import { RangeFilterInputWithSlider } from '..';
 

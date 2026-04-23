@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { chakra, RecipeVariantProps, useRecipe } from '@chakra-ui/react';
 
-import { countRecipe } from 'src/themes/shared/recipes/count';
+import { countRecipe } from '@/src/themes/shared/recipes/count';
 
 type CountVariantProps = RecipeVariantProps<typeof countRecipe>;
 

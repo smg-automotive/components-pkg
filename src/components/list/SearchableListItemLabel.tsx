@@ -7,6 +7,7 @@ import {
   ChevronRightSmallIcon,
 } from '@/src/components/icons/index';
 import { Flex } from '@/src/components/flex/index';
+
 import { ListItemType } from './SearchableListItem';
 
 type LabelProps = Pick<

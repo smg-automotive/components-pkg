@@ -4,21 +4,23 @@ import {
   Dialog as ChakraDialog,
   ConditionalValue,
   Portal,
-  RecipeVariantProps,
   UseDialogProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { dialogRecipe } from 'src/themes/shared/slotRecipes/dialog';
+import { H3 } from '@/src';
+import { Button } from '@/src';
 
-import { H3 } from '../heading';
-import { Button } from '../button';
 import { DialogCloseButton } from './DialogCloseButton';
 import { Box } from '../box';
 
 type MotionPreset = 'none' | 'scale';
 
-type DialogRootProps = RecipeVariantProps<typeof dialogRecipe>;
+type DialogRootProps = {
+  size?: 'md' | 'lg' | 'auth0' | 'full';
+  variant?: 'fullScreen' | 'topScroll';
+  overlayColor?: 'gray';
+};
 
 type ActionButton = {
   action: () => void;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sizes } from 'src/themes/shared/tokens/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
 import { TooltipIcon } from '@/src/components/icons';
 
