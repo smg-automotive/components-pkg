@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 
-import { Flex } from '../flex';
-import { Box } from '../box';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
 
 export const TenantSelectionModalLayout: FunctionComponent<
   PropsWithChildren

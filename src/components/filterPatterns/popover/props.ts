@@ -1,7 +1,7 @@
 import { ZIndex } from 'src/themes/shared/tokens/zIndex';
 
-import { FilterPatternProps } from '../props';
-import { ActionButtonProps } from '../ActionButton';
+import { FilterPatternProps } from '@/src/components/filterPatterns/props';
+import { ActionButtonProps } from '@/src/components/filterPatterns/ActionButton';
 export type PopoverFilterProps = FilterPatternProps &
   Omit<ActionButtonProps, 'onClose'> & {
     initialPopoverState?: 'open' | 'closed';

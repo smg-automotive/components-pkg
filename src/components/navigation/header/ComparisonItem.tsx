@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { chakra } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { CompareIcon } from 'src/components/icons';
-import { Count } from 'src/components/count';
-import { Box } from 'src/components/box';
-
-import { Link } from '../link';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Link } from '@/src/components/navigation/link';
+import { CompareIcon } from '@/src/components/icons';
+import { Count } from '@/src/components/count';
+import { Box } from '@/src/components/box';
 
 export const shouldShowComparisonLink = (
   comparisonItemIds?: number[] | null,

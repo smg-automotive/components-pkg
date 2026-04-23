@@ -8,8 +8,8 @@ import {
   useRecipe,
 } from '@chakra-ui/react';
 
-import { chipRecipe } from 'src/themes/shared/recipes/chip';
-import { CheckmarkIcon } from 'src/components/icons/CheckmarkIcon';
+import { chipRecipe } from '@/src/themes/shared/recipes/chip';
+import { CheckmarkIcon } from '@/src/components/icons/CheckmarkIcon';
 
 export type ChipProps = {
   onClick?: () => void;

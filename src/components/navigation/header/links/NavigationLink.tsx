@@ -2,12 +2,12 @@ import React, { FC, ReactNode } from 'react';
 
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { Project } from 'src/types/project';
-import { BreakpointName } from 'src/themes/shared/breakpoints';
-import { Link } from 'src/components/link';
-import { Box } from 'src/components/box';
-import { Badge } from 'src/components/badge';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Project } from '@/src/types/project';
+import { BreakpointName } from '@/src/themes/shared/breakpoints';
+import { Link } from '@/src/components/link';
+import { Box } from '@/src/components/box';
+import { Badge } from '@/src/components/badge';
 
 export interface NavigationLinkProps {
   link?: Record<Language, string>;

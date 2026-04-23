@@ -8,10 +8,10 @@ import {
 } from '@smg-automotive/auth/fixtures';
 import { Auth0UserType } from '@smg-automotive/auth';
 
-import { Entitlement } from 'src/types/entitlements';
-import { Brand } from 'src/types/brand';
-import { PageLayout } from 'src/components/layout';
-import { Box } from 'src/components/box';
+import { Entitlement } from '@/src/types/entitlements';
+import { Brand } from '@/src/types/brand';
+import { PageLayout } from '@/src/components/layout';
+import { Box } from '@/src/components/box';
 
 import { Navigation } from './index';
 

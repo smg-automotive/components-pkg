@@ -31,7 +31,9 @@ const config: StorybookConfig = {
         esModuleInterop: false,
         allowSyntheticDefaultImports: false,
       },
-      shouldExtractLiteralValuesFromEnum: true,
+        tsconfigPath: './tsconfig.storybook.json',
+
+        shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop) => {
         const isWhitelistedProp = ['variant', 'size'].includes(prop.name);

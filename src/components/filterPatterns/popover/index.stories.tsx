@@ -2,11 +2,11 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Text } from 'src/components/text';
-import { ChevronLeftSmallIcon, FlashIcon } from 'src/components/icons';
-import { Flex } from 'src/components/flex';
-import { CheckboxFilter } from 'src/components/checkboxFilter';
-import { Box } from 'src/components/box';
+import { Text } from '@/src/components/text';
+import { ChevronLeftSmallIcon, FlashIcon } from '@/src/components/icons';
+import { Flex } from '@/src/components/flex';
+import { CheckboxFilter } from '@/src/components/checkboxFilter';
+import { Box } from '@/src/components/box';
 
 import { PopoverFilter } from './index';
 

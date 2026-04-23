@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { MissingImageIcon } from '../icons';
-import { Box, BoxProps } from '../box';
+import { MissingImageIcon } from '@/src/components/icons';
+import { Box, BoxProps } from '@/src/components/box';
 
 export type MissingImageProps = Pick<
   BoxProps,

@@ -2,11 +2,9 @@ import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { Portal } from '@chakra-ui/react';
 
-import { Grid } from 'src/components/grid';
-import { Box } from 'src/components/box';
+import { Grid } from '@/src/components/grid';
+import { Box } from '@/src/components/box';
 
-import { Drawer as useNavigationDrawerType } from '../hooks/useNavigationDrawer';
-import { DrawerNode } from '../config/DrawerNodeItems';
 import { DrawerUserInfo } from './userInfo';
 import { DrawerMenu } from './DrawerMenu';
 import { DrawerLoginToggle } from './DrawerLoginToggle';

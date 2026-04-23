@@ -1,10 +1,11 @@
 import React, { FC, ReactNode } from 'react';
 import { GridItem, Heading } from '@chakra-ui/react';
 
-import { sizes } from 'src/themes/shared/tokens/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
-import { Link } from '../link';
-import { ArrowLeftIcon } from '../icons';
+import { Link } from '@/src/components/link';
+import { ArrowLeftIcon } from '@/src/components/icons';
+
 import { BaseLayout } from './BaseLayout';
 import { BaseGridLayout, repeatArea } from './BaseGrid';
 

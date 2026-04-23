@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
 import { Box, GridItem } from '@chakra-ui/react';
 
-import { FullHeight } from '../index';
+import { FullHeight } from '@/src/components/index';
+
 import { BaseGridLayout } from './BaseGrid';
 
 const meta: Meta<typeof BaseGridLayout> = {

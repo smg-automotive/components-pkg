@@ -7,7 +7,7 @@ import {
 
 import { vehicleReferenceRecipe } from 'src/themes/shared/slotRecipes/vehicleReference';
 
-import { Stack } from '../stack';
+import { Stack } from '@/src/components/stack';
 import { MissingImage } from '../missingImage';
 import { Grid } from '../grid';
 import { Box } from '../box';

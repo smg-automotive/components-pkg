@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { NavigationLinkNode } from '../config/DrawerNodeItems';
+import { NavigationLinkNode } from '@/src/components/navigation/header/config/DrawerNodeItems';
+
 import { CollapsibleSection, NonCollapsibleSection } from './DrawerSections';
 
 export const DrawerMenu: FC<{ node: NavigationLinkNode }> = ({ node }) => {

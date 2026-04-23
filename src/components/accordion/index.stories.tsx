@@ -5,7 +5,12 @@ import { accordionRecipe } from 'src/themes/shared/slotRecipes/accordion';
 
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import { CheckmarkIcon, InformationIcon, TimeIcon } from '../icons';
+import {
+  CheckmarkIcon,
+  InformationIcon,
+  TimeIcon,
+} from '@/src/components/icons';
+
 import { AccordionPanel } from './AccordionPanel';
 import { AccordionItem } from './AccordionItem';
 import { AccordionButton } from './AccordionButton';

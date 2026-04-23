@@ -4,7 +4,7 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Center } from '@chakra-ui/react';
 
-import { Box } from '../box';
+import { Box } from '@/src/components/box';
 
 import { DiscreteSlider, type DiscreteSliderProps } from './index';
 

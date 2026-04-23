@@ -1,4 +1,4 @@
-import { CustomEvent, navigationEventCategory } from 'src/types/tracking';
+import { CustomEvent, navigationEventCategory } from '@/src/types/tracking';
 
 import { NavigationLinkConfigProps } from './headerLinks';
 

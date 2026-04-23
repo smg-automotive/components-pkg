@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Text } from 'src/components/text';
-import { render, screen } from 'jest-utils';
+import { Text } from '@/src/components/text';
+import { render, screen } from '@/jest-utils';
 
 import { Progress } from '../index';
 

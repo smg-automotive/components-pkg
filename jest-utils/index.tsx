@@ -7,12 +7,12 @@ import {
   renderHook as testingLibraryRenderHook,
 } from '@testing-library/react';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
 import {
   ThemeProvider,
   type ThemeProviderProps,
-} from '../src/components/themeProvider';
+} from '@/src/components/themeProvider';
 
 type WrapperOptions = {
   theme?: ThemeProviderProps['theme'];

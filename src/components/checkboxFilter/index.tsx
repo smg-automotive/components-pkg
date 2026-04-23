@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import { TranslationProvider } from '../translationProvider';
+import { TranslationProvider } from '@/src/components/translationProvider';
 
 import { Separator } from '../separator';
 import { Grid, GridItem } from '../grid';

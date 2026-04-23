@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { AspectRatio } from '../aspectRatio';
+import { AspectRatio } from '@/src/components/aspectRatio';
 
 type Props = {
   aspectRatio?: number;

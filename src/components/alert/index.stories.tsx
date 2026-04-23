@@ -6,7 +6,7 @@ import { alertRecipe } from 'src/themes/shared/slotRecipes/alert';
 
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import { ErrorIcon } from '../index';
+import { ErrorIcon } from '@/src/components/index';
 
 import { Alert } from './index';
 

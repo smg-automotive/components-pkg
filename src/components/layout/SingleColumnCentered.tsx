@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from 'react';
 
 import { Container } from '@chakra-ui/react';
 
-import { sizes } from 'src/themes/shared/tokens/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
 import { Box } from '../box';
 

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
-import { CloseIcon } from '../icons';
+import { CloseIcon } from '@/src/components/icons';
 
 import { Flex } from '../flex';
 

@@ -1,4 +1,4 @@
-import { Entitlement } from 'src/types/entitlements';
+import { Entitlement } from '@/src/types/entitlements';
 
 import { NavigationLinkConfigProps } from './headerLinks';
 

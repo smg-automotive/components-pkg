@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { GridItem, GridItemProps } from 'src/components/grid';
+import { GridItem, GridItemProps } from '@/src/components/grid';
 
 export const AppLayoutContent = forwardRef<HTMLDivElement, GridItemProps>(
   (props, ref) => {

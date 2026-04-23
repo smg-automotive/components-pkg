@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { Stack } from 'src/components/stack';
-import { Box } from 'src/components/box';
+import { Stack } from '@/src/components/stack';
+import { Box } from '@/src/components/box';
 
 import { FooterLink } from './Link';
 import { FooterConfigInstance } from './config/factory';

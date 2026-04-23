@@ -1,14 +1,17 @@
+import { fileURLToPath } from 'url';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
-import { dirname, join } from 'path';
+import { dirname } from 'path';
 import typescript from '@rollup/plugin-typescript';
-import resolve from '@rollup/plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+// eslint-disable-next-line import/no-unresolved
+import alias from '@rollup/plugin-alias';
 
 import packageJson from './package.json' with { type: 'json' };
 
@@ -28,16 +31,18 @@ const onwarn = (warning, warn) => {
 
 const fontsHostedRequire = packageJson.exports[
   './fonts/hosted'
-].require.replace(/^.\//, '');
-const fontsHostedImport = packageJson.exports['./fonts/hosted'].import.replace(
-  /^.\//,
-  '',
-);
+].require.default.replace(/^.\//, '');
+const fontsHostedImport = packageJson.exports[
+  './fonts/hosted'
+].import.default.replace(/^.\//, '');
 
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
+const rootDir = dirname(fileURLToPath(import.meta.url));
+const aliasEntries = [{ find: '@', replacement: rootDir }];
 const jsPlugins = [
   peerDepsExternal(),
-  resolve(resolveOptions),
+  alias({ entries: aliasEntries }),
+  nodeResolve(resolveOptions),
   commonjs(),
   image(),
   json(),
@@ -58,6 +63,8 @@ const cjs = {
     typescript({
       tsconfig: './tsconfig.build.json',
       compilerOptions: {
+        declaration: false,
+        declarationMap: false,
         outDir: dirname(packageJson.main),
       },
     }),
@@ -82,8 +89,9 @@ const esm = {
     typescript({
       tsconfig: './tsconfig.build.json',
       compilerOptions: {
+        declaration: false,
+        declarationMap: false,
         outDir: dirname(packageJson.module),
-        declaration: true,
       },
     }),
     copy({
@@ -103,7 +111,33 @@ const esm = {
 const types = {
   input: 'src/index.ts',
   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-  plugins: [dts({ tsconfig: './tsconfig.build.json' })],
+  plugins: [
+    dts({ tsconfig: './tsconfig.build.json' }),
+    copy({
+      targets: [
+        { src: 'dist/index.d.ts', dest: 'dist', rename: 'index.d.mts' },
+      ],
+      hook: 'writeBundle',
+    }),
+  ],
+};
+
+const hostedFontsTypes = {
+  input: 'src/fonts/Hosted.tsx',
+  output: [{ file: 'dist/fonts/esm/types/Hosted.d.ts', format: 'esm' }],
+  plugins: [
+    dts({ tsconfig: './tsconfig.build_fonts.json' }),
+    copy({
+      targets: [
+        {
+          src: 'dist/fonts/esm/types/Hosted.d.ts',
+          dest: 'dist/fonts/esm/types',
+          rename: 'Hosted.d.mts',
+        },
+      ],
+      hook: 'writeBundle',
+    }),
+  ],
 };
 
 const hostedFontsCjs = {
@@ -121,9 +155,9 @@ const hostedFontsCjs = {
     typescript({
       tsconfig: './tsconfig.build_fonts.json',
       compilerOptions: {
+        declaration: false,
+        declarationMap: false,
         outDir: dirname(fontsHostedRequire),
-        declaration: true,
-        declarationDir: join(dirname(fontsHostedRequire), 'types'),
       },
     }),
   ],
@@ -147,9 +181,9 @@ const hostedFontsEsm = {
     typescript({
       tsconfig: './tsconfig.build_fonts.json',
       compilerOptions: {
+        declaration: false,
+        declarationMap: false,
         outDir: dirname(fontsHostedImport),
-        declaration: true,
-        declarationDir: join(dirname(fontsHostedImport), 'types'),
       },
     }),
   ],
@@ -167,7 +201,8 @@ const cli = {
     },
   ],
   plugins: [
-    resolve({
+    alias({ entries: aliasEntries }),
+    nodeResolve({
       ...resolveOptions,
       preferBuiltins: true,
     }),
@@ -175,6 +210,8 @@ const cli = {
     typescript({
       tsconfig: './tsconfig.build_cli.json',
       compilerOptions: {
+        declaration: false,
+        declarationMap: false,
         outDir: dirname(packageJson.bin.components),
       },
     }),
@@ -194,4 +231,12 @@ const cli = {
   onwarn,
 };
 
-export default [cjs, esm, types, hostedFontsCjs, hostedFontsEsm, cli];
+export default [
+  cjs,
+  esm,
+  types,
+  hostedFontsTypes,
+  hostedFontsCjs,
+  hostedFontsEsm,
+  cli,
+];

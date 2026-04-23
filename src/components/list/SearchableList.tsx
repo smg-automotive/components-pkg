@@ -3,9 +3,11 @@ import Fuse, { FuseResult } from 'fuse.js';
 
 import { useToken } from 'src/hooks';
 
-import { SearchField, SearchFieldOptions } from '../input/SearchField';
-import { Flex } from '../flex';
-
+import {
+  SearchField,
+  SearchFieldOptions,
+} from '@/src/components/input/SearchField';
+import { Flex } from '@/src/components/flex';
 import { ListItemType, SearchableListItem } from './SearchableListItem';
 
 import { List } from './index';

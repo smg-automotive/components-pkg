@@ -2,9 +2,9 @@ import React, { FC, Fragment } from 'react';
 
 import { Box } from '@chakra-ui/react';
 
-import { Stack } from '../stack';
-import { Separator } from '../separator';
-import { Checkbox, CheckboxProps } from '../checkbox';
+import { Stack } from '@/src/components/stack';
+import { Separator } from '@/src/components/separator';
+import { Checkbox, CheckboxProps } from '@/src/components/checkbox';
 
 export interface CheckboxGroupProps extends CheckboxProps {
   /**

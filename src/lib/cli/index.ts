@@ -5,6 +5,15 @@ import setupNextFonts from './setupNextFonts';
 import setup from './setup';
 import copyFonts from './copyFonts';
 
+type PathArgs = {
+  path: string;
+};
+
+type SetupNextFontsArgs = {
+  componentPath: string;
+  fontsPath: string;
+};
+
 yargs(hideBin(process.argv))
   .command<Parameters<typeof setup>[0]>({
     command: 'setup',
@@ -16,8 +25,9 @@ yargs(hideBin(process.argv))
           'Path to copy fonts to, it should be public directory in your web project',
         type: 'string',
         default: 'public',
-      }),
-    handler: setup,
+      },
+    },
+    handler: ({ path }) => setup({ path }),
   })
   .command<Parameters<typeof copyFonts>[0]>({
     command: 'copy-fonts',
@@ -28,8 +38,9 @@ yargs(hideBin(process.argv))
         description: 'Path to copy fonts to',
         type: 'string',
         demandOption: 'Please specify path to copy fonts to',
-      }),
-    handler: copyFonts,
+      },
+    },
+    handler: ({ path }) => copyFonts({ path }),
   })
   .command<Parameters<typeof setupNextFonts>[0]>({
     command: 'setup-next-fonts',

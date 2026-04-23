@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { emBreakpoints } from 'src/themes/shared/breakpoints';
+import { emBreakpoints } from '@/src/themes/shared/breakpoints';
 
 import { Box } from './index';
 

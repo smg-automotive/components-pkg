@@ -1,4 +1,5 @@
-import { withTranslationProvider } from '../translationProvider/withTranslationProvider';
+import { withTranslationProvider } from '@/src/components/translationProvider/withTranslationProvider';
+
 import { ErrorPageContent, ErrorPageContentProps } from './content';
 
 export const ErrorPage = withTranslationProvider<ErrorPageContentProps>([

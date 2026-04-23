@@ -3,9 +3,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { useSlotRecipe } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { Language } from 'src/types/language';
-import { CloseIcon } from 'src/components/icons';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Language } from '@/src/types/language';
+import { CloseIcon } from '@/src/components/icons';
 
 import { SimpleGrid } from '../simpleGrid';
 import { Link } from '../link';

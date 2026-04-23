@@ -1,4 +1,4 @@
-import { chunkArray } from '../chunkArray';
+import { chunkArray } from '@/src/utilities/chunkArray';
 
 describe('The chunkArray utility', () => {
   it('chunks the given array', () => {

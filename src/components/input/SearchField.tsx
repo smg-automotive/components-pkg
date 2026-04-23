@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react';
 
-import useMediaQuery from 'src/hooks/useMediaQuery';
+import useMediaQuery from '@/src/hooks/useMediaQuery';
 
 import { MagnifierIcon } from '../icons/index';
 

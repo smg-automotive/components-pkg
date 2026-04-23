@@ -10,8 +10,8 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { ChevronDownSmallIcon, CloseIcon } from 'src/components/icons';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { ChevronDownSmallIcon, CloseIcon } from '@/src/components/icons';
 
 import { PopoverFilterProps } from './props';
 import { Popover as FilterPopover } from './Popover';

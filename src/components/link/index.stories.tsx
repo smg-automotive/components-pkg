@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import { ArrowLeftIcon, ErrorIcon } from '../index';
+import { ArrowLeftIcon, ErrorIcon } from '@/src/components/index';
 
 import { Link } from './index';
 

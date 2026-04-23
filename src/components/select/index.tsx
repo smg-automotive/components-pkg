@@ -7,7 +7,7 @@ import {
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-import { selectSlotRecipe } from 'src/themes/shared/slotRecipes/select';
+import { selectSlotRecipe } from '@/src/themes/shared/slotRecipes/select';
 
 export type Option<T extends string | number> = {
   value: T;

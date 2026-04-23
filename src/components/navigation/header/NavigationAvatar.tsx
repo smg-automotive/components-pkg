@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import type { EnrichedSessionUser } from '@smg-automotive/auth';
 import { useSlotRecipe } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { Text } from 'src/components/text';
-import { Box } from 'src/components/box';
-import { Avatar } from 'src/components/avatar';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Text } from '@/src/components/text';
+import { Box } from '@/src/components/box';
+import { Avatar } from '@/src/components/avatar';
 
 import { Drawer } from './hooks/useNavigationDrawer';
 import { DrawerIndicator } from './drawer/DrawerIndicator';

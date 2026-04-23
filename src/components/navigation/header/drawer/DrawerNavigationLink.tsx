@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { List } from 'src/components/list';
-import { Box } from 'src/components/box';
+import { List } from '@/src/components/list';
+import { Box } from '@/src/components/box';
 
 import { NavigationLink, NavigationLinkProps } from '../links/NavigationLink';
 

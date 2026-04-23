@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Table, useChakraContext } from '@chakra-ui/react';
 
-import { convertRemEmToPx } from 'src/utilities/convertRemEmToPx';
+import { convertRemEmToPx } from '@/src/utilities/convertRemEmToPx';
 
 const BreakpointShowCase: FC = () => {
   const context = useChakraContext();

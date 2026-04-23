@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Box, Flex, Heading, Spacer, Table } from '@chakra-ui/react';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import { Switch, SwitchProps } from '../switch';
-import { CloseIcon } from '../icons';
-import { Button, ButtonSharedProps } from '../button';
+import { Switch, SwitchProps } from '@/src/components/switch';
+import { CloseIcon } from '@/src/components/icons';
+import { Button, ButtonSharedProps } from '@/src/components/button';
 
 export type DevOverlayVariables = { name: string; value: string }[];
 

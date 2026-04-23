@@ -2,14 +2,14 @@ import { ReactNode } from 'react';
 
 import { Auth0UserType } from '@smg-automotive/auth';
 
-import { Project } from 'src/types/project';
-import { Environment } from 'src/types/environment';
-import { Brand } from 'src/types/brand';
+import { Project } from '@/src/types/project';
+import { Environment } from '@/src/types/environment';
+import { Brand } from '@/src/types/brand';
 
-import { BreakpointName } from 'src/themes/shared/breakpoints';
-import { Domains, Link, LinkConfig } from 'src/components/navigation/link';
+import { BreakpointName } from '@/src/themes/shared/breakpoints';
+import { Domains, Link, LinkConfig } from '@/src/components/navigation/link';
 
-import { UserTypeExternal } from '../types';
+import { UserTypeExternal } from '@/src/components/navigation/header/types';
 
 export class HeaderNavigationLink extends Link {
   isNew?: boolean;

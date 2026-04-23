@@ -2,8 +2,9 @@ import React, { FC, useCallback } from 'react';
 
 import { UseEmblaCarouselType } from 'embla-carousel-react';
 
-import { Flex } from '../flex';
-import { Box } from '../box';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+
 import { NumbersPaginationButton } from './NumbersPaginationButton';
 
 interface Props {

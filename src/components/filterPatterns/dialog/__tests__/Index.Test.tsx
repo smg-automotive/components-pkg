@@ -1,10 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from 'jest-utils';
-
-import { DialogFilterProps } from '../props';
-import { DialogFilter } from '../index';
+import { DialogFilterProps } from '@/src/components/filterPatterns/modal/props';
+import { DialogFilter } from '@/src/components/filterPatterns/modal/index';
+import { render, screen, waitFor } from '@/jest-utils';
 
 const validProps: DialogFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },

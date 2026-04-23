@@ -8,8 +8,8 @@ import { inputSlotRecipe } from 'src/themes/shared/slotRecipes/input';
 
 import { getRecipeControls } from '.storybook/preview/controls/recipe';
 
-import { AiSearchIcon, Button } from '../index';
-import { MagnifierIcon } from '../icons';
+import { AiSearchIcon, Button } from '@/src/components/index';
+import { MagnifierIcon } from '@/src/components/icons';
 
 import { Input, InputProps } from './index';
 

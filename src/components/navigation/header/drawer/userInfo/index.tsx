@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { Auth0UserType, type EnrichedSessionUser } from '@smg-automotive/auth';
 import { GridItem, Separator } from '@chakra-ui/react';
 
-import { Stack } from 'src/components/stack';
-import { Box } from 'src/components/box';
-import { Avatar } from 'src/components/avatar';
+import { Stack } from '@/src/components/stack';
+import { Box } from '@/src/components/box';
+import { Avatar } from '@/src/components/avatar';
 
 import { TenantSelectionMenu } from './TenantSelectionMenu';
 import { SelectedTenantInfo } from './SelectedTenantInfo';

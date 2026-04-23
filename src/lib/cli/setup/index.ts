@@ -1,5 +1,6 @@
-import { destination } from '../paths';
-import copyFonts from '../copyFonts';
+import { destination } from '@/src/lib/cli/paths';
+import copyFonts from '@/src/lib/cli/copyFonts';
+
 import appendGitignore from './appendGitignore';
 import addPostinstallScript from './addPostinstallScript';
 

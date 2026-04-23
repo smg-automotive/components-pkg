@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { ShareIcon } from '../icons';
+import { ShareIcon } from '@/src/components/icons';
 
 import { Button } from './index';
 

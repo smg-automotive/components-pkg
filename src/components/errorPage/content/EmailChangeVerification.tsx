@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Trans } from 'src/utilities/i18nInit';
-import { Box } from 'src/components/box';
+import { Trans } from '@/src/utilities/i18nInit';
+import { Box } from '@/src/components/box';
 
 export const EmailChangeVerificationErrorContent = () => {
   return (

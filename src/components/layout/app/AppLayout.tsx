@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { Grid, GridProps } from 'src/components/grid';
+import { Grid, GridProps } from '@/src/components/grid';
 
 const pageGridArea = `
   "header"
