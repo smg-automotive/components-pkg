@@ -32,17 +32,12 @@ const config: StorybookConfig = {
         allowSyntheticDefaultImports: false,
       },
       tsconfigPath: './tsconfig.storybook.json',
-
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop) => {
         const isWhitelistedProp = ['variant', 'size'].includes(prop.name);
-
-        // Excludes styling props defined by chakra
         const isExcludedProp = ['as', 'asChild', 'recipe'].includes(prop.name);
         const isStyledSystemProp = autoScout24System.isValidProperty(prop.name);
-
-        // Excludes HTML attributes and DOM properties coming (mostly) from react
         const isHTMLProp = prop.parent?.name?.match(/^(html|dom)/i) ?? false;
         const isReactProp =
           prop.parent?.fileName?.includes('node_modules/@types/react') ?? false;
@@ -65,6 +60,10 @@ const config: StorybookConfig = {
   ],
   webpackFinal: async (webpack) => {
     webpack.resolve = webpack.resolve || {};
+    webpack.resolve.alias = {
+      ...(webpack.resolve.alias || {}),
+      '@': path.resolve(__dirname, '..'),
+    };
     webpack.resolve.modules = [
       ...(webpack.resolve.modules || []),
       path.resolve(__dirname, '..'),
@@ -72,4 +71,5 @@ const config: StorybookConfig = {
     return webpack;
   },
 };
+
 export default config;
