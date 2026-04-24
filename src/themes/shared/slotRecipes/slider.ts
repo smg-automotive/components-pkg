@@ -9,6 +9,7 @@ export const sliderSlotRecipe = defineSlotRecipe({
       flexDirection: 'column',
       width: 'full',
       fontSize: 'base',
+      '--slider-marker-inset': '4px',
       '--slider-marker-track': '4px',
       '--slider-thumb-border': '1px',
       '--slider-thumb-boxShadow': '0 0 0 8px #2988E14D',
@@ -39,6 +40,7 @@ export const sliderSlotRecipe = defineSlotRecipe({
     markerGroup: {
       position: 'absolute!',
       top: '2xl',
+      insetInline: 'var(--slider-marker-inset)',
     },
     thumb: {
       width: 'sm',
