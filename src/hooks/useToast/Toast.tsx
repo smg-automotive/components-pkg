@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import {
+  Box,
   Alert as ChakraAlert,
   Toast as ChakraToast,
   createToaster,
@@ -50,13 +51,13 @@ export const Toast: FC<ToastProps> = (props) => {
                   {toast.meta?.link ? (
                     <AlertLink {...toast.meta?.link} />
                   ) : null}
-                  <ChakraToast.CloseTrigger css={styles.toastClose}>
+                  <Box css={styles.toastClose}>
                     <CloseButton
                       onClick={() => {
                         toast.meta?.onClose?.();
                       }}
                     />
-                  </ChakraToast.CloseTrigger>
+                  </Box>
                 </ChakraAlert.Content>
               </ChakraAlert.Root>
             </ChakraToast.Root>
