@@ -18,6 +18,8 @@ export const FormControl: FC<PropsWithChildren<Props>> = ({
   children,
   tooltip,
   hint,
+  labelButtonOnClick,
+  labelButtonText,
 }) => {
   return (
     <Field
@@ -29,6 +31,8 @@ export const FormControl: FC<PropsWithChildren<Props>> = ({
       size={size}
       tooltip={tooltip}
       hint={hint}
+      labelButtonText={labelButtonText}
+      labelButtonOnClick={labelButtonOnClick}
     >
       {children}
     </Field>
