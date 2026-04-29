@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import {
-  Field,
   Input,
   InputProps,
   RecipeVariantProps,
@@ -26,20 +25,19 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const recipe = useSlotRecipe({ key: 'input' });
     const [recipeProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
+
     return (
-      <Field.Root invalid={props.invalid}>
-        <Input
-          {...props}
-          css={{
-            ...styles.field,
-            display: 'block',
-            textAlign: 'start',
-          }}
-          type="date"
-          min={min ? min.toISOString().split('T')[0] : undefined}
-          ref={ref}
-        />
-      </Field.Root>
+      <Input
+        {...props}
+        css={{
+          ...styles.field,
+          display: 'block',
+          textAlign: 'start',
+        }}
+        type="date"
+        min={min ? min.toISOString().split('T')[0] : undefined}
+        ref={ref}
+      />
     );
   },
 );
