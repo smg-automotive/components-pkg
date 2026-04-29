@@ -1,24 +1,24 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import AccordionPanel from '@/src/components/accordion/AccordionPanel';
-import AccordionItem from '@/src/components/accordion/AccordionItem';
-import AccordionButton from '@/src/components/accordion/AccordionButton';
 import { render, screen, waitFor } from '@/jest-utils';
 
-import Accordion from '..';
+import { AccordionPanel } from '../AccordionPanel';
+import { AccordionItem } from '../AccordionItem';
+import { AccordionButton } from '../AccordionButton';
+import { Accordion } from '..';
 
 const renderWrapper = ({ ...props }) =>
   render(
     <Accordion {...props}>
-      <AccordionItem>
+      <AccordionItem value="item-1">
         <AccordionButton data-testid="test-accordion-button-1">
           Section 1
         </AccordionButton>
         <AccordionPanel>Section 1 content</AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem>
+      <AccordionItem value="item-2">
         <AccordionButton data-testid="test-accordion-button-2">
           Section 2
         </AccordionButton>
@@ -58,10 +58,10 @@ describe('<Accordion />', () => {
     });
   });
 
-  describe('allowToggle', () => {
+  describe('collapsible', () => {
     it('is toggle accordion panel', async () => {
       renderWrapper({
-        allowToggle: true,
+        collapsible: true,
       });
 
       const firstAccordionButton = screen.getByTestId(
@@ -80,9 +80,9 @@ describe('<Accordion />', () => {
     });
   });
 
-  describe('allowMultiple', () => {
+  describe('multiple', () => {
     it('opens multiple accordion panels', async () => {
-      renderWrapper({ allowMultiple: true, defaultIndex: [] });
+      renderWrapper({ multiple: true });
 
       const firstAccordionButton = screen.getByTestId(
         'test-accordion-button-1',

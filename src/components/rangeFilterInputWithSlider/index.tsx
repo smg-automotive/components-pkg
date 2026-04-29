@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
-import RangeSliderWithScale, {
+import {
   NumericMinMaxValue,
+  RangeSliderWithScale,
 } from '@/src/components/rangeSlider/RangeSliderWithScale';
-import RangeSliderWithChart, {
+import {
   Facet,
+  RangeSliderWithChart,
   RangeSliderWithChartProps,
 } from '@/src/components/rangeSlider/RangeSliderWithChart';
-import RangeFilterInput, {
+
+import type {
   ChangeCallback,
   PickedNumberInputProps,
   RangeFilterInputField,
 } from '@/src/components/rangeFilterInput';
-import Flex from '@/src/components/flex';
-import Box from '@/src/components/box';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+
+import { RangeFilterInput } from '../rangeFilterInput';
 
 export type ChangeSliderCallback = {
   touched: 'min' | 'max';
@@ -46,7 +51,7 @@ export type Props<NameFrom, NameTo> = {
 } & RangeSliderProps &
   PickedNumberInputProps;
 
-function RangeFilterInputWithSlider<
+export function RangeFilterInputWithSlider<
   NameFrom extends string,
   NameTo extends string,
 >({
@@ -59,7 +64,7 @@ function RangeFilterInputWithSlider<
   chartHeight,
   ...rest
 }: Props<NameFrom, NameTo>) {
-  const value = {
+  const value: NumericMinMaxValue = {
     min: from.value,
     max: to.value,
   };
@@ -101,24 +106,22 @@ function RangeFilterInputWithSlider<
   const appliedValue = (): NumericMinMaxValue => {
     if (isSliding || !isFilterApplied()) {
       return valuesWhileSliding;
-    } else {
-      return value;
     }
+    return value;
   };
 
   const handleInputChange = (event: ChangeCallback<NameFrom | NameTo>) => {
     // sync slider with input
-    setValuesWhileSliding({
-      ...valuesWhileSliding,
+    setValuesWhileSliding((prev: NumericMinMaxValue) => ({
+      ...prev,
       [event.name === from.name ? 'min' : 'max']: event.value,
-    });
-
+    }));
     onChange({ ...event, changeType: 'inputfield' });
   };
 
   return (
     <Flex direction="column">
-      <Box order={{ base: 1, sm: 0 }} px="md" py={{ base: 'md', sm: 0 }}>
+      <Box order={{ base: 1, sm: 0 }} px="md" py={{ base: 'md', sm: '0' }}>
         {facets ? (
           <RangeSliderWithChart
             onSliderChange={handleSliderChange}
@@ -132,19 +135,13 @@ function RangeFilterInputWithSlider<
             onSliderChange={handleSliderChange}
             onSliderRelease={handleSliderRelease}
             selection={appliedValue()}
-            scale={rangeSliderScale}
+            scale={rangeSliderScale!}
           />
         )}
       </Box>
       <RangeFilterInput
-        from={{
-          ...from,
-          value: appliedValue().min,
-        }}
-        to={{
-          ...to,
-          value: appliedValue().max,
-        }}
+        from={{ ...from, value: appliedValue().min }}
+        to={{ ...to, value: appliedValue().max }}
         handleChange={handleInputChange}
         onBlur={handleInputChange}
         unit={unit}
@@ -153,5 +150,3 @@ function RangeFilterInputWithSlider<
     </Flex>
   );
 }
-
-export default RangeFilterInputWithSlider;

@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 
 import { chakra } from '@chakra-ui/react';
 
-import HighlightedText from '@/src/components/text/HighlightedText';
-import GridItem from '@/src/components/grid/GridItem';
-import Grid from '@/src/components/grid';
-import Checkbox from '@/src/components/checkbox';
+import { HighlightedText } from '@/src/components/text/HighlightedText';
+import { GridItem } from '@/src/components/grid';
+import { Grid } from '@/src/components/grid';
+import { Checkbox } from '@/src/components/checkbox';
 
 import { Props as CheckboxFilterProps, Item } from './type';
 
@@ -20,7 +20,10 @@ type Props<ItemKey extends string, FilterName extends string> = {
   contentRight?: ReactNode;
 } & Pick<CheckboxFilterProps<ItemKey, FilterName>, 'onApply'>;
 
-function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
+export function CheckboxWithFacet<
+  ItemKey extends string,
+  FilterName extends string,
+>({
   item,
   onApply,
   contentRight,
@@ -30,7 +33,12 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
   const renderFacet = (facet?: number | null) => {
     if (typeof facet !== 'number') return null;
     return (
-      <chakra.span ml="sm" color="gray.400" minW="7ch" textAlign="right">
+      <chakra.span
+        ml="sm"
+        color="gray.400"
+        style={{ minWidth: '7ch' }}
+        textAlign="right"
+      >
         {addThousandSeparatorToNumber(facet)}
       </chakra.span>
     );
@@ -45,13 +53,12 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
       <Checkbox
         variant={item?.image ? 'alignCenter' : 'alignTop'}
         name={`filter_${item.key}_${item.label}`}
-        isChecked={item.isChecked}
+        checked={isIndeterminate ? 'indeterminate' : item.isChecked}
         value={item.key}
         fullWidth
-        isIndeterminate={isIndeterminate}
         label={
           item?.image ? (
-            <chakra.span display="flex" alignItems="center">
+            <chakra.span display="flex" alignItems="center" width="full">
               {item.image}
               <chakra.span
                 w="full"
@@ -76,21 +83,19 @@ function CheckboxWithFacet<ItemKey extends string, FilterName extends string>({
               <HighlightedText
                 text={item.label}
                 highlightIndices={item.highlightIndices}
-                w="full"
                 wordBreak="break-word"
               />
               {renderFacet(item.facet)}
             </chakra.span>
           )
         }
-        onChange={(event) => {
-          const isChecked = event.target.checked;
+        onChange={(details) => {
+          const isChecked = details.checked === true;
           onApply({ ...item, isChecked });
         }}
       />
 
-      {contentRight ? <GridItem>{contentRight}</GridItem> : null}
+      {contentRight ? <GridItem ml="sm">{contentRight}</GridItem> : null}
     </Grid>
   );
 }
-export default CheckboxWithFacet;

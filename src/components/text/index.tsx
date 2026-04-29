@@ -1,3 +1,6 @@
-import { Text } from '@chakra-ui/react';
+import { Text as ChakraText, TextProps } from '@chakra-ui/react';
 
-export default Text;
+const Text = ChakraText;
+Text.displayName = 'Text';
+
+export { Text, type TextProps };

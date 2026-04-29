@@ -2,16 +2,16 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import { Button } from '@/src/components/index';
+import { Button } from '@/src/components/button';
 
-import VehicleReference from './index';
+import { VehicleReference } from './index';
 
 const meta: Meta<typeof VehicleReference> = {
   title: 'Patterns/Data display/Vehicle reference',
   component: VehicleReference,
   decorators: [
     (Story) => (
-      <Box maxW={{ '2xs': '100%', md: '600px' }}>
+      <Box maxW={{ '2xs': 'full', md: '7xl' }}>
         <Story />
       </Box>
     ),
@@ -71,7 +71,7 @@ export const VehicleReferenceWithImageAndCallToAction: StoryType = {
     sellerAddress: `2540 Grenchen (SO)`,
     image: <img src="https://picsum.photos/400/400" alt="400x400" />,
     callToAction: (
-      <Button variant="secondary" width="full" onClick={() => null}>
+      <Button width="full" onClick={() => null}>
         Press me!
       </Button>
     ),

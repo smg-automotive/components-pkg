@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Chip from './index';
+import { Chip } from './index';
 
 const meta: Meta<typeof Chip> = {
   title: 'Components/Data display/Chip',
@@ -10,8 +10,7 @@ const meta: Meta<typeof Chip> = {
 
   args: {
     children: 'Chip',
-    isDisabled: false,
-    isActive: false,
+    selected: false,
     onClick: action('onClick'),
   },
 
@@ -20,12 +19,12 @@ const meta: Meta<typeof Chip> = {
       control: 'text',
     },
 
-    isDisabled: {
+    selected: {
       control: 'boolean',
-    },
-
-    isActive: {
-      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
 
     href: {
@@ -40,23 +39,14 @@ export const Default: StoryType = {
   name: 'Default',
   args: {
     children: 'Default Chip',
-    isActive: false,
   },
 };
 
-export const Active: StoryType = {
-  name: 'Active',
+export const Selected: StoryType = {
+  name: 'Selected',
   args: {
-    children: 'Active Chip',
-    isActive: true,
-  },
-};
-
-export const StateDisabled: StoryType = {
-  name: 'State > Disabled',
-  args: {
-    isDisabled: true,
-    children: 'Disabled Chip',
+    children: 'Selected Chip',
+    selected: true,
   },
 };
 
@@ -79,23 +69,12 @@ export const AsLink: StoryType = {
 export const InteractiveExample: StoryType = {
   name: 'Interactive Example',
   render: function InteractiveChipsExample() {
-    const [activeChips, setActiveChips] = React.useState<string[]>([]);
-
-    const toggleChip = (chipId: string) => {
-      setActiveChips((prev) =>
-        prev.includes(chipId)
-          ? prev.filter((id) => id !== chipId)
-          : [...prev, chipId],
-      );
-    };
+    const [selected, setSelected] = React.useState(false);
 
     return (
       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <Chip onClick={() => toggleChip('option1')}>Suggestion chip</Chip>
-        <Chip
-          isActive={activeChips.includes('option2')}
-          onClick={() => toggleChip('option2')}
-        >
+        <Chip>Suggestion chip</Chip>
+        <Chip selected={selected} onClick={() => setSelected((prev) => !prev)}>
           Filter chip
         </Chip>
       </div>
@@ -105,7 +84,7 @@ export const InteractiveExample: StoryType = {
     docs: {
       description: {
         story:
-          'Click the chips to see them toggle between active and inactive states. The last two chips are links.',
+          'Click the chips to see them toggle between selected and default states.',
       },
     },
   },

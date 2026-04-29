@@ -2,9 +2,11 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { ErrorIcon } from '@/src/components/index';
+import { alertRecipe } from '@/src/themes/shared/slotRecipes/alert';
 
-import Alert from './index';
+import { ErrorIcon } from '@/src/components/icons/ErrorIcon';
+import { Alert } from '@/src/components/alert';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components/Feedback/Alert',
@@ -14,22 +16,11 @@ const meta: Meta<typeof Alert> = {
     type: 'info',
     description: 'Your Chakra experience may be degraded.',
     dismissible: false,
-    title: '',
     link: undefined,
   },
 
   argTypes: {
-    type: {
-      options: ['error', 'warning', 'info', 'success'],
-      control: 'select',
-    },
-    dismissible: {
-      control: 'boolean',
-    },
-    onDismiss: {
-      description: 'Callback when the alert is dismissed',
-      control: {},
-    },
+    ...getRecipeControls(alertRecipe),
   },
 };
 export default meta;

@@ -1,25 +1,25 @@
 import React, { FC } from 'react';
 
 import {
-  BreadcrumbLink as ChakraBreadcrumbLink,
+  Breadcrumb as ChakraBreadcrumb,
   BreadcrumbLinkProps as ChakraBreadcrumbLinkProps,
-  useMultiStyleConfig,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-const BreadcrumbLink: FC<ChakraBreadcrumbLinkProps> = ({
+export const BreadcrumbLink: FC<ChakraBreadcrumbLinkProps> = ({
   children,
-  ...itemProps
+  ...props
 }) => {
-  const styles = useMultiStyleConfig('Breadcrumbs');
-  const { href } = itemProps;
+  const { href } = props;
+
+  const recipe = useSlotRecipe({ key: 'breadcrumbs' });
+  const styles = recipe();
 
   return href ? (
-    <ChakraBreadcrumbLink __css={styles.link} href={href} {...itemProps}>
+    <ChakraBreadcrumb.Link css={styles.link} href={href} {...props}>
       {children}
-    </ChakraBreadcrumbLink>
+    </ChakraBreadcrumb.Link>
   ) : (
     children
   );
 };
-
-export default BreadcrumbLink;

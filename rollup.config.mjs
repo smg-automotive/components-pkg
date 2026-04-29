@@ -22,6 +22,11 @@ const external = [
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') {
     if (warning.message.includes('node_modules/yargs')) return;
+    if (warning.message.includes('node_modules/@internationalized/date/'))
+      return;
+    if (warning.message.includes('node_modules/@zag-js/color-utils/')) return;
+    if (warning.message.includes('node_modules/@zag-js/json-tree-utils/'))
+      return;
     throw new Error(warning.message);
   }
   warn(warning);

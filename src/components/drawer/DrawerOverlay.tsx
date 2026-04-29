@@ -1,9 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { DrawerOverlay as ChakraDrawerOverlay } from '@chakra-ui/react';
+import { Drawer as ChakraDrawer } from '@chakra-ui/react';
 
-const DrawerOverlay: FC<PropsWithChildren> = (props) => {
-  return <ChakraDrawerOverlay {...props} />;
+export const DrawerOverlay: FC<PropsWithChildren> = (props) => {
+  return <ChakraDrawer.Backdrop {...props} />;
 };
-
-export default DrawerOverlay;

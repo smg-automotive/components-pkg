@@ -1,21 +1,18 @@
 import React, { FC } from 'react';
-import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
 interface DotsButtonProps {
   isCurrent: boolean;
 }
 
-const DotsPaginationIndicator: FC<DotsButtonProps> = ({ isCurrent }) => {
-  const { dotsPaginationIndicator, dotsPaginationIndicatorActive } =
-    useMultiStyleConfig('Carousel');
+export const DotsPaginationIndicator: FC<DotsButtonProps> = ({ isCurrent }) => {
+  const recipe = useSlotRecipe({ key: 'carousel' });
+  const styles = recipe();
 
   return (
     <chakra.span
-      __css={
-        isCurrent ? dotsPaginationIndicatorActive : dotsPaginationIndicator
-      }
+      aria-current={isCurrent}
+      css={styles.dotsPaginationIndicator}
     />
   );
 };
-
-export default DotsPaginationIndicator;

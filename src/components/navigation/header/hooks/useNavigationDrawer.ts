@@ -60,7 +60,7 @@ export const useNavigationDrawer = ({
   drawerNodeItems: DrawerNodeItems;
 }) => {
   const [drawer, setDrawer] = useState<Drawer>(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open: isOpen, onOpen, onClose } = useDisclosure();
   const createDrawerHandler = ({ nodeName }: { nodeName: DrawerNode }) => {
     return drawerHandlerFactory({
       nodeName,

@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-import Button from '@/src/components/button';
+import { Button } from '@/src/components/button';
 
 import { ActionButtonInterface } from './interface';
 
-const BackToHomepage: FC<
+export const BackToHomepage: FC<
   ActionButtonInterface & { variant: 'primary' | 'secondary' }
 > = ({ t, language = 'de', onButtonClick, variant }) => {
   const homePageLink = `/${language}`;
@@ -22,5 +22,3 @@ const BackToHomepage: FC<
     </Button>
   );
 };
-
-export default BackToHomepage;

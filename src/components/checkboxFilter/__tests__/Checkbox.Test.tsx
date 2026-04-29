@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import { Item } from '@/src/components/checkboxFilter/type';
-import CheckboxFilter from '@/src/components/checkboxFilter/index';
+import { CheckboxFilter } from '@/src/components/checkboxFilter/index';
 import { render, screen, waitFor, within } from '@/jest-utils';
 
 const renderWrapper = ({

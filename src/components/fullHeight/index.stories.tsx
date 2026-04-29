@@ -1,23 +1,20 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Box } from '@chakra-ui/react';
 
-import FullHeightComponent from './index';
+import { Box } from '../box';
 
-const meta: Meta<typeof FullHeightComponent> = {
+import { FullHeight } from './index';
+
+const meta: Meta<typeof FullHeight> = {
   title: 'Layout/Full Height',
-  component: FullHeightComponent,
+  component: FullHeight,
 
   parameters: {
     layout: 'fullscreen',
   },
 
   args: {
-    children: (
-      <Box backgroundColor="brand.primary" minHeight="100vh">
-        I am full height container
-      </Box>
-    ),
+    children: 'box',
   },
 
   argTypes: {
@@ -25,9 +22,16 @@ const meta: Meta<typeof FullHeightComponent> = {
       table: {
         disable: true,
       },
+      mapping: {
+        box: (
+          <Box backgroundColor="brand.primary" minHeight="full">
+            I am full height container
+          </Box>
+        ),
+      },
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof FullHeightComponent> = {};
+export const Overview: StoryObj<typeof FullHeight> = {};

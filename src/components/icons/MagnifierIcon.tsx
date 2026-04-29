@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const MagnifierIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const MagnifierIcon = createIcon({
   displayName: 'LocationPin',
   viewBox: '0 0 24 24',
   path: (

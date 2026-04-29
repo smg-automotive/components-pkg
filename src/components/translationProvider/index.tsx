@@ -10,7 +10,7 @@ interface Props {
   scopes: string[];
 }
 
-const TranslationProvider: FC<PropsWithChildren<Props>> = ({
+export const TranslationProvider: FC<PropsWithChildren<Props>> = ({
   language,
   scopes,
   children,
@@ -29,5 +29,3 @@ const TranslationProvider: FC<PropsWithChildren<Props>> = ({
     </I18nProvider>
   );
 };
-
-export default TranslationProvider;

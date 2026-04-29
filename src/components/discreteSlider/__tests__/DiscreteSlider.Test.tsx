@@ -1,8 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import DiscreteSlider from '@/src/components/discreteSlider/index';
 import { render, screen, waitFor } from '@/jest-utils';
+
+import { DiscreteSlider } from '../index';
 
 const dummyMarks = [
   { label: '14 days', value: 1 },
@@ -27,16 +28,19 @@ const renderWrapper = ({
   );
 
 describe('DiscreteSlider', () => {
-  it('renders DiscreteSlider', () => {
+  it('renders DiscreteSlider', async () => {
     renderWrapper();
-    expect(screen.getByRole('slider')).toBeInTheDocument();
+    const slider = await screen.findByRole('slider', { hidden: true });
+    expect(slider).toBeInTheDocument();
   });
 
   it('should move the thumb', async () => {
+    const user = userEvent.setup();
     renderWrapper();
 
-    const slider = screen.getByRole('slider');
-    await userEvent.keyboard('[ArrowRight]');
+    const slider = screen.getByRole('slider', { hidden: true });
+    slider.focus();
+    await user.keyboard('{ArrowRight}');
     await waitFor(() => expect(slider).toHaveAttribute('aria-valuenow', '1'));
   });
 });

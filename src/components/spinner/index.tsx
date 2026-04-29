@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import { Spinner as ChakraSpinner } from '@chakra-ui/react';
+import {
+  Spinner as ChakraSpinner,
+  SpinnerProps as ChakraSpinnerProps,
+} from '@chakra-ui/react';
 
-type Props = {
+export type SpinnerProps = ChakraSpinnerProps & {
   size?: 'xs' | 'sm' | 'md' | 'lg';
 };
 
-const Spinner: FC<Props> = ({ size }) => (
-  <ChakraSpinner size={size} color="gray.900" speed="0.8s" />
+export const Spinner: FC<SpinnerProps> = ({ size }) => (
+  <ChakraSpinner size={size} />
 );
-
-export default Spinner;

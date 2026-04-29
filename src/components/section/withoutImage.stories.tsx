@@ -1,32 +1,35 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import SectionComponent from './index';
+import { Section } from './index';
 
-const meta: Meta<typeof SectionComponent> = {
+const meta: Meta<typeof Section> = {
   title: 'Patterns/Sections/WithoutImage',
-  component: SectionComponent,
+  component: Section,
 
   args: {
     title:
       'Thank you for sending a message! We have sent a copy to your inbox.',
     text: 'Auto-Center Grenchen AG has received your message. A common response time is around 1 to 4 days.',
-    maxImgW: undefined,
+    variant: 'hero',
   },
-
   argTypes: {
     variant: {
       options: ['hero', 'regular'],
       control: 'select',
     },
-
     maxImgW: {
+      table: { disable: true },
+    },
+    image: {
       table: { disable: true },
     },
   },
 };
+
 export default meta;
 
-type StoryType = StoryObj<typeof SectionComponent>;
+type StoryType = StoryObj<typeof Section>;
+
 export const Hero: StoryType = {
   args: {
     variant: 'hero',

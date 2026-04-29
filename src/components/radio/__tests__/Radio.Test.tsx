@@ -1,56 +1,81 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import Radio from '@/src/components/radio/index';
-import { render, screen, waitFor } from '@/jest-utils';
+import { render, screen } from '@/jest-utils';
 
-const renderWrapper = ({
-  name = 'Radio',
-  onChange = jest.fn(),
-  label = 'Option',
-  value = 'Option',
-  isDisabled = false,
-  isChecked = false,
-} = {}) =>
-  render(
-    <Radio
-      name={name}
-      value={value}
-      onChange={onChange}
-      label={label}
-      isDisabled={isDisabled}
-      isChecked={isChecked}
-    />,
+import { Radio, RadioItemProps } from '..';
+
+const renderWrapper = (
+  props: Partial<{
+    name: string;
+    onChange: jest.Mock;
+    label: string;
+    items: RadioItemProps[];
+    value?: string;
+  }> = {},
+) => {
+  const {
+    name = 'Radio',
+    onChange = jest.fn(),
+    value,
+    items = [
+      {
+        value: 'Option',
+        label: 'Option',
+      },
+    ],
+  } = props;
+
+  return render(
+    <Radio name={name} value={value} onChange={onChange} items={items} />,
   );
+};
 
 describe('<Radio>', () => {
-  it('is not checked', () => {
+  it('is not checked', async () => {
     renderWrapper();
-    const radio = screen.getByRole('radio', { name: 'Option' });
+    const radio = await screen.findByRole('radio', { name: 'Option' });
+
     expect(radio).not.toBeChecked();
   });
 
-  it('is checked', () => {
-    renderWrapper({ isChecked: true });
-    const radio = screen.getByRole('radio', { name: 'Option' });
+  it('is checked', async () => {
+    const user = userEvent.setup();
+    renderWrapper();
+    const radio = await screen.findByRole('radio', { name: 'Option' });
+
+    await user.click(radio);
+
     expect(radio).toBeChecked();
   });
 
   it('triggers onChange event when clicking on radio', async () => {
+    const user = userEvent.setup();
     const onChange = jest.fn();
-    renderWrapper({ onChange });
-    await userEvent.click(screen.getByRole('radio', { name: 'Option' }));
 
-    await waitFor(() => expect(onChange).toHaveBeenCalled());
+    renderWrapper({ onChange });
+
+    const radio = await screen.findByRole('radio', { name: 'Option' });
+
+    await user.click(radio);
+
+    expect(onChange).toHaveBeenCalled();
   });
 
   it('is not possible to check the radio when disabled', async () => {
+    const user = userEvent.setup();
     const onChange = jest.fn();
-    renderWrapper({ onChange, isDisabled: true });
-    const radio = screen.getByRole('radio', { name: 'Option' });
-    await userEvent.click(radio);
 
-    await waitFor(() => expect(radio).toBeDisabled());
+    renderWrapper({
+      onChange,
+      items: [{ value: 'Option', label: 'Option', disabled: true }],
+    });
+
+    const radio = await screen.findByRole('radio', { name: 'Option' });
+
+    await user.click(radio);
+
+    expect(radio).toBeDisabled();
     expect(onChange).not.toHaveBeenCalled();
   });
 });

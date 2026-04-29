@@ -2,7 +2,7 @@
 import React, { ComponentType, FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import TranslationProvider from './index';
+import { TranslationProvider } from './index';
 
 type Props = {
   language: Language;

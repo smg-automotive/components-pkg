@@ -45,7 +45,7 @@
     "components": "dist/bin/cli"
   },
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "dev": "storybook dev -p 6006 --no-open",
     "start": "http-server ./storybook-static -p 8008",
     "version": "npm run build",
     "build": "rimraf dist && rollup -c",
@@ -55,8 +55,11 @@
     "format:i18n": "npm run lint:i18n -- --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
+    "typegen": "THEME_PATH=`[ -d src ] && echo src/themes/autoScout24.ts || echo dist/esm/themes/autoScout24.js` && npx chakra typegen $THEME_PATH --clean",
+    "typegen:watch": "npm run typegen -- --watch",
     "test": "jest",
-    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand"
+    "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
+    "postinstall": "npm run typegen"
   },
   "author": "SMG Automotive",
   "license": "MIT",
@@ -90,7 +93,7 @@
     "@storybook/addon-webpack5-compiler-babel": "4.0.1",
     "@storybook/blocks": "8.6.14",
     "@storybook/components": "8.6.14",
-    "@storybook/core": "8.6.14",
+    "@storybook/core": "8.6.15",
     "@storybook/manager-api": "8.6.14",
     "@storybook/preview-api": "8.6.14",
     "@storybook/react": "8.6.18",
@@ -139,11 +142,8 @@
     "webpack": "5.106.2"
   },
   "dependencies": {
-    "@chakra-ui/anatomy": "2.3.4",
-    "@chakra-ui/react": "2.10.9",
-    "@chakra-ui/styled-system": "2.12.0",
-    "@chakra-ui/system": "2.6.2",
-    "@chakra-ui/theme-tools": "2.2.6",
+    "@chakra-ui/cli": "3.27.1",
+    "@chakra-ui/react": "3.27.1",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@smg-automotive/i18n-pkg": "3.2.0",

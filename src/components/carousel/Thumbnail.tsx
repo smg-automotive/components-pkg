@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import AspectRatio from '@/src/components/aspectRatio';
+import { AspectRatio } from '@/src/components/aspectRatio';
 
 interface Props {
   onClick: () => void;
@@ -9,7 +9,7 @@ interface Props {
   totalThumbnails: number;
 }
 
-const Thumbnail: FC<PropsWithChildren<Props>> = ({
+export const Thumbnail: FC<PropsWithChildren<Props>> = ({
   onClick,
   isCurrent,
   thumbnailIndex,
@@ -33,5 +33,3 @@ const Thumbnail: FC<PropsWithChildren<Props>> = ({
     </AspectRatio>
   );
 };
-
-export default Thumbnail;

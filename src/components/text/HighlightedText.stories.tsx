@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import HighlightedTextComponent from './HighlightedText';
+import { HighlightedText } from './HighlightedText';
 
-const meta: Meta<typeof HighlightedTextComponent> = {
+const meta: Meta<typeof HighlightedText> = {
   title: 'Components/Utils/HighlightedText',
-  component: HighlightedTextComponent,
+  component: HighlightedText,
 
   args: {
     text: 'Mercedes',
@@ -16,4 +16,4 @@ const meta: Meta<typeof HighlightedTextComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof HighlightedTextComponent> = {};
+export const Overview: StoryObj<typeof HighlightedText> = {};

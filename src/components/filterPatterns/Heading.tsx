@@ -1,6 +1,7 @@
 import { withTranslationProvider } from '@/src/components/translationProvider/withTranslationProvider';
 
-import FilterHeadingContent, {
+import {
+  FilterHeadingContent,
   FilterHeadingContentProps,
 } from './HeadingContent';
 

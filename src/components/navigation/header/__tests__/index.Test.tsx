@@ -9,14 +9,14 @@ import {
 
 import { Brand } from '@/src/types/brand';
 
-import { iconItems } from '@/src/components/navigation/header/config/iconItems';
-import { HeaderNavigationLink } from '@/src/components/navigation/header/config/headerNavigationLink';
-import { HeaderNavigationConfig } from '@/src/components/navigation/header/config/HeaderNavigationConfig';
-import { headerLinks } from '@/src/components/navigation/header/config/headerLinks';
-import { drawerNodeItems } from '@/src/components/navigation/header/config/DrawerNodeItems';
 import { act, fireEvent, render, screen, within } from '@/jest-utils';
 
-import Navigation, { NavigationProps } from '..';
+import { Navigation, NavigationProps } from '../index';
+import { iconItems } from '../config/iconItems';
+import { HeaderNavigationLink } from '../config/headerNavigationLink';
+import { HeaderNavigationConfig } from '../config/HeaderNavigationConfig';
+import { headerLinks } from '../config/headerLinks';
+import { drawerNodeItems } from '../config/DrawerNodeItems';
 
 const renderNavigation = ({
   environment = 'preprod',
@@ -117,7 +117,7 @@ describe('Header', () => {
     const tenantSelectionMenu = screen.getByText('Garage Amir Zurich');
     fireEvent.click(tenantSelectionMenu);
 
-    const popover = screen.getByRole('dialog', { hidden: true });
+    const popover = await screen.findByRole('dialog');
     const newTenant = within(popover).getByText('Garage Amir Basel - 6002');
     act(() => {
       fireEvent.click(newTenant);

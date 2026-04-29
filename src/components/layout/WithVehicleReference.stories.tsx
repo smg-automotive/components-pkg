@@ -1,14 +1,14 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sizes } from '@/src/themes/shared/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
-import SimpleHeader from '@/src/components/simpleHeader';
-import Input from '@/src/components/input';
-import FormControl from '@/src/components/formControl';
-import Button from '@/src/components/button';
+import { SimpleHeader } from '@/src/components/simpleHeader';
+import { Input } from '@/src/components/input';
+import { Field } from '@/src/components/field';
+import { Button } from '@/src/components/button';
 
-import LayoutWithVehicleReference from './WithVehicleReference';
+import { LayoutWithVehicleReference } from './WithVehicleReference';
 
 const meta: Meta<typeof LayoutWithVehicleReference> = {
   title: 'Layout/Pages/Layout with vehicle reference',
@@ -37,15 +37,15 @@ const meta: Meta<typeof LayoutWithVehicleReference> = {
 
     children: (
       <>
-        <FormControl id="name" label="Name">
+        <Field id="name" label="Name">
           <Input name="name" size="lg" />
-        </FormControl>
-        <FormControl id="email" label="E-Mail address">
+        </Field>
+        <Field id="email" label="E-Mail address">
           <Input name="email" size="lg" />
-        </FormControl>
-        <FormControl id="phone" label="Phone number">
+        </Field>
+        <Field id="phone" label="Phone number">
           <Input name="phone" size="lg" />
-        </FormControl>
+        </Field>
       </>
     ),
 

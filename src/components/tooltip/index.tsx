@@ -1,32 +1,57 @@
 import React, { cloneElement, FC, useState } from 'react';
 
-import { Tooltip as ChakraTooltip, TooltipProps } from '@chakra-ui/react';
+import {
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipContentProps,
+  TooltipPositioner,
+  TooltipRoot,
+  TooltipRootProps,
+  TooltipTrigger,
+} from '@chakra-ui/react';
 
-type Props = {
-  children: React.ReactNode;
-} & Pick<TooltipProps, 'label' | 'placement' | 'maxWidth'>;
+type Placement = Exclude<
+  Exclude<TooltipRootProps['positioning'], undefined>['placement'],
+  undefined
+>;
+type Content = TooltipContentProps['content'];
+export type TooltipProps = Pick<TooltipRootProps, 'children'> &
+  Pick<TooltipContentProps, 'maxWidth'> & {
+    placement?: Placement;
+    label: Content;
+  };
 
-const Tooltip: FC<Props> = ({ children, ...props }) => {
-  const [isLabelOpen, setIsLabelOpen] = useState<boolean>(false);
-
+export const Tooltip: FC<TooltipProps> = ({
+  children,
+  placement = 'bottom',
+  maxWidth = '6xl',
+  label,
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const childrenWithProps = cloneElement(children as React.ReactElement<any>, {
-    onMouseEnter: () => setIsLabelOpen(true),
-    onMouseLeave: () => setIsLabelOpen(false),
-    onClick: () => setIsLabelOpen(true),
+    onMouseEnter: () => setIsOpen(true),
+    onMouseLeave: () => setIsOpen(false),
+    onClick: () => setIsOpen(true),
   });
 
   return (
-    <ChakraTooltip
-      hasArrow
-      placement="auto"
-      maxWidth="6xl"
-      isOpen={isLabelOpen}
-      {...props}
+    <TooltipRoot
+      positioning={{
+        placement,
+      }}
+      open={isOpen}
     >
-      {childrenWithProps}
-    </ChakraTooltip>
+      <TooltipTrigger asChild={true}>{childrenWithProps}</TooltipTrigger>
+      <TooltipPositioner>
+        <TooltipContent maxWidth={maxWidth}>
+          <TooltipArrow>
+            <TooltipArrowTip />
+          </TooltipArrow>
+          {label}
+        </TooltipContent>
+      </TooltipPositioner>
+    </TooltipRoot>
   );
 };
-
-export default Tooltip;

@@ -4,12 +4,12 @@ import { useArgs } from '@storybook/preview-api';
 import { Source } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 
-import Text from '@/src/components/text';
-import Box from '@/src/components/box';
+import { Text } from '@/src/components/text';
+import { Box } from '@/src/components/box';
 
 import { Item } from './type';
 
-import CheckboxFilterComponent, { Props } from './index';
+import { CheckboxFilter, Props } from './index';
 
 type Values =
   | 'new'
@@ -213,7 +213,7 @@ const Template = ({ query, ...props }: Args) => {
   };
 
   return (
-    <CheckboxFilterComponent<Values, FilterType>
+    <CheckboxFilter<Values, FilterType>
       {...{
         ...props,
         ...args,
@@ -253,7 +253,7 @@ const items: Item<Values, FilterType>[] = [
 
 const meta: Meta<typeof Template> = {
   title: 'Components/Filter/Checkbox',
-  component: CheckboxFilterComponent<Values, FilterType>,
+  component: CheckboxFilter<Values, FilterType>,
   render: Template.bind({}),
 
   decorators: [
@@ -261,7 +261,13 @@ const meta: Meta<typeof Template> = {
       const [{ query }] = useArgs<Args>();
 
       return (
-        <Box display="flex" maxW="8xl" w="100%" gap="md" flexDirection="column">
+        <Box
+          display="flex"
+          maxW="8xl"
+          style={{ width: '100%' }}
+          gap="md"
+          flexDirection="column"
+        >
           <Text>Current query:</Text>
           <Source code={JSON.stringify(query, null, 2)} language="json" dark />
           <Story />

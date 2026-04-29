@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from '@/jest-utils';
 
-import Input, { Props } from '..';
+import { Input, InputProps } from '..';
 
 const renderWrapper = ({
   name = 'test-input',
@@ -18,7 +18,7 @@ const renderWrapper = ({
   icon,
   isClearable,
   endElement,
-}: Partial<Props> = {}) =>
+}: Partial<InputProps> = {}) =>
   render(
     <Input
       name={name}
@@ -163,7 +163,6 @@ describe('<Input>', () => {
       );
     });
   });
-
   describe('endElement', () => {
     it('renders a custom end element', () => {
       renderWrapper({

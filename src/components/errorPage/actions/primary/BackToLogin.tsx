@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
 
-import { ActionButtonInterface } from '@/src/components/errorPage/actions/interface';
-import Button from '@/src/components/button';
+import { Button } from '@/src/components/button';
 
-const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
+import { ActionButtonInterface } from '../interface';
+
+export const BackToLogin: FC<ActionButtonInterface> = ({
+  t,
+  language = 'de',
+}) => {
   const logoutLink = `/seller-web/api/auth/logout`;
   const vehicleManagementLink = `/${language}/vehicle-management`;
   const loginLink = `/seller-web/api/auth/login?locale=${language}&returnTo=${encodeURIComponent(vehicleManagementLink)}`;
@@ -16,5 +20,3 @@ const BackToLogin: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
     </Button>
   );
 };
-
-export default BackToLogin;

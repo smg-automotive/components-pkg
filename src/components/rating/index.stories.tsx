@@ -1,17 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import RatingComponent from './index';
+import { Rating } from './index';
 
-const meta: Meta<typeof RatingComponent> = {
+const meta: Meta<typeof Rating> = {
   title: 'Components/Data display/Rating',
-  component: RatingComponent,
+  component: Rating,
 
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['small', 'large'],
-    },
-
     rating: {
       control: {
         type: 'range',
@@ -20,21 +15,29 @@ const meta: Meta<typeof RatingComponent> = {
         step: 0.1,
       },
     },
+    size: {
+      options: ['sm', 'lg'],
+      control: {
+        type: 'select',
+      },
+    },
   },
 };
+
 export default meta;
 
-type StoryType = StoryObj<typeof RatingComponent>;
+type StoryType = StoryObj<typeof Rating>;
+
 export const Large: StoryType = {
   args: {
-    rating: 4.5,
-    size: 'large',
+    rating: 3.5,
+    size: 'lg',
   },
 };
 
 export const Small: StoryType = {
   args: {
-    rating: 4.5,
-    size: 'small',
+    rating: 3.5,
+    size: 'sm',
   },
 };

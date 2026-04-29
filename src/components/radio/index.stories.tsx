@@ -1,160 +1,153 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
+import { Grid } from '@chakra-ui/react';
 
-import RadioComponent, { Props } from './index';
+import { radioRecipe } from '@/src/themes/shared/slotRecipes/radio';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
-const Template = (props: Props) => {
-  const [args, updateArgs] = useArgs<Props>();
+import { Radio, RadioProps } from './index';
+
+const Template = (props: RadioProps) => {
+  const [args, updateArgs] = useArgs<RadioProps>();
 
   return (
-    <RadioComponent
+    <Radio
       {...props}
       {...args}
-      isChecked={args.isChecked}
       onChange={(e) => {
-        updateArgs({ isChecked: e.target.checked });
+        updateArgs({ value: e.target.value });
         action('onChange')(e);
       }}
     />
   );
 };
 
-const meta: Meta<typeof RadioComponent> = {
+const meta: Meta<typeof Radio> = {
   title: 'Components/Forms/Radio',
-  component: RadioComponent,
-  render: Template.bind({}),
-
+  component: Radio,
+  render: Template,
+  parameters: {
+    docs: {
+      description: {
+        component: [
+          'Radio renders a Chakra `RadioGroup.Root` plus the radio items.',
+          '',
+          '### Layout (default vs render prop)',
+          '- **Default (no `children`)**: items are wrapped in an internal `Stack` whose direction is controlled by `orientation`.',
+          '- **Render prop (`children`)**: pass `children={(renderedItems) => ...}` to provide your own wrapper/layout (for example, `Grid`).',
+        ].join('\n'),
+      },
+    },
+  },
   args: {
-    isDisabled: false,
-    isInvalid: false,
+    value: undefined,
+    name: '',
     size: 'md',
-    label: 'Radio',
-    value: 'option',
-    name: 'test-radio',
     variant: 'fontRegular',
+    orientation: 'horizontal',
+    items: [
+      { value: 'option-1', label: 'Radio 1' },
+      { value: 'option-2', label: 'Radio 2' },
+      { value: 'option-3', label: 'Radio 3' },
+    ],
   },
-
   argTypes: {
-    size: {
-      options: ['base', 'md'],
-      control: 'select',
-    },
-
-    variant: {
-      options: ['fontRegular', 'fontBold'],
-      control: 'select',
+    ...getRecipeControls(radioRecipe),
+    children: {
+      control: false,
+      description:
+        'Optional render prop: `(renderedItems) => ReactNode`. If omitted, the component uses the default internal Stack wrapper based on `orientation`.',
+      table: {
+        type: { summary: '(renderedItems: ReactNode) => ReactNode' },
+      },
     },
   },
 };
+
 export default meta;
+type Story = StoryObj<typeof Radio>;
 
-type StoryType = StoryObj<typeof RadioComponent>;
+export const Default: Story = { name: 'Default (uses internal Stack)' };
 
-export const Overview: StoryType = {};
+export const OrientationHorizontal: Story = {
+  name: 'Orientation › horizontal (Stack row)',
+  args: { orientation: 'horizontal' },
+};
 
-export const SizeBase: StoryType = {
-  name: 'Sizes > Base',
+export const OrientationVertical: Story = {
+  name: 'Orientation › vertical (Stack column)',
+  args: { orientation: 'vertical' },
+};
 
-  args: {
-    size: 'base',
-    name: 'test-radio-base',
-  },
-
-  argTypes: {
-    size: {
-      table: {
-        disable: true,
+export const CustomWrapperGrid: Story = {
+  name: 'Custom wrapper via children (Grid)',
+  render: (args) => (
+    <Radio {...args}>
+      {(renderedItems) => (
+        <Grid
+          templateColumns={{ base: '1fr', sm: 'repeat(3, max-content)' }}
+          gap={{ base: 'md', sm: 'xl' }}
+          alignItems="center"
+        >
+          {renderedItems}
+        </Grid>
+      )}
+    </Radio>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: [
+          'Uses the **render prop** (`children`) to replace the default internal Stack wrapper with a Grid.',
+          'Only the layout changes—radio items remain the same.',
+        ].join('\n'),
+      },
+      source: {
+        code: `<Radio {...args}>{
+    (renderedItems) => (
+        <Grid
+          templateColumns={{ base: '1fr', sm: 'repeat(3, max-content)' }}
+          gap={{ base: 'md', sm: 'xl' }}
+          alignItems="center"
+        >
+          {renderedItems}
+        </Grid>
+      )}
+    </Radio>`,
+        language: 'tsx',
       },
     },
   },
 };
 
-export const SizeMedium: StoryType = {
-  name: 'Sizes > Medium',
+export const SizeBase: Story = { name: 'Size › base', args: { size: 'base' } };
+export const SizeMd: Story = { name: 'Size › md', args: { size: 'md' } };
 
+export const VariantBold: Story = {
+  name: 'Variant › fontBold',
+  args: { variant: 'fontBold' },
+};
+
+export const StateDisabled: Story = {
+  name: 'State › disabled',
   args: {
-    size: 'md',
-    name: 'test-radio-md',
-  },
-
-  argTypes: {
-    size: {
-      table: {
-        disable: true,
-      },
-    },
+    items: [
+      { value: 'option-1', label: 'Radio 1', disabled: true },
+      { value: 'option-2', label: 'Radio 2', disabled: true },
+      { value: 'option-3', label: 'Radio 3', disabled: true },
+    ],
   },
 };
 
-export const StateDefault: StoryType = {
-  name: 'States > Default',
-
+export const StateInvalid: Story = {
+  name: 'State › invalid',
   args: {
-    isDisabled: false,
-    isInvalid: false,
-  },
-
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export const StateDisabled: StoryType = {
-  name: 'States > Disabled',
-
-  args: {
-    isDisabled: true,
-    isInvalid: false,
-    name: 'test-radio-disabled',
-  },
-
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-};
-
-export const StateInvalid: StoryType = {
-  name: 'States > Invalid',
-
-  args: {
-    isDisabled: false,
-    isInvalid: true,
-    name: 'test-radio-invalid',
-  },
-
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-
-    isInvalid: {
-      table: {
-        disable: true,
-      },
-    },
+    items: [
+      { value: 'option-1', label: 'Radio 1', invalid: true },
+      { value: 'option-2', label: 'Radio 2', invalid: true },
+      { value: 'option-3', label: 'Radio 3', invalid: true },
+    ],
   },
 };

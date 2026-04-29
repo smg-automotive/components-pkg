@@ -1,6 +1,8 @@
 import React, { FC, MutableRefObject } from 'react';
 
-import { CloseIcon } from '@/src/components/icons';
+import { CloseButton } from '@chakra-ui/react';
+
+import { CloseIcon } from '../icons';
 
 type Props = {
   inputRef: MutableRefObject<HTMLInputElement | null>;
@@ -25,26 +27,27 @@ const triggerNativeEventFor = (
   elm.dispatchEvent(new Event(event, { bubbles: true }));
 };
 
-const ClearButton: FC<Props> = ({ inputRef, marginRight }) => (
-  <button
-    role="button"
-    style={{
-      marginRight,
-      display: 'flex',
-      alignItems: 'center',
-    }}
-    onClick={() => {
-      if (!inputRef.current) return;
+export const ClearButton: FC<Props> = ({ inputRef, marginRight }) => {
+  return (
+    <CloseButton
+      cursor="pointer"
+      role="button"
+      style={{
+        marginRight,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      onClick={() => {
+        if (!inputRef.current) return;
 
-      triggerNativeEventFor(inputRef.current, {
-        event: 'input',
-        value: '',
-      });
-      inputRef.current.focus();
-    }}
-  >
-    <CloseIcon w="xs" h="xs" />
-  </button>
-);
-
-export default ClearButton;
+        triggerNativeEventFor(inputRef.current, {
+          event: 'input',
+          value: '',
+        });
+        inputRef.current.focus();
+      }}
+    >
+      <CloseIcon w="xs" h="xs" />
+    </CloseButton>
+  );
+};

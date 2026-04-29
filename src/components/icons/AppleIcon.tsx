@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const AppleIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const AppleIcon = createIcon({
   displayName: 'Apple',
   viewBox: '0 0 24 24',
   path: (

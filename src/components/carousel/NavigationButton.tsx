@@ -1,39 +1,44 @@
 import React, { FC } from 'react';
-import { chakra, useMultiStyleConfig } from '@chakra-ui/react';
+import { chakra, useSlotRecipe } from '@chakra-ui/react';
 
 import {
   ChevronLeftLargeIcon,
   ChevronRightLargeIcon,
 } from '@/src/components/icons';
-import Flex from '@/src/components/flex';
+import { Flex } from '@/src/components/flex';
 
 export type Direction = 'previous' | 'next';
 interface Props {
   onClick: () => void;
   direction: Direction;
   fullScreen: boolean;
+  isHovered?: boolean;
 }
 
-const NavigationButton: FC<Props> = ({ direction, onClick, fullScreen }) => {
-  const { button, buttonContainer, icon } = useMultiStyleConfig(
-    'Carousel',
-    fullScreen ? { variant: 'fullScreen' } : {},
-  );
+export const NavigationButton: FC<Props> = ({
+  direction,
+  onClick,
+  fullScreen,
+  isHovered = false,
+}) => {
+  const recipe = useSlotRecipe({ key: 'carousel' });
+  const styles = recipe(fullScreen ? { variant: 'fullScreen' } : {});
   const side = direction === 'previous' ? { left: '0' } : { right: '0' };
   const icons = {
-    previous: <ChevronLeftLargeIcon boxSize={undefined} __css={icon} />,
-    next: <ChevronRightLargeIcon boxSize={undefined} __css={icon} />,
+    previous: <ChevronLeftLargeIcon boxSize={undefined} css={styles.icon} />,
+    next: <ChevronRightLargeIcon boxSize={undefined} css={styles.icon} />,
   };
   return (
     <chakra.button
       onClick={onClick}
-      {...side}
       aria-label={`${direction} slide`}
-      __css={buttonContainer}
+      css={{
+        ...styles.buttonContainer,
+        ...(isHovered ? { visibility: 'visible', pointerEvents: 'auto' } : {}),
+        ...side,
+      }}
     >
-      <Flex __css={button}>{icons[direction]}</Flex>
+      <Flex css={styles.button}>{icons[direction]}</Flex>
     </chakra.button>
   );
 };
-
-export default NavigationButton;
