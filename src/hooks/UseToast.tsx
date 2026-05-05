@@ -6,7 +6,7 @@ import {
   ToastPosition,
 } from '@chakra-ui/react';
 
-import BareAlert, { BareAlertProps } from '../components/alert/Bare';
+import BareAlert, { BareAlertProps } from '@/src/components/alert/Bare';
 
 export interface ToastOptions extends BareAlertProps {
   position?: ToastPosition;

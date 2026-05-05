@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '../index';
+import { Box } from '@/src/components/index';
+
 import GridItem from './GridItem';
 
 import GridComponent from './index';

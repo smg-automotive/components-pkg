@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { filterDictionaryScopes, Language } from '@smg-automotive/i18n-pkg';
 
-import { I18nProvider } from 'src/utilities/i18nInit';
-import { dictionaries } from 'src/locales';
-import logger from 'src/lib/logger';
+import { I18nProvider } from '@/src/utilities/i18nInit';
+import { dictionaries } from '@/src/locales';
+import logger from '@/src/lib/logger';
 
 interface Props {
   language: Language;

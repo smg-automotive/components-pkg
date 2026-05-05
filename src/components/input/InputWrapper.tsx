@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { InputGroup } from '@chakra-ui/react';
 
-import { Props as InputProps } from '../input';
+import { Props as InputProps } from '@/src/components/input';
 
 type Props = {
   size?: InputProps['size'];

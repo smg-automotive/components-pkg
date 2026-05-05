@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { Badge } from '@chakra-ui/react';
 
-import GridItem from '../grid/GridItem';
-import Grid from '../grid';
-import AspectRatio from '../aspectRatio';
+import GridItem from '@/src/components/grid/GridItem';
+import Grid from '@/src/components/grid';
+import AspectRatio from '@/src/components/aspectRatio';
 
 type Props = {
   aspectRatio?: number;

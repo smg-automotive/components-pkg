@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { BoxProps, ShowProps, useQuery } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 export type Props = Omit<ShowProps, 'ssr'> &
   Omit<BoxProps, 'sx'> & {

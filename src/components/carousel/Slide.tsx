@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { ResponsiveObject, useMultiStyleConfig } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 interface Props {
   onClick: () => void;

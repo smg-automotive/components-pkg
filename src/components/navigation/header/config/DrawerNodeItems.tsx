@@ -1,8 +1,9 @@
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import { CustomEvent } from 'src/types/tracking';
+import { CustomEvent } from '@/src/types/tracking';
 
-import { NavigationLinkProps } from '../links/NavigationLink';
+import { NavigationLinkProps } from '@/src/components/navigation/header/links/NavigationLink';
+
 import {
   autoScoutVehiclesLinkConfig,
   motoScoutVehiclesLinkConfig,

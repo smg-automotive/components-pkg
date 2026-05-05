@@ -1,6 +1,6 @@
-import { Project } from 'src/types/project';
-import { Environment } from 'src/types/environment';
-import { Brand } from 'src/types/brand';
+import { Project } from '@/src/types/project';
+import { Environment } from '@/src/types/environment';
+import { Brand } from '@/src/types/brand';
 
 import { Domains, LinkConfig, LinkInstance } from './link';
 

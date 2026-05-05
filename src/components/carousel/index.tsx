@@ -6,10 +6,11 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-import { breakpoints } from 'src/themes';
+import { breakpoints } from '@/src/themes';
 
-import Flex from '../flex';
-import Box from '../box';
+import Flex from '@/src/components/flex';
+import Box from '@/src/components/box';
+
 import ThumbnailPagination from './ThumbnailPagination';
 import Slide from './Slide';
 import NumbersPagination from './NumbersPagination';

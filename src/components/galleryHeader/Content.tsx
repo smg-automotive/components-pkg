@@ -1,13 +1,13 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { Language } from 'src/types/language';
-import SimpleGrid from 'src/components/simpleGrid';
-import Show from 'src/components/show';
-import Link from 'src/components/link';
-import { CloseIcon } from 'src/components/icons';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Language } from '@/src/types/language';
+import SimpleGrid from '@/src/components/simpleGrid';
+import Show from '@/src/components/show';
+import Link from '@/src/components/link';
+import { CloseIcon } from '@/src/components/icons';
 
-import Box from 'src/components/box';
+import Box from '@/src/components/box';
 
 export interface GalleryHeaderProps {
   currentSlide: number;

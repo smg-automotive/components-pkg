@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
 
-import Center from 'src/components/center';
-import Box from 'src/components/box';
+import Center from '@/src/components/center';
+import Box from '@/src/components/box';
 
 import AppLayoutHeader from './Header';
 import AppLayoutFooter from './Footer';

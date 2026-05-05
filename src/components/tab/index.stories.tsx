@@ -2,7 +2,8 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Box from '../box';
+import Box from '@/src/components/box';
+
 import TabPanels from './TabPanels';
 import TabPanel from './TabPanel';
 import TabList from './TabList';

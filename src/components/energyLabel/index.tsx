@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import Text from '../text';
-import Flex from '../flex';
-import Box from '../box';
+import Text from '@/src/components/text';
+import Flex from '@/src/components/flex';
+import Box from '@/src/components/box';
 
 type Efficiency = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 

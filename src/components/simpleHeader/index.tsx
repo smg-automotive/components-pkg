@@ -8,7 +8,7 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-import { CloseIcon } from '../icons';
+import { CloseIcon } from '@/src/components/icons';
 
 export interface Props {
   title: string;

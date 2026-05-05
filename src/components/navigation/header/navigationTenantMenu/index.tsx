@@ -9,11 +9,11 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
-import { ChevronDownSmallIcon, GarageIcon } from 'src/components/icons';
-import Hide from 'src/components/hide';
-import Box from 'src/components/box';
+import { useI18n } from '@/src/utilities/i18nInit';
+import Text from '@/src/components/text';
+import { ChevronDownSmallIcon, GarageIcon } from '@/src/components/icons';
+import Hide from '@/src/components/hide';
+import Box from '@/src/components/box';
 
 import NavigationTenantMenuContent from './Content';
 

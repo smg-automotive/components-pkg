@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { Image, List, ListItem } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
-import Stack from 'src/components/stack';
+import { useI18n } from '@/src/utilities/i18nInit';
+import Text from '@/src/components/text';
+import Stack from '@/src/components/stack';
 
-import GridItem from 'src/components/grid/GridItem';
-import googleplay from 'src/assets/images/googleplay.png';
-import appstore from 'src/assets/images/appstore.png';
+import GridItem from '@/src/components/grid/GridItem';
+import googleplay from '@/src/assets/images/googleplay.png';
+import appstore from '@/src/assets/images/appstore.png';
 
 import FooterLink from './Link';
 import { FooterConfigInstance } from './config/factory';

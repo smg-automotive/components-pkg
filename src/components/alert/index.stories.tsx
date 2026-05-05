@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { ErrorIcon } from '../index';
+import { ErrorIcon } from '@/src/components/index';
 
 import Alert from './index';
 

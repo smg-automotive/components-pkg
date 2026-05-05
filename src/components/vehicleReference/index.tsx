@@ -2,11 +2,11 @@ import React, { ComponentProps, FC, ReactNode } from 'react';
 
 import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
-import Stack from '../stack';
+import Stack from '@/src/components/stack';
 
-import MissingImage from '../missingImage';
-import Grid from '../grid';
-import AspectRatio from '../aspectRatio';
+import MissingImage from '@/src/components/missingImage';
+import Grid from '@/src/components/grid';
+import AspectRatio from '@/src/components/aspectRatio';
 
 interface Props {
   image?: ReactNode;

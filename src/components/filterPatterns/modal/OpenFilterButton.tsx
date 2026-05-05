@@ -13,9 +13,9 @@ import {
   ChevronRightSmallIcon,
   CloseIcon,
   DeleteIcon,
-} from 'src/components/icons';
+} from '@/src/components/icons';
 
-import { FilterPatternProps } from '../props';
+import { FilterPatternProps } from '@/src/components/filterPatterns/props';
 
 export type OpenFilterButtonPaddingX = '0' | 'md';
 export type OpenFilterButtonDisplayType = 'default' | 'inline';

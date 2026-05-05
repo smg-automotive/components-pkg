@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import AspectRatio from '../aspectRatio';
+import AspectRatio from '@/src/components/aspectRatio';
 
 interface Props {
   onClick: () => void;

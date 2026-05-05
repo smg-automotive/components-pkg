@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Description, Primary, Subtitle, Title } from '@storybook/blocks';
 
-import AspectRatio from '../aspectRatio';
+import AspectRatio from '@/src/components/aspectRatio';
 
 import MissingImageComponent from './index';
 

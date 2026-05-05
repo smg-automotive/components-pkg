@@ -7,12 +7,13 @@ import {
   Portal,
 } from '@chakra-ui/react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import Stack from 'src/components/stack';
-import Box from 'src/components/box';
+import { useI18n } from '@/src/utilities/i18nInit';
+import Stack from '@/src/components/stack';
 
-import { FilterHeading } from '../Heading';
-import FilterActionButton from '../ActionButton';
+import { FilterHeading } from '@/src/components/filterPatterns/Heading';
+import FilterActionButton from '@/src/components/filterPatterns/ActionButton';
+import Box from '@/src/components/box';
+
 import { PopoverFilterProps } from './props';
 
 type Props = {

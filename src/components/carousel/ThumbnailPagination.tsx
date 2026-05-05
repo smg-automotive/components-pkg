@@ -10,8 +10,9 @@ import React, {
 import { UseEmblaCarouselType } from 'embla-carousel-react';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 
-import Flex from '../flex';
-import Box from '../box';
+import Flex from '@/src/components/flex';
+import Box from '@/src/components/box';
+
 import ThumbnailNavigationButton from './ThumbnailNavigationButton';
 import Thumbnail from './Thumbnail';
 

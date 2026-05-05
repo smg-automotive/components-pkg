@@ -1,10 +1,9 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from 'jest-utils';
-
-import { PopoverFilterProps } from '../props';
-import { PopoverFilter } from '../index';
+import { PopoverFilterProps } from '@/src/components/filterPatterns/popover/props';
+import { PopoverFilter } from '@/src/components/filterPatterns/popover/index';
+import { render, screen, waitFor } from '@/jest-utils';
 
 const validProps: PopoverFilterProps = {
   actionButton: { label: 'Action button', onClick: jest.fn() },

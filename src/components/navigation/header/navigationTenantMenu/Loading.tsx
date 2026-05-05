@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import Spinner from 'src/components/spinner';
-import Box from 'src/components/box';
+import Spinner from '@/src/components/spinner';
+import Box from '@/src/components/box';
 
 export const NavigationTenantMenuLoading: FC = () => (
   <>

@@ -1,10 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import Text from 'src/components/text';
-import { default as ComponentsLink } from 'src/components/link';
-
-import { LinkInstance } from '../link';
+import { useI18n } from '@/src/utilities/i18nInit';
+import Text from '@/src/components/text';
+import { LinkInstance } from '@/src/components/navigation/link';
+import { default as ComponentsLink } from '@/src/components/link';
 
 interface FooterLinkProps {
   linkInstance: LinkInstance;

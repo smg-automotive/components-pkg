@@ -2,9 +2,8 @@ import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from 'jest-utils';
-
-import Carousel, { PaginationType } from '../index';
+import Carousel, { PaginationType } from '@/src/components/carousel/index';
+import { render, screen, waitFor } from '@/jest-utils';
 
 jest.mock('embla-carousel-react', () => {
   const embla = jest.requireActual('embla-carousel-react');

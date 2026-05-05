@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ArrowLeftIcon, ErrorIcon } from '../index';
+import { ArrowLeftIcon, ErrorIcon } from '@/src/components/index';
 
 import LinkComponent from './index';
 

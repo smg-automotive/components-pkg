@@ -2,10 +2,10 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
-import { Brand } from 'src/types/brand';
+import { Brand } from '@/src/types/brand';
 
-import ThemeProvider from '../themeProvider';
-import { FullHeight } from '../index';
+import ThemeProvider from '@/src/components/themeProvider';
+import { FullHeight } from '@/src/components/index';
 
 import DevOverlayComponent, { type DevOverlayProps } from './index';
 

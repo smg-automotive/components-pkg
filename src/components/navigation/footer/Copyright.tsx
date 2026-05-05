@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-import { useI18n } from 'src/utilities/i18nInit';
-import { Brand } from 'src/types/brand';
-import { opacity } from 'src/themes/shared/opacity';
+import { useI18n } from '@/src/utilities/i18nInit';
+import { Brand } from '@/src/types/brand';
+import { opacity } from '@/src/themes/shared/opacity';
 
-import Box from 'src/components/box';
+import Box from '@/src/components/box';
 
 type Props = {
   brand: Brand;

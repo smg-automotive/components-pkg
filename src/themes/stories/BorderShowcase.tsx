@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useTheme } from '@chakra-ui/react';
 
-import { Box, Table, TableContainer, Td, Th, Thead, Tr } from 'src/index';
+import { Box, Table, TableContainer, Td, Th, Thead, Tr } from '@/src/index';
 
 const BorderShowCase: FC = () => {
   const theme = useTheme();

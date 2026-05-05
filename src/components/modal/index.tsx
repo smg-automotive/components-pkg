@@ -11,9 +11,9 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react';
 
-import { H3 } from '../heading';
-import Divider from '../divider';
-import Button from '../button';
+import { H3 } from '@/src/components/heading';
+import Divider from '@/src/components/divider';
+import Button from '@/src/components/button';
 
 type ActionButton = {
   action: () => void;

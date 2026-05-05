@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { fontSizes } from 'src/themes/shared/fontSizes';
+import { fontSizes } from '@/src/themes/shared/fontSizes';
 
-import { Box } from 'src';
+import { Box } from '@/src';
 
 import MarkedTextComponent from '.';
 

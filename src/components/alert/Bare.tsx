@@ -8,7 +8,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 
-import Link from '../link';
+import Link from '@/src/components/link';
 
 export interface BareAlertProps {
   title?: string;

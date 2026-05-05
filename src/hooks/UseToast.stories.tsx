@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ErrorIcon } from '../index';
+import { Button, ErrorIcon } from '@/src/index';
+
 import useToast, { ToastOptions } from './UseToast';
 
 const Template = (args: ToastOptions) => {

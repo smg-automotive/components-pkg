@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { TabList as ChakraTabList, TabListProps } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 const TabList: FC<PropsWithChildren<TabListProps>> = (props) => {
   return (

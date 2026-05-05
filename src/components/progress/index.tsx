@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 import { Progress as ChakraProgress } from '@chakra-ui/react';
 
-import Text from 'src/components/text';
-import Stack from 'src/components/stack';
-import { CheckmarkCircleIcon } from 'src/components/icons';
+import Text from '@/src/components/text';
+import Stack from '@/src/components/stack';
+import { CheckmarkCircleIcon } from '@/src/components/icons';
 
 export interface ProgressProps {
   current: number;

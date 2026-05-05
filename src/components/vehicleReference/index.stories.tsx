@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '@chakra-ui/react';
 
-import { Button } from '../index';
+import { Button } from '@/src/components/index';
 
 import VehicleReference from './index';
 

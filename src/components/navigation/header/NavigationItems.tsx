@@ -3,13 +3,13 @@ import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 import { Image } from '@chakra-ui/react';
 
-import { breakpoints } from 'src/themes';
-import Stack from 'src/components/stack';
-import Show from 'src/components/show';
-import Link from 'src/components/link';
-import Hide from 'src/components/hide';
-import logoMotoScout24 from 'src/assets/images/logo_ms24.svg';
-import logoAutoScout24 from 'src/assets/images/logo_as24.svg';
+import { breakpoints } from '@/src/themes';
+import Stack from '@/src/components/stack';
+import Show from '@/src/components/show';
+import Link from '@/src/components/link';
+import Hide from '@/src/components/hide';
+import logoMotoScout24 from '@/src/assets/images/logo_ms24.svg';
+import logoAutoScout24 from '@/src/assets/images/logo_as24.svg';
 
 import { Platform } from './types';
 import { NavigationItem } from './NavigationItem';

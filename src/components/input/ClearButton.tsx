@@ -1,6 +1,6 @@
 import React, { FC, MutableRefObject } from 'react';
 
-import { CloseIcon } from '../icons';
+import { CloseIcon } from '@/src/components/icons';
 
 type Props = {
   inputRef: MutableRefObject<HTMLInputElement | null>;

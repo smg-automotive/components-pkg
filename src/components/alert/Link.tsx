@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import Link from 'src/components/link';
+import Link from '@/src/components/link';
 
 import { AlertProps } from '.';
 

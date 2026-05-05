@@ -9,9 +9,9 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 
-import { FontWeights } from 'src/themes';
+import { FontWeights } from '@/src/themes';
 
-import { ChevronDownSmallIcon } from '../icons';
+import { ChevronDownSmallIcon } from '@/src/components/icons';
 
 interface MenuItem {
   text: JSX.Element | string;

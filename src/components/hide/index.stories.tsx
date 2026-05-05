@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 import Hide, { type Props } from './index';
 

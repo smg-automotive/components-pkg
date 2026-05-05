@@ -7,8 +7,8 @@ import {
 } from '@chakra-ui/react';
 import { modalAnatomy as parts } from '@chakra-ui/anatomy';
 
-import { zIndices } from '../shared/zIndices';
-import { opacity } from '../shared/opacity';
+import { zIndices } from '@/src/themes/shared/zIndices';
+import { opacity } from '@/src/themes/shared/opacity';
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys);

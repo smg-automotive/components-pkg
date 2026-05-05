@@ -7,10 +7,10 @@ import {
   Link,
 } from '@chakra-ui/react';
 
-import Tooltip from '../tooltip';
-import Stack from '../stack';
-import { TooltipIcon } from '../icons';
-import FormLabel from '../formLabel';
+import Tooltip from '@/src/components/tooltip';
+import Stack from '@/src/components/stack';
+import { TooltipIcon } from '@/src/components/icons';
+import FormLabel from '@/src/components/formLabel';
 
 export type Props = {
   isDisabled?: boolean;

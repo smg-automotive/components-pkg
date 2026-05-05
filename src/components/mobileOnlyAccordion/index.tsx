@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { AccordionProps } from '@chakra-ui/react';
 
-import Accordion from '../accordion';
+import Accordion from '@/src/components/accordion';
 
 export type Props = {
   variant?: 'light' | 'dark';

@@ -1,7 +1,7 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
 import { useRadio, UseRadioProps } from '@chakra-ui/react';
 
-import Box from '../box';
+import Box from '@/src/components/box';
 
 export const RadioListItem = forwardRef<
   HTMLInputElement,

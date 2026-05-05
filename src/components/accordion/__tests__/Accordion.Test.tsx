@@ -1,11 +1,11 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen, waitFor } from 'jest-utils';
+import AccordionPanel from '@/src/components/accordion/AccordionPanel';
+import AccordionItem from '@/src/components/accordion/AccordionItem';
+import AccordionButton from '@/src/components/accordion/AccordionButton';
+import { render, screen, waitFor } from '@/jest-utils';
 
-import AccordionPanel from '../AccordionPanel';
-import AccordionItem from '../AccordionItem';
-import AccordionButton from '../AccordionButton';
 import Accordion from '..';
 
 const renderWrapper = ({ ...props }) =>

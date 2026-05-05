@@ -1,9 +1,8 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from 'jest-utils';
-
-import Button from '../index';
+import Button from '@/src/components/button/index';
+import { render, screen } from '@/jest-utils';
 
 const renderWrapper = ({
   onClick = jest.fn(),
