@@ -14,6 +14,8 @@ export const HeartIcon = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
     fill: 'none',
     stroke: 'currentColor',

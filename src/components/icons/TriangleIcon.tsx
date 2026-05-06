@@ -16,4 +16,9 @@ export const TriangleIcon = createIcon({
       </g>
     </>
   ),
+  defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
+    boxSize: 'sm',
+  },
 });

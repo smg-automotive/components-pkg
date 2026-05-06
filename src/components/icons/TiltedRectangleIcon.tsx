@@ -21,6 +21,8 @@ export const TiltedRectangleIcon = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });
