@@ -14,6 +14,8 @@ export const CartIcon = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

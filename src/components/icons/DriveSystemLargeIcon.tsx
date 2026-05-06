@@ -18,6 +18,8 @@ export const DriveSystemLargeIcon = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });
