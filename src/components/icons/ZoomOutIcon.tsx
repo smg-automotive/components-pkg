@@ -3,7 +3,7 @@ import { ComponentWithAs } from '@chakra-ui/system';
 import { createIcon, IconProps } from '@chakra-ui/react';
 
 export const ZoomOutIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-  displayName: 'ZoomOutIcon',
+  displayName: 'ZoomOut',
   viewBox: '0 0 24 24',
   path: (
     <>
