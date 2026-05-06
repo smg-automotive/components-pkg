@@ -5,6 +5,10 @@ import { Box, Text } from '@chakra-ui/react';
 
 import useMediaQuery, { QueryProps } from './index';
 const queryToString = (query: QueryProps): string => {
+  if ('breakpoint' in query) {
+    return `breakpoint: ${query.breakpoint}`;
+  }
+
   const { above, below } = query;
 
   if (above && below) {

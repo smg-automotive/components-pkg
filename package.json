@@ -48,14 +48,14 @@
     "dev": "storybook dev -p 6006 --no-open",
     "start": "http-server ./storybook-static -p 8008",
     "version": "npm run build",
-    "build": "rimraf dist && rollup -c",
+    "build": "rimraf dist && npm run typegen && rollup -c",
     "build:storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
     "lint:i18n": "npx sort-locales src/locales/de/dict.json src/locales/en/dict.json src/locales/fr/dict.json src/locales/it/dict.json",
     "lint": "npm run lint:i18n && eslint .",
     "format:i18n": "npm run lint:i18n -- --fix",
     "format": "npm run format:i18n && npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "typegen": "THEME_PATH=`[ -d src ] && echo src/themes/autoScout24.ts || echo dist/esm/themes/autoScout24.js` && npx chakra typegen $THEME_PATH --clean",
+    "typegen": "THEME_PATH=$( [ -f src/themes/typegenSystem.ts ] && echo src/themes/typegenSystem.ts || echo dist/bin/chakraTypegenTheme.cjs ); npx chakra typegen \"$THEME_PATH\" --clean",
     "typegen:watch": "npm run typegen -- --watch",
     "test": "jest",
     "test:debug": "node --inspect-brk --inspect=127.0.0.1:9229 ./node_modules/jest/bin/jest.js --runInBand",
@@ -159,6 +159,6 @@
     "yargs": "18.0.0"
   },
   "overrides": {
-    "eslint": "latest"
+    "eslint": "9.39.4"
   }
 }

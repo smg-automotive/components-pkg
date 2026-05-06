@@ -1,5 +1,6 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, PropsWithChildren } from 'react';
 
+import { TopRightToast, TopToast } from '@/src/components/toast';
 import { Grid, GridProps } from '@/src/components/grid';
 
 const pageGridArea = `
@@ -8,7 +9,10 @@ const pageGridArea = `
   "footer"
 `;
 
-export const AppLayout = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
+export const AppLayout = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<GridProps>
+>(({ children, ...rest }, ref) => {
   return (
     <Grid
       as="div"
@@ -17,8 +21,12 @@ export const AppLayout = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
       minHeight="screen-height"
       ref={ref}
       textStyle="body"
-      {...props}
-    />
+      {...rest}
+    >
+      <TopRightToast />
+      <TopToast />
+      {children}
+    </Grid>
   );
 });
 

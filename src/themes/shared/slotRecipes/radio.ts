@@ -7,8 +7,8 @@ export const radioRecipe = defineSlotRecipe({
       position: 'relative',
       display: 'inline-flex',
       alignItems: 'center',
-      '--radio-control-size': '20px',
-      '--radio-indicator-size': '20px',
+      '--radio-control-size': '16px',
+      '--radio-indicator-size': '16px',
       '--radio-border-style': 'solid',
       '--radio-border-width': '1px',
     },
@@ -20,6 +20,7 @@ export const radioRecipe = defineSlotRecipe({
       px: 'sm',
       py: 'xxs',
       listStyle: 'none',
+      padding: '0',
     },
     control: {
       boxSize: 'xs',
@@ -56,10 +57,13 @@ export const radioRecipe = defineSlotRecipe({
       rounded: 'full',
       width: 'xxs',
       height: 'xxs',
-      display: 'none',
+      bg: 'white',
+      opacity: 0,
+      transform: 'scale(0.6)',
+      transition: 'opacity 0.15s ease, transform 0.15s ease',
       _checked: {
-        display: 'block',
-        bg: 'white',
+        opacity: 1,
+        transform: 'scale(1)',
         _disabled: {
           bg: 'white',
         },
@@ -106,5 +110,5 @@ export const radioRecipe = defineSlotRecipe({
       },
     },
   },
-  defaultVariants: { variant: 'fontRegular', size: 'md' },
+  defaultVariants: { variant: 'fontRegular', size: 'base' },
 });

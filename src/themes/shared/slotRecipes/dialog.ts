@@ -23,7 +23,7 @@ const baseStyleDialogContainer = defineStyle({
   display: 'flex',
   flexDirection: 'column',
   width: 'full',
-  height: 'full',
+  height: '100dvh',
   position: 'fixed',
   left: '0',
   top: '0',
@@ -193,12 +193,20 @@ export const dialogRecipe: SlotRecipeDefinition = defineSlotRecipe({
       topScroll: {
         positioner: {
           ...baseStyleDialogContainer,
-          marginTop: '5xl',
           justifyContent: 'flex-start',
-          overflow: 'auto',
+          overflowY: 'auto',
+          overscrollBehaviorY: 'contain',
+          pt: { base: '0', sm: '5xl' },
+          pb: { base: '0', sm: 'lg' },
         },
         content: {
           flexShrink: '0',
+          my: '0',
+        },
+        body: {
+          overflowY: 'visible',
+          flex: 'unset',
+          minHeight: 'auto',
         },
       },
     },

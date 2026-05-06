@@ -1,6 +1,7 @@
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs';
 
+import typegenChakra from './typegenChakra';
 import setupNextFonts from './setupNextFonts';
 import setup from './setup';
 import copyFonts from './copyFonts';
@@ -65,6 +66,12 @@ yargs(hideBin(process.argv))
         'component-path': componentPath,
         'fonts-path': fontsPath,
       }),
+  })
+  .command({
+    command: 'typegen-chakra',
+    describe:
+      'Generate Chakra typings for consumers using the bundled autoScout24 theme',
+    handler: typegenChakra,
   })
   .help()
   .demandCommand()

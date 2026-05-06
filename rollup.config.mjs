@@ -234,6 +234,31 @@ const cli = {
   onwarn,
 };
 
+const chakraTypegenThemeBridge = {
+  input: 'src/lib/cli/chakraTypegenTheme.ts',
+  output: [
+    {
+      file: 'dist/bin/chakraTypegenTheme.cjs',
+      format: 'cjs',
+      sourcemap: false,
+    },
+  ],
+  plugins: [
+    nodeResolve({
+      ...resolveOptions,
+      preferBuiltins: true,
+    }),
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.build_cli.json',
+      compilerOptions: {
+        outDir: 'dist/bin',
+      },
+    }),
+  ],
+  onwarn,
+};
+
 export default [
   cjs,
   esm,
@@ -242,4 +267,5 @@ export default [
   hostedFontsCjs,
   hostedFontsEsm,
   cli,
+  chakraTypegenThemeBridge,
 ];

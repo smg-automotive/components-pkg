@@ -19,12 +19,8 @@ export const fieldSlotRecipe = defineSlotRecipe({
       lineHeight: 'xs',
     },
     root: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
       width: 'full',
       position: 'relative',
-      gap: 'xs',
     },
     label: {
       display: 'flex',

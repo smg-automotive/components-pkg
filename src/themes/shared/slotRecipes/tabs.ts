@@ -53,6 +53,7 @@ export const tabsRecipe = defineSlotRecipe({
     variant: {
       default: {
         trigger: {
+          display: 'flex',
           _selected: {
             borderBottomColor: 'currentColor',
           },

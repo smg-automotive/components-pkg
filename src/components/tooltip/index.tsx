@@ -1,4 +1,4 @@
-import React, { cloneElement, FC, useState } from 'react';
+import React, { cloneElement, FC, ReactNode, useState } from 'react';
 
 import {
   TooltipArrow,
@@ -15,12 +15,11 @@ type Placement = Exclude<
   Exclude<TooltipRootProps['positioning'], undefined>['placement'],
   undefined
 >;
-type Content = TooltipContentProps['content'];
-export type TooltipProps = Pick<TooltipRootProps, 'children'> &
-  Pick<TooltipContentProps, 'maxWidth'> & {
-    placement?: Placement;
-    label: Content;
-  };
+export type TooltipProps = Pick<TooltipRootProps, 'children'> & {
+  placement?: Placement;
+  label: ReactNode;
+  maxWidth?: TooltipContentProps['maxWidth'];
+};
 
 export const Tooltip: FC<TooltipProps> = ({
   children,
