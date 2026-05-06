@@ -13,12 +13,12 @@ type Props = Omit<SelectProps, 'disabled'> & {
 export const Select = forwardRef<HTMLSelectElement, Props>((props, ref) => {
   const { isDisabled, isInvalid, ...rest } = props;
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     <SelectComponents
-      {...rest}
-      disabled={isDisabled}
-      invalid={isInvalid}
+      {...({
+        ...rest,
+        disabled: isDisabled,
+        invalid: isInvalid,
+      } as SelectProps)}
       ref={ref}
     />
   );

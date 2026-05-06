@@ -15,7 +15,7 @@ type Props = PopoverProps & {
   closeOnBlur?: boolean;
 };
 
-export const Popover: React.FC<Props> = ({ trigger = 'click', ...props }) => {
+export const Popover: React.FC<Props> = ({ trigger = 'hover', ...props }) => {
   const { onOpen, onClose, isOpen, closeOnBlur, ...rest } = props;
   if (trigger === 'hover') {
     return <HoverCard {...rest} />;
