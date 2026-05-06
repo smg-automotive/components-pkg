@@ -19,23 +19,46 @@ export const toastConfig = {
   max: 5,
 };
 
-export type ToastProps = RecipeVariantProps<typeof alertRecipe> & {
+type ToastStatus = 'error' | 'warning' | 'info' | 'success';
+
+export type ToastProps = Omit<
+  RecipeVariantProps<typeof alertRecipe>,
+  'status'
+> & {
   toaster: ReturnType<typeof createToaster>;
 };
 
-export const Toast: FC<ToastProps> = (props) => {
+export const Toast: FC<ToastProps> = ({ toaster, ...props }) => {
   const recipe = useSlotRecipe({ recipe: alertRecipe });
-
-  const [recipeProps] = recipe.splitVariantProps(props);
-  const styles = recipe({ ...recipeProps });
 
   return (
     <Portal>
-      <Toaster toaster={props.toaster} css={{ width: '90%' }}>
+      <Toaster toaster={toaster} css={{ width: '90%' }}>
         {(toast) => {
+          const type = (toast.meta?.type as ToastStatus | undefined) ?? 'info';
+          const [recipeProps] = recipe.splitVariantProps(props);
+
+          const styles = recipe({
+            ...recipeProps,
+            status: type,
+          });
+
           return (
-            <ChakraToast.Root>
-              <ChakraAlert.Root css={styles.root} status={toast.meta?.type}>
+            <ChakraToast.Root
+              css={{
+                maxWidth: '560px',
+                minWidth: '300px',
+                translate: 'var(--x) var(--y)',
+                scale: 'var(--scale)',
+                opacity: 'var(--opacity)',
+                height: 'var(--height)',
+                zIndex: 'var(--z-index)',
+                willChange: 'transform, opacity, height',
+                transitionProperty: 'common',
+                transitionDuration: 'normal',
+              }}
+            >
+              <ChakraAlert.Root css={styles.root} status={type}>
                 <ChakraAlert.Indicator css={styles.indicator}>
                   {toast.meta?.icon}
                 </ChakraAlert.Indicator>
@@ -45,20 +68,21 @@ export const Toast: FC<ToastProps> = (props) => {
                       {toast.title}
                     </ChakraAlert.Title>
                   ) : null}
+
                   <ChakraAlert.Description css={styles.description}>
                     {toast.description}
                   </ChakraAlert.Description>
                   {toast.meta?.link ? (
                     <AlertLink {...toast.meta?.link} />
                   ) : null}
-                  <Box css={styles.toastClose}>
-                    <CloseButton
-                      onClick={() => {
-                        toast.meta?.onClose?.();
-                      }}
-                    />
-                  </Box>
                 </ChakraAlert.Content>
+                <Box css={styles.toastClose}>
+                  <CloseButton
+                    onClick={() => {
+                      toast.meta?.onClose?.();
+                    }}
+                  />
+                </Box>
               </ChakraAlert.Root>
             </ChakraToast.Root>
           );

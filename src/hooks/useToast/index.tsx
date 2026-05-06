@@ -1,15 +1,14 @@
+import { topRightToaster, topToaster } from '@/src/components/toast';
 import { SharedProps } from '@/src/components/alert';
 
-import { topToaster } from './TopToaster';
-
-import { topRightToaster } from './TopRightToast';
+type ToastPosition = 'top' | 'top-right';
 
 export type ToastOptions = {
-  position?: 'top' | 'top-right';
+  position?: ToastPosition;
   onClose?: () => void;
-} & SharedProps;
+} & Omit<SharedProps, 'position'>;
 
-const toasterMap = {
+const toasterMap: Record<ToastPosition, typeof topToaster> = {
   top: topToaster,
   'top-right': topRightToaster,
 };

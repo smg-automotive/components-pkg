@@ -9,6 +9,8 @@ import { CloseIcon } from '../icons';
 
 interface Props extends ChakraDrawerContentProps {
   withCloseButton?: boolean;
+  p?: ChakraDrawerContentProps['p'];
+  borderRadius?: ChakraDrawerContentProps['borderRadius'];
 }
 
 export const DrawerContent: FC<PropsWithChildren<Props>> = (props) => {

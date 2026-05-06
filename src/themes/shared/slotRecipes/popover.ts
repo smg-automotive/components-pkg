@@ -5,6 +5,7 @@ export const popoverRecipe = defineSlotRecipe({
   slots: popoverAnatomy.keys(),
   base: {
     content: {
+      padding: '0',
       _focusVisible: { outline: 'none' },
       bg: 'white',
       '--popover-bg': 'white',
@@ -28,7 +29,7 @@ export const popoverRecipe = defineSlotRecipe({
   },
   variants: {
     size: {
-      lg: {
+      xl: {
         content: {
           width: '6xl',
           p: 'md',

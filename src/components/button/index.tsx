@@ -109,9 +109,9 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
           }
         }}
       >
-        {props.children ? props.leftIcon : props.icon}
+        {props.leftIcon ? props.leftIcon : props.icon}
         {props.children}
-        {props.children ? props.rightIcon : undefined}
+        {props.rightIcon ? props.rightIcon : undefined}
       </ChakraButton>
     );
   },
