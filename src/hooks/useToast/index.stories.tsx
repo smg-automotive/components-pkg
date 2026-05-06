@@ -1,11 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { TopRightToast, TopToast } from '@/src/components/toast/';
 import { Button, ErrorIcon } from '@/src/components';
 
 import useToast, { ToastOptions } from './index';
-
-import { TopRightToast, TopToast } from '@/src/components/toast/';
 
 const Template = (args: ToastOptions) => {
   const toast = useToast();
