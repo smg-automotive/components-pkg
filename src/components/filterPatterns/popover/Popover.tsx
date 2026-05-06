@@ -60,10 +60,7 @@ export const Popover: FC<Props> = ({
       <Box zIndex={zIndex} w="full" h="full" position="relative">
         <ChakraPopover.Positioner>
           <ChakraPopover.Content
-            css={{
-              ...styles.content,
-              padding: 0,
-            }}
+            css={styles.content}
             minHeight={enforceHeight ? '7xl' : undefined}
             height={enforceHeight ? '7xl' : undefined}
             ref={popoverContentRef}

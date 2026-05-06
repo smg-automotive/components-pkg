@@ -83,14 +83,11 @@ export const Alert: FC<AlertProps> = (props) => {
         {title ? (
           <ChakraAlert.Title css={styles.title}>{title}</ChakraAlert.Title>
         ) : null}
-
         <ChakraAlert.Description css={styles.description}>
           {description}
         </ChakraAlert.Description>
-
         {link ? <AlertLink {...link} /> : null}
       </ChakraAlert.Content>
-
       {dismissible ? (
         <Box ml="auto" position="relative" flexShrink={0}>
           <CloseButton
