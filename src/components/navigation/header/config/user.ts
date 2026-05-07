@@ -43,6 +43,27 @@ export const editUsersLinkConfig: NavigationLinkConfigProps = {
   },
 };
 
+export const securitySettingsLinkConfig: NavigationLinkConfigProps = {
+  translationKey: 'header.userMenu.securitySettings',
+  link: {
+    de: '/de/account/security-settings',
+    en: '/en/account/security-settings',
+    fr: '/fr/account/security-settings',
+    it: '/it/account/security-settings',
+  },
+  visibilitySettings: {
+    userType: {
+      private: true,
+      professional: true,
+    },
+    brand: {
+      autoscout24: true,
+      motoscout24: true,
+    },
+  },
+  projectIdentifier: 'seller-web',
+};
+
 export const changeLanguageLinkConfig: NavigationLinkConfigProps = {
   translationKey: 'header.userMenu.userLanguage',
   link: {
