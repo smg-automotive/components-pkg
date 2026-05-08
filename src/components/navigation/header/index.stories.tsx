@@ -46,7 +46,7 @@ const Wrapper: typeof HeaderNavigation = ({ user, selectTenant, ...props }) => {
  * They will pop up from the top of the screen.
  * To experience "page-like" behaviour visit story directly
  **/
-const meta: Meta<typeof Navigation> = {
+const meta: Meta<typeof HeaderNavigation> = {
   title: 'Patterns/Navigation/Header',
   component: Wrapper,
   decorators: [
@@ -118,7 +118,7 @@ const meta: Meta<typeof Navigation> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof Navigation>;
+type StoryType = StoryObj<typeof HeaderNavigation>;
 
 export const Unauthenticated: StoryType = {
   args: {
