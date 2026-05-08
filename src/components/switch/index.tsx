@@ -1,17 +1,20 @@
 import React, { FC, ReactNode } from 'react';
 import {
   Switch as ChakraSwitch,
+  SwitchCheckedChangeDetails,
   SystemStyleObject,
   useSlotRecipe,
 } from '@chakra-ui/react';
 
-export type SwitchProps = Pick<
+type SwitchProps = Pick<
   ChakraSwitch.RootProps,
   'onCheckedChange' | 'checked' | 'disabled'
 > & {
   id: string;
   label?: ReactNode;
 };
+
+export type { SwitchProps, SwitchCheckedChangeDetails };
 
 type SwitchSlots = 'root' | 'control' | 'thumb' | 'label';
 
