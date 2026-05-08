@@ -15,6 +15,7 @@ import {
   Box,
   Input as ChakraInput,
   InputGroup as ChakraInputGroup,
+  InputProps as ChakraInputProps,
   RecipeVariantProps,
   useSlotRecipe,
 } from '@chakra-ui/react';
@@ -25,22 +26,24 @@ import { ClearButton } from './ClearButton';
 
 type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
 
-type SharedProps = InputVariantProps & {
-  placeholder?: string;
-  disabled?: boolean;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onFocus?: FocusEventHandler<HTMLInputElement>;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
-  autoFocus?: boolean;
-  name: string;
-  type?: 'text' | 'number' | 'password';
-  icon?: React.ComponentType;
-  isClearable?: boolean;
-  endElement?: ReactElement;
-  rightAddonElement?: ReactElement;
-  leftAddonElement?: ReactElement;
-  autoComplete?: 'on' | 'off';
-};
+type SharedProps = ChakraInputProps &
+  InputVariantProps & {
+    placeholder?: string;
+    disabled?: boolean;
+    onBlur?: FocusEventHandler<HTMLInputElement>;
+    onFocus?: FocusEventHandler<HTMLInputElement>;
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+    autoFocus?: boolean;
+    name: string;
+    type?: 'text' | 'number' | 'password';
+    icon?: React.ComponentType;
+    isClearable?: boolean;
+    endElement?: ReactElement;
+    rightAddonElement?: ReactElement;
+    leftAddonElement?: ReactElement;
+    autoComplete?: 'on' | 'off';
+    readOnly?: boolean;
+  };
 
 type ControlledInputProps = {
   debounce?: false;
@@ -63,10 +66,19 @@ type DebouncedInputPros = {
   setInputValue: (value: string) => void;
 } & SharedProps;
 
+type ReadOnlyValueProps = {
+  value: string | number;
+  readOnly?: true;
+  onChange?: never;
+  debounce?: false;
+  setInputValue?: never;
+} & SharedProps;
+
 export type InputProps =
   | ControlledInputProps
   | BaseInputPros
-  | DebouncedInputPros;
+  | DebouncedInputPros
+  | ReadOnlyValueProps;
 
 const bindRefBeforeForwarding =
   <T extends Element>({
@@ -98,6 +110,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       endElement,
       rightAddonElement: RightAddonElement,
       leftAddonElement: LeftAddonElement,
+      readOnly = false,
       ...props
     },
     ref,
@@ -182,6 +195,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           })}
           borderRightRadius={RightAddonElement ? '0' : 'sm'}
           borderLeftRadius={LeftAddonElement ? '0' : 'sm'}
+          readOnly={readOnly}
         />
       </ChakraInputGroup>
     );
