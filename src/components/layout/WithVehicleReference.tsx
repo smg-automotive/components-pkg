@@ -27,7 +27,7 @@ export const LayoutWithVehicleReference: FC<PropsWithChildren<Props>> = ({
   rightColumnSize = 4,
   maxContentWidth = 'lg',
 }) => {
-  const contentMargin = { md: '2xl' };
+  const contentMargin = { marginRight: { md: '2xl' } };
 
   return (
     <TwoColumnsLayout

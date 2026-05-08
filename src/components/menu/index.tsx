@@ -21,7 +21,10 @@ export interface MenuProps {
   items: MenuItem[];
   value?: string;
   fontWeightTitle?: MenuTriggerProps['fontWeight'];
-  offset?: [number, number];
+  offset?: {
+    mainAxis?: number;
+    crossAxis?: number;
+  };
   menuColor?: MenuTriggerProps['color'];
   menuOptionColor?: MenuContentProps['color'];
   showChevron?: boolean;
@@ -36,8 +39,11 @@ export const Menu: FC<MenuProps> = ({
   items,
   value,
   fontWeightTitle = 'regular',
-  offset = [8, 0],
-  menuColor,
+  offset = {
+    mainAxis: 8,
+    crossAxis: 0,
+  },
+  menuColor = 'blue.700',
   menuOptionColor,
   showChevron = true,
   icon,
@@ -47,15 +53,17 @@ export const Menu: FC<MenuProps> = ({
 }) => {
   const recipe = useSlotRecipe({ key: 'menu' });
   const styles = recipe();
-  const [crossAxis = 0, mainAxis = 0] = offset;
   return (
     <ChakraMenu.Root
-      positioning={{ placement, offset: { mainAxis, crossAxis } }}
+      positioning={{
+        placement,
+        offset: { mainAxis: offset.mainAxis, crossAxis: offset.crossAxis },
+      }}
     >
       <ChakraMenu.Context>
         {({ open }) => {
           // menuColor takes precedence over the open state color
-          const color = menuColor || (open ? 'blue.700' : undefined);
+          const color = menuColor;
 
           return (
             <ChakraMenu.Trigger
@@ -79,7 +87,7 @@ export const Menu: FC<MenuProps> = ({
       <ChakraMenu.Positioner>
         <ChakraMenu.Content css={styles.content}>
           {items.map(({ onClick, text, value: itemValue }) => {
-            const optionColor = menuOptionColor || menuColor;
+            const optionColor = menuOptionColor;
 
             return (
               <ChakraMenu.Item

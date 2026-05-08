@@ -11,9 +11,9 @@ const { Root, Header, Body, Footer } = ChakraCard;
 Root.displayName = 'Card.Root';
 Header.displayName = 'Card.Header';
 Body.displayName = 'Card.Body';
-Footer.displayName = 'Footer.Body';
+Footer.displayName = 'Card.Footer';
 
-export const Card = {
+export const CardComponents = {
   Root,
   Body,
   Header,
@@ -24,7 +24,7 @@ export const Card = {
  * @deprecated please use the namespace style import instead
  */
 export {
-  Root as CardRoot,
+  Root as Card,
   Body as CardBody,
   Header as CardHeader,
   Footer as CardFooter,

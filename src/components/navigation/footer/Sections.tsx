@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 
 import { useI18n } from '@/src/utilities/i18nInit';
 import { chunkArray } from '@/src/utilities/chunkArray';
-import useMediaQuery from '@/src/hooks/useMediaQuery';
 import { MobileOnlyAccordionPanel } from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionPanel';
 import { MobileOnlyAccordionItem } from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionItem';
 import { MobileOnlyAccordionButton } from '@/src/components/mobileOnlyAccordion/MobileOnlyAccordionButton';
@@ -25,8 +24,6 @@ export const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
     chunkSize: 2,
   });
 
-  const isAboveMd = useMediaQuery({ above: 'md' });
-
   return (
     <>
       {sectionChunks.map((sectionChunk, chunkIndex) => {
@@ -39,7 +36,7 @@ export const FooterSections: FC<FooterSectionsProps> = ({ config }) => {
                     key={`footerSection-${chunkIndex}-${sectionIndex}`}
                     borderTop="none"
                     borderBottom="1px"
-                    marginBottom={isAboveMd ? 'lg' : '0'}
+                    marginBottom={{ base: 0, md: 'lg' }}
                     borderBottomColor="gray.700"
                     value={`footerSection-${chunkIndex}-${sectionIndex}`}
                   >

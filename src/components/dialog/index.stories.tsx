@@ -58,10 +58,10 @@ const Template = ({
   );
 };
 
-const meta: Meta<typeof Template> = {
+const meta = {
   title: 'Components/Data display/Dialog',
-  component: Dialog,
-  render: Template.bind({}),
+  component: Template,
+  render: Template,
 
   args: {
     contentParagraphs: 1,
@@ -69,25 +69,21 @@ const meta: Meta<typeof Template> = {
     size: 'md',
     disableBodyPadding: false,
     motionPreset: 'scale',
+    variant: 'topScroll',
+    primaryActionLabel: undefined,
+    secondaryActionLabel: undefined,
+    overlayColor: undefined,
   },
 
   argTypes: {
     size: {
       options: ['md', 'lg', 'full', 'auth0'],
-
-      control: {
-        type: 'select',
-      },
+      control: { type: 'select' },
     },
-
     variant: {
-      options: ['fullScreen', 'base', 'topScroll'],
-
-      control: {
-        type: 'select',
-      },
+      options: ['fullScreen', 'topScroll'],
+      control: { type: 'select' },
     },
-
     motionPreset: {
       options: [
         'slideInBottom',
@@ -97,33 +93,21 @@ const meta: Meta<typeof Template> = {
         'scale',
         'none',
       ],
-
-      control: {
-        type: 'select',
-      },
+      control: { type: 'select' },
     },
-
     primaryActionLabel: {
-      control: {
-        type: 'text',
-      },
+      control: { type: 'text' },
     },
-
     secondaryActionLabel: {
-      control: {
-        type: 'text',
-      },
+      control: { type: 'text' },
     },
-
     overlayColor: {
       options: ['default', 'gray'],
-
-      control: {
-        type: 'select',
-      },
+      control: { type: 'select' },
     },
   },
-};
+} satisfies Meta<typeof Template>;
+
 export default meta;
 
 type StoryType = StoryObj<typeof Template>;
