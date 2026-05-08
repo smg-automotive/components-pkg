@@ -17,7 +17,9 @@ type Never<Source> = { [P in keyof Source]?: never };
 type LinkButton = {
   href?: string;
   isExternal?: boolean;
+  prefetch?: boolean;
   rel?: string;
+  replace?: boolean;
 };
 
 type IconButton = {
@@ -84,13 +86,56 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
     const [recipeProps, restProps] = recipe.splitVariantProps(props);
     const styles = recipe(recipeProps);
 
-    const { as = 'button', disabled, ...rest } = restProps;
+    const {
+      as = 'button',
+      disabled,
+      href,
+      isExternal,
+      prefetch,
+      rel,
+      replace,
+      ...rest
+    } = restProps;
 
     const asLinkProps = {
-      target: props.isExternal ? '_blank' : undefined,
-      rel: props.rel || (props.isExternal ? 'noopener noreferrer' : undefined),
+      target: isExternal ? '_blank' : undefined,
+      rel: rel || (isExternal ? 'noopener noreferrer' : undefined),
       ...(props.disabled ? { 'aria-disabled': true } : {}),
     };
+
+    const content = (
+      <>
+        {props.leftIcon ? props.leftIcon : props.icon}
+        {props.children}
+        {props.rightIcon ? props.rightIcon : undefined}
+      </>
+    );
+
+    const isComponentAs = Boolean(as) && typeof as !== 'string';
+
+    if (isComponentAs) {
+      const AsComp = as as React.ElementType;
+
+      return (
+        <ChakraButton
+          ref={ref}
+          css={styles}
+          asChild
+          disabled={disabled}
+          aria-label={props.children ? undefined : props.ariaLabel}
+          {...rest}
+        >
+          <AsComp
+            href={href}
+            prefetch={prefetch}
+            replace={replace}
+            onClick={props.onClick}
+          >
+            {content}
+          </AsComp>
+        </ChakraButton>
+      );
+    }
 
     return (
       <ChakraButton
@@ -100,18 +145,16 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
         disabled={disabled}
         aria-label={props.children ? undefined : props.ariaLabel}
         {...rest}
-        {...(props.as === 'a' ? asLinkProps : {})}
+        {...(as === 'a' ? asLinkProps : {})}
         onClick={(e) => {
-          if (props.as === 'a' && props.href && disabled) {
+          if (as === 'a' && href && disabled) {
             e.preventDefault();
           } else {
             props.onClick?.(e);
           }
         }}
       >
-        {props.leftIcon ? props.leftIcon : props.icon}
-        {props.children}
-        {props.rightIcon ? props.rightIcon : undefined}
+        {content}
       </ChakraButton>
     );
   },
