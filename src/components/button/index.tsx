@@ -98,9 +98,19 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
     } = restProps;
 
     const asLinkProps = {
+      href,
       target: isExternal ? '_blank' : undefined,
       rel: rel || (isExternal ? 'noopener noreferrer' : undefined),
-      ...(props.disabled ? { 'aria-disabled': true } : {}),
+      ...(disabled ? { 'aria-disabled': true } : {}),
+    };
+
+    const handleClick: ChakraButtonProps['onClick'] = (e) => {
+      if (href && disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      props.onClick?.(e);
     };
 
     const content = (
@@ -126,10 +136,10 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
           {...rest}
         >
           <AsComp
-            href={href}
+            {...asLinkProps}
             prefetch={prefetch}
             replace={replace}
-            onClick={props.onClick}
+            onClick={handleClick}
           >
             {content}
           </AsComp>
@@ -146,13 +156,7 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
         aria-label={props.children ? undefined : props.ariaLabel}
         {...rest}
         {...(as === 'a' ? asLinkProps : {})}
-        onClick={(e) => {
-          if (as === 'a' && href && disabled) {
-            e.preventDefault();
-          } else {
-            props.onClick?.(e);
-          }
-        }}
+        onClick={handleClick}
       >
         {content}
       </ChakraButton>
