@@ -99,6 +99,6 @@ export const inputSlotRecipe = defineSlotRecipe({
   },
   defaultVariants: {
     variant: 'outline',
-    size: 'lg',
+    size: 'md',
   },
 });
