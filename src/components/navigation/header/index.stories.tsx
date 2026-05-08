@@ -13,14 +13,14 @@ import { Brand } from '@/src/types/brand';
 import { PageLayout } from '@/src/components/layout';
 import { Box } from '@/src/components/box';
 
-import { Navigation } from './index';
+import { HeaderNavigation } from './index';
 
-const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
+const Wrapper: typeof HeaderNavigation = ({ user, selectTenant, ...props }) => {
   const [selectedTenant, setSelectedTenant] = React.useState<number | null>(
     user?.sellerId || null,
   );
   return (
-    <Navigation
+    <HeaderNavigation
       user={
         user && selectedTenant
           ? {
