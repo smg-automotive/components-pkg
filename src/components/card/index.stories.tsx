@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Card } from './index';
+import { CardComponents as Card } from './index';
 
 const meta: Meta<typeof Card.Root> = {
   title: 'Components/Data display/Card',
