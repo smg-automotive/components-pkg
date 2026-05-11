@@ -7,4 +7,3 @@ export { default as useFocusWhenVisible } from './useFocusWhenVisible';
 export { default as useClipboard } from './useClipboard';
 
 export { useDisclosure } from './adapter/useDisclosure';
-
