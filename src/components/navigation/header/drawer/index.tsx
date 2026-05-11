@@ -68,8 +68,6 @@ export const NavigationDrawer: FC<NavigationDrawerProps> = ({
             <Drawer.Body
               data-testid="drawer-body"
               overflowY="auto"
-              py="lg"
-              px={{ md: 'xs' }}
               maxWidth="container.2xl"
               width="full"
               margin="auto"
