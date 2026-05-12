@@ -124,7 +124,6 @@ const getUserNodeItems = ({
       insertionLinkConfig,
       autoScoutVehiclesLinkConfig,
       motoScoutVehiclesLinkConfig,
-      optimizerLinkConfig,
       cockpitLinkConfig,
       carParkLinkConfig,
       motorcycleParkLinkConfig,
@@ -135,6 +134,7 @@ const getUserNodeItems = ({
     items: [
       leadsManagementLinkConfig,
       printCenterLinkConfig,
+      optimizerLinkConfig,
       getPartnerHubLinkConfig({ sellerId }),
       topListingProLinkConfig,
       autoScoutTopVehiclesLinkConfig,
