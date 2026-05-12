@@ -1,6 +1,7 @@
 import React, { cloneElement, FC, ReactNode, useState } from 'react';
 
 import {
+  Portal,
   TooltipArrow,
   TooltipArrowTip,
   TooltipContent,
@@ -43,14 +44,16 @@ export const Tooltip: FC<TooltipProps> = ({
       open={isOpen}
     >
       <TooltipTrigger asChild={true}>{childrenWithProps}</TooltipTrigger>
-      <TooltipPositioner>
-        <TooltipContent maxWidth={maxWidth}>
-          <TooltipArrow>
-            <TooltipArrowTip />
-          </TooltipArrow>
-          {label}
-        </TooltipContent>
-      </TooltipPositioner>
+      <Portal>
+        <TooltipPositioner>
+          <TooltipContent maxWidth={maxWidth}>
+            <TooltipArrow>
+              <TooltipArrowTip />
+            </TooltipArrow>
+            {label}
+          </TooltipContent>
+        </TooltipPositioner>
+      </Portal>
     </TooltipRoot>
   );
 };
