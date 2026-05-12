@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from '@chakra-ui/react';
 
 import {
   Popover as PopoverComponents,
@@ -16,17 +17,37 @@ type Props = PopoverProps & {
 };
 
 export const Popover: React.FC<Props> = ({ trigger = 'hover', ...props }) => {
-  const { onOpen, onClose, isOpen, closeOnBlur, ...rest } = props;
-  if (trigger === 'hover') {
+  const {
+    onOpen,
+    onClose,
+    isOpen,
+    closeOnBlur,
+    closeOnInteractOutside,
+    ...rest
+  } = props;
+  const [internalIsOpen, setInternalIsOpen] = React.useState(false);
+  const [supportsHover] = useMediaQuery(['(hover: hover) and (pointer: fine)']);
+  // Touch devices cannot reliably open hover cards, so hover-triggered popovers
+  // fall back to a click popover that owns its open state when uncontrolled.
+  const usesHoverCard = trigger === 'hover' && supportsHover;
+  const isControlled = isOpen !== undefined;
+
+  if (usesHoverCard) {
     return <HoverCard {...rest} />;
   }
 
   return (
     <PopoverComponents
       {...rest}
-      open={isOpen}
-      closeOnInteractOutside={closeOnBlur}
+      open={isControlled ? isOpen : internalIsOpen}
+      closeOnInteractOutside={
+        closeOnInteractOutside ?? closeOnBlur ?? trigger === 'hover'
+      }
       onOpenChange={({ open }) => {
+        if (!isControlled) {
+          setInternalIsOpen(open);
+        }
+
         if (open) {
           onOpen?.();
         } else {
