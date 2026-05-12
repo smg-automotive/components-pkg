@@ -30,4 +30,5 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
     },
     missingEntitlementTranslationKey: 'header.userMenu.optimizer',
   },
+  projectIdentifier: 'seller-web',
 };
