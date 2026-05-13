@@ -37,6 +37,7 @@ const GalleryHeaderContent: FC<PropsWithChildren<GalleryHeaderProps>> = ({
       left={0}
       right={0}
       zIndex={1}
+      bg="blackAlpha.600"
     >
       <SimpleGrid
         columns={{
