@@ -5,7 +5,6 @@ import { Field, FieldProps } from '@/src/components/field';
 type Props = Omit<FieldProps, 'required' | 'disabled'> & {
   isRequired?: boolean;
   isDisabled?: boolean;
-  isInvalid?: boolean;
 };
 
 export const FormControl: FC<PropsWithChildren<Props>> = ({

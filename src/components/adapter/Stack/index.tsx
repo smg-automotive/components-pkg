@@ -8,11 +8,5 @@ type Props = StackProps & {
 
 export const Stack: FC<Props> = (props) => {
   const { spacing, ...rest } = props;
-  return (
-    <ComponentsStack
-      {...rest}
-      {...(spacing ? { gap: spacing } : {})}
-      gap={spacing}
-    />
-  );
+  return <ComponentsStack {...rest} {...(spacing ? { gap: spacing } : {})} />;
 };

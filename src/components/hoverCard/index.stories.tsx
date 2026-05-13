@@ -41,7 +41,7 @@ const meta: Meta<typeof Template> = {
       control: 'select',
     },
     size: {
-      options: ['md', 'lg'],
+      options: ['md', 'xl'],
       control: 'select',
     },
     showArrow: {

@@ -14,7 +14,7 @@ type Props = Omit<
   isDisabled?: boolean;
   isInvalid?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  name?: string;
+  name: string;
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>((props, ref) => {
@@ -46,7 +46,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>((props, ref) => {
       ref={ref}
       name={name}
       value=""
-      checked={!!isChecked}
+      {...(isChecked !== undefined ? { checked: isChecked } : {})}
       disabled={isDisabled}
       invalid={isInvalid}
       onChange={handleChange}
