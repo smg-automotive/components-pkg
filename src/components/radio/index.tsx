@@ -17,7 +17,7 @@ export type RadioItemProps = {
   disabled?: boolean;
 };
 
-type RadioRenderFn = (renderedItems: React.ReactElement[]) => ReactNode;
+export type RadioRenderFn = (renderedItems: React.ReactElement[]) => ReactNode;
 
 export type RadioProps = RecipeVariantProps<typeof radioRecipe> & {
   value?: string;
