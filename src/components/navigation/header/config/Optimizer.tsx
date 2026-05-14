@@ -21,7 +21,7 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
     },
   },
   entitlementConfig: {
-    singleRequiredEntitlement: [Entitlement.Optimizer],
+    singleRequiredEntitlement: [Entitlement.OptimizerPro],
     missingEntitlementFallbackLink: {
       de: '/de/optimizer/entry',
       en: '/en/optimizer/entry',
