@@ -260,6 +260,19 @@ export const footerConfig = (): FooterConfigInterface => ({
           },
           target: '_blank',
         },
+        {
+          translationKey: 'footer.sections.aboutUs.ombudsmanOffice',
+          visibilitySettings: {
+            brand: { [Brand.AutoScout24]: true, [Brand.MotoScout24]: true },
+          },
+          link: {
+            de: 'https://konsum.ch/de/ombudsstellen/ombudsstelle-mobilitaetsplattformen/',
+            en: 'https://konsum.ch/en/ombudsmans-office-for-mobility-platforms/',
+            fr: 'https://konsum.ch/fr/service-de-mediation-pour-les-plateformes-de-mobilite/',
+            it: 'https://konsum.ch/it/ufficio-del-mediatore-per-le-piattaforme-di-mobilita/',
+          },
+          target: '_blank',
+        },
       ],
     },
     {

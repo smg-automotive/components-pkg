@@ -12,6 +12,7 @@ const baseStyleContainer = defineStyle({
   left: '0',
   right: '0',
   zIndex: 'docked',
+  bg: 'blackAlpha.600',
 });
 
 const baseStyleGrid = defineStyle({
