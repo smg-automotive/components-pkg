@@ -15,10 +15,10 @@ export const CompareIcon = createIcon({
   ),
   defaultProps: {
     flexShrink: 0,
-    display: 'inline-block',
     boxSize: 'sm',
     fill: 'currentColor',
     fillRule: 'evenodd',
     clipRule: 'evenodd',
+    display: 'inline-block',
   },
 });

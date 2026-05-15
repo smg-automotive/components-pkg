@@ -12,4 +12,5 @@ const typegenSystem = createSystem(
   mergeConfigs(autoScout24Config, motoScout24Config),
   { preflight: true },
 );
+
 export default typegenSystem;
