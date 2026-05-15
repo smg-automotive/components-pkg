@@ -21,6 +21,8 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
     },
   },
   entitlementConfig: {
+    hideIfRequiredEntitlementIsMissing:
+      !!Entitlement.Optimizer && !!Entitlement.OptimizerPro,
     singleRequiredEntitlement: [Entitlement.OptimizerPro],
     missingEntitlementFallbackLink: {
       de: '/de/optimizer/entry',
