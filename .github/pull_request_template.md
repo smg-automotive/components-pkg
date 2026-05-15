@@ -1,6 +1,6 @@
 References [link the ticket here]
 
-- [] I hereby solemnly swear that I will sync these changes to the [chakra-integration](https://github.com/smg-automotive/seller-web/pull/4351) branch right after merging this to main.
+- [ ] I hereby solemnly swear that I will sync these changes to the [chakra-integration](/tree/chakra-integration) branch right after merging this to main.
 
 ## Motivation and context
 
