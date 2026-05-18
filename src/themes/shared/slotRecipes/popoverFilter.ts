@@ -30,6 +30,7 @@ const baseContentStyle = defineStyle({
   borderRadius: 'sm',
   backgroundColor: 'white',
   shadow: 'md',
+  padding: 0,
   _open: {
     animationName: 'fade-in',
     animationDuration: 'normal',
