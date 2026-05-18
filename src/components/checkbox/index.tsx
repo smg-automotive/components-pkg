@@ -65,7 +65,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <ChakraCheckbox.HiddenInput ref={ref} />
         <ChakraCheckbox.Control css={styles.control} />
         {label && (
-          <ChakraCheckbox.Label css={{ ...styles.label, fontWeight }}>
+          <ChakraCheckbox.Label
+            css={{
+              ...styles.label,
+              fontWeight,
+              ...(fullWidth ? { width: 'full' } : {}),
+            }}
+          >
             {label}
           </ChakraCheckbox.Label>
         )}
