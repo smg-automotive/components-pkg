@@ -3,7 +3,7 @@ import { Entitlement } from '@/src/types/entitlements';
 import { NavigationLinkConfigProps } from './headerLinks';
 
 export const optimizerLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.optimizerPro',
+  translationKey: 'header.userMenu.optimizerEntry',
   link: {
     de: '/de/optimizer/entry',
     en: '/en/optimizer/entry',
@@ -21,14 +21,11 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
     },
   },
   entitlementConfig: {
-    singleRequiredEntitlement: [Entitlement.OptimizerPro],
-    missingEntitlementFallbackLink: {
-      de: '/de/optimizer/entry',
-      en: '/en/optimizer/entry',
-      fr: '/fr/optimizer/entry',
-      it: '/it/optimizer/entry',
-    },
-    missingEntitlementTranslationKey: 'header.userMenu.optimizer',
+    hideIfRequiredEntitlementIsMissing: true,
+    singleRequiredEntitlement: [
+      Entitlement.Optimizer,
+      Entitlement.OptimizerPro,
+    ],
   },
   projectIdentifier: 'seller-web',
 };
