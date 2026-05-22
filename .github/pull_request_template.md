@@ -1,5 +1,7 @@
 References [link the ticket here]
 
+- [ ] I hereby solemnly swear that I will sync these changes to the [chakra-integration](/tree/chakra-integration) branch right after merging this to main.
+
 ## Motivation and context
 
 [Describe the problem we're solving and lay out the solution]
