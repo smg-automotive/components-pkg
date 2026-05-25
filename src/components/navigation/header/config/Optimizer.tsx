@@ -3,7 +3,7 @@ import { Entitlement } from '@/src/types/entitlements';
 import { NavigationLinkConfigProps } from './headerLinks';
 
 export const optimizerLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.optimizerEntry',
+  translationKey: 'header.userMenu.optimizer',
   link: {
     de: '/de/optimizer/entry',
     en: '/en/optimizer/entry',
