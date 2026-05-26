@@ -15,12 +15,14 @@ export type ChipProps = {
   onClick?: () => void;
   href?: string;
   'aria-label'?: string;
+  disabled?: boolean;
 } & RecipeVariantProps<typeof chipRecipe>;
 
 export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   children,
   onClick,
   href,
+  disabled = false,
   'aria-label': ariaLabel,
   ...rest
 }) => {
@@ -29,11 +31,12 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   const styles = recipe(recipeProps);
 
   const handleClick = () => {
+    if (disabled) return;
     onClick?.();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       onClick?.();
     }
@@ -42,6 +45,8 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   const commonProps = {
     css: styles,
     'aria-label': ariaLabel,
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.4 : 1,
     ...rest,
   } as Partial<FlexProps>;
 
@@ -51,10 +56,11 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   return (
     <Flex
       as={asType}
-      {...(isLink && onClick ? { href } : {})}
+      {...(isLink && onClick && !disabled ? { href } : {})}
       {...(!isLink ? { type: 'button' } : {})}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      tabIndex={disabled ? -1 : 0}
       {...commonProps}
     >
       {recipeProps.selected ? (
