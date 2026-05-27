@@ -13,10 +13,6 @@ type PolymorphicProps<
     keyof OwnProps | 'as' | 'children'
   >;
 
-/** Public adapter props:
- * - do NOT expose `css` (compat layer is sx-only)
- * - keep textColor/spacing mappings
- */
 type Props = Omit<BoxProps, 'color'> & {
   textColor?: BoxProps['color'];
   spacing?: BoxProps['gap'];
@@ -30,27 +26,60 @@ export type BoxAdapterProps<E extends ElementType = 'div'> = PolymorphicProps<
 export const Box = React.forwardRef(function BoxAdapter<
   E extends ElementType = 'div',
 >(props: BoxAdapterProps<E>, ref: React.ForwardedRef<unknown>) {
-  const { as, textColor, spacing, color, sx, children, ...rest } = props;
+  const {
+    as,
+    textColor,
+    spacing,
+    color,
+    sx,
+    children,
+
+    // Link-like props, e.g. NextLink
+    href,
+    prefetch,
+
+    ...rest
+  } = props;
+
+  const boxProps = {
+    ...rest,
+    sx,
+    ...(color !== undefined ? { color } : {}),
+    ...(textColor !== undefined ? { color: textColor } : {}),
+    ...(spacing !== undefined ? { gap: spacing } : {}),
+  };
+
+  const isLinkLike =
+    as !== undefined && (href !== undefined || prefetch !== undefined);
 
   if (!as) {
     return (
-      <BoxComponents
-        {...rest}
-        {...(color ? { color } : {})}
-        {...(textColor ? { color: textColor } : {})}
-        {...(spacing ? { gap: spacing } : {})}
-        ref={ref}
-      >
+      <BoxComponents {...boxProps} ref={ref}>
         {children}
       </BoxComponents>
     );
   }
 
-  const AsComp = as as ElementType; // relies on your existing approach
+  const AsComp = as as ElementType;
+
+  if (isLinkLike) {
+    return (
+      <BoxComponents {...boxProps} asChild ref={ref}>
+        <AsComp
+          {...{
+            href,
+            prefetch,
+          }}
+        >
+          {children}
+        </AsComp>
+      </BoxComponents>
+    );
+  }
 
   return (
-    <BoxComponents {...props} asChild ref={ref}>
-      <AsComp>{children}</AsComp>
+    <BoxComponents {...boxProps} as={AsComp} ref={ref}>
+      {children}
     </BoxComponents>
   );
 }) as <E extends ElementType = 'div'>(
