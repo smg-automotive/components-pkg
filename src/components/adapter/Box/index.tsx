@@ -50,7 +50,9 @@ export const Box = React.forwardRef(function BoxAdapter<
   };
 
   const isLinkLike =
-    as !== undefined && (href !== undefined || prefetch !== undefined);
+    as !== undefined &&
+    typeof as !== 'string' &&
+    (href !== undefined || prefetch !== undefined);
 
   if (!as) {
     return (
