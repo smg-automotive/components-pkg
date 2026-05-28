@@ -47,6 +47,12 @@ export const Box = React.forwardRef(function BoxAdapter<
     ...(color !== undefined ? { color } : {}),
     ...(textColor !== undefined ? { color: textColor } : {}),
     ...(spacing !== undefined ? { gap: spacing } : {}),
+
+    // Important: keep href on string elements like as="a"
+    ...(typeof as === 'string' && href !== undefined ? { href } : {}),
+
+    // Avoid passing prefetch to native DOM elements like <a>
+    ...(typeof as !== 'string' && prefetch !== undefined ? { prefetch } : {}),
   };
 
   const isLinkLike =
@@ -68,10 +74,8 @@ export const Box = React.forwardRef(function BoxAdapter<
     return (
       <BoxComponents {...boxProps} asChild ref={ref}>
         <AsComp
-          {...{
-            href,
-            prefetch,
-          }}
+          {...(href !== undefined ? { href } : {})}
+          {...(prefetch !== undefined ? { prefetch } : {})}
         >
           {children}
         </AsComp>
