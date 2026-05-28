@@ -2,8 +2,8 @@ import { Entitlement } from '@/src/types/entitlements';
 
 import { NavigationLinkConfigProps } from './headerLinks';
 
-export const optimizerLinkConfig: NavigationLinkConfigProps = {
-  translationKey: 'header.userMenu.optimizer',
+export const optimizerProLinkConfig: NavigationLinkConfigProps = {
+  translationKey: 'header.userMenu.optimizerPro',
   link: {
     de: '/de/optimizer/entry',
     en: '/en/optimizer/entry',
@@ -22,8 +22,7 @@ export const optimizerLinkConfig: NavigationLinkConfigProps = {
   },
   entitlementConfig: {
     hideIfRequiredEntitlementIsMissing: true,
-    singleRequiredEntitlement: [Entitlement.Optimizer],
-    hideIfEntitlementIsPresent: Entitlement.OptimizerPro,
+    singleRequiredEntitlement: [Entitlement.OptimizerPro],
   },
   projectIdentifier: 'seller-web',
 };

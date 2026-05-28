@@ -49,6 +49,7 @@ import {
   qualilogoLinkConfig,
 } from './Presence';
 import { getPartnerHubLinkConfig } from './partnerHub';
+import { optimizerProLinkConfig } from './OptimizerPro';
 import { optimizerLinkConfig } from './Optimizer';
 
 import { marketPriceCheckLinkConfig } from './marketPriceCheckConfig';
@@ -124,7 +125,6 @@ const getUserNodeItems = ({
       insertionLinkConfig,
       autoScoutVehiclesLinkConfig,
       motoScoutVehiclesLinkConfig,
-      optimizerLinkConfig,
       cockpitLinkConfig,
       carParkLinkConfig,
       motorcycleParkLinkConfig,
@@ -135,6 +135,8 @@ const getUserNodeItems = ({
     items: [
       leadsManagementLinkConfig,
       printCenterLinkConfig,
+      optimizerLinkConfig,
+      optimizerProLinkConfig,
       getPartnerHubLinkConfig({ sellerId }),
       topListingProLinkConfig,
       autoScoutTopVehiclesLinkConfig,
