@@ -117,8 +117,9 @@ describe('Header', () => {
 
     const popover = await screen.findByRole('dialog');
     const newTenant = within(popover).getByText('Garage Amir Basel - 6002');
-    act(() => {
+    await act(async () => {
       fireEvent.click(newTenant);
+      await Promise.resolve();
     });
 
     expect(selectTenant).toHaveBeenCalledWith(6002);
@@ -143,8 +144,9 @@ describe('Header', () => {
     const newTenant = within(
       screen.getAllByTestId('tenant-selection-accordion-panel')[0],
     ).getByText('Garage Amir Basel - 6002');
-    act(() => {
+    await act(async () => {
       fireEvent.click(newTenant);
+      await Promise.resolve();
     });
 
     expect(selectTenant).toHaveBeenCalledWith(6002);
