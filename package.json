@@ -15,6 +15,16 @@
         "default": "./dist/cjs/index.js"
       }
     },
+    "./breakpoints": {
+      "import": {
+        "types": "./dist/breakpoints.d.mts",
+        "default": "./dist/esm/breakpoints.js"
+      },
+      "require": {
+        "types": "./dist/breakpoints.d.ts",
+        "default": "./dist/cjs/breakpoints.js"
+      }
+    },
     "./fonts/hosted": {
       "import": {
         "types": "./dist/fonts/esm/types/Hosted.d.mts",
@@ -24,13 +34,42 @@
         "types": "./dist/fonts/esm/types/Hosted.d.ts",
         "default": "./dist/fonts/cjs/Hosted.js"
       }
+    },
+    "./theme-provider": {
+      "import": {
+        "types": "./dist/theme-provider.d.mts",
+        "default": "./dist/esm/themeProvider.js"
+      },
+      "require": {
+        "types": "./dist/theme-provider.d.ts",
+        "default": "./dist/cjs/theme-provider.js"
+      }
+    },
+    "./themes": {
+      "import": {
+        "types": "./dist/themes.d.mts",
+        "default": "./dist/esm/themes/index.js"
+      },
+      "require": {
+        "types": "./dist/themes.d.ts",
+        "default": "./dist/cjs/themes.js"
+      }
     }
   },
   "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
+      "breakpoints": [
+        "dist/breakpoints.d.ts"
+      ],
       "fonts/hosted": [
         "dist/fonts/esm/types/Hosted"
+      ],
+      "theme-provider": [
+        "dist/theme-provider.d.ts"
+      ],
+      "themes": [
+        "dist/themes.d.ts"
       ]
     }
   },

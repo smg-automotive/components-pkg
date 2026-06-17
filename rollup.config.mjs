@@ -4,7 +4,7 @@ import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
-import { dirname } from 'path';
+import { basename, dirname } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
@@ -38,6 +38,17 @@ const fontsHostedRequire = packageJson.exports[
 const fontsHostedImport = packageJson.exports[
   './fonts/hosted'
 ].import.default.replace(/^.\//, '');
+
+const breakpointsRequire = packageJson.exports[
+  './breakpoints'
+].require.default.replace(/^.\//, '');
+const themeProviderRequire = packageJson.exports[
+  './theme-provider'
+].require.default.replace(/^.\//, '');
+const themesRequire = packageJson.exports['./themes'].require.default.replace(
+  /^.\//,
+  '',
+);
 
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
 const rootDir = dirname(fileURLToPath(import.meta.url));
@@ -77,7 +88,12 @@ const cjs = {
 };
 
 const esm = {
-  input: 'src/index.ts',
+  input: [
+    'src/index.ts',
+    'src/breakpoints.ts',
+    'src/themeProvider.ts',
+    'src/themes/index.ts',
+  ],
   output: [
     {
       dir: dirname(packageJson.module),
@@ -111,6 +127,59 @@ const esm = {
   onwarn,
 };
 
+const createSubpathCjs = (input, outputFile) => ({
+  input,
+  output: [
+    {
+      file: outputFile,
+      format: 'cjs',
+      sourcemap: true,
+      inlineDynamicImports: true,
+    },
+  ],
+  plugins: [
+    ...jsPlugins,
+    typescript({
+      tsconfig: './tsconfig.build.json',
+      compilerOptions: {
+        declaration: false,
+        declarationMap: false,
+        outDir: dirname(outputFile),
+      },
+    }),
+  ],
+  external,
+  onwarn,
+});
+
+const createSubpathTypes = (input, outputFile) => ({
+  input,
+  output: [{ file: outputFile, format: 'esm' }],
+  plugins: [
+    dts({ tsconfig: './tsconfig.build.json' }),
+    copy({
+      targets: [
+        {
+          src: outputFile,
+          dest: dirname(outputFile),
+          rename: basename(outputFile).replace(/\.d\.ts$/, '.d.mts'),
+        },
+      ],
+      hook: 'writeBundle',
+    }),
+  ],
+});
+
+const breakpointsCjs = createSubpathCjs(
+  'src/breakpoints.ts',
+  breakpointsRequire,
+);
+const themeProviderCjs = createSubpathCjs(
+  'src/themeProvider.ts',
+  themeProviderRequire,
+);
+const themesCjs = createSubpathCjs('src/themes/index.ts', themesRequire);
+
 const types = {
   input: 'src/index.ts',
   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
@@ -124,6 +193,19 @@ const types = {
     }),
   ],
 };
+
+const breakpointsTypes = createSubpathTypes(
+  'src/breakpoints.ts',
+  'dist/breakpoints.d.ts',
+);
+const themeProviderTypes = createSubpathTypes(
+  'src/themeProvider.ts',
+  'dist/theme-provider.d.ts',
+);
+const themesTypes = createSubpathTypes(
+  'src/themes/index.ts',
+  'dist/themes.d.ts',
+);
 
 const hostedFontsTypes = {
   input: 'src/fonts/Hosted.tsx',
@@ -263,6 +345,12 @@ export default [
   cjs,
   esm,
   types,
+  breakpointsCjs,
+  themeProviderCjs,
+  themesCjs,
+  breakpointsTypes,
+  themeProviderTypes,
+  themesTypes,
   hostedFontsTypes,
   hostedFontsCjs,
   hostedFontsEsm,

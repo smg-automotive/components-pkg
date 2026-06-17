@@ -91,7 +91,6 @@ export * from './tenantSelection';
 export * from './text/HighlightedText';
 export * from './text/marked';
 export * from './textarea';
-export * from './themeProvider';
 export * from './timePicker';
 export * from './toast';
 export * from './tooltip';
