@@ -116,7 +116,7 @@ As agreed upon in the [RFC](https://github.com/smg-automotive/au-docs/discussion
 
 ```tsx
 // app.tsx
-import { ThemeProvider } from '@smg-automotive/components';
+import { ThemeProvider } from '@smg-automotive/components/theme-provider';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -132,7 +132,7 @@ export default MyApp;
 Theme objects can also be imported directly from the package (for showcasing, debugging, etc.):
 
 ```tsx
-import { autoScout24Theme } from '@smg-automotive/components';
+import { autoScout24Theme } from '@smg-automotive/components/themes';
 ```
 
 ### Switching themes in storybook

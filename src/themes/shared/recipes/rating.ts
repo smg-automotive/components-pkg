@@ -1,9 +1,4 @@
-import {
-  createSystem,
-  defaultConfig,
-  defineConfig,
-  defineRecipe,
-} from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react';
 
 export const ratingRecipe = defineRecipe({
   className: 'rating',
@@ -22,13 +17,3 @@ export const ratingRecipe = defineRecipe({
     size: 'lg',
   },
 });
-
-const customConfig = defineConfig({
-  theme: {
-    recipes: {
-      title: ratingRecipe,
-    },
-  },
-});
-
-export const system = createSystem(defaultConfig, customConfig);
