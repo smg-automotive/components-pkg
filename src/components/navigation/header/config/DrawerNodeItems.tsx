@@ -16,6 +16,7 @@ import {
   getFavoritesLinkConfig,
   getLogoutLinkConfig,
   savedSearchesLinkConfig,
+  securitySettingsLinkConfig,
 } from './user';
 import {
   autoScoutTopVehiclesLinkConfig,
@@ -175,6 +176,7 @@ const getUserNodeItems = ({
     translationKey: 'header.userMenu.accountSettings',
     items: [
       editUsersLinkConfig,
+      securitySettingsLinkConfig,
       changeLanguageLinkConfig,
       getLogoutLinkConfig({ onLogout }),
     ],
