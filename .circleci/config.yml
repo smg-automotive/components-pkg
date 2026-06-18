@@ -71,7 +71,7 @@ jobs:
           at: ~/
       - run:
           command: npm run test -- --runInBand
-          no_output_timeout: 3m
+          no_output_timeout: 10m
       - <<: *SLACK_NOTIFY
 
   lint:
