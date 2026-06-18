@@ -45,6 +45,26 @@
         "default": "./dist/cjs/theme-provider.js"
       }
     },
+    "./theme-provider/autoscout24": {
+      "import": {
+        "types": "./dist/theme-provider/autoscout24.d.mts",
+        "default": "./dist/esm/components/themeProvider/AutoScout24ThemeProvider.js"
+      },
+      "require": {
+        "types": "./dist/theme-provider/autoscout24.d.ts",
+        "default": "./dist/cjs/theme-provider/autoscout24.js"
+      }
+    },
+    "./theme-provider/motoscout24": {
+      "import": {
+        "types": "./dist/theme-provider/motoscout24.d.mts",
+        "default": "./dist/esm/components/themeProvider/MotoScout24ThemeProvider.js"
+      },
+      "require": {
+        "types": "./dist/theme-provider/motoscout24.d.ts",
+        "default": "./dist/cjs/theme-provider/motoscout24.js"
+      }
+    },
     "./themes": {
       "import": {
         "types": "./dist/themes.d.mts",
@@ -67,6 +87,12 @@
       ],
       "theme-provider": [
         "dist/theme-provider.d.ts"
+      ],
+      "theme-provider/autoscout24": [
+        "dist/theme-provider/autoscout24.d.ts"
+      ],
+      "theme-provider/motoscout24": [
+        "dist/theme-provider/motoscout24.d.ts"
       ],
       "themes": [
         "dist/themes.d.ts"

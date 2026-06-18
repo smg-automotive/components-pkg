@@ -45,6 +45,12 @@ const breakpointsRequire = packageJson.exports[
 const themeProviderRequire = packageJson.exports[
   './theme-provider'
 ].require.default.replace(/^.\//, '');
+const autoScout24ThemeProviderRequire = packageJson.exports[
+  './theme-provider/autoscout24'
+].require.default.replace(/^.\//, '');
+const motoScout24ThemeProviderRequire = packageJson.exports[
+  './theme-provider/motoscout24'
+].require.default.replace(/^.\//, '');
 const themesRequire = packageJson.exports['./themes'].require.default.replace(
   /^.\//,
   '',
@@ -92,6 +98,8 @@ const esm = {
     'src/index.ts',
     'src/breakpoints.ts',
     'src/themeProvider.ts',
+    'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+    'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
     'src/themes/index.ts',
   ],
   output: [
@@ -178,6 +186,14 @@ const themeProviderCjs = createSubpathCjs(
   'src/themeProvider.ts',
   themeProviderRequire,
 );
+const autoScout24ThemeProviderCjs = createSubpathCjs(
+  'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+  autoScout24ThemeProviderRequire,
+);
+const motoScout24ThemeProviderCjs = createSubpathCjs(
+  'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
+  motoScout24ThemeProviderRequire,
+);
 const themesCjs = createSubpathCjs('src/themes/index.ts', themesRequire);
 
 const types = {
@@ -201,6 +217,14 @@ const breakpointsTypes = createSubpathTypes(
 const themeProviderTypes = createSubpathTypes(
   'src/themeProvider.ts',
   'dist/theme-provider.d.ts',
+);
+const autoScout24ThemeProviderTypes = createSubpathTypes(
+  'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+  'dist/theme-provider/autoscout24.d.ts',
+);
+const motoScout24ThemeProviderTypes = createSubpathTypes(
+  'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
+  'dist/theme-provider/motoscout24.d.ts',
 );
 const themesTypes = createSubpathTypes(
   'src/themes/index.ts',
@@ -347,9 +371,13 @@ export default [
   types,
   breakpointsCjs,
   themeProviderCjs,
+  autoScout24ThemeProviderCjs,
+  motoScout24ThemeProviderCjs,
   themesCjs,
   breakpointsTypes,
   themeProviderTypes,
+  autoScout24ThemeProviderTypes,
+  motoScout24ThemeProviderTypes,
   themesTypes,
   hostedFontsTypes,
   hostedFontsCjs,
