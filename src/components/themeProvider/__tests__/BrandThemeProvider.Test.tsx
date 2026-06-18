@@ -6,7 +6,7 @@ import { theme as autoScout24Theme } from '@/src/themes/autoscout24';
 
 import { screen, testingLibraryRender } from '@/jest-utils';
 
-import { MotoScout24Providers } from '../MotoScout24ThemeProvider';
+import { MotoScout24ThemeProvider } from '../MotoScout24ThemeProvider';
 import AutoScout24ThemeProvider from '../AutoScout24ThemeProvider';
 
 const TestComponent: FC = () => {
@@ -32,7 +32,7 @@ describe('brand-specific theme providers', () => {
   });
 
   it('provides motoscout24 theme without the generic provider', () => {
-    renderWrapper(MotoScout24Providers);
+    renderWrapper(MotoScout24ThemeProvider);
 
     expect(
       screen.getByText(motoScout24Theme.colors.brand[100]),

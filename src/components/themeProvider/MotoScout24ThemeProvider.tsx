@@ -15,6 +15,4 @@ export const MotoScout24ThemeProvider: FC<MotoScout24ThemeProviderProps> = ({
   );
 };
 
-export const MotoScout24Providers = MotoScout24ThemeProvider;
-
 export default MotoScout24ThemeProvider;

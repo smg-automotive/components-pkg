@@ -130,13 +130,13 @@ const App = ({ Component, pageProps }) => {
 ```
 
 ```tsx
-import { MotoScout24Providers } from '@smg-automotive/components/theme-provider/motoscout24';
+import { MotoScout24ThemeProvider } from '@smg-automotive/components/theme-provider/motoscout24';
 
 const App = ({ Component, pageProps }) => {
   return (
-    <MotoScout24Providers>
+    <MotoScout24ThemeProvider>
       <Component {...pageProps} />
-    </MotoScout24Providers>
+    </MotoScout24ThemeProvider>
   );
 };
 ```
