@@ -15,10 +15,14 @@ import alias from '@rollup/plugin-alias';
 
 import packageJson from './package.json' with { type: 'json' };
 
-const external = [
+const externalPackages = [
   ...Object.keys(packageJson.dependencies || {}),
   ...Object.keys(packageJson.peerDependencies || {}),
 ];
+const external = (id) =>
+  externalPackages.some((packageName) => {
+    return id === packageName || id.startsWith(`${packageName}/`);
+  });
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') {
     if (warning.message.includes('node_modules/yargs')) return;
