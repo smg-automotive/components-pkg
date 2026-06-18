@@ -24,6 +24,26 @@
         "types": "./dist/fonts/esm/types/Hosted.d.ts",
         "default": "./dist/fonts/cjs/Hosted.js"
       }
+    },
+    "./theme-provider/autoscout24": {
+      "import": {
+        "types": "./dist/components/themeProvider/AutoScout24ThemeProvider.d.mts",
+        "default": "./dist/esm/components/themeProvider/AutoScout24ThemeProvider.js"
+      },
+      "require": {
+        "types": "./dist/components/themeProvider/AutoScout24ThemeProvider.d.ts",
+        "default": "./dist/cjs/components/themeProvider/AutoScout24ThemeProvider.js"
+      }
+    },
+    "./theme-provider/motoscout24": {
+      "import": {
+        "types": "./dist/components/themeProvider/MotoScout24ThemeProvider.d.mts",
+        "default": "./dist/esm/components/themeProvider/MotoScout24ThemeProvider.js"
+      },
+      "require": {
+        "types": "./dist/components/themeProvider/MotoScout24ThemeProvider.d.ts",
+        "default": "./dist/cjs/components/themeProvider/MotoScout24ThemeProvider.js"
+      }
     }
   },
   "types": "dist/index.d.ts",
@@ -31,6 +51,12 @@
     "*": {
       "fonts/hosted": [
         "dist/fonts/esm/types/Hosted"
+      ],
+      "theme-provider/autoscout24": [
+        "dist/components/themeProvider/AutoScout24ThemeProvider"
+      ],
+      "theme-provider/motoscout24": [
+        "dist/components/themeProvider/MotoScout24ThemeProvider"
       ]
     }
   },

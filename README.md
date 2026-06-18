@@ -114,6 +114,33 @@ Theme objects can also be imported directly from the package (for showcasing, de
 import { autoScout24Theme } from '@smg-automotive/components';
 ```
 
+For single-brand applications, prefer the brand-specific provider entrypoints so the
+application only imports the selected brand theme:
+
+```tsx
+import { AutoScout24ThemeProvider } from '@smg-automotive/components/theme-provider/autoscout24';
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <AutoScout24ThemeProvider>
+      <Component {...pageProps} />
+    </AutoScout24ThemeProvider>
+  );
+};
+```
+
+```tsx
+import { MotoScout24Providers } from '@smg-automotive/components/theme-provider/motoscout24';
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <MotoScout24Providers>
+      <Component {...pageProps} />
+    </MotoScout24Providers>
+  );
+};
+```
+
 ### Switching themes in storybook
 
 We leverage [a theming addon](https://storybook.js.org/addons/storybook-addon-themes#custom-decorator) in storybook.

@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 import { useTheme } from '@chakra-ui/react';
 
 import { Brand } from '@/src/types/brand';
-import { autoScout24Theme, motoScout24Theme } from '@/src/themes';
+import { theme as motoScout24Theme } from '@/src/themes/motoscout24';
+import { theme as autoScout24Theme } from '@/src/themes/autoscout24';
 
 import { screen, testingLibraryRender } from '@/jest-utils';
 

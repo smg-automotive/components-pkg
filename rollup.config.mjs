@@ -4,7 +4,7 @@ import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
-import { dirname } from 'path';
+import { basename, dirname } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
@@ -33,6 +33,17 @@ const fontsHostedRequire = packageJson.exports[
 const fontsHostedImport = packageJson.exports[
   './fonts/hosted'
 ].import.default.replace(/^.\//, '');
+
+const themeProviderEntries = [
+  {
+    input: 'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+    exportPath: './theme-provider/autoscout24',
+  },
+  {
+    input: 'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
+    exportPath: './theme-provider/motoscout24',
+  },
+];
 
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
 const rootDir = dirname(fileURLToPath(import.meta.url));
@@ -189,6 +200,73 @@ const hostedFontsEsm = {
   onwarn,
 };
 
+const createThemeProviderJsBuild = ({ input, exportPath }, condition) => {
+  const outputFile = packageJson.exports[exportPath][condition].default.replace(
+    /^.\//,
+    '',
+  );
+
+  return {
+    input,
+    output: [
+      {
+        file: outputFile,
+        format: condition === 'require' ? 'cjs' : 'esm',
+        ...(condition === 'require' ? { exports: 'named' } : {}),
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      ...jsPlugins,
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        compilerOptions: {
+          declaration: false,
+          declarationMap: false,
+          outDir: dirname(outputFile),
+        },
+      }),
+    ],
+    external,
+    onwarn,
+  };
+};
+
+const createThemeProviderTypesBuild = ({ input, exportPath }) => {
+  const typeFile = packageJson.exports[exportPath].require.types.replace(
+    /^.\//,
+    '',
+  );
+  const moduleTypeFile = packageJson.exports[exportPath].import.types.replace(
+    /^.\//,
+    '',
+  );
+
+  return {
+    input,
+    output: [{ file: typeFile, format: 'esm' }],
+    plugins: [
+      dts({ tsconfig: './tsconfig.build.json' }),
+      copy({
+        targets: [
+          {
+            src: typeFile,
+            dest: dirname(moduleTypeFile),
+            rename: basename(moduleTypeFile),
+          },
+        ],
+        hook: 'writeBundle',
+      }),
+    ],
+  };
+};
+
+const themeProviderBuilds = themeProviderEntries.flatMap((entry) => [
+  createThemeProviderTypesBuild(entry),
+  createThemeProviderJsBuild(entry, 'require'),
+  createThemeProviderJsBuild(entry, 'import'),
+]);
+
 const cli = {
   input: 'src/lib/cli/index.ts',
   output: [
@@ -236,5 +314,6 @@ export default [
   hostedFontsTypes,
   hostedFontsCjs,
   hostedFontsEsm,
+  ...themeProviderBuilds,
   cli,
 ];
