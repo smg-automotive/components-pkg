@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC, PropsWithChildren } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
