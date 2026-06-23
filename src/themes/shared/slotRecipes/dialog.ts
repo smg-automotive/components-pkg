@@ -43,7 +43,6 @@ const baseStyleDialog = defineStyle({
   borderRadius: 'sm',
   bg: { base: 'white', _dark: 'gray.700' },
   color: 'inherit',
-  my: 'lg',
   zIndex: 'modal',
   boxShadow: 'lg',
   _open: {
@@ -194,8 +193,8 @@ export const dialogRecipe: SlotRecipeDefinition = defineSlotRecipe({
         positioner: {
           ...baseStyleDialogContainer,
           justifyContent: 'flex-start',
-          overflowY: 'auto',
-          overscrollBehaviorY: 'contain',
+          overflow: 'hidden',
+          overscrollBehaviorY: 'none',
           pt: { base: '0', sm: '5xl' },
           pb: { base: '0', sm: 'lg' },
         },
@@ -204,9 +203,10 @@ export const dialogRecipe: SlotRecipeDefinition = defineSlotRecipe({
           my: '0',
         },
         body: {
-          overflowY: 'visible',
-          flex: 'unset',
-          minHeight: 'auto',
+          overflowY: 'auto',
+          overscrollBehaviorY: 'contain',
+          flex: '1',
+          minHeight: '0',
         },
       },
     },
