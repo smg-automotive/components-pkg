@@ -254,9 +254,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
               onClick={scrollPrev}
               direction="previous"
               fullScreen={!!fullScreen}
-              isHovered={
-                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
-              }
+              isHovered={isHovered}
             />
           ) : null}
           {canScrollNext ? (
@@ -264,9 +262,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
               onClick={scrollNext}
               direction="next"
               fullScreen={!!fullScreen}
-              isHovered={
-                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
-              }
+              isHovered={isHovered}
             />
           ) : null}
           {paginationType === PaginationType.Dot ? (

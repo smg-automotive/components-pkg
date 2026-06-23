@@ -34,7 +34,12 @@ export const NavigationButton: FC<Props> = ({
       aria-label={`${direction} slide`}
       css={{
         ...styles.buttonContainer,
-        ...(isHovered ? { visibility: 'visible', pointerEvents: 'auto' } : {}),
+        ...(isHovered
+          ? {
+              visibility: { base: 'hidden', md: 'visible' },
+              pointerEvents: { base: 'none', md: 'auto' },
+            }
+          : {}),
         ...side,
       }}
     >
