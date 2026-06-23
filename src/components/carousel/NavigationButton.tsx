@@ -12,14 +12,12 @@ interface Props {
   onClick: () => void;
   direction: Direction;
   fullScreen: boolean;
-  isHovered?: boolean;
 }
 
 export const NavigationButton: FC<Props> = ({
   direction,
   onClick,
   fullScreen,
-  isHovered = false,
 }) => {
   const recipe = useSlotRecipe({ key: 'carousel' });
   const styles = recipe(fullScreen ? { variant: 'fullScreen' } : {});
@@ -34,7 +32,6 @@ export const NavigationButton: FC<Props> = ({
       aria-label={`${direction} slide`}
       css={{
         ...styles.buttonContainer,
-        ...(isHovered ? { visibility: 'visible', pointerEvents: 'auto' } : {}),
         ...side,
       }}
     >

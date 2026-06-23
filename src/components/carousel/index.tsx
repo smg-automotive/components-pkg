@@ -199,10 +199,8 @@ export const Carousel: FC<CarouselProps> = (props) => {
     ? carouselHeightByPaginationTypeMap[PaginationType.Thumbnail]
     : carouselHeightByPaginationTypeMap[paginationType];
 
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <Box css={styles.container} data-group>
+    <Box css={styles.container}>
       {prerenderFallbackSlide ? (
         <Slide
           slideIndex={startIndex}
@@ -222,9 +220,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
           aria-label="Carousel"
           aria-roledescription="Carousel"
           role="group"
-          data-group
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className="group"
           height={'var(--carousel-height)'}
           css={{
             ...styles.carousel,
@@ -254,9 +250,6 @@ export const Carousel: FC<CarouselProps> = (props) => {
               onClick={scrollPrev}
               direction="previous"
               fullScreen={!!fullScreen}
-              isHovered={
-                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
-              }
             />
           ) : null}
           {canScrollNext ? (
@@ -264,9 +257,6 @@ export const Carousel: FC<CarouselProps> = (props) => {
               onClick={scrollNext}
               direction="next"
               fullScreen={!!fullScreen}
-              isHovered={
-                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
-              }
             />
           ) : null}
           {paginationType === PaginationType.Dot ? (
