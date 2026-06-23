@@ -2,6 +2,8 @@ import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import userEvent from '@testing-library/user-event';
 
+import { breakpoints } from '@/src/themes/shared/breakpoints';
+import { setMatchMediaViewport } from '@/jest-utils/setup/mockMatchMedia';
 import { render, screen, waitFor } from '@/jest-utils';
 
 import { Carousel, PaginationType } from '../index';
@@ -15,16 +17,6 @@ jest.mock('embla-carousel-react', () => {
 });
 
 describe('<Carousel />', () => {
-  beforeAll(() => {
-    Object.defineProperty(window, 'matchMedia', {
-      value: jest.fn(() => ({
-        matches: false,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-      })),
-    });
-  });
-
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -225,6 +217,11 @@ describe('<Carousel />', () => {
   });
 
   it('should change the current thumbnail when the user changes the main carousel slide', async () => {
+    setMatchMediaViewport({
+      height: breakpoints.md.px,
+      width: breakpoints.md.px,
+    });
+
     render(
       <Carousel fullScreen={true}>
         {[
@@ -245,6 +242,21 @@ describe('<Carousel />', () => {
         'true',
       ),
     );
+  });
+
+  it('should not render navigation buttons on mobile fullscreen gallery', () => {
+    render(
+      <Carousel fullScreen={true}>
+        {[
+          { slide: <div>slide 1</div>, thumbnail: <div>thumbnail 1</div> },
+          { slide: <div>slide 2</div>, thumbnail: <div>thumbnail 2</div> },
+          { slide: <div>slide 3</div>, thumbnail: <div>thumbnail 3</div> },
+        ]}
+      </Carousel>,
+    );
+
+    expect(screen.queryByLabelText('previous slide')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('next slide')).not.toBeInTheDocument();
   });
 
   it('should prerender a fallback slide on the server (emblaRef is undefined) when the start index is different than 0', () => {

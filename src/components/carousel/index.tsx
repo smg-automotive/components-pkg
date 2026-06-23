@@ -78,11 +78,13 @@ export const Carousel: FC<CarouselProps> = (props) => {
       fallback: [false],
     },
   );
+
   const [isDesktop] = useMediaQuery([`(min-width: ${breakpoints.md.px}px)`], {
     ssr: true,
     fallback: [false],
   });
-  const hideNavigationButtons = fullScreen && !isDesktop;
+
+  const shouldShowNavigationButtons = !fullScreen || isDesktop;
 
   const recipe = useSlotRecipe({ key: 'carousel' });
   const styles = recipe(fullScreen ? { variant: 'fullScreen' } : {});
@@ -255,7 +257,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
               </Slide>
             ))}
           </Flex>
-          {canScrollPrevious && !hideNavigationButtons ? (
+          {canScrollPrevious && shouldShowNavigationButtons ? (
             <NavigationButton
               onClick={scrollPrev}
               direction="previous"
@@ -264,7 +266,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
             />
           ) : null}
 
-          {canScrollNext && !hideNavigationButtons ? (
+          {canScrollNext && shouldShowNavigationButtons ? (
             <NavigationButton
               onClick={scrollNext}
               direction="next"
