@@ -78,6 +78,12 @@ export const Carousel: FC<CarouselProps> = (props) => {
       fallback: [false],
     },
   );
+  const [isDesktop] = useMediaQuery([`(min-width: ${breakpoints.md.px}px)`], {
+    ssr: true,
+    fallback: [false],
+  });
+  const hideNavigationButtons = fullScreen && !isDesktop;
+
   const recipe = useSlotRecipe({ key: 'carousel' });
   const styles = recipe(fullScreen ? { variant: 'fullScreen' } : {});
 
@@ -200,7 +206,6 @@ export const Carousel: FC<CarouselProps> = (props) => {
     : carouselHeightByPaginationTypeMap[paginationType];
 
   const [isHovered, setIsHovered] = useState(false);
-  const hideNavigationButtons = fullScreen && isSmallLandscapeViewport;
 
   return (
     <Box css={styles.container} data-group>

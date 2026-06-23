@@ -199,8 +199,12 @@ export const dialogRecipe: SlotRecipeDefinition = defineSlotRecipe({
           pb: { base: '0', sm: 'lg' },
         },
         content: {
-          flexShrink: '0',
-          my: '0',
+          flexShrink: '1',
+          maxH: {
+            base: '100dvh',
+            sm: 'calc(100dvh - var(--chakra-spacing-5xl) - var(--chakra-spacing-lg))',
+          },
+          overflow: 'hidden',
         },
         body: {
           overflowY: 'auto',
