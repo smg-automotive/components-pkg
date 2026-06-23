@@ -200,6 +200,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
     : carouselHeightByPaginationTypeMap[paginationType];
 
   const [isHovered, setIsHovered] = useState(false);
+  const hideNavigationButtons = fullScreen && isSmallLandscapeViewport;
 
   return (
     <Box css={styles.container} data-group>
@@ -249,24 +250,21 @@ export const Carousel: FC<CarouselProps> = (props) => {
               </Slide>
             ))}
           </Flex>
-          {canScrollPrevious ? (
+          {canScrollPrevious && !hideNavigationButtons ? (
             <NavigationButton
               onClick={scrollPrev}
               direction="previous"
               fullScreen={!!fullScreen}
-              isHovered={
-                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
-              }
+              isHovered={isHovered || !!fullScreen}
             />
           ) : null}
-          {canScrollNext ? (
+
+          {canScrollNext && !hideNavigationButtons ? (
             <NavigationButton
               onClick={scrollNext}
               direction="next"
               fullScreen={!!fullScreen}
-              isHovered={
-                isHovered || (!!fullScreen && !isSmallLandscapeViewport)
-              }
+              isHovered={isHovered || !!fullScreen}
             />
           ) : null}
           {paginationType === PaginationType.Dot ? (
