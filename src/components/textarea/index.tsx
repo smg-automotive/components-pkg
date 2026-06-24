@@ -4,7 +4,7 @@ import React, {
   forwardRef,
 } from 'react';
 
-import { Textarea as ChakraTextarea } from '@chakra-ui/react';
+import { Textarea as ChakraTextarea, HTMLChakraProps } from '@chakra-ui/react';
 
 export interface TextareaProps {
   name: string;
@@ -12,12 +12,16 @@ export interface TextareaProps {
   placeholder?: string;
   disabled?: boolean;
   autoFocus?: boolean;
+  autoresize?: boolean;
   onBlur?: FocusEventHandler<HTMLTextAreaElement>;
   onFocus?: FocusEventHandler<HTMLTextAreaElement>;
   onChange?: ChangeEventHandler<HTMLTextAreaElement>;
   rows?: number;
   cols?: number;
   textStyle?: 'body' | 'body-small';
+  minHeight?: HTMLChakraProps<'textarea'>['minHeight'];
+  maxHeight?: HTMLChakraProps<'textarea'>['maxHeight'];
+  paddingRight?: HTMLChakraProps<'textarea'>['paddingRight'];
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
