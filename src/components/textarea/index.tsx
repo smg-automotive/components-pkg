@@ -2,6 +2,7 @@ import React, {
   ChangeEventHandler,
   FocusEventHandler,
   forwardRef,
+  KeyboardEventHandler,
 } from 'react';
 
 import { Textarea as ChakraTextarea, HTMLChakraProps } from '@chakra-ui/react';
@@ -16,6 +17,7 @@ export interface TextareaProps {
   onBlur?: FocusEventHandler<HTMLTextAreaElement>;
   onFocus?: FocusEventHandler<HTMLTextAreaElement>;
   onChange?: ChangeEventHandler<HTMLTextAreaElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
   rows?: number;
   cols?: number;
   textStyle?: 'body' | 'body-small';
