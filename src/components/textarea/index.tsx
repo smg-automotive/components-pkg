@@ -21,7 +21,7 @@ export interface TextareaProps {
   textStyle?: 'body' | 'body-small';
   minHeight?: HTMLChakraProps<'textarea'>['minHeight'];
   maxHeight?: HTMLChakraProps<'textarea'>['maxHeight'];
-  paddingRight?: HTMLChakraProps<'textarea'>['paddingRight'];
+  padding: HTMLChakraProps<'textarea'>['padding'];
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
