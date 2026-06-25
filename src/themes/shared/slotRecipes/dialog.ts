@@ -43,7 +43,6 @@ const baseStyleDialog = defineStyle({
   borderRadius: 'sm',
   bg: { base: 'white', _dark: 'gray.700' },
   color: 'inherit',
-  my: 'lg',
   zIndex: 'modal',
   boxShadow: 'lg',
   _open: {
