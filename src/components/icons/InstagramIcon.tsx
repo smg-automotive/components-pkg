@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const InstagramIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const InstagramIcon = createIcon({
   displayName: 'Instagram',
   viewBox: '0 0 24 24',
   path: (
@@ -19,6 +18,8 @@ export const InstagramIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

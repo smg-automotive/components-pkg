@@ -2,8 +2,9 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 
 import { SearchableList } from '@/src/components/list/SearchableList';
-import List from '@/src/components/list/index';
 import { render, screen, waitFor } from '@/jest-utils';
+
+import { List } from '../index';
 
 const optionOneMock = jest.fn();
 const optionTwoMock = jest.fn();
@@ -52,9 +53,9 @@ const listItems = [
 describe('<SearchableList />', () => {
   it('renders the list', () => {
     render(
-      <List>
+      <List.Root>
         <SearchableList listItems={listItems} />
-      </List>,
+      </List.Root>,
     );
 
     expect(screen.getByText('Parent Option One')).toBeInTheDocument();
@@ -63,12 +64,12 @@ describe('<SearchableList />', () => {
 
   it('renders the insertion if the filter is empty', () => {
     render(
-      <List>
+      <List.Root>
         <SearchableList
           listItems={listItems}
           EmptyQueryPlaceholder={() => <>Insert me</>}
         />
-      </List>,
+      </List.Root>,
     );
 
     expect(screen.getByText('Insert me')).toBeInTheDocument();
@@ -76,9 +77,9 @@ describe('<SearchableList />', () => {
 
   it('filters the list', async () => {
     render(
-      <List>
+      <List.Root>
         <SearchableList listItems={listItems} />
-      </List>,
+      </List.Root>,
     );
 
     const searchField = screen.getByRole('textbox');
@@ -93,9 +94,9 @@ describe('<SearchableList />', () => {
 
   it('filters the list by child options', async () => {
     render(
-      <List>
+      <List.Root>
         <SearchableList listItems={listItems} />
-      </List>,
+      </List.Root>,
     );
 
     const searchField = screen.getByRole('textbox');

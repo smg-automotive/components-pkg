@@ -1,15 +1,13 @@
 import React, { FC, ReactNode } from 'react';
 
-import { TextProps } from '@chakra-ui/react';
+import { Text, TextProps } from './index';
 
-import Text from './index';
-
-type Props = {
+export type HighlightedTextProps = {
   text: string;
   highlightIndices?: ReadonlyArray<[number, number]>;
 } & Omit<TextProps, 'as' | 'fontWeight'>;
 
-const HighlightedText: FC<Props> = ({
+export const HighlightedText: FC<HighlightedTextProps> = ({
   text,
   highlightIndices = [],
   ...textProps
@@ -63,5 +61,3 @@ const HighlightedText: FC<Props> = ({
     </Text>
   );
 };
-
-export default HighlightedText;

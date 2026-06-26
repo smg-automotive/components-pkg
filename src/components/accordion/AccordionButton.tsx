@@ -1,31 +1,36 @@
 import React, { FC, PropsWithChildren } from 'react';
 import {
-  AccordionButton as ChakraAccordionButton,
-  AccordionButtonProps as ChakraAccordionButtonProps,
+  Accordion as ChakraAccordion,
+  AccordionItemTriggerProps as ChakraAccordionItemTriggerProps,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import Box from '@/src/components/box';
+import { accordionRecipe } from '@/src/themes/shared/slotRecipes/accordion';
 
-import AccordionIcon from './AccordionIcon';
+import { Box } from '../box';
 
-interface AccordionButtonProps extends ChakraAccordionButtonProps {
-  leftIcon?: React.ReactNode;
-}
+export type AccordionButtonProps = ChakraAccordionItemTriggerProps &
+  RecipeVariantProps<typeof accordionRecipe> & {
+    leftIcon?: React.ReactNode;
+  };
 
-const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
+export const AccordionButton: FC<PropsWithChildren<AccordionButtonProps>> = (
   props,
 ) => {
-  const { children, leftIcon, ...buttonProps } = props;
+  const recipe = useSlotRecipe({ key: 'accordion' });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe({ ...recipeProps });
+
+  const { children, leftIcon, ...rest } = restProps;
 
   return (
-    <ChakraAccordionButton {...buttonProps}>
+    <ChakraAccordion.ItemTrigger {...rest} css={styles.button}>
       {leftIcon ? <Box mr="sm">{leftIcon}</Box> : null}
-      <Box flex="1" textAlign="left">
+      <Box as="span" flex="1" textAlign="left">
         {children}
       </Box>
-      <AccordionIcon />
-    </ChakraAccordionButton>
+      <ChakraAccordion.ItemIndicator css={styles.indicator} />
+    </ChakraAccordion.ItemTrigger>
   );
 };
-
-export default AccordionButton;

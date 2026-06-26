@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 
-import TranslationProvider from '@/src/components/translationProvider';
+import { TranslationProvider } from '@/src/components/translationProvider';
 
-import GridItem from '@/src/components/grid/GridItem';
-import Grid from '@/src/components/grid';
-import Divider from '@/src/components/divider';
-
+import { Separator } from '../separator';
+import { Grid, GridItem } from '../grid';
 import { type Props } from './type';
-import CheckboxWithFacet from './CheckboxWithFacet';
-import CheckboxGroupCollapsibleWithChildren from './CheckboxGroupCollapsibleWithChildren';
+import { CheckboxWithFacet } from './CheckboxWithFacet';
+import { CheckboxGroupCollapsibleWithChildren } from './CheckboxGroupCollapsibleWithChildren';
 
 const groupItems = <ItemKey extends string, FilterName extends string>(
   items: Props<ItemKey, FilterName>['items'],
@@ -26,7 +24,10 @@ const groupItems = <ItemKey extends string, FilterName extends string>(
   return groupedItems;
 };
 
-function CheckboxFilter<ItemKey extends string, FilterName extends string>({
+export function CheckboxFilter<
+  ItemKey extends string,
+  FilterName extends string,
+>({
   alwaysExpanded = false,
   items,
   onApply,
@@ -51,11 +52,9 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
         {groupedItems.map((columnItems, columnIndex) => (
           <GridItem key={columnIndex} data-testid="column" position="relative">
             {groupedItems.length - 1 !== columnIndex && (
-              <Divider
+              <Separator
                 position="absolute"
-                top={0}
-                right="-1.5rem"
-                width="1px"
+                style={{ top: 0, right: '-1.5rem', width: '1px' }}
                 height="full"
                 bg="gray.100"
               />
@@ -84,5 +83,4 @@ function CheckboxFilter<ItemKey extends string, FilterName extends string>({
     </TranslationProvider>
   );
 }
-export default CheckboxFilter;
 export { type Props };

@@ -1,17 +1,21 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ArrowLeftIcon, ErrorIcon } from '@/src/components/index';
+import { ErrorIcon } from '@/src/components/icons/ErrorIcon';
+import { ArrowLeftIcon } from '@/src/components/icons/ArrowLeftIcon';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
-import LinkComponent from './index';
+import { Link } from './index';
 
-const meta: Meta<typeof LinkComponent> = {
+const meta: Meta<typeof Link> = {
   title: 'Components/Navigation/Link',
-  component: LinkComponent,
+  component: Link,
 
   args: {
     href: '#href',
     children: 'I am a link',
+    variant: 'baseLink' as const,
+    disabled: false,
   },
 
   argTypes: {
@@ -33,48 +37,36 @@ const meta: Meta<typeof LinkComponent> = {
       control: 'boolean',
     },
 
-    variant: {
-      control: 'select',
-      options: ['baseLink', 'navigationLink', 'subNavigationLink'],
-    },
-
-    fontWeight: {
-      control: 'select',
-      options: ['regular', 'bold'],
-    },
-
-    color: {
-      control: 'color',
-    },
+    ...getRecipeControls('link'),
   },
 };
 export default meta;
 
-type StoryType = StoryObj<typeof LinkComponent>;
+type StoryType = StoryObj<typeof Link>;
 export const Overview: StoryType = {};
 
 export const LinkWithLeftIcon: StoryType = {
   name: 'Link with Left icon',
   args: {
-    leftIcon: <ArrowLeftIcon />,
-    children: 'Back',
+    children: [<ArrowLeftIcon key="icon" />, 'Back'],
   },
 };
 
 export const LinkWithRightIcon: StoryType = {
   name: 'Link with Right icon',
   args: {
-    rightIcon: <ErrorIcon />,
-    children: 'Go to External Link',
+    children: ['Go to External Link', <ErrorIcon key="icon" />],
   },
 };
 
 export const LinkWithBothIcons: StoryType = {
   name: 'Link with both icons',
   args: {
-    leftIcon: <ArrowLeftIcon />,
-    rightIcon: <ErrorIcon />,
-    children: 'Terms & conditions',
+    children: [
+      <ArrowLeftIcon key="icon-left" />,
+      'Terms & conditions',
+      <ErrorIcon key="icon-right" />,
+    ],
   },
 };
 
@@ -85,7 +77,7 @@ export const LinkAsPartOfAParagraph: StoryType = {
   },
   render: (args) => (
     <p>
-      You must accept <LinkComponent {...args} /> to continue
+      You must accept <Link {...args} /> to continue
     </p>
   ),
 };

@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 
-import Flex from '@/src/components/flex';
-import Box from '@/src/components/box';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
 
 import { Facet } from './RangeSliderWithChart';
 
@@ -11,7 +13,7 @@ interface Props {
   height?: 'sm' | 'normal';
 }
 
-const Chart: React.FC<Props> = ({ facets, range }) => {
+export const Chart: React.FC<Props> = ({ facets, range }) => {
   if (!facets || facets.length === 0) {
     return null;
   }
@@ -23,13 +25,12 @@ const Chart: React.FC<Props> = ({ facets, range }) => {
       {facets.map(({ from }, index) => (
         <Box
           h="full"
-          mx="1px"
+          style={{ marginInline: '1px', transition: 'transform 1s ease' }}
           flexGrow={1}
           key={from}
           bg={
             index < range[0] || index > range[1] - 1 ? 'gray.200' : 'gray.500'
           }
-          transition="transform 1s"
           transformOrigin="bottom"
           transform={`scaleY(${
             maxValue > 0 ? facets[index].value / maxValue : 0
@@ -39,5 +40,3 @@ const Chart: React.FC<Props> = ({ facets, range }) => {
     </Flex>
   );
 };
-
-export default Chart;

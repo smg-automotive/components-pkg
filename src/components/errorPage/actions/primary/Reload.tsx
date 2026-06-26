@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 
-import { ActionButtonInterface } from '@/src/components/errorPage/actions/interface';
-import Button from '@/src/components/button';
+import { Button } from '@/src/components/button';
 
-const Reload: FC<ActionButtonInterface> = ({ t }) => {
+import { ActionButtonInterface } from '../interface';
+
+export const Reload: FC<ActionButtonInterface> = ({ t }) => {
   return (
     <Button
       onClick={() => {
@@ -14,5 +15,3 @@ const Reload: FC<ActionButtonInterface> = ({ t }) => {
     </Button>
   );
 };
-
-export default Reload;

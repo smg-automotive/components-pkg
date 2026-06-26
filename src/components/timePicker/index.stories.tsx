@@ -4,7 +4,7 @@ import { useArgs } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
 import { Box } from '@chakra-ui/react';
 
-import TimePickerComponent, { TimePickerProps } from './index';
+import { TimePicker, TimePickerProps } from './index';
 
 const timeToDateString = (timeStr: string): string => {
   const [hours, minutes] = timeStr.split(':').map(Number);
@@ -29,7 +29,7 @@ const Template = (props: TimePickerProps) => {
   const [args, updateArgs] = useArgs<TimePickerProps>();
 
   return (
-    <TimePickerComponent
+    <TimePicker
       {...{
         ...props,
         ...args,
@@ -43,14 +43,14 @@ const Template = (props: TimePickerProps) => {
   );
 };
 
-const meta: Meta<typeof TimePickerComponent> = {
+const meta: Meta<typeof TimePicker> = {
   title: 'Components/Forms/Time Picker',
-  component: TimePickerComponent,
+  component: TimePicker,
   render: Template.bind({}),
 
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="250px">
+      <Box w="full" maxW="5xl">
         <Story />
       </Box>
     ),
@@ -62,7 +62,7 @@ const meta: Meta<typeof TimePickerComponent> = {
     onFocus: action('onFocus'),
     size: 'lg',
     value: '',
-    isInvalid: false,
+    invalid: false,
   },
 
   argTypes: {
@@ -74,11 +74,11 @@ const meta: Meta<typeof TimePickerComponent> = {
       control: 'select',
       options: ['md', 'lg'],
     },
-    isInvalid: {
+    invalid: {
       control: 'boolean',
     },
   },
 };
 export default meta;
 
-export const Overview: StoryObj<typeof TimePickerComponent> = {};
+export const Overview: StoryObj<typeof TimePicker> = {};

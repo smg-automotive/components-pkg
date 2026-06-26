@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const CreditCardIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const CreditCardIcon = createIcon({
   displayName: 'CreditCard',
   viewBox: '0 0 24 24',
   path: (
@@ -16,6 +15,8 @@ export const CreditCardIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

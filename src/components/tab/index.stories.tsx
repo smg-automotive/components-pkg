@@ -2,30 +2,35 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Box from '@/src/components/box';
+import { tabsRecipe } from '@/src/themes/shared/slotRecipes/tabs';
+import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
-import TabPanels from './TabPanels';
-import TabPanel from './TabPanel';
-import TabList from './TabList';
-import Tab from './Tab';
+import { Box } from '../box';
+import { TabPanels } from './TabPanels';
+import { TabPanel } from './TabPanel';
+import { TabList } from './TabList';
+import { Tab } from './Tab';
 
-import Tabs from './index';
+import { Tabs } from './index';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
+  component: Tabs,
 
   render: (args) => {
     return (
       <Tabs {...args}>
-        <TabList key="tab-list">
+        <TabList>
           {Array.from({ length: 3 }).map((_, index) => (
-            <Tab key={`tab-${index}`}>Tab: {index}</Tab>
+            <Tab key={`tab-${index}`} value={`tab-${index}`}>
+              Tab: {index}
+            </Tab>
           ))}
         </TabList>
-        <TabPanels key="tab-panels">
+        <TabPanels>
           {Array.from({ length: 3 }).map((_, index) => (
-            <TabPanel key={`tab-panel-${index}`}>
-              <Box backgroundColor="gray.50" w="full" h="300px">
+            <TabPanel key={`tab-panel-${index}`} value={`tab-${index}`}>
+              <Box backgroundColor="gray.50" w="full" h="5xl">
                 <p>Tab panel: {index}</p>
               </Box>
             </TabPanel>
@@ -36,22 +41,23 @@ const meta: Meta<typeof Tabs> = {
   },
 
   args: {
-    defaultIndex: 2,
-    onChange: action('onChange'),
-    isLazy: true,
-    variant: 'default' as unknown as undefined,
+    defaultValue: 'tab-2',
+    lazyMount: true,
+    onValueChange: action('onValueChange'),
+    variant: 'default',
   },
 
   argTypes: {
-    variant: {
-      options: [
-        'spaceBetween',
-        'spaceAround',
-        'enclosed',
-        'fullWidth',
-        'default',
-      ],
+    ...getRecipeControls(tabsRecipe),
+    defaultValue: {
       control: 'select',
+      options: ['tab-0', 'tab-1', 'tab-2'],
+    },
+    lazyMount: {
+      control: 'boolean',
+    },
+    onValueChange: {
+      action: 'onValueChange',
     },
     children: {
       table: {
@@ -63,11 +69,11 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 
 type StoryType = StoryObj<typeof Tabs>;
+
 export const Overview: StoryType = {};
 
 export const VariantSpaceBetween: StoryType = {
   name: 'Variant > Space Between',
-
   args: {
     variant: 'spaceBetween',
   },
@@ -75,7 +81,6 @@ export const VariantSpaceBetween: StoryType = {
 
 export const VariantSpaceAround: StoryType = {
   name: 'Variant > Space Around',
-
   args: {
     variant: 'spaceAround',
   },
@@ -83,7 +88,6 @@ export const VariantSpaceAround: StoryType = {
 
 export const VariantEnclosed: StoryType = {
   name: 'Variant > Enclosed',
-
   args: {
     variant: 'enclosed',
   },
@@ -91,7 +95,6 @@ export const VariantEnclosed: StoryType = {
 
 export const VariantFullWidth: StoryType = {
   name: 'Variant > Full Width',
-
   args: {
     variant: 'fullWidth',
   },
@@ -99,8 +102,7 @@ export const VariantFullWidth: StoryType = {
 
 export const WithSecondTabSelected: StoryType = {
   name: 'With second tab selected',
-
   args: {
-    defaultIndex: 1,
+    defaultValue: 'tab-1',
   },
 };

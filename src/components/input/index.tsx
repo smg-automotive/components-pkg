@@ -1,7 +1,6 @@
 import { useDebouncedCallback } from 'use-debounce';
 import React, {
   ChangeEventHandler,
-  ComponentType,
   FocusEventHandler,
   ForwardedRef,
   forwardRef,
@@ -13,34 +12,38 @@ import React, {
   useState,
 } from 'react';
 import {
+  Box,
   Input as ChakraInput,
-  InputLeftAddon,
-  InputLeftElement,
-  InputRightAddon,
-  InputRightElement,
+  InputGroup as ChakraInputGroup,
+  InputProps as ChakraInputProps,
+  RecipeVariantProps,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import InputWrapper from './InputWrapper';
-import ClearButton from './ClearButton';
+import { inputSlotRecipe } from '@/src/themes/shared/slotRecipes/input';
 
-type SharedProps = {
-  placeholder?: string;
-  isInvalid?: boolean;
-  isDisabled?: boolean;
-  size?: 'md' | 'lg';
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onFocus?: FocusEventHandler<HTMLInputElement>;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
-  autoFocus?: boolean;
-  name: string;
-  type?: 'text' | 'number' | 'password';
-  icon?: ComponentType;
-  isClearable?: boolean;
-  endElement?: ReactElement;
-  rightAddonElement?: ReactElement;
-  leftAddonElement?: ReactElement;
-  autoComplete?: 'on' | 'off';
-};
+import { ClearButton } from './ClearButton';
+
+type InputVariantProps = RecipeVariantProps<typeof inputSlotRecipe>;
+
+type SharedProps = ChakraInputProps &
+  InputVariantProps & {
+    placeholder?: string;
+    disabled?: boolean;
+    onBlur?: FocusEventHandler<HTMLInputElement>;
+    onFocus?: FocusEventHandler<HTMLInputElement>;
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+    autoFocus?: boolean;
+    name: string;
+    type?: 'text' | 'number' | 'password';
+    icon?: React.ComponentType;
+    isClearable?: boolean;
+    endElement?: ReactElement;
+    rightAddonElement?: ReactElement;
+    leftAddonElement?: ReactElement;
+    autoComplete?: 'on' | 'off';
+    readOnly?: boolean;
+  };
 
 type ControlledInputProps = {
   debounce?: false;
@@ -49,7 +52,7 @@ type ControlledInputProps = {
   setInputValue?: never;
 } & SharedProps;
 
-type InputPros = {
+type BaseInputPros = {
   debounce?: false;
   value?: never;
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -63,48 +66,19 @@ type DebouncedInputPros = {
   setInputValue: (value: string) => void;
 } & SharedProps;
 
-export type Props = ControlledInputProps | InputPros | DebouncedInputPros;
+type ReadOnlyValueProps = {
+  value: string | number;
+  readOnly?: true;
+  onChange?: never;
+  debounce?: false;
+  setInputValue?: never;
+} & SharedProps;
 
-const renderIcon = (Icon?: ComponentType) =>
-  Icon ? (
-    <InputLeftElement pointerEvents="none">
-      <Icon />
-    </InputLeftElement>
-  ) : null;
-
-const renderEndElements = ({
-  isClearable,
-  inputRef,
-  endElement,
-}: {
-  isClearable: boolean;
-  inputRef: MutableRefObject<HTMLInputElement | null>;
-  endElement?: ReactElement;
-}) => {
-  if (!isClearable && !endElement) return null;
-
-  return (
-    <InputRightElement justifyContent="flex-end">
-      <>
-        {isClearable ? (
-          <ClearButton
-            inputRef={inputRef}
-            marginRight={endElement ? '4px' : '16px'}
-          />
-        ) : null}
-        {endElement}
-      </>
-    </InputRightElement>
-  );
-};
-
-const renderLeftAddonElement = (LeftAddonElement?: ReactElement) =>
-  LeftAddonElement ? <InputLeftAddon>{LeftAddonElement}</InputLeftAddon> : null;
-
-const renderRightAddonElement = (RightAddonElement?: ReactElement) =>
-  RightAddonElement ? (
-    <InputRightAddon>{RightAddonElement}</InputRightAddon>
-  ) : null;
+export type InputProps =
+  | ControlledInputProps
+  | BaseInputPros
+  | DebouncedInputPros
+  | ReadOnlyValueProps;
 
 const bindRefBeforeForwarding =
   <T extends Element>({
@@ -123,7 +97,7 @@ const bindRefBeforeForwarding =
     }
   };
 
-const Input = forwardRef<HTMLInputElement, Props>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       onChange,
@@ -136,10 +110,15 @@ const Input = forwardRef<HTMLInputElement, Props>(
       endElement,
       rightAddonElement: RightAddonElement,
       leftAddonElement: LeftAddonElement,
+      readOnly = false,
       ...props
     },
     ref,
   ) => {
+    const recipe = useSlotRecipe({ key: 'input' });
+    const [recipeProps, componentProps] = recipe.splitVariantProps(props);
+    const styles = recipe(recipeProps);
+
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [internalUIValue, setInternalUIValue] = useState(value || '');
     // https://lawsofux.com/doherty-threshold/
@@ -177,40 +156,50 @@ const Input = forwardRef<HTMLInputElement, Props>(
       : defaultOnChangeHandler;
 
     return (
-      <InputWrapper
-        size={props.size}
-        shouldWrap={Boolean(LeftAddonElement || RightAddonElement)}
+      <ChakraInputGroup
+        {...(LeftAddonElement ? { startAddon: LeftAddonElement } : {})}
+        {...(RightAddonElement ? { endAddon: RightAddonElement } : {})}
+        {...(Icon
+          ? {
+              startElement: (
+                <Box css={styles.icon}>
+                  <Icon />
+                </Box>
+              ),
+            }
+          : {})}
+        {...((isClearable && internalUIValue) || endElement
+          ? {
+              endElement: (
+                <>
+                  {isClearable && internalUIValue ? (
+                    <Box css={styles.clearButton}>
+                      <ClearButton inputRef={inputRef} />
+                    </Box>
+                  ) : null}
+                  {endElement}
+                </>
+              ),
+            }
+          : {})}
       >
-        {renderLeftAddonElement(LeftAddonElement)}
-        <InputWrapper
-          size={props.size}
-          shouldWrap={!!Icon || isClearable || !!endElement}
-        >
-          {renderIcon(Icon)}
-          <ChakraInput
-            {...props}
-            type={type}
-            value={inputValue}
-            onChange={onChangeHandler}
-            ref={bindRefBeforeForwarding({
-              forwardedRef: ref,
-              localRef: inputRef,
-            })}
-            borderRightRadius={RightAddonElement ? '0' : 'sm'}
-            borderLeftRadius={LeftAddonElement ? '0' : 'sm'}
-          />
-          {renderEndElements({
-            isClearable: isClearable && !!internalUIValue,
-            inputRef,
-            endElement,
+        <ChakraInput
+          {...componentProps}
+          css={styles.field}
+          type={type}
+          value={inputValue}
+          onChange={onChangeHandler}
+          ref={bindRefBeforeForwarding({
+            forwardedRef: ref,
+            localRef: inputRef,
           })}
-        </InputWrapper>
-        {renderRightAddonElement(RightAddonElement)}
-      </InputWrapper>
+          borderRightRadius={RightAddonElement ? '0' : 'sm'}
+          borderLeftRadius={LeftAddonElement ? '0' : 'sm'}
+          readOnly={readOnly}
+        />
+      </ChakraInputGroup>
     );
   },
 );
-Input.displayName = 'Input';
 
-export default Input;
-export { Props as InputProps };
+Input.displayName = 'Input';

@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const PhoneIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+import { createIcon } from '@chakra-ui/react';
+
+export const PhoneIcon = createIcon({
   displayName: 'Phone',
   viewBox: '0 0 24 24',
   path: (
@@ -17,6 +17,8 @@ export const PhoneIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

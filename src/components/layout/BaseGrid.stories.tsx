@@ -3,13 +3,13 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Description, Stories, Subtitle, Title } from '@storybook/blocks';
 import { Box, GridItem } from '@chakra-ui/react';
 
-import { FullHeight } from '@/src/components/index';
+import { FullHeight } from '@/src/components/fullHeight';
 
-import BaseGridComponent from './BaseGrid';
+import { BaseGridLayout } from './BaseGrid';
 
-const meta: Meta<typeof BaseGridComponent> = {
+const meta: Meta<typeof BaseGridLayout> = {
   title: 'Layout/Pages/Base grid',
-  component: BaseGridComponent,
+  component: BaseGridLayout,
   decorators: [
     (Story) => (
       <FullHeight>
@@ -44,7 +44,7 @@ const meta: Meta<typeof BaseGridComponent> = {
 
     children: Array.from({ length: 12 }).map((_, index) => (
       <GridItem key={index}>
-        <Box bg="blue.200" h="100%">
+        <Box bg="blue.200" h="full">
           {index + 1}
         </Box>
       </GridItem>
@@ -57,4 +57,4 @@ export default meta;
 /**
  * Base grid for XL layouts
  **/
-export const Overview: StoryObj<typeof BaseGridComponent> = {};
+export const Overview: StoryObj<typeof BaseGridLayout> = {};

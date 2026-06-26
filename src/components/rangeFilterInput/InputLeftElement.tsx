@@ -1,19 +1,16 @@
 import React, { FC } from 'react';
 
-import { InputLeftElement as ChakraInputLeftElement } from '@chakra-ui/react';
+import { InputElement } from '@chakra-ui/react';
 
-const InputLeftElement: FC<{ unit: string }> = ({ unit }) => {
+export const InputLeftElement: FC<{ unit: string }> = ({ unit }) => {
   return (
-    <ChakraInputLeftElement
+    <InputElement
+      insetY="0"
+      px="sm"
+      textStyle="body-small"
       pointerEvents="none"
-      paddingLeft="sm"
-      height="full"
-      fontSize="sm"
-      width="auto"
     >
       {unit}
-    </ChakraInputLeftElement>
+    </InputElement>
   );
 };
-
-export default InputLeftElement;

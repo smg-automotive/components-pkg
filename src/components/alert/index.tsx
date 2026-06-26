@@ -1,19 +1,39 @@
-import React, { FC } from 'react';
-
+import React, { FC, ReactNode } from 'react';
 import {
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
+  Box,
   Alert as ChakraAlert,
-  CloseButton,
-  Flex,
+  AlertRootProps as ChakraAlertRootProps,
+  RecipeVariantProps,
   useDisclosure,
+  useSlotRecipe,
 } from '@chakra-ui/react';
 
-import AlertLink from './Link';
-import { BareAlertProps } from './Bare';
+import { alertRecipe } from '@/src/themes/shared/slotRecipes/alert';
 
-type SharedProps = Omit<BareAlertProps, 'onClose'>;
+import { CloseButton } from '../closeButton';
+import { AlertLink } from './Link';
+
+type AlertStatus = 'error' | 'warning' | 'info' | 'success';
+
+type AlertLinkProps = {
+  as?: 'link' | 'button' | React.ElementType;
+  text: string;
+  url?: string;
+  isExternal?: boolean;
+  onClick?: () => void;
+};
+
+type AlertRecipeProps = RecipeVariantProps<typeof alertRecipe>;
+type RootProps = Omit<ChakraAlertRootProps, 'status' | 'variant' | 'title'>;
+
+export type SharedProps = RootProps &
+  Omit<AlertRecipeProps, 'status'> & {
+    description: string | ReactNode;
+    title?: string;
+    link?: AlertLinkProps;
+    icon?: React.ReactNode;
+    type?: AlertStatus;
+  };
 
 export type DismissibleProps = SharedProps & {
   onDismiss?: () => void;
@@ -27,36 +47,57 @@ export type NonDismissibleProps = SharedProps & {
 
 export type AlertProps = DismissibleProps | NonDismissibleProps;
 
-const Alert: FC<AlertProps> = ({
-  title,
-  description,
-  link,
-  type,
-  icon,
-  ...rest
-}) => {
-  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
+export const Alert: FC<AlertProps> = (props) => {
+  const recipe = useSlotRecipe({ recipe: alertRecipe });
+  const { open, onClose } = useDisclosure({ defaultOpen: true });
 
-  return isOpen || !rest.dismissible ? (
-    <ChakraAlert status={type}>
-      <AlertIcon>{icon}</AlertIcon>
-      <Flex direction="column" w="100%">
-        {title ? <AlertTitle>{title}</AlertTitle> : null}
-        <AlertDescription>{description}</AlertDescription>
+  const {
+    description,
+    title,
+    link,
+    icon,
+    type = 'info',
+    dismissible = false,
+    onDismiss,
+    ...rest
+  } = props;
+
+  const [recipeProps, restProps] = recipe.splitVariantProps(rest);
+
+  const styles = recipe({
+    ...recipeProps,
+    status: type,
+  });
+
+  if (!open && dismissible) {
+    return null;
+  }
+
+  return (
+    <ChakraAlert.Root {...restProps} status={type} css={styles.root}>
+      <ChakraAlert.Indicator css={styles.indicator}>
+        {icon}
+      </ChakraAlert.Indicator>
+
+      <ChakraAlert.Content css={styles.content}>
+        {title ? (
+          <ChakraAlert.Title css={styles.title}>{title}</ChakraAlert.Title>
+        ) : null}
+        <ChakraAlert.Description css={styles.description}>
+          {description}
+        </ChakraAlert.Description>
         {link ? <AlertLink {...link} /> : null}
-      </Flex>
-      {rest.dismissible ? (
-        <CloseButton
-          alignSelf="flex-start"
-          position="relative"
-          onClick={() => {
-            onClose();
-            rest.onDismiss?.();
-          }}
-        />
+      </ChakraAlert.Content>
+      {dismissible ? (
+        <Box ml="auto" position="relative" flexShrink={0}>
+          <CloseButton
+            onClick={() => {
+              onClose();
+              onDismiss?.();
+            }}
+          />
+        </Box>
       ) : null}
-    </ChakraAlert>
-  ) : null;
+    </ChakraAlert.Root>
+  );
 };
-
-export default Alert;

@@ -10,6 +10,7 @@
    ```sh
    npm install @smg-automotive/components
    ```
+
 2. run the setup script
    ```sh
    npx components setup --path=<path to you public dir>
@@ -73,6 +74,10 @@
 
      We recommend adding fallback font families of `Arial, Helvetica, Sans-Serif`
 
+## Migrating to chakra-ui v3
+
+When migrating to chakra-ui v3, we introduced a set of breaking changes aligning with the parent library. You can get the overview of the changes in our components in the [migration guide](./migration-guide.md)
+
 ## Development
 
 ```
@@ -89,29 +94,57 @@ cd <project directory>
 npm link ../smg-automotive-components-pkg
 ```
 
+### Type generation
+
+Chakra UI provides type generation for tokens. This is incorporated into the `typegen` script.
+If you're adding new tokens you will need to re-generate the types:
+
+```bash
+$ npm run typegen
+```
+
+If you're heavily modifying the theme you can watch the changes with:
+```bash
+$ npm run typegen:watch
+```
+
+Since re-installing chakra ui will clean the generated types we're running the type generation as a post-install script.
+
 ## Theming
 
-As agreed upon in the [RFC](https://github.com/smg-automotive/au-docs/discussions/3) we will handle the differences between AS24 and MS24 with two different themes. They can be then used via a theme provider that needs to wrap the application:
+As agreed upon in the [RFC](https://github.com/smg-automotive/au-docs/discussions/3) we will handle the differences between AS24 and MS24 with two different themes. Applications should use a brand-specific provider entrypoint so only the selected brand style system is imported:
 
 ```tsx
 // app.tsx
-import { ThemeProvider } from '@smg-automotive/components';
+import { AutoScout24ThemeProvider } from '@smg-automotive/components/theme-provider/autoscout24';
 
 const App = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme="autoscout24">
+    <AutoScout24ThemeProvider>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </AutoScout24ThemeProvider>
   );
 };
 
-export default MyApp;
+export default App;
+```
+
+```tsx
+import { MotoScout24ThemeProvider } from '@smg-automotive/components/theme-provider/motoscout24';
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <MotoScout24ThemeProvider>
+      <Component {...pageProps} />
+    </MotoScout24ThemeProvider>
+  );
+};
 ```
 
 Theme objects can also be imported directly from the package (for showcasing, debugging, etc.):
 
 ```tsx
-import { autoScout24Theme } from '@smg-automotive/components';
+import { autoScout24Theme } from '@smg-automotive/components/themes';
 ```
 
 ### Switching themes in storybook

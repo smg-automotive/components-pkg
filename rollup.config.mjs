@@ -4,7 +4,7 @@ import executable from 'rollup-plugin-executable';
 import dts from 'rollup-plugin-dts';
 import copy from 'rollup-plugin-copy';
 import shebang from 'rollup-plugin-add-shebang';
-import { dirname } from 'path';
+import { basename, dirname } from 'path';
 import typescript from '@rollup/plugin-typescript';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
@@ -15,13 +15,22 @@ import alias from '@rollup/plugin-alias';
 
 import packageJson from './package.json' with { type: 'json' };
 
-const external = [
+const externalPackages = [
   ...Object.keys(packageJson.dependencies || {}),
   ...Object.keys(packageJson.peerDependencies || {}),
 ];
+const external = (id) =>
+  externalPackages.some((packageName) => {
+    return id === packageName || id.startsWith(`${packageName}/`);
+  });
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') {
     if (warning.message.includes('node_modules/yargs')) return;
+    if (warning.message.includes('node_modules/@internationalized/date/'))
+      return;
+    if (warning.message.includes('node_modules/@zag-js/color-utils/')) return;
+    if (warning.message.includes('node_modules/@zag-js/json-tree-utils/'))
+      return;
     throw new Error(warning.message);
   }
   warn(warning);
@@ -33,6 +42,23 @@ const fontsHostedRequire = packageJson.exports[
 const fontsHostedImport = packageJson.exports[
   './fonts/hosted'
 ].import.default.replace(/^.\//, '');
+
+const breakpointsRequire = packageJson.exports[
+  './breakpoints'
+].require.default.replace(/^.\//, '');
+const themeProviderRequire = packageJson.exports[
+  './theme-provider'
+].require.default.replace(/^.\//, '');
+const autoScout24ThemeProviderRequire = packageJson.exports[
+  './theme-provider/autoscout24'
+].require.default.replace(/^.\//, '');
+const motoScout24ThemeProviderRequire = packageJson.exports[
+  './theme-provider/motoscout24'
+].require.default.replace(/^.\//, '');
+const themesRequire = packageJson.exports['./themes'].require.default.replace(
+  /^.\//,
+  '',
+);
 
 const resolveOptions = { moduleDirectories: ['.', 'node_modules'] };
 const rootDir = dirname(fileURLToPath(import.meta.url));
@@ -72,7 +98,14 @@ const cjs = {
 };
 
 const esm = {
-  input: 'src/index.ts',
+  input: [
+    'src/index.ts',
+    'src/breakpoints.ts',
+    'src/themeProvider.ts',
+    'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+    'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
+    'src/themes/index.ts',
+  ],
   output: [
     {
       dir: dirname(packageJson.module),
@@ -106,6 +139,67 @@ const esm = {
   onwarn,
 };
 
+const createSubpathCjs = (input, outputFile) => ({
+  input,
+  output: [
+    {
+      file: outputFile,
+      format: 'cjs',
+      sourcemap: true,
+      inlineDynamicImports: true,
+    },
+  ],
+  plugins: [
+    ...jsPlugins,
+    typescript({
+      tsconfig: './tsconfig.build.json',
+      compilerOptions: {
+        declaration: false,
+        declarationMap: false,
+        outDir: dirname(outputFile),
+      },
+    }),
+  ],
+  external,
+  onwarn,
+});
+
+const createSubpathTypes = (input, outputFile) => ({
+  input,
+  output: [{ file: outputFile, format: 'esm' }],
+  plugins: [
+    dts({ tsconfig: './tsconfig.build.json' }),
+    copy({
+      targets: [
+        {
+          src: outputFile,
+          dest: dirname(outputFile),
+          rename: basename(outputFile).replace(/\.d\.ts$/, '.d.mts'),
+        },
+      ],
+      hook: 'writeBundle',
+    }),
+  ],
+});
+
+const breakpointsCjs = createSubpathCjs(
+  'src/breakpoints.ts',
+  breakpointsRequire,
+);
+const themeProviderCjs = createSubpathCjs(
+  'src/themeProvider.ts',
+  themeProviderRequire,
+);
+const autoScout24ThemeProviderCjs = createSubpathCjs(
+  'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+  autoScout24ThemeProviderRequire,
+);
+const motoScout24ThemeProviderCjs = createSubpathCjs(
+  'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
+  motoScout24ThemeProviderRequire,
+);
+const themesCjs = createSubpathCjs('src/themes/index.ts', themesRequire);
+
 const types = {
   input: 'src/index.ts',
   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
@@ -119,6 +213,27 @@ const types = {
     }),
   ],
 };
+
+const breakpointsTypes = createSubpathTypes(
+  'src/breakpoints.ts',
+  'dist/breakpoints.d.ts',
+);
+const themeProviderTypes = createSubpathTypes(
+  'src/themeProvider.ts',
+  'dist/theme-provider.d.ts',
+);
+const autoScout24ThemeProviderTypes = createSubpathTypes(
+  'src/components/themeProvider/AutoScout24ThemeProvider.tsx',
+  'dist/theme-provider/autoscout24.d.ts',
+);
+const motoScout24ThemeProviderTypes = createSubpathTypes(
+  'src/components/themeProvider/MotoScout24ThemeProvider.tsx',
+  'dist/theme-provider/motoscout24.d.ts',
+);
+const themesTypes = createSubpathTypes(
+  'src/themes/index.ts',
+  'dist/themes.d.ts',
+);
 
 const hostedFontsTypes = {
   input: 'src/fonts/Hosted.tsx',
@@ -229,12 +344,48 @@ const cli = {
   onwarn,
 };
 
+const chakraTypegenThemeBridge = {
+  input: 'src/lib/cli/chakraTypegenTheme.ts',
+  output: [
+    {
+      file: 'dist/bin/chakraTypegenTheme.cjs',
+      format: 'cjs',
+      sourcemap: false,
+    },
+  ],
+  plugins: [
+    nodeResolve({
+      ...resolveOptions,
+      preferBuiltins: true,
+    }),
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.build_cli.json',
+      compilerOptions: {
+        outDir: 'dist/bin',
+      },
+    }),
+  ],
+  onwarn,
+};
+
 export default [
   cjs,
   esm,
   types,
+  breakpointsCjs,
+  themeProviderCjs,
+  autoScout24ThemeProviderCjs,
+  motoScout24ThemeProviderCjs,
+  themesCjs,
+  breakpointsTypes,
+  themeProviderTypes,
+  autoScout24ThemeProviderTypes,
+  motoScout24ThemeProviderTypes,
+  themesTypes,
   hostedFontsTypes,
   hostedFontsCjs,
   hostedFontsEsm,
   cli,
+  chakraTypegenThemeBridge,
 ];

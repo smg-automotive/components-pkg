@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import SpinnerComponent from './index';
+import { Spinner } from '.';
 
-const meta: Meta<typeof SpinnerComponent> = {
+const meta: Meta<typeof Spinner> = {
   title: 'Components/Feedback/Spinner',
-  component: SpinnerComponent,
+  component: Spinner,
 
   args: {
     size: 'sm',
@@ -22,7 +22,7 @@ const meta: Meta<typeof SpinnerComponent> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof SpinnerComponent>;
+type StoryType = StoryObj<typeof Spinner>;
 export const Overview: StoryType = {};
 
 export const SizesXs: StoryType = {

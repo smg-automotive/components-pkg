@@ -1,11 +1,14 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { sizes } from '@/src/themes/shared/sizes';
+import { sizes } from '@/src/themes/shared/tokens/sizes';
 
-import { Box, Divider, Flex, Text } from '@/src/components/index';
+import { Text } from '@/src/components/text';
+import { Separator } from '@/src/components/separator';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
 
-import PageLayout from './Page';
+import { PageLayout } from './Page';
 
 const meta: Meta<typeof PageLayout> = {
   title: 'Layout/Pages/Page',
@@ -13,8 +16,8 @@ const meta: Meta<typeof PageLayout> = {
 
   args: {
     header: (
-      <Box h="80px" bg="gray.50">
-        <Divider />
+      <Box h="2xl" bg="gray.50">
+        <Separator />
         <Flex justifyContent="center" alignItems="center" h="full">
           <Text p="2xl">I am the header</Text>
         </Flex>
@@ -24,24 +27,15 @@ const meta: Meta<typeof PageLayout> = {
     maxContentWidth: 'lg',
 
     footer: (
-      <Box h="400px" bg="gray.50">
-        <Divider />
+      <Box h="2xl" bg="gray.50">
+        <Separator />
         <Flex justifyContent="center" alignItems="center" h="full">
           <Text p="2xl">I am the footer</Text>
         </Flex>
       </Box>
     ),
 
-    children: (
-      <Flex
-        bg="green.100"
-        h="1200px"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Text>Content</Text>
-      </Flex>
-    ),
+    children: 'content',
   },
 
   argTypes: {
@@ -70,6 +64,18 @@ const meta: Meta<typeof PageLayout> = {
     },
 
     children: {
+      mapping: {
+        content: (
+          <Flex
+            bg="green.100"
+            h="container.sm"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Text>Content</Text>
+          </Flex>
+        ),
+      },
       table: {
         disable: true,
       },
@@ -100,7 +106,7 @@ export const LayoutWithSidebarAds: StoryType = {
 
   args: {
     skyScraperAd: (
-      <Flex bg="red.100" h="600px" justifyContent="center" alignItems="center">
+      <Flex bg="red.100" h="8xl" justifyContent="center" alignItems="center">
         <Text>Sidebar Ads</Text>
       </Flex>
     ),
@@ -112,13 +118,13 @@ export const LayoutWithHeroAndSidebarAds: StoryType = {
 
   args: {
     skyScraperAd: (
-      <Flex bg="red.100" h="600px" justifyContent="center" alignItems="center">
+      <Flex bg="red.100" h="8xl" justifyContent="center" alignItems="center">
         <Text>Sidebar Ads</Text>
       </Flex>
     ),
 
     heroAd: (
-      <Flex bg="blue.100" h="300px" justifyContent="center" alignItems="center">
+      <Flex bg="blue.100" h="6xl" justifyContent="center" alignItems="center">
         <Text>Hero Ad</Text>
       </Flex>
     ),

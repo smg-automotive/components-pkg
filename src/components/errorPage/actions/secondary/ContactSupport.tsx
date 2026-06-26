@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
 
-import { ActionButtonInterface } from '@/src/components/errorPage/actions/interface';
-import Button from '@/src/components/button';
+import { Button } from '@/src/components/button';
 
-const ContactSupport: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
+import { ActionButtonInterface } from '../interface';
+
+export const ContactSupport: FC<ActionButtonInterface> = ({
+  t,
+  language = 'de',
+}) => {
   const loginLink = `/${language}/contact`;
 
   return (
@@ -12,5 +16,3 @@ const ContactSupport: FC<ActionButtonInterface> = ({ t, language = 'de' }) => {
     </Button>
   );
 };
-
-export default ContactSupport;

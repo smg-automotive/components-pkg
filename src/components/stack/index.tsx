@@ -1,26 +1,38 @@
 import React, { FC } from 'react';
-import { Stack as ChakraStack, StackProps } from '@chakra-ui/react';
+import {
+  Stack as ChakraStack,
+  StackProps as ChakraStackProps,
+} from '@chakra-ui/react';
 
-type Props = Pick<
-  StackProps,
+export { StackSeparator } from '@chakra-ui/react';
+
+export type StackProps = Pick<
+  ChakraStackProps,
   | 'align'
   | 'children'
   | 'direction'
   | 'justify'
-  | 'spacing'
+  | 'gap'
   | 'wrap'
-  | 'marginBottom'
-  | 'marginTop'
-  | 'divider'
+  | 'margin'
+  | 'marginX'
   | 'marginY'
-  | 'paddingY'
+  | 'marginTop'
+  | 'marginBottom'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'padding'
   | 'paddingX'
+  | 'paddingY'
+  | 'paddingTop'
+  | 'paddingBottom'
+  | 'paddingLeft'
+  | 'paddingRight'
+  | 'separator'
   | 'alignItems'
   | 'width'
 >;
 
-const Stack: FC<Props> = ({ children, ...rest }) => (
+export const Stack: FC<StackProps> = ({ children, ...rest }) => (
   <ChakraStack {...rest}>{children}</ChakraStack>
 );
-
-export default Stack;

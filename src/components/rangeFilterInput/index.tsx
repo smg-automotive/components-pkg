@@ -1,11 +1,10 @@
-import { useDebouncedCallback } from 'use-debounce';
-import React from 'react';
-import {
-  InputGroup as ChakraInputGroup,
-  NumberInputProps,
-} from '@chakra-ui/react';
+'use client';
 
-import InputGroup from './InputGroup';
+import React from 'react';
+import { Flex } from '@chakra-ui/react';
+import { NumberInput } from '@chakra-ui/react';
+
+import { InputGroup } from './InputGroup';
 
 export type RangeFilterInputField<Name> = {
   name: Name;
@@ -20,11 +19,11 @@ export type ChangeCallback<Name> = {
 };
 
 export type PickedNumberInputProps = Pick<
-  NumberInputProps,
-  'min' | 'max' | 'isDisabled' | 'onFocus'
+  React.ComponentProps<typeof NumberInput.Root>,
+  'min' | 'max' | 'disabled' | 'onFocus'
 >;
 
-type RangeFilterInputProps<NameFrom, NameTo> = {
+type RangeFilterInputProps<NameFrom extends string, NameTo extends string> = {
   from: RangeFilterInputField<NameFrom>;
   handleChange: (event: ChangeCallback<NameFrom | NameTo>) => void;
   onBlur?: (event: ChangeCallback<NameFrom | NameTo>) => void;
@@ -32,22 +31,23 @@ type RangeFilterInputProps<NameFrom, NameTo> = {
   unit?: string;
 } & PickedNumberInputProps;
 
-function RangeFilterInput<NameFrom extends string, NameTo extends string>({
+export const RangeFilterInput = <
+  NameFrom extends string,
+  NameTo extends string,
+>({
   from,
   to,
   handleChange,
   unit,
   onBlur,
   ...rest
-}: RangeFilterInputProps<NameFrom, NameTo>) {
-  const handleChangeDebounced = useDebouncedCallback(handleChange, 1000);
-
+}: RangeFilterInputProps<NameFrom, NameTo>) => {
   return (
-    <ChakraInputGroup display="flex">
+    <Flex>
       <InputGroup
         inputProps={from}
         variant="inputLeft"
-        handleChange={handleChangeDebounced}
+        handleChange={handleChange}
         onBlur={onBlur}
         unit={unit}
         {...rest}
@@ -56,13 +56,11 @@ function RangeFilterInput<NameFrom extends string, NameTo extends string>({
       <InputGroup
         inputProps={to}
         variant="inputRight"
-        handleChange={handleChangeDebounced}
+        handleChange={handleChange}
         onBlur={onBlur}
         unit={unit}
         {...rest}
       />
-    </ChakraInputGroup>
+    </Flex>
   );
-}
-
-export default RangeFilterInput;
+};

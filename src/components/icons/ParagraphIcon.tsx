@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
 
-export const ParagraphIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+import { createIcon } from '@chakra-ui/react';
+
+export const ParagraphIcon = createIcon({
   displayName: 'Paragraph',
   viewBox: '0 0 24 24',
   path: (
@@ -15,6 +15,8 @@ export const ParagraphIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

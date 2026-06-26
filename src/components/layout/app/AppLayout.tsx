@@ -1,30 +1,33 @@
-import React from 'react';
-import { ComponentWithAs, forwardRef } from '@chakra-ui/react';
+import React, { forwardRef, PropsWithChildren } from 'react';
 
-import Grid, { type GridProps } from '@/src/components/grid';
+import { TopRightToast, TopToast } from '@/src/components/toast';
+import { Grid, GridProps } from '@/src/components/grid';
 
-const pageGirdArea = `
+const pageGridArea = `
   "header"
   "content"
   "footer"
 `;
 
-const AppLayout: ComponentWithAs<'div', GridProps> = forwardRef<
-  GridProps,
-  'div'
->((props, ref) => {
+export const AppLayout = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<GridProps>
+>(({ children, ...rest }, ref) => {
   return (
     <Grid
+      as="div"
       templateRows="min-content auto min-content"
-      templateAreas={pageGirdArea}
-      minHeight="100vh"
+      templateAreas={pageGridArea}
+      minHeight="screen-height"
       ref={ref}
       textStyle="body"
-      {...(props as GridProps)}
-    />
+      {...rest}
+    >
+      <TopRightToast />
+      <TopToast />
+      {children}
+    </Grid>
   );
 });
 
 AppLayout.displayName = 'AppLayout';
-
-export default AppLayout;

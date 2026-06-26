@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const MiniVanIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const MiniVanIcon = createIcon({
   displayName: 'Minivan',
   viewBox: '0 0 100 68',
   path: (
@@ -34,6 +33,8 @@ export const MiniVanIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

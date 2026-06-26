@@ -11,16 +11,16 @@ import { Auth0UserType } from '@smg-automotive/auth';
 import { Entitlement } from '@/src/types/entitlements';
 import { Brand } from '@/src/types/brand';
 import { PageLayout } from '@/src/components/layout';
-import Box from '@/src/components/box';
+import { Box } from '@/src/components/box';
 
-import Navigation from './index';
+import { HeaderNavigation } from './index';
 
-const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
+const Wrapper: typeof HeaderNavigation = ({ user, selectTenant, ...props }) => {
   const [selectedTenant, setSelectedTenant] = React.useState<number | null>(
     user?.sellerId || null,
   );
   return (
-    <Navigation
+    <HeaderNavigation
       user={
         user && selectedTenant
           ? {
@@ -46,14 +46,14 @@ const Wrapper: typeof Navigation = ({ user, selectTenant, ...props }) => {
  * They will pop up from the top of the screen.
  * To experience "page-like" behaviour visit story directly
  **/
-const meta: Meta<typeof Navigation> = {
+const meta: Meta<typeof HeaderNavigation> = {
   title: 'Patterns/Navigation/Header',
   component: Wrapper,
   decorators: [
     (Story) => (
       <PageLayout header={<Story />} maxContentWidth="2xl">
         <Box
-          height="400px"
+          css={{ height: '400px' }}
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -80,6 +80,9 @@ const meta: Meta<typeof Navigation> = {
     comparisonItemIds: [1, 2, 3],
     selectTenant: async (id) => action('select tenant')(id),
     showTenantSelection: true,
+    hasNotification: false,
+    onLogin: action('login'),
+    onLogout: action('logout'),
     experiments: {
       leasing: 'on',
     },
@@ -115,7 +118,8 @@ const meta: Meta<typeof Navigation> = {
 };
 export default meta;
 
-type StoryType = StoryObj<typeof Navigation>;
+type StoryType = StoryObj<typeof HeaderNavigation>;
+
 export const Unauthenticated: StoryType = {
   args: {
     user: null,

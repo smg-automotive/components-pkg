@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Language } from '@smg-automotive/i18n-pkg';
 
-import Text from '@/src/components/text';
-import Menu from '@/src/components/menu';
-import Hide from '@/src/components/hide';
+import { Text } from '@/src/components/text';
+import { Menu } from '@/src/components/menu';
 
-import Flex from '@/src/components/flex';
-import Badge from '@/src/components/badge';
+import { Flex } from '@/src/components/flex';
+import { Box } from '@/src/components/box';
+import { Badge } from '@/src/components/badge';
 
 import { replaceLanguage } from './replaceLanguage';
 
@@ -18,12 +18,15 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
   activeLanguage,
 }) => {
   return (
-    <Hide below="sm">
+    <Box hideBelow="sm">
       <Menu
         title={activeLanguage.toUpperCase()}
         fontWeightTitle="bold"
         menuColor="gray.900"
-        offset={[0, 18]}
+        offset={{
+          mainAxis: 8,
+          crossAxis: 0,
+        }}
         iconSpacing="xs"
         placement="bottom-end"
         items={[
@@ -31,16 +34,19 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
             text: 'Deutsch',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'de' }),
+            value: 'de',
           },
           {
             text: 'Français',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'fr' }),
+            value: 'fr',
           },
           {
             text: 'Italiano',
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'it' }),
+            value: 'it',
           },
           {
             text: (
@@ -51,9 +57,10 @@ export const NavigationLanguageMenu: FC<NavigationLanguageMenuProps> = ({
             ),
             onClick: () =>
               replaceLanguage({ activeLanguage, newLanguage: 'en' }),
+            value: 'en',
           },
         ]}
       />
-    </Hide>
+    </Box>
   );
 };

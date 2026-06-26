@@ -1,16 +1,17 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import Button from '@/src/components/button/index';
 import { render, screen } from '@/jest-utils';
+
+import { Button } from '../index';
 
 const renderWrapper = ({
   onClick = jest.fn(),
-  isDisabled = false,
+  disabled = false,
   label = 'Button Label',
 } = {}) =>
   render(
-    <Button onClick={onClick} isDisabled={isDisabled}>
+    <Button onClick={onClick} disabled={disabled}>
       {label}
     </Button>,
   );
@@ -31,8 +32,8 @@ describe('<Button>', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('should add disabled attr when isDisabled was passed to component', () => {
-    renderWrapper({ label: 'Button Label', isDisabled: true });
+  it('should add disabled attr when disabled was passed to component', () => {
+    renderWrapper({ label: 'Button Label', disabled: true });
     const button = screen.getByRole('button', { name: 'Button Label' });
 
     expect(button).toHaveAttribute('disabled');

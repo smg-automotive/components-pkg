@@ -1,13 +1,16 @@
+'use client';
+
 import React from 'react';
 import { BoxProps } from '@chakra-ui/react';
 
-import Box from '@/src/components/box';
+import { Box } from '@/src/components/box';
 
-import RangeSliderWithScale, {
+import {
   ChangeCallback,
   NumericMinMaxValue,
+  RangeSliderWithScale,
 } from './RangeSliderWithScale';
-import Chart from './Chart';
+import { Chart } from './Chart';
 
 export type Facet = {
   from: number;
@@ -23,14 +26,15 @@ export interface RangeSliderWithChartProps {
   chartHeight?: BoxProps['h'];
 }
 
-const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
+export const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
   facets,
   selection,
   onSliderChange,
   onSliderRelease,
   chartHeight = '3xl',
 }) => {
-  const sortedFacetsByFromKey = facets.sort((a, b) => a.from - b.from);
+  // Create a copy before sorting to avoid mutating the `facets` prop.
+  const sortedFacetsByFromKey = [...facets].sort((a, b) => a.from - b.from);
   const scale = sortedFacetsByFromKey.map(({ from }) => from);
 
   return (
@@ -47,5 +51,3 @@ const RangeSliderWithChart: React.FC<RangeSliderWithChartProps> = ({
     />
   );
 };
-
-export default RangeSliderWithChart;

@@ -6,9 +6,10 @@ import { NavigationLinkProps } from '@/src/components/navigation/header/links/Na
 
 import {
   autoScoutVehiclesLinkConfig,
+  carParkLinkConfig,
+  motorcycleParkLinkConfig,
   motoScoutVehiclesLinkConfig,
 } from './vehiclePool';
-import { carParkLinkConfig, motorcycleParkLinkConfig } from './vehiclePool';
 import {
   changeLanguageLinkConfig,
   editUsersLinkConfig,
@@ -26,8 +27,8 @@ import {
   commentTemplatesLinkConfig,
   teaserTemplatesLinkConfig,
 } from './templates';
-import { insertionLinkConfig } from './sell';
 import {
+  insertionLinkConfig,
   privateAutoScoutSellLinkConfig,
   privateMotoScoutSellLinkConfig,
   professionalSellLinkConfig,
@@ -52,7 +53,6 @@ import {
 import { getPartnerHubLinkConfig } from './partnerHub';
 import { optimizerProLinkConfig } from './OptimizerPro';
 import { optimizerLinkConfig } from './Optimizer';
-
 import { marketPriceCheckLinkConfig } from './marketPriceCheckConfig';
 import { magazineLinkConfig } from './magazine';
 import { leadsManagementLinkConfig } from './leadsManagement';

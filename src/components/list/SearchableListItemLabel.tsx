@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-import Text from '@/src/components/text/index';
-import HighlightedText from '@/src/components/text/HighlightedText';
+import { Text } from '@/src/components/text/index';
+import { HighlightedText } from '@/src/components/text/HighlightedText';
 import {
   CheckmarkIcon,
   ChevronRightSmallIcon,
 } from '@/src/components/icons/index';
-import Flex from '@/src/components/flex/index';
+import { Flex } from '@/src/components/flex/index';
 
 import { ListItemType } from './SearchableListItem';
 
@@ -35,6 +35,7 @@ export const SearchableListItemLabel: FC<LabelProps> = ({
       whiteSpace="pre-wrap"
       fontWeight={isSelected && !isCheckbox ? 'bold' : undefined}
       color="gray.900"
+      cursor="pointer"
     >
       <Flex>
         {isSelected && !isCheckbox ? (
@@ -51,9 +52,9 @@ export const SearchableListItemLabel: FC<LabelProps> = ({
           <Text
             as="span"
             color="gray.400"
-            mr={showChevron ? 'lg' : 0}
+            mr={showChevron ? 'lg' : undefined}
             ml="sm"
-            minW="6ch"
+            minW="lg"
             textAlign="right"
             fontWeight="regular"
           >

@@ -1,8 +1,7 @@
 import React from 'react';
-import { ComponentWithAs } from '@chakra-ui/system';
-import { createIcon, IconProps } from '@chakra-ui/react';
+import { createIcon } from '@chakra-ui/react';
 
-export const CalculatorIcon: ComponentWithAs<'svg', IconProps> = createIcon({
+export const CalculatorIcon = createIcon({
   displayName: 'Calculator',
   viewBox: '0 0 24 24',
   path: (
@@ -15,6 +14,8 @@ export const CalculatorIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     </>
   ),
   defaultProps: {
+    flexShrink: 0,
+    display: 'inline-block',
     boxSize: 'sm',
   },
 });

@@ -1,24 +1,31 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import {
-  DrawerContent as ChakraDrawerContent,
+  Drawer as ChakraDrawer,
   DrawerContentProps as ChakraDrawerContentProps,
-  DrawerCloseButton,
 } from '@chakra-ui/react';
+
+import { CloseIcon } from '../icons';
 
 interface Props extends ChakraDrawerContentProps {
   withCloseButton?: boolean;
+  p?: ChakraDrawerContentProps['p'];
+  borderRadius?: ChakraDrawerContentProps['borderRadius'];
 }
 
-const DrawerContent: FC<PropsWithChildren<Props>> = (props) => {
+export const DrawerContent: FC<PropsWithChildren<Props>> = (props) => {
   const { children, withCloseButton, ...drawerContentProps } = props;
 
   return (
-    <ChakraDrawerContent {...drawerContentProps}>
-      {withCloseButton && <DrawerCloseButton fontSize="base" />}
-      {children}
-    </ChakraDrawerContent>
+    <ChakraDrawer.Positioner>
+      <ChakraDrawer.Content {...drawerContentProps}>
+        {withCloseButton ? (
+          <ChakraDrawer.CloseTrigger asChild fontSize="base">
+            <CloseIcon />
+          </ChakraDrawer.CloseTrigger>
+        ) : null}
+        {children}
+      </ChakraDrawer.Content>
+    </ChakraDrawer.Positioner>
   );
 };
-
-export default DrawerContent;

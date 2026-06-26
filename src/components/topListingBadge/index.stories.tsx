@@ -3,14 +3,14 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Box, Image } from '@chakra-ui/react';
 
-import TopListingBadgeComponent from './index';
+import { TopListingBadge } from './index';
 
-const meta: Meta<typeof TopListingBadgeComponent> = {
+const meta: Meta<typeof TopListingBadge> = {
   title: 'Components/Features/TopListingBadge',
-  component: TopListingBadgeComponent,
+  component: TopListingBadge,
   decorators: [
     (Story) => (
-      <Box w="100%" maxW="400px">
+      <Box w="full" maxW="7xl">
         <Story />
       </Box>
     ),
@@ -34,4 +34,4 @@ const meta: Meta<typeof TopListingBadgeComponent> = {
 };
 export default meta;
 
-export const Overview: StoryObj<typeof TopListingBadgeComponent> = {};
+export const Overview: StoryObj<typeof TopListingBadge> = {};
