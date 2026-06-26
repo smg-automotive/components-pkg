@@ -88,6 +88,35 @@ export const buttonRecipe = defineRecipe({
           pointerEvents: 'none',
         },
       },
+      scouty: {
+        bg: 'blue.100',
+        color: 'blue.700',
+        border: 'none',
+        borderBottom: '2px solid',
+        borderBottomColor: 'blackAlpha.200',
+        borderRadius: 'full',
+        boxShadow: 'none',
+        aspectRatio: 'square',
+        flexShrink: 0,
+        gap: 'xs',
+        minWidth: 'auto',
+        px: '0',
+        py: '0',
+        _hover: {
+          bg: 'blue.50',
+        },
+        _active: {
+          bg: 'blue.100',
+          borderBottomWidth: '0',
+          transform: 'translateY(2px)',
+        },
+        _disabled: {
+          bg: 'gray.100',
+          borderBottomColor: 'transparent',
+          color: 'gray.400',
+          pointerEvents: 'none',
+        },
+      },
     },
     size: {
       md: {
