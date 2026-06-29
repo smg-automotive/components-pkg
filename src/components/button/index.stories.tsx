@@ -5,6 +5,7 @@ import { buttonRecipe } from '@/src/themes/shared/recipes/button';
 import { iconControl } from '@/src/storybook/ControlTypes';
 
 import { VideoIcon } from '@/src/components/icons/VideoIcon';
+import { SparkIcon } from '@/src/components/icons/SparkIcon';
 import { ShareIcon } from '@/src/components/icons/ShareIcon';
 import { getRecipeControls } from '@/.storybook/preview/controls/recipe';
 
@@ -63,6 +64,34 @@ export const VariantTransparent: StoryObj<typeof Button> = {
   args: {
     variant: 'transparent',
     children: 'Transparent Button',
+  },
+};
+
+export const VariantScouty: StoryObj<typeof Button> = {
+  name: 'Variant > Scouty',
+  args: {
+    variant: 'scouty',
+    children: undefined,
+    icon: <SparkIcon />,
+    ariaLabel: 'Scouty',
+    size: 'lg',
+  },
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+    rightIcon: {
+      table: {
+        disable: true,
+      },
+    },
+    leftIcon: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
