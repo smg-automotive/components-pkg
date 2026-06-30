@@ -34,8 +34,8 @@ export const radioRecipe = defineSlotRecipe({
       justifyContent: 'center',
       flexShrink: 0,
       _checked: {
-        bg: 'gray.900',
-        borderColor: 'gray.900',
+        bg: 'blue.700',
+        borderColor: 'blue.700',
       },
 
       _focusVisible: { outline: '2px solid', outlineColor: 'blue.400' },

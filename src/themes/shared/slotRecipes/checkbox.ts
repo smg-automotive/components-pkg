@@ -19,6 +19,7 @@ export const checkboxRecipe = defineSlotRecipe({
       border: '1px',
       borderColor: 'gray.400',
       borderRadius: 'sm',
+      bg: 'white',
       cursor: 'pointer',
       '&:hover': {
         outlineStyle: 'solid',
@@ -37,8 +38,8 @@ export const checkboxRecipe = defineSlotRecipe({
       },
       '&[data-state=checked], &[data-state=indeterminate]': {
         color: 'white',
-        borderColor: 'gray.900',
-        bg: 'gray.900',
+        borderColor: 'blue.700',
+        bg: 'blue.700',
       },
       _invalid: {
         borderColor: 'red.500',
