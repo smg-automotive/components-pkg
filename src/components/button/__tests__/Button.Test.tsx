@@ -5,6 +5,19 @@ import { render, screen } from '@/jest-utils';
 
 import { Button } from '../index';
 
+type TestLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  prefetch?: boolean;
+  replace?: boolean;
+};
+
+const TestLink = React.forwardRef<HTMLAnchorElement, TestLinkProps>(
+  ({ children, href, onClick }, ref) => (
+    <a ref={ref} href={href} onClick={onClick}>
+      {children}
+    </a>
+  ),
+);
+
 const renderWrapper = ({
   onClick = jest.fn(),
   disabled = false,
@@ -30,6 +43,22 @@ describe('<Button>', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Button Label' }));
 
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should trigger onClick event once when rendering as a custom component', async () => {
+    const onClick = jest.fn((event: React.MouseEvent) => {
+      event.preventDefault();
+    });
+
+    render(
+      <Button as={TestLink} href="/search" onClick={onClick} prefetch={false}>
+        Search
+      </Button>,
+    );
+
+    await userEvent.click(screen.getByRole('link', { name: 'Search' }));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('should add disabled attr when disabled was passed to component', () => {
