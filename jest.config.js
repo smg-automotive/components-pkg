@@ -20,7 +20,6 @@ module.exports = transpileESMModulesForJest(() => ({
     '<rootDir>/jest-utils/setup/mockMatchMedia.ts',
     '<rootDir>/jest-utils/setup/resizeObserver.ts',
     '<rootDir>/jest-utils/setup/intersectionObserver.ts',
-    '@smg-automotive/auth/test/environment-setup',
   ],
   testEnvironment: 'jest-environment-jsdom',
 }));
