@@ -27,6 +27,15 @@ const meta: Meta<typeof Chip> = {
       },
     },
 
+    variant: {
+      control: 'select',
+      options: ['solid', 'dashed'],
+      table: {
+        type: { summary: `'solid' | 'dashed'` },
+        defaultValue: { summary: 'solid' },
+      },
+    },
+
     href: {
       control: 'text',
     },
@@ -47,6 +56,14 @@ export const Selected: StoryType = {
   args: {
     children: 'Selected Chip',
     selected: true,
+  },
+};
+
+export const Dashed: StoryType = {
+  name: 'Dashed',
+  args: {
+    children: 'Type other',
+    variant: 'dashed',
   },
 };
 
