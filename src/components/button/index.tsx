@@ -91,6 +91,7 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
       disabled,
       href,
       isExternal,
+      onClick,
       prefetch,
       rel,
       replace,
@@ -110,7 +111,7 @@ export const Button = forwardRef<HTMLButtonElement, UnifiedButtonProps>(
         return;
       }
 
-      props.onClick?.(e);
+      onClick?.(e);
     };
 
     const content = (
