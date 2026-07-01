@@ -149,7 +149,7 @@
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
     "@smg-automotive/auth": "9.0.0",
-    "@smg-automotive/eslint-config": "6.0.10",
+    "@smg-automotive/eslint-config": "7.1.4",
     "@storybook/addon-actions": "8.6.18",
     "@storybook/addon-docs": "8.6.18",
     "@storybook/addon-essentials": "8.6.14",
