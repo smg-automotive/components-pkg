@@ -23,7 +23,7 @@ const fallbackCopy = (text: string): boolean => {
   textarea.focus();
   textarea.select();
 
-  let successful = false;
+  let successful: boolean;
 
   try {
     successful = document.execCommand('copy');
@@ -69,7 +69,7 @@ const useClipboard = (
   }, []);
 
   const onCopy = useCallback(async (): Promise<boolean> => {
-    let copied = false;
+    let copied: boolean;
 
     try {
       copied = await copyWithClipboardAPI(value);
