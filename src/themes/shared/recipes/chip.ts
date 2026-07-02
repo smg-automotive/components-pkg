@@ -13,6 +13,7 @@ export const chipRecipe = defineRecipe({
     w: 'fit',
     flexShrink: 0,
     border: '1px',
+    borderStyle: 'var(--chip-border-style, solid)',
     _focusVisible: {
       outline: '2px solid',
       outlineColor: 'blue.300',
@@ -23,6 +24,14 @@ export const chipRecipe = defineRecipe({
     borderColor: 'gray.200',
   },
   variants: {
+    variant: {
+      solid: {
+        '--chip-border-style': 'solid',
+      },
+      dashed: {
+        '--chip-border-style': 'dashed',
+      },
+    },
     selected: {
       false: {
         _hover: {
@@ -40,6 +49,7 @@ export const chipRecipe = defineRecipe({
     },
   },
   defaultVariants: {
+    variant: 'solid',
     selected: false,
   },
 });
