@@ -25,7 +25,7 @@ export const switchRecipe = defineSlotRecipe({
       },
     },
     control: {
-      bg: 'gray.200',
+      bg: 'gray.700',
       cursor: 'pointer',
       borderRadius: 'full',
       position: 'relative',
@@ -35,16 +35,19 @@ export const switchRecipe = defineSlotRecipe({
       height: 'var(--switch-height)',
       flexShrink: 0,
       _hover: {
-        bg: 'gray.300',
-      },
-      _disabled: {
-        opacity: '60',
-        cursor: 'notAllowed',
+        bg: 'gray.900',
       },
       _checked: {
-        bg: 'gray.900',
+        bg: 'blue.700',
         _hover: {
-          bg: 'gray.700',
+          bg: 'blue.800',
+        },
+      },
+      _disabled: {
+        bg: 'gray.400',
+        cursor: 'notAllowed',
+        _checked: {
+          bg: 'gray.400',
         },
       },
     },
@@ -69,7 +72,17 @@ export const switchRecipe = defineSlotRecipe({
           top: 'var(--checkmark-top)',
           left: 'var(--checkmark-left)',
           transform: 'translate(-50%, -50%) rotate(45deg)',
-          borderColor: 'gray.900',
+          borderColor: 'blue.700',
+        },
+        _groupHover: {
+          outlineStyle: 'solid',
+          outlineWidth: '4px',
+          outlineColor: 'blue.300/40',
+        },
+        _disabled: {
+          _after: {
+            borderColor: 'gray.400',
+          },
         },
       },
     },
@@ -77,7 +90,7 @@ export const switchRecipe = defineSlotRecipe({
       userSelect: 'none',
       fontSize: 'base',
       _disabled: {
-        opacity: '60',
+        color: 'gray.600',
       },
     },
   },

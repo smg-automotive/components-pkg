@@ -38,7 +38,24 @@ export const radioRecipe = defineSlotRecipe({
         borderColor: 'blue.700',
       },
 
-      _focusVisible: { outline: '2px solid', outlineColor: 'blue.400' },
+      _hover: {
+        outlineStyle: 'solid',
+        outlineWidth: '2px',
+        outlineColor: 'blue.100',
+        borderColor: 'gray.900',
+        _checked: {
+          borderColor: 'blue.700',
+        },
+      },
+      _focusVisible: {
+        outlineStyle: 'solid',
+        outlineWidth: '2px',
+        outlineColor: 'blue.300',
+        borderColor: 'gray.900',
+        _checked: {
+          borderColor: 'blue.700',
+        },
+      },
       _invalid: { borderColor: 'red.500' },
 
       _disabled: {
@@ -73,7 +90,7 @@ export const radioRecipe = defineSlotRecipe({
       userSelect: 'none',
       fontWeight: 'regular',
       color: 'gray.900',
-      _disabled: { color: 'gray.400' },
+      _disabled: { color: 'gray.600' },
     },
   },
   variants: {

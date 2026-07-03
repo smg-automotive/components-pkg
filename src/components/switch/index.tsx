@@ -39,7 +39,7 @@ export const Switch: FC<SwitchProps> = ({
       css={styles.root}
     >
       <ChakraSwitch.HiddenInput />
-      <ChakraSwitch.Control css={styles.control}>
+      <ChakraSwitch.Control className="group" css={styles.control}>
         <ChakraSwitch.Thumb css={styles.thumb} />
       </ChakraSwitch.Control>
       {label ? (

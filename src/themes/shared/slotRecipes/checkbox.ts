@@ -88,7 +88,7 @@ export const checkboxRecipe = defineSlotRecipe({
       userSelect: 'none',
       cursor: 'pointer',
       _disabled: {
-        color: 'gray.500',
+        color: 'gray.600',
         cursor: 'notAllowed',
       },
     },
