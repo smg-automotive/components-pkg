@@ -27,7 +27,7 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
   ...rest
 }) => {
   const recipe = useRecipe({ recipe: chipRecipe });
-  const [recipeProps] = recipe.splitVariantProps(rest);
+  const [recipeProps, restProps] = recipe.splitVariantProps(rest);
   const styles = recipe(recipeProps);
 
   const handleClick = () => {
@@ -47,7 +47,7 @@ export const Chip: FC<PropsWithChildren<ChipProps>> = ({
     'aria-label': ariaLabel,
     cursor: disabled ? 'not-allowed' : 'pointer',
     opacity: disabled ? 0.4 : 1,
-    ...rest,
+    ...restProps,
   } as Partial<FlexProps>;
 
   const isLink = Boolean(href);
