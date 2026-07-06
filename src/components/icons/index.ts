@@ -68,6 +68,7 @@ export { LocationPinIcon } from './LocationPinIcon';
 export { MagnifierIcon } from './MagnifierIcon';
 export { MessageIcon } from './MessageIcon';
 export { MessageSparkleIcon } from './MessageSparkleIcon';
+export { MagicWandIcon } from './MagicWandIcon';
 export { MissingImageIcon } from './MissingImageIcon';
 export { MotorcycleIcon } from './MotorcycleIcon';
 export { MotoScout24AppLogo } from './MotoScout24AppLogo';
