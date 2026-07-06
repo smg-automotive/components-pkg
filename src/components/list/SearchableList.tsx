@@ -1,7 +1,7 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
-import Fuse, { FuseResult } from 'fuse.js';
+import React, { FC } from 'react';
+import { FuseResult } from 'fuse.js';
 
-import { useToken } from '@/src/hooks';
+import { useFuseSearch, useToken } from '@/src/hooks';
 
 import {
   SearchField,
@@ -25,10 +25,6 @@ export type Props = {
   searchFieldOptions?: SearchFieldOptions;
   listOptions?: { columns?: number; childrenSpacing?: 'md' | '2xl' };
   listRef?: React.RefObject<HTMLUListElement | null>;
-};
-
-type FuseSearch = Fuse<ListItemWithChildren> & {
-  options: typeof fuseOptions;
 };
 
 const fuseOptions = {
@@ -88,16 +84,6 @@ const mapItemsFromSearchResult = (
 
 const empty = () => null;
 
-const search = ({ query, fuse }: { query: string; fuse: FuseSearch }) => {
-  fuse.options.minMatchCharLength = query.length || 1;
-  return fuse.search(query);
-};
-
-const getFuseInstance = (listItems: ListItemWithChildren[]) => {
-  // Not casting the instance will result in the options not being typed
-  return new Fuse(listItems, fuseOptions) as unknown as FuseSearch;
-};
-
 export const SearchableList: FC<Props> = ({
   listItems,
   NoResults = empty,
@@ -108,17 +94,6 @@ export const SearchableList: FC<Props> = ({
   listRef,
 }) => {
   const [gray200] = useToken('colors', ['gray.200']);
-  const [searchState, setSearchState] = useState<{
-    query: string;
-    listItems: typeof listItems;
-    fullListItems: typeof listItems;
-    fuse: FuseSearch;
-  }>({
-    query: '',
-    listItems,
-    fullListItems: [...listItems],
-    fuse: getFuseInstance(listItems),
-  });
   const {
     placeholder = '',
     autofocusOnDesktop = true,
@@ -126,55 +101,16 @@ export const SearchableList: FC<Props> = ({
   } = searchFieldOptions;
   const { columns = 1, childrenSpacing = 'md' } = listOptions;
   const areaId = 'searchableList';
-  const { query } = searchState;
-
-  useEffect(() => {
-    setSearchState((currentState) => {
-      const fuse = getFuseInstance(listItems);
-      if (currentState.query === '') {
-        return {
-          listItems,
-          fullListItems: [...listItems],
-          fuse,
-          query: currentState.query,
-        };
-      }
-
-      const searchResults = search({ fuse, query: currentState.query });
-      const filteredListItems = mapItemsFromSearchResult(searchResults);
-      return {
-        listItems: filteredListItems,
-        fuse,
-        query: currentState.query,
-        fullListItems: [...listItems],
-      };
-    });
-  }, [listItems]);
-
-  const setSearchQuery = useCallback((newQuery: string) => {
-    setSearchState((currentState) => {
-      const trimmedQuery = newQuery.trim();
-
-      if (!trimmedQuery) {
-        return {
-          ...currentState,
-          listItems: currentState.fullListItems,
-          query: trimmedQuery,
-        };
-      }
-
-      const searchResults = search({
-        fuse: currentState.fuse,
-        query: trimmedQuery,
-      });
-      const filteredListItems = mapItemsFromSearchResult(searchResults);
-      return {
-        ...currentState,
-        listItems: filteredListItems,
-        query: trimmedQuery,
-      };
-    });
-  }, []);
+  const {
+    query,
+    results: filteredListItems,
+    setSearchQuery,
+  } = useFuseSearch<ListItemWithChildren>({
+    items: listItems,
+    fuseOptions,
+    mapResults: mapItemsFromSearchResult,
+    getInitialResults: (items) => [...items],
+  });
 
   return (
     <Flex gridGap="md" direction="column" width="full">
@@ -187,8 +123,8 @@ export const SearchableList: FC<Props> = ({
         autofocusOnDesktop={autofocusOnDesktop}
         autoComplete={autoComplete}
       />
-      {searchState.query.length === 0 ? <EmptyQueryPlaceholder /> : null}
-      {searchState.listItems.length > 0 ? (
+      {query.length === 0 ? <EmptyQueryPlaceholder /> : null}
+      {filteredListItems.length > 0 ? (
         <List.Root
           ref={listRef}
           width="full"
@@ -202,7 +138,7 @@ export const SearchableList: FC<Props> = ({
           }}
           aria-label={listAriaLabel}
         >
-          {searchState.listItems.map((item, itemIndex) => {
+          {filteredListItems.map((item, itemIndex) => {
             const parentKey = `${itemIndex}-${item.value}`;
             const children = item.children || [];
 
