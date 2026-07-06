@@ -3,7 +3,7 @@ import { createIcon } from '@chakra-ui/react';
 
 export const MagicWandIcon = createIcon({
   displayName: 'MagicWand',
-  viewBox: '0 0 20 20',
+  viewBox: '0 0 24 24',
   path: (
     <>
       <title>Magic wand icon</title>
