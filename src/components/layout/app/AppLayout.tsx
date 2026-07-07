@@ -1,6 +1,5 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
 
-import { TopRightToast, TopToast } from '@/src/components/toast';
 import { Grid, GridProps } from '@/src/components/grid';
 
 const pageGridArea = `
@@ -23,8 +22,6 @@ export const AppLayout = forwardRef<
       textStyle="body"
       {...rest}
     >
-      <TopRightToast />
-      <TopToast />
       {children}
     </Grid>
   );
