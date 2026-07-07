@@ -5,5 +5,6 @@ export { default as useToken } from './useToken';
 export { default as useToast } from './useToast';
 export { default as useFocusWhenVisible } from './useFocusWhenVisible';
 export { default as useClipboard } from './useClipboard';
+export { default as useFuseSearch } from './useFuseSearch';
 
 export { useDisclosure } from './adapter/useDisclosure';
